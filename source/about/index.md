@@ -1,11 +1,11 @@
 ---
-title: #文章标题
+title: 我的简历 #文章标题
 date: 2017-11-11 00:46:26 #文章生成时间
 type: "about"
 comments: false  
 
 ---
-# <h1 align='center'>我的简历</h1>
+
 ---
 # 联系方式
 
@@ -34,9 +34,8 @@ comments: false
 
 - 2009/9至2013/6&emsp;&emsp;黄淮学院&emsp;&emsp;电子信息工程&emsp;&emsp;全日制本科
 
----
-# <h1 align='center'>工作经历</h1>
----
+# 工作经历
+
 ##  西藏远誉(北京)网络科技有限公司（2016年7月~2017年10月）
 
 __听呗FM__   
