@@ -11,7 +11,7 @@ tags: [问题分析]
 - 在本地source下新建README.md文件，并编写说明信息，提交到Github后，出现了乱码，本地的README.md文件被发布后变成了README.html格式	
 
 ![][1]  
-
+<!--more-->
 
 ### 解决
 

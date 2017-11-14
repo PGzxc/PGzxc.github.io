@@ -3,13 +3,12 @@ title: MarkDown快速入门
 date: 2017-11-12 02:12:18
 categories: "Markdown教程" #文章分类目录，可以省略
 tags: [Markdown,语法]
+
 ---
-Markdown 快速入门教程
-====================
 
 >上一篇文章简单介绍了Markdown的安装和破解方法，这篇文章简单介绍下Markdown的语法和使用范例，如果想查看Markdown的HTML输入结果，可以使用[Disgus](https://daringfireball.net/projects/markdown/dingus)，将编写的Markdown文档转成 XHTML。
     ![dispug](http://oz732f72q.bkt.clouddn.com/dingus.png)
-
+<!--more-->
 一：区块元素
 ==========
 **段落**：
