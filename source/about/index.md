@@ -19,7 +19,7 @@ comments: false
  - 本科/电子信息工程
  - 工作年限：4年
  
-# 技术信息
+# 相关信息
  - 个人网址：https://pgzxc.github.io/
  - GitHub：https://github.com/PGzxc/
  - CSDN博客：http://blog.csdn.net/calvin_zhou
