@@ -15,11 +15,11 @@ tags: [建站]
 # 生成备份文件 
 
 - 安装hexo-git-backup  
- 
+ <!--more-->
 	 $ npm install hexo-git-backup --save 
        
      ![安装hexo-git-backup][2]
-  <!--more-->
+
 -  在项目根目录的_config.yml中添加back备份信息，如备份主题，备注信息，备份分支  
 	
      ![添加备份信息][3]
