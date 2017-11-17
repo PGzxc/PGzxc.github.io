@@ -1,5 +1,5 @@
 ---
-title: android面试中关于Activity的那些事
+title: 关于Activity的那些事
 date: 2017-11-14 16:41:25
 categories: "Android面试知识点"
 tags: [Activity,Android]
