@@ -16,6 +16,15 @@ tags: [备份,hexo,Git]
 比如：提交本地文件到origin主机的hexo分支 git push origin hexo
 
 ![push][4]
+# 备份
+- 查看当前分支
+![branch][6]
+- 把要备份的文件添加进来 
+![][7]
+- 添加备份说明
+![][8]
+- 提交更改到远端
+![push][9]
 
 # 查看备份
 远程origin的hexo分支已更新    
@@ -30,3 +39,7 @@ tags: [备份,hexo,Git]
 [3]: http://p0j682kwo.bkt.clouddn.com/git-fetch.png
 [4]: http://p0j682kwo.bkt.clouddn.com/git-push.png
 [5]: http://p0j682kwo.bkt.clouddn.com/hexo-update.png
+[6]: http://p0j682kwo.bkt.clouddn.com/git_branch.png
+[7]: http://p0j682kwo.bkt.clouddn.com/git_add.png
+[8]: http://p0j682kwo.bkt.clouddn.com/git_commit_m.png
+[9]: http://p0j682kwo.bkt.clouddn.com/git-push.png
