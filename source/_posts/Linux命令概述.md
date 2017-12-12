@@ -2,7 +2,7 @@
 title: Linux命令概述
 date: 2017-12-12 12:05:27
 categories: [Linux]
-tags: [Linux,命令]
+tags: [Linux命令]
 ---
 
 近几年来，尽管 Linux 发展得非常迅速，图形界面越来越友好，但是在真正的开发过程中，Linux 命令行的应用还是占有非常重要的席位，而且许多Linux功能在命令行界面要比图形化界面下运行的快。可以说不会命令行，就不算会 Linux。    
