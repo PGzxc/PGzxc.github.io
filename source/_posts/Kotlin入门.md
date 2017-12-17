@@ -2,7 +2,7 @@
 title: Kotlin入门
 date: 2017-12-17 19:56:17
 categories: [Kotlin]
-tags: [Kotlin入门]
+tags: [Kotlin]
 ---
 # 什么是Kotlin
 Kotlin 是一种在 Java 虚拟机上运行的静态类型编程语言，被称之为 Android 世界的Swift，由 JetBrains 设计开发并开源。   
