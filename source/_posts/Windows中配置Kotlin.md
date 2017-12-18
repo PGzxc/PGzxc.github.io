@@ -28,7 +28,25 @@ tags: [Kotlin配置]
 ![][6]
 - 检查kotlin是否生效
 ![kotlin-version][7]
+# 运行kotlin
+## 新建一个Kotlint文件
+![][8]
+## 进入文件目录生成jar文件
 
+	kotlinc KotlinDemo.kt -include-runtime -d KotlinDemo.jar
+注：指令解释
+
+-  kotlinc： 编译指令，类似于java中的javac
+- KotlinDemo.kt：当前要编译的kt文件
+- -include-runtime： 引入kotlin libary，使的输出的jar文件是是自包含且可以运行的
+- -d：输出目录，没指定为当前目录
+- KotlinDemo.jar：生成jar文件
+
+![jar][9]
+## 查看输出结果
+![][10]
+## kotlin的build过程
+![][11]
 
 
 [1]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
@@ -38,3 +56,7 @@ tags: [Kotlin配置]
 [5]: http://p13wlhfa8.bkt.clouddn.com/kotlin-home.png
 [6]: http://p13wlhfa8.bkt.clouddn.com/kotlin-home-bin.png
 [7]: http://p13wlhfa8.bkt.clouddn.com/kotliln-version.png
+[8]: http://p13wlhfa8.bkt.clouddn.com/kotlin-compiler-pro.png
+[9]: http://p13wlhfa8.bkt.clouddn.com/kotlin-compiler-jar.png
+[10]: http://p13wlhfa8.bkt.clouddn.com/kotlin-compiler-jar-run.png
+[11]: http://p13wlhfa8.bkt.clouddn.com/kotlin-build-process.png
