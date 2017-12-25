@@ -139,7 +139,11 @@ __E朝朝企业版__
 -  了解react native开发流程，如组件、API、与原生交互、组件封装、调试、发布等
 
 ---
+# 微信公共号
+![weixin][1]
+---
 # 致谢
 感谢您花时间阅读我的简历，期待能有机会和您共事。
 
 [1]: http://p15oo9gqh.bkt.clouddn.com/weixin.jpg
+
