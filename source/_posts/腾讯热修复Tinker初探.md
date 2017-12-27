@@ -13,7 +13,7 @@ Tinker官方地址： [https://github.com/Tencent/tinker][1]
 ![][2]
 本次所使用的为tinker-sample-android
 ## 将tinker-sample-android导入androiid studio
-![][3]
+![][3]   
 导入后，build项目时会出现一系列问题，下文将讲述如何解决这些问题
 # Tinker集成时问题
 Tinker导入项目后，不能直接运行，需要稍作修改，下面的本人集成过程中出现的问题，如果你遇到的问题与我不同，欢迎留言。
@@ -31,11 +31,11 @@ Tinker导入项目后，不能直接运行，需要稍作修改，下面的本�
 ![][7]
 # 集成步骤
 ## 生成一个未修改之前的apk文件
-- 点击右侧的Gradle，在展开的Gradle projects中选择app，并依次展开Tasks->build->assembleDebug
+- 点击右侧的Gradle，在展开的Gradle projects中选择app，并依次展开Tasks->build->assembleDebug   
 ![][8]
-- 在assembleDebug上右键运行
+- 在assembleDebug上右键运行    
 ![][9]
-- 在app/build/barApk下可以看到生成的apk文件
+- 在app/build/barApk下可以看到生成的apk文件    
 ![][10]
 - 将此apk运行到手机上   
 ![][11]
@@ -46,11 +46,11 @@ Tinker导入项目后，不能直接运行，需要稍作修改，下面的本�
 ### 在app下的build.gradle中配置如下  
 ![][13]
 ### gradle里面执行下tinkerpatchdebug
-- 点击Gradle，依次展开tiner-sample-android->Task->tinker，选择tinkerPatchDebug
+- 点击Gradle，依次展开tiner-sample-android->Task->tinker，选择tinkerPatchDebug    
 ![][14]
-- 右键运行  
+- 右键运行    
 ![][15]
-- 在app/build/outputs/tinkerPatch下可以看到patch补丁
+- 在app/build/outputs/tinkerPatch下可以看到patch补丁    
 ![][16]
 - 将patch补丁包放到手机根目录下   
 ![][17]
@@ -59,8 +59,12 @@ Tinker导入项目后，不能直接运行，需要稍作修改，下面的本�
 ### 点击load patch
 ![][18]
 ### 点击Kill self并重启
-新下的按钮是新增的，修复已生效
+新下的按钮是新增的，修复已生效     
 ![][19]
+
+参考：  
+[tinker-sample-android][20]
+
 
 [1]: https://github.com/Tencent/tinker
 [2]: http://p1ljiesly.bkt.clouddn.com/tinker-jieya.png
@@ -81,3 +85,4 @@ Tinker导入项目后，不能直接运行，需要稍作修改，下面的本�
 [17]: http://p1ljiesly.bkt.clouddn.com/patch-signed-7zip.png
 [18]: http://p1ljiesly.bkt.clouddn.com/patch-success.png
 [19]: http://p1ljiesly.bkt.clouddn.com/patch-new.png
+[20]: https://github.com/PGzxc/tinker-sample-android
