@@ -121,13 +121,6 @@ GreenDao 3.0采用注解的方式来定义实体类，通过gradle插件生成�
 
  
 
-
-
-
-
-
-
-
 [1]: https://github.com/greenrobot/greenDAO
 [2]: http://p1xi78kuy.bkt.clouddn.com/greendao-build-gradle.png
 [3]: http://p1xi78kuy.bkt.clouddn.com/greendao-compile.png
