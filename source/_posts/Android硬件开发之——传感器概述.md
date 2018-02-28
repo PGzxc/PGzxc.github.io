@@ -1,7 +1,7 @@
 ---
-title: Android硬件之-传感器概述
+title: Android硬件开发之——传感器概述
 date: 2018-02-28 10:44:57
-categories: [Android硬件]
+categories: [Android硬件开发]
 tags: [传感器概述]
 ---
 # 前言 
