@@ -39,6 +39,7 @@ Android传感器主要分为以下三个方面
 - 湿度（barometer）传感器  
 - 光线（photometer）传感器   
 - 温度（thermometer）传感器  
+
 ### 位置（Position）传感器    
 这类传感器可以测量设备的物理位置。包括如下几个传感器。  
 
