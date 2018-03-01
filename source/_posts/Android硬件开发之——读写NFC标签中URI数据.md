@@ -1,0 +1,33 @@
+---
+title: Android硬件开发之——读写NFC标签中URI数据
+date: 2018-03-01 17:28:58
+categories: [Android硬件开发]
+tags: [读写NFC标签中URI数据]
+---
+# 前言 
+本文主要讲述NFC技术：NDEF Uri格式解析，包含以下内容：  
+
+- NFC技术：NDEF Uri格式解析
+- 编写可以解析Uri格式数据的类
+
+<!--more-->  
+
+# 读写NFC标签中URI数据
+## NDEF Uri格式规范  
+与NDEF文本格式一样，存储在NFC标签中的Uri也有一定的格式
+
+	http://www.nfc-forum.org/specs/spec_dashboard
+
+![][1]  
+# 实例 
+源码参考：[NFCReadWriteUri][2]   
+效果图  
+![][3]     
+![][4]
+
+
+
+[1]: http://p4ub8kcva.bkt.clouddn.com/nfc-uri-state.png
+[2]: https://github.com/PGzxc/NFCReadWriteUri
+[3]: http://p4ub8kcva.bkt.clouddn.com/nfc-read-write-uri.png
+[4]: http://p4ub8kcva.bkt.clouddn.com/nfc-uri-read.png
