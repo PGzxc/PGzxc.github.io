@@ -56,8 +56,18 @@ Text组件可以使用View组件所有的Style，View组件的所有Style可以�
 	});
 ### 效果 
 ![][5]
-## 嵌套练习  
+## onPress和onLongPress
 ### 代码 
+![][9]
+### 效果  
+![][10]
+## onLayout
+### 代码 
+![][11]
+### 效果图 
+![][12]
+# 嵌套练习  
+## 代码 
 
 	export default class BoldAndBeautiful extends Component 
 	{
@@ -73,10 +83,10 @@ Text组件可以使用View组件所有的Style，View组件的所有Style可以�
     	);
 		}
 	}
-### 效果图 
+## 效果图 
 ![][6]  
-## 组合练习 
-### 代码 
+# 组合练习 
+## 代码 
 
 	<View>
 		<MyAppText>
@@ -84,7 +94,7 @@ Text组件可以使用View组件所有的Style，View组件的所有Style可以�
 		</MyAppText>
 		<MyAppHeaderText>Text styled as a header</MyAppHeaderText>
 	</View>
-### 效果图 
+## 效果图 
 ![][7]
 
 # 其他  
@@ -101,3 +111,7 @@ Text组件可以使用View组件所有的Style，View组件的所有Style可以�
 [6]: http://p4ykqh02p.bkt.clouddn.com/rn-compontent-tv-nesting.png
 [7]: http://p4ykqh02p.bkt.clouddn.com/rn-compontent-tv-combinat.png
 [8]: https://github.com/PGzxc/RN_Text
+[9]: http://p4ykqh02p.bkt.clouddn.com/rn-text-onpress.png
+[10]: http://p4ykqh02p.bkt.clouddn.com/rn-text-onlongpress.gif
+[11]: http://p4ykqh02p.bkt.clouddn.com/rn-text-onlayout-code.png
+[12]: http://p4ykqh02p.bkt.clouddn.com/rn-text-onlayout-look.png
