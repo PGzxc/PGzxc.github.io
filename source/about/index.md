@@ -176,6 +176,7 @@ __E朝朝企业端__
 - 基于SmartReFreshLayout实现下拉刷新和上拉加载
 - 基于HeartLayout实现点心动画
 - 基于ViewAnimator实现聊天弹幕和礼物特效
+- 使用RAP模拟接口数据
 
 ---
 
@@ -183,11 +184,12 @@ __E朝朝企业端__
 -  具备扎实的Java编程基础
 -  熟练掌握C、C++编程语言
 -  熟练掌握Android编程知识
--  熟悉链式编程Rx的使用
--  熟悉kotlin、Anko开发
--  熟悉常用的设计模式
--  熟悉React Native开发
+-  熟悉常用SDK及第三方库
+-  熟悉链式编程Rx、Kotlin、Anko开发
+-  熟悉常用的设计模式、数据结构
 -  熟悉Git、SVN等版本管理工具
+-  熟悉React Native、Object-C、Swift
+-  了解逆向与安全防护
 
 ---
 # 微信公众号
