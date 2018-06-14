@@ -1,7 +1,7 @@
 ---
 title: Android硬件开发之——使用Android Beam传输文件(2)
 date: 2018-03-01 22:03:44
-categories: [Android硬件开发]
+categories: [Android,Android硬件开发]
 tags: [Android Beam传输文件]
 ---
 # 前言 

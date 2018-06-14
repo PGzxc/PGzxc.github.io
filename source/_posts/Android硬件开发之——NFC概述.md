@@ -1,7 +1,7 @@
 ---
 title: Android硬件开发之——NFC概述
 date: 2018-02-28 17:39:19
-categories: [Android硬件开发]
+categories: [Android,Android硬件开发]
 tags: [NFC概述]
 ---
 # 前言  

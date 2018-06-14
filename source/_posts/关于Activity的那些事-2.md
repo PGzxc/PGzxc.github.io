@@ -1,8 +1,8 @@
 ---
 title: 关于Activity的那些事(2)
 date: 2017-11-14 22:12:15
-categories: "Android面试知识点"
-tags: [Activity,Android]
+categories: [Android,Android面试知识点]
+tags: [Activity]
 ---
 
 此处的Activity知识点分：Android任务栈、Activity启动模式、scheme跳转协议三方面展开；

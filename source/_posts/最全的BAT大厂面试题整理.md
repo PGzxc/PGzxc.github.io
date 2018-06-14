@@ -1,7 +1,7 @@
 ---
 title: 最全的BAT大厂面试题整理
 date: 2018-03-05 16:53:18
-categories: [Android面试知识点]
+categories: [Android,Android面试知识点]
 tags: [BAT大厂面试题]
 ---
 注：本文为转载文章，原文出处： [最全的BAT大厂面试题整理][1] 

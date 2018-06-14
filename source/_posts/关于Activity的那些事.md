@@ -1,8 +1,8 @@
 ---
 title: 关于Activity的那些事
 date: 2017-11-14 16:41:25
-categories: "Android面试知识点"
-tags: [Activity,Android]
+categories: [Android,Android面试知识点]
+tags: [Activity]
 ---
 
 Activity作为四大组件之一，在软件开发中占据着非常重要的地位，也是面试中必问的知识点和考点，作为开发者，Activity相关知识点你都掌握了吗？

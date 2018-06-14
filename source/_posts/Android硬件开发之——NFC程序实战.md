@@ -1,7 +1,7 @@
 ---
 title: Android硬件开发之——NFC程序实战
 date: 2018-02-28 22:56:46
-categories: [Android硬件开发]
+categories: [Android,Android硬件开发]
 tags: [NFC程序实战]
 ---
 # 前言 
