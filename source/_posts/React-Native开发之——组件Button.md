@@ -1,7 +1,7 @@
 ---
 title: React Native开发之——组件Button
 date: 2018-03-07 10:14:43
-categories: [React Native开发]
+categories: [移动开发,React Native]
 tags: [组件Button]
 ---
 # 前言 

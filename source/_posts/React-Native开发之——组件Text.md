@@ -1,7 +1,7 @@
 ---
 title: React Native开发之——组件Text
 date: 2018-03-04 00:40:05
-categories: [React Native开发]
+categories: [移动开发,React Native]
 tags: [组件Text]
 ---
 # 前言 

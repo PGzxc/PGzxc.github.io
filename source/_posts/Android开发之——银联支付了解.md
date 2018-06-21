@@ -1,7 +1,7 @@
 ---
 title: Android开发之——银联支付了解
 date: 2018-05-23 18:29:55
-categories: [Android]
+categories: [移动开发,Android,支付]
 tags: [银联支付]
 ---
 # 前言

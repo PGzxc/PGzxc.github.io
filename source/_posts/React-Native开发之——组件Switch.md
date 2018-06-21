@@ -1,7 +1,7 @@
 ---
 title: React Native开发之——组件Switch
 date: 2018-03-12 11:16:07
-categories: [React Native开发]
+categories: [移动开发,React Native]
 tags: [组件Switch]
 ---
 # 前言 

@@ -1,7 +1,7 @@
 ---
 title: DSL简介
 date: 2017-11-27 11:13:27
-categories: [领域建模]
+categories: [高级语言,DSL]
 tags: [DSL]
 ---
 DSL领域专用语言简介主要回答几下几个问题  

@@ -1,7 +1,7 @@
 ---
 title: Kotlin学习之——课程大纲
 date: 2018-04-25 08:47:33
-categories: [Kotlin]
+categories: [高级语言,Kotlin]
 tags: [课程大纲]
 ---
 # Kotlin 课程大纲

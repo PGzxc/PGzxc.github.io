@@ -1,7 +1,7 @@
 ---
 title: React Native开发之——组件ScrollView
 date: 2018-03-19 17:50:17
-categories: [React Native开发]
+categories: [移动开发,React Native]
 tags: [组件ScrollView]
 ---
 # 前言 

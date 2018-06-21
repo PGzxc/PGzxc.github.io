@@ -1,7 +1,7 @@
 ---
 title: Android开发之——银联支付初探
 date: 2018-05-23 10:43:13
-categories: [Android]
+categories: [移动开发,Android,支付]
 tags: [银联支付]
 ---
 # 前言

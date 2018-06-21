@@ -1,7 +1,7 @@
 ---
 title: Android开发之——SDK
 date: 2018-05-23 09:17:40
-categories: [Android]
+categories: [移动开发,Android,SDK]
 tags: [SDK]
 ---
 # 概述

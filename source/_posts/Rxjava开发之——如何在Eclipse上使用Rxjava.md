@@ -1,7 +1,7 @@
 ---
-title: Rxjava开发之——如何在Eclipse上使用Rxjava
+title: RxJava开发之——如何在Eclipse上使用Rxjava
 date: 2018-03-11 11:33:02
-categories: [Rxjava开发]
+categories: [高级语言,RxJava]
 tags: [Rxjava开发工具]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Flutter开发之——环境配置
 date: 2018-05-29 18:16:47
-categories: [Flutter]
+categories: [移动开发,Flutter]
 tags: [环境配置]
 ---
 # 前言

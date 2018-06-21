@@ -1,7 +1,7 @@
 ---
 title: React Native开发之——组件DrawerLayoutAndroid
 date: 2018-03-22 23:42:18
-categories: [React Native开发]
+categories: [移动开发,React Native]
 tags: [组件DrawerLayoutAndroid]
 ---
 # 前言 

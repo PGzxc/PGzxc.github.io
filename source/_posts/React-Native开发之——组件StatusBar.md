@@ -1,7 +1,7 @@
 ---
 title: React Native开发之——组件StatusBar
 date: 2018-03-16 10:56:14
-categories: [React Native开发]
+categories: [移动开发,React Native]
 tags: [组件StatusBar]
 ---
 # 前言 

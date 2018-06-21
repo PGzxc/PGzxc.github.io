@@ -1,7 +1,7 @@
 ---
 title: React Native开发之—— React Native将license修改为MIT意欲何为
 date: 2018-03-07 11:09:04
-categories: [React Native开发]
+categories: [移动开发,React Native]
 tags: [React Native将license修改为MIT]
 ---
 注：本文为转载文章，原文请参考：[React Native将license修改为MIT意欲何为][1]
