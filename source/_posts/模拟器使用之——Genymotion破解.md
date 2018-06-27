@@ -1,7 +1,7 @@
 ---
 title: 模拟器使用之——Genymotion破解
 date: 2017-12-01 22:17:48
-categories: [模拟器]
+categories: [工具,模拟器]
 tags: [Genymotion]
 ---
 
