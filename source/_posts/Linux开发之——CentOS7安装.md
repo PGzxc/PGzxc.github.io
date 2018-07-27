@@ -89,6 +89,16 @@ CentOS（Community Enterprise Operating System，中文意思是：社区企业�
 ![][27]
 2. 打开ssh shell 
 ![][28]	
+3. ssh shell 乱码
+	![][29]
+4. 配置 /ect/locale.conf文件(UTF-8为GBK)
+	![][30]
+	![][31]
+5. 修改后生效
+	![][32]
+
+
+
 
 
 [1]: https://www.centos.org/download/
@@ -119,3 +129,7 @@ CentOS（Community Enterprise Operating System，中文意思是：社区企业�
 [26]: http://p0oaq2t2i.bkt.clouddn.com/centos-ping.png
 [27]: http://p0oaq2t2i.bkt.clouddn.com/centos-remote-host.png
 [28]: http://p0oaq2t2i.bkt.clouddn.com/centos-ssh.png
+[29]: http://p0oaq2t2i.bkt.clouddn.com/centos-lang-confusion.png
+[30]: http://p0oaq2t2i.bkt.clouddn.com/centos-language-before.png
+[31]: http://p0oaq2t2i.bkt.clouddn.com/centos-language-after.png
+[32]: http://p0oaq2t2i.bkt.clouddn.com/centos-local-shengxiao.png
