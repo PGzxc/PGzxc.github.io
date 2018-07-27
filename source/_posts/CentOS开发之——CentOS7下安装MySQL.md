@@ -1,7 +1,7 @@
 ---
-title: Linux开发之——CentOS7下安装MySQL
+title: CentOS开发之——CentOS7下安装MySQL
 date: 2018-07-27 17:56:03
-categories: [系统,Linux]
+categories: [系统,CentOS]
 tags: [MySQL]
 ---
 # 前言

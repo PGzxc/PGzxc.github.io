@@ -1,7 +1,7 @@
 ---
-title: Linux开发之——CentOS7安装
+title: CentOS开发之——CentOS7安装
 date: 2018-07-26 22:36:57
-categories: [系统,Linux]
+categories: [系统,CentOS]
 tags: [CentOS7]
 ---
 # 前言
