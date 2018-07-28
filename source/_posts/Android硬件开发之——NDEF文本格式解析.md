@@ -1,7 +1,7 @@
 ---
 title: Android硬件开发之——NDEF文本格式解析
 date: 2018-03-01 13:58:13
-categories: [移动开发,Android,硬件开发]
+categories: [开发,移动开发,Android,硬件开发]
 tags: [NDEF文本格式解析]
 ---
 # 前言

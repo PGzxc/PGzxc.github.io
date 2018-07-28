@@ -1,7 +1,7 @@
 ---
 title: Android开发之——版本兼容性问题
 date: 2017-11-15 17:06:39
-categories: [移动开发,Android,适配]
+categories: [开发,移动开发,Android,适配]
 tags: [版本兼容,适配]
 ---
 

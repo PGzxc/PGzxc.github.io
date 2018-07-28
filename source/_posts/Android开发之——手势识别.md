@@ -1,7 +1,7 @@
 ---
 title: Android开发之——手势识别
 date: 2018-01-09 17:16:01
-categories: [移动开发,Android,基础]
+categories: [开发,移动开发,Android,基础]
 tags: [手势识别]
 ---
 # 前言

@@ -1,7 +1,7 @@
 ---
 title: Android开发之——环信聊天集成
 date: 2017-12-28 13:09:30
-categories: [移动开发,Android,SDK]
+categories: [开发,移动开发,Android,SDK]
 tags: [环信聊天]
 ---
 # 前言

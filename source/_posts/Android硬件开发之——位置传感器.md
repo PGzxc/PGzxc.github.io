@@ -1,7 +1,7 @@
 ---
 title: Android硬件开发之——位置传感器
 date: 2018-02-28 16:32:20
-categories: [移动开发,Android,硬件开发]
+categories: [开发,移动开发,Android,硬件开发]
 tags: [位置传感器]
 ---
 # 前言  

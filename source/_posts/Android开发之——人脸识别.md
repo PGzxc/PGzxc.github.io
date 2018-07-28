@@ -1,7 +1,7 @@
 ---
 title: Android开发之——人脸识别
 date: 2018-01-09 10:48:10
-categories: [移动开发,Android,第三方库]
+categories: [开发,移动开发,Android,第三方库]
 tags: [人脸识别]
 ---
 # 前言 

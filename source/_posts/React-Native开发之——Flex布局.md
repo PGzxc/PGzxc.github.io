@@ -1,7 +1,7 @@
 ---
 title: React Native开发之——Flex布局
 date: 2018-03-03 21:20:44
-categories: [移动开发,React Native]
+categories: [开发,移动开发,React Native]
 tags: [Flex布局]
 ---
 # 前言 

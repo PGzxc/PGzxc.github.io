@@ -1,7 +1,7 @@
 ---
 title: Android开发之——Lambda表达式
 date: 2017-12-13 22:25:54
-categories: [移动开发,Android,基础]
+categories: [开发,移动开发,Android,基础]
 tags: [Lambda]
 ---
 # 前言

@@ -1,7 +1,7 @@
 ---
 title: Android开发之——Android 代码混淆(2)
 date: 2017-11-16 16:36:01
-categories: [移动开发,Android,安全]
+categories: [开发,移动开发,Android,安全]
 tags: [混淆,安全,工具]
 ---
 

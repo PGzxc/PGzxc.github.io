@@ -1,7 +1,7 @@
 ---
 title: IOS开发之——图片资源
 date: 2018-07-16 08:43:36
-categories: [移动开发,IOS,基础]
+categories: [开发,移动开发,IOS,基础]
 tags: [基础]
 ---
 # 前言

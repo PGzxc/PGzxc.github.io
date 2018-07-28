@@ -1,7 +1,7 @@
 ---
 title: Android开发之——跑马灯效果
 date: 2018-03-29 22:26:54
-categories: [移动开发,Android,基础]
+categories: [开发,移动开发,Android,基础]
 tags: [跑马灯]
 ---
 # 前言 

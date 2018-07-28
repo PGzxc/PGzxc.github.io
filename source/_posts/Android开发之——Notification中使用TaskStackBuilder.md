@@ -1,7 +1,7 @@
 ---
 title: Android开发之——Notification中使用TaskStackBuilder
 date: 2018-01-07 16:00:33
-categories: [移动开发,Android,基础]
+categories: [开发,移动开发,Android,基础]
 tags: [Notification]
 ---
 # 前言 

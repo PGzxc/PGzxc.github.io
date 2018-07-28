@@ -1,7 +1,7 @@
 ---
 title: Android开发之——Context你必须知道的一些事
 date: 2017-11-22 17:01:21
-categories: [移动开发,Android,基础]
+categories: [开发,移动开发,Android,基础]
 tags: [Context]
 ---
 作为开发者，对于Context的使用一定不陌生；你在加载资源、启动一个新的Activity、获取系统服务、获取内部文件（夹）路径、创建View操作时等都需要Context的参与，可见Context的常见性；

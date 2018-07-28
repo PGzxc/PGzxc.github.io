@@ -1,7 +1,7 @@
 ---
 title: Android开发之——EventBus3.x的使用
 date: 2018-02-01 14:35:58
-categories: [移动开发,Android,第三方库]
+categories: [开发,移动开发,Android,第三方库]
 tags: [EventBus3.x]
 ---
 # 简介

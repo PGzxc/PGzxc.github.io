@@ -1,7 +1,7 @@
 ---
 title: Android开发之——刷新显示数据变化动画
 date: 2018-02-04 16:48:42
-categories: [移动开发,Android,第三方库]
+categories: [开发,移动开发,Android,第三方库]
 tags: [动画]
 ---
 # 前言

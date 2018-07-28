@@ -1,7 +1,7 @@
 ---
 title: React Native开发之——RN开发中遇到的错误总结
 date: 2018-03-22 18:08:49
-categories: [移动开发,React Native]
+categories: [开发,移动开发,React Native]
 tags: [RN错误总结]
 ---
 

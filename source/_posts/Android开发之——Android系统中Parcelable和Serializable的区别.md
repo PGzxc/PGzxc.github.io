@@ -1,7 +1,7 @@
 ---
 title: Android开发之——Parcelable和Serializable的区别
 date: 2017-11-22 15:31:42
-categories: [移动开发,Android,优化]
+categories: [开发,移动开发,Android,优化]
 tags: [序列化]
 ---
 

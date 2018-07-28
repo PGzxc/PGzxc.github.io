@@ -1,7 +1,7 @@
 ---
 title: Dart开发之——环境配置
 date: 2018-05-29 16:35:24
-categories: [前端开发,Dart]
+categories: [开发,前端开发,Dart]
 tags: [环境配置]
 ---
 # 前言

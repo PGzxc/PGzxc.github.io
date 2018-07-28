@@ -1,7 +1,7 @@
 ---
 title: IOS开发之——入门
 date: 2018-07-09 11:10:33
-categories: [移动开发,IOS,基础]
+categories: [开发,移动开发,IOS,基础]
 tags: [基础]
 ---
 # 前言

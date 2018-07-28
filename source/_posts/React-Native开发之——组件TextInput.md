@@ -1,7 +1,7 @@
 ---
 title: React Native开发之——组件TextInput
 date: 2018-03-04 12:18:25
-categories: [移动开发,React Native]
+categories: [开发,移动开发,React Native]
 tags: [组件TextInput]
 ---
 # 前言 

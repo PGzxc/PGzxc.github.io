@@ -1,7 +1,7 @@
 ---
 title: Android开发之——Android Studio 3.0 构建中失败总结
 date: 2017-12-16 22:41:16
-categories: [移动开发,Android,工具]
+categories: [开发,移动开发,Android,工具]
 tags: [AS3.0]
 ---
 # 前言

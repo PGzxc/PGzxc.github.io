@@ -1,7 +1,7 @@
 ---
 title: IOS开发之——第一个IOS应用
 date: 2018-07-09 15:56:02
-categories: [移动开发,IOS,基础]
+categories: [开发,移动开发,IOS,基础]
 tags: [基础]
 ---
 

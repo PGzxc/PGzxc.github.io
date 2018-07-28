@@ -1,7 +1,7 @@
 ---
 title: Android开发之——Only fullscreen opaque activities can request orientation
 date: 2017-12-25 12:48:44  
-categories: [移动开发,Android,Error]   
+categories: [开发,移动开发,Android,Error]   
 tags: [Error]  
 ---
 # 问题   

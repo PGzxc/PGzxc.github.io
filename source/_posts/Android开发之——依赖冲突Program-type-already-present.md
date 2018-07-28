@@ -1,7 +1,7 @@
 ---
 title: Android开发之——依赖冲突Program type already present
 date: 2018-07-01 23:56:15
-categories: [移动开发,Android,Error]
+categories: [开发,移动开发,Android,Error]
 tags: [依赖冲突]
 ---
 # 前言

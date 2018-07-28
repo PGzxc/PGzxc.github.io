@@ -1,7 +1,7 @@
 ---
 title: Android开发之——第三方集成支付宝
 date: 2018-03-28 16:41:27
-categories: [移动开发,Android,支付]
+categories: [开发,移动开发,Android,支付]
 tags: [支付宝]
 ---
 # 前言 

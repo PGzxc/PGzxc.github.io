@@ -1,7 +1,7 @@
 ---
 title: React Native开发之——Webstorm开发RN配置
 date: 2018-03-02 22:35:26
-categories: [移动开发,React Native]
+categories: [开发,移动开发,React Native]
 tags: [Webstorm开发RN配置]
 ---
 # 前言 

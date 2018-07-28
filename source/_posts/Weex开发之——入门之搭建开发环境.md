@@ -1,7 +1,7 @@
 ---
 title: Weex开发之——入门之搭建开发环境
 date: 2018-02-10 09:02:38
-categories: [移动开发,Weex]
+categories: [开发,移动开发,Weex]
 tags: [环境搭建]
 ---
 # 前言

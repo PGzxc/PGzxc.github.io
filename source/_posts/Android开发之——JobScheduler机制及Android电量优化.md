@@ -1,7 +1,7 @@
 ---
 title: Android开发之——JobScheduler机制及Android电量优化
 date: 2018-01-04 21:49:54
-categories: [移动开发,Android,优化]
+categories: [开发,移动开发,Android,优化]
 tags: [JobScheduler,优化]
 ---
 # 前言 

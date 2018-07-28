@@ -1,7 +1,7 @@
 ---
 title: Android开发之——通知Notification
 date: 2018-01-07 18:16:15
-categories: [移动开发,Android,基础]
+categories: [开发,移动开发,Android,基础]
 tags: [Notification]
 ---
 # 介绍

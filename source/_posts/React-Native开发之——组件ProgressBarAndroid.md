@@ -1,7 +1,7 @@
 ---
 title: React Native开发之——组件ProgressBarAndroid
 date: 2018-03-13 11:49:24
-categories: [移动开发,React Native]
+categories: [开发,移动开发,React Native]
 tags: [组件ProgressBarAndroid]
 ---
 # 前言 

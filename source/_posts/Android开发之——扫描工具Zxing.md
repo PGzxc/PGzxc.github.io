@@ -1,7 +1,7 @@
 ---
 title: Android开发之——扫描工具Zxing
 date: 2018-07-04 13:55:20
-categories: [移动开发,Android,工具]
+categories: [开发,移动开发,Android,工具]
 tags: [Zxing]
 ---
 # 前言

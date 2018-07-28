@@ -1,7 +1,7 @@
 ---
 title: React Native开发之——组件ViewPagerAndroid
 date: 2018-03-20 09:44:24
-categories: [移动开发,React Native]
+categories: [开发,移动开发,React Native]
 tags: [组件ViewPagerAndroid]
 ---
 # 前言 

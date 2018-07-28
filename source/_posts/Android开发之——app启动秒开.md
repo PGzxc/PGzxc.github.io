@@ -1,7 +1,7 @@
 ---
 title: Android开发之——app启动秒开
 date: 2018-01-22 09:44:46
-categories: [移动开发,Android,优化]
+categories: [开发,移动开发,Android,优化]
 tags:  [APP秒开]
 ---
 # 前言 

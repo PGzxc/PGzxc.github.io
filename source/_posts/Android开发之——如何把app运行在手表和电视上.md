@@ -1,7 +1,7 @@
 ---
 title: Android开发之——如何把app运行在手表和电视上
 date: 2018-01-02 15:41:40
-categories: [移动开发,Android,基础]
+categories: [开发,移动开发,Android,基础]
 tags: [Watch]
 ---
 # 前言

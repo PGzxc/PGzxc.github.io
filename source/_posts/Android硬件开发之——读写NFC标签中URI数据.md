@@ -1,7 +1,7 @@
 ---
 title: Android硬件开发之——读写NFC标签中URI数据
 date: 2018-03-01 17:28:58
-categories: [移动开发,Android,硬件开发]
+categories: [开发,移动开发,Android,硬件开发]
 tags: [读写NFC标签中URI数据]
 ---
 # 前言 

@@ -1,7 +1,7 @@
 ---
 title: Android数据加密之——异或加密算法
 date: 2018-03-30 16:34:55
-categories: [移动开发,Android,加密]
+categories: [开发,移动开发,Android,加密]
 tags: [异或加密算法]
 ---
 

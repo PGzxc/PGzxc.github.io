@@ -1,7 +1,7 @@
 ---
 title: React Native开发之——组件RefreshControl
 date: 2018-03-24 17:02:29
-categories: [移动开发,React Native]
+categories: [开发,移动开发,React Native]
 tags: [组件RefreshControl]
 ---
 # 前言 

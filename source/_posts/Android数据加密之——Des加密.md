@@ -1,7 +1,7 @@
 ---
 title: Android数据加密之——Des加密
 date: 2018-03-30 22:38:29
-categories: [移动开发,Android,加密]
+categories: [开发,移动开发,Android,加密]
 tags: [Des加密]
 ---
 注：本文为转载文章，原文请参考：[Android数据加密之Des加密][1] 

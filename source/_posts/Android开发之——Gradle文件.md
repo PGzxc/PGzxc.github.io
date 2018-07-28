@@ -1,7 +1,7 @@
 ---
 title: Android开发之——Gradle文件
 date: 2017-11-17 21:15:14
-categories: [移动开发,Android,配置]
+categories: [开发,移动开发,Android,配置]
 tags: [gradle]
 ---
 Android Studio是基于Gradle构建的，项目创建成功后，下面会有三个gradle文件；  

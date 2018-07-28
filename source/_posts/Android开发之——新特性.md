@@ -1,7 +1,7 @@
 ---
 title: Android开发之——新特性
 date: 2018-01-10 22:38:27
-categories: [移动开发,Android,新特性]
+categories: [开发,移动开发,Android,新特性]
 tags: [新特性]
 ---
 # 前言

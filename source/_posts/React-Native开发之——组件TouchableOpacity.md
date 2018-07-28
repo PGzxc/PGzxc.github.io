@@ -1,7 +1,7 @@
 ---
 title: React Native开发之——组件TouchableOpacity
 date: 2018-03-09 09:09:56
-categories: [移动开发,React Native]
+categories: [开发,移动开发,React Native]
 tags: [组件TouchableOpacity]
 ---
 # 前言 

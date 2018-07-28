@@ -1,7 +1,7 @@
 ---
 title: Android开发之——数据优化ProtoBuf
 date: 2018-06-27 14:29:24
-categories: [移动开发,Android,优化]
+categories: [开发,移动开发,Android,优化]
 tags: [ProtoBuf]
 ---
 # 前言

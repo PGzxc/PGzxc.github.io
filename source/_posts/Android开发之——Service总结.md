@@ -1,7 +1,7 @@
 ---
 title: Android开发之——Service总结
 date: 2018-01-07 21:55:21
-categories: [移动开发,Android,基础]
+categories: [开发,移动开发,Android,基础]
 tags: [Service]
 ---
 # 概述 

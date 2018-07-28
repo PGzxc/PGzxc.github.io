@@ -1,7 +1,7 @@
 ---
 title: Android开发之——App构建流程分析
 date: 2017-11-16 22:30:15
-categories: [移动开发,Android,基础]
+categories: [开发,移动开发,Android,基础]
 tags: [app构建]
 ---
 转载声明：原文出处[Android App 构建流程分析][1]

@@ -1,7 +1,7 @@
 ---
 title: Android开发之——Ubuntu下编译FFmpeg生成.so文件
 date: 2018-06-02 22:03:19
-categories: [移动开发,Android,第三方库]
+categories: [开发,移动开发,Android,第三方库]
 tags: [FFmpeg]
 ---
 # 前言

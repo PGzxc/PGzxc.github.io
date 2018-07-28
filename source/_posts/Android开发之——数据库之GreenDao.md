@@ -1,7 +1,7 @@
 ---
 title: Android开发之——数据库之GreenDao
 date: 2018-01-03 10:48:37
-categories: [移动开发,Android,数据库]
+categories: [开发,移动开发,Android,数据库]
 tags: [数据库,GreenDao]
 ---
 # 前言  

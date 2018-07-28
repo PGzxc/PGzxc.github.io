@@ -1,7 +1,7 @@
 ---
 title: Android开发之——AAPT2 error
 date: 2017-12-14 03:28:44
-categories: [移动开发,Android,Error]
+categories: [开发,移动开发,Android,Error]
 tags: [Error]
 ---
 # 问题

@@ -1,7 +1,7 @@
 ---
 title: Android开发之——Lottie动画
 date: 2017-12-26 09:37:47
-categories: [移动开发,Android,动画]
+categories: [开发,移动开发,Android,动画]
 tags: [Lottie动画]
 ---
 # 简介

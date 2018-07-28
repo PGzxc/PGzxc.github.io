@@ -1,7 +1,7 @@
 ---
 title: Android开发之——图片加载框架比较与使用
 date: 2017-12-05 22:43:01
-categories: [移动开发,Android,第三方库]
+categories: [开发,移动开发,Android,第三方库]
 tags: [网络图片]
 ---
 

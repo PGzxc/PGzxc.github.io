@@ -1,7 +1,7 @@
 ---
 title: Android开发之——依赖注入的原理
 date: 2017-12-11 21:12:45
-categories: [移动开发,Android,第三方库]
+categories: [开发,移动开发,Android,第三方库]
 tags: [依赖注入,Dagger2]
 ---
 原文请参考：[依赖注入的原理][1]   

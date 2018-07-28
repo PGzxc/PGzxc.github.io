@@ -1,7 +1,7 @@
 ---
 title: React Native开发之——Webstorm快捷开发
 date: 2018-03-02 17:49:59
-categories: [移动开发,React Native]
+categories: [开发,移动开发,React Native]
 tags: [Webstorm快捷开发]
 ---
 # 前言  

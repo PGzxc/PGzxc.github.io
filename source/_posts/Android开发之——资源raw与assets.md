@@ -1,7 +1,7 @@
 ---
 title: Android开发之——资源raw与assets
 date: 2017-12-26 01:03:23
-categories: [移动开发,Android,基础]
+categories: [开发,移动开发,Android,基础]
 tags: [raw与assets]
 ---
 # android raw与assets区别

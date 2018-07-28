@@ -1,7 +1,7 @@
 ---
 title: React Native开发之——组件Image
 date: 2018-03-05 12:40:09
-categories: [移动开发,React Native]
+categories: [开发,移动开发,React Native]
 tags: [组件Image]
 ---
 # 前言

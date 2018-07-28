@@ -1,7 +1,7 @@
 ---
 title: Android开发之——7.0适配之应用之间共享文件(FileProvider)
 date: 2018-01-07 16:21:10
-categories: [移动开发,Android,适配]
+categories: [开发,移动开发,Android,适配]
 tags: [FileProvider]
 ---
 # 前言  

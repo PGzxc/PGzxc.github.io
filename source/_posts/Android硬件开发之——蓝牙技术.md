@@ -1,7 +1,7 @@
 ---
 title: Android硬件开发之——蓝牙技术
 date: 2018-03-01 23:26:33
-categories: [移动开发,Android,硬件开发]
+categories: [开发,移动开发,Android,硬件开发]
 tags: [蓝牙技术]
 ---
 # 前言 

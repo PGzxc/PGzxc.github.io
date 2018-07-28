@@ -1,7 +1,7 @@
 ---
 title: Android开发之——Activity，FragmentActivity, ActionBarActivity, AppCompatActivity
 date: 2017-12-06 02:31:19
-categories: [移动开发,Android,基础]
+categories: [开发,移动开发,Android,基础]
 tags: [Activity]
 ---
 stack overflow上看到一篇关于Activity，FragmentActivity，ActionBarActivity和AppCompatActivity使用问题的讨论     

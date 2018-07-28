@@ -1,7 +1,7 @@
 ---
 title: Android开发之——Dagger2入门教程
 date: 2017-12-11 22:51:46
-categories: [移动开发,Android,第三方库]
+categories: [开发,移动开发,Android,第三方库]
 tags: [Dagger2]
 ---
 

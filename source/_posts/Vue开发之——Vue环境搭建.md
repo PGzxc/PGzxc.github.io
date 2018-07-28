@@ -1,7 +1,7 @@
 ---
 title: Vue开发之——Vue环境搭建
 date: 2018-03-07 15:14:31
-categories: [前端开发,Vue]
+categories: [开发,前端开发,Vue]
 tags: [环境搭建]
 ---
 # 前言 

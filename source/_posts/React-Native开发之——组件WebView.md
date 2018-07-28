@@ -1,7 +1,7 @@
 ---
 title: React Native开发之——组件WebView
 date: 2018-03-21 10:41:06
-categories: [移动开发,React Native]
+categories: [开发,移动开发,React Native]
 tags: [组件WebView]
 ---
 # 前言

@@ -1,7 +1,7 @@
 ---
 title: React Native开发之——组件ListView
 date: 2018-03-14 10:00:29
-categories: [移动开发,React Native]
+categories: [开发,移动开发,React Native]
 tags: [组件ListView]
 ---
 # 前言 

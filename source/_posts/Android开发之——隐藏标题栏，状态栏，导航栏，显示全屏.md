@@ -1,7 +1,7 @@
 ---
 title: Android开发之——隐藏标题栏，状态栏，导航栏，显示全屏
 date: 2017-12-06 12:10:00
-categories: [移动开发,Android,基础]
+categories: [开发,移动开发,Android,基础]
 tags: [全屏]
 ---
 ![][0]   

@@ -1,7 +1,7 @@
 ---
 title: Android数据加密之——Base64编码算法
 date: 2018-03-30 17:13:33
-categories: [移动开发,Android,加密]
+categories: [开发,移动开发,Android,加密]
 tags: [Base64编码算法]
 ---
 注：本文为转载文章，原文请参考：[Android数据加密之Base64编码算法][1]  

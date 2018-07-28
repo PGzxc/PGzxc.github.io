@@ -1,7 +1,7 @@
 ---
 title: Android面试之——关于Activity的那些事(2)
 date: 2017-11-14 22:12:15
-categories: [面试相关,Android面试]
+categories: [开发,面试相关,Android面试]
 tags: [Activity]
 ---
 

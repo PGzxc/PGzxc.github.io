@@ -1,7 +1,7 @@
 ---
 title: Android硬件开发之——使用Android Beam传输文本
 date: 2018-03-01 21:46:16
-categories: [移动开发,Android,硬件开发]
+categories: [开发,移动开发,Android,硬件开发]
 tags: [Android Beam传输文本]
 ---
 # 前言 

@@ -1,7 +1,7 @@
 ---
 title: Android开发之——快速发布开源项目到Jcenter
 date: 2017-12-31 09:05:54
-categories: [移动开发,Android,第三方库]
+categories: [开发,移动开发,Android,第三方库]
 tags: [Jcenter]
 ---
 # 前言

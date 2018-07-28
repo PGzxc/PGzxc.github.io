@@ -1,7 +1,7 @@
 ---
 title: Android开发之——修改debug.keystore
 date: 2018-03-29 13:25:25
-categories: [移动开发,Android,配置]
+categories: [开发,移动开发,Android,配置]
 tags: [修改debug.keystore]
 ---
 # 前言 
