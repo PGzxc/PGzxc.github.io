@@ -134,21 +134,21 @@ tags: [软件环境配置]
 ### Go
 #### 变量
 	GO_HOME D:\SoftWare\Go;	
-### Path
+#### Path
 	%GO_HOME%\bin;
 
 ------
 ### Cmake
 #### 变量
 	Cmake_HOME  D:\SoftWare\cmake
-### Path
+#### Path
 	%Cmake_HOME%\bin;
 
 ------
 ### Node
 #### 变量
 	NODE_HOME  D:\SoftWare\Node
-### Path
+#### Path
 	%NODE_HOME%
 	%NODE_HOME%\node_global;
 
@@ -156,19 +156,19 @@ tags: [软件环境配置]
 ### Git
 #### 变量
 	GIT_HOME C:\Program Files\Git
-### Path
+#### Path
 	%GIT_HOM%\cmd;
 
 ------ 
 ### vscode
 #### 变量
 	VS_HOME D:\SoftWare\VsCode\Microsoft VS Code
-### Path
+#### Path
 	%VS_HOME%\bin;
 
 ------
 ### Putty
 #### 变量
 	Putty_Home D:\SoftWare\Putty
-### Path
+#### Path
 	%Putty_Home%;
