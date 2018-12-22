@@ -56,6 +56,6 @@ man中各个section意义如下：
 
 
 
-[1]: http://p0oaq2t2i.bkt.clouddn.com/linux_command_opt.png
-[2]: http://p0oaq2t2i.bkt.clouddn.com/ls_help.png
-[3]: http://p0oaq2t2i.bkt.clouddn.com/linux_history.png
+[1]: http://bolo-imgs.pgzxc.com/linux_command_opt.png
+[2]: http://bolo-imgs.pgzxc.com/linux-order-ls_help.png
+[3]: http://bolo-imgs.pgzxc.com/linux_history.png

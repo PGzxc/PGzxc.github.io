@@ -84,30 +84,31 @@ tags: [支付宝]
 
 
 
+
 [1]: https://openhome.alipay.com/platform/appManage.htm
 [2]: https://docs.open.alipay.com/204/105296/#s0
 [3]: https://docs.open.alipay.com/54/cyz7do/
 [4]: https://docs.open.alipay.com/291/106097/
 [5]: https://openhome.alipay.com/platform/appDaily.htm?tab=info
-[6]: http://p6alo7dgd.bkt.clouddn.com/alibaba-guide-app.png
-[7]: http://p6alo7dgd.bkt.clouddn.com/alibaba-guide-document.png
-[8]: http://p6alo7dgd.bkt.clouddn.com/alibaba-guide-sdk-download.png
-[9]: http://p6alo7dgd.bkt.clouddn.com/alibaba-guide-sign-download.png
-[10]: http://p6alo7dgd.bkt.clouddn.com/alibaba-guide-saxiang.png
-[11]: http://p6alo7dgd.bkt.clouddn.com/app-create.png
-[12]: http://p6alo7dgd.bkt.clouddn.com/aliba-modify-icon.png
-[13]: http://p6alo7dgd.bkt.clouddn.com/aliba-app-sign-create.png
-[14]: http://p6alo7dgd.bkt.clouddn.com/aliba-app-create-sign-public.png
-[15]: http://p6alo7dgd.bkt.clouddn.com/aliba-app-copy-sign.png
-[16]: http://p6alo7dgd.bkt.clouddn.com/aliba-app-commit.png
-[17]: http://p6alo7dgd.bkt.clouddn.com/aliba-shenhe.png
-[18]: http://p6alo7dgd.bkt.clouddn.com/aliba-app-sdk-download.png
-[19]: http://p6alo7dgd.bkt.clouddn.com/aliba-app-as.png
-[20]: http://p6alo7dgd.bkt.clouddn.com/aliba-normal-run.png
-[21]: http://p6alo7dgd.bkt.clouddn.com/aliba-shaxiang-app.png
-[22]: http://p6alo7dgd.bkt.clouddn.com/aliba-shaxiang-user.png
-[23]: http://p6alo7dgd.bkt.clouddn.com/aliba-shaxiang-money.png
-[24]: http://p6alo7dgd.bkt.clouddn.com/aliba-shaxiang-envutils.png
-[25]: http://p6alo7dgd.bkt.clouddn.com/aliba-shaxiang-order.png
-[26]: http://p6alo7dgd.bkt.clouddn.com/aliba-shaxiang-pay.png
-[27]: http://p6alo7dgd.bkt.clouddn.com/aliba-shaxiang-suc.png
+[6]: http://bolo-imgs.pgzxc.com/alibaba-guide-app.png
+[7]: http://bolo-imgs.pgzxc.com/alibaba-guide-document.png
+[8]: http://bolo-imgs.pgzxc.com/alibaba-guide-sdk-download.png
+[9]: http://bolo-imgs.pgzxc.com/alibaba-guide-sign-download.png
+[10]: http://bolo-imgs.pgzxc.com/alibaba-guide-saxiang.png
+[11]: http://bolo-imgs.pgzxc.com/app-alibaba-create.png
+[12]: http://bolo-imgs.pgzxc.com/aliba-modify-icon.png
+[13]: http://bolo-imgs.pgzxc.com/aliba-app-sign-create.png
+[14]: http://bolo-imgs.pgzxc.com/aliba-app-create-sign-public.png
+[15]: http://bolo-imgs.pgzxc.com/aliba-app-copy-sign.png
+[16]: http://bolo-imgs.pgzxc.com/aliba-app-commit.png
+[17]: http://bolo-imgs.pgzxc.com/aliba-shenhe.png
+[18]: http://bolo-imgs.pgzxc.com/aliba-app-sdk-download.png
+[19]: http://bolo-imgs.pgzxc.com/aliba-app-as.png
+[20]: http://bolo-imgs.pgzxc.com/aliba-normal-run.png
+[21]: http://bolo-imgs.pgzxc.com/aliba-shaxiang-app.png
+[22]: http://bolo-imgs.pgzxc.com/aliba-shaxiang-user.png
+[23]: http://bolo-imgs.pgzxc.com/aliba-shaxiang-money.png
+[24]: http://bolo-imgs.pgzxc.com/aliba-shaxiang-envutils.png
+[25]: http://bolo-imgs.pgzxc.com/aliba-shaxiang-order.png
+[26]: http://bolo-imgs.pgzxc.com/aliba-shaxiang-pay.png
+[27]: http://bolo-imgs.pgzxc.com/aliba-shaxiang-suc.png

@@ -57,14 +57,14 @@ selectTextOnFocus和selectionColor，用于设置获取焦点时，选中文本�
 
 
 
-[1]: http://p4ykqh02p.bkt.clouddn.com/rn-textinput-maxlength-code.png
-[2]: http://p4ykqh02p.bkt.clouddn.com/rn-textinput-maxlength.gif
-[3]: http://p4ykqh02p.bkt.clouddn.com/rn-textinput-multiline-code.png
-[4]: http://p4ykqh02p.bkt.clouddn.com/rn-textinput-multiline-look.png
-[5]: http://p4ykqh02p.bkt.clouddn.com/rn-textinput-placeholder.png
-[6]: http://p4ykqh02p.bkt.clouddn.com/rn-textinput-placeholder.gif
-[7]: http://p4ykqh02p.bkt.clouddn.com/rn-textinput-securetextentry.png
-[8]: http://p4ykqh02p.bkt.clouddn.com/rn-textinput-securetextentry.gif
-[9]: http://p4ykqh02p.bkt.clouddn.com/rn-textinput-selectonfocus.png
-[10]: http://p4ykqh02p.bkt.clouddn.com/rn-textinput-selectTextOnFocus.gif
+[1]: http://bolo-imgs.pgzxc.com/rn-textinput-maxlength-code.png
+[2]: http://bolo-imgs.pgzxc.com/rn-textinput-maxlength.gif
+[3]: http://bolo-imgs.pgzxc.com/rn-textinput-multiline-code.png
+[4]: http://bolo-imgs.pgzxc.com/rn-textinput-multiline-look.png
+[5]: http://bolo-imgs.pgzxc.com/rn-textinput-placeholder.png
+[6]: http://bolo-imgs.pgzxc.com/rn-textinput-placeholder.gif
+[7]: http://bolo-imgs.pgzxc.com/rn-textinput-securetextentry.png
+[8]: http://bolo-imgs.pgzxc.com/rn-textinput-securetextentry.gif
+[9]: http://bolo-imgs.pgzxc.com/rn-textinput-selectonfocus.png
+[10]: http://bolo-imgs.pgzxc.com/rn-textinput-selectTextOnFocus.gif
 [11]: https://github.com/PGzxc/RN_TextInput

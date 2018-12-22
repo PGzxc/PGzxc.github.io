@@ -42,9 +42,11 @@ tags: [序列化]
 
 ##  Serializable序列化实现
 - 安装插件  
-![serializable插件][3]
+
+	![serializable插件][3]
 - 使用插件  
-![使用插件][4]
+
+	![使用插件][4]
 
 
 
@@ -52,10 +54,12 @@ tags: [序列化]
 ## Parcelable序列化实现  
 
 - 安装插件 
-![安装插件][1]
+
+	![安装插件][1]
 
 - 使用插件 
-![使用插件][2]
+
+	![使用插件][2]
 
 参考：  
 [Android系统中Parcelable和Serializable的区别][5]  
@@ -63,10 +67,10 @@ tags: [序列化]
 
 
 
-[1]: http://ozt79kamz.bkt.clouddn.com/parcelable-plug.png
-[2]: http://ozt79kamz.bkt.clouddn.com/parcelable-use.gif
-[3]: http://ozt79kamz.bkt.clouddn.com/serialize-plug.png
-[4]: http://ozt79kamz.bkt.clouddn.com/serializeable-use.gif
+[1]: http://bolo-imgs.pgzxc.com/parcelable-plug.png
+[2]: http://bolo-imgs.pgzxc.com/parcelable-use.gif
+[3]: http://bolo-imgs.pgzxc.com/serialize-plug.png
+[4]: http://bolo-imgs.pgzxc.com/serializeable-use.gif
 [5]: http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0204/2410.html  
 [6]: http://www.cnblogs.com/renqingping/archive/2012/10/25/Parcelable.html
 

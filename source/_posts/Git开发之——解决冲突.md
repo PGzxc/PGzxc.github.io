@@ -39,16 +39,16 @@ tags: [解决冲突]
 ![][13]  
 
 
-[1]: http://p4plw91nh.bkt.clouddn.com/git-conflict-show.png 
-[2]: http://p4plw91nh.bkt.clouddn.com/git-config-checkout-b.png
-[3]: http://p4plw91nh.bkt.clouddn.com/git-config-add-content.png
-[4]: http://p4plw91nh.bkt.clouddn.com/git-config-add-commit.png
-[5]: http://p4plw91nh.bkt.clouddn.com/git-config-master.png
-[6]: http://p4plw91nh.bkt.clouddn.com/git-config-master-modify.png
-[7]: http://p4plw91nh.bkt.clouddn.com/git-config-master-add-commit.png
-[8]: http://p4plw91nh.bkt.clouddn.com/git-config-merge-fail.png
-[9]: http://p4plw91nh.bkt.clouddn.com/git-config-merge-status.png
-[10]: http://p4plw91nh.bkt.clouddn.com/git-config-confile.png
-[11]: http://p4plw91nh.bkt.clouddn.com/git-config-confile-after.png
-[12]: http://p4plw91nh.bkt.clouddn.com/git-config-fixed.png
-[13]: http://p4plw91nh.bkt.clouddn.com/git-config-del-branch.png
+[1]: http://bolo-imgs.pgzxc.com/git-conflict-show.png 
+[2]: http://bolo-imgs.pgzxc.com/git-config-checkout-b.png
+[3]: http://bolo-imgs.pgzxc.com/git-config-add-content.png
+[4]: http://bolo-imgs.pgzxc.comgit-config-add-commit.png
+[5]: http://bolo-imgs.pgzxc.com/git-config-master.png
+[6]: http://bolo-imgs.pgzxc.com/git-config-master-modify.png
+[7]: http://bolo-imgs.pgzxc.com/git-config-master-add-commit.png
+[8]: http://bolo-imgs.pgzxc.com/git-config-merge-fail.png
+[9]: http://bolo-imgs.pgzxc.com/git-config-merge-status.png
+[10]: http://bolo-imgs.pgzxc.com/git-config-confile.png
+[11]: http://bolo-imgs.pgzxc.com/git-config-confile-after.png
+[12]: http://bolo-imgs.pgzxc.com/git-config-fixed.png
+[13]: http://bolo-imgs.pgzxc.com/git-config-del-branch.png

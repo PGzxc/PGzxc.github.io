@@ -48,11 +48,11 @@ ReactNative的代码模板，包括：
 
 
 [1]: https://pgzxc.github.io/2018/03/02/React-Native%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94Webstorm%E5%BF%AB%E6%8D%B7%E5%BC%80%E5%8F%91/
-[2]: http://p4ykqh02p.bkt.clouddn.com/webstorm-file-encodings.png
-[3]: http://p4ykqh02p.bkt.clouddn.com/webstorm-jsx-languages.png
-[4]: http://p4ykqh02p.bkt.clouddn.com/webstorm-library-react.png
-[5]: http://p4ykqh02p.bkt.clouddn.com/webstorm-library-react-native.png
-[6]: http://p4ykqh02p.bkt.clouddn.com/webstorm-library-global.png
+[2]: http://bolo-imgs.pgzxc.com/webstorm-file-encodings.png
+[3]: http://bolo-imgs.pgzxc.com/webstorm-jsx-languages.png
+[4]: http://bolo-imgs.pgzxc.com/webstorm-library-react.png
+[5]: http://bolo-imgs.pgzxc.com/webstorm-library-react-native.png
+[6]: http://bolo-imgs.pgzxc.com/webstorm-library-global.png
 [7]: https://github.com/virtoolswebplayer/ReactNative-LiveTemplate
-[8]: http://p4ykqh02p.bkt.clouddn.com/webstorm-live-templates.png
-[9]: http://p4ykqh02p.bkt.clouddn.com/webstorm-live-effect.png
+[8]: http://bolo-imgs.pgzxc.com/webstorm-live-templates.png
+[9]: http://bolo-imgs.pgzxc.com/webstorm-live-effect.png

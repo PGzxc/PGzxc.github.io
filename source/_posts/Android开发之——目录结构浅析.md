@@ -30,7 +30,7 @@ tags: [目录结构]
 
 # Eclipse目录结构浅析  
 
-![Eclipse目录][3]  
+![Eclipse目录][0]  
 
 主要介绍在入门阶段需要知道的几个文件夹：
   
@@ -86,7 +86,6 @@ tags: [目录结构]
 
 
 
-
-[1]: http://ozjwpdk06.bkt.clouddn.com/struct-as.png
-[2]: http://ozjwpdk06.bkt.clouddn.com/as-src.png
-[3]: http://ozjwpdk06.bkt.clouddn.com/eclipse.png
+[0]: http://bolo-imgs.pgzxc.com/struct-eclipse.png
+[1]: http://bolo-imgs.pgzxc.com/struct-android.png
+[2]: http://bolo-imgs.pgzxc.com/android-src.png

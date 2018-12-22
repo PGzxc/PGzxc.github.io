@@ -80,6 +80,6 @@ tags: [组件DrawerLayoutAndroid]
 # 其他 
 参考：[Github下载][2]
 
-[1]: http://p4ykqh02p.bkt.clouddn.com/rn-drawerLayoutandroid.gif
+[1]: http://bolo-imgs.pgzxc.com/rn-drawerLayoutandroid.gif
 [2]: https://github.com/PGzxc/RN_DrawerLayoutAndroid
 

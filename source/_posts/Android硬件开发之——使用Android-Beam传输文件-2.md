@@ -32,4 +32,4 @@ tags: [Android Beam传输文件]
 
 
 [1]: https://github.com/PGzxc/NFCFile
-[2]: http://p4ub8kcva.bkt.clouddn.com/nfc-file.png
+[2]: http://bolo-imgs.pgzxc.com/nfc-file.png

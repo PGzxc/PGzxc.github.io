@@ -95,6 +95,7 @@ CentOS（Community Enterprise Operating System，中文意思是：社区企业�
 	![][30]
 	![][31]
 5. 修改后生效
+	
 	![][32]
 
 
@@ -102,34 +103,34 @@ CentOS（Community Enterprise Operating System，中文意思是：社区企业�
 
 
 [1]: https://www.centos.org/download/
-[2]: http://p0oaq2t2i.bkt.clouddn.com/centos-guanwang.png
-[3]: http://p0oaq2t2i.bkt.clouddn.com/centos-download.png
-[4]: http://p0oaq2t2i.bkt.clouddn.com/vmware-workstation.png
-[5]: http://p0oaq2t2i.bkt.clouddn.com/vmware-guide.png
-[6]: http://p0oaq2t2i.bkt.clouddn.com/centos--system.png
-[7]: http://p0oaq2t2i.bkt.clouddn.com/centos-select.png
-[8]: http://p0oaq2t2i.bkt.clouddn.com/centos-position.png
-[9]: http://p0oaq2t2i.bkt.clouddn.com/centos-capacity.png
-[10]: http://p0oaq2t2i.bkt.clouddn.com/centos-system-img.png
-[11]: http://p0oaq2t2i.bkt.clouddn.com/centos-start.png
-[12]: http://p0oaq2t2i.bkt.clouddn.com/centos-install-centos-7.png
-[13]: http://p0oaq2t2i.bkt.clouddn.com/centos-language.png
-[14]: http://p0oaq2t2i.bkt.clouddn.com/centos-config.png
-[15]: http://p0oaq2t2i.bkt.clouddn.com/centos7-system.jpg
-[16]: http://p0oaq2t2i.bkt.clouddn.com/centos-boot.png
-[17]: http://p0oaq2t2i.bkt.clouddn.com/centos-done.png
-[18]: http://p0oaq2t2i.bkt.clouddn.com/centos-localhost-before.png
-[19]: http://p0oaq2t2i.bkt.clouddn.com/centos-password.png
-[20]: http://p0oaq2t2i.bkt.clouddn.com/centos-root-install.png
-[21]: http://p0oaq2t2i.bkt.clouddn.com/centos-login.png
-[22]: http://p0oaq2t2i.bkt.clouddn.com/centos-no-ip.png
-[23]: http://p0oaq2t2i.bkt.clouddn.com/centos-network-scripts.png
-[24]: http://p0oaq2t2i.bkt.clouddn.com/centos-noboots.png
-[25]: http://p0oaq2t2i.bkt.clouddn.com/centos-service-network-restart.png
-[26]: http://p0oaq2t2i.bkt.clouddn.com/centos-ping.png
-[27]: http://p0oaq2t2i.bkt.clouddn.com/centos-remote-host.png
-[28]: http://p0oaq2t2i.bkt.clouddn.com/centos-ssh.png
-[29]: http://p0oaq2t2i.bkt.clouddn.com/centos-lang-confusion.png
-[30]: http://p0oaq2t2i.bkt.clouddn.com/centos-language-before.png
-[31]: http://p0oaq2t2i.bkt.clouddn.com/centos-language-after.png
-[32]: http://p0oaq2t2i.bkt.clouddn.com/centos-local-shengxiao.png
+[2]: http://bolo-imgs.pgzxc.com/centos-guanwang.png
+[3]: http://bolo-imgs.pgzxc.com/centos-download.png
+[4]: http://bolo-imgs.pgzxc.com/vmware-workstation.png
+[5]: http://bolo-imgs.pgzxc.com/vmware-guide.png
+[6]: http://bolo-imgs.pgzxc.com/centos--system.png
+[7]: http://bolo-imgs.pgzxc.com/centos-select.png
+[8]: http://bolo-imgs.pgzxc.com/centos-position.png
+[9]: http://bolo-imgs.pgzxc.com/centos-capacity.png
+[10]: http://bolo-imgs.pgzxc.com/centos-system-img.png
+[11]: http://bolo-imgs.pgzxc.com/centos-start.png
+[12]: http://bolo-imgs.pgzxc.com/centos-install-centos-7.png
+[13]: http://bolo-imgs.pgzxc.com/centos-language.png
+[14]: http://bolo-imgs.pgzxc.com/centos-config.png
+[15]: http://bolo-imgs.pgzxc.com/centos7-system.jpg
+[16]: http://bolo-imgs.pgzxc.com/centos-boot.png
+[17]: http://bolo-imgs.pgzxc.com/centos-done.png
+[18]: http://bolo-imgs.pgzxc.com/centos-localhost-before.png
+[19]: http://bolo-imgs.pgzxc.com/centos-password.png
+[20]: http://bolo-imgs.pgzxc.com/centos-root-install.png
+[21]: http://bolo-imgs.pgzxc.com/centos-login.png
+[22]: http://bolo-imgs.pgzxc.com/centos-no-ip.png
+[23]: http://bolo-imgs.pgzxc.com/centos-network-scripts.png
+[24]: http://bolo-imgs.pgzxc.com/centos-noboots.png
+[25]: http://bolo-imgs.pgzxc.com/centos-service-network-restart.png
+[26]: http://bolo-imgs.pgzxc.com/centos-ping.png
+[27]: http://bolo-imgs.pgzxc.com/centos-remote-host.png
+[28]: http://bolo-imgs.pgzxc.com/centos-ssh.png
+[29]: http://bolo-imgs.pgzxc.com/centos-lang-confusion.png
+[30]: http://bolo-imgs.pgzxc.com/centos-language-before.png
+[31]: http://bolo-imgs.pgzxc.com/centos-language-after.png
+[32]: http://bolo-imgs.pgzxc.com/centos-local-shengxiao.png

@@ -182,5 +182,5 @@ Touch功能了，而三星也将会提供相应的支持。
 
 
 [0]: https://developer.android.google.cn/about/versions/nougat/index.html
-[1]: http://p0kng3270.bkt.clouddn.com/android-change.png
+[1]: http://bolo-imgs.pgzxc.com/android-change.png
 [2]: http://blog.csdn.net/fanenqian/article/details/56479714 

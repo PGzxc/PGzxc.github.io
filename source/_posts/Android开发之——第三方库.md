@@ -9,4 +9,4 @@ tags: [第三方库]
 ![][1]
 
 
-[1]: http://p0vnrxb94.bkt.clouddn.com/%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93.png
+[1]: http://bolo-imgs.pgzxc.com/android-libraries.png

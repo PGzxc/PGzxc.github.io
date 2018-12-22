@@ -46,7 +46,8 @@ tags: [Java]
 6. 重新加载/etc/profile配置文件
 	
 	改变文件权限:chmod 777 profile    
-	source /etc/profile    	
+	source /etc/profile   
+ 	
 	![][8]
 
 7. 查看java信息   
@@ -54,11 +55,11 @@ tags: [Java]
 
 
 [1]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-[2]: http://pcj4vn4xs.bkt.gdipper.com/java-linux-download.png
-[3]: http://pcj4vn4xs.bkt.gdipper.com/java-grep.png
-[4]: http://pcj4vn4xs.bkt.gdipper.com/java-upload.png
-[5]: http://pcj4vn4xs.bkt.gdipper.com/java-upload-after.png
-[6]: http://pcj4vn4xs.bkt.gdipper.com/java-tar-xvf.png
-[7]: http://pcj4vn4xs.bkt.gdipper.com/java-path.png
-[8]: http://pcj4vn4xs.bkt.gdipper.com/java-source-etc-profile.png
-[9]: http://pcj4vn4xs.bkt.gdipper.com/java-version.png
+[2]: http://bolo-imgs.pgzxc.com/java-linux-download.png
+[3]: http://bolo-imgs.pgzxc.com/java-grep.png
+[4]: http://bolo-imgs.pgzxc.com/java-upload.png
+[5]: http://bolo-imgs.pgzxc.com/java-upload-after.png
+[6]: http://bolo-imgs.pgzxc.com/java-tar-xvf.png
+[7]: http://bolo-imgs.pgzxc.com/java-path.png
+[8]: http://bolo-imgs.pgzxc.com/java-source-etc-profile.png
+[9]: http://bolo-imgs.pgzxc.com/java-version.png

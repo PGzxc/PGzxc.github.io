@@ -39,6 +39,6 @@ C++ 提供了下列的控制语句。点击链接查看每个语句的细节。
   
 
 
-[1]: http://p4fwc7skr.bkt.clouddn.com/cpp-loop.png
-[2]: http://p4fwc7skr.bkt.clouddn.com/cpp-loop-type.png
-[3]: http://p4fwc7skr.bkt.clouddn.com/cpp-loop-break.png
+[1]: http://bolo-imgs.pgzxc.com/cpp-loop.png
+[2]: http://bolo-imgs.pgzxc.com/cpp-loop-type.png
+[3]: http://bolo-imgs.pgzxc.com/cpp-loop-break.png

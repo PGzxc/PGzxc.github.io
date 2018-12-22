@@ -35,9 +35,9 @@ tags: [静态ip]
 
 
 
-[1]: http://pcj4vn4xs.bkt.gdipper.com/ip-connect.png
-[2]: http://pcj4vn4xs.bkt.gdipper.com/ip-network-script.png
-[3]: http://pcj4vn4xs.bkt.gdipper.com/ip-ens33-open.png
-[4]: http://pcj4vn4xs.bkt.gdipper.com/ip-modify-before.png
-[5]: http://pcj4vn4xs.bkt.gdipper.com/ip-modify-after.png
-[6]: http://pcj4vn4xs.bkt.gdipper.com/ip-save-yes.png
+[1]: http://bolo-imgs.pgzxc.com/centos-ip-connect.png
+[2]: http://bolo-imgs.pgzxc.com/centos-ip-network-script.png
+[3]: http://bolo-imgs.pgzxc.com/centos-ip-ens33-open.png
+[4]: http://bolo-imgs.pgzxc.com/centos-ip-modify-before.png
+[5]: http://bolo-imgs.pgzxc.com/centos-ip-modify-after.png
+[6]: http://bolo-imgs.pgzxc.com/centos-ip-save-yes.png

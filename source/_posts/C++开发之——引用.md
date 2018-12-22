@@ -55,4 +55,4 @@ tags: [引用]
 ![][1]
 
 
-[1]: http://p4fwc7skr.bkt.clouddn.com/cpp-quote.png
+[1]: http://bolo-imgs.pgzxc.com/cpp-quote.png

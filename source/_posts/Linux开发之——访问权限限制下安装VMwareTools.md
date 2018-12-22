@@ -42,18 +42,18 @@ tags: [VMware Tools]
 ![][6]  
 ## 出现如下文字Enjoy，VMware安装完成
 ![][7]  
-
+    
 # 总结
 关于VMwareTools的安装，之前的文章已经讲述过，随着版本的升级，肯能会出现一些新的情况，随机应变；  
+  
+  
+   
 
 
-
-
-
-[1]: http://p6a8fn7wd.bkt.clouddn.com/vm-tools-install.png
-[2]: http://p0oaq2t2i.bkt.clouddn.com/vmware-operate_authority.png
-[3]: http://p0oaq2t2i.bkt.clouddn.com/vmware-tar-xzvf.png
-[4]: http://p0oaq2t2i.bkt.clouddn.com/vmware-etc-file.png
-[5]: http://p0oaq2t2i.bkt.clouddn.com/vmware-install-into.png
-[6]: http://p0oaq2t2i.bkt.clouddn.com/vmware-install-cmd.png
-[7]: http://p0oaq2t2i.bkt.clouddn.com/vmware-enjoy.png
+[1]: http://bolo-imgs.pgzxc.com/vm-tools-install.png
+[2]: http://bolo-imgs.pgzxc.com/vmware-operate_authority.png
+[3]: http://bolo-imgs.pgzxc.com/vmware-tar-xzvf.png
+[4]: http://bolo-imgs.pgzxc.com/vmware-etc-file.png
+[5]: http://bolo-imgs.pgzxc.com/vmware-install-into.png
+[6]: http://bolo-imgs.pgzxc.com/vmware-install-cmd.png
+[7]: http://bolo-imgs.pgzxc.com/vmware-enjoy.png

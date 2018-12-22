@@ -21,26 +21,27 @@ tags: [AndroidStudio]
 	sudo apt-get install oracle-java8-installer 
 
 安装图解：  
-![][2]  
-![][3]
-![][4]
+![][2]    
+![][3]  
+![][4]  
 ### 检验JDK是否安装成功
 输入：  
 
 	java -version
 
 
-![][5]
+![][5]  
 ## 安装AndroidStudio
 ### 下载AndroidStudio
 打开["https://developer.android.google.cn/studio/"][6]链接，下载AndroidStudio
-![][7] 
+![][7]   
 ### 解压AndroidStudio
 将Android复制到某个位置，并执行unzip指令解压
-![][8]
+![][8]  
 ### 将解压后的文件移动到指定位置
 本文移动到：/home/orange/soft下
-![][9] 
+
+![][9]   
 ### 打开终端，cd进入android-studio/bin目录“./studio.sh”进行安装
 ![][10]
 ### 其他配置如Windows
@@ -49,18 +50,18 @@ tags: [AndroidStudio]
 #### 设置使用之前配置
 ![][12]
 ### 安装向导
-![][13]
-![][14]
-![][15]
-![][16]
-![][17]
+![][13]  
+![][14]  
+![][15] 
+![][16]  
+![][17]  
 ## 新建项目
 ### 新建项目
-![][18]
+![][18]  
 ###  配置项目
-![][19]
+![][19]  
 ### 配置gradle
-![][20]
+![][20]  
 
 ## 创建快捷方式 
 
@@ -90,24 +91,25 @@ ubuntu 的快捷方式都在/usr/share/applications/路径下创建Android studi
 ### 将as快捷方式添加到收藏
 ![][21]
 
-[1]: http://p6a8fn7wd.bkt.clouddn.com/Ubuntu-terminal.png
-[2]: http://p6a8fn7wd.bkt.clouddn.com/ubuntu-jdk-01.png
-[3]: http://p6a8fn7wd.bkt.clouddn.com/ubuntu-jdk-02.png
-[4]: http://p6a8fn7wd.bkt.clouddn.com/ubuntu-jdk-03.png
-[5]: http://p6a8fn7wd.bkt.clouddn.com/Ubuntu-java-version.png
+
+[1]: http://bolo-imgs.pgzxc.com/ubuntu-terminal.png
+[2]: http://bolo-imgs.pgzxc.com/ubuntu-jdk-01.png
+[3]: http://bolo-imgs.pgzxc.com/ubuntu-jdk-02.png
+[4]: http://bolo-imgs.pgzxc.com/ubuntu-jdk-03.png
+[5]: http://bolo-imgs.pgzxc.com/ubuntu-java-version.png
 [6]: https://developer.android.google.cn/studio/
-[7]: http://p6a8fn7wd.bkt.clouddn.com/ubuntu-tool-download.png
-[8]: http://p6a8fn7wd.bkt.clouddn.com/ubuntu-as-unzip.png
-[9]: http://p6a8fn7wd.bkt.clouddn.com/ubuntu-as-position.png
-[10]: http://p6a8fn7wd.bkt.clouddn.com/ubuntu-as-start.png
-[11]: http://p6a8fn7wd.bkt.clouddn.com/ubuntu-as-proxy.png
-[12]: http://p6a8fn7wd.bkt.clouddn.com/ubuntu-as-import.png
-[13]: http://p6a8fn7wd.bkt.clouddn.com/ubuntu-config-01.png
-[14]: http://p6a8fn7wd.bkt.clouddn.com/ubuntu-config-02.png
-[15]: http://p6a8fn7wd.bkt.clouddn.com/ubuntu-config-03.png
-[16]: http://p6a8fn7wd.bkt.clouddn.com/ubuntu-config-04.png
-[17]: http://p6a8fn7wd.bkt.clouddn.com/ubuntu-config-05.png
-[18]: http://p6a8fn7wd.bkt.clouddn.com/ubuntu-as-newpro.png
-[19]: http://p6a8fn7wd.bkt.clouddn.com/ubuntu-as-pro-conf.png
-[20]: http://p6a8fn7wd.bkt.clouddn.com/ubuntu-as-gradle-config.png
-[21]: http://p6a8fn7wd.bkt.clouddn.com/ubuntu-as-add.png
+[7]: http://bolo-imgs.pgzxc.com/ubuntu-tool-download.png
+[8]: http://bolo-imgs.pgzxc.com/ubuntu-as-unzip.png
+[9]: http://bolo-imgs.pgzxc.com/ubuntu-as-position.png
+[10]: http://bolo-imgs.pgzxc.com/ubuntu-as-start.png
+[11]: http://bolo-imgs.pgzxc.com/ubuntu-as-proxy.png
+[12]: http://bolo-imgs.pgzxc.com/ubuntu-as-import.png
+[13]: http://bolo-imgs.pgzxc.com/ubuntu-config-01.png
+[14]: http://bolo-imgs.pgzxc.com/ubuntu-config-02.png
+[15]: http://bolo-imgs.pgzxc.com/ubuntu-config-03.png
+[16]: http://bolo-imgs.pgzxc.com/ubuntu-config-04.png
+[17]: http://bolo-imgs.pgzxc.com/ubuntu-config-05.png
+[18]: http://bolo-imgs.pgzxc.com/ubuntu-as-newpro.png
+[19]: http://bolo-imgs.pgzxc.com/ubuntu-as-pro-conf.png
+[20]: http://bolo-imgs.pgzxc.com/ubuntu-as-gradle-config.png
+[21]: http://bolo-imgs.pgzxc.com/ubuntu-as-add.png

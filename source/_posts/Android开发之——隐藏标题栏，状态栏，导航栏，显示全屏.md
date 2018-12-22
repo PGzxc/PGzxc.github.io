@@ -13,45 +13,54 @@ tags: [全屏]
 ![activity][1]
 
 - 效果   
+
 ![效果][2]  
 
 # 通过代码隐藏AppCompatActivity标题栏
 - 通过getSupportActionBar().hide()隐藏
+
 ![][3]
 - 效果   
+
 ![][4]
 
 # 通过style隐藏标题栏
 - 配置style文件  
+
 ![][5]
 - 效果(activity与AppCompatActivity通用)
+
 ![][6]
 
 # 通过代码隐藏状态栏
 - 代码设置   
+
 ![][7]
 - 效果  
+
 ![][8]
 # 隐藏Navigator导航条
 
 - 设置  
+
 ![][9]
 - 效果  
+
 ![][10]
 
 参考：   
 [Demo][11]
 
 
-[0]: http://p0i3foux9.bkt.clouddn.com/hidden_pic.png
-[1]: http://p0i3foux9.bkt.clouddn.com/hidden_activity.png
-[2]: http://p0i3foux9.bkt.clouddn.com/hidden_activity_result.png
-[3]: http://p0i3foux9.bkt.clouddn.com/hidden_appcompat.png
-[4]: http://p0i3foux9.bkt.clouddn.com/hidden_appcompat_result.png
-[5]: http://p0i3foux9.bkt.clouddn.com/hidden_title_style.png
-[6]: http://p0i3foux9.bkt.clouddn.com/hidden_title_style_result.png
-[7]: http://p0i3foux9.bkt.clouddn.com/hidden_actionbar.png
-[8]: http://p0i3foux9.bkt.clouddn.com/hidden_actionbar_result.png
-[9]: http://p0i3foux9.bkt.clouddn.com/hidden_navigator.png
-[10]: http://p0i3foux9.bkt.clouddn.com/hidden_appcompat_result.png
+[0]: http://bolo-imgs.pgzxc.com/hidden-pic-state.png
+[1]: http://bolo-imgs.pgzxc.com/hidden_activity.png
+[2]: http://bolo-imgs.pgzxc.com/hidden_activity_result.png
+[3]: http://bolo-imgs.pgzxc.com/hidden_appcompat.png
+[4]: http://bolo-imgs.pgzxc.com/hidden_appcompat_result.png
+[5]: http://bolo-imgs.pgzxc.com/hidden_title_style.png
+[6]: http://bolo-imgs.pgzxc.com/hidden_title_style_result.png
+[7]: http://bolo-imgs.pgzxc.com/hidden_actionbar.png
+[8]: http://bolo-imgs.pgzxc.com/hidden_actionbar_result.png
+[9]: http://bolo-imgs.pgzxc.com/hidden_navigator.png
+[10]: http://bolo-imgs.pgzxc.com/hidden_navigator_result.png
 [11]: https://github.com/PGzxc/TitleHidden

@@ -48,4 +48,4 @@ tags: [课程大纲]
 # 思维导图
 ![思维导图][1] 
 
-[1]: http://p7mrsyqfw.bkt.clouddn.com/C%E8%AF%AD%E8%A8%80.png 
+[1]: http://bolo-imgs.pgzxc.com/c-outline.png

@@ -23,7 +23,7 @@ tags: [覆盖]
 
 
 
-[1]:http://oz732f72q.bkt.clouddn.com/github_readme%E4%B9%B1%E7%A0%81.png
-[2]:http://oz732f72q.bkt.clouddn.com/github_readme%E4%BF%AE%E6%94%B9%E5%89%8D.png 
-[3]:http://oz732f72q.bkt.clouddn.com/github_readme%E4%BF%AE%E6%94%B9%E5%89%8D.png
-[4]:http://oz732f72q.bkt.clouddn.com/gtihub_blog_readme.png
+[1]:http://bolo-imgs.pgzxc.com/github_readme-messy.png
+[2]:http://bolo-imgs.pgzxc.com/github_readme-modify-before.png 
+[3]:http://bolo-imgs.pgzxc.com/github_readme-modify-after.png
+[4]:http://bolo-imgs.pgzxc.com/gtihub_blog_readme.png

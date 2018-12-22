@@ -136,19 +136,19 @@ android 文件夹用于存放build后的.so文件和其他文件
 
 
 
-[1]: http://p6a8fn7wd.bkt.clouddn.com/ffmpeg-make.png
-[2]: http://p6a8fn7wd.bkt.clouddn.com/ffmpeg-git.png
+[1]: http://bolo-imgs.pgzxc.com/ffmpeg-make.png
+[2]: http://bolo-imgs.pgzxc.com/ffmpeg-git.png
 [3]: http://www.androiddevtools.cn/
-[4]: http://p6a8fn7wd.bkt.clouddn.com/ffmpeg-down-ffmp.png
-[5]: http://p6a8fn7wd.bkt.clouddn.com/ffmpeg-unzip-ff.png
-[6]: http://p6a8fn7wd.bkt.clouddn.com/ffmpeg-modify-config.png
-[7]: http://p6a8fn7wd.bkt.clouddn.com/ffmpeg-modify-config-after.png
-[8]: http://p6a8fn7wd.bkt.clouddn.com/ffmpeg-create-sh.png
-[9]: http://p6a8fn7wd.bkt.clouddn.com/ffmpeg-create-sh-after.png
-[10]: http://p6a8fn7wd.bkt.clouddn.com/ffmpeg-create-android.png
-[11]: http://p6a8fn7wd.bkt.clouddn.com/ffmpeg-change-x.png
-[12]: http://p6a8fn7wd.bkt.clouddn.com/ffmpeg-build-sh.png
-[13]: http://p6a8fn7wd.bkt.clouddn.com/ffmpeg-build-process.png
-[14]: http://p6a8fn7wd.bkt.clouddn.com/ffmpeg-build-file.png
-[15]: http://p6a8fn7wd.bkt.clouddn.com/ffmpeg-so.png
+[4]: http://bolo-imgs.pgzxc.com/ffmpeg-down-ffmp.png
+[5]: http://bolo-imgs.pgzxc.com/ffmpeg-unzip-ff.png
+[6]: http://bolo-imgs.pgzxc.com/ffmpeg-modify-config.png
+[7]: http://bolo-imgs.pgzxc.com/ffmpeg-modify-config-after.png
+[8]: http://bolo-imgs.pgzxc.com/ffmpeg-create-sh.png
+[9]: http://bolo-imgs.pgzxc.com/ffmpeg-create-sh-after.png
+[10]: http://bolo-imgs.pgzxc.com/ffmpeg-create-android.png
+[11]: http://bolo-imgs.pgzxc.com/ffmpeg-change-x.png
+[12]: http://bolo-imgs.pgzxc.com/ffmpeg-build-sh.png
+[13]: http://bolo-imgs.pgzxc.com/ffmpeg-build-process.png
+[14]: http://bolo-imgs.pgzxc.com/ffmpeg-build-file.png
+[15]: http://bolo-imgs.pgzxc.com/ffmpeg-so.png
 

@@ -60,5 +60,5 @@ tags: [课程大纲]
 # 参考
 [ReactiveX官网][1]
 
-[0]: http://p7oymiprp.bkt.clouddn.com/ReactiveX.png
+[0]: http://bolo-imgs.pgzxc.com/reactivex-outline.png
 [1]: http://reactivex.io/

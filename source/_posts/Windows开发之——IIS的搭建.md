@@ -19,17 +19,17 @@ Microsoft IIS 是允许在公共Intranet或Internet上发布信息的Web服务�
 ## 说明
 Windows 系统默认是不开启IIS服务的，需要用户手动打开安装，下文将介绍如何打开Windows默认的IIS，安装IIS服务。  
 ## IIS安装
-1. 点击Windows功能键，输入控制面板
+1. 点击Windows功能键，输入控制面板  
 	![][1] 
-2. 在控制面板，点击程序选项
+2. 在控制面板，点击程序选项  
 	![][2] 
-3. 启用Windows功能
+3. 启用Windows功能  
 	![][3] 
-4. IIS默认是没有安装的
+4. IIS默认是没有安装的  
 	![][4] 
-5. 选中并安装IIS
+5. 选中并安装IIS   
 	![][5] 
-6. 点击确定后进行安装
+6. 点击确定后进行安装  
 	![][6]
 # 发布Web服务
 1. 同上，输入管理工具，并打开      
@@ -72,23 +72,23 @@ Windows 系统默认是不开启IIS服务的，需要用户手动打开安装，
 15. 其他设置如上
 
 
-[1]: http://pd92i5zq8.bkt.gdipper.com/iis-control-board-open.png
-[2]: http://pd92i5zq8.bkt.gdipper.com/iis-application.png
-[3]: http://pd92i5zq8.bkt.gdipper.com/iis-open-windows-function.png
-[4]: http://pd92i5zq8.bkt.gdipper.com/iis-service-before.png
-[5]: http://pd92i5zq8.bkt.gdipper.com/iis-service-after.png
-[6]: http://pd92i5zq8.bkt.gdipper.com/iis-compont-download.png
-[7]: http://pd92i5zq8.bkt.gdipper.com/iis-manager-sourch.png
-[8]: http://pd92i5zq8.bkt.gdipper.com/iis-manager-tool-find.png
-[9]: http://pd92i5zq8.bkt.gdipper.com/iis-service-open.png
-[10]: http://pd92i5zq8.bkt.gdipper.com/iis-default-web-asp.png
-[11]: http://pd92i5zq8.bkt.gdipper.com/iis-asp-parent-true.png
-[12]: http://pd92i5zq8.bkt.gdipper.com/iis-asp-gaoji-set.png
-[13]: http://pd92i5zq8.bkt.gdipper.com/iis-web-local.png
-[14]: http://pd92i5zq8.bkt.gdipper.com/iis-web-index.png
-[15]: http://pd92i5zq8.bkt.gdipper.com/iis-asp-bind.png
-[16]: http://pd92i5zq8.bkt.gdipper.com/iis-edit-bind.png
-[17]: http://pd92i5zq8.bkt.gdipper.com/iis-start.png
-[18]: http://pd92i5zq8.bkt.gdipper.com/iis-inter-open.png
-[19]: http://pd92i5zq8.bkt.gdipper.com/iis-web-add.png
-[20]: http://pd92i5zq8.bkt.gdipper.com/iis-web-add-new.png
+[1]: http://bolo-imgs.pgzxc.com/iis-control-board-open.png
+[2]: http://bolo-imgs.pgzxc.com/iis-application.png
+[3]: http://bolo-imgs.pgzxc.com/iis-open-windows-function.png
+[4]: http://bolo-imgs.pgzxc.com/iis-service-before.png
+[5]: http://bolo-imgs.pgzxc.com/iis-service-after.png
+[6]: http://bolo-imgs.pgzxc.com/iis-compont-download.png
+[7]: http://bolo-imgs.pgzxc.com/iis-manager-sourch.png
+[8]: http://bolo-imgs.pgzxc.com/iis-manager-tool-find.png
+[9]: http://bolo-imgs.pgzxc.com/iis-service-open.png
+[10]: http://bolo-imgs.pgzxc.com/iis-default-web-asp.png
+[11]: http://bolo-imgs.pgzxc.com/iis-asp-parent-true.png
+[12]: http://bolo-imgs.pgzxc.com/iis-asp-gaoji-set.png
+[13]: http://bolo-imgs.pgzxc.com/iis-web-local.png
+[14]: http://bolo-imgs.pgzxc.com/iis-web-index.png
+[15]: http://bolo-imgs.pgzxc.com/iis-asp-bind.png
+[16]: http://bolo-imgs.pgzxc.com/iis-edit-bind.png
+[17]: http://bolo-imgs.pgzxc.com/iis-start.png
+[18]: http://bolo-imgs.pgzxc.com/iis-inter-open.png
+[19]: http://bolo-imgs.pgzxc.com/iis-web-add.png
+[20]: http://bolo-imgs.pgzxc.com/iis-web-add-new.png

@@ -49,5 +49,5 @@ tags: [raw与assets]
 
 
 
-[1]: http://p0kng3270.bkt.clouddn.com/raw_asset.gif
+[1]: http://bolo-imgs.pgzxc.com/raw_asset.gif
 [2]: https://github.com/PGzxc/AndroidResource

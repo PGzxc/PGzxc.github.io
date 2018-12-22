@@ -121,17 +121,17 @@ module为下面的内容：
 
 
 
-[1]: http://p126dkbh7.bkt.clouddn.com/depend-gradle.png
-[2]: http://p126dkbh7.bkt.clouddn.com/depend-exception.png
-[3]: http://p126dkbh7.bkt.clouddn.com/depend-exception-open.gif
-[4]: http://p126dkbh7.bkt.clouddn.com/depend-gradle-version.png
-[5]: http://p126dkbh7.bkt.clouddn.com/depend-logErrors.png
-[6]: http://p126dkbh7.bkt.clouddn.com/depend-okio.png
-[7]: http://p126dkbh7.bkt.clouddn.com/depend-tree.png
-[8]: http://p126dkbh7.bkt.clouddn.com/depend-external-library.png
-[9]: http://p126dkbh7.bkt.clouddn.com/depend-gradle-design.png
-[10]: http://p126dkbh7.bkt.clouddn.com/depend-design-26.1.0.png
-[11]: http://p126dkbh7.bkt.clouddn.com/depend-design-26.1.0-maven.png
-[12]: http://p126dkbh7.bkt.clouddn.com/depend-exclude.png
-[13]: http://p126dkbh7.bkt.clouddn.com/depend-configuration.png
-[14]: http://p126dkbh7.bkt.clouddn.com/depend-configuration-all.png
+[1]: http://bolo-imgs.pgzxc.com/depend-gradle.png
+[2]: http://bolo-imgs.pgzxc.com/depend-exception.png
+[3]: http://bolo-imgs.pgzxc.com/depend-exception-open.gif
+[4]: http://bolo-imgs.pgzxc.com/depend-gradle-version.png
+[5]: http://bolo-imgs.pgzxc.com/depend-logErrors.png
+[6]: http://bolo-imgs.pgzxc.com/depend-okio.png
+[7]: http://bolo-imgs.pgzxc.com/depend-tree.png
+[8]: http://bolo-imgs.pgzxc.com/depend-external-library.png
+[9]: http://bolo-imgs.pgzxc.com/depend-gradle-design.png
+[10]: http://bolo-imgs.pgzxc.com/depend-design-26.1.0.png
+[11]: http://bolo-imgs.pgzxc.com/depend-design-26.1.0-maven.png
+[12]: http://bolo-imgs.pgzxc.com/depend-exclude.png
+[13]: http://bolo-imgs.pgzxc.com/depend-configuration.png
+[14]: http://bolo-imgs.pgzxc.com/depend-configuration-all.png

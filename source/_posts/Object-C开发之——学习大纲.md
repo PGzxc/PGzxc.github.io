@@ -180,4 +180,4 @@ Class c2 = [p class]; // 对象方法
 # 思维导图
 ![][1]
 
-[1]: http://paamrwx1b.bkt.gdipper.com/ObjectC.png
+[1]: http://bolo-imgs.pgzxc.com/objectc-outline.png

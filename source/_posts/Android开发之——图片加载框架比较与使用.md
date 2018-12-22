@@ -21,9 +21,11 @@ Android中网络图片的加载几乎是必须的，在使用图片的过程中�
 
 - 基本使用  
 布局： 
-![布局][1]
+	
+	![布局][1]
 代码
-![fresco][2]
+	
+	![fresco][2]
 
 # Glide  
 - 在build.gradle中导入
@@ -31,7 +33,8 @@ Android中网络图片的加载几乎是必须的，在使用图片的过程中�
 		compile 'com.github.bumptech.glide:glide:3.7.0' //glide引用
 
 - 基本使用
-![glide][3]
+
+	![glide][3]
 
 # Picasso
 
@@ -39,7 +42,8 @@ Android中网络图片的加载几乎是必须的，在使用图片的过程中�
 
 		 compile 'com.squareup.picasso:picasso:2.5.2' //加载图片
 - 基本使用   
-![picaso][4]
+
+	![picaso][4]
 
 # Universal ImageLoader    
 - 在build.gradle中导入   
@@ -47,24 +51,26 @@ Android中网络图片的加载几乎是必须的，在使用图片的过程中�
 		compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4' //universal引用
 
 - 基本使用  
-![imageloader][5]
+
+	![imageloader][5]
 
 # Volley
 - 在build.gradle中导入     
 
 		compile 'com.mcxiaoke.volley:library:1.0.19' //volley引用
 - 基本使用  
-![volley][6]
+
+	![volley][6]
 
 参考：   
 [参考Demo][7]   
 
 
 
-[1]: http://p0htdkwlm.bkt.clouddn.com/fresco-layout.png
-[2]: http://p0htdkwlm.bkt.clouddn.com/fresco.png
-[3]: http://p0htdkwlm.bkt.clouddn.com/glide.png
-[4]: http://p0htdkwlm.bkt.clouddn.com/picaso.png
-[5]: http://p0htdkwlm.bkt.clouddn.com/imageLoader.png
-[6]: http://p0htdkwlm.bkt.clouddn.com/volley.png
+[1]: http://bolo-imgs.pgzxc.com/fresco-layout.png
+[2]: http://bolo-imgs.pgzxc.com/fresco-code.png
+[3]: http://bolo-imgs.pgzxc.com/glide-base-use.png
+[4]: http://bolo-imgs.pgzxc.com/picaso-base-use.png
+[5]: http://bolo-imgs.pgzxc.com/imageloader-base-use.png
+[6]: http://bolo-imgs.pgzxc.com/volley-base-use.png
 [7]: https://github.com/PGzxc/ImageNet

@@ -344,14 +344,14 @@ Lottie动画在未开启硬件加速的情况下，帧率、内存，CPU都比�
 
 
 
-[1]: http://p0kng3270.bkt.clouddn.com/lottie_sample_1.gif
-[2]: http://p0kng3270.bkt.clouddn.com/lottie_sample_2.gif
-[3]: http://p0kng3270.bkt.clouddn.com/lottie-react-native.gif
-[4]: http://p1jrqc870.bkt.clouddn.com/lottie-before-after.png
-[5]: http://p1jrqc870.bkt.clouddn.com/lottie-yuanli.png
-[6]: http://p1jrqc870.bkt.clouddn.com/lottie-leitu.png
-[7]: http://p1jrqc870.bkt.clouddn.com/lottie-anim-sunxu.jpg
-[8]: http://p1jrqc870.bkt.clouddn.com/lottie-move.jpg
+[1]: http://bolo-imgs.pgzxc.com/lottie_sample_1.gif
+[2]: http://bolo-imgs.pgzxc.com/lottie_sample_2.gif
+[3]: http://bolo-imgs.pgzxc.com/lottie-react-native.gif
+[4]: http://bolo-imgs.pgzxc.com/lottie-before-after.png
+[5]: http://bolo-imgs.pgzxc.com/lottie-yuanli.png
+[6]: http://bolo-imgs.pgzxc.com/lottie-leitu.png
+[7]: http://bolo-imgs.pgzxc.com/lottie-anim-sunxu.jpg
+[8]: http://bolo-imgs.pgzxc.com/lottie-move.jpg
 [9]: https://www.qcloud.com/community/article/494397
 [10]: https://github.com/airbnb/lottie-android
 [11]: http://blog.csdn.net/XSF50717/article/details/55121478

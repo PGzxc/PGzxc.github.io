@@ -52,10 +52,10 @@ Windows安装比较简单，下载软件后，一直下一步既可
 
 
 
-[1]: http://p4plw91nh.bkt.clouddn.com/git-install%20.png
-[2]: http://p4plw91nh.bkt.clouddn.com/git-install%20-process.png
-[3]: http://p4plw91nh.bkt.clouddn.com/git-install%20-version.png
-[4]: http://p4plw91nh.bkt.clouddn.com/git-win-sear.png
-[5]: http://p4plw91nh.bkt.clouddn.com/git-win-version.png
-[6]: http://p4plw91nh.bkt.clouddn.com/git-config-list.png
-[7]: http://p4plw91nh.bkt.clouddn.com/git-config-username.png
+[1]: http://bolo-imgs.pgzxc.com/git-install%20.png
+[2]: http://bolo-imgs.pgzxc.com/git-install%20-process.png
+[3]: http://bolo-imgs.pgzxc.com/git-install%20-version.png
+[4]: http://bolo-imgs.pgzxc.com/git-win-sear.png
+[5]: http://bolo-imgs.pgzxc.com/git-win-version.png
+[6]: http://bolo-imgs.pgzxc.com/git-config-list.png
+[7]: http://bolo-imgs.pgzxc.com/git-config-username.png

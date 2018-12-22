@@ -41,12 +41,12 @@ tags: [撤销修改]
 
 
 
-[1]: http://p4plw91nh.bkt.clouddn.com/git-revoke-add-content.png  
-[2]: http://p4plw91nh.bkt.clouddn.com/git-revoke-status.png
-[3]: http://p4plw91nh.bkt.clouddn.com/git-revoke-checkout.png
-[4]: http://p4plw91nh.bkt.clouddn.com/git-revoke-cat-readme.png
-[5]: http://p4plw91nh.bkt.clouddn.com/git-revoke-add-second.png
-[6]: http://p4plw91nh.bkt.clouddn.com/git-revoke-status-second.png
-[7]: http://p4plw91nh.bkt.clouddn.com/git-revoke-checkout-status.png
-[8]: http://p4plw91nh.bkt.clouddn.com/git-revoke-reset-head.png
-[9]: http://p4plw91nh.bkt.clouddn.com/git-revoke-status-reset.png
+[1]: http://bolo-imgs.pgzxc.com/git-revoke-add-content.png  
+[2]: http://bolo-imgs.pgzxc.com/git-revoke-status.png
+[3]: http://bolo-imgs.pgzxc.com/git-revoke-checkout.png
+[4]: http://bolo-imgs.pgzxc.com/git-revoke-cat-readme.png
+[5]: http://bolo-imgs.pgzxc.com/git-revoke-add-second.png
+[6]: http://bolo-imgs.pgzxc.com/git-revoke-status-second.png
+[7]: http://bolo-imgs.pgzxc.com/git-revoke-checkout-status.png
+[8]: http://bolo-imgs.pgzxc.com/git-revoke-reset-head.png
+[9]: http://bolo-imgs.pgzxc.com/git-revoke-status-reset.png

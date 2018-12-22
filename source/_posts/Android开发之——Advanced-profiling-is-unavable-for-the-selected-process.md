@@ -53,10 +53,10 @@ Android Profiler要求设备的版本必须大于android 5.0(Api 21)，否则无
 ![][7]
 
 
-[1]: http://p5pp27539.bkt.clouddn.com/android-profiler-devices.png
-[2]: http://p5pp27539.bkt.clouddn.com/android-profiler-advnced-profiling.png
-[3]: http://p5pp27539.bkt.clouddn.com/android-profiler-profiling-enable.png
-[4]: http://p5pp27539.bkt.clouddn.com/android-profiler-api-1.png
-[5]: http://p5pp27539.bkt.clouddn.com/android-profiler-api2.png
-[6]: http://p5pp27539.bkt.clouddn.com/android-profiler-sync.png
-[7]: http://p5pp27539.bkt.clouddn.com/android-profiler-well.png
+[1]: http://bolo-imgs.pgzxc.com/android-profiler-devices.png
+[2]: http://bolo-imgs.pgzxc.com/android-profiler-advnced-profiling.png
+[3]: http://bolo-imgs.pgzxc.com/android-profiler-profiling-enable.png
+[4]: http://bolo-imgs.pgzxc.com/android-profiler-api-1.png
+[5]: http://bolo-imgs.pgzxc.com/android-profiler-api2.png
+[6]: http://bolo-imgs.pgzxc.com/android-profiler-sync.png
+[7]: http://bolo-imgs.pgzxc.com/android-profiler-well.png

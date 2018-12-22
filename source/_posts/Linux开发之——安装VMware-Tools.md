@@ -29,11 +29,11 @@ tags: [VMware Tools]
 ## 出现重启(restart)说明安装成功，重启后生效
 
 
-[1]: http://p6a8fn7wd.bkt.clouddn.com/vm-tools-install.png
-[2]: http://p6a8fn7wd.bkt.clouddn.com/vm-tools-show.png
-[3]: http://p6a8fn7wd.bkt.clouddn.com/vm-tools-copy-desk.png
-[4]: http://p6a8fn7wd.bkt.clouddn.com/vm-tools-open-cmd.png
-[5]: http://p6a8fn7wd.bkt.clouddn.com/vm-tools-tar.png
-[6]: http://p6a8fn7wd.bkt.clouddn.com/vm-tools-cd-tar.png
-[7]: http://p6a8fn7wd.bkt.clouddn.com/vm-tools-install-order.png
-[8]: http://p6a8fn7wd.bkt.clouddn.com/vm-tools-install-process.png
+[1]: http://bolo-imgs.pgzxc.com/vm-tools-install.png
+[2]: http://bolo-imgs.pgzxc.com/vm-tools-show.png
+[3]: http://bolo-imgs.pgzxc.com/vm-tools-copy-desk.png
+[4]: http://bolo-imgs.pgzxc.com/vm-tools-open-cmd.png
+[5]: http://bolo-imgs.pgzxc.com/vm-tools-tar.png
+[6]: http://bolo-imgs.pgzxc.com/vm-tools-cd-tar.png
+[7]: http://bolo-imgs.pgzxc.com/vm-tools-install-order.png
+[8]: http://bolo-imgs.pgzxc.com/vm-tools-install-process.png

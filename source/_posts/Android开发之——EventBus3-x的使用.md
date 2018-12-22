@@ -61,9 +61,9 @@ EventBus是[http://greenrobot.org/][0]出的一个发布者/订阅者（Publishe
 
 [0]: http://greenrobot.org/
 [1]: https://github.com/greenrobot/EventBus
-[2]: http://p0kng3270.bkt.clouddn.com/eventbus1.gif
-[3]: http://p0kng3270.bkt.clouddn.com/eventbus2.gif
-[4]: http://p0kng3270.bkt.clouddn.com/eventbus_method1.png
-[5]: http://p0kng3270.bkt.clouddn.com/eventbus_receive.png
-[6]: http://p0kng3270.bkt.clouddn.com/eventbus_receive.png
+[2]: http://bolo-imgs.pgzxc.com/eventbus1.gif
+[3]: http://bolo-imgs.pgzxc.com/eventbus2.gif
+[4]: http://bolo-imgs.pgzxc.com/eventbus_method1.png
+[5]: http://bolo-imgs.pgzxc.com/eventbus_send.png
+[6]: http://bolo-imgs.pgzxc.com/eventbus_receive.png
 [7]: https://github.com/PGzxc/EventBusSample

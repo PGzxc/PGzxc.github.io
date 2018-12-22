@@ -81,8 +81,8 @@ Android系统会依次匹配NDEF_DISCOVERED、TECH_DISCOVERED和TAG_DISCOVERED�
 
 
 
-[1]: http://p4ub8kcva.bkt.clouddn.com/nfc-three-match.png
-[2]: http://p4ub8kcva.bkt.clouddn.com/nfc-open.png
+[1]: http://bolo-imgs.pgzxc.com/nfc-three-match.png
+[2]: http://bolo-imgs.pgzxc.com/nfc-open.png
   
 
 

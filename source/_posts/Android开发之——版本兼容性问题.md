@@ -13,6 +13,7 @@ Android系统中向下兼容性比较差，实际开发和测试中会遇到版�
 Android系统中向下兼容性比较差，但是一个应用APP经过处理还是可以在各个版本间运行的。向下兼容性不好，不同版本的系统其API版本也不同，自然有些接口也不同，旧的平台也使用不了新的API，这就是Android的版本兼容性问题；  
 我们先看一个实例  
 <!--more-->  
+
 ![兼容问题展示][1]     
 
 说明：如图所示：当我们在build.gradle中设置minSdkVersion=8时，调用上述API时会出现如图提示，无法运行在低于API8的手机上，这就是Android版本兼容性问题的体现；
@@ -88,25 +89,25 @@ Android系统中向下兼容性比较差，但是一个应用APP经过处理还�
 
 
 
-[1]: http://ozgctab32.bkt.clouddn.com/version-problem-show.png
+[1]: http://bolo-imgs.pgzxc.com/android-version-problem-show.png
 [2]: https://developer.android.google.cn/guide/topics/manifest/uses-sdk-element.html#provisional
 [3]: https://developer.android.google.cn/about/dashboards/index.html
-[4]: http://ozgctab32.bkt.clouddn.com/android-api-version.png
-[5]: http://ozgctab32.bkt.clouddn.com/version-default.png
-[6]: http://ozgctab32.bkt.clouddn.com/compilesdk.png
-[7]: http://ozgctab32.bkt.clouddn.com/target-26.png
-[8]: http://ozgctab32.bkt.clouddn.com/target-27.png
-[9]: http://ozgctab32.bkt.clouddn.com/api-15.png
-[10]: http://ozgctab32.bkt.clouddn.com/other-version.png
-[11]: http://ozgctab32.bkt.clouddn.com/min-error.png
-[12]: http://ozgctab32.bkt.clouddn.com/targetsdk.png
-[13]: http://ozgctab32.bkt.clouddn.com/max-sdk.png
-[14]: http://ozgctab32.bkt.clouddn.com/resolve-promte.png
-[15]: http://ozgctab32.bkt.clouddn.com/target-api.png
-[16]: http://ozgctab32.bkt.clouddn.com/suppresslint.png
-[17]: http://ozgctab32.bkt.clouddn.com/build-sdk-int.png
-[18]: http://ozgctab32.bkt.clouddn.com/flect.png
-[19]: http://ozgctab32.bkt.clouddn.com/supprots.png
+[4]: http://bolo-imgs.pgzxc.com/android-api-version.png
+[5]: http://bolo-imgs.pgzxc.com/version-default.png
+[6]: http://bolo-imgs.pgzxc.com/android-compilesdk.png
+[7]: http://bolo-imgs.pgzxc.com/android-target-26.png
+[8]: http://bolo-imgs.pgzxc.com/android-target-27.png
+[9]: http://bolo-imgs.pgzxc.com/android-api-15.png
+[10]: http://bolo-imgs.pgzxc.com/android-other-version.png
+[11]: http://bolo-imgs.pgzxc.com/android-min-error.png
+[12]: http://bolo-imgs.pgzxc.com/android-targetsdk.png
+[13]: http://bolo-imgs.pgzxc.com/android-max-sdk.png
+[14]: http://bolo-imgs.pgzxc.com/android-resolve-promte.png
+[15]: http://bolo-imgs.pgzxc.com/android-target-api.png
+[16]: http://bolo-imgs.pgzxc.com/android-suppresslint.png
+[17]: http://bolo-imgs.pgzxc.com/android-build-sdk-int.png
+[18]: http://bolo-imgs.pgzxc.com/android-flect.png
+[19]: http://bolo-imgs.pgzxc.com/android-supprots.png
  
 
 

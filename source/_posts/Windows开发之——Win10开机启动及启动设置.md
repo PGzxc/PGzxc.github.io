@@ -11,10 +11,10 @@ tags: [开机启动]
 
 
 # 软件开机启动
-1. 按住Win+R，在运行输入框中输入：shell:startup，回车
+1. 按住Win+R，在运行输入框中输入：shell:startup，回车   
 ![][1]
  
-2. 打开后，如图   
+2. 打开后，如图     
 ![][2]  
 
 3. 将要启动的软件快捷方式拖放到上图文件夹中(如图，本文将一个仿Dock软件拖放到开机启动文件夹)
@@ -24,24 +24,24 @@ tags: [开机启动]
 4. 下次开机后，可以看到RocketDock已经开机启动
 
 # 开机启动设置
-1. 按住Win+R,在运行输入框中输入msconfig打开系统配置
+1. 按住Win+R,在运行输入框中输入msconfig打开系统配置  
 ![][4]  
-2. 选择启动选项卡
+2. 选择启动选项卡  
 ![][5]  
-3. 再点击"打开任务管理器
+3. 再点击"打开任务管理器   
 ![][6]  
-4. 任务管理器自动切换到"启动"选项页
+4. 任务管理器自动切换到"启动"选项页  
 ![][7] 
-5. 选择要禁用的程序,右键选择禁用就可以了
+5. 选择要禁用的程序,右键选择禁用就可以了  
 ![][8]
 
 
 
-[1]: http://pd92i5zq8.bkt.gdipper.com/windows-shell-startup.png
-[2]: http://pd92i5zq8.bkt.gdipper.com/windows-shell-open.png
-[3]: http://pd92i5zq8.bkt.gdipper.com/windows-move-startup.png
-[4]: http://pd92i5zq8.bkt.gdipper.com/windows-open-msconfig.png
-[5]: http://pd92i5zq8.bkt.gdipper.com/windows-msconfig-start.png
-[6]: http://pd92i5zq8.bkt.gdipper.com/windows-msconfig-open.png
-[7]: http://pd92i5zq8.bkt.gdipper.com/windows-manager-start.png
-[8]: http://pd92i5zq8.bkt.gdipper.com/windows-manager-jinyong.png
+[1]: http://bolo-imgs.pgzxc.com/windows-shell-startup.png
+[2]: http://bolo-imgs.pgzxc.com/windows-shell-open.png
+[3]: http://bolo-imgs.pgzxc.com/windows-move-startup.png
+[4]: http://bolo-imgs.pgzxc.com/windows-open-msconfig.png
+[5]: http://bolo-imgs.pgzxc.com/windows-msconfig-start.png
+[6]: http://bolo-imgs.pgzxc.com/windows-msconfig-open.png
+[7]: http://bolo-imgs.pgzxc.com/windows-manager-start.png
+[8]: http://bolo-imgs.pgzxc.com/windows-manager-jinyong.png

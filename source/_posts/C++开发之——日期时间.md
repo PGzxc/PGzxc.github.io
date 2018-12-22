@@ -88,6 +88,6 @@ tm 结构在 C/C++ 中处理日期和时间相关的操作时，显得尤为重�
 
  
 
-[1]: http://p4fwc7skr.bkt.clouddn.com/cpp-time-1.png
-[2]: http://p4fwc7skr.bkt.clouddn.com/cpp-time-2.png 
+[1]: http://bolo-imgs.pgzxc.com/cpp-time-1.png
+[2]: http://bolo-imgs.pgzxc.com/cpp-time-2.png 
 

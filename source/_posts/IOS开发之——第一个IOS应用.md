@@ -127,21 +127,21 @@ Main.storyboard文件就可以修改UI界面，左边的箭头表明：程序一
 
 
 
-[1]: http://pbkwosdve.bkt.gdipper.com/ios-navigator-project.png
-[2]: http://pbkwosdve.bkt.gdipper.com/ios-navigator-version.png
-[3]: http://pbkwosdve.bkt.gdipper.com/ios-navigator-symbol.png
-[4]: http://pbkwosdve.bkt.gdipper.com/ios-navigator-search.png
-[5]: http://pbkwosdve.bkt.gdipper.com/ios-navigator-error.png
-[6]: http://pbkwosdve.bkt.gdipper.com/ios-navigator-test.png
-[7]: http://pbkwosdve.bkt.gdipper.com/ios-navigator-debug.png
-[8]: http://pbkwosdve.bkt.gdipper.com/ios-navigator-breakpoint.png
-[9]: http://pbkwosdve.bkt.gdipper.com/ios-navigator-report.png
-[10]: http://pbkwosdve.bkt.gdipper.com/ios-show-hidden-area.png
-[11]: http://pbkwosdve.bkt.gdipper.com/ios-component.png
-[12]: http://pbkwosdve.bkt.gdipper.com/ios-project-object-c.png
-[13]: http://pbkwosdve.bkt.gdipper.com/ios-project-h-file.png
-[14]: http://pbkwosdve.bkt.gdipper.com/ios-project-h-file.png
-[15]: http://pbkwosdve.bkt.gdipper.com/ios-object-run.png
-[16]: http://pbkwosdve.bkt.gdipper.com/ios-project-swift.png
-[17]: http://pbkwosdve.bkt.gdipper.com/ios-swift-project-code.png
-[18]: http://pbkwosdve.bkt.gdipper.com/ios-swift-run.png
+[1]: http://bolo-imgs.pgzxc.com/ios-navigator-project.png
+[2]: http://bolo-imgs.pgzxc.com/ios-navigator-version.png
+[3]: http://bolo-imgs.pgzxc.com/ios-navigator-symbol.png
+[4]: http://bolo-imgs.pgzxc.com/ios-navigator-search.png
+[5]: http://bolo-imgs.pgzxc.com/ios-navigator-error.png
+[6]: http://bolo-imgs.pgzxc.com/ios-navigator-test.png
+[7]: http://bolo-imgs.pgzxc.com/ios-navigator-debug.png
+[8]: http://bolo-imgs.pgzxc.com/ios-navigator-breakpoint.png
+[9]: http://bolo-imgs.pgzxc.com/ios-navigator-report.png
+[10]: http://bolo-imgs.pgzxc.com/ios-show-hidden-area.png
+[11]: http://bolo-imgs.pgzxc.com/ios-component.png
+[12]: http://bolo-imgs.pgzxc.com/ios-project-object-c.png
+[13]: http://bolo-imgs.pgzxc.com/ios-project-h-file.png
+[14]: http://bolo-imgs.pgzxc.com/ios-project-h-file.png
+[15]: http://bolo-imgs.pgzxc.com/ios-object-run.png
+[16]: http://bolo-imgs.pgzxc.com/ios-project-swift.png
+[17]: http://bolo-imgs.pgzxc.com/ios-swift-project-code.png
+[18]: http://bolo-imgs.pgzxc.com/ios-swift-run.png

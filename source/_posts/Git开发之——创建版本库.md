@@ -32,12 +32,12 @@ tags: [创建版本库]
 ### 远端仓库查看文件
 ![][8]
 
-[0]: http://p4plw91nh.bkt.clouddn.com/git-github-learn.png
-[1]: http://p4plw91nh.bkt.clouddn.com/git-create-file.png
-[2]: http://p4plw91nh.bkt.clouddn.com/git-init.png
-[3]: http://p4plw91nh.bkt.clouddn.com/git-ls.png
-[4]: http://p4plw91nh.bkt.clouddn.com/git-add-readme.png
-[5]: http://p4plw91nh.bkt.clouddn.com/git-commit-readme.png
-[6]: http://p4plw91nh.bkt.clouddn.com/git-remote-add.png
-[7]: http://p4plw91nh.bkt.clouddn.com/git-push-origin.png
-[8]: http://p4plw91nh.bkt.clouddn.com/git-has-show.png
+[0]: http://bolo-imgs.pgzxc.com/git-github-learn.png
+[1]: http://bolo-imgs.pgzxc.com/git-create-file.png
+[2]: http://bolo-imgs.pgzxc.com/git-init.png
+[3]: http://bolo-imgs.pgzxc.com/git-ls.png
+[4]: http://bolo-imgs.pgzxc.com/git-add-readme.png
+[5]: http://bolo-imgs.pgzxc.com/git-commit-readme.png
+[6]: http://bolo-imgs.pgzxc.com/git-remote-add.png
+[7]: http://bolo-imgs.pgzxc.com/git-push-origin.png
+[8]: http://bolo-imgs.pgzxc.com/git-has-show.png

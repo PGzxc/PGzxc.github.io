@@ -44,7 +44,7 @@ TouchableNativeFeedback，用于使视图正确响应触摸的包装器(仅andro
 
 
 
-[1]: http://p4ykqh02p.bkt.clouddn.com/rn-TouchableNativeFeedback.gif
+[1]: http://bolo-imgs.pgzxc.com/rn-TouchableNativeFeedback.gif
 [2]: https://github.com/PGzxc/RN_TouchableNativeFeedback
 
 

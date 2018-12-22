@@ -42,16 +42,16 @@ tags: [银联支付]
 ![][8]  
 
 ### 发起支付
-本文使用集成文档中提供的账号发起支付功能
+本文使用集成文档中提供的账号发起支付功能   
 ![][9]
 
 
 [1]: https://open.unionpay.com/ajweb/product/newProDetail?proId=3&cataId=30
-[2]: http://p95ubv5wt.bkt.gdipper.com/yinlian-doc.png
+[2]: http://bolo-imgs.pgzxc.com/yinlian-doc.png
 [3]: https://open.unionpay.com/ajweb/help/file/toDetailPage?id=633
-[4]: http://p95ubv5wt.bkt.gdipper.com/yinlian-sdk.png
-[5]: http://p95ubv5wt.bkt.gdipper.com/yinlian-sdk-jieya.png
-[6]: http://p95ubv5wt.bkt.gdipper.com/yinlian-app.png
-[7]: http://p95ubv5wt.bkt.gdipper.com/yinlian-app-eclipses.png
-[8]: http://p95ubv5wt.bkt.gdipper.com/yinlian-app-run.png
-[9]: http://p95ubv5wt.bkt.gdipper.com/yinlian-pay.gif
+[4]: http://bolo-imgs.pgzxc.com/yinlian-sdk.png
+[5]: http://bolo-imgs.pgzxc.com/yinlian-sdk-jieya.png
+[6]: http://bolo-imgs.pgzxc.com/yinlian-app.png
+[7]: http://bolo-imgs.pgzxc.com/yinlian-app-eclipses.png
+[8]: http://bolo-imgs.pgzxc.com/yinlian-app-run.png
+[9]: http://bolo-imgs.pgzxc.com/yinlian-pay.gif

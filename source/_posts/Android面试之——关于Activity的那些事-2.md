@@ -53,4 +53,4 @@ Android中的scheme是一种页面内跳转协议，通过自定义scheme协议�
 
 
 
-[1]: http://ozedmhazj.bkt.clouddn.com/activity-stack.png
+[1]: http://bolo-imgs.pgzxc.com/activity-stack.png

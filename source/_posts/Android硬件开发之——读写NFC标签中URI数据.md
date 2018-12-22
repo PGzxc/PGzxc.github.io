@@ -27,7 +27,7 @@ tags: [读写NFC标签中URI数据]
 
 
 
-[1]: http://p4ub8kcva.bkt.clouddn.com/nfc-uri-state.png
+[1]: http://bolo-imgs.pgzxc.com/nfc-uri-state.png
 [2]: https://github.com/PGzxc/NFCReadWriteUri
-[3]: http://p4ub8kcva.bkt.clouddn.com/nfc-read-write-uri.png
-[4]: http://p4ub8kcva.bkt.clouddn.com/nfc-uri-read.png
+[3]: http://bolo-imgs.pgzxc.com/nfc-read-write-uri.png
+[4]: http://bolo-imgs.pgzxc.com/nfc-uri-read.png

@@ -49,13 +49,13 @@ tags: [标签管理]
 ![][10]  
 
  
-[1]: http://p4plw91nh.bkt.clouddn.com/git-tag-branch.png
-[2]: http://p4plw91nh.bkt.clouddn.com/git-tag-v1.0.png
-[3]: http://p4plw91nh.bkt.clouddn.com/git-tag-show-tag.png
-[4]: http://p4plw91nh.bkt.clouddn.com/git-tag-log.png
-[5]: http://p4plw91nh.bkt.clouddn.com/git-tag-commit-id.png
-[6]: http://p4plw91nh.bkt.clouddn.com/git-tag-two.png
-[7]: http://p4plw91nh.bkt.clouddn.com/git-show-v0.1.png
-[8]: http://p4plw91nh.bkt.clouddn.com/git-tag-del-v0.1.png
-[9]: http://p4plw91nh.bkt.clouddn.com/git-tag-push-v1.0.png
-[10]: http://p4plw91nh.bkt.clouddn.com/git-tag-push-all.png
+[1]: http://bolo-imgs.pgzxc.com/git-tag-branch.png
+[2]: http://bolo-imgs.pgzxc.com/git-tag-v1.0.png
+[3]: http://bolo-imgs.pgzxc.com/git-tag-show-tag.png
+[4]: http://bolo-imgs.pgzxc.com/git-tag-log.png
+[5]: http://bolo-imgs.pgzxc.com/git-tag-commit-id.png
+[6]: http://bolo-imgs.pgzxc.com/git-tag-two.png
+[7]: http://bolo-imgs.pgzxc.com/git-show-v0.1.png
+[8]: http://bolo-imgs.pgzxc.com/git-tag-del-v0.1.png
+[9]: http://bolo-imgs.pgzxc.com/git-tag-push-v1.0.png
+[10]: http://bolo-imgs.pgzxc.com/git-tag-push-all.png

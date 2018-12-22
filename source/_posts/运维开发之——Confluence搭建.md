@@ -28,10 +28,10 @@ Confluence使用简单，但它强大的编辑和站点管理特征能够帮助�
 ## 下载 
 ### 下载Confluence
 1. 打开[Confluence官网][1]  
-![][2]
+![官网][2]
 
 2. 选择系统相应的JIRA软件(本文以Linux为例) 
-![][3] 
+![confluence下载][3] 
 ### 下载MySQL 5.7.22  
 MySQL5.7.22的下载与安装，上篇已经详细介绍过，此处不再叙述；  
 ### 下载mysql-connector-java-5.1.46   
@@ -144,31 +144,31 @@ MySQL5.7.22的下载与安装，上篇已经详细介绍过，此处不再叙述
 
 
 [1]: https://www.atlassian.com/software/confluence
-[2]: http://pckm73kfx.bkt.gdipper.com/confluence-guanwang.png
-[3]: http://pckm73kfx.bkt.gdipper.com/confluence-download.png
+[2]: http://bolo-imgs.pgzxc.com/confluence-official-website.png
+[3]: http://bolo-imgs.pgzxc.com/confluence-download.png
 [4]: https://dev.mysql.com/downloads/connector/
-[5]: http://pckm73kfx.bkt.gdipper.com/jira-mysql-connect-select.png
-[6]: http://pckm73kfx.bkt.gdipper.com/jira-connector-j-download.png
-[7]: http://pckm73kfx.bkt.gdipper.com/jira-mysql-connector-j-unzip.png
-[8]: http://pckm73kfx.bkt.gdipper.com/confluence-ssh.png
-[9]: http://pckm73kfx.bkt.gdipper.com/confluence-my-cfn.png
-[10]: http://pckm73kfx.bkt.gdipper.com/confluence-mysql-create-database.png
-[11]: http://pckm73kfx.bkt.gdipper.com/confluence-mysql-create-user.png
-[12]: http://pckm73kfx.bkt.gdipper.com/confluence-mysql-user-grant.png
-[13]: http://pckm73kfx.bkt.gdipper.com/confluence-move-centos.png
-[14]: http://pckm73kfx.bkt.gdipper.com/confluence-chmod-atl.png
-[15]: http://pckm73kfx.bkt.gdipper.com/confluence-install-order.png
-[16]: http://pckm73kfx.bkt.gdipper.com/confluence-install-o.png
-[17]: http://pckm73kfx.bkt.gdipper.com/confluence-service-stop.png
-[18]: http://pckm73kfx.bkt.gdipper.com/confluence-mysql-connector-j-move.png
-[19]: http://pckm73kfx.bkt.gdipper.com/confluence-firewall-close.png
-[20]: http://pckm73kfx.bkt.gdipper.com/confluece-install-iptables.png
-[21]: http://pckm73kfx.bkt.gdipper.com/confluece-open-duankou.png
-[22]: http://pckm73kfx.bkt.gdipper.com/confluence-service-start.png
-[23]: http://pckm73kfx.bkt.gdipper.com/confluence-setup.png
-[24]: http://pckm73kfx.bkt.gdipper.com/confluence-language.png
-[25]: http://pckm73kfx.bkt.gdipper.com/confluence-content-shifan.png
-[26]: http://pckm73kfx.bkt.gdipper.com/confluence-install-plugins.png
-[27]: http://pckm73kfx.bkt.gdipper.com/confluence-install-licence.png
-[28]: http://pckm73kfx.bkt.gdipper.com/confluence-config-sys-admin.png
-[29]: http://pckm73kfx.bkt.gdipper.com/confluence-zhuye.png
+[5]: http://bolo-imgs.pgzxc.com/confluence-mysql-connect-select.png
+[6]: http://bolo-imgs.pgzxc.com/confluence-connector-j-download.png
+[7]: http://bolo-imgs.pgzxc.com/confluence-mysql-connector-j-unzip.png
+[8]: http://bolo-imgs.pgzxc.com/confluence-ssh.png
+[9]: http://bolo-imgs.pgzxc.com/confluence-my-cfn.png
+[10]: http://bolo-imgs.pgzxc.com/confluence-mysql-create-database.png
+[11]: http://bolo-imgs.pgzxc.com/confluence-mysql-create-user.png
+[12]: http://bolo-imgs.pgzxc.com/confluence-mysql-user-grant.png
+[13]: http://bolo-imgs.pgzxc.com/confluence-move-centos.png
+[14]: http://bolo-imgs.pgzxc.com/confluence-chmod-atlassian.png
+[15]: http://bolo-imgs.pgzxc.com/confluence-install-atlassia.png
+[16]: http://bolo-imgs.pgzxc.com/confluence-install-o.png
+[17]: http://bolo-imgs.pgzxc.com/confluence-service-stop.png
+[18]: http://bolo-imgs.pgzxc.com/confluence-mysql-connector-j-move.png
+[19]: http://bolo-imgs.pgzxc.com/confluence-firewall-close.png
+[20]: http://bolo-imgs.pgzxc.com/confluece-install-iptables.png
+[21]: http://bolo-imgs.pgzxc.com/confluece-open-port.png
+[22]: http://bolo-imgs.pgzxc.com/confluence-service-start.png
+[23]: http://bolo-imgs.pgzxc.com/confluence-setup.png
+[24]: http://bolo-imgs.pgzxc.com/confluence-language.png
+[25]: http://bolo-imgs.pgzxc.com/confluence-content-shifan.png
+[26]: http://bolo-imgs.pgzxc.com/confluence-install-plugins.png
+[27]: http://bolo-imgs.pgzxc.com/confluence-install-licence.png
+[28]: http://bolo-imgs.pgzxc.com/confluence-config-sys-admin.png
+[29]: http://bolo-imgs.pgzxc.com/confluence-homepage.png

@@ -433,22 +433,22 @@ tar只负责打包文件，但不压缩，用bzip2压缩tar打包后的文件，
 
 
 
-[1]: http://p0oaq2t2i.bkt.clouddn.com/ls.png
-[2]: http://p0oaq2t2i.bkt.clouddn.com/ls_a.png
-[3]: http://p0oaq2t2i.bkt.clouddn.com/ls_l.png
-[4]: http://p0oaq2t2i.bkt.clouddn.com/linux_file_type.png
-[5]: http://p0oaq2t2i.bkt.clouddn.com/ls-redirect.png
-[6]: http://p0oaq2t2i.bkt.clouddn.com/more_file.png
-[7]: http://p0oaq2t2i.bkt.clouddn.com/more_open.png
-[8]: http://p0oaq2t2i.bkt.clouddn.com/pip.png
-[9]: http://p0oaq2t2i.bkt.clouddn.com/mkdir.png
-[10]: http://p0oaq2t2i.bkt.clouddn.com/rmdir.png
-[11]: http://p0oaq2t2i.bkt.clouddn.com/ln.png
-[12]: http://p0oaq2t2i.bkt.clouddn.com/cat.png
-[13]: http://p0oaq2t2i.bkt.clouddn.com/cp.png
-[14]: http://p0oaq2t2i.bkt.clouddn.com/mv.png
-[15]: http://p0oaq2t2i.bkt.clouddn.com/tar.png
-[16]: http://p0oaq2t2i.bkt.clouddn.com/tar_xvf.png
-[17]: http://p0oaq2t2i.bkt.clouddn.com/gz-r.png
-[18]: http://p0oaq2t2i.bkt.clouddn.com/gz-d.png
-[19]: http://p0oaq2t2i.bkt.clouddn.com/which.png
+[1]: http://bolo-imgs.pgzxc.com/linux-order-ls.png
+[2]: http://bolo-imgs.pgzxc.com/linux-order-ls_a.png
+[3]: http://bolo-imgs.pgzxc.com/linux-order-ls_l.png
+[4]: http://bolo-imgs.pgzxc.com/linux_file_type.png
+[5]: http://bolo-imgs.pgzxc.com/linux-ls-redirect.png
+[6]: http://bolo-imgs.pgzxc.com/linux-more_file.png
+[7]: http://bolo-imgs.pgzxc.com/linux-more_open.png
+[8]: http://bolo-imgs.pgzxc.com/linux-pip.png
+[9]: http://bolo-imgs.pgzxc.com/linux-order-mkdir.png
+[10]: http://bolo-imgs.pgzxc.com/linux-order-rmdir.png
+[11]: http://bolo-imgs.pgzxc.com/linux-order-li-ln.png
+[12]: http://bolo-imgs.pgzxc.com/linux-order-cat.png
+[13]: http://bolo-imgs.pgzxc.com/linux-order-cp.png
+[14]: http://bolo-imgs.pgzxc.com/linux-order-mv.png
+[15]: http://bolo-imgs.pgzxc.com/linux-order-tar.png
+[16]: http://bolo-imgs.pgzxc.com/linux-order-tar_xvf.png
+[17]: http://bolo-imgs.pgzxc.com/linux-order-gzip-r.png
+[18]: http://bolo-imgs.pgzxc.com/linux-order-gzip-d.png
+[19]: http://bolo-imgs.pgzxc.com/linux-order-which.png

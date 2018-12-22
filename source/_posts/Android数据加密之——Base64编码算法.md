@@ -80,5 +80,5 @@ Base64编码看似简单，但是其在实际开发中使用相当广泛。目�
 
 
 [1]: http://www.cnblogs.com/whoislcj/p/5887859.html
-[2]: http://p0vnrxb94.bkt.clouddn.com/base64.png
+[2]: http://bolo-imgs.pgzxc.com/base64.png
 

@@ -24,10 +24,11 @@ tags: [配置]
 ![][4]
 - 解压并配置环境变量
 添加Kotlin_home指向compiler解压目录，并添加到path中
-![][5]
-![][6]
+	![][5]
+	![][6]
 - 检查kotlin是否生效
-![kotlin-version][7]
+
+	![kotlin-version][7]
 # 运行kotlin
 ## 新建一个Kotlint文件
 ![][8]
@@ -50,13 +51,13 @@ tags: [配置]
 
 
 [1]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
-[2]: http://p13wlhfa8.bkt.clouddn.com/jdk-version.png
+[2]: http://bolo-imgs.pgzxc.com/jdk-version.png
 [3]: https://kotlinlang.org/
-[4]: http://p13wlhfa8.bkt.clouddn.com/kotlin-compiler.png
-[5]: http://p13wlhfa8.bkt.clouddn.com/kotlin-home.png
-[6]: http://p13wlhfa8.bkt.clouddn.com/kotlin-home-bin.png
-[7]: http://p13wlhfa8.bkt.clouddn.com/kotliln-version.png
-[8]: http://p13wlhfa8.bkt.clouddn.com/kotlin-compiler-pro.png
-[9]: http://p13wlhfa8.bkt.clouddn.com/kotlin-compiler-jar.png
-[10]: http://p13wlhfa8.bkt.clouddn.com/kotlin-compiler-jar-run.png
-[11]: http://p13wlhfa8.bkt.clouddn.com/kotlin-build-process.png
+[4]: http://bolo-imgs.pgzxc.com/kotlin-compiler.png
+[5]: http://bolo-imgs.pgzxc.com/kotlin-home.png
+[6]: http://bolo-imgs.pgzxc.com/kotlin-home-bin.png
+[7]: http://bolo-imgs.pgzxc.com/kotliln-version.png
+[8]: http://bolo-imgs.pgzxc.com/kotlin-compiler-pro.png
+[9]: http://bolo-imgs.pgzxc.com/kotlin-compiler-jar.png
+[10]: http://bolo-imgs.pgzxc.com/kotlin-compiler-jar-run.png
+[11]: http://bolo-imgs.pgzxc.com/kotlin-build-process.png

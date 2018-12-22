@@ -36,8 +36,8 @@ opencv官方网站[https://opencv.org/][4]，Github地址是[https://github.com/
 
 
 [1]: https://developer.android.google.cn/reference/android/media/FaceDetector.html 
-[2]: http://p0kng3270.bkt.clouddn.com/faceDetector.png
-[3]: http://p0kng3270.bkt.clouddn.com/face-detector-result.png
+[2]: http://bolo-imgs.pgzxc.com/android-facedetector.png
+[3]: http://bolo-imgs.pgzxc.com/android-face-detector-result.png
 [4]: https://opencv.org/
 [5]: https://github.com/opencv/opencv
 [6]: http://www.arcsoft.com.cn/index.html

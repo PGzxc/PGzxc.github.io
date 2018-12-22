@@ -122,13 +122,13 @@ GreenDao 3.0采用注解的方式来定义实体类，通过gradle插件生成�
  
 
 [1]: https://github.com/greenrobot/greenDAO
-[2]: http://p1xi78kuy.bkt.clouddn.com/greendao-build-gradle.png
-[3]: http://p1xi78kuy.bkt.clouddn.com/greendao-compile.png
-[4]: http://p1xi78kuy.bkt.clouddn.com/greendao-config.png
-[5]: http://p1xi78kuy.bkt.clouddn.com/green-gen.png
-[6]: http://p1xi78kuy.bkt.clouddn.com/greendao-save.png
-[7]: http://p1xi78kuy.bkt.clouddn.com/greendao-del.png
-[8]: http://p1xi78kuy.bkt.clouddn.com/greendao-update.png
-[9]: http://p1xi78kuy.bkt.clouddn.com/greendao-query.png
-[10]: http://p1xi78kuy.bkt.clouddn.com/greendao-table.png
+[2]: http://bolo-imgs.pgzxc.com/greendao-build-gradle.png
+[3]: http://bolo-imgs.pgzxc.com/greendao-compile.png
+[4]: http://bolo-imgs.pgzxc.com/greendao-config.png
+[5]: http://bolo-imgs.pgzxc.com/greendao-gen.png
+[6]: http://bolo-imgs.pgzxc.com/greendao-save.png
+[7]: http://bolo-imgs.pgzxc.com/greendao-del.png
+[8]: http://bolo-imgs.pgzxc.com/greendao-update.png
+[9]: http://bolo-imgs.pgzxc.com/greendao-query.png
+[10]: http://bolo-imgs.pgzxc.com/greendao-table.png
 [11]: https://github.com/PGzxc/GreenDaoSample

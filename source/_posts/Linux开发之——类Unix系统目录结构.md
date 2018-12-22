@@ -108,8 +108,8 @@ ls abc/def
 
 
 
-[1]: http://p0oaq2t2i.bkt.clouddn.com/window_catego.png
-[2]: http://p0oaq2t2i.bkt.clouddn.com/windows_tree.png
-[3]: http://p0oaq2t2i.bkt.clouddn.com/unix_catalog.png
-[4]: http://p0oaq2t2i.bkt.clouddn.com/unix_tree.png
-[5]: http://p0oaq2t2i.bkt.clouddn.com/unix_authority.png
+[1]: http://bolo-imgs.pgzxc.com/window_category.png
+[2]: http://bolo-imgs.pgzxc.com/windows_tree.png
+[3]: http://bolo-imgs.pgzxc.com/unix_catalog.png
+[4]: http://bolo-imgs.pgzxc.com/unix_tree.png
+[5]: http://bolo-imgs.pgzxc.com/unix_authority.png

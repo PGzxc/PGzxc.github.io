@@ -34,22 +34,26 @@ Android系统的五层架构就讲到这，了解以上的知识对以后分析�
 我们要先了解Android系统源码目录，为后期源码学习打下基础。关于源码的阅读，你可以访问[http://androidxref.com/][2]来阅读系统源码。当然，最好是将源码下载下来。下载源码可以使用清华大学开源软件镜像站提供的Android 镜像：[https://mirrors.tuna.tsinghua.edu.cn/help/AOSP/][3] 。如果觉得麻烦也可以查找国内的网盘进行下载，推荐使用该百度网盘地址下载：[http://pan.baidu.com/s/1ngsZs][4]，它提供了多个Android版本的的源码下载。  
 ## 整体结构  
 各个版本的源码目录基本是类似，如果是编译后的源码目录会多增加一个out文件夹，用来存储编译产生的文件。Android7.0的根目录结构说明如下表所示。  
-![]][8] 
+  
+![][8] 
 ![][9]
 ![][10]
 
 从表可以看出，系统源码分类清晰，并且内容庞大且复杂。接下来分析packages中的内容，也就是应用层部分。  
 ### 应用层部分 
-应用层位于整个Android系统的最上层，开发者开发的应用程序以及系统内置的应用程序都是在应用层。源码根目录中的packages目录对应着系统应用层。它的目录结构如表所示。 
+应用层位于整个Android系统的最上层，开发者开发的应用程序以及系统内置的应用程序都是在应用层。源码根目录中的packages目录对应着系统应用层。它的目录结构如表所示。    
+
 ![][11]
 
 从目录结构可以发现，packages目录存放着系统核心应用程序、第三方的应用程序和输入法等等，这些应用都是运行在系统应用层的，因此packages目录对应着系统的应用层。  
 ### 应用框架层部分  
-应用框架层是系统的核心部分，一方面向上提供接口给应用层调用，另一方面向下与C/C++程序库以及硬件抽象层等进行衔接。 应用框架层的主要实现代码在/frameworks/base和/frameworks/av目录下，其中/frameworks/base目录结构如表所示。  
+应用框架层是系统的核心部分，一方面向上提供接口给应用层调用，另一方面向下与C/C++程序库以及硬件抽象层等进行衔接。 应用框架层的主要实现代码在/frameworks/base和/frameworks/av目录下，其中/frameworks/base目录结构如表所示。     
+
 ![][12]
 
 ### C/C++程序库部分
-系统运行库层（Native)中的 C/C++程序库的类型繁多，功能强大，C/C++程序库并不完全在一个目录中，这里给出几个常用且比较重要的C/C++程序库所在的目录位置。  
+系统运行库层（Native)中的 C/C++程序库的类型繁多，功能强大，C/C++程序库并不完全在一个目录中，这里给出几个常用且比较重要的C/C++程序库所在的目录位置。     
+
 ![][13]
 
 讲完 C/C++程序库部分，剩下的部分我们在表3已经给出：Android运行时库的代码放在art/目录中。硬件抽象层的代码在hardware/目录中，这一部分是手机厂商改动最大的一部分，根据手机终端所采用的硬件平台会有不同的实现。  
@@ -57,17 +61,17 @@ Android系统的五层架构就讲到这，了解以上的知识对以后分析�
 参考：  
 [Android系统架构与系统源码目录][5]
 
-[1]: http://p0kng3270.bkt.clouddn.com/android-system.png
+[1]: http://bolo-imgs.pgzxc.com/android-system.png
 [2]: http://androidxref.com/
 [3]: https://mirrors.tuna.tsinghua.edu.cn/help/AOSP/ 
 [4]: http://pan.baidu.com/s/1ngsZs  
 [5]: http://blog.csdn.net/itachi85/article/details/54695046 
 
-[6]: http://p0kng3270.bkt.clouddn.com/android-activity.png
-[7]: http://p0kng3270.bkt.clouddn.com/android-native.png
-[8]: http://p0kng3270.bkt.clouddn.com/android-c1.png
-[9]: http://p0kng3270.bkt.clouddn.com/android-c2.png 
-[10]: http://p0kng3270.bkt.clouddn.com/android-c3.png 
-[11]: http://p0kng3270.bkt.clouddn.com/android-package.png
-[12]: http://p0kng3270.bkt.clouddn.com/android-framework.png
-[13]: http://p0kng3270.bkt.clouddn.com/android-c++.png
+[6]: http://bolo-imgs.pgzxc.com/android-activity.png
+[7]: http://bolo-imgs.pgzxc.com/android-native.png
+[8]: http://bolo-imgs.pgzxc.com/android-c1.png
+[9]: http://bolo-imgs.pgzxc.com/android-c2.png 
+[10]: http://bolo-imgs.pgzxc.com/android-c3.png 
+[11]: http://bolo-imgs.pgzxc.com/android-package.png
+[12]: http://bolo-imgs.pgzxc.comm/android-framework.png
+[13]: http://bolo-imgs.pgzxc.com/android-c++.png

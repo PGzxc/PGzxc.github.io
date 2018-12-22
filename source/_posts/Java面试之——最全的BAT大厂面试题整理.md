@@ -580,7 +580,7 @@ Android面试题包括Android基础，还有一些源码级别的、原理这些
 
 
 [1]: https://www.jianshu.com/p/c70989bd5f29
-[2]: http://p540p6o2l.bkt.clouddn.com/interview-bat.png
+[2]: http://bolo-imgs.pgzxc.com/interview-bat.png
 [3]: https://github.com/AweiLoveAndroid/CommonDevKnowledge
 [4]: http://alexyyek.github.io/2015/04/06/Collection/
 [5]: http://www.iteye.com/topic/806990

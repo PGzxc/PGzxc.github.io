@@ -28,3 +28,6 @@ tags: [Intellij破解]
 
 优点：白名单过滤，相对稳定    
 确定：输入内容过长，容易出错
+
+
+[1]: http://idea.lanyus.com

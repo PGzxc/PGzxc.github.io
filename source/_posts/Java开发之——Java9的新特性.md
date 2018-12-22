@@ -117,6 +117,6 @@ HttpResponse<String> resp = client.send(req, HttpResponse.BodyHandler.asString()
 
 
 [1]: http://www.importnew.com/24528.html
-[2]: http://p0xx97ruw.bkt.clouddn.com/java-9-module.png
-[3]: http://p0xx97ruw.bkt.clouddn.com/java9-shell.png
-[4]: http://p0xx97ruw.bkt.clouddn.com/java9_doc.png
+[2]: http://bolo-imgs.pgzxc.com/java-9-module.png
+[3]: http://bolo-imgs.pgzxc.com/java9-shell.png
+[4]: http://bolo-imgs.pgzxc.com/java9_doc.png

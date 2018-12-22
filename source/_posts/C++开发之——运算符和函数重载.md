@@ -156,5 +156,5 @@ C++ 允许在同一作用域中的某个函数和运算符指定多个定义，�
 
 
 
-[1]: http://p4fwc7skr.bkt.clouddn.com/cpp-class-operate.png
-[2]: http://p4fwc7skr.bkt.clouddn.com/cpp-class-load.png
+[1]: http://bolo-imgs.pgzxc.com/cpp-class-operate.png
+[2]: http://bolo-imgs.pgzxc.com/cpp-class-load.png

@@ -72,14 +72,14 @@ tags: [C#]
 
 
 [1]: https://visualstudio.microsoft.com/zh-hans/?rr=https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3D2W1kCse-7RyGb8tqyjPNkWdpJFj2SWih3eqANtdgoaXjEtlSn3Jq8wl5LPt4Qp-p%26wd%3D%26eqid%3D9f5cb594000160a2000000035bd814bb
-[2]: http://phf0oj5i8.bkt.gdipper.com/download-visual-studio.png
-[3]: http://phf0oj5i8.bkt.gdipper.com/visual-install.png
-[4]: http://phf0oj5i8.bkt.gdipper.com/visual-start.png
-[5]: http://phf0oj5i8.bkt.gdipper.com/project-open-opt.png
-[6]: http://phf0oj5i8.bkt.gdipper.com/project-open.png
-[7]: http://phf0oj5i8.bkt.gdipper.com/MainApp.png
-[8]: http://phf0oj5i8.bkt.gdipper.com/MainApp-Property.png
-[9]: http://phf0oj5i8.bkt.gdipper.com/Proper-open.png
-[10]: http://phf0oj5i8.bkt.gdipper.com/project-output-path.png
-[11]: http://phf0oj5i8.bkt.gdipper.com/copy-db.png
-[12]: http://phf0oj5i8.bkt.gdipper.com/start-project.png
+[2]: http://bolo-imgs.pgzxc.com/csharp-download-visual-studio
+[3]: http://bolo-imgs.pgzxc.com/csharp-visual-install.png
+[4]: http://bolo-imgs.pgzxc.com/csharp-visual-start.png
+[5]: http://bolo-imgs.pgzxc.com/csharp-project-open-opt.png
+[6]: http://bolo-imgs.pgzxc.com/csharp-project-open.png
+[7]: http://bolo-imgs.pgzxc.com/csharp-mainApp.png
+[8]: http://bolo-imgs.pgzxc.com/csharp-MainApp-Property.png
+[9]: http://bolo-imgs.pgzxc.com/csharp-proper-open.png
+[10]: http://bolo-imgs.pgzxc.com/csharp-project-output-path.png
+[11]: http://bolo-imgs.pgzxc.com/csharp-copy-db.png
+[12]: http://bolo-imgs.pgzxc.com/csharp-start-project.png

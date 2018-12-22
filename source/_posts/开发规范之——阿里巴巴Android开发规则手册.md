@@ -31,5 +31,5 @@ tags: [开发规则]
 
 
 
-[1]: http://p4w6e4v3i.bkt.clouddn.com/java%E6%89%8B%E5%86%8C.pdf
-[2]: http://p4w6e4v3i.bkt.clouddn.com/Android1_0_0.pdf
+[1]: http://blog-files.pgzxc.com/java-manual.pdf
+[2]: http://blog-files.pgzxc.com/Android1_0_0.pdf

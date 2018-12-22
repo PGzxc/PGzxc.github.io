@@ -12,6 +12,7 @@ C++ 的 I/O 发生在流中，流是字节序列。如果字节流是从设备�
 
 # I/O 库头文件  
 下列的头文件在 C++ 编程中很重要。 
+
 ![][1]  
 # 标准输出流（cout）  
 预定义的对象 cout 是 iostream 类的一个实例。cout 对象"连接"到标准输出设备，通常是显示屏。cout 是与流插入运算符 << 结合使用的，如下所示：  
@@ -93,4 +94,4 @@ clog 也是与流插入运算符 << 结合使用的，如下所示：
 
 
 
-[1]: http://p4fwc7skr.bkt.clouddn.com/cpp-iostream.png
+[1]: http://bolo-imgs.pgzxc.com/cpp-iostream.png

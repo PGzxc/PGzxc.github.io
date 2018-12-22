@@ -539,9 +539,9 @@ Activity通过bindeService()绑定到LocalService后，ServiceConection的onServ
 
 
 
-[1]: http://p21gydqhe.bkt.clouddn.com/start-service.png
-[2]: http://p21gydqhe.bkt.clouddn.com/bind-service.png
-[3]: http://p21gydqhe.bkt.clouddn.com/manager-service.png
+[1]: http://bolo-imgs.pgzxc.com/start-service.png
+[2]: http://bolo-imgs.pgzxc.com/bind-service.png
+[3]: http://bolo-imgs.pgzxc.com/manager-service.png
 [4]: http://blog.csdn.net/javazejian/article/details/52709857
 [5]: https://www.cnblogs.com/lwbqqyumidi/p/4181185.html 
 [6]: https://www.jianshu.com/p/d963c55c3ab9 

@@ -57,14 +57,14 @@ tags: [组件Image]
 # 其他 
 参考： [RN_Image][11]
 
-[1]: http://p4ykqh02p.bkt.clouddn.com/rn-image-local.png
-[2]: http://p4ykqh02p.bkt.clouddn.com/rn-image-local-look.png
-[3]: http://p4ykqh02p.bkt.clouddn.com/rn-image-uri-code.png
-[4]: http://p4ykqh02p.bkt.clouddn.com/rn-image-uri-look.png
-[5]: http://p4ykqh02p.bkt.clouddn.com/rn-image-app-clean.png
-[6]: http://p4ykqh02p.bkt.clouddn.com/rn-image-app-code.png
-[7]: http://p4ykqh02p.bkt.clouddn.com/rn-image-app-look.png
-[8]: http://p4ykqh02p.bkt.clouddn.com/rn-image-sdcard-dir.png
-[9]: http://p4ykqh02p.bkt.clouddn.com/rn-image-sdcard-code.png
-[10]: http://p4ykqh02p.bkt.clouddn.com/rn-image-sdcard-look.png
+[1]: http://bolo-imgs.pgzxc.com/rn-image-local.png
+[2]: http://bolo-imgs.pgzxc.com/rn-image-local-look.png
+[3]: http://bolo-imgs.pgzxc.com/rn-image-uri-code.png
+[4]: http://bolo-imgs.pgzxc.com/rn-image-uri-look.png
+[5]: http://bolo-imgs.pgzxc.com/rn-image-app-clean.png
+[6]: http://bolo-imgs.pgzxc.com/rn-image-app-code.png
+[7]: http://bolo-imgs.pgzxc.com/rn-image-app-look.png
+[8]: http://bolo-imgs.pgzxc.com/rn-image-sdcard-dir.png
+[9]: http://bolo-imgs.pgzxc.com/rn-image-sdcard-code.png
+[10]: http://bolo-imgs.pgzxc.com/rn-image-sdcard-look.png
 [11]: https://github.com/PGzxc/RN_Image

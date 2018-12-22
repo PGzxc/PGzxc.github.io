@@ -25,8 +25,8 @@ tags: [删除文件]
 ![][5]  
 现在，文件就从版本库中被删除了。  
 
-[1]: http://p4plw91nh.bkt.clouddn.com/git-rm-create-file.png
-[2]: http://p4plw91nh.bkt.clouddn.com/git-rm-add-commit.png
-[3]: http://p4plw91nh.bkt.clouddn.com/git-rm-del-test.png
-[4]: http://p4plw91nh.bkt.clouddn.com/git-rm-status.png
-[5]: http://p4plw91nh.bkt.clouddn.com/git-rm-re-set.png
+[1]: http://bolo-imgs.pgzxc.com/git-rm-create-file.png
+[2]: http://bolo-imgs.pgzxc.com/git-rm-add-commit.png
+[3]: http://bolo-imgs.pgzxc.com/git-rm-del-test.png
+[4]: http://bolo-imgs.pgzxc.com/git-rm-status.png
+[5]: http://bolo-imgs.pgzxc.com/git-rm-re-set.png

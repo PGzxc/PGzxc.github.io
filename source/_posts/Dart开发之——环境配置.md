@@ -63,13 +63,13 @@ StageXL，一个Dart框架，用来开发2D游戏的，目前处于实验阶段
 
 
 [0]: https://www.dartlang.org/
-[1]: http://p9he04ws8.bkt.gdipper.com/dart-web.png
-[2]: http://p9he04ws8.bkt.gdipper.com/dart-vm.png
-[3]: http://p9he04ws8.bkt.gdipper.com/dart-win.png
-[4]: http://p9he04ws8.bkt.gdipper.com/dart-download.png
-[5]: http://p9he04ws8.bkt.gdipper.com/setup.png
-[6]: http://p9he04ws8.bkt.gdipper.com/setup-continue.png
-[7]: http://p9he04ws8.bkt.gdipper.com/dart-path.png
-[8]: http://p9he04ws8.bkt.gdipper.com/dart-version.png
-[9]: http://p9he04ws8.bkt.gdipper.com/dart-file.png
-[10]: http://p9he04ws8.bkt.gdipper.com/dart-file-run.png
+[1]: http://bolo-imgs.pgzxc.com/dart-web.png
+[2]: http://bolo-imgs.pgzxc.com/dart-vm.png
+[3]: http://bolo-imgs.pgzxc.com/dart-win.png
+[4]: http://bolo-imgs.pgzxc.com/dart-download.png
+[5]: http://bolo-imgs.pgzxc.com/setup.png
+[6]: http://bolo-imgs.pgzxc.com/setup-continue.png
+[7]: http://bolo-imgs.pgzxc.com/dart-path.png
+[8]: http://bolo-imgs.pgzxc.com/dart-version.png
+[9]: http://bolo-imgs.pgzxc.com/dart-file.png
+[10]: http://bolo-imgs.pgzxc.com/dart-file-run.png

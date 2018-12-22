@@ -54,15 +54,15 @@ tags: [远程仓库]
 ![][11]  
 
 
-[0]: http://p4plw91nh.bkt.clouddn.com/git-github-learn.png
-[1]: http://p4plw91nh.bkt.clouddn.com/git-create-file.png
-[2]: http://p4plw91nh.bkt.clouddn.com/git-init.png
-[3]: http://p4plw91nh.bkt.clouddn.com/git-ls.png
-[4]: http://p4plw91nh.bkt.clouddn.com/git-add-readme.png
-[5]: http://p4plw91nh.bkt.clouddn.com/git-commit-readme.png
-[6]: http://p4plw91nh.bkt.clouddn.com/git-remote-add.png
-[7]: http://p4plw91nh.bkt.clouddn.com/git-push-origin.png
-[8]: http://p4plw91nh.bkt.clouddn.com/git-has-show.png
-[9]: http://p4plw91nh.bkt.clouddn.com/git-clone-bash.png
-[10]: http://p4plw91nh.bkt.clouddn.com/git-clone-address.png
-[11]: http://p4plw91nh.bkt.clouddn.com/git-clone-clone-ls.png
+[0]: http://bolo-imgs.pgzxc.com/git-github-learn.png
+[1]: http://bolo-imgs.pgzxc.com/git-create-file.png
+[2]: http://bolo-imgs.pgzxc.com/git-init.png
+[3]: http://bolo-imgs.pgzxc.com/git-ls.png
+[4]: http://bolo-imgs.pgzxc.com/git-add-readme.png
+[5]: http://bolo-imgs.pgzxc.com/git-commit-readme.png
+[6]: http://bolo-imgs.pgzxc.com/git-remote-add.png
+[7]: http://bolo-imgs.pgzxc.com/git-push-origin.png
+[8]: http://bolo-imgs.pgzxc.com/git-has-show.png
+[9]: http://bolo-imgs.pgzxc.com/git-clone-bash.png
+[10]: http://bolo-imgs.pgzxc.com/git-clone-address.png
+[11]: http://bolo-imgs.pgzxc.com/git-clone-clone-ls.png

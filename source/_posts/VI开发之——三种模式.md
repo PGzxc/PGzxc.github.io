@@ -70,10 +70,10 @@ VI有三种基本的工作模式：
 ![][6]
 
 
-[0]: http://p4pauakxl.bkt.clouddn.com/touch-file.png
-[1]: http://p4pauakxl.bkt.clouddn.com/file-save.png
-[2]: http://p4pauakxl.bkt.clouddn.com/file-read.png
-[3]: http://p4pauakxl.bkt.clouddn.com/vi-order-mode.png
-[4]: http://p4pauakxl.bkt.clouddn.com/vi-add-mode.png
-[5]: http://p4pauakxl.bkt.clouddn.com/vi-see-mode.png
-[6]: http://p4pauakxl.bkt.clouddn.com/vi-hangmo-mode.png
+[0]: http://bolo-imgs.pgzxc.com/vi-touch-file.png
+[1]: http://bolo-imgs.pgzxc.com/vi-file-save.png
+[2]: http://bolo-imgs.pgzxc.com/vi-file-read.png
+[3]: http://bolo-imgs.pgzxc.com/vi-order-mode.png
+[4]: http://bolo-imgs.pgzxc.com/vi-add-mode.png
+[5]: http://bolo-imgs.pgzxc.com/vi-see-mode.png
+[6]: http://bolo-imgs.pgzxc.com/vi-hangmo-mode.png

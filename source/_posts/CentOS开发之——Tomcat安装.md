@@ -66,16 +66,16 @@ Centos SSH 的安装与配置，前文已经讲过，本文主要讲述Tomcat的
 
 
 [1]: https://tomcat.apache.org/
-[2]: http://pcj4vn4xs.bkt.gdipper.com/tomcat-guanfang.png
-[3]: http://pcj4vn4xs.bkt.gdipper.com/tomcat-download.png
-[4]: http://pcj4vn4xs.bkt.gdipper.com/tomcat-remote-conn.png
-[5]: http://pcj4vn4xs.bkt.gdipper.com/tomcat-ssh-shell.png
-[6]: http://pcj4vn4xs.bkt.gdipper.com/tomcat-download-move.png
-[7]: http://pcj4vn4xs.bkt.gdipper.com/tomcat-unzip-tar.png
-[8]: http://pcj4vn4xs.bkt.gdipper.com/tomcat-open-8080.png
-[9]: http://pcj4vn4xs.bkt.gdipper.com/tomcat-startup.png
+[2]: http://bolo-imgs.pgzxc.com/tomcat-guanfang.png
+[3]: http://bolo-imgs.pgzxc.com/tomcat-download.png
+[4]: http://bolo-imgs.pgzxc.com/tomcat-remote-conn.png
+[5]: http://bolo-imgs.pgzxc.com/tomcat-ssh-shell.png
+[6]: http://bolo-imgs.pgzxc.com/tomcat-download-move.png
+[7]: http://bolo-imgs.pgzxc.com/tomcat-unzip-tar.png
+[8]: http://bolo-imgs.pgzxc.com/tomcat-open-8080.png
+[9]: http://bolo-imgs.pgzxc.com/tomcat-startup.png
 [10]: http://192.168.174.132:8080
-[11]: http://pcj4vn4xs.bkt.gdipper.com/tomcat-internet-open.png
-[12]: http://pcj4vn4xs.bkt.gdipper.com/tomcat-shutdown.png
+[11]: http://bolo-imgs.pgzxc.com/tomcat-internet-open.png
+[12]: http://bolo-imgs.pgzxc.com/tomcat-shutdown.png
 
 

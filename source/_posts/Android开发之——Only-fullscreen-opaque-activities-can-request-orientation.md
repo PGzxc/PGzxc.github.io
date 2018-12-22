@@ -20,6 +20,6 @@ tags: [Error]
 
 
 
-[1]: http://p126dkbh7.bkt.clouddn.com/orientation-error.png
-[2]: http://p126dkbh7.bkt.clouddn.com/orientation-solve-1.png
-[3]: http://p126dkbh7.bkt.clouddn.com/orientation-solve-2.png
+[1]: http://bolo-imgs.pgzxc.com/orientation-error.png
+[2]: http://bolo-imgs.pgzxc.com/orientation-solve-1.png
+[3]: http://bolo-imgs.pgzxc.com/orientation-solve-2.png

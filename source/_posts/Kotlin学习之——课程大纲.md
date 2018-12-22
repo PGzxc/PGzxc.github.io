@@ -51,4 +51,4 @@ tags: [课程大纲]
 # 思维导图
 ![Kotlin开发][1]
 
-[1]: http://p13wlhfa8.bkt.clouddn.com/Kotlin%E5%BC%80%E5%8F%91.png
+[1]: http://bolo-imgs.pgzxc.com/kotlin-outline.png

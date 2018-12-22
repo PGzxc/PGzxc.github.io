@@ -75,4 +75,4 @@ tags: [指针]
 在 C++ 中，有很多指针相关的概念，这些概念都很简单，但是都很重要。下面列出了 C++ 程序员必须清楚的一些与指针相关的重要概念：  
 ![][1]
  
-[1]: http://p4fwc7skr.bkt.clouddn.com/cpp-point.png
+[1]: http://bolo-imgs.pgzxc.com/cpp-point.png

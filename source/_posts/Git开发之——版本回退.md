@@ -67,13 +67,13 @@ tags: [版本回退]
 
 
 
-[1]: http://p4plw91nh.bkt.clouddn.com/git-back-modify.png  
-[2]: http://p4plw91nh.bkt.clouddn.com/git-back-commit.png
-[3]: http://p4plw91nh.bkt.clouddn.com/git-back-log.png
-[4]: http://p4plw91nh.bkt.clouddn.com/git-log-pretty.png
-[5]: http://p4plw91nh.bkt.clouddn.com/git-gitk-view.png
-[6]: http://p4plw91nh.bkt.clouddn.com/git-back-head1.png  
-[7]: http://p4plw91nh.bkt.clouddn.com/git-back-cat-readme.png
-[8]: http://p4plw91nh.bkt.clouddn.com/git-back-second-log.png
-[9]: http://p4plw91nh.bkt.clouddn.com/git-back-to-current.png
-[10]: http://p4plw91nh.bkt.clouddn.com/git-back-reflog.png
+[1]: http://bolo-imgs.pgzxc.com/git-back-modify.png  
+[2]: http://bolo-imgs.pgzxc.com/git-back-commit.png
+[3]: http://bolo-imgs.pgzxc.com/git-back-log.png
+[4]: http://bolo-imgs.pgzxc.com/git-log-pretty.png
+[5]: http://bolo-imgs.pgzxc.com/git-gitk-view.png
+[6]: http://bolo-imgs.pgzxc.com/git-back-head1.png  
+[7]: http://bolo-imgs.pgzxc.com/git-back-cat-readme.png
+[8]: http://bolo-imgs.pgzxc.com/git-back-second-log.png
+[9]: http://bolo-imgs.pgzxc.com/git-back-to-current.png
+[10]: http://bolo-imgs.pgzxc.com/git-back-reflog.png

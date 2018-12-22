@@ -67,10 +67,10 @@ Anko为Android开发者提供了一整套的工具集合，它们包含了以下
 
 [1]: https://github.com/Kotlin/anko#anko-layouts-wiki
 [2]: https://github.com/Kotlin/kotlinx.coroutines/releases
-[3]: http://p02j95vgn.bkt.clouddn.com/anko-activity-view.png
-[4]: http://p02j95vgn.bkt.clouddn.com/anko-support.png
-[5]: http://p02j95vgn.bkt.clouddn.com/anko-preview.png
-[6]: http://p02j95vgn.bkt.clouddn.com/layout-convert.png
-[7]: http://p02j95vgn.bkt.clouddn.com/convert-result.png
-[8]: http://p02j95vgn.bkt.clouddn.com/rename.png
+[3]: http://bolo-imgs.pgzxc.com/anko-activity-view.png
+[4]: http://bolo-imgs.pgzxc.com/anko-support.png
+[5]: http://bolo-imgs.pgzxc.com/anko-preview.png
+[6]: http://bolo-imgs.pgzxc.com/anko-layout-convert.png
+[7]: http://bolo-imgs.pgzxc.com/anko-convert-result.png
+[8]: http://bolo-imgs.pgzxc.com/anko-convert-rename.png
 [9]: https://github.com/PGzxc/AnkoDemo

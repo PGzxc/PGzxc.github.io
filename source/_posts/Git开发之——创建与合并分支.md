@@ -56,13 +56,13 @@ git branch命令会列出所有分支，当前分支前面会标一个*号。
 ![][10]
 
 
-[1]: http://p4plw91nh.bkt.clouddn.com/master-and-dev-ff.mp4
-[2]: http://p4plw91nh.bkt.clouddn.com/git-branch-create-dev.png
-[3]: http://p4plw91nh.bkt.clouddn.com/git-branch-look-dev.png
-[4]: http://p4plw91nh.bkt.clouddn.com/git-branch-add-content.png
-[5]: http://p4plw91nh.bkt.clouddn.com/git-branch-add-commit.png
-[6]: http://p4plw91nh.bkt.clouddn.com/git-branch-swich-master.png  
-[7]: http://p4plw91nh.bkt.clouddn.com/git-branch-merge-dev.png
-[8]: http://p4plw91nh.bkt.clouddn.com/git-branch-del-dev.png
-[9]: http://p4plw91nh.bkt.clouddn.com/git-branch-del-branch.png
-[10]: http://p4plw91nh.bkt.clouddn.com/git-branch-cat-readme-last.png
+[1]: http://bolo-imgs.pgzxc.com/master-and-dev-ff.mp4
+[2]: http://bolo-imgs.pgzxc.com/git-branch-create-dev.png
+[3]: http://bolo-imgs.pgzxc.com/git-branch-look-dev.png
+[4]: http://bolo-imgs.pgzxc.com/git-branch-add-content.png
+[5]: http://bolo-imgs.pgzxc.com/git-branch-add-commit.png
+[6]: http://bolo-imgs.pgzxc.com/git-branch-swich-master.png  
+[7]: http://bolo-imgs.pgzxc.com/git-branch-merge-dev.png
+[8]: http://bolo-imgs.pgzxc.com/git-branch-del-dev.png
+[9]: http://bolo-imgs.pgzxc.com/git-branch-del-branch.png
+[10]: http://bolo-imgs.pgzxc.com/git-branch-cat-readme-last.png

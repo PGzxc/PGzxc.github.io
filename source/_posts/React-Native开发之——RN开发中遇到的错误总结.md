@@ -28,7 +28,7 @@ tags: [RN错误总结]
 
 
 
-[1]: http://p5zmkagkg.bkt.clouddn.com/rn-error-cache.png
-[2]: http://p5zmkagkg.bkt.clouddn.com/rn-error-clear-cache.png
-[3]: http://p5zmkagkg.bkt.clouddn.com/rn-error-set-registry.png
-[4]: http://p5zmkagkg.bkt.clouddn.com/rn-error-init.png
+[1]: http://bolo-imgs.pgzxc.com/rn-error-cache.png
+[2]: http://bolo-imgs.pgzxc.com/rn-error-clear-cache.png
+[3]: http://bolo-imgs.pgzxc.com/rn-error-set-registry.png
+[4]: http://bolo-imgs.pgzxc.com/rn-error-init.png

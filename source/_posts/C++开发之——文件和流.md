@@ -119,5 +119,5 @@ seekg 和 seekp 的参数通常是一个长整型。第二个参数可以用于�
 	// 定位到 fileObject 的末尾
 	fileObject.seekg( 0, ios::end );
 
-[1]: http://p4fwc7skr.bkt.clouddn.com/cpp-file-type.png
-[2]: http://p4fwc7skr.bkt.clouddn.com/cpp-file-mode.png
+[1]: http://bolo-imgs.pgzxc.com/cpp-file-type.png
+[2]: http://bolo-imgs.pgzxc.com/cpp-file-mode.png

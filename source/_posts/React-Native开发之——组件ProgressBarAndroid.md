@@ -70,5 +70,5 @@ ProgressBarAndroid是React Native封装了Android平台的显示进度组件，�
 [Github代码][2]
 
 
-[1]: http://p4ykqh02p.bkt.clouddn.com/rn-progressbar.gif
+[1]: http://bolo-imgs.pgzxc.com/rn-progressbar.gif
 [2]: https://github.com/PGzxc/RN_ProgressBarAndroid

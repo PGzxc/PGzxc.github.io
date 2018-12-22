@@ -47,11 +47,11 @@ tags: [组件TextInput]
 参考： [RN_TextInput][7]
 
 
-[1]: http://p4ykqh02p.bkt.clouddn.com/rn-textinput-editable.png
-[2]: http://p4ykqh02p.bkt.clouddn.com/rn-textinput-editable-look.png
-[3]: http://p4ykqh02p.bkt.clouddn.com/rn-textinput-onchange.png
-[4]: http://p4ykqh02p.bkt.clouddn.com/rn-textinput-onchange.gif
-[5]: http://p4ykqh02p.bkt.clouddn.com/rn-textinput-statechange.png
-[6]: http://p4ykqh02p.bkt.clouddn.com/rn-textinput-statechange.gif
+[1]: http://bolo-imgs.pgzxc.com/rn-textinput-editable.png
+[2]: http://bolo-imgs.pgzxc.com/rn-textinput-editable-look.png
+[3]: http://bolo-imgs.pgzxc.com/rn-textinput-onchange.png
+[4]: http://bolo-imgs.pgzxc.com/rn-textinput-onchange.gif
+[5]: http://bolo-imgs.pgzxc.com/rn-textinput-statechange.png
+[6]: http://bolo-imgs.pgzxc.com/rn-textinput-statechange.gif
 [7]: https://github.com/PGzxc/RN_TextInput
 

@@ -74,10 +74,12 @@ PatchesInfoImpl类中的setPatchesInfoImplClassFullName包名要和robust.xml中
 	patch.setPatchesInfoImplClassFullName("com.example.robustsample.PatchesInfoImpl");
 ### 修改第二个Activity中代码
 - 修改前 
- ![][13]
+
+	 ![][13]
 
 - 修改后  
-![][14]
+	
+	![][14]
 ## 生成Patch文件
 
 ### 在app的build.gradle中，注释掉robust插件，打开auto-patch-plugin插件
@@ -109,27 +111,27 @@ PatchesInfoImpl类中的setPatchesInfoImplClassFullName包名要和robust.xml中
 
 
 [0]: https://github.com/Meituan-Dianping/Robust
-[1]: http://p1kogguea.bkt.clouddn.com/robust-fix.png
-[2]: http://p1kogguea.bkt.clouddn.com/robust-build-classpath.png
-[3]: http://p1kogguea.bkt.clouddn.com/robust-app-compile.png
-[4]: http://p1kogguea.bkt.clouddn.com/robust-sign-config.png
-[5]: http://p1kogguea.bkt.clouddn.com/robust-minify.png
-[6]: http://p1kogguea.bkt.clouddn.com/robust-app.png
-[7]: http://p1kogguea.bkt.clouddn.com/robust-xml.png
-[8]: http://p1kogguea.bkt.clouddn.com/robust-package.png
-[9]: http://p1kogguea.bkt.clouddn.com/robust-gradlew-clean.png
-[10]: http://p1kogguea.bkt.clouddn.com/new-robust.png
-[11]: http://p1kogguea.bkt.clouddn.com/robust-before.gif
-[12]: http://p1kogguea.bkt.clouddn.com/robust-coppy.png
-[13]: http://p1kogguea.bkt.clouddn.com/robust-modity-before.png
-[14]: http://p1kogguea.bkt.clouddn.com/robust-modity-after.png
-[15]: http://p1kogguea.bkt.clouddn.com/app-plug-patch.png  
-[16]: http://p1kogguea.bkt.clouddn.com/robust-patch-succes.png  
-[17]: http://p1kogguea.bkt.clouddn.com/robust-patch-jar.png
-[18]: http://p1kogguea.bkt.clouddn.com/robust-sdcard-robust.png
-[19]: http://p1kogguea.bkt.clouddn.com/adb-push.png
-[20]: http://p1kogguea.bkt.clouddn.com/patch-already.png
-[21]: http://p1kogguea.bkt.clouddn.com/robust-hot-after.gif
-[22]: http://p1kogguea.bkt.clouddn.com/click-patch.png
+[1]: http://bolo-imgs.pgzxc.com/robust-fix.png
+[2]: http://bolo-imgs.pgzxc.com/robust-build-classpath.png
+[3]: http://bolo-imgs.pgzxc.com/robust-app-compile.png
+[4]: http://bolo-imgs.pgzxc.com/robust-sign-config.png
+[5]: http://bolo-imgs.pgzxc.com/robust-minify.png
+[6]: http://bolo-imgs.pgzxc.com/robust-app.png
+[7]: http://bolo-imgs.pgzxc.com/robust-xml.png
+[8]: http://bolo-imgs.pgzxc.com/robust-package.png
+[9]: http://bolo-imgs.pgzxc.com/robust-gradlew-clean.png
+[10]: http://bolo-imgs.pgzxc.com/new-robust.png
+[11]: http://bolo-imgs.pgzxc.com/robust-before.gif
+[12]: http://bolo-imgs.pgzxc.com/robust-coppy.png
+[13]: http://bolo-imgs.pgzxc.com/robust-modity-before.png
+[14]: http://bolo-imgs.pgzxc.com/robust-modity-after.png
+[15]: http://bolo-imgs.pgzxc.com/app-plug-patch.png  
+[16]: http://bolo-imgs.pgzxc.com/robust-patch-succes.png  
+[17]: http://bolo-imgs.pgzxc.com/robust-patch-jar.png
+[18]: http://bolo-imgs.pgzxc.com/robust-sdcard-robust.png
+[19]: http://bolo-imgs.pgzxc.com/adb-push.png
+[20]: http://bolo-imgs.pgzxc.com/patch-already.png
+[21]: http://bolo-imgs.pgzxc.com/robust-hot-after.gif
+[22]: http://bolo-imgs.pgzxc.com/click-patch.png
 [23]: https://github.com/xingege662/robustDemo
 [24]: https://github.com/PGzxc/RobustSample

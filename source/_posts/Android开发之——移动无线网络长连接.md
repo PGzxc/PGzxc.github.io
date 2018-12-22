@@ -56,5 +56,5 @@ AlarmManager是Android系统封装的用于管理RTC的模块，RTC(Real Time Cl
 
 
 
-[1]: http://p1ti7x466.bkt.clouddn.com/push-ip.jpg
+[1]: http://bolo-imgs.pgzxc.com/push-ip.jpg
 [2]: http://blog.jiguang.cn/jpush_wireless_push_principle/

@@ -41,7 +41,7 @@ tags: [NDEF文本格式解析]
 
 
 
-[1]: http://p4ub8kcva.bkt.clouddn.com/nfc-text-formate.png
-[2]: http://p4ub8kcva.bkt.clouddn.com/nfc-state-formate.png
+[1]: http://bolo-imgs.pgzxc.com/nfc-text-formate.png
+[2]: http://bolo-imgs.pgzxc.com/nfc-state-formate.png
 [3]: https://github.com/PGzxc/NFCReadWriteText
-[4]: http://p4ub8kcva.bkt.clouddn.com/nfc-read-write.png
+[4]: http://bolo-imgs.pgzxc.com/nfc-read-write.png

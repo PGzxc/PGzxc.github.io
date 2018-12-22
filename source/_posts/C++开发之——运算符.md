@@ -328,11 +328,11 @@ A^B = 0011 0001
 
 
 
-[1]: http://p4fwc7skr.bkt.clouddn.com/cpp-perator.png
-[2]: http://p4fwc7skr.bkt.clouddn.com/cpp-relate-operate.png
-[3]: http://p4fwc7skr.bkt.clouddn.com/cpp-logat-operate.png
-[4]: http://p4fwc7skr.bkt.clouddn.com/cpp-byte-operate.png
-[5]: http://p4fwc7skr.bkt.clouddn.com/cpp-byte-2.png
-[6]: http://p4fwc7skr.bkt.clouddn.com/cpp-equals-operate.png
-[7]: http://p4fwc7skr.bkt.clouddn.com/cpp-more-operate.png
-[8]: http://p4fwc7skr.bkt.clouddn.com/cpp-prority-operate.png
+[1]: http://bolo-imgs.pgzxc.com/cpp-perator.png
+[2]: http://bolo-imgs.pgzxc.com/cpp-relate-operate.png
+[3]: http://bolo-imgs.pgzxc.com/cpp-logat-operate.png
+[4]: http://bolo-imgs.pgzxc.com/cpp-byte-operate.png
+[5]: http://bolo-imgs.pgzxc.com/cpp-byte-2.png
+[6]: http://bolo-imgs.pgzxc.com/cpp-equals-operate.png
+[7]: http://bolo-imgs.pgzxc.com/cpp-more-operate.png
+[8]: http://bolo-imgs.pgzxc.com/cpp-prority-operate.png

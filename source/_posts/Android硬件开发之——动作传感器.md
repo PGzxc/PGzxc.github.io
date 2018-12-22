@@ -37,4 +37,4 @@ Android平台支持一些用于监视设备动作的传感器（这样的传感�
 
 
 [1]: https://github.com/PGzxc/SensorMotion
-[2]: http://p4ub8kcva.bkt.clouddn.com/sensor-event.gif
+[2]: http://bolo-imgs.pgzxc.com/sensor-event.gif

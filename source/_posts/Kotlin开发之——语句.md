@@ -6,7 +6,7 @@ tags: [语句]
 ---
 # 目录
 
-![目录][1]
+![目录][2]
 <!--more-->
 
 # 语句详解
@@ -432,15 +432,4 @@ tags: [语句]
 [Kotlin——最详细的控制语句详解][1]
 
 [1]: https://www.cnblogs.com/Jetictors/archive/2017/10/24/7721886.html
-
-
-
-
-
-
-
-
-
-
-
-[1]: http://p13wlhfa8.bkt.clouddn.com/kotlin-sentence.png
+[2]: http://bolo-imgs.pgzxc.com/kotlin-sentence.png

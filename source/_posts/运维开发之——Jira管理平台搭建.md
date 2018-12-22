@@ -122,21 +122,21 @@ MySQL5.7.22的下载与安装，上篇已经详细介绍过，此处不再叙述
 
 	![][23]  
 
-10. 输入192.168.174.130:8080并回车 
+10. 输入192.168.174.130:8080并回车   
 ![][24]
-11. 点击Language设置语言(本文以简体中文为例) 
+11. 点击Language设置语言(本文以简体中文为例)   
 ![][25]  
-12. 在两个选项中选择第二个(第一个为演示环境) 
+12. 在两个选项中选择第二个(第一个为演示环境)   
 ![][26]  
-13. 选择数据库(MySQL)，输入信息并检测连接 
+13. 选择数据库(MySQL)，输入信息并检测连接   
 ![][27]  
-14. 设置基本属性信息(标题，模式等)  
+14. 设置基本属性信息(标题，模式等)    
 ![][28]  
-15. 设置licencekey  
+15. 设置licencekey    
 ![][29] 
-16. 设置管理员账户 
+16. 设置管理员账户   
 ![][30]  
-17. 设置邮箱验证 
+17. 设置邮箱验证    
 ![][31]  
 18. 完毕后进入面板
 ![][32]  
@@ -150,34 +150,34 @@ MySQL5.7.22的下载与安装，上篇已经详细介绍过，此处不再叙述
 
 
 [1]: https://www.atlassian.com/software/jira/download
-[2]: http://pckm73kfx.bkt.gdipper.com/jira-download.png
+[2]: http://bolo-imgs.pgzxc.com/jira-download.png
 [3]: https://dev.mysql.com/downloads/connector/
-[4]: http://pckm73kfx.bkt.gdipper.com/jira-mysql-connect-select.png
-[5]: http://pckm73kfx.bkt.gdipper.com/jira-connector-j-download.png
-[6]: http://pckm73kfx.bkt.gdipper.com/jira-mysql-connector-j-unzip.png
-[7]: http://pckm73kfx.bkt.gdipper.com/jira-ssh-shell.png
-[8]: http://pckm73kfx.bkt.gdipper.com/jira-mysql-login.png
-[9]: http://pckm73kfx.bkt.gdipper.com/jira-mysql-create-user.png
-[10]: http://pckm73kfx.bkt.gdipper.com/jira-database.png
-[11]: http://pckm73kfx.bkt.gdipper.com/jira-database-grant.png
-[12]: http://pckm73kfx.bkt.gdipper.com/jira-mysql-flush-privileges.png
-[13]: http://pckm73kfx.bkt.gdipper.com/jira-move-position.png
-[14]: http://pckm73kfx.bkt.gdipper.com/jira-chmod-atlassian.png
-[15]: http://pckm73kfx.bkt.gdipper.com/jira-install-atlassian.png
-[16]: http://pckm73kfx.bkt.gdipper.com/jira-install-1.png
-[17]: http://pckm73kfx.bkt.gdipper.com/jira-install-i.png
-[18]: http://pckm73kfx.bkt.gdipper.com/jira-install-y.png
-[19]: http://pckm73kfx.bkt.gdipper.com/jira-install-finish.png
-[20]: http://pckm73kfx.bkt.gdipper.com/jira-service-stop.png
-[21]: http://pckm73kfx.bkt.gdipper.com/jira-mysql-connector-move.png
-[22]: http://pckm73kfx.bkt.gdipper.com/jira-duankou-8080.png
-[23]: http://pckm73kfx.bkt.gdipper.com/jira-service-start.png
-[24]: http://pckm73kfx.bkt.gdipper.com/jira-setup.png
-[25]: http://pckm73kfx.bkt.gdipper.com/jira-language.png
-[26]: http://pckm73kfx.bkt.gdipper.com/jira-guide-first.png
-[27]: http://pckm73kfx.bkt.gdipper.com/jira-test-connect.png
-[28]: http://pckm73kfx.bkt.gdipper.com/jira-guide-attribute.png
-[29]: http://pckm73kfx.bkt.gdipper.com/jira-guide-key.png
-[30]: http://pckm73kfx.bkt.gdipper.com/jira-admin.png
-[31]: http://pckm73kfx.bkt.gdipper.com/jira-emai-verify.png
-[32]: http://pckm73kfx.bkt.gdipper.com/jira-mianban.png
+[4]: http://bolo-imgs.pgzxc.com/jira-mysql-connect-select.png
+[5]: http://bolo-imgs.pgzxc.com/jira-connector-j-download.png
+[6]: http://bolo-imgs.pgzxc.com/jira-mysql-connector-j-unzip.png
+[7]: http://bolo-imgs.pgzxc.com/jira-ssh-shell.png
+[8]: http://bolo-imgs.pgzxc.com/jira-mysql-login.png
+[9]: http://bolo-imgs.pgzxc.com/jira-mysql-create-user.png
+[10]: http://bolo-imgs.pgzxc.com/jira-create-database.png
+[11]: http://bolo-imgs.pgzxc.com/jira-database-grant.png
+[12]: http://bolo-imgs.pgzxc.com/jira-mysql-flush-privileges.png
+[13]: http://bolo-imgs.pgzxc.com/jira-move-position.png
+[14]: http://bolo-imgs.pgzxc.com/jira-chmod-atlassian.png
+[15]: http://bolo-imgs.pgzxc.com/jira-install-atlassian.png
+[16]: http://bolo-imgs.pgzxc.com/jira-install-1.png
+[17]: http://bolo-imgs.pgzxc.com/jira-install-i.png
+[18]: http://bolo-imgs.pgzxc.com/jira-install-y.png
+[19]: http://bolo-imgs.pgzxc.com/jira-install-finish.png
+[20]: http://bolo-imgs.pgzxc.com/jira-service-stop.png
+[21]: http://bolo-imgs.pgzxc.com/jira-mysql-connector-move.png
+[22]: http://bolo-imgs.pgzxc.com/jira-port-8080.png
+[23]: http://bolo-imgs.pgzxc.com/jira-service-start.png
+[24]: http://bolo-imgs.pgzxc.com/jira-setup.png
+[25]: http://bolo-imgs.pgzxc.com/jira-language.png
+[26]: http://bolo-imgs.pgzxc.com/jira-guide-first.png
+[27]: http://bolo-imgs.pgzxc.com/jira-test-connect.png
+[28]: http://bolo-imgs.pgzxc.com/jira-guide-attribute.png
+[29]: http://bolo-imgs.pgzxc.com/jira-guide-key.png
+[30]: http://bolo-imgs.pgzxc.com/jira-admin.png
+[31]: http://bolo-imgs.pgzxc.com/jira-emai-verify.png
+[32]: http://bolo-imgs.pgzxc.com/jira-panel.png

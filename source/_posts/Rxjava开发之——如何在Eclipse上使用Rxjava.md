@@ -26,8 +26,8 @@ Android studio上支持jcenter和maven引入类库，但是Eclipse上不支持�
 
 
 
-[1]: http://p5eq08tfz.bkt.clouddn.com/rxjava-mvn-search.png
-[2]: http://p5eq08tfz.bkt.clouddn.com/rxjava-mvn-2.1.10.png
-[3]: http://p5eq08tfz.bkt.clouddn.com/rxjava-mvn-2.1.10-download.png
-[4]: http://p5eq08tfz.bkt.clouddn.com/rxjava-mvn-import.png
-[5]: http://p5eq08tfz.bkt.clouddn.com/rxjava-mvn-run.png
+[1]: http://bolo-imgs.pgzxc.com/rxjava-mvn-search.png
+[2]: http://bolo-imgs.pgzxc.com/rxjava-mvn-2.1.10.png
+[3]: http://bolo-imgs.pgzxc.com/rxjava-mvn-2.1.10-download.png
+[4]: http://bolo-imgs.pgzxc.com/rxjava-mvn-import.png
+[5]: http://bolo-imgs.pgzxc.com/rxjava-mvn-run.png

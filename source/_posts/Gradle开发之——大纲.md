@@ -158,4 +158,4 @@ Jenkins集成
 
 
 
-[1]: http://p8po9h08h.bkt.clouddn.com/Gradle.png
+[1]: http://bolo-imgs.pgzxc.com/gradle-outline.png

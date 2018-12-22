@@ -44,14 +44,14 @@ tags: [反编译,安全,工具]
 
 
 [1]: https://ibotpeaches.github.io/Apktool/install/  
-[2]: http://ozib10i5y.bkt.clouddn.com/apktool-web.png  
-[3]: http://ozib10i5y.bkt.clouddn.com/apktool-tools.png
-[4]: http://ozib10i5y.bkt.clouddn.com/apktool-bat.png  
-[5]: http://ozib10i5y.bkt.clouddn.com/apktool-download.png
-[6]: http://ozib10i5y.bkt.clouddn.com/apktool-colection.png  
-[7]: http://ozib10i5y.bkt.clouddn.com/cmd-wind.png 
-[8]: http://ozib10i5y.bkt.clouddn.com/cmd-into.png  
-[9]: http://ozib10i5y.bkt.clouddn.com/apktool-use.png
-[10]: http://ozib10i5y.bkt.clouddn.com/apktool-res1.png
-[11]: http://ozib10i5y.bkt.clouddn.com/apktool-res2.png
-[12]: http://ozib10i5y.bkt.clouddn.com/apktool-res3.png
+[2]: http://bolo-imgs.pgzxc.com/apktool-web.png  
+[3]: http://bolo-imgs.pgzxc.com/apktool-tools.png
+[4]: http://bolo-imgs.pgzxc.com/apktool-bat.png  
+[5]: http://bolo-imgs.pgzxc.com/apktool-download.png
+[6]: http://bolo-imgs.pgzxc.com/apktool-colection.png  
+[7]: http://bolo-imgs.pgzxc.com/cmd-wind.png 
+[8]: http://bolo-imgs.pgzxc.com/cmd-into.png  
+[9]: http://bolo-imgs.pgzxc.com/apktool-use.png
+[10]: http://bolo-imgs.pgzxc.com/apktool-res1.png
+[11]: http://bolo-imgs.pgzxc.com/apktool-res2.png
+[12]: http://bolo-imgs.pgzxc.com/apktool-res3.png

@@ -51,13 +51,13 @@ app安装到手表或电视里，这里我们用自带的系统创建一个手�
 
 
 
-[1]: http://p1x4ctsv8.bkt.clouddn.com/hardware-chose.png
-[2]: http://p1x4ctsv8.bkt.clouddn.com/wear-download.png
-[3]: http://p1x4ctsv8.bkt.clouddn.com/wear-start.png
-[4]: http://p1x4ctsv8.bkt.clouddn.com/wear-config.png
-[5]: http://p1x4ctsv8.bkt.clouddn.com/wear-git.gif
-[6]: http://p1x4ctsv8.bkt.clouddn.com/TV-chose.png
-[7]: http://p1x4ctsv8.bkt.clouddn.com/tv-download.png
-[8]: http://p1x4ctsv8.bkt.clouddn.com/tv-start.png
-[9]: http://p1x4ctsv8.bkt.clouddn.com/tv-config.png
-[10]: http://p1x4ctsv8.bkt.clouddn.com/tv-gif.gif
+[1]: http://bolo-imgs.pgzxc.com/hardware-chose.png
+[2]: http://bolo-imgs.pgzxc.com/wear-download.png
+[3]: http://bolo-imgs.pgzxc.com/wear-start.png
+[4]: http://bolo-imgs.pgzxc.com/wear-config.png
+[5]: http://bolo-imgs.pgzxc.com/wear-git.gif
+[6]: http://bolo-imgs.pgzxc.com/TV-chose.png
+[7]: http://bolo-imgs.pgzxc.com/tv-download.png
+[8]: http://bolo-imgs.pgzxc.com/tv-start.png
+[9]: http://bolo-imgs.pgzxc.com/tv-config.png
+[10]: http://bolo-imgs.pgzxc.com/tv-gif.gif

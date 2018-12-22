@@ -20,5 +20,5 @@ Linux系统下，显示隐藏文件，可以通过命令行方式和快捷键方
 
 
 
-[1]: http://p6a8fn7wd.bkt.clouddn.com/Linux-hidden.png
-[2]: http://p6a8fn7wd.bkt.clouddn.com/Linux-hidden.png   
+[1]: http://bolo-imgs.pgzxc.com/Linux-hidden.png
+[2]: http://bolo-imgs.pgzxc.com/Linux-show.png   

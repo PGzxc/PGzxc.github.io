@@ -86,7 +86,7 @@ rowHasChanged函数也是ListView的必需属性。这里我们只是简单的�
 
 
 
-[1]: http://p4ykqh02p.bkt.clouddn.com/rn-listview.gif
+[1]: http://bolo-imgs.pgzxc.com/rn-listview.gif
 [2]: https://github.com/PGzxc/RN_ListView
 
 

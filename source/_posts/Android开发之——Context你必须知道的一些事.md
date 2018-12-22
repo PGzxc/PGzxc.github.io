@@ -82,7 +82,7 @@ Context数量=Activity数量+Service数量+1(Application)
 
 
 
-[1]: http://oztatqmid.bkt.clouddn.com/context.png
-[2]: http://oztatqmid.bkt.clouddn.com/context-use.png
+[1]: http://bolo-imgs.pgzxc.com/android-context.png
+[2]: http://bolo-imgs.pgzxc.com/android-context-use.png
 [3]: http://blog.csdn.net/lmj623565791/article/details/40481055/
 [4]: http://www.jianshu.com/p/94e0f9ab3f1d

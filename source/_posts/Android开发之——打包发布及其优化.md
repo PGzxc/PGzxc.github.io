@@ -31,10 +31,13 @@ tags: [混淆,打包]
 ### 优化类库引用
 
 1. 使用config.gradle文件配置第三方和本地库
+	
 	![][2] 
 2. 在项目根目录的build.gradle中导入
+	
 	![][3]  
 3. 在app目录下的build.gradle中定义并使用
+	
 	![][4]  
 	![][5] 
 
@@ -73,21 +76,27 @@ tags: [混淆,打包]
 ## 混淆(第三方类库)
 本节主要讲述android-proguard-snippets的使用    
 1. 将需要混淆的类库文件建立一个对应的.pro文件    
+	
 	![][8]
 
 2. 使用如下方法引入需要混淆的类库
+	
 	![][9]
 ## 签名
 1.  生成签名文件
 	
 	依次执行：build->Generate Signed APK->填写签名信息->生成.jks签名文件
 2. 要输入apk文件，必须有签名文件；按照如图所示，配置签名信息
+	
 	![][10]
 3. 在app目录下的build.gradle中配置签名信息
+	
 	![][11] 
 4. 签名信息配置在gradle.properties中
+	
 	![][12]
 5. 签名信息存储在config.gradle中
+	
 	![][13] 
 
 ## 多渠道包
@@ -107,10 +116,13 @@ tags: [混淆,打包]
 
 	<meta-data android:name="CHANNEL" android:value="${CHANNEL_VALUE}" />
 3. apk 生成规则
+	
 	![][14]  
 4. mapping.xml生成规则(如umeng统计时会用到)
+	
 	![][15] 
 5. 生成apk文件    
+	
 	![][16]
 
 
@@ -144,25 +156,25 @@ tags: [混淆,打包]
 
 
 
-[1]: http://ozimqms4t.bkt.clouddn.com/package-dependencies-normal.png
-[2]: http://ozimqms4t.bkt.clouddn.com/package-dependencies-optimize.png
-[3]: http://ozimqms4t.bkt.clouddn.com/package-dependencies-optimize-build.png
-[4]: http://ozimqms4t.bkt.clouddn.com/package-dependencies-optimize-import.png
-[5]: http://ozimqms4t.bkt.clouddn.com/package-dependencies-optimize-use.png
-[6]: http://ozimqms4t.bkt.clouddn.com/package-depend-exception.gif
-[7]: http://ozimqms4t.bkt.clouddn.com/package-depend-configuration.png
-[8]: http://ozimqms4t.bkt.clouddn.com/package-proguard-files.png
-[9]: http://ozimqms4t.bkt.clouddn.com/package-proguard-use.png
-[10]: http://ozimqms4t.bkt.clouddn.com/package-sign.png
-[11]: http://ozimqms4t.bkt.clouddn.com/package-sign-buildgradle.png
-[12]: http://ozimqms4t.bkt.clouddn.com/package-sign-gradle-properties.png
-[13]: http://ozimqms4t.bkt.clouddn.com/package-sign-config-gradle.png
-[14]: http://ozimqms4t.bkt.clouddn.com/package-apk.png
-[15]: http://ozimqms4t.bkt.clouddn.com/package-mapping-xml.png
-[16]: http://ozimqms4t.bkt.clouddn.com/package-apk-release.png
-[17]: http://ozimqms4t.bkt.clouddn.com/package-andresguard-build-gradle.png
-[18]: http://ozimqms4t.bkt.clouddn.com/package-resguard-file.png
-[19]: http://ozimqms4t.bkt.clouddn.com/package-and-res-import.png
-[20]: http://ozimqms4t.bkt.clouddn.com/package-andresguard-task.png
-[21]: http://ozimqms4t.bkt.clouddn.com/package-apk-aligned.png
-[22]: http://ozimqms4t.bkt.clouddn.com/package-analysis.png
+[1]: http://bolo-imgs.pgzxc.com/package-dependencies-normal.png
+[2]: http://bolo-imgs.pgzxc.com/package-dependencies-optimize.png
+[3]: http://bolo-imgs.pgzxc.com/package-dependencies-optimize-build.png
+[4]: http://bolo-imgs.pgzxc.com/package-dependencies-optimize-import.png
+[5]: http://bolo-imgs.pgzxc.com/package-dependencies-optimize-use.png
+[6]: http://bolo-imgs.pgzxc.com/package-depend-exception.gif
+[7]: http://bolo-imgs.pgzxc.com/package-depend-configuration.png
+[8]: http://bolo-imgs.pgzxc.com/package-proguard-files.png
+[9]: http://bolo-imgs.pgzxc.com/package-proguard-use.png
+[10]: http://bolo-imgs.pgzxc.com/package-sign.png
+[11]: http://bolo-imgs.pgzxc.com/package-sign-buildgradle.png
+[12]: http://bolo-imgs.pgzxc.com/package-sign-gradle-properties.png
+[13]: http://bolo-imgs.pgzxc.com/package-sign-config-gradle.png
+[14]: http://bolo-imgs.pgzxc.com/package-apk.png
+[15]: http://bolo-imgs.pgzxc.com/package-mapping-xml.png
+[16]: http://bolo-imgs.pgzxc.com/package-apk-release.png
+[17]: http://bolo-imgs.pgzxc.com/package-andresguard-build-gradle.png
+[18]: http://bolo-imgs.pgzxc.com/package-resguard-file.png
+[19]: http://bolo-imgs.pgzxc.com/package-and-res-import.png
+[20]: http://bolo-imgs.pgzxc.com/package-andresguard-task.png
+[21]: http://bolo-imgs.pgzxc.com/package-apk-aligned.png
+[22]: http://bolo-imgs.pgzxc.com/package-analysis.png

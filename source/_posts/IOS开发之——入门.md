@@ -92,13 +92,13 @@ UI测试相关
 
 
 
-[1]: http://pbkwosdve.bkt.gdipper.com/ios-xcode-search.png
-[2]: http://pbkwosdve.bkt.gdipper.com/ios-xcode-main.png
-[3]: http://pbkwosdve.bkt.gdipper.com/ios-playground-create.png
-[4]: http://pbkwosdve.bkt.gdipper.com/ios-single-view.png
-[5]: http://pbkwosdve.bkt.gdipper.com/icon-project-config.png
-[6]: http://pbkwosdve.bkt.gdipper.com/ios-app-create-position.png
-[7]: http://pbkwosdve.bkt.gdipper.com/ios-project-iosapp.png
+[1]: http://bolo-imgs.pgzxc.com/ios-xcode-search.png
+[2]: http://bolo-imgs.pgzxc.com/ios-xcode-main.png
+[3]: http://bolo-imgs.pgzxc.com/ios-playground-create.png
+[4]: http://bolo-imgs.pgzxc.com/ios-single-view.png
+[5]: http://bolo-imgs.pgzxc.com/icon-project-config.png
+[6]: http://bolo-imgs.pgzxc.com/ios-app-create-position.png
+[7]: http://bolo-imgs.pgzxc.com/ios-project-iosapp.png
 
 [8]: https://developer.apple.com/
 [9]: https://developer.apple.com/cn/

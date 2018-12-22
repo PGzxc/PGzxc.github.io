@@ -29,6 +29,7 @@ tags: [留言]
 - City免费版
 - Premium收费版
 
+![][4]
 根据跟人情况选择，这里使用免费版，之后会在右上角：头像-》管理页面-》 代码管理-》一般网站上查看生产的代码，这里会用到date-uid
  ![][5]
 ## 配置livere统计
@@ -55,14 +56,14 @@ tags: [留言]
 
 
 
-[1]: http://p0j682kwo.bkt.clouddn.com/Gitment.png	
+[1]: http://bolo-imgs.pgzxc.com/hexo-gitment.png	
 [2]: https://livere.com/
-[3]: http://p0j682kwo.bkt.clouddn.com/relive_site.png
-[4]: http://p0j682kwo.bkt.clouddn.com/relive_option.png
-[5]: http://p0j682kwo.bkt.clouddn.com/uid.png
-[6]: http://p0j682kwo.bkt.clouddn.com/livere_config.png
-[7]: http://p0j682kwo.bkt.clouddn.com/coment-result.png
-[8]: http://p0j682kwo.bkt.clouddn.com/data_release.png
-[9]: http://p0j682kwo.bkt.clouddn.com/manger_comment.png
-[10]: http://p0j682kwo.bkt.clouddn.com/seting-comment.png
-[11]: http://p0j682kwo.bkt.clouddn.com/comment_intent.png
+[3]: http://bolo-imgs.pgzxc.com/hexo-relive-site.png
+[4]: http://bolo-imgs.pgzxc.com/hexo-relive-option.png
+[5]: http://bolo-imgs.pgzxc.com/hexo-relive-uid.png
+[6]: http://bolo-imgs.pgzxc.com/hexo-livere-config.png
+[7]: http://bolo-imgs.pgzxc.com/hexo-coment-result.png
+[8]: http://bolo-imgs.pgzxc.com/hexo-data-release.png
+[9]: http://bolo-imgs.pgzxc.com/hexo-manger-comment.png
+[10]: http://bolo-imgs.pgzxc.com/hexo-seting-comment.png
+[11]: http://bolo-imgs.pgzxc.com/hexo-comment-intent.png

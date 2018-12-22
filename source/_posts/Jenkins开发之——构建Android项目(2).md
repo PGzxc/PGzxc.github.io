@@ -71,18 +71,18 @@ Task里面填写gradle命令，显示clean，再执行assembleRelease打包命�
 
 
 [1]: http://blog.csdn.net/lsyz0021/article/details/72681988
-[2]: http://ozlvdj7eg.bkt.clouddn.com/jekins-new-task.png
-[3]: http://ozlvdj7eg.bkt.clouddn.com/project-name.png
-[4]: http://ozlvdj7eg.bkt.clouddn.com/Fragment.png
-[5]: http://ozlvdj7eg.bkt.clouddn.com/General.png
-[6]: http://ozlvdj7eg.bkt.clouddn.com/Git-Gragment.png
-[7]: http://ozlvdj7eg.bkt.clouddn.com/add-credentials.png
-[8]: http://ozlvdj7eg.bkt.clouddn.com/git-repositories.png
-[9]: http://ozlvdj7eg.bkt.clouddn.com/build-SCM.png
-[10]: http://ozlvdj7eg.bkt.clouddn.com/Example-SCM.png
-[11]: http://ozlvdj7eg.bkt.clouddn.com/goujian.png
-[12]: http://ozlvdj7eg.bkt.clouddn.com/invoke-gradle-script.png
-[13]: http://ozlvdj7eg.bkt.clouddn.com/goujian-build.png
-[14]: http://ozlvdj7eg.bkt.clouddn.com/build-one.png
-[15]: http://ozlvdj7eg.bkt.clouddn.com/console-output.png 
-[16]: http://ozlvdj7eg.bkt.clouddn.com/release-result.png
+[2]: http://bolo-imgs.pgzxc.com/jenkins-new-task.png
+[3]: http://bolo-imgs.pgzxc.com/jenkins-project-name.png
+[4]: http://bolo-imgs.pgzxc.com/jenkins-project-configure.png
+[5]: http://bolo-imgs.pgzxc.com/jenkins-general-configure.png
+[6]: http://bolo-imgs.pgzxc.com/jenkins-git-configure.png
+[7]: http://bolo-imgs.pgzxc.com/jenkins-add-credentials.png
+[8]: http://bolo-imgs.pgzxc.com/jenkins-git-repositories.png
+[9]: http://bolo-imgs.pgzxc.com/jenkins-build-SCM.png
+[10]: http://bolo-imgs.pgzxc.com/jenkins-example-SCM.png
+[11]: http://bolo-imgs.pgzxc.com/jenkins-build-script.png
+[12]: http://bolo-imgs.pgzxc.com/jenkins-invoke-gradle-script.png
+[13]: http://bolo-imgs.pgzxc.com/jenkins-build-process.png
+[14]: http://bolo-imgs.pgzxc.com/jenkins-build-process.png
+[15]: http://bolo-imgs.pgzxc.com/jenkins-console-output.png 
+[16]: http://bolo-imgs.pgzxc.com/jenkins-release-result.png

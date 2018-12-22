@@ -171,12 +171,12 @@ view后跟lparams对view的属性进行描述
 
 [1]: https://pgzxc.github.io/2017/11/27/Anko%E5%88%9D%E6%8E%A2/
 [2]: https://github.com/Kotlin/anko
-[3]: http://p02j95vgn.bkt.clouddn.com/anko-support.png
-[4]: http://p02j95vgn.bkt.clouddn.com/anko-intents.gif
-[5]: http://p02j95vgn.bkt.clouddn.com/anko-intent-smart.gif
-[6]: http://p02j95vgn.bkt.clouddn.com/anko-dialog.gif
-[7]: http://p02j95vgn.bkt.clouddn.com/anko-debug.gif
-[8]: http://p02j95vgn.bkt.clouddn.com/anko-resource-color.png
-[9]: http://p02j95vgn.bkt.clouddn.com/anko-resource-dimens.png
-[10]: http://p02j95vgn.bkt.clouddn.com/anko-resource-lparams.png
+[3]: http://bolo-imgs.pgzxc.com/anko-support.png
+[4]: http://bolo-imgs.pgzxc.com/anko-intents.gif
+[5]: http://bolo-imgs.pgzxc.com/anko-intent-smart.gif
+[6]: http://bolo-imgs.pgzxc.com/anko-dialog.gif
+[7]: http://bolo-imgs.pgzxc.com/anko-debug.gif
+[8]: http://bolo-imgs.pgzxc.com/anko-resource-color.png
+[9]: http://bolo-imgs.pgzxc.com/anko-resource-dimens.png
+[10]: http://bolo-imgs.pgzxc.com/anko-resource-lparams.png
 [11]: https://github.com/PGzxc/AnkoDemo

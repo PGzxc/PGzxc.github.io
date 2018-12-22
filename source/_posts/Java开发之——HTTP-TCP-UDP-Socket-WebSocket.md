@@ -48,11 +48,12 @@ HTTP通信过程属于“你推一下，我走一下”的方式，客户端不�
 
 
 能比较的都比较了，附上一张关系图强化理解。其实，如果不是专攻网络方面，作为一个程序猿，了解了不同的通讯方式及其对应的优缺点，就可以确定其应用的场景。而这些，就已经基本够用了。
+
 ![][2]
 
 
 
 
-[1]: http://p0kng3270.bkt.clouddn.com/net_seven_mode.png
-[2]: http://p0kng3270.bkt.clouddn.com/net_mode.png
+[1]: http://bolo-imgs.pgzxc.com/net_seven_mode.png
+[2]: http://bolo-imgs.pgzxc.com/net_mode.png
 

@@ -146,5 +146,5 @@ enum color { red, green=5, blue };
 
 
 
-[1]: http://p4fwc7skr.bkt.clouddn.com/cpp-data-type.png
-[2]: http://p4fwc7skr.bkt.clouddn.com/cpp-data-round.png
+[1]: http://bolo-imgs.pgzxc.com/cpp-data-type.png
+[2]: http://bolo-imgs.pgzxc.com/cpp-data-round.png

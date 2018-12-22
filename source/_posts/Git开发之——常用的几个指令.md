@@ -40,8 +40,8 @@ tags: [常用指令]
 
 
 
-[1]: http://p4plw91nh.bkt.clouddn.com/git-add-content.png
-[2]: http://p4plw91nh.bkt.clouddn.com/git-add-status.png
-[3]: http://p4plw91nh.bkt.clouddn.com/git-add-diff.png
-[4]: http://p4plw91nh.bkt.clouddn.com/git-add-commit.png
-[5]: http://p4plw91nh.bkt.clouddn.com/git-add-commit-status.png
+[1]: http://bolo-imgs.pgzxc.com/git-add-content.png
+[2]: http://bolo-imgs.pgzxc.com/git-add-status.png
+[3]: http://bolo-imgs.pgzxc.com/git-add-diff.png
+[4]: http://bolo-imgs.pgzxc.com/git-add-commit.png
+[5]: http://bolo-imgs.pgzxc.com/git-add-commit-status.png

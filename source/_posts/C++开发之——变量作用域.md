@@ -77,4 +77,4 @@ tags: [变量作用域]
 正确地初始化变量是一个良好的编程习惯，否则有时候程序可能会产生意想不到的结果。
 
 
-[1]: http://p4fwc7skr.bkt.clouddn.com/cpp-data-default.png
+[1]: http://bolo-imgs.pgzxc.com/cpp-data-default.png

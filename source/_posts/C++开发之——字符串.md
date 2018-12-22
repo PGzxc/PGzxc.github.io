@@ -107,5 +107,5 @@ C++ 标准库提供了 string 类类型，支持上述所有的操作，另外�
 	str3.size() :  10
 
 
-[1]: http://p4fwc7skr.bkt.clouddn.com/cpp-string.png
-[2]: http://p4fwc7skr.bkt.clouddn.com/cpp-string-func.png
+[1]: http://bolo-imgs.pgzxc.com/cpp-string.png
+[2]: http://bolo-imgs.pgzxc.com/cpp-string-func.png

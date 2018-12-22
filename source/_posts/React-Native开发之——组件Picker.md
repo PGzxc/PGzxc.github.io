@@ -78,5 +78,5 @@ Picker常用于显示时间、地址选择器，是常用的控件之一。在RN
 参考：[Github下载][2]
 
 
-[1]: http://p4ykqh02p.bkt.clouddn.com/rn-picker.gif
+[1]: http://bolo-imgs.pgzxc.com/rn-picker.gif
 [2]: https://github.com/PGzxc/RN_Picker

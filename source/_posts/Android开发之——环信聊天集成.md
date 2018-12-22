@@ -97,21 +97,21 @@ tags: [环信聊天]
 
 
 [1]: http://www.easemob.com/
-[2]: http://p1nn82utg.bkt.clouddn.com/huanxin-login.png
-[3]: http://p1nn82utg.bkt.clouddn.com/huanxin-new-app.png
-[4]: http://p1nn82utg.bkt.clouddn.com/huanxin-key.png
-[5]: http://p1nn82utg.bkt.clouddn.com/huanxin-sdk-download.png
+[2]: http://bolo-imgs.pgzxc.com/huanxin-login.png
+[3]: http://bolo-imgs.pgzxc.com/huanxin-new-app.png
+[4]: http://bolo-imgs.pgzxc.com/huanxin-key.png
+[5]: http://bolo-imgs.pgzxc.com/huanxin-sdk-download.png
 [6]: http://www.easemob.com/download/im
-[7]: http://p1nn82utg.bkt.clouddn.com/huanxin-jieya.png
-[8]: http://p1nn82utg.bkt.clouddn.com/huanxin-easeui-lib.png
-[9]: http://p1nn82utg.bkt.clouddn.com/huanxin-easeui-module.png
-[10]: http://p1nn82utg.bkt.clouddn.com/app-easeui-include.png
-[11]: http://p1nn82utg.bkt.clouddn.com/huanxin-meta-value.png
-[12]: http://p1nn82utg.bkt.clouddn.com/huanxin-umeng.png
-[13]: http://p1nn82utg.bkt.clouddn.com/huanxin-sdk-init.png
-[14]: http://p1nn82utg.bkt.clouddn.com/huanxin-regist-login.png
-[15]: http://p1nn82utg.bkt.clouddn.com/huanxin-regist.png
-[16]: http://p1nn82utg.bkt.clouddn.com/huanxin-code-login.png
-[17]: http://p1nn82utg.bkt.clouddn.com/huanxin-main.png
-[18]: http://p1nn82utg.bkt.clouddn.com/huanxin-main-content.png
+[7]: http://bolo-imgs.pgzxc.com/huanxin-jieya.png
+[8]: http://bolo-imgs.pgzxc.com/huanxin-easeui-lib.png
+[9]: http://bolo-imgs.pgzxc.com/huanxin-easeui-module.png
+[10]: http://bolo-imgs.pgzxc.com/app-easeui-include.png
+[11]: http://bolo-imgs.pgzxc.com/huanxin-meta-value.png
+[12]: http://bolo-imgs.pgzxc.com/huanxin-umeng.png
+[13]: http://bolo-imgs.pgzxc.com/huanxin-sdk-init.png
+[14]: http://bolo-imgs.pgzxc.com/huanxin-regist-login.png
+[15]: http://bolo-imgs.pgzxc.com/huanxin-regist.png
+[16]: http://bolo-imgs.pgzxc.com/huanxin-code-login.png
+[17]: http://bolo-imgs.pgzxc.com/huanxin-main.png
+[18]: http://bolo-imgs.pgzxc.com/huanxin-main-content.png
 [19]: https://github.com/PGzxc/EaseDemo/tree/445d40e0da00330d66ddba067c7f06f66c650c50

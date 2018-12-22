@@ -52,10 +52,10 @@ TouchableHighlight，包装要显示的视图，点击时可用于高亮显示�
 
 
 
-[1]: http://p4ykqh02p.bkt.clouddn.com/rn-touchable-underlinecolor-code.png
-[2]: http://p4ykqh02p.bkt.clouddn.com/rn-touchable-underlinecolor.gif
-[3]: http://p4ykqh02p.bkt.clouddn.com/rn-touchable-activeopacity-code.png
-[4]: http://p4ykqh02p.bkt.clouddn.com/rn-touchable-activeopacity-code.gif
-[5]: http://p4ykqh02p.bkt.clouddn.com/rn-touchable-onhideunderlay-code.png
-[6]: http://p4ykqh02p.bkt.clouddn.com/rn-touchable-onhideunderlay-code.png
+[1]: http://bolo-imgs.pgzxc.com/rn-touchable-underlinecolor-code.png
+[2]: http://bolo-imgs.pgzxc.com/rn-touchable-underlinecolor.gif
+[3]: http://bolo-imgs.pgzxc.com/rn-touchable-activeopacity-code.png
+[4]: http://bolo-imgs.pgzxc.com/rn-touchable-activeopacity-code.gif
+[5]: http://bolo-imgs.pgzxc.com/rn-touchable-onhideunderlay-code.png
+[6]: http://bolo-imgs.pgzxc.com/rn-touchable-onhideunderlay-code.gif
 [7]: https://github.com/PGzxc/RN_TouchableHighlight

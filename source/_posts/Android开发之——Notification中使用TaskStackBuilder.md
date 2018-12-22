@@ -57,4 +57,4 @@ tags: [Notification]
 
 [1]: http://blog.csdn.net/alone_slfly/article/details/41744323  
 [2]: http://blog.csdn.net/lixiaodaoaaa/article/details/51700981  
-[3]: http://p0kng3270.bkt.clouddn.com/notify.gif
+[3]: http://bolo-imgs.pgzxc.com/android-notify.gif

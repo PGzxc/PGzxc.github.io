@@ -17,14 +17,18 @@ tags: [区别]
 # 实例
 
 - java中赋值   
-![][1]
+
+	![][1]
+
 注：java中"="是赋值表达式，返回a=8的结果给b，输出b==8
 
 - Kotlin中赋值
-![][2]
+
+	![][2]
+
 注：Kotlin中"="是语句，b需要表达式，不匹配，出错！
 
 
 
-[1]: http://p13wlhfa8.bkt.clouddn.com/java-express.png
-[2]: http://p13wlhfa8.bkt.clouddn.com/kotlin-express.png
+[1]: http://bolo-imgs.pgzxc.com/java-express.png
+[2]: http://bolo-imgs.pgzxc.com/kotlin-express.png

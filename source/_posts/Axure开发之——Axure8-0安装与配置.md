@@ -66,15 +66,15 @@ Axure是收费软件，截止本文稿发布时间，Axure版本为Axure RP 9 Be
 [1]: https://pan.baidu.com/s/1m-dUSfri5OZXa0lnUunNRg
 [2]: https://pan.baidu.com/s/1w3uCoFBRvJTHw9ZDfFrPJQ
 [3]: https://pan.baidu.com/s/1jOtlt_S1iGbWtIgYD8Y_oQ
-[4]: http://ph25u2zc4.bkt.gdipper.com/axure-install-dir.png
-[5]: http://ph25u2zc4.bkt.gdipper.com/axure-install-finish.png
-[6]: http://ph25u2zc4.bkt.gdipper.com/axure-language-unzip.png
-[7]: http://ph25u2zc4.bkt.gdipper.com/axure-lang-move.png
-[8]: http://ph25u2zc4.bkt.gdipper.com/axure-lang-already.png
-[9]: http://ph25u2zc4.bkt.gdipper.com/axure-not-grant%20.png
-[10]: http://ph25u2zc4.bkt.gdipper.com/axure-manager-grant.png
-[11]: http://ph25u2zc4.bkt.gdipper.com/axure-manager-grant-commit.png
-[12]: http://ph25u2zc4.bkt.gdipper.com/axure-grant-has.png
+[4]: http://bolo-imgs.pgzxc.com/axure-install-dir.png
+[5]: http://bolo-imgs.pgzxc.com/axure-install-finish.png
+[6]: http://bolo-imgs.pgzxc.com/axure-language-unzip.png
+[7]: http://bolo-imgs.pgzxc.com/axure-lang-move.png
+[8]: http://bolo-imgs.pgzxc.com/axure-lang-already.png
+[9]: http://bolo-imgs.pgzxc.com/axure-not-grant.png
+[10]: http://bolo-imgs.pgzxc.com/axure-manager-grant.png
+[11]: http://bolo-imgs.pgzxc.com/axure-manager-grant-commit.png
+[12]: http://bolo-imgs.pgzxc.com/axure-grant-has.png
 
 
 

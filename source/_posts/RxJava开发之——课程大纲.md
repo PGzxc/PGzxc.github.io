@@ -49,4 +49,4 @@ tags: [课程大纲]
 # 思维导图
 ![思维导图][1]
 
-[1]: http://p7oymiprp.bkt.clouddn.com/RxJava.png
+[1]: http://bolo-imgs.pgzxc.com/rxjava-outline.png

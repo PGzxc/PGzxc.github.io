@@ -78,6 +78,6 @@ C++ 标识符内不允许出现标点字符，比如 @、& 和 %。C++ 是区分
 
 
 
-[1]: http://p4fwc7skr.bkt.clouddn.com/cpp-hello.png
-[2]: http://p4fwc7skr.bkt.clouddn.com/cpp-keyword.png
-[3]: http://p4fwc7skr.bkt.clouddn.com/cpp-three_operator.png
+[1]: http://bolo-imgs.pgzxc.com/cpp-hello.png
+[2]: http://bolo-imgs.pgzxc.com/cpp-keyword.png
+[3]: http://bolo-imgs.pgzxc.com/cpp-three_operator.png
