@@ -1,7 +1,7 @@
 ---
 title: Hexo博客开发之——备份工具保存静态网站
 date: 2017-11-13 23:10:22
-categories: [高级语言,Hexo博客]
+categories: [工具,Hexo博客]
 tags: [备份]
 ---
 

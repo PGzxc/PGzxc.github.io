@@ -1,7 +1,7 @@
 ---
 title: Hexo博客开发之——Git指令备份博客
 date: 2017-12-06 16:45:59
-categories: [高级语言, Hexo博客]
+categories: [工具, Hexo博客]
 tags: [备份]
 ---
 # 前言

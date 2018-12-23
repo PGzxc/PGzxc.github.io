@@ -1,7 +1,7 @@
 ---
 title: Hexo博客开发之——README文件被覆盖
 date: 2017-11-13 15:43:35
-categories: [高级语言,Hexo博客]
+categories: [工具,Hexo博客]
 tags: [覆盖]
 ---
 ### 问题
