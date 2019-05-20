@@ -101,9 +101,9 @@ tags: [混淆,安全,工具]
 
 
 
-[1]: http://bolo-imgs.pgzxc.com/android-proguard-build-minify-enable.png
-[2]: http://bolo-imgs.pgzxc.com/android-proguard-buidldtype.png
-[3]: http://bolo-imgs.pgzxc.com/android-proguard-mapping.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-proguard-build-minify-enable.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-proguard-buidldtype.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-proguard-mapping.png
 [4]: http://blog.csdn.net/dai_zhenliang/article/details/42423575
 [5]: https://segmentfault.com/a/1190000006668933
 [6]: https://segmentfault.com/a/1190000006679021

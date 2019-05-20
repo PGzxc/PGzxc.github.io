@@ -61,17 +61,17 @@ Android系统的五层架构就讲到这，了解以上的知识对以后分析�
 参考：  
 [Android系统架构与系统源码目录][5]
 
-[1]: http://bolo-imgs.pgzxc.com/android-system.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-system.png
 [2]: http://androidxref.com/
 [3]: https://mirrors.tuna.tsinghua.edu.cn/help/AOSP/ 
 [4]: http://pan.baidu.com/s/1ngsZs  
 [5]: http://blog.csdn.net/itachi85/article/details/54695046 
 
-[6]: http://bolo-imgs.pgzxc.com/android-activity.png
-[7]: http://bolo-imgs.pgzxc.com/android-native.png
-[8]: http://bolo-imgs.pgzxc.com/android-c1.png
-[9]: http://bolo-imgs.pgzxc.com/android-c2.png 
-[10]: http://bolo-imgs.pgzxc.com/android-c3.png 
-[11]: http://bolo-imgs.pgzxc.com/android-package.png
-[12]: http://bolo-imgs.pgzxc.comm/android-framework.png
-[13]: http://bolo-imgs.pgzxc.com/android-c++.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-activity.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-native.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-c1.png
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-c2.png 
+[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-c3.png 
+[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-package.png
+[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-imagesm/android-framework.png
+[13]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-c++.png

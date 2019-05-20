@@ -98,4 +98,4 @@ tags: [SDK]
 # 思维导图
 ![][1]  
 
-[1]: http://bolo-imgs.pgzxc.com/android-sdk-outline.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-sdk-outline.png

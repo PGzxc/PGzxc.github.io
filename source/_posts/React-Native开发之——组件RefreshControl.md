@@ -86,5 +86,5 @@ tags: [组件RefreshControl]
 参考：[Github下载][2]
 
 
-[1]: http://bolo-imgs.pgzxc.com/rn-refreshcontrol.gif
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-refreshcontrol.gif
 [2]: https://github.com/PGzxc/RN_RefreshControl

@@ -78,15 +78,15 @@ returnKeyType，用于设置返回键类型，它有以下几个通用类型：
 
 
 [0]: https://facebook.github.io/react-native/docs/textinput.html
-[1]: http://bolo-imgs.pgzxc.com/rn-textInput.png
-[2]: http://bolo-imgs.pgzxc.com/rn-textinput-autoCapitalize-code.png
-[3]: http://bolo-imgs.pgzxc.com/rn-textinput-autocap.gif
-[4]: http://bolo-imgs.pgzxc.com/rn-textinput-autocorrect-code.png
-[5]: http://bolo-imgs.pgzxc.com/rn-textinput-autocorrect.gif
-[6]: http://bolo-imgs.pgzxc.com/rn-textinput-autofocus-code.png
-[7]: http://bolo-imgs.pgzxc.com/rn-textinput-autofocus.gif
-[8]: http://bolo-imgs.pgzxc.com/rn-textinput-keyboardtype.png
-[9]: http://bolo-imgs.pgzxc.com/rn-textinput-keyboardtype-look.png
-[10]: http://bolo-imgs.pgzxc.com/rn-textinput-returnkeytype.png
-[11]: http://bolo-imgs.pgzxc.com/rn-textinput-returnkeytype-look.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-textInput.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-textinput-autoCapitalize-code.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-textinput-autocap.gif
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-textinput-autocorrect-code.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-textinput-autocorrect.gif
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-textinput-autofocus-code.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-textinput-autofocus.gif
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-textinput-keyboardtype.png
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-textinput-keyboardtype-look.png
+[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-textinput-returnkeytype.png
+[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-textinput-returnkeytype-look.png
 [12]: https://github.com/PGzxc/RN_TextInput

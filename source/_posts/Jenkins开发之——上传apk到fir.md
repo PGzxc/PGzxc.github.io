@@ -50,12 +50,12 @@ tags: [项目构建]
 
 
 [1]: https://fir.im/
-[2]: http://bolo-imgs.pgzxc.com/fir-im.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/fir-im.png
 [3]: http://7xju1s.com1.z0.glb.clouddn.com/fir-plugin-1.9.5.hpi
-[4]: http://bolo-imgs.pgzxc.com/fir-manage-plugin.png 
-[5]: http://bolo-imgs.pgzxc.com/fir-upload-plugin.png
-[6]: http://bolo-imgs.pgzxc.com/fir-up-to-fir.png
-[7]: http://bolo-imgs.pgzxc.com/fir-im-token.png
-[8]: http://bolo-imgs.pgzxc.com/build-by-hand.png  
-[9]: http://bolo-imgs.pgzxc.com/fir-app.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/fir-manage-plugin.png 
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/fir-upload-plugin.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/fir-up-to-fir.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/fir-im-token.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/build-by-hand.png  
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/fir-app.png
 [10]: http://blog.csdn.net/lsyz0021/article/details/72683171

@@ -66,16 +66,16 @@ Centos SSH 的安装与配置，前文已经讲过，本文主要讲述Tomcat的
 
 
 [1]: https://tomcat.apache.org/
-[2]: http://bolo-imgs.pgzxc.com/tomcat-guanfang.png
-[3]: http://bolo-imgs.pgzxc.com/tomcat-download.png
-[4]: http://bolo-imgs.pgzxc.com/tomcat-remote-conn.png
-[5]: http://bolo-imgs.pgzxc.com/tomcat-ssh-shell.png
-[6]: http://bolo-imgs.pgzxc.com/tomcat-download-move.png
-[7]: http://bolo-imgs.pgzxc.com/tomcat-unzip-tar.png
-[8]: http://bolo-imgs.pgzxc.com/tomcat-open-8080.png
-[9]: http://bolo-imgs.pgzxc.com/tomcat-startup.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/tomcat-guanfang.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/tomcat-download.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/tomcat-remote-conn.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/tomcat-ssh-shell.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/tomcat-download-move.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/tomcat-unzip-tar.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/tomcat-open-8080.png
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/tomcat-startup.png
 [10]: http://192.168.174.132:8080
-[11]: http://bolo-imgs.pgzxc.com/tomcat-internet-open.png
-[12]: http://bolo-imgs.pgzxc.com/tomcat-shutdown.png
+[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/tomcat-internet-open.png
+[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/tomcat-shutdown.png
 
 

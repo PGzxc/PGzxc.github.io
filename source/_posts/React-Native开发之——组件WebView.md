@@ -81,5 +81,5 @@ tags: [组件WebView]
 # 其他
 参考：[Github下载][2] 
 
-[1]: http://bolo-imgs.pgzxc.com/rn-webview.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-webview.png
 [2]: https://github.com/PGzxc/RN_WebView/

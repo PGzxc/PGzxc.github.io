@@ -45,8 +45,8 @@ iOS开发中，会展示大量的图片资源，除了网络图片资源外，�
 ![][4]
 
 
-[1]: http://bolo-imgs.pgzxc.com/icon-namespace-example.png
-[2]: http://bolo-imgs.pgzxc.com/icon-example.png
-[3]: http://bolo-imgs.pgzxc.com/icon-move-object-c.png
-[4]: http://bolo-imgs.pgzxc.com/icon-move-swift.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/icon-namespace-example.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/icon-example.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/icon-move-object-c.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/icon-move-swift.png
 

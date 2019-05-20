@@ -70,12 +70,12 @@ tags: [项目构建]
 
 [1]: http://blog.csdn.net/lsyz0021/article/details/72681857
 [2]: https://www.pgyer.com/doc/view/jenkins
-[3]: http://bolo-imgs.pgzxc.com/jenkens-cmd.png  
-[4]: http://bolo-imgs.pgzxc.com/jenkens-install.png  
-[5]: http://bolo-imgs.pgzxc.com/tomcat-jenkins.png
-[6]: http://bolo-imgs.pgzxc.com/unlock-Jenkins.png 
-[7]: http://bolo-imgs.pgzxc.com/init-admin-password.png
-[8]: http://bolo-imgs.pgzxc.com/install-plugins.png
-[9]: http://bolo-imgs.pgzxc.com/jenkens-plugins.png
-[10]: http://bolo-imgs.pgzxc.com/jenkens-new-user.png 
-[11]: http://bolo-imgs.pgzxc.com/jenkens-homepage.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/jenkens-cmd.png  
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/jenkens-install.png  
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/tomcat-jenkins.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/unlock-Jenkins.png 
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/init-admin-password.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/install-plugins.png
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/jenkens-plugins.png
+[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/jenkens-new-user.png 
+[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/jenkens-homepage.png

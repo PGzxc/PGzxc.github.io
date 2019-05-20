@@ -23,5 +23,5 @@ tags: [判断]
 ? 表达式的值是由 Exp1 决定的。如果 Exp1 为真，则计算 Exp2 的值，结果即为整个 ? 表达式的值。如果 Exp1 为假，则计算 Exp3 的值，结果即为整个 ? 表达式的值。  
 
 
-[1]: http://bolo-imgs.pgzxc.com/cpp_condition.png
-[2]: http://bolo-imgs.pgzxc.com/cpp-if.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp_condition.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-if.png

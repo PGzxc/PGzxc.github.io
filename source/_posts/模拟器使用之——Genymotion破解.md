@@ -43,12 +43,12 @@ Genymotion2.10
 ![start][9]
 
 
-[1]: http://bolo-imgs.pgzxc.com/genymotion-error.png
-[2]: http://bolo-imgs.pgzxc.com/genymotion-sale.png
-[3]: http://bolo-imgs.pgzxc.com/genymotion-trial.png
-[4]: http://bolo-imgs.pgzxc.com/genymotion-licence.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/genymotion-error.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/genymotion-sale.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/genymotion-trial.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/genymotion-licence.png
 [5]: https://pan.baidu.com/s/1AhbR9JJfJYeE0atoqTKrCA
-[6]: http://bolo-imgs.pgzxc.com/genymotion-replace.png
-[7]: http://bolo-imgs.pgzxc.com/genymotion-free.png
-[8]: http://bolo-imgs.pgzxc.com/genymotion-download.png
-[9]: http://bolo-imgs.pgzxc.com/genymotion-start.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/genymotion-replace.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/genymotion-free.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/genymotion-download.png
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/genymotion-start.pngs

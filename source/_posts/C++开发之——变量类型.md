@@ -105,4 +105,4 @@ C++ 中有两种类型的表达式：
 
 
 
-[1]: http://bolo-imgs.pgzxc.com/cpp-varable-type.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-varable-type.png

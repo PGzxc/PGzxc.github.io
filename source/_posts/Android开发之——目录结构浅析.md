@@ -86,6 +86,6 @@ tags: [目录结构]
 
 
 
-[0]: http://bolo-imgs.pgzxc.com/struct-eclipse.png
-[1]: http://bolo-imgs.pgzxc.com/struct-android.png
-[2]: http://bolo-imgs.pgzxc.com/android-src.png
+[0]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/struct-eclipse.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/struct-android.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-src.png

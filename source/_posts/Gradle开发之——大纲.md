@@ -158,4 +158,4 @@ Jenkins集成
 
 
 
-[1]: http://bolo-imgs.pgzxc.com/gradle-outline.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/gradle-outline.png

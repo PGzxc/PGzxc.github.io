@@ -136,19 +136,19 @@ android 文件夹用于存放build后的.so文件和其他文件
 
 
 
-[1]: http://bolo-imgs.pgzxc.com/ffmpeg-make.png
-[2]: http://bolo-imgs.pgzxc.com/ffmpeg-git.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ffmpeg-make.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ffmpeg-git.png
 [3]: http://www.androiddevtools.cn/
-[4]: http://bolo-imgs.pgzxc.com/ffmpeg-down-ffmp.png
-[5]: http://bolo-imgs.pgzxc.com/ffmpeg-unzip-ff.png
-[6]: http://bolo-imgs.pgzxc.com/ffmpeg-modify-config.png
-[7]: http://bolo-imgs.pgzxc.com/ffmpeg-modify-config-after.png
-[8]: http://bolo-imgs.pgzxc.com/ffmpeg-create-sh.png
-[9]: http://bolo-imgs.pgzxc.com/ffmpeg-create-sh-after.png
-[10]: http://bolo-imgs.pgzxc.com/ffmpeg-create-android.png
-[11]: http://bolo-imgs.pgzxc.com/ffmpeg-change-x.png
-[12]: http://bolo-imgs.pgzxc.com/ffmpeg-build-sh.png
-[13]: http://bolo-imgs.pgzxc.com/ffmpeg-build-process.png
-[14]: http://bolo-imgs.pgzxc.com/ffmpeg-build-file.png
-[15]: http://bolo-imgs.pgzxc.com/ffmpeg-so.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ffmpeg-down-ffmp.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ffmpeg-unzip-ff.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ffmpeg-modify-config.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ffmpeg-modify-config-after.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ffmpeg-create-sh.png
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ffmpeg-create-sh-after.png
+[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ffmpeg-create-android.png
+[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ffmpeg-change-x.png
+[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ffmpeg-build-sh.png
+[13]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ffmpeg-build-process.png
+[14]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ffmpeg-build-file.png
+[15]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ffmpeg-so.png
 

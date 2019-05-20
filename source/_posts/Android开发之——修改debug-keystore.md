@@ -33,7 +33,7 @@ app在运行安装到手机上时，都是要签名的(没有签名无法安装)
 ![][1]  
 
 
-[1]: http://bolo-imgs.pgzxc.com/eclipse-debug-keystore.png  
-[2]: http://bolo-imgs.pgzxc.com/as-debug-keystore.png
-[3]: http://bolo-imgs.pgzxc.com/keystore-make.png
-[4]: http://bolo-imgs.pgzxc.com/deubg-keystore-exist.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/eclipse-debug-keystore.png  
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/as-debug-keystore.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/keystore-make.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/deubg-keystore-exist.png

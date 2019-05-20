@@ -51,13 +51,13 @@ tags: [配置]
 
 
 [1]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
-[2]: http://bolo-imgs.pgzxc.com/jdk-version.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/jdk-version.png
 [3]: https://kotlinlang.org/
-[4]: http://bolo-imgs.pgzxc.com/kotlin-compiler.png
-[5]: http://bolo-imgs.pgzxc.com/kotlin-home.png
-[6]: http://bolo-imgs.pgzxc.com/kotlin-home-bin.png
-[7]: http://bolo-imgs.pgzxc.com/kotliln-version.png
-[8]: http://bolo-imgs.pgzxc.com/kotlin-compiler-pro.png
-[9]: http://bolo-imgs.pgzxc.com/kotlin-compiler-jar.png
-[10]: http://bolo-imgs.pgzxc.com/kotlin-compiler-jar-run.png
-[11]: http://bolo-imgs.pgzxc.com/kotlin-build-process.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/kotlin-compiler.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/kotlin-home.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/kotlin-home-bin.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/kotliln-version.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/kotlin-compiler-pro.png
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/kotlin-compiler-jar.png
+[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/kotlin-compiler-jar-run.png
+[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/kotlin-build-process.png

@@ -171,12 +171,12 @@ view后跟lparams对view的属性进行描述
 
 [1]: https://pgzxc.github.io/2017/11/27/Anko%E5%88%9D%E6%8E%A2/
 [2]: https://github.com/Kotlin/anko
-[3]: http://bolo-imgs.pgzxc.com/anko-support.png
-[4]: http://bolo-imgs.pgzxc.com/anko-intents.gif
-[5]: http://bolo-imgs.pgzxc.com/anko-intent-smart.gif
-[6]: http://bolo-imgs.pgzxc.com/anko-dialog.gif
-[7]: http://bolo-imgs.pgzxc.com/anko-debug.gif
-[8]: http://bolo-imgs.pgzxc.com/anko-resource-color.png
-[9]: http://bolo-imgs.pgzxc.com/anko-resource-dimens.png
-[10]: http://bolo-imgs.pgzxc.com/anko-resource-lparams.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/anko-support.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/anko-intents.gif
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/anko-intent-smart.gif
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/anko-dialog.gif
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/anko-debug.gif
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/anko-resource-color.png
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/anko-resource-dimens.png
+[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/anko-resource-lparams.png
 [11]: https://github.com/PGzxc/AnkoDemo

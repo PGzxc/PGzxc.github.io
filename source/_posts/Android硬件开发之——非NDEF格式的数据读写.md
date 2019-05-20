@@ -28,5 +28,5 @@ tags: [非NDEF格式的数据读写]
 
 
 [1]: https://github.com/PGzxc/NFCMifareUltralight
-[2]: http://bolo-imgs.pgzxc.com/nfc-mifareul-tralight.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/nfc-mifareul-tralight.png
 

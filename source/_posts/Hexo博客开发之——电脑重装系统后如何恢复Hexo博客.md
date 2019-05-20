@@ -59,15 +59,15 @@ tags: [Hexo恢复]
 
 
 
-[1]: http://bolo-imgs.pgzxc.com/hexo-retore-software-info.png
-[2]: http://bolo-imgs.pgzxc.com/hexo-restore-create-ssh.png
-[3]: http://bolo-imgs.pgzxc.com/hexo-resote-add-ssh-key.png
-[4]: http://bolo-imgs.pgzxc.com/hexo-restore-ssh-test.png
-[5]: http://bolo-imgs.pgzxc.com/hexo-restore-git-username-email.png
-[6]: http://bolo-imgs.pgzxc.com/hexo-restore-bolg-folder-remove.png
-[7]: http://bolo-imgs.pgzxc.com/hexo-restore-git-init-remote.png
-[8]: http://bolo-imgs.pgzxc.com/hexo-restore-install-hexo.png
-[9]: http://bolo-imgs.pgzxc.com/hexo-restore-npm-install.png
-[10]: http://bolo-imgs.pgzxc.com/hexo-restore-npm-install.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-retore-software-info.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-restore-create-ssh.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-resote-add-ssh-key.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-restore-ssh-test.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-restore-git-username-email.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-restore-bolg-folder-remove.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-restore-git-init-remote.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-restore-install-hexo.png
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-restore-npm-install.png
+[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-restore-npm-install.png
 [11]: http://localhost:4000/
-[12]: http://bolo-imgs.pgzxc.com/hexo-restore-hexo-s.png
+[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-restore-hexo-s.png

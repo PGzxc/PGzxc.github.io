@@ -30,7 +30,7 @@ Git是分布式版本控制系统，同一个Git仓库，可以分布到不同�
 至此，配置已经完成  
 
 
-[1]: http://bolo-imgs.pgzxc.com/git-github-ssh.png
-[2]: http://bolo-imgs.pgzxc.com/git-github-gui-key.png
-[3]: http://bolo-imgs.pgzxc.com/git-github-ssh-config.png
-[4]: http://bolo-imgs.pgzxc.com/git-github-new-ssh.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-github-ssh.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-github-gui-key.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-github-ssh-config.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-github-new-ssh.png

@@ -328,11 +328,11 @@ A^B = 0011 0001
 
 
 
-[1]: http://bolo-imgs.pgzxc.com/cpp-perator.png
-[2]: http://bolo-imgs.pgzxc.com/cpp-relate-operate.png
-[3]: http://bolo-imgs.pgzxc.com/cpp-logat-operate.png
-[4]: http://bolo-imgs.pgzxc.com/cpp-byte-operate.png
-[5]: http://bolo-imgs.pgzxc.com/cpp-byte-2.png
-[6]: http://bolo-imgs.pgzxc.com/cpp-equals-operate.png
-[7]: http://bolo-imgs.pgzxc.com/cpp-more-operate.png
-[8]: http://bolo-imgs.pgzxc.com/cpp-prority-operate.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-perator.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-relate-operate.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-logat-operate.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-byte-operate.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-byte-2.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-equals-operate.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-more-operate.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-prority-operate.png

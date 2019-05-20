@@ -55,11 +55,11 @@ tags: [Java]
 
 
 [1]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-[2]: http://bolo-imgs.pgzxc.com/java-linux-download.png
-[3]: http://bolo-imgs.pgzxc.com/java-grep.png
-[4]: http://bolo-imgs.pgzxc.com/java-upload.png
-[5]: http://bolo-imgs.pgzxc.com/java-upload-after.png
-[6]: http://bolo-imgs.pgzxc.com/java-tar-xvf.png
-[7]: http://bolo-imgs.pgzxc.com/java-path.png
-[8]: http://bolo-imgs.pgzxc.com/java-source-etc-profile.png
-[9]: http://bolo-imgs.pgzxc.com/java-version.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-linux-download.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-grep.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-upload.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-upload-after.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-tar-xvf.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-path.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-source-etc-profile.png
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-version.png

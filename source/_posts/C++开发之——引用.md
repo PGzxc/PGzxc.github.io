@@ -55,4 +55,4 @@ tags: [引用]
 ![][1]
 
 
-[1]: http://bolo-imgs.pgzxc.com/cpp-quote.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-quote.png

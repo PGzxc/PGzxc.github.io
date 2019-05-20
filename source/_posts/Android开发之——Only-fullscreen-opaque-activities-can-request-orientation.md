@@ -20,6 +20,6 @@ tags: [Error]
 
 
 
-[1]: http://bolo-imgs.pgzxc.com/orientation-error.png
-[2]: http://bolo-imgs.pgzxc.com/orientation-solve-1.png
-[3]: http://bolo-imgs.pgzxc.com/orientation-solve-2.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/orientation-error.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/orientation-solve-1.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/orientation-solve-2.png

@@ -93,4 +93,4 @@ Button——》开启一个线程，请求网络——》得到消息——》ha
 
 
 
-[1]: http://bolo-imgs.pgzxc.com/yinlian-demo-analysis.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/yinlian-demo-analysis.png

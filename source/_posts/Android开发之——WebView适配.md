@@ -99,11 +99,11 @@ tags: [WebView]
 [浅谈Android 浏览器内核][8]
 
 
-[1]: http://blog-files.pgzxc.com/emui-4_0.png
-[2]: http://blog-files.pgzxc.com/webview_user_agent.gif
-[3]: http://blog-files.pgzxc.com/webview-layout.png
-[4]: http://blog-files.pgzxc.com/webview-click-function.png
-[5]: http://blog-files.pgzxc.com/webview-userAgent.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/emui-4_0.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/webview_user_agent.gif
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/webview-layout.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/webview-click-function.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/webview-userAgent.png
 
 
 [6]: https://jingyan.baidu.com/article/ca2d939d4cd90ceb6c31ce22.html

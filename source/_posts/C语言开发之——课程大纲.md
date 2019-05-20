@@ -48,4 +48,4 @@ tags: [课程大纲]
 # 思维导图
 ![思维导图][1] 
 
-[1]: http://bolo-imgs.pgzxc.com/c-outline.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/c-outline.png

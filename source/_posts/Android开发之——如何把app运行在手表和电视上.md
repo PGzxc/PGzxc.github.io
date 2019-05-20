@@ -51,13 +51,13 @@ app安装到手表或电视里，这里我们用自带的系统创建一个手�
 
 
 
-[1]: http://bolo-imgs.pgzxc.com/hardware-chose.png
-[2]: http://bolo-imgs.pgzxc.com/wear-download.png
-[3]: http://bolo-imgs.pgzxc.com/wear-start.png
-[4]: http://bolo-imgs.pgzxc.com/wear-config.png
-[5]: http://bolo-imgs.pgzxc.com/wear-git.gif
-[6]: http://bolo-imgs.pgzxc.com/TV-chose.png
-[7]: http://bolo-imgs.pgzxc.com/tv-download.png
-[8]: http://bolo-imgs.pgzxc.com/tv-start.png
-[9]: http://bolo-imgs.pgzxc.com/tv-config.png
-[10]: http://bolo-imgs.pgzxc.com/tv-gif.gif
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hardware-chose.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/wear-download.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/wear-start.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/wear-config.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/wear-git.gif
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/TV-chose.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/tv-download.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/tv-start.png
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/tv-config.png
+[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/tv-gif.gif

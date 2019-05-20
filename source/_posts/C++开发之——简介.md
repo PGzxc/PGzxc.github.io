@@ -47,4 +47,4 @@ C++ 广泛用于教学和研究。
 
 
 
-[1]: http://bolo-imgs.pgzxc.com/cpp-standard.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-standard.png

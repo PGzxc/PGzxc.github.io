@@ -87,12 +87,12 @@ Android进程分为前台进程，可见进程，服务进程，后台进程，�
 
 
 
-[1]: http://bolo-imgs.pgzxc.com/activity-fout-state.png
-[2]: http://bolo-imgs.pgzxc.com/activity-life.jpg
-[3]: http://bolo-imgs.pgzxc.com/activity-start.png
-[4]: http://bolo-imgs.pgzxc.com/activity-to-home.png
-[5]: http://bolo-imgs.pgzxc.com/activity-return.png
-[6]: http://bolo-imgs.pgzxc.com/activity-stop.png
-[7]: http://bolo-imgs.pgzxc.com/android-progre.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/activity-fout-state.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/activity-life.jpg
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/activity-start.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/activity-to-home.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/activity-return.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/activity-stop.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-progre.png
 
 

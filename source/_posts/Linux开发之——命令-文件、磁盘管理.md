@@ -433,22 +433,22 @@ tar只负责打包文件，但不压缩，用bzip2压缩tar打包后的文件，
 
 
 
-[1]: http://bolo-imgs.pgzxc.com/linux-order-ls.png
-[2]: http://bolo-imgs.pgzxc.com/linux-order-ls_a.png
-[3]: http://bolo-imgs.pgzxc.com/linux-order-ls_l.png
-[4]: http://bolo-imgs.pgzxc.com/linux_file_type.png
-[5]: http://bolo-imgs.pgzxc.com/linux-ls-redirect.png
-[6]: http://bolo-imgs.pgzxc.com/linux-more_file.png
-[7]: http://bolo-imgs.pgzxc.com/linux-more_open.png
-[8]: http://bolo-imgs.pgzxc.com/linux-pip.png
-[9]: http://bolo-imgs.pgzxc.com/linux-order-mkdir.png
-[10]: http://bolo-imgs.pgzxc.com/linux-order-rmdir.png
-[11]: http://bolo-imgs.pgzxc.com/linux-order-li-ln.png
-[12]: http://bolo-imgs.pgzxc.com/linux-order-cat.png
-[13]: http://bolo-imgs.pgzxc.com/linux-order-cp.png
-[14]: http://bolo-imgs.pgzxc.com/linux-order-mv.png
-[15]: http://bolo-imgs.pgzxc.com/linux-order-tar.png
-[16]: http://bolo-imgs.pgzxc.com/linux-order-tar_xvf.png
-[17]: http://bolo-imgs.pgzxc.com/linux-order-gzip-r.png
-[18]: http://bolo-imgs.pgzxc.com/linux-order-gzip-d.png
-[19]: http://bolo-imgs.pgzxc.com/linux-order-which.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/linux-order-ls.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/linux-order-ls_a.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/linux-order-ls_l.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/linux_file_type.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/linux-ls-redirect.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/linux-more_file.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/linux-more_open.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/linux-pip.png
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/linux-order-mkdir.png
+[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/linux-order-rmdir.png
+[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/linux-order-li-ln.png
+[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/linux-order-cat.png
+[13]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/linux-order-cp.png
+[14]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/linux-order-mv.png
+[15]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/linux-order-tar.png
+[16]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/linux-order-tar_xvf.png
+[17]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/linux-order-gzip-r.png
+[18]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/linux-order-gzip-d.png
+[19]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/linux-order-which.png

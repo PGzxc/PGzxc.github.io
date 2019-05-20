@@ -41,13 +41,13 @@ Markdown是一种可以使用普通文本编辑器编写的标记语言，通过
 
 
 [1]: http://markdownpad.com/
-[2]: http://bolo-imgs.pgzxc.com/markdown-preview.png
-[3]: http://bolo-imgs.pgzxc.com/markdown-install.png
-[4]: http://bolo-imgs.pgzxc.com/markdown-active.png
-[5]: http://bolo-imgs.pgzxc.com/markdown-unlock.png
-[6]: http://bolo-imgs.pgzxc.com/markdown-preview-error.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/markdown-preview.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/markdown-install.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/markdown-active.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/markdown-unlock.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/markdown-preview-error.png
 [7]: http://markdownpad.com/faq.html#livepreview-directx
-[8]: http://bolo-imgs.pgzxc.com/markdown-view-issue.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/markdown-view-issue.png
 [9]: http://markdownpad.com/download/awesomium_v1.6.6_sdk_win.exe
 [10]: http://www.microsoft.com/en-us/download/details.aspx?id=8109
-[11]: http://bolo-imgs.pgzxc.com/markdown_ok.png
+[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/markdown_ok.png

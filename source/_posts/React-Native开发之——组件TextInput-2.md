@@ -57,14 +57,14 @@ selectTextOnFocus和selectionColor，用于设置获取焦点时，选中文本�
 
 
 
-[1]: http://bolo-imgs.pgzxc.com/rn-textinput-maxlength-code.png
-[2]: http://bolo-imgs.pgzxc.com/rn-textinput-maxlength.gif
-[3]: http://bolo-imgs.pgzxc.com/rn-textinput-multiline-code.png
-[4]: http://bolo-imgs.pgzxc.com/rn-textinput-multiline-look.png
-[5]: http://bolo-imgs.pgzxc.com/rn-textinput-placeholder.png
-[6]: http://bolo-imgs.pgzxc.com/rn-textinput-placeholder.gif
-[7]: http://bolo-imgs.pgzxc.com/rn-textinput-securetextentry.png
-[8]: http://bolo-imgs.pgzxc.com/rn-textinput-securetextentry.gif
-[9]: http://bolo-imgs.pgzxc.com/rn-textinput-selectonfocus.png
-[10]: http://bolo-imgs.pgzxc.com/rn-textinput-selectTextOnFocus.gif
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-textinput-maxlength-code.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-textinput-maxlength.gif
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-textinput-multiline-code.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-textinput-multiline-look.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-textinput-placeholder.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-textinput-placeholder.gif
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-textinput-securetextentry.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-textinput-securetextentry.gif
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-textinput-selectonfocus.png
+[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-textinput-selectTextOnFocus.gif
 [11]: https://github.com/PGzxc/RN_TextInput

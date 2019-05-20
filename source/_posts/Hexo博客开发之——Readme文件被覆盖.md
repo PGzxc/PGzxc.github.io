@@ -23,7 +23,7 @@ tags: [覆盖]
 
 
 
-[1]:http://bolo-imgs.pgzxc.com/github_readme-messy.png
-[2]:http://bolo-imgs.pgzxc.com/github_readme-modify-before.png 
-[3]:http://bolo-imgs.pgzxc.com/github_readme-modify-after.png
-[4]:http://bolo-imgs.pgzxc.com/gtihub_blog_readme.png
+[1]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/github_readme-messy.png
+[2]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/github_readme-modify-before.png 
+[3]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/github_readme-modify-after.png
+[4]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/gtihub_blog_readme.png

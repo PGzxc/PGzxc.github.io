@@ -100,12 +100,12 @@ tags: [跑马灯]
 参考：[Github下载][8]
 
 
-[1]: http://bolo-imgs.pgzxc.com/android-marqueeview.gif  
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-marqueeview.gif  
 [2]: https://github.com/sfsheng0322/MarqueeView
-[3]: http://bolo-imgs.pgzxc.com/marqueeview-use.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/marqueeview-use.png
 [4]: https://github.com/xiaohaibin/XMarqueeView
-[5]: http://bolo-imgs.pgzxc.com/xmarqueeview-use.png
-[6]: http://bolo-imgs.pgzxc.com/viewfilpper.png
-[7]: http://bolo-imgs.pgzxc.com/viewflipper.gif
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/xmarqueeview-use.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/viewfilpper.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/viewflipper.gif
 [8]: https://github.com/PGzxc/ViewFlipper
 

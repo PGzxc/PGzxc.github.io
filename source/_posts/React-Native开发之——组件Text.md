@@ -103,15 +103,15 @@ Text组件可以使用View组件所有的Style，View组件的所有Style可以�
 
 
 
-[1]: http://bolo-imgs.pgzxc.com/rn-compontent-text.png
-[2]: http://bolo-imgs.pgzxc.com/rn-compontent-tv-prop-type.png
-[3]: http://bolo-imgs.pgzxc.com/rn-compontent-tv-style-1.png
-[4]: http://bolo-imgs.pgzxc.com/rn-compontent-tv-style-2.png
-[5]: http://bolo-imgs.pgzxc.com/rn-compontent-tv-prop.png
-[6]: http://bolo-imgs.pgzxc.com/rn-compontent-tv-nesting.png
-[7]: http://bolo-imgs.pgzxc.com/rn-compontent-tv-combinat.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-compontent-text.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-compontent-tv-prop-type.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-compontent-tv-style-1.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-compontent-tv-style-2.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-compontent-tv-prop.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-compontent-tv-nesting.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-compontent-tv-combinat.png
 [8]: https://github.com/PGzxc/RN_Text
-[9]: http://bolo-imgs.pgzxc.com/rn-text-onpress.png
-[10]: http://bolo-imgs.pgzxc.com/rn-text-onlongpress.gif
-[11]: http://bolo-imgs.pgzxc.com/rn-text-onlayout-code.png
-[12]: http://bolo-imgs.pgzxc.com/rn-text-onlayout-look.png
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-text-onpress.png
+[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-text-onlongpress.gif
+[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-text-onlayout-code.png
+[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-text-onlayout-look.png

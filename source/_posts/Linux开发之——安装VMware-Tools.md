@@ -29,11 +29,11 @@ tags: [VMware Tools]
 ## 出现重启(restart)说明安装成功，重启后生效
 
 
-[1]: http://bolo-imgs.pgzxc.com/vm-tools-install.png
-[2]: http://bolo-imgs.pgzxc.com/vm-tools-show.png
-[3]: http://bolo-imgs.pgzxc.com/vm-tools-copy-desk.png
-[4]: http://bolo-imgs.pgzxc.com/vm-tools-open-cmd.png
-[5]: http://bolo-imgs.pgzxc.com/vm-tools-tar.png
-[6]: http://bolo-imgs.pgzxc.com/vm-tools-cd-tar.png
-[7]: http://bolo-imgs.pgzxc.com/vm-tools-install-order.png
-[8]: http://bolo-imgs.pgzxc.com/vm-tools-install-process.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vm-tools-install.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vm-tools-show.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vm-tools-copy-desk.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vm-tools-open-cmd.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vm-tools-tar.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vm-tools-cd-tar.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vm-tools-install-order.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vm-tools-install-process.png

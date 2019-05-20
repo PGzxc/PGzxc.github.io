@@ -72,14 +72,14 @@ tags: [C#]
 
 
 [1]: https://visualstudio.microsoft.com/zh-hans/?rr=https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3D2W1kCse-7RyGb8tqyjPNkWdpJFj2SWih3eqANtdgoaXjEtlSn3Jq8wl5LPt4Qp-p%26wd%3D%26eqid%3D9f5cb594000160a2000000035bd814bb
-[2]: http://bolo-imgs.pgzxc.com/csharp-download-visual-studio
-[3]: http://bolo-imgs.pgzxc.com/csharp-visual-install.png
-[4]: http://bolo-imgs.pgzxc.com/csharp-visual-start.png
-[5]: http://bolo-imgs.pgzxc.com/csharp-project-open-opt.png
-[6]: http://bolo-imgs.pgzxc.com/csharp-project-open.png
-[7]: http://bolo-imgs.pgzxc.com/csharp-mainApp.png
-[8]: http://bolo-imgs.pgzxc.com/csharp-MainApp-Property.png
-[9]: http://bolo-imgs.pgzxc.com/csharp-proper-open.png
-[10]: http://bolo-imgs.pgzxc.com/csharp-project-output-path.png
-[11]: http://bolo-imgs.pgzxc.com/csharp-copy-db.png
-[12]: http://bolo-imgs.pgzxc.com/csharp-start-project.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/csharp-download-visual-studio
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/csharp-visual-install.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/csharp-visual-start.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/csharp-project-open-opt.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/csharp-project-open.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/csharp-mainApp.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/csharp-MainApp-Property.png
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/csharp-proper-open.png
+[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/csharp-project-output-path.png
+[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/csharp-copy-db.png
+[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/csharp-start-project.png

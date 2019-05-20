@@ -156,25 +156,25 @@ tags: [混淆,打包]
 
 
 
-[1]: http://bolo-imgs.pgzxc.com/package-dependencies-normal.png
-[2]: http://bolo-imgs.pgzxc.com/package-dependencies-optimize.png
-[3]: http://bolo-imgs.pgzxc.com/package-dependencies-optimize-build.png
-[4]: http://bolo-imgs.pgzxc.com/package-dependencies-optimize-import.png
-[5]: http://bolo-imgs.pgzxc.com/package-dependencies-optimize-use.png
-[6]: http://bolo-imgs.pgzxc.com/package-depend-exception.gif
-[7]: http://bolo-imgs.pgzxc.com/package-depend-configuration.png
-[8]: http://bolo-imgs.pgzxc.com/package-proguard-files.png
-[9]: http://bolo-imgs.pgzxc.com/package-proguard-use.png
-[10]: http://bolo-imgs.pgzxc.com/package-sign.png
-[11]: http://bolo-imgs.pgzxc.com/package-sign-buildgradle.png
-[12]: http://bolo-imgs.pgzxc.com/package-sign-gradle-properties.png
-[13]: http://bolo-imgs.pgzxc.com/package-sign-config-gradle.png
-[14]: http://bolo-imgs.pgzxc.com/package-apk.png
-[15]: http://bolo-imgs.pgzxc.com/package-mapping-xml.png
-[16]: http://bolo-imgs.pgzxc.com/package-apk-release.png
-[17]: http://bolo-imgs.pgzxc.com/package-andresguard-build-gradle.png
-[18]: http://bolo-imgs.pgzxc.com/package-resguard-file.png
-[19]: http://bolo-imgs.pgzxc.com/package-and-res-import.png
-[20]: http://bolo-imgs.pgzxc.com/package-andresguard-task.png
-[21]: http://bolo-imgs.pgzxc.com/package-apk-aligned.png
-[22]: http://bolo-imgs.pgzxc.com/package-analysis.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-dependencies-normal.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-dependencies-optimize.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-dependencies-optimize-build.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-dependencies-optimize-import.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-dependencies-optimize-use.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-depend-exception.gif
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-depend-configuration.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-proguard-files.png
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-proguard-use.png
+[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-sign.png
+[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-sign-buildgradle.png
+[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-sign-gradle-properties.png
+[13]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-sign-config-gradle.png
+[14]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-apk.png
+[15]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-mapping-xml.png
+[16]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-apk-release.png
+[17]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-andresguard-build-gradle.png
+[18]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-resguard-file.png
+[19]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-and-res-import.png
+[20]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-andresguard-task.png
+[21]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-apk-aligned.png
+[22]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-analysis.png

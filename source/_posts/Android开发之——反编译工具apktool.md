@@ -44,14 +44,14 @@ tags: [反编译,安全,工具]
 
 
 [1]: https://ibotpeaches.github.io/Apktool/install/  
-[2]: http://bolo-imgs.pgzxc.com/apktool-web.png  
-[3]: http://bolo-imgs.pgzxc.com/apktool-tools.png
-[4]: http://bolo-imgs.pgzxc.com/apktool-bat.png  
-[5]: http://bolo-imgs.pgzxc.com/apktool-download.png
-[6]: http://bolo-imgs.pgzxc.com/apktool-colection.png  
-[7]: http://bolo-imgs.pgzxc.com/cmd-wind.png 
-[8]: http://bolo-imgs.pgzxc.com/cmd-into.png  
-[9]: http://bolo-imgs.pgzxc.com/apktool-use.png
-[10]: http://bolo-imgs.pgzxc.com/apktool-res1.png
-[11]: http://bolo-imgs.pgzxc.com/apktool-res2.png
-[12]: http://bolo-imgs.pgzxc.com/apktool-res3.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/apktool-web.png  
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/apktool-tools.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/apktool-bat.png  
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/apktool-download.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/apktool-colection.png  
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cmd-wind.png 
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cmd-into.png  
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/apktool-use.png
+[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/apktool-res1.png
+[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/apktool-res2.png
+[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/apktool-res3.png

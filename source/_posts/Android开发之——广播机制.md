@@ -273,13 +273,13 @@ android的粘性广播，是指广播接收器一注册马上就能接收到广�
 
 
 
-[1]: http://bolo-imgs.pgzxc.com/broadcast.png
-[2]: http://bolo-imgs.pgzxc.com/boradcast-ams.png
-[3]: http://bolo-imgs.pgzxc.com/boradcast-detail.png
-[4]: http://bolo-imgs.pgzxc.com/boradcast-life.png
-[5]: http://bolo-imgs.pgzxc.com/broadcast-style.png
-[6]: http://bolo-imgs.pgzxc.com/system-broadcast1.png  
-[7]: http://bolo-imgs.pgzxc.com/system-broadcast2.png  
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/broadcast.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/boradcast-ams.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/boradcast-detail.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/boradcast-life.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/broadcast-style.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/system-broadcast1.png  
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/system-broadcast2.png  
 [8]: https://www.jianshu.com/p/ca3d87a4cdf3  
 [9]: https://www.jianshu.com/p/c85ee69553b5 
 [10]: https://github.com/PGzxc/BroadCastSample 

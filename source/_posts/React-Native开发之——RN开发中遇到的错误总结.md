@@ -28,7 +28,7 @@ tags: [RN错误总结]
 
 
 
-[1]: http://bolo-imgs.pgzxc.com/rn-error-cache.png
-[2]: http://bolo-imgs.pgzxc.com/rn-error-clear-cache.png
-[3]: http://bolo-imgs.pgzxc.com/rn-error-set-registry.png
-[4]: http://bolo-imgs.pgzxc.com/rn-error-init.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-error-cache.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-error-clear-cache.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-error-set-registry.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-error-init.png

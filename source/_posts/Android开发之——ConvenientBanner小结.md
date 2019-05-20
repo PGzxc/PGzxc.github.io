@@ -51,15 +51,15 @@ ConvenientBanner地址:[https://github.com/saiwu-bigkoo/Android-ConvenientBanner
 [Demo地址][12]
 
 
-[1]: http://bolo-imgs.pgzxc.com/android-viewpager.gif
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-viewpager.gif
 [2]: https://github.com/saiwu-bigkoo/Android-ConvenientBanner
-[3]: http://bolo-imgs.pgzxc.com/android-banner.png
-[4]: http://bolo-imgs.pgzxc.com/android-banner_layout.png
-[5]: http://bolo-imgs.pgzxc.com/android-banner_holder.png
-[6]: http://bolo-imgs.pgzxc.com/android-banner_data.png
-[7]: http://bolo-imgs.pgzxc.com/android-banner_indicator.png
-[8]: http://bolo-imgs.pgzxc.com/android-banner_scroll.png
-[9]: http://bolo-imgs.pgzxc.com/android-banner_click.png
-[10]: http://bolo-imgs.pgzxc.com/android-banner_loop.png
-[11]: http://bolo-imgs.pgzxc.com/android-banner_stop.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-banner.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-banner_layout.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-banner_holder.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-banner_data.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-banner_indicator.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-banner_scroll.png
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-banner_click.png
+[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-banner_loop.png
+[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-banner_stop.png
 [12]: https://github.com/PGzxc/ConvenientBannerDemo

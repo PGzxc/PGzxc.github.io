@@ -50,10 +50,10 @@ tags: [VMware Tools]
    
 
 
-[1]: http://bolo-imgs.pgzxc.com/vm-tools-install.png
-[2]: http://bolo-imgs.pgzxc.com/vmware-operate_authority.png
-[3]: http://bolo-imgs.pgzxc.com/vmware-tar-xzvf.png
-[4]: http://bolo-imgs.pgzxc.com/vmware-etc-file.png
-[5]: http://bolo-imgs.pgzxc.com/vmware-install-into.png
-[6]: http://bolo-imgs.pgzxc.com/vmware-install-cmd.png
-[7]: http://bolo-imgs.pgzxc.com/vmware-enjoy.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vm-tools-install.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vmware-operate_authority.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vmware-tar-xzvf.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vmware-etc-file.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vmware-install-into.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vmware-install-cmd.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vmware-enjoy.png

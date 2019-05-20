@@ -30,5 +30,5 @@ tags: [区别]
 
 
 
-[1]: http://bolo-imgs.pgzxc.com/java-express.png
-[2]: http://bolo-imgs.pgzxc.com/kotlin-express.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-express.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/kotlin-express.png

@@ -88,16 +88,16 @@ Github上Zxing三方库比较多，如果有适合自己的项目可以不用改
 
 
 [1]: https://github.com/zxing/zxing
-[2]: http://bolo-imgs.pgzxc.com/zxing-struct.png
-[3]: http://bolo-imgs.pgzxc.com/zxing-android-struct.png
-[4]: http://bolo-imgs.pgzxc.com/zxing-intellij-new.png
-[5]: http://bolo-imgs.pgzxc.com/zxing-intellij-pom.png
-[6]: http://bolo-imgs.pgzxc.com/zxing-intellij-app.png
-[7]: http://bolo-imgs.pgzxc.com/zxing-intellij-run.png
-[8]: http://bolo-imgs.pgzxc.com/zxing-eclipse-import.png
-[9]: http://bolo-imgs.pgzxc.com/zxing-eclipse-android-core.png
-[10]: http://bolo-imgs.pgzxc.com/zxing-eclipse-core.png
-[11]: http://bolo-imgs.pgzxc.com/zxing-eclipse-libs.png
-[12]: http://bolo-imgs.pgzxc.com/zxing-run.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/zxing-struct.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/zxing-android-struct.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/zxing-intellij-new.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/zxing-intellij-pom.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/zxing-intellij-app.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/zxing-intellij-run.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/zxing-eclipse-import.png
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/zxing-eclipse-android-core.png
+[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/zxing-eclipse-core.png
+[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/zxing-eclipse-libs.png
+[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/zxing-run.png
 [13]: https://github.com/yipianfengye/android-zxingLibrary
 [14]: https://github.com/journeyapps/zxing-android-embedded

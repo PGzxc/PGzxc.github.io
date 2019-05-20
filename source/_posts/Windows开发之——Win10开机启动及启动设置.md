@@ -37,11 +37,11 @@ tags: [开机启动]
 
 
 
-[1]: http://bolo-imgs.pgzxc.com/windows-shell-startup.png
-[2]: http://bolo-imgs.pgzxc.com/windows-shell-open.png
-[3]: http://bolo-imgs.pgzxc.com/windows-move-startup.png
-[4]: http://bolo-imgs.pgzxc.com/windows-open-msconfig.png
-[5]: http://bolo-imgs.pgzxc.com/windows-msconfig-start.png
-[6]: http://bolo-imgs.pgzxc.com/windows-msconfig-open.png
-[7]: http://bolo-imgs.pgzxc.com/windows-manager-start.png
-[8]: http://bolo-imgs.pgzxc.com/windows-manager-jinyong.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-shell-startup.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-shell-open.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-move-startup.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-open-msconfig.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-msconfig-start.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-msconfig-open.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-manager-start.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-manager-jinyong.png

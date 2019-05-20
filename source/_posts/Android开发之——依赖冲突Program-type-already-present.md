@@ -121,17 +121,17 @@ module为下面的内容：
 
 
 
-[1]: http://bolo-imgs.pgzxc.com/depend-gradle.png
-[2]: http://bolo-imgs.pgzxc.com/depend-exception.png
-[3]: http://bolo-imgs.pgzxc.com/depend-exception-open.gif
-[4]: http://bolo-imgs.pgzxc.com/depend-gradle-version.png
-[5]: http://bolo-imgs.pgzxc.com/depend-logErrors.png
-[6]: http://bolo-imgs.pgzxc.com/depend-okio.png
-[7]: http://bolo-imgs.pgzxc.com/depend-tree.png
-[8]: http://bolo-imgs.pgzxc.com/depend-external-library.png
-[9]: http://bolo-imgs.pgzxc.com/depend-gradle-design.png
-[10]: http://bolo-imgs.pgzxc.com/depend-design-26.1.0.png
-[11]: http://bolo-imgs.pgzxc.com/depend-design-26.1.0-maven.png
-[12]: http://bolo-imgs.pgzxc.com/depend-exclude.png
-[13]: http://bolo-imgs.pgzxc.com/depend-configuration.png
-[14]: http://bolo-imgs.pgzxc.com/depend-configuration-all.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/depend-gradle.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/depend-exception.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/depend-exception-open.gif
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/depend-gradle-version.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/depend-logErrors.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/depend-okio.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/depend-tree.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/depend-external-library.png
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/depend-gradle-design.png
+[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/depend-design-26.1.0.png
+[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/depend-design-26.1.0-maven.png
+[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/depend-exclude.png
+[13]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/depend-configuration.png
+[14]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/depend-configuration-all.png

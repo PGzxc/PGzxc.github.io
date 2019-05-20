@@ -68,20 +68,20 @@ Vue自从发布以来就一直受到前端开发人员的热爱，而除了一�
 参考：[手把手教你搭建 vue 环境][17]
 
 
-[1]:  https://nodejs.org/en/
+[1]: https://nodejs.org/en/
 [2]: http://nodejs.cn/
 [3]: https://gitforwindows.org/
-[4]: http://bolo-imgs.pgzxc.com/vue-git-bash.png
-[5]: http://bolo-imgs.pgzxc.com/vue-git-bash-here.png
-[6]: http://bolo-imgs.pgzxc.com/vue-npm-cmd.png
-[7]: http://bolo-imgs.pgzxc.com/vue-taobao.png
-[8]: http://bolo-imgs.pgzxc.com/vue-cli.png
-[9]: http://bolo-imgs.pgzxc.com/vue-go-demo.png
-[10]: http://bolo-imgs.pgzxc.com/vue-router.png
-[11]: http://bolo-imgs.pgzxc.com/vue-esl.png
-[12]: http://bolo-imgs.pgzxc.com/vue-test.png
-[13]: http://bolo-imgs.pgzxc.com/vue-nightwatch.png
-[14]: http://bolo-imgs.pgzxc.com/vue-npm-install.png
-[15]: http://bolo-imgs.pgzxc.com/vue-run.png
-[16]: http://bolo-imgs.pgzxc.com/vue-effect.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vue-git-bash.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vue-git-bash-here.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vue-npm-cmd.png
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vue-taobao.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vue-cli.png
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vue-go-demo.png
+[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vue-router.png
+[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vue-esl.png
+[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vue-test.png
+[13]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vue-nightwatch.png
+[14]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vue-npm-install.png
+[15]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vue-run.png
+[16]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vue-effect.png
 [17]: https://segmentfault.com/a/1190000008922234

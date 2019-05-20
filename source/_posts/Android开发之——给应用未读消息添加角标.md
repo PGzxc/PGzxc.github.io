@@ -42,9 +42,9 @@ tags: [应用角标]
 
 [1]: https://github.com/leolin310148/ShortcutBadger
 [2]: https://github.com/xuyisheng/ShortcutHelper
-[3]: http://bolo-imgs.pgzxc.com/shortcut.png
-[4]: http://bolo-imgs.pgzxc.com/shortcut-add.png
-[5]: http://bolo-imgs.pgzxc.com/shortcut-reduce.png
-[6]: http://bolo-imgs.pgzxc.com/android-lg-show.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/shortcut.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/shortcut-add.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/shortcut-reduce.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-lg-show.png
 [7]: https://www.cnblogs.com/dmtyoung/p/6477531.html
 [8]: https://github.com/PGzxc/ShortcutBadgerSample

@@ -67,13 +67,13 @@ tags: [版本回退]
 
 
 
-[1]: http://bolo-imgs.pgzxc.com/git-back-modify.png  
-[2]: http://bolo-imgs.pgzxc.com/git-back-commit.png
-[3]: http://bolo-imgs.pgzxc.com/git-back-log.png
-[4]: http://bolo-imgs.pgzxc.com/git-log-pretty.png
-[5]: http://bolo-imgs.pgzxc.com/git-gitk-view.png
-[6]: http://bolo-imgs.pgzxc.com/git-back-head1.png  
-[7]: http://bolo-imgs.pgzxc.com/git-back-cat-readme.png
-[8]: http://bolo-imgs.pgzxc.com/git-back-second-log.png
-[9]: http://bolo-imgs.pgzxc.com/git-back-to-current.png
-[10]: http://bolo-imgs.pgzxc.com/git-back-reflog.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-back-modify.png  
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-back-commit.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-back-log.png
+[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-log-pretty.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-gitk-view.png
+[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-back-head1.png  
+[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-back-cat-readme.png
+[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-back-second-log.png
+[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-back-to-current.png
+[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-back-reflog.png

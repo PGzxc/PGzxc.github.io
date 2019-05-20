@@ -9,4 +9,4 @@ tags: [第三方库]
 ![][1]
 
 
-[1]: http://bolo-imgs.pgzxc.com/android-libraries.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-libraries.png

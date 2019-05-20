@@ -92,7 +92,7 @@ tags: [动画]
 参考：  
 [RefreshAnimal][4]
 
-[1]: http://bolo-imgs.pgzxc.com/android-refresh_animal.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-refresh_animal.png
 [2]: https://github.com/florent37/ViewAnimator
-[3]: http://bolo-imgs.pgzxc.com/android-refresh.gif
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-refresh.gif
 [4]: https://github.com/PGzxc/RefreshAnimal

@@ -40,7 +40,7 @@ tags: [组件ViewPagerAndroid]
 参考：[Github下载][3]
 
 
-[1]: http://bolo-imgs.pgzxc.com/rn-viewpagerandroid-code.png
-[2]: http://bolo-imgs.pgzxc.com/rn-viewpagerandroid.gif
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-viewpagerandroid-code.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-viewpagerandroid.gif
 [3]: https://github.com/PGzxc/RN_ViewPagerAndroid
 	

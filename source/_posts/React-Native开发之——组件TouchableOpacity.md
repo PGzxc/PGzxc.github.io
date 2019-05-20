@@ -47,5 +47,5 @@ activeOpacity用于显示透明度，0-完全透明，1-完全不透明
 参考：[RN_TouchableOpacity][2]  
 
 
-[1]: http://bolo-imgs.pgzxc.com/rn-touchableOpacity.gif
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-touchableOpacity.gif
 [2]: https://github.com/PGzxc/RN_TouchableOpacity

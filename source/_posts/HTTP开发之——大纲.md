@@ -240,4 +240,4 @@ tags: [HTTP]
 # 思维导图
 ![HTTP][1]
 
-[1]: http://bolo-imgs.pgzxc.com/http-outline.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/http-outline.png

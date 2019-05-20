@@ -43,6 +43,6 @@ Node项目在执行npm install时，会安装项目所需依赖，依赖文件�
 
 
 
-[1]: http://bolo-imgs.pgzxc.com/node-project_view.png
-[2]: http://bolo-imgs.pgzxc.com/node-rm-help.png  
-[3]: http://bolo-imgs.pgzxc.com/npm-rm-clean.png
+[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/node-project_view.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/node-rm-help.png  
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/npm-rm-clean.png

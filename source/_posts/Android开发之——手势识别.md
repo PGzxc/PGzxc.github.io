@@ -130,8 +130,8 @@ tags: [手势识别]
 
 
 [1]: http://p0kng3270.bkt.clouddn.com/create-gesture
-[2]: http://bolo-imgs.pgzxc.com/gesture-draw.png
-[3]: http://bolo-imgs.pgzxc.com/gesture-sample.png
+[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/gesture-draw.png
+[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/gesture-sample.png
 [4]: https://www.cnblogs.com/xyzlmn/p/3442241.html
 [5]: https://www.cnblogs.com/everhad/p/6075716.html  
 [6]: http://blog.csdn.net/LABLENET/article/details/48105089  
