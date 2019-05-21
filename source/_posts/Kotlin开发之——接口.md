@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——接口
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 接口
+abbrlink: f8c2aefd
 date: 2017-12-22 10:01:26
-categories: [高级语言,Kotlin]
-tags: [接口]
 ---
 
 # 说明

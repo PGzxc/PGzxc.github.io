@@ -1,8 +1,13 @@
 ---
 title: React Native开发之——组件TextInput(3)
+categories:
+  - 开发
+  - 移动开发
+  - React Native
+tags:
+  - 组件TextInput
+abbrlink: d8acfc56
 date: 2018-03-04 17:19:35
-categories: [开发,移动开发,React Native]
-tags: [组件TextInput]
 ---
 # 前言 
 前两节已经讲了TextInput的大部分属性，本文将继续介绍TextInput的属性，内容如下：  

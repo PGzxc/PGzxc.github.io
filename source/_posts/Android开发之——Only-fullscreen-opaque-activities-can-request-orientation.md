@@ -1,8 +1,14 @@
 ---
 title: Android开发之——Only fullscreen opaque activities can request orientation
-date: 2017-12-25 12:48:44  
-categories: [开发,移动开发,Android,Error]   
-tags: [Error]  
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - Error
+tags:
+  - Error
+abbrlink: 811b5cca
+date: 2017-12-25 12:48:44
 ---
 # 问题   
 给activity启动页设置orientation后出现了如下错误：  

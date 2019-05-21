@@ -1,8 +1,13 @@
 ---
 title: React Native开发之——组件RefreshControl
+categories:
+  - 开发
+  - 移动开发
+  - React Native
+tags:
+  - 组件RefreshControl
+abbrlink: fe876950
 date: 2018-03-24 17:02:29
-categories: [开发,移动开发,React Native]
-tags: [组件RefreshControl]
 ---
 # 前言 
 这一组件可以用在ScrollView或ListView内部，为其添加下拉刷新的功能。当ScrollView处于竖直方向的起点位置（scrollY: 0），此时下拉会触发一个onRefresh事件。  

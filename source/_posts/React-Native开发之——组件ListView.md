@@ -1,8 +1,13 @@
 ---
 title: React Native开发之——组件ListView
+categories:
+  - 开发
+  - 移动开发
+  - React Native
+tags:
+  - 组件ListView
+abbrlink: 4d4d5258
 date: 2018-03-14 10:00:29
-categories: [开发,移动开发,React Native]
-tags: [组件ListView]
 ---
 # 前言 
 ListView是React Native中渲染大量数据的组件，ListView是日常开发最常用的控件之一，会话列表（微信），商品列表（淘宝），问题列表（汽车大师）等等各种列表均用到了ListView。这篇文章简单介绍下ListView的入门。  

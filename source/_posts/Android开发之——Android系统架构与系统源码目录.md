@@ -1,8 +1,14 @@
 ---
 title: Android开发之——Android系统架构与系统源码目录
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 基础
+tags:
+  - 系统架构
+abbrlink: 34c1b827
 date: 2018-01-11 08:57:00
-categories: [开发,移动开发,Android,基础]
-tags: [系统架构]
 ---
 # 前言  
 本文分为两部分讲解，Android系统架构与系统源码目录  

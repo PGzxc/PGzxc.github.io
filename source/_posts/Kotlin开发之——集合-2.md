@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——集合(二)
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 集合
+abbrlink: 3563bbc5
 date: 2017-12-20 22:05:41
-categories: [高级语言,Kotlin]
-tags: [集合]
 ---
 # 概述  
 自从Java8支持Lambda表达式以来，Lambda表达式是实现大量函数特性的基础，让Java开发越来越趋向于流程式开始。   

@@ -1,8 +1,13 @@
 ---
 title: React Native开发之——Flex布局
+categories:
+  - 开发
+  - 移动开发
+  - React Native
+tags:
+  - Flex布局
+abbrlink: b531856b
 date: 2018-03-03 21:20:44
-categories: [开发,移动开发,React Native]
-tags: [Flex布局]
 ---
 # 前言 
 React中引入了flexbox概念,flexbox是属于web前端领域CSS的一种布局方案，是2009年W3C提出了一种新的布局方案，可以简便、完整、响应式地实现各种页面布局。你可以简单的理解为flexbox是CSS领域类似Android中 LinearLayout的一种布局，但是要比 LinearLayout要强大的多。

@@ -1,8 +1,15 @@
 ---
 title: Android开发之——数据库之Realm
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 数据库
+tags:
+  - 数据库
+  - Realm
+abbrlink: 510e4f07
 date: 2018-01-04 00:09:48
-categories: [开发,移动开发,Android,数据库]
-tags: [数据库,Realm]
 ---
 # 简介  
 

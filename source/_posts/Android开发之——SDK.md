@@ -1,8 +1,14 @@
 ---
 title: Android开发之——SDK
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - SDK
+tags:
+  - SDK
+abbrlink: dfb02e03
 date: 2018-05-23 09:17:40
-categories: [开发,移动开发,Android,SDK]
-tags: [SDK]
 ---
 # 概述
 本文主要介绍开发中使用的第三方SDK集成  

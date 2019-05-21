@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——Windows配置
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 配置
+abbrlink: 5824f311
 date: 2017-12-17 20:40:31
-categories: [高级语言,Kotlin]
-tags: [配置]
 ---
 
 # 前言

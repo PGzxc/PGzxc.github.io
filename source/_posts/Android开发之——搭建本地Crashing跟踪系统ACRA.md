@@ -1,8 +1,15 @@
 ---
 title: Android开发之——搭建本地Crashing跟踪系统ACRA
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 异常
+tags:
+  - 异常
+  - ACRA
+abbrlink: 4c54adf2
 date: 2018-10-14 10:45:10
-categories: [开发,移动开发,Android,异常]
-tags: [异常,ACRA]
 ---
 
 # 前言

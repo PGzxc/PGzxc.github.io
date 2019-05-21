@@ -1,8 +1,16 @@
 ---
 title: Android开发之——反编译工具apktool
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 安全
+tags:
+  - 反编译
+  - 安全
+  - 工具
+abbrlink: ad15ee8b
 date: 2017-11-16 18:39:56
-categories: [开发,移动开发,Android,安全]
-tags: [反编译,安全,工具]
 ---
 # 前言  
 我们开发时，为防止自己的APP被破解使用了一系列措施，比如ProGuard，又比如第三方加密，如：爱加密，360加固等；同时，又有需求破解别人的APP，工欲善其事必先利其器，这个神器就是apktool，这篇简单介绍下如何使用apktool对apk文件进行反编译，拿到我们需要的信息；  

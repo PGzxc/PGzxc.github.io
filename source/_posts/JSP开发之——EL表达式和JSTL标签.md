@@ -1,8 +1,14 @@
 ---
-title: 'JSP开发之——EL表达式和JSTL标签'
+title: JSP开发之——EL表达式和JSTL标签
+categories:
+  - 开发
+  - 前端开发
+  - JSP
+tags:
+  - EL表达式
+  - JSTL标签
+abbrlink: 34c3e234
 date: 2018-09-16 10:25:55
-categories: [开发,前端开发,JSP]
-tags: [EL表达式,JSTL标签]
 ---
 # 前言
 JSP全名为Java Server Pages，中文名叫java服务器页面，它使用JSP标签在HTML网页中插入Java代码。标签通常以<%开头以%>结束，也可以使用EL表达式向网页传值。本文将简单介绍下这两种语言的简单使用。

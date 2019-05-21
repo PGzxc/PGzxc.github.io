@@ -1,8 +1,12 @@
 ---
 title: Swift开发之——学习大纲
+categories:
+  - 高级语言
+  - Swift
+tags:
+  - 学习大纲
+abbrlink: 750303be
 date: 2018-06-14 11:25:26
-categories: [高级语言,Swift]
-tags: [学习大纲]
 ---
 # 前言
 ## 历史

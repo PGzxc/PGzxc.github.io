@@ -1,8 +1,12 @@
 ---
 title: C++开发之——指针
+categories:
+  - 基础语言
+  - C++
+tags:
+  - 指针
+abbrlink: a2e9ec0a
 date: 2018-02-24 13:03:50
-categories: [基础语言,C++]
-tags: [指针]
 ---
 
 # C++指针 

@@ -1,8 +1,14 @@
 ---
 title: Android开发之——Lambda表达式
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 基础
+tags:
+  - Lambda
+abbrlink: 6c403126
 date: 2017-12-13 22:25:54
-categories: [开发,移动开发,Android,基础]
-tags: [Lambda]
 ---
 # 前言
 Lambda表达式是Java 8的一个新特性,可以替代只有一个函数的接口实现，告别匿名内部类，代码看起来更简洁易懂。   

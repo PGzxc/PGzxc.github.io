@@ -1,8 +1,13 @@
 ---
 title: React Native开发之——组件Picker
+categories:
+  - 开发
+  - 移动开发
+  - React Native
+tags:
+  - 组件Picker
+abbrlink: 14f0d83d
 date: 2018-03-15 09:33:20
-categories: [开发,移动开发,React Native]
-tags: [组件Picker]
 ---
 # 前言 
 Picker常用于显示时间、地址选择器，是常用的控件之一。在RN开发中，系统也为我们提供Picker控件，并且提供了IOS专用的PickerIOS组件。  

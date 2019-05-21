@@ -1,8 +1,12 @@
 ---
 title: Java面试之——最全的BAT大厂面试题整理
+categories:
+  - 面试相关
+  - Java面试
+tags:
+  - BAT大厂面试题
+abbrlink: 4d2039a3
 date: 2018-03-05 16:53:18
-categories: [面试相关,Java面试]
-tags: [BAT大厂面试题]
 ---
 注：本文为转载文章，原文出处： [最全的BAT大厂面试题整理][1] 
 ![][2]    

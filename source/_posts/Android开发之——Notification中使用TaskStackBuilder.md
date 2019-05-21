@@ -1,8 +1,14 @@
 ---
 title: Android开发之——Notification中使用TaskStackBuilder
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 基础
+tags:
+  - Notification
+abbrlink: 92d18b21
 date: 2018-01-07 16:00:33
-categories: [开发,移动开发,Android,基础]
-tags: [Notification]
 ---
 # 前言 
 在使用Notification通知栏的时候，用TaskStackBuilder来获取PendingIntent处理点击跳转到别的Activity，首先是用一般的PendingIntent来进行跳转。   

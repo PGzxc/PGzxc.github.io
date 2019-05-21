@@ -1,8 +1,12 @@
 ---
 title: Jenkins开发之——工具集成
+categories:
+  - 工具
+  - Jenkins
+tags:
+  - Jenkins
+abbrlink: a093e812
 date: 2018-06-17 11:26:20
-categories: [工具,Jenkins]
-tags: [Jenkins]
 ---
 # 前言
 Jenkins是一个功能强大的应用程序，允许持续集成和持续交付项目，无论用的是什么平台。这是一个免费的源代码，可以处理任何类型的构建或持续集成。集成Jenkins可以用于一些测试和部署技术。    

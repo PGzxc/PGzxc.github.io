@@ -1,8 +1,12 @@
 ---
 title: Jenkins开发之——上传apk到fir
+categories:
+  - 工具
+  - Jenkins
+tags:
+  - 项目构建
+abbrlink: 685bb144
 date: 2017-11-18 21:54:00
-categories: [工具,Jenkins]
-tags: [项目构建]
 ---
 原文参考：[Jenkins持续化构建Android项目（三）-Jenkins上传apk到fir（by 星空武哥）][10]    
 # 前言 

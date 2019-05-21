@@ -1,8 +1,12 @@
 ---
 title: Linux开发之——VMWare安装Ubuntu
+categories:
+  - 系统
+  - Linux
+tags:
+  - VMWare
+abbrlink: f6328493
 date: 2017-12-09 10:37:30
-categories: [系统,Linux]
-tags: [VMWare]
 ---
 
 现在的很多服务器都是linux系统,作为一名开发人员有必要去了解一下Linux；   

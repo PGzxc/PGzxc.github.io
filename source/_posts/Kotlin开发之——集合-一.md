@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——集合(一)
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 集合
+abbrlink: 9a5220a7
 date: 2017-12-20 16:27:47
-categories: [高级语言,Kotlin]
-tags: [集合]
 ---
 # 概述
 集合类存放地点都是对象的引用，而非对象本身，处于表达式上的便利，我们称集合中的对象就是指集合中对象的引用。   

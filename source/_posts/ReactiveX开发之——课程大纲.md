@@ -1,8 +1,12 @@
 ---
 title: ReactiveX开发之——课程大纲
+categories:
+  - 高级语言
+  - ReactiveX
+tags:
+  - 课程大纲
+abbrlink: ec34f163
 date: 2018-04-24 21:26:38
-categories: [高级语言,ReactiveX]
-tags: [课程大纲]
 ---
 # ReactiveX学习大纲
 ## ReactiveX定义

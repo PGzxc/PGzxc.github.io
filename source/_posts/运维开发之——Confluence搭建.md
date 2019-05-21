@@ -1,8 +1,12 @@
 ---
 title: 运维开发之——Confluence搭建
+categories:
+  - 开发
+  - 运维
+tags:
+  - Confluence
+abbrlink: cddda75d
 date: 2018-07-30 22:16:34
-categories: [开发,运维]
-tags: [Confluence]
 ---
 # 前言
 Atlassian Confluence（简称Confluence）是一个专业的wiki程序。它是一个知识管理的工具，通过它可以实现团队成员之间的协作和知识共享。

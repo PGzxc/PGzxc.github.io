@@ -1,8 +1,14 @@
 ---
 title: Android开发之——美团Robus热修复
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 第三方库
+tags:
+  - 热修复
+abbrlink: '86500645'
 date: 2017-12-26 21:10:23
-categories: [开发,移动开发,Android,第三方库]
-tags: [热修复]
 ---
 介绍热修复之前，我们先看下InstantRun 
 # InstantRun

@@ -1,8 +1,12 @@
 ---
 title: Git开发之——常用的几个指令
+categories:
+  - 工具
+  - Git
+tags:
+  - 常用指令
+abbrlink: a16a4971
 date: 2018-02-25 23:26:44
-categories: [工具,Git]
-tags: [常用指令]
 ---
 
 # 前言

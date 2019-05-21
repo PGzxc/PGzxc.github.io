@@ -1,8 +1,12 @@
 ---
 title: VI开发之——三种模式
+categories:
+  - 工具
+  - VI
+tags:
+  - VI模式
+abbrlink: ed14c809
 date: 2018-02-25 18:02:31
-categories: [工具,VI]
-tags: [VI模式]
 ---
 # VI三种模式
 VI有三种基本的工作模式：  

@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——字符串模板
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 字符串模板
+abbrlink: dce5e494
 date: 2017-12-19 17:04:40
-categories: [高级语言,Kotlin]
-tags: [字符串模板]
 ---
 # 前言
 

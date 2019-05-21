@@ -1,8 +1,15 @@
 ---
 title: Android开发之——移动无线网络长连接
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 基础
+tags:
+  - 推送
+  - 长连接
+abbrlink: fb864bb6
 date: 2017-12-31 17:03:53
-categories: [开发,移动开发,Android,基础]
-tags: [推送,长连接]
 ---
 # 移动互联网应用现状  
 

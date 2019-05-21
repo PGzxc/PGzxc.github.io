@@ -1,8 +1,13 @@
 ---
 title: React Native开发之——组件Button
+categories:
+  - 开发
+  - 移动开发
+  - React Native
+tags:
+  - 组件Button
+abbrlink: cba43e80
 date: 2018-03-07 10:14:43
-categories: [开发,移动开发,React Native]
-tags: [组件Button]
 ---
 # 前言 
 Button-按钮，平时开发中再熟悉不过的东西了，React Native 0.37之前并没有Button按钮，一直用TouchableOpacity 或 TouchableNativeFeedback替代，React Native 0.37开始加入Button组件，今天我们要学的就是Button组件。

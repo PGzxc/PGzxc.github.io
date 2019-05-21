@@ -1,8 +1,12 @@
 ---
 title: Jenkins构建Android项目生成apk
+categories:
+  - 工具
+  - Jenkins
+tags:
+  - 项目构建
+abbrlink: '17119812'
 date: 2017-11-18 17:57:47
-categories: [工具,Jenkins]
-tags: [项目构建]
 ---
 原文参考：[Jenkins持续化构建Android项目（二）-构建Android项目生成apk（by 星空武哥）][1]    
  

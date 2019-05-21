@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——数据类
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 数据类
+abbrlink: 107a5f4d
 date: 2017-12-23 10:39:44
-categories: [高级语言,Kotlin]
-tags: [数据类]
 ---
 # 前言 
 

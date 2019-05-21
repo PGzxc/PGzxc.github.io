@@ -1,8 +1,14 @@
 ---
 title: Android开发之——图片加载框架比较与使用
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 第三方库
+tags:
+  - 网络图片
+abbrlink: be069810
 date: 2017-12-05 22:43:01
-categories: [开发,移动开发,Android,第三方库]
-tags: [网络图片]
 ---
 
 Android中网络图片的加载几乎是必须的，在使用图片的过程中经常伴随着OOM，错位，图像自定义等一系列问题；    

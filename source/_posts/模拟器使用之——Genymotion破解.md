@@ -1,8 +1,12 @@
 ---
 title: 模拟器使用之——Genymotion破解
+categories:
+  - 工具
+  - 模拟器
+tags:
+  - Genymotion
+abbrlink: 84d69a61
 date: 2017-12-01 22:17:48
-categories: [工具,模拟器]
-tags: [Genymotion]
 ---
 # 前言
 昨天还是好好的，今天Genymotion突然不能用了，错误如下：

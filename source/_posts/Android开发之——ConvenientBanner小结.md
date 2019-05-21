@@ -1,8 +1,14 @@
 ---
 title: Android开发之——ConvenientBanner小结
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 第三方库
+tags:
+  - 轮播图
+abbrlink: 5d558d7d
 date: 2017-12-05 21:36:54
-categories: [开发,移动开发,Android,第三方库]
-tags: [轮播图]
 ---
 轮播图是每款APP的标配，无论是引导页还是首页展示，随从可见；自己实现的话，既要处理布局问题，数据适配问题，又要处理图片的轮询等一系列问题；好在有封装好的第三方的类库，从此实现轮播图就简单了好多！！
 <!--more-->

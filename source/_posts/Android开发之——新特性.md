@@ -1,8 +1,14 @@
 ---
 title: Android开发之——新特性
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 新特性
+tags:
+  - 新特性
+abbrlink: fb211eb4
 date: 2018-01-10 22:38:27
-categories: [开发,移动开发,Android,新特性]
-tags: [新特性]
 ---
 # 前言
 Google每发布一个Android新版本，都会在官网更新最新的功能，我们通过[https://developer.android.google.cn/about/versions/nougat/index.html][0]

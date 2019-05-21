@@ -1,8 +1,14 @@
 ---
 title: Android硬件开发之——NFC概述
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 硬件开发
+tags:
+  - NFC概述
+abbrlink: dac1b518
 date: 2018-02-28 17:39:19
-categories: [开发,移动开发,Android,硬件开发]
-tags: [NFC概述]
 ---
 # 前言  
 本文主要讲述与NFC相关的知识点，内容包含：  

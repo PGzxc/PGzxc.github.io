@@ -1,8 +1,14 @@
 ---
 title: Android开发之——腾讯热修复Tinker初探
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 第三方库
+tags:
+  - 热修复
+abbrlink: 15e207bb
 date: 2017-12-27 09:38:14
-categories: [开发,移动开发,Android,第三方库]
-tags: [热修复]
 ---
 热补丁修复框架，极大的方便了开发者热修复自己线上App的出现的bug和漏洞。之前已经尝试了阿里热修复SopHix和美团热修复Robust，现在尝试集成腾讯的热修复Tinker。  
 <!--more-->

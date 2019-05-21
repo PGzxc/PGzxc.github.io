@@ -1,8 +1,14 @@
 ---
 title: Android开发之——快速发布开源项目到Jcenter
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 第三方库
+tags:
+  - Jcenter
+abbrlink: 3a83dc3
 date: 2017-12-31 09:05:54
-categories: [开发,移动开发,Android,第三方库]
-tags: [Jcenter]
 ---
 # 前言
 在Android开发中我们经常使用第三方的开源项目，在app/build.gradle中compile类库，不用去下载文件以lib或modulelib的方式引入，是不是很方便呢？   

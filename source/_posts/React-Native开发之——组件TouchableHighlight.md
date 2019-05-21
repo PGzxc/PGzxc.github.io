@@ -1,8 +1,13 @@
 ---
 title: React Native开发之——组件TouchableHighlight
+categories:
+  - 开发
+  - 移动开发
+  - React Native
+tags:
+  - 组件TouchableHighlight
+abbrlink: c9325146
 date: 2018-03-06 11:54:29
-categories: [开发,移动开发,React Native]
-tags: [组件TouchableHighlight]
 ---
 
 # 前言 

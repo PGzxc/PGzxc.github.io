@@ -1,8 +1,14 @@
 ---
 title: Android硬件开发之——非NDEF格式的数据读写
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 硬件开发
+tags:
+  - 非NDEF格式的数据读写
+abbrlink: 32fd0337
 date: 2018-03-01 18:19:19
-categories: [开发,移动开发,Android,硬件开发]
-tags: [非NDEF格式的数据读写]
 ---
 # 前言 
 本文主要讲述读写非NDEF格式的数据，包含以下内容：  

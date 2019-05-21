@@ -1,8 +1,13 @@
 ---
 title: React Native开发之——组件TextInput
+categories:
+  - 开发
+  - 移动开发
+  - React Native
+tags:
+  - 组件TextInput
+abbrlink: f59b5413
 date: 2018-03-04 12:18:25
-categories: [开发,移动开发,React Native]
-tags: [组件TextInput]
 ---
 # 前言 
 React Native中用于输入文本的组件是TextInput，类似于Android中的EditText，TextInput也是继承自 View,所以 View 的属性 TextInput 也能使用，一些样式类的属性可以参照 View 的相关属性。   

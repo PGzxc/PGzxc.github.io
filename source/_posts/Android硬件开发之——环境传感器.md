@@ -1,8 +1,14 @@
 ---
 title: Android硬件开发之——环境传感器
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 硬件开发
+tags:
+  - 环境传感器
+abbrlink: 2c10b3e1
 date: 2018-02-28 16:50:05
-categories: [开发,移动开发,Android,硬件开发]
-tags: [环境传感器]
 ---
 # 前言 
 本文讲述环境传感器，主要内容有：  

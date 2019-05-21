@@ -1,8 +1,12 @@
 ---
 title: Hexo博客开发之——Git指令备份博客
+categories:
+  - 工具
+  - Hexo博客
+tags:
+  - 备份
+abbrlink: dc9065
 date: 2017-12-06 16:45:59
-categories: [工具, Hexo博客]
-tags: [备份]
 ---
 # 前言
 一直使用第三方备份工具[hexo-git-backup][1]备份hexo博客，今天使用时突然出错了！那么只能用git自带的指令完成博客文件的备份工作了。

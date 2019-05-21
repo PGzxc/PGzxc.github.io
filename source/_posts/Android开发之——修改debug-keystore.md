@@ -1,8 +1,14 @@
 ---
 title: Android开发之——修改debug.keystore
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 配置
+tags:
+  - 修改debug.keystore
+abbrlink: 49f3ab4a
 date: 2018-03-29 13:25:25
-categories: [开发,移动开发,Android,配置]
-tags: [修改debug.keystore]
 ---
 # 前言 
 app在运行安装到手机上时，都是要签名的(没有签名无法安装)，你可以设置签名，然后安装时使用设置的签名；没有设置签名，就用系统默认的签名信息，那么，这个签名信息，你知道么？     

@@ -1,8 +1,14 @@
 ---
 title: Android硬件开发之——NDEF文本格式解析
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 硬件开发
+tags:
+  - NDEF文本格式解析
+abbrlink: '9e253423'
 date: 2018-03-01 13:58:13
-categories: [开发,移动开发,Android,硬件开发]
-tags: [NDEF文本格式解析]
 ---
 # 前言
 本文主要讲述NFC文本格式解析，主要包括以下几个方面：  

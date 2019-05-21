@@ -1,8 +1,12 @@
 ---
 title: Windows开发之——软件环境变量及配置
+categories:
+  - 系统
+  - Windows
+tags:
+  - 软件环境配置
+abbrlink: e939ac0e
 date: 2018-10-20 13:37:13
-categories: [系统,Windows]
-tags: [软件环境配置]
 ---
 
 # 前言

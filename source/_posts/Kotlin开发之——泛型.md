@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——泛型
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 泛型
+abbrlink: d7ebd6b2
 date: 2017-12-23 00:00:32
-categories: [高级语言,Kotlin]
-tags: [泛型]
 ---
 # 概述
 一般类和函数，只能使用具体的类型：要么是基本类型，要么是自定义的类。如果要编写可以应用于多种类型的代码，这种刻板的约束对代码的限制很大。而OOP的多态采用了一种泛化的机制，在SE5中，java引用了泛型。   

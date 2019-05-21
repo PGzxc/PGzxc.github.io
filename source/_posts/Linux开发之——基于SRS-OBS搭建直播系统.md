@@ -1,8 +1,12 @@
 ---
 title: Linux开发之——基于SRS+OBS搭建直播系统
+categories:
+  - 系统
+  - Linux
+tags:
+  - 直播
+abbrlink: b85f9952
 date: 2017-11-23 17:26:03
-categories: [系统,Linux]
-tags: [直播]
 ---
 这段时间与视频，直播相关的技术不可谓不热，今天我们就近距离接触下，尽早搭上这班车！  
 我们先看一张效果图  

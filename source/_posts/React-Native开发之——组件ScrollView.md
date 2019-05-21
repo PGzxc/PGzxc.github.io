@@ -1,8 +1,13 @@
 ---
 title: React Native开发之——组件ScrollView
+categories:
+  - 开发
+  - 移动开发
+  - React Native
+tags:
+  - 组件ScrollView
+abbrlink: 13ea2994
 date: 2018-03-19 17:50:17
-categories: [开发,移动开发,React Native]
-tags: [组件ScrollView]
 ---
 # 前言 
 ScrollView是一个通用的可滚动的容器，你可以在其中放入多个组件和视图，而且这些组件并不需要是同类型的。ScrollView不仅可以垂直滚动（默认），还能水平滚动（通过horizontal属性来设置）。  

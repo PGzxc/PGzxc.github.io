@@ -1,8 +1,12 @@
 ---
 title: Java开发之——Java9的新特性
+categories:
+  - 基础语言
+  - Java
+tags:
+  - Java9
+abbrlink: 25c02a3c
 date: 2017-12-14 15:31:51
-categories: [基础语言,Java]
-tags: [Java9]
 ---
 原文请参考：[Java 9中的9个新特性]
 # 序

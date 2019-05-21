@@ -1,8 +1,14 @@
 ---
 title: Android硬件开发之——NFC程序实战
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 硬件开发
+tags:
+  - NFC程序实战
+abbrlink: 6e2d77e9
 date: 2018-02-28 22:56:46
-categories: [开发,移动开发,Android,硬件开发]
-tags: [NFC程序实战]
 ---
 # 前言 
 本文开始讲述NFC实战，本文包含以下几点：  

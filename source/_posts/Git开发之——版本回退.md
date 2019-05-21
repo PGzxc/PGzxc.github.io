@@ -1,8 +1,12 @@
 ---
 title: Git开发之——版本回退
+categories:
+  - 工具
+  - Git
+tags:
+  - 版本回退
+abbrlink: 95bd231c
 date: 2018-02-26 09:21:32
-categories: [工具,Git]
-tags: [版本回退]
 ---
 # 前言 
 

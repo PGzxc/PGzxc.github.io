@@ -1,8 +1,13 @@
 ---
 title: React Native开发之——组件TouchableOpacity
+categories:
+  - 开发
+  - 移动开发
+  - React Native
+tags:
+  - 组件TouchableOpacity
+abbrlink: c0c33208
 date: 2018-03-09 09:09:56
-categories: [开发,移动开发,React Native]
-tags: [组件TouchableOpacity]
 ---
 # 前言 
 TouchableOpacity用于使视图正确响应触摸的包装器。按下，封装视图的透明度降低，使其变暗。 这个组件比较简单，属性较少，简单说明如下：  

@@ -1,8 +1,14 @@
 ---
 title: Android开发之——WebView适配
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 适配
+tags:
+  - WebView
+abbrlink: '36321e42'
 date: 2019-03-03 13:22:23
-categories: [开发,移动开发,Android,适配]
-tags: [WebView]
 ---
 
 ## 前言

@@ -1,8 +1,12 @@
 ---
 title: Java开发之——Java8的新特性
+categories:
+  - 基础语言
+  - Java
+tags:
+  - Java8
+abbrlink: f856f3b9
 date: 2017-12-14 11:00:06
-categories: [基础语言,Java]
-tags: [Java8]
 ---
 原文请参考[Java8的新特性][1]
 # 序

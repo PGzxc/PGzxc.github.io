@@ -1,8 +1,12 @@
 ---
 title: Node开发之——清除项目缓存文件夹
+categories:
+  - 后端
+  - Node
+tags:
+  - 清除缓存
+abbrlink: e824cee
 date: 2019-04-01 20:58:03
-categories: [后端,Node]
-tags: [清除缓存]
 ---
 
 ## 前言

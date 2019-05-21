@@ -1,8 +1,12 @@
 ---
 title: Windows开发之——Telnet Service
+categories:
+  - 系统
+  - Windows
+tags:
+  - Telnet Service
+abbrlink: 9a92c8b
 date: 2018-09-19 23:15:53
-categories: [系统,Windows]
-tags: [Telnet Service]
 ---
 # 前言
 telnet命令用于登录远程主机，对远程主机进行管理。telnet因为采用明文传送报文，安全性不好，很多Linux服务器都不开放telnet服务，而改用更安全的ssh方式了。但仍然有很多别的系统可能采用了telnet方式来提供远程登录，因此弄清楚telnet客户端的使用方式仍是很有必要的。

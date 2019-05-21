@@ -1,8 +1,14 @@
 ---
 title: Android硬件开发之——传感器概述
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 硬件开发
+tags:
+  - 传感器概述
+abbrlink: 209a37a7
 date: 2018-02-28 10:44:57
-categories: [开发,移动开发,Android,硬件开发]
-tags: [传感器概述]
 ---
 # 前言 
 本文主要讲述与Android硬件相关的传感器方面的知识，将从以下几个方面展开：  

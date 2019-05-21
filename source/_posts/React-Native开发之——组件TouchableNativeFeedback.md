@@ -1,8 +1,13 @@
 ---
 title: React Native开发之——组件TouchableNativeFeedback
+categories:
+  - 开发
+  - 移动开发
+  - React Native
+tags:
+  - 组件TouchableNativeFeedback
+abbrlink: 2d3fe878
 date: 2018-03-08 10:37:29
-categories: [开发,移动开发,React Native]
-tags: [组件TouchableNativeFeedback]
 ---
 # 前言 
 TouchableNativeFeedback，用于使视图正确响应触摸的包装器(仅android)。在android上，该组件使用本地状态drawable来显示触摸反馈。目前它只支持将单个视图实例作为子节点，因为它通过将该视图替换为另一个中的节点实例，并设置一些附加属性。

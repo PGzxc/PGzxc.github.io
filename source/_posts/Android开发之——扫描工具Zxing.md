@@ -1,8 +1,14 @@
 ---
 title: Android开发之——扫描工具Zxing
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 工具
+tags:
+  - Zxing
+abbrlink: 5fa29d1d
 date: 2018-07-04 13:55:20
-categories: [开发,移动开发,Android,工具]
-tags: [Zxing]
 ---
 # 前言
 二维码可以集成文本、网址、名片、文件、图片、音视频、微信、小程序等众多的功能，极大的方便了信息的传输与推广。在Android中使用Zxing二维码工具，zxing项目是谷歌推出的用来识别多种格式条形码的开源项目，本文将介绍Zxing项目、如何运行官方、自定义功能等。

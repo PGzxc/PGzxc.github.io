@@ -1,8 +1,12 @@
 ---
 title: Windows开发之——IIS的搭建
+categories:
+  - 系统
+  - Windows
+tags:
+  - IIS
+abbrlink: 93e5ea10
 date: 2018-08-12 16:34:07
-categories: [系统,Windows]
-tags: [IIS]
 ---
 
 # 前言

@@ -1,8 +1,14 @@
 ---
 title: Android数据加密之——MD5加密
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 加密
+tags:
+  - MD5加密
+abbrlink: 96f14beb
 date: 2018-03-30 19:47:37
-categories: [开发,移动开发,Android,加密]
-tags: [MD5加密]
 ---
 注：本文为转载文章，原文请参考：[Android数据加密之MD5加密][1] 
 # 前言：

@@ -1,8 +1,12 @@
 ---
 title: CentOS开发之——设置静态ip
+categories:
+  - 系统
+  - CentOS
+tags:
+  - 静态ip
+abbrlink: 8bc69dea
 date: 2018-07-28 16:09:42
-categories: [系统,CentOS]
-tags: [静态ip]
 ---
 # 前言
 安装好的CentOS系统，默认是动态ip，下次启动后ip地址有可能就变了。而应用软件有些是需要设置固定ip地址的，本文主要讲述CentOS系统设置静态ip。      

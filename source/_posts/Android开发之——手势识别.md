@@ -1,8 +1,14 @@
 ---
 title: Android开发之——手势识别
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 基础
+tags:
+  - 手势识别
+abbrlink: b7e898af
 date: 2018-01-09 17:16:01
-categories: [开发,移动开发,Android,基础]
-tags: [手势识别]
 ---
 # 前言
 使用浏览器或者输入法应用时会有一些手势操作，还可以自定义手势。这些神奇的操作是怎么做的呢？这一篇重点记录手势的识别和创建。这篇的内容使用到了android.gesture包，具体的例子参考的是Sample中的GestureBuilder程序。 

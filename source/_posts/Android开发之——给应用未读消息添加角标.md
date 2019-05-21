@@ -1,8 +1,14 @@
 ---
 title: Android开发之——给应用未读消息添加角标
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 第三方库
+tags:
+  - 应用角标
+abbrlink: db3260ad
 date: 2017-12-29 15:42:43
-categories: [开发,移动开发,Android,第三方库]
-tags: [应用角标]
 ---
 # 前言
 

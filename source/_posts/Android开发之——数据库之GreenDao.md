@@ -1,8 +1,15 @@
 ---
 title: Android开发之——数据库之GreenDao
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 数据库
+tags:
+  - 数据库
+  - GreenDao
+abbrlink: ae39a0be
 date: 2018-01-03 10:48:37
-categories: [开发,移动开发,Android,数据库]
-tags: [数据库,GreenDao]
 ---
 # 前言  
 GreenDao是一个将对象映射到SQLite数据库中的轻量级且快速的ORM解决方案。关于GreenDao的相关信息可以查看官网[GreenDao][1]      

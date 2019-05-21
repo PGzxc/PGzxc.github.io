@@ -1,9 +1,12 @@
 ---
 title: MarkDown开发之——快速入门
+categories:
+  - 工具
+  - Markdown
+tags:
+  - 语法
+abbrlink: 8d6e83f
 date: 2017-11-12 02:12:18
-categories: [工具,Markdown] #文章分类目录，可以省略
-tags: [语法]
-
 ---
 # 前言
 

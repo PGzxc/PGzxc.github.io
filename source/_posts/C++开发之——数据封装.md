@@ -1,8 +1,12 @@
 ---
 title: C++开发之——数据封装
+categories:
+  - 基础语言
+  - C++
+tags:
+  - 数据封装
+abbrlink: b98fe6be
 date: 2018-02-24 22:42:39
-categories: [基础语言,C++]
-tags: [数据封装]
 ---
 # C++数据封装  
 所有的 C++ 程序都有以下两个基本要素：  

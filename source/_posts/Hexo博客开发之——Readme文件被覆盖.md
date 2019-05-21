@@ -1,8 +1,12 @@
 ---
 title: Hexo博客开发之——README文件被覆盖
+categories:
+  - 工具
+  - Hexo博客
+tags:
+  - 覆盖
+abbrlink: 8b92bac4
 date: 2017-11-13 15:43:35
-categories: [工具,Hexo博客]
-tags: [覆盖]
 ---
 ### 问题
  使用hexo+github搭建个人博客后，使用hexo d 指令发布本地代码到github上的时候，遇到了一下问题，现总结如下：

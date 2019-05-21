@@ -1,8 +1,12 @@
 ---
 title: Hexo博客开发之——电脑重装系统后如何恢复Hexo博客
+categories:
+  - 工具
+  - Hexo博客
+tags:
+  - Hexo恢复
+abbrlink: 3131a92e
 date: 2018-12-22 20:51:01
-categories: [工具,Hexo博客]
-tags: [Hexo恢复]
 ---
 ## 一：安装Node.js，git，并查看当前软件环境
 ![][1]

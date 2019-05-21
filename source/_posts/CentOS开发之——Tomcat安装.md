@@ -1,8 +1,12 @@
 ---
 title: CentOS开发之——Tomcat安装
+categories:
+  - 系统
+  - CentOS
+tags:
+  - Tomcat
+abbrlink: f5779c0a
 date: 2018-08-12 12:32:42
-categories: [系统,CentOS]
-tags: [Tomcat]
 ---
 # 前言
 Tomcat是Apache 软件基金会（Apache Software Foundation）的Jakarta 项目中的一个核心项目，是一个免费的开放源代码的Web 应用服务器，属于轻量级应用服务器，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试JSP 程序的首选。本文将介绍在UcentOS系统下安装Tomcat。  

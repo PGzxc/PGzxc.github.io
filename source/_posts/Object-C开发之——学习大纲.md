@@ -1,8 +1,12 @@
 ---
 title: Object-C开发之——学习大纲
+categories:
+  - 基础语言
+  - Object-C
+tags:
+  - 学习大纲
+abbrlink: e4c5840
 date: 2018-06-14 11:11:59
-categories: [基础语言,Object-C]
-tags: [学习大纲]
 ---
 # 前言
 ## 历史

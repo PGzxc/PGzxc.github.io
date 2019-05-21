@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——密封类
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 密封类
+abbrlink: d13d0da4
 date: 2017-12-22 18:37:17
-categories: [高级语言,Kotlin]
-tags: [密封类]
 ---
 # 前言   
 Kotlin的密封类是Java中没有的新概念，并为此开辟了另一片可能性新的世界。   

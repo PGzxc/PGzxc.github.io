@@ -1,8 +1,14 @@
 ---
 title: Android开发之——EventBus3.x的使用
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 第三方库
+tags:
+  - EventBus3.x
+abbrlink: 172008d
 date: 2018-02-01 14:35:58
-categories: [开发,移动开发,Android,第三方库]
-tags: [EventBus3.x]
 ---
 # 简介
 EventBus是[http://greenrobot.org/][0]出的一个发布者/订阅者（Publisher/Subscriber）的事件总线。主要是用来在Android各个组件之间进行消息传递的。能够很好地对发布者和订阅者之间进行解耦。 

@@ -1,8 +1,13 @@
 ---
 title: React Native开发之——组件ViewPagerAndroid
+categories:
+  - 开发
+  - 移动开发
+  - React Native
+tags:
+  - 组件ViewPagerAndroid
+abbrlink: 8805ed25
 date: 2018-03-20 09:44:24
-categories: [开发,移动开发,React Native]
-tags: [组件ViewPagerAndroid]
 ---
 # 前言 
 今天我们来讲解一下关于 ViewPager 的使用，它是一个允许子视图左右滚动翻页的容器。我们知道在Android开发中系统有ViewPager这个组件，作用是实现滚动翻页的，在RN中也是有这么一个组件的（ViewPagerAndroid），每一个ViewPagerAndroid的子容器会被视作一个单独的页，并且会被拉伸填满ViewPagerAndroid。  

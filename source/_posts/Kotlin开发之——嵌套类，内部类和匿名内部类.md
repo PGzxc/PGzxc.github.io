@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——嵌套类，内部类和匿名内部类
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 内部类
+abbrlink: '31685994'
 date: 2017-12-23 11:58:06
-categories: [高级语言,Kotlin]
-tags: [内部类]
 ---
 # 实例
 和Java编程类似，在Kotlin编程也有嵌套类和内部类及匿名内部类。   

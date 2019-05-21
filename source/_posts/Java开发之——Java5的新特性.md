@@ -1,8 +1,12 @@
 ---
 title: Java开发之——Java5的新特性
+categories:
+  - 基础语言
+  - Java
+tags:
+  - Java5
+abbrlink: bf7a93c7
 date: 2017-12-14 09:04:08
-categories: [基础语言,Java]
-tags: [Java5]
 ---
 原文请参考：[Java5的新特性][1]
 # 序

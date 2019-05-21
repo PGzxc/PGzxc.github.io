@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——可见性修饰符
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 可见性修饰符
+abbrlink: fa1b585f
 date: 2017-12-23 09:50:15
-categories: [高级语言,Kotlin]
-tags: [可见性修饰符]
 ---
 # 可见性修饰符
 可见性修饰符用于对其修饰对象的适用范围。在Kotlin中，存在private、protected、internal以及public等四种修饰符，它们可用于修饰类、对象、接口、构造器、函数、属性以及属性的设置方法等。   

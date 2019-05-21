@@ -1,8 +1,14 @@
 ---
 title: Android开发之——跑马灯效果
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 基础
+tags:
+  - 跑马灯
+abbrlink: 91b0c8ff
 date: 2018-03-29 22:26:54
-categories: [开发,移动开发,Android,基础]
-tags: [跑马灯]
 ---
 # 前言 
 在看商城类的项目时，如淘宝头条，京东头条，经常会看到跑马灯效果，上下轮播显示热门商品！ 

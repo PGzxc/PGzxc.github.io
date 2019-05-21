@@ -1,8 +1,14 @@
 ---
 title: Android开发之——Lottie动画
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 动画
+tags:
+  - Lottie动画
+abbrlink: d9faa022
 date: 2017-12-26 09:37:47
-categories: [开发,移动开发,Android,动画]
-tags: [Lottie动画]
 ---
 # 简介
 Lottie是Airbnb开源的一个面向IOS、Android、React Native的动画库，能分析Adobe After Effects导出的动画，并且能让原生App像使用静态素材一样使用这些动画，完美实现动画效果。 

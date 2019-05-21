@@ -1,8 +1,12 @@
 ---
 title: Git开发之——标签管理
+categories:
+  - 工具
+  - Git
+tags:
+  - 标签管理
+abbrlink: 89e1ab8f
 date: 2018-02-26 19:37:07
-categories: [工具,Git]
-tags: [标签管理]
 ---
 # 前言 
 本次主要介绍标签的操作   

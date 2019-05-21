@@ -1,8 +1,13 @@
 ---
 title: React Native开发之——Webstorm快捷开发
+categories:
+  - 开发
+  - 移动开发
+  - React Native
+tags:
+  - Webstorm快捷开发
+abbrlink: c8be3adf
 date: 2018-03-02 17:49:59
-categories: [开发,移动开发,React Native]
-tags: [Webstorm快捷开发]
 ---
 # 前言  
 开发RN的工具有很多，选择性也比较多，常见的有：  

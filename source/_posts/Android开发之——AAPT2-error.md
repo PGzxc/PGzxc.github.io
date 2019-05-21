@@ -1,8 +1,14 @@
 ---
 title: Android开发之——AAPT2 error
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - Error
+tags:
+  - Error
+abbrlink: 29a50c49
 date: 2017-12-14 03:28:44
-categories: [开发,移动开发,Android,Error]
-tags: [Error]
 ---
 # 问题
 今天使用Android Studio 3.0.1 编译运行时项目报错了   

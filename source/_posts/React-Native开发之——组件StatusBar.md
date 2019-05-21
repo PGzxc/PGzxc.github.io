@@ -1,8 +1,13 @@
 ---
 title: React Native开发之——组件StatusBar
+categories:
+  - 开发
+  - 移动开发
+  - React Native
+tags:
+  - 组件StatusBar
+abbrlink: f52d4829
 date: 2018-03-16 10:56:14
-categories: [开发,移动开发,React Native]
-tags: [组件StatusBar]
 ---
 # 前言 
 StatusBar 是 React Native 用来设置并动态改变设备的状态栏显示特性。可以通过设置StatusBar的样式实现不同页面状态栏的显示。  

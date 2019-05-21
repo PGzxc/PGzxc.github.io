@@ -1,8 +1,13 @@
 ---
 title: 'C#开发之——Visual2017导入项目'
+categories:
+  - 开发
+  - 桌面开发
+  - 'C#'
+tags:
+  - 'C#'
+abbrlink: 19e5eb6c
 date: 2018-10-30 22:03:23
-categories: [开发,桌面开发,C#]
-tags: [C#]
 ---
 
 # 前言

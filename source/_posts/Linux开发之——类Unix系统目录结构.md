@@ -1,8 +1,12 @@
 ---
 title: Linux开发之——类Unix系统目录结构
+categories:
+  - 系统
+  - Linux
+tags:
+  - 目录结构
+abbrlink: 97511c81
 date: 2017-12-11 08:43:43
-categories: [系统,Linux]
-tags: [目录结构]
 ---
 
 # 文件和目录

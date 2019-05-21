@@ -1,8 +1,12 @@
 ---
 title: Anko开发之——Anko Commons
+categories:
+  - 高级语言
+  - Anko
+tags:
+  - Anko Commons
+abbrlink: dc8aeb00
 date: 2018-03-13 15:56:32
-categories: [高级语言,Anko]
-tags: [Anko Commons]
 ---
 # 前言 
 最近的事情有点多，继上一篇[Anko初探][1]有一段时间了，本文将继续更新用Anko开发Android相关教程；关于Anko网上的资源有限，大部分是查看官网说明一点点摸索的，有需求的请查看官方地址：[Anko][2]，作者水平有限，难免有疏漏之处。欢迎留言探讨。    

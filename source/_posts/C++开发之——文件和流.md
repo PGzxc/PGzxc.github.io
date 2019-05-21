@@ -1,8 +1,12 @@
 ---
 title: C++开发之——文件和流
+categories:
+  - 基础语言
+  - C++
+tags:
+  - 文件和流
+abbrlink: cb274156
 date: 2018-02-24 23:03:06
-categories: [基础语言,C++]
-tags: [文件和流]
 ---
 # C++文件和流  
 到目前为止，我们已经使用了 iostream 标准库，它提供了 cin 和 cout 方法分别用于从标准输入读取流和向标准输出写入流。

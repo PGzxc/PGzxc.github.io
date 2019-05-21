@@ -1,8 +1,16 @@
 ---
 title: Android开发之——Android 代码混淆(2)
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 安全
+tags:
+  - 混淆
+  - 安全
+  - 工具
+abbrlink: 3c0af0fb
 date: 2017-11-16 16:36:01
-categories: [开发,移动开发,Android,安全]
-tags: [混淆,安全,工具]
 ---
 
 上一篇介绍了混淆的概念，Proguard的作用和原理。这篇简单介绍下ProGuard的配置和使用。

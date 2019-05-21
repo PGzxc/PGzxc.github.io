@@ -1,8 +1,14 @@
 ---
 title: Android硬件开发之——NFC技术
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 硬件开发
+tags:
+  - NFC技术
+abbrlink: 4dc6e808
 date: 2018-02-28 19:26:38
-categories: [开发,移动开发,Android,硬件开发]
-tags: [NFC技术]
 ---
 # 前言 
 本文主要讲述Android中的NFC技术，分以下几个方面展开：  

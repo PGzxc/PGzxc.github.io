@@ -1,8 +1,14 @@
 ---
 title: Android开发之——目录结构浅析
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 基础
+tags:
+  - 目录结构
+abbrlink: ac8bb24
 date: 2017-11-17 15:32:57
-categories: [开发,移动开发,Android,基础]
-tags: [目录结构]
 ---
 
 对于从Eclipe转向As的开发者和Android新手来说，明白Eclipse和As的区别，熟悉AS的目录结构，十分必要！  

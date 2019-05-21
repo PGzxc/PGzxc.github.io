@@ -1,8 +1,14 @@
 ---
 title: Android开发之——app启动秒开
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 优化
+tags:
+  - APP秒开
+abbrlink: e88019ff
 date: 2018-01-22 09:44:46
-categories: [开发,移动开发,Android,优化]
-tags:  [APP秒开]
 ---
 # 前言 
 本篇博客要剖析和解决的两个问题：   

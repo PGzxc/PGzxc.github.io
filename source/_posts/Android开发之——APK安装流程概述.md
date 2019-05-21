@@ -1,8 +1,14 @@
 ---
 title: Android开发之——APK安装流程概述
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 基础
+tags:
+  - APK安装
+abbrlink: 350cd010
 date: 2017-11-17 10:47:53
-categories: [开发,移动开发,Android,基础]
-tags: [APK安装]
 ---
 # 前言 
    

@@ -1,8 +1,12 @@
 ---
 title: Java开发之——HTTP-TCP-UDP-Socket-WebSocket
+categories:
+  - 基础语言
+  - Java
+tags:
+  - 网络通信
+abbrlink: a32cc810
 date: 2018-02-05 11:15:36
-categories: [基础语言,Java]
-tags: [网络通信]
 ---
 # 前言
 此文终结我站在开发者的角度对于以上关键词的形象理解，至于底层抽象的概念，别人用啥TCP/IP详解，我也懒得浪费时间。前任栽树，后人乘凉，一个道理。

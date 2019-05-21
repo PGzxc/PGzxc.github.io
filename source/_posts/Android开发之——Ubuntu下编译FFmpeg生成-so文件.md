@@ -1,8 +1,14 @@
 ---
 title: Android开发之——Ubuntu下编译FFmpeg生成.so文件
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 第三方库
+tags:
+  - FFmpeg
+abbrlink: c5189b5e
 date: 2018-06-02 22:03:19
-categories: [开发,移动开发,Android,第三方库]
-tags: [FFmpeg]
 ---
 # 前言
 FFmpeg是一套可以用来记录、转换数字音频、视频，并能将其转化为流的开源计算机程序。多媒体视频处理工具FFmpeg有非常强大的功能包括视频采集功能、视频格式转换、视频抓图、给视频加水印等。市面上常见的播放器如：暴风影音、QQ影音、KMP、GOM Player、PotPlayer等都使用了该开源项目。   

@@ -1,8 +1,14 @@
 ---
 title: Android开发之——Parcelable和Serializable的区别
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 优化
+tags:
+  - 序列化
+abbrlink: 5f1f64ca
 date: 2017-11-22 15:31:42
-categories: [开发,移动开发,Android,优化]
-tags: [序列化]
 ---
 
 进行Android开发的时候，我们都知道不能将对象的引用传给Activities或者Fragments，我们需要将这些对象放到一个Intent或者Bundle里面，然后再传递。 

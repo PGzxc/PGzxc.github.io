@@ -1,8 +1,12 @@
 ---
 title: CentOS开发之——CentOS7安装
+categories:
+  - 系统
+  - CentOS
+tags:
+  - CentOS7
+abbrlink: 7f0aea19
 date: 2018-07-26 22:36:57
-categories: [系统,CentOS]
-tags: [CentOS7]
 ---
 # 前言
 CentOS（Community Enterprise Operating System，中文意思是：社区企业操作系统）是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。由于出自同样的源代码，因此有些要求高度稳定性的服务器以CentOS替代商业版的Red Hat Enterprise Linux使用。两者的不同，在于CentOS并不包含封闭源代码软件。   

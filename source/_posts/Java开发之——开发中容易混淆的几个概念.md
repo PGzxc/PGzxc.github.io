@@ -1,8 +1,13 @@
 ---
 title: Java开发之——开发中容易混淆的几个概念
+categories:
+  - 基础语言
+  - Java
+tags:
+  - Java
+  - 区别
+abbrlink: ea85e8b4
 date: 2017-11-20 10:56:28
-categories: [基础语言,Java]
-tags: [Java,区别]
 ---
 这篇文章主要记录在开发中容易混淆和使用出现错误的知识点，稍作整理，后续会持续更新  
 

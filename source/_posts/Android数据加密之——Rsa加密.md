@@ -1,8 +1,14 @@
 ---
 title: Android数据加密之——Rsa加密
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 加密
+tags:
+  - Rsa加密
+abbrlink: bd1a518b
 date: 2018-03-30 23:06:20
-categories: [开发,移动开发,Android,加密]
-tags: [Rsa加密]
 ---
 注：本文为转载文章，原文请参考：[Android数据加密之Rsa加密][1] 
 

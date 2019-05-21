@@ -1,8 +1,13 @@
 ---
 title: React Native开发之——组件Switch
+categories:
+  - 开发
+  - 移动开发
+  - React Native
+tags:
+  - 组件Switch
+abbrlink: 9e4bd9a5
 date: 2018-03-12 11:16:07
-categories: [开发,移动开发,React Native]
-tags: [组件Switch]
 ---
 # 前言 
 Switch：开关控件，类似于Android中的开关控件Switch。它需要一个onValueChange更新的回调函数value为了使组件反映用户操作，如果value组件未更新，组件将继续呈现所提供的value支持任何用户操作的预期结果。 

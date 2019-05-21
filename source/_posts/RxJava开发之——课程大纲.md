@@ -1,8 +1,12 @@
 ---
 title: RxJava开发之——课程大纲
+categories:
+  - 高级语言
+  - RxJava
+tags:
+  - 课程大纲
+abbrlink: dc86634d
 date: 2018-04-24 21:53:16
-categories: [高级语言,RxJava]
-tags: [课程大纲]
 ---
 ## 前言
 1. RxJava定义

@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——对象表达式和对象声明
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 对象表达式
+abbrlink: 3cd1c591
 date: 2017-12-23 11:24:53
-categories: [高级语言,Kotlin]
-tags: [对象表达式]
 ---
 # 概述  
 在java中，不管是为了实现接口或者抽象类类，我们总是习惯使用匿名内部类。最熟悉的例子，莫过于对单击事件的监听，也就是这样写：  

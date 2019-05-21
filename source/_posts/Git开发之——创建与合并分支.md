@@ -1,8 +1,12 @@
 ---
 title: Git开发之——创建与合并分支
+categories:
+  - 工具
+  - Git
+tags:
+  - 创建与合并分支
+abbrlink: b8d27512
 date: 2018-02-26 15:09:34
-categories: [工具,Git]
-tags: [创建与合并分支]
 ---
 # 前言  
 

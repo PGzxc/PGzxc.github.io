@@ -1,8 +1,14 @@
 ---
 title: Android开发之——Dagger2入门教程
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 第三方库
+tags:
+  - Dagger2
+abbrlink: 7361483e
 date: 2017-12-11 22:51:46
-categories: [开发,移动开发,Android,第三方库]
-tags: [Dagger2]
 ---
 
 现在Dagger2在项目里用的越来越多了，特别是RxJava+Retrofit+MVP+Dagger2在Android框架搭建时被越来越多的使用了。   

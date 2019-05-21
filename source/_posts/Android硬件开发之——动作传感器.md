@@ -1,8 +1,14 @@
 ---
 title: Android硬件开发之——动作传感器
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 硬件开发
+tags:
+  - 动作传感器
+abbrlink: 90472d34
 date: 2018-02-28 16:04:28
-categories: [开发,移动开发,Android,硬件开发]
-tags: [动作传感器]
 ---
 # 前言  
 本文主要讲述动作传感器，包含以下几个方面：  

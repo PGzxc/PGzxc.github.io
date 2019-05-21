@@ -1,8 +1,12 @@
 ---
 title: Linux开发之——安装AndroidStudio
+categories:
+  - 系统
+  - Linux
+tags:
+  - AndroidStudio
+abbrlink: 3d9c9766
 date: 2018-05-20 12:48:25
-categories: [系统,Linux]
-tags: [AndroidStudio]
 ---
 # 前言
 接触Ubuntu系统有一段时间了，对Ubuntu下软件的操作有了一定的了解，本文结合所学的知识，在Ubuntu系统下安装android开发工具——Android Studio。

@@ -1,8 +1,14 @@
 ---
 title: Android开发之——Android广播机制
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 基础
+tags:
+  - 广播
+abbrlink: 35f8b34f
 date: 2018-01-05 00:08:25
-categories: [开发,移动开发,Android,基础]
-tags: [广播]
 ---
 # 前言  
 BroadcastReceiver(广播接收器)，属于Android四大组件之一，在Android开发中，BroadcastReceiver的应用场景非常多，今天，我们将详细讲解关于BroadcastReceiver的一切相关知识。   

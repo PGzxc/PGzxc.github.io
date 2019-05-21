@@ -1,8 +1,12 @@
 ---
 title: Anko开发之——初探
+categories:
+  - 高级语言
+  - Anko
+tags:
+  - Anko
+abbrlink: dbbc033a
 date: 2017-11-27 16:25:39
-categories: [高级语言,Anko]
-tags: [Anko]
 ---
 这是一篇翻译文章，原文请查看[Kotlin/Anko][1]    
 Anko是一个Kotlin类库，它让我们开发Android应用更加快捷和方便，使你的代码更加简洁和易读；  

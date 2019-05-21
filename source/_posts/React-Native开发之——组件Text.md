@@ -1,8 +1,13 @@
 ---
 title: React Native开发之——组件Text
+categories:
+  - 开发
+  - 移动开发
+  - React Native
+tags:
+  - 组件Text
+abbrlink: '9735e687'
 date: 2018-03-04 00:40:05
-categories: [开发,移动开发,React Native]
-tags: [组件Text]
 ---
 # 前言 
 Text组件是React中的一个基本组件，它与Android上的TextView组件相类似，就是用来显示文本的，这个控件除了基本的显示布局之外，可以嵌套使用，设置样式，添加事件处理功能。

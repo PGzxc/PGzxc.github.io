@@ -1,8 +1,14 @@
 ---
 title: Android开发之——通知Notification
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 基础
+tags:
+  - Notification
+abbrlink: de09b701
 date: 2018-01-07 18:16:15
-categories: [开发,移动开发,Android,基础]
-tags: [Notification]
 ---
 # 介绍
 Android O引入了通知渠道(Notification Channels)，以提供统一的系统来帮助用户管理通知，如果是针对Android O为目标平台时，必须实现一个或者多个通知渠道，以向用户显示通知。若并不以Android O为目标平台，当应用运行在Android O设备上时，其行为将与运行在Android 7.0上时相同。  

@@ -1,8 +1,12 @@
 ---
 title: Git开发之——解决冲突
+categories:
+  - 工具
+  - Git
+tags:
+  - 解决冲突
+abbrlink: a1788f9b
 date: 2018-02-26 18:07:50
-categories: [工具,Git]
-tags: [解决冲突]
 ---
 # 前言 
 当有2个分支，master分支和feature1分支各自都分别有新的提交，变成了这样

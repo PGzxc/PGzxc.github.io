@@ -1,8 +1,12 @@
 ---
 title: Git开发之——安装与配置
+categories:
+  - 工具
+  - Git
+tags:
+  - 安装与配置
+abbrlink: 2c28e7bb
 date: 2018-02-25 21:41:52
-categories: [工具,Git]
-tags: [安装与配置]
 ---
 # Git安装与配置  
 Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。  

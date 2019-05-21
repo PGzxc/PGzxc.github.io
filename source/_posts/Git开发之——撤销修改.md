@@ -1,8 +1,12 @@
 ---
 title: Git开发之——撤销修改
+categories:
+  - 工具
+  - Git
+tags:
+  - 撤销修改
+abbrlink: a72ef28e
 date: 2018-02-26 10:05:40
-categories: [工具,Git]
-tags: [撤销修改]
 ---
 # 前言  
 

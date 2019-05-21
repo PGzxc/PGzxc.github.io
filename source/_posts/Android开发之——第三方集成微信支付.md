@@ -1,8 +1,14 @@
 ---
 title: Android开发之——第三方集成微信支付
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 支付
+tags:
+  - 微信支付
+abbrlink: 273a2bef
 date: 2018-03-29 14:58:35
-categories: [开发,移动开发,Android,支付]
-tags: [微信支付]
 ---
 # 前言 
 上文介绍了支付宝集成的步骤，本文将继续介绍第三方支付——微信的集成

@@ -1,8 +1,12 @@
 ---
 title: Linux开发之——访问权限限制下安装VMwareTools
+categories:
+  - 系统
+  - Linux
+tags:
+  - VMware Tools
+abbrlink: 6815021d
 date: 2018-10-12 23:04:35
-categories: [系统,Linux]
-tags: [VMware Tools]
 ---
 
 # 前言

@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——变量
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 变量
+abbrlink: b26cca10
 date: 2017-12-18 23:56:28
-categories: [高级语言,Kotlin]
-tags: [变量]
 ---
 # 前言
 

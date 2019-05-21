@@ -1,8 +1,12 @@
 ---
 title: IntelliJ使用之——破解
+categories:
+  - 工具
+  - IntelliJ
+tags:
+  - Intellij破解
+abbrlink: 1cdb2657
 date: 2017-12-20 08:38:04
-categories: [工具,IntelliJ]
-tags: [Intellij破解]
 ---
 # 前言
 

@@ -1,8 +1,14 @@
 ---
 title: Android数据加密之——Aes加密
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 加密
+tags:
+  - Aes加密
+abbrlink: 62c29a74
 date: 2018-03-30 22:52:57
-categories: [开发,移动开发,Android,加密]
-tags: [Aes加密]
 ---
 注：本文为转载文章，原文请参考：[Android数据加密之Aes加密][1] 
 

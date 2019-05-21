@@ -1,8 +1,14 @@
 ---
 title: Android开发之——数据优化ProtoBuf
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 优化
+tags:
+  - ProtoBuf
+abbrlink: 91bcd8c1
 date: 2018-06-27 14:29:24
-categories: [开发,移动开发,Android,优化]
-tags: [ProtoBuf]
 ---
 # 前言
 protobuf，全称：Google Protocol Buffer，是Google开源的一种轻便高效的结构化数据存储格式，可以用于结构化数据的串行化，也称作序列化，主要用于数据存储或是RPC数据交换，支持多语言，可拓展。   

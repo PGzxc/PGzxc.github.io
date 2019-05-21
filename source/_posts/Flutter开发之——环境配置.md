@@ -1,8 +1,13 @@
 ---
 title: Flutter开发之——环境配置
+categories:
+  - 开发
+  - 移动开发
+  - Flutter
+tags:
+  - 环境配置
+abbrlink: f3b0a54d
 date: 2018-05-29 18:16:47
-categories: [开发,移动开发,Flutter]
-tags: [环境配置]
 ---
 # 前言
 Flutter是Google的一款跨平台开发语言，你可能知道另外一种跨平台开发语言React Native，作为两款跨平台开发语言，他们有什么区别，哪个更好一些呢，这里暂时不做评价，知乎上有人做了对比：[如何评价 Google 的 Fuchsia、Android、iOS 跨平台应用框架 Flutter？][1] ,Flutter 作为Google极力推荐的跨平台开发工具，天生具备MD(材料设计)特性，目前尚未成熟，但前景是远大的。值得我们学习。

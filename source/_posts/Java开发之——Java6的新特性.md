@@ -1,8 +1,12 @@
 ---
 title: Java开发之——Java6的新特性
+categories:
+  - 基础语言
+  - Java
+tags:
+  - Java6
+abbrlink: 2b0ff09
 date: 2017-12-14 10:06:40
-categories: [基础语言,Java]
-tags: [Java6]
 ---
 原文请参考:[Java6的新特性][1]
 # 序

@@ -1,8 +1,12 @@
 ---
 title: Hexo博客开发之——备份工具保存静态网站
+categories:
+  - 工具
+  - Hexo博客
+tags:
+  - 备份
+abbrlink: 7d6f9cb8
 date: 2017-11-13 23:10:22
-categories: [工具,Hexo博客]
-tags: [备份]
 ---
 
 

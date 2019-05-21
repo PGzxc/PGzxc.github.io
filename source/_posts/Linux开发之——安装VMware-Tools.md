@@ -1,8 +1,12 @@
 ---
 title: Linux开发之——安装VMware Tools
+categories:
+  - 系统
+  - Linux
+tags:
+  - VMware Tools
+abbrlink: d0a73778
 date: 2018-03-28 11:48:27
-categories: [系统,Linux]
-tags: [VMware Tools]
 ---
 # 前言 
 本文以虚拟机为例讲解VMware Tools的安装过程，默认用户已安装了Vmware虚拟机和Ubuntu系统，安装VMware Tools后Ubuntu可全屏并且可与电脑之间进行互操作(如文件拖放等)极大地方便了用户的行为。   

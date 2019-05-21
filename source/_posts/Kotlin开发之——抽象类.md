@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——抽象类
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 抽象类
+abbrlink: d28e39ab
 date: 2017-12-22 12:12:09
-categories: [高级语言,Kotlin]
-tags: [抽象类]
 ---
 # 简述  
 对于面向对象编程来说，抽象是它的一个特征之一。在kotlin中可以通过抽象类和接口来完成抽象。抽象类和接口有很多相似之处，又有不同之处。  

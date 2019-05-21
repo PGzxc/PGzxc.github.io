@@ -1,8 +1,12 @@
 ---
 title: Python开发之——Pycharm破解
+categories:
+  - 后端
+  - Python
+tags:
+  - Pycharm激活
+abbrlink: 5e86ddc9
 date: 2019-03-23 12:33:31
-categories: [后端,Python]
-tags: [Pycharm激活]
 ---
 
 ## 准备阶段(修改hosts文件)

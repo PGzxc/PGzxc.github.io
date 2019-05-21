@@ -1,8 +1,14 @@
 ---
 title: Android数据加密之——异或加密算法
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 加密
+tags:
+  - 异或加密算法
+abbrlink: a3cd3cd0
 date: 2018-03-30 16:34:55
-categories: [开发,移动开发,Android,加密]
-tags: [异或加密算法]
 ---
 
 注：本文为转载文章，原文请参考：[Android数据加密之异或加密算法][1]  

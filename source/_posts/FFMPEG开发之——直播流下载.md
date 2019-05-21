@@ -1,8 +1,12 @@
 ---
 title: FFMPEG开发之——直播流下载
+categories:
+  - 视频开发
+  - FFMPEG
+tags:
+  - 直播流下载
+abbrlink: adbe4f32
 date: 2019-03-31 22:24:18
-categories: [视频开发,FFMPEG]
-tags: [直播流下载]
 ---
 
 ## 前言

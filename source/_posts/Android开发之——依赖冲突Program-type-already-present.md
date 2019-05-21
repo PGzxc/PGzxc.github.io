@@ -1,8 +1,14 @@
 ---
 title: Android开发之——依赖冲突Program type already present
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - Error
+tags:
+  - 依赖冲突
+abbrlink: eef37b39
 date: 2018-07-01 23:56:15
-categories: [开发,移动开发,Android,Error]
-tags: [依赖冲突]
 ---
 # 前言
 实际开发中，为了提高开发速度和效率，总避免不了引用第三方提供的依赖和类库，如果含有相同依赖的类库被我们引用时，而他们的版本又不相同，就有可能会导致一系列问题和异常，本文结合本人时间总结和他人经验，稍作总结。

@@ -1,8 +1,13 @@
 ---
 title: Dart开发之——环境配置
+categories:
+  - 开发
+  - 前端开发
+  - Dart
+tags:
+  - 环境配置
+abbrlink: 6f2a7b27
 date: 2018-05-29 16:35:24
-categories: [开发,前端开发,Dart]
-tags: [环境配置]
 ---
 # 前言
 Dart是一门小众语言，可用于开发服务器，Web应用，移动应用和游戏开发，目前尚不稳定，无法用于实际项目的开发。   

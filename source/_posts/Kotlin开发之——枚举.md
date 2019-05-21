@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——枚举
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 枚举
+abbrlink: c2a97752
 date: 2017-12-20 00:44:21
-categories: [高级语言,Kotlin]
-tags: [枚举]
 ---
 # Kotlin中枚举
 

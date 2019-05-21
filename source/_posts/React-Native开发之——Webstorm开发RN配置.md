@@ -1,8 +1,13 @@
 ---
 title: React Native开发之——Webstorm开发RN配置
+categories:
+  - 开发
+  - 移动开发
+  - React Native
+tags:
+  - Webstorm开发RN配置
+abbrlink: 3a8bdbec
 date: 2018-03-02 22:35:26
-categories: [开发,移动开发,React Native]
-tags: [Webstorm开发RN配置]
 ---
 # 前言 
 前文[React Native开发之——Webstorm快捷开发][1]介绍了使用Webstorm快捷开发React Native，

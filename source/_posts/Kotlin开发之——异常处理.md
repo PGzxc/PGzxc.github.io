@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——异常处理
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 异常处理
+abbrlink: 88a0dc83
 date: 2017-12-20 12:10:12
-categories: [高级语言,Kotlin]
-tags: [异常处理]
 ---
 # 异常处理概述
 

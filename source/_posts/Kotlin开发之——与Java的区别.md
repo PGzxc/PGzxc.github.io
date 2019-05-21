@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——与Java的区别
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 区别
+abbrlink: ba69d8f8
 date: 2017-12-19 18:16:06
-categories: [高级语言,Kotlin]
-tags: [区别]
 ---
 # 前言
 语句和表达式在Kotlin和Java中是不一样的。

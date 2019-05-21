@@ -1,8 +1,13 @@
 ---
 title: React Native开发之——组件Image
+categories:
+  - 开发
+  - 移动开发
+  - React Native
+tags:
+  - 组件Image
+abbrlink: b34dfb8e
 date: 2018-03-05 12:40:09
-categories: [开发,移动开发,React Native]
-tags: [组件Image]
 ---
 # 前言
 在ReactNative中Image是用于显示图片的组件，和开发Android的时候ImageView控件相同的效果。它可以用来显示网络图片、静态资源、临时的本地图片、以及本地磁盘上的图片（如相册）等。恰当的使用Image组件能更形象更直观的向用户传达信息。

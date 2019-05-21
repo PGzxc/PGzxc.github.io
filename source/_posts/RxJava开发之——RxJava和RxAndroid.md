@@ -1,8 +1,13 @@
 ---
 title: RxJava开发之——RxJava和RxAndroid
+categories:
+  - 高级语言
+  - RxJava
+tags:
+  - RxJava
+  - RxAndroid
+abbrlink: '75527026'
 date: 2017-12-17 18:27:21
-categories: [高级语言,RxJava]
-tags: [RxJava,RxAndroid]
 ---
 ## 前言
 Rx是一个实现异步操作的库，它使的代码更加简洁易读，去年开始在公司的项目中已经开始使用了，大大简化了开发流程，下面是自己在学习中见到的一些好的资料。

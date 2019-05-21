@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——代理属性
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 代理属性
+abbrlink: f655a5da
 date: 2017-12-23 18:07:23
-categories: [高级语言,Kotlin]
-tags: [代理属性]
 ---
 # 概述
 所谓委托模式，就是为了其他对象提供一种代理以控制对这个对象的访问，在java开发过程中，是继承模式之外的很好的解决问题的方案。    

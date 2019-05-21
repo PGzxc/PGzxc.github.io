@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——构造函数
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 构造函数
+abbrlink: 70b0c843
 date: 2017-12-22 11:21:24
-categories: [高级语言,Kotlin]
-tags: [构造函数]
 ---
 # 前言   
 Java中的构造函数在Kotlin中被称为构造器，Kotlin中使用关键字"constructor"声明构造器，kotlin的类能有一个主要的构造器与多个次要的构造器，也可以没有次构造器。主构造器出现在类名的后面参数是可选的。   

@@ -1,8 +1,12 @@
 ---
 title: Axure开发之——Axure8.0安装与配置
+categories:
+  - 开发
+  - 产品
+tags:
+  - Axure 8.0
+abbrlink: 24f37b56
 date: 2018-10-23 23:11:38
-categories: [开发,产品]
-tags: [Axure 8.0]
 ---
 
 # 前言

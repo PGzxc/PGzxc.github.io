@@ -1,8 +1,12 @@
 ---
 title: Linux开发之——命令-文件、磁盘管理
+categories:
+  - 系统
+  - Linux
+tags:
+  - Linux命令
+abbrlink: 490c29b7
 date: 2017-12-12 14:58:25
-categories: [系统,Linux]
-tags: [Linux命令]
 ---
 # 文件管理  
 

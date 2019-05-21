@@ -1,8 +1,12 @@
 ---
 title: DSL简介
+categories:
+  - 高级语言
+  - DSL
+tags:
+  - DSL
+abbrlink: c7ca44dc
 date: 2017-11-27 11:13:27
-categories: [高级语言,DSL]
-tags: [DSL]
 ---
 DSL领域专用语言简介主要回答几下几个问题  
 

@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——主要特征
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 主要特征
+abbrlink: 72804c70
 date: 2017-12-18 23:16:31
-categories: [高级语言,Kotlin]
-tags: [主要特征]
 ---
 
 # 概要

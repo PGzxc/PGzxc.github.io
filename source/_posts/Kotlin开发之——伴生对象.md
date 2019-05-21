@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——伴生对象
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 伴生对象
+abbrlink: ab85ccc6
 date: 2017-12-23 01:08:44
-categories: [高级语言,Kotlin]
-tags: [伴生对象]
 ---
 # 前言
 伴生对象又叫同伴对象(Companion Object);   

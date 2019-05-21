@@ -1,8 +1,12 @@
 ---
 title: Git开发之——远程仓库的添加及克隆
+categories:
+  - 工具
+  - Git
+tags:
+  - 远程仓库
+abbrlink: 2ad42dcb
 date: 2018-02-26 11:42:43
-categories: [工具,Git]
-tags: [远程仓库]
 ---
 # 前言  
 上一节已经关联了一个Github远程仓库，下面将介绍远程仓库的添加及克隆  

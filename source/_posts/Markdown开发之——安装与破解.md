@@ -1,9 +1,12 @@
 ---
 title: Markdown开发之——安装与破解
+categories:
+  - 工具
+  - Markdown
+tags:
+  - 破解
+abbrlink: 605ae4
 date: 2017-11-10 15:12:18
-categories: [工具,Markdown] #文章分类目录，可以省略
-tags: [破解]
-
 ---
 # 前言
 

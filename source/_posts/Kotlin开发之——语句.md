@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——语句
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 语句
+abbrlink: 12be44e3
 date: 2017-12-20 09:39:18
-categories: [高级语言,Kotlin]
-tags: [语句]
 ---
 # 目录
 

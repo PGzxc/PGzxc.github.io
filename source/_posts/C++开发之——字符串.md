@@ -1,8 +1,12 @@
 ---
 title: C++开发之——字符串
+categories:
+  - 基础语言
+  - C++
+tags:
+  - 字符串
+abbrlink: 712a496f
 date: 2018-02-24 12:16:07
-categories: [基础语言,C++]
-tags: [字符串]
 ---
 # C++字符串
 C++ 提供了以下两种类型的字符串表示形式：  

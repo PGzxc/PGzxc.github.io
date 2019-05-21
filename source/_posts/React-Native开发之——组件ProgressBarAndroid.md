@@ -1,8 +1,13 @@
 ---
 title: React Native开发之——组件ProgressBarAndroid
+categories:
+  - 开发
+  - 移动开发
+  - React Native
+tags:
+  - 组件ProgressBarAndroid
+abbrlink: e4f34554
 date: 2018-03-13 11:49:24
-categories: [开发,移动开发,React Native]
-tags: [组件ProgressBarAndroid]
 ---
 # 前言 
 ProgressBarAndroid是React Native封装了Android平台的显示进度组件，用来在App中内容加载进度显示。本文主要熟悉以下属性：  

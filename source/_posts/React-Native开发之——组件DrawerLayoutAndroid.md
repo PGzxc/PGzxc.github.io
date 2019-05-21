@@ -1,8 +1,13 @@
 ---
 title: React Native开发之——组件DrawerLayoutAndroid
+categories:
+  - 开发
+  - 移动开发
+  - React Native
+tags:
+  - 组件DrawerLayoutAndroid
+abbrlink: 6d70d8b3
 date: 2018-03-22 23:42:18
-categories: [开发,移动开发,React Native]
-tags: [组件DrawerLayoutAndroid]
 ---
 # 前言 
 封装了平台DrawerLayout（仅限安卓平台）的React组件。抽屉（通常用于导航切换）是通过renderNavigationView方法渲染的，并且DrawerLayoutAndroid的直接子视图会成为主视图（用于放置你的内容）。导航视图一开始在屏幕上并不可见，不过可以从drawerPosition指定的窗口侧面拖拽出来，并且抽屉的宽度可以使用drawerWidth属性来指定。(借鉴于React Native中文官网)  

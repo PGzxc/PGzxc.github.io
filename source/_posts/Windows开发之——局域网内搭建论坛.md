@@ -1,8 +1,12 @@
 ---
 title: Windows开发之——局域网内搭建论坛
+categories:
+  - 系统
+  - Windows
+tags:
+  - 论坛
+abbrlink: '59e21807'
 date: 2018-08-10 22:56:36
-categories: [系统,Windows]
-tags: [论坛]
 ---
 
 # 前言

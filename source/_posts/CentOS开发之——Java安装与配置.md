@@ -1,8 +1,12 @@
 ---
 title: CentOS开发之——Java安装与配置
+categories:
+  - 系统
+  - CentOS
+tags:
+  - Java
+abbrlink: 4cd663f5
 date: 2018-07-27 21:39:15
-categories: [系统,CentOS]
-tags: [Java]
 ---
 # 准备
 1. JDK版本：jdk-8u181-linux-x64.tar.gz    

@@ -1,8 +1,13 @@
 ---
 title: Weex开发之——入门之搭建开发环境
+categories:
+  - 开发
+  - 移动开发
+  - Weex
+tags:
+  - 环境搭建
+abbrlink: 8275d77a
 date: 2018-02-10 09:02:38
-categories: [开发,移动开发,Weex]
-tags: [环境搭建]
 ---
 # 前言
 Weex 是一个使用 Web 开发体验来开发高性能原生应用的框架，并支持iOS、安卓、YunOS及Web等多端部署；Weex 已经于 2017-02-24 迁移至 Apache 基金会，项目地址：[https://github.com/alibaba/weex][1]  

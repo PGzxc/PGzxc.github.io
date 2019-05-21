@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——常用操作符
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 操作符
+abbrlink: b6266d42
 date: 2017-12-21 17:18:54
-categories: [高级语言,Kotlin]
-tags: [操作符]
 ---
 # 前言 
 熟悉Kotlin中常出现的一些操作符的用法，有助于我们快速入门Kotlin，下面将列举Kotlin中常用的一些操作符。  

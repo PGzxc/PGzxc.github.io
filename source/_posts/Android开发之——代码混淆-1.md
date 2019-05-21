@@ -1,8 +1,16 @@
 ---
 title: Android开发之——Android 代码混淆(1)
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 安全
+tags:
+  - 混淆
+  - 安全
+  - 工具
+abbrlink: 1727a338
 date: 2017-11-16 15:47:06
-categories: [开发,移动开发,Android,安全]
-tags: [混淆,安全,工具]
 ---
 
 # 前言

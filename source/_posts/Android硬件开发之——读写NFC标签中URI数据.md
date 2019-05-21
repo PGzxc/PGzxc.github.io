@@ -1,8 +1,14 @@
 ---
 title: Android硬件开发之——读写NFC标签中URI数据
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 硬件开发
+tags:
+  - 读写NFC标签中URI数据
+abbrlink: 1323c684
 date: 2018-03-01 17:28:58
-categories: [开发,移动开发,Android,硬件开发]
-tags: [读写NFC标签中URI数据]
 ---
 # 前言 
 本文主要讲述NFC技术：NDEF Uri格式解析，包含以下内容：  

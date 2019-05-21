@@ -1,8 +1,12 @@
 ---
 title: Hexo博客开发之——留言功能
+categories:
+  - 工具
+  - Hexo博客
+tags:
+  - 留言
+abbrlink: f712492d
 date: 2017-12-16 15:48:15
-categories: [工具,Hexo博客]
-tags: [留言]
 ---
 # 前言 
 个人博客加入评论功能，方便交流与沟通，通常我们借助第三方评论系统，如：

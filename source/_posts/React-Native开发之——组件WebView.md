@@ -1,8 +1,13 @@
 ---
 title: React Native开发之——组件WebView
+categories:
+  - 开发
+  - 移动开发
+  - React Native
+tags:
+  - 组件WebView
+abbrlink: c5c23d10
 date: 2018-03-21 10:41:06
-categories: [开发,移动开发,React Native]
-tags: [组件WebView]
 ---
 # 前言
 在开发Android的时候，一般我们会有一些加载网页的需求，或者执行一些JavaScript，我们都知道在Android中实现这个功能的控件是WebView,在ReactNative中也有实现此类需求额的组件，它的名字也是WebView。那么今天的这篇文章就来详细说说在ReactNative WebView的使用。  

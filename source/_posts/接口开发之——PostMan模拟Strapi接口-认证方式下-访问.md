@@ -1,8 +1,13 @@
 ---
 title: 接口开发之——PostMan模拟Strapi接口(认证方式下)访问
+categories:
+  - 后端
+  - 接口
+tags:
+  - postman
+  - strapi
+abbrlink: c4402abd
 date: 2019-01-22 00:02:25
-categories: [后端,接口]
-tags: [postman,strapi]
 ---
 
 # 概念

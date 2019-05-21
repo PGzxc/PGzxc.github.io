@@ -1,8 +1,14 @@
 ---
 title: Android开发之——环信聊天集成
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - SDK
+tags:
+  - 环信聊天
+abbrlink: b980f3d6
 date: 2017-12-28 13:09:30
-categories: [开发,移动开发,Android,SDK]
-tags: [环信聊天]
 ---
 # 前言
 在这个信息爆炸的时代，好像应用内聊天(即时通信)也称为了每款app的必备，如何实现聊天功呢？ 

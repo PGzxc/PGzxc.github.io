@@ -1,8 +1,14 @@
 ---
 title: IOS开发之——入门
+categories:
+  - 开发
+  - 移动开发
+  - IOS
+  - 基础
+tags:
+  - 基础
+abbrlink: 3b6fd622
 date: 2018-07-09 11:10:33
-categories: [开发,移动开发,IOS,基础]
-tags: [基础]
 ---
 # 前言
 目前主要的移动开发平台有：Android、iOS、WindowsPhone，前两者占据着绝大多数的终端应用，我们常说的移动开发就是指：Android和iOS开发。本位主要讲述IOS的开发。

@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——类与对象
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 类与对象
+abbrlink: b079d41a
 date: 2017-12-19 22:55:45
-categories: [高级语言,Kotlin]
-tags: [类与对象]
 ---
 # 类与对象的关系
 对象是对问题领域中事物的抽象   

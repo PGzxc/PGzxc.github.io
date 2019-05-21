@@ -1,8 +1,12 @@
 ---
 title: C++开发之——数字
+categories:
+  - 基础语言
+  - C++
+tags:
+  - 数字
+abbrlink: 7e29074c
 date: 2018-02-24 10:33:17
-categories: [基础语言,C++]
-tags: [数字]
 ---
 # C++数字  
 通常，当我们需要用到数字时，我们会使用原始的数据类型，如 int、short、long、float 和 double 等等。这些用于数字的数据类型，其可能的值和数值范围，我们已经在 C++ 数据类型一章中讨论过。  

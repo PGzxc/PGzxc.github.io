@@ -1,8 +1,12 @@
 ---
 title: Gradle开发之——大纲
+categories:
+  - 工具
+  - Gradle
+tags:
+  - Gradle
+abbrlink: ca22ef37
 date: 2018-06-20 00:23:17
-categories: [工具,Gradle]
-tags: [Gradle]
 ---
 # 前言
 ## 概念

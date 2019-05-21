@@ -1,8 +1,12 @@
 ---
 title: C++开发之——函数
+categories:
+  - 基础语言
+  - C++
+tags:
+  - 函数
+abbrlink: a024de14
 date: 2018-02-21 13:16:31
-categories: [基础语言,C++]
-tags: [函数]
 ---
 # C++函数
 

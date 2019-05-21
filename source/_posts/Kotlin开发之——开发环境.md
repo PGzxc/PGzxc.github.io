@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——开发环境
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 开发环境
+abbrlink: 766ce094
 date: 2017-12-18 08:08:32
-categories: [高级语言,Kotlin]
-tags: [开发环境]
 ---
 # 前言
 工欲善其事必先利其器，好的集成开发环境更有助于Kotlin的开发进度，本文主要介绍官网介绍的四个集成开发环境。

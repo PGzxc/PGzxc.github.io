@@ -1,8 +1,12 @@
 ---
 title: Linux开发之——系统下如何显示隐藏文件
+categories:
+  - 系统
+  - Linux
+tags:
+  - 显示隐藏文件
+abbrlink: baf9213a
 date: 2018-04-16 20:48:50
-categories: [系统,Linux]
-tags: [显示隐藏文件]
 ---
 # 前言
 Linux系统下，显示隐藏文件，可以通过命令行方式和快捷键方式两种 

@@ -1,8 +1,12 @@
 ---
 title: Jenkins开发之——构建Android项目(2)
+categories:
+  - 工具
+  - Jenkins
+tags:
+  - 项目构建
+abbrlink: 7d8d3d8
 date: 2017-11-18 16:47:38
-categories: [工具,Jenkins]
-tags: [项目构建]
 ---
 原文参考：[Jenkins持续化构建Android项目（一）-安装配置Jenkins（by 星空武哥）][1]  
 

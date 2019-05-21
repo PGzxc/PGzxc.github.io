@@ -1,8 +1,12 @@
 ---
 title: 设计模式之——Android中的23种设计模式
+categories:
+  - 技能提升
+  - 设计模式
+tags:
+  - 设计模式
+abbrlink: 6804df
 date: 2017-12-24 22:23:47
-categories: [技能提升,设计模式]
-tags: [设计模式]
 ---
 # 前言   
 ## 基本定义  

@@ -1,8 +1,14 @@
 ---
 title: Android开发之——Advanced profiling is unavable for the selected process
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 工具
+tags:
+  - Profiler
+abbrlink: 10f4129f
 date: 2018-03-17 09:59:28
-categories: [开发,移动开发,Android,工具]
-tags: [Profiler]
 ---
 
 # 前言 

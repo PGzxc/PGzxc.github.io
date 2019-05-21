@@ -1,8 +1,15 @@
 ---
 title: Android开发之——数据库框架之LitePal
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 数据库
+tags:
+  - 数据库
+  - LitePal
+abbrlink: 6771de5f
 date: 2018-01-02 20:43:22
-categories: [开发,移动开发,Android,数据库]
-tags: [数据库,LitePal]
 ---
 # 简述  
 LitePal是郭神（郭霖）在2014年的杰作，Github地址：[LitePal][1]。LitePal是一款开源的Android数据库框架，它采用了对象关系映射(ORM)的模式，并将我们平时开发时最常用到的一些数据库功能进行了封装，使得不用编写一行SQL语句就可以完成各种建表、増删改查的操作。并且LitePal很"轻"，jar包只有100k不到，而且近乎零配置，这一点和hibernate这类的框架有很大区别。  

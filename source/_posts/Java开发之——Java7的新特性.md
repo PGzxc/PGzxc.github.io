@@ -1,8 +1,12 @@
 ---
 title: Java开发之——Java7的新特性
+categories:
+  - 基础语言
+  - Java
+tags:
+  - Java7
+abbrlink: df26268c
 date: 2017-12-14 10:23:58
-categories: [基础语言,Java]
-tags: [Java7]
 ---
 # 序
 本文主要讲Java7的新特性，相对于Java6而言，Java7增加了一些重要的特性，比如NIO2，不像Java6那么鸡肋，也算是一个重要的版本。  

@@ -1,8 +1,12 @@
 ---
 title: Kotlin学习之——课程大纲
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 课程大纲
+abbrlink: abc87d60
 date: 2018-04-25 08:47:33
-categories: [高级语言,Kotlin]
-tags: [课程大纲]
 ---
 # Kotlin 课程大纲
 ## 第一章——前言

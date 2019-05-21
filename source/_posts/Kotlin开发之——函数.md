@@ -1,8 +1,12 @@
 ---
 title: Kotlin开发之——函数
+categories:
+  - 高级语言
+  - Kotlin
+tags:
+  - 函数
+abbrlink: d03ec40e
 date: 2017-12-19 09:14:06
-categories: [高级语言,Kotlin]
-tags: [函数]
 ---
 # 前言
 无论函数还是方法我们这里统称函数，Koltin中的函数要比Java中丰富的多，我们这篇文章来了解下Kotlin中的各类函数。   

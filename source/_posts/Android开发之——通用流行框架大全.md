@@ -1,8 +1,14 @@
 ---
 title: Android开发之——通用流行框架大全
+categories:
+  - 开发
+  - 移动开发
+  - Android
+  - 第三方库
+tags:
+  - 第三方库
+abbrlink: 66cc8d59
 date: 2017-12-13 10:12:30
-categories: [开发,移动开发,Android,第三方库]
-tags: [第三方库]
 ---
 原文请参考[15 个 Android 通用流行框架大全][0]
 ![][1]
