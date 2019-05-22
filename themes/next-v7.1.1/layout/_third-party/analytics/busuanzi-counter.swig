@@ -5,8 +5,7 @@
   {% if theme.busuanzi_count.total_visitors %}
 
    <span>{{ __('京ICP备') }} -
-    <a href="http://www.beian.miit.gov.cn">18061062号</a>
-    </a>
+    <a href="http://www.beian.miit.gov.cn" style="text-decoration:none;color:white;">18061062号</a>
   </span>
   <span class="post-meta-divider">|</span>
 

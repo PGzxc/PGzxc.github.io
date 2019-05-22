@@ -1,6 +1,6 @@
-<script>
+<script type="text/javascript">
   window.livereOptions = {
-    refer: '{{ page.path }}'
+    refer: 'pgzxc.github.io'+'{{ page.path }}'
   };
   (function(d, s) {
     var j, e = d.getElementsByTagName(s)[0];
