@@ -38,6 +38,6 @@ Mac系统已安装了typora，双击markdown文档，打开的却是Xcode。如�
 [2]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-default-setting-show-brief.png
 [3]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-default-setting-open-way.png
 [4]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-default-setting-open-typora.png
-[5]: default-images/mac-default-setting-open-other.png
+[5]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-default-setting-open-other.png
 [6]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-default-setting-all-config.png
 
