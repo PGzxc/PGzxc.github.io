@@ -1,5 +1,5 @@
 ---
-title: C++开发之——Windows下Codeblocks安装与配置
+title: CPP开发之——Windows下Codeblocks安装与配置
 categories:
   - 基础语言
   - C++
