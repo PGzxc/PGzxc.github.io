@@ -1,5 +1,5 @@
 ---
-title: CPP开发之——Windows下Clion安装与配置
+title: CPP学习之——Windows下Clion安装与配置
 categories:
   - 基础语言
   - C++

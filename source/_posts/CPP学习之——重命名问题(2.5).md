@@ -1,5 +1,5 @@
 ---
-title: CPP开发之——重命名问题(2.5)
+title: CPP学习之——重命名问题(2.5)
 categories:
   - 基础语言
   - C++

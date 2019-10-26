@@ -1,5 +1,5 @@
 ---
-title: CPP开发之——学习CPP前要先学C吗(1.4)
+title: CPP学习之——学习CPP前要先学C吗(1.4)
 categories:
   - 基础语言
   - C++

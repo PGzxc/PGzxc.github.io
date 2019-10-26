@@ -1,5 +1,5 @@
 ---
-title: CPP开发之——注释(2.6)
+title: CPP学习之——注释(2.6)
 categories:
   - 基础语言
   - C++
