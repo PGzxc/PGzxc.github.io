@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 数据库
 tags:
   - 数据库
   - GreenDao

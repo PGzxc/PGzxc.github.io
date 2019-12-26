@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 动画
 tags:
   - Lottie动画
 abbrlink: d9faa022

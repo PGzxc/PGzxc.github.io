@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 第三方库
 tags:
   - 动画
 abbrlink: 4bb06e5b

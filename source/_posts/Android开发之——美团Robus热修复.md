@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 第三方库
 tags:
   - 热修复
 abbrlink: '86500645'

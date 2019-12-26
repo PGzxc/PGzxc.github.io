@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - Error
 tags:
   - Error
 abbrlink: 811b5cca

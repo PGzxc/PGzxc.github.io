@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 硬件开发
 tags:
   - Android Beam传输文本
 abbrlink: 286c2d39

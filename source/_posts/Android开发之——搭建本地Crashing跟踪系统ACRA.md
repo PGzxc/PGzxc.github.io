@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 异常
 tags:
   - 异常
   - ACRA

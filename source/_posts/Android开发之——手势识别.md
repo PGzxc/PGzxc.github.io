@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 基础
 tags:
   - 手势识别
 abbrlink: b7e898af

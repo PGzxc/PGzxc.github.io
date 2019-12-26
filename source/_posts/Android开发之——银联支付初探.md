@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 支付
 tags:
   - 银联支付
 abbrlink: cbf7ec0c

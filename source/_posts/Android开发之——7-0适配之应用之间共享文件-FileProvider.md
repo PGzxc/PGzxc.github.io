@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 适配
 tags:
   - FileProvider
 abbrlink: f6618f6d

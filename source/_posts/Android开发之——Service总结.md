@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 基础
 tags:
   - Service
 abbrlink: ec2f3945

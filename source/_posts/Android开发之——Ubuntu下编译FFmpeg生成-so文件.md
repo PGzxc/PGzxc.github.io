@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 第三方库
 tags:
   - FFmpeg
 abbrlink: c5189b5e

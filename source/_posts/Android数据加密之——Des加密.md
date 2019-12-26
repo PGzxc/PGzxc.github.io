@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 加密
 tags:
   - Des加密
 abbrlink: 2855df3b

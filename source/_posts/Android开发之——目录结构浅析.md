@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 基础
 tags:
   - 目录结构
 abbrlink: ac8bb24

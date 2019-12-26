@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 硬件开发
 tags:
   - 蓝牙技术
 abbrlink: f758bcf7

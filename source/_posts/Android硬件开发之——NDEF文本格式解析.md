@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 硬件开发
 tags:
   - NDEF文本格式解析
 abbrlink: '9e253423'

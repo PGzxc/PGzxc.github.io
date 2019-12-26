@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 基础
 tags:
   - 系统架构
 abbrlink: 34c1b827

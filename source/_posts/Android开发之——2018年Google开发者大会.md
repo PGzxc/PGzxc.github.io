@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 开发者大会
 tags:
   - Google开发者大会
 abbrlink: 55963f2c

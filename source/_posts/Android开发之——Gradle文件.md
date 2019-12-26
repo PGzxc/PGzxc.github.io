@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 配置
 tags:
   - gradle
 abbrlink: 5d93c695

@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 支付
 tags:
   - 微信支付
 abbrlink: 273a2bef

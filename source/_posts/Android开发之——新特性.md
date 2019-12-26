@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 新特性
 tags:
   - 新特性
 abbrlink: fb211eb4

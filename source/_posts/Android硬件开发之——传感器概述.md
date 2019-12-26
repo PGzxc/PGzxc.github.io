@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 硬件开发
 tags:
   - 传感器概述
 abbrlink: 209a37a7

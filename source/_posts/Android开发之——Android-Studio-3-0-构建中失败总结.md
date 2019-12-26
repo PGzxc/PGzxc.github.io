@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 工具
 tags:
   - AS3.0
 abbrlink: 7bcf7fd0

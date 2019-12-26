@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 基础
 tags:
   - 推送
   - 长连接

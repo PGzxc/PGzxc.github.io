@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - SDK
 tags:
   - SDK
 abbrlink: dfb02e03

@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 优化
 tags:
   - APP秒开
 abbrlink: e88019ff

@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - JetPack
 tags:
   - JetPack
 abbrlink: 620b2d3d

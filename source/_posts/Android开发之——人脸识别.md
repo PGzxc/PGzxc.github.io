@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 第三方库
 tags:
   - 人脸识别
 abbrlink: 4c0809c0

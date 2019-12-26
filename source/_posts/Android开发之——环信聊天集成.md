@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - SDK
 tags:
   - 环信聊天
 abbrlink: b980f3d6

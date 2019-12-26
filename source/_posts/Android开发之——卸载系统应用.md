@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 系统应用
 tags:
   - 系统应用
 abbrlink: 58fbebe

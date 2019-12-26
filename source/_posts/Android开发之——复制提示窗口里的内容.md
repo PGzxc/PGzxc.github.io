@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - Error
 tags:
   - 复制
 abbrlink: 8c752d23

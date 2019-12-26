@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 优化
 tags:
   - ProtoBuf
 abbrlink: 91bcd8c1

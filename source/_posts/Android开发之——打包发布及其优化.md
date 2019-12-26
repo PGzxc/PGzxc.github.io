@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 打包
 tags:
   - 混淆
   - 打包

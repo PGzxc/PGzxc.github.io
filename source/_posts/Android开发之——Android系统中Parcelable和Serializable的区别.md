@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 优化
 tags:
   - 序列化
 abbrlink: 5f1f64ca

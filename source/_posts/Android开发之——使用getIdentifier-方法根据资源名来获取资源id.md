@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 工具
 tags:
   - Identifier
 abbrlink: ba9a138a

@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - Android
-  - 硬件开发
 tags:
   - 非NDEF格式的数据读写
 abbrlink: 32fd0337
