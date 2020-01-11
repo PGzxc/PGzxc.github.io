@@ -4,7 +4,6 @@ categories:
   - 开发
   - 移动开发
   - IOS
-  - 基础
 tags:
   - 基础
 abbrlink: ee100ec

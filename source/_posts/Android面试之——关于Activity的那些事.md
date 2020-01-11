@@ -1,7 +1,6 @@
 ---
 title: Android面试之——关于Activity的那些事
 categories:
-  - 开发
   - 面试相关
   - Android面试
 tags:
