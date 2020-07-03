@@ -17,6 +17,8 @@ date: 2020-07-01 23:24:09
 * 顺传：控制器之间的传值，需要把登录的账号传给联系人控制器
 * 逆传：控制器之间的传值，把添加用户信息传递给联系人控制器
 
+<!--more-->
+
 ## 二 效果图
 
 ![][1]
@@ -75,4 +77,4 @@ date: 2020-07-01 23:24:09
 ```
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-sirentongxunlu-chuanzhi.gif
+[1]:https://images.pgzxc.com//ios-sirentongxunlu-chuanzhi.gif

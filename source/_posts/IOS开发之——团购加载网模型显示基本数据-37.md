@@ -127,4 +127,4 @@ date: 2020-06-09 23:33:14
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-tuangou-jiben-view.png
+[1]:https://images.pgzxc.com//ios-tuangou-jiben-view.png

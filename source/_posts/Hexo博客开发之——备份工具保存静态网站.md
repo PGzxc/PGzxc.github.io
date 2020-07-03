@@ -75,14 +75,14 @@ date: 2017-11-13 23:10:22
 
 
 [1]: https://github.com/coneycode/hexo-git-backup
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-install-git-backup.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-add-backup-info.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-branches.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-back-folder.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-backup-git-bash.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-git-clone.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-git-clone-local.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-install-hexo-g.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-install-hexo-deplyer-git.png
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-backup-hexo-g.png
-[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-localhost-4000.png
+[2]: https://images.pgzxc.com/hexo-install-git-backup.png
+[3]: https://images.pgzxc.com/hexo-add-backup-info.png
+[4]: https://images.pgzxc.com/hexo-branches.png
+[5]: https://images.pgzxc.com/hexo-back-folder.png
+[6]: https://images.pgzxc.com/hexo-backup-git-bash.png
+[7]: https://images.pgzxc.com/hexo-git-clone.png
+[8]: https://images.pgzxc.com/hexo-git-clone-local.png
+[9]: https://images.pgzxc.com/hexo-install-hexo-g.png
+[10]: https://images.pgzxc.com/hexo-install-hexo-deplyer-git.png
+[11]: https://images.pgzxc.com/hexo-backup-hexo-g.png
+[12]: https://images.pgzxc.com/hexo-localhost-4000.png

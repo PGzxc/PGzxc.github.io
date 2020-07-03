@@ -105,14 +105,14 @@ date: 2020-01-12 21:12:27
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-cmd-bin-list.png
-[2]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-cmd-help.png
-[3]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-cmd--s-d-sample.png
-[4]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-cmd-build-b.png
-[5]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-tools-build-project.png
-[6]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-tools-run-params.png
-[7]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cpack-tools-help.png
-[8]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ctest-tools-help.png
-[9]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-tools-gui-open.png
-[10]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-tools-generator-choice.png
-[11]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-tools-gui-source-generate.png
+[1]:https://images.pgzxc.com//cmake-cmd-bin-list.png
+[2]:https://images.pgzxc.com//cmake-cmd-help.png
+[3]:https://images.pgzxc.com//cmake-cmd--s-d-sample.png
+[4]:https://images.pgzxc.com//cmake-cmd-build-b.png
+[5]:https://images.pgzxc.com//cmake-tools-build-project.png
+[6]:https://images.pgzxc.com//cmake-tools-run-params.png
+[7]:https://images.pgzxc.com//cpack-tools-help.png
+[8]:https://images.pgzxc.com//ctest-tools-help.png
+[9]:https://images.pgzxc.com//cmake-tools-gui-open.png
+[10]:https://images.pgzxc.com//cmake-tools-generator-choice.png
+[11]:https://images.pgzxc.com//cmake-tools-gui-source-generate.png

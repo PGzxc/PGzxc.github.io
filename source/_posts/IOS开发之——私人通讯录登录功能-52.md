@@ -68,5 +68,5 @@ date: 2020-06-29 23:34:22
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-tongxunlu-login.gif
+[1]:https://images.pgzxc.com//ios-tongxunlu-login.gif
 

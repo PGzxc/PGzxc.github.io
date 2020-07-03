@@ -114,13 +114,13 @@ date: 2019-09-19 22:02:04
 * [程序员计算器][22]
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-calc-program.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-calc-ce-c.gif
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-calc-ms.gif
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-calc-mr.gif
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-calc-mc.gif
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-calc-binary.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-calc-operator.png
+[1]: https://images.pgzxc.com/java-calc-program.png
+[2]: https://images.pgzxc.com/java-calc-ce-c.gif
+[3]: https://images.pgzxc.com/java-calc-ms.gif
+[4]: https://images.pgzxc.com/java-calc-mr.gif
+[5]: https://images.pgzxc.com/java-calc-mc.gif
+[6]: https://images.pgzxc.com/java-calc-binary.png
+[7]: https://images.pgzxc.com/java-calc-operator.png
 
 
 [20]: https://jingyan.baidu.com/article/b87fe19e72f7b35219356851.html

@@ -36,9 +36,9 @@ date: 2020-03-08 08:37:24
 	![][6]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/nas-mycloudex2-ultra-mac-net-open.png
-[2]:https://raw.githubusercontent.com/PGzxc/images/master/2020/nas-mycloudex2-ultra-mac-share-setting.png
-[3]:https://raw.githubusercontent.com/PGzxc/images/master/2020/nas-mycloudex2-ultra-mac-switch-login.png
-[4]:https://raw.githubusercontent.com/PGzxc/images/master/2020/nas-mycloudex2-ultra-mac-login-admin.png
-[5]:https://raw.githubusercontent.com/PGzxc/images/master/2020/nas-mycloudex2-ultra-mac-public-open-tag.png
-[6]:https://raw.githubusercontent.com/PGzxc/images/master/2020/nas-mycloudex2-ultra-mac-public-yingshe.png
+[1]:https://images.pgzxc.com//nas-mycloudex2-ultra-mac-net-open.png
+[2]:https://images.pgzxc.com//nas-mycloudex2-ultra-mac-share-setting.png
+[3]:https://images.pgzxc.com//nas-mycloudex2-ultra-mac-switch-login.png
+[4]:https://images.pgzxc.com//nas-mycloudex2-ultra-mac-login-admin.png
+[5]:https://images.pgzxc.com//nas-mycloudex2-ultra-mac-public-open-tag.png
+[6]:https://images.pgzxc.com//nas-mycloudex2-ultra-mac-public-yingshe.png

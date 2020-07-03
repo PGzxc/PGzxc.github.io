@@ -30,8 +30,8 @@ My Cloud EX2 Ultra有两个USB 3.0接口，可以通过USB连接外置硬盘，�
 * 回到My Cloud EX2 Ultra主界面，点击USB图标中的部分弹出USB，并拔出
 	![][5]
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/nas-mycloudex2-ulrta-no-usb.png
-[2]:https://raw.githubusercontent.com/PGzxc/images/master/2020/nas-mycloudex2-ulrta-has-usb.png
-[3]:https://raw.githubusercontent.com/PGzxc/images/master/2020/nas-mycloudex2-ulrta-disk-show.png
-[4]:https://raw.githubusercontent.com/PGzxc/images/master/2020/nas-mycloudex2-ulrta-disk-desktop.png
-[5]:https://raw.githubusercontent.com/PGzxc/images/master/2020/nas-mycloudex2-ulrta-disk-out.png
+[1]:https://images.pgzxc.com//nas-mycloudex2-ulrta-no-usb.png
+[2]:https://images.pgzxc.com//nas-mycloudex2-ulrta-has-usb.png
+[3]:https://images.pgzxc.com//nas-mycloudex2-ulrta-disk-show.png
+[4]:https://images.pgzxc.com//nas-mycloudex2-ulrta-disk-desktop.png
+[5]:https://images.pgzxc.com//nas-mycloudex2-ulrta-disk-out.png

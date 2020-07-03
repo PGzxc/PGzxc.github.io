@@ -131,22 +131,22 @@ rpm命令是RPM软件包的管理工具。rpm原本是Red Hat Linux发行版专�
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/centos7-software-rpm-qa-grep.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/centos7-software-rpm-q.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/centos7-software-rpm-ql.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/centos7-software-rpm-qal-grep.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/centos-software-rpm-ivh.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/centos7-software-tar-zxvf.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/centos7-software-ect-profile-config.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/centos7-software-source-etc-profile.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/centos7-software-yum-list.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/centos7-software-yum-install.png
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/centos7-software-yum-remove.png
-[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/centos7-software-rpm-e-remove.png
-[13]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/centos7-software-check-update.png
-[14]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/centos7-software-yum-update.png
-[15]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/centos7-software-yum-update-all.png
-[16]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/centos7-software-yum-upgrade-all.png
+[1]: https://images.pgzxc.com/centos7-software-rpm-qa-grep.png
+[2]: https://images.pgzxc.com/centos7-software-rpm-q.png
+[3]: https://images.pgzxc.com/centos7-software-rpm-ql.png
+[4]: https://images.pgzxc.com/centos7-software-rpm-qal-grep.png
+[5]: https://images.pgzxc.com/centos-software-rpm-ivh.png
+[6]: https://images.pgzxc.com/centos7-software-tar-zxvf.png
+[7]: https://images.pgzxc.com/centos7-software-ect-profile-config.png
+[8]: https://images.pgzxc.com/centos7-software-source-etc-profile.png
+[9]: https://images.pgzxc.com/centos7-software-yum-list.png
+[10]: https://images.pgzxc.com/centos7-software-yum-install.png
+[11]: https://images.pgzxc.com/centos7-software-yum-remove.png
+[12]: https://images.pgzxc.com/centos7-software-rpm-e-remove.png
+[13]: https://images.pgzxc.com/centos7-software-check-update.png
+[14]: https://images.pgzxc.com/centos7-software-yum-update.png
+[15]: https://images.pgzxc.com/centos7-software-yum-update-all.png
+[16]: https://images.pgzxc.com/centos7-software-yum-upgrade-all.png
 
 
 [30]: https://www.cnblogs.com/zhi-leaf/p/10315125.html

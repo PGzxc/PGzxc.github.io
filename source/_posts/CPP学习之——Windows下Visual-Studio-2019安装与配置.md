@@ -36,10 +36,10 @@ date: 2019-10-20 11:31:31
 
 
 [1]: https://visualstudio.microsoft.com/zh-hans/downloads/?rr=https%3A%2F%2Fmsdn.microsoft.com%2Fzh-cn%2Flibrary%2Faa468128
-[2]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-visual-studio-page.png
-[3]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-visual-studio-c-plugin.png
-[4]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-visual-studio-tool-install-plugin.png
-[5]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-visual-studio-choice-template.png
-[6]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-visual-studio-create-config.png
-[7]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-visual-studio-project-preview.png
-[8]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-visual-studio-debug-run.png
+[2]:https://images.pgzxc.com/cpp-visual-studio-page.png
+[3]:https://images.pgzxc.com/cpp-visual-studio-c-plugin.png
+[4]:https://images.pgzxc.com/cpp-visual-studio-tool-install-plugin.png
+[5]:https://images.pgzxc.com/cpp-visual-studio-choice-template.png
+[6]:https://images.pgzxc.com/cpp-visual-studio-create-config.png
+[7]:https://images.pgzxc.com/cpp-visual-studio-project-preview.png
+[8]:https://images.pgzxc.com/cpp-visual-studio-debug-run.png

@@ -64,13 +64,13 @@ date: 2019-10-03 14:11:42
 
 
 [1]: https://www.canon.com.cn
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-print-search-type.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-print-download-soft.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-print-install-software.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-print-software-install-finish.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-print-scanner.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-print-add-scanner.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-print-add-a-scanner.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-print-add-scanner-finish.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-print-document-print.png
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-print-image-print.png
+[2]: https://images.pgzxc.com/mac-print-search-type.png
+[3]: https://images.pgzxc.com/mac-print-download-soft.png
+[4]: https://images.pgzxc.com/mac-print-install-software.png
+[5]: https://images.pgzxc.com/mac-print-software-install-finish.png
+[6]: https://images.pgzxc.com/mac-print-scanner.png
+[7]: https://images.pgzxc.com/mac-print-add-scanner.png
+[8]: https://images.pgzxc.com/mac-print-add-a-scanner.png
+[9]: https://images.pgzxc.com/mac-print-add-scanner-finish.png
+[10]: https://images.pgzxc.com/mac-print-document-print.png
+[11]: https://images.pgzxc.com/mac-print-image-print.png

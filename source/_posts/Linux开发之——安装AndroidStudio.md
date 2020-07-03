@@ -96,24 +96,24 @@ ubuntu 的快捷方式都在/usr/share/applications/路径下创建Android studi
 ![][21]
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ubuntu-terminal.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ubuntu-jdk-01.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ubuntu-jdk-02.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ubuntu-jdk-03.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ubuntu-java-version.png
+[1]: https://images.pgzxc.com/ubuntu-terminal.png
+[2]: https://images.pgzxc.com/ubuntu-jdk-01.png
+[3]: https://images.pgzxc.com/ubuntu-jdk-02.png
+[4]: https://images.pgzxc.com/ubuntu-jdk-03.png
+[5]: https://images.pgzxc.com/ubuntu-java-version.png
 [6]: https://developer.android.google.cn/studio/
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ubuntu-tool-download.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ubuntu-as-unzip.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ubuntu-as-position.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ubuntu-as-start.png
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ubuntu-as-proxy.png
-[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ubuntu-as-import.png
-[13]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ubuntu-config-01.png
-[14]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ubuntu-config-02.png
-[15]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ubuntu-config-03.png
-[16]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ubuntu-config-04.png
-[17]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ubuntu-config-05.png
-[18]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ubuntu-as-newpro.png
-[19]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ubuntu-as-pro-conf.png
-[20]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ubuntu-as-gradle-config.png
-[21]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ubuntu-as-add.png
+[7]: https://images.pgzxc.com/ubuntu-tool-download.png
+[8]: https://images.pgzxc.com/ubuntu-as-unzip.png
+[9]: https://images.pgzxc.com/ubuntu-as-position.png
+[10]: https://images.pgzxc.com/ubuntu-as-start.png
+[11]: https://images.pgzxc.com/ubuntu-as-proxy.png
+[12]: https://images.pgzxc.com/ubuntu-as-import.png
+[13]: https://images.pgzxc.com/ubuntu-config-01.png
+[14]: https://images.pgzxc.com/ubuntu-config-02.png
+[15]: https://images.pgzxc.com/ubuntu-config-03.png
+[16]: https://images.pgzxc.com/ubuntu-config-04.png
+[17]: https://images.pgzxc.com/ubuntu-config-05.png
+[18]: https://images.pgzxc.com/ubuntu-as-newpro.png
+[19]: https://images.pgzxc.com/ubuntu-as-pro-conf.png
+[20]: https://images.pgzxc.com/ubuntu-as-gradle-config.png
+[21]: https://images.pgzxc.com/ubuntu-as-add.png

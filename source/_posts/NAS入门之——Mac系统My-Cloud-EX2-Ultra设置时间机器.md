@@ -38,9 +38,9 @@ date: 2020-03-08 08:43:12
 * [使用“时间机器”备份您的 Mac][11]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/nas-mycloudex2-ultra-open.png
-[2]:https://raw.githubusercontent.com/PGzxc/images/master/2020/nas-mycloudex2-ultra-timebackup-click.png
-[3]:https://raw.githubusercontent.com/PGzxc/images/master/2020/nas-mycloudex2-ultra-disk-choice.png
-[4]:https://raw.githubusercontent.com/PGzxc/images/master/2020/nas-mycloudex2-ultra-setup-finish.png
+[1]:https://images.pgzxc.com//nas-mycloudex2-ultra-open.png
+[2]:https://images.pgzxc.com//nas-mycloudex2-ultra-timebackup-click.png
+[3]:https://images.pgzxc.com//nas-mycloudex2-ultra-disk-choice.png
+[4]:https://images.pgzxc.com//nas-mycloudex2-ultra-setup-finish.png
 
 [11]:https://support.apple.com/zh-cn/HT201250

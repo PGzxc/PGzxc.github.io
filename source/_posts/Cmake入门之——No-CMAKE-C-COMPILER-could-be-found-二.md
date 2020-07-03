@@ -59,11 +59,11 @@ date: 2020-01-12 21:10:09
 
 
 
-[0]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-cmake-gui-open.png
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-c-cpp-unknow.png
-[2]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-error-no-compiler-found.png
+[0]:https://images.pgzxc.com//cmake-cmake-gui-open.png
+[1]:https://images.pgzxc.com//cmake-c-cpp-unknow.png
+[2]:https://images.pgzxc.com//cmake-error-no-compiler-found.png
 [3]:https://developer.microsoft.com/zh-cn/windows/downloads/sdk-archive
-[4]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-windows-10-sdk-download.png
-[5]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-development-kit.png
-[6]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-visual-studio-install-sdk.png
-[7]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-c-cpp-done.png
+[4]:https://images.pgzxc.com//cmake-windows-10-sdk-download.png
+[5]:https://images.pgzxc.com//cmake-development-kit.png
+[6]:https://images.pgzxc.com//cmake-visual-studio-install-sdk.png
+[7]:https://images.pgzxc.com//cmake-c-cpp-done.png

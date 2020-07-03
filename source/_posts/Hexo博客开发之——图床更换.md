@@ -116,13 +116,13 @@ date: 2019-06-13 21:46:54
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-qiniu-store.png
+[1]: https://images.pgzxc.com/hexo-qiniu-store.png
 [2]: https://portal.qiniu.com/user/key
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-qiniu-accesskey-secretkey.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-qiniu-images-download.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-qiniu-images-download-after.png
+[3]: https://images.pgzxc.com/hexo-qiniu-accesskey-secretkey.png
+[4]: https://images.pgzxc.com/hexo-qiniu-images-download.png
+[5]: https://images.pgzxc.com/hexo-qiniu-images-download-after.png
 [6]: https://github.com/Molunerfinn/PicGo
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-github-picgo-download.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-picgo-github-setting.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-picgo-github-upload.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-vscode-open.png
+[7]: https://images.pgzxc.com/hexo-github-picgo-download.png
+[8]: https://images.pgzxc.com/hexo-picgo-github-setting.png
+[9]: https://images.pgzxc.com/hexo-picgo-github-upload.png
+[10]: https://images.pgzxc.com/hexo-vscode-open.png

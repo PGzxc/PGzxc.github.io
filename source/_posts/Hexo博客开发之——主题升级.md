@@ -194,17 +194,17 @@ date: 2019-06-13 23:28:10
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-theme-update-doc.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-theme-git-clone-v7.1.1.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-theme-v7.11-clone-done.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-config-theme-modify.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-menu-setting.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-menu-badges-setting.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-schemes-setting.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-social-setting.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-links-setting.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-avatar-setting.png
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-comment-zh-cn.png
-[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-npm-install-symbols-count-time.png
-[13]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-reward-setting.png
-[14]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-beian-open-setting.png
+[1]: https://images.pgzxc.com/hexo-theme-update-doc.png
+[2]: https://images.pgzxc.com/hexo-theme-git-clone-v7.1.1.png
+[3]: https://images.pgzxc.com/hexo-theme-v7.11-clone-done.png
+[4]: https://images.pgzxc.com/hexo-config-theme-modify.png
+[5]: https://images.pgzxc.com/hexo-menu-setting.png
+[6]: https://images.pgzxc.com/hexo-menu-badges-setting.png
+[7]: https://images.pgzxc.com/hexo-schemes-setting.png
+[8]: https://images.pgzxc.com/hexo-social-setting.png
+[9]: https://images.pgzxc.com/hexo-links-setting.png
+[10]: https://images.pgzxc.com/hexo-avatar-setting.png
+[11]: https://images.pgzxc.com/hexo-comment-zh-cn.png
+[12]: https://images.pgzxc.com/hexo-npm-install-symbols-count-time.png
+[13]: https://images.pgzxc.com/hexo-reward-setting.png
+[14]: https://images.pgzxc.com/hexo-beian-open-setting.png

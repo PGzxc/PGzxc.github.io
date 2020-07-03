@@ -50,4 +50,4 @@ date: 2020-05-09 23:34:15
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-uiscrollview-property.png
+[1]:https://images.pgzxc.com//ios-uiscrollview-property.png

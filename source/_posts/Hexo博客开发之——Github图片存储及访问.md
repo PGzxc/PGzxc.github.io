@@ -95,15 +95,15 @@ date: 2019-06-10 23:37:46
 
 
 [1]: https://desktop.github.com/
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-github-destop-file.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-github-local-files.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-github-desktop-push.png
+[2]: https://images.pgzxc.com/hexo-github-destop-file.png
+[3]: https://images.pgzxc.com/hexo-github-local-files.png
+[4]: https://images.pgzxc.com/hexo-github-desktop-push.png
 [5]: https://github.com/Molunerfinn/PicGo/releases
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-github-picgo-download.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-github-new-person-access-token.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-github-access-token-save.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-github-picgo-setting.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-github-picgo-push.png
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-github-image-address-look.png
-[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-github-image-real-address.png
-[13]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-github-image-preview.png
+[6]: https://images.pgzxc.com/hexo-github-picgo-download.png
+[7]: https://images.pgzxc.com/hexo-github-new-person-access-token.png
+[8]: https://images.pgzxc.com/hexo-github-access-token-save.png
+[9]: https://images.pgzxc.com/hexo-github-picgo-setting.png
+[10]: https://images.pgzxc.com/hexo-github-picgo-push.png
+[11]: https://images.pgzxc.com/hexo-github-image-address-look.png
+[12]: https://images.pgzxc.com/hexo-github-image-real-address.png
+[13]: https://images.pgzxc.com/hexo-github-image-preview.png

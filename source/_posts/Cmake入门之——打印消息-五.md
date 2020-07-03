@@ -77,15 +77,15 @@ message([<mode>] "message to display" ...)
 * [Documentation » cmake-commands(7) »message][12]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-debug-message-info.png
-[2]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-message-model-fatal-error-config.png
-[3]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-message-model-fatal-error-print.png
-[4]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-message-model-send-error-config.png
-[5]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-message-model-send-error-print.png
-[6]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-message-model-warning-config.png
-[7]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-message-model-warning-print.png
-[8]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-message-model-deprecation-config.png
-[9]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-message-model-deprecation-print.png
-[10]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-message-model-other-config.png
-[11]:https://raw.githubusercontent.com/PGzxc/images/master/2020/cmake-message-model-other-print.png
+[1]:https://images.pgzxc.com//cmake-debug-message-info.png
+[2]:https://images.pgzxc.com//cmake-message-model-fatal-error-config.png
+[3]:https://images.pgzxc.com//cmake-message-model-fatal-error-print.png
+[4]:https://images.pgzxc.com//cmake-message-model-send-error-config.png
+[5]:https://images.pgzxc.com//cmake-message-model-send-error-print.png
+[6]:https://images.pgzxc.com//cmake-message-model-warning-config.png
+[7]:https://images.pgzxc.com//cmake-message-model-warning-print.png
+[8]:https://images.pgzxc.com//cmake-message-model-deprecation-config.png
+[9]:https://images.pgzxc.com//cmake-message-model-deprecation-print.png
+[10]:https://images.pgzxc.com//cmake-message-model-other-config.png
+[11]:https://images.pgzxc.com//cmake-message-model-other-print.png
 [12]:https://cmake.org/cmake/help/latest/command/message.html

@@ -150,5 +150,5 @@ enum color { red, green=5, blue };
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-data-type.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-data-round.png
+[1]: https://images.pgzxc.com/cpp-data-type.png
+[2]: https://images.pgzxc.com/cpp-data-round.png

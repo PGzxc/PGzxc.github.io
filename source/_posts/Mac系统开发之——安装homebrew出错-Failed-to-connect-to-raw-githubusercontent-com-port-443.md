@@ -47,14 +47,14 @@ Mac 装homebrew时，执行如下指令出现错误
 ## 三 参考
 * [安装homebrew报错curl: (7) Failed to connect to raw.githubusercontent.com port 443: Operation][10]
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/homebrew-error-view.png
-[2]:https://raw.githubusercontent.com/PGzxc/images/master/2020/homebrew-error-commandlinetools-sdks.png
-[3]:https://raw.githubusercontent.com/PGzxc/images/master/2020/homebrew-error-rm-old-commandline.png
-[4]:https://raw.githubusercontent.com/PGzxc/images/master/2020/homebrew-error-select-install.png
-[5]:https://raw.githubusercontent.com/PGzxc/images/master/2020/homebrew-error-install-webpage.png
-[6]:https://raw.githubusercontent.com/PGzxc/images/master/2020/homebrew-error-install-save.png
-[7]:https://raw.githubusercontent.com/PGzxc/images/master/2020/homebrew-error-ruby-install.png
-[8]:https://raw.githubusercontent.com/PGzxc/images/master/2020/homebrew-error-install-finish.png
+[1]:https://images.pgzxc.com//homebrew-error-view.png
+[2]:https://images.pgzxc.com//homebrew-error-commandlinetools-sdks.png
+[3]:https://images.pgzxc.com//homebrew-error-rm-old-commandline.png
+[4]:https://images.pgzxc.com//homebrew-error-select-install.png
+[5]:https://images.pgzxc.com//homebrew-error-install-webpage.png
+[6]:https://images.pgzxc.com//homebrew-error-install-save.png
+[7]:https://images.pgzxc.com//homebrew-error-ruby-install.png
+[8]:https://images.pgzxc.com//homebrew-error-install-finish.png
 
 [10]:https://www.jianshu.com/p/68efabd2e32b
 

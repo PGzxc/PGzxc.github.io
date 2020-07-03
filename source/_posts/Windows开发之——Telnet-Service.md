@@ -78,16 +78,16 @@ win10环境下Telnet服务端已被阉割，Telnet服务没有启动的情况下
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/telnet-position.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/telnet-win7.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/telnet-win10.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/telnet-client-select.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/telnet-client-install.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/telnet-cmd.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/telnet-baidu.png
+[1]: https://images.pgzxc.com/telnet-position.png
+[2]: https://images.pgzxc.com/telnet-win7.png
+[3]: https://images.pgzxc.com/telnet-win10.png
+[4]: https://images.pgzxc.com/telnet-client-select.png
+[5]: https://images.pgzxc.com/telnet-client-install.png
+[6]: https://images.pgzxc.com/telnet-cmd.png
+[7]: https://images.pgzxc.com/telnet-baidu.png
 [8]: http://www.kpym.com/2/kpym/download.htm
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/telnet-kts119.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/telnet-kts-port-23.png
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/telnet-kts-setup.png
-[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/telnet-kts-regis.png
-[13]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/telnet-linux-win.png
+[9]: https://images.pgzxc.com/telnet-kts119.png
+[10]: https://images.pgzxc.com/telnet-kts-port-23.png
+[11]: https://images.pgzxc.com/telnet-kts-setup.png
+[12]: https://images.pgzxc.com/telnet-kts-regis.png
+[13]: https://images.pgzxc.com/telnet-linux-win.png

@@ -62,14 +62,14 @@ date: 2018-03-05 12:40:09
 # 其他 
 参考： [RN_Image][11]
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-image-local.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-image-local-look.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-image-uri-code.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-image-uri-look.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-image-app-clean.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-image-app-code.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-image-app-look.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-image-sdcard-dir.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-image-sdcard-code.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-image-sdcard-look.png
+[1]: https://images.pgzxc.com/rn-image-local.png
+[2]: https://images.pgzxc.com/rn-image-local-look.png
+[3]: https://images.pgzxc.com/rn-image-uri-code.png
+[4]: https://images.pgzxc.com/rn-image-uri-look.png
+[5]: https://images.pgzxc.com/rn-image-app-clean.png
+[6]: https://images.pgzxc.com/rn-image-app-code.png
+[7]: https://images.pgzxc.com/rn-image-app-look.png
+[8]: https://images.pgzxc.com/rn-image-sdcard-dir.png
+[9]: https://images.pgzxc.com/rn-image-sdcard-code.png
+[10]: https://images.pgzxc.com/rn-image-sdcard-look.png
 [11]: https://github.com/PGzxc/RN_Image

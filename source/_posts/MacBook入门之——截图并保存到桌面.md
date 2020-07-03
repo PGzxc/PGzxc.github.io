@@ -40,10 +40,10 @@ Applestore搜索截图，可以看到很多截图软件如：Xnip和QQ截图等�
 	![][6]
 	
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-cut-image-keyboard.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-cut-image-keyboard-area.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-cut-image-keyboard-save.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-cut-image-software-setting.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-cut-image-software-setting-config.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-cut-image-software-save.png
+[1]: https://images.pgzxc.com/mac-cut-image-keyboard.png
+[2]: https://images.pgzxc.com/mac-cut-image-keyboard-area.png
+[3]: https://images.pgzxc.com/mac-cut-image-keyboard-save.png
+[4]: https://images.pgzxc.com/mac-cut-image-software-setting.png
+[5]: https://images.pgzxc.com/mac-cut-image-software-setting-config.png
+[6]: https://images.pgzxc.com/mac-cut-image-software-save.png
 

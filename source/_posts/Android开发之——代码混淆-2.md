@@ -108,9 +108,9 @@ date: 2017-11-16 16:36:01
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-proguard-build-minify-enable.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-proguard-buidldtype.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-proguard-mapping.png
+[1]: https://images.pgzxc.com/android-proguard-build-minify-enable.png
+[2]: https://images.pgzxc.com/android-proguard-buidldtype.png
+[3]: https://images.pgzxc.com/android-proguard-mapping.png
 [4]: http://blog.csdn.net/dai_zhenliang/article/details/42423575
 [5]: https://segmentfault.com/a/1190000006668933
 [6]: https://segmentfault.com/a/1190000006679021

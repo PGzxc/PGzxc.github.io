@@ -33,11 +33,11 @@ date: 2018-03-28 11:48:27
 ## 出现重启(restart)说明安装成功，重启后生效
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vm-tools-install.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vm-tools-show.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vm-tools-copy-desk.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vm-tools-open-cmd.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vm-tools-tar.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vm-tools-cd-tar.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vm-tools-install-order.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vm-tools-install-process.png
+[1]: https://images.pgzxc.com/vm-tools-install.png
+[2]: https://images.pgzxc.com/vm-tools-show.png
+[3]: https://images.pgzxc.com/vm-tools-copy-desk.png
+[4]: https://images.pgzxc.com/vm-tools-open-cmd.png
+[5]: https://images.pgzxc.com/vm-tools-tar.png
+[6]: https://images.pgzxc.com/vm-tools-cd-tar.png
+[7]: https://images.pgzxc.com/vm-tools-install-order.png
+[8]: https://images.pgzxc.com/vm-tools-install-process.png

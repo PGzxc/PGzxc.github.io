@@ -46,7 +46,7 @@ date: 2018-03-01 13:58:13
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/nfc-text-formate.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/nfc-state-formate.png
+[1]: https://images.pgzxc.com/nfc-text-formate.png
+[2]: https://images.pgzxc.com/nfc-state-formate.png
 [3]: https://github.com/PGzxc/NFCReadWriteText
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/nfc-read-write.png
+[4]: https://images.pgzxc.com/nfc-read-write.png

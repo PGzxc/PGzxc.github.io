@@ -36,8 +36,8 @@ Mac键盘上只有一个delete删除键，删除的是光标前的字符，Fn+de
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-keyboard-delete.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-keyboard-option.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-keyboard-command.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-keyboard-start-end.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-keyboard-print-screen.png
+[1]: https://images.pgzxc.com/mac-keyboard-delete.png
+[2]: https://images.pgzxc.com/mac-keyboard-option.png
+[3]: https://images.pgzxc.com/mac-keyboard-command.png
+[4]: https://images.pgzxc.com/mac-keyboard-start-end.png
+[5]: https://images.pgzxc.com/mac-keyboard-print-screen.png

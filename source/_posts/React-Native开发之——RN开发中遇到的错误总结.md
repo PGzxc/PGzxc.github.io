@@ -33,7 +33,7 @@ date: 2018-03-22 18:08:49
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-error-cache.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-error-clear-cache.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-error-set-registry.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-error-init.png
+[1]: https://images.pgzxc.com/rn-error-cache.png
+[2]: https://images.pgzxc.com/rn-error-clear-cache.png
+[3]: https://images.pgzxc.com/rn-error-set-registry.png
+[4]: https://images.pgzxc.com/rn-error-init.png

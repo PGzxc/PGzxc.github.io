@@ -41,4 +41,4 @@ date: 2020-06-21 22:42:13
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-chaoji-caitu-nextquestion.gif
+[1]:https://images.pgzxc.com//ios-chaoji-caitu-nextquestion.gif

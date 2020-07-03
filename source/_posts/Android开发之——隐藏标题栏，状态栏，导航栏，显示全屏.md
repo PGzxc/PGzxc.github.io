@@ -57,15 +57,15 @@ date: 2017-12-06 12:10:00
 [Demo][11]
 
 
-[0]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hidden-pic-state.png
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hidden_activity.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hidden_activity_result.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hidden_appcompat.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hidden_appcompat_result.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hidden_title_style.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hidden_title_style_result.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hidden_actionbar.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hidden_actionbar_result.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hidden_navigator.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hidden_navigator_result.png
+[0]: https://images.pgzxc.com/hidden-pic-state.png
+[1]: https://images.pgzxc.com/hidden_activity.png
+[2]: https://images.pgzxc.com/hidden_activity_result.png
+[3]: https://images.pgzxc.com/hidden_appcompat.png
+[4]: https://images.pgzxc.com/hidden_appcompat_result.png
+[5]: https://images.pgzxc.com/hidden_title_style.png
+[6]: https://images.pgzxc.com/hidden_title_style_result.png
+[7]: https://images.pgzxc.com/hidden_actionbar.png
+[8]: https://images.pgzxc.com/hidden_actionbar_result.png
+[9]: https://images.pgzxc.com/hidden_navigator.png
+[10]: https://images.pgzxc.com/hidden_navigator_result.png
 [11]: https://github.com/PGzxc/TitleHidden

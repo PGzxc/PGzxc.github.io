@@ -58,5 +58,5 @@ Switch：开关控件，类似于Android中的开关控件Switch。它需要一�
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-switch.gif
+[1]: https://images.pgzxc.com/rn-switch.gif
 [2]: https://github.com/PGzxc/RN_Switch

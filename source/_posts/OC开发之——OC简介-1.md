@@ -56,4 +56,4 @@ date: 2020-03-22 22:37:37
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/oc-build-process.png
+[1]:https://images.pgzxc.com//oc-build-process.png

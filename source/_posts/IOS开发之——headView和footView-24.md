@@ -40,4 +40,4 @@ date: 2020-05-25 22:40:58
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-head-foot-view.gif
+[1]:https://images.pgzxc.com//ios-head-foot-view.gif

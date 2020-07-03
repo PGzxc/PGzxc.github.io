@@ -97,13 +97,13 @@ UI测试相关
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-xcode-search.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-xcode-main.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-playground-create.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-single-view.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/icon-project-config.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-app-create-position.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-project-iosapp.png
+[1]: https://images.pgzxc.com/ios-xcode-search.png
+[2]: https://images.pgzxc.com/ios-xcode-main.png
+[3]: https://images.pgzxc.com/ios-playground-create.png
+[4]: https://images.pgzxc.com/ios-single-view.png
+[5]: https://images.pgzxc.com/icon-project-config.png
+[6]: https://images.pgzxc.com/ios-app-create-position.png
+[7]: https://images.pgzxc.com/ios-project-iosapp.png
 
 [8]: https://developer.apple.com/
 [9]: https://developer.apple.com/cn/

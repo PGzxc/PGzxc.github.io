@@ -27,7 +27,7 @@ date: 2019-09-15 22:05:59
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-file-path-java-look.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-file-path-show.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-file-path-copy-path.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-file-path-copy-editor.png
+[1]: https://images.pgzxc.com/mac-file-path-java-look.png
+[2]: https://images.pgzxc.com/mac-file-path-show.png
+[3]: https://images.pgzxc.com/mac-file-path-copy-path.png
+[4]: https://images.pgzxc.com/mac-file-path-copy-editor.png

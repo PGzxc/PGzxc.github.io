@@ -98,4 +98,4 @@ clog 也是与流插入运算符 << 结合使用的，如下所示：
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-iostream.png
+[1]: https://images.pgzxc.com/cpp-iostream.png

@@ -54,12 +54,12 @@ date: 2017-11-18 21:54:00
 
 
 [1]: https://fir.im/
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/fir-im.png
+[2]: https://images.pgzxc.com/fir-im.png
 [3]: http://7xju1s.com1.z0.glb.clouddn.com/fir-plugin-1.9.5.hpi
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/fir-manage-plugin.png 
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/fir-upload-plugin.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/fir-up-to-fir.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/fir-im-token.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/build-by-hand.png  
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/fir-app.png
+[4]: https://images.pgzxc.com/fir-manage-plugin.png 
+[5]: https://images.pgzxc.com/fir-upload-plugin.png
+[6]: https://images.pgzxc.com/fir-up-to-fir.png
+[7]: https://images.pgzxc.com/fir-im-token.png
+[8]: https://images.pgzxc.com/build-by-hand.png  
+[9]: https://images.pgzxc.com/fir-app.png
 [10]: http://blog.csdn.net/lsyz0021/article/details/72683171

@@ -58,6 +58,6 @@ HTTP通信过程属于“你推一下，我走一下”的方式，客户端不�
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/net_seven_mode.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/net_mode.png
+[1]: https://images.pgzxc.com/net_seven_mode.png
+[2]: https://images.pgzxc.com/net_mode.png
 

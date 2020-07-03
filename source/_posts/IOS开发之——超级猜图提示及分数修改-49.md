@@ -58,4 +58,4 @@ date: 2020-06-26 22:54:40
 ```
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-chaoji-caitu-tishi.gif
+[1]:https://images.pgzxc.com//ios-chaoji-caitu-tishi.gif

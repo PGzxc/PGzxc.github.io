@@ -53,11 +53,11 @@ ReactNative的代码模板，包括：
 
 
 [1]: https://pgzxc.github.io/2018/03/02/React-Native%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94Webstorm%E5%BF%AB%E6%8D%B7%E5%BC%80%E5%8F%91/
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/webstorm-file-encodings.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/webstorm-jsx-languages.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/webstorm-library-react.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/webstorm-library-react-native.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/webstorm-library-global.png
+[2]: https://images.pgzxc.com/webstorm-file-encodings.png
+[3]: https://images.pgzxc.com/webstorm-jsx-languages.png
+[4]: https://images.pgzxc.com/webstorm-library-react.png
+[5]: https://images.pgzxc.com/webstorm-library-react-native.png
+[6]: https://images.pgzxc.com/webstorm-library-global.png
 [7]: https://github.com/virtoolswebplayer/ReactNative-LiveTemplate
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/webstorm-live-templates.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/webstorm-live-effect.png
+[8]: https://images.pgzxc.com/webstorm-live-templates.png
+[9]: https://images.pgzxc.com/webstorm-live-effect.png

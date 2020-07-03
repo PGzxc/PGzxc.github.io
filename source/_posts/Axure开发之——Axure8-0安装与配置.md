@@ -70,15 +70,15 @@ Axure是收费软件，截止本文稿发布时间，Axure版本为Axure RP 9 Be
 [1]: https://pan.baidu.com/s/1m-dUSfri5OZXa0lnUunNRg
 [2]: https://pan.baidu.com/s/1w3uCoFBRvJTHw9ZDfFrPJQ
 [3]: https://pan.baidu.com/s/1jOtlt_S1iGbWtIgYD8Y_oQ
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/axure-install-dir.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/axure-install-finish.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/axure-language-unzip.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/axure-lang-move.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/axure-lang-already.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/axure-not-grant.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/axure-manager-grant.png
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/axure-manager-grant-commit.png
-[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/axure-grant-has.png
+[4]: https://images.pgzxc.com/axure-install-dir.png
+[5]: https://images.pgzxc.com/axure-install-finish.png
+[6]: https://images.pgzxc.com/axure-language-unzip.png
+[7]: https://images.pgzxc.com/axure-lang-move.png
+[8]: https://images.pgzxc.com/axure-lang-already.png
+[9]: https://images.pgzxc.com/axure-not-grant.png
+[10]: https://images.pgzxc.com/axure-manager-grant.png
+[11]: https://images.pgzxc.com/axure-manager-grant-commit.png
+[12]: https://images.pgzxc.com/axure-grant-has.png
 
 
 

@@ -362,24 +362,24 @@ android
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-tools-effect.png
+[1]: https://images.pgzxc.com/android-tools-effect.png
 [2]: https://dwz.cn/MHl1xA75
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-tools-ignore-before.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-tools-ignore-after.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-tools-targetapi-before.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-tools-targetapi-after.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-tools-preview-view-tools-before.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-tools-preview-view-tools-after.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-tools-context-click.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-tools-itemcount-2.png
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-tools-layout-priview.png
-[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-tools-listitem-header-footer.png
-[13]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-tools-menu-before.png
-[14]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-tools-layout-menu-preview.png
-[15]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-tools-layout-menu-after.png
-[16]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-tools-numberpicker-preview.png
-[17]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-tools-drawaer-layout-preview.png
-[18]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-tools-sample-preview.png
+[3]: https://images.pgzxc.com/android-tools-ignore-before.png
+[4]: https://images.pgzxc.com/android-tools-ignore-after.png
+[5]: https://images.pgzxc.com/android-tools-targetapi-before.png
+[6]: https://images.pgzxc.com/android-tools-targetapi-after.png
+[7]: https://images.pgzxc.com/android-tools-preview-view-tools-before.png
+[8]: https://images.pgzxc.com/android-tools-preview-view-tools-after.png
+[9]: https://images.pgzxc.com/android-tools-context-click.png
+[10]: https://images.pgzxc.com/android-tools-itemcount-2.png
+[11]: https://images.pgzxc.com/android-tools-layout-priview.png
+[12]: https://images.pgzxc.com/android-tools-listitem-header-footer.png
+[13]: https://images.pgzxc.com/android-tools-menu-before.png
+[14]: https://images.pgzxc.com/android-tools-layout-menu-preview.png
+[15]: https://images.pgzxc.com/android-tools-layout-menu-after.png
+[16]: https://images.pgzxc.com/android-tools-numberpicker-preview.png
+[17]: https://images.pgzxc.com/android-tools-drawaer-layout-preview.png
+[18]: https://images.pgzxc.com/android-tools-sample-preview.png
 [19]: https://blog.csdn.net/p106786860/article/details/53943540
 [20]: https://developer.android.google.cn/studio/write/tool-attributes.html
 [21]: https://www.jianshu.com/p/2912bcba4465

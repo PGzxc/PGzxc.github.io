@@ -111,4 +111,4 @@ class ViewController: UIViewController {
 }
 ```
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-timer-cutdown.gif
+[1]:https://images.pgzxc.com//ios-timer-cutdown.gif

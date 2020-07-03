@@ -87,14 +87,14 @@ FFmpeg是一款多媒体视频处理工具，有非常强大的功能包括视�
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vlc-stream-select.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vlc-stream-network.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vlc-stream-play.png
+[1]: https://images.pgzxc.com/vlc-stream-select.png
+[2]: https://images.pgzxc.com/vlc-stream-network.png
+[3]: https://images.pgzxc.com/vlc-stream-play.png
 [4]: http://www.ffmpeg.org/download.html
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ffmpeg-guanwang.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ffmpeg-unzip.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ffmpeg-add-path.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ffmpeg-make-up.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ffmpeg-mp4-play.png
+[5]: https://images.pgzxc.com/ffmpeg-guanwang.png
+[6]: https://images.pgzxc.com/ffmpeg-unzip.png
+[7]: https://images.pgzxc.com/ffmpeg-add-path.png
+[8]: https://images.pgzxc.com/ffmpeg-make-up.png
+[9]: https://images.pgzxc.com/ffmpeg-mp4-play.png
 
 

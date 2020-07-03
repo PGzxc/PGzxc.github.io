@@ -36,10 +36,10 @@ MacBook
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-active-language.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-active-keyboard.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-active-country.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-active-network.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-active-account.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-active-finish.png
+[1]: https://images.pgzxc.com/mac-active-language.png
+[2]: https://images.pgzxc.com/mac-active-keyboard.png
+[3]: https://images.pgzxc.com/mac-active-country.png
+[4]: https://images.pgzxc.com/mac-active-network.png
+[5]: https://images.pgzxc.com/mac-active-account.png
+[6]: https://images.pgzxc.com/mac-active-finish.png
 

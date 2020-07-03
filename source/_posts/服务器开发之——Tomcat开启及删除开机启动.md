@@ -67,13 +67,13 @@ CATALINA_HOME   D:\SoftWare\apache-tomcat-8.5.32
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/2019/file-open-cmd.gif
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/2019/tomcat-open-cmder.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/2019/tomcat-service-install.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/2019/tomcat-service-installed.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/2019/tomcat-service-show-windows-msc.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/2019/tomcat-start-auto-set.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/2019/tomcat-delete-open-cmder.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/2019/tomcat-delete-tomcat-service.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/2019/tomcat-modify-search-servicename.png
+[1]: https://images.pgzxc.com/file-open-cmd.gif
+[2]: https://images.pgzxc.com/tomcat-open-cmder.png
+[3]: https://images.pgzxc.com/tomcat-service-install.png
+[4]: https://images.pgzxc.com/tomcat-service-installed.png
+[5]: https://images.pgzxc.com/tomcat-service-show-windows-msc.png
+[6]: https://images.pgzxc.com/tomcat-start-auto-set.png
+[7]: https://images.pgzxc.com/tomcat-delete-open-cmder.png
+[8]: https://images.pgzxc.com/tomcat-delete-tomcat-service.png
+[9]: https://images.pgzxc.com/tomcat-modify-search-servicename.png
 [10]:https://www.cnblogs.com/kengqiangmao/p/10861065.html

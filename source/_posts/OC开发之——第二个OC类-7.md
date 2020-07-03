@@ -137,7 +137,7 @@ int main()
 
 ![][4]
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/oc-memory-allocation-1.png
-[2]:https://raw.githubusercontent.com/PGzxc/images/master/2020/oc-memory-allocation-2.png
-[3]:https://raw.githubusercontent.com/PGzxc/images/master/2020/oc-memory-allocation-3.png
-[4]:https://raw.githubusercontent.com/PGzxc/images/master/2020/oc-memory-allocation-4.png
+[1]:https://images.pgzxc.com//oc-memory-allocation-1.png
+[2]:https://images.pgzxc.com//oc-memory-allocation-2.png
+[3]:https://images.pgzxc.com//oc-memory-allocation-3.png
+[4]:https://images.pgzxc.com//oc-memory-allocation-4.png

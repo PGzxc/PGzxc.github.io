@@ -102,21 +102,21 @@ date: 2017-12-28 13:09:30
 
 
 [1]: http://www.easemob.com/
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/huanxin-login.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/huanxin-new-app.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/huanxin-key.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/huanxin-sdk-download.png
+[2]: https://images.pgzxc.com/huanxin-login.png
+[3]: https://images.pgzxc.com/huanxin-new-app.png
+[4]: https://images.pgzxc.com/huanxin-key.png
+[5]: https://images.pgzxc.com/huanxin-sdk-download.png
 [6]: http://www.easemob.com/download/im
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/huanxin-jieya.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/huanxin-easeui-lib.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/huanxin-easeui-module.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/app-easeui-include.png
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/huanxin-meta-value.png
-[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/huanxin-umeng.png
-[13]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/huanxin-sdk-init.png
-[14]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/huanxin-regist-login.png
-[15]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/huanxin-regist.png
-[16]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/huanxin-code-login.png
-[17]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/huanxin-main.png
-[18]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/huanxin-main-content.png
+[7]: https://images.pgzxc.com/huanxin-jieya.png
+[8]: https://images.pgzxc.com/huanxin-easeui-lib.png
+[9]: https://images.pgzxc.com/huanxin-easeui-module.png
+[10]: https://images.pgzxc.com/app-easeui-include.png
+[11]: https://images.pgzxc.com/huanxin-meta-value.png
+[12]: https://images.pgzxc.com/huanxin-umeng.png
+[13]: https://images.pgzxc.com/huanxin-sdk-init.png
+[14]: https://images.pgzxc.com/huanxin-regist-login.png
+[15]: https://images.pgzxc.com/huanxin-regist.png
+[16]: https://images.pgzxc.com/huanxin-code-login.png
+[17]: https://images.pgzxc.com/huanxin-main.png
+[18]: https://images.pgzxc.com/huanxin-main-content.png
 [19]: https://github.com/PGzxc/EaseDemo/tree/445d40e0da00330d66ddba067c7f06f66c650c50

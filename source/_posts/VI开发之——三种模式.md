@@ -74,10 +74,10 @@ VI有三种基本的工作模式：
 ![][6]
 
 
-[0]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vi-touch-file.png
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vi-file-save.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vi-file-read.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vi-order-mode.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vi-add-mode.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vi-see-mode.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/vi-hangmo-mode.png
+[0]: https://images.pgzxc.com/vi-touch-file.png
+[1]: https://images.pgzxc.com/vi-file-save.png
+[2]: https://images.pgzxc.com/vi-file-read.png
+[3]: https://images.pgzxc.com/vi-order-mode.png
+[4]: https://images.pgzxc.com/vi-add-mode.png
+[5]: https://images.pgzxc.com/vi-see-mode.png
+[6]: https://images.pgzxc.com/vi-hangmo-mode.png

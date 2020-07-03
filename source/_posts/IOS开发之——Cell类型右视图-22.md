@@ -115,4 +115,4 @@ date: 2020-05-24 23:36:00
 @end
 ```
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-uitableview-cell-right.gif
+[1]:https://images.pgzxc.com//ios-uitableview-cell-right.gif

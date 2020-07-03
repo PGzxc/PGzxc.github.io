@@ -48,5 +48,5 @@ date: 2020-06-14 23:53:28
   ```
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-tuangou-headerview-xib.png
-[2]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-tuangou-view-width-1.png
+[1]:https://images.pgzxc.com//ios-tuangou-headerview-xib.png
+[2]:https://images.pgzxc.com//ios-tuangou-view-width-1.png

@@ -76,17 +76,17 @@ date: 2019-06-13 23:19:16
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-open-vscode.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-install-hexo-cli.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-npm-install-depend.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/npm-install-error.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-package-json.png
+[1]: https://images.pgzxc.com/hexo-open-vscode.png
+[2]: https://images.pgzxc.com/hexo-install-hexo-cli.png
+[3]: https://images.pgzxc.com/hexo-npm-install-depend.png
+[4]: https://images.pgzxc.com/npm-install-error.png
+[5]: https://images.pgzxc.com/hexo-package-json.png
 [6]: https://www.npmjs.com/package/npm-check-updates
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/npm-check-update.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/npm-audit-fix.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-npm-audit-fix.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-npm-audit-after-warn.png
+[7]: https://images.pgzxc.com/npm-check-update.png
+[8]: https://images.pgzxc.com/npm-audit-fix.png
+[9]: https://images.pgzxc.com/hexo-npm-audit-fix.png
+[10]: https://images.pgzxc.com/hexo-npm-audit-after-warn.png
 [11]: https://www.npmjs.com/package/eslint
-[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-install-eslint.png
-[20]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-g-old-version.png
-[21]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-s-old-version.png
+[12]: https://images.pgzxc.com/hexo-install-eslint.png
+[20]: https://images.pgzxc.com/hexo-g-old-version.png
+[21]: https://images.pgzxc.com/hexo-s-old-version.png

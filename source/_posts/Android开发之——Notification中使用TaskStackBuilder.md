@@ -62,4 +62,4 @@ date: 2018-01-07 16:00:33
 
 [1]: http://blog.csdn.net/alone_slfly/article/details/41744323  
 [2]: http://blog.csdn.net/lixiaodaoaaa/article/details/51700981  
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-notify.gif
+[3]: https://images.pgzxc.com/android-notify.gif

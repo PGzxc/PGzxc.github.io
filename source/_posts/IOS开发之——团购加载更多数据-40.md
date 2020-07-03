@@ -135,6 +135,6 @@ date: 2020-06-13 23:43:16
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/icon-tuangou-tgfooterview.png
-[2]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-tuangou-loadmore.gif
+[1]:https://images.pgzxc.com//icon-tuangou-tgfooterview.png
+[2]:https://images.pgzxc.com//ios-tuangou-loadmore.gif
 

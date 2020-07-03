@@ -59,11 +59,11 @@ date: 2018-07-27 21:39:15
 
 
 [1]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-linux-download.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-grep.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-upload.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-upload-after.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-tar-xvf.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-path.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-source-etc-profile.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/java-version.png
+[2]: https://images.pgzxc.com/java-linux-download.png
+[3]: https://images.pgzxc.com/java-grep.png
+[4]: https://images.pgzxc.com/java-upload.png
+[5]: https://images.pgzxc.com/java-upload-after.png
+[6]: https://images.pgzxc.com/java-tar-xvf.png
+[7]: https://images.pgzxc.com/java-path.png
+[8]: https://images.pgzxc.com/java-source-etc-profile.png
+[9]: https://images.pgzxc.com/java-version.png

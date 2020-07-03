@@ -91,5 +91,5 @@ date: 2018-03-24 17:02:29
 参考：[Github下载][2]
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/rn-refreshcontrol.gif
+[1]: https://images.pgzxc.com/rn-refreshcontrol.gif
 [2]: https://github.com/PGzxc/RN_RefreshControl

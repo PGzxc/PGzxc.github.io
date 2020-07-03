@@ -70,9 +70,9 @@ date: 2019-10-08 22:56:40
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/centos7-login-error.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/centos7-ssh-check.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/centos7-yum-install-openssh.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/centos7-systemctl-enable-sshd.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/centos-iptables-22-open.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/centos-ssh-connect.png
+[1]: https://images.pgzxc.com/centos7-login-error.png
+[2]: https://images.pgzxc.com/centos7-ssh-check.png
+[3]: https://images.pgzxc.com/centos7-yum-install-openssh.png
+[4]: https://images.pgzxc.com/centos7-systemctl-enable-sshd.png
+[5]: https://images.pgzxc.com/centos-iptables-22-open.png
+[6]: https://images.pgzxc.com/centos-ssh-connect.png

@@ -60,13 +60,13 @@ git branch命令会列出所有分支，当前分支前面会标一个*号。
 ![][10]
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/master-and-dev-ff.mp4
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-branch-create-dev.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-branch-look-dev.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-branch-add-content.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-branch-add-commit.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-branch-swich-master.png  
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-branch-merge-dev.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-branch-del-dev.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-branch-del-branch.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-branch-cat-readme-last.png
+[1]: https://images.pgzxc.com/master-and-dev-ff.mp4
+[2]: https://images.pgzxc.com/git-branch-create-dev.png
+[3]: https://images.pgzxc.com/git-branch-look-dev.png
+[4]: https://images.pgzxc.com/git-branch-add-content.png
+[5]: https://images.pgzxc.com/git-branch-add-commit.png
+[6]: https://images.pgzxc.com/git-branch-swich-master.png  
+[7]: https://images.pgzxc.com/git-branch-merge-dev.png
+[8]: https://images.pgzxc.com/git-branch-del-dev.png
+[9]: https://images.pgzxc.com/git-branch-del-branch.png
+[10]: https://images.pgzxc.com/git-branch-cat-readme-last.png

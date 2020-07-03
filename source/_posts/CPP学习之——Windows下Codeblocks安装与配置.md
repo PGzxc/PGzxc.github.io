@@ -108,28 +108,28 @@ date: 2019-10-17 23:29:57
 
 
 [1]: https://osdn.net/projects/mingw/releases/
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-mingw-download-list.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-mingw-download.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-mingw-install-accept.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-mingw-install-position.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-mingw-install-position.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-mingw-install-choice.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-mingw-install-apply-change.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-mingw-config-mingw.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-mingw-path-add.png
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-mingw-version.png
+[2]: https://images.pgzxc.com/cpp-mingw-download-list.png
+[3]: https://images.pgzxc.com/cpp-mingw-download.png
+[4]: https://images.pgzxc.com/cpp-mingw-install-accept.png
+[5]: https://images.pgzxc.com/cpp-mingw-install-position.png
+[6]: https://images.pgzxc.com/cpp-mingw-install-position.png
+[7]: https://images.pgzxc.com/cpp-mingw-install-choice.png
+[8]: https://images.pgzxc.com/cpp-mingw-install-apply-change.png
+[9]: https://images.pgzxc.com/cpp-mingw-config-mingw.png
+[10]: https://images.pgzxc.com/cpp-mingw-path-add.png
+[11]: https://images.pgzxc.com/cpp-mingw-version.png
 [12]:http://www.codeblocks.org/downloads/26
-[13]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-codeblocks-download-list.png
-[14]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-codeblocks-download.png
-[15]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-codeblcoks-install-component.png
-[16]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-codeblocks-mingw.png
-[17]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-codeblocks-mingw-version.png
-[18]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-codeblocks-directory-tools.png
-[19]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-codeblocks-new-project.png
-[20]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-codeblocks-console-application.png
-[21]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-codeblocks-c-cpp-select.png
-[22]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-codeblocks-file-create.png
-[23]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-codeblocks-compiler.png
-[24]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-codeblocks-create-finish.png
-[25]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-codeblocks-build-run.png
+[13]: https://images.pgzxc.com/cpp-codeblocks-download-list.png
+[14]: https://images.pgzxc.com/cpp-codeblocks-download.png
+[15]: https://images.pgzxc.com/cpp-codeblcoks-install-component.png
+[16]: https://images.pgzxc.com/cpp-codeblocks-mingw.png
+[17]: https://images.pgzxc.com/cpp-codeblocks-mingw-version.png
+[18]: https://images.pgzxc.com/cpp-codeblocks-directory-tools.png
+[19]: https://images.pgzxc.com/cpp-codeblocks-new-project.png
+[20]: https://images.pgzxc.com/cpp-codeblocks-console-application.png
+[21]: https://images.pgzxc.com/cpp-codeblocks-c-cpp-select.png
+[22]: https://images.pgzxc.com/cpp-codeblocks-file-create.png
+[23]: https://images.pgzxc.com/cpp-codeblocks-compiler.png
+[24]: https://images.pgzxc.com/cpp-codeblocks-create-finish.png
+[25]: https://images.pgzxc.com/cpp-codeblocks-build-run.png
 [26]:https://jingyan.baidu.com/article/915fc414e8838051394b209b.html

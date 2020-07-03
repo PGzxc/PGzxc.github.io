@@ -97,4 +97,4 @@ date: 2020-06-28 23:05:22
 
   
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-tongxunlu-kuangjia.gif
+[1]:https://images.pgzxc.com//ios-tongxunlu-kuangjia.gif

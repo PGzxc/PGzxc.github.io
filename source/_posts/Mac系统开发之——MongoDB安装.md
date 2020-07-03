@@ -95,11 +95,11 @@ date: 2020-02-12 21:23:30
 [6]:https://www.cnblogs.com/HoverM/p/11897638.html
 
 
-[11]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mongodb-service-download-page.png
-[12]:https://raw.githubusercontent.com/PGzxc/images/master/2020/monogo-upzip-mv-usr-local.png
-[13]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mongodb-terminal-version.png
-[14]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mongodb-mkdir-data-dbpath.png
-[15]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mongodb-mongod-in-use.png
-[16]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mongodb-compass-tools.png
-[17]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mongodb-compass-install.png
-[18]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mongodb-compass-open.png
+[11]:https://images.pgzxc.com//mongodb-service-download-page.png
+[12]:https://images.pgzxc.com//monogo-upzip-mv-usr-local.png
+[13]:https://images.pgzxc.com//mongodb-terminal-version.png
+[14]:https://images.pgzxc.com//mongodb-mkdir-data-dbpath.png
+[15]:https://images.pgzxc.com//mongodb-mongod-in-use.png
+[16]:https://images.pgzxc.com//mongodb-compass-tools.png
+[17]:https://images.pgzxc.com//mongodb-compass-install.png
+[18]:https://images.pgzxc.com//mongodb-compass-open.png

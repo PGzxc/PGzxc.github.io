@@ -96,22 +96,22 @@ MobaXterm又名MobaXVT，是一款增强型远程连接工具，类似xshell。�
 
 
 [1]: https://mobaxterm.mobatek.net/download-home-edition.html
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/mobaxterm-install-wizard.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/mobaxterm-intall-wizard-position.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/mobaxterm-install-shortcut.png
+[2]: https://images.pgzxc.com/mobaxterm-install-wizard.png
+[3]: https://images.pgzxc.com/mobaxterm-intall-wizard-position.png
+[4]: https://images.pgzxc.com/mobaxterm-install-shortcut.png
 [5]:https://www.52pojie.cn/thread-1025639-1-1.html
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/mobaxterm-keygen-click.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/mobaXterm-crack-get-from-file.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/mobaxterm-crack-generate.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/mobaxterm-crack-finish.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/mobaxterm-remote-centos7.png
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/mobaxterm-remote-ubuntu.png
-[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/mobaxterm-add-sessions.png
-[13]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/mobaxterm-ssh-session.png
-[14]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/mobaxterm-ssh-connect.png
-[15]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/mobaxterm-ssh-login-root.png
-[16]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/mobaxterm-connect-sftp-file.png
-[17]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/mobaxterm-remote-file-function.png
+[6]: https://images.pgzxc.com/mobaxterm-keygen-click.png
+[7]: https://images.pgzxc.com/mobaXterm-crack-get-from-file.png
+[8]: https://images.pgzxc.com/mobaxterm-crack-generate.png
+[9]: https://images.pgzxc.com/mobaxterm-crack-finish.png
+[10]: https://images.pgzxc.com/mobaxterm-remote-centos7.png
+[11]: https://images.pgzxc.com/mobaxterm-remote-ubuntu.png
+[12]: https://images.pgzxc.com/mobaxterm-add-sessions.png
+[13]: https://images.pgzxc.com/mobaxterm-ssh-session.png
+[14]: https://images.pgzxc.com/mobaxterm-ssh-connect.png
+[15]: https://images.pgzxc.com/mobaxterm-ssh-login-root.png
+[16]: https://images.pgzxc.com/mobaxterm-connect-sftp-file.png
+[17]: https://images.pgzxc.com/mobaxterm-remote-file-function.png
 
 
 

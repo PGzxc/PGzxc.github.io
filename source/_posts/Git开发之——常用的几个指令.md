@@ -44,8 +44,8 @@ date: 2018-02-25 23:26:44
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-add-content.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-add-status.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-add-diff.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-add-commit.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-add-commit-status.png
+[1]: https://images.pgzxc.com/git-add-content.png
+[2]: https://images.pgzxc.com/git-add-status.png
+[3]: https://images.pgzxc.com/git-add-diff.png
+[4]: https://images.pgzxc.com/git-add-commit.png
+[5]: https://images.pgzxc.com/git-add-commit-status.png

@@ -41,11 +41,11 @@ date: 2018-08-19 09:13:17
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-shell-startup.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-shell-open.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-move-startup.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-open-msconfig.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-msconfig-start.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-msconfig-open.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-manager-start.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-manager-jinyong.png
+[1]: https://images.pgzxc.com/windows-shell-startup.png
+[2]: https://images.pgzxc.com/windows-shell-open.png
+[3]: https://images.pgzxc.com/windows-move-startup.png
+[4]: https://images.pgzxc.com/windows-open-msconfig.png
+[5]: https://images.pgzxc.com/windows-msconfig-start.png
+[6]: https://images.pgzxc.com/windows-msconfig-open.png
+[7]: https://images.pgzxc.com/windows-manager-start.png
+[8]: https://images.pgzxc.com/windows-manager-jinyong.png

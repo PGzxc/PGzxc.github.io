@@ -37,4 +37,4 @@ date: 2018-03-01 22:03:44
 
 
 [1]: https://github.com/PGzxc/NFCFile
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/nfc-file.png
+[2]: https://images.pgzxc.com/nfc-file.png

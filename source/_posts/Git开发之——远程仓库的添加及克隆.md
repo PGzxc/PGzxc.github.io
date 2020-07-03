@@ -58,15 +58,15 @@ date: 2018-02-26 11:42:43
 ![][11]  
 
 
-[0]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-github-learn.png
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-create-file.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-init.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-ls.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-add-readme.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-commit-readme.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-remote-add.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-push-origin.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-has-show.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-clone-bash.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-clone-address.png
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-clone-clone-ls.png
+[0]: https://images.pgzxc.com/git-github-learn.png
+[1]: https://images.pgzxc.com/git-create-file.png
+[2]: https://images.pgzxc.com/git-init.png
+[3]: https://images.pgzxc.com/git-ls.png
+[4]: https://images.pgzxc.com/git-add-readme.png
+[5]: https://images.pgzxc.com/git-commit-readme.png
+[6]: https://images.pgzxc.com/git-remote-add.png
+[7]: https://images.pgzxc.com/git-push-origin.png
+[8]: https://images.pgzxc.com/git-has-show.png
+[9]: https://images.pgzxc.com/git-clone-bash.png
+[10]: https://images.pgzxc.com/git-clone-address.png
+[11]: https://images.pgzxc.com/git-clone-clone-ls.png

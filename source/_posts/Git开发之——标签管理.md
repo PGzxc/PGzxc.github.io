@@ -53,13 +53,13 @@ date: 2018-02-26 19:37:07
 ![][10]  
 
  
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-tag-branch.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-tag-v1.0.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-tag-show-tag.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-tag-log.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-tag-commit-id.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-tag-two.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-show-v0.1.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-tag-del-v0.1.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-tag-push-v1.0.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-tag-push-all.png
+[1]: https://images.pgzxc.com/git-tag-branch.png
+[2]: https://images.pgzxc.com/git-tag-v1.0.png
+[3]: https://images.pgzxc.com/git-tag-show-tag.png
+[4]: https://images.pgzxc.com/git-tag-log.png
+[5]: https://images.pgzxc.com/git-tag-commit-id.png
+[6]: https://images.pgzxc.com/git-tag-two.png
+[7]: https://images.pgzxc.com/git-show-v0.1.png
+[8]: https://images.pgzxc.com/git-tag-del-v0.1.png
+[9]: https://images.pgzxc.com/git-tag-push-v1.0.png
+[10]: https://images.pgzxc.com/git-tag-push-all.png

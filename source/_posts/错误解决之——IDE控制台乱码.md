@@ -31,8 +31,8 @@ IDE控制台调试时，打印信息出现乱码，现象如下：
 ![][5]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/error-idea-luanma-info.png
-[2]:https://raw.githubusercontent.com/PGzxc/images/master/2020/error-idea-utf8-check.png
-[3]:https://raw.githubusercontent.com/PGzxc/images/master/2020/error-idea-vmoptions.png
-[4]:https://raw.githubusercontent.com/PGzxc/images/master/2020/error-idea-vmoptions-dfileencoding.png
-[5]:https://raw.githubusercontent.com/PGzxc/images/master/2020/error-idea-luanma-correct.png
+[1]:https://images.pgzxc.com//error-idea-luanma-info.png
+[2]:https://images.pgzxc.com//error-idea-utf8-check.png
+[3]:https://images.pgzxc.com//error-idea-vmoptions.png
+[4]:https://images.pgzxc.com//error-idea-vmoptions-dfileencoding.png
+[5]:https://images.pgzxc.com//error-idea-luanma-correct.png

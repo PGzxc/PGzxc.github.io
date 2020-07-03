@@ -184,4 +184,4 @@ Class c2 = [p class]; // 对象方法
 # 思维导图
 ![][1]
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/objectc-outline.png
+[1]: https://images.pgzxc.com/objectc-outline.png

@@ -132,21 +132,21 @@ Main.storyboard文件就可以修改UI界面，左边的箭头表明：程序一
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-navigator-project.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-navigator-version.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-navigator-symbol.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-navigator-search.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-navigator-error.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-navigator-test.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-navigator-debug.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-navigator-breakpoint.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-navigator-report.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-show-hidden-area.png
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-component.png
-[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-project-object-c.png
-[13]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-project-h-file.png
-[14]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-project-h-file.png
-[15]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-object-run.png
-[16]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-project-swift.png
-[17]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-swift-project-code.png
-[18]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/ios-swift-run.png
+[1]: https://images.pgzxc.com/ios-navigator-project.png
+[2]: https://images.pgzxc.com/ios-navigator-version.png
+[3]: https://images.pgzxc.com/ios-navigator-symbol.png
+[4]: https://images.pgzxc.com/ios-navigator-search.png
+[5]: https://images.pgzxc.com/ios-navigator-error.png
+[6]: https://images.pgzxc.com/ios-navigator-test.png
+[7]: https://images.pgzxc.com/ios-navigator-debug.png
+[8]: https://images.pgzxc.com/ios-navigator-breakpoint.png
+[9]: https://images.pgzxc.com/ios-navigator-report.png
+[10]: https://images.pgzxc.com/ios-show-hidden-area.png
+[11]: https://images.pgzxc.com/ios-component.png
+[12]: https://images.pgzxc.com/ios-project-object-c.png
+[13]: https://images.pgzxc.com/ios-project-h-file.png
+[14]: https://images.pgzxc.com/ios-project-h-file.png
+[15]: https://images.pgzxc.com/ios-object-run.png
+[16]: https://images.pgzxc.com/ios-project-swift.png
+[17]: https://images.pgzxc.com/ios-swift-project-code.png
+[18]: https://images.pgzxc.com/ios-swift-run.png

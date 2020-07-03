@@ -52,11 +52,11 @@ date: 2018-05-23 10:43:13
 
 
 [1]: https://open.unionpay.com/ajweb/product/newProDetail?proId=3&cataId=30
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/yinlian-doc.png
+[2]: https://images.pgzxc.com/yinlian-doc.png
 [3]: https://open.unionpay.com/ajweb/help/file/toDetailPage?id=633
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/yinlian-sdk.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/yinlian-sdk-jieya.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/yinlian-app.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/yinlian-app-eclipses.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/yinlian-app-run.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/yinlian-pay.gif
+[4]: https://images.pgzxc.com/yinlian-sdk.png
+[5]: https://images.pgzxc.com/yinlian-sdk-jieya.png
+[6]: https://images.pgzxc.com/yinlian-app.png
+[7]: https://images.pgzxc.com/yinlian-app-eclipses.png
+[8]: https://images.pgzxc.com/yinlian-app-run.png
+[9]: https://images.pgzxc.com/yinlian-pay.gif

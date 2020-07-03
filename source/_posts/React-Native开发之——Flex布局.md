@@ -108,23 +108,23 @@ flex(数值型的属性值)：类似于Android中的layout-weight，用于收缩
 
 
 
-[0]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/react-native-flex-props.png
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/react-native-flex-layouts.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/react-native-flex-layout-flexdirection.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/react-native-flex-code-column.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/react-native-flex-look-column.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/react-native-flex-look-row.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/react-native-flex-code-flex-wrap.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/react-native-layout-flexwrap-no.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/react-native-layout-flexwrap-yes.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/react-native-prop-flexwrap.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/react-native-prop-justifyContent.png
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/react-native-flex-code-justifycontent.png
-[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/react-native-flex-look-justifycontent.png
-[13]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/react-native-prop-alignitems.png
-[14]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/react-native-layout-algnitems-code.png
-[15]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/react-native-algnitems-look.png
-[16]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/react-native-prop-flex.png
-[17]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/react-native-layout-flex-code.png
-[18]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/react-native-flex-look.png
+[0]: https://images.pgzxc.com/react-native-flex-props.png
+[1]: https://images.pgzxc.com/react-native-flex-layouts.png
+[2]: https://images.pgzxc.com/react-native-flex-layout-flexdirection.png
+[3]: https://images.pgzxc.com/react-native-flex-code-column.png
+[4]: https://images.pgzxc.com/react-native-flex-look-column.png
+[5]: https://images.pgzxc.com/react-native-flex-look-row.png
+[6]: https://images.pgzxc.com/react-native-flex-code-flex-wrap.png
+[7]: https://images.pgzxc.com/react-native-layout-flexwrap-no.png
+[8]: https://images.pgzxc.com/react-native-layout-flexwrap-yes.png
+[9]: https://images.pgzxc.com/react-native-prop-flexwrap.png
+[10]: https://images.pgzxc.com/react-native-prop-justifyContent.png
+[11]: https://images.pgzxc.com/react-native-flex-code-justifycontent.png
+[12]: https://images.pgzxc.com/react-native-flex-look-justifycontent.png
+[13]: https://images.pgzxc.com/react-native-prop-alignitems.png
+[14]: https://images.pgzxc.com/react-native-layout-algnitems-code.png
+[15]: https://images.pgzxc.com/react-native-algnitems-look.png
+[16]: https://images.pgzxc.com/react-native-prop-flex.png
+[17]: https://images.pgzxc.com/react-native-layout-flex-code.png
+[18]: https://images.pgzxc.com/react-native-flex-look.png
 [19]: https://github.com/PGzxc/RNFlex

@@ -49,9 +49,9 @@ stack overflow上看到一篇关于Activity，FragmentActivity，ActionBarActivi
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-activity-isue.png
+[1]: https://images.pgzxc.com/android-activity-isue.png
 [2]: https://stackoverflow.com/questions/31297246/activity-appcompatactivity-fragmentactivity-and-actionbaractivity-when-to-us#  
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-Activity.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-FragmentActivity.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-ActionBarActivity.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-AppCompatActivity.png
+[3]: https://images.pgzxc.com/android-Activity.png
+[4]: https://images.pgzxc.com/android-FragmentActivity.png
+[5]: https://images.pgzxc.com/android-ActionBarActivity.png
+[6]: https://images.pgzxc.com/android-AppCompatActivity.png

@@ -45,7 +45,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-bash-profile-terminal.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-bash-profile-finder.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-bash-profile-java-config.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-bash-profile-source.png
+[1]: https://images.pgzxc.com/mac-bash-profile-terminal.png
+[2]: https://images.pgzxc.com/mac-bash-profile-finder.png
+[3]: https://images.pgzxc.com/mac-bash-profile-java-config.png
+[4]: https://images.pgzxc.com/mac-bash-profile-source.png

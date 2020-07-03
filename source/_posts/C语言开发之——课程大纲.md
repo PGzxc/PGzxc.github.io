@@ -52,4 +52,4 @@ date: 2018-04-23 16:39:05
 # 思维导图
 ![思维导图][1] 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/c-outline.png
+[1]: https://images.pgzxc.com/c-outline.png

@@ -59,4 +59,4 @@ C++是高级语言的基础，这对你学习其他编程语言大有裨益。�
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-outline.png
+[1]: https://images.pgzxc.com/cpp-outline.png

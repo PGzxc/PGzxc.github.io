@@ -74,6 +74,6 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 [1]:https://brew.sh/index_zh-cn
 [2]:https://zhuanlan.zhihu.com/p/59805070
 
-[11]:https://raw.githubusercontent.com/PGzxc/images/master/2020/homebrew-websit.png
-[12]:https://raw.githubusercontent.com/PGzxc/images/master/2020/homebrew-install-progress.png
-[13]:https://raw.githubusercontent.com/PGzxc/images/master/2020/homebrew-install-success.png
+[11]:https://images.pgzxc.com//homebrew-websit.png
+[12]:https://images.pgzxc.com//homebrew-install-progress.png
+[13]:https://images.pgzxc.com//homebrew-install-success.png

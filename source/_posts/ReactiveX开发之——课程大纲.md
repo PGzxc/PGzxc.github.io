@@ -64,5 +64,5 @@ date: 2018-04-24 21:26:38
 # 参考
 [ReactiveX官网][1]
 
-[0]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/reactivex-outline.png
+[0]: https://images.pgzxc.com/reactivex-outline.png
 [1]: http://reactivex.io/

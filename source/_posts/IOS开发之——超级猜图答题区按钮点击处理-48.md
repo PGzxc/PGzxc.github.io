@@ -61,4 +61,4 @@ date: 2020-06-26 22:52:58
 ```
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-chaoji-caitu-answer-click.gif
+[1]:https://images.pgzxc.com//ios-chaoji-caitu-answer-click.gif

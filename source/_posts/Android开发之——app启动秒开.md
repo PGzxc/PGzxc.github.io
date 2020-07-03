@@ -152,6 +152,6 @@ StartingWindow一般出现在应用程序进程创建并初始化成功前，所
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/app_open_splash.gif
+[1]: https://images.pgzxc.com/app_open_splash.gif
 [2]: http://blog.csdn.net/yanzhenjie1003/article/details/52201896
 [3]: https://github.com/PGzxc/SplashOpenApp

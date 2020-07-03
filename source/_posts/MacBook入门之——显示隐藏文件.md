@@ -34,8 +34,8 @@ date: 2019-09-01 18:56:26
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-hidden-show-finder-file-open.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-hidden-show-finder-file-show.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-hidden-terminal-input-dir.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-hidden-terminal-show.png
+[1]: https://images.pgzxc.com/mac-hidden-show-finder-file-open.png
+[2]: https://images.pgzxc.com/mac-hidden-show-finder-file-show.png
+[3]: https://images.pgzxc.com/mac-hidden-terminal-input-dir.png
+[4]: https://images.pgzxc.com/mac-hidden-terminal-show.png
 

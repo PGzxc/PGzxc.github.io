@@ -95,25 +95,25 @@ Android系统中向下兼容性比较差，但是一个应用APP经过处理还�
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-version-problem-show.png
+[1]: https://images.pgzxc.com/android-version-problem-show.png
 [2]: https://developer.android.google.cn/guide/topics/manifest/uses-sdk-element.html#provisional
 [3]: https://developer.android.google.cn/about/dashboards/index.html
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-api-version.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/version-default.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-compilesdk.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-target-26.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-target-27.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-api-15.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-other-version.png
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-min-error.png
-[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-targetsdk.png
-[13]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-max-sdk.png
-[14]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-resolve-promte.png
-[15]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-target-api.png
-[16]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-suppresslint.png
-[17]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-build-sdk-int.png
-[18]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-flect.png
-[19]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-supprots.png
+[4]: https://images.pgzxc.com/android-api-version.png
+[5]: https://images.pgzxc.com/version-default.png
+[6]: https://images.pgzxc.com/android-compilesdk.png
+[7]: https://images.pgzxc.com/android-target-26.png
+[8]: https://images.pgzxc.com/android-target-27.png
+[9]: https://images.pgzxc.com/android-api-15.png
+[10]: https://images.pgzxc.com/android-other-version.png
+[11]: https://images.pgzxc.com/android-min-error.png
+[12]: https://images.pgzxc.com/android-targetsdk.png
+[13]: https://images.pgzxc.com/android-max-sdk.png
+[14]: https://images.pgzxc.com/android-resolve-promte.png
+[15]: https://images.pgzxc.com/android-target-api.png
+[16]: https://images.pgzxc.com/android-suppresslint.png
+[17]: https://images.pgzxc.com/android-build-sdk-int.png
+[18]: https://images.pgzxc.com/android-flect.png
+[19]: https://images.pgzxc.com/android-supprots.png
  
 
 

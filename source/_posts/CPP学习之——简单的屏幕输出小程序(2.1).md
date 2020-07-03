@@ -65,11 +65,11 @@ date: 2019-10-21 21:29:38
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-eclipse-create-new-project-cpp.png
-[2]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-eclipse-cpp-managed-build-select.png
-[3]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-eclipse-cpp-project-params.png
-[4]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-eclipse-new-folder-src.png
-[5]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-eclipse-new-source-cpp-file.png
-[6]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-eclipse-cpp-source-create.png
-[7]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-eclipse-source-file-content-console.png
-[8]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-eclipse-simple-app-build-run.gif
+[1]:https://images.pgzxc.com/cpp-eclipse-create-new-project-cpp.png
+[2]:https://images.pgzxc.com/cpp-eclipse-cpp-managed-build-select.png
+[3]:https://images.pgzxc.com/cpp-eclipse-cpp-project-params.png
+[4]:https://images.pgzxc.com/cpp-eclipse-new-folder-src.png
+[5]:https://images.pgzxc.com/cpp-eclipse-new-source-cpp-file.png
+[6]:https://images.pgzxc.com/cpp-eclipse-cpp-source-create.png
+[7]:https://images.pgzxc.com/cpp-eclipse-source-file-content-console.png
+[8]:https://images.pgzxc.com/cpp-eclipse-simple-app-build-run.gif

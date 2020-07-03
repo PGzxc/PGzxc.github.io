@@ -42,13 +42,13 @@ date: 2019-11-03 10:50:48
 * [excel如何快速统计一列中相同数值出现的个数][10]
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/excel-statis-raw-data.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/excel-statis-insert-table.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/excel-statis-select-raw-data.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/excel-statis-drag-line-value.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/excel-statis-raw-sum.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/excel-statis-change-num.gif
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/excel-statis-make-right.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/excel-statis-table-border-set.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/excel-statis-number.png
+[1]: https://images.pgzxc.com/excel-statis-raw-data.png
+[2]: https://images.pgzxc.com/excel-statis-insert-table.png
+[3]: https://images.pgzxc.com/excel-statis-select-raw-data.png
+[4]: https://images.pgzxc.com/excel-statis-drag-line-value.png
+[5]: https://images.pgzxc.com/excel-statis-raw-sum.png
+[6]: https://images.pgzxc.com/excel-statis-change-num.gif
+[7]: https://images.pgzxc.com/excel-statis-make-right.png
+[8]: https://images.pgzxc.com/excel-statis-table-border-set.png
+[9]: https://images.pgzxc.com/excel-statis-number.png
 [10]:https://jingyan.baidu.com/article/9113f81b2c16822b3214c785.html

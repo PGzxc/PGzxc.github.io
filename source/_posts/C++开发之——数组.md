@@ -84,5 +84,5 @@ C++ 支持数组数据结构，它可以存储一个固定大小的相同类型�
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-array.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-array-detail.png
+[1]: https://images.pgzxc.com/cpp-array.png
+[2]: https://images.pgzxc.com/cpp-array-detail.png

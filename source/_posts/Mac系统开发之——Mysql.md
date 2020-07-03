@@ -126,19 +126,19 @@ export PATH=$Mysql_Home/support-files:$PATH
 [4]:https://blog.csdn.net/pariese/article/details/77527813
 
 
-[7]:https://raw.githubusercontent.com/PGzxc/images/master/2020/java-config-bash-profile.png
-[10]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mysql-webpage-download.png
-[11]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mysql-install-click-open.png
-[12]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mysql-install-yindao.png
-[13]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mysql-install-configuration.png
-[14]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mysql-install-weak-password.png
-[15]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mysql-install-finish.png
-[16]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mysql-setting-open.png
-[17]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mysql-config-start-stop-uninstall.png
-[18]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mysql-setting-configuration.png
-[19]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mysql-terminal-not-found.png
-[20]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mysql-terminal-config.png
-[21]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mysql-terminal-login.png
-[22]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mysql-terminal-modify-password.png
-[23]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mysql-service-status-download-restart.png
-[24]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mysql-navicat-premium.png
+[7]:https://images.pgzxc.com//java-config-bash-profile.png
+[10]:https://images.pgzxc.com//mysql-webpage-download.png
+[11]:https://images.pgzxc.com//mysql-install-click-open.png
+[12]:https://images.pgzxc.com//mysql-install-yindao.png
+[13]:https://images.pgzxc.com//mysql-install-configuration.png
+[14]:https://images.pgzxc.com//mysql-install-weak-password.png
+[15]:https://images.pgzxc.com//mysql-install-finish.png
+[16]:https://images.pgzxc.com//mysql-setting-open.png
+[17]:https://images.pgzxc.com//mysql-config-start-stop-uninstall.png
+[18]:https://images.pgzxc.com//mysql-setting-configuration.png
+[19]:https://images.pgzxc.com//mysql-terminal-not-found.png
+[20]:https://images.pgzxc.com//mysql-terminal-config.png
+[21]:https://images.pgzxc.com//mysql-terminal-login.png
+[22]:https://images.pgzxc.com//mysql-terminal-modify-password.png
+[23]:https://images.pgzxc.com//mysql-service-status-download-restart.png
+[24]:https://images.pgzxc.com//mysql-navicat-premium.png

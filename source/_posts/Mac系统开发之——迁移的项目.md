@@ -32,6 +32,6 @@ date: 2020-03-25 13:27:54
 	![][3]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mac-update-move-project.png
-[2]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mac-move-project-open-files.png
-[3]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mac-update-move-explain.png
+[1]:https://images.pgzxc.com//mac-update-move-project.png
+[2]:https://images.pgzxc.com//mac-move-project-open-files.png
+[3]:https://images.pgzxc.com//mac-update-move-explain.png

@@ -162,25 +162,25 @@ date: 2018-09-03 23:05:04
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-dependencies-normal.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-dependencies-optimize.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-dependencies-optimize-build.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-dependencies-optimize-import.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-dependencies-optimize-use.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-depend-exception.gif
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-depend-configuration.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-proguard-files.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-proguard-use.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-sign.png
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-sign-buildgradle.png
-[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-sign-gradle-properties.png
-[13]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-sign-config-gradle.png
-[14]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-apk.png
-[15]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-mapping-xml.png
-[16]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-apk-release.png
-[17]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-andresguard-build-gradle.png
-[18]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-resguard-file.png
-[19]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-and-res-import.png
-[20]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-andresguard-task.png
-[21]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-apk-aligned.png
-[22]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/package-analysis.png
+[1]: https://images.pgzxc.com/package-dependencies-normal.png
+[2]: https://images.pgzxc.com/package-dependencies-optimize.png
+[3]: https://images.pgzxc.com/package-dependencies-optimize-build.png
+[4]: https://images.pgzxc.com/package-dependencies-optimize-import.png
+[5]: https://images.pgzxc.com/package-dependencies-optimize-use.png
+[6]: https://images.pgzxc.com/package-depend-exception.gif
+[7]: https://images.pgzxc.com/package-depend-configuration.png
+[8]: https://images.pgzxc.com/package-proguard-files.png
+[9]: https://images.pgzxc.com/package-proguard-use.png
+[10]: https://images.pgzxc.com/package-sign.png
+[11]: https://images.pgzxc.com/package-sign-buildgradle.png
+[12]: https://images.pgzxc.com/package-sign-gradle-properties.png
+[13]: https://images.pgzxc.com/package-sign-config-gradle.png
+[14]: https://images.pgzxc.com/package-apk.png
+[15]: https://images.pgzxc.com/package-mapping-xml.png
+[16]: https://images.pgzxc.com/package-apk-release.png
+[17]: https://images.pgzxc.com/package-andresguard-build-gradle.png
+[18]: https://images.pgzxc.com/package-resguard-file.png
+[19]: https://images.pgzxc.com/package-and-res-import.png
+[20]: https://images.pgzxc.com/package-andresguard-task.png
+[21]: https://images.pgzxc.com/package-apk-aligned.png
+[22]: https://images.pgzxc.com/package-analysis.png

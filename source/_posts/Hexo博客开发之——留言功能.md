@@ -60,14 +60,14 @@ date: 2017-12-16 15:48:15
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-gitment.png	
+[1]: https://images.pgzxc.com/hexo-gitment.png	
 [2]: https://livere.com/
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-relive-site.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-relive-option.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-relive-uid.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-livere-config.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-coment-result.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-data-release.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-manger-comment.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-seting-comment.png
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-comment-intent.png
+[3]: https://images.pgzxc.com/hexo-relive-site.png
+[4]: https://images.pgzxc.com/hexo-relive-option.png
+[5]: https://images.pgzxc.com/hexo-relive-uid.png
+[6]: https://images.pgzxc.com/hexo-livere-config.png
+[7]: https://images.pgzxc.com/hexo-coment-result.png
+[8]: https://images.pgzxc.com/hexo-data-release.png
+[9]: https://images.pgzxc.com/hexo-manger-comment.png
+[10]: https://images.pgzxc.com/hexo-seting-comment.png
+[11]: https://images.pgzxc.com/hexo-comment-intent.png

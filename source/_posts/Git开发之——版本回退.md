@@ -71,13 +71,13 @@ date: 2018-02-26 09:21:32
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-back-modify.png  
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-back-commit.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-back-log.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-log-pretty.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-gitk-view.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-back-head1.png  
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-back-cat-readme.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-back-second-log.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-back-to-current.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-back-reflog.png
+[1]: https://images.pgzxc.com/git-back-modify.png  
+[2]: https://images.pgzxc.com/git-back-commit.png
+[3]: https://images.pgzxc.com/git-back-log.png
+[4]: https://images.pgzxc.com/git-log-pretty.png
+[5]: https://images.pgzxc.com/git-gitk-view.png
+[6]: https://images.pgzxc.com/git-back-head1.png  
+[7]: https://images.pgzxc.com/git-back-cat-readme.png
+[8]: https://images.pgzxc.com/git-back-second-log.png
+[9]: https://images.pgzxc.com/git-back-to-current.png
+[10]: https://images.pgzxc.com/git-back-reflog.png

@@ -67,8 +67,8 @@ Path:%Cmake_HOME%\bin;
 ![][5]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2019/cmake-install-download-select.png
-[2]:https://raw.githubusercontent.com/PGzxc/images/master/2019/cmake-windows-x64-download.png
-[3]:https://raw.githubusercontent.com/PGzxc/images/master/2019/cmake-upzip-destion-folder.png
-[4]:https://raw.githubusercontent.com/PGzxc/images/master/2019/cmake-clion-toolschains-setting.png
-[5]:https://raw.githubusercontent.com/PGzxc/images/master/2019/cmake-environment-config.png
+[1]:https://images.pgzxc.com/cmake-install-download-select.png
+[2]:https://images.pgzxc.com/cmake-windows-x64-download.png
+[3]:https://images.pgzxc.com/cmake-upzip-destion-folder.png
+[4]:https://images.pgzxc.com/cmake-clion-toolschains-setting.png
+[5]:https://images.pgzxc.com/cmake-environment-config.png

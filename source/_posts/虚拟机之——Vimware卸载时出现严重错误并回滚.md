@@ -40,9 +40,9 @@ date: 2020-01-11 23:03:00
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/virtualbox-uninstall-error.png
-[2]:https://raw.githubusercontent.com/PGzxc/images/master/2020/virtualbox-system-service.png
-[3]:https://raw.githubusercontent.com/PGzxc/images/master/2020/virtual-sc-delete.png
-[4]:https://raw.githubusercontent.com/PGzxc/images/master/2020/virtualbox-extract.png
-[5]:https://raw.githubusercontent.com/PGzxc/images/master/2020/virtualbox-loca-temp-file.png
-[6]:https://raw.githubusercontent.com/PGzxc/images/master/2020/virtualbox-repair.png
+[1]:https://images.pgzxc.com//virtualbox-uninstall-error.png
+[2]:https://images.pgzxc.com//virtualbox-system-service.png
+[3]:https://images.pgzxc.com//virtual-sc-delete.png
+[4]:https://images.pgzxc.com//virtualbox-extract.png
+[5]:https://images.pgzxc.com//virtualbox-loca-temp-file.png
+[6]:https://images.pgzxc.com//virtualbox-repair.png

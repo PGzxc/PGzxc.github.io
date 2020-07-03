@@ -37,7 +37,7 @@ Xcode编译成功后生成了可执行文件，但是可执行文件并没有在
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-xcode-locations-view.png
-[2]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-xcode-locations-folder-deriveddata.png
-[3]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-xcode-build-product-app.png
-[4]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-xcode-build-custom.png
+[1]:https://images.pgzxc.com//ios-xcode-locations-view.png
+[2]:https://images.pgzxc.com//ios-xcode-locations-folder-deriveddata.png
+[3]:https://images.pgzxc.com//ios-xcode-build-product-app.png
+[4]:https://images.pgzxc.com//ios-xcode-build-custom.png

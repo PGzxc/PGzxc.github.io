@@ -177,6 +177,6 @@ Lambda 表达式本质上与函数声明非常类似。Lambda 表达式具体形
 
 	[this]() { this->someFunc(); }();
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-paramas.png
+[1]: https://images.pgzxc.com/cpp-paramas.png
 
   

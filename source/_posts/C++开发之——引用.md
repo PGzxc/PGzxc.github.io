@@ -59,4 +59,4 @@ date: 2018-02-24 15:54:45
 ![][1]
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-quote.png
+[1]: https://images.pgzxc.com/cpp-quote.png

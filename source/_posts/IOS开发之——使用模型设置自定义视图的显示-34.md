@@ -221,6 +221,6 @@ date: 2020-06-06 23:24:43
 ```
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-uiview-custom-view.png
-[2]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-uivew-xib-custom-class.png
+[1]:https://images.pgzxc.com//ios-uiview-custom-view.png
+[2]:https://images.pgzxc.com//ios-uivew-xib-custom-class.png
 

@@ -43,7 +43,7 @@ NdefMessage和NdefRecord是Android NFC技术的核心类，无论读写NDEF格�
 
 
 [0]: https://github.com/PGzxc/NFCSample
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/nfc-select-run.gif
+[1]: https://images.pgzxc.com/nfc-select-run.gif
 
 
 

@@ -103,4 +103,4 @@ date: 2018-05-23 09:17:40
 # 思维导图
 ![][1]  
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/android-sdk-outline.png
+[1]: https://images.pgzxc.com/android-sdk-outline.png

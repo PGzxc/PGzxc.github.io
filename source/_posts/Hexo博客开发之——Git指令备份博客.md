@@ -49,11 +49,11 @@ date: 2017-12-06 16:45:59
 
 
 [1]: https://github.com/coneycode/hexo-git-backup
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo_backup_error.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-git-fetch.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-git-push.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hxo-git-branch.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-git-add.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-git-commit-m.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-git-push-hexo.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/hexo-update-bolg.png
+[2]: https://images.pgzxc.com/hexo_backup_error.png
+[3]: https://images.pgzxc.com/hexo-git-fetch.png
+[4]: https://images.pgzxc.com/hexo-git-push.png
+[5]: https://images.pgzxc.com/hxo-git-branch.png
+[6]: https://images.pgzxc.com/hexo-git-add.png
+[7]: https://images.pgzxc.com/hexo-git-commit-m.png
+[8]: https://images.pgzxc.com/hexo-git-push-hexo.png
+[9]: https://images.pgzxc.com/hexo-update-bolg.png

@@ -43,16 +43,16 @@ date: 2018-02-26 18:07:50
 ![][13]  
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-conflict-show.png 
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-config-checkout-b.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-config-add-content.png
+[1]: https://images.pgzxc.com/git-conflict-show.png 
+[2]: https://images.pgzxc.com/git-config-checkout-b.png
+[3]: https://images.pgzxc.com/git-config-add-content.png
 [4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-imagesgit-config-add-commit.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-config-master.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-config-master-modify.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-config-master-add-commit.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-config-merge-fail.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-config-merge-status.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-config-confile.png
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-config-confile-after.png
-[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-config-fixed.png
-[13]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-config-del-branch.png
+[5]: https://images.pgzxc.com/git-config-master.png
+[6]: https://images.pgzxc.com/git-config-master-modify.png
+[7]: https://images.pgzxc.com/git-config-master-add-commit.png
+[8]: https://images.pgzxc.com/git-config-merge-fail.png
+[9]: https://images.pgzxc.com/git-config-merge-status.png
+[10]: https://images.pgzxc.com/git-config-confile.png
+[11]: https://images.pgzxc.com/git-config-confile-after.png
+[12]: https://images.pgzxc.com/git-config-fixed.png
+[13]: https://images.pgzxc.com/git-config-del-branch.png

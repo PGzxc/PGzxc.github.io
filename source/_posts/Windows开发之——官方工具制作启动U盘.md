@@ -48,15 +48,15 @@ date: 2019-09-04 21:57:42
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-pure-win-10.png
+[1]: https://images.pgzxc.com/windows-pure-win-10.png
 [2]: https://www.microsoft.com/zh-cn/software-download/windows10/
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-win-10-tools-site.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-win-10-tool-download.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-win-10-software-install.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-win-10-what-to-do.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-win-10-language-other.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-win-10-u-pan.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-win-10-u-pan-select.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-win-10-make.png
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-win-10-finish.png
-[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/windows-win-10-finish-upan-files.png
+[3]: https://images.pgzxc.com/windows-win-10-tools-site.png
+[4]: https://images.pgzxc.com/windows-win-10-tool-download.png
+[5]: https://images.pgzxc.com/windows-win-10-software-install.png
+[6]: https://images.pgzxc.com/windows-win-10-what-to-do.png
+[7]: https://images.pgzxc.com/windows-win-10-language-other.png
+[8]: https://images.pgzxc.com/windows-win-10-u-pan.png
+[9]: https://images.pgzxc.com/windows-win-10-u-pan-select.png
+[10]: https://images.pgzxc.com/windows-win-10-make.png
+[11]: https://images.pgzxc.com/windows-win-10-finish.png
+[12]: https://images.pgzxc.com/windows-win-10-finish-upan-files.png

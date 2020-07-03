@@ -29,9 +29,9 @@ date: 2019-08-25 11:26:44
 ![][6]
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-finder-open.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-finder-setting.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-finder-desktop-show.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-finder-sidebar-seting.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-finder-drag-add.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-finder-item-remove.png
+[1]: https://images.pgzxc.com/mac-finder-open.png
+[2]: https://images.pgzxc.com/mac-finder-setting.png
+[3]: https://images.pgzxc.com/mac-finder-desktop-show.png
+[4]: https://images.pgzxc.com/mac-finder-sidebar-seting.png
+[5]: https://images.pgzxc.com/mac-finder-drag-add.png
+[6]: https://images.pgzxc.com/mac-finder-item-remove.png

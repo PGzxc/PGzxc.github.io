@@ -51,13 +51,13 @@ date: 2019-10-17 23:31:57
 
 [1]: https://bloodshed-dev-c.en.softonic.com/
 [2]: https://sourceforge.net/projects/orwelldevcpp/files/
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/dev-cpp-bloodshed-download.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/dev-cpp-sourceforge-download.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/dev-cpp-install-finish.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/dev-cpp-language-change.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/dev-cpp-language-apply.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/dev-cpp-compiler-select.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/dev-cpp-new-project.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/dev-cpp-project-setting.png
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/dev-cpp-create-finish-preview.png
-[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/dev-cpp-save-build-run.png
+[3]: https://images.pgzxc.com/dev-cpp-bloodshed-download.png
+[4]: https://images.pgzxc.com/dev-cpp-sourceforge-download.png
+[5]: https://images.pgzxc.com/dev-cpp-install-finish.png
+[6]: https://images.pgzxc.com/dev-cpp-language-change.png
+[7]: https://images.pgzxc.com/dev-cpp-language-apply.png
+[8]: https://images.pgzxc.com/dev-cpp-compiler-select.png
+[9]: https://images.pgzxc.com/dev-cpp-new-project.png
+[10]: https://images.pgzxc.com/dev-cpp-project-setting.png
+[11]: https://images.pgzxc.com/dev-cpp-create-finish-preview.png
+[12]: https://images.pgzxc.com/dev-cpp-save-build-run.png

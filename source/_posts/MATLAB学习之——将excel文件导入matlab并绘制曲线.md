@@ -69,19 +69,19 @@ date: 2019-11-03 10:59:51
 * [MATLAB中plot函数的用法][16]
 * [MATLAB plot 函数][17]
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/matlab-draw-project.png
-[2]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/matlab-draw-import-data-open.png
-[3]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/matlab-import-excel-sele-data-type.png
-[4]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/matlab-import-excel-change-name.png
-[5]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/matlab-import-excel-show-more.png
-[6]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/matlab-draw-software-plot.png
-[7]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/matlab-software-plot-finish.png
-[8]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/matlab-plot-insert-x-y-table.png
-[9]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/matlab-new-script.png
-[10]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/matlab-function-plot.png
-[11]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/matlab-function-run.png
-[12]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/matlab-function-x-y-table.png
-[13]:https://raw.githubusercontent.com/PGzxc/images/master/blog-images/matlab-draw-open-dialog.png
+[1]:https://images.pgzxc.com/matlab-draw-project.png
+[2]:https://images.pgzxc.com/matlab-draw-import-data-open.png
+[3]:https://images.pgzxc.com/matlab-import-excel-sele-data-type.png
+[4]:https://images.pgzxc.com/matlab-import-excel-change-name.png
+[5]:https://images.pgzxc.com/matlab-import-excel-show-more.png
+[6]:https://images.pgzxc.com/matlab-draw-software-plot.png
+[7]:https://images.pgzxc.com/matlab-software-plot-finish.png
+[8]:https://images.pgzxc.com/matlab-plot-insert-x-y-table.png
+[9]:https://images.pgzxc.com/matlab-new-script.png
+[10]:https://images.pgzxc.com/matlab-function-plot.png
+[11]:https://images.pgzxc.com/matlab-function-run.png
+[12]:https://images.pgzxc.com/matlab-function-x-y-table.png
+[13]:https://images.pgzxc.com/matlab-draw-open-dialog.png
 [14]:https://jingyan.baidu.com/article/adc81513a396c6f723bf73f3.html
 [15]:https://jingyan.baidu.com/article/1974b2894f3f6df4b1f7743d.html
 [16]:https://blog.csdn.net/xuxinrk/article/details/80051238

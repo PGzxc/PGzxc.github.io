@@ -195,4 +195,4 @@ date: 2020-05-18 22:51:34
 ```
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/iso-image-view-switch.gif
+[1]:https://images.pgzxc.com//iso-image-view-switch.gif

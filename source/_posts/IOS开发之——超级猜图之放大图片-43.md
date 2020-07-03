@@ -86,5 +86,5 @@ date: 2020-06-17 23:40:49
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-chaoji-caitu.gif
-[2]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-chaoji-caitu-bigimage.gif
+[1]:https://images.pgzxc.com//ios-chaoji-caitu.gif
+[2]:https://images.pgzxc.com//ios-chaoji-caitu-bigimage.gif

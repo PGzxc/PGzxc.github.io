@@ -68,7 +68,7 @@ gyp ERR! not ok
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mac-npm-install-gyp-error.png
-[2]:https://raw.githubusercontent.com/PGzxc/images/master/2020/mac-npm-xcode-select.png
+[1]:https://images.pgzxc.com//mac-npm-install-gyp-error.png
+[2]:https://images.pgzxc.com//mac-npm-xcode-select.png
 
 [11]:https://www.cnblogs.com/zhuxiaoxi/p/12088359.html

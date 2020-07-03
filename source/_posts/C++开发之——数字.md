@@ -127,4 +127,4 @@ C++ 内置了丰富的数学函数，可对各种数字进行运算。下表列�
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cpp-function.png
+[1]: https://images.pgzxc.com/cpp-function.png

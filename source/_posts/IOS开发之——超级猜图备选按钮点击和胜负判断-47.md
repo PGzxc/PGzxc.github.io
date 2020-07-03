@@ -251,4 +251,4 @@ date: 2020-06-23 23:59:55
 @end
 ```
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-chaoji-caitu-answer-right.gif
+[1]:https://images.pgzxc.com//ios-chaoji-caitu-answer-right.gif

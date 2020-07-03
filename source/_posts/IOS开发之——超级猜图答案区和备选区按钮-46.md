@@ -78,4 +78,4 @@ date: 2020-06-22 23:25:23
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-chaoji-chaitu-answer-option-view.gif
+[1]:https://images.pgzxc.com//ios-chaoji-chaitu-answer-option-view.gif

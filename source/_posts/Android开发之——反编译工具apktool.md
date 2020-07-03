@@ -51,14 +51,14 @@ date: 2017-11-16 18:39:56
 
 
 [1]: https://ibotpeaches.github.io/Apktool/install/  
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/apktool-web.png  
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/apktool-tools.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/apktool-bat.png  
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/apktool-download.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/apktool-colection.png  
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cmd-wind.png 
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/cmd-into.png  
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/apktool-use.png
-[10]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/apktool-res1.png
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/apktool-res2.png
-[12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/apktool-res3.png
+[2]: https://images.pgzxc.com/apktool-web.png  
+[3]: https://images.pgzxc.com/apktool-tools.png
+[4]: https://images.pgzxc.com/apktool-bat.png  
+[5]: https://images.pgzxc.com/apktool-download.png
+[6]: https://images.pgzxc.com/apktool-colection.png  
+[7]: https://images.pgzxc.com/cmd-wind.png 
+[8]: https://images.pgzxc.com/cmd-into.png  
+[9]: https://images.pgzxc.com/apktool-use.png
+[10]: https://images.pgzxc.com/apktool-res1.png
+[11]: https://images.pgzxc.com/apktool-res2.png
+[12]: https://images.pgzxc.com/apktool-res3.png

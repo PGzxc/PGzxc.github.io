@@ -78,16 +78,16 @@ date: 2020-02-09 11:34:47
 * [如何为 Mac 更新 Java？][13]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/java-version-look-uninstall.png
-[2]:https://raw.githubusercontent.com/PGzxc/images/master/2020/java-uninstall-progress.png
+[1]:https://images.pgzxc.com//java-version-look-uninstall.png
+[2]:https://images.pgzxc.com//java-uninstall-progress.png
 [3]:https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-[4]:https://raw.githubusercontent.com/PGzxc/images/master/2020/java-net-download.png
-[5]:https://raw.githubusercontent.com/PGzxc/images/master/2020/java-install-start.png
-[6]:https://raw.githubusercontent.com/PGzxc/images/master/2020/java-install-success.png
-[7]:https://raw.githubusercontent.com/PGzxc/images/master/2020/java-config-bash-profile.png
-[8]:https://raw.githubusercontent.com/PGzxc/images/master/2020/java-version.png
-[9]:https://raw.githubusercontent.com/PGzxc/images/master/2020/java-update-pianhao.png
-[10]:https://raw.githubusercontent.com/PGzxc/images/master/2020/java_update-setting.png
+[4]:https://images.pgzxc.com//java-net-download.png
+[5]:https://images.pgzxc.com//java-install-start.png
+[6]:https://images.pgzxc.com//java-install-success.png
+[7]:https://images.pgzxc.com//java-config-bash-profile.png
+[8]:https://images.pgzxc.com//java-version.png
+[9]:https://images.pgzxc.com//java-update-pianhao.png
+[10]:https://images.pgzxc.com//java_update-setting.png
 [11]:https://www.java.com/zh_CN/download/help/mac_uninstall_java.xml
 [12]:https://blog.csdn.net/qq_43212747/article/details/88140407
 [13]:https://www.java.com/zh_CN/download/help/mac_java_update.xml

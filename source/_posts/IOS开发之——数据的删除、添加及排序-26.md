@@ -132,4 +132,4 @@ date: 2020-05-28 00:20:11
 @end
 ```
 
-[1]:https://raw.githubusercontent.com/PGzxc/images/master/2020/ios-drag-add-delete.gif
+[1]:https://images.pgzxc.com//ios-drag-add-delete.gif

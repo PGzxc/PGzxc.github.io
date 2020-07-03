@@ -61,12 +61,12 @@ date: 2020-02-17 17:35:21
 [3]:https://jingyan.baidu.com/article/1612d500fbc363e20f1eee7e.html
 
 
-[11]: https://raw.githubusercontent.com/PGzxc/images/master/2020/mac-input-num-view-zhuangtailan.png
-[12]: https://raw.githubusercontent.com/PGzxc/images/master/2020/mac-input-num-view-pianhao.png
-[13]: https://raw.githubusercontent.com/PGzxc/images/master/2020/mac-add-input-japan-dialog.png
-[14]: https://raw.githubusercontent.com/PGzxc/images/master/2020/mac-add-input-config.png
-[15]: https://raw.githubusercontent.com/PGzxc/images/master/2020/mac-move-input-view-piaohao.png
-[16]: https://raw.githubusercontent.com/PGzxc/images/master/2020/mac-move-input-view-piaohao-after.png
-[17]: https://raw.githubusercontent.com/PGzxc/images/master/2020/mac-input-switch-look.png
-[18]: https://raw.githubusercontent.com/PGzxc/images/master/2020/mac-input-switch-redone.png
-[19]: https://raw.githubusercontent.com/PGzxc/images/master/2020/mac-input-switch-language.png
+[11]: https://images.pgzxc.com//mac-input-num-view-zhuangtailan.png
+[12]: https://images.pgzxc.com//mac-input-num-view-pianhao.png
+[13]: https://images.pgzxc.com//mac-add-input-japan-dialog.png
+[14]: https://images.pgzxc.com//mac-add-input-config.png
+[15]: https://images.pgzxc.com//mac-move-input-view-piaohao.png
+[16]: https://images.pgzxc.com//mac-move-input-view-piaohao-after.png
+[17]: https://images.pgzxc.com//mac-input-switch-look.png
+[18]: https://images.pgzxc.com//mac-input-switch-redone.png
+[19]: https://images.pgzxc.com//mac-input-switch-language.png

@@ -68,6 +68,6 @@ date: 2019-08-28 22:59:29
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-touch-single-click-fetch.png
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-touch-double-click.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/mac-images/mac-smooth-down.gif
+[1]: https://images.pgzxc.com/mac-touch-single-click-fetch.png
+[2]: https://images.pgzxc.com/mac-touch-double-click.png
+[3]: https://images.pgzxc.com/mac-smooth-down.gif

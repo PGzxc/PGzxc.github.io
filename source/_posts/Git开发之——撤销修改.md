@@ -45,12 +45,12 @@ date: 2018-02-26 10:05:40
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-revoke-add-content.png  
-[2]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-revoke-status.png
-[3]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-revoke-checkout.png
-[4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-revoke-cat-readme.png
-[5]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-revoke-add-second.png
-[6]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-revoke-status-second.png
-[7]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-revoke-checkout-status.png
-[8]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-revoke-reset-head.png
-[9]: https://raw.githubusercontent.com/PGzxc/images/master/blog-images/git-revoke-status-reset.png
+[1]: https://images.pgzxc.com/git-revoke-add-content.png  
+[2]: https://images.pgzxc.com/git-revoke-status.png
+[3]: https://images.pgzxc.com/git-revoke-checkout.png
+[4]: https://images.pgzxc.com/git-revoke-cat-readme.png
+[5]: https://images.pgzxc.com/git-revoke-add-second.png
+[6]: https://images.pgzxc.com/git-revoke-status-second.png
+[7]: https://images.pgzxc.com/git-revoke-checkout-status.png
+[8]: https://images.pgzxc.com/git-revoke-reset-head.png
+[9]: https://images.pgzxc.com/git-revoke-status-reset.png
