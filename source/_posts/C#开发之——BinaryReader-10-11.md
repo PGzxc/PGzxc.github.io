@@ -1,5 +1,5 @@
 ---
-title: 'C#开发之——BinaryReader(11)'
+title: 'C#开发之——BinaryReader(10.11)'
 categories:
   - 开发
   - 桌面开发
