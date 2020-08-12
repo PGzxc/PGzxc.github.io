@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前言你不断对文件进行修改，然后不断提交修改到版本库里，就好比玩RPG游戏时，每通过一关就会自动把游戏状态存盘，如果某一关没过去，你还可以选择读取前一关的状态。有些时候，在打Boss之前，你会手动存盘，以便万一打Boss失败了，可以从最近的地方重新开始。Git也是一样，每当你觉得文件修改到一定程度的时候，就可以“保存一个快照”，这个快照在Git中被称为commit。一旦你把文件改乱了，或者误删了文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git开发之——版本回退">
+<meta property="og:url" content="http://pgzxc.github.io/posts/95bd231c.html">
+<meta property="og:site_name" content="PGzxc的博客">
+<meta property="og:description" content="前言你不断对文件进行修改，然后不断提交修改到版本库里，就好比玩RPG游戏时，每通过一关就会自动把游戏状态存盘，如果某一关没过去，你还可以选择读取前一关的状态。有些时候，在打Boss之前，你会手动存盘，以便万一打Boss失败了，可以从最近的地方重新开始。Git也是一样，每当你觉得文件修改到一定程度的时候，就可以“保存一个快照”，这个快照在Git中被称为commit。一旦你把文件改乱了，或者误删了文件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pgzxc.com/git-back-modify.png">
+<meta property="og:image" content="https://images.pgzxc.com/git-back-commit.png">
+<meta property="og:image" content="https://images.pgzxc.com/git-back-log.png">
+<meta property="og:image" content="https://images.pgzxc.com/git-log-pretty.png">
+<meta property="og:image" content="https://images.pgzxc.com/git-gitk-view.png">
+<meta property="og:image" content="https://images.pgzxc.com/git-back-head1.png">
+<meta property="og:image" content="https://images.pgzxc.com/git-back-cat-readme.png">
+<meta property="og:image" content="https://images.pgzxc.com/git-back-second-log.png">
+<meta property="og:image" content="https://images.pgzxc.com/git-back-to-current.png">
+<meta property="og:image" content="https://images.pgzxc.com/git-back-reflog.png">
+<meta property="article:published_time" content="2018-02-26T01:21:32.000Z">
+<meta property="article:modified_time" content="2020-07-03T12:07:33.232Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="版本回退">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pgzxc.com/git-back-modify.png">
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/95bd231c.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Git开发之——版本回退 | PGzxc的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">PGzxc的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">967</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">85</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">378</span></a>
+
+  </li>
+        <li class="menu-item menu-item-comments">
+
+    <a href="/comments/" rel="section"><i class="fa fa-comments fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/95bd231c.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Git开发之——版本回退
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-02-26 09:21:32" itemprop="dateCreated datePublished" datetime="2018-02-26T09:21:32+08:00">2018-02-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-03 20:07:33" itemprop="dateModified" datetime="2020-07-03T20:07:33+08:00">2020-07-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>773</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>你不断对文件进行修改，然后不断提交修改到版本库里，就好比玩RPG游戏时，每通过一关就会自动把游戏状态存盘，如果某一关没过去，你还可以选择读取前一关的状态。有些时候，在打Boss之前，你会手动存盘，以便万一打Boss失败了，可以从最近的地方重新开始。Git也是一样，每当你觉得文件修改到一定程度的时候，就可以“保存一个快照”，这个快照在Git中被称为commit。一旦你把文件改乱了，或者误删了文件，还可以从最近的一个commit恢复，然后继续工作，而不是把几个月的工作成果全部丢失。   </p>
+<p>这个操作就叫做版本回退    </p>
+<a id="more"></a>  
+
+<h1 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h1><p>下面将演示版本回退操作   </p>
+<h2 id="再次对README文件进行修改操作"><a href="#再次对README文件进行修改操作" class="headerlink" title="再次对README文件进行修改操作"></a>再次对README文件进行修改操作</h2><p><img src="https://images.pgzxc.com/git-back-modify.png" alt="">  </p>
+<h2 id="对修改后的文件进行提交"><a href="#对修改后的文件进行提交" class="headerlink" title="对修改后的文件进行提交"></a>对修改后的文件进行提交</h2><p><img src="https://images.pgzxc.com/git-back-commit.png" alt="">  </p>
+<h2 id="查看修改记录"><a href="#查看修改记录" class="headerlink" title="查看修改记录"></a>查看修改记录</h2><p>目前为止我们总共对文件进行了3此修改操作，现在我们查看git是否为我们记录了这次操作    </p>
+<h3 id="使用git-log查看"><a href="#使用git-log查看" class="headerlink" title="使用git log查看"></a>使用git log查看</h3><p>这个指令是：   </p>
+<pre><code>git log    </code></pre><p><img src="https://images.pgzxc.com/git-back-log.png" alt=""><br>上图显示了我们进行3次操作的记录  </p>
+<h3 id="使用-git-log-–pretty-oneling查看"><a href="#使用-git-log-–pretty-oneling查看" class="headerlink" title="使用 git log –pretty=oneling查看"></a>使用 git log –pretty=oneling查看</h3><p>上图显示的过于凌乱，上述指令后面加上  –pretty=oneline指令会稍微清晰   </p>
+<pre><code>git log --pretty=oneline   </code></pre><p><img src="https://images.pgzxc.com/git-log-pretty.png" alt="">   </p>
+<h3 id="可视化查看"><a href="#可视化查看" class="headerlink" title="可视化查看"></a>可视化查看</h3><p><img src="https://images.pgzxc.com/git-gitk-view.png" alt="">  </p>
+<h1 id="版本回退-1"><a href="#版本回退-1" class="headerlink" title="版本回退"></a>版本回退</h1><p>下面演示版本回退操作<br>版本回退使用 git reset指令    </p>
+<h2 id="回退到上一个版本"><a href="#回退到上一个版本" class="headerlink" title="回退到上一个版本"></a>回退到上一个版本</h2><pre><code>git reset --hard HEAD^  </code></pre><p><img src="https://images.pgzxc.com/git-back-head1.png" alt="">  </p>
+<h2 id="查看是否回退"><a href="#查看是否回退" class="headerlink" title="查看是否回退"></a>查看是否回退</h2><h3 id="查看上一个版本内容"><a href="#查看上一个版本内容" class="headerlink" title="查看上一个版本内容"></a>查看上一个版本内容</h3><p><img src="https://images.pgzxc.com/git-back-cat-readme.png" alt="">   </p>
+<h3 id="使用git-log查看当前状态"><a href="#使用git-log查看当前状态" class="headerlink" title="使用git log查看当前状态"></a>使用git log查看当前状态</h3><p><img src="https://images.pgzxc.com/git-back-second-log.png" alt="">  </p>
+<h2 id="回到之前的版本"><a href="#回到之前的版本" class="headerlink" title="回到之前的版本"></a>回到之前的版本</h2><p>通过之前的版本id，通过查看我们知道，上一个的版本id为03799aa4c3c6e4fe7a9d23d3411a910dc57b2307，我们只需要写前几位既可<br><img src="https://images.pgzxc.com/git-back-to-current.png" alt=""><br>查看当前内容，又回来了    </p>
+<pre><code>admin@DESKTOP-S2V5EN0 MINGW64 ~/Desktop/Git (master)
+$ cat README.md
+# GITLearn
+add new content
+add third   </code></pre><h2 id="使用-git-reflog用来记录你的每一次命令"><a href="#使用-git-reflog用来记录你的每一次命令" class="headerlink" title="使用 git reflog用来记录你的每一次命令"></a>使用 git reflog用来记录你的每一次命令</h2><p><img src="https://images.pgzxc.com/git-back-reflog.png" alt="">  </p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80/" rel="tag"># 版本回退</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/a16a4971.html" rel="prev" title="Git开发之——常用的几个指令">
+      <i class="fa fa-chevron-left"></i> Git开发之——常用的几个指令
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/a72ef28e.html" rel="next" title="Git开发之——撤销修改">
+      Git开发之——撤销修改 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjQ1OC85MDE5"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80"><span class="nav-number">2.</span> <span class="nav-text">版本回退</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%8D%E6%AC%A1%E5%AF%B9README%E6%96%87%E4%BB%B6%E8%BF%9B%E8%A1%8C%E4%BF%AE%E6%94%B9%E6%93%8D%E4%BD%9C"><span class="nav-number">2.1.</span> <span class="nav-text">再次对README文件进行修改操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E4%BF%AE%E6%94%B9%E5%90%8E%E7%9A%84%E6%96%87%E4%BB%B6%E8%BF%9B%E8%A1%8C%E6%8F%90%E4%BA%A4"><span class="nav-number">2.2.</span> <span class="nav-text">对修改后的文件进行提交</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E4%BF%AE%E6%94%B9%E8%AE%B0%E5%BD%95"><span class="nav-number">2.3.</span> <span class="nav-text">查看修改记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8git-log%E6%9F%A5%E7%9C%8B"><span class="nav-number">2.3.1.</span> <span class="nav-text">使用git log查看</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-git-log-%E2%80%93pretty-oneling%E6%9F%A5%E7%9C%8B"><span class="nav-number">2.3.2.</span> <span class="nav-text">使用 git log –pretty&#x3D;oneling查看</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E6%9F%A5%E7%9C%8B"><span class="nav-number">2.3.3.</span> <span class="nav-text">可视化查看</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80-1"><span class="nav-number">3.</span> <span class="nav-text">版本回退</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E9%80%80%E5%88%B0%E4%B8%8A%E4%B8%80%E4%B8%AA%E7%89%88%E6%9C%AC"><span class="nav-number">3.1.</span> <span class="nav-text">回退到上一个版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%98%AF%E5%90%A6%E5%9B%9E%E9%80%80"><span class="nav-number">3.2.</span> <span class="nav-text">查看是否回退</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E4%B8%8A%E4%B8%80%E4%B8%AA%E7%89%88%E6%9C%AC%E5%86%85%E5%AE%B9"><span class="nav-number">3.2.1.</span> <span class="nav-text">查看上一个版本内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8git-log%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%8A%B6%E6%80%81"><span class="nav-number">3.2.2.</span> <span class="nav-text">使用git log查看当前状态</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E5%88%B0%E4%B9%8B%E5%89%8D%E7%9A%84%E7%89%88%E6%9C%AC"><span class="nav-number">3.3.</span> <span class="nav-text">回到之前的版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-git-reflog%E7%94%A8%E6%9D%A5%E8%AE%B0%E5%BD%95%E4%BD%A0%E7%9A%84%E6%AF%8F%E4%B8%80%E6%AC%A1%E5%91%BD%E4%BB%A4"><span class="nav-number">3.4.</span> <span class="nav-text">使用 git reflog用来记录你的每一次命令</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">967</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">378</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PGzxc" title="GitHub → https://github.com/PGzxc" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http://blog.csdn.net/calvin_zhou" rel="noopener" target="_blank"><i class="book fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http://weibo.com/5582039920" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>微博</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http://www.jianshu.com/u/c5cdcb4dc52b" rel="noopener" target="_blank"><i class="heartbeat fa-fw"></i>简书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wanandroid.com/" title="https://wanandroid.com/" rel="noopener" target="_blank">鸿洋</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/home.html" title="http://www.ruanyifeng.com/home.html" rel="noopener" target="_blank">阮一峰</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://memento.net.cn" title="https://memento.net.cn" rel="noopener" target="_blank">琅涯阁</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/sinyu890807/" title="http://blog.csdn.net/sinyu890807/" rel="noopener" target="_blank">郭霖</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/luoshengyang/" title="http://blog.csdn.net/luoshengyang/" rel="noopener" target="_blank">老罗</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/aigestudio/" title="http://blog.csdn.net/aigestudio/" rel="noopener" target="_blank">爱哥</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/wwj_748/" title="http://blog.csdn.net/wwj_748/" rel="noopener" target="_blank">小巫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/singwhatiwanna/" title="http://blog.csdn.net/singwhatiwanna/" rel="noopener" target="_blank">任玉刚</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/eclipsexys/" title="http://blog.csdn.net/eclipsexys/" rel="noopener" target="_blank">徐医生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/bboyfeiyu/" title="http://blog.csdn.net/bboyfeiyu/" rel="noopener" target="_blank">Mr.Simple</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/xyz_lmn/" title="http://blog.csdn.net/xyz_lmn/" rel="noopener" target="_blank">张兴业</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.android.google.cn/index.html" title="https://developer.android.google.cn/index.html" rel="noopener" target="_blank">谷歌中国</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备18061062号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pgzxc</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">1.4m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">20:35</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>

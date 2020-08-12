@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前言最近在做项目时发现，Android 6.0的平板在运行项目时，网页信息加载不出来(已设置addJavascriptInterface)。Android 6.0.1的平板可以正常显示。有问题平板的信息如下：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发之——WebView适配">
+<meta property="og:url" content="http://pgzxc.github.io/posts/36321e42.html">
+<meta property="og:site_name" content="PGzxc的博客">
+<meta property="og:description" content="前言最近在做项目时发现，Android 6.0的平板在运行项目时，网页信息加载不出来(已设置addJavascriptInterface)。Android 6.0.1的平板可以正常显示。有问题平板的信息如下：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pgzxc.com/emui-4_0.png">
+<meta property="og:image" content="https://images.pgzxc.com/webview_user_agent.gif">
+<meta property="og:image" content="https://images.pgzxc.com/webview-layout.png">
+<meta property="og:image" content="https://images.pgzxc.com/webview-click-function.png">
+<meta property="og:image" content="https://images.pgzxc.com/webview-userAgent.png">
+<meta property="article:published_time" content="2019-03-03T05:22:23.000Z">
+<meta property="article:modified_time" content="2020-07-03T12:07:33.187Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="WebView">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pgzxc.com/emui-4_0.png">
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/36321e42.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Android开发之——WebView适配 | PGzxc的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">PGzxc的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">967</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">85</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">378</span></a>
+
+  </li>
+        <li class="menu-item menu-item-comments">
+
+    <a href="/comments/" rel="section"><i class="fa fa-comments fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/36321e42.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android开发之——WebView适配
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-03 13:22:23" itemprop="dateCreated datePublished" datetime="2019-03-03T13:22:23+08:00">2019-03-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-03 20:07:33" itemprop="dateModified" datetime="2020-07-03T20:07:33+08:00">2020-07-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">移动开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在做项目时发现，Android 6.0的平板在运行项目时，网页信息加载不出来(已设置addJavascriptInterface)。Android 6.0.1的平板可以正常显示。<br>有问题平板的信息如下：  </p>
+<p><img src="https://images.pgzxc.com/emui-4_0.png" alt=""></p>
+<a id="more"></a>  
+
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>在分析了：Android版本，网络等因素后，我怀疑是web浏览器的版本不兼容问题。      </p>
+<h3 id="如何查看Android手机Web浏览器的内核版本"><a href="#如何查看Android手机Web浏览器的内核版本" class="headerlink" title="如何查看Android手机Web浏览器的内核版本"></a>如何查看Android手机Web浏览器的内核版本</h3><h2 id="如何查看手机浏览器的版本"><a href="#如何查看手机浏览器的版本" class="headerlink" title="如何查看手机浏览器的版本"></a>如何查看手机浏览器的版本</h2><h3 id="使用JavaScript函数"><a href="#使用JavaScript函数" class="headerlink" title="使用JavaScript函数"></a>使用JavaScript函数</h3><p>网上给出的较多的解答是使用<code>javascript:alert(navigator.userAgent)</code>，参考了<a target="_blank" rel="noopener" href="https://images.pgzxc.com/webview-userAgent.png">如何查看android 内置浏览器内核版本</a>，但是没有测试成功。可能我的方法不正确，有成功的小伙伴可以告知我下。</p>
+<h3 id="使用Web浏览器的设置"><a href="#使用Web浏览器的设置" class="headerlink" title="使用Web浏览器的设置"></a>使用Web浏览器的设置</h3><p>依次打开：浏览器——&gt;设置——&gt;关于——&gt;浏览器标识(UA)    会弹出浏览器UA信息     </p>
+<p><img src="https://images.pgzxc.com/webview_user_agent.gif" alt=""></p>
+<h3 id="通过WebView的方法获取"><a href="#通过WebView的方法获取" class="headerlink" title="通过WebView的方法获取"></a>通过WebView的方法获取</h3><h4 id="布局配置文件信息"><a href="#布局配置文件信息" class="headerlink" title="布局配置文件信息"></a>布局配置文件信息</h4><p><img src="https://images.pgzxc.com/webview-layout.png" alt=""> </p>
+<h4 id="点击事件，获取webview的userAgentString"><a href="#点击事件，获取webview的userAgentString" class="headerlink" title="点击事件，获取webview的userAgentString"></a>点击事件，获取webview的userAgentString</h4><pre><code>webView.settings.userAgentString   </code></pre><p><img src="https://images.pgzxc.com/webview-click-function.png" alt="">  </p>
+<h4 id="显示效果"><a href="#显示效果" class="headerlink" title="显示效果"></a>显示效果</h4><p><img src="https://images.pgzxc.com/webview-userAgent.png" alt=""></p>
+<h3 id="关于UA的知识补充"><a href="#关于UA的知识补充" class="headerlink" title="关于UA的知识补充"></a>关于UA的知识补充</h3><table>
+        <tr>
+            <th>浏览器</th>
+            <th>User-Agent</th>
+        <tr>
+        <tr>
+            <th>Internet Explorer 6</th>
+            <th>Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0; WOW64; Trident/4.0; SLCC1)</th>
+        <tr>
+        <tr>
+            <th>Internet Explorer 10</th>
+            <th>Mozilla/5.0 (MSIE 10.0; Windows NT 6.1; Trident/5.0)</th>
+        <tr>
+        <tr>
+            <th>iPhone 6</th>
+            <th>Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25</th>
+        <tr>
+        <tr>
+            <th>Android KitKat</th>
+            <th>Mozilla/5.0 (Linux; Android 4.4.2; Nexus 4 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.114 Mobile Safari/537.36</th>
+        <tr>
+        <tr>
+            <th>Windows Phone 8</th>
+            <th>Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 920)</th>
+        <tr>
+        <tr>
+            <th>Windows Firefox 33</th>
+            <th>Mozilla/5.0 (Windows NT 6.1; WOW64; rv:33.0) Gecko/20120101 Firefox/33.0</th>
+        <tr>
+        <tr>
+            <th>Opera 12.14</th>
+            <th>Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14</th>
+        <tr>
+        <tr>
+            <th>Mac Safari 7</th>
+            <th>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A</th>
+        <tr>
+<table>
+
+<h2 id="浏览器过低的解决办法"><a href="#浏览器过低的解决办法" class="headerlink" title="浏览器过低的解决办法"></a>浏览器过低的解决办法</h2><h3 id="给出升级提示"><a href="#给出升级提示" class="headerlink" title="给出升级提示"></a>给出升级提示</h3><p>通过比较当前系统的userAgent和运行要求的最小userAgent，给出提示信息 </p>
+<h3 id="升级浏览器"><a href="#升级浏览器" class="headerlink" title="升级浏览器"></a>升级浏览器</h3><p>通过GooglePlay商店，更新浏览器内核到最新版本。已达到满足程序运行的要求。  </p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/ca2d939d4cd90ceb6c31ce22.html">如何查看android 内置浏览器内核版本</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/scholar_ii/article/details/80738194">有趣有历史的浏览器UA(user-agent)</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/itluochen/article/details/53336460">浅谈Android 浏览器内核</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/WebView/" rel="tag"># WebView</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/c4402abd.html" rel="prev" title="接口开发之——PostMan模拟Strapi接口(认证方式下)访问">
+      <i class="fa fa-chevron-left"></i> 接口开发之——PostMan模拟Strapi接口(认证方式下)访问
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/9ad7577f.html" rel="next" title="韩语学习之——基础">
+      韩语学习之——基础 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjQ1OC85MDE5"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8BAndroid%E6%89%8B%E6%9C%BAWeb%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%86%85%E6%A0%B8%E7%89%88%E6%9C%AC"><span class="nav-number">2.1.</span> <span class="nav-text">如何查看Android手机Web浏览器的内核版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E6%89%8B%E6%9C%BA%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%89%88%E6%9C%AC"><span class="nav-number">3.</span> <span class="nav-text">如何查看手机浏览器的版本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8JavaScript%E5%87%BD%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">使用JavaScript函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Web%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text">使用Web浏览器的设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87WebView%E7%9A%84%E6%96%B9%E6%B3%95%E8%8E%B7%E5%8F%96"><span class="nav-number">3.3.</span> <span class="nav-text">通过WebView的方法获取</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%83%E5%B1%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="nav-number">3.3.1.</span> <span class="nav-text">布局配置文件信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6%EF%BC%8C%E8%8E%B7%E5%8F%96webview%E7%9A%84userAgentString"><span class="nav-number">3.3.2.</span> <span class="nav-text">点击事件，获取webview的userAgentString</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E6%95%88%E6%9E%9C"><span class="nav-number">3.3.3.</span> <span class="nav-text">显示效果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8EUA%E7%9A%84%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85"><span class="nav-number">3.4.</span> <span class="nav-text">关于UA的知识补充</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%87%E4%BD%8E%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">浏览器过低的解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%99%E5%87%BA%E5%8D%87%E7%BA%A7%E6%8F%90%E7%A4%BA"><span class="nav-number">4.1.</span> <span class="nav-text">给出升级提示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%87%E7%BA%A7%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-number">4.2.</span> <span class="nav-text">升级浏览器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">967</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">378</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PGzxc" title="GitHub → https://github.com/PGzxc" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http://blog.csdn.net/calvin_zhou" rel="noopener" target="_blank"><i class="book fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http://weibo.com/5582039920" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>微博</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http://www.jianshu.com/u/c5cdcb4dc52b" rel="noopener" target="_blank"><i class="heartbeat fa-fw"></i>简书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wanandroid.com/" title="https://wanandroid.com/" rel="noopener" target="_blank">鸿洋</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/home.html" title="http://www.ruanyifeng.com/home.html" rel="noopener" target="_blank">阮一峰</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://memento.net.cn" title="https://memento.net.cn" rel="noopener" target="_blank">琅涯阁</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/sinyu890807/" title="http://blog.csdn.net/sinyu890807/" rel="noopener" target="_blank">郭霖</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/luoshengyang/" title="http://blog.csdn.net/luoshengyang/" rel="noopener" target="_blank">老罗</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/aigestudio/" title="http://blog.csdn.net/aigestudio/" rel="noopener" target="_blank">爱哥</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/wwj_748/" title="http://blog.csdn.net/wwj_748/" rel="noopener" target="_blank">小巫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/singwhatiwanna/" title="http://blog.csdn.net/singwhatiwanna/" rel="noopener" target="_blank">任玉刚</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/eclipsexys/" title="http://blog.csdn.net/eclipsexys/" rel="noopener" target="_blank">徐医生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/bboyfeiyu/" title="http://blog.csdn.net/bboyfeiyu/" rel="noopener" target="_blank">Mr.Simple</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/xyz_lmn/" title="http://blog.csdn.net/xyz_lmn/" rel="noopener" target="_blank">张兴业</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.android.google.cn/index.html" title="https://developer.android.google.cn/index.html" rel="noopener" target="_blank">谷歌中国</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备18061062号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pgzxc</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">1.4m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">20:35</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>

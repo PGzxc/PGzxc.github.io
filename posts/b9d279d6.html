@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一 简介本文主要介绍Centos7系统下软件的查询，安装，升级及卸载等相关的操作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS开发之——查询、安装、更新及卸载软件">
+<meta property="og:url" content="http://pgzxc.github.io/posts/b9d279d6.html">
+<meta property="og:site_name" content="PGzxc的博客">
+<meta property="og:description" content="一 简介本文主要介绍Centos7系统下软件的查询，安装，升级及卸载等相关的操作。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pgzxc.com/centos7-software-rpm-qa-grep.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos7-software-rpm-q.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos7-software-rpm-ql.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos7-software-rpm-qal-grep.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-software-rpm-ivh.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos7-software-tar-zxvf.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos7-software-ect-profile-config.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos7-software-source-etc-profile.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos7-software-yum-list.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos7-software-yum-install.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos7-software-yum-remove.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos7-software-rpm-e-remove.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos7-software-check-update.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos7-software-yum-update.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos7-software-yum-update-all.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos7-software-yum-upgrade-all.png">
+<meta property="article:published_time" content="2019-10-08T14:52:38.000Z">
+<meta property="article:modified_time" content="2020-07-03T12:07:33.195Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="软件操作">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pgzxc.com/centos7-software-rpm-qa-grep.png">
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/b9d279d6.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CentOS开发之——查询、安装、更新及卸载软件 | PGzxc的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">PGzxc的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">967</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">85</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">378</span></a>
+
+  </li>
+        <li class="menu-item menu-item-comments">
+
+    <a href="/comments/" rel="section"><i class="fa fa-comments fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/b9d279d6.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CentOS开发之——查询、安装、更新及卸载软件
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-08 22:52:38" itemprop="dateCreated datePublished" datetime="2019-10-08T22:52:38+08:00">2019-10-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-03 20:07:33" itemprop="dateModified" datetime="2020-07-03T20:07:33+08:00">2020-07-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">系统</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%B3%BB%E7%BB%9F/CentOS/" itemprop="url" rel="index"><span itemprop="name">CentOS</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="一-简介"><a href="#一-简介" class="headerlink" title="一 简介"></a>一 简介</h2><p>本文主要介绍Centos7系统下软件的查询，安装，升级及卸载等相关的操作。</p>
+<a id="more"></a>
+
+<h2 id="二-软件查询"><a href="#二-软件查询" class="headerlink" title="二 软件查询"></a>二 软件查询</h2><p>Centos7 系统下，软件查询的常用命令是rmp</p>
+<h3 id="2-1-rmp-简介"><a href="#2-1-rmp-简介" class="headerlink" title="2.1 rmp 简介"></a>2.1 rmp 简介</h3><p>rpm命令是RPM软件包的管理工具。rpm原本是Red Hat Linux发行版专门用来管理Linux各项套件的程序，由于它遵循GPL规则且功能强大方便，因而广受欢迎。逐渐受到其他发行版的采用。RPM套件管理方式的出现，让Linux易于安装，升级，间接提升了Linux的适用度</p>
+<h3 id="2-2-常见的查询命令-以软件net-tools为例"><a href="#2-2-常见的查询命令-以软件net-tools为例" class="headerlink" title="2.2 常见的查询命令(以软件net-tools为例)"></a>2.2 常见的查询命令(以软件net-tools为例)</h3><h4 id="2-2-1-列出所有安装的软件及依赖"><a href="#2-2-1-列出所有安装的软件及依赖" class="headerlink" title="2.2.1 列出所有安装的软件及依赖"></a>2.2.1 列出所有安装的软件及依赖</h4><p><img src="https://images.pgzxc.com/centos7-software-rpm-qa-grep.png" alt=""></p>
+<h4 id="2-2-2-查询某个软件包的文件全名"><a href="#2-2-2-查询某个软件包的文件全名" class="headerlink" title="2.2.2 查询某个软件包的文件全名"></a>2.2.2 查询某个软件包的文件全名</h4><pre><code>rpm -q net-tools </code></pre><p><img src="https://images.pgzxc.com/centos7-software-rpm-q.png" alt=""></p>
+<h4 id="2-2-3-查询某个软件包安装的位置"><a href="#2-2-3-查询某个软件包安装的位置" class="headerlink" title="2.2.3 查询某个软件包安装的位置"></a>2.2.3 查询某个软件包安装的位置</h4><pre><code>rpm -ql net-tools</code></pre><p><img src="https://images.pgzxc.com/centos7-software-rpm-ql.png" alt=""></p>
+<h4 id="2-2-4-查询某个软件包存储位置"><a href="#2-2-4-查询某个软件包存储位置" class="headerlink" title="2.2.4 查询某个软件包存储位置"></a>2.2.4 查询某个软件包存储位置</h4><pre><code>rpm -qal|grep net-tools</code></pre><p><img src="https://images.pgzxc.com/centos7-software-rpm-qal-grep.png" alt=""></p>
+<h4 id="2-2-5-查询某个软件是否存在"><a href="#2-2-5-查询某个软件是否存在" class="headerlink" title="2.2.5 查询某个软件是否存在"></a>2.2.5 查询某个软件是否存在</h4><ul>
+<li>rpm包安装的，可以用rpm -qa看到，如果要查找某软件包是否安装，用 rpm -qa | grep “软件或者包的名字”</li>
+<li>deb包安装的，可以用dpkg -l能看到。如果是查找指定软件包，用dpkg -l | grep “软件或者包的名字” </li>
+<li>yum方法安装的，可以用yum list installed查找，如果是查找指定包，命令后加 | grep “软件名或者包名”</li>
+<li>如果是以源码包自己编译安装的，例如.tar.gz或者tar.bz2形式的，这个只能看可执行文件是否存在了</li>
+<li>pip安装的所有包：pip list</li>
+</ul>
+<h2 id="三-软件安装-以安装java为例"><a href="#三-软件安装-以安装java为例" class="headerlink" title="三 软件安装(以安装java为例)"></a>三 软件安装(以安装java为例)</h2><p>本文主要讲述几种常见的软件安装方式：rpm安装包，tar.gz压缩文件安装包，yum在线安装包</p>
+<h3 id="3-1-rpm安装包"><a href="#3-1-rpm安装包" class="headerlink" title="3.1 rpm安装包"></a>3.1 rpm安装包</h3><pre><code>rpm -ivh ***.rpm　　#其中i表示安装，v表示显示安装过程，h表示显示进度</code></pre><p><img src="https://images.pgzxc.com/centos-software-rpm-ivh.png" alt=""></p>
+<h3 id="3-2-tar-gz压缩文件安装包"><a href="#3-2-tar-gz压缩文件安装包" class="headerlink" title="3.2 tar.gz压缩文件安装包"></a>3.2 tar.gz压缩文件安装包</h3><h4 id="3-2-1-解压文件"><a href="#3-2-1-解压文件" class="headerlink" title="3.2.1 解压文件"></a>3.2.1 解压文件</h4><pre><code>tar -zxvf jdk-13_linux-x64_bin.tar.gz</code></pre><p><img src="https://images.pgzxc.com/centos7-software-tar-zxvf.png" alt=""></p>
+<h4 id="3-2-2-添加环境变量-修改-etc-profile文件，在文件结尾添加配置信息"><a href="#3-2-2-添加环境变量-修改-etc-profile文件，在文件结尾添加配置信息" class="headerlink" title="3.2.2 添加环境变量(修改/etc/profile文件，在文件结尾添加配置信息)"></a>3.2.2 添加环境变量(修改/etc/profile文件，在文件结尾添加配置信息)</h4><pre><code>export JAVA_HOME=/home/jdk-13
+export CLASSPATH=$JAVA_HOME/lib:$JRE_HOME/lib:
+export PATH=$JAVA_HOME/bin:$PATH</code></pre><p><img src="https://images.pgzxc.com/centos7-software-ect-profile-config.png" alt=""></p>
+<h4 id="3-2-3-执行source-etc-profile命令让配置生效"><a href="#3-2-3-执行source-etc-profile命令让配置生效" class="headerlink" title="3.2.3   执行source /etc/profile命令让配置生效"></a>3.2.3   执行source /etc/profile命令让配置生效</h4><pre><code>source /etc/profile </code></pre><p><img src="https://images.pgzxc.com/centos7-software-source-etc-profile.png" alt=""></p>
+<h3 id="3-3-yum在线安装包"><a href="#3-3-yum在线安装包" class="headerlink" title="3.3 yum在线安装包"></a>3.3 yum在线安装包</h3><h4 id="3-3-1-查询系统有没有自带open-jdk"><a href="#3-3-1-查询系统有没有自带open-jdk" class="headerlink" title="3.3.1 查询系统有没有自带open-jdk"></a>3.3.1 查询系统有没有自带open-jdk</h4><pre><code>rpm -qa |grep java
+rpm -qa |grep jdk
+rpm -qa |grep gcj</code></pre><h4 id="3-3-2-检索包含java的列表"><a href="#3-3-2-检索包含java的列表" class="headerlink" title="3.3.2 检索包含java的列表"></a>3.3.2 检索包含java的列表</h4><p><img src="https://images.pgzxc.com/centos7-software-yum-list.png" alt=""></p>
+<h4 id="3-3-3-安装1-8-11的所有文件"><a href="#3-3-3-安装1-8-11的所有文件" class="headerlink" title="3.3.3 安装1.8.11的所有文件"></a>3.3.3 安装1.8.11的所有文件</h4><pre><code>yum install java-11-openjdk* -y</code></pre><p><img src="https://images.pgzxc.com/centos7-software-yum-install.png" alt=""></p>
+<h2 id="四-软件卸载"><a href="#四-软件卸载" class="headerlink" title="四 软件卸载"></a>四 软件卸载</h2><h3 id="4-1-卸载yum安装软件"><a href="#4-1-卸载yum安装软件" class="headerlink" title="4.1 卸载yum安装软件"></a>4.1 卸载yum安装软件</h3><pre><code>yum remove java-11*</code></pre><p><img src="https://images.pgzxc.com/centos7-software-yum-remove.png" alt=""></p>
+<h3 id="4-2-卸载rpm安装软件"><a href="#4-2-卸载rpm安装软件" class="headerlink" title="4.2 卸载rpm安装软件"></a>4.2 卸载rpm安装软件</h3><pre><code>rpm -e jdk-13</code></pre><p><img src="https://images.pgzxc.com/centos7-software-rpm-e-remove.png" alt=""></p>
+<h3 id="4-3-tar二进制包安装"><a href="#4-3-tar二进制包安装" class="headerlink" title="4.3 tar二进制包安装"></a>4.3 tar二进制包安装</h3><ul>
+<li>直接删除解压出来的文件</li>
+<li>去掉配置文件中的信息</li>
+</ul>
+<h2 id="五-更新软件"><a href="#五-更新软件" class="headerlink" title="五 更新软件"></a>五 更新软件</h2><h3 id="5-1-检查可更新的rpm包"><a href="#5-1-检查可更新的rpm包" class="headerlink" title="5.1 检查可更新的rpm包"></a>5.1 检查可更新的rpm包</h3><pre><code>yum check-update </code></pre><p><img src="https://images.pgzxc.com/centos7-software-check-update.png" alt=""></p>
+<h3 id="5-2-更新指定的rpm包"><a href="#5-2-更新指定的rpm包" class="headerlink" title="5.2 更新指定的rpm包"></a>5.2 更新指定的rpm包</h3><pre><code>yum -y update kernel</code></pre><p><img src="https://images.pgzxc.com/centos7-software-yum-update.png" alt=""></p>
+<h3 id="5-3-更新所有的rpm包-不升级淘汰的包"><a href="#5-3-更新所有的rpm包-不升级淘汰的包" class="headerlink" title="5.3 更新所有的rpm包(不升级淘汰的包 )"></a>5.3 更新所有的rpm包(不升级淘汰的包 )</h3><pre><code>yum update </code></pre><p><img src="https://images.pgzxc.com/centos7-software-yum-update-all.png" alt=""></p>
+<h3 id="5-3-更新所有的rpm包-连旧的淘汰的包也升级"><a href="#5-3-更新所有的rpm包-连旧的淘汰的包也升级" class="headerlink" title="5.3 更新所有的rpm包(连旧的淘汰的包也升级 )"></a>5.3 更新所有的rpm包(连旧的淘汰的包也升级 )</h3><pre><code>yum upgrade</code></pre><p><img src="https://images.pgzxc.com/centos7-software-yum-upgrade-all.png" alt=""></p>
+<h2 id="六-参考"><a href="#六-参考" class="headerlink" title="六 参考"></a>六 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhi-leaf/p/10315125.html">CentOS安装JDK-tar.gz文件</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wlsblog/p/7908348.html">centos7通过yum安装JDK1.8</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/mier9042/article/details/80612707">linux下软件的更新命令</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangjianming2018/article/details/80382082">centos查看是否安装了某个软件</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%93%8D%E4%BD%9C/" rel="tag"># 软件操作</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/29c983d5.html" rel="prev" title="MacBook入门之——添加打印机">
+      <i class="fa fa-chevron-left"></i> MacBook入门之——添加打印机
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/85a8c385.html" rel="next" title="CentOS开发之——开启远程登录访问">
+      CentOS开发之——开启远程登录访问 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjQ1OC85MDE5"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">一 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E8%BD%AF%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.</span> <span class="nav-text">二 软件查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-rmp-%E7%AE%80%E4%BB%8B"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 rmp 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%B8%B8%E8%A7%81%E7%9A%84%E6%9F%A5%E8%AF%A2%E5%91%BD%E4%BB%A4-%E4%BB%A5%E8%BD%AF%E4%BB%B6net-tools%E4%B8%BA%E4%BE%8B"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 常见的查询命令(以软件net-tools为例)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-%E5%88%97%E5%87%BA%E6%89%80%E6%9C%89%E5%AE%89%E8%A3%85%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%8F%8A%E4%BE%9D%E8%B5%96"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 列出所有安装的软件及依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-%E6%9F%A5%E8%AF%A2%E6%9F%90%E4%B8%AA%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%9A%84%E6%96%87%E4%BB%B6%E5%85%A8%E5%90%8D"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 查询某个软件包的文件全名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-3-%E6%9F%A5%E8%AF%A2%E6%9F%90%E4%B8%AA%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%AE%89%E8%A3%85%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.2.3 查询某个软件包安装的位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-4-%E6%9F%A5%E8%AF%A2%E6%9F%90%E4%B8%AA%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.2.4.</span> <span class="nav-text">2.2.4 查询某个软件包存储位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-5-%E6%9F%A5%E8%AF%A2%E6%9F%90%E4%B8%AA%E8%BD%AF%E4%BB%B6%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="nav-number">2.2.5.</span> <span class="nav-text">2.2.5 查询某个软件是否存在</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85-%E4%BB%A5%E5%AE%89%E8%A3%85java%E4%B8%BA%E4%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">三 软件安装(以安装java为例)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-rpm%E5%AE%89%E8%A3%85%E5%8C%85"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 rpm安装包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-tar-gz%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6%E5%AE%89%E8%A3%85%E5%8C%85"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 tar.gz压缩文件安装包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-%E8%A7%A3%E5%8E%8B%E6%96%87%E4%BB%B6"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1 解压文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2-%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-%E4%BF%AE%E6%94%B9-etc-profile%E6%96%87%E4%BB%B6%EF%BC%8C%E5%9C%A8%E6%96%87%E4%BB%B6%E7%BB%93%E5%B0%BE%E6%B7%BB%E5%8A%A0%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2 添加环境变量(修改&#x2F;etc&#x2F;profile文件，在文件结尾添加配置信息)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-3-%E6%89%A7%E8%A1%8Csource-etc-profile%E5%91%BD%E4%BB%A4%E8%AE%A9%E9%85%8D%E7%BD%AE%E7%94%9F%E6%95%88"><span class="nav-number">3.2.3.</span> <span class="nav-text">3.2.3   执行source &#x2F;etc&#x2F;profile命令让配置生效</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-yum%E5%9C%A8%E7%BA%BF%E5%AE%89%E8%A3%85%E5%8C%85"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 yum在线安装包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-1-%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F%E6%9C%89%E6%B2%A1%E6%9C%89%E8%87%AA%E5%B8%A6open-jdk"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.3.1 查询系统有没有自带open-jdk</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-2-%E6%A3%80%E7%B4%A2%E5%8C%85%E5%90%ABjava%E7%9A%84%E5%88%97%E8%A1%A8"><span class="nav-number">3.3.2.</span> <span class="nav-text">3.3.2 检索包含java的列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-3-%E5%AE%89%E8%A3%851-8-11%E7%9A%84%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6"><span class="nav-number">3.3.3.</span> <span class="nav-text">3.3.3 安装1.8.11的所有文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E8%BD%AF%E4%BB%B6%E5%8D%B8%E8%BD%BD"><span class="nav-number">4.</span> <span class="nav-text">四 软件卸载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%8D%B8%E8%BD%BDyum%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 卸载yum安装软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E5%8D%B8%E8%BD%BDrpm%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 卸载rpm安装软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-tar%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8C%85%E5%AE%89%E8%A3%85"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 tar二进制包安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E6%9B%B4%E6%96%B0%E8%BD%AF%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">五 更新软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E6%A3%80%E6%9F%A5%E5%8F%AF%E6%9B%B4%E6%96%B0%E7%9A%84rpm%E5%8C%85"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 检查可更新的rpm包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E6%9B%B4%E6%96%B0%E6%8C%87%E5%AE%9A%E7%9A%84rpm%E5%8C%85"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 更新指定的rpm包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E6%9B%B4%E6%96%B0%E6%89%80%E6%9C%89%E7%9A%84rpm%E5%8C%85-%E4%B8%8D%E5%8D%87%E7%BA%A7%E6%B7%98%E6%B1%B0%E7%9A%84%E5%8C%85"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 更新所有的rpm包(不升级淘汰的包 )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E6%9B%B4%E6%96%B0%E6%89%80%E6%9C%89%E7%9A%84rpm%E5%8C%85-%E8%BF%9E%E6%97%A7%E7%9A%84%E6%B7%98%E6%B1%B0%E7%9A%84%E5%8C%85%E4%B9%9F%E5%8D%87%E7%BA%A7"><span class="nav-number">5.4.</span> <span class="nav-text">5.3 更新所有的rpm包(连旧的淘汰的包也升级 )</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD-%E5%8F%82%E8%80%83"><span class="nav-number">6.</span> <span class="nav-text">六 参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">967</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">378</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PGzxc" title="GitHub → https://github.com/PGzxc" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http://blog.csdn.net/calvin_zhou" rel="noopener" target="_blank"><i class="book fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http://weibo.com/5582039920" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>微博</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http://www.jianshu.com/u/c5cdcb4dc52b" rel="noopener" target="_blank"><i class="heartbeat fa-fw"></i>简书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wanandroid.com/" title="https://wanandroid.com/" rel="noopener" target="_blank">鸿洋</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/home.html" title="http://www.ruanyifeng.com/home.html" rel="noopener" target="_blank">阮一峰</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://memento.net.cn" title="https://memento.net.cn" rel="noopener" target="_blank">琅涯阁</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/sinyu890807/" title="http://blog.csdn.net/sinyu890807/" rel="noopener" target="_blank">郭霖</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/luoshengyang/" title="http://blog.csdn.net/luoshengyang/" rel="noopener" target="_blank">老罗</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/aigestudio/" title="http://blog.csdn.net/aigestudio/" rel="noopener" target="_blank">爱哥</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/wwj_748/" title="http://blog.csdn.net/wwj_748/" rel="noopener" target="_blank">小巫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/singwhatiwanna/" title="http://blog.csdn.net/singwhatiwanna/" rel="noopener" target="_blank">任玉刚</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/eclipsexys/" title="http://blog.csdn.net/eclipsexys/" rel="noopener" target="_blank">徐医生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/bboyfeiyu/" title="http://blog.csdn.net/bboyfeiyu/" rel="noopener" target="_blank">Mr.Simple</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/xyz_lmn/" title="http://blog.csdn.net/xyz_lmn/" rel="noopener" target="_blank">张兴业</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.android.google.cn/index.html" title="https://developer.android.google.cn/index.html" rel="noopener" target="_blank">谷歌中国</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备18061062号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pgzxc</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">1.4m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">20:35</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>

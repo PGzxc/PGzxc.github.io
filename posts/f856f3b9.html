@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="原文请参考Java8的新特性 序本文主要讲Java8的新特性，Java8也是一个重要的版本，在语法层面有更大的改动，支持了lamda表达式，影响堪比Java5的泛型支持。    特性列表 lamda表达式(重磅)  集合的stream操作  提升HashMaps的性能  Date-Time Package  java.lang and java.util Packages  Concurrency">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java开发之——Java8的新特性">
+<meta property="og:url" content="http://pgzxc.github.io/posts/f856f3b9.html">
+<meta property="og:site_name" content="PGzxc的博客">
+<meta property="og:description" content="原文请参考Java8的新特性 序本文主要讲Java8的新特性，Java8也是一个重要的版本，在语法层面有更大的改动，支持了lamda表达式，影响堪比Java5的泛型支持。    特性列表 lamda表达式(重磅)  集合的stream操作  提升HashMaps的性能  Date-Time Package  java.lang and java.util Packages  Concurrency">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-12-14T03:00:06.000Z">
+<meta property="article:modified_time" content="2019-05-21T14:19:24.615Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Java8">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/f856f3b9.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Java开发之——Java8的新特性 | PGzxc的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">PGzxc的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">967</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">85</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">378</span></a>
+
+  </li>
+        <li class="menu-item menu-item-comments">
+
+    <a href="/comments/" rel="section"><i class="fa fa-comments fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/f856f3b9.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java开发之——Java8的新特性
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-12-14 11:00:06" itemprop="dateCreated datePublished" datetime="2017-12-14T11:00:06+08:00">2017-12-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-05-21 22:19:24" itemprop="dateModified" datetime="2019-05-21T22:19:24+08:00">2019-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">基础语言</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80%E8%AF%AD%E8%A8%80/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>7.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>7 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>原文请参考<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000004419611">Java8的新特性</a></p>
+<h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>本文主要讲Java8的新特性，Java8也是一个重要的版本，在语法层面有更大的改动，支持了lamda表达式，影响堪比Java5的泛型支持。   </p>
+<h1 id="特性列表"><a href="#特性列表" class="headerlink" title="特性列表"></a>特性列表</h1><ul>
+<li><p>lamda表达式(重磅)</p>
+</li>
+<li><p>集合的stream操作</p>
+</li>
+<li><p>提升HashMaps的性能</p>
+</li>
+<li><p>Date-Time Package</p>
+</li>
+<li><p>java.lang and java.util Packages</p>
+</li>
+<li><p>Concurrency</p>
+<a id="more"></a>
+<h2 id="lamda表达式-重磅"><a href="#lamda表达式-重磅" class="headerlink" title="lamda表达式(重磅)"></a>lamda表达式(重磅)</h2><p>方法引用</p>
+<p>   /**</p>
+<pre><code>* 静态方法引用：ClassName::methodName
+* 实例上的实例方法引用：instanceReference::methodName
+* 超类上的实例方法引用：super::methodName
+* 类型上的实例方法引用：ClassName::methodName
+* 构造方法引用：Class::new
+* 数组构造方法引用：TypeName[]::new
+*/</code></pre><p>  public class MethodReference<br>   {</p>
+<pre><code>@Test
+public void methodRef()
+  &#123;
+    SampleData.getThreeArtists().stream()
+        .map(Artist::getName)
+        .forEach(System.out::println);
+  &#125;
+
+    @Test
+public void constructorRef()
+ &#123;
+       ArtistFactory&lt;Artist&gt; af = Artist::new;
+    Artist a = af.create(&quot;patterncat&quot;,&quot;china&quot;);
+    System.out.println(a);
+&#125;</code></pre><p>   }</p>
+<h2 id="集合的stream操作"><a href="#集合的stream操作" class="headerlink" title="集合的stream操作"></a>集合的stream操作</h2><p>  /**</p>
+<ul>
+<li><p>主要接口</p>
+</li>
+<li><p>1,predicate</p>
+</li>
+<li><p>2,Unary/BinaryOperator:传入参数和返回值必然是同一种数据类型</p>
+</li>
+<li><p>3,Int/Double/LongFunction/BiFunction:函数接口并不要求传入参数和返回值之间的数据类型必须一样</p>
+</li>
+<li><p>4,Int/Long/DoubleConsumer/BiConsumer:消费数据</p>
+</li>
+<li><p>5,Int/Long/DoubleSupplier:生产数据</p>
+</li>
+<li></li>
+<li><p>主要方法:</p>
+</li>
+<li><p>1,filter</p>
+</li>
+<li><p>2,map</p>
+</li>
+<li><p>3,reduce</p>
+</li>
+<li><p>4,collect</p>
+</li>
+<li><p>5,peek</p>
+</li>
+<li><p>-Djdk.internal.lambda.dumpProxyClasses</p>
+</li>
+<li><p>/<br>public class LamdaDemo<br>{</p>
+<pre><code>int[] arr = &#123;4,12,1,3,5,7,9&#125;;</code></pre><p>  @Test<br>  public void filter()</p>
+<pre><code>&#123;
+  Arrays.stream(arr).filter((x) -&gt; x%2 !=0).forEach(System.out::println);
+&#125;</code></pre><p>  @Test<br>  public void map(){<br>  Arrays.stream(arr).map((x) -&gt; x * x).forEach(System.out::println);<br>  }</p>
+<p>  @Test<br>  public void reduce(){<br>  Arrays.stream(arr).reduce((x,y) -&gt; x+y).ifPresent(System.out::println);<br>  System.out.println(Arrays.stream(arr).reduce(-10, (x, y) -&gt; x + y));<br>  }</p>
+<p>  @Test</p>
+<pre><code>public void collect()&#123;</code></pre><p>  List<Integer> list = Arrays.stream(arr).collect(ArrayList::new,ArrayList::add,ArrayList::addAll);<br>  System.out.println(list);</p>
+<p>  Set<Integer> set = list.stream().collect(Collectors.toSet());<br>  System.out.println(set);</p>
+<p>  Map&lt;String,Artist&gt; map = SampleData.getThreeArtists().stream()</p>
+<pre><code>.collect(Collectors.toMap(a -&gt; a.getName(),a -&gt; a));</code></pre><p>  System.out.println(map);<br>  }</p>
+<p>  @Test<br>  public void peek(){<br>  long count = Arrays.stream(arr).filter(x -&gt; x &gt; 2).peek(System.out::println).count();<br>  System.out.println(count);<br>  }</p>
+<p>  @Test<br>  public void average(){<br>  Arrays.stream(arr).average().ifPresent(System.out::println);<br>  }</p>
+<p>  @Test<br>  public void sum(){<br>  System.out.println(Arrays.stream(arr).sum());<br>  }</p>
+<p>  @Test<br>  public void max(){<br>  Arrays.stream(arr).max().ifPresent(System.out::println);<br>  }</p>
+<pre><code>@Test</code></pre><p>  public void min(){<br>  Arrays.stream(arr).min().ifPresent(System.out::println);<br>  }</p>
+<p>  @Test<br>  public void sorted(){<br>  Comparator<Artist> asc = (x,y) -&gt; x.getName().compareTo(y.getName());<br>  SampleData.getThreeArtists().stream().sorted(asc).forEach(System.out::println);<br>  SampleData.getThreeArtists().stream().sorted(asc.reversed()).forEach(System.out::println);<br>  SampleData.getThreeArtists().stream().sorted(Comparator.comparing(Artist::getName)).forEach(System.out::println);<br>  SampleData.getThreeArtists().stream().sorted(Comparator.comparing(Artist::getName).reversed()).forEach(System.out::println);</p>
+<p>  SampleData.getThreeArtists().stream().sorted(Comparator.comparing(Artist::getName).thenComparing(Artist::getNationality)).forEach(System.out::println);<br>  }</p>
+<p>  @Test<br>  public void groupBy(){<br>  Map&lt;String,List<Artist>&gt; rs = SampleData.getThreeArtists().stream().collect(Collectors.groupingBy(Artist::getNationality));<br>  System.out.println(rs);<br>  }</p>
+<pre><code>@Test</code></pre><p>  public void join(){<br>  String joinedNames = SampleData.getThreeArtists().stream().map(Artist::getName).collect(Collectors.joining(“,”));<br>  System.out.println(joinedNames);<br>  joinedNames.chars().mapToObj(c -&gt; (char) Character.toUpperCase(c)).forEach(System.out::println);<br>  }</p>
+<p>  @Test<br>  public void flatMap(){<br>  Set<Artist> rs = SampleData.getThreeArtists().stream().flatMap(a -&gt; a.getMembers()).collect(Collectors.toSet());<br>  rs.stream().forEach(System.out::println);<br>  }</p>
+<p>  @Test</p>
+<pre><code>public void arrStream()&#123;</code></pre><p>  Arrays.stream(arr).forEach(System.out::println);<br>  }</p>
+<p>  @Test<br>  public void then(){<br>  //IntConsumer out = System.out::println;<br>  //IntConsumer err = System.err::println;<br>  IntConsumer out = (x) -&gt; System.out.println(“out consume:”+x);<br>  IntConsumer err = (x) -&gt; System.err.println(“err consume:”+x);<br>  //Arrays.stream(arr).forEach(out.andThen(err));<br>  Arrays.stream(arr).forEach(err.andThen(out));<br>  }</p>
+<p>  @Test<br>  public void foreach(){<br>  List<Integer> numbers = Arrays.asList(1,2,3,4,5,6);<br>  numbers.forEach(System.out::println);</p>
+<pre><code>&#125;</code></pre><p>  @Test<br>  public void visitOuterVar(){<br>  final int num = 2;<br>  Function&lt;Integer,Integer&gt; fun = (from) -&gt; from * num;<br>  System.out.println(fun.apply(3));<br>  }<br>}</p>
+<h2 id="提升HashMaps的性能"><a href="#提升HashMaps的性能" class="headerlink" title="提升HashMaps的性能"></a>提升HashMaps的性能</h2><p>当hash冲突时，以前都是用链表存储，在java8里头，当节点个数&gt;=TREEIFY_THRESHOLD - 1时，HashMap将采用红黑树存储，这样最坏的情况下即所有的key都Hash冲突，采用链表的话查找时间为O(n)，而采用红黑树为O(logn)。   </p>
+<h2 id="Date-Time-Package"><a href="#Date-Time-Package" class="headerlink" title="Date-Time Package"></a>Date-Time Package</h2><p>Java 8新增了LocalDate和LocalTime接口，一方面把月份和星期都改成了enum防止出错，另一方面把LocalDate和LocalTime变成不可变类型，这样就线程安全了。   </p>
+<p>@Test<br>public void today(){<br>  LocalDate today = LocalDate.now();<br>  System.out.println(today);<br>}<br>@Test<br>public void parseString(){<br>  // 严格按照ISO yyyy-MM-dd验证，02写成2都不行，当然也有一个重载方法允许自己定义格式<br>  LocalDate date = LocalDate.parse(“2016-02-05”);<br>  System.out.println(date);<br>}</p>
+<p>@Test<br>public void calculate(){<br>  LocalDate today = LocalDate.now();<br>  LocalDate firstDayOfThisMonth = today.with(TemporalAdjusters.firstDayOfMonth());<br>  System.out.println(firstDayOfThisMonth);</p>
+<p>  // 取本月第2天：<br>  LocalDate secondDayOfThisMonth = today.withDayOfMonth(2);<br>  System.out.println(secondDayOfThisMonth);</p>
+<p>  // 取本月最后一天，再也不用计算是28，29，30还是31：<br>  LocalDate lastDayOfThisMonth = today.with(TemporalAdjusters.lastDayOfMonth());<br>  System.out.println(lastDayOfThisMonth);</p>
+<p>  // 取下一天：<br>  LocalDate nextDay = lastDayOfThisMonth.plusDays(1);<br>  System.out.println(nextDay);</p>
+<p>  // 取2015年1月第一个周一，这个计算用Calendar要死掉很多脑细胞：<br>  LocalDate firstMondayOf2015 = LocalDate.parse(“2015-01-01”).with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY));<br>  System.out.println(firstMondayOf2015);<br>}</p>
+<p>@Test<br>public void getTime(){<br>  LocalTime now = LocalTime.now();<br>  System.out.println(now);<br>}</p>
+<p>@Test<br>public void getTimeWithoutMillis(){<br>  LocalTime now = LocalTime.now().withNano(0);<br>  System.out.println(now);<br>}</p>
+<p>@Test<br>public void parseTime(){<br>  LocalTime zero = LocalTime.of(0, 0, 0); // 00:00:00<br>  System.out.println(zero);</p>
+<p>  LocalTime mid = LocalTime.parse(“12:00:00”); // 12:00:00<br>  System.out.println(mid);<br>}</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="java-lang-and-java-util-Packages"><a href="#java-lang-and-java-util-Packages" class="headerlink" title="java.lang and java.util Packages"></a>java.lang and java.util Packages</h2><p>比如数组的并行排序   </p>
+<pre><code>public class UtilDemo &#123;
+int[] data = &#123;4,12,1,3,5,7,9&#125;;
+@Test
+public void parallelSort()&#123;
+    Arrays.parallelSort(data);
+    System.out.println(Arrays.toString(data));
+&#125;
+
+@Test
+public void testCollectPrallel() &#123;
+    //[4, 16, 17, 20, 25, 32, 41]
+    Arrays.parallelPrefix(data, Integer::sum);
+    System.out.println(Arrays.toString(data));
+&#125;
+&#125;</code></pre><p>比如文件遍历   </p>
+<pre><code>@Test
+public void list() throws IOException &#123;
+    Files.list(Paths.get(&quot;.&quot;)).filter(Files::isDirectory).forEach(System.out::println);
+&#125;
+
+@Test
+public void walk() throws IOException &#123;
+    Files.walk(Paths.get(&quot;.&quot;), FileVisitOption.FOLLOW_LINKS).forEach(System.out::println);
+&#125;</code></pre><h2 id="Concurrency"><a href="#Concurrency" class="headerlink" title="Concurrency"></a>Concurrency</h2><ul>
+<li><p>StampedLock</p>
+<pre><code>public class BankAccountWithStampedLock &#123;
+
+private final StampedLock lock = new StampedLock();
+private double balance;
+
+public void deposit(double amount) &#123;
+long stamp = lock.writeLock();
+try &#123;
+    balance = balance + amount;
+&#125; finally &#123;
+    lock.unlockWrite(stamp);
+&#125;
+&#125;
+
+public double getBalance() &#123;
+long stamp = lock.readLock();
+try &#123;
+    return balance;
+&#125; finally &#123;
+    lock.unlockRead(stamp);
+&#125;
+&#125;
+&#125;</code></pre></li>
+</ul>
+<p>测试  </p>
+<pre><code>    @Test
+    public void bench() throws InterruptedException &#123;
+    BankAccountWithStampedLock account = new BankAccountWithStampedLock();
+    ExecutorService pool = Executors.newCachedThreadPool();
+    List&lt;Callable&lt;Double&gt;&gt; callables = IntStream.range(1,5)
+            .mapToObj(x -&gt; (Callable&lt;Double&gt;) () -&gt; &#123;
+    //                    if (x % 2 == 0) &#123;
+    //                        return account.getBalance();
+    //                    &#125; else &#123;
+    //                        account.deposit(x);
+    //                        return 0d;
+    //                    &#125;
+                account.deposit(x);
+                return 0d;
+            &#125;)
+            .collect(Collectors.toList());
+    pool.invokeAll(callables).forEach(x -&gt; &#123;
+        try &#123;
+            System.out.println(x.get());
+        &#125; catch (InterruptedException e) &#123;
+            e.printStackTrace();
+        &#125; catch (ExecutionException e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;);
+    pool.shutdown();
+    System.out.println(account.getBalance());
+&#125;</code></pre><ul>
+<li>ConcurrentHashMap的stream支持</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java8/" rel="tag"># Java8</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/df26268c.html" rel="prev" title="Java开发之——Java7的新特性">
+      <i class="fa fa-chevron-left"></i> Java开发之——Java7的新特性
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/25c02a3c.html" rel="next" title="Java开发之——Java9的新特性">
+      Java开发之——Java9的新特性 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjQ1OC85MDE5"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text">序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%B9%E6%80%A7%E5%88%97%E8%A1%A8"><span class="nav-number">2.</span> <span class="nav-text">特性列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#lamda%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E9%87%8D%E7%A3%85"><span class="nav-number">2.1.</span> <span class="nav-text">lamda表达式(重磅)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E7%9A%84stream%E6%93%8D%E4%BD%9C"><span class="nav-number">2.2.</span> <span class="nav-text">集合的stream操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%90%E5%8D%87HashMaps%E7%9A%84%E6%80%A7%E8%83%BD"><span class="nav-number">2.3.</span> <span class="nav-text">提升HashMaps的性能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Date-Time-Package"><span class="nav-number">2.4.</span> <span class="nav-text">Date-Time Package</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java-lang-and-java-util-Packages"><span class="nav-number">2.5.</span> <span class="nav-text">java.lang and java.util Packages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Concurrency"><span class="nav-number">2.6.</span> <span class="nav-text">Concurrency</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">967</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">378</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PGzxc" title="GitHub → https://github.com/PGzxc" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http://blog.csdn.net/calvin_zhou" rel="noopener" target="_blank"><i class="book fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http://weibo.com/5582039920" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>微博</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http://www.jianshu.com/u/c5cdcb4dc52b" rel="noopener" target="_blank"><i class="heartbeat fa-fw"></i>简书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wanandroid.com/" title="https://wanandroid.com/" rel="noopener" target="_blank">鸿洋</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/home.html" title="http://www.ruanyifeng.com/home.html" rel="noopener" target="_blank">阮一峰</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://memento.net.cn" title="https://memento.net.cn" rel="noopener" target="_blank">琅涯阁</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/sinyu890807/" title="http://blog.csdn.net/sinyu890807/" rel="noopener" target="_blank">郭霖</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/luoshengyang/" title="http://blog.csdn.net/luoshengyang/" rel="noopener" target="_blank">老罗</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/aigestudio/" title="http://blog.csdn.net/aigestudio/" rel="noopener" target="_blank">爱哥</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/wwj_748/" title="http://blog.csdn.net/wwj_748/" rel="noopener" target="_blank">小巫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/singwhatiwanna/" title="http://blog.csdn.net/singwhatiwanna/" rel="noopener" target="_blank">任玉刚</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/eclipsexys/" title="http://blog.csdn.net/eclipsexys/" rel="noopener" target="_blank">徐医生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/bboyfeiyu/" title="http://blog.csdn.net/bboyfeiyu/" rel="noopener" target="_blank">Mr.Simple</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/xyz_lmn/" title="http://blog.csdn.net/xyz_lmn/" rel="noopener" target="_blank">张兴业</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.android.google.cn/index.html" title="https://developer.android.google.cn/index.html" rel="noopener" target="_blank">谷歌中国</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备18061062号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pgzxc</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">1.4m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">20:35</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>

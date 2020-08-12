@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一 概述 我们通常用Excel记录一些测试数据，然后将Excel中的数据导入到别的软件如MATLAB中进行数据的处理和分析，然后绘制成图形。   本文主要介绍将excel文件中的数据导入到MATLAB中，并绘制plot曲线">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MATLAB学习之——将excel文件导入matlab并绘制曲线">
+<meta property="og:url" content="http://pgzxc.github.io/posts/3394915f.html">
+<meta property="og:site_name" content="PGzxc的博客">
+<meta property="og:description" content="一 概述 我们通常用Excel记录一些测试数据，然后将Excel中的数据导入到别的软件如MATLAB中进行数据的处理和分析，然后绘制成图形。   本文主要介绍将excel文件中的数据导入到MATLAB中，并绘制plot曲线">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pgzxc.com/matlab-draw-project.png">
+<meta property="og:image" content="https://images.pgzxc.com/matlab-draw-import-data-open.png">
+<meta property="og:image" content="https://images.pgzxc.com/matlab-import-excel-sele-data-type.png">
+<meta property="og:image" content="https://images.pgzxc.com/matlab-import-excel-change-name.png">
+<meta property="og:image" content="https://images.pgzxc.com/matlab-import-excel-show-more.png">
+<meta property="og:image" content="https://images.pgzxc.com/matlab-draw-software-plot.png">
+<meta property="og:image" content="https://images.pgzxc.com/matlab-software-plot-finish.png">
+<meta property="og:image" content="https://images.pgzxc.com/matlab-plot-insert-x-y-table.png">
+<meta property="og:image" content="https://images.pgzxc.com/matlab-new-script.png">
+<meta property="og:image" content="https://images.pgzxc.com/matlab-function-plot.png">
+<meta property="og:image" content="https://images.pgzxc.com/matlab-function-run.png">
+<meta property="og:image" content="https://images.pgzxc.com/matlab-function-x-y-table.png">
+<meta property="og:image" content="https://images.pgzxc.com/matlab-draw-open-dialog.png">
+<meta property="article:published_time" content="2019-11-03T02:59:51.000Z">
+<meta property="article:modified_time" content="2020-07-03T12:07:33.235Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="绘制">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pgzxc.com/matlab-draw-project.png">
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/3394915f.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>MATLAB学习之——将excel文件导入matlab并绘制曲线 | PGzxc的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">PGzxc的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">967</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">85</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">378</span></a>
+
+  </li>
+        <li class="menu-item menu-item-comments">
+
+    <a href="/comments/" rel="section"><i class="fa fa-comments fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/3394915f.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MATLAB学习之——将excel文件导入matlab并绘制曲线
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-03 10:59:51" itemprop="dateCreated datePublished" datetime="2019-11-03T10:59:51+08:00">2019-11-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-03 20:07:33" itemprop="dateModified" datetime="2020-07-03T20:07:33+08:00">2020-07-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/MATLAB/" itemprop="url" rel="index"><span itemprop="name">MATLAB</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>585</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul>
+<li><p>我们通常用Excel记录一些测试数据，然后将Excel中的数据导入到别的软件如MATLAB中进行数据的处理和分析，然后绘制成图形。 </p>
+</li>
+<li><p>本文主要介绍将excel文件中的数据导入到MATLAB中，并绘制plot曲线</p>
+</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="二-原料"><a href="#二-原料" class="headerlink" title="二 原料"></a>二 原料</h2><ul>
+<li>电脑</li>
+<li>excel</li>
+<li>matlab</li>
+</ul>
+<h2 id="三-步骤"><a href="#三-步骤" class="headerlink" title="三 步骤"></a>三 步骤</h2><h3 id="3-1-数据导入及处理"><a href="#3-1-数据导入及处理" class="headerlink" title="3.1 数据导入及处理"></a>3.1 数据导入及处理</h3><ul>
+<li>MATLAB项目打开后，如图所示<br><img src="https://images.pgzxc.com/matlab-draw-project.png" alt=""></li>
+<li>依次点击：主页-&gt;导入数据-&gt;选择excel文件所在的路径<br><img src="https://images.pgzxc.com/matlab-draw-import-data-open.png" alt=""></li>
+<li>在打开的导入数据对话框中，选择首先导入的列数，选择输出类型为“列向量”，确认后，点击导入所选内容<br><img src="https://images.pgzxc.com/matlab-import-excel-sele-data-type.png" alt=""></li>
+<li>对导入的数据变量名进行修改(方便识别)<br><img src="https://images.pgzxc.com/matlab-import-excel-change-name.png" alt="">  </li>
+<li>或在名称上右键显示更多选项<br><img src="https://images.pgzxc.com/matlab-import-excel-show-more.png" alt=""></li>
+</ul>
+<h4 id="3-2-根据数据进行显示"><a href="#3-2-根据数据进行显示" class="headerlink" title="3.2 根据数据进行显示"></a>3.2 根据数据进行显示</h4><h4 id="3-2-1-选中数据，由软件直接生成图形"><a href="#3-2-1-选中数据，由软件直接生成图形" class="headerlink" title="3.2.1 选中数据，由软件直接生成图形"></a>3.2.1 选中数据，由软件直接生成图形</h4><ul>
+<li><p>按住Ctrl键，依次选中工作区的X Y，右键选中plot(X,Y)<br><img src="https://images.pgzxc.com/matlab-draw-software-plot.png" alt=""></p>
+</li>
+<li><p>绘制完后会，如图<br><img src="https://images.pgzxc.com/matlab-software-plot-finish.png" alt=""></p>
+</li>
+<li><p>绘制的图形没有x，y，及标题说明，点击插入分别完成以上声明<br><img src="https://images.pgzxc.com/matlab-plot-insert-x-y-table.png" alt=""></p>
+</li>
+</ul>
+<h4 id="3-2-2-使用绘制曲线函数plot函数"><a href="#3-2-2-使用绘制曲线函数plot函数" class="headerlink" title="3.2.2 使用绘制曲线函数plot函数"></a>3.2.2 使用绘制曲线函数plot函数</h4><ul>
+<li><p>依次打开：主页-&gt;新建-&gt;新建实时脚本，打开实时编辑器<br><img src="https://images.pgzxc.com/matlab-new-script.png" alt=""></p>
+</li>
+<li><p>在编辑器内输入plot，根据提示输入参数<br><img src="https://images.pgzxc.com/matlab-function-plot.png" alt=""></p>
+</li>
+<li><p>切换到实时编辑器选项卡，点击运行，根据参数显示出图像<br><img src="https://images.pgzxc.com/matlab-function-run.png" alt=""></p>
+</li>
+<li><p>同理，要显示X,Y坐标及标题，进行函数输入<br><img src="https://images.pgzxc.com/matlab-function-x-y-table.png" alt=""></p>
+</li>
+<li><p>把图标放到图形上，点击右上角的在图形窗口中打开，可以单独显示<br><img src="https://images.pgzxc.com/matlab-draw-open-dialog.png" alt=""></p>
+</li>
+</ul>
+<h2 id="四-参考"><a href="#四-参考" class="headerlink" title="四 参考"></a>四 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/adc81513a396c6f723bf73f3.html">如何将excel文件导入matlab并绘制曲线</a></li>
+<li><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/1974b2894f3f6df4b1f7743d.html">如何用matlab导入文件中的数据</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/xuxinrk/article/details/80051238">MATLAB中plot函数的用法</a></li>
+<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/plot/10776857?fr=aladdin">MATLAB plot 函数</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BB%98%E5%88%B6/" rel="tag"># 绘制</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/8ec48218.html" rel="prev" title="MATLAB学习之——软件的安装及破解">
+      <i class="fa fa-chevron-left"></i> MATLAB学习之——软件的安装及破解
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/34bb49ac.html" rel="next" title="CPP学习之——什么是面向对象程序语言(6.1)">
+      CPP学习之——什么是面向对象程序语言(6.1) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjQ1OC85MDE5"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E5%8E%9F%E6%96%99"><span class="nav-number">2.</span> <span class="nav-text">二 原料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.</span> <span class="nav-text">三 步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5%E5%8F%8A%E5%A4%84%E7%90%86"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 数据导入及处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E6%A0%B9%E6%8D%AE%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E6%98%BE%E7%A4%BA"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.2 根据数据进行显示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-%E9%80%89%E4%B8%AD%E6%95%B0%E6%8D%AE%EF%BC%8C%E7%94%B1%E8%BD%AF%E4%BB%B6%E7%9B%B4%E6%8E%A5%E7%94%9F%E6%88%90%E5%9B%BE%E5%BD%A2"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.2.1 选中数据，由软件直接生成图形</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2-%E4%BD%BF%E7%94%A8%E7%BB%98%E5%88%B6%E6%9B%B2%E7%BA%BF%E5%87%BD%E6%95%B0plot%E5%87%BD%E6%95%B0"><span class="nav-number">3.1.3.</span> <span class="nav-text">3.2.2 使用绘制曲线函数plot函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">四 参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">967</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">378</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PGzxc" title="GitHub → https://github.com/PGzxc" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http://blog.csdn.net/calvin_zhou" rel="noopener" target="_blank"><i class="book fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http://weibo.com/5582039920" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>微博</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http://www.jianshu.com/u/c5cdcb4dc52b" rel="noopener" target="_blank"><i class="heartbeat fa-fw"></i>简书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wanandroid.com/" title="https://wanandroid.com/" rel="noopener" target="_blank">鸿洋</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/home.html" title="http://www.ruanyifeng.com/home.html" rel="noopener" target="_blank">阮一峰</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://memento.net.cn" title="https://memento.net.cn" rel="noopener" target="_blank">琅涯阁</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/sinyu890807/" title="http://blog.csdn.net/sinyu890807/" rel="noopener" target="_blank">郭霖</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/luoshengyang/" title="http://blog.csdn.net/luoshengyang/" rel="noopener" target="_blank">老罗</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/aigestudio/" title="http://blog.csdn.net/aigestudio/" rel="noopener" target="_blank">爱哥</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/wwj_748/" title="http://blog.csdn.net/wwj_748/" rel="noopener" target="_blank">小巫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/singwhatiwanna/" title="http://blog.csdn.net/singwhatiwanna/" rel="noopener" target="_blank">任玉刚</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/eclipsexys/" title="http://blog.csdn.net/eclipsexys/" rel="noopener" target="_blank">徐医生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/bboyfeiyu/" title="http://blog.csdn.net/bboyfeiyu/" rel="noopener" target="_blank">Mr.Simple</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/xyz_lmn/" title="http://blog.csdn.net/xyz_lmn/" rel="noopener" target="_blank">张兴业</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.android.google.cn/index.html" title="https://developer.android.google.cn/index.html" rel="noopener" target="_blank">谷歌中国</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备18061062号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pgzxc</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">1.4m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">20:35</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>

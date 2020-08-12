@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一 概述 在前面的小节中已经了解了类中成员的定义，本节介绍如何访问类中的成员，即调用类的成员 调用类的成员实际上使用的是类的对象，对于创建类的对象，首先可以将类理解成一个模板，类的对象则是按照这个模板定制的一个对象 例如在创建一个Word文档时，会自动按照Word中默认的文档模板创建一个与之样式相同的文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#开发之——调用类成员(3.6)">
+<meta property="og:url" content="http://pgzxc.github.io/posts/3fd1b84.html">
+<meta property="og:site_name" content="PGzxc的博客">
+<meta property="og:description" content="一 概述 在前面的小节中已经了解了类中成员的定义，本节介绍如何访问类中的成员，即调用类的成员 调用类的成员实际上使用的是类的对象，对于创建类的对象，首先可以将类理解成一个模板，类的对象则是按照这个模板定制的一个对象 例如在创建一个Word文档时，会自动按照Word中默认的文档模板创建一个与之样式相同的文件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pgzxc.com/csharp-class-book-func.png">
+<meta property="og:image" content="https://images.pgzxc.com/csharp-class-book-value-set.png">
+<meta property="article:published_time" content="2020-07-14T12:50:19.000Z">
+<meta property="article:modified_time" content="2020-07-16T14:10:34.564Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="C#">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pgzxc.com/csharp-class-book-func.png">
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/3fd1b84.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>C#开发之——调用类成员(3.6) | PGzxc的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">PGzxc的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">967</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">85</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">378</span></a>
+
+  </li>
+        <li class="menu-item menu-item-comments">
+
+    <a href="/comments/" rel="section"><i class="fa fa-comments fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/3fd1b84.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C#开发之——调用类成员(3.6)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-14 20:50:19" itemprop="dateCreated datePublished" datetime="2020-07-14T20:50:19+08:00">2020-07-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-16 22:10:34" itemprop="dateModified" datetime="2020-07-16T22:10:34+08:00">2020-07-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">桌面开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91/C/" itemprop="url" rel="index"><span itemprop="name">C#</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul>
+<li>在前面的小节中已经了解了类中成员的定义，本节介绍如何访问类中的成员，即调用类的成员</li>
+<li>调用类的成员实际上使用的是类的对象，对于创建类的对象，首先可以将类理解成一个模板，类的对象则是按照这个模板定制的一个对象</li>
+<li>例如在创建一个Word文档时，会自动按照Word中默认的文档模板创建一个与之样式相同的文件</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="二-类对象的语法形式"><a href="#二-类对象的语法形式" class="headerlink" title="二 类对象的语法形式"></a>二 类对象的语法形式</h2><p>创建类对象的语法形式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">类名 对象名 &#x3D; new 类名();</span><br></pre></td></tr></table></figure>
+
+<p>上面的语法形式是一种简单形式，通过”对象名”即可调用类中的成员。调用的语法形式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对象名.类的成员</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-实例"><a href="#三-实例" class="headerlink" title="三 实例"></a>三 实例</h2><h3 id="3-1：在Book类中添加一个方法，用于输出该类中的所有属性"><a href="#3-1：在Book类中添加一个方法，用于输出该类中的所有属性" class="headerlink" title="3.1：在Book类中添加一个方法，用于输出该类中的所有属性"></a>3.1：在Book类中添加一个方法，用于输出该类中的所有属性</h3><h4 id="3-1-1-代码"><a href="#3-1-1-代码" class="headerlink" title="3.1.1 代码"></a>3.1.1 代码</h4><ul>
+<li><p>Book类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Book</span><br><span class="line">&#123;</span><br><span class="line">    public int Id &#123; get; set; &#125;</span><br><span class="line">    public string Name &#123; get; set; &#125;</span><br><span class="line">    public double Price &#123; get; set; &#125;</span><br><span class="line">    public void PrintMsg()</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(&quot;图书编号：&quot; + Id);</span><br><span class="line">        Console.WriteLine(&quot;图书名称：&quot; + Name);</span><br><span class="line">        Console.WriteLine(&quot;图书价格：&quot; + Price);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Program.cs文件里的Main方法中，加入调用PrintMsg()方法的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Program</span><br><span class="line">&#123;</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        Book book &#x3D; new Book();</span><br><span class="line">        book.PrintMsg();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="3-1-2-执行结果"><a href="#3-1-2-执行结果" class="headerlink" title="3.1.2 执行结果"></a>3.1.2 执行结果</h4><p><img src="https://images.pgzxc.com/csharp-class-book-func.png" alt=""></p>
+<ul>
+<li>从上面的输出效果可以看出，如果没有对自定义的属性赋值，系统会默认为属性赋值。</li>
+<li>如果需要为属性赋值后做输出操作，则要在调用PrintMsg()前先对属性赋值</li>
+</ul>
+<h4 id="3-1-3-对属性事先赋值"><a href="#3-1-3-对属性事先赋值" class="headerlink" title="3.1.3 对属性事先赋值"></a>3.1.3 对属性事先赋值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Program</span><br><span class="line">&#123;</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        Book book &#x3D; new Book();</span><br><span class="line">        &#x2F;&#x2F;为属性赋值</span><br><span class="line">        book.Id &#x3D; 1;</span><br><span class="line">        book.Name &#x3D; &quot;计算机基础&quot;;</span><br><span class="line">        book.Price &#x3D; 34.5;</span><br><span class="line">        book.PrintMsg();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行上面的代码，效果 如图所示  </p>
+<p><img src="https://images.pgzxc.com/csharp-class-book-value-set.png" alt=""></p>
+<h3 id="3-2-在-Book-类中添加一个向属性赋值的方法，并在-Main-方法中调用"><a href="#3-2-在-Book-类中添加一个向属性赋值的方法，并在-Main-方法中调用" class="headerlink" title="3.2  在 Book 类中添加一个向属性赋值的方法，并在 Main 方法中调用"></a>3.2  在 Book 类中添加一个向属性赋值的方法，并在 Main 方法中调用</h3><h4 id="3-2-1-代码"><a href="#3-2-1-代码" class="headerlink" title="3.2.1 代码"></a>3.2.1 代码</h4><ul>
+<li><p>Book</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Book</span><br><span class="line">&#123;</span><br><span class="line">    public int Id &#123; get; set; &#125;</span><br><span class="line">    public string Name &#123; get; set; &#125;</span><br><span class="line">    public double Price &#123; get; set; &#125;</span><br><span class="line">    public void SetBook(int id, string name, double price)</span><br><span class="line">    &#123;</span><br><span class="line">        Id &#x3D; id;</span><br><span class="line">        Name &#x3D; name;</span><br><span class="line">        Price &#x3D; price;</span><br><span class="line">    &#125;</span><br><span class="line">    public void PrintMsg()</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(&quot;图书编号：&quot; + Id);</span><br><span class="line">        Console.WriteLine(&quot;图书名称：&quot; + Name);</span><br><span class="line">        Console.WriteLine(&quot;图书价格：&quot; + Price);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Main方法中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Program</span><br><span class="line">&#123;</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        Book book &#x3D; new Book();</span><br><span class="line">        book.SetBook(1, &quot;计算机基础&quot;, 34.5);</span><br><span class="line">        book.PrintMsg();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="3-2-2-说明"><a href="#3-2-2-说明" class="headerlink" title="3.2.2 说明"></a>3.2.2 说明</h4><ul>
+<li><p>通过上面的实例可以了解类的对象调用属性和方法的基本用法，给属性赋值的代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">类的对象.属性名 &#x3D; 值;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果要取得属性的值，直接使用”类的对象.属性名”即可。使用类的对象调用方法的代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">类的对象.方法名(参数);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果将类中的成员使用修饰符static声明，则在访问类成员时直接使用”类名.类成员”的方法即可</p>
+</li>
+<li><p>需要注意的是，如果将一个方法声明成静态的，在方法中直接访问静态类成员，非静态成员通过类的对象调用才能访问。例如将【实例2】中的方法PrintMsg改成静态方法，则无法直接访问属性，而需要通过类的对象才能访问属性或者直接将属性定义成静态的</p>
+</li>
+</ul>
+<h3 id="3-3-将-Book-类中的属性和方法更改为静态的"><a href="#3-3-将-Book-类中的属性和方法更改为静态的" class="headerlink" title="3.3  将 Book 类中的属性和方法更改为静态的"></a>3.3  将 Book 类中的属性和方法更改为静态的</h3><h4 id="3-3-1-代码"><a href="#3-3-1-代码" class="headerlink" title="3.3.1 代码"></a>3.3.1 代码</h4><ul>
+<li><p>Book类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Book</span><br><span class="line">&#123;</span><br><span class="line">    public static int Id &#123; get; set; &#125;</span><br><span class="line">    public static string Name &#123; get; set; &#125;</span><br><span class="line">    public static double Price &#123; get; set; &#125;</span><br><span class="line">    public static void SetBook(int id, string name, double price)</span><br><span class="line">    &#123;</span><br><span class="line">        Id &#x3D; id;</span><br><span class="line">        Name &#x3D; name;</span><br><span class="line">        Price &#x3D; price;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void PrintMsg()</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(&quot;图书编号：&quot; + Id);</span><br><span class="line">        Console.WriteLine(&quot;图书名称：&quot; + Name);</span><br><span class="line">        Console.WriteLine(&quot;图书价格：&quot; + Price);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Main方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Program</span><br><span class="line">&#123;</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        Book.SetBook(1, &quot;计算机基础&quot;, 34.5);</span><br><span class="line">        Book.PrintMsg();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C#</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/483a3ae0.html" rel="prev" title="C#开发之——get和set访问器(3.5)">
+      <i class="fa fa-chevron-left"></i> C#开发之——get和set访问器(3.5)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/c692bc92.html" rel="next" title="C#开发之——构造函数(3.7)">
+      C#开发之——构造函数(3.7) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjQ1OC85MDE5"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E7%B1%BB%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%AF%AD%E6%B3%95%E5%BD%A2%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">二 类对象的语法形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%AE%9E%E4%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">三 实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1%EF%BC%9A%E5%9C%A8Book%E7%B1%BB%E4%B8%AD%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%96%B9%E6%B3%95%EF%BC%8C%E7%94%A8%E4%BA%8E%E8%BE%93%E5%87%BA%E8%AF%A5%E7%B1%BB%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E5%B1%9E%E6%80%A7"><span class="nav-number">3.1.</span> <span class="nav-text">3.1：在Book类中添加一个方法，用于输出该类中的所有属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-%E4%BB%A3%E7%A0%81"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.1.2 执行结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-3-%E5%AF%B9%E5%B1%9E%E6%80%A7%E4%BA%8B%E5%85%88%E8%B5%8B%E5%80%BC"><span class="nav-number">3.1.3.</span> <span class="nav-text">3.1.3 对属性事先赋值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%9C%A8-Book-%E7%B1%BB%E4%B8%AD%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E5%90%91%E5%B1%9E%E6%80%A7%E8%B5%8B%E5%80%BC%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%8C%E5%B9%B6%E5%9C%A8-Main-%E6%96%B9%E6%B3%95%E4%B8%AD%E8%B0%83%E7%94%A8"><span class="nav-number">3.2.</span> <span class="nav-text">3.2  在 Book 类中添加一个向属性赋值的方法，并在 Main 方法中调用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-%E4%BB%A3%E7%A0%81"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1 代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2-%E8%AF%B4%E6%98%8E"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2 说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%B0%86-Book-%E7%B1%BB%E4%B8%AD%E7%9A%84%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95%E6%9B%B4%E6%94%B9%E4%B8%BA%E9%9D%99%E6%80%81%E7%9A%84"><span class="nav-number">3.3.</span> <span class="nav-text">3.3  将 Book 类中的属性和方法更改为静态的</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-1-%E4%BB%A3%E7%A0%81"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.3.1 代码</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">967</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">378</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PGzxc" title="GitHub → https://github.com/PGzxc" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http://blog.csdn.net/calvin_zhou" rel="noopener" target="_blank"><i class="book fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http://weibo.com/5582039920" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>微博</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http://www.jianshu.com/u/c5cdcb4dc52b" rel="noopener" target="_blank"><i class="heartbeat fa-fw"></i>简书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wanandroid.com/" title="https://wanandroid.com/" rel="noopener" target="_blank">鸿洋</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/home.html" title="http://www.ruanyifeng.com/home.html" rel="noopener" target="_blank">阮一峰</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://memento.net.cn" title="https://memento.net.cn" rel="noopener" target="_blank">琅涯阁</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/sinyu890807/" title="http://blog.csdn.net/sinyu890807/" rel="noopener" target="_blank">郭霖</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/luoshengyang/" title="http://blog.csdn.net/luoshengyang/" rel="noopener" target="_blank">老罗</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/aigestudio/" title="http://blog.csdn.net/aigestudio/" rel="noopener" target="_blank">爱哥</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/wwj_748/" title="http://blog.csdn.net/wwj_748/" rel="noopener" target="_blank">小巫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/singwhatiwanna/" title="http://blog.csdn.net/singwhatiwanna/" rel="noopener" target="_blank">任玉刚</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/eclipsexys/" title="http://blog.csdn.net/eclipsexys/" rel="noopener" target="_blank">徐医生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/bboyfeiyu/" title="http://blog.csdn.net/bboyfeiyu/" rel="noopener" target="_blank">Mr.Simple</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/xyz_lmn/" title="http://blog.csdn.net/xyz_lmn/" rel="noopener" target="_blank">张兴业</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.android.google.cn/index.html" title="https://developer.android.google.cn/index.html" rel="noopener" target="_blank">谷歌中国</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备18061062号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pgzxc</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">1.4m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">20:35</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>

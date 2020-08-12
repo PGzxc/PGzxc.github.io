@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Android系统中向下兼容性比较差，实际开发和测试中会遇到版本兼容性的问题，本题的成文参考了网上的部分教程和个人在开发中的实例，进行归纳和总结而成。 版本兼容问题版本兼容性：Android系统中向下兼容性比较差，但是一个应用APP经过处理还是可以在各个版本间运行的。向下兼容性不好，不同版本的系统其API版本也不同，自然有些接口也不同，旧的平台也使用不了新的API，这就是Android的版本兼容性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发之——版本兼容性问题">
+<meta property="og:url" content="http://pgzxc.github.io/posts/8f6c6f34.html">
+<meta property="og:site_name" content="PGzxc的博客">
+<meta property="og:description" content="Android系统中向下兼容性比较差，实际开发和测试中会遇到版本兼容性的问题，本题的成文参考了网上的部分教程和个人在开发中的实例，进行归纳和总结而成。 版本兼容问题版本兼容性：Android系统中向下兼容性比较差，但是一个应用APP经过处理还是可以在各个版本间运行的。向下兼容性不好，不同版本的系统其API版本也不同，自然有些接口也不同，旧的平台也使用不了新的API，这就是Android的版本兼容性">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pgzxc.com/android-version-problem-show.png">
+<meta property="og:image" content="https://images.pgzxc.com/android-api-version.png">
+<meta property="og:image" content="https://images.pgzxc.com/version-default.png">
+<meta property="og:image" content="https://images.pgzxc.com/android-compilesdk.png">
+<meta property="og:image" content="https://images.pgzxc.com/android-target-26.png">
+<meta property="og:image" content="https://images.pgzxc.com/android-target-27.png">
+<meta property="og:image" content="https://images.pgzxc.com/android-api-15.png">
+<meta property="og:image" content="https://images.pgzxc.com/android-other-version.png">
+<meta property="og:image" content="https://images.pgzxc.com/android-min-error.png">
+<meta property="og:image" content="https://images.pgzxc.com/android-targetsdk.png">
+<meta property="og:image" content="https://images.pgzxc.com/android-max-sdk.png">
+<meta property="og:image" content="https://images.pgzxc.com/android-resolve-promte.png">
+<meta property="og:image" content="https://images.pgzxc.com/android-target-api.png">
+<meta property="og:image" content="https://images.pgzxc.com/android-suppresslint.png">
+<meta property="og:image" content="https://images.pgzxc.com/android-build-sdk-int.png">
+<meta property="og:image" content="https://images.pgzxc.com/android-flect.png">
+<meta property="og:image" content="https://images.pgzxc.com/android-supprots.png">
+<meta property="article:published_time" content="2017-11-15T09:06:39.000Z">
+<meta property="article:modified_time" content="2020-07-03T12:07:33.190Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="版本兼容">
+<meta property="article:tag" content="适配">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pgzxc.com/android-version-problem-show.png">
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/8f6c6f34.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Android开发之——版本兼容性问题 | PGzxc的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">PGzxc的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">967</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">85</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">378</span></a>
+
+  </li>
+        <li class="menu-item menu-item-comments">
+
+    <a href="/comments/" rel="section"><i class="fa fa-comments fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/8f6c6f34.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android开发之——版本兼容性问题
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-11-15 17:06:39" itemprop="dateCreated datePublished" datetime="2017-11-15T17:06:39+08:00">2017-11-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-03 20:07:33" itemprop="dateModified" datetime="2020-07-03T20:07:33+08:00">2020-07-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">移动开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Android系统中向下兼容性比较差，实际开发和测试中会遇到版本兼容性的问题，本题的成文参考了网上的部分教程和个人在开发中的实例，进行归纳和总结而成。</p>
+<h1 id="版本兼容问题"><a href="#版本兼容问题" class="headerlink" title="版本兼容问题"></a>版本兼容问题</h1><p>版本兼容性：<br>Android系统中向下兼容性比较差，但是一个应用APP经过处理还是可以在各个版本间运行的。向下兼容性不好，不同版本的系统其API版本也不同，自然有些接口也不同，旧的平台也使用不了新的API，这就是Android的版本兼容性问题；<br>我们先看一个实例  </p>
+<a id="more"></a>  
+
+<p><img src="https://images.pgzxc.com/android-version-problem-show.png" alt="兼容问题展示">     </p>
+<p>说明：如图所示：当我们在build.gradle中设置minSdkVersion=8时，调用上述API时会出现如图提示，无法运行在低于API8的手机上，这就是Android版本兼容性问题的体现；</p>
+<p>下表列出了各 Android 平台版本支持的API级别。 如需了解有关运行各版本的设备的相对数量的信息，请参阅<a target="_blank" rel="noopener" href="https://developer.android.google.cn/about/dashboards/index.html">“平台版本”信息中心页面</a>。  </p>
+<p><img src="https://images.pgzxc.com/android-api-version.png" alt="api-version"></p>
+<p>说明：Android版本更新，新的版本会引入一些新的特性和方法，新的方法带来很多便利，但是对系统版本有要求，无法再低版本手机上运行，如果未做兼容性处理，强行运行，会导致Crash。  </p>
+<h1 id="做兼容性处理先要明白几个概念"><a href="#做兼容性处理先要明白几个概念" class="headerlink" title="做兼容性处理先要明白几个概念"></a>做兼容性处理先要明白几个概念</h1><ul>
+<li><p>Android build.gradle中compileSdkVersion，minSdkVersion，targetSdkVersion，maxSdkVersion信息你弄明白了么！</p>
+<p>  <img src="https://images.pgzxc.com/version-default.png" alt="默认配置">    </p>
+<p>  新建一个项目工程时，系统都会默认为我们配置上面的参数，compileSdkVersion，minSdkVersion，targetSdkVersion，为什么设置这些参数，有什么作用，你都知道么！  </p>
+<ul>
+<li>compileSdkVersion<br>compileSdkVersion 26：指target=android-26，也就是{Sdk}\platforms\android-26\android.jar编译项目<br><img src="https://images.pgzxc.com/android-compilesdk.png" alt="compilesdk"><br>在项目工程的External Libraries下可以看到引用了Android-26<br><img src="https://images.pgzxc.com/android-target-26.png" alt="target26"><br>如果compileSdkVersion 修改为27，相应的也会做修改<br><img src="https://images.pgzxc.com/android-target-27.png" alt="target27"><br>一般情况下，设置compileSdkVersion为最新的API即可，这也是项目默认的行为<ul>
+<li>minSdkVersion<br>minSdkVersion 15，指app最小支持版本为API15(Android 4.0)，低于Android 4.0的手机无法安装此类应用，当设置minSdkVersion 15时，已经完全覆盖100%的设备<br><img src="https://images.pgzxc.com/android-api-15.png" alt=""><br>并且google官方给出了其他版本对应的比例<br><img src="https://images.pgzxc.com/android-other-version.png" alt="其他版本"><br>minSdkVersion不仅在安装时起作用，在项目构建时也会起作用。如图，在minSdkVersion 8 调用API 9中的方法时给出提示<br><img src="https://images.pgzxc.com/android-min-error.png" alt="min-error">  </li>
+<li>targetSdkVersion<br>targetSdkVersion 26，指当前应用已在API26(Android 8.0)经过测试，无需系统开启兼容模式保证程序正常运行。这个值一般和最新的API值相同。<br><img src="https://images.pgzxc.com/android-targetsdk.png" alt="targetsdk"><br>当设置targetSdkVersion 26时会有如图提示，意思是没有设置为最新的API Level值，打开SDK manager看到最新的API Level为 27，将targetSdkVersion设置为27便兼容了最新的API<br><img src="https://images.pgzxc.com/android-max-sdk.png" alt="max-sdk">   </li>
+<li>maxSdkVersion<br>maxSdkVersion 26 标明App最高应用版本为API 26(Android 8.0)，高于Android 8.0的手机无法安装此类应用。如果系统升级后，高于maxSdkVersion ，应用将会被卸载。所以官方文档，不推荐使用这个属性。    </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="针对API的变更引起的问题如何做兼容性处理呢？"><a href="#针对API的变更引起的问题如何做兼容性处理呢？" class="headerlink" title="针对API的变更引起的问题如何做兼容性处理呢？"></a>针对API的变更引起的问题如何做兼容性处理呢？</h1><ul>
+<li><p>在程序运行时对应用所运行的平台进行判断，旧平台使用旧的API，新平台使用新的API<br>使用高于minSdkVersion API Level的方法时，可以看到如下三条提示<br><img src="https://images.pgzxc.com/android-resolve-promte.png" alt="提示解决">    </p>
+<ul>
+<li>使用TargetApi注解标注<br>注：targetApi，只屏蔽某一新API才能使用的方法报的Android lint错误，如图path.getTotalSpace，如果你在此方法中引入了另一个高于minSdkVersion的api时，此方法仍会报错！<br><img src="https://images.pgzxc.com/android-target-api.png" alt="target-api">  </li>
+<li>使用SuppressLint注解标注<br>注：屏蔽一切新API才能使用新方法才报的Android lint错误<br><img src="https://images.pgzxc.com/android-suppresslint.png" alt="">  </li>
+<li>使用build.Version.SDK_INT运行时判断，分别处理<br><img src="https://images.pgzxc.com/android-build-sdk-int.png" alt="sdk-int"><br>总结：1和2虽然未提示错误，但问题依然存在，我们一般结合1,3使用</li>
+</ul>
+</li>
+<li><p>用反射的方式调用高版本中的新功能接口进行调用<br>  如果是基于低版本SDK开发，那么新版本中的新接口肯定编译不通过，这时候可以考虑反射的方式先去查找这个方法是否存在，如果有就代表用户的手机支持该调用方法，如果没有则采用低版本的处理方式(借用网上的一段话)<br>  <img src="https://images.pgzxc.com/android-flect.png" alt="反射"></p>
+</li>
+<li><p>分离代码<br>别在不同的SDK上编译运行，最后classLoader加载高版本中的相关类接口。此方法如同二，可以将高版本中的API接口封装后再高版本中的SDK编译成jar包，供低版本中动态加载(借用网上的一段话)</p>
+</li>
+<li><p>使用官方提供的support类库，如support-v4,support-v7,support-v13等<br>  <img src="https://images.pgzxc.com/android-supprots.png" alt="supports"></p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9/" rel="tag"># 版本兼容</a>
+              <a href="/tags/%E9%80%82%E9%85%8D/" rel="tag"># 适配</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/f27906f.html" rel="prev" title="Android面试之——关于Activity的那些事(2)">
+      <i class="fa fa-chevron-left"></i> Android面试之——关于Activity的那些事(2)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/97a348f4.html" rel="next" title="开发规范之——阿里规约插件安装和使用">
+      开发规范之——阿里规约插件安装和使用 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjQ1OC85MDE5"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">版本兼容问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%81%9A%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86%E5%85%88%E8%A6%81%E6%98%8E%E7%99%BD%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5"><span class="nav-number">2.</span> <span class="nav-text">做兼容性处理先要明白几个概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%92%88%E5%AF%B9API%E7%9A%84%E5%8F%98%E6%9B%B4%E5%BC%95%E8%B5%B7%E7%9A%84%E9%97%AE%E9%A2%98%E5%A6%82%E4%BD%95%E5%81%9A%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86%E5%91%A2%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">针对API的变更引起的问题如何做兼容性处理呢？</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">967</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">378</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PGzxc" title="GitHub → https://github.com/PGzxc" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http://blog.csdn.net/calvin_zhou" rel="noopener" target="_blank"><i class="book fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http://weibo.com/5582039920" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>微博</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http://www.jianshu.com/u/c5cdcb4dc52b" rel="noopener" target="_blank"><i class="heartbeat fa-fw"></i>简书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wanandroid.com/" title="https://wanandroid.com/" rel="noopener" target="_blank">鸿洋</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/home.html" title="http://www.ruanyifeng.com/home.html" rel="noopener" target="_blank">阮一峰</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://memento.net.cn" title="https://memento.net.cn" rel="noopener" target="_blank">琅涯阁</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/sinyu890807/" title="http://blog.csdn.net/sinyu890807/" rel="noopener" target="_blank">郭霖</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/luoshengyang/" title="http://blog.csdn.net/luoshengyang/" rel="noopener" target="_blank">老罗</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/aigestudio/" title="http://blog.csdn.net/aigestudio/" rel="noopener" target="_blank">爱哥</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/wwj_748/" title="http://blog.csdn.net/wwj_748/" rel="noopener" target="_blank">小巫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/singwhatiwanna/" title="http://blog.csdn.net/singwhatiwanna/" rel="noopener" target="_blank">任玉刚</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/eclipsexys/" title="http://blog.csdn.net/eclipsexys/" rel="noopener" target="_blank">徐医生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/bboyfeiyu/" title="http://blog.csdn.net/bboyfeiyu/" rel="noopener" target="_blank">Mr.Simple</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/xyz_lmn/" title="http://blog.csdn.net/xyz_lmn/" rel="noopener" target="_blank">张兴业</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.android.google.cn/index.html" title="https://developer.android.google.cn/index.html" rel="noopener" target="_blank">谷歌中国</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备18061062号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pgzxc</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">1.4m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">20:35</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>

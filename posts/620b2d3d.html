@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一 什么是JetPackJetpack 是一套库、工具和指南，可帮助开发者更轻松地编写优质应用。这些组件可帮助您遵循最佳做法、让您摆脱编写样板代码的工作并简化复杂任务，以便您将精力集中放在所需的代码上。 Jetpack 包含与平台 API 解除捆绑的 androidx.* 软件包库。这意味着，它可以提供向后兼容性，且比 Android 平台的更新频率更高，以此确保您始终可以获取最新且最好的 Jet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发之——JetPack组件">
+<meta property="og:url" content="http://pgzxc.github.io/posts/620b2d3d.html">
+<meta property="og:site_name" content="PGzxc的博客">
+<meta property="og:description" content="一 什么是JetPackJetpack 是一套库、工具和指南，可帮助开发者更轻松地编写优质应用。这些组件可帮助您遵循最佳做法、让您摆脱编写样板代码的工作并简化复杂任务，以便您将精力集中放在所需的代码上。 Jetpack 包含与平台 API 解除捆绑的 androidx.* 软件包库。这意味着，它可以提供向后兼容性，且比 Android 平台的更新频率更高，以此确保您始终可以获取最新且最好的 Jet">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pgzxc.com/android-jetpack-composition.png">
+<meta property="article:published_time" content="2019-09-02T13:50:50.000Z">
+<meta property="article:modified_time" content="2020-07-03T12:07:33.187Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="JetPack">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pgzxc.com/android-jetpack-composition.png">
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/620b2d3d.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Android开发之——JetPack组件 | PGzxc的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">PGzxc的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">967</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">85</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">378</span></a>
+
+  </li>
+        <li class="menu-item menu-item-comments">
+
+    <a href="/comments/" rel="section"><i class="fa fa-comments fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/620b2d3d.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android开发之——JetPack组件
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-02 21:50:50" itemprop="dateCreated datePublished" datetime="2019-09-02T21:50:50+08:00">2019-09-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-03 20:07:33" itemprop="dateModified" datetime="2020-07-03T20:07:33+08:00">2020-07-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">移动开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="一-什么是JetPack"><a href="#一-什么是JetPack" class="headerlink" title="一 什么是JetPack"></a>一 <a target="_blank" rel="noopener" href="https://developer.android.google.cn/jetpack">什么是JetPack</a></h2><p>Jetpack 是一套库、工具和指南，可帮助开发者更轻松地编写优质应用。这些组件可帮助您遵循最佳做法、让您摆脱编写样板代码的工作并简化复杂任务，以便您将精力集中放在所需的代码上。</p>
+<p>Jetpack 包含与平台 API 解除捆绑的 androidx.* 软件包库。这意味着，它可以提供向后兼容性，且比 Android 平台的更新频率更高，以此确保您始终可以获取最新且最好的 Jetpack 组件版本。</p>
+<a id="more"></a>
+
+<h2 id="二-Android-JetPack发展历程"><a href="#二-Android-JetPack发展历程" class="headerlink" title="二 Android JetPack发展历程"></a>二 Android JetPack发展历程</h2><ul>
+<li>Google在17年的I/O大会上推出了架构组件(Architecture Component)工具集</li>
+<li>随后在18年I/O大会上发布了 Android Jetpack ，Jetpack 是Android开发组件工具集，旨在帮助我们轻松构建更稳定、更健壮、以及更可维护的应用程序</li>
+</ul>
+<h2 id="三-Android-JetPack-组成"><a href="#三-Android-JetPack-组成" class="headerlink" title="三 Android JetPack 组成"></a>三 Android JetPack 组成</h2><h3 id="3-1-JetPack-组成"><a href="#3-1-JetPack-组成" class="headerlink" title="3.1 JetPack 组成"></a>3.1 JetPack 组成</h3><p><img src="https://images.pgzxc.com/android-jetpack-composition.png" alt="">     </p>
+<ul>
+<li>Jetpack主要分为4个部分， 基础、架构、行为、界面 。   </li>
+<li>从图中得知，Jetpack并不全是些新东西，只要是能够帮助开发者更好更方便地构建应用程序的组件，Google都将其归纳入了Jetpack</li>
+<li>每个 Jetpack 组件均可单独采用，并且它们依然可以流畅地协作</li>
+</ul>
+<h3 id="3-2-AndroidX"><a href="#3-2-AndroidX" class="headerlink" title="3.2 AndroidX"></a>3.2 <a target="_blank" rel="noopener" href="https://developer.android.google.cn/jetpack/androidx">AndroidX</a></h3><p>紧接着Google推出 AndroidX ，将许多Google认为是正确的方案和实践集中起来    </p>
+<ul>
+<li>AndroidX 是对support library的重大改进</li>
+<li>AndroidX中的所有软件包名都以字符串androidx.开头，位于一致的命名空间中</li>
+<li>与support支持库不同，AndroidX软件包可单独维护和更新</li>
+<li>所有新的支持库开发都将在AndroidX库中进行</li>
+</ul>
+<h3 id="3-3-JetPack-基础"><a href="#3-3-JetPack-基础" class="headerlink" title="3.3 JetPack(基础)"></a>3.3 JetPack(基础)</h3><h4 id="3-3-1-概念"><a href="#3-3-1-概念" class="headerlink" title="3.3.1 概念"></a>3.3.1 概念</h4><p> 基础组件，向后兼容性，测试，Kotlin 语言支持</p>
+<h4 id="3-3-2-组成"><a href="#3-3-2-组成" class="headerlink" title="3.3.2 组成"></a>3.3.2 组成</h4><ol>
+<li>Android KTX——Kotlin的扩展支持库</li>
+<li>AppCompat——功能支持库(核心平台功能提供向后兼容的实现。扩展类的早期版本，以处理在较新版本的平台中添加的新方法和功能)</li>
+<li>Auto——构建生态系统(车辆音频应用、即时通讯)</li>
+<li>检测(Benchmark)——从 Android Studio 中快速检测基于 Kotlin 或 Java 的代码</li>
+<li>多Dex处理(Multidex)——为具有多个 DEX 文件的应用提供支持</li>
+<li>安全(Security)——按照安全最佳做法读写加密文件和共享偏好设置</li>
+<li>测试(Test)——用于单元和运行时界面测试的 Android 测试框架</li>
+<li>TV——用于开发 Android TV 应用的组件</li>
+<li>Wear OS——开发 Wear 应用的组件</li>
+</ol>
+<h3 id="3-4-JetPack-架构"><a href="#3-4-JetPack-架构" class="headerlink" title="3.4 JetPack(架构)"></a>3.4 JetPack(架构)</h3><h4 id="3-4-1-概念"><a href="#3-4-1-概念" class="headerlink" title="3.4.1 概念"></a>3.4.1 概念</h4><p>架构组件可帮助您设计稳健、可测试且易维护的应用。</p>
+<h4 id="3-4-2-组成"><a href="#3-4-2-组成" class="headerlink" title="3.4.2 组成"></a>3.4.2 组成</h4><ol>
+<li>数据绑定(Data Binding)——以声明方式将可观察数据绑定到界面元素</li>
+<li>Lifecycles——管理您的 Activity 和 Fragment 生命周期</li>
+<li>LiveData——在底层数据库更改时通知视图</li>
+<li>Navigation——处理应用内导航所需的一切</li>
+<li>Paging——逐步从您的数据源按需加载信息</li>
+<li>Room——流畅地访问 SQLite 数据库</li>
+<li>ViewModel——以注重生命周期的方式管理界面相关的数据</li>
+<li>WorkManager——管理您的 Android 后台作业</li>
+</ol>
+<h3 id="3-5-JetPack-行为"><a href="#3-5-JetPack-行为" class="headerlink" title="3.5 JetPack(行为)"></a>3.5 JetPack(行为)</h3><h4 id="3-5-1-概念"><a href="#3-5-1-概念" class="headerlink" title="3.5.1 概念"></a>3.5.1 概念</h4><p>行为组件可帮助您的应用与标准 Android 服务（如通知、权限、分享和 Google 助理）相集成。</p>
+<h4 id="3-5-2-组成"><a href="#3-5-2-组成" class="headerlink" title="3.5.2 组成"></a>3.5.2 组成</h4><ol>
+<li>CameraX——轻松地向应用中添加相机功能</li>
+<li>下载管理器(Download manager)——安排和管理大量下载任务</li>
+<li>媒体和播放(Media&amp;Playback)——用于媒体播放和路由（包括 Google Cast）的向后兼容 API</li>
+<li>通知(Notifications)——提供向后兼容的通知 API，支持 Wear 和 Auto</li>
+<li>权限(Permissions)——用于检查和请求应用权限的兼容性 API</li>
+<li>偏好设置(Preferences)——创建交互式设置屏幕</li>
+<li>共享(Sharing)——提供适合应用操作栏的共享操作</li>
+<li>切片(Slices)——创建可在应用外部显示应用数据的灵活界面元素</li>
+</ol>
+<h3 id="3-6-JetPack-界面"><a href="#3-6-JetPack-界面" class="headerlink" title="3.6 JetPack(界面)"></a>3.6 JetPack(界面)</h3><h4 id="3-6-1-概念"><a href="#3-6-1-概念" class="headerlink" title="3.6.1 概念"></a>3.6.1 概念</h4><p>界面组件可提供微件和辅助程序，让您的应用不仅简单易用，还能带来愉悦体验。了解有助于简化界面开发的 <a target="_blank" rel="noopener" href="https://developer.android.google.cn/jetpack/compose/">Jetpack Compose</a></p>
+<h4 id="3-6-2-组成"><a href="#3-6-2-组成" class="headerlink" title="3.6.2 组成"></a>3.6.2 组成</h4><ol>
+<li>动画和过渡(Animations and Transitions)——动画，界面转场等</li>
+<li>表情符号(Emoji)——在旧版平台上启用最新的表情符号字体</li>
+<li>Fragment——组件化界面的基本单位</li>
+<li>布局(Layout)——基础概念</li>
+<li>调色板(Palette)——从调色板中提取出有用的信息</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JetPack/" rel="tag"># JetPack</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/1bcda7ac.html" rel="prev" title="MacBook入门之——显示隐藏文件">
+      <i class="fa fa-chevron-left"></i> MacBook入门之——显示隐藏文件
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/e50c1dfd.html" rel="next" title="日语学习之——文法(1.3)">
+      日语学习之——文法(1.3) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjQ1OC85MDE5"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E4%BB%80%E4%B9%88%E6%98%AFJetPack"><span class="nav-number">1.</span> <span class="nav-text">一 什么是JetPack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-Android-JetPack%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">二 Android JetPack发展历程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-Android-JetPack-%E7%BB%84%E6%88%90"><span class="nav-number">3.</span> <span class="nav-text">三 Android JetPack 组成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-JetPack-%E7%BB%84%E6%88%90"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 JetPack 组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-AndroidX"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 AndroidX</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-JetPack-%E5%9F%BA%E7%A1%80"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 JetPack(基础)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-1-%E6%A6%82%E5%BF%B5"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.3.1 概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-2-%E7%BB%84%E6%88%90"><span class="nav-number">3.3.2.</span> <span class="nav-text">3.3.2 组成</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-JetPack-%E6%9E%B6%E6%9E%84"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 JetPack(架构)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-1-%E6%A6%82%E5%BF%B5"><span class="nav-number">3.4.1.</span> <span class="nav-text">3.4.1 概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-2-%E7%BB%84%E6%88%90"><span class="nav-number">3.4.2.</span> <span class="nav-text">3.4.2 组成</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-JetPack-%E8%A1%8C%E4%B8%BA"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 JetPack(行为)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-1-%E6%A6%82%E5%BF%B5"><span class="nav-number">3.5.1.</span> <span class="nav-text">3.5.1 概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-2-%E7%BB%84%E6%88%90"><span class="nav-number">3.5.2.</span> <span class="nav-text">3.5.2 组成</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-JetPack-%E7%95%8C%E9%9D%A2"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 JetPack(界面)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6-1-%E6%A6%82%E5%BF%B5"><span class="nav-number">3.6.1.</span> <span class="nav-text">3.6.1 概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6-2-%E7%BB%84%E6%88%90"><span class="nav-number">3.6.2.</span> <span class="nav-text">3.6.2 组成</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">967</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">378</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PGzxc" title="GitHub → https://github.com/PGzxc" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http://blog.csdn.net/calvin_zhou" rel="noopener" target="_blank"><i class="book fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http://weibo.com/5582039920" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>微博</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http://www.jianshu.com/u/c5cdcb4dc52b" rel="noopener" target="_blank"><i class="heartbeat fa-fw"></i>简书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wanandroid.com/" title="https://wanandroid.com/" rel="noopener" target="_blank">鸿洋</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/home.html" title="http://www.ruanyifeng.com/home.html" rel="noopener" target="_blank">阮一峰</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://memento.net.cn" title="https://memento.net.cn" rel="noopener" target="_blank">琅涯阁</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/sinyu890807/" title="http://blog.csdn.net/sinyu890807/" rel="noopener" target="_blank">郭霖</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/luoshengyang/" title="http://blog.csdn.net/luoshengyang/" rel="noopener" target="_blank">老罗</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/aigestudio/" title="http://blog.csdn.net/aigestudio/" rel="noopener" target="_blank">爱哥</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/wwj_748/" title="http://blog.csdn.net/wwj_748/" rel="noopener" target="_blank">小巫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/singwhatiwanna/" title="http://blog.csdn.net/singwhatiwanna/" rel="noopener" target="_blank">任玉刚</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/eclipsexys/" title="http://blog.csdn.net/eclipsexys/" rel="noopener" target="_blank">徐医生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/bboyfeiyu/" title="http://blog.csdn.net/bboyfeiyu/" rel="noopener" target="_blank">Mr.Simple</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/xyz_lmn/" title="http://blog.csdn.net/xyz_lmn/" rel="noopener" target="_blank">张兴业</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.android.google.cn/index.html" title="https://developer.android.google.cn/index.html" rel="noopener" target="_blank">谷歌中国</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备18061062号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pgzxc</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">1.4m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">20:35</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>

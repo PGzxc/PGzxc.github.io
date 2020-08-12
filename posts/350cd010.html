@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前言开始前，我们先来思考几个问题？   安装和卸载APK的方法由哪些，每种方法得实现的原理是什么？  APK安装和卸载过程中，系统数据发生了哪些变化？  Android App端常用的Package Manager 用来做什么？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发之——APK安装流程概述">
+<meta property="og:url" content="http://pgzxc.github.io/posts/350cd010.html">
+<meta property="og:site_name" content="PGzxc的博客">
+<meta property="og:description" content="前言开始前，我们先来思考几个问题？   安装和卸载APK的方法由哪些，每种方法得实现的原理是什么？  APK安装和卸载过程中，系统数据发生了哪些变化？  Android App端常用的Package Manager 用来做什么？">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-11-17T02:47:53.000Z">
+<meta property="article:modified_time" content="2019-12-26T13:39:26.497Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="APK安装">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/350cd010.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Android开发之——APK安装流程概述 | PGzxc的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">PGzxc的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">967</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">85</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">378</span></a>
+
+  </li>
+        <li class="menu-item menu-item-comments">
+
+    <a href="/comments/" rel="section"><i class="fa fa-comments fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/350cd010.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android开发之——APK安装流程概述
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-11-17 10:47:53" itemprop="dateCreated datePublished" datetime="2017-11-17T10:47:53+08:00">2017-11-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-26 21:39:26" itemprop="dateModified" datetime="2019-12-26T21:39:26+08:00">2019-12-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">移动开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>17k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>15 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>开始前，我们先来思考几个问题？ </p>
+<ul>
+<li><p>安装和卸载APK的方法由哪些，每种方法得实现的原理是什么？</p>
+</li>
+<li><p>APK安装和卸载过程中，系统数据发生了哪些变化？</p>
+</li>
+<li><p>Android App端常用的Package Manager 用来做什么？ </p>
+<a id="more"></a>
+<h1 id="APK安装简介"><a href="#APK安装简介" class="headerlink" title="APK安装简介"></a>APK安装简介</h1><p>什么是APK?<br>APK为Android Package的缩写。<br>Android应用安装有如下四种方式： </p>
+</li>
+<li><p>1.系统应用安装–开机时完成，没有安装界面；</p>
+</li>
+<li><p>2.网络下载应用安装–通过market应用完成，没有安装界面；</p>
+</li>
+<li><p>ADB工具安装–没有安装界面；</p>
+</li>
+<li><p>第三方应用下载–通过SD卡里的APK文件安装，有安装界面，由packageinstaller.apk应用处理安装及卸载过程的界面；  </p>
+</li>
+</ul>
+<p>应用安装涉及到如下几个目录：</p>
+<ul>
+<li>system/app——————————系统自带的应用程序，获得adb root权限才能删除；</li>
+<li>data/app————————————应用程序安装的目录，安装时把apk文件复制到此目录；</li>
+<li>data/data————————————存放应用程序的数据；</li>
+<li>data/dalvik-cache————将apk中的dex文件安装到dalvik-cache目录下(dex文件时dalvik虚拟机的可执行文件，其大小约为原始apk文件大小的四分之一)  </li>
+</ul>
+<h1 id="APK-安装和卸载浅析"><a href="#APK-安装和卸载浅析" class="headerlink" title="APK 安装和卸载浅析"></a>APK 安装和卸载浅析</h1><ul>
+<li><p>APK安装可以归纳一下几个过程：</p>
+<ul>
+<li>将APK文件复制到指定的目录下；</li>
+<li>解压APK，拷贝文件，创建应用的数据目录；</li>
+<li>把dex文件(Dalvik字节码)保存到dalvik-cache目录</li>
+<li>解析APK的AndroidMainfest.xml文件，将其中声明的组件信息保存在PMS中；更新PMS中相应的数据结构；</li>
+</ul>
+</li>
+<li><p>APK卸载：<br>将APK文件，data/data/packageName/，dalvik-cache目录中相应的文件删除；并更新PMS中相应的数据结构；</p>
+</li>
+</ul>
+<h1 id="安装应用的过程浅析"><a href="#安装应用的过程浅析" class="headerlink" title="安装应用的过程浅析"></a>安装应用的过程浅析</h1><h2 id="一：开机安装"><a href="#一：开机安装" class="headerlink" title="一：开机安装"></a>一：开机安装</h2><p>PackageManagerService处理各种应用的安装，卸载，管理工作，开机时由systemService启动此服务；<br>packageManagerService服务启动的流程： </p>
+<ul>
+<li><p>首先扫描安装”system\framework”目录下的jar包 </p>
+<pre><code>//Find base frameworks (resource packages without code).
+mFrameworkInstallObserver = new AppDirObserver(  
+mFrameworkDir.getPath(), OBSERVER_EVENTS, true);
+mFrameworkInstallObserver.startWatching();
+scanDirLI(mFrameworkDir, PackageParser.PARSE_IS_SYSTEM|
+    PackageParser.PARSE_IS_SYSTEM_DIR,scanMode | SCAN_NO_DEX, 0);</code></pre></li>
+<li><p>扫描安装系统system/app的应用程序   </p>
+<pre><code>//Collect all system packages.  
+mSystemAppDir = new File(Environment.getRootDirectory(),&quot;app&quot;);  
+mSystemInstallObserver = new AppDirObserve(
+mSystemAppDir.getPath(), OBSERVER_EVENTS, true);
+mSystemInstallObserver.startWatching();
+scanDirLI(mSystemAppDir, PackageParser.PARSE_IS_SYSTEM
+        | PackageParser.PARSE_IS_SYSTEM_DIR, scanMode, 0);  </code></pre></li>
+<li><p>制造商的目录下/vendor/app应用包  </p>
+<pre><code>// Collect all vendor packages.
+mVendorAppDir = new File(&quot;/vendor/app&quot;);
+mVendorInstallObserver = new AppDirObserver(
+mVendorAppDir.getPath(), OBSERVER_EVENTS, true);
+mVendorInstallObserver.startWatching();
+scanDirLI(mVendorAppDir, PackageParser.PARSE_IS_SYSTEM
+        | PackageParser.PARSE_IS_SYSTEM_DIR, scanMode, 0);  </code></pre></li>
+<li><p>扫描”data\app”目录，即用户安装的第三方应用  </p>
+<pre><code>scanDirLI(mAppInstallDir, 0, scanMode, 0);   </code></pre></li>
+<li><p>扫描” data\app-private”目录，即安装DRM保护的APK文件（一个受保护的歌曲或受保 护的视频是使用 DRM 保护的文件）   </p>
+<pre><code>scanDirLI(mDrmAppPrivateInstallDir,
+PackageParser.PARSE_FORWARD_LOCK,scanMode, 0);      </code></pre><p>扫描方法的代码清单    </p>
+<pre><code>private void scanDirLI(File dir, int flags, int scanMode, long currentTime)   
+&#123;
+   String[] files = dir.list();
+   if (files == null)   
+  &#123;
+   Log.d(TAG, &quot;No files in app dir &quot; + dir);
+   return;
+   &#125;
+if (false) 
+ &#123;
+  Log.d(TAG, &quot;Scanning app dir &quot; + dir);
+    &#125;
+int i;
+for (i=0; i&lt;files.length; i++) &#123;
+File file = new File(dir, files[i]);
+if (!isPackageFilename(files[i])) &#123;
+    // Ignore entries which are not apk&apos;s
+    continue;
+&#125;
+PackageParser.Package pkg = scanPackageLI(file,
+        flags|PackageParser.PARSE_MUST_BE_APK, scanMode, currentTime);
+// Don&apos;t mess around with apps in system partition.
+if (pkg == null &amp;&amp; (flags &amp; PackageParser.PARSE_IS_SYSTEM) == 0  
+  &amp;&amp;mLastScanError == PackageManager.INSTALL_FAILED_INVALID_APK) &#123;
+    //Delete the apk
+    Slog.w(TAG, &quot;Cleaning up failed install of &quot; + file);
+    file.delete();
+ &#125;
+    &#125;
+    &#125;  </code></pre><p>  并且从该扫描方法中可以看出调用了scanPackageLI（）  </p>
+<pre><code>private PackageParser.Package scanPackageLI(File scanFile,
+                  int parseFlags, int scanMode, long currentTime)  </code></pre><p>  跟踪scanPackageLI（）方法后发现，程序经过很多次的if else 的筛选，最后判定可以安装apk后，调用了 mInstaller.install    </p>
+<pre><code>if (mInstaller != null) &#123;
+          int ret = mInstaller.install(pkgName, useEncryptedFSDir,  pkg.applicationInfo.uid,pkg.applicationInfo.uid);
+            if(ret &lt; 0) &#123;
+                // Error from installer
+                mLastScanError =PackageManager.INSTALL_FAILED_INSUFFICIENT_STORAG;
+                return null;
+            &#125;
+        &#125;
+mInstaller.install();   </code></pre><p>  通过   </p>
+<pre><code>LocalSocketAddress address = new LocalSocketAddress(
+        &quot;installd&quot;, LocalSocketAddress.Namespace.RESERVED);  </code></pre><p>  指挥installd在C语言的文件中完成工作<br>PackageManagerService小节 ：    </p>
+<ul>
+<li>从apk，xml中载入package信息，存储到内部成员变量中，用于后面的查找，关键的方法是scanPackageLI()；</li>
+<li>各种查询操作，包括query intent操作</li>
+<li>install package和delete package的操作，还有后面的关键方法是installPackageLI();  </li>
+</ul>
+</li>
+</ul>
+<h2 id="二：从网络上下载应用："><a href="#二：从网络上下载应用：" class="headerlink" title="二：从网络上下载应用："></a>二：从网络上下载应用：</h2><p> 下载完成后，会自动调用PackageManager的安装方法installPackage()  </p>
+<pre><code> /*Called when a downloaded package installation has been confirmed by the user */  
+由英文注释可见PackageManagerService 类的installPackage()函数为安装程序的入口。   
+
+    public void installPackage(final Uri packageURI,final IPackageInstallObserver observer, 
+    final int flags,final String installerPackageName) 
+    &#123;
+    mContext.enforceCallingOrSelfPermission(
+    android.Manifest.permission.INSTALL_PACKAGES, null);
+    Message msg = mHandler.obtainMessage(INIT_COPY);
+    msg.obj = new InstallParams(packageURI, observer, flags,installerPackageName);
+    mHandler.sendMessage(msg);
+    &#125;  </code></pre><p>其中是通过PackageHandler的实例mhandler.sendMessage（msg）把信息发给继承Handler的类HandleMessage()方法;  </p>
+<pre><code>class PackageHandler extends Handler&#123;
+ *****************省略若干********************
+ public void handleMessage(Message msg) &#123;
+    try 
+    &#123;
+        doHandleMessage(msg);
+    &#125; finally &#123;
+        Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
+    &#125;
+&#125;
+   ******************省略若干**********************
+&#125;</code></pre><p>把信息发给doHandleMessage()方法,方法中用switch（）语句进行判定传来Message; </p>
+<pre><code>void doHandleMessage(Message msg) &#123;
+    switch (msg.what) &#123;
+        case INIT_COPY: 
+        &#123;
+            if (DEBUG_SD_INSTALL) 
+            Log.i(TAG, &quot;init_copy&quot;);
+            HandlerParams params = (HandlerParams) msg.obj;
+            int idx = mPendingInstalls.size();
+            if (DEBUG_SD_INSTALL)  
+             Log.i(TAG, &quot;idx=&quot; + idx);
+            // If a bind was already initiated we dont really
+            // need to do anything. The pending install
+            // will be processed later on.
+            if (!mBound) &#123;
+
+                // If this is the only one pending we might
+                // have to bind to the service again.
+                if (!connectToService()) &#123;
+                    Slog.e(TAG, &quot;Failed to bind to media container service&quot;);
+                    params.serviceError();
+                    return;
+                &#125; else &#123;
+                    // Once we bind to the service, the first
+                    // pending request will be processed.
+                    mPendingInstalls.add(idx, params);
+                &#125;
+
+            &#125; else &#123;
+                mPendingInstalls.add(idx, params);
+                // Already bound to the service. Just make
+                // sure we trigger off processing the first request.
+                if (idx == 0) &#123;
+                    mHandler.sendEmptyMessage(MCS_BOUND);
+                &#125;
+            &#125;
+            break;
+        &#125;
+        case MCS_BOUND: &#123;
+            if (DEBUG_SD_INSTALL) 
+            Log.i(TAG, &quot;mcs_bound&quot;);
+            if (msg.obj != null) &#123;
+                mContainerService = (IMediaContainerService) msg.obj;
+            &#125;
+            if (mContainerService == null) &#123;
+                // Something seriously wrong. Bail out
+                Slog.e(TAG, &quot;Cannot bind to media container service&quot;);
+                for (HandlerParams params : mPendingInstalls) &#123;
+                    mPendingInstalls.remove(0);
+                    // Indicate service bind error
+                    params.serviceError();
+                &#125;
+                mPendingInstalls.clear();
+            &#125; else if (mPendingInstalls.size() &gt; 0) &#123;
+                HandlerParams params = mPendingInstalls.get(0);
+                if (params != null) &#123;
+                    params.startCopy();
+                &#125;
+
+            &#125; else &#123;
+                // Should never happen ideally.
+                Slog.w(TAG, &quot;Empty queue&quot;);
+            &#125;
+            break;
+        &#125;
+      ****************省略若干**********************
+    &#125;
+&#125;             </code></pre><p>注：<br>public final boolean sendMessage (Message msg)<br>public final boolean sendEmptyMessage (int what)<br>两者参数有别。<br>然后调用抽象类HandlerParams中的一个startCopy（）方法    </p>
+<pre><code>abstract class HandlerParams &#123;
+    final void startCopy() &#123;
+    ***************若干if语句判定否这打回handler消息*******
+   handleReturnCode();
+   &#125;
+&#125;  </code></pre><p>handleReturnCode（）复写了两次其中有一次是删除时要调用的，只列出安装调用的一个方法  </p>
+<pre><code>@Override
+ void handleReturnCode() &#123;
+     // If mArgs is null, then MCS couldn&apos;t be reached. When it
+     // reconnects, it will try again to install. At that point,this
+     // will succeed.
+     if (mArgs != null) &#123;
+         processPendingInstall(mArgs, mRet);
+     &#125;
+ &#125;  </code></pre><p>这时可以清楚的看见 processPendingInstall（）被调用。<br>其中run（）方法如下：   </p>
+<pre><code>run()&#123;
+synchronized (mInstallLock) &#123;
+************省略*****************
+ installPackageLI(args, true, res);             
+  &#125;
+&#125;  </code></pre><p>instaPacakgeLI（）args,res参数分析<br>//InstallArgs 是在PackageService定义的static abstract class InstallArgs 静态抽象类。 </p>
+<pre><code>static abstract class InstallArgs &#123;
+*********************************************************************
+其中定义了flag标志，packageURL，创建文件，拷贝apk，修改包名称，
+ 还有一些删除文件的清理，释放存储函数。
+
+*********************************************************************
+&#125;
+
+class PackageInstalledInfo &#123;
+    String name;
+    int uid;
+    PackageParser.Package pkg;
+    int returnCode;
+    PackageRemovedInfo removedInfo;
+
+ &#125;  </code></pre><hr>
+<pre><code>private void installPackageLI(InstallArgs args,
+        boolean newInstall, PackageInstalledInfo res) &#123;
+    int pFlags = args.flags;
+    String installerPackageName = args.installerPackageName;
+    File tmpPackageFile = new File(args.getCodePath());
+    boolean forwardLocked = ((pFlags &amp; PackageManager.INSTALL_FORWARD_LOCK) != 0);
+    boolean onSd = ((pFlags &amp; PackageManager.INSTALL_EXTERNAL) != 0);
+    boolean replace = false;
+    int scanMode = (onSd ? 0 : SCAN_MONITOR) | SCAN_FORCE_DEX | SCAN_UPDATE_SIGNATURE
+            | (newInstall ? SCAN_NEW_INSTALL : 0);
+    // Result object to be returned
+    res.returnCode = PackageManager.INSTALL_SUCCEEDED;
+    // Retrieve PackageSettings and parse package
+    int parseFlags = PackageParser.PARSE_CHATTY |
+    (forwardLocked ? PackageParser.PARSE_FORWARD_LOCK : 0) |
+    (onSd ? PackageParser.PARSE_ON_SDCARD : 0);
+    parseFlags |= mDefParseFlags;
+    PackageParser pp = new PackageParser(tmpPackageFile.getPath());
+    pp.setSeparateProcesses(mSeparateProcesses);
+    final PackageParser.Package pkg = pp.parsePackage(tmpPackageFile,
+            null, mMetrics, parseFlags);
+    if (pkg == null) &#123;
+        res.returnCode = pp.getParseError();
+        return;
+    &#125;
+    String pkgName = res.name = pkg.packageName;
+    if ((pkg.applicationInfo.flags&amp;ApplicationInfo.FLAG_TEST_ONLY) != 0) &#123;
+        if ((pFlags&amp;PackageManager.INSTALL_ALLOW_TEST) == 0) &#123;
+            res.returnCode = PackageManager.INSTALL_FAILED_TEST_ONLY;
+            return;
+        &#125;
+    &#125;
+    if (GET_CERTIFICATES &amp;&amp; !pp.collectCertificates(pkg, parseFlags)) &#123;
+        res.returnCode = pp.getParseError();
+        return;
+    &#125;
+    // Get rid of all references to package scan path via parser.
+    pp = null;
+    String oldCodePath = null;
+    boolean systemApp = false;
+    synchronized (mPackages) &#123;
+        // Check if installing already existing package
+        if ((pFlags&amp;PackageManager.INSTALL_REPLACE_EXISTING) != 0) &#123;
+            String oldName = mSettings.mRenamedPackages.get(pkgName);
+            if (pkg.mOriginalPackages != null
+                    &amp;&amp; pkg.mOriginalPackages.contains(oldName)
+                    &amp;&amp; mPackages.containsKey(oldName)) &#123;
+                // This package is derived from an original package,
+                // and this device has been updating from that original
+                // name.  We must continue using the original name, so
+                // rename the new package here.
+                pkg.setPackageName(oldName);
+                pkgName = pkg.packageName;
+                replace = true;
+            &#125; else if (mPackages.containsKey(pkgName)) &#123;
+                // This package, under its official name, already exists
+                // on the device; we should replace it.
+                replace = true;
+            &#125;
+        &#125;
+        PackageSetting ps = mSettings.mPackages.get(pkgName);
+        if (ps != null) &#123;
+            oldCodePath = mSettings.mPackages.get(pkgName).codePathString;
+            if (ps.pkg != null &amp;&amp; ps.pkg.applicationInfo != null) &#123;
+                systemApp = (ps.pkg.applicationInfo.flags &amp;
+                        ApplicationInfo.FLAG_SYSTEM) != 0;
+            &#125;
+        &#125;
+    &#125;
+    if (systemApp &amp;&amp; onSd) &#123;
+        // Disable updates to system apps on sdcard
+        Slog.w(TAG, &quot;Cannot install updates to system apps on sdcard&quot;);
+        res.returnCode = PackageManager.INSTALL_FAILED_INVALID_INSTALL_LOCATION;
+        return;
+    &#125;
+    if (!args.doRename(res.returnCode, pkgName, oldCodePath)) &#123;
+        res.returnCode = PackageManager.INSTALL_FAILED_INSUFFICIENT_STORAGE;
+        return;
+    &#125;
+    // Set application objects path explicitly after the rename
+    setApplicationInfoPaths(pkg, args.getCodePath(), args.getResourcePath());
+    pkg.applicationInfo.nativeLibraryDir = args.getNativeLibraryPath();
+    if (replace) &#123;
+        replacePackageLI(pkg, parseFlags, scanMode,
+                installerPackageName, res);
+    &#125; else &#123;
+        installNewPackageLI(pkg, parseFlags, scanMode,
+                installerPackageName,res);
+    &#125;
+&#125;  </code></pre><p>最后判断 如果以前 不存在 那么调用installNewPackageLI(）  </p>
+<pre><code>private void installNewPackageLI(PackageParser.Package pkg,
+        int parseFlags,int scanMode,
+        String installerPackageName, PackageInstalledInfo res) &#123;
+ ***********************省略若干*************************************************
+    PackageParser.Package newPackage = scanPackageLI(pkg, parseFlags, scanMode,
+           System.currentTimeMillis());
+ ***********************省略若干**************************************************  
+&#125;  </code></pre><p>最后终于 回到了和 开机安装 一样的地方. 与开机方式安装 调用统一方法。  </p>
+<h2 id="三：从ADB工具安装"><a href="#三：从ADB工具安装" class="headerlink" title="三：从ADB工具安装"></a>三：从ADB工具安装</h2><p>其入口函数源文件为pm.java<br>(源文件路径：android\frameworks\base\cmds\pm\src\com\android\commands\pm\Pm.java)<br>其中\system\framework\pm.jar包管理库<br>包管理脚本 \system\bin\pm 解析  </p>
+<pre><code>Pm.java 文件里的 showUsage就是使用方法  
+
+    private static void showUsage() &#123; 
+    System.err.println(&quot;usage: pm [list|path|install|uninstall]&quot;); 
+    System.err.println(&quot;       pm list packages [-f]&quot;); 
+    System.err.println(&quot;       pm list permission-groups&quot;); 
+    System.err.println(&quot;       pm list permissions [-g] [-f] [-d] [-u] [GROUP]&quot;); 
+    System.err.println(&quot;       pm list instrumentation [-f] [TARGET-PACKAGE]&quot;); 
+    System.err.println(&quot;       pm list features&quot;); 
+    System.err.println(&quot;       pm path PACKAGE&quot;); 
+    System.err.println(&quot;       pm install [-l] [-r] [-t] [-i INSTALLER_PACKAGE_NAME] [-s] [-f] PATH&quot;); 
+    System.err.println(&quot;       pm uninstall [-k] PACKAGE&quot;); 
+    System.err.println(&quot;       pm enable PACKAGE_OR_COMPONENT&quot;); 
+    System.err.println(&quot;       pm disable PACKAGE_OR_COMPONENT&quot;); 
+    System.err.println(&quot;       pm setInstallLocation [0/auto] [1/internal] [2/external]&quot;);
+      **********************省略**************************
+       &#125;  
+安装时候 会调用 runInstall()方法  
+
+    private void runInstall() &#123;
+    int installFlags = 0;
+    String installerPackageName = null;
+    String opt;
+    while ((opt=nextOption()) != null) &#123;
+        if (opt.equals(&quot;-l&quot;)) &#123;
+            installFlags |= PackageManager.INSTALL_FORWARD_LOCK;
+        &#125; else if (opt.equals(&quot;-r&quot;)) &#123;
+            installFlags |= PackageManager.INSTALL_REPLACE_EXISTING;
+        &#125; else if (opt.equals(&quot;-i&quot;)) &#123;
+            installerPackageName = nextOptionData();
+            if (installerPackageName == null) &#123;
+                System.err.println(&quot;Error: no value specified for -i&quot;);
+                showUsage();
+                return;
+            &#125;
+        &#125; else if (opt.equals(&quot;-t&quot;)) &#123;
+            installFlags |= PackageManager.INSTALL_ALLOW_TEST;
+        &#125; else if (opt.equals(&quot;-s&quot;)) &#123;
+            // Override if -s option is specified.
+            installFlags |= PackageManager.INSTALL_EXTERNAL;
+        &#125; else if (opt.equals(&quot;-f&quot;)) &#123;
+            // Override if -s option is specified.
+            installFlags |= PackageManager.INSTALL_INTERNAL;
+        &#125; else &#123;
+            System.err.println(&quot;Error: Unknown option: &quot; + opt);
+            showUsage();
+            return;
+        &#125;
+    &#125;
+    String apkFilePath = nextArg();
+    System.err.println(&quot;\tpkg: &quot; + apkFilePath);
+    if (apkFilePath == null) &#123;
+        System.err.println(&quot;Error: no package specified&quot;);
+        showUsage();
+        return;
+    &#125;
+    PackageInstallObserver obs = new PackageInstallObserver();
+    try &#123;
+        mPm.installPackage(Uri.fromFile(new File(apkFilePath)), obs, installFlags,
+                installerPackageName);
+        synchronized (obs) &#123;
+            while (!obs.finished) &#123;
+                try &#123;
+                    obs.wait();
+                &#125; catch (InterruptedException e) &#123;
+                &#125;
+            &#125;
+            if (obs.result == PackageManager.INSTALL_SUCCEEDED) &#123;
+                System.out.println(&quot;Success&quot;);
+            &#125; else &#123;
+                System.err.println(&quot;Failure [&quot;
+                        + installFailureToString(obs.result)
+                        + &quot;]&quot;);
+            &#125;
+        &#125;
+    &#125; catch (RemoteException e) &#123;
+        System.err.println(e.toString());
+        System.err.println(PM_NOT_RUNNING_ERR);
+     &#125;
+    &#125;  
+
+其中：  
+
+    PackageInstallObserver obs = new PackageInstallObserver();  
+        mPm.installPackage(Uri.fromFile(new File(apkFilePath)), obs, installFlags,
+            installerPackageName);     
+
+如果 安装成功   
+obs.result == PackageManager.INSTALL_SUCCEEDED)  
+又因为有：  
+
+    IPackageManage mPm；
+    mPm = IpackageManager.Stub.asInterface(ServiceManager.getService(&quot;package&quot;));  
+Stub是接口IPackageManage的静态抽象类，asInterface是返回IPackageManager代理的静态方法。  
+因为class PackageManagerService extends IPackageManager.Stub  
+所以mPm.installPackage 调用   
+/* Called when a downloaded package installation has been confirmed by the user */  
+
+    public void installPackage(
+        final Uri packageURI, final IPackageInstallObserver observer, final int flags,final String installerPackageName) 
+这样最后就是相当于调用从网络下载安装的 入口了。  </code></pre><h2 id="四：从SD卡安装"><a href="#四：从SD卡安装" class="headerlink" title="四：从SD卡安装"></a>四：从SD卡安装</h2><p>系统调用 PackageInstallerActivity.java<br>源码路径：android/packages/apps/PackageInstaller/src/com/android/packageinstaller/PackageInstallerActivity.java<br>进入这个Activity会判断信息是否有错，然后调用private void initiateInstall() 判断 是否 曾经有过 同名包的安装，或者包已经安装<br>通过后 执行private void startInstallConfirm() 点击OK按钮后经过一系列的安装信息的判断 Intent跳转到  </p>
+<pre><code>public class InstallAppProgress extends Activity implements View.OnClickListener, OnCancelListener
+  public void onCreate(Bundle icicle) &#123;
+    super.onCreate(icicle);
+    Intent intent = getIntent();
+    mAppInfo = intent.getParcelableExtra(PackageUtil.INTENT_ATTR_APPLICATION_INFO);
+    mPackageURI = intent.getData();
+    initView();
+    &#125;  </code></pre><p>方法中调用了initView()方法  </p>
+<pre><code>public void initView() &#123;
+    requestWindowFeature(Window.FEATURE_NO_TITLE);
+    setContentView(R.layout.op_progress);
+    int installFlags = 0;
+    PackageManager pm = getPackageManager();
+    try &#123;
+        PackageInfo pi = pm.getPackageInfo(mAppInfo.packageName, 
+                PackageManager.GET_UNINSTALLED_PACKAGES);
+        if(pi != null) &#123;
+            installFlags |= PackageManager.INSTALL_REPLACE_EXISTING;
+        &#125;
+    &#125; catch (NameNotFoundException e) &#123;
+    &#125;
+    if((installFlags &amp; PackageManager.INSTALL_REPLACE_EXISTING )!= 0) &#123;
+        Log.w(TAG, &quot;Replacing package:&quot; + mAppInfo.packageName);
+    &#125;
+    PackageUtil.AppSnippet as = PackageUtil.getAppSnippet(this, mAppInfo,
+            mPackageURI);
+    mLabel = as.label;
+    PackageUtil.initSnippetForNewApp(this, as, R.id.app_snippet);
+    mStatusTextView = (TextView)findViewById(R.id.center_text);
+    mStatusTextView.setText(R.string.installing);
+    mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
+    mProgressBar.setIndeterminate(true);
+    // Hide button till progress is being displayed
+    mOkPanel = (View)findViewById(R.id.buttons_panel);
+    mDoneButton = (Button)findViewById(R.id.done_button);
+    mLaunchButton = (Button)findViewById(R.id.launch_button);
+    mOkPanel.setVisibility(View.INVISIBLE);
+    String installerPackageName = getIntent().getStringExtra(
+            Intent.EXTRA_INSTALLER_PACKAGE_NAME);
+    PackageInstallObserver observer = new PackageInstallObserver();
+    pm.installPackage(mPackageURI, observer, installFlags, installerPackageName);
+&#125;  </code></pre><p>方法最后 我们可以看到 再次调用安装接口 完成安装，相当于 又 调用了 网络安装。  </p>
+<hr>
+<h1 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h1><ul>
+<li>1.系统应用安装――开机时完成；</li>
+<li>2.网络下载应用安装――最后 会 调用  系统应用安装 的 scanPackageLI 接口；</li>
+<li>3.ADB工具安装――最后 会 调用   网络下载应用安装 的installPackage 接口，从而 相当于 走的 还是系统应用安装 的 路径；</li>
+<li>4.第三方应用安装――由 packageinstaller.apk 应用处理安装及卸载，最后也会 调用   网络下载应用安装 的installPackage 接口，从而 相当于 走的 还是系统应用安装的路径。</li>
+</ul>
+<p>参考：<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/neo-java/p/7117482.html">APK安装简介</a><br><a target="_blank" rel="noopener" href="http://lib.csdn.net/article/android/53120">Android APK安装与卸载机制</a><br><a target="_blank" rel="noopener" href="http://blog.csdn.net/wh_19910525/article/details/7909686">APK安装过程及原理详解</a><br><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000004916563">APK打包安装过程</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/APK%E5%AE%89%E8%A3%85/" rel="tag"># APK安装</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/297b6664.html" rel="prev" title="Android开发之——App构建流程分析">
+      <i class="fa fa-chevron-left"></i> Android开发之——App构建流程分析
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/ac8bb24.html" rel="next" title="Android开发之——目录结构浅析">
+      Android开发之——目录结构浅析 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjQ1OC85MDE5"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#APK%E5%AE%89%E8%A3%85%E7%AE%80%E4%BB%8B"><span class="nav-number">2.</span> <span class="nav-text">APK安装简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#APK-%E5%AE%89%E8%A3%85%E5%92%8C%E5%8D%B8%E8%BD%BD%E6%B5%85%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">APK 安装和卸载浅析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%BA%94%E7%94%A8%E7%9A%84%E8%BF%87%E7%A8%8B%E6%B5%85%E6%9E%90"><span class="nav-number">4.</span> <span class="nav-text">安装应用的过程浅析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%EF%BC%9A%E5%BC%80%E6%9C%BA%E5%AE%89%E8%A3%85"><span class="nav-number">4.1.</span> <span class="nav-text">一：开机安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%EF%BC%9A%E4%BB%8E%E7%BD%91%E7%BB%9C%E4%B8%8A%E4%B8%8B%E8%BD%BD%E5%BA%94%E7%94%A8%EF%BC%9A"><span class="nav-number">4.2.</span> <span class="nav-text">二：从网络上下载应用：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%EF%BC%9A%E4%BB%8EADB%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85"><span class="nav-number">4.3.</span> <span class="nav-text">三：从ADB工具安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%EF%BC%9A%E4%BB%8ESD%E5%8D%A1%E5%AE%89%E8%A3%85"><span class="nav-number">4.4.</span> <span class="nav-text">四：从SD卡安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="nav-number">5.</span> <span class="nav-text">总结：</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">967</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">378</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PGzxc" title="GitHub → https://github.com/PGzxc" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http://blog.csdn.net/calvin_zhou" rel="noopener" target="_blank"><i class="book fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http://weibo.com/5582039920" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>微博</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http://www.jianshu.com/u/c5cdcb4dc52b" rel="noopener" target="_blank"><i class="heartbeat fa-fw"></i>简书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wanandroid.com/" title="https://wanandroid.com/" rel="noopener" target="_blank">鸿洋</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/home.html" title="http://www.ruanyifeng.com/home.html" rel="noopener" target="_blank">阮一峰</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://memento.net.cn" title="https://memento.net.cn" rel="noopener" target="_blank">琅涯阁</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/sinyu890807/" title="http://blog.csdn.net/sinyu890807/" rel="noopener" target="_blank">郭霖</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/luoshengyang/" title="http://blog.csdn.net/luoshengyang/" rel="noopener" target="_blank">老罗</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/aigestudio/" title="http://blog.csdn.net/aigestudio/" rel="noopener" target="_blank">爱哥</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/wwj_748/" title="http://blog.csdn.net/wwj_748/" rel="noopener" target="_blank">小巫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/singwhatiwanna/" title="http://blog.csdn.net/singwhatiwanna/" rel="noopener" target="_blank">任玉刚</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/eclipsexys/" title="http://blog.csdn.net/eclipsexys/" rel="noopener" target="_blank">徐医生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/bboyfeiyu/" title="http://blog.csdn.net/bboyfeiyu/" rel="noopener" target="_blank">Mr.Simple</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/xyz_lmn/" title="http://blog.csdn.net/xyz_lmn/" rel="noopener" target="_blank">张兴业</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.android.google.cn/index.html" title="https://developer.android.google.cn/index.html" rel="noopener" target="_blank">谷歌中国</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备18061062号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pgzxc</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">1.4m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">20:35</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>

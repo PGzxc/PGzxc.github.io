@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一 前言在Windows中，Win+R快捷键，打开的输入框中输入”calc”可以快速打开计算机。在菜单栏中-&gt;查看-&gt;程序员，打开程序员计算器。下面我们讲述程序员计算机的功能及如何使用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java开发之——程序员计算器">
+<meta property="og:url" content="http://pgzxc.github.io/posts/6d67c1ca.html">
+<meta property="og:site_name" content="PGzxc的博客">
+<meta property="og:description" content="一 前言在Windows中，Win+R快捷键，打开的输入框中输入”calc”可以快速打开计算机。在菜单栏中-&gt;查看-&gt;程序员，打开程序员计算器。下面我们讲述程序员计算机的功能及如何使用。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pgzxc.com/java-calc-program.png">
+<meta property="og:image" content="https://images.pgzxc.com/java-calc-ce-c.gif">
+<meta property="og:image" content="https://images.pgzxc.com/java-calc-ms.gif">
+<meta property="og:image" content="https://images.pgzxc.com/java-calc-mr.gif">
+<meta property="og:image" content="https://images.pgzxc.com/java-calc-mc.gif">
+<meta property="og:image" content="https://images.pgzxc.com/java-calc-binary.png">
+<meta property="og:image" content="https://images.pgzxc.com/java-calc-operator.png">
+<meta property="article:published_time" content="2019-09-19T14:02:04.000Z">
+<meta property="article:modified_time" content="2020-07-03T12:07:33.233Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="计算器">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pgzxc.com/java-calc-program.png">
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/6d67c1ca.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Java开发之——程序员计算器 | PGzxc的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">PGzxc的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">967</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">85</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">378</span></a>
+
+  </li>
+        <li class="menu-item menu-item-comments">
+
+    <a href="/comments/" rel="section"><i class="fa fa-comments fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/6d67c1ca.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java开发之——程序员计算器
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-19 22:02:04" itemprop="dateCreated datePublished" datetime="2019-09-19T22:02:04+08:00">2019-09-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-03 20:07:33" itemprop="dateModified" datetime="2020-07-03T20:07:33+08:00">2020-07-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">基础语言</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80%E8%AF%AD%E8%A8%80/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>947</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="一-前言"><a href="#一-前言" class="headerlink" title="一 前言"></a>一 前言</h2><p>在Windows中，Win+R快捷键，打开的输入框中输入”calc”可以快速打开计算机。在菜单栏中-&gt;查看-&gt;程序员，打开程序员计算器。下面我们讲述程序员计算机的功能及如何使用。  </p>
+<p><img src="https://images.pgzxc.com/java-calc-program.png" alt=""></p>
+<a id="more"></a>
+
+<h2 id="二-计算器上的CE、C的用法"><a href="#二-计算器上的CE、C的用法" class="headerlink" title="二 计算器上的CE、C的用法"></a>二 计算器上的CE、C的用法</h2><h3 id="2-1-按钮介绍"><a href="#2-1-按钮介绍" class="headerlink" title="2.1 按钮介绍"></a>2.1 按钮介绍</h3><ul>
+<li>CE:归零(清除现有寄存器中的值并显示零)，数据重新输入</li>
+<li>C：清除(清除刚才的输入)</li>
+</ul>
+<h3 id="2-2-操作演示"><a href="#2-2-操作演示" class="headerlink" title="2.2 操作演示"></a>2.2 操作演示</h3><p><img src="https://images.pgzxc.com/java-calc-ce-c.gif" alt="CE AND C"></p>
+<h2 id="三-计算器上的MR、MC、MS和M-M-的用法"><a href="#三-计算器上的MR、MC、MS和M-M-的用法" class="headerlink" title="三 计算器上的MR、MC、MS和M+/M-的用法"></a>三 计算器上的MR、MC、MS和M+/M-的用法</h2><h3 id="3-1-按钮介绍"><a href="#3-1-按钮介绍" class="headerlink" title="3.1 按钮介绍"></a>3.1 按钮介绍</h3><ul>
+<li>MR键叫做memory read，中文名字 读取存储</li>
+<li>MC键叫做memory clear，中文 清除存储</li>
+<li>MS键叫做memory save，中文 存入存储</li>
+<li>M+：在存储内加上</li>
+<li>M-：在存储内减去</li>
+</ul>
+<h3 id="3-2-操作演示"><a href="#3-2-操作演示" class="headerlink" title="3.2 操作演示"></a>3.2 操作演示</h3><h4 id="3-2-1-MS操作"><a href="#3-2-1-MS操作" class="headerlink" title="3.2.1 MS操作"></a>3.2.1 MS操作</h4><h5 id="3-2-1-1-MS说明"><a href="#3-2-1-1-MS说明" class="headerlink" title="3.2.1.1 MS说明"></a>3.2.1.1 MS说明</h5><ul>
+<li>比如键入数字3后再按下MS，就代表将3存入了，这时屏幕的左侧会出现M标志，代表存储内有数据存储。</li>
+</ul>
+<h5 id="3-2-1-2-MS操作演示"><a href="#3-2-1-2-MS操作演示" class="headerlink" title="3.2.1.2 MS操作演示"></a>3.2.1.2 MS操作演示</h5><p><img src="https://images.pgzxc.com/java-calc-ms.gif" alt=""></p>
+<h4 id="3-2-2-MR操作"><a href="#3-2-2-MR操作" class="headerlink" title="3.2.2 MR操作"></a>3.2.2 MR操作</h4><h5 id="3-2-2-1-MR说明"><a href="#3-2-2-1-MR说明" class="headerlink" title="3.2.2.1 MR说明"></a>3.2.2.1 MR说明</h5><ul>
+<li>上步中，按CE或C清零后，按MR，数字又显示到屏幕上</li>
+</ul>
+<h5 id="3-2-2-2-MS操作演示"><a href="#3-2-2-2-MS操作演示" class="headerlink" title="3.2.2.2 MS操作演示"></a>3.2.2.2 MS操作演示</h5><p><img src="https://images.pgzxc.com/java-calc-mr.gif" alt=""></p>
+<h4 id="3-2-3-MC操作"><a href="#3-2-3-MC操作" class="headerlink" title="3.2.3 MC操作"></a>3.2.3 MC操作</h4><h5 id="3-2-3-1-MC说明"><a href="#3-2-3-1-MC说明" class="headerlink" title="3.2.3.1 MC说明"></a>3.2.3.1 MC说明</h5><ul>
+<li>上步中，按MC后，屏幕左侧的M标志会消失，按CE或C清零，再按MR，数字不会再出现</li>
+</ul>
+<h5 id="3-2-3-2-MC操作演示"><a href="#3-2-3-2-MC操作演示" class="headerlink" title="3.2.3.2 MC操作演示"></a>3.2.3.2 MC操作演示</h5><p><img src="https://images.pgzxc.com/java-calc-mc.gif" alt=""></p>
+<h4 id="3-2-4-M-操作"><a href="#3-2-4-M-操作" class="headerlink" title="3.2.4 M+操作"></a>3.2.4 M+操作</h4><h5 id="3-2-4-1-M-说明"><a href="#3-2-4-1-M-说明" class="headerlink" title="3.2.4.1 M+说明"></a>3.2.4.1 M+说明</h5><ul>
+<li>果依次按下2、M+，意味着存储内加上2</li>
+</ul>
+<h4 id="3-2-5-M-操作"><a href="#3-2-5-M-操作" class="headerlink" title="3.2.5 M-操作"></a>3.2.5 M-操作</h4><h5 id="3-2-5-1-M-说明"><a href="#3-2-5-1-M-说明" class="headerlink" title="3.2.5.1 M-说明"></a>3.2.5.1 M-说明</h5><ul>
+<li>果依次按下2、M-，意味着存储内减去2</li>
+</ul>
+<h2 id="四-计算器上的字节、字、双字、四字"><a href="#四-计算器上的字节、字、双字、四字" class="headerlink" title="四 计算器上的字节、字、双字、四字"></a>四 计算器上的字节、字、双字、四字</h2><h3 id="4-1-字节"><a href="#4-1-字节" class="headerlink" title="4.1 字节"></a>4.1 字节</h3><ul>
+<li>八位二进制数</li>
+</ul>
+<h3 id="4-2-字"><a href="#4-2-字" class="headerlink" title="4.2 字"></a>4.2 字</h3><ul>
+<li>十六位二进制数</li>
+</ul>
+<h3 id="4-3-双字"><a href="#4-3-双字" class="headerlink" title="4.3 双字"></a>4.3 双字</h3><ul>
+<li>32位二进制数</li>
+</ul>
+<h3 id="4-4-四字"><a href="#4-4-四字" class="headerlink" title="4.4 四字"></a>4.4 四字</h3><ul>
+<li>64位二进制数</li>
+</ul>
+<h2 id="五-计算器上的进制-二进制、八进制、十进制、十六进制"><a href="#五-计算器上的进制-二进制、八进制、十进制、十六进制" class="headerlink" title="五 计算器上的进制(二进制、八进制、十进制、十六进制)"></a>五 计算器上的进制(二进制、八进制、十进制、十六进制)</h2><p><img src="https://images.pgzxc.com/java-calc-binary.png" alt=""></p>
+<h3 id="5-1-二进制"><a href="#5-1-二进制" class="headerlink" title="5.1 二进制"></a>5.1 二进制</h3><ul>
+<li>只有0和1</li>
+<li>前缀0b</li>
+</ul>
+<h3 id="5-2-八进制"><a href="#5-2-八进制" class="headerlink" title="5.2 八进制"></a>5.2 八进制</h3><ul>
+<li>八进制数从0到7</li>
+<li>前缀为0(java中表示)</li>
+</ul>
+<h3 id="5-3-十进制"><a href="#5-3-十进制" class="headerlink" title="5.3 十进制"></a>5.3 十进制</h3><ul>
+<li>数字从0-9</li>
+<li>没有任何前缀</li>
+</ul>
+<h4 id="5-4-十六进制"><a href="#5-4-十六进制" class="headerlink" title="5.4 十六进制"></a>5.4 十六进制</h4><ul>
+<li>数字从0-F</li>
+<li>前缀0x或0X(x大小写不区分)</li>
+</ul>
+<h2 id="六-操作符"><a href="#六-操作符" class="headerlink" title="六 操作符"></a>六 操作符</h2><p><img src="https://images.pgzxc.com/java-calc-operator.png" alt=""></p>
+<h3 id="操作符说明"><a href="#操作符说明" class="headerlink" title="操作符说明"></a>操作符说明</h3><ul>
+<li>And：逻辑与；同真为真</li>
+<li>Or：逻辑或；有真为真</li>
+<li>Not：逻辑非；取反</li>
+<li>Xor：逻辑异或；同假异真</li>
+<li>Lsh：全称是Left Shift；左移操作</li>
+<li>Rsh：全称是Right Shift；右移操作</li>
+<li>RoL：全称是Rotate Left</li>
+<li>RoR：全称是Rotate Right</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/b87fe19e72f7b35219356851.html">计算器上的MR、MC、MS和M+/M-的用法</a></li>
+<li><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/17bd8e527d045185ab2bb831.html">在java中如何表示二进制,八进制,十六进制的数字</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/komtao520/article/details/86546609">程序员计算器</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E5%99%A8/" rel="tag"># 计算器</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/ac915add.html" rel="prev" title="日语学习之——表达式及词语(2.6)">
+      <i class="fa fa-chevron-left"></i> 日语学习之——表达式及词语(2.6)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/44c36c1.html" rel="next" title="日语学习之——课文(2.7)">
+      日语学习之——课文(2.7) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjQ1OC85MDE5"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">一 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E8%AE%A1%E7%AE%97%E5%99%A8%E4%B8%8A%E7%9A%84CE%E3%80%81C%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">二 计算器上的CE、C的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%8C%89%E9%92%AE%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 按钮介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%93%8D%E4%BD%9C%E6%BC%94%E7%A4%BA"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 操作演示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E8%AE%A1%E7%AE%97%E5%99%A8%E4%B8%8A%E7%9A%84MR%E3%80%81MC%E3%80%81MS%E5%92%8CM-M-%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">三 计算器上的MR、MC、MS和M+&#x2F;M-的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%8C%89%E9%92%AE%E4%BB%8B%E7%BB%8D"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 按钮介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%93%8D%E4%BD%9C%E6%BC%94%E7%A4%BA"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 操作演示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-MS%E6%93%8D%E4%BD%9C"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1 MS操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-1-1-MS%E8%AF%B4%E6%98%8E"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">3.2.1.1 MS说明</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-1-2-MS%E6%93%8D%E4%BD%9C%E6%BC%94%E7%A4%BA"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">3.2.1.2 MS操作演示</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2-MR%E6%93%8D%E4%BD%9C"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2 MR操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-2-1-MR%E8%AF%B4%E6%98%8E"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">3.2.2.1 MR说明</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-2-2-MS%E6%93%8D%E4%BD%9C%E6%BC%94%E7%A4%BA"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">3.2.2.2 MS操作演示</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-3-MC%E6%93%8D%E4%BD%9C"><span class="nav-number">3.2.3.</span> <span class="nav-text">3.2.3 MC操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-3-1-MC%E8%AF%B4%E6%98%8E"><span class="nav-number">3.2.3.1.</span> <span class="nav-text">3.2.3.1 MC说明</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-3-2-MC%E6%93%8D%E4%BD%9C%E6%BC%94%E7%A4%BA"><span class="nav-number">3.2.3.2.</span> <span class="nav-text">3.2.3.2 MC操作演示</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-4-M-%E6%93%8D%E4%BD%9C"><span class="nav-number">3.2.4.</span> <span class="nav-text">3.2.4 M+操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-4-1-M-%E8%AF%B4%E6%98%8E"><span class="nav-number">3.2.4.1.</span> <span class="nav-text">3.2.4.1 M+说明</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-5-M-%E6%93%8D%E4%BD%9C"><span class="nav-number">3.2.5.</span> <span class="nav-text">3.2.5 M-操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-5-1-M-%E8%AF%B4%E6%98%8E"><span class="nav-number">3.2.5.1.</span> <span class="nav-text">3.2.5.1 M-说明</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E8%AE%A1%E7%AE%97%E5%99%A8%E4%B8%8A%E7%9A%84%E5%AD%97%E8%8A%82%E3%80%81%E5%AD%97%E3%80%81%E5%8F%8C%E5%AD%97%E3%80%81%E5%9B%9B%E5%AD%97"><span class="nav-number">4.</span> <span class="nav-text">四 计算器上的字节、字、双字、四字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%AD%97%E8%8A%82"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 字节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E5%AD%97"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E5%8F%8C%E5%AD%97"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 双字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E5%9B%9B%E5%AD%97"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 四字</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E8%AE%A1%E7%AE%97%E5%99%A8%E4%B8%8A%E7%9A%84%E8%BF%9B%E5%88%B6-%E4%BA%8C%E8%BF%9B%E5%88%B6%E3%80%81%E5%85%AB%E8%BF%9B%E5%88%B6%E3%80%81%E5%8D%81%E8%BF%9B%E5%88%B6%E3%80%81%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6"><span class="nav-number">5.</span> <span class="nav-text">五 计算器上的进制(二进制、八进制、十进制、十六进制)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 二进制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E5%85%AB%E8%BF%9B%E5%88%B6"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 八进制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E5%8D%81%E8%BF%9B%E5%88%B6"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 十进制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4-%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6"><span class="nav-number">5.3.1.</span> <span class="nav-text">5.4 十六进制</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD-%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">6.</span> <span class="nav-text">六 操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6%E8%AF%B4%E6%98%8E"><span class="nav-number">6.1.</span> <span class="nav-text">操作符说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">967</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">378</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PGzxc" title="GitHub → https://github.com/PGzxc" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http://blog.csdn.net/calvin_zhou" rel="noopener" target="_blank"><i class="book fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http://weibo.com/5582039920" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>微博</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http://www.jianshu.com/u/c5cdcb4dc52b" rel="noopener" target="_blank"><i class="heartbeat fa-fw"></i>简书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wanandroid.com/" title="https://wanandroid.com/" rel="noopener" target="_blank">鸿洋</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/home.html" title="http://www.ruanyifeng.com/home.html" rel="noopener" target="_blank">阮一峰</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://memento.net.cn" title="https://memento.net.cn" rel="noopener" target="_blank">琅涯阁</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/sinyu890807/" title="http://blog.csdn.net/sinyu890807/" rel="noopener" target="_blank">郭霖</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/luoshengyang/" title="http://blog.csdn.net/luoshengyang/" rel="noopener" target="_blank">老罗</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/aigestudio/" title="http://blog.csdn.net/aigestudio/" rel="noopener" target="_blank">爱哥</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/wwj_748/" title="http://blog.csdn.net/wwj_748/" rel="noopener" target="_blank">小巫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/singwhatiwanna/" title="http://blog.csdn.net/singwhatiwanna/" rel="noopener" target="_blank">任玉刚</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/eclipsexys/" title="http://blog.csdn.net/eclipsexys/" rel="noopener" target="_blank">徐医生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/bboyfeiyu/" title="http://blog.csdn.net/bboyfeiyu/" rel="noopener" target="_blank">Mr.Simple</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/xyz_lmn/" title="http://blog.csdn.net/xyz_lmn/" rel="noopener" target="_blank">张兴业</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.android.google.cn/index.html" title="https://developer.android.google.cn/index.html" rel="noopener" target="_blank">谷歌中国</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备18061062号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pgzxc</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">1.4m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">20:35</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>

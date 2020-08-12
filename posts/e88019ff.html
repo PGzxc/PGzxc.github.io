@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前言本篇博客要剖析和解决的两个问题：     APP启动时白屏&#x2F;黑屏、Activity打开时白屏&#x2F;黑屏。     APP启动速度慢，如何实现点击ICON后APP秒开。APP启动加速。     先看效果图(模拟映客启动)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发之——app启动秒开">
+<meta property="og:url" content="http://pgzxc.github.io/posts/e88019ff.html">
+<meta property="og:site_name" content="PGzxc的博客">
+<meta property="og:description" content="前言本篇博客要剖析和解决的两个问题：     APP启动时白屏&#x2F;黑屏、Activity打开时白屏&#x2F;黑屏。     APP启动速度慢，如何实现点击ICON后APP秒开。APP启动加速。     先看效果图(模拟映客启动)">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pgzxc.com/app_open_splash.gif">
+<meta property="article:published_time" content="2018-01-22T01:44:46.000Z">
+<meta property="article:modified_time" content="2020-07-03T12:07:33.187Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="APP秒开">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pgzxc.com/app_open_splash.gif">
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/e88019ff.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Android开发之——app启动秒开 | PGzxc的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">PGzxc的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">967</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">85</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">378</span></a>
+
+  </li>
+        <li class="menu-item menu-item-comments">
+
+    <a href="/comments/" rel="section"><i class="fa fa-comments fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/e88019ff.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android开发之——app启动秒开
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-01-22 09:44:46" itemprop="dateCreated datePublished" datetime="2018-01-22T09:44:46+08:00">2018-01-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-03 20:07:33" itemprop="dateModified" datetime="2020-07-03T20:07:33+08:00">2020-07-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">移动开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本篇博客要剖析和解决的两个问题：   </p>
+<ul>
+<li>APP启动时白屏/黑屏、Activity打开时白屏/黑屏。    </li>
+<li>APP启动速度慢，如何实现点击ICON后APP秒开。APP启动加速。   </li>
+</ul>
+<p>先看效果图(模拟映客启动)<br><img src="https://images.pgzxc.com/app_open_splash.gif" alt=""></p>
+<a id="more"></a>
+
+<h1 id="APP启动时白屏-黑屏、Activity打开时白屏-黑屏"><a href="#APP启动时白屏-黑屏、Activity打开时白屏-黑屏" class="headerlink" title="APP启动时白屏/黑屏、Activity打开时白屏/黑屏"></a>APP启动时白屏/黑屏、Activity打开时白屏/黑屏</h1><p>首先要说明的是无论是APP启动，还是startActivity都是Activity的启动，所以这归根结底是一个问题，看完本博客就明白了。</p>
+<p>这是一个很多新手或者从事Android开发已经一年多的同学们可能遇到的疑问，究其原因是对Activity的启动机制和Activity的绘制机智不太了解。  </p>
+<p>绘制整个窗口需要按顺序执行以下几个步骤：   </p>
+<ol>
+<li>绘制背景。 </li>
+<li>绘制View本身的内容</li>
+<li>绘制子View。 </li>
+<li>绘制修饰内容（例如滚动条)。</li>
+</ol>
+<p>这里是主要的四步，还有些其他对于今天内容不太重要省去没写。  </p>
+<h2 id="闪屏原因剖析StartingWindow（Preview-Window）"><a href="#闪屏原因剖析StartingWindow（Preview-Window）" class="headerlink" title="闪屏原因剖析StartingWindow（Preview Window）"></a>闪屏原因剖析StartingWindow（Preview Window）</h2><p>我们正常开发中会在Activity的onCreate()方法中调用setContentView(View)设置该Activity的显示布局，那么问题就来了，既然我们设置了布局，为什么启动的时候还会白屏或者黑屏而不是显示我set的布局呢？下面就带领大家一起来剖析一下原因。  </p>
+<p>当打开一个Activity时，如果这个Activity所属Application还没有在运行，系统会为这个Activity的创建一个进程（每开启一个进程都会有一个Application，所以Application的onCreate()可能会被调用多次），但进程的创建与初始化都需要时间，在这个动作完成之前，如果初始化的时间过长，屏幕上可能没有任何动静，用户会以为没有点到按钮。所以既不能停在原来的地方又没到显示新的界面，怎么办呢？这就有了StartingWindow（也称之为PreviewWindow）的出现，这样看起来就像Activity已经启动起来了，只是数据内容还没有初始化好。  </p>
+<p>StartingWindow一般出现在应用程序进程创建并初始化成功前，所以它是个临时窗口，对应的WindowType是TYPE_APPLICATION_STARTING。目的是告诉用户，系统已经接受到操作，正在响应，在程序初始化完成后实现目的UI，同时移除这个窗口。</p>
+<p>这个StartingWindow就是我们要讨论的白屏和黑屏的“元凶”，一般情况下我们会对Application和Activity设置Theme，系统会根据设置的Theme初始化StartingWindow。Window布局的顶层是DecorView，StartingWindow显示一个空DecorView，但是会给这个DecorView应用这个Activity指定的Theme，如果这个Activity没有指定Theme就用Application的（Application系统要求必须设置Theme）。</p>
+<p>在Theme中可以指定窗口的背景，Activity的ICON，APP整体文字颜色等，如果说没有指定任何属性，就会用默认的属性，也就是上文中提到的空DecorView，所以我们的白屏和黑屏和空DecorView息息相关，我们给APP设置的Style就决定了是白屏还是黑屏。  </p>
+<ul>
+<li><p>如果选择了Black的系列的主题那么Activity跳转的时候就是黑屏：</p>
+<pre><code>@android:style/Theme.Black&quot;</code></pre></li>
+<li><p>如果选择了Light的系列的主题那么Activity跳转的时候就是白屏：    </p>
+<pre><code>@android:style/Theme.Light&quot;</code></pre></li>
+</ul>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>通常的解决办法都是给Activity设置一个透明背景的主题：  </p>
+<pre><code>&lt;style name=&quot;SplashTheme&quot; parent=&quot;AppTheme&quot;&gt;
+    &lt;item name=&quot;android:windowFullscreen&quot;&gt;true&lt;/item&gt;
+    &lt;item name=&quot;android:windowIsTranslucent&quot;&gt;true&lt;/item&gt;
+&lt;/style&gt;</code></pre><p>如上设置后APP和Activity启动时，我们的StartingWindow会应用我们这个透明背景的主题，跳转时确实没有白屏和黑屏了，但是这样设置会产生如下后果：  </p>
+<ul>
+<li><p>给SplashActivity设置后，用户点击我们APP图标后，需要等待2秒左右的时候才会显示contentView。造成了APP启动速度慢的假象，其实Activity已经启动了，只是background是透明的，这时候你点击桌面的其他地方是无效的。这样就和Google的初衷背道而驰了，所以还要继续往下看。  </p>
+</li>
+<li><p>给其他Activity设置后，会导致通过overridePendingTransition设置的启动关闭Activity的动画无效。需要在style中重新写如下几个动画：  </p>
+<pre><code>&lt;style name=&quot;AppTheme&quot; parent=&quot;AppBaseTheme&quot;&gt;
+    &lt;item name=&quot;android:windowAnimationStyle&quot;&gt;@style/Animation.Activity.Translucent.Style&lt;/item&gt;
+    &lt;item name=&quot;android:windowFullscreen&quot;&gt;true...
+    &lt;item name=&quot;android:windowIsTranslucent&quot;&gt;true...
+&lt;/style&gt;
+
+&lt;style name=&quot;Animation.Activity.Style&quot; parent=&quot;@android:style/Animation.Activity&quot;&gt;
+    &lt;item name=&quot;android:activityOpenEnterAnimation&quot;&gt;...
+    &lt;item name=&quot;android:activityOpenExitAnimation&quot;&gt;...
+    &lt;item name=&quot;android:activityCloseEnterAnimation&quot;&gt;...
+    &lt;item name=&quot;android:activityCloseExitAnimation&quot;&gt;...
+&lt;/style&gt;
+
+&lt;style name=&quot;Animation.Activity.Translucent.Style&quot; parent=&quot;@android:style/Animation.Translucent&quot;&gt; 
+    &lt;item name=&quot;android:windowEnterAnimation&quot;&gt;...
+    &lt;item name=&quot;android:windowExitAnimation&quot;&gt;...
+&lt;/style&gt;   </code></pre></li>
+</ul>
+<ul>
+<li>Activity之间的跳转可能偶尔会看到桌面一闪而过（如果SplashActivity和其他Activity都设置了透明）。</li>
+</ul>
+<p>小结：一般情况下是只会给SplashActivity设置一个透明背景的主题，其他Activity不会设置，经过实践，这种体验是最好的。但是如果要做到APP秒开还是不行的，和我们的文章开头所分析的原理相斥了。  </p>
+<h1 id="秒开方案"><a href="#秒开方案" class="headerlink" title="秒开方案"></a>秒开方案</h1><p>那像妈妈去哪儿、美团、淘宝等APP是如何实现秒开的？其实看完上面的原理分析，这个基本上也就明白了。</p>
+<p>还是从Activity的Theme下手，既然可以让Window白屏黑屏或者透明，那么是不是可以设置其他颜色或者图片来实现APP的秒开呢？答案是肯定的。  </p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>我们之前设置了Window透明，实现了去掉白屏和黑屏，现在要弄一个颜色或者图片来代替白屏和黑屏，所以首先要把原来style中的透明属性去掉。然后给Window设置一个背景颜色或者图片。  </p>
+<h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><ul>
+<li><p>首先在res/drawable下新建一个layer-list，名字随便取，比如splash.xml：  </p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;layer-list xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+&lt;!-- 背景颜色 --&gt;
+&lt;item android:drawable=&quot;@color/white&quot; /&gt;
+
+&lt;item&gt;
+    &lt;!-- 图片 --&gt;
+    &lt;bitmap
+        android:gravity=&quot;center&quot;
+        android:src=&quot;@drawable/wel_page&quot; /&gt;
+&lt;/item&gt;
+&lt;/layer-list&gt;</code></pre><p>  layer-list大家都会写吧，上面是背景颜色，下面是一张图，这张图可以是全屏的图，可以是一张小图。如果是全屏的图，那上面的颜色也可以不用设置，如果是小图，就要指定下颜色了，并且可以指定图片在位置。</p>
+</li>
+<li><p>给主题设置Window背景：</p>
+<pre><code>&lt;style name=&quot;SplashTheme&quot; parent=&quot;AppBaseTheme&quot;&gt;
+&lt;!-- 欢迎页背景引用刚才写好的 --&gt;
+&lt;item name=&quot;android:windowBackground&quot;&gt;@drawable/splash&lt;/item&gt;
+&lt;item name=&quot;android:windowFullscreen&quot;&gt;true&lt;/item&gt;
+&lt;!-- &lt;item name=&quot;android:windowIsTranslucent&quot;&gt;true&lt;/item&gt; --&gt; &lt;!-- 透明背景不要了 --&gt;
+&lt;/style&gt;</code></pre><p>  上面的<item name="android:windowBackground">可以用我们上面的layer-list作为背景，当然也可以设置个全屏的图片。</p>
+</li>
+<li><p>在AndroidManifest.xml中定义SplashActivity的theme为SplashTheme：  </p>
+<pre><code>&lt;activity android:name=&quot;.SplashActivity&quot;
+android:theme=&quot;@style/SplashTheme&quot;&gt;
+&lt;intent-filter&gt;
+    &lt;action android:name=&quot;android.intent.action.MAIN&quot;/&gt;
+    &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot;/&gt;
+&lt;/intent-filter&gt;
+&lt;/activity&gt;</code></pre></li>
+<li><p>SplashActivity的实现，在onCreate()启动你的MainActivity即可，其他什么都别干：</p>
+<pre><code>public class SplashActivity extends Activity 
+&#123;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) 
+    &#123;
+        super.onCreate(savedInstanceState);
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
+    &#125;
+&#125;</code></pre><p>  特别注意：为保证启动速度，SplashActivity不要调用setContentView()方法。因为Activity设置了layout，它在App完全初始化完成后才会显示，也会耗时。使用该启动画面实现也能兼容到上面说的白屏和黑屏的问题。跟上面的小结一样，其他Activity不要设置。</p>
+<p>  特别更新：博客刚发不久，有人跟我吐槽说，SplashActivity中需要做一个初始化的操作，被我放哪里了？可能是因为在上面第四点中说了个直接启动MainActivity其他什么都不别干，这里可以把MainActivity换成别的InitializeActivity，初始化、引导页的判断可以放在这里，这里都操作完了再启动MainActivity 、CoreActivity等即可。</p>
+<p>  当然大多数必要的初始化可以放在Application中（建议再启动一个子线程），因为你的进程说不定什么时候就被系统回收了，这时候直接启动时是启动被系统回收的时候正处于Resume状态的那个Activity，那你的初始化的`Activity就不会被执行了。 </p>
+</li>
+</ul>
+<p>参考：<br><a target="_blank" rel="noopener" href="http://blog.csdn.net/yanzhenjie1003/article/details/52201896">带你重新认识：Android Splash页秒开 Activity白屏 Activity黑屏</a><br><a target="_blank" rel="noopener" href="https://github.com/PGzxc/SplashOpenApp">SplashOpenApp</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/APP%E7%A7%92%E5%BC%80/" rel="tag"># APP秒开</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/34c1b827.html" rel="prev" title="Android开发之——Android系统架构与系统源码目录">
+      <i class="fa fa-chevron-left"></i> Android开发之——Android系统架构与系统源码目录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/172008d.html" rel="next" title="Android开发之——EventBus3.x的使用">
+      Android开发之——EventBus3.x的使用 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjQ1OC85MDE5"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#APP%E5%90%AF%E5%8A%A8%E6%97%B6%E7%99%BD%E5%B1%8F-%E9%BB%91%E5%B1%8F%E3%80%81Activity%E6%89%93%E5%BC%80%E6%97%B6%E7%99%BD%E5%B1%8F-%E9%BB%91%E5%B1%8F"><span class="nav-number">2.</span> <span class="nav-text">APP启动时白屏&#x2F;黑屏、Activity打开时白屏&#x2F;黑屏</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AA%E5%B1%8F%E5%8E%9F%E5%9B%A0%E5%89%96%E6%9E%90StartingWindow%EF%BC%88Preview-Window%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">闪屏原因剖析StartingWindow（Preview Window）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">解决办法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A7%92%E5%BC%80%E6%96%B9%E6%A1%88"><span class="nav-number">3.</span> <span class="nav-text">秒开方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">3.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.2.</span> <span class="nav-text">实现步骤</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">967</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">378</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PGzxc" title="GitHub → https://github.com/PGzxc" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http://blog.csdn.net/calvin_zhou" rel="noopener" target="_blank"><i class="book fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http://weibo.com/5582039920" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>微博</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http://www.jianshu.com/u/c5cdcb4dc52b" rel="noopener" target="_blank"><i class="heartbeat fa-fw"></i>简书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wanandroid.com/" title="https://wanandroid.com/" rel="noopener" target="_blank">鸿洋</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/home.html" title="http://www.ruanyifeng.com/home.html" rel="noopener" target="_blank">阮一峰</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://memento.net.cn" title="https://memento.net.cn" rel="noopener" target="_blank">琅涯阁</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/sinyu890807/" title="http://blog.csdn.net/sinyu890807/" rel="noopener" target="_blank">郭霖</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/luoshengyang/" title="http://blog.csdn.net/luoshengyang/" rel="noopener" target="_blank">老罗</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/aigestudio/" title="http://blog.csdn.net/aigestudio/" rel="noopener" target="_blank">爱哥</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/wwj_748/" title="http://blog.csdn.net/wwj_748/" rel="noopener" target="_blank">小巫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/singwhatiwanna/" title="http://blog.csdn.net/singwhatiwanna/" rel="noopener" target="_blank">任玉刚</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/eclipsexys/" title="http://blog.csdn.net/eclipsexys/" rel="noopener" target="_blank">徐医生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/bboyfeiyu/" title="http://blog.csdn.net/bboyfeiyu/" rel="noopener" target="_blank">Mr.Simple</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/xyz_lmn/" title="http://blog.csdn.net/xyz_lmn/" rel="noopener" target="_blank">张兴业</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.android.google.cn/index.html" title="https://developer.android.google.cn/index.html" rel="noopener" target="_blank">谷歌中国</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备18061062号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pgzxc</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">1.4m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">20:35</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>

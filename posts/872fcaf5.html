@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一 IOS数据存储常用方式 XML属性列表(plist)归档(Documents) Preference(偏好设置) NSKeyedArchiver归档(NSCoding) SQLite3 Core Data">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IOS开发之——数据存取(57)">
+<meta property="og:url" content="http://pgzxc.github.io/posts/872fcaf5.html">
+<meta property="og:site_name" content="PGzxc的博客">
+<meta property="og:description" content="一 IOS数据存储常用方式 XML属性列表(plist)归档(Documents) Preference(偏好设置) NSKeyedArchiver归档(NSCoding) SQLite3 Core Data">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pgzxc.com/ios-data-write-read-view.png">
+<meta property="og:image" content="https://images.pgzxc.com/ios-data-document-write.png">
+<meta property="og:image" content="https://images.pgzxc.com/ios-data-document-read.png">
+<meta property="article:published_time" content="2020-07-09T14:48:46.000Z">
+<meta property="article:modified_time" content="2020-07-09T14:50:22.949Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="IOS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pgzxc.com/ios-data-write-read-view.png">
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/872fcaf5.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>IOS开发之——数据存取(57) | PGzxc的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">PGzxc的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">967</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">85</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">378</span></a>
+
+  </li>
+        <li class="menu-item menu-item-comments">
+
+    <a href="/comments/" rel="section"><i class="fa fa-comments fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/872fcaf5.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          IOS开发之——数据存取(57)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-09 22:48:46 / 修改时间：22:50:22" itemprop="dateCreated datePublished" datetime="2020-07-09T22:48:46+08:00">2020-07-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">移动开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="一-IOS数据存储常用方式"><a href="#一-IOS数据存储常用方式" class="headerlink" title="一 IOS数据存储常用方式"></a>一 IOS数据存储常用方式</h2><ul>
+<li>XML属性列表(plist)归档(Documents)</li>
+<li>Preference(偏好设置)</li>
+<li>NSKeyedArchiver归档(NSCoding)</li>
+<li>SQLite3</li>
+<li>Core Data</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="二数据存储位置-应用沙盒"><a href="#二数据存储位置-应用沙盒" class="headerlink" title="二数据存储位置(应用沙盒)"></a>二数据存储位置(应用沙盒)</h2><ul>
+<li>Documents：保存应用运行时需要持久化的数据，iTunes同步设备时会备份该目录。例如：游戏应用可将游戏归档保存在该目录</li>
+<li>tmp：保存应用运行时所需的临时数据，使用完毕后再将相应的文件从该目录删除。应用没有运行时，系统也可能会清除该目录下的文件。iTunes不会备份该目录</li>
+<li>Library/Caches：保存应用运行时生成的需要持久化的数据，iTunes同步设备时不会备份该目录。一般存储体积大，不需要备份的非常重要数据</li>
+<li>Library/Preference：保存应用的所有偏好设置，iOS的Settings(设置)应用会在该目录中查找应用的设置信息。iTunes同步设备时会备份该目录</li>
+</ul>
+<h2 id="三-演示方式"><a href="#三-演示方式" class="headerlink" title="三 演示方式"></a>三 演示方式</h2><ul>
+<li>页面上有存储和读取两个按钮</li>
+<li>点击存储按钮时，写入数据</li>
+<li>点击读取按钮时，读取写入的数据</li>
+</ul>
+<p><img src="https://images.pgzxc.com/ios-data-write-read-view.png" alt=""></p>
+<h2 id="四-常见的数据存储"><a href="#四-常见的数据存储" class="headerlink" title="四 常见的数据存储"></a>四 常见的数据存储</h2><h3 id="4-1-Documents归档"><a href="#4-1-Documents归档" class="headerlink" title="4.1 Documents归档"></a>4.1 Documents归档</h3><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;保存按钮</span><br><span class="line">NSLog(@&quot;%@&quot;,NSHomeDirectory());</span><br><span class="line">NSString *home&#x3D;NSHomeDirectory();</span><br><span class="line">NSString *docPath&#x3D;NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES )[0];</span><br><span class="line">NSLog(@&quot;%@&quot;,docPath);</span><br><span class="line">&#x2F;&#x2F;文件路径</span><br><span class="line">NSString *filePath&#x3D;[docPath stringByAppendingPathComponent:@&quot;data.plist&quot;];</span><br><span class="line">&#x2F;&#x2F;只有具备了writeToFile的对象才能写入plist</span><br><span class="line">NSArray *array&#x3D;@[@1,@2,@&quot;123&quot;];</span><br><span class="line">[array writeToFile:filePath atomically:YES];</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;读取</span><br><span class="line">NSString *docPath&#x3D;NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES )[0];</span><br><span class="line">NSLog(@&quot;%@&quot;,docPath);</span><br><span class="line">&#x2F;&#x2F;文件路径</span><br><span class="line">NSString *filePath&#x3D;[docPath stringByAppendingPathComponent:@&quot;data.plist&quot;];</span><br><span class="line">NSArray *data&#x3D;[NSArray arrayWithContentsOfFile:filePath];</span><br><span class="line">NSLog(@&quot;%@&quot;,data);</span><br></pre></td></tr></table></figure>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><ul>
+<li><p>数据写入时</p>
+<p><img src="https://images.pgzxc.com/ios-data-document-write.png" alt=""></p>
+</li>
+<li><p>读取Document存储的数据</p>
+<p><img src="https://images.pgzxc.com/ios-data-document-read.png" alt=""></p>
+</li>
+</ul>
+<h3 id="4-2-偏好设置存储方式"><a href="#4-2-偏好设置存储方式" class="headerlink" title="4.2 偏好设置存储方式"></a>4.2 偏好设置存储方式</h3><h4 id="存储位置"><a href="#存储位置" class="headerlink" title="存储位置"></a>存储位置</h4><ul>
+<li><p>偏好设置的存储路径是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">应用沙盒&#x2F;Library&#x2F;Preferences</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;保存</span><br><span class="line">&#x2F;&#x2F;[NSUserDefaults standardUserDefaults]可以直接操作偏好设置文件夹</span><br><span class="line"> NSUserDefaults *defaults&#x3D; [NSUserDefaults standardUserDefaults];</span><br><span class="line"> &#x2F;&#x2F;自动帮我们生成一个plist文件存放偏好设置的文件夹</span><br><span class="line"> [defaults setObject:@&quot;123&quot; forKey:@&quot;key&quot;];</span><br><span class="line"> &#x2F;&#x2F;同步，把内存中的数据和硬盘同步</span><br><span class="line"> [defaults synchronize];</span><br><span class="line"> </span><br><span class="line"> &#x2F;&#x2F;读取</span><br><span class="line"> NSUserDefaults *defaults&#x3D;[NSUserDefaults standardUserDefaults];</span><br><span class="line"> NSLog(@&quot;%@&quot;,[defaults objectForKey:@&quot;key&quot;]);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-归档方式"><a href="#4-3-归档方式" class="headerlink" title="4.3 归档方式"></a>4.3 归档方式</h3><h4 id="Person存储对象"><a href="#Person存储对象" class="headerlink" title="Person存储对象"></a>Person存储对象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;Person.h</span><br><span class="line">#import &lt;Foundation&#x2F;Foundation.h&gt;</span><br><span class="line">@interface Person : NSObject&lt;NSSecureCoding&gt;</span><br><span class="line">@property (nonatomic,assign) int age;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;Person.m</span><br><span class="line">#import &quot;Person.h&quot;</span><br><span class="line">@implementation Person</span><br><span class="line">+ (BOOL)supportsSecureCoding</span><br><span class="line">&#123;</span><br><span class="line">    return YES;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;在对象归档的时候调用</span><br><span class="line">- (void)encodeWithCoder:(NSCoder *)coder</span><br><span class="line">&#123;</span><br><span class="line">    [coder encodeInt:_age forKey:@&quot;age&quot;];</span><br><span class="line">&#125;</span><br><span class="line">- (nullable instancetype)initWithCoder:(nonnull NSCoder *)coder &#123;</span><br><span class="line">    if ([super init])</span><br><span class="line">    &#123;</span><br><span class="line">        self.age&#x3D;[coder decodeIntForKey:@&quot;age&quot;];</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line">- (NSString *)description</span><br><span class="line">&#123;</span><br><span class="line">    return [NSString stringWithFormat:@&quot;&lt;%@ : %p, \&quot;%d\&quot;&gt;&quot;, [self class], self, _age];</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<h4 id="保存归档文件"><a href="#保存归档文件" class="headerlink" title="保存归档文件"></a>保存归档文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;创建Person对象</span><br><span class="line"> Person *person&#x3D;[Person new];</span><br><span class="line"> person.age&#x3D;18;</span><br><span class="line"> &#x2F;&#x2F;1.对需要保存的数据进行编码</span><br><span class="line"> NSData *data &#x3D; [NSKeyedArchiver archivedDataWithRootObject:person requiringSecureCoding:YES error:nil];</span><br><span class="line"> &#x2F;&#x2F;2将二进制数据保存到文件</span><br><span class="line"> &#x2F;&#x2F;创建文件</span><br><span class="line"> NSString *docPath&#x3D;NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];</span><br><span class="line"> &#x2F;&#x2F;文件路径</span><br><span class="line"> NSString *filePath&#x3D;[docPath stringByAppendingPathComponent:@&quot;person.archiver&quot;];</span><br><span class="line"> &#x2F;&#x2F;创建文件</span><br><span class="line"> [[NSFileManager defaultManager]createFileAtPath:filePath contents:nil attributes:nil];</span><br><span class="line"> [data writeToFile:filePath atomically:YES];</span><br></pre></td></tr></table></figure>
+
+<h4 id="解归档"><a href="#解归档" class="headerlink" title="解归档"></a>解归档</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;解归档</span><br><span class="line"> NSString *docPath&#x3D;NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];</span><br><span class="line">   &#x2F;&#x2F;文件路径</span><br><span class="line"> NSString *filePath&#x3D;[docPath stringByAppendingPathComponent:@&quot;person.archiver&quot;];</span><br><span class="line"> &#x2F;&#x2F;读取文件的内容</span><br><span class="line"> NSData *data &#x3D; [NSData dataWithContentsOfFile:filePath];</span><br><span class="line"> &#x2F;&#x2F;将二进制数据转换为对应的对象类型</span><br><span class="line"> Person *person&#x3D;[NSKeyedUnarchiver unarchivedObjectOfClass:[Person class] fromData:data error:nil];</span><br><span class="line"> NSLog(@&quot;%@&quot;,person);</span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/IOS/" rel="tag"># IOS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/901b68a8.html" rel="prev" title="IOS开发之——查看运行软件沙盒环境(56)">
+      <i class="fa fa-chevron-left"></i> IOS开发之——查看运行软件沙盒环境(56)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/e57f1c93.html" rel="next" title="C#开发之——运算符(2.2)">
+      C#开发之——运算符(2.2) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjQ1OC85MDE5"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-IOS%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%B8%B8%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">一 IOS数据存储常用方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE-%E5%BA%94%E7%94%A8%E6%B2%99%E7%9B%92"><span class="nav-number">2.</span> <span class="nav-text">二数据存储位置(应用沙盒)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E6%BC%94%E7%A4%BA%E6%96%B9%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">三 演示方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E5%B8%B8%E8%A7%81%E7%9A%84%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8"><span class="nav-number">4.</span> <span class="nav-text">四 常见的数据存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Documents%E5%BD%92%E6%A1%A3"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 Documents归档</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">4.1.1.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C"><span class="nav-number">4.2.</span> <span class="nav-text">结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E5%81%8F%E5%A5%BD%E8%AE%BE%E7%BD%AE%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">4.3.</span> <span class="nav-text">4.2 偏好设置存储方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE"><span class="nav-number">4.3.1.</span> <span class="nav-text">存储位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="nav-number">4.3.2.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E5%BD%92%E6%A1%A3%E6%96%B9%E5%BC%8F"><span class="nav-number">4.4.</span> <span class="nav-text">4.3 归档方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Person%E5%AD%98%E5%82%A8%E5%AF%B9%E8%B1%A1"><span class="nav-number">4.4.1.</span> <span class="nav-text">Person存储对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%9D%E5%AD%98%E5%BD%92%E6%A1%A3%E6%96%87%E4%BB%B6"><span class="nav-number">4.4.2.</span> <span class="nav-text">保存归档文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%BD%92%E6%A1%A3"><span class="nav-number">4.4.3.</span> <span class="nav-text">解归档</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">967</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">378</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PGzxc" title="GitHub → https://github.com/PGzxc" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http://blog.csdn.net/calvin_zhou" rel="noopener" target="_blank"><i class="book fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http://weibo.com/5582039920" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>微博</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http://www.jianshu.com/u/c5cdcb4dc52b" rel="noopener" target="_blank"><i class="heartbeat fa-fw"></i>简书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wanandroid.com/" title="https://wanandroid.com/" rel="noopener" target="_blank">鸿洋</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/home.html" title="http://www.ruanyifeng.com/home.html" rel="noopener" target="_blank">阮一峰</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://memento.net.cn" title="https://memento.net.cn" rel="noopener" target="_blank">琅涯阁</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/sinyu890807/" title="http://blog.csdn.net/sinyu890807/" rel="noopener" target="_blank">郭霖</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/luoshengyang/" title="http://blog.csdn.net/luoshengyang/" rel="noopener" target="_blank">老罗</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/aigestudio/" title="http://blog.csdn.net/aigestudio/" rel="noopener" target="_blank">爱哥</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/wwj_748/" title="http://blog.csdn.net/wwj_748/" rel="noopener" target="_blank">小巫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/singwhatiwanna/" title="http://blog.csdn.net/singwhatiwanna/" rel="noopener" target="_blank">任玉刚</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/eclipsexys/" title="http://blog.csdn.net/eclipsexys/" rel="noopener" target="_blank">徐医生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/bboyfeiyu/" title="http://blog.csdn.net/bboyfeiyu/" rel="noopener" target="_blank">Mr.Simple</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/xyz_lmn/" title="http://blog.csdn.net/xyz_lmn/" rel="noopener" target="_blank">张兴业</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.android.google.cn/index.html" title="https://developer.android.google.cn/index.html" rel="noopener" target="_blank">谷歌中国</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备18061062号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pgzxc</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">1.4m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">20:35</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>

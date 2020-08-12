@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="原文参考：Jenkins持续化构建Android项目（一）-安装配置Jenkins（by 星空武哥）   前言使用Jenkins自动构建的服务端配置，可以方便的实现自动化打包，使用第三方插件，打包成功的apk文件可以实时更新到fir和蒲公英，设置邮件服务，随时随地接受到构建成功，失败，取消等消息提醒！ 这篇博客主要介绍Jenkins的安装和配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jenkins开发之——构建Android项目(2)">
+<meta property="og:url" content="http://pgzxc.github.io/posts/7d8d3d8.html">
+<meta property="og:site_name" content="PGzxc的博客">
+<meta property="og:description" content="原文参考：Jenkins持续化构建Android项目（一）-安装配置Jenkins（by 星空武哥）   前言使用Jenkins自动构建的服务端配置，可以方便的实现自动化打包，使用第三方插件，打包成功的apk文件可以实时更新到fir和蒲公英，设置邮件服务，随时随地接受到构建成功，失败，取消等消息提醒！ 这篇博客主要介绍Jenkins的安装和配置">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pgzxc.com/jenkens-cmd.png">
+<meta property="og:image" content="https://images.pgzxc.com/jenkens-install.png">
+<meta property="og:image" content="https://images.pgzxc.com/tomcat-jenkins.png">
+<meta property="og:image" content="https://images.pgzxc.com/unlock-Jenkins.png">
+<meta property="og:image" content="https://images.pgzxc.com/init-admin-password.png">
+<meta property="og:image" content="https://images.pgzxc.com/install-plugins.png">
+<meta property="og:image" content="https://images.pgzxc.com/jenkens-plugins.png">
+<meta property="og:image" content="https://images.pgzxc.com/jenkens-new-user.png">
+<meta property="og:image" content="https://images.pgzxc.com/jenkens-homepage.png">
+<meta property="article:published_time" content="2017-11-18T08:47:38.000Z">
+<meta property="article:modified_time" content="2020-07-03T12:07:33.233Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="项目构建">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pgzxc.com/jenkens-cmd.png">
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/7d8d3d8.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Jenkins开发之——构建Android项目(2) | PGzxc的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">PGzxc的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">967</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">85</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">378</span></a>
+
+  </li>
+        <li class="menu-item menu-item-comments">
+
+    <a href="/comments/" rel="section"><i class="fa fa-comments fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/7d8d3d8.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Jenkins开发之——构建Android项目(2)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-11-18 16:47:38" itemprop="dateCreated datePublished" datetime="2017-11-18T16:47:38+08:00">2017-11-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-03 20:07:33" itemprop="dateModified" datetime="2020-07-03T20:07:33+08:00">2020-07-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/Jenkins/" itemprop="url" rel="index"><span itemprop="name">Jenkins</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>848</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>原文参考：<a target="_blank" rel="noopener" href="http://blog.csdn.net/lsyz0021/article/details/72681857">Jenkins持续化构建Android项目（一）-安装配置Jenkins（by 星空武哥）</a>  </p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>使用Jenkins自动构建的服务端配置，可以方便的实现自动化打包，使用第三方插件，打包成功的apk文件可以实时更新到fir和蒲公英，设置邮件服务，随时随地接受到构建成功，失败，取消等消息提醒！</p>
+<p>这篇博客主要介绍Jenkins的安装和配置  </p>
+<a id="more"></a>
+<h1 id="下载安装Jenkins"><a href="#下载安装Jenkins" class="headerlink" title="下载安装Jenkins"></a>下载安装Jenkins</h1><h2 id="测试开发环境"><a href="#测试开发环境" class="headerlink" title="测试开发环境"></a>测试开发环境</h2><p>在看下面的文章时，默认你已经搭建好Android开发环境了，并且已经配置好环境变量了（jdk、sdk、gradle环境变量都要配置，并且已经配置好了tomcat）<br>下面的命令测试通过就说明环境变量配置好了，分别用下面的命令测试<br><img src="https://images.pgzxc.com/jenkens-cmd.png" alt="环境变量">    </p>
+<h2 id="下载Jenkens"><a href="#下载Jenkens" class="headerlink" title="下载Jenkens"></a>下载Jenkens</h2><p>配置完上面环境变量后，去官网下载Jenkins：<a target="_blank" rel="noopener" href="https://jenkins.io/download/">https://jenkins.io/download/</a> ，这里有两种安装方式：一个是安装包，一种是war包，war包是放在tomcat的webapps目录下即可，运行tomcat后他会自动解压，建议这种是用这种方式。本教程也是使用的war的形式。<br><img src="https://images.pgzxc.com/jenkens-install.png" alt="">  </p>
+<h1 id="配置Jenkens"><a href="#配置Jenkens" class="headerlink" title="配置Jenkens"></a>配置Jenkens</h1><h2 id="下载完成后，将war包放到tomcat的”webapps”目录下，然后运行tomcat，"><a href="#下载完成后，将war包放到tomcat的”webapps”目录下，然后运行tomcat，" class="headerlink" title="下载完成后，将war包放到tomcat的”webapps”目录下，然后运行tomcat，"></a>下载完成后，将war包放到tomcat的”webapps”目录下，然后运行tomcat，</h2><p><img src="https://images.pgzxc.com/tomcat-jenkins.png" alt="tomcat-jenkins">  </p>
+<h2 id="待tomcat启动后在”webapps”目录下就可以看到”jenkins”目录，然后再浏览器内输入：http-localhost-8080-jenkins-登陆Jenkins"><a href="#待tomcat启动后在”webapps”目录下就可以看到”jenkins”目录，然后再浏览器内输入：http-localhost-8080-jenkins-登陆Jenkins" class="headerlink" title="待tomcat启动后在”webapps”目录下就可以看到”jenkins”目录，然后再浏览器内输入：http://localhost:8080/jenkins/ 登陆Jenkins"></a>待tomcat启动后在”webapps”目录下就可以看到”jenkins”目录，然后再浏览器内输入：<a target="_blank" rel="noopener" href="http://localhost:8080/jenkins/">http://localhost:8080/jenkins/</a> 登陆Jenkins</h2><p><img src="https://images.pgzxc.com/unlock-Jenkins.png" alt="unlock">  </p>
+<h2 id="首次登陆后需要重置初始密码，找到个人文件目录，Jenkins自动生成的初始密码"><a href="#首次登陆后需要重置初始密码，找到个人文件目录，Jenkins自动生成的初始密码" class="headerlink" title="首次登陆后需要重置初始密码，找到个人文件目录，Jenkins自动生成的初始密码"></a>首次登陆后需要重置初始密码，找到个人文件目录，Jenkins自动生成的初始密码</h2><p>注：只有在登陆首次登陆时需要输入这个默认的密码</p>
+<p><img src="https://images.pgzxc.com/init-admin-password.png" alt="initAdminPassword">  </p>
+<h2 id="下一步是让你选择要安装的插件，这里我们建议选择”建议安装的插件”，因为这里面几乎包含我所需要的插件了"><a href="#下一步是让你选择要安装的插件，这里我们建议选择”建议安装的插件”，因为这里面几乎包含我所需要的插件了" class="headerlink" title="下一步是让你选择要安装的插件，这里我们建议选择”建议安装的插件”，因为这里面几乎包含我所需要的插件了"></a>下一步是让你选择要安装的插件，这里我们建议选择”建议安装的插件”，因为这里面几乎包含我所需要的插件了</h2><p><img src="https://images.pgzxc.com/install-plugins.png" alt="安装插件">  </p>
+<h2 id="插件的安装需要一段时间，下面显示要安装的插件，可以查看安装进度"><a href="#插件的安装需要一段时间，下面显示要安装的插件，可以查看安装进度" class="headerlink" title="插件的安装需要一段时间，下面显示要安装的插件，可以查看安装进度"></a>插件的安装需要一段时间，下面显示要安装的插件，可以查看安装进度</h2><p><img src="https://images.pgzxc.com/jenkens-plugins.png" alt="安装进度">  </p>
+<h2 id="插件安装完成后，默认跳转到创建用户界面"><a href="#插件安装完成后，默认跳转到创建用户界面" class="headerlink" title="插件安装完成后，默认跳转到创建用户界面"></a>插件安装完成后，默认跳转到创建用户界面</h2><p><img src="https://images.pgzxc.com/jenkens-new-user.png" alt="创建用户">  </p>
+<h2 id="下一步进入主界面，至此环境搭建成功"><a href="#下一步进入主界面，至此环境搭建成功" class="headerlink" title="下一步进入主界面，至此环境搭建成功"></a>下一步进入主界面，至此环境搭建成功</h2><p><img src="https://images.pgzxc.com/jenkens-homepage.png" alt=""></p>
+<p>参考：<br><a target="_blank" rel="noopener" href="http://blog.csdn.net/lsyz0021/article/details/72681857">Jenkins持续化构建Android项目（一）-安装配置Jenkins（by 星空武哥）</a><br><a target="_blank" rel="noopener" href="https://www.pgyer.com/doc/view/jenkins">蒲公英使用 Jenkins 实现持续集成 (Android)</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA/" rel="tag"># 项目构建</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/5d93c695.html" rel="prev" title="Android开发之——Gradle文件">
+      <i class="fa fa-chevron-left"></i> Android开发之——Gradle文件
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/17119812.html" rel="next" title="Jenkins构建Android项目生成apk">
+      Jenkins构建Android项目生成apk <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjQ1OC85MDE5"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85Jenkins"><span class="nav-number">2.</span> <span class="nav-text">下载安装Jenkins</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="nav-number">2.1.</span> <span class="nav-text">测试开发环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDJenkens"><span class="nav-number">2.2.</span> <span class="nav-text">下载Jenkens</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEJenkens"><span class="nav-number">3.</span> <span class="nav-text">配置Jenkens</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%8C%E6%88%90%E5%90%8E%EF%BC%8C%E5%B0%86war%E5%8C%85%E6%94%BE%E5%88%B0tomcat%E7%9A%84%E2%80%9Dwebapps%E2%80%9D%E7%9B%AE%E5%BD%95%E4%B8%8B%EF%BC%8C%E7%84%B6%E5%90%8E%E8%BF%90%E8%A1%8Ctomcat%EF%BC%8C"><span class="nav-number">3.1.</span> <span class="nav-text">下载完成后，将war包放到tomcat的”webapps”目录下，然后运行tomcat，</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%85tomcat%E5%90%AF%E5%8A%A8%E5%90%8E%E5%9C%A8%E2%80%9Dwebapps%E2%80%9D%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%B0%B1%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%E2%80%9Djenkins%E2%80%9D%E7%9B%AE%E5%BD%95%EF%BC%8C%E7%84%B6%E5%90%8E%E5%86%8D%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E8%BE%93%E5%85%A5%EF%BC%9Ahttp-localhost-8080-jenkins-%E7%99%BB%E9%99%86Jenkins"><span class="nav-number">3.2.</span> <span class="nav-text">待tomcat启动后在”webapps”目录下就可以看到”jenkins”目录，然后再浏览器内输入：http:&#x2F;&#x2F;localhost:8080&#x2F;jenkins&#x2F; 登陆Jenkins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A6%96%E6%AC%A1%E7%99%BB%E9%99%86%E5%90%8E%E9%9C%80%E8%A6%81%E9%87%8D%E7%BD%AE%E5%88%9D%E5%A7%8B%E5%AF%86%E7%A0%81%EF%BC%8C%E6%89%BE%E5%88%B0%E4%B8%AA%E4%BA%BA%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%EF%BC%8CJenkins%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E7%9A%84%E5%88%9D%E5%A7%8B%E5%AF%86%E7%A0%81"><span class="nav-number">3.3.</span> <span class="nav-text">首次登陆后需要重置初始密码，找到个人文件目录，Jenkins自动生成的初始密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E4%B8%80%E6%AD%A5%E6%98%AF%E8%AE%A9%E4%BD%A0%E9%80%89%E6%8B%A9%E8%A6%81%E5%AE%89%E8%A3%85%E7%9A%84%E6%8F%92%E4%BB%B6%EF%BC%8C%E8%BF%99%E9%87%8C%E6%88%91%E4%BB%AC%E5%BB%BA%E8%AE%AE%E9%80%89%E6%8B%A9%E2%80%9D%E5%BB%BA%E8%AE%AE%E5%AE%89%E8%A3%85%E7%9A%84%E6%8F%92%E4%BB%B6%E2%80%9D%EF%BC%8C%E5%9B%A0%E4%B8%BA%E8%BF%99%E9%87%8C%E9%9D%A2%E5%87%A0%E4%B9%8E%E5%8C%85%E5%90%AB%E6%88%91%E6%89%80%E9%9C%80%E8%A6%81%E7%9A%84%E6%8F%92%E4%BB%B6%E4%BA%86"><span class="nav-number">3.4.</span> <span class="nav-text">下一步是让你选择要安装的插件，这里我们建议选择”建议安装的插件”，因为这里面几乎包含我所需要的插件了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85%E9%9C%80%E8%A6%81%E4%B8%80%E6%AE%B5%E6%97%B6%E9%97%B4%EF%BC%8C%E4%B8%8B%E9%9D%A2%E6%98%BE%E7%A4%BA%E8%A6%81%E5%AE%89%E8%A3%85%E7%9A%84%E6%8F%92%E4%BB%B6%EF%BC%8C%E5%8F%AF%E4%BB%A5%E6%9F%A5%E7%9C%8B%E5%AE%89%E8%A3%85%E8%BF%9B%E5%BA%A6"><span class="nav-number">3.5.</span> <span class="nav-text">插件的安装需要一段时间，下面显示要安装的插件，可以查看安装进度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90%E5%90%8E%EF%BC%8C%E9%BB%98%E8%AE%A4%E8%B7%B3%E8%BD%AC%E5%88%B0%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2"><span class="nav-number">3.6.</span> <span class="nav-text">插件安装完成后，默认跳转到创建用户界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E4%B8%80%E6%AD%A5%E8%BF%9B%E5%85%A5%E4%B8%BB%E7%95%8C%E9%9D%A2%EF%BC%8C%E8%87%B3%E6%AD%A4%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E6%88%90%E5%8A%9F"><span class="nav-number">3.7.</span> <span class="nav-text">下一步进入主界面，至此环境搭建成功</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">967</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">378</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PGzxc" title="GitHub → https://github.com/PGzxc" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http://blog.csdn.net/calvin_zhou" rel="noopener" target="_blank"><i class="book fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http://weibo.com/5582039920" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>微博</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http://www.jianshu.com/u/c5cdcb4dc52b" rel="noopener" target="_blank"><i class="heartbeat fa-fw"></i>简书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wanandroid.com/" title="https://wanandroid.com/" rel="noopener" target="_blank">鸿洋</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/home.html" title="http://www.ruanyifeng.com/home.html" rel="noopener" target="_blank">阮一峰</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://memento.net.cn" title="https://memento.net.cn" rel="noopener" target="_blank">琅涯阁</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/sinyu890807/" title="http://blog.csdn.net/sinyu890807/" rel="noopener" target="_blank">郭霖</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/luoshengyang/" title="http://blog.csdn.net/luoshengyang/" rel="noopener" target="_blank">老罗</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/aigestudio/" title="http://blog.csdn.net/aigestudio/" rel="noopener" target="_blank">爱哥</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/wwj_748/" title="http://blog.csdn.net/wwj_748/" rel="noopener" target="_blank">小巫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/singwhatiwanna/" title="http://blog.csdn.net/singwhatiwanna/" rel="noopener" target="_blank">任玉刚</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/eclipsexys/" title="http://blog.csdn.net/eclipsexys/" rel="noopener" target="_blank">徐医生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/bboyfeiyu/" title="http://blog.csdn.net/bboyfeiyu/" rel="noopener" target="_blank">Mr.Simple</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/xyz_lmn/" title="http://blog.csdn.net/xyz_lmn/" rel="noopener" target="_blank">张兴业</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.android.google.cn/index.html" title="https://developer.android.google.cn/index.html" rel="noopener" target="_blank">谷歌中国</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备18061062号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pgzxc</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">1.4m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">20:35</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>

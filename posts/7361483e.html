@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="现在Dagger2在项目里用的越来越多了，特别是RxJava+Retrofit+MVP+Dagger2在Android框架搭建时被越来越多的使用了。    Dagger2是Google出的依赖注入框架。肯定有小伙伴疑问，为什么会有个 2 呢。该框架是基于square开发的dagger基础上开发的。    Dagger2的原理是在编译期生成相应的依赖注入代码。这也是和其他依赖注入框架不同的地方，其他">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发之——Dagger2入门教程">
+<meta property="og:url" content="http://pgzxc.github.io/posts/7361483e.html">
+<meta property="og:site_name" content="PGzxc的博客">
+<meta property="og:description" content="现在Dagger2在项目里用的越来越多了，特别是RxJava+Retrofit+MVP+Dagger2在Android框架搭建时被越来越多的使用了。    Dagger2是Google出的依赖注入框架。肯定有小伙伴疑问，为什么会有个 2 呢。该框架是基于square开发的dagger基础上开发的。    Dagger2的原理是在编译期生成相应的依赖注入代码。这也是和其他依赖注入框架不同的地方，其他">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pgzxc.com/dagger2.png">
+<meta property="article:published_time" content="2017-12-11T14:51:46.000Z">
+<meta property="article:modified_time" content="2020-07-03T12:07:33.187Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Dagger2">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pgzxc.com/dagger2.png">
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/7361483e.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Android开发之——Dagger2入门教程 | PGzxc的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">PGzxc的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">967</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">85</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">378</span></a>
+
+  </li>
+        <li class="menu-item menu-item-comments">
+
+    <a href="/comments/" rel="section"><i class="fa fa-comments fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/7361483e.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android开发之——Dagger2入门教程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-12-11 22:51:46" itemprop="dateCreated datePublished" datetime="2017-12-11T22:51:46+08:00">2017-12-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-03 20:07:33" itemprop="dateModified" datetime="2020-07-03T20:07:33+08:00">2020-07-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">移动开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>12k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>11 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>现在Dagger2在项目里用的越来越多了，特别是RxJava+Retrofit+MVP+Dagger2在Android框架搭建时被越来越多的使用了。   </p>
+<p>Dagger2是Google出的依赖注入框架。肯定有小伙伴疑问，为什么会有个 2 呢。该框架是基于square开发的dagger基础上开发的。   </p>
+<p>Dagger2的原理是在编译期生成相应的依赖注入代码。这也是和其他依赖注入框架不同的地方，其他框架是在运行时期反射获取注解内容，影响了运行效率。   </p>
+<a id="more"></a>
+<h1 id="Dagger2配置"><a href="#Dagger2配置" class="headerlink" title="Dagger2配置"></a>Dagger2配置</h1><p>使用Dagger2之前需要一些配置，该配置是在Android Studio中进行操作<br>最新的AS只需在Module的build.gradle中添加如下配置   </p>
+<pre><code>dependencies 
+&#123;
+  implementation &apos;com.google.dagger:dagger:2.9&apos;
+  annotationProcessor &apos;com.google.dagger:dagger-compiler:2.9&apos;
+&#125;</code></pre><h1 id="Dagger2的简单使用"><a href="#Dagger2的简单使用" class="headerlink" title="Dagger2的简单使用"></a>Dagger2的简单使用</h1><p>Dagger2的使用，需要大量的学习成本，不是很能够容易的上手并使用。该博客将从简单入手，尽可能的使用简单的例子演示Dagger2的功能。<br>在之前的分析中，通过Dagger2的目的是将程序分为三个部分。   </p>
+<ul>
+<li>实例化部分：对象的实例化。类似于容器，将类的实例放在容器里。</li>
+<li>调用者：需要实例化对象的类。</li>
+<li>沟通桥梁：利用Dagger2中的一些API 将两者联系。   </li>
+</ul>
+<h2 id="先看实例化部分（容器），在此处是Module"><a href="#先看实例化部分（容器），在此处是Module" class="headerlink" title="先看实例化部分（容器），在此处是Module"></a>先看实例化部分（容器），在此处是Module</h2><pre><code>@Module //提供依赖对象的实例
+public class MainModule 
+&#123;
+  @Provides // 关键字，标明该方法提供依赖对象
+  Person providerPerson()
+    &#123;
+      //提供Person对象
+      return new Person();
+    &#125;
+&#125;</code></pre><h2 id="沟通部分Component"><a href="#沟通部分Component" class="headerlink" title="沟通部分Component"></a>沟通部分Component</h2><pre><code>@Component(modules = MainModule.class)// 作为桥梁，沟通调用者和依赖对象库
+public interface MainComponent 
+&#123;
+    //定义注入的方法
+    void inject(MainActivity activity);
+&#125;</code></pre><h2 id="Person对象类"><a href="#Person对象类" class="headerlink" title="Person对象类"></a>Person对象类</h2><pre><code>public class Person 
+&#123;
+   public Person()
+    &#123;
+     Log.i(&quot;dagger&quot;,&quot;person create!!!&quot;);
+    &#125;
+ &#125;</code></pre><h2 id="在Actvity中调用"><a href="#在Actvity中调用" class="headerlink" title="在Actvity中调用"></a>在Actvity中调用</h2><pre><code>public class MainActivity extends AppCompatActivity
+&#123;
+    @Inject   //标明需要注入的对象
+    Person person;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) 
+    &#123;
+     super.onCreate(savedInstanceState);
+     // 构造桥梁对象
+     MainComponent component = DaggerMainComponent.builder().mainModule(new MainModule()).build();
+     //注入
+     component.inject(this);
+
+    &#125;
+&#125;</code></pre><h2 id="过程分析"><a href="#过程分析" class="headerlink" title="过程分析"></a>过程分析</h2><ul>
+<li><p>创建Component(桥梁)，并调用注入方法    </p>
+<pre><code>// 构造桥梁对象
+ MainComponent component = DaggerMainComponent.builder().mainModule(new MainModule()).build();
+//注入
+component.inject(this);</code></pre></li>
+<li><p>查找当前类中带有@Inject的成员变量     </p>
+</li>
+</ul>
+<pre><code>@Inject//标明需要注入的对象   
+Person person;</code></pre><ul>
+<li><p>根据成员变量的类型从Module中查找哪个有@Provides注解的方法返回值为当前类型   </p>
+<pre><code>@Provides // 关键字，标明该方法提供依赖对象
+Person providerPerson()
+&#123;
+ //提供Person对象
+ return new Person();
+&#125;</code></pre></li>
+</ul>
+<p><img src="https://images.pgzxc.com/dagger2.png" alt="dagger2"><br>在使用过程出现了很多注解：   </p>
+<ul>
+<li>@Module:作为实例对象的容器</li>
+<li>@Provides:标注能够提供实例化对象的方法</li>
+<li>@Component:作为桥梁，注入对象的通道</li>
+<li>@Inject：需要注入的方法</li>
+</ul>
+<p>如上使用有一种变通，修改MainModule和Person类    </p>
+<pre><code>@Module//提供依赖对象的实例
+public class MainModule 
+&#123;
+    /*
+    @Provides //关键字，标明该方法提供依赖对象
+    Person providerPerson()
+    &#123;
+    //提供Person对象
+    Log.i(&quot;dagger&quot;,&quot; from Module&quot;);
+    return new Person();
+    &#125;
+
+    */
+&#125;  
+
+
+public class Person 
+&#123;
+  @Inject  // 添加注解关键字
+  public Person()
+    &#123;
+     Log.i(&quot;dagger&quot;,&quot;person create!!!&quot;);
+    &#125;
+&#125;</code></pre><p>将Module中的providePerson()方法注释，在Person中添加@Inject注解，依然能够实现  </p>
+<p>逻辑如下：  </p>
+<ul>
+<li>先判断Module中是否有提供该对象实例化的方法。</li>
+<li>如果有则返回。结束。</li>
+<li>如果没有，则查找该类的构造方法，是否有带有@Inject的方法。如过存在，则返回。</li>
+</ul>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="Singleton-单例注解"><a href="#Singleton-单例注解" class="headerlink" title="@Singleton 单例注解"></a>@Singleton 单例注解</h2><p>假如，对于同一个对象，我们需要注入两次，如下方式<br>    public class MainActivity extends AppCompatActivity<br>    {<br>        @Inject<br>        Person person;</p>
+<pre><code>    @Inject
+    Person person2;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState)
+     &#123;
+       super.onCreate(savedInstanceState);
+       // 构造桥梁对象
+       MainComponent component = DaggerMainComponent.builder().mainModule(new MainModule()).build();
+       //注入
+      component.inject(this);
+      //打印两个对象的地址
+     Log.i(&quot;dagger&quot;,&quot;person = &quot;+ person.toString()+&quot;; person2 = &quot;+ person2.toString());
+    &#125;
+&#125;</code></pre><p>看一下结果：</p>
+<pre><code>person = com.example.dagger2.Person@430d1620;  
+person2 = example.dagger2.Person@430d17c8   </code></pre><p>可见两个对象不一致。也就是说创建了两个对象。<br>可以在提供实例化对象的方法上添加@Singleton注解    </p>
+<pre><code>@Provides //关键字,标明该方法提供依赖对象
+@Singleton
+Person providerPerson()
+&#123;
+   return new Person();
+&#125;</code></pre><p>同时，对于MainComponent也需要添加注解，不添加会无法编译   </p>
+<pre><code>@Singleton
+@Component(modules = MainModule.class)  // 作为桥梁，沟通调用者和依赖对象库
+public interface MainComponent 
+&#123;
+ //定义注入的方法
+ void inject(MainActivity activity);
+ &#125;</code></pre><p>此时在Log,会发现两个对象的地址一样，可见是同一个对象。</p>
+<pre><code>person = com.example.dagger2.Person@4310f898;   
+person2 = com.example.dagger2.Person@4310f898  </code></pre><p>那么不同的Activity之间，能否保持单例呢？<br>创建一个新的Activity，代码如下：   </p>
+<pre><code>public class Main2Actvity extends AppCompatActivity 
+&#123;
+   @Inject
+   Person person;
+   @Override
+   protected void onCreate(@Nullable Bundle savedInstanceState) 
+    &#123;
+      super.onCreate(savedInstanceState);
+      // 构造桥梁对象
+      MainComponent component = DaggerMainComponent.builder().mainModule(new MainModule()).build();
+      //注入
+      component.inject(this);
+      Log.i(&quot;dagger&quot;,&quot;person = &quot;+ person.toString());
+    &#125;
+&#125;</code></pre><p>结果如下： </p>
+<pre><code>person create!!!
+person = com.example.dagger2.Person@4310f898;    
+person2 = com.example.dagger2.Person@4310f898
+person create!!!
+person = com.example.dagger2.Person@43130058   </code></pre><p>可见，@Singleton只对一个Component有效，即其单例所依赖Component对象。</p>
+<h2 id="需要参数的实例化对象"><a href="#需要参数的实例化对象" class="headerlink" title="需要参数的实例化对象"></a>需要参数的实例化对象</h2><p>Person的构造方法发生了变化，需要传入一个Context，代码如下：  </p>
+<pre><code>public class Person 
+&#123;
+   private Context mContext;
+   public Person(Context context)
+    &#123;
+     mContext = context;
+     Log.i(&quot;dagger&quot;,&quot;create&quot;);
+    &#125;
+&#125;</code></pre><p>这样的话，我们需要修改MainModule  </p>
+<pre><code>@Module   //提供依赖对象的实例
+public class MainModule 
+&#123;
+ private Context mContext;
+ public MainModule(Context context)
+   &#123;
+     mContext = context;
+   &#125;
+@Provides
+Context providesContext()
+ &#123;
+   //提供上下文对象
+   return mContext;
+ &#125;
+@Provides //关键字，标明该方法提供依赖对象
+@Singleton
+Person providerPerson(Context context)
+ &#123;
+   return new Person(context);
+ &#125;
+
+&#125;</code></pre><p>修改providerPerson方法，传入Context对象。<br>添加providesContext(),用以提供Context对象。</p>
+<p>看一下使用:  </p>
+<pre><code>//构造桥梁对象
+ MainComponent component = DaggerMainComponent.builder().mainModule(new MainModule(this)).build();
+ //注入
+ component.inject(this);   </code></pre><p>逻辑：   </p>
+<ul>
+<li>根据@Inject注解，查找需要依赖注入的对象。</li>
+<li>从MainModule中根据返回值，找到providerPerson(Context context)对象。</li>
+<li>发现其需要传入参数Context，找到moudule中具有返回值为Context的方法providesContext()。</li>
+<li>最后就成功的构建了实例化对象。</li>
+</ul>
+<p>可能会有疑问，我既然module中已经保存了Context对象，那么为什么不直接使用Context对象呢，因为解耦，如果使用了保存的对象，会导致下次Context获取发生变化时，需要修改providerPerson(Context context)中的代码。   </p>
+<p>在编写Module中，不能出现传入参数和返回参数一致的情况，会导致死循环。  </p>
+<p>很容易理解，需要的和获取的是同一个方法，循环调用。  </p>
+<h2 id="依赖一个组件"><a href="#依赖一个组件" class="headerlink" title="依赖一个组件"></a>依赖一个组件</h2><p>在使用中，往往会有依赖另一个组件的情况。比如，在AppMoudle中能够提供Context对象，如下：</p>
+<pre><code>@Module
+public class AppModule 
+&#123;
+  private Context mContext;
+ public AppModule(Context context)
+  &#123;
+    mContext = context;
+  &#125;
+@Provides
+Context providesContext()
+  &#123;
+   // 提供Context对象　
+   return mContext;
+  &#125;
+&#125;</code></pre><p>而在另一个Module中需要依赖Context对象，那么怎么写呢？<br>首先编写当前AppModule的Component类     </p>
+<pre><code>@Component(modules = AppModule.class)
+public interface AppComponent 
+&#123;
+ // 向其下层提供Context 对象
+ Context proContext();
+&#125;</code></pre><p>在此种，因为Module中需要向下层提供Context对象，而其与下层的联系时通过Component<br>，所以需要在这里声明一个其所提供对象的方法。以便下层Module获取。   </p>
+<pre><code>@Module
+public class ActivityMoudule 
+&#123;
+  @Provides
+  Person providePerson(Context context)
+    &#123;
+    //　此方法需要Context 对象
+    return new Person(context);
+    &#125;
+&#125;
+
+@Component(dependencies = AppComponent.class,modules = ActivityMoudule.class)
+public interface ActivityComponent 
+&#123;
+  // 注入
+  void inject(MainActivity activity);
+&#125;</code></pre><p>在子Component中，有一句关键的注解dependencies = AppComponent.class，添加了上层依赖。  </p>
+<p>看一下使用<br>    // 依赖对象　Component<br>        AppComponent appCom = DaggerAppComponent.builder().appModule(new AppModule(this)).build();<br>        // 子类依赖对象 ，并注入<br>        DaggerActivityComponent.builder()<br>                .appComponent(appCom)<br>                .activityMoudule(new ActivityMoudule())<br>                .build()<br>                .inject(this);  </p>
+<p>在其中使用过程中，有很重的两点。  </p>
+<ul>
+<li>父依赖的Component中需要添加提供对象的接口。</li>
+<li>子依赖的Component中的注解中添加dependencies = AppComponent.class</li>
+</ul>
+<h2 id="Qualifier-自定义标记"><a href="#Qualifier-自定义标记" class="headerlink" title="@Qualifier 自定义标记"></a>@Qualifier 自定义标记</h2><p>在使用中，会出现两个方法返回对象相同时的情况，那么如何区分呢。<br>Person对象具有两个构造方法，根据不同的参数值构造不同的方法。  </p>
+<pre><code>public class Person 
+&#123;
+  private Context mContext;
+ public Person(Context context)
+    &#123;
+      mContext = context;
+      Log.i(&quot;dagger&quot;,&quot;create&quot;);
+    &#125;
+public Person(String name)
+ &#123;
+    Log.i(&quot;dagger&quot;,name);
+ &#125;
+&#125;</code></pre><p>ActivityModule中添加@Named标记   </p>
+<pre><code>@Module
+public class ActivityMoudule 
+&#123;
+   @Named(&quot;Context&quot;) //通过context创建Person 对象
+   @Provides
+   Person providePersonContext(Context context)
+    &#123;
+      //　此方法需要Context 对象
+      return new Person(context);
+    &#125;
+   @Named(&quot;name&quot;)  // 通过name创建Person 对象
+  @Provides
+  Person providePersonName()
+    &#123;
+      //此方法需要name
+      return new Person(&quot;1234&quot;);
+    &#125;
+&#125;</code></pre><p>使用时，也需要添加此标记 </p>
+<pre><code>public class MainActivity extends AppCompatActivity
+&#123;
+   @Named(&quot;context&quot;) // 标记
+   @Inject
+   Person person;
+
+   @Named(&quot;name&quot;)  // 标记
+   @Inject
+   Person person2;
+
+ @Override
+ protected void onCreate(@Nullable Bundle savedInstanceState) 
+  &#123;
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    //注入
+    component.inject(this);*/
+    // 依赖对象　Component
+    AppComponent appCom = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
+    // 子类依赖对象 ，并注入
+    DaggerActivityComponent.builder()
+            .appComponent(appCom)
+            .activityMoudule(new ActivityMoudule())
+            .build()
+            .inject(this);
+   &#125;
+
+&#125;</code></pre><p>使用时，使用者的@Inject上，必须要加入注解@Named(“xxx”),不然编译期会报错。<br>这样使用过程中，虽然解决了问题，但是通过字符串标记一个对象，容易导致前后不匹配，可以通过自定义注解的方式解决。<br>添加两个注解，分别对应Context和name。 </p>
+<pre><code>@Qualifier  // 关键词
+@Retention(RetentionPolicy.RUNTIME)  // 运行时仍可用
+public @interface PersonForContext 
+&#123;
+  // Context 对象的注解
+&#125;
+
+@Qualifier
+@Retention(RetentionPolicy.RUNTIME)
+public @interface PersonForName
+ &#123;
+  // name 对象的注解
+ &#125;</code></pre><p>在使用@Named(“”)的地方替换为上面的注解  </p>
+<pre><code>@PersonForContext  // 通过context创建Person 对象
+@Provides
+Person providePersonContext(Context context)
+&#123;
+    //　此方法需要Context 对象
+    return new Person(context);
+&#125;
+
+@PersonForName  // 通过name创建Person 对象
+@Provides
+Person providePersonName()
+&#123;
+    //　此方法需要Context 对象
+    return new Person(&quot;123&quot;);
+&#125;</code></pre><p>注入时：    </p>
+<pre><code>@PersonForContext // 标记
+@Inject
+Person person;
+
+@PersonForName // 标记
+@Inject
+Person person2;  </code></pre><h2 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a>Scope</h2><p>在前面中提到@Singleton注解，该注解能够使同一个Component中的对象保持唯一，即单例。<br>回忆一下，如下方式：   </p>
+<pre><code>@Provides // 关键字，标明该方法提供依赖对象
+@Singleton
+Person providerPerson(Context context)
+&#123;
+   return new Person(context);
+&#125;</code></pre><p>Module中，对应方法中添加@Singleton注解，同时其所在的Component中，类生命上也需要添加注解 </p>
+<pre><code>@Singleton
+@Component(modules = MainModule.class)  // 作为桥梁，沟通调用者和依赖对象库
+public interface MainComponent &#123;
+&#125;</code></pre><p>如果我们看这个意思，感觉其内部应该做了很多的实现，用以达到单例。其实，没我们想的那么复杂。<br>看一下@Singleton的实现   </p>
+<pre><code>@Scope //注明是Scope 
+@Documented  //标记在文档 
+@Retention(RUNTIME)  // 运行时级别
+public @interface Singleton &#123;&#125;</code></pre><p>通过@Scope定义的一个新的注解。  </p>
+<p>在之前的，我们知道该单例是依托于他所在的Component组件。那么我们是否可以这样理解，因为方法上添加的@Scope标记的注解和Component上添加的@Scope标记的注解相同（确实相同，同为@Singleton），就表明了该方法提供的实例对象在Component保持唯一。保持唯一的条件是通过@Scope标记的注解相同。   </p>
+<p>通过在上面的依赖层级上，Android中通常定义两个生命周期。  </p>
+<h2 id="全局的生命周期PerApp"><a href="#全局的生命周期PerApp" class="headerlink" title="全局的生命周期PerApp"></a>全局的生命周期PerApp</h2><pre><code>/**
+ * 全局的生命周期单例
+ */
+@Scope
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+public @interface PerApp &#123;
+&#125;</code></pre><p>在使用中完全和@Singleton相同。   </p>
+<pre><code>@Module
+public class AppModule 
+&#123;
+   private Context mContext;
+   public AppModule(Context context)
+    &#123;
+      mContext = context;
+    &#125;
+  @Provides
+  @PerApp  // 添加该标记表明该方法只产生一个实例
+ Context providesContext()
+    &#123;
+      // 提供上下文对象
+     return mContext;
+    &#125;
+
+&#125;
+
+@PerApp // 因为Module 中使用了该标记,所以需要在此添加
+@Component(modules = AppModule.class)
+public interface AppComponent &#123;
+// 向其下层提供Context 对象
+Context proContext();
+&#125;</code></pre><p>因为单例的依托于他所在的Component中，所以需要在Application中进行实例化。  </p>
+<pre><code>public class App extends Application 
+&#123;
+   // 为什么可以使用静态
+   public static AppComponent appComponent;
+   @Override
+   public void onCreate() 
+    &#123;
+      super.onCreate();
+      // 实例化
+      appComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
+    &#125;
+&#125;</code></pre><p>为什么可以使用静态的，因为该AppComponent对象的生命周期是整个App。那么在使用中，其所在Module中的实例化对象，可以保持全局单例。   </p>
+<h2 id="一个Activity的生命周期PerActivity"><a href="#一个Activity的生命周期PerActivity" class="headerlink" title="一个Activity的生命周期PerActivity"></a>一个Activity的生命周期PerActivity</h2><p>有全局的单例，而对于一个Activity，他也有些对象需要保持单例。我们需要定义该注解。  </p>
+<pre><code>@Scope
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+public @interface PerActivity &#123;
+&#125;</code></pre><p>会发现，除了定义名不一样，其余都和PerApp一样。在前面，说过这样一句话：保持唯一的条件是通过@Scope标记的注解相同。  </p>
+<pre><code>@Module
+public class ActivityMoudule 
+&#123;
+   @PersonForContext
+   @Provides
+   @PerActivity  // 添加标记，生命其所构造的对象单例
+   Person providePersonContext(Context context)
+    &#123;
+      //　此方法需要Context 对象
+      return new Person(context);
+    &#125;
+
+    .....
+&#125;
+
+@PerActivity  // ActivityMoudule 中使用了该标记
+@Component(dependencies = AppComponent.class,modules = ActivityMoudule.class)
+public interface ActivityComponent &#123;
+// 注入
+void inject(MainActivity activity);
+&#125;</code></pre><p>使用方式，因为其所保持的单例是在Activity中，具体使用如下。  </p>
+<pre><code>public class MainActivity extends AppCompatActivity
+&#123;
+   @PersonForContext // 标记
+   @Inject
+   Person person;
+
+   @PersonForName // 标记
+   @Inject
+   Person person2;
+
+
+   /**
+    * 不使用静态的，因为该Component只是针对于该Activity，而不是全局的
+    */
+   ActivityComponent  activityComponent;
+
+   @Override
+   protected void onCreate(@Nullable Bundle savedInstanceState)
+     &#123;
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        activityComponent = DaggerActivityComponent.builder()
+            .appComponent(App.appComponent)  // 添加了全局的AppComponent组件,可以使用全局的实例化对象
+            .activityMoudule(new ActivityMoudule())
+            .build();
+
+        activityComponent.inject(this);</code></pre><p>对于具有依赖关系的Component，不能使用相同的Scope，如果使用相同的会带来语意不明  </p>
+<h2 id="懒加载Lazy和强制重新加载Provider"><a href="#懒加载Lazy和强制重新加载Provider" class="headerlink" title="懒加载Lazy和强制重新加载Provider"></a>懒加载Lazy和强制重新加载Provider</h2><pre><code>public class MainActivity extends AppCompatActivity
+&#123;
+   @PersonForContext // 标记
+   @Inject
+   Lazy&lt;Person&gt; lazyPerson; // 注入Lazy元素
+
+   @PersonForName // 标记
+   @Inject
+   Provider&lt;Person&gt; providerPerson; // 注入Provider
+
+   /**
+    * 不使用静态的，因为该Component只是针对于该Activity，而不是全局的
+    */
+   ActivityComponent  activityComponent;
+   @Override
+   protected void onCreate(@Nullable Bundle savedInstanceState) 
+    &#123;
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_main);
+       activityComponent = DaggerActivityComponent.builder()
+            .appComponent(App.appComponent)  // 添加了全局的AppComponent组件
+            .activityMoudule(new ActivityMoudule())
+            .build();
+       activityComponent.inject(this);
+       Person person = lazyPerson.get();// 调用该方法时才会去创建Person,以后每次调用获取的是同一个对象
+       //调用该方法时才回去创建Person1，以后每次调用都会重新加载Module中的具体方法，根据Module中的实现，可能相同，可能不相同。
+      Person person1 = providerPerson.get();
+     &#125;
+&#125;</code></pre><p>参考<a target="_blank" rel="noopener" href="https://github.com/PGzxc/Dagger2Demo">Demo</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Dagger2/" rel="tag"># Dagger2</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/74be698c.html" rel="prev" title="Android开发之——依赖注入的原理">
+      <i class="fa fa-chevron-left"></i> Android开发之——依赖注入的原理
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/a9998d19.html" rel="next" title="Linux开发之——命令概述">
+      Linux开发之——命令概述 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjQ1OC85MDE5"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Dagger2%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">Dagger2配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dagger2%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">Dagger2的简单使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%88%E7%9C%8B%E5%AE%9E%E4%BE%8B%E5%8C%96%E9%83%A8%E5%88%86%EF%BC%88%E5%AE%B9%E5%99%A8%EF%BC%89%EF%BC%8C%E5%9C%A8%E6%AD%A4%E5%A4%84%E6%98%AFModule"><span class="nav-number">2.1.</span> <span class="nav-text">先看实例化部分（容器），在此处是Module</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B2%9F%E9%80%9A%E9%83%A8%E5%88%86Component"><span class="nav-number">2.2.</span> <span class="nav-text">沟通部分Component</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Person%E5%AF%B9%E8%B1%A1%E7%B1%BB"><span class="nav-number">2.3.</span> <span class="nav-text">Person对象类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8Actvity%E4%B8%AD%E8%B0%83%E7%94%A8"><span class="nav-number">2.4.</span> <span class="nav-text">在Actvity中调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%87%E7%A8%8B%E5%88%86%E6%9E%90"><span class="nav-number">2.5.</span> <span class="nav-text">过程分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">3.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Singleton-%E5%8D%95%E4%BE%8B%E6%B3%A8%E8%A7%A3"><span class="nav-number">3.1.</span> <span class="nav-text">@Singleton 单例注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9C%80%E8%A6%81%E5%8F%82%E6%95%B0%E7%9A%84%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.2.</span> <span class="nav-text">需要参数的实例化对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E4%B8%80%E4%B8%AA%E7%BB%84%E4%BB%B6"><span class="nav-number">3.3.</span> <span class="nav-text">依赖一个组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qualifier-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%87%E8%AE%B0"><span class="nav-number">3.4.</span> <span class="nav-text">@Qualifier 自定义标记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scope"><span class="nav-number">3.5.</span> <span class="nav-text">Scope</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9FPerApp"><span class="nav-number">3.6.</span> <span class="nav-text">全局的生命周期PerApp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AAActivity%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9FPerActivity"><span class="nav-number">3.7.</span> <span class="nav-text">一个Activity的生命周期PerActivity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%87%92%E5%8A%A0%E8%BD%BDLazy%E5%92%8C%E5%BC%BA%E5%88%B6%E9%87%8D%E6%96%B0%E5%8A%A0%E8%BD%BDProvider"><span class="nav-number">3.8.</span> <span class="nav-text">懒加载Lazy和强制重新加载Provider</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">967</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">378</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PGzxc" title="GitHub → https://github.com/PGzxc" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http://blog.csdn.net/calvin_zhou" rel="noopener" target="_blank"><i class="book fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http://weibo.com/5582039920" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>微博</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http://www.jianshu.com/u/c5cdcb4dc52b" rel="noopener" target="_blank"><i class="heartbeat fa-fw"></i>简书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wanandroid.com/" title="https://wanandroid.com/" rel="noopener" target="_blank">鸿洋</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/home.html" title="http://www.ruanyifeng.com/home.html" rel="noopener" target="_blank">阮一峰</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://memento.net.cn" title="https://memento.net.cn" rel="noopener" target="_blank">琅涯阁</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/sinyu890807/" title="http://blog.csdn.net/sinyu890807/" rel="noopener" target="_blank">郭霖</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/luoshengyang/" title="http://blog.csdn.net/luoshengyang/" rel="noopener" target="_blank">老罗</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/aigestudio/" title="http://blog.csdn.net/aigestudio/" rel="noopener" target="_blank">爱哥</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/wwj_748/" title="http://blog.csdn.net/wwj_748/" rel="noopener" target="_blank">小巫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/singwhatiwanna/" title="http://blog.csdn.net/singwhatiwanna/" rel="noopener" target="_blank">任玉刚</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/eclipsexys/" title="http://blog.csdn.net/eclipsexys/" rel="noopener" target="_blank">徐医生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/bboyfeiyu/" title="http://blog.csdn.net/bboyfeiyu/" rel="noopener" target="_blank">Mr.Simple</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/xyz_lmn/" title="http://blog.csdn.net/xyz_lmn/" rel="noopener" target="_blank">张兴业</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.android.google.cn/index.html" title="https://developer.android.google.cn/index.html" rel="noopener" target="_blank">谷歌中国</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备18061062号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pgzxc</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">1.4m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">20:35</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>

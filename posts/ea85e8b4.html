@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="这篇文章主要记录在开发中容易混淆和使用出现错误的知识点，稍作整理，后续会持续更新   equals和&#x3D;&#x3D;的区别&#x3D;&#x3D; &#x3D;&#x3D;是一个运算符   &#x3D;&#x3D;比较两个对象的栈内存地址是否相同  可以比较基本数据类型的值是否相等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java开发之——开发中容易混淆的几个概念">
+<meta property="og:url" content="http://pgzxc.github.io/posts/ea85e8b4.html">
+<meta property="og:site_name" content="PGzxc的博客">
+<meta property="og:description" content="这篇文章主要记录在开发中容易混淆和使用出现错误的知识点，稍作整理，后续会持续更新   equals和&#x3D;&#x3D;的区别&#x3D;&#x3D; &#x3D;&#x3D;是一个运算符   &#x3D;&#x3D;比较两个对象的栈内存地址是否相同  可以比较基本数据类型的值是否相等">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-11-20T02:56:28.000Z">
+<meta property="article:modified_time" content="2019-05-21T14:19:23.425Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="区别">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/ea85e8b4.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Java开发之——开发中容易混淆的几个概念 | PGzxc的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">PGzxc的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">967</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">85</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">378</span></a>
+
+  </li>
+        <li class="menu-item menu-item-comments">
+
+    <a href="/comments/" rel="section"><i class="fa fa-comments fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/ea85e8b4.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java开发之——开发中容易混淆的几个概念
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-11-20 10:56:28" itemprop="dateCreated datePublished" datetime="2017-11-20T10:56:28+08:00">2017-11-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-05-21 22:19:23" itemprop="dateModified" datetime="2019-05-21T22:19:23+08:00">2019-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">基础语言</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80%E8%AF%AD%E8%A8%80/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>这篇文章主要记录在开发中容易混淆和使用出现错误的知识点，稍作整理，后续会持续更新  </p>
+<h1 id="equals和-的区别"><a href="#equals和-的区别" class="headerlink" title="equals和==的区别"></a>equals和==的区别</h1><h2 id=""><a href="#" class="headerlink" title="=="></a>==</h2><ul>
+<li>==是一个运算符  </li>
+<li>==比较两个对象的栈内存地址是否相同 </li>
+<li>可以比较基本数据类型的值是否相等  <a id="more"></a>
+<h2 id="Equalse"><a href="#Equalse" class="headerlink" title="Equalse"></a>Equalse</h2></li>
+<li>string对象的方法  </li>
+<li>比较两个对象的栈内存地址是否相同  </li>
+<li>既可以表示两个对象的内存地址是否相同，又可以表示值是否相同  </li>
+</ul>
+<h1 id="NULL和“”的区别"><a href="#NULL和“”的区别" class="headerlink" title="NULL和“”的区别"></a>NULL和“”的区别</h1><h2 id="NULL"><a href="#NULL" class="headerlink" title="NULL"></a>NULL</h2><ul>
+<li>代表一个空对象</li>
+<li>除了=和==，一般不执行其他操作  </li>
+<li>String s=null;只是定义了一个句柄，也就是说你有了引用，但引用并未任何内存空间</li>
+</ul>
+<h2 id="“”"><a href="#“”" class="headerlink" title="“”"></a>“”</h2><ul>
+<li>代表一个对象实例，这个对象实例的值是一个长度为0的空字符串</li>
+<li>是一个空字符串，可以执行字符串里的方法</li>
+<li>String s=””;这个引用已经指向了一块是空字符串的内存空间，可以对其进行任何操作  </li>
+</ul>
+<h1 id="单引号和双引号"><a href="#单引号和双引号" class="headerlink" title="单引号和双引号"></a>单引号和双引号</h1><h2 id="单引号"><a href="#单引号" class="headerlink" title="单引号"></a>单引号</h2><ul>
+<li>单引号的数据是char类型</li>
+<li>只能引一个字符</li>
+</ul>
+<h2 id="双引号"><a href="#双引号" class="headerlink" title="双引号"></a>双引号</h2><ul>
+<li>双引号的数据是string类型</li>
+<li>可以引0个及其以上  </li>
+</ul>
+<h1 id="wait、sleep和Yield的区别"><a href="#wait、sleep和Yield的区别" class="headerlink" title="wait、sleep和Yield的区别"></a>wait、sleep和Yield的区别</h1><h2 id="wait"><a href="#wait" class="headerlink" title="wait"></a>wait</h2><ul>
+<li>Condition/Object的方法</li>
+<li>执行环境：同步代码块内</li>
+<li>是否释放持有的锁：释放</li>
+<li>调用后何时恢复：某个线程调用对应的nofity/signal方法唤醒后进入就绪状态</li>
+</ul>
+<h2 id="sleep"><a href="#sleep" class="headerlink" title="sleep"></a>sleep</h2><ul>
+<li>Thread的方法</li>
+<li>执行环境：任意位置</li>
+<li>是否释放持有的锁：不释放</li>
+<li>调用后何时恢复：指定时间后</li>
+</ul>
+<h2 id="Yield"><a href="#Yield" class="headerlink" title="Yield"></a>Yield</h2><ul>
+<li>Thread的方法</li>
+<li>执行环境：任意位置</li>
+<li>是否释放持有的锁：不释放</li>
+<li>调用后何时恢复：立即进入就绪状态  </li>
+</ul>
+<h1 id="overload和override的区别"><a href="#overload和override的区别" class="headerlink" title="overload和override的区别"></a>overload和override的区别</h1><h2 id="overload-重载"><a href="#overload-重载" class="headerlink" title="overload(重载)"></a>overload(重载)</h2><ul>
+<li>参数类型、个数、顺序至少有一个不相同；</li>
+<li>不能重载只有返回值不同的方法名；</li>
+<li>存在于父类和子类、同类中；</li>
+</ul>
+<h2 id="override-重写"><a href="#override-重写" class="headerlink" title="override(重写)"></a>override(重写)</h2><ul>
+<li>方法名、参数、返回值相同</li>
+<li>子类方法不能缩小父类方法的访问权限</li>
+<li>子类方法不能抛出比父类更多的异常(但子类方法可以不抛出异常)</li>
+<li>存在于父类和子类之间</li>
+<li>方法被定义为final不能被重写</li>
+</ul>
+<h1 id="String、StringBuffer与StringBuilder之间区别"><a href="#String、StringBuffer与StringBuilder之间区别" class="headerlink" title="String、StringBuffer与StringBuilder之间区别"></a>String、StringBuffer与StringBuilder之间区别</h1><h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><ul>
+<li>字符串常量</li>
+<li>执行速度：最慢</li>
+<li>操作少量数据时使用</li>
+</ul>
+<h2 id="StringBuffer"><a href="#StringBuffer" class="headerlink" title="StringBuffer"></a>StringBuffer</h2><ul>
+<li>字符串变量</li>
+<li>执行速度：稍快</li>
+<li>多线程操作字符串缓冲区下大量数据时使用</li>
+<li>线程安全的</li>
+</ul>
+<h2 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h2><ul>
+<li>字符串变量</li>
+<li>执行速度：最快 </li>
+<li>单线程操作字符串缓冲区下大量数据时使用</li>
+<li>线程非安全的</li>
+</ul>
+<h1 id="Collection-和-Collections的区别"><a href="#Collection-和-Collections的区别" class="headerlink" title="Collection 和 Collections的区别"></a>Collection 和 Collections的区别</h1><h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><ul>
+<li>是一个集合接口（集合类的一个顶级接口）</li>
+<li>继承与他的接口主要有Set 和List</li>
+<li>它提供了对集合对象进行基本操作的通用接口方法</li>
+</ul>
+<h2 id="Collections"><a href="#Collections" class="headerlink" title="Collections"></a>Collections</h2><ul>
+<li>是集合类的一个工具类/帮助类</li>
+<li>其中提供了一系列静态方法，用于对集合中元素进行排序、搜索以及线程安全等各种操作</li>
+</ul>
+<h1 id="ArrayList-Vector-LinkedList的存储性能和特性"><a href="#ArrayList-Vector-LinkedList的存储性能和特性" class="headerlink" title="ArrayList,Vector, LinkedList的存储性能和特性"></a>ArrayList,Vector, LinkedList的存储性能和特性</h1><h2 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h2><ul>
+<li>ArrayList 采用的是数组形式来保存对象的</li>
+<li>此数组元素数大于实际存储数据以便增加和插入元素</li>
+<li>允许直接用序号索引元素</li>
+<li>索引数据快而插入数据慢</li>
+<li>线程不安全的，不是同步的</li>
+<li>当需要增长时，ArrayList却是原来的一半</li>
+</ul>
+<h2 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h2><ul>
+<li>ArrayList 采用的是数组形式来保存对象的</li>
+<li>此数组元素数大于实际存储数据以便增加和插入元素</li>
+<li>允许直接用序号索引元素</li>
+<li>索引数据快而插入数据慢</li>
+<li>线程安全的，也就是说是同步的</li>
+<li>当需要增长时,Vector默认增长为原来一培</li>
+</ul>
+<h2 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h2><ul>
+<li>使用双向链表方式存储数据</li>
+<li>按序号索引数据需要前向或后向遍历数据</li>
+<li>索引数据慢，插入的速度快</li>
+</ul>
+<h1 id="HashMap和Hashtable的区别"><a href="#HashMap和Hashtable的区别" class="headerlink" title="HashMap和Hashtable的区别"></a>HashMap和Hashtable的区别</h1><h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><ul>
+<li>线程不安全</li>
+<li>允许有null的键和值</li>
+<li>效率高一点</li>
+<li>方法不是Synchronize的要提供外同步</li>
+<li>有containsvalue和containsKey方法</li>
+<li>HashMap是Hashtable的轻量级实现</li>
+</ul>
+<h2 id="Hashtable"><a href="#Hashtable" class="headerlink" title="Hashtable"></a>Hashtable</h2><ul>
+<li>线程安全</li>
+<li>不允许有null的键和值</li>
+<li>效率稍低</li>
+<li>方法是是Synchronize的</li>
+<li>有contains方法</li>
+<li>Hashtable 比HashMap 要旧</li>
+</ul>
+<h1 id="final-finally-finalize的区别"><a href="#final-finally-finalize的区别" class="headerlink" title="final, finally, finalize的区别"></a>final, finally, finalize的区别</h1><h2 id="final"><a href="#final" class="headerlink" title="final"></a>final</h2><ul>
+<li>用于声明属性，方法和类，分别表示属性不可变，方法不可覆盖，类不可继承</li>
+</ul>
+<h2 id="finally"><a href="#finally" class="headerlink" title="finally"></a>finally</h2><ul>
+<li>是异常处理语句结构的一部分，表示总是执行</li>
+</ul>
+<h2 id="finalize"><a href="#finalize" class="headerlink" title="finalize"></a>finalize</h2><ul>
+<li>是Object类的一个方法，在垃圾收集器执行的时候会调用被回收对象的此方法，可以覆盖此方法提供垃圾收集时的其他资源回收，例如关闭文件等。  </li>
+</ul>
+<h1 id="error和exception有什么区别"><a href="#error和exception有什么区别" class="headerlink" title="error和exception有什么区别?"></a>error和exception有什么区别?</h1><h2 id="error"><a href="#error" class="headerlink" title="error"></a>error</h2><ul>
+<li>Error类的父类都是throwable类</li>
+<li>Error类一般是指与虚拟机相关的问题，如系统崩溃，虚拟机错误，内存空间不足，方法调用栈溢等</li>
+<li>对于这类错误的导致的应用程序中断，仅靠程序本身无法恢复和和预防，遇到这样的错误，建议让程序终止。</li>
+</ul>
+<h2 id="exception"><a href="#exception" class="headerlink" title="exception"></a>exception</h2><ul>
+<li>Exception类的父类都是throwable类</li>
+<li>Exception类表示程序可以处理的异常，可以捕获且可能恢复</li>
+<li>遇到这类异常，应该尽可能处理异常，使程序恢复运行，而不应该随意终止异常  </li>
+</ul>
+<h1 id="abstract-class和interface有什么区别"><a href="#abstract-class和interface有什么区别" class="headerlink" title="abstract class和interface有什么区别?"></a>abstract class和interface有什么区别?</h1><h2 id="abstract-class"><a href="#abstract-class" class="headerlink" title="abstract class"></a>abstract class</h2><ul>
+<li>抽象类可以有构造方法</li>
+<li>抽象类中可以有普通成员变量</li>
+<li>抽象类中可以包含非抽象的普通方法</li>
+<li>抽象类中的抽象方法的访问类型可以是public，protected和默认类型</li>
+<li>抽象类和接口中都可以包含静态成员变量，抽象类中的静态成员变量的访问类型可以任意</li>
+<li>抽象类类可以实现多个接口，但只能单继承</li>
+</ul>
+<h2 id="interface"><a href="#interface" class="headerlink" title="interface"></a>interface</h2><ul>
+<li>接口中不能有构造方法</li>
+<li>接口中没有普通成员变量</li>
+<li>接口中的所有方法必须都是抽象的，不能有非抽象的普通方法</li>
+<li>但接口中的抽象方法只能是public类型的，并且默认即为public abstract类型</li>
+<li>但接口中定义的变量只能是public static final类型，并且默认即为public static final类型</li>
+<li>接口只可以继承一个或多个其它接口</li>
+</ul>
+<h1 id="正斜杠-和反斜杠-的区别"><a href="#正斜杠-和反斜杠-的区别" class="headerlink" title="正斜杠/和反斜杠\的区别"></a>正斜杠/和反斜杠\的区别</h1><h2 id="正斜杠"><a href="#正斜杠" class="headerlink" title="正斜杠/"></a>正斜杠/</h2><ul>
+<li>从右写到左(右倾)</li>
+<li>表示除法，如120/60 = 2；表示单位（除法的变形），如60km/h</li>
+<li>表示路径；Unix使用斜杆/ 作为路径分隔符；如果代表的是网络文件路径，则必须使用 正斜杠/</li>
+</ul>
+<h2 id="反斜杠"><a href="#反斜杠" class="headerlink" title="反斜杠\"></a>反斜杠\</h2><ul>
+<li>从左写到右(左倾)</li>
+<li>符表示转义字符，如\0表示“空字符”\r表示“回车”，\n表示“换行”等。</li>
+<li>表示路径；如果代表的是windows文件路径，则使用 正斜杠/和 反斜杠\是一样的</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%8C%BA%E5%88%AB/" rel="tag"># 区别</a>
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/685bb144.html" rel="prev" title="Jenkins开发之——上传apk到fir">
+      <i class="fa fa-chevron-left"></i> Jenkins开发之——上传apk到fir
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/5f1f64ca.html" rel="next" title="Android开发之——Parcelable和Serializable的区别">
+      Android开发之——Parcelable和Serializable的区别 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjQ1OC85MDE5"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#equals%E5%92%8C-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">equals和&#x3D;&#x3D;的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">&#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Equalse"><span class="nav-number">1.2.</span> <span class="nav-text">Equalse</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NULL%E5%92%8C%E2%80%9C%E2%80%9D%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">NULL和“”的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NULL"><span class="nav-number">2.1.</span> <span class="nav-text">NULL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%80%9C%E2%80%9D"><span class="nav-number">2.2.</span> <span class="nav-text">“”</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E5%BC%95%E5%8F%B7%E5%92%8C%E5%8F%8C%E5%BC%95%E5%8F%B7"><span class="nav-number">3.</span> <span class="nav-text">单引号和双引号</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E5%BC%95%E5%8F%B7"><span class="nav-number">3.1.</span> <span class="nav-text">单引号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E5%BC%95%E5%8F%B7"><span class="nav-number">3.2.</span> <span class="nav-text">双引号</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#wait%E3%80%81sleep%E5%92%8CYield%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">4.</span> <span class="nav-text">wait、sleep和Yield的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#wait"><span class="nav-number">4.1.</span> <span class="nav-text">wait</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sleep"><span class="nav-number">4.2.</span> <span class="nav-text">sleep</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Yield"><span class="nav-number">4.3.</span> <span class="nav-text">Yield</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#overload%E5%92%8Coverride%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">5.</span> <span class="nav-text">overload和override的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#overload-%E9%87%8D%E8%BD%BD"><span class="nav-number">5.1.</span> <span class="nav-text">overload(重载)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#override-%E9%87%8D%E5%86%99"><span class="nav-number">5.2.</span> <span class="nav-text">override(重写)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#String%E3%80%81StringBuffer%E4%B8%8EStringBuilder%E4%B9%8B%E9%97%B4%E5%8C%BA%E5%88%AB"><span class="nav-number">6.</span> <span class="nav-text">String、StringBuffer与StringBuilder之间区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">6.1.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StringBuffer"><span class="nav-number">6.2.</span> <span class="nav-text">StringBuffer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StringBuilder"><span class="nav-number">6.3.</span> <span class="nav-text">StringBuilder</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Collection-%E5%92%8C-Collections%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">7.</span> <span class="nav-text">Collection 和 Collections的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Collection"><span class="nav-number">7.1.</span> <span class="nav-text">Collection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collections"><span class="nav-number">7.2.</span> <span class="nav-text">Collections</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ArrayList-Vector-LinkedList%E7%9A%84%E5%AD%98%E5%82%A8%E6%80%A7%E8%83%BD%E5%92%8C%E7%89%B9%E6%80%A7"><span class="nav-number">8.</span> <span class="nav-text">ArrayList,Vector, LinkedList的存储性能和特性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList"><span class="nav-number">8.1.</span> <span class="nav-text">ArrayList</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vector"><span class="nav-number">8.2.</span> <span class="nav-text">Vector</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LinkedList"><span class="nav-number">8.3.</span> <span class="nav-text">LinkedList</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HashMap%E5%92%8CHashtable%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">9.</span> <span class="nav-text">HashMap和Hashtable的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap"><span class="nav-number">9.1.</span> <span class="nav-text">HashMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hashtable"><span class="nav-number">9.2.</span> <span class="nav-text">Hashtable</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#final-finally-finalize%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">10.</span> <span class="nav-text">final, finally, finalize的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#final"><span class="nav-number">10.1.</span> <span class="nav-text">final</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#finally"><span class="nav-number">10.2.</span> <span class="nav-text">finally</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#finalize"><span class="nav-number">10.3.</span> <span class="nav-text">finalize</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#error%E5%92%8Cexception%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="nav-number">11.</span> <span class="nav-text">error和exception有什么区别?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#error"><span class="nav-number">11.1.</span> <span class="nav-text">error</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exception"><span class="nav-number">11.2.</span> <span class="nav-text">exception</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#abstract-class%E5%92%8Cinterface%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="nav-number">12.</span> <span class="nav-text">abstract class和interface有什么区别?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#abstract-class"><span class="nav-number">12.1.</span> <span class="nav-text">abstract class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#interface"><span class="nav-number">12.2.</span> <span class="nav-text">interface</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E6%96%9C%E6%9D%A0-%E5%92%8C%E5%8F%8D%E6%96%9C%E6%9D%A0-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">13.</span> <span class="nav-text">正斜杠&#x2F;和反斜杠\的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E6%96%9C%E6%9D%A0"><span class="nav-number">13.1.</span> <span class="nav-text">正斜杠&#x2F;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E6%96%9C%E6%9D%A0"><span class="nav-number">13.2.</span> <span class="nav-text">反斜杠\</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">967</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">378</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PGzxc" title="GitHub → https://github.com/PGzxc" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http://blog.csdn.net/calvin_zhou" rel="noopener" target="_blank"><i class="book fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http://weibo.com/5582039920" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>微博</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http://www.jianshu.com/u/c5cdcb4dc52b" rel="noopener" target="_blank"><i class="heartbeat fa-fw"></i>简书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wanandroid.com/" title="https://wanandroid.com/" rel="noopener" target="_blank">鸿洋</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/home.html" title="http://www.ruanyifeng.com/home.html" rel="noopener" target="_blank">阮一峰</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://memento.net.cn" title="https://memento.net.cn" rel="noopener" target="_blank">琅涯阁</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/sinyu890807/" title="http://blog.csdn.net/sinyu890807/" rel="noopener" target="_blank">郭霖</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/luoshengyang/" title="http://blog.csdn.net/luoshengyang/" rel="noopener" target="_blank">老罗</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/aigestudio/" title="http://blog.csdn.net/aigestudio/" rel="noopener" target="_blank">爱哥</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/wwj_748/" title="http://blog.csdn.net/wwj_748/" rel="noopener" target="_blank">小巫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/singwhatiwanna/" title="http://blog.csdn.net/singwhatiwanna/" rel="noopener" target="_blank">任玉刚</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/eclipsexys/" title="http://blog.csdn.net/eclipsexys/" rel="noopener" target="_blank">徐医生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/bboyfeiyu/" title="http://blog.csdn.net/bboyfeiyu/" rel="noopener" target="_blank">Mr.Simple</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/xyz_lmn/" title="http://blog.csdn.net/xyz_lmn/" rel="noopener" target="_blank">张兴业</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.android.google.cn/index.html" title="https://developer.android.google.cn/index.html" rel="noopener" target="_blank">谷歌中国</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备18061062号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pgzxc</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">1.4m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">20:35</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>

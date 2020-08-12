@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前言CentOS（Community Enterprise Operating System，中文意思是：社区企业操作系统）是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。由于出自同样的源代码，因此有些要求高度稳定性的服务器以CentOS替代商业版的Red Hat Enterprise Linux使用。两者的不同，在于Ce">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS开发之——CentOS7安装">
+<meta property="og:url" content="http://pgzxc.github.io/posts/7f0aea19.html">
+<meta property="og:site_name" content="PGzxc的博客">
+<meta property="og:description" content="前言CentOS（Community Enterprise Operating System，中文意思是：社区企业操作系统）是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。由于出自同样的源代码，因此有些要求高度稳定性的服务器以CentOS替代商业版的Red Hat Enterprise Linux使用。两者的不同，在于Ce">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pgzxc.com/centos-guanwang.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-download.png">
+<meta property="og:image" content="https://images.pgzxc.com/vmware-workstation.png">
+<meta property="og:image" content="https://images.pgzxc.com/vmware-guide.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos--system.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-select.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-position.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-capacity.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-system-img.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-start.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-install-centos-7.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-language.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-config.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos7-system.jpg">
+<meta property="og:image" content="https://images.pgzxc.com/centos-boot.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-done.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-localhost-before.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-password.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-root-install.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-login.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-no-ip.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-network-scripts.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-noboots.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-service-network-restart.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-ping.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-remote-host.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-ssh.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-lang-confusion.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-language-before.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-language-after.png">
+<meta property="og:image" content="https://images.pgzxc.com/centos-local-shengxiao.png">
+<meta property="article:published_time" content="2018-07-26T14:36:57.000Z">
+<meta property="article:modified_time" content="2020-07-03T12:07:33.195Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="CentOS7">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pgzxc.com/centos-guanwang.png">
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/7f0aea19.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CentOS开发之——CentOS7安装 | PGzxc的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">PGzxc的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">967</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">85</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">378</span></a>
+
+  </li>
+        <li class="menu-item menu-item-comments">
+
+    <a href="/comments/" rel="section"><i class="fa fa-comments fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/7f0aea19.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CentOS开发之——CentOS7安装
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-07-26 22:36:57" itemprop="dateCreated datePublished" datetime="2018-07-26T22:36:57+08:00">2018-07-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-03 20:07:33" itemprop="dateModified" datetime="2020-07-03T20:07:33+08:00">2020-07-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">系统</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%B3%BB%E7%BB%9F/CentOS/" itemprop="url" rel="index"><span itemprop="name">CentOS</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>CentOS（Community Enterprise Operating System，中文意思是：社区企业操作系统）是Linux发行版之一，它是来自于Red Hat Enterprise Linux依照开放源代码规定释出的源代码所编译而成。由于出自同样的源代码，因此有些要求高度稳定性的服务器以CentOS替代商业版的Red Hat Enterprise Linux使用。两者的不同，在于CentOS并不包含封闭源代码软件。   </p>
+<a id="more"></a>
+
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>本文基于vmware workstations进行CentOS7安装过程，关于vmware workstations安装配置这里不再介绍</p>
+<h2 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h2><ol>
+<li>VMware </li>
+<li>CentOS7</li>
+</ol>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><h3 id="打开CentOS官网"><a href="#打开CentOS官网" class="headerlink" title="打开CentOS官网"></a>打开CentOS官网</h3><p><a target="_blank" rel="noopener" href="https://www.centos.org/download/">CentOS官网</a><br><img src="https://images.pgzxc.com/centos-guanwang.png" alt=""> </p>
+<h3 id="从镜像列表中选择下载"><a href="#从镜像列表中选择下载" class="headerlink" title="从镜像列表中选择下载"></a>从镜像列表中选择下载</h3><p><img src="https://images.pgzxc.com/centos-download.png" alt=""></p>
+<h1 id="系统安装"><a href="#系统安装" class="headerlink" title="系统安装"></a>系统安装</h1><h2 id="新建虚拟机"><a href="#新建虚拟机" class="headerlink" title="新建虚拟机"></a>新建虚拟机</h2><ol>
+<li><p>打开VMware<br> <img src="https://images.pgzxc.com/vmware-workstation.png" alt="">  </p>
+</li>
+<li><p>文件-&gt;新建虚拟机(本文选用典型模式)<br> <img src="https://images.pgzxc.com/vmware-guide.png" alt=""></p>
+</li>
+<li><p>选择系统镜像(稍后安装)<br> <img src="https://images.pgzxc.com/centos--system.png" alt=""></p>
+</li>
+<li><p>选择操作系统(Linux-&gt;centOS)<br> <img src="https://images.pgzxc.com/centos-select.png" alt=""></p>
+</li>
+<li><p>设置虚拟机的名称和存储位置<br> <img src="https://images.pgzxc.com/centos-position.png" alt=""></p>
+</li>
+<li><p>设置虚拟机的容量<br> <img src="https://images.pgzxc.com/centos-capacity.png" alt=""></p>
+</li>
+<li><p>下一步，完成向导设置</p>
+</li>
+<li><p>选中虚拟机(centOS7)-&gt;编辑虚拟机设置(内存容量、ios镜像)<br> <img src="https://images.pgzxc.com/centos-system-img.png" alt=""></p>
+</li>
+<li><p>点击开启虚拟机<br> <img src="https://images.pgzxc.com/centos-start.png" alt=""></p>
+<h2 id="CentOS7操作系统安装过程"><a href="#CentOS7操作系统安装过程" class="headerlink" title="CentOS7操作系统安装过程"></a>CentOS7操作系统安装过程</h2></li>
+<li><p>虚拟机控制台出现界面，选择Install CentOS 7，点击回车键继续<br> <img src="https://images.pgzxc.com/centos-install-centos-7.png" alt=""></p>
+</li>
+<li><p>如下界面默认选择中文，点击Continue继续<br> <img src="https://images.pgzxc.com/centos-language.png" alt=""></p>
+</li>
+<li><p>centOS7安装配置主要界面</p>
+<p> 3.1 本地化(不需要进行任何设置)<br> 3.2 软件(不需要进行任何设置，这里本次采用默认值（即最小化安装安装)<br> 3.3 系统        </p>
+<p> <img src="https://images.pgzxc.com/centos-config.png" alt=""></p>
+</li>
+</ol>
+<ol start="4">
+<li>点击 系统-&gt;安装位置，配置(也可默认配置)<br> <img src="https://images.pgzxc.com/centos7-system.jpg" alt=""><br> <img src="https://images.pgzxc.com/centos-boot.png" alt=""><br> <img src="https://images.pgzxc.com/centos-done.png" alt=""></li>
+<li>修改操作系统主机名，这里修改为orange<br> <img src="https://images.pgzxc.com/centos-localhost-before.png" alt=""></li>
+<li>设置登录密码<br> <img src="https://images.pgzxc.com/centos-password.png" alt=""></li>
+<li>确认后点击安装<br> <img src="https://images.pgzxc.com/centos-root-install.png" alt=""></li>
+<li>操作系统安装已经完成，点击reboot重启操作系统</li>
+<li>重启后oot用户登录（即root/(root密码)）<br> <img src="https://images.pgzxc.com/centos-login.png" alt=""></li>
+</ol>
+<h2 id="CentOS配置"><a href="#CentOS配置" class="headerlink" title="CentOS配置"></a>CentOS配置</h2><h3 id="配置ip"><a href="#配置ip" class="headerlink" title="配置ip"></a>配置ip</h3><ol>
+<li>使用指令：ip add 查看ip 地址<br>可以看到inet6是没有地址信息的<br><img src="https://images.pgzxc.com/centos-no-ip.png" alt=""></li>
+<li>修改IP地址（vi /etc/sysconfig/network-scripts/ifcfg-ens32）<br>本文使用动态ip地址，打开ifcfg-ens32后将ONBOOT改为yes<br><img src="https://images.pgzxc.com/centos-network-scripts.png" alt=""><br><img src="https://images.pgzxc.com/centos-noboots.png" alt=""> </li>
+<li>service network restart命令重启网卡，生效刚刚修改ip地址<br>可以看到inet6后面的ip已生效<br><img src="https://images.pgzxc.com/centos-service-network-restart.png" alt=""> </li>
+<li>打开外网cmd客户端，ping centOS 地址<br><img src="https://images.pgzxc.com/centos-ping.png" alt=""> </li>
+</ol>
+<h3 id="SSH工具"><a href="#SSH工具" class="headerlink" title="SSH工具"></a>SSH工具</h3><ol>
+<li><p>链接远程主机<br><img src="https://images.pgzxc.com/centos-remote-host.png" alt=""></p>
+</li>
+<li><p>打开ssh shell<br><img src="https://images.pgzxc.com/centos-ssh.png" alt="">    </p>
+</li>
+<li><p>ssh shell 乱码<br> <img src="https://images.pgzxc.com/centos-lang-confusion.png" alt=""></p>
+</li>
+<li><p>配置 /ect/locale.conf文件(UTF-8为GBK)<br> <img src="https://images.pgzxc.com/centos-language-before.png" alt=""><br> <img src="https://images.pgzxc.com/centos-language-after.png" alt=""></p>
+</li>
+<li><p>修改后生效</p>
+<p> <img src="https://images.pgzxc.com/centos-local-shengxiao.png" alt=""></p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CentOS7/" rel="tag"># CentOS7</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/ee100ec.html" rel="prev" title="IOS开发之——图片资源(3)">
+      <i class="fa fa-chevron-left"></i> IOS开发之——图片资源(3)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/aaf89be0.html" rel="next" title="CentOS开发之——CentOS7下安装MySQL">
+      CentOS开发之——CentOS7下安装MySQL <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjQ1OC85MDE5"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD"><span class="nav-number">2.2.</span> <span class="nav-text">下载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%BC%80CentOS%E5%AE%98%E7%BD%91"><span class="nav-number">2.2.1.</span> <span class="nav-text">打开CentOS官网</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E9%95%9C%E5%83%8F%E5%88%97%E8%A1%A8%E4%B8%AD%E9%80%89%E6%8B%A9%E4%B8%8B%E8%BD%BD"><span class="nav-number">2.2.2.</span> <span class="nav-text">从镜像列表中选择下载</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">系统安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">3.1.</span> <span class="nav-text">新建虚拟机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS7%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B"><span class="nav-number">3.2.</span> <span class="nav-text">CentOS7操作系统安装过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS%E9%85%8D%E7%BD%AE"><span class="nav-number">3.3.</span> <span class="nav-text">CentOS配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEip"><span class="nav-number">3.3.1.</span> <span class="nav-text">配置ip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH%E5%B7%A5%E5%85%B7"><span class="nav-number">3.3.2.</span> <span class="nav-text">SSH工具</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">967</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">378</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PGzxc" title="GitHub → https://github.com/PGzxc" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http://blog.csdn.net/calvin_zhou" rel="noopener" target="_blank"><i class="book fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http://weibo.com/5582039920" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>微博</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http://www.jianshu.com/u/c5cdcb4dc52b" rel="noopener" target="_blank"><i class="heartbeat fa-fw"></i>简书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wanandroid.com/" title="https://wanandroid.com/" rel="noopener" target="_blank">鸿洋</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/home.html" title="http://www.ruanyifeng.com/home.html" rel="noopener" target="_blank">阮一峰</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://memento.net.cn" title="https://memento.net.cn" rel="noopener" target="_blank">琅涯阁</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/sinyu890807/" title="http://blog.csdn.net/sinyu890807/" rel="noopener" target="_blank">郭霖</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/luoshengyang/" title="http://blog.csdn.net/luoshengyang/" rel="noopener" target="_blank">老罗</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/aigestudio/" title="http://blog.csdn.net/aigestudio/" rel="noopener" target="_blank">爱哥</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/wwj_748/" title="http://blog.csdn.net/wwj_748/" rel="noopener" target="_blank">小巫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/singwhatiwanna/" title="http://blog.csdn.net/singwhatiwanna/" rel="noopener" target="_blank">任玉刚</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/eclipsexys/" title="http://blog.csdn.net/eclipsexys/" rel="noopener" target="_blank">徐医生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/bboyfeiyu/" title="http://blog.csdn.net/bboyfeiyu/" rel="noopener" target="_blank">Mr.Simple</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/xyz_lmn/" title="http://blog.csdn.net/xyz_lmn/" rel="noopener" target="_blank">张兴业</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.android.google.cn/index.html" title="https://developer.android.google.cn/index.html" rel="noopener" target="_blank">谷歌中国</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备18061062号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pgzxc</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">1.4m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">20:35</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>

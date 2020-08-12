@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前言React中引入了flexbox概念,flexbox是属于web前端领域CSS的一种布局方案，是2009年W3C提出了一种新的布局方案，可以简便、完整、响应式地实现各种页面布局。你可以简单的理解为flexbox是CSS领域类似Android中 LinearLayout的一种布局，但是要比 LinearLayout要强大的多。 本文主要讲述Flex布局，包含以下几个：    flexDirect">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Native开发之——Flex布局">
+<meta property="og:url" content="http://pgzxc.github.io/posts/b531856b.html">
+<meta property="og:site_name" content="PGzxc的博客">
+<meta property="og:description" content="前言React中引入了flexbox概念,flexbox是属于web前端领域CSS的一种布局方案，是2009年W3C提出了一种新的布局方案，可以简便、完整、响应式地实现各种页面布局。你可以简单的理解为flexbox是CSS领域类似Android中 LinearLayout的一种布局，但是要比 LinearLayout要强大的多。 本文主要讲述Flex布局，包含以下几个：    flexDirect">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pgzxc.com/react-native-flex-layouts.png">
+<meta property="og:image" content="https://images.pgzxc.com/react-native-flex-props.png">
+<meta property="og:image" content="https://images.pgzxc.com/react-native-flex-layout-flexdirection.png">
+<meta property="og:image" content="https://images.pgzxc.com/react-native-flex-code-column.png">
+<meta property="og:image" content="https://images.pgzxc.com/react-native-flex-look-column.png">
+<meta property="og:image" content="https://images.pgzxc.com/react-native-flex-look-row.png">
+<meta property="og:image" content="https://images.pgzxc.com/react-native-prop-flexwrap.png">
+<meta property="og:image" content="https://images.pgzxc.com/react-native-flex-code-flex-wrap.png">
+<meta property="og:image" content="https://images.pgzxc.com/react-native-layout-flexwrap-no.png">
+<meta property="og:image" content="https://images.pgzxc.com/react-native-layout-flexwrap-yes.png">
+<meta property="og:image" content="https://images.pgzxc.com/react-native-prop-justifyContent.png">
+<meta property="og:image" content="https://images.pgzxc.com/react-native-flex-code-justifycontent.png">
+<meta property="og:image" content="https://images.pgzxc.com/react-native-flex-look-justifycontent.png">
+<meta property="og:image" content="https://images.pgzxc.com/react-native-prop-alignitems.png">
+<meta property="og:image" content="https://images.pgzxc.com/react-native-layout-algnitems-code.png">
+<meta property="og:image" content="https://images.pgzxc.com/react-native-algnitems-look.png">
+<meta property="og:image" content="https://images.pgzxc.com/react-native-prop-flex.png">
+<meta property="og:image" content="https://images.pgzxc.com/react-native-layout-flex-code.png">
+<meta property="og:image" content="https://images.pgzxc.com/react-native-flex-look.png">
+<meta property="article:published_time" content="2018-03-03T13:20:44.000Z">
+<meta property="article:modified_time" content="2020-07-03T12:07:33.241Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Flex布局">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pgzxc.com/react-native-flex-layouts.png">
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/b531856b.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>React Native开发之——Flex布局 | PGzxc的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">PGzxc的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">967</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">85</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">378</span></a>
+
+  </li>
+        <li class="menu-item menu-item-comments">
+
+    <a href="/comments/" rel="section"><i class="fa fa-comments fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/b531856b.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          React Native开发之——Flex布局
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-03-03 21:20:44" itemprop="dateCreated datePublished" datetime="2018-03-03T21:20:44+08:00">2018-03-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-03 20:07:33" itemprop="dateModified" datetime="2020-07-03T20:07:33+08:00">2020-07-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">移动开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/React-Native/" itemprop="url" rel="index"><span itemprop="name">React Native</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>React中引入了flexbox概念,flexbox是属于web前端领域CSS的一种布局方案，是2009年W3C提出了一种新的布局方案，可以简便、完整、响应式地实现各种页面布局。你可以简单的理解为flexbox是CSS领域类似Android中 LinearLayout的一种布局，但是要比 LinearLayout要强大的多。</p>
+<p>本文主要讲述Flex布局，包含以下几个：  </p>
+<ul>
+<li>flexDirection</li>
+<li>flexWrap</li>
+<li>justifyContent</li>
+<li>alignItems</li>
+<li>flex</li>
+</ul>
+<a id="more"></a>
+
+<h1 id="Flex布局"><a href="#Flex布局" class="headerlink" title="Flex布局"></a>Flex布局</h1><h2 id="Flex布局概念"><a href="#Flex布局概念" class="headerlink" title="Flex布局概念"></a>Flex布局概念</h2><p><img src="https://images.pgzxc.com/react-native-flex-layouts.png" alt=""><br>图是W3C Flexbox布局模型：</p>
+<p>flexbox由伸缩容器和伸缩项目组成；任何一个元素都可以指定flexbox布局，伸缩容器的子元素可以称为伸缩项目；伸缩项目使用伸缩布局模型来排版；在默认情况下，伸缩容器由两根轴组成：主轴(main axis)和交叉轴(cross axis)，主轴的开始位置叫做main start，结束位置叫做main end；交叉轴的开始位置叫做cross start，结束位置叫做cross end；伸缩项目在主轴上占据的空间叫做main size，在交叉轴上占据的空间叫做cross size；   </p>
+<p>React Native目前版本为0.54， 本文所用属性位于APIs-&gt;Layout Props下<br><img src="https://images.pgzxc.com/react-native-flex-props.png" alt=""></p>
+<h2 id="flexDirection"><a href="#flexDirection" class="headerlink" title="flexDirection"></a>flexDirection</h2><h3 id="属性说明"><a href="#属性说明" class="headerlink" title="属性说明"></a>属性说明</h3><p>flexDirection控制主轴的方向，它有四个值：  </p>
+<ul>
+<li>‘row’</li>
+<li>‘row-reverse’</li>
+<li>‘column’</li>
+<li>‘column-reverse’</li>
+</ul>
+<p><img src="https://images.pgzxc.com/react-native-flex-layout-flexdirection.png" alt=""></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><img src="https://images.pgzxc.com/react-native-flex-code-column.png" alt=""></p>
+<h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="https://images.pgzxc.com/react-native-flex-look-column.png" alt=""> <img src="https://images.pgzxc.com/react-native-flex-look-row.png" alt=""> </p>
+<h2 id="flexWrap"><a href="#flexWrap" class="headerlink" title="flexWrap"></a>flexWrap</h2><h3 id="属性说明-1"><a href="#属性说明-1" class="headerlink" title="属性说明"></a>属性说明</h3><p>flexWrap控制当子view到达末尾时是否绕行，它有两个值(默认是nowrap)：  </p>
+<ul>
+<li>wrap</li>
+<li>nowrap</li>
+</ul>
+<p><img src="https://images.pgzxc.com/react-native-prop-flexwrap.png" alt=""></p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><p>增加到12个Text<br><img src="https://images.pgzxc.com/react-native-flex-code-flex-wrap.png" alt=""></p>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><h4 id="flexWrap-nowrap时，如下："><a href="#flexWrap-nowrap时，如下：" class="headerlink" title="flexWrap=nowrap时，如下："></a>flexWrap=nowrap时，如下：</h4><p><img src="https://images.pgzxc.com/react-native-layout-flexwrap-no.png" alt="">  </p>
+<h4 id="flexWrap-wrap时，如下"><a href="#flexWrap-wrap时，如下" class="headerlink" title="flexWrap=wrap时，如下:"></a>flexWrap=wrap时，如下:</h4><p><img src="https://images.pgzxc.com/react-native-layout-flexwrap-yes.png" alt="">  </p>
+<h2 id="justifyContent"><a href="#justifyContent" class="headerlink" title="justifyContent"></a>justifyContent</h2><h3 id="属性说明-2"><a href="#属性说明-2" class="headerlink" title="属性说明"></a>属性说明</h3><p>justifyContent，用来定义伸缩项目沿主轴线的对其方式：，它有以下6个值：  </p>
+<ul>
+<li>flex-start</li>
+<li>flex-end</li>
+<li>center</li>
+<li>space-between</li>
+<li>space-around</li>
+<li>space-evenly</li>
+</ul>
+<p><img src="https://images.pgzxc.com/react-native-prop-justifyContent.png" alt=""></p>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><p><img src="https://images.pgzxc.com/react-native-flex-code-justifycontent.png" alt=""></p>
+<h3 id="效果图-1"><a href="#效果图-1" class="headerlink" title="效果图"></a>效果图</h3><p><img src="https://images.pgzxc.com/react-native-flex-look-justifycontent.png" alt="">  </p>
+<h2 id="alignItems"><a href="#alignItems" class="headerlink" title="alignItems"></a>alignItems</h2><h3 id="属性说明-3"><a href="#属性说明-3" class="headerlink" title="属性说明"></a>属性说明</h3><p>alignItems，用来定义交叉轴的对其方式：，它有以下5个值：</p>
+<ul>
+<li>flex-start</li>
+<li>flex-end</li>
+<li>center</li>
+<li>stretch</li>
+<li>baseline</li>
+</ul>
+<p><img src="https://images.pgzxc.com/react-native-prop-alignitems.png" alt=""> </p>
+<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h3><p><img src="https://images.pgzxc.com/react-native-layout-algnitems-code.png" alt=""></p>
+<h3 id="效果图-2"><a href="#效果图-2" class="headerlink" title="效果图"></a>效果图</h3><p><img src="https://images.pgzxc.com/react-native-algnitems-look.png" alt="">  </p>
+<h2 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h2><h3 id="属性说明-4"><a href="#属性说明-4" class="headerlink" title="属性说明"></a>属性说明</h3><p>flex(数值型的属性值)：类似于Android中的layout-weight，用于收缩项目向右尽可能扩展。<br><img src="https://images.pgzxc.com/react-native-prop-flex.png" alt=""> </p>
+<h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h3><p><img src="https://images.pgzxc.com/react-native-layout-flex-code.png" alt=""></p>
+<h3 id="效果-1"><a href="#效果-1" class="headerlink" title="效果"></a>效果</h3><p><img src="https://images.pgzxc.com/react-native-flex-look.png" alt=""></p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>参考： <a target="_blank" rel="noopener" href="https://github.com/PGzxc/RNFlex">RNFlex</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Flex%E5%B8%83%E5%B1%80/" rel="tag"># Flex布局</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/3a8bdbec.html" rel="prev" title="React Native开发之——Webstorm开发RN配置">
+      <i class="fa fa-chevron-left"></i> React Native开发之——Webstorm开发RN配置
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/9735e687.html" rel="next" title="React Native开发之——组件Text">
+      React Native开发之——组件Text <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjQ1OC85MDE5"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Flex%E5%B8%83%E5%B1%80"><span class="nav-number">2.</span> <span class="nav-text">Flex布局</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Flex%E5%B8%83%E5%B1%80%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">Flex布局概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flexDirection"><span class="nav-number">2.2.</span> <span class="nav-text">flexDirection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E"><span class="nav-number">2.2.1.</span> <span class="nav-text">属性说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">2.2.2.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%88%E6%9E%9C%E5%9B%BE"><span class="nav-number">2.2.3.</span> <span class="nav-text">效果图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flexWrap"><span class="nav-number">2.3.</span> <span class="nav-text">flexWrap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">属性说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="nav-number">2.3.2.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%88%E6%9E%9C"><span class="nav-number">2.3.3.</span> <span class="nav-text">效果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#flexWrap-nowrap%E6%97%B6%EF%BC%8C%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">2.3.3.1.</span> <span class="nav-text">flexWrap&#x3D;nowrap时，如下：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flexWrap-wrap%E6%97%B6%EF%BC%8C%E5%A6%82%E4%B8%8B"><span class="nav-number">2.3.3.2.</span> <span class="nav-text">flexWrap&#x3D;wrap时，如下:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#justifyContent"><span class="nav-number">2.4.</span> <span class="nav-text">justifyContent</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E-2"><span class="nav-number">2.4.1.</span> <span class="nav-text">属性说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-2"><span class="nav-number">2.4.2.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%88%E6%9E%9C%E5%9B%BE-1"><span class="nav-number">2.4.3.</span> <span class="nav-text">效果图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#alignItems"><span class="nav-number">2.5.</span> <span class="nav-text">alignItems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E-3"><span class="nav-number">2.5.1.</span> <span class="nav-text">属性说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-3"><span class="nav-number">2.5.2.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%88%E6%9E%9C%E5%9B%BE-2"><span class="nav-number">2.5.3.</span> <span class="nav-text">效果图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flex"><span class="nav-number">2.6.</span> <span class="nav-text">flex</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E-4"><span class="nav-number">2.6.1.</span> <span class="nav-text">属性说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-4"><span class="nav-number">2.6.2.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%88%E6%9E%9C-1"><span class="nav-number">2.6.3.</span> <span class="nav-text">效果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">3.</span> <span class="nav-text">其他</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">967</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">378</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PGzxc" title="GitHub → https://github.com/PGzxc" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http://blog.csdn.net/calvin_zhou" rel="noopener" target="_blank"><i class="book fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http://weibo.com/5582039920" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>微博</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http://www.jianshu.com/u/c5cdcb4dc52b" rel="noopener" target="_blank"><i class="heartbeat fa-fw"></i>简书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wanandroid.com/" title="https://wanandroid.com/" rel="noopener" target="_blank">鸿洋</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/home.html" title="http://www.ruanyifeng.com/home.html" rel="noopener" target="_blank">阮一峰</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://memento.net.cn" title="https://memento.net.cn" rel="noopener" target="_blank">琅涯阁</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/sinyu890807/" title="http://blog.csdn.net/sinyu890807/" rel="noopener" target="_blank">郭霖</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/luoshengyang/" title="http://blog.csdn.net/luoshengyang/" rel="noopener" target="_blank">老罗</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/aigestudio/" title="http://blog.csdn.net/aigestudio/" rel="noopener" target="_blank">爱哥</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/wwj_748/" title="http://blog.csdn.net/wwj_748/" rel="noopener" target="_blank">小巫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/singwhatiwanna/" title="http://blog.csdn.net/singwhatiwanna/" rel="noopener" target="_blank">任玉刚</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/eclipsexys/" title="http://blog.csdn.net/eclipsexys/" rel="noopener" target="_blank">徐医生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/bboyfeiyu/" title="http://blog.csdn.net/bboyfeiyu/" rel="noopener" target="_blank">Mr.Simple</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/xyz_lmn/" title="http://blog.csdn.net/xyz_lmn/" rel="noopener" target="_blank">张兴业</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.android.google.cn/index.html" title="https://developer.android.google.cn/index.html" rel="noopener" target="_blank">谷歌中国</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备18061062号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pgzxc</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">1.4m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">20:35</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>

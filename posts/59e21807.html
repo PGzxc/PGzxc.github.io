@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前言论坛(Forums) 是在线商业服务中的团体组织。论坛可能运作着一个图书馆、一个聊天室，让人们进行实时的信息交流，甚至它还有一个分类的广告目录。因特网上的论坛，它将会吸引一些带有特殊兴趣的群体(资源分享、婚恋交友等)。版主对版块发起者和管理者严格实施真实身份信息备案、定期核验。    本文主要介绍使用便捷开发工具快速搭建一个论坛，如果愿意，你可以发布到互联网上让给多的人参与进来。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows开发之——局域网内搭建论坛">
+<meta property="og:url" content="http://pgzxc.github.io/posts/59e21807.html">
+<meta property="og:site_name" content="PGzxc的博客">
+<meta property="og:description" content="前言论坛(Forums) 是在线商业服务中的团体组织。论坛可能运作着一个图书馆、一个聊天室，让人们进行实时的信息交流，甚至它还有一个分类的广告目录。因特网上的论坛，它将会吸引一些带有特殊兴趣的群体(资源分享、婚恋交友等)。版主对版块发起者和管理者严格实施真实身份信息备案、定期核验。    本文主要介绍使用便捷开发工具快速搭建一个论坛，如果愿意，你可以发布到互联网上让给多的人参与进来。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pgzxc.com/phpnow-download.png">
+<meta property="og:image" content="https://images.pgzxc.com/ucenter-download.png">
+<meta property="og:image" content="https://images.pgzxc.com/discuz-download.png">
+<meta property="og:image" content="https://images.pgzxc.com/LunTan-dir.png">
+<meta property="og:image" content="https://images.pgzxc.com/forum-file-unzip.png">
+<meta property="og:image" content="https://images.pgzxc.com/phpnow-unzip.png">
+<meta property="og:image" content="https://images.pgzxc.com/uncenter-unzip.png">
+<meta property="og:image" content="https://images.pgzxc.com/discusz-unzip.png">
+<meta property="og:image" content="https://images.pgzxc.com/luntan-php-move.png">
+<meta property="og:image" content="https://images.pgzxc.com/luntan-php-setup.png">
+<meta property="og:image" content="https://images.pgzxc.com/phpnow-apache.png">
+<meta property="og:image" content="https://images.pgzxc.com/phpnow-mysql-select.png">
+<meta property="og:image" content="https://images.pgzxc.com/phpnow-init-y.png">
+<meta property="og:image" content="https://images.pgzxc.com/mysql-kill-mysqld.png">
+<meta property="og:image" content="https://images.pgzxc.com/apache-pn-fail.png">
+<meta property="og:image" content="https://images.pgzxc.com/cmd-delete-apache.png">
+<meta property="og:image" content="https://images.pgzxc.com/mysql-root-password.png">
+<meta property="og:image" content="https://images.pgzxc.com/phpnow-default-page.png">
+<meta property="og:image" content="https://images.pgzxc.com/ucenter-reload-move.png">
+<meta property="og:image" content="https://images.pgzxc.com/discusz-upload-move.png">
+<meta property="og:image" content="https://images.pgzxc.com/ucenter-install-guide.png">
+<meta property="og:image" content="https://images.pgzxc.com/ucenter-install-next.png">
+<meta property="og:image" content="https://images.pgzxc.com/ucenter-install-mysql.png">
+<meta property="og:image" content="https://images.pgzxc.com/ucenter-mysql-finish.png">
+<meta property="og:image" content="https://images.pgzxc.com/ucenter-login.png">
+<meta property="og:image" content="https://images.pgzxc.com/ucenter-add-apply.png">
+<meta property="og:image" content="https://images.pgzxc.com/ucenter-install-url.png">
+<meta property="og:image" content="https://images.pgzxc.com/discuz-install.png">
+<meta property="og:image" content="https://images.pgzxc.com/discusz-install-next.png">
+<meta property="og:image" content="https://images.pgzxc.com/discuz-url-zhandian.png">
+<meta property="og:image" content="https://images.pgzxc.com/discusz-mysql.png">
+<meta property="og:image" content="https://images.pgzxc.com/discuz-email.png">
+<meta property="og:image" content="https://images.pgzxc.com/discusz-fail.png">
+<meta property="og:image" content="https://images.pgzxc.com/mysql-navicate-conn.png">
+<meta property="og:image" content="https://images.pgzxc.com/navicat-ucenter-open.png">
+<meta property="og:image" content="https://images.pgzxc.com/navicate-ucenter-create.png">
+<meta property="og:image" content="https://images.pgzxc.com/navicat-uc-pms.png">
+<meta property="og:image" content="https://images.pgzxc.com/create-success-refresh.png">
+<meta property="og:image" content="https://images.pgzxc.com/discuz-main.png">
+<meta property="article:published_time" content="2018-08-10T14:56:36.000Z">
+<meta property="article:modified_time" content="2020-07-03T12:07:33.245Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="论坛">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pgzxc.com/phpnow-download.png">
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/59e21807.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Windows开发之——局域网内搭建论坛 | PGzxc的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">PGzxc的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">967</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">85</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">378</span></a>
+
+  </li>
+        <li class="menu-item menu-item-comments">
+
+    <a href="/comments/" rel="section"><i class="fa fa-comments fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/59e21807.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Windows开发之——局域网内搭建论坛
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-08-10 22:56:36" itemprop="dateCreated datePublished" datetime="2018-08-10T22:56:36+08:00">2018-08-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-03 20:07:33" itemprop="dateModified" datetime="2020-07-03T20:07:33+08:00">2020-07-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">系统</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%B3%BB%E7%BB%9F/Windows/" itemprop="url" rel="index"><span itemprop="name">Windows</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>论坛(Forums) 是在线商业服务中的团体组织。论坛可能运作着一个图书馆、一个聊天室，让人们进行实时的信息交流，甚至它还有一个分类的广告目录。因特网上的论坛，它将会吸引一些带有特殊兴趣的群体(资源分享、婚恋交友等)。版主对版块发起者和管理者严格实施真实身份信息备案、定期核验。   </p>
+<p>本文主要介绍使用便捷开发工具快速搭建一个论坛，如果愿意，你可以发布到互联网上让给多的人参与进来。     </p>
+<a id="more"></a>
+
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h2><h3 id="软件清单"><a href="#软件清单" class="headerlink" title="软件清单"></a>软件清单</h3><ol>
+<li>PHPnow-1.5.6</li>
+<li>UCenter_1.6.0_SC_GBK</li>
+<li>Discuz_7.2_SC_GBK</li>
+</ol>
+<h3 id="软件介绍"><a href="#软件介绍" class="headerlink" title="软件介绍"></a>软件介绍</h3><ol>
+<li>PHPnow：它是一款Apache+PHP+MySql的集成环境，就像傻瓜相机一样，方便新手在自己的电脑上创建一个WEB服务器环境。</li>
+<li>Discuz: 论坛包</li>
+<li>UCenter：用户中心，Dicuz安装和运行依赖程序。</li>
+</ol>
+<h3 id="软件下载"><a href="#软件下载" class="headerlink" title="软件下载"></a>软件下载</h3><h4 id="下载PHPnow"><a href="#下载PHPnow" class="headerlink" title="下载PHPnow"></a>下载PHPnow</h4><p>打开<a target="_blank" rel="noopener" href="http://servkit.org/">servkit.org</a>，下载绿色PHP套件<br><img src="https://images.pgzxc.com/phpnow-download.png" alt=""></p>
+<h4 id="下载UCenter"><a href="#下载UCenter" class="headerlink" title="下载UCenter"></a>下载UCenter</h4><p>打开<a target="_blank" rel="noopener" href="http://www.comsenz.com/products/ucenter/">UCenter</a>，在产品列中下载UCenter<br><img src="https://images.pgzxc.com/ucenter-download.png" alt=""> </p>
+<h4 id="打开UCenter，在产品列中下载Discuz"><a href="#打开UCenter，在产品列中下载Discuz" class="headerlink" title="打开UCenter，在产品列中下载Discuz"></a>打开<a target="_blank" rel="noopener" href="http://www.comsenz.com/products/ucenter/">UCenter</a>，在产品列中下载Discuz</h4><p><img src="https://images.pgzxc.com/discuz-download.png" alt=""></p>
+<h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><ol>
+<li><p>在本地电脑上新建LunTan目录(如：D:\LunTan)<br><img src="https://images.pgzxc.com/LunTan-dir.png" alt="">  </p>
+</li>
+<li><p>分别将三个文件解压<br><img src="https://images.pgzxc.com/forum-file-unzip.png" alt=""> </p>
+</li>
+<li><p>解压后的三个文件目录<br><img src="https://images.pgzxc.com/phpnow-unzip.png" alt="phpunzip"><br><img src="https://images.pgzxc.com/uncenter-unzip.png" alt="ucenter-unzip"><br><img src="https://images.pgzxc.com/discusz-unzip.png" alt="discusz-unzip"></p>
+</li>
+<li><p>将PHPnow解压后的文件移动到LunTan目录下<br><img src="https://images.pgzxc.com/luntan-php-move.png" alt="">  </p>
+</li>
+<li><p>双击LunTan目录下的setup.bat运行<br><img src="https://images.pgzxc.com/luntan-php-setup.png" alt="">  </p>
+</li>
+<li><p>选择Apache版本，输入推荐值20并回车<br><img src="https://images.pgzxc.com/phpnow-apache.png" alt=""></p>
+</li>
+<li><p>选择Mysql版本，输入推荐值50并回车<br><img src="https://images.pgzxc.com/phpnow-mysql-select.png" alt=""> </p>
+</li>
+<li><p>是否初始化配置中，输入y并回车<br><img src="https://images.pgzxc.com/phpnow-init-y.png" alt="">  </p>
+</li>
+<li><p>如果事先已安装Mysql，会出现如图所示，请结束掉mysqld.exe进程，输入2重试<br><img src="https://images.pgzxc.com/mysql-kill-mysqld.png" alt=""></p>
+</li>
+<li><p>你可能遇到出现apache-pn失败<br><img src="https://images.pgzxc.com/apache-pn-fail.png" alt="">  </p>
+</li>
+<li><p>打开CMD,输入sc delete  apache_pn并回车(或者以管理员模式进入到LunTan目录，执行init)<br><img src="https://images.pgzxc.com/cmd-delete-apache.png" alt=""></p>
+</li>
+<li><p>正常启动后，设置Mysql密码<br><img src="https://images.pgzxc.com/mysql-root-password.png" alt="">  </p>
+</li>
+<li><p>继续可以看到默认页面，Mysql连接输入密码，测试是否正常<br><img src="https://images.pgzxc.com/phpnow-default-page.png" alt=""> </p>
+</li>
+<li><p>将UCenter下的upload改名为UCenter并移动到LunTan\htdocs目录下<br><img src="https://images.pgzxc.com/ucenter-reload-move.png" alt="">  </p>
+</li>
+<li><p>将Discusz下upload中的内容全部复制到LunTan\htdocs下，并覆盖index.php文件<br><img src="https://images.pgzxc.com/discusz-upload-move.png" alt=""> </p>
+</li>
+<li><p>在浏览器地址栏内输入：<a target="_blank" rel="noopener" href="http://127.0.0.1/Uncenter/install/">http://127.0.0.1/Uncenter/install/</a><br><img src="https://images.pgzxc.com/ucenter-install-guide.png" alt="">  </p>
+</li>
+<li><p>开始安装，下一步<br><img src="https://images.pgzxc.com/ucenter-install-next.png" alt=""></p>
+</li>
+<li><p>在数据库页面输入密码和管理员信息<br><img src="https://images.pgzxc.com/ucenter-install-mysql.png" alt=""> </p>
+</li>
+<li><p>数据库完成，进入用户中心<br><img src="https://images.pgzxc.com/ucenter-mysql-finish.png" alt=""></p>
+</li>
+<li><p>输入用户密码，以创建者方式登录<br><img src="https://images.pgzxc.com/ucenter-login.png" alt=""></p>
+</li>
+<li><p>进入应用管理，添加新应用<br><img src="https://images.pgzxc.com/ucenter-add-apply.png" alt=""> </p>
+</li>
+<li><p>选择安装方式(选择推荐URL方式，domain改为127.0.0.1)  </p>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/install/index.php">http://127.0.0.1/install/index.php</a><br><img src="https://images.pgzxc.com/ucenter-install-url.png" alt=""></p>
+</li>
+<li><p>进入论坛安装向导<br><img src="https://images.pgzxc.com/discuz-install.png" alt="">  </p>
+</li>
+<li><p>安装向导，下一步<br><img src="https://images.pgzxc.com/discusz-install-next.png" alt=""></p>
+</li>
+<li><p>设置访问URL和站点名称<br><img src="https://images.pgzxc.com/discuz-url-zhandian.png" alt=""> </p>
+</li>
+<li><p>设置站点数据库和管理员信息<br><img src="https://images.pgzxc.com/discusz-mysql.png" alt=""></p>
+</li>
+<li><p>跳过联系方式<br><img src="https://images.pgzxc.com/discuz-email.png" alt=""></p>
+</li>
+<li><p>如果不出问题，可能会出现如下错误<br>Error:Table ‘ucenter.uc_pms’ doesn’t exist<br>Errno:1146<br>SQL::SELECT count(*) FROM <code>ucenter</code>.uc_pms WHERE (related=’0’ AND     msgfromid&gt;’0’ OR msgfromid=’0’) AND msgtoid=’0’ AND folder=’inbox’ AND    new=’1’<br><img src="https://images.pgzxc.com/discusz-fail.png" alt=""></p>
+</li>
+<li><p>使用navicat连接到数据库<br><img src="https://images.pgzxc.com/mysql-navicate-conn.png" alt="">  </p>
+</li>
+<li><p>打开ucenter的命令行窗口模式<br><img src="https://images.pgzxc.com/navicat-ucenter-open.png" alt="">   </p>
+</li>
+<li><p>在ucenter中创建表信息<br>CREATE TABLE uc_pms (<br>pmid int(10) unsigned NOT NULL auto_increment,<br>msgfrom varchar(15) NOT NULL default ‘’,<br>msgfromid mediumint(8) unsigned NOT NULL default ‘0’,<br>msgtoid mediumint(8) unsigned NOT NULL default ‘0’,<br>folder enum(‘inbox’,’outbox’) NOT NULL default ‘inbox’,<br>new tinyint(1) NOT NULL default ‘0’,<br>subject varchar(75) NOT NULL default ‘’,<br>dateline int(10) unsigned NOT NULL default ‘0’,<br>message text NOT NULL,<br>delstatus tinyint(1) unsigned NOT NULL default ‘0’,<br>related int(10) unsigned NOT NULL default ‘0’,<br>PRIMARY KEY(pmid),<br>KEY msgtoid(msgtoid,folder,dateline),<br>KEY msgfromid(msgfromid,folder,dateline),<br>KEY related (related),<br>KEY getnum (msgtoid,folder,delstatus)) TYPE=MyISAM;<br><img src="https://images.pgzxc.com/navicate-ucenter-create.png" alt=""> </p>
+</li>
+<li><p>查看新建表uc_pms信息<br><img src="https://images.pgzxc.com/navicat-uc-pms.png" alt="">  </p>
+</li>
+<li><p>输入：127.0.0.1，错误消失<br><img src="https://images.pgzxc.com/create-success-refresh.png" alt="">  </p>
+</li>
+<li><p>进入论坛主界面<br><img src="https://images.pgzxc.com/discuz-main.png" alt=""></p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%BA%E5%9D%9B/" rel="tag"># 论坛</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/cddda75d.html" rel="prev" title="运维开发之——Confluence搭建">
+      <i class="fa fa-chevron-left"></i> 运维开发之——Confluence搭建
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/f5779c0a.html" rel="next" title="CentOS开发之——Tomcat安装">
+      CentOS开发之——Tomcat安装 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjQ1OC85MDE5"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E6%B8%85%E5%8D%95"><span class="nav-number">2.1.1.</span> <span class="nav-text">软件清单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.1.2.</span> <span class="nav-text">软件介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="nav-number">2.1.3.</span> <span class="nav-text">软件下载</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDPHPnow"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">下载PHPnow</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDUCenter"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">下载UCenter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%93%E5%BC%80UCenter%EF%BC%8C%E5%9C%A8%E4%BA%A7%E5%93%81%E5%88%97%E4%B8%AD%E4%B8%8B%E8%BD%BDDiscuz"><span class="nav-number">2.1.3.3.</span> <span class="nav-text">打开UCenter，在产品列中下载Discuz</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-1"><span class="nav-number">2.2.</span> <span class="nav-text">安装</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">967</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">378</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PGzxc" title="GitHub → https://github.com/PGzxc" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http://blog.csdn.net/calvin_zhou" rel="noopener" target="_blank"><i class="book fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http://weibo.com/5582039920" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>微博</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http://www.jianshu.com/u/c5cdcb4dc52b" rel="noopener" target="_blank"><i class="heartbeat fa-fw"></i>简书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wanandroid.com/" title="https://wanandroid.com/" rel="noopener" target="_blank">鸿洋</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/home.html" title="http://www.ruanyifeng.com/home.html" rel="noopener" target="_blank">阮一峰</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://memento.net.cn" title="https://memento.net.cn" rel="noopener" target="_blank">琅涯阁</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/sinyu890807/" title="http://blog.csdn.net/sinyu890807/" rel="noopener" target="_blank">郭霖</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/luoshengyang/" title="http://blog.csdn.net/luoshengyang/" rel="noopener" target="_blank">老罗</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/aigestudio/" title="http://blog.csdn.net/aigestudio/" rel="noopener" target="_blank">爱哥</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/wwj_748/" title="http://blog.csdn.net/wwj_748/" rel="noopener" target="_blank">小巫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/singwhatiwanna/" title="http://blog.csdn.net/singwhatiwanna/" rel="noopener" target="_blank">任玉刚</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/eclipsexys/" title="http://blog.csdn.net/eclipsexys/" rel="noopener" target="_blank">徐医生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/bboyfeiyu/" title="http://blog.csdn.net/bboyfeiyu/" rel="noopener" target="_blank">Mr.Simple</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/xyz_lmn/" title="http://blog.csdn.net/xyz_lmn/" rel="noopener" target="_blank">张兴业</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.android.google.cn/index.html" title="https://developer.android.google.cn/index.html" rel="noopener" target="_blank">谷歌中国</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备18061062号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pgzxc</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">1.4m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">20:35</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>

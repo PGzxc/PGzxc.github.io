@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="注：本文为转载文章，原文请参考：Android数据加密之Des加密  DES加密介绍：DES是一种对称加密算法，所谓对称加密算法即：加密和解密使用相同密钥的算法。DES加密算法出自IBM的研究，后来被美国政府正式采用，之后开始广泛流传，但是近些年使用越来越少，因为DES使用56位密钥，以现代计算能力，24小时内即可被破解。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android数据加密之——Des加密">
+<meta property="og:url" content="http://pgzxc.github.io/posts/2855df3b.html">
+<meta property="og:site_name" content="PGzxc的博客">
+<meta property="og:description" content="注：本文为转载文章，原文请参考：Android数据加密之Des加密  DES加密介绍：DES是一种对称加密算法，所谓对称加密算法即：加密和解密使用相同密钥的算法。DES加密算法出自IBM的研究，后来被美国政府正式采用，之后开始广泛流传，但是近些年使用越来越少，因为DES使用56位密钥，以现代计算能力，24小时内即可被破解。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-03-30T14:38:29.000Z">
+<meta property="article:modified_time" content="2019-12-26T13:41:12.521Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Des加密">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/2855df3b.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Android数据加密之——Des加密 | PGzxc的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">PGzxc的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">967</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">85</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">378</span></a>
+
+  </li>
+        <li class="menu-item menu-item-comments">
+
+    <a href="/comments/" rel="section"><i class="fa fa-comments fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/2855df3b.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android数据加密之——Des加密
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-03-30 22:38:29" itemprop="dateCreated datePublished" datetime="2018-03-30T22:38:29+08:00">2018-03-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-26 21:41:12" itemprop="dateModified" datetime="2019-12-26T21:41:12+08:00">2019-12-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">移动开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>注：本文为转载文章，原文请参考：<a target="_blank" rel="noopener" href="http://www.cnblogs.com/whoislcj/p/5580950.html">Android数据加密之Des加密</a> </p>
+<h1 id="DES加密介绍："><a href="#DES加密介绍：" class="headerlink" title="DES加密介绍："></a>DES加密介绍：</h1><p>DES是一种对称加密算法，所谓对称加密算法即：加密和解密使用相同密钥的算法。DES加密算法出自IBM的研究，后来被美国政府正式采用，之后开始广泛流传，但是近些年使用越来越少，因为DES使用56位密钥，以现代计算能力，24小时内即可被破解。</p>
+<a id="more"></a>
+
+<h1 id="DES加密使用方式："><a href="#DES加密使用方式：" class="headerlink" title="DES加密使用方式："></a>DES加密使用方式：</h1><h2 id="DesUtil常量类介绍"><a href="#DesUtil常量类介绍" class="headerlink" title="DesUtil常量类介绍"></a>DesUtil常量类介绍</h2><pre><code>private final static String HEX = &quot;0123456789ABCDEF&quot;;
+private final static String TRANSFORMATION = &quot;DES/CBC/PKCS5Padding&quot;;//DES是加密方式 CBC是工作模式 PKCS5Padding是填充模式
+private final static String IVPARAMETERSPEC = &quot;01020304&quot;;////初始化向量参数，AES 为16bytes. DES 为8bytes.
+private final static String ALGORITHM = &quot;DES&quot;;//DES是加密方式
+private static final String SHA1PRNG = &quot;SHA1PRNG&quot;;//// SHA1PRNG 强随机种子算法, 要区别4.2以上版本的调用方法</code></pre><h2 id="动态生成秘钥"><a href="#动态生成秘钥" class="headerlink" title="动态生成秘钥"></a>动态生成秘钥</h2><p>长度不能够小于8位字节 因为DES固定格式为128bits，即8bytes。</p>
+<pre><code>/** 生成随机数，可以当做动态的密钥 加密和解密的密钥必须一致，不然将不能解密*/
+public static String generateKey() 
+&#123;
+    try 
+    &#123;
+        SecureRandom localSecureRandom = SecureRandom.getInstance(SHA1PRNG);
+        byte[] bytes_key = new byte[20];
+        localSecureRandom.nextBytes(bytes_key);
+        String str_key = toHex(bytes_key);
+        return str_key;
+    &#125; catch (Exception e) 
+    &#123;
+        e.printStackTrace();
+    &#125;
+    return null;
+&#125;
+
+//二进制转字符
+public static String toHex(byte[] buf) 
+&#123;
+    if (buf == null)
+        return &quot;&quot;;
+    StringBuffer result = new StringBuffer(2 * buf.length);
+    for (int i = 0; i &lt; buf.length; i++) 
+    &#123;
+        appendHex(result, buf[i]);
+    &#125;
+    return result.toString();
+&#125;
+
+private static void appendHex(StringBuffer sb, byte b) 
+&#123;
+    sb.append(HEX.charAt((b &gt;&gt; 4) &amp; 0x0f)).append(HEX.charAt(b &amp; 0x0f));
+&#125;</code></pre><h2 id="处理秘钥Key的两种方式"><a href="#处理秘钥Key的两种方式" class="headerlink" title="处理秘钥Key的两种方式"></a>处理秘钥Key的两种方式</h2><h3 id="第一种："><a href="#第一种：" class="headerlink" title="第一种："></a>第一种：</h3><pre><code>// 对密钥进行处理
+private static Key getRawKey(String key) throws Exception 
+&#123;
+    KeyGenerator kgen = KeyGenerator.getInstance(ALGORITHM);
+    //for android
+    SecureRandom sr = null;
+    // 在4.2以上版本中，SecureRandom获取方式发生了改变
+    if (android.os.Build.VERSION.SDK_INT &gt;= 17) 
+    &#123;
+        sr = SecureRandom.getInstance(SHA1PRNG, &quot;Crypto&quot;);
+    &#125; else 
+    &#123;
+        sr = SecureRandom.getInstance(SHA1PRNG);
+    &#125;
+    // for Java
+    // secureRandom = SecureRandom.getInstance(SHA1PRNG);
+    sr.setSeed(key.getBytes());
+    kgen.init(64, sr); //DES固定格式为64bits，即8bytes。
+    SecretKey skey = kgen.generateKey();
+    byte[] raw = skey.getEncoded();
+    return new SecretKeySpec(raw, ALGORITHM);
+&#125;</code></pre><h3 id="第二种："><a href="#第二种：" class="headerlink" title="第二种："></a>第二种：</h3><pre><code>// 对密钥进行处理
+private static Key getRawKey(String key) throws Exception 
+&#123;
+    DESKeySpec dks = new DESKeySpec(key.getBytes());
+    SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(ALGORITHM);
+    return keyFactory.generateSecret(dks);
+&#125;</code></pre><h2 id="加密实现"><a href="#加密实现" class="headerlink" title="加密实现"></a>加密实现</h2><pre><code>/**
+ * DES算法，加密
+ * @param data 待加密字符串
+ * @param key  加密私钥，长度不能够小于8位
+ * @return 加密后的字节数组，一般结合Base64编码使用
+ */
+public static String encode(String key, String data) 
+&#123;
+    return encode(key, data.getBytes());
+&#125;
+
+
+/**
+ * DES算法，加密
+ * @param data 待加密字符串
+ * @param key  加密私钥，长度不能够小于8位
+ * @return 加密后的字节数组，一般结合Base64编码使用
+ */
+public static String encode(String key, byte[] data) 
+&#123;
+    try 
+    &#123;
+        Cipher cipher = Cipher.getInstance(TRANSFORMATION);
+        IvParameterSpec iv = new IvParameterSpec(IVPARAMETERSPEC.getBytes());
+        cipher.init(Cipher.ENCRYPT_MODE, getRawKey(key), iv);
+        byte[] bytes = cipher.doFinal(data);
+        return Base64.encodeToString(bytes, Base64.DEFAULT);
+    &#125; catch (Exception e) 
+    &#123;
+        return null;
+    &#125;
+&#125;</code></pre><h2 id="解密实现"><a href="#解密实现" class="headerlink" title="解密实现"></a>解密实现</h2><pre><code>/**
+ * 获取编码后的值
+ * @param key
+ * @param data
+ * @return
+ */
+public static String decode(String key, String data) 
+&#123;
+    return decode(key, Base64.decode(data, Base64.DEFAULT));
+&#125;
+
+/**
+ * DES算法，解密
+ * @param data 待解密字符串
+ * @param key  解密私钥，长度不能够小于8位
+ * @return 解密后的字节数组
+ */
+public static String decode(String key, byte[] data) 
+&#123;
+    try 
+    &#123;
+        Cipher cipher = Cipher.getInstance(TRANSFORMATION);
+        IvParameterSpec iv = new IvParameterSpec(IVPARAMETERSPEC.getBytes());
+        cipher.init(Cipher.DECRYPT_MODE, getRawKey(key), iv);
+        byte[] original = cipher.doFinal(data);
+        String originalString = new String(original);
+        return originalString;
+    &#125; catch (Exception e) 
+    &#123;
+        return null;
+    &#125;
+&#125;</code></pre><h2 id="DES知识扩展：3DES"><a href="#DES知识扩展：3DES" class="headerlink" title="DES知识扩展：3DES"></a>DES知识扩展：3DES</h2><p>3DES是DES加密算法的一种模式，它使用3条64位的密钥对数据进行三次加密。数据加密标准（DES）是美国的一种由来已久的加密标准，它使用对称密钥加密法。3DES（即Triple DES）是DES向AES过渡的加密算法（1999年，NIST将3-DES指定为过渡的加密标准），是DES的一个更安全的变形。它以DES为基本模块，通过组合分组方法设计出分组加密算法。</p>
+<h2 id="DES与AES比较："><a href="#DES与AES比较：" class="headerlink" title="DES与AES比较："></a>DES与AES比较：</h2><p>当时被问起采用DES加密内心深处我是拒绝的。单纯从名字上看AES(Advanced Encryption Standard)高级加密标准，安全性要高于DES，其实AES的出现本身就是为了取代DES的，AES具有比DES更好的安全性、效率、灵活性，所以对称加密优先采用AES。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Des%E5%8A%A0%E5%AF%86/" rel="tag"># Des加密</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/96f14beb.html" rel="prev" title="Android数据加密之——MD5加密">
+      <i class="fa fa-chevron-left"></i> Android数据加密之——MD5加密
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/62c29a74.html" rel="next" title="Android数据加密之——Aes加密">
+      Android数据加密之——Aes加密 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjQ1OC85MDE5"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DES%E5%8A%A0%E5%AF%86%E4%BB%8B%E7%BB%8D%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">DES加密介绍：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DES%E5%8A%A0%E5%AF%86%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">DES加密使用方式：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DesUtil%E5%B8%B8%E9%87%8F%E7%B1%BB%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.1.</span> <span class="nav-text">DesUtil常量类介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E7%94%9F%E6%88%90%E7%A7%98%E9%92%A5"><span class="nav-number">2.2.</span> <span class="nav-text">动态生成秘钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E7%A7%98%E9%92%A5Key%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-number">2.3.</span> <span class="nav-text">处理秘钥Key的两种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8D%EF%BC%9A"><span class="nav-number">2.3.1.</span> <span class="nav-text">第一种：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D%EF%BC%9A"><span class="nav-number">2.3.2.</span> <span class="nav-text">第二种：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.4.</span> <span class="nav-text">加密实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%AF%86%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.5.</span> <span class="nav-text">解密实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DES%E7%9F%A5%E8%AF%86%E6%89%A9%E5%B1%95%EF%BC%9A3DES"><span class="nav-number">2.6.</span> <span class="nav-text">DES知识扩展：3DES</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DES%E4%B8%8EAES%E6%AF%94%E8%BE%83%EF%BC%9A"><span class="nav-number">2.7.</span> <span class="nav-text">DES与AES比较：</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">967</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">378</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PGzxc" title="GitHub → https://github.com/PGzxc" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http://blog.csdn.net/calvin_zhou" rel="noopener" target="_blank"><i class="book fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http://weibo.com/5582039920" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>微博</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http://www.jianshu.com/u/c5cdcb4dc52b" rel="noopener" target="_blank"><i class="heartbeat fa-fw"></i>简书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wanandroid.com/" title="https://wanandroid.com/" rel="noopener" target="_blank">鸿洋</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/home.html" title="http://www.ruanyifeng.com/home.html" rel="noopener" target="_blank">阮一峰</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://memento.net.cn" title="https://memento.net.cn" rel="noopener" target="_blank">琅涯阁</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/sinyu890807/" title="http://blog.csdn.net/sinyu890807/" rel="noopener" target="_blank">郭霖</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/luoshengyang/" title="http://blog.csdn.net/luoshengyang/" rel="noopener" target="_blank">老罗</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/aigestudio/" title="http://blog.csdn.net/aigestudio/" rel="noopener" target="_blank">爱哥</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/wwj_748/" title="http://blog.csdn.net/wwj_748/" rel="noopener" target="_blank">小巫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/singwhatiwanna/" title="http://blog.csdn.net/singwhatiwanna/" rel="noopener" target="_blank">任玉刚</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/eclipsexys/" title="http://blog.csdn.net/eclipsexys/" rel="noopener" target="_blank">徐医生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/bboyfeiyu/" title="http://blog.csdn.net/bboyfeiyu/" rel="noopener" target="_blank">Mr.Simple</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/xyz_lmn/" title="http://blog.csdn.net/xyz_lmn/" rel="noopener" target="_blank">张兴业</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.android.google.cn/index.html" title="https://developer.android.google.cn/index.html" rel="noopener" target="_blank">谷歌中国</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备18061062号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pgzxc</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">1.4m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">20:35</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>
