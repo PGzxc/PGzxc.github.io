@@ -118,7 +118,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">969</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">971</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -186,6 +186,303 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/b7e898af.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/b7e898af.html" class="post-title-link" itemprop="url">Android开发之——手势识别</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-01-09 17:16:01" itemprop="dateCreated datePublished" datetime="2018-01-09T17:16:01+08:00">2018-01-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-03 20:07:33" itemprop="dateModified" datetime="2020-07-03T20:07:33+08:00">2020-07-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">移动开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>使用浏览器或者输入法应用时会有一些手势操作，还可以自定义手势。这些神奇的操作是怎么做的呢？这一篇重点记录手势的识别和创建。这篇的内容使用到了android.gesture包，具体的例子参考的是Sample中的GestureBuilder程序。 </p>
+<h1 id="手势识别的一般步骤"><a href="#手势识别的一般步骤" class="headerlink" title="手势识别的一般步骤"></a>手势识别的一般步骤</h1><h2 id="手势创建"><a href="#手势创建" class="headerlink" title="手势创建"></a>手势创建</h2><p>手势创建主要用到了GestureOverlayView和GestureLibrary。GestrueOverlayView的父类为android.widget.FrameLayout，是手势绘图区。GestureLibrary类主要对手势进行保存、删除等操作的，存放手势的仓库。下面给出创建手势的例子，如下图，可以定义如图手势打开csdn.net<br><img src="http://p0kng3270.bkt.clouddn.com/create-gesture" alt=""></p>
+<h3 id="创建绘图区"><a href="#创建绘图区" class="headerlink" title="创建绘图区"></a>创建绘图区</h3><pre><code>GestureOverlayView overlay = (GestureOverlayView) findViewById(R.id.gestures_overlay);  
+overlay.setGestureStrokeType(GestureOverlayView.GESTURE_STROKE_TYPE_MULTIPLE);    
+overlay.setFadeOffset(2000);  //多笔画每两次的间隔时间  
+overlay.setGestureColor(Color.CYAN);//画笔颜色  
+overlay.setGestureStrokeWidth(6);//画笔粗细值   
+overlay.addOnGestureListener(new GesturesProcessor());  </code></pre><h3 id="监听绘制"><a href="#监听绘制" class="headerlink" title="监听绘制"></a>监听绘制</h3><pre><code>private class GesturesProcessor implements estureOverlayView.OnGestureListener 
+&#123;  
+   public void onGestureStarted(GestureOverlayView overlay, MotionEvent event) 
+    &#123;  
+       mDoneButton.setEnabled(false);  
+       mGesture = null;  
+       &#125;  
+   public void onGesture(GestureOverlayView overlay, MotionEvent event) &#123;&#125;  
+
+   public void onGestureEnded(GestureOverlayView overlay, MotionEvent event) &#123;  
+       mGesture = overlay.getGesture();  
+       if (mGesture.getLength() &lt; LENGTH_THRESHOLD) &#123;overlay.clear(false);&#125;  
+       mDoneButton.setEnabled(true);  
+   &#125;  
+   public void onGestureCancelled(GestureOverlayView overlay, MotionEvent event) &#123;&#125;  
+&#125;  </code></pre><h3 id="保存手势"><a href="#保存手势" class="headerlink" title="保存手势"></a>保存手势</h3><pre><code>public void addGesture(View v) 
+&#123;  
+   if (mGesture != null) 
+    &#123;  
+       final TextView input = (TextView) findViewById(R.id.gesture_name);  
+       final CharSequence name = input.getText();  
+       if (name.length() == 0) 
+        &#123;  
+           input.setError(getString(R.string.error_missing_name));  
+           return;  
+        &#125;  
+
+       /** 
+        * 获取手势库 
+        *   private final File mStoreFile = new File(Environment.getExternalStorageDirectory(), &quot;gestures&quot;); 
+        *   GestureLibrary sStore = GestureLibraries.fromFile(mStoreFile); 
+        *  
+        */  
+       final GestureLibrary store = GestureBuilderActivity.getStore();  
+       store.addGesture(name.toString(), mGesture);  
+       store.save();  
+       setResult(RESULT_OK);  
+       final String path = new File(Environment.getExternalStorageDirectory(),  
+               &quot;gestures&quot;).getAbsolutePath();  
+       Toast.makeText(this, getString(R.string.save_success, path), Toast.LENGTH_LONG).show();  
+   &#125; else &#123;  
+       setResult(RESULT_CANCELED);  
+   &#125;  
+
+   finish();  
+&#125;  </code></pre><h2 id="手势识别"><a href="#手势识别" class="headerlink" title="手势识别"></a>手势识别</h2><p>手势识别也是经过创建绘图区、监听绘制、比对结果三个过程，这里直接给出代码。  </p>
+<pre><code>public class GesturePerformedActivity extends Activity 
+&#123;  
+private final File mStoreFile = new File(Environment.getExternalStorageDirectory(), &quot;gestures&quot;);  
+
+// 手势库  
+GestureLibrary mGestureLib;  
+@Override  
+protected void onCreate(Bundle savedInstanceState) &#123;  
+    // TODO Auto-generated method stub  
+    super.onCreate(savedInstanceState);  
+    setContentView(R.layout.gesture_perform);  
+    // 手势画板  
+    GestureOverlayView gestures = (GestureOverlayView) findViewById(R.id.gestures_overlay);  
+    gestures.setGestureStrokeType(GestureOverlayView.GESTURE_STROKE_TYPE_MULTIPLE);  
+    gestures.setFadeOffset(2000); // 多笔画每两次的间隔时间  
+    gestures.setGestureColor(Color.CYAN);// 画笔颜色  
+    gestures.setGestureStrokeWidth(6);// 画笔粗细值  
+
+    // 手势识别的监听器  
+    gestures.addOnGesturePerformedListener(new GestureOverlayView.OnGesturePerformedListener() &#123;  
+        @Override  
+        public void onGesturePerformed(GestureOverlayView overlay,  
+                Gesture gesture) &#123;  
+            // 从手势库中查询匹配的内容，匹配的结果可能包括多个相似的结果，匹配度高的结果放在最前面  
+            ArrayList&lt;Prediction&gt; predictions = mGestureLib  
+                    .recognize(gesture);      
+            if (predictions.size() &gt; 0) &#123;  
+                Prediction prediction = (Prediction) predictions.get(0);  
+                // 匹配的手势  
+                if (prediction.score &gt; 1.0) &#123; // 越匹配score的值越大，最大为10  
+                    Toast.makeText(GesturePerformedActivity.this,  
+                            prediction.name, Toast.LENGTH_SHORT).show();  
+                &#125;  
+            &#125;  
+        &#125;  
+    &#125;);  
+
+    if (mGestureLib == null) &#123;  
+        mGestureLib = GestureLibraries.fromFile(mStoreFile);  
+        mGestureLib.load();  
+    &#125;  
+&#125;  
+
+&#125; </code></pre><h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="https://images.pgzxc.com/gesture-draw.png" alt=""><br><img src="https://images.pgzxc.com/gesture-sample.png" alt="">   </p>
+<p>参考：<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xyzlmn/p/3442241.html">android手势创建及识别</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/everhad/p/6075716.html">札记：android手势识别，MotionEvent</a><br><a target="_blank" rel="noopener" href="http://blog.csdn.net/LABLENET/article/details/48105089">Android-手势识别</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/4c0809c0.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/4c0809c0.html" class="post-title-link" itemprop="url">Android开发之——人脸识别</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-01-09 10:48:10" itemprop="dateCreated datePublished" datetime="2018-01-09T10:48:10+08:00">2018-01-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-03 20:07:33" itemprop="dateModified" datetime="2020-07-03T20:07:33+08:00">2020-07-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">移动开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>782</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>人工智能时代快速来临，其中人脸识别是当前比较热门的技术，在国内也越来越多的运用，例如刷脸打卡、刷脸App，身份识别，人脸门禁等等。当前的人脸识别技术分为WEBAPI和SDK调用两种法方式，WEBAPI需要实时联网，SDK调用可以离线使用。  </p>
+<p>Android作为一个比较广泛的平台，如何实现人脸识别功能呢？  </p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/4c0809c0.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1044,216 +1341,10 @@ mBuilder.setContentIntent(pendingIntent);  </code></pre>
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/6771de5f.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="PGzxc">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PGzxc的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/6771de5f.html" class="post-title-link" itemprop="url">Android开发之——数据库框架之LitePal</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-01-02 20:43:22" itemprop="dateCreated datePublished" datetime="2018-01-02T20:43:22+08:00">2018-01-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-03 20:07:33" itemprop="dateModified" datetime="2020-07-03T20:07:33+08:00">2020-07-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">移动开发</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.7k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h1><p>LitePal是郭神（郭霖）在2014年的杰作，Github地址：<a target="_blank" rel="noopener" href="https://github.com/LitePalFramework/LitePal">LitePal</a>。LitePal是一款开源的Android数据库框架，它采用了对象关系映射(ORM)的模式，并将我们平时开发时最常用到的一些数据库功能进行了封装，使得不用编写一行SQL语句就可以完成各种建表、増删改查的操作。并且LitePal很”轻”，jar包只有100k不到，而且近乎零配置，这一点和hibernate这类的框架有很大区别。  </p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/6771de5f.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/68198de7.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="PGzxc">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PGzxc的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/68198de7.html" class="post-title-link" itemprop="url">Android开发之——如何把app运行在手表和电视上</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-01-02 15:41:40" itemprop="dateCreated datePublished" datetime="2018-01-02T15:41:40+08:00">2018-01-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-03 20:07:33" itemprop="dateModified" datetime="2020-07-03T20:07:33+08:00">2020-07-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">移动开发</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>483</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我们开发的App一般是运行在手机上的，你可能见过手表或电视上的Android应用程序，我们如果把一个Android应用程序运行到它们上面呢，这里我们对手表和电视软件安装进行一点的介绍！  </p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/68198de7.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/87/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/87/">87</a><span class="page-number current">88</span><a class="page-number" href="/page/89/">89</a><span class="space">&hellip;</span><a class="page-number" href="/page/97/">97</a><a class="extend next" rel="next" href="/page/89/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/87/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/87/">87</a><span class="page-number current">88</span><a class="page-number" href="/page/89/">89</a><span class="space">&hellip;</span><a class="page-number" href="/page/98/">98</a><a class="extend next" rel="next" href="/page/89/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1321,7 +1412,7 @@ mBuilder.setContentIntent(pendingIntent);  </code></pre>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">969</span>
+          <span class="site-state-item-count">971</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1434,7 +1525,7 @@ mBuilder.setContentIntent(pendingIntent);  </code></pre>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">20:41</span>
+    <span title="站点阅读时长">20:42</span>
 </div>
 
         
