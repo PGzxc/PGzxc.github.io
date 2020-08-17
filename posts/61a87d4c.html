@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一 概述 在上一节 C# Connection中我们讲解了 C#语言连接数据库的方法，在与数据库建立连接之后即可开始操作数据库中的对象。 操作数据库需则要用到 Command 类中提供的属性和方法。下面来介绍一下如何使用 Command 类来操作数据表中的数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#开发之——操作数据库(15.6)">
+<meta property="og:url" content="http://pgzxc.github.io/posts/61a87d4c.html">
+<meta property="og:site_name" content="PGzxc的博客">
+<meta property="og:description" content="一 概述 在上一节 C# Connection中我们讲解了 C#语言连接数据库的方法，在与数据库建立连接之后即可开始操作数据库中的对象。 操作数据库需则要用到 Command 类中提供的属性和方法。下面来介绍一下如何使用 Command 类来操作数据表中的数据">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.pgzxc.com/csharp-sql-register-view.gif">
+<meta property="og:image" content="https://images.pgzxc.com/csharp-sql-login-cancle-view.png">
+<meta property="og:image" content="https://images.pgzxc.com/charp-sql-register-username-exist.png">
+<meta property="og:image" content="https://images.pgzxc.com/csharp-sql-store-progress-command.png">
+<meta property="article:published_time" content="2020-08-17T13:56:27.000Z">
+<meta property="article:modified_time" content="2020-08-17T13:57:17.503Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="C#">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.pgzxc.com/csharp-sql-register-view.gif">
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/61a87d4c.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>C#开发之——操作数据库(15.6) | PGzxc的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">PGzxc的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">975</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">85</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">379</span></a>
+
+  </li>
+        <li class="menu-item menu-item-comments">
+
+    <a href="/comments/" rel="section"><i class="fa fa-comments fa-fw"></i>留言板</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/61a87d4c.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C#开发之——操作数据库(15.6)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-08-17 21:56:27 / 修改时间：21:57:17" itemprop="dateCreated datePublished" datetime="2020-08-17T21:56:27+08:00">2020-08-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">桌面开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%80%E5%8F%91/%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91/C/" itemprop="url" rel="index"><span itemprop="name">C#</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>7.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>7 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul>
+<li>在上一节 C# Connection中我们讲解了 C#语言连接数据库的方法，在与数据库建立连接之后即可开始操作数据库中的对象。</li>
+<li>操作数据库需则要用到 Command 类中提供的属性和方法。下面来介绍一下如何使用 Command 类来操作数据表中的数据 </li>
+</ul>
+<a id="more"></a>
+
+<h2 id="二-Command-类概述"><a href="#二-Command-类概述" class="headerlink" title="二 Command 类概述"></a>二 Command 类概述</h2><p> 在 System.Data.SqlClient 命名空间下，对应的 Command 类为 SqlCommand，在创建 SqlCommand 实例前必须已经创建了与数据库的连接。 </p>
+<h3 id="2-1-常用构造方法"><a href="#2-1-常用构造方法" class="headerlink" title="2.1 常用构造方法"></a>2.1 常用构造方法</h3><table>
+<thead>
+<tr>
+<th align="center"><strong>构造方法</strong></th>
+<th align="center"><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">SqlCommand()</td>
+<td align="center">无参构造方法</td>
+</tr>
+<tr>
+<td align="center">SqlCommand(string commandText,SqlConnection conn)</td>
+<td align="center">带参的构造方法，第 1 个参数是要执行的 SQL 语句，第 2 个参数是数据库的连接对象</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-常用属性和方法"><a href="#2-2-常用属性和方法" class="headerlink" title="2.2 常用属性和方法"></a>2.2 常用属性和方法</h3><p>对数据库中对象的操作不仅包括对数据表的操作，还包括对数据库、视图、存储过程等数据库对象的操作，接下来主要介绍的是对数据表和存储过程的操作。</p>
+<p>在对不同数据库对象进行操作时，SqlCommand 类提供了不同的属性和方法，常用的属性和方法如下表所示 </p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>属性或方法</strong></th>
+<th align="center"><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">CommandText</td>
+<td align="center">属性，Command 对象中要执行的 SQL 语句</td>
+</tr>
+<tr>
+<td align="center">Connection</td>
+<td align="center">属性，获取或设置数据库的连接对象</td>
+</tr>
+<tr>
+<td align="center">CommandType</td>
+<td align="center">属性，获取或设置命令类型</td>
+</tr>
+<tr>
+<td align="center">Parameters</td>
+<td align="center">属性，设置 Command 对象中 SQL 语句的参数</td>
+</tr>
+<tr>
+<td align="center">ExecuteReader()</td>
+<td align="center">方法，获取执行查询语句的结果</td>
+</tr>
+<tr>
+<td align="center">ExecuteScalar()</td>
+<td align="center">方法，返回查询结果中第 1 行第 1 列的值</td>
+</tr>
+<tr>
+<td align="center">ExecuteNonQuery()</td>
+<td align="center">方法，执行对数据表的增加、删除、修改操作</td>
+</tr>
+</tbody></table>
+<h2 id="三-使用-Command-类操作数据库"><a href="#三-使用-Command-类操作数据库" class="headerlink" title="三 使用 Command 类操作数据库"></a>三 使用 Command 类操作数据库</h2><ul>
+<li>Command 类中提供了 3 种命令类型，分别是 Text、TableDirect 以及 StoredProcedure，默认情况下是 Text。 </li>
+<li>所谓 Text 类型是指使用 SQL 语句的形式，包括增加、删除、修改以及查询的SQL语句。</li>
+<li>StoredProcedure 用于执行存储过程；TableDirect 仅在 OLE DB 驱动程序中有效  </li>
+<li>在使用 Command 类操作数据库时需要通过以下步骤完成 </li>
+</ul>
+<h3 id="3-1-创建-SqlCommand-类的实例"><a href="#3-1-创建-SqlCommand-类的实例" class="headerlink" title="3.1 创建 SqlCommand 类的实例"></a>3.1 创建 SqlCommand 类的实例</h3><p> 创建 SqlCommand 类的实例分两种情况，一种是命令类型为 Text 的，一种是命令类型为 StoredProcedure 的。 </p>
+<h4 id="3-1-1-命令类型为-Text"><a href="#3-1-1-命令类型为-Text" class="headerlink" title="3.1.1 命令类型为 Text"></a>3.1.1 命令类型为 Text</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SqlCommand SqlCommand 类的实例名 &#x3D; new SqlCommand(SQL语句 , 数据库连接类的实例 );</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li>SQL语句：指该SqlCommand类的实例要执行的SQL语句</li>
+<li>数据库连接类的实例： 指使用 SqlConnection 类创建的实例，通常数据库连接类的实例处于打开的状态 </li>
+</ul>
+<h4 id="3-1-2-命令类型为-StoredProcedure"><a href="#3-1-2-命令类型为-StoredProcedure" class="headerlink" title="3.1.2 命令类型为 StoredProcedure"></a>3.1.2 命令类型为 StoredProcedure</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SqlCommand SqlCommand 类的实例名 &#x3D; new SqlCommand( 存储过程名称 , 数据库连接类的实例 );</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是：</p>
+<ul>
+<li><p>存储过程必须是当前数据库实例中的存储过程，并且在调用带参数的存储过程时，还需要在 SqlCommand 类的实例中添加对应的存储过程参数 </p>
+<p>为存储过程添加参数，需要使用 SqlCommand 类实例的 Parameters 属性来设置，具体的代码如下 </p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SqlCommand 类实例 .Parameters.Add( 参数名 , 参数值 );</span><br></pre></td></tr></table></figure>
+
+<p>在这里，参数名与存储过程中定义的参数名要一致 </p>
+<h3 id="3-2-执行对数据表的操作"><a href="#3-2-执行对数据表的操作" class="headerlink" title="3.2  执行对数据表的操作"></a>3.2  执行对数据表的操作</h3><p> 在执行对数据表的操作时通常分为两种情况，一种是执行非查询 SQL 语句的操作，即增加、修改、删除的操作，一种是执行查询 SQL 语句的操作 </p>
+<h4 id="3-2-1-执行非查询-SQL-语句的操作"><a href="#3-2-1-执行非查询-SQL-语句的操作" class="headerlink" title="3.2.1 执行非查询 SQL 语句的操作"></a>3.2.1 执行非查询 SQL 语句的操作</h4><p>在执行非查询 SQL 语句时并不需要返回表中的数据，直接使用 SqlCommand 类的 ExecuteNonQuery 方法即可，该方法的返回值是一个整数，用于返回 SqlCommand 类在执行 SQL 语句后，对表中数据影响的行数</p>
+<p>当该方法的返回值为 -1 时，代表 SQL 语句执行失败，当该方法的返回值为 0 时，代表 SQL 语句对当前数据表中的数据没有影响 </p>
+<p>例如 要删除学号为 1100 的学生的信息，而表中不存在该学号的学生的信息，SQL语句可以正常执行，但对表中的影响行数是 0 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SqlCommand 类的实例 .ExecuteNonQuery();</span><br></pre></td></tr></table></figure>
+
+<p> 需要注意的是，如果执行的 SQL 语句在数据库中执行错误，则会产生异常，因此该部分需要进行异常处理 </p>
+<h4 id="3-2-2-执行查询语句的操作"><a href="#3-2-2-执行查询语句的操作" class="headerlink" title="3.2.2 执行查询语句的操作"></a>3.2.2 执行查询语句的操作</h4><p> 在执行查询语句时通常需要返回查询结果，SqlCommand 类中提供的 ExecuteReader 方法在执行查询 SQL 语句后，会返回一个 SqlDataReader 类型的值，通过遍历 SqlDataReader 类中的结果即可得到返回值。 </p>
+<p>具体的代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SqlDataReader dr &#x3D; SqlCommand 类的实例 .ExecuteReader();</span><br></pre></td></tr></table></figure>
+
+<p> 此外，如果在执行查询语句后并不需要返回所有的查询结果，而仅需要返回一个值，例如查询表中的记录行数，这时可以使用 ExecuteScalar 方法。具体的代码如下。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int returnvalue &#x3D; SqlCommand 类的实例 .ExecuteScalar();</span><br></pre></td></tr></table></figure>
+
+<h2 id="五-实例-表的创建见15-5"><a href="#五-实例-表的创建见15-5" class="headerlink" title="五 实例(表的创建见15.5)"></a>五 实例(表的创建见15.5)</h2><h3 id="5-1-实例一-制作一个用户注册界面，使用-SqlCommand-类向用户信息表中添加一条记录"><a href="#5-1-实例一-制作一个用户注册界面，使用-SqlCommand-类向用户信息表中添加一条记录" class="headerlink" title="5.1 实例一  制作一个用户注册界面，使用 SqlCommand 类向用户信息表中添加一条记录"></a>5.1 实例一  制作一个用户注册界面，使用 SqlCommand 类向用户信息表中添加一条记录</h3><h4 id="5-1-1-效果图"><a href="#5-1-1-效果图" class="headerlink" title="5.1.1  效果图"></a>5.1.1  效果图</h4><p>  <img src="https://images.pgzxc.com/csharp-sql-register-view.gif" alt=""></p>
+<h4 id="5-1-2-代码"><a href="#5-1-2-代码" class="headerlink" title="5.1.2 代码"></a>5.1.2 代码</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;“注册”按钮的单击事件</span><br><span class="line">private void button1_Click(object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;编写数据库连接串</span><br><span class="line">    string connStr &#x3D; &quot;Data Source&#x3D;.;Initial Catalog&#x3D;test;User ID&#x3D;sa;Password&#x3D;root&quot;;</span><br><span class="line">    &#x2F;&#x2F;创建 SqlConnection的实例</span><br><span class="line">    SqlConnection conn &#x3D; null;</span><br><span class="line">    try</span><br><span class="line">    &#123;</span><br><span class="line">        conn &#x3D; new SqlConnection(connStr);</span><br><span class="line">        &#x2F;&#x2F;打开数据库连接</span><br><span class="line">        conn.Open();</span><br><span class="line">        string sql &#x3D; &quot;insert into userinfo(name,password) values(&#39;&#123;0&#125;&#39;,&#39;&#123;1&#125;&#39;)&quot;;</span><br><span class="line">        &#x2F;&#x2F;填充SQL语句</span><br><span class="line">        sql &#x3D; string.Format(sql, textBox1.Text, textBox2.Text);</span><br><span class="line">        &#x2F;&#x2F;创建SqlCommand对象</span><br><span class="line">        SqlCommand cmd &#x3D; new SqlCommand(sql, conn);</span><br><span class="line">        &#x2F;&#x2F;执行SQL语句</span><br><span class="line">        int returnvalue &#x3D; cmd.ExecuteNonQuery();</span><br><span class="line">        &#x2F;&#x2F;判断SQL语句是否执行成功</span><br><span class="line">        if(returnvalue !&#x3D; -1)</span><br><span class="line">        &#123;</span><br><span class="line">            MessageBox.Show(&quot;注册成功！&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    catch(Exception ex)</span><br><span class="line">    &#123;</span><br><span class="line">        MessageBox.Show(&quot;注册失败！&quot;+ex.Message);</span><br><span class="line">    &#125;</span><br><span class="line">    finally</span><br><span class="line">    &#123;</span><br><span class="line">        if (conn !&#x3D; null)</span><br><span class="line">        &#123;</span><br><span class="line">            &#x2F;&#x2F;关闭数据库连接</span><br><span class="line">            conn.Close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-实例二-制作一个登录界面，使用-SqlCommand-类判断用户是否登录成功"><a href="#5-2-实例二-制作一个登录界面，使用-SqlCommand-类判断用户是否登录成功" class="headerlink" title="5.2 实例二 制作一个登录界面，使用 SqlCommand 类判断用户是否登录成功"></a>5.2 实例二 制作一个登录界面，使用 SqlCommand 类判断用户是否登录成功</h3><h4 id="5-2-1-效果图"><a href="#5-2-1-效果图" class="headerlink" title="5.2.1 效果图"></a>5.2.1 效果图</h4><p>  <img src="https://images.pgzxc.com/csharp-sql-login-cancle-view.png" alt=""></p>
+<h4 id="5-2-2-代码"><a href="#5-2-2-代码" class="headerlink" title="5.2.2 代码"></a>5.2.2 代码</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;&quot;登录&quot;按钮的单击事件</span><br><span class="line">private void button1_Click(object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;编写数据库连接串</span><br><span class="line">    string connStr &#x3D; &quot;Data Source&#x3D;.;Initial Catalog&#x3D;test;User ID&#x3D;sa;Password&#x3D;root&quot;;</span><br><span class="line">    &#x2F;&#x2F;创建SQLConnection的实例</span><br><span class="line">    SqlConnection conn &#x3D; null;</span><br><span class="line">    try</span><br><span class="line">    &#123;</span><br><span class="line">        conn &#x3D; new SqlConnection(connStr);</span><br><span class="line">        &#x2F;&#x2F;打开数据库连接</span><br><span class="line">        conn.Open();</span><br><span class="line">        string sql &#x3D; &quot;Select count(*) from userinfo where name&#x3D;&#39;&#123;0&#125;&#39; and password&#x3D;&#39;&#123;1&#125;&#39;&quot;;</span><br><span class="line">        &#x2F;&#x2F;填充SQL语句</span><br><span class="line">        sql &#x3D; string.Format(sql, textBox1.Text, textBox2.Text);</span><br><span class="line">        &#x2F;&#x2F;创建SqlCommand对象</span><br><span class="line">        SqlCommand cmd &#x3D; new SqlCommand(sql, conn);</span><br><span class="line">        &#x2F;&#x2F;执行SQL语句</span><br><span class="line">        int returnvalue &#x3D; (int)cmd.ExecuteScalar();</span><br><span class="line">        &#x2F;&#x2F;判断SQL语句是否执行成功</span><br><span class="line">        if (returnvalue !&#x3D; 0)</span><br><span class="line">        &#123;</span><br><span class="line">            MessageBox.Show(&quot;登录成功！&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            MessageBox.Show(&quot;登录失败！&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    catch (Exception ex)</span><br><span class="line">    &#123;</span><br><span class="line">        MessageBox.Show(&quot;注册失败！&quot; + ex.Message);</span><br><span class="line">    &#125;</span><br><span class="line">    finally</span><br><span class="line">    &#123;</span><br><span class="line">        if (conn !&#x3D; null)</span><br><span class="line">        &#123;</span><br><span class="line">            &#x2F;&#x2F;关闭数据库连接</span><br><span class="line">            conn.Close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;“取消”按钮的单击事件</span><br><span class="line">private void button2_Click(object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    this.Close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3-实例三-改进用户注册功能，使用户在注册时用户名唯一"><a href="#5-3-实例三-改进用户注册功能，使用户在注册时用户名唯一" class="headerlink" title="5.3 实例三  改进用户注册功能，使用户在注册时用户名唯一"></a>5.3 实例三  改进用户注册功能，使用户在注册时用户名唯一</h3><h4 id="5-3-1-效果图"><a href="#5-3-1-效果图" class="headerlink" title="5.3.1 效果图"></a>5.3.1 效果图</h4><p>  <img src="https://images.pgzxc.com/charp-sql-register-username-exist.png" alt=""></p>
+<h4 id="5-3-2-代码"><a href="#5-3-2-代码" class="headerlink" title="5.3.2 代码"></a>5.3.2 代码</h4>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;“注册”按钮的单击事件</span><br><span class="line">private void button1_Click(object sender, EventArgs e)</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;编写数据库连接串</span><br><span class="line">    string connStr &#x3D; &quot;Data Source&#x3D;.;Initial Catalog&#x3D;test;User ID&#x3D;sa;Password&#x3D;root&quot;;</span><br><span class="line">    &#x2F;&#x2F;创建 SqlConnection的实例</span><br><span class="line">    SqlConnection conn &#x3D; null;</span><br><span class="line">    try</span><br><span class="line">    &#123;</span><br><span class="line">        conn &#x3D; new SqlConnection(connStr);</span><br><span class="line">        &#x2F;&#x2F;打开数据库连接</span><br><span class="line">        conn.Open();</span><br><span class="line">        &#x2F;&#x2F;判断用户名是否重复</span><br><span class="line">        string checkNameSql &#x3D; &quot;select count(*) from userinfo where name&#x3D;&#39;&#123;0&#125;&#39;&quot;;</span><br><span class="line">        checkNameSql &#x3D; string.Format(checkNameSql, textBox1.Text);</span><br><span class="line">        &#x2F;&#x2F;创建SqlCommand对象</span><br><span class="line">        SqlCommand cmdCheckName &#x3D; new SqlCommand(checkNameSql, conn);</span><br><span class="line">        &#x2F;&#x2F;执行SQL语句</span><br><span class="line">        int isRepeatName &#x3D; (int)cmdCheckName.ExecuteScalar();</span><br><span class="line">        if (isRepeatName !&#x3D; 0)</span><br><span class="line">        &#123;</span><br><span class="line">            &#x2F;&#x2F;用户名重复，则不执行注册操作</span><br><span class="line">            MessageBox.Show(&quot;用户名已存在！&quot;);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        string sql &#x3D; &quot;insert into userinfo(name,password) values(&#39;&#123;0&#125;&#39;,&#39;&#123;1&#125;&#39;)&quot;;</span><br><span class="line">        &#x2F;&#x2F;填充SQL语句</span><br><span class="line">        sql &#x3D; string.Format(sql, textBox1.Text, textBox2.Text);</span><br><span class="line">        &#x2F;&#x2F;创建SqlCommand对象</span><br><span class="line">        SqlCommand cmd &#x3D; new SqlCommand(sql, conn);</span><br><span class="line">        &#x2F;&#x2F;执行SQL语句</span><br><span class="line">        int returnvalue &#x3D; cmd.ExecuteNonQuery();</span><br><span class="line">        &#x2F;&#x2F;判断SQL语句是否执行成功</span><br><span class="line">        if(returnvalue !&#x3D; -1)</span><br><span class="line">        &#123;</span><br><span class="line">            MessageBox.Show(&quot;注册成功！&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    catch(Exception ex)</span><br><span class="line">    &#123;</span><br><span class="line">        MessageBox.Show(&quot;注册失败！&quot;+ex.Message);</span><br><span class="line">    &#125;</span><br><span class="line">    finally</span><br><span class="line">    &#123;</span><br><span class="line">        if (conn !&#x3D; null)</span><br><span class="line">        &#123;</span><br><span class="line">            &#x2F;&#x2F;关闭数据库连接</span><br><span class="line">            conn.Close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-4-实例四-创建一个存储过程实现用户注册功能，并使用-SqlCommand-类调用存储过程"><a href="#5-4-实例四-创建一个存储过程实现用户注册功能，并使用-SqlCommand-类调用存储过程" class="headerlink" title="5.4 实例四  创建一个存储过程实现用户注册功能，并使用 SqlCommand 类调用存储过程"></a>5.4 实例四  创建一个存储过程实现用户注册功能，并使用 SqlCommand 类调用存储过程</h3><h4 id="5-4-1-功能分析"><a href="#5-4-1-功能分析" class="headerlink" title="5.4.1 功能分析"></a>5.4.1 功能分析</h4><p> 用户注册功能的存储过程比较简单，只需要写一个带参数的存储过程将用户名和密码传递给存储过程，并使用 insert 语句将用户名和密码添加到用户信息表中 </p>
+<h4 id="5-4-2-创建存储过程的语句"><a href="#5-4-2-创建存储过程的语句" class="headerlink" title="5.4.2  创建存储过程的语句"></a>5.4.2  创建存储过程的语句</h4><p>数据库的<code>存储过程</code>上单击右键<code>添加存储过程</code>，在dbo.Procedure.sql，填入存储过程语句，并更新</p>
+<p><img src="https://images.pgzxc.com/csharp-sql-store-progress-command.png" alt=""></p>
+<h4 id="5-4-3-代码"><a href="#5-4-3-代码" class="headerlink" title="5.4.3 代码"></a>5.4.3 代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;编写数据库连接串</span><br><span class="line">string connStr &#x3D; &quot;Data Source&#x3D;.;Initial Catalog&#x3D;test;User ID&#x3D;sa;Password&#x3D;root&quot;;</span><br><span class="line">&#x2F;&#x2F;创建 SqlConnection的实例</span><br><span class="line">SqlConnection conn &#x3D; null;</span><br><span class="line">try</span><br><span class="line">&#123;</span><br><span class="line">    conn &#x3D; new SqlConnection(connStr);</span><br><span class="line">    &#x2F;&#x2F;打开数据库连接</span><br><span class="line">    conn.Open();</span><br><span class="line">    &#x2F;&#x2F;创建SqlCommand对象</span><br><span class="line">    SqlCommand cmd &#x3D; new SqlCommand(&quot;AddUser&quot;, conn);</span><br><span class="line">    &#x2F;&#x2F;设置SQLCommand对象的命令类型（CommandType）是存储过程</span><br><span class="line">    cmd.CommandType &#x3D; CommandType.StoredProcedure;</span><br><span class="line">    &#x2F;&#x2F;设置存储过程需要的参数</span><br><span class="line">    cmd.Parameters.AddWithValue(&quot;name&quot;, textBox1.Text);</span><br><span class="line">    cmd.Parameters.AddWithValue(&quot;password&quot;, textBox2.Text);</span><br><span class="line">    &#x2F;&#x2F;执行存储过程</span><br><span class="line">    int returnvalue &#x3D; cmd.ExecuteNonQuery();</span><br><span class="line">    Console.WriteLine(returnvalue);</span><br><span class="line">    &#x2F;&#x2F;判断SQL语句是否执行成功</span><br><span class="line">    if(returnvalue !&#x3D; -1)</span><br><span class="line">    &#123;</span><br><span class="line">        MessageBox.Show(&quot;注册成功！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">catch(Exception ex)</span><br><span class="line">&#123;</span><br><span class="line">    MessageBox.Show(&quot;注册失败！&quot;+ex.Message);</span><br><span class="line">&#125;</span><br><span class="line">finally</span><br><span class="line">&#123;</span><br><span class="line">    if (conn !&#x3D; null)</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F;关闭数据库连接</span><br><span class="line">        conn.Close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-4-4-说明"><a href="#5-4-4-说明" class="headerlink" title="5.4.4 说明"></a>5.4.4 说明</h4><p> 运行该窗体，效果与实例 1 一致。从上面的代码可以看出，调用存储过程并不复杂，只需要在 SqlCommand 对象中将 CommandType 属性的值改成 StoredProcedure，并添加存储过程中所需要的参数即可 </p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C#</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/88238754.html" rel="prev" title="C#开发之——创建表和字段(15.5)">
+      <i class="fa fa-chevron-left"></i> C#开发之——创建表和字段(15.5)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/b3124fd9.html" rel="next" title="C#开发之——读取查询结果(15.7)">
+      C#开发之——读取查询结果(15.7) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjQ1OC85MDE5"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-Command-%E7%B1%BB%E6%A6%82%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">二 Command 类概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%B8%B8%E7%94%A8%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 常用构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 常用属性和方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E4%BD%BF%E7%94%A8-Command-%E7%B1%BB%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">3.</span> <span class="nav-text">三 使用 Command 类操作数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%88%9B%E5%BB%BA-SqlCommand-%E7%B1%BB%E7%9A%84%E5%AE%9E%E4%BE%8B"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 创建 SqlCommand 类的实例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-%E5%91%BD%E4%BB%A4%E7%B1%BB%E5%9E%8B%E4%B8%BA-Text"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 命令类型为 Text</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-%E5%91%BD%E4%BB%A4%E7%B1%BB%E5%9E%8B%E4%B8%BA-StoredProcedure"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.1.2 命令类型为 StoredProcedure</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%89%A7%E8%A1%8C%E5%AF%B9%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">3.2.</span> <span class="nav-text">3.2  执行对数据表的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-%E6%89%A7%E8%A1%8C%E9%9D%9E%E6%9F%A5%E8%AF%A2-SQL-%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1 执行非查询 SQL 语句的操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2-%E6%89%A7%E8%A1%8C%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2 执行查询语句的操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E5%AE%9E%E4%BE%8B-%E8%A1%A8%E7%9A%84%E5%88%9B%E5%BB%BA%E8%A7%8115-5"><span class="nav-number">4.</span> <span class="nav-text">五 实例(表的创建见15.5)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E5%AE%9E%E4%BE%8B%E4%B8%80-%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E7%94%A8%E6%88%B7%E6%B3%A8%E5%86%8C%E7%95%8C%E9%9D%A2%EF%BC%8C%E4%BD%BF%E7%94%A8-SqlCommand-%E7%B1%BB%E5%90%91%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF%E8%A1%A8%E4%B8%AD%E6%B7%BB%E5%8A%A0%E4%B8%80%E6%9D%A1%E8%AE%B0%E5%BD%95"><span class="nav-number">4.1.</span> <span class="nav-text">5.1 实例一  制作一个用户注册界面，使用 SqlCommand 类向用户信息表中添加一条记录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-1-%E6%95%88%E6%9E%9C%E5%9B%BE"><span class="nav-number">4.1.1.</span> <span class="nav-text">5.1.1  效果图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-2-%E4%BB%A3%E7%A0%81"><span class="nav-number">4.1.2.</span> <span class="nav-text">5.1.2 代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E5%AE%9E%E4%BE%8B%E4%BA%8C-%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%EF%BC%8C%E4%BD%BF%E7%94%A8-SqlCommand-%E7%B1%BB%E5%88%A4%E6%96%AD%E7%94%A8%E6%88%B7%E6%98%AF%E5%90%A6%E7%99%BB%E5%BD%95%E6%88%90%E5%8A%9F"><span class="nav-number">4.2.</span> <span class="nav-text">5.2 实例二 制作一个登录界面，使用 SqlCommand 类判断用户是否登录成功</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-1-%E6%95%88%E6%9E%9C%E5%9B%BE"><span class="nav-number">4.2.1.</span> <span class="nav-text">5.2.1 效果图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-2-%E4%BB%A3%E7%A0%81"><span class="nav-number">4.2.2.</span> <span class="nav-text">5.2.2 代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E5%AE%9E%E4%BE%8B%E4%B8%89-%E6%94%B9%E8%BF%9B%E7%94%A8%E6%88%B7%E6%B3%A8%E5%86%8C%E5%8A%9F%E8%83%BD%EF%BC%8C%E4%BD%BF%E7%94%A8%E6%88%B7%E5%9C%A8%E6%B3%A8%E5%86%8C%E6%97%B6%E7%94%A8%E6%88%B7%E5%90%8D%E5%94%AF%E4%B8%80"><span class="nav-number">4.3.</span> <span class="nav-text">5.3 实例三  改进用户注册功能，使用户在注册时用户名唯一</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-1-%E6%95%88%E6%9E%9C%E5%9B%BE"><span class="nav-number">4.3.1.</span> <span class="nav-text">5.3.1 效果图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-2-%E4%BB%A3%E7%A0%81"><span class="nav-number">4.3.2.</span> <span class="nav-text">5.3.2 代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-%E5%AE%9E%E4%BE%8B%E5%9B%9B-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E5%AE%9E%E7%8E%B0%E7%94%A8%E6%88%B7%E6%B3%A8%E5%86%8C%E5%8A%9F%E8%83%BD%EF%BC%8C%E5%B9%B6%E4%BD%BF%E7%94%A8-SqlCommand-%E7%B1%BB%E8%B0%83%E7%94%A8%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="nav-number">4.4.</span> <span class="nav-text">5.4 实例四  创建一个存储过程实现用户注册功能，并使用 SqlCommand 类调用存储过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4-1-%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90"><span class="nav-number">4.4.1.</span> <span class="nav-text">5.4.1 功能分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4-2-%E5%88%9B%E5%BB%BA%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E7%9A%84%E8%AF%AD%E5%8F%A5"><span class="nav-number">4.4.2.</span> <span class="nav-text">5.4.2  创建存储过程的语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4-3-%E4%BB%A3%E7%A0%81"><span class="nav-number">4.4.3.</span> <span class="nav-text">5.4.3 代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4-4-%E8%AF%B4%E6%98%8E"><span class="nav-number">4.4.4.</span> <span class="nav-text">5.4.4 说明</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">975</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">85</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">379</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/PGzxc" title="GitHub → https://github.com/PGzxc" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http://blog.csdn.net/calvin_zhou" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http://weibo.com/5582039920" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>微博</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http://www.jianshu.com/u/c5cdcb4dc52b" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>简书</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://wanandroid.com/" title="https://wanandroid.com/" rel="noopener" target="_blank">鸿洋</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.ruanyifeng.com/home.html" title="http://www.ruanyifeng.com/home.html" rel="noopener" target="_blank">阮一峰</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://memento.net.cn" title="https://memento.net.cn" rel="noopener" target="_blank">琅涯阁</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/sinyu890807/" title="http://blog.csdn.net/sinyu890807/" rel="noopener" target="_blank">郭霖</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/luoshengyang/" title="http://blog.csdn.net/luoshengyang/" rel="noopener" target="_blank">老罗</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/aigestudio/" title="http://blog.csdn.net/aigestudio/" rel="noopener" target="_blank">爱哥</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/wwj_748/" title="http://blog.csdn.net/wwj_748/" rel="noopener" target="_blank">小巫</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/singwhatiwanna/" title="http://blog.csdn.net/singwhatiwanna/" rel="noopener" target="_blank">任玉刚</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/eclipsexys/" title="http://blog.csdn.net/eclipsexys/" rel="noopener" target="_blank">徐医生</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/bboyfeiyu/" title="http://blog.csdn.net/bboyfeiyu/" rel="noopener" target="_blank">Mr.Simple</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.csdn.net/xyz_lmn/" title="http://blog.csdn.net/xyz_lmn/" rel="noopener" target="_blank">张兴业</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://developer.android.google.cn/index.html" title="https://developer.android.google.cn/index.html" rel="noopener" target="_blank">谷歌中国</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备18061062号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pgzxc</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">1.4m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">20:55</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>
