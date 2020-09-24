@@ -162,8 +162,8 @@ FLAG_GRANT_WRITE_URI_PERMISSION：表示写入权限；
 
 
 
-[1]: https://images.pgzxc.com/fileprovider.png
-[2]: https://images.pgzxc.com/fileprovider-path.png
+[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/fileprovider.png
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/fileprovider-path.png
 [3]: https://www.jianshu.com/p/55eae30d133c  
 [4]: http://blog.csdn.net/lmj623565791/article/details/72859156  
 [5]: http://blog.csdn.net/xifengwanzhao/article/details/53587234

@@ -72,10 +72,10 @@ Android中网络图片的加载几乎是必须的，在使用图片的过程中�
 
 
 
-[1]: https://images.pgzxc.com/fresco-layout.png
-[2]: https://images.pgzxc.com/fresco-code.png
-[3]: https://images.pgzxc.com/glide-base-use.png
-[4]: https://images.pgzxc.com/picaso-base-use.png
-[5]: https://images.pgzxc.com/imageloader-base-use.png
-[6]: https://images.pgzxc.com/volley-base-use.png
+[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/fresco-layout.png
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/fresco-code.png
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/glide-base-use.png
+[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/picaso-base-use.png
+[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/imageloader-base-use.png
+[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/volley-base-use.png
 [7]: https://github.com/PGzxc/ImageNet

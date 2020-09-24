@@ -43,6 +43,6 @@ C++ 提供了下列的控制语句。点击链接查看每个语句的细节。
   
 
 
-[1]: https://images.pgzxc.com/cpp-loop.png
-[2]: https://images.pgzxc.com/cpp-loop-type.png
-[3]: https://images.pgzxc.com/cpp-loop-break.png
+[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-loop.png
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-loop-type.png
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-loop-break.png

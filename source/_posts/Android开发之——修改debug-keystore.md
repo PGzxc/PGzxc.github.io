@@ -38,7 +38,7 @@ app在运行安装到手机上时，都是要签名的(没有签名无法安装)
 ![][1]  
 
 
-[1]: https://images.pgzxc.com/eclipse-debug-keystore.png  
-[2]: https://images.pgzxc.com/as-debug-keystore.png
-[3]: https://images.pgzxc.com/keystore-make.png
-[4]: https://images.pgzxc.com/deubg-keystore-exist.png
+[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/eclipse-debug-keystore.png  
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/as-debug-keystore.png
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/keystore-make.png
+[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/deubg-keystore-exist.png

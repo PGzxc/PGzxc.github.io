@@ -38,12 +38,12 @@ Windows 10系统下，通过网上邻居的方式添加My Cloud EX2 Ultra文件�
 ## 四 参考
 * [如何在Windows 10上映射WD网络驱动器][11]
 
-[1]:https://images.pgzxc.com//mycloud-ext2-net-add-no.png
-[2]:https://images.pgzxc.com//mycloud-ext2-windows-version.png
-[3]:https://images.pgzxc.com//mycloud-guanwang-name-path.png
-[4]:https://images.pgzxc.com//mycloud-ext2-windows-path-fill.png
-[5]:https://images.pgzxc.com//mycloud-ext2-net-folder-open.png
-[6]:https://images.pgzxc.com//mycloud-ext2-windows-public-yingshe.png
-[7]:https://images.pgzxc.com//mycloud-ext2-windows-add-finish.png
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mycloud-ext2-net-add-no.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mycloud-ext2-windows-version.png
+[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mycloud-guanwang-name-path.png
+[4]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mycloud-ext2-windows-path-fill.png
+[5]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mycloud-ext2-net-folder-open.png
+[6]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mycloud-ext2-windows-public-yingshe.png
+[7]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mycloud-ext2-windows-add-finish.png
 
 [11]:https://support-en.wd.com/app/answers/detail/a_id/25436/h/p2#subject2

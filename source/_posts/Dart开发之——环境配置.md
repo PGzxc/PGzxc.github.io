@@ -68,13 +68,13 @@ StageXL，一个Dart框架，用来开发2D游戏的，目前处于实验阶段
 
 
 [0]: https://www.dartlang.org/
-[1]: https://images.pgzxc.com/dart-web.png
-[2]: https://images.pgzxc.com/dart-vm.png
-[3]: https://images.pgzxc.com/dart-win.png
-[4]: https://images.pgzxc.com/dart-download.png
-[5]: https://images.pgzxc.com/setup.png
-[6]: https://images.pgzxc.com/setup-continue.png
-[7]: https://images.pgzxc.com/dart-path.png
-[8]: https://images.pgzxc.com/dart-version.png
-[9]: https://images.pgzxc.com/dart-file.png
-[10]: https://images.pgzxc.com/dart-file-run.png
+[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/dart-web.png
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/dart-vm.png
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/dart-win.png
+[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/dart-download.png
+[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/setup.png
+[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/setup-continue.png
+[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/dart-path.png
+[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/dart-version.png
+[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/dart-file.png
+[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/dart-file-run.png

@@ -72,10 +72,10 @@ date: 2017-11-22 15:31:42
 
 
 
-[1]: https://images.pgzxc.com/parcelable-plug.png
-[2]: https://images.pgzxc.com/parcelable-use.gif
-[3]: https://images.pgzxc.com/serialize-plug.png
-[4]: https://images.pgzxc.com/serializeable-use.gif
+[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/parcelable-plug.png
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/parcelable-use.gif
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/serialize-plug.png
+[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/serializeable-use.gif
 [5]: http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0204/2410.html  
 [6]: http://www.cnblogs.com/renqingping/archive/2012/10/25/Parcelable.html
 

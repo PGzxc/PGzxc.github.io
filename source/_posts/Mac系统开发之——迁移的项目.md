@@ -32,6 +32,6 @@ date: 2020-03-25 13:27:54
 	![][3]
 
 
-[1]:https://images.pgzxc.com//mac-update-move-project.png
-[2]:https://images.pgzxc.com//mac-move-project-open-files.png
-[3]:https://images.pgzxc.com//mac-update-move-explain.png
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mac-update-move-project.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mac-move-project-open-files.png
+[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mac-update-move-explain.png

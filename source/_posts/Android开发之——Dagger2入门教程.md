@@ -675,6 +675,6 @@ Module中，对应方法中添加@Singleton注解，同时其所在的Component�
 
 
 
-[1]: https://images.pgzxc.com/dagger2.png
+[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/dagger2.png
 [2]: https://github.com/PGzxc/Dagger2Demo
 

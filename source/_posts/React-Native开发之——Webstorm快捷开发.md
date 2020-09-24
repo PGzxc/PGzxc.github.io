@@ -59,11 +59,11 @@ React Native构建时，下方会出现构建过程，如没有出错，出现Do
 ![][7]
 
 
-[1]: https://images.pgzxc.com/webstorm-react-new.png
-[2]: https://images.pgzxc.com/webstorm-react-create.png
-[3]: https://images.pgzxc.com/webstorm-react-file.png
-[4]: https://images.pgzxc.com/webstorm-react-modify.png
-[5]: https://images.pgzxc.com/webstorm-react-modify-down.png
-[6]: https://images.pgzxc.com/webstorm-react-run.png
-[7]: https://images.pgzxc.com/webstorm-react-run-effect.png
+[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/webstorm-react-new.png
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/webstorm-react-create.png
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/webstorm-react-file.png
+[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/webstorm-react-modify.png
+[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/webstorm-react-modify-down.png
+[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/webstorm-react-run.png
+[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/webstorm-react-run-effect.png
 

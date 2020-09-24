@@ -42,8 +42,8 @@ date: 2020-08-20 22:05:02
 
 
 
-[1]:https://images.pgzxc.com/html-eclipse-new-static-web-project.png
-[2]:https://images.pgzxc.com/html-eclipse-project-webpage.png
-[3]:https://images.pgzxc.com/html-eclipse-new-html-file.png
-[4]:https://images.pgzxc.com/html-eclipse-webcontent-filename.png
-[5]:https://images.pgzxc.com/html-eclipse-webpage-open.png
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/html-eclipse-new-static-web-project.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/html-eclipse-project-webpage.png
+[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/html-eclipse-new-html-file.png
+[4]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/html-eclipse-webcontent-filename.png
+[5]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/html-eclipse-webpage-open.png

@@ -39,4 +39,4 @@ date: 2019-11-25 22:37:12
 * public表示派生类型为公有，你也可以声明为私有(private)，后面跟基类的名字，这里是父亲
 
 
-[1]:https://images.pgzxc.com/cpp-extends-single-double.png
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-extends-single-double.png

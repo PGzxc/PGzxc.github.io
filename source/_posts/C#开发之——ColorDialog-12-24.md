@@ -47,5 +47,5 @@ public partial class ColorDialogForm : Form
 
 
 
-[1]:https://images.pgzxc.com/csharp-winform-colordialog-layout.png
-[2]:https://images.pgzxc.com/csharp-winform-colordialog-view.gif
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-winform-colordialog-layout.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-winform-colordialog-view.gif

@@ -49,11 +49,11 @@ date: 2017-12-06 16:45:59
 
 
 [1]: https://github.com/coneycode/hexo-git-backup
-[2]: https://images.pgzxc.com/hexo_backup_error.png
-[3]: https://images.pgzxc.com/hexo-git-fetch.png
-[4]: https://images.pgzxc.com/hexo-git-push.png
-[5]: https://images.pgzxc.com/hxo-git-branch.png
-[6]: https://images.pgzxc.com/hexo-git-add.png
-[7]: https://images.pgzxc.com/hexo-git-commit-m.png
-[8]: https://images.pgzxc.com/hexo-git-push-hexo.png
-[9]: https://images.pgzxc.com/hexo-update-bolg.png
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo_backup_error.png
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-git-fetch.png
+[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-git-push.png
+[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hxo-git-branch.png
+[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-git-add.png
+[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-git-commit-m.png
+[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-git-push-hexo.png
+[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-update-bolg.png

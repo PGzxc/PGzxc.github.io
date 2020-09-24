@@ -33,7 +33,7 @@ acme:error:unauthorized: During secondary validation: Invalid response from http
 
 
 
-[1]:https://images.pgzxc.com/coding-bang-error.png
-[2]:https://images.pgzxc.com/coding-github-pause.png
-[3]:https://images.pgzxc.com/coding-yuming-bang-success.png
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-bang-error.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-github-pause.png
+[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-yuming-bang-success.png
 

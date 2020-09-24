@@ -43,11 +43,11 @@ date: 2019-10-17 23:33:30
 
 
 [1]: https://www.eclipse.org/downloads/
-[2]:https://images.pgzxc.com/cpp-eclipse-download-packages.png
-[3]:https://images.pgzxc.com/cpp-eclipse-c-download-select.png
-[4]:https://images.pgzxc.com/cpp-eclipse-marketplace-c-install.png
-[5]:https://images.pgzxc.com/cpp-eclipse-cpp-build-tools-config.png
-[6]:https://images.pgzxc.com/cpp-eclipse-new-project.png
-[7]:https://images.pgzxc.com/cpp-eclipse-c-select.png
-[8]:https://images.pgzxc.com/cpp-eclipse-create-preview.png
-[9]:https://images.pgzxc.com/cpp-eclipse-c-run.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-eclipse-download-packages.png
+[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-eclipse-c-download-select.png
+[4]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-eclipse-marketplace-c-install.png
+[5]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-eclipse-cpp-build-tools-config.png
+[6]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-eclipse-new-project.png
+[7]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-eclipse-c-select.png
+[8]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-eclipse-create-preview.png
+[9]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-eclipse-c-run.png

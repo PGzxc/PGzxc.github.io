@@ -70,16 +70,16 @@ Centos SSH 的安装与配置，前文已经讲过，本文主要讲述Tomcat的
 
 
 [1]: https://tomcat.apache.org/
-[2]: https://images.pgzxc.com/tomcat-guanfang.png
-[3]: https://images.pgzxc.com/tomcat-download.png
-[4]: https://images.pgzxc.com/tomcat-remote-conn.png
-[5]: https://images.pgzxc.com/tomcat-ssh-shell.png
-[6]: https://images.pgzxc.com/tomcat-download-move.png
-[7]: https://images.pgzxc.com/tomcat-unzip-tar.png
-[8]: https://images.pgzxc.com/tomcat-open-8080.png
-[9]: https://images.pgzxc.com/tomcat-startup.png
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tomcat-guanfang.png
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tomcat-download.png
+[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tomcat-remote-conn.png
+[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tomcat-ssh-shell.png
+[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tomcat-download-move.png
+[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tomcat-unzip-tar.png
+[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tomcat-open-8080.png
+[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tomcat-startup.png
 [10]: http://192.168.174.132:8080
-[11]: https://images.pgzxc.com/tomcat-internet-open.png
-[12]: https://images.pgzxc.com/tomcat-shutdown.png
+[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tomcat-internet-open.png
+[12]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tomcat-shutdown.png
 
 

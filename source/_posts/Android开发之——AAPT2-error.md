@@ -25,6 +25,6 @@ Google官方给出了解释
 
 
 
-[1]: https://images.pgzxc.com/aapt2_error.png
-[2]: https://images.pgzxc.com/gradle_3_0.png
-[3]: https://images.pgzxc.com/aapt2_result.png
+[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/aapt2_error.png
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/gradle_3_0.png
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/aapt2_result.png

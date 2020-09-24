@@ -77,4 +77,4 @@ date: 2020-07-01 23:24:09
 ```
 
 
-[1]:https://images.pgzxc.com//ios-sirentongxunlu-chuanzhi.gif
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-sirentongxunlu-chuanzhi.gif

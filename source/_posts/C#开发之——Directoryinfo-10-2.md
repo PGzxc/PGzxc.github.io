@@ -136,5 +136,5 @@ class Program
 
 
 
-[1]:https://images.pgzxc.com/csharp-file-directoryinfo-create.png
-[2]:https://images.pgzxc.com/csharp-file-directoryinfo-list.png
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-file-directoryinfo-create.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-file-directoryinfo-list.png

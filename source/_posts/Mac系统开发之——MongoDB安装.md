@@ -95,11 +95,11 @@ date: 2020-02-12 21:23:30
 [6]:https://www.cnblogs.com/HoverM/p/11897638.html
 
 
-[11]:https://images.pgzxc.com//mongodb-service-download-page.png
-[12]:https://images.pgzxc.com//monogo-upzip-mv-usr-local.png
-[13]:https://images.pgzxc.com//mongodb-terminal-version.png
-[14]:https://images.pgzxc.com//mongodb-mkdir-data-dbpath.png
-[15]:https://images.pgzxc.com//mongodb-mongod-in-use.png
-[16]:https://images.pgzxc.com//mongodb-compass-tools.png
-[17]:https://images.pgzxc.com//mongodb-compass-install.png
-[18]:https://images.pgzxc.com//mongodb-compass-open.png
+[11]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mongodb-service-download-page.png
+[12]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//monogo-upzip-mv-usr-local.png
+[13]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mongodb-terminal-version.png
+[14]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mongodb-mkdir-data-dbpath.png
+[15]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mongodb-mongod-in-use.png
+[16]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mongodb-compass-tools.png
+[17]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mongodb-compass-install.png
+[18]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mongodb-compass-open.png

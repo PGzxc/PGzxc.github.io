@@ -96,7 +96,7 @@ Lambda表达式同时还提升了对集合的迭代、遍历、过滤数据的�
 
 
 
-[1]: https://images.pgzxc.com/lambda-jdk_8.png
-[2]: https://images.pgzxc.com/lambda-compileoptions.png
-[3]: https://images.pgzxc.com/lambda_sample.png
+[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/lambda-jdk_8.png
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/lambda-compileoptions.png
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/lambda_sample.png
 [4]: https://github.com/PGzxc/LambdaDemo

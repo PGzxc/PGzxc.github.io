@@ -93,16 +93,16 @@ Github上Zxing三方库比较多，如果有适合自己的项目可以不用改
 
 
 [1]: https://github.com/zxing/zxing
-[2]: https://images.pgzxc.com/zxing-struct.png
-[3]: https://images.pgzxc.com/zxing-android-struct.png
-[4]: https://images.pgzxc.com/zxing-intellij-new.png
-[5]: https://images.pgzxc.com/zxing-intellij-pom.png
-[6]: https://images.pgzxc.com/zxing-intellij-app.png
-[7]: https://images.pgzxc.com/zxing-intellij-run.png
-[8]: https://images.pgzxc.com/zxing-eclipse-import.png
-[9]: https://images.pgzxc.com/zxing-eclipse-android-core.png
-[10]: https://images.pgzxc.com/zxing-eclipse-core.png
-[11]: https://images.pgzxc.com/zxing-eclipse-libs.png
-[12]: https://images.pgzxc.com/zxing-run.png
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/zxing-struct.png
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/zxing-android-struct.png
+[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/zxing-intellij-new.png
+[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/zxing-intellij-pom.png
+[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/zxing-intellij-app.png
+[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/zxing-intellij-run.png
+[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/zxing-eclipse-import.png
+[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/zxing-eclipse-android-core.png
+[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/zxing-eclipse-core.png
+[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/zxing-eclipse-libs.png
+[12]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/zxing-run.png
 [13]: https://github.com/yipianfengye/android-zxingLibrary
 [14]: https://github.com/journeyapps/zxing-android-embedded

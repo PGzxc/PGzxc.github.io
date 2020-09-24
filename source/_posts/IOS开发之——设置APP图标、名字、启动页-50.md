@@ -47,6 +47,6 @@ date: 2020-06-27 23:29:10
 
 
 
-[1]:https://images.pgzxc.com//ios-chaoji-caitu-appicon-create.png
-[2]:https://images.pgzxc.com//ios-chaoji-caitu-icon-setting.png
-[3]:https://images.pgzxc.com//ios-chaoji-caitu-bundlename-modify.png
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-chaoji-caitu-appicon-create.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-chaoji-caitu-icon-setting.png
+[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-chaoji-caitu-bundlename-modify.png

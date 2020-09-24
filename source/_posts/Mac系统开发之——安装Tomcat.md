@@ -73,10 +73,10 @@ date: 2020-02-12 21:27:00
 
 
 
-[11]:https://images.pgzxc.com//tomcat-page-downloadpng.png
-[12]:https://images.pgzxc.com//tomcat-unzip-mv-library.png
-[13]:https://images.pgzxc.com//tomcat-folder-quanxian-before.png
-[14]:https://images.pgzxc.com//tomcat-terminal-startup.png
-[15]:https://images.pgzxc.com//tomcat-start-webview.png
-[16]:https://images.pgzxc.com//tomcat-terminal-shutdown.png
+[11]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//tomcat-page-downloadpng.png
+[12]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//tomcat-unzip-mv-library.png
+[13]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//tomcat-folder-quanxian-before.png
+[14]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//tomcat-terminal-startup.png
+[15]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//tomcat-start-webview.png
+[16]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//tomcat-terminal-shutdown.png
 

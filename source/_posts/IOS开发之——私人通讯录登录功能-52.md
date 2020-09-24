@@ -68,5 +68,5 @@ date: 2020-06-29 23:34:22
 
 
 
-[1]:https://images.pgzxc.com//ios-tongxunlu-login.gif
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-tongxunlu-login.gif
 

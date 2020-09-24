@@ -44,11 +44,11 @@ Android Studio中的代码出现错误时，会被红线标记，把鼠标放到
 
 
 
-[1]: https://images.pgzxc.com/android-copy-error-info.png
-[2]: https://images.pgzxc.com/android-copy-error-code-show.png
-[3]: https://images.pgzxc.com/android-copy-error-code.png
-[4]: https://images.pgzxc.com/android-copy-error-code-copy.png
-[5]: https://images.pgzxc.com/android-copy-error-layout-show.png
-[6]: https://images.pgzxc.com/android-copy-error-layout-design-model.png
-[7]: https://images.pgzxc.com/android-copy-error-layout-design-model-more.png
-[8]: https://images.pgzxc.com/android-copy-error-layout-design-model-detail.png
+[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-copy-error-info.png
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-copy-error-code-show.png
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-copy-error-code.png
+[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-copy-error-code-copy.png
+[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-copy-error-layout-show.png
+[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-copy-error-layout-design-model.png
+[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-copy-error-layout-design-model-more.png
+[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-copy-error-layout-design-model-detail.png

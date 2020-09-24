@@ -91,6 +91,6 @@ public partial class MainForm : Form
 
 
 
-[1]:https://images.pgzxc.com/csharp-windform-button-regform-layout.png
-[2]:https://images.pgzxc.com/csharp-windform-mainform-layout.png
-[3]:https://images.pgzxc.com/csharp-windform-button-login-view.gif
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-windform-button-regform-layout.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-windform-mainform-layout.png
+[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-windform-button-login-view.gif

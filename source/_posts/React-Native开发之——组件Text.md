@@ -108,15 +108,15 @@ Text组件可以使用View组件所有的Style，View组件的所有Style可以�
 
 
 
-[1]: https://images.pgzxc.com/rn-compontent-text.png
-[2]: https://images.pgzxc.com/rn-compontent-tv-prop-type.png
-[3]: https://images.pgzxc.com/rn-compontent-tv-style-1.png
-[4]: https://images.pgzxc.com/rn-compontent-tv-style-2.png
-[5]: https://images.pgzxc.com/rn-compontent-tv-prop.png
-[6]: https://images.pgzxc.com/rn-compontent-tv-nesting.png
-[7]: https://images.pgzxc.com/rn-compontent-tv-combinat.png
+[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/rn-compontent-text.png
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/rn-compontent-tv-prop-type.png
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/rn-compontent-tv-style-1.png
+[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/rn-compontent-tv-style-2.png
+[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/rn-compontent-tv-prop.png
+[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/rn-compontent-tv-nesting.png
+[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/rn-compontent-tv-combinat.png
 [8]: https://github.com/PGzxc/RN_Text
-[9]: https://images.pgzxc.com/rn-text-onpress.png
-[10]: https://images.pgzxc.com/rn-text-onlongpress.gif
-[11]: https://images.pgzxc.com/rn-text-onlayout-code.png
-[12]: https://images.pgzxc.com/rn-text-onlayout-look.png
+[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/rn-text-onpress.png
+[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/rn-text-onlongpress.gif
+[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/rn-text-onlayout-code.png
+[12]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/rn-text-onlayout-look.png

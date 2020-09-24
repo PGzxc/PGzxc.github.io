@@ -112,4 +112,4 @@ body{
 
 
 
-[1]:https://images.pgzxc.com/ct_css_selector.gif
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ct_css_selector.gif

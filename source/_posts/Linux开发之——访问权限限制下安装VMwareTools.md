@@ -54,10 +54,10 @@ date: 2018-10-12 23:04:35
    
 
 
-[1]: https://images.pgzxc.com/vm-tools-install.png
-[2]: https://images.pgzxc.com/vmware-operate_authority.png
-[3]: https://images.pgzxc.com/vmware-tar-xzvf.png
-[4]: https://images.pgzxc.com/vmware-etc-file.png
-[5]: https://images.pgzxc.com/vmware-install-into.png
-[6]: https://images.pgzxc.com/vmware-install-cmd.png
-[7]: https://images.pgzxc.com/vmware-enjoy.png
+[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/vm-tools-install.png
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/vmware-operate_authority.png
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/vmware-tar-xzvf.png
+[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/vmware-etc-file.png
+[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/vmware-install-into.png
+[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/vmware-install-cmd.png
+[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/vmware-enjoy.png

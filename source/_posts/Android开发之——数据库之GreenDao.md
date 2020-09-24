@@ -128,13 +128,13 @@ GreenDao 3.0采用注解的方式来定义实体类，通过gradle插件生成�
  
 
 [1]: https://github.com/greenrobot/greenDAO
-[2]: https://images.pgzxc.com/greendao-build-gradle.png
-[3]: https://images.pgzxc.com/greendao-compile.png
-[4]: https://images.pgzxc.com/greendao-config.png
-[5]: https://images.pgzxc.com/greendao-gen.png
-[6]: https://images.pgzxc.com/greendao-save.png
-[7]: https://images.pgzxc.com/greendao-del.png
-[8]: https://images.pgzxc.com/greendao-update.png
-[9]: https://images.pgzxc.com/greendao-query.png
-[10]: https://images.pgzxc.com/greendao-table.png
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/greendao-build-gradle.png
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/greendao-compile.png
+[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/greendao-config.png
+[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/greendao-gen.png
+[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/greendao-save.png
+[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/greendao-del.png
+[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/greendao-update.png
+[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/greendao-query.png
+[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/greendao-table.png
 [11]: https://github.com/PGzxc/GreenDaoSample

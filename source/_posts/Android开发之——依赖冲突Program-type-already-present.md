@@ -126,17 +126,17 @@ module为下面的内容：
 
 
 
-[1]: https://images.pgzxc.com/depend-gradle.png
-[2]: https://images.pgzxc.com/depend-exception.png
-[3]: https://images.pgzxc.com/depend-exception-open.gif
-[4]: https://images.pgzxc.com/depend-gradle-version.png
-[5]: https://images.pgzxc.com/depend-logErrors.png
-[6]: https://images.pgzxc.com/depend-okio.png
-[7]: https://images.pgzxc.com/depend-tree.png
-[8]: https://images.pgzxc.com/depend-external-library.png
-[9]: https://images.pgzxc.com/depend-gradle-design.png
-[10]: https://images.pgzxc.com/depend-design-26.1.0.png
-[11]: https://images.pgzxc.com/depend-design-26.1.0-maven.png
-[12]: https://images.pgzxc.com/depend-exclude.png
-[13]: https://images.pgzxc.com/depend-configuration.png
-[14]: https://images.pgzxc.com/depend-configuration-all.png
+[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-gradle.png
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-exception.png
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-exception-open.gif
+[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-gradle-version.png
+[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-logErrors.png
+[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-okio.png
+[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-tree.png
+[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-external-library.png
+[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-gradle-design.png
+[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-design-26.1.0.png
+[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-design-26.1.0-maven.png
+[12]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-exclude.png
+[13]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-configuration.png
+[14]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-configuration-all.png

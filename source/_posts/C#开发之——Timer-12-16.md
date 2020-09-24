@@ -85,5 +85,5 @@ public partial class TimerForm : Form
 
 
 
-[1]:https://images.pgzxc.com/csharp-winform-timer-layout.png
-[2]:https://images.pgzxc.com/csharp-winform-timer-view.gif
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-winform-timer-layout.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-winform-timer-view.gif

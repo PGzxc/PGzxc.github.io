@@ -42,8 +42,8 @@ error:40-无法打开到SQL Server的连接(Microsoft SQL Server,错误2)
   ![][5]
 
 
-[1]:https://images.pgzxc.com/csharp-sql-server-login-error.png
-[2]:https://images.pgzxc.com/csharp-sql-server-state-view.png
-[3]:https://images.pgzxc.com/csharp-sql-server-delegate-start-auto.png
-[4]:https://images.pgzxc.com/sql-server-config-manager.png
-[5]:https://images.pgzxc.com/sql-server-mssqlserver-start.png
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-sql-server-login-error.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-sql-server-state-view.png
+[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-sql-server-delegate-start-auto.png
+[4]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/sql-server-config-manager.png
+[5]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/sql-server-mssqlserver-start.png

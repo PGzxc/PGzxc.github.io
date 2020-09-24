@@ -47,5 +47,5 @@ public partial class FontDialogForm : Form
 ![][2]
 
 
-[1]:https://images.pgzxc.com/csharp-winform-fontdialog-layout.png
-[2]:https://images.pgzxc.com/csharp-winform-fontdialog-view.gif
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-winform-fontdialog-layout.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-winform-fontdialog-view.gif

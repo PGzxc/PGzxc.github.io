@@ -95,25 +95,25 @@ Android系统中向下兼容性比较差，但是一个应用APP经过处理还�
 
 
 
-[1]: https://images.pgzxc.com/android-version-problem-show.png
+[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-version-problem-show.png
 [2]: https://developer.android.google.cn/guide/topics/manifest/uses-sdk-element.html#provisional
 [3]: https://developer.android.google.cn/about/dashboards/index.html
-[4]: https://images.pgzxc.com/android-api-version.png
-[5]: https://images.pgzxc.com/version-default.png
-[6]: https://images.pgzxc.com/android-compilesdk.png
-[7]: https://images.pgzxc.com/android-target-26.png
-[8]: https://images.pgzxc.com/android-target-27.png
-[9]: https://images.pgzxc.com/android-api-15.png
-[10]: https://images.pgzxc.com/android-other-version.png
-[11]: https://images.pgzxc.com/android-min-error.png
-[12]: https://images.pgzxc.com/android-targetsdk.png
-[13]: https://images.pgzxc.com/android-max-sdk.png
-[14]: https://images.pgzxc.com/android-resolve-promte.png
-[15]: https://images.pgzxc.com/android-target-api.png
-[16]: https://images.pgzxc.com/android-suppresslint.png
-[17]: https://images.pgzxc.com/android-build-sdk-int.png
-[18]: https://images.pgzxc.com/android-flect.png
-[19]: https://images.pgzxc.com/android-supprots.png
+[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-api-version.png
+[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/version-default.png
+[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-compilesdk.png
+[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-target-26.png
+[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-target-27.png
+[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-api-15.png
+[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-other-version.png
+[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-min-error.png
+[12]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-targetsdk.png
+[13]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-max-sdk.png
+[14]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-resolve-promte.png
+[15]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-target-api.png
+[16]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-suppresslint.png
+[17]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-build-sdk-int.png
+[18]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-flect.png
+[19]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-supprots.png
  
 
 

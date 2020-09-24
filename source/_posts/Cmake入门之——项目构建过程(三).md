@@ -103,11 +103,11 @@ date: 2020-01-02 21:07:45
 
 
 
-[1]:https://images.pgzxc.com//cmake-cmd-create-two-file.png
-[2]:https://images.pgzxc.com//cmake-cmd-mkdir-build-folder.png
-[3]:https://images.pgzxc.com//cmake-cmd-pre-build.png
-[4]:https://images.pgzxc.com//cmake-cmd-build-file.png
-[5]:https://images.pgzxc.com//cmake-cmd-debug-run-effect.png
-[6]:https://images.pgzxc.com//cmake-clion-create-project.png
-[7]:https://images.pgzxc.com//cmake-clion-auto-build.png
-[8]:https://images.pgzxc.com//cmake-clion-run-result.png
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//cmake-cmd-create-two-file.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//cmake-cmd-mkdir-build-folder.png
+[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//cmake-cmd-pre-build.png
+[4]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//cmake-cmd-build-file.png
+[5]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//cmake-cmd-debug-run-effect.png
+[6]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//cmake-clion-create-project.png
+[7]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//cmake-clion-auto-build.png
+[8]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//cmake-clion-run-result.png

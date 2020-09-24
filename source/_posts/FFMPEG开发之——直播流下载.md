@@ -87,14 +87,14 @@ FFmpeg是一款多媒体视频处理工具，有非常强大的功能包括视�
 
 
 
-[1]: https://images.pgzxc.com/vlc-stream-select.png
-[2]: https://images.pgzxc.com/vlc-stream-network.png
-[3]: https://images.pgzxc.com/vlc-stream-play.png
+[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/vlc-stream-select.png
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/vlc-stream-network.png
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/vlc-stream-play.png
 [4]: http://www.ffmpeg.org/download.html
-[5]: https://images.pgzxc.com/ffmpeg-guanwang.png
-[6]: https://images.pgzxc.com/ffmpeg-unzip.png
-[7]: https://images.pgzxc.com/ffmpeg-add-path.png
-[8]: https://images.pgzxc.com/ffmpeg-make-up.png
-[9]: https://images.pgzxc.com/ffmpeg-mp4-play.png
+[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ffmpeg-guanwang.png
+[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ffmpeg-unzip.png
+[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ffmpeg-add-path.png
+[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ffmpeg-make-up.png
+[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ffmpeg-mp4-play.png
 
 

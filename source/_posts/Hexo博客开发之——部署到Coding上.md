@@ -127,21 +127,21 @@ hexo d
 
 
 
-[1]:https://images.pgzxc.com/coding-ras-setting.png
-[2]:https://images.pgzxc.com/coding-auth-disable.png
-[3]:https://images.pgzxc.com/coding-auth-set-phone-after.png
-[4]:https://images.pgzxc.com/coding-auth-success.png
-[5]:https://images.pgzxc.com/coding-ssh-list.png
-[6]:https://images.pgzxc.com/coding-ssh-setting.png
-[7]:https://images.pgzxc.com/coding-create-project-devops.png
-[8]:https://images.pgzxc.com/coding-devops-info.png
-[9]:https://images.pgzxc.com/coding-ssh-gitcopy.png
-[10]:https://images.pgzxc.com/coding-deploy-coding.png
-[11]:https://images.pgzxc.com/coding-code-property-view.png
-[12]:https://images.pgzxc.com/coding-static-webview-list.png
-[13]:https://images.pgzxc.com/coding-static-webview-deply-quick.png
-[14]:https://images.pgzxc.com/coding-aliyun-jiexi.png
-[15]:https://images.pgzxc.com/coding-yuming-bang-success.png
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-ras-setting.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-auth-disable.png
+[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-auth-set-phone-after.png
+[4]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-auth-success.png
+[5]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-ssh-list.png
+[6]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-ssh-setting.png
+[7]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-create-project-devops.png
+[8]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-devops-info.png
+[9]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-ssh-gitcopy.png
+[10]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-deploy-coding.png
+[11]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-code-property-view.png
+[12]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-static-webview-list.png
+[13]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-static-webview-deply-quick.png
+[14]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-aliyun-jiexi.png
+[15]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-yuming-bang-success.png
 
 
 [21]:https://coding.net/

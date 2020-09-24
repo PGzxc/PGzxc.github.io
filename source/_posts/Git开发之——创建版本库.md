@@ -36,12 +36,12 @@ date: 2018-02-25 22:52:44
 ### 远端仓库查看文件
 ![][8]
 
-[0]: https://images.pgzxc.com/git-github-learn.png
-[1]: https://images.pgzxc.com/git-create-file.png
-[2]: https://images.pgzxc.com/git-init.png
-[3]: https://images.pgzxc.com/git-ls.png
-[4]: https://images.pgzxc.com/git-add-readme.png
-[5]: https://images.pgzxc.com/git-commit-readme.png
-[6]: https://images.pgzxc.com/git-remote-add.png
-[7]: https://images.pgzxc.com/git-push-origin.png
-[8]: https://images.pgzxc.com/git-has-show.png
+[0]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-github-learn.png
+[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-create-file.png
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-init.png
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-ls.png
+[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-add-readme.png
+[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-commit-readme.png
+[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-remote-add.png
+[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-push-origin.png
+[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-has-show.png

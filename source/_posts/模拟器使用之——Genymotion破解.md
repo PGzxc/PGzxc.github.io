@@ -47,12 +47,12 @@ Genymotion2.10
 ![start][9]
 
 
-[1]: https://images.pgzxc.com/genymotion-error.png
-[2]: https://images.pgzxc.com/genymotion-sale.png
-[3]: https://images.pgzxc.com/genymotion-trial.png
-[4]: https://images.pgzxc.com/genymotion-licence.png
+[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/genymotion-error.png
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/genymotion-sale.png
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/genymotion-trial.png
+[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/genymotion-licence.png
 [5]: https://pan.baidu.com/s/1AhbR9JJfJYeE0atoqTKrCA
-[6]: https://images.pgzxc.com/genymotion-replace.png
-[7]: https://images.pgzxc.com/genymotion-free.png
-[8]: https://images.pgzxc.com/genymotion-download.png
-[9]: https://images.pgzxc.com/genymotion-start.pngs
+[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/genymotion-replace.png
+[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/genymotion-free.png
+[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/genymotion-download.png
+[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/genymotion-start.pngs

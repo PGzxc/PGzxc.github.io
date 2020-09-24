@@ -31,7 +31,7 @@ date: 2020-04-11 23:14:23
 	![][3]
 
 
-[1]:https://images.pgzxc.com//oc-xcode-arc-project-view.png
-[2]:https://images.pgzxc.com//oc-xcode-arc-buildsettings-search.png
-[3]:https://images.pgzxc.com//oc-xcode-arc-buildsettings-setting.png
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//oc-xcode-arc-project-view.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//oc-xcode-arc-buildsettings-search.png
+[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//oc-xcode-arc-buildsettings-setting.png
 

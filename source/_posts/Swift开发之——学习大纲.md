@@ -208,4 +208,4 @@ typealias newname = type
 ![][1]  
 
 
-[1]: https://images.pgzxc.com/swift-outline.png
+[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/swift-outline.png

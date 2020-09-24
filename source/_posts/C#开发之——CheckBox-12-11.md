@@ -123,5 +123,5 @@ public partial class CheckBoxForm : Form
 
   
 
-[1]:https://images.pgzxc.com/csharp-windows-checkbox-layout.png
-[2]:https://images.pgzxc.com/csharp-windform-checkbox-view.gif
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-windows-checkbox-layout.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-windform-checkbox-view.gif

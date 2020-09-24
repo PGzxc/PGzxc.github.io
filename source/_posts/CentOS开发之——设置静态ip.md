@@ -39,9 +39,9 @@ date: 2018-07-28 16:09:42
 
 
 
-[1]: https://images.pgzxc.com/centos-ip-connect.png
-[2]: https://images.pgzxc.com/centos-ip-network-script.png
-[3]: https://images.pgzxc.com/centos-ip-ens33-open.png
-[4]: https://images.pgzxc.com/centos-ip-modify-before.png
-[5]: https://images.pgzxc.com/centos-ip-modify-after.png
-[6]: https://images.pgzxc.com/centos-ip-save-yes.png
+[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/centos-ip-connect.png
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/centos-ip-network-script.png
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/centos-ip-ens33-open.png
+[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/centos-ip-modify-before.png
+[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/centos-ip-modify-after.png
+[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/centos-ip-save-yes.png

@@ -436,4 +436,4 @@ date: 2017-12-20 09:39:18
 [Kotlin——最详细的控制语句详解][1]
 
 [1]: https://www.cnblogs.com/Jetictors/archive/2017/10/24/7721886.html
-[2]: https://images.pgzxc.com/kotlin-sentence.png
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/kotlin-sentence.png

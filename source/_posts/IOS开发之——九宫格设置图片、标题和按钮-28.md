@@ -112,4 +112,4 @@ date: 2020-05-29 23:28:04
 ```
 
 
-[1]:https://images.pgzxc.com//ios-jiugongge-image-label-button.png
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-jiugongge-image-label-button.png

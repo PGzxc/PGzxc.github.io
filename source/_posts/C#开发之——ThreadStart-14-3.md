@@ -102,5 +102,5 @@ class Program
 
 
 
-[1]:https://images.pgzxc.com/csharp-thread-start-evenum.png
-[2]:https://images.pgzxc.com/csharp-thread-print-eveandodd.png
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-thread-start-evenum.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-thread-print-eveandodd.png

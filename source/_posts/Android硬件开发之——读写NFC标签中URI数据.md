@@ -32,7 +32,7 @@ date: 2018-03-01 17:28:58
 
 
 
-[1]: https://images.pgzxc.com/nfc-uri-state.png
+[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/nfc-uri-state.png
 [2]: https://github.com/PGzxc/NFCReadWriteUri
-[3]: https://images.pgzxc.com/nfc-read-write-uri.png
-[4]: https://images.pgzxc.com/nfc-uri-read.png
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/nfc-read-write-uri.png
+[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/nfc-uri-read.png

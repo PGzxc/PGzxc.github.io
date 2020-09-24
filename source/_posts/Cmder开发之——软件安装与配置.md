@@ -68,9 +68,9 @@ local lambda = "$"
 
 
 
-[1]:https://images.pgzxc.com/cmder-download-select.png
-[2]:https://images.pgzxc.com/cmder-exe-run.png
-[3]:https://images.pgzxc.com/cmder-register-all.png
-[4]:https://images.pgzxc.com/cmder-setup-tasks.png
-[5]:https://images.pgzxc.com/cmder-startup-environment-zh.png
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cmder-download-select.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cmder-exe-run.png
+[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cmder-register-all.png
+[4]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cmder-setup-tasks.png
+[5]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cmder-startup-environment-zh.png
 [11]:https://cmder.net

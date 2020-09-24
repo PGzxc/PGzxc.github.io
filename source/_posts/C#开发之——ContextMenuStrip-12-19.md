@@ -58,7 +58,7 @@ public partial class ContextMenuStrip : Form
 
 
 
-[1]:https://images.pgzxc.com/csharp-winform-contextmenustrip-setting.png
-[2]:https://images.pgzxc.com/csharp-winform-contentmenustrip-drag-default.png
-[3]:https://images.pgzxc.com/csharp-winform-contentment-addmenu-view.gif
-[4]:https://images.pgzxc.com/csharp-winform-contentment-view.gif
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-winform-contextmenustrip-setting.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-winform-contentmenustrip-drag-default.png
+[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-winform-contentment-addmenu-view.gif
+[4]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-winform-contentment-view.gif

@@ -48,5 +48,5 @@ date: 2020-06-14 23:53:28
   ```
 
 
-[1]:https://images.pgzxc.com//ios-tuangou-headerview-xib.png
-[2]:https://images.pgzxc.com//ios-tuangou-view-width-1.png
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-tuangou-headerview-xib.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-tuangou-view-width-1.png

@@ -77,7 +77,7 @@ date: 2020-07-07 22:52:37
 
 
 
-[1]:https://images.pgzxc.com/csharp-visual-studio-2019-new-project-dialog.png
-[2]:https://images.pgzxc.com/csharp-visual-studio2019-project-console.png
-[3]:https://images.pgzxc.com/csharp-visual-studio2019-console-program.png
-[4]:https://images.pgzxc.com/csharp-visual-studio2019-first-run.png
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-visual-studio-2019-new-project-dialog.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-visual-studio2019-project-console.png
+[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-visual-studio2019-console-program.png
+[4]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-visual-studio2019-first-run.png

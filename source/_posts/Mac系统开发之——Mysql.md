@@ -126,19 +126,19 @@ export PATH=$Mysql_Home/support-files:$PATH
 [4]:https://blog.csdn.net/pariese/article/details/77527813
 
 
-[7]:https://images.pgzxc.com//java-config-bash-profile.png
-[10]:https://images.pgzxc.com//mysql-webpage-download.png
-[11]:https://images.pgzxc.com//mysql-install-click-open.png
-[12]:https://images.pgzxc.com//mysql-install-yindao.png
-[13]:https://images.pgzxc.com//mysql-install-configuration.png
-[14]:https://images.pgzxc.com//mysql-install-weak-password.png
-[15]:https://images.pgzxc.com//mysql-install-finish.png
-[16]:https://images.pgzxc.com//mysql-setting-open.png
-[17]:https://images.pgzxc.com//mysql-config-start-stop-uninstall.png
-[18]:https://images.pgzxc.com//mysql-setting-configuration.png
-[19]:https://images.pgzxc.com//mysql-terminal-not-found.png
-[20]:https://images.pgzxc.com//mysql-terminal-config.png
-[21]:https://images.pgzxc.com//mysql-terminal-login.png
-[22]:https://images.pgzxc.com//mysql-terminal-modify-password.png
-[23]:https://images.pgzxc.com//mysql-service-status-download-restart.png
-[24]:https://images.pgzxc.com//mysql-navicat-premium.png
+[7]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//java-config-bash-profile.png
+[10]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mysql-webpage-download.png
+[11]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mysql-install-click-open.png
+[12]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mysql-install-yindao.png
+[13]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mysql-install-configuration.png
+[14]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mysql-install-weak-password.png
+[15]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mysql-install-finish.png
+[16]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mysql-setting-open.png
+[17]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mysql-config-start-stop-uninstall.png
+[18]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mysql-setting-configuration.png
+[19]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mysql-terminal-not-found.png
+[20]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mysql-terminal-config.png
+[21]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mysql-terminal-login.png
+[22]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mysql-terminal-modify-password.png
+[23]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mysql-service-status-download-restart.png
+[24]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mysql-navicat-premium.png

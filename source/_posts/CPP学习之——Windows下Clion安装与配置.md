@@ -42,11 +42,11 @@ date: 2019-10-17 23:34:51
 
 
 [1]:http://www.jetbrains.com/clion/download/#section=windows
-[2]:https://images.pgzxc.com/cpp-clion-download.png
-[3]:https://images.pgzxc.com/cpp-clion-install-position.png
-[4]:https://images.pgzxc.com/cpp-clion-mingw-config.png
-[5]:https://images.pgzxc.com/cpp-clion-encodings-utf8.png
-[6]:https://images.pgzxc.com/cpp-clion-toolschanins-change.png
-[7]:https://images.pgzxc.com/cpp-clion-create-project.png
-[8]:https://images.pgzxc.com/cpp-clion-project-preview.png
-[9]:https://images.pgzxc.com/cpp-clion-build-run.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-clion-download.png
+[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-clion-install-position.png
+[4]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-clion-mingw-config.png
+[5]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-clion-encodings-utf8.png
+[6]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-clion-toolschanins-change.png
+[7]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-clion-create-project.png
+[8]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-clion-project-preview.png
+[9]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-clion-build-run.png

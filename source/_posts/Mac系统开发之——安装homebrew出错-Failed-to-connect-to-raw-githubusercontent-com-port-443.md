@@ -47,14 +47,14 @@ Mac 装homebrew时，执行如下指令出现错误
 ## 三 参考
 * [安装homebrew报错curl: (7) Failed to connect to raw.githubusercontent.com port 443: Operation][10]
 
-[1]:https://images.pgzxc.com//homebrew-error-view.png
-[2]:https://images.pgzxc.com//homebrew-error-commandlinetools-sdks.png
-[3]:https://images.pgzxc.com//homebrew-error-rm-old-commandline.png
-[4]:https://images.pgzxc.com//homebrew-error-select-install.png
-[5]:https://images.pgzxc.com//homebrew-error-install-webpage.png
-[6]:https://images.pgzxc.com//homebrew-error-install-save.png
-[7]:https://images.pgzxc.com//homebrew-error-ruby-install.png
-[8]:https://images.pgzxc.com//homebrew-error-install-finish.png
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//homebrew-error-view.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//homebrew-error-commandlinetools-sdks.png
+[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//homebrew-error-rm-old-commandline.png
+[4]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//homebrew-error-select-install.png
+[5]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//homebrew-error-install-webpage.png
+[6]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//homebrew-error-install-save.png
+[7]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//homebrew-error-ruby-install.png
+[8]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//homebrew-error-install-finish.png
 
 [10]:https://www.jianshu.com/p/68efabd2e32b
 

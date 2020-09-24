@@ -77,6 +77,6 @@ ScrollView是一个通用的可滚动的容器，你可以在其中放入多个�
 # 其他 
 参考：[Github下载][3]
 
-[1]: https://images.pgzxc.com/rn-scroll-view.gif
-[2]: https://images.pgzxc.com/rn-scroll-top.gif
+[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/rn-scroll-view.gif
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/rn-scroll-top.gif
 [3]: https://github.com/PGzxc/RN_ScrollView

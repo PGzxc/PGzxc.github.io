@@ -78,6 +78,6 @@ public partial class PictureBoxForm : Form
 
 
 
-[1]:https://images.pgzxc.com/csharp-winform-pictureform-layout.png
-[2]:https://images.pgzxc.com/csharp-winform-picturebox-view.gif
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-winform-pictureform-layout.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-winform-picturebox-view.gif
 

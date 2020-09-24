@@ -96,14 +96,14 @@ sudo tar -xzvf Sierra-compact-light.tar /usr/share/themes/ #因为在Download文
 
 
 
-[1]:https://images.pgzxc.com//linu-mac-preview.png
-[2]:https://images.pgzxc.com//linux-mac-extra-user-theme.png
-[3]:https://images.pgzxc.com//linux-mac-extra-user-theme-on.png
-[4]:https://images.pgzxc.com//linux-mac-dash-to-dock.png
-[5]:https://images.pgzxc.com//linux-mac-use-theme-compact-download.png
-[6]:https://images.pgzxc.com//linux-mac-tweaks-open.png
-[7]:https://images.pgzxc.com//linux-mac-look-theme-config.png
-[8]:https://images.pgzxc.com//linux-mac-look-extra-config.png
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//linu-mac-preview.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//linux-mac-extra-user-theme.png
+[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//linux-mac-extra-user-theme-on.png
+[4]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//linux-mac-dash-to-dock.png
+[5]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//linux-mac-use-theme-compact-download.png
+[6]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//linux-mac-tweaks-open.png
+[7]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//linux-mac-look-theme-config.png
+[8]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//linux-mac-look-extra-config.png
 [9]:https://www.jianshu.com/p/321e15ec863d
 [10]:https://blog.csdn.net/zyqblog/article/details/80152016
 [11]:https://pan.baidu.com/s/1yCu3GQUTGH8cnAndOHYQ0A
