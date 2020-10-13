@@ -3,6 +3,7 @@ title: Cmake入门之——No CMAKE_C_COMPILER could be found(二)
 categories:
   - 开发
   - 跨平台
+  - Cmake
 tags:
   - Cmake
 abbrlink: 9d3b828b

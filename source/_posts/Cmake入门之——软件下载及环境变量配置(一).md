@@ -3,6 +3,7 @@ title: Cmake入门之——软件下载及环境变量配置(一)
 categories:
   - 开发
   - 跨平台
+  - Cmake
 tags:
   - Cmake
 abbrlink: a4ab86aa

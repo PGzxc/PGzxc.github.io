@@ -3,6 +3,7 @@ title: Cmake入门之——Unset方法(七)
 categories:
   - 开发
   - 跨平台
+  - Cmake
 tags:
   - Cmake
 abbrlink: 5a9c4a7a

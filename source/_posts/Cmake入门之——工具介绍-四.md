@@ -3,6 +3,7 @@ title: Cmake入门之——工具介绍(四)
 categories:
   - 开发
   - 跨平台
+  - Cmake
 tags:
   - Cmake
 abbrlink: 32360f4f

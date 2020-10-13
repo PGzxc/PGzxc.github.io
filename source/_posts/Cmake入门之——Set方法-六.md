@@ -3,6 +3,7 @@ title: Cmake入门之——Set方法(六)
 categories:
   - 开发
   - 跨平台
+  - Cmake
 tags:
   - Cmake
 abbrlink: ddd38c81
