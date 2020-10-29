@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN,default">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="5AUIVYTbHIAuz-eQtxSfZbWW5eg9_EVZMSQycIuXrG0">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"8.0.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="轮播图是每款APP的标配，无论是引导页还是首页展示，随从可见；自己实现的话，既要处理布局问题，数据适配问题，又要处理图片的轮询等一系列问题；好在有封装好的第三方的类库，从此实现轮播图就简单了好多！！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发之——ConvenientBanner小结">
+<meta property="og:url" content="http://pgzxc.github.io/posts/5d558d7d.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="轮播图是每款APP的标配，无论是引导页还是首页展示，随从可见；自己实现的话，既要处理布局问题，数据适配问题，又要处理图片的轮询等一系列问题；好在有封装好的第三方的类库，从此实现轮播图就简单了好多！！">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-viewpager.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_layout.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_holder.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_data.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_indicator.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_scroll.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_click.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_loop.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_stop.png">
+<meta property="article:published_time" content="2017-12-05T13:36:54.000Z">
+<meta property="article:modified_time" content="2020-10-29T15:37:32.663Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="轮播图">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-viewpager.gif">
+
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/5d558d7d.html">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Android开发之——ConvenientBanner小结 | PGzxc</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108155018-3"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-108155018-3');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">PGzxc</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">1087</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">91</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">386</span></a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8Module%E4%B8%8B%E6%B7%BB%E5%8A%A0gradle%E4%BE%9D%E8%B5%96"><span class="nav-number">1.</span> <span class="nav-text">在Module下添加gradle依赖</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8%E8%BD%AE%E6%92%AD%E5%9B%BE%E7%9A%84%E5%9C%B0%E6%96%B9%E6%B7%BB%E5%8A%A0%E5%B8%83%E5%B1%80"><span class="nav-number">2.</span> <span class="nav-text">在需要使用轮播图的地方添加布局</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8%E4%BB%A3%E7%A0%81%E4%B8%AD%E9%85%8D%E7%BD%AEBanner%E9%80%89%E9%A1%B9"><span class="nav-number">3.</span> <span class="nav-text">在代码中配置Banner选项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8convenientBanner-setPages%E8%AE%BE%E7%BD%AE%E9%A1%B5%E9%9D%A2%E5%92%8C%E6%95%B0%E6%8D%AE"><span class="nav-number">3.1.</span> <span class="nav-text">调用convenientBanner.setPages设置页面和数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8setPageIndicator%E8%AE%BE%E7%BD%AE%E6%8C%87%E7%A4%BA%E5%99%A8"><span class="nav-number">3.2.</span> <span class="nav-text">调用setPageIndicator设置指示器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8setOnPageChangeListener%E8%AE%BE%E7%BD%AEViewPager%E9%A1%B5%E9%9D%A2%E6%BB%91%E5%8A%A8%E4%BA%8B%E4%BB%B6"><span class="nav-number">3.3.</span> <span class="nav-text">调用setOnPageChangeListener设置ViewPager页面滑动事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8setOnItemClickListener%E8%AE%BE%E7%BD%AE%E9%A1%B5%E9%9D%A2%E8%A2%AB%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6"><span class="nav-number">3.4.</span> <span class="nav-text">调用setOnItemClickListener设置页面被点击事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BD%93%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E6%97%B6%E8%B0%83%E7%94%A8-bannerNet-startTurning-xxx-%E5%BC%80%E5%A7%8B%E8%BD%AE%E6%92%AD"><span class="nav-number">3.5.</span> <span class="nav-text">当页面显示时调用 bannerNet.startTurning(xxx)开始轮播</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BD%93%E9%A1%B5%E9%9D%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E6%97%B6%E8%B0%83%E7%94%A8bannerNet-stopTurning-%E6%9A%82%E5%81%9C%E8%BD%AE%E6%92%AD"><span class="nav-number">3.6.</span> <span class="nav-text">当页面不显示时调用bannerNet.stopTurning()暂停轮播</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">1087</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">91</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">386</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BHenhj" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PGzxc"><i class="fab fa-github fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY2FsdmluX3pob3U=" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou"><i class="fa fa-book fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3dlaWJvLmNvbS81NTgyMDM5OTIw" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920"><i class="fab fa-weibo fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3d3dy5qaWFuc2h1LmNvbS91L2M1Y2RjYjRkYzUyYg==" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b"><i class="fa fa-book fa-fw"></i></span>
+      </span>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/5d558d7d.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android开发之——ConvenientBanner小结<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BHenhjL1BHenhjLmdpdGh1Yi5pby9lZGl0L2hleG8vc291cmNlL19wb3N0cy9BbmRyb2lk5byA5Y+R5LmL4oCU4oCUQ29udmVuaWVudEJhbm5lcuWwj+e7ky5tZA==" title="编辑"><i class="fa fa-pen-nib"></i></span>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-12-05 21:36:54" itemprop="dateCreated datePublished" datetime="2017-12-05T21:36:54+08:00">2017-12-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-10-29 23:37:32" itemprop="dateModified" datetime="2020-10-29T23:37:32+08:00">2020-10-29</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">移动开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>轮播图是每款APP的标配，无论是引导页还是首页展示，随从可见；自己实现的话，既要处理布局问题，数据适配问题，又要处理图片的轮询等一系列问题；好在有封装好的第三方的类库，从此实现轮播图就简单了好多！！</p>
+<a id="more"></a>
+<p>先看效果图：<br><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-viewpager.gif" alt="轮播图" loading="lazy">    </p>
+<p>如何实现？  </p>
+<h1 id="在Module下添加gradle依赖"><a href="#在Module下添加gradle依赖" class="headerlink" title="在Module下添加gradle依赖"></a>在Module下添加gradle依赖</h1><pre><code>compile &#39;com.bigkoo:convenientbanner:2.0.5&#39;</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner.png" alt="banner" loading="lazy"></p>
+<h1 id="在需要使用轮播图的地方添加布局"><a href="#在需要使用轮播图的地方添加布局" class="headerlink" title="在需要使用轮播图的地方添加布局"></a>在需要使用轮播图的地方添加布局</h1><p>注：canLoop设置为“true”，表示轮播   </p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_layout.png" alt="布局" loading="lazy"> </p>
+<h1 id="在代码中配置Banner选项"><a href="#在代码中配置Banner选项" class="headerlink" title="在代码中配置Banner选项"></a>在代码中配置Banner选项</h1><h2 id="调用convenientBanner-setPages设置页面和数据"><a href="#调用convenientBanner-setPages设置页面和数据" class="headerlink" title="调用convenientBanner.setPages设置页面和数据"></a>调用convenientBanner.setPages设置页面和数据</h2><ul>
+<li><p>setPages中的第一个参数为Holder(可以自定义布局)<br>注：createView为返回view，可以自定义，此处代码生成；UpdateUI为页面设置数据</p>
+<p>  <img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_holder.png" loading="lazy"></p>
+</li>
+<li><p>setPages中的第二个参数为数据集合</p>
+<p>  <img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_data.png" alt="data" loading="lazy"></p>
+</li>
+</ul>
+<h2 id="调用setPageIndicator设置指示器"><a href="#调用setPageIndicator设置指示器" class="headerlink" title="调用setPageIndicator设置指示器"></a>调用setPageIndicator设置指示器</h2><p>注：指示器为一个数组，有两个值，第一个为默认，第二个为当前选中时显示</p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_indicator.png" alt="indicator" loading="lazy"></p>
+<h2 id="调用setOnPageChangeListener设置ViewPager页面滑动事件"><a href="#调用setOnPageChangeListener设置ViewPager页面滑动事件" class="headerlink" title="调用setOnPageChangeListener设置ViewPager页面滑动事件"></a>调用setOnPageChangeListener设置ViewPager页面滑动事件</h2><p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_scroll.png" alt="scroll" loading="lazy"></p>
+<h2 id="调用setOnItemClickListener设置页面被点击事件"><a href="#调用setOnItemClickListener设置页面被点击事件" class="headerlink" title="调用setOnItemClickListener设置页面被点击事件"></a>调用setOnItemClickListener设置页面被点击事件</h2><p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_click.png" alt="click" loading="lazy"></p>
+<h2 id="当页面显示时调用-bannerNet-startTurning-xxx-开始轮播"><a href="#当页面显示时调用-bannerNet-startTurning-xxx-开始轮播" class="headerlink" title="当页面显示时调用 bannerNet.startTurning(xxx)开始轮播"></a>当页面显示时调用 bannerNet.startTurning(xxx)开始轮播</h2><p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_loop.png" alt="loop" loading="lazy"></p>
+<h2 id="当页面不显示时调用bannerNet-stopTurning-暂停轮播"><a href="#当页面不显示时调用bannerNet-stopTurning-暂停轮播" class="headerlink" title="当页面不显示时调用bannerNet.stopTurning()暂停轮播"></a>当页面不显示时调用bannerNet.stopTurning()暂停轮播</h2><p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_stop.png" alt="stop" loading="lazy"></p>
+<p>参考：<br>ConvenientBanner地址:<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NhaXd1LWJpZ2tvby9BbmRyb2lkLUNvbnZlbmllbnRCYW5uZXI=">https://github.com/saiwu-bigkoo/Android-ConvenientBanner<i class="fa fa-external-link-alt"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BHenhjL0NvbnZlbmllbnRCYW5uZXJEZW1v">Demo地址<i class="fa fa-external-link-alt"></i></span></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>PGzxc
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://pgzxc.github.io/posts/5d558d7d.html" title="Android开发之——ConvenientBanner小结">http://pgzxc.github.io/posts/5d558d7d.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%BD%AE%E6%92%AD%E5%9B%BE/" rel="tag"># 轮播图</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/84d69a61.html" rel="prev" title="模拟器使用之——Genymotion破解">
+                  <i class="fa fa-chevron-left"></i> 模拟器使用之——Genymotion破解
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/be069810.html" rel="next" title="Android开发之——图片加载框架比较与使用">
+                  Android开发之——图片加载框架比较与使用 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+  <div class="beian"><span class="exturl" data-url="aHR0cHM6Ly9iZWlhbi5taWl0Lmdvdi5jbg==">京ICP备18061062号-1 </span>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">PGzxc</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/motion.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script data-pjax>
+if (document.querySelectorAll('.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.8.0/dist/mermaid.min.js', () => {
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+
+<script>
+NexT.utils.loadComments('#gitalk-container', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '4d2d97c55a316dfcea73',
+      clientSecret: 'f55fe43764e8560484a13850e4a6d84792924fb0',
+      repo        : 'PGzxc.github.io',
+      owner       : 'PGzxc',
+      admin       : ['PGzxc'],
+      id          : 'b09f74d7f660b993342c692ab3648280',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+</body>
+</html>

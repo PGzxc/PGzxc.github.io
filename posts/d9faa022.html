@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="zh-CN,default">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="5AUIVYTbHIAuz-eQtxSfZbWW5eg9_EVZMSQycIuXrG0">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"8.0.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="简介Lottie是Airbnb开源的一个面向IOS、Android、React Native的动画库，能分析Adobe After Effects导出的动画，并且能让原生App像使用静态素材一样使用这些动画，完美实现动画效果。  现在使用各个平台的native代码实现一套复杂的动画是一件很困难并且耗时的事，我们需要为不同尺寸的屏幕加载不同的材料资源，还需要写大量难维护的代码，而Lottie可以做到">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发之——Lottie动画">
+<meta property="og:url" content="http://pgzxc.github.io/posts/d9faa022.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="简介Lottie是Airbnb开源的一个面向IOS、Android、React Native的动画库，能分析Adobe After Effects导出的动画，并且能让原生App像使用静态素材一样使用这些动画，完美实现动画效果。  现在使用各个平台的native代码实现一套复杂的动画是一件很困难并且耗时的事，我们需要为不同尺寸的屏幕加载不同的材料资源，还需要写大量难维护的代码，而Lottie可以做到">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/lottie_sample_1.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/lottie_sample_2.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/lottie-react-native.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/lottie-before-after.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/lottie-yuanli.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/lottie-leitu.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/lottie-anim-sunxu.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/lottie-move.jpg">
+<meta property="article:published_time" content="2017-12-26T01:37:47.000Z">
+<meta property="article:modified_time" content="2020-10-29T15:37:32.684Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Lottie动画">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/lottie_sample_1.gif">
+
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/d9faa022.html">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Android开发之——Lottie动画 | PGzxc</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108155018-3"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-108155018-3');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">PGzxc</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">1087</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">91</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">386</span></a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">如何使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BDLottie"><span class="nav-number">2.1.</span> <span class="nav-text">下载Lottie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0Adobe-After-Effects%E5%AF%BC%E5%87%BA%E7%9A%84%E5%8A%A8%E7%94%BB%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">添加Adobe After Effects导出的动画文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Lottie"><span class="nav-number">2.3.</span> <span class="nav-text">使用Lottie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E5%85%A5Lottie%E5%BD%B1%E5%93%8D"><span class="nav-number">2.4.</span> <span class="nav-text">引入Lottie影响</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%8A%80%E5%B7%A7"><span class="nav-number">3.</span> <span class="nav-text">使用小技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BDSDCard%E5%8A%A8%E7%94%BB%E6%96%87%E4%BB%B6"><span class="nav-number">3.1.</span> <span class="nav-text">加载SDCard动画文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BDSDCard%E5%9B%BE%E7%89%87"><span class="nav-number">3.2.</span> <span class="nav-text">加载SDCard图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BDSDCard%E5%AD%97%E4%BD%93"><span class="nav-number">3.3.</span> <span class="nav-text">加载SDCard字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E5%8A%A8%E7%94%BB"><span class="nav-number">3.4.</span> <span class="nav-text">缓存动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lottie%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">3.5.</span> <span class="nav-text">Lottie实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#json%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90"><span class="nav-number">3.5.1.</span> <span class="nav-text">json文件解析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90json%E5%A4%96%E9%83%A8%E7%BB%93%E6%9E%84"><span class="nav-number">3.5.1.1.</span> <span class="nav-text">解析json外部结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E5%9B%BE%E7%89%87%E8%B5%84%E6%BA%90"><span class="nav-number">3.5.1.2.</span> <span class="nav-text">解析图片资源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E5%9B%BE%E5%B1%82"><span class="nav-number">3.5.1.3.</span> <span class="nav-text">解析图层</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%8A%A8%E8%B5%B7%E6%9D%A5"><span class="nav-number">3.5.2.</span> <span class="nav-text">如何动起来</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E5%B1%9E%E6%80%A7%E5%8A%A8%E7%94%BB%E8%AE%A1%E7%AE%97%E8%BF%9B%E5%BA%A6"><span class="nav-number">3.5.2.1.</span> <span class="nav-text">利用属性动画计算进度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E8%BF%87CompositionLayer%E6%8A%8A%E8%BF%9B%E5%BA%A6%E4%BC%A0%E9%80%92%E5%88%B0%E5%90%84%E4%B8%AA%E5%9B%BE%E5%B1%82"><span class="nav-number">3.5.2.2.</span> <span class="nav-text">通过CompositionLayer把进度传递到各个图层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E7%9F%A5%E8%BF%9B%E5%BA%A6%E6%94%B9%E5%8F%98"><span class="nav-number">3.5.2.3.</span> <span class="nav-text">通知进度改变</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E5%9B%9E%E8%B0%83%E5%88%B0LottieAnimationView%E7%9A%84invalidateDrawable"><span class="nav-number">3.5.2.4.</span> <span class="nav-text">最终回调到LottieAnimationView的invalidateDrawable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E5%90%8E%E8%A7%A6%E5%8F%91LottieDrawable%E9%87%8D%E7%BB%98"><span class="nav-number">3.5.2.5.</span> <span class="nav-text">最后触发LottieDrawable重绘</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%A7%E8%83%BD"><span class="nav-number">4.</span> <span class="nav-text">性能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E8%AF%B4%E6%98%8E"><span class="nav-number">4.1.</span> <span class="nav-text">官方说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E5%8A%A8%E7%94%BB%E5%92%8CLottie%E5%8A%A8%E7%94%BB%E5%AF%B9%E6%AF%94"><span class="nav-number">4.2.</span> <span class="nav-text">属性动画和Lottie动画对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AA%E5%BC%80%E5%90%AF%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F%EF%BC%8CLottie%E5%8A%A8%E7%94%BB%E5%A4%A7%E5%B0%8F%E5%B8%A7%E7%8E%87%E5%AF%B9%E6%AF%94"><span class="nav-number">4.3.</span> <span class="nav-text">未开启硬件加速，Lottie动画大小帧率对比</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">1087</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">91</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">386</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BHenhj" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PGzxc"><i class="fab fa-github fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY2FsdmluX3pob3U=" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou"><i class="fa fa-book fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3dlaWJvLmNvbS81NTgyMDM5OTIw" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920"><i class="fab fa-weibo fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3d3dy5qaWFuc2h1LmNvbS91L2M1Y2RjYjRkYzUyYg==" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b"><i class="fa fa-book fa-fw"></i></span>
+      </span>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/d9faa022.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android开发之——Lottie动画<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BHenhjL1BHenhjLmdpdGh1Yi5pby9lZGl0L2hleG8vc291cmNlL19wb3N0cy9BbmRyb2lk5byA5Y+R5LmL4oCU4oCUTG90dGll5Yqo55S7Lm1k" title="编辑"><i class="fa fa-pen-nib"></i></span>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-12-26 09:37:47" itemprop="dateCreated datePublished" datetime="2017-12-26T09:37:47+08:00">2017-12-26</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-10-29 23:37:32" itemprop="dateModified" datetime="2020-10-29T23:37:32+08:00">2020-10-29</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">移动开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Lottie是Airbnb开源的一个面向IOS、Android、React Native的动画库，能分析Adobe After Effects导出的动画，并且能让原生App像使用静态素材一样使用这些动画，完美实现动画效果。 </p>
+<p>现在使用各个平台的native代码实现一套复杂的动画是一件很困难并且耗时的事，我们需要为不同尺寸的屏幕加载不同的材料资源，还需要写大量难维护的代码，而Lottie可以做到同一个动画文件在不同平台上实现相同的效果，极大减少开发时间，实现不同的动画，只需要设置不同的动画文件即可极大减少开发和维护成本。  </p>
+<a id="more"></a>
+
+<p>官方效果图：<br><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/lottie_sample_1.gif" alt="lottie" loading="lazy"><br><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/lottie_sample_2.gif" alt="lottie2" loading="lazy"></p>
+<h1 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h1><p>Lottie支持多个平台，使用同一个JSON动画文件，可在不同平台实现相同的效果。<br>Android通过Airbnb开源项目lottie-android实现，最低支持API 16;<br>IOS通过Airbnb的开源项目lottie-ios实现，最低支持IOS7<br>React Native通过Airbnb的开源项目lottie-react-native实现<br><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/lottie-react-native.gif" loading="lazy"><br>这是React logo的动画，以下是以Android平台为例如何使用Lottie  </p>
+<h2 id="下载Lottie"><a href="#下载Lottie" class="headerlink" title="下载Lottie"></a>下载Lottie</h2><p>在项目build.gradle文件添加依赖  </p>
+<pre><code>dependencies 
+&#123;  
+    compile &#39;com.airbnb.android:lottie:2.1.0&#39;
+&#125;</code></pre>
+<h2 id="添加Adobe-After-Effects导出的动画文件"><a href="#添加Adobe-After-Effects导出的动画文件" class="headerlink" title="添加Adobe After Effects导出的动画文件"></a>添加Adobe After Effects导出的动画文件</h2><p>Lottie默认读取Assets中的文件，我们需要把动画文件react.json保存在app/src/main/assets文件里。（文件比较大，只展示了部分内容，文件链接）     </p>
+<pre><code>&#123;
+    &quot;v&quot;: &quot;4.6.0&quot;, 
+    &quot;fr&quot;: 29.9700012207031, 
+    &quot;ip&quot;: 0, 
+    &quot;op&quot;: 141.000005743048, 
+    &quot;w&quot;: 800, 
+    &quot;h&quot;: 800, 
+    &quot;ddd&quot;: 0, 
+    &quot;assets&quot;: [ ], 
+    &quot;layers&quot;: [
+        &#123;
+            &quot;ddd&quot;: 0, 
+            &quot;ind&quot;: 0, 
+            &quot;ty&quot;: 4, 
+            &quot;nm&quot;: &quot;center_circle&quot;, 
+            &quot;ks&quot;: &#123;...&#125;, 
+            &quot;ao&quot;: 0, 
+            &quot;shapes&quot;: [...], 
+            &quot;ip&quot;: 0, 
+            &quot;op&quot;: 900.000036657751, 
+            &quot;st&quot;: 0, 
+            &quot;bm&quot;: 0, 
+            &quot;sr&quot;: 1
+        &#125;, 
+        &#123;...&#125;, 
+        &#123;...&#125;, 
+        &#123;...&#125;
+    ]
+&#125;  </code></pre>
+<h2 id="使用Lottie"><a href="#使用Lottie" class="headerlink" title="使用Lottie"></a>使用Lottie</h2><p>在布局文件中直接添加Lottie的LottieAnimationView控件，即可在界面显示React logo动画效果  </p>
+<pre><code>&lt;com.airbnb.lottie.LottieAnimationView
+    android:id=&quot;@+id/animation_view&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    app:lottie_fileName=&quot;react.json&quot;
+    app:lottie_loop=&quot;true&quot;
+    app:lottie_autoPlay=&quot;true&quot; /&gt;</code></pre>
+<h2 id="引入Lottie影响"><a href="#引入Lottie影响" class="headerlink" title="引入Lottie影响"></a>引入Lottie影响</h2><ul>
+<li>兼容性<br>Lottie 最低支持版本API 16，低版本系统需要做降级动画或者不展示动画</li>
+<li>安装包<br><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/lottie-before-after.png" loading="lazy"><br>这是用全民K歌release包的测试数据，lottie本身方法数不小，有方法数超标和安装包过大的风险，业务可自行评估<br>注：LottieAnimationView继承于V7的AppCompatImageView，需要引入V7兼容包，根据业务需要，可以源码引入Lottie，让LottieAnimationView继承与ImageView，就不用引入V7兼容包，可减少安装包大小。  <h1 id="使用小技巧"><a href="#使用小技巧" class="headerlink" title="使用小技巧"></a>使用小技巧</h1><h2 id="加载SDCard动画文件"><a href="#加载SDCard动画文件" class="headerlink" title="加载SDCard动画文件"></a>加载SDCard动画文件</h2>  StringBuilder stringBuilder = new StringBuilder();<br>  BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(JSON_PATH + &quot;react.json&quot;)));<br>  String content = null;<br>  while ((content = bufferedReader.readLine()) != null)<br>  {<pre><code>  stringBuilder.append(content);</code></pre>
+  }<br>  JSONObject jsonObject = new JSONObject(stringBuilder.toString());<br>  animationView.setAnimation(jsonObject);<br>  animationView.loop(true);<br>  animationView.playAnimation();<h2 id="加载SDCard图片"><a href="#加载SDCard图片" class="headerlink" title="加载SDCard图片"></a>加载SDCard图片</h2>  animationView.setImageAssetDelegate(new ImageAssetDelegate()<br>  {<pre><code>  @Override
+  public Bitmap fetchBitmap(LottieImageAsset asset)     &#123;
+      try &#123;
+          FileInputStream fileInputStream = new FileInputStream(IMAGE_PATH + asset.getFileName());
+          return BitmapFactory.decodeStream(fileInputStream);  ///把流转化为Bitmap图片
+          &#125; catch (Exception e) 
+          &#123;
+                  Log.e(TAG, &quot;&quot;, e);
+          &#125;
+          return null;
+      &#125;</code></pre>
+  });<h2 id="加载SDCard字体"><a href="#加载SDCard字体" class="headerlink" title="加载SDCard字体"></a>加载SDCard字体</h2>  animationView.setFontAssetDelegate(new FontAssetDelegate()<br>  {<pre><code>  public Typeface fetchFont(String fontFamily) 
+  &#123;
+      Typeface customFont = Typeface.createFromFile(FONT_PATH + fontFamily);
+      return customFont;
+  &#125;</code></pre>
+  });<h2 id="缓存动画"><a href="#缓存动画" class="headerlink" title="缓存动画"></a>缓存动画</h2></li>
+</ul>
+<p>Lottie内部有两个缓存map（强引用缓存，弱引用缓存），在动画文件加载完成后会根据设置的缓存策略缓存动画，方便下次使用。</p>
+<pre><code>animationView.setAnimation(animation, LottieAnimationView.CacheStrategy.Strong);    //强缓存
+
+animationView.setAnimation(animation, LottieAnimationView.CacheStrategy.Weak);      //弱缓存</code></pre>
+<h2 id="Lottie实现原理"><a href="#Lottie实现原理" class="headerlink" title="Lottie实现原理"></a>Lottie实现原理</h2><p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/lottie-yuanli.png" alt="lottie-原理" loading="lazy"><br>设计师把一张复杂的图片使用多个图层来表示，每个图层展示一部分内容，图层中的内容也可以拆分为多个元素。拆分元素之后，根据动画需求，可以单独对图层或者图层中的元素做平移，旋转、收缩等动画。  </p>
+<p>Lottie的使用的资源是需要先通过bodymovin(bodymovin插件本身是用于网页上呈现各种AE效果的一个开源库)将Adobe After Effects(AE)生成的aep动画工程文件转换为通用的json格式描述文件。Lottie则负责解析动画的数据，计算每个动画在某个时间点的状态，准确地绘制到屏幕上。   </p>
+<p>导出的json动画描述文件：  </p>
+<pre><code>&#123;
+    &quot;v&quot;: &quot;4.6.0&quot;, 
+    &quot;fr&quot;: 29.9700012207031, 
+    &quot;ip&quot;: 0, 
+    &quot;op&quot;: 141.000005743048, 
+    &quot;w&quot;: 800, 
+    &quot;h&quot;: 800, 
+    &quot;ddd&quot;: 0, 
+    &quot;assets&quot;: [ ], 
+    &quot;layers&quot;: [
+        &#123;...&#125;, 
+    ]
+&#125;  </code></pre>
+<p>Lottie主要类图：<br><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/lottie-leitu.png" loading="lazy"><br>Lottie对外通过控件LottieAnimationView暴露接口，控制动画</p>
+<p>LottieAnimationView继承自ImageView，通过当前时间绘制canvas显示到界面上。这里有两个关键类：<br>LottieComposition负责解析json描述文件，把json内容转成java数据对象；<br>LottieDrawable负责绘制，把LottieComposition转成的数据对象绘制成drawable显示到View上。顺序如下：<br><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/lottie-anim-sunxu.jpg" loading="lazy"></p>
+<h3 id="json文件解析"><a href="#json文件解析" class="headerlink" title="json文件解析"></a>json文件解析</h3><p>LottieComposition负责解析json文件，建立数据到java对象的映射关系。   </p>
+<h4 id="解析json外部结构"><a href="#解析json外部结构" class="headerlink" title="解析json外部结构"></a>解析json外部结构</h4><p>LottieComposition封装了动画的信息，包括动画大小，动画时长，帧率，用到的图片，字体，图层等等<br>json外部结构 </p>
+<pre><code>&#123;
+    &quot;v&quot;: &quot;4.6.0&quot;,               //bodymovin的版本
+    &quot;fr&quot;: 29.9700012207031,     //帧率
+    &quot;ip&quot;: 0,                    //起始关键帧
+    &quot;op&quot;: 141.000005743048,     //结束关键帧
+    &quot;w&quot;: 800,                   //动画宽度
+    &quot;h&quot;: 800,                   //动画高度
+    &quot;ddd&quot;: 0, 
+    &quot;assets&quot;: [...]             //资源信息
+    &quot;layers&quot;: [...]             //图层信息
+&#125;
+
+//解析json的源码
+static LottieComposition fromJsonSync(Resources res, JSONObject json) &#123;
+  Rect bounds = null;
+  float scale = res.getDisplayMetrics().density;
+  int width = json.optInt(&quot;w&quot;, -1);
+  int height = json.optInt(&quot;h&quot;, -1);
+
+  if (width != -1 &amp;&amp; height != -1) &#123;
+    int scaledWidth = (int) (width * scale);
+    int scaledHeight = (int) (height * scale);
+    bounds = new Rect(0, 0, scaledWidth, scaledHeight);
+  &#125;
+
+  long startFrame = json.optLong(&quot;ip&quot;, 0);
+  long endFrame = json.optLong(&quot;op&quot;, 0);
+  float frameRate = (float) json.optDouble(&quot;fr&quot;, 0);
+  String version = json.optString(&quot;v&quot;);
+  String[] versions = version.split(&quot;[.]&quot;);
+  int major = Integer.parseInt(versions[0]);
+  int minor = Integer.parseInt(versions[1]);
+  int patch = Integer.parseInt(versions[2]);
+  LottieComposition composition = new LottieComposition(
+      bounds, startFrame, endFrame, frameRate, scale, major, minor, patch);
+  JSONArray assetsJson = json.optJSONArray(&quot;assets&quot;);
+  parseImages(assetsJson, composition); //解析图片
+  parsePrecomps(assetsJson, composition);
+  parseFonts(json.optJSONObject(&quot;fonts&quot;), composition); //解析字体
+  parseChars(json.optJSONArray(&quot;chars&quot;), composition);  //解析字符
+  parseLayers(json, composition);   //解析图层
+  return composition;
+&#125;</code></pre>
+<h4 id="解析图片资源"><a href="#解析图片资源" class="headerlink" title="解析图片资源"></a>解析图片资源</h4><p>LottieImageAsset类封装图片信息</p>
+<pre><code>&quot;assets&quot;: [                 //资源信息
+    &#123;                       //第一张图片
+        &quot;id&quot;: &quot;image_0&quot;,    //图片id
+        &quot;w&quot;: 58,            //图片宽度
+        &quot;h&quot;: 31,            //图片高度
+        &quot;u&quot;: &quot;images/&quot;,     //图片路径
+        &quot;p&quot;: &quot;img_0.png&quot;    //图片名称
+    &#125;,
+    &#123;...&#125;                   //第n张图片
+]
+static LottieImageAsset newInstance(JSONObject imageJson) 
+&#123;
+    return new LottieImageAsset(imageJson.optInt(&quot;w&quot;), imageJson.optInt(&quot;h&quot;), imageJson.optString(&quot;id&quot;),
+      imageJson.optString(&quot;p&quot;));
+&#125;</code></pre>
+<h4 id="解析图层"><a href="#解析图层" class="headerlink" title="解析图层"></a>解析图层</h4><p>Layer封装图层信息，现在lottie只支持PreComp，Solid，Image，Null，Shape，Text这6中图层。  </p>
+<pre><code>&quot;layers&quot;: [                 //图层信息
+    &#123;                       //第一层动画
+        &quot;ddd&quot;: 0, 
+        &quot;ind&quot;: 0,           //layer id 图层 id
+        &quot;ty&quot;: 4,            //图层类型
+        &quot;nm&quot;: &quot;center_circle&quot;, 
+        &quot;ks&quot;: &#123;...&#125;,        //动画
+        &quot;ao&quot;: 0, 
+        &quot;shapes&quot;: [...], 
+        &quot;ip&quot;: 0,            //inFrame 该图层起始关键帧
+        &quot;op&quot;: 90,           //outFrame 该图层结束关键帧
+        &quot;st&quot;: 0,            //startFrame 开始
+        &quot;bm&quot;: 0, 
+        &quot;sr&quot;: 1
+    &#125;, 
+    &#123;...&#125;                   //第n层动画
+]    </code></pre>
+<h3 id="如何动起来"><a href="#如何动起来" class="headerlink" title="如何动起来"></a>如何动起来</h3><p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/lottie-move.jpg" loading="lazy"><br>利用属性动画控制进度，每次进度改变通知到每一层，触发LottieAnimationView重绘。</p>
+<h4 id="利用属性动画计算进度"><a href="#利用属性动画计算进度" class="headerlink" title="利用属性动画计算进度"></a>利用属性动画计算进度</h4><p>这里用到了属性动画来产生一个0～1的插值，根据不同的插值来设置当前动画进度。<br>代码如下： </p>
+<pre><code>public LottieDrawable() &#123;
+animator.setRepeatCount(0);
+animator.setInterpolator(new LinearInterpolator());
+animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() &#123;
+    @Override
+    public void onAnimationUpdate(ValueAnimator animation) &#123;
+        if (systemAnimationsAreDisabled) &#123;
+            animator.cancel();
+            setProgress(1f);
+        &#125; else &#123;
+            setProgress((float) animation.getAnimatedValue());
+        &#125;
+    &#125;
+&#125;);
+&#125;</code></pre>
+<h4 id="通过CompositionLayer把进度传递到各个图层"><a href="#通过CompositionLayer把进度传递到各个图层" class="headerlink" title="通过CompositionLayer把进度传递到各个图层"></a>通过CompositionLayer把进度传递到各个图层</h4><pre><code>@Override
+public void setProgress(@FloatRange(from = 0f, to = 1f) float progress) &#123;
+    super.setProgress(progress);
+    if (timeRemapping != null) &#123;
+        long duration = lottieDrawable.getComposition().getDuration();
+        long remappedTime = (long) (timeRemapping.getValue() * 1000);
+        progress = remappedTime / (float) duration;
+    &#125;
+    if (layerModel.getTimeStretch() != 0) &#123;
+        progress /= layerModel.getTimeStretch();
+    &#125;
+    progress -= layerModel.getStartProgress();
+    for (int i = layers.size() - 1; i &gt;= 0; i--) &#123;
+    layers.get(i).setProgress(progress);
+    &#125;
+&#125;</code></pre>
+<h4 id="通知进度改变"><a href="#通知进度改变" class="headerlink" title="通知进度改变"></a>通知进度改变</h4><pre><code>void setProgress(@FloatRange(from = 0f, to = 1f) float     progress) &#123;
+    if (progress &lt; getStartDelayProgress()) &#123;
+      progress = 0f;
+    &#125; else if (progress &gt; getEndProgress()) &#123;
+      progress = 1f;
+    &#125;
+
+    if (progress == this.progress) &#123;
+      return;
+    &#125;
+    this.progress = progress;
+
+    for (int i = 0; i &lt; listeners.size(); i++) &#123;
+      listeners.get(i).onValueChanged();
+    &#125;
+  &#125;</code></pre>
+<h4 id="最终回调到LottieAnimationView的invalidateDrawable"><a href="#最终回调到LottieAnimationView的invalidateDrawable" class="headerlink" title="最终回调到LottieAnimationView的invalidateDrawable"></a>最终回调到LottieAnimationView的invalidateDrawable</h4><pre><code>@Override
+public void invalidateDrawable(@NonNull Drawable dr) &#123;
+    if (getDrawable() == lottieDrawable) &#123;
+      // We always want to invalidate the root drawable so it redraws the whole drawable.
+      // Eventually it would be great to be able to invalidate just the changed region.
+        super.invalidateDrawable(lottieDrawable);
+    &#125; else &#123;
+      // Otherwise work as regular ImageView
+        super.invalidateDrawable(dr);
+    &#125;
+&#125;</code></pre>
+<h4 id="最后触发LottieDrawable重绘"><a href="#最后触发LottieDrawable重绘" class="headerlink" title="最后触发LottieDrawable重绘"></a>最后触发LottieDrawable重绘</h4><pre><code>@Override
+public void draw(@NonNull Canvas canvas) &#123;
+    ...
+    matrix.reset();
+    matrix.preScale(scale, scale);
+    compositionLayer.draw(canvas, matrix, alpha);   //这里会调用所有layer的绘制方法
+    if (hasExtraScale) &#123;
+        canvas.restore();
+    &#125;
+&#125;</code></pre>
+<h1 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h1><h2 id="官方说明"><a href="#官方说明" class="headerlink" title="官方说明"></a>官方说明</h2><p>如果没有mask和mattes，那么性能和内存非常好，没有bitmap创建，大部分操作都是简单的cavas绘制。</p>
+<p>如果存在mattes，将会创建2～3个bitmap。bitmap在动画加载到window时被创建，被window删除时回收。所以不宜在RecyclerView中使用包涵mattes或者mask的动画，否则会引起bitmap抖动。除了内存抖动，mattes和mask中必要的bitmap.eraseColor()和canvas.drawBitmap()也会降低动画性能。对于简单的动画，在实际使用时性能不太明显。</p>
+<p>如果在列表中使用动画，推荐使用缓存LottieAnimationView.setAnimation(String, CacheStrategy) 。</p>
+<h2 id="属性动画和Lottie动画对比"><a href="#属性动画和Lottie动画对比" class="headerlink" title="属性动画和Lottie动画对比"></a>属性动画和Lottie动画对比</h2><p>Lottie动画在未开启硬件加速的情况下，帧率、内存，CPU都比属性动画差，开启硬件加速后，性能差不多。</p>
+<h2 id="未开启硬件加速，Lottie动画大小帧率对比"><a href="#未开启硬件加速，Lottie动画大小帧率对比" class="headerlink" title="未开启硬件加速，Lottie动画大小帧率对比"></a>未开启硬件加速，Lottie动画大小帧率对比</h2><p>主要耗时在draw方法，绘制区域越小，耗时越小  </p>
+<p>参考：<br><span class="exturl" data-url="aHR0cHM6Ly93d3cucWNsb3VkLmNvbS9jb21tdW5pdHkvYXJ0aWNsZS80OTQzOTc=">Lottie : 让动画如此简单<i class="fa fa-external-link-alt"></i></span><br><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FpcmJuYi9sb3R0aWUtYW5kcm9pZA==">GitHub - airbnb/lottie-android: Render After Effects animations natively on Android and iOS<i class="fa fa-external-link-alt"></i></span><br><span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWFNGNTA3MTcvYXJ0aWNsZS9kZXRhaWxzLzU1MTIxNDc4">Lottie的使用及原理浅析 - 彩笔学长 - CSDN博客<i class="fa fa-external-link-alt"></i></span>    </p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>PGzxc
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://pgzxc.github.io/posts/d9faa022.html" title="Android开发之——Lottie动画">http://pgzxc.github.io/posts/d9faa022.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Lottie%E5%8A%A8%E7%94%BB/" rel="tag"># Lottie动画</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/3335eee7.html" rel="prev" title="Android开发之——资源raw与assets">
+                  <i class="fa fa-chevron-left"></i> Android开发之——资源raw与assets
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/86500645.html" rel="next" title="Android开发之——美团Robus热修复">
+                  Android开发之——美团Robus热修复 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+  <div class="beian"><span class="exturl" data-url="aHR0cHM6Ly9iZWlhbi5taWl0Lmdvdi5jbg==">京ICP备18061062号-1 </span>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">PGzxc</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/motion.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script data-pjax>
+if (document.querySelectorAll('.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.8.0/dist/mermaid.min.js', () => {
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+
+<script>
+NexT.utils.loadComments('#gitalk-container', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '4d2d97c55a316dfcea73',
+      clientSecret: 'f55fe43764e8560484a13850e4a6d84792924fb0',
+      repo        : 'PGzxc.github.io',
+      owner       : 'PGzxc',
+      admin       : ['PGzxc'],
+      id          : '5074316410939b6846ac5a6c86342fef',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+</body>
+</html>

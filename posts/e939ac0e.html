@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-CN,default">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="5AUIVYTbHIAuz-eQtxSfZbWW5eg9_EVZMSQycIuXrG0">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"8.0.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="前言作为软件开发人员，你可能会有这样的烦恼，换新电脑或安装系统后，需要重新安装软件配置环境变量，这个过程是十分枯燥的。为此，本文收集了软件开发中常用软件的环境变量配置，相信会帮你省去不少时间。       本文所记录的软件是开发中经常使用并加以整理的，可能时间仓促，如有遗漏，欢迎留言，本文将会记录更新；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows开发之——软件环境变量及配置">
+<meta property="og:url" content="http://pgzxc.github.io/posts/e939ac0e.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="前言作为软件开发人员，你可能会有这样的烦恼，换新电脑或安装系统后，需要重新安装软件配置环境变量，这个过程是十分枯燥的。为此，本文收集了软件开发中常用软件的环境变量配置，相信会帮你省去不少时间。       本文所记录的软件是开发中经常使用并加以整理的，可能时间仓促，如有遗漏，欢迎留言，本文将会记录更新；">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-10-20T05:37:13.000Z">
+<meta property="article:modified_time" content="2020-10-29T15:37:34.967Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="软件环境配置">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/e939ac0e.html">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Windows开发之——软件环境变量及配置 | PGzxc</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108155018-3"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-108155018-3');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">PGzxc</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">1087</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">91</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">386</span></a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">软件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%85%E5%8D%95"><span class="nav-number">2.1.</span> <span class="nav-text">清单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">2.2.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java"><span class="nav-number">2.2.1.</span> <span class="nav-text">Java</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Path"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">Path</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android"><span class="nav-number">2.2.2.</span> <span class="nav-text">Android</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F-1"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Path-1"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">Path</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tomcat"><span class="nav-number">2.2.3.</span> <span class="nav-text">Tomcat</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F-2"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Path-2"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">Path</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cmder"><span class="nav-number">2.2.4.</span> <span class="nav-text">cmder</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F-3"><span class="nav-number">2.2.4.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Path-3"><span class="nav-number">2.2.4.2.</span> <span class="nav-text">Path</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#maven"><span class="nav-number">2.2.5.</span> <span class="nav-text">maven</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F-4"><span class="nav-number">2.2.5.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Path-4"><span class="nav-number">2.2.5.2.</span> <span class="nav-text">Path</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mongodb"><span class="nav-number">2.2.6.</span> <span class="nav-text">mongodb</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F-5"><span class="nav-number">2.2.6.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Path-5"><span class="nav-number">2.2.6.2.</span> <span class="nav-text">Path</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MinGW"><span class="nav-number">2.2.7.</span> <span class="nav-text">MinGW</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F-6"><span class="nav-number">2.2.7.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Path-6"><span class="nav-number">2.2.7.2.</span> <span class="nav-text">Path</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kotlin"><span class="nav-number">2.2.8.</span> <span class="nav-text">Kotlin</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F-7"><span class="nav-number">2.2.8.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Path-7"><span class="nav-number">2.2.8.2.</span> <span class="nav-text">Path</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql"><span class="nav-number">2.2.9.</span> <span class="nav-text">mysql</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F-8"><span class="nav-number">2.2.9.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Path-8"><span class="nav-number">2.2.9.2.</span> <span class="nav-text">Path</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python"><span class="nav-number">2.2.10.</span> <span class="nav-text">Python</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F-9"><span class="nav-number">2.2.10.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Path-9"><span class="nav-number">2.2.10.2.</span> <span class="nav-text">Path</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Perl"><span class="nav-number">2.2.11.</span> <span class="nav-text">Perl</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F-10"><span class="nav-number">2.2.11.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Path-10"><span class="nav-number">2.2.11.2.</span> <span class="nav-text">Path</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Go"><span class="nav-number">2.2.12.</span> <span class="nav-text">Go</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F-11"><span class="nav-number">2.2.12.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Path-11"><span class="nav-number">2.2.12.2.</span> <span class="nav-text">Path</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cmake"><span class="nav-number">2.2.13.</span> <span class="nav-text">Cmake</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F-12"><span class="nav-number">2.2.13.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Path-12"><span class="nav-number">2.2.13.2.</span> <span class="nav-text">Path</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node"><span class="nav-number">2.2.14.</span> <span class="nav-text">Node</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F-13"><span class="nav-number">2.2.14.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Path-13"><span class="nav-number">2.2.14.2.</span> <span class="nav-text">Path</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git"><span class="nav-number">2.2.15.</span> <span class="nav-text">Git</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F-14"><span class="nav-number">2.2.15.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Path-14"><span class="nav-number">2.2.15.2.</span> <span class="nav-text">Path</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vscode"><span class="nav-number">2.2.16.</span> <span class="nav-text">vscode</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F-15"><span class="nav-number">2.2.16.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Path-15"><span class="nav-number">2.2.16.2.</span> <span class="nav-text">Path</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Putty"><span class="nav-number">2.2.17.</span> <span class="nav-text">Putty</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F-16"><span class="nav-number">2.2.17.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Path-16"><span class="nav-number">2.2.17.2.</span> <span class="nav-text">Path</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">1087</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">91</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">386</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BHenhj" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PGzxc"><i class="fab fa-github fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY2FsdmluX3pob3U=" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou"><i class="fa fa-book fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3dlaWJvLmNvbS81NTgyMDM5OTIw" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920"><i class="fab fa-weibo fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3d3dy5qaWFuc2h1LmNvbS91L2M1Y2RjYjRkYzUyYg==" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b"><i class="fa fa-book fa-fw"></i></span>
+      </span>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/e939ac0e.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Windows开发之——软件环境变量及配置<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BHenhjL1BHenhjLmdpdGh1Yi5pby9lZGl0L2hleG8vc291cmNlL19wb3N0cy9XaW5kb3dz5byA5Y+R5LmL4oCU4oCU6L2v5Lu2546v5aKD5Y+Y6YeP5Y+K6YWN572uLm1k" title="编辑"><i class="fa fa-pen-nib"></i></span>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-10-20 13:37:13" itemprop="dateCreated datePublished" datetime="2018-10-20T13:37:13+08:00">2018-10-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-10-29 23:37:34" itemprop="dateModified" datetime="2020-10-29T23:37:34+08:00">2020-10-29</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">系统</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%B3%BB%E7%BB%9F/Windows/" itemprop="url" rel="index"><span itemprop="name">Windows</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>作为软件开发人员，你可能会有这样的烦恼，换新电脑或安装系统后，需要重新安装软件配置环境变量，这个过程是十分枯燥的。为此，本文收集了软件开发中常用软件的环境变量配置，相信会帮你省去不少时间。      </p>
+<p>本文所记录的软件是开发中经常使用并加以整理的，可能时间仓促，如有遗漏，欢迎留言，本文将会记录更新；</p>
+<a id="more"></a>
+
+
+<h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><h2 id="清单"><a href="#清单" class="headerlink" title="清单"></a>清单</h2><ol>
+<li>Java</li>
+<li>Android</li>
+<li>Tomcat</li>
+<li>cmder</li>
+<li>maven</li>
+<li>mongodb</li>
+<li>MinGW</li>
+<li>Kotlin </li>
+<li>mysql </li>
+<li>Python</li>
+<li>Perl</li>
+<li>Go</li>
+<li>Cmake</li>
+<li>Node</li>
+<li>Git</li>
+<li>vscode</li>
+<li>Putty</li>
+</ol>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><pre><code>JAVA_HOME  D:\SoftWare\Java\jdk1.8.0_191    
+CLASSPATH  .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar</code></pre>
+<h4 id="Path"><a href="#Path" class="headerlink" title="Path"></a>Path</h4><pre><code>%JAVA_HOME%\bin;  
+%JAVA_HOME%\jre\bin;</code></pre>
+<hr>
+<h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><h4 id="变量-1"><a href="#变量-1" class="headerlink" title="变量"></a>变量</h4><pre><code>ANDROID_HOME     D:\SoftWare\SDK  </code></pre>
+<h4 id="Path-1"><a href="#Path-1" class="headerlink" title="Path"></a>Path</h4><pre><code>%ANDROID_HOME%;  
+%ANDROID_HOME%\platform-tools;     
+%ANDROID_HOME%\tools;</code></pre>
+<hr>
+<h3 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h3><h4 id="变量-2"><a href="#变量-2" class="headerlink" title="变量"></a>变量</h4><pre><code>CATALINA_BASE    D:\SoftWare\apache-tomcat-8.5.32     
+CATALINA_HOME   D:\SoftWare\apache-tomcat-8.5.32</code></pre>
+<h4 id="Path-2"><a href="#Path-2" class="headerlink" title="Path"></a>Path</h4><pre><code>%CATALINA_HOME%\lib;   
+%CATALINA_HOME%\bin;</code></pre>
+<hr>
+<h3 id="cmder"><a href="#cmder" class="headerlink" title="cmder"></a>cmder</h3><h4 id="变量-3"><a href="#变量-3" class="headerlink" title="变量"></a>变量</h4><pre><code>CMDER_HOME D:\SoftWare\cmder</code></pre>
+<h4 id="Path-3"><a href="#Path-3" class="headerlink" title="Path"></a>Path</h4><pre><code>%CMDER_HOME%;</code></pre>
+<hr>
+<h3 id="maven"><a href="#maven" class="headerlink" title="maven"></a>maven</h3><h4 id="变量-4"><a href="#变量-4" class="headerlink" title="变量"></a>变量</h4><pre><code>MAVEN_HOME  D:\SoftWare\apache-maven-3.5.4</code></pre>
+<h4 id="Path-4"><a href="#Path-4" class="headerlink" title="Path"></a>Path</h4><pre><code>%MAVEN_HOME%\bin;</code></pre>
+<hr>
+<h3 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h3><h4 id="变量-5"><a href="#变量-5" class="headerlink" title="变量"></a>变量</h4><pre><code>MONGO_HOME  D:\SoftWare\MongoDB</code></pre>
+<h4 id="Path-5"><a href="#Path-5" class="headerlink" title="Path"></a>Path</h4><pre><code>%MONGO_HOME%\bin;</code></pre>
+<hr>
+<h3 id="MinGW"><a href="#MinGW" class="headerlink" title="MinGW"></a>MinGW</h3><h4 id="变量-6"><a href="#变量-6" class="headerlink" title="变量"></a>变量</h4><pre><code>MinGW D:\SoftWare\Dev-Cpp\MinGW64</code></pre>
+<h4 id="Path-6"><a href="#Path-6" class="headerlink" title="Path"></a>Path</h4><pre><code>%MinGW%\bin;</code></pre>
+<hr>
+<h3 id="Kotlin"><a href="#Kotlin" class="headerlink" title="Kotlin"></a>Kotlin</h3><h4 id="变量-7"><a href="#变量-7" class="headerlink" title="变量"></a>变量</h4><pre><code>Kotlin_HOME D:\SoftWare\kotlinc</code></pre>
+<h4 id="Path-7"><a href="#Path-7" class="headerlink" title="Path"></a>Path</h4><pre><code>%Kotlin_HOME%\bin;</code></pre>
+<hr>
+<h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><h4 id="变量-8"><a href="#变量-8" class="headerlink" title="变量"></a>变量</h4><pre><code>MYSQL_HOME C:\Program Files\MySQL</code></pre>
+<h4 id="Path-8"><a href="#Path-8" class="headerlink" title="Path"></a>Path</h4><pre><code>%MYSQL_HOME%\MySQL Utilities 1.6\;  
+%MYSQL_HOME%\MySQL Server 5.7\bin;</code></pre>
+<hr>
+<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><h4 id="变量-9"><a href="#变量-9" class="headerlink" title="变量"></a>变量</h4><pre><code>Python_Home  D:\SoftWare\Python\3.6.5</code></pre>
+<h4 id="Path-9"><a href="#Path-9" class="headerlink" title="Path"></a>Path</h4><pre><code>%Python_Home%\Scripts\;    
+%Python_Home%; </code></pre>
+<hr>
+<h3 id="Perl"><a href="#Perl" class="headerlink" title="Perl"></a>Perl</h3><h4 id="变量-10"><a href="#变量-10" class="headerlink" title="变量"></a>变量</h4><pre><code>Perl_HOME C:\Perl64\bin</code></pre>
+<h4 id="Path-10"><a href="#Path-10" class="headerlink" title="Path"></a>Path</h4><pre><code>%Perl_HOME%\bin;   </code></pre>
+<hr>
+<h3 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h3><h4 id="变量-11"><a href="#变量-11" class="headerlink" title="变量"></a>变量</h4><pre><code>GO_HOME D:\SoftWare\Go;    </code></pre>
+<h4 id="Path-11"><a href="#Path-11" class="headerlink" title="Path"></a>Path</h4><pre><code>%GO_HOME%\bin;</code></pre>
+<hr>
+<h3 id="Cmake"><a href="#Cmake" class="headerlink" title="Cmake"></a>Cmake</h3><h4 id="变量-12"><a href="#变量-12" class="headerlink" title="变量"></a>变量</h4><pre><code>Cmake_HOME  D:\SoftWare\cmake</code></pre>
+<h4 id="Path-12"><a href="#Path-12" class="headerlink" title="Path"></a>Path</h4><pre><code>%Cmake_HOME%\bin;</code></pre>
+<hr>
+<h3 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h3><h4 id="变量-13"><a href="#变量-13" class="headerlink" title="变量"></a>变量</h4><pre><code>NODE_HOME  D:\SoftWare\Node</code></pre>
+<h4 id="Path-13"><a href="#Path-13" class="headerlink" title="Path"></a>Path</h4><pre><code>%NODE_HOME%
+%NODE_HOME%\node_global;</code></pre>
+<hr>
+<h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><h4 id="变量-14"><a href="#变量-14" class="headerlink" title="变量"></a>变量</h4><pre><code>GIT_HOME C:\Program Files\Git</code></pre>
+<h4 id="Path-14"><a href="#Path-14" class="headerlink" title="Path"></a>Path</h4><pre><code>%GIT_HOM%\cmd;</code></pre>
+<hr>
+<h3 id="vscode"><a href="#vscode" class="headerlink" title="vscode"></a>vscode</h3><h4 id="变量-15"><a href="#变量-15" class="headerlink" title="变量"></a>变量</h4><pre><code>VS_HOME D:\SoftWare\VsCode\Microsoft VS Code</code></pre>
+<h4 id="Path-15"><a href="#Path-15" class="headerlink" title="Path"></a>Path</h4><pre><code>%VS_HOME%\bin;</code></pre>
+<hr>
+<h3 id="Putty"><a href="#Putty" class="headerlink" title="Putty"></a>Putty</h3><h4 id="变量-16"><a href="#变量-16" class="headerlink" title="变量"></a>变量</h4><pre><code>Putty_Home D:\SoftWare\Putty</code></pre>
+<h4 id="Path-16"><a href="#Path-16" class="headerlink" title="Path"></a>Path</h4><pre><code>%Putty_Home%;</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>PGzxc
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://pgzxc.github.io/posts/e939ac0e.html" title="Windows开发之——软件环境变量及配置">http://pgzxc.github.io/posts/e939ac0e.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%BD%AF%E4%BB%B6%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag"># 软件环境配置</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/4c54adf2.html" rel="prev" title="Android开发之——搭建本地Crashing跟踪系统ACRA">
+                  <i class="fa fa-chevron-left"></i> Android开发之——搭建本地Crashing跟踪系统ACRA
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/24f37b56.html" rel="next" title="Axure开发之——Axure8.0安装与配置">
+                  Axure开发之——Axure8.0安装与配置 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+  <div class="beian"><span class="exturl" data-url="aHR0cHM6Ly9iZWlhbi5taWl0Lmdvdi5jbg==">京ICP备18061062号-1 </span>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">PGzxc</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/motion.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script data-pjax>
+if (document.querySelectorAll('.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.8.0/dist/mermaid.min.js', () => {
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+
+<script>
+NexT.utils.loadComments('#gitalk-container', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '4d2d97c55a316dfcea73',
+      clientSecret: 'f55fe43764e8560484a13850e4a6d84792924fb0',
+      repo        : 'PGzxc.github.io',
+      owner       : 'PGzxc',
+      admin       : ['PGzxc'],
+      id          : '11aac25cafaa36f2b31d08c867e003bc',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+</body>
+</html>

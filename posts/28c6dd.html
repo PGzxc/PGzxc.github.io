@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh-CN,default">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="5AUIVYTbHIAuz-eQtxSfZbWW5eg9_EVZMSQycIuXrG0">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"8.0.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="一 概述 在 C#语言中程序调试主要指在 Visual Studio 2019 中调试程序，包括设置断点、监视断点，以及逐语句、逐过程、使用一些辅助窗口来调试程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#开发之——程序调试(13.5)">
+<meta property="og:url" content="http://pgzxc.github.io/posts/28c6dd.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 概述 在 C#语言中程序调试主要指在 Visual Studio 2019 中调试程序，包括设置断点、监视断点，以及逐语句、逐过程、使用一些辅助窗口来调试程序">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-break-point-set.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-break-point-set-view.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-break-point-set-or-relate.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-break-point-view-track.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-break-point-str-right-key.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-debug-f5-progress.png">
+<meta property="og:image" content="http://c.biancheng.net/uploads/allimg/190403/4-1Z403101S5T9.gif">
+<meta property="og:image" content="http://c.biancheng.net/uploads/allimg/190403/4-1Z403101ZK27.gif">
+<meta property="og:image" content="http://c.biancheng.net/uploads/allimg/190403/4-1Z403101944544.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-debug-right-keyboard.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-debug-monitor-i.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-debug-monitor-delete-monotor.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-monitor-quiclly.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-debug-im-windows-right.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-debug-im-windows.png">
+<meta property="article:published_time" content="2020-08-03T12:49:42.000Z">
+<meta property="article:modified_time" content="2020-10-29T15:37:33.156Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="C#">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-break-point-set.png">
+
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/28c6dd.html">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>C#开发之——程序调试(13.5) | PGzxc</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108155018-3"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-108155018-3');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">PGzxc</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">1087</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">91</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">386</span></a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD"><span class="nav-number">2.</span> <span class="nav-text">二 常用功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E8%AE%BE%E7%BD%AE%E6%96%AD%E7%82%B9"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 设置断点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1 概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-%E6%93%8D%E4%BD%9C"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.1.2 操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E7%AE%A1%E7%90%86%E6%96%AD%E7%82%B9"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 管理断点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%B0%83%E8%AF%95%E8%BF%87%E7%A8%8B"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 程序的调试过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E7%9B%91%E8%A7%86%E5%99%A8"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 监视器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E5%BF%AB%E9%80%9F%E7%9B%91%E8%A7%86"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 快速监视</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E5%8D%B3%E6%97%B6%E7%AA%97%E5%8F%A3"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 即时窗口</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">1087</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">91</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">386</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BHenhj" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PGzxc"><i class="fab fa-github fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY2FsdmluX3pob3U=" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou"><i class="fa fa-book fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3dlaWJvLmNvbS81NTgyMDM5OTIw" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920"><i class="fab fa-weibo fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3d3dy5qaWFuc2h1LmNvbS91L2M1Y2RjYjRkYzUyYg==" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b"><i class="fa fa-book fa-fw"></i></span>
+      </span>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/28c6dd.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C#开发之——程序调试(13.5)<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BHenhjL1BHenhjLmdpdGh1Yi5pby9lZGl0L2hleG8vc291cmNlL19wb3N0cy9DI+W8gOWPkeS5i+KAlOKAlOeoi+W6j+iwg+ivlS0xMy01Lm1k" title="编辑"><i class="fa fa-pen-nib"></i></span>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-08-03 20:49:42" itemprop="dateCreated datePublished" datetime="2020-08-03T20:49:42+08:00">2020-08-03</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-10-29 23:37:33" itemprop="dateModified" datetime="2020-10-29T23:37:33+08:00">2020-10-29</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">桌面开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/%E6%A1%8C%E9%9D%A2%E5%BC%80%E5%8F%91/C/" itemprop="url" rel="index"><span itemprop="name">C#</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><p> 在 C#语言中程序调试主要指在 Visual Studio 2019 中调试程序，包括设置断点、监视断点，以及逐语句、逐过程、使用一些辅助窗口来调试程序 </p>
+<a id="more"></a>
+
+<h2 id="二-常用功能"><a href="#二-常用功能" class="headerlink" title="二 常用功能"></a>二 常用功能</h2><h3 id="2-1-设置断点"><a href="#2-1-设置断点" class="headerlink" title="2.1 设置断点"></a>2.1 设置断点</h3><h4 id="2-1-1-概念"><a href="#2-1-1-概念" class="headerlink" title="2.1.1 概念"></a>2.1.1 概念</h4><ul>
+<li> 所谓断点是程序自动进入中断模式的标记，即当程序运行到此处时自动中断。</li>
+<li>在断点所在行的前面用红色的圆圈标记，设置标记时直接用鼠标单击需要设置断点的行前面的灰色区域即可，或者直接按键盘上的 F9 键 </li>
+</ul>
+<h4 id="2-1-2-操作"><a href="#2-1-2-操作" class="headerlink" title="2.1.2 操作"></a>2.1.2 操作</h4><ul>
+<li><p>例如在程序中设置断点，效果如下图 </p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-break-point-set.png" loading="lazy"></p>
+</li>
+<li><p>在设置断点时单击齿轮图标进入断点设置界面，如下图所示( 在该界面中允许为断点设置条件或操作，条件是指在满足指定条件时才会命中该断点 )</p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-break-point-set-view.png" loading="lazy"></p>
+</li>
+<li><p>此外，每个断点也允许设置多个条件，每个条件之间的关系是“与”的关系。界面如下图所示<br>在设置条件时可以设置条件表达式、命中次数以及筛选器 , 其中： </p>
+<ul>
+<li> 条件表达式是指一个布尔类型的表达式，如果满足条件则触发断点 </li>
+<li> 命中次数若满足指定次数，则触发断点 </li>
+<li> 筛选器用于限制只在某些进程和线程中设置断点 </li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-break-point-set-or-relate.png" loading="lazy"></p>
+</li>
+<li><p>在上图所示的界面中还可以为断点设置操作，用于指定在命中断点时打印追踪信息，界面如下图所示</p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-break-point-view-track.png" loading="lazy"></p>
+</li>
+<li><p>在该界面中，如果在“将消息记录到输出窗口”文本框中输出断点“string[] str = new string<span class="exturl" data-url="aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL3BnenhjL0NETi9ibG9nLWltYWdlL2NzaGFycC1icmVhay1wb2ludC1zdHItcmlnaHQta2V5LnBuZw==">5<i class="fa fa-external-link-alt"></i></span>;”处，其中 str 的值，则可以写成“str={str}”的形式，在调试输出窗口中会发现“str=Null”的信息输出。此外，右击断点，弹出的右键菜单如下图所示</p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-break-point-str-right-key.png" loading="lazy"></p>
+</li>
+<li><p>在该菜单中选择“条件”或“操作”命令也可以完成对断点的上述设置</p>
+</li>
+</ul>
+<h3 id="2-2-管理断点"><a href="#2-2-管理断点" class="headerlink" title="2.2 管理断点"></a>2.2 管理断点</h3><p> 在断点设置完成后，还可以在上图所示的菜单中选择进行“删除断点”“禁用断点”“编辑标签”“导出”的操作 , 其中： </p>
+<ul>
+<li> “删除断点”操作是取消当前断点，也可以再次单击断点的红点取消 </li>
+<li> 禁用断点”操作是指暂时跳过该断点，将断点设置为禁用状态后，断点的右键菜单中的“禁用断点”选项更改为“启用断点”，在需要该断点时还可以选择“启用断点”恢复断点； </li>
+<li>“编辑标签” 操作是为断点设置名称；</li>
+<li> “导出”操作是将断点信息导出到一个 XML 文件中存放 </li>
+</ul>
+<h3 id="2-3-程序的调试过程"><a href="#2-3-程序的调试过程" class="headerlink" title="2.3 程序的调试过程"></a>2.3 程序的调试过程</h3><ul>
+<li><p>在设置好断点后，调试程序可以直接按 F5 键，或者直接在菜单栏中选择“调试”→“开始调试”命令 </p>
+</li>
+<li><p>在调试程序的过程中，可以直接使用工具栏上的调试快捷键，如下图所示，或者直接在菜单栏中选择所需的调试命令 </p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-debug-f5-progress.png" loading="lazy"></p>
+</li>
+<li><p>下面介绍常用的调试命令</p>
+<ul>
+<li> 逐语句（<img src="http://c.biancheng.net/uploads/allimg/190403/4-1Z403101S5T9.gif" alt="逐语句" loading="lazy">）：按 F11 键也可以，用于逐条语句运行 </li>
+<li>逐过程（<img src="http://c.biancheng.net/uploads/allimg/190403/4-1Z403101ZK27.gif" alt="逐过程" loading="lazy">）：按 F10 键也可以，过程是指可以将方法作为一个整体去执行，不会跳进方法中执行。</li>
+<li> 跳出（<img src="http://c.biancheng.net/uploads/allimg/190403/4-1Z403101944544.gif" alt="跳出" loading="lazy">）：按 Shift+F11 组合键也可以，跳出是将程序的调试状态结束，并结束整个程序 </li>
+</ul>
+</li>
+<li><p>此外，在调试过程中右击，会出现如下图所示的右键菜单</p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-debug-right-keyboard.png" loading="lazy"></p>
+<h3 id="2-4-监视器"><a href="#2-4-监视器" class="headerlink" title="2.4 监视器"></a>2.4 监视器</h3></li>
+<li><p>在调试程序的过程中经常需要知道某些变量的值在运行过程发生的变化，以便发现其在何时发生错误 </p>
+</li>
+<li><p>将程序中的变量或某个表达式放入监视器中即可监视其变化状态 </p>
+</li>
+<li><p>假设将 for 循环中的循环变量 i 加入监视器，在程序中右击变量 i，在弹出的如上图所示的菜单中选择“添加监视”命令，效果如下图所示 </p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-debug-monitor-i.png" loading="lazy"></p>
+</li>
+<li><p>从上图中可以看出，在监视器界面的“名称”列中是变量名、“值”列中是当前变量 i 的值，“类型”列中是当前变量的数据类型</p>
+</li>
+<li><p>在一个监视器中可以设置多个需要监视的变量或表达式</p>
+</li>
+<li><p>对于监视器中不需要再监视的变量，可以右击该变量，在弹出的右键菜单中选择“删除监视”命令，如下图所示</p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-debug-monitor-delete-monotor.png" loading="lazy"></p>
+<h3 id="2-5-快速监视"><a href="#2-5-快速监视" class="headerlink" title="2.5 快速监视"></a>2.5 快速监视</h3></li>
+<li><p>在调试程序时，如果需要监视变量或表达式的值也可以使用快速监视 </p>
+</li>
+<li><p>例如仍然要监视变量 i 的值，右击变量 i，在弹出的右键菜单中选择“快速监视”命令，弹出如下图所示的对话框</p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-monitor-quiclly.png" loading="lazy"> </p>
+</li>
+<li><p>通常，快速监视用于查看变量当前值的状态，与直接加入监视不同的是快速监视一次只能监视一个变量</p>
+</li>
+<li><p> 此外，在“快速监视”对话框处于打开状态时程序是无法继续调试的，如果需要继续监视“快速监视”对话框中的变量，可以单击“添加监视”按钮将当前监视的变量加入到监视器界面中 </p>
+</li>
+</ul>
+<h3 id="2-6-即时窗口"><a href="#2-6-即时窗口" class="headerlink" title="2.6 即时窗口"></a>2.6 即时窗口</h3><ul>
+<li><p>在调试程序时，如果需要对变量或表达式做相关运算，在即时窗口中都可以实现，并显示当前状态下变量或表达式的值 </p>
+</li>
+<li><p>在调试时可以使用“调试”菜单中“窗口”下的命令，在“调试”菜单中单击“窗口”出现如下图所示的子菜单<br><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-debug-im-windows-right.png" loading="lazy"></p>
+</li>
+<li><p>在其中选择“即时”命令即可出现即时窗口， 如下图所<br><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-debug-im-windows.png" loading="lazy"></p>
+</li>
+<li><p>在即时窗口中输入变量 i 的值并按回车键，即出现当前 i 在程序运行到此时的值</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>PGzxc
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://pgzxc.github.io/posts/28c6dd.html" title="C#开发之——程序调试(13.5)">http://pgzxc.github.io/posts/28c6dd.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C#</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/fe6e82a2.html" rel="prev" title="C#开发之——Debug和Trace(13.4)">
+                  <i class="fa fa-chevron-left"></i> C#开发之——Debug和Trace(13.4)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/75f4f920.html" rel="next" title="C#开发之——Process(14.1)">
+                  C#开发之——Process(14.1) <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+  <div class="beian"><span class="exturl" data-url="aHR0cHM6Ly9iZWlhbi5taWl0Lmdvdi5jbg==">京ICP备18061062号-1 </span>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">PGzxc</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/motion.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script data-pjax>
+if (document.querySelectorAll('.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.8.0/dist/mermaid.min.js', () => {
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+
+<script>
+NexT.utils.loadComments('#gitalk-container', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '4d2d97c55a316dfcea73',
+      clientSecret: 'f55fe43764e8560484a13850e4a6d84792924fb0',
+      repo        : 'PGzxc.github.io',
+      owner       : 'PGzxc',
+      admin       : ['PGzxc'],
+      id          : '255ff58a37d0f1af80a6cff1d3759082',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+</body>
+</html>

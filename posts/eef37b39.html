@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="zh-CN,default">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="5AUIVYTbHIAuz-eQtxSfZbWW5eg9_EVZMSQycIuXrG0">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"8.0.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="前言实际开发中，为了提高开发速度和效率，总避免不了引用第三方提供的依赖和类库，如果含有相同依赖的类库被我们引用时，而他们的版本又不相同，就有可能会导致一系列问题和异常，本文结合本人时间总结和他人经验，稍作总结。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发之——依赖冲突Program type already present">
+<meta property="og:url" content="http://pgzxc.github.io/posts/eef37b39.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="前言实际开发中，为了提高开发速度和效率，总避免不了引用第三方提供的依赖和类库，如果含有相同依赖的类库被我们引用时，而他们的版本又不相同，就有可能会导致一系列问题和异常，本文结合本人时间总结和他人经验，稍作总结。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-gradle.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-exception.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-exception-open.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-gradle-version.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-logErrors.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-okio.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-tree.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-external-library.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-gradle-design.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-design-26.1.0.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-design-26.1.0-maven.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-exclude.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-configuration.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-configuration-all.png">
+<meta property="article:published_time" content="2018-07-01T15:56:15.000Z">
+<meta property="article:modified_time" content="2020-10-29T15:37:32.723Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="依赖冲突">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-gradle.png">
+
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/eef37b39.html">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Android开发之——依赖冲突Program type already present | PGzxc</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108155018-3"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-108155018-3');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">PGzxc</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">1087</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">91</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">386</span></a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96"><span class="nav-number">2.1.</span> <span class="nav-text">依赖</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3"><span class="nav-number">2.1.1.</span> <span class="nav-text">网络相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%B1%BB%E5%BA%93"><span class="nav-number">2.1.2.</span> <span class="nav-text">常用类库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E5%B8%B8%E7%94%A8"><span class="nav-number">2.1.3.</span> <span class="nav-text">不常用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8"><span class="nav-number">2.2.</span> <span class="nav-text">异常</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%BC%82%E5%B8%B8"><span class="nav-number">2.2.1.</span> <span class="nav-text">查看异常</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%B8%A6%E5%B7%A5%E5%85%B7%E6%9F%A5%E7%9C%8B"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">自带工具查看</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E6%8C%87%E4%BB%A4%E5%B0%86%E5%BC%82%E5%B8%B8%E4%BF%9D%E5%AD%98"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">通过指令将异常保存</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E5%BC%82%E5%B8%B8"><span class="nav-number">2.2.2.</span> <span class="nav-text">分析异常</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E6%90%9C%E7%B4%A2%E6%A0%8F%E6%9F%A5%E7%9C%8B"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">通过搜索栏查看</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8Terminal%E4%B8%AD%E8%BE%93%E5%85%A5%E6%8C%87%E4%BB%A4"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">在Terminal中输入指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8External-Libraries%E4%B8%AD%E6%9F%A5%E7%9C%8B%E5%AF%B9%E5%BA%94%E4%BE%9D%E8%B5%96"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">在External Libraries中查看对应依赖</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3"><span class="nav-number">3.</span> <span class="nav-text">解决</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Group%E4%B8%8Emodule%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.1.</span> <span class="nav-text">Group与module的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Module"><span class="nav-number">3.1.1.</span> <span class="nav-text">Module</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Group"><span class="nav-number">3.1.2.</span> <span class="nav-text">Group</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B%E5%88%86%E6%9E%90"><span class="nav-number">3.1.3.</span> <span class="nav-text">实例分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8Terminal%E4%B8%AD%E8%BE%93%E5%85%A5%E6%8C%87%E4%BB%A4-1"><span class="nav-number">3.1.3.1.</span> <span class="nav-text">在Terminal中输入指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8-Maven-Repository%E4%B8%AD%E6%9F%A5%E6%89%BEcom-android-support-design-26-1-0"><span class="nav-number">3.1.3.2.</span> <span class="nav-text">在 Maven Repository中查找com.android.support:design:26.1.0</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E4%BE%9D%E8%B5%96"><span class="nav-number">3.2.</span> <span class="nav-text">解决依赖</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#exclude%E6%96%B9%E5%BC%8F"><span class="nav-number">3.2.1.</span> <span class="nav-text">exclude方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87configurations%E6%96%B9%E5%BC%8F"><span class="nav-number">3.2.2.</span> <span class="nav-text">通过configurations方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87configurations-all%E5%90%8C%E4%B8%80%E7%89%88%E6%9C%AC"><span class="nav-number">3.2.3.</span> <span class="nav-text">通过configurations.all同一版本</span></a></li></ol></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">1087</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">91</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">386</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BHenhj" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PGzxc"><i class="fab fa-github fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY2FsdmluX3pob3U=" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou"><i class="fa fa-book fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3dlaWJvLmNvbS81NTgyMDM5OTIw" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920"><i class="fab fa-weibo fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3d3dy5qaWFuc2h1LmNvbS91L2M1Y2RjYjRkYzUyYg==" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b"><i class="fa fa-book fa-fw"></i></span>
+      </span>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/eef37b39.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android开发之——依赖冲突Program type already present<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BHenhjL1BHenhjLmdpdGh1Yi5pby9lZGl0L2hleG8vc291cmNlL19wb3N0cy9BbmRyb2lk5byA5Y+R5LmL4oCU4oCU5L6d6LWW5Yay56qBUHJvZ3JhbS10eXBlLWFscmVhZHktcHJlc2VudC5tZA==" title="编辑"><i class="fa fa-pen-nib"></i></span>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-07-01 23:56:15" itemprop="dateCreated datePublished" datetime="2018-07-01T23:56:15+08:00">2018-07-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-10-29 23:37:32" itemprop="dateModified" datetime="2020-10-29T23:37:32+08:00">2020-10-29</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">移动开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>实际开发中，为了提高开发速度和效率，总避免不了引用第三方提供的依赖和类库，如果含有相同依赖的类库被我们引用时，而他们的版本又不相同，就有可能会导致一系列问题和异常，本文结合本人时间总结和他人经验，稍作总结。</p>
+<a id="more"></a>
+
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><p>下面是一个项目build.gradle中的依赖，我们简单做一下分类<br><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-gradle.png" loading="lazy"> </p>
+<h3 id="网络相关"><a href="#网络相关" class="headerlink" title="网络相关"></a>网络相关</h3><ol>
+<li>okhttp</li>
+<li>retrofit</li>
+<li>http-legacy<h3 id="常用类库"><a href="#常用类库" class="headerlink" title="常用类库"></a>常用类库</h3></li>
+<li>rxpermission(权限监测)</li>
+<li>leakcanary(内存泄漏)</li>
+<li>BaseRecycleViewAdapterHelper(star较多的Adapter)</li>
+<li>rxjava2</li>
+<li>smartRefreshLayout(刷新)</li>
+</ol>
+<h3 id="不常用"><a href="#不常用" class="headerlink" title="不常用"></a>不常用</h3><ol>
+<li>bmob(消息推送)</li>
+<li>jsoup(html解析器)   </li>
+</ol>
+<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p>当我们运行时，会发生异常<br><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-exception.png" loading="lazy">  </p>
+<h3 id="查看异常"><a href="#查看异常" class="headerlink" title="查看异常"></a>查看异常</h3><h4 id="自带工具查看"><a href="#自带工具查看" class="headerlink" title="自带工具查看"></a>自带工具查看</h4><p>如果你觉得标识的不太清晰，可以点击如图所示图标，展开信息<br><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-exception-open.gif" loading="lazy">  </p>
+<h4 id="通过指令将异常保存"><a href="#通过指令将异常保存" class="headerlink" title="通过指令将异常保存"></a>通过指令将异常保存</h4><pre><code>gradlew build --stacktrace &gt; logs.txt 2&gt;logErrors.txt</code></pre>
+<p>编译前，请确认gradle环境变量已配置，关于build Task请查看Gradle总结。<br><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-gradle-version.png" loading="lazy"></p>
+<p>通过上述指令，将信息分别保存到上述文件中(默认项目根目录)：   </p>
+<ol>
+<li>logs.txt:编译过程信息</li>
+<li>logErrors.txt：异常信息</li>
+</ol>
+<p>logs、logErrors信息如下：<br><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-logErrors.png" loading="lazy">  </p>
+<h3 id="分析异常"><a href="#分析异常" class="headerlink" title="分析异常"></a>分析异常</h3><p> 在logErrors中看到Program type already present: okio.AsyncTimeout$1，如何查看是否有多个的Okio文件呢？  </p>
+<h4 id="通过搜索栏查看"><a href="#通过搜索栏查看" class="headerlink" title="通过搜索栏查看"></a>通过搜索栏查看</h4><p>双击Shift，在搜索框中输入Okio，可以看到有2条okio的信息<br><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-okio.png" loading="lazy"> </p>
+<h4 id="在Terminal中输入指令"><a href="#在Terminal中输入指令" class="headerlink" title="在Terminal中输入指令"></a>在Terminal中输入指令</h4><pre><code>gradlew -q app:dependencies</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-tree.png" loading="lazy">  </p>
+<h4 id="在External-Libraries中查看对应依赖"><a href="#在External-Libraries中查看对应依赖" class="headerlink" title="在External Libraries中查看对应依赖"></a>在External Libraries中查看对应依赖</h4><p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-external-library.png" loading="lazy"> </p>
+<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><h2 id="Group与module的区别"><a href="#Group与module的区别" class="headerlink" title="Group与module的区别"></a>Group与module的区别</h2><p>要解决上述问题，首先要明白Group与module的区别，然而搜索了一遍，好像网上没有给出比较清晰的解释，而这些又是解决依赖冲突这些问题首先要明白的问题，本人在摸索中，稍微总结了一下(如有问题，还请包含)   </p>
+<h3 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h3><ol>
+<li>具有独立功能的模块</li>
+<li>Module中可能还包含有Module</li>
+<li>implementation分号之后的部分</li>
+</ol>
+<h3 id="Group"><a href="#Group" class="headerlink" title="Group"></a>Group</h3><ol>
+<li>Module的集合</li>
+<li>implementation分号之前的部分</li>
+</ol>
+<h3 id="实例分析"><a href="#实例分析" class="headerlink" title="实例分析"></a>实例分析</h3><p>以下图为例，加入我们要了解com.android.support:design:26.1.0中，group和module分别是哪些呢？<br><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-gradle-design.png" loading="lazy"></p>
+<h4 id="在Terminal中输入指令-1"><a href="#在Terminal中输入指令-1" class="headerlink" title="在Terminal中输入指令"></a>在Terminal中输入指令</h4><pre><code>gradlew -q app:dependencies</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-design-26.1.0.png" loading="lazy"></p>
+<h4 id="在-Maven-Repository中查找com-android-support-design-26-1-0"><a href="#在-Maven-Repository中查找com-android-support-design-26-1-0" class="headerlink" title="在 Maven Repository中查找com.android.support:design:26.1.0"></a>在 Maven Repository中查找com.android.support:design:26.1.0</h4><p>可以清晰的看到，group为：com.android.support，   </p>
+<p>module为下面的内容：  </p>
+<ol>
+<li>support-v4</li>
+<li>appcompat-v7</li>
+<li>recyclerview-v7</li>
+<li>transition</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-design-26.1.0-maven.png" loading="lazy"></p>
+<h2 id="解决依赖"><a href="#解决依赖" class="headerlink" title="解决依赖"></a>解决依赖</h2><p>解决依赖本文提供两种方式 </p>
+<h3 id="exclude方式"><a href="#exclude方式" class="headerlink" title="exclude方式"></a>exclude方式</h3><p>特点：      </p>
+<ol>
+<li>配置较为麻烦，需要在引起冲突的每个依赖上进行exclude操作 </li>
+<li>配置繁琐，不美观  </li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-exclude.png" loading="lazy">  </p>
+<h3 id="通过configurations方式"><a href="#通过configurations方式" class="headerlink" title="通过configurations方式"></a>通过configurations方式</h3><p>特点：   </p>
+<ol>
+<li>在configurations中，统一指定要配置的方式</li>
+<li>配置简单，较为整洁  </li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-configuration.png" loading="lazy">  </p>
+<h3 id="通过configurations-all同一版本"><a href="#通过configurations-all同一版本" class="headerlink" title="通过configurations.all同一版本"></a>通过configurations.all同一版本</h3><p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/depend-configuration-all.png" loading="lazy">  </p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>PGzxc
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://pgzxc.github.io/posts/eef37b39.html" title="Android开发之——依赖冲突Program type already present">http://pgzxc.github.io/posts/eef37b39.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E4%BE%9D%E8%B5%96%E5%86%B2%E7%AA%81/" rel="tag"># 依赖冲突</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/91bcd8c1.html" rel="prev" title="Android开发之——数据优化ProtoBuf">
+                  <i class="fa fa-chevron-left"></i> Android开发之——数据优化ProtoBuf
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/5fa29d1d.html" rel="next" title="Android开发之——扫描工具Zxing">
+                  Android开发之——扫描工具Zxing <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+  <div class="beian"><span class="exturl" data-url="aHR0cHM6Ly9iZWlhbi5taWl0Lmdvdi5jbg==">京ICP备18061062号-1 </span>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">PGzxc</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/motion.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script data-pjax>
+if (document.querySelectorAll('.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.8.0/dist/mermaid.min.js', () => {
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+
+<script>
+NexT.utils.loadComments('#gitalk-container', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '4d2d97c55a316dfcea73',
+      clientSecret: 'f55fe43764e8560484a13850e4a6d84792924fb0',
+      repo        : 'PGzxc.github.io',
+      owner       : 'PGzxc',
+      admin       : ['PGzxc'],
+      id          : '4881c7ac5f3e002befbb0bc4310044f6',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+</body>
+</html>

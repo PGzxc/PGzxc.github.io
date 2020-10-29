@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="zh-CN,default">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="5AUIVYTbHIAuz-eQtxSfZbWW5eg9_EVZMSQycIuXrG0">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.github.io","root":"/","scheme":"Gemini","version":"8.0.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="一 概述之前将博客部署到了Github上，但是由于网络的原因导致网站有时候无法访问，这时候的解决办法是将博客部署到两个服务器上，国外访问时使用Github上的项目，国内访问时使用本文介绍的Coding上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客开发之——部署到Coding上">
+<meta property="og:url" content="http://pgzxc.github.io/posts/7871b3a7.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 概述之前将博客部署到了Github上，但是由于网络的原因导致网站有时候无法访问，这时候的解决办法是将博客部署到两个服务器上，国外访问时使用Github上的项目，国内访问时使用本文介绍的Coding上">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-ras-setting.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-auth-disable.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-auth-set-phone-after.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-auth-success.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-ssh-list.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-ssh-setting.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-create-project-devops.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-devops-info.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-ssh-gitcopy.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-deploy-coding.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-code-property-view.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-static-webview-list.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-static-webview-deply-quick.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-aliyun-jiexi.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-yuming-bang-success.png">
+<meta property="article:published_time" content="2020-08-15T10:34:59.000Z">
+<meta property="article:modified_time" content="2020-10-29T15:37:34.149Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Hexo博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-ras-setting.png">
+
+
+<link rel="canonical" href="http://pgzxc.github.io/posts/7871b3a7.html">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Hexo博客开发之——部署到Coding上 | PGzxc</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108155018-3"></script>
+    <script data-pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-108155018-3');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">PGzxc</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">1087</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">91</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">386</span></a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E5%88%97%E8%A1%A8"><span class="nav-number">2.</span> <span class="nav-text">二 列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E9%85%8D%E7%BD%AESSH"><span class="nav-number">3.</span> <span class="nav-text">三 配置SSH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E9%85%8D%E7%BD%AECoding"><span class="nav-number">4.</span> <span class="nav-text">四 配置Coding</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81-%E6%B2%A1%E6%9C%89%E5%AE%9E%E5%90%8D%E8%AE%A4%E8%AF%81%EF%BC%8C%E6%97%A0%E6%B3%95%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 实名认证(没有实名认证，无法设置静态博客)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E9%85%8D%E7%BD%AESSH"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 配置SSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 新建项目</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E9%85%8D%E7%BD%AEhexo%E5%8D%9A%E5%AE%A2-config-yml"><span class="nav-number">5.</span> <span class="nav-text">五 配置hexo博客( _config.yml )</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E9%85%8D%E7%BD%AE-config-yml"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 配置_config.yml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E6%89%A7%E8%A1%8Chexo-%E6%8C%87%E4%BB%A4"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 执行hexo 指令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD-Coding%E9%83%A8%E7%BD%B2"><span class="nav-number">6.</span> <span class="nav-text">六 Coding部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%EF%BC%88%E6%9C%89%E5%9F%9F%E5%90%8D%E8%80%85%E2%80%94%E9%98%BF%E9%87%8C%E4%BA%91%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">七 自定义域名（有域名者—阿里云域名解析）</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">1087</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">91</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">386</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BHenhj" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;PGzxc"><i class="fab fa-github fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY2FsdmluX3pob3U=" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou"><i class="fa fa-book fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3dlaWJvLmNvbS81NTgyMDM5OTIw" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920"><i class="fab fa-weibo fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3d3dy5qaWFuc2h1LmNvbS91L2M1Y2RjYjRkYzUyYg==" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b"><i class="fa fa-book fa-fw"></i></span>
+      </span>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://pgzxc.github.io/posts/7871b3a7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo博客开发之——部署到Coding上<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BHenhjL1BHenhjLmdpdGh1Yi5pby9lZGl0L2hleG8vc291cmNlL19wb3N0cy9IZXhv5Y2a5a6i5byA5Y+R5LmL4oCU4oCU6YOo572y5YiwQ29kaW5n5LiKLm1k" title="编辑"><i class="fa fa-pen-nib"></i></span>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-08-15 18:34:59" itemprop="dateCreated datePublished" datetime="2020-08-15T18:34:59+08:00">2020-08-15</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-10-29 23:37:34" itemprop="dateModified" datetime="2020-10-29T23:37:34+08:00">2020-10-29</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7/Hexo%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index"><span itemprop="name">Hexo博客</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><p>之前将博客部署到了Github上，但是由于网络的原因导致网站有时候无法访问，这时候的解决办法是将博客部署到两个服务器上，国外访问时使用Github上的项目，国内访问时使用本文介绍的Coding上</p>
+<a id="more"></a>
+
+<h2 id="二-列表"><a href="#二-列表" class="headerlink" title="二 列表"></a>二 列表</h2><ul>
+<li>hexo博客代码</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9jb2RpbmcubmV0Lw==">coding<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+<h2 id="三-配置SSH"><a href="#三-配置SSH" class="headerlink" title="三 配置SSH"></a>三 配置SSH</h2><ul>
+<li><p>查看<code>C:\Users\用户名\</code>下有没有.ssh文件夹(如果有，id_rsa.pub是要设置的)</p>
+</li>
+<li><p>如果没有，执行下面的指令生成SSH</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;你的邮箱&quot; </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接下来几步中系统会要你输入密码 ( <strong>注：不设置密码的可以直接按三次回车</strong> )</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter passphrase (empty for no passphrase):&lt;输入密码&gt;</span><br><span class="line">Enter same passphrase again:&lt;再次输入密码&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-ras-setting.png" loading="lazy"></p>
+<h2 id="四-配置Coding"><a href="#四-配置Coding" class="headerlink" title="四 配置Coding"></a>四 配置Coding</h2><h3 id="4-1-实名认证-没有实名认证，无法设置静态博客"><a href="#4-1-实名认证-没有实名认证，无法设置静态博客" class="headerlink" title="4.1 实名认证(没有实名认证，无法设置静态博客)"></a>4.1 实名认证(没有实名认证，无法设置静态博客)</h3><ul>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9jb2RpbmcubmV0Lw==">Cdoing官网<i class="fa fa-external-link-alt"></i></span>登录后，点击右上角下拉列表中的团队管理 </p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-auth-disable.png" loading="lazy"></p>
+</li>
+<li><p>绑定了手机号后，可以进行实名认证了</p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-auth-set-phone-after.png" loading="lazy"></p>
+</li>
+<li><p>点击进行实名认证，输入姓名和身份证号</p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-auth-success.png" loading="lazy"></p>
+</li>
+</ul>
+<h3 id="4-2-配置SSH"><a href="#4-2-配置SSH" class="headerlink" title="4.2 配置SSH"></a>4.2 配置SSH</h3><ul>
+<li><p>点击右上角下拉列表中的<code>个人账户设置</code>，在左侧找到SSH公钥</p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-ssh-list.png" loading="lazy"></p>
+</li>
+<li><p>点击右上角的<code>新增公钥</code>，将id_rsa.pub中的内容全部copy到<code>公钥内容</code>中，公钥名称自定义，并设置期限为<code>永久有效</code><br><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-ssh-setting.png" loading="lazy"></p>
+</li>
+</ul>
+<h3 id="4-3-新建项目"><a href="#4-3-新建项目" class="headerlink" title="4.3 新建项目"></a>4.3 新建项目</h3><ul>
+<li><p>点击<code>创建项目</code>时，弹出项目模板选择页面(选择DevOps项目)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-create-project-devops.png" loading="lazy"></p>
+</li>
+<li><p>填写项目创建信息</p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-devops-info.png" loading="lazy"></p>
+</li>
+<li><p>进入刚刚创建的项目，找到仓库设置，copy SSH下路径(hexo博客设置会用到)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-ssh-gitcopy.png" loading="lazy"></p>
+</li>
+</ul>
+<h2 id="五-配置hexo博客-config-yml"><a href="#五-配置hexo博客-config-yml" class="headerlink" title="五 配置hexo博客( _config.yml )"></a>五 配置hexo博客( _config.yml )</h2><h3 id="5-1-配置-config-yml"><a href="#5-1-配置-config-yml" class="headerlink" title="5.1 配置_config.yml"></a>5.1 配置_config.yml</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:                                         #部署部分的设置</span><br><span class="line">  type: git</span><br><span class="line">  repository: </span><br><span class="line">     github: git@github.com:PGzxc&#x2F;PGzxc.github.io.git(换成你自己的)</span><br><span class="line">     coding: git@e.coding.net:pgzxc&#x2F;pgzxc&#x2F;pgzxc.git(换成你自己的)</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-执行hexo-指令"><a href="#5-2-执行hexo-指令" class="headerlink" title="5.2 执行hexo 指令"></a>5.2 执行hexo 指令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-deploy-coding.png" loading="lazy"></p>
+<h2 id="六-Coding部署"><a href="#六-Coding部署" class="headerlink" title="六 Coding部署"></a>六 Coding部署</h2><ul>
+<li><p>步骤五执行后，项目下会有部署的代码文件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-code-property-view.png" loading="lazy"></p>
+</li>
+<li><p>点击下方的<code>持续部署</code>，从列表中找到静态网站(此时的访问地址是无法访问的)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-static-webview-list.png" loading="lazy"></p>
+</li>
+<li><p>点击<code>立即部署</code>按钮，再次点击访问地址就可以正常访问了</p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-static-webview-deply-quick.png" loading="lazy"></p>
+</li>
+</ul>
+<h2 id="七-自定义域名（有域名者—阿里云域名解析）"><a href="#七-自定义域名（有域名者—阿里云域名解析）" class="headerlink" title="七 自定义域名（有域名者—阿里云域名解析）"></a>七 自定义域名（有域名者—阿里云域名解析）</h2><ul>
+<li><p>将在coding上的网站添加到域名解析列表中(最好先将github解析暂停，否则会出现解析失败的情况)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-aliyun-jiexi.png" loading="lazy"></p>
+</li>
+<li><p>在Coding静态网站—&gt;自定义域名，输入要绑定的域名，添加绑定，并强制开启https访问</p>
+<p><img src="https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/coding-yuming-bang-success.png" loading="lazy"></p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>PGzxc
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://pgzxc.github.io/posts/7871b3a7.html" title="Hexo博客开发之——部署到Coding上">http://pgzxc.github.io/posts/7871b3a7.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Hexo%E5%8D%9A%E5%AE%A2/" rel="tag"># Hexo博客</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/ba501380.html" rel="prev" title="C#开发之——连接数据库(15.4)">
+                  <i class="fa fa-chevron-left"></i> C#开发之——连接数据库(15.4)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/73040432.html" rel="next" title="Hexo博客开发之——Coding Pages 申请 SSL 证书错误">
+                  Hexo博客开发之——Coding Pages 申请 SSL 证书错误 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+  <div class="beian"><span class="exturl" data-url="aHR0cHM6Ly9iZWlhbi5taWl0Lmdvdi5jbg==">京ICP备18061062号-1 </span>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">PGzxc</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/motion.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/next-boot.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.0.1/source/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+<script data-pjax>
+if (document.querySelectorAll('.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.8.0/dist/mermaid.min.js', () => {
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+    <div class="pjax">
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.css">
+
+<script>
+NexT.utils.loadComments('#gitalk-container', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '4d2d97c55a316dfcea73',
+      clientSecret: 'f55fe43764e8560484a13850e4a6d84792924fb0',
+      repo        : 'PGzxc.github.io',
+      owner       : 'PGzxc',
+      admin       : ['PGzxc'],
+      id          : 'f90af651f01149b74466811830498ed7',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+</body>
+</html>
