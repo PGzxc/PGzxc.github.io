@@ -1,48 +1,44 @@
-<a title="NexT website" href="https://theme-next.js.org"><img align="right" alt="NexT logo" width="100" height="100" src="https://raw.githubusercontent.com/next-theme/hexo-theme-next/master/source/images/logo.svg"></a>
+# Github个人博客
 
-# [NexT](https://github.com/next-theme/hexo-theme-next) [Documentation](https://theme-next.js.org)
+本博客使用hexo+github搭建
 
-> «NexT» is a high quality elegant [Hexo](https://hexo.io) theme. It is crafted from scratch with love.
+## 下面是搭建的过程
 
-[![Build Status](https://img.shields.io/netlify/bc28ebb2-8371-4a33-a1eb-e0a15e909168?logo=netlify&style=flat-square)](https://app.netlify.com/sites/hexo-theme-next/deploys)
+### 准备工作
+ - 申请一个github账号
+ - 安装了node.js、npm，并了解相关基础知识
+ - 安装了git for windows（或者其它git客户端）
+ 
+### 创建Github仓库
 
-## Schemes
+新建一个名为你的用户名.github.io的仓库
 
-* :heart_decoration: [Muse](https://theme-next.js.org/muse/)
-* :six_pointed_star: [Mist](https://theme-next.js.org/mist/)
-* :pisces: [Pisces](https://theme-next.js.org/pisces/)
-* :gemini: [Gemini](https://theme-next.js.org) (**Default**)
+### 配置SSH key并添加到Github
+	
+	ssh-keygen -t rsa -C "邮件地址"
 
-## Getting started
+### 配置全局变量
 
-Autoinstall Hexo & NexT & NexT Website Source on Localhost:
+	$ git config --global user.name "username"// 你的github用户名，非昵称
+	$ git config --global user.email  "xxx@qq.com"// 填写你的github注册邮箱
 
-```bash
-git clone https://github.com/next-theme/theme-next-docs
-cd theme-next-docs
-npm install
-```
+### 安装hexo
 
-Generate:
+	$ npm install -g hexo
 
-```bash
-npx hexo generate
-```
+### 新建本地仓库，并初始化
 
-Run server:
+	$ cd /d/Code/hexo/
+	$ hexo init
 
-```bash
-npx hexo server
-```
+### 安装并修改主题
 
-### Checkout docs for older versions
+	$ cd /d/Code/hexo/
+	$ git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia
 
-```bash
-git checkout v8.0.0
-npm install
-npx hexo clean
-```
+### 测试没问题上传Github
 
-## License
-
-[![CC BY-NC-SA 4.0](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+	$ hexo g # 生成
+	$ hexo s # 启动服务
+    $ hexo d #提交
+### 博客的备份及还原请见个人博客
