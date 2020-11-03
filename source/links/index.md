@@ -22,7 +22,7 @@ Mr.Simple | https://blog.csdn.net/bboyfeiyu | LIFE IS LIKE A BATTLE. | /images/l
 
 <font style="font-family:verdana;font-size:150%;color:green;font-weight:bold">好友链接(排名不分先后)</font>
 {% linkgrid %}
-
+initcool | https://blog.nmslwsnd.com | 打倒了100个四大魔公的男人! | https://blog.nmslwsnd.com/medias/avatar.jpg
 
 {% endlinkgrid %}
 
