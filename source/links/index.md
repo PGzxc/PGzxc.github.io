@@ -30,6 +30,6 @@ Mr.Simple | https://blog.csdn.net/bboyfeiyu | LIFE IS LIKE A BATTLE. | /images/l
 ```
 name：PGzxc
 link：https://pgzxc.com/
-avatar：https://raw.githubusercontent.com/PGzxc/CDN/master/popular-images/avatar.jpg
+avatar：https://cdn.jsdelivr.net/gh/pgzxc/CDN/popular-images/avatar.jpg
 descr：纸上得来终觉浅 绝知此事要躬行
 ```
