@@ -23,6 +23,9 @@ Mr.Simple | https://blog.csdn.net/bboyfeiyu | LIFE IS LIKE A BATTLE. | /images/l
 <font style="font-family:verdana;font-size:150%;color:green;font-weight:bold">好友链接(排名不分先后)</font>
 {% linkgrid %}
 initcool | https://blog.nmslwsnd.com | 打倒了100个四大魔公的男人! | https://blog.nmslwsnd.com/medias/avatar.jpg
+长征部落格 |  https://www.cz5h.com |  | https://cdn.jsdelivr.net/gh/TianZonglin/tuchuang/img/logo.jpg
+MuJin's Blog | https://xiabor.com | 君浅吟，叹落笔 | https://xiabor.com/img/avatar.png
+
 
 {% endlinkgrid %}
 
