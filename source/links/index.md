@@ -5,14 +5,9 @@ date: 2020-10-28 23:03:31
 tags: 
 ---
 <!--more-->
-<font style="font-family:verdana;font-size:150%;color:green;font-weight:bold">全栈大神(排名不分先后)</font>
+<font style="font-family:verdana;font-size:150%;color:green;font-weight:bold">技术大神(排名不分先后)</font>
 {% linkgrid %}
 阮一峰 | http://www.ruanyifeng.com/ | 阮一峰的个人网站 | /images/link_heads/ruanyifeng.jpg
-
-{% endlinkgrid %}
-
-<font style="font-family:verdana;font-size:150%;color:green;font-weight:bold">Android大神(排名不分先后)</font>
-{% linkgrid %}
 鸿洋 | https://wanandroid.com/ | wanandroid CEO  | /images/avatar.jpg
 郭霖 | https://blog.csdn.net/guolin_blog/ | 《第一行代码》 | /images/link_heads/guolin.jpg
 老罗 | https://blog.csdn.net/luoshengyang/ | 爱生活，爱Android | /images/link_heads/luoshengyang.jpg
@@ -22,6 +17,12 @@ tags:
 徐医生 | https://blog.csdn.net/eclipsexys/ | 路漫漫其修远兮 吾将上下而求索 | /images/link_heads/elipse_xu.jpg
 Mr.Simple | https://blog.csdn.net/bboyfeiyu | LIFE IS LIKE A BATTLE. | /images/link_heads/mrsimple.jpg
 张兴业 | https://blog.csdn.net/xyz_lmn/ | 张兴业 | /images/link_heads/xyz_lmn.jpg
+
+{% endlinkgrid %}
+
+<font style="font-family:verdana;font-size:150%;color:green;font-weight:bold">好友链接(排名不分先后)</font>
+{% linkgrid %}
+
 
 {% endlinkgrid %}
 
