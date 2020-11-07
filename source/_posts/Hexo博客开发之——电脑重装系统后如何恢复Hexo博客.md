@@ -1,7 +1,7 @@
 ---
 title: Hexo博客开发之——电脑重装系统后如何恢复Hexo博客
 categories:
-  - 工具
+  - 站点
   - Hexo博客
 tags:
   - Hexo恢复

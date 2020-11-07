@@ -1,7 +1,7 @@
 ---
 title: Hexo博客开发之——博客升级
 categories:
-  - 工具
+  - 站点
   - Hexo博客
 tags:
   - 博客升级

@@ -1,7 +1,7 @@
 ---
 title: Hexo博客开发之——README文件被覆盖
 categories:
-  - 工具
+  - 站点
   - Hexo博客
 tags:
   - 覆盖

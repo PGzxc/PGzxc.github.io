@@ -1,7 +1,7 @@
 ---
 title: 'Hexo博客开发之——No Layout:index.html'
 categories:
-  - 工具
+  - 站点
   - Hexo博客
 tags:
   - No Layout

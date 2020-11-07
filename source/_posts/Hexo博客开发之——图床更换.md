@@ -1,7 +1,7 @@
 ---
 title: Hexo博客开发之——图床更换
 categories:
-  - 工具
+  - 站点
   - Hexo博客
 tags:
   - 图床

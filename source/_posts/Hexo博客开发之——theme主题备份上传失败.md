@@ -1,7 +1,7 @@
 ---
 title: Hexo博客开发之——theme主题备份上传失败
 categories:
-  - 工具
+  - 站点
   - Hexo博客
 tags:
   - theme

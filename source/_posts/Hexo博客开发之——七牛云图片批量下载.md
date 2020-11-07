@@ -1,7 +1,7 @@
 ---
 title: Hexo博客开发之——七牛云图片批量下载
 categories:
-  - 工具
+  - 站点
   - Hexo博客
 tags:
   - 七牛云

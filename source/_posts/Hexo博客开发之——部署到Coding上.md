@@ -1,7 +1,7 @@
 ---
 title: Hexo博客开发之——部署到Coding上
 categories:
-  - 工具
+  - 站点
   - Hexo博客
 tags:
   - Hexo博客

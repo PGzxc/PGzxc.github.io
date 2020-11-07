@@ -1,7 +1,7 @@
 ---
 title: Hexo博客开发之——Git指令备份博客
 categories:
-  - 工具
+  - 站点
   - Hexo博客
 tags:
   - 备份
