@@ -63,7 +63,7 @@ echo "=============================================================="
     hexo config root /muse/
     hexo config theme_config.scheme Muse
     hexo config theme_config.sidebar.position right
-    hexo clean && hexo g
+    hexo clean && hexo g && hexo d
 
     echo "${lred}`mv -v public muse`${norm}"
 
