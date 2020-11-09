@@ -63,7 +63,7 @@ echo "=============================================================="
     hexo config root /muse/
     hexo config theme_config.scheme Muse
     hexo config theme_config.sidebar.position right
-    hexo clean && hexo g && hexo d
+    hexo clean && hexo g 
 
     echo "${lred}`mv -v public muse`${norm}"
 
@@ -74,7 +74,7 @@ echo "=============================================================="
     hexo config url https://theme-next.js.org/mist
     hexo config root /mist/
     hexo config theme_config.scheme Mist
-    hexo clean && hexo g
+    hexo clean && hexo g 
 
     echo "${lred}`mv -v public mist`${norm}"
 
@@ -97,7 +97,7 @@ echo "=============================================================="
     hexo config url https://theme-next.js.org
     hexo config root /
     hexo config theme_config.scheme Gemini
-    hexo clean && hexo g
+    hexo clean && hexo g && hexo d
 
     echo "${yellow}robots.txt:${norm}"
     echo "User-agent: *
