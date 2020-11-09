@@ -1,5 +1,5 @@
 ---
-title: Hexo博客开发之——Github图片存储及访问
+title: Hexo站点建设之——Github图片存储及访问
 categories:
   - 站点
   - Hexo博客

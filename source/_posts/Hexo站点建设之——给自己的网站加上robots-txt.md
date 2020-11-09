@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Hexo博客开发之——给自己的网站加上robots.txt
+title: Hexo站点建设之——给自己的网站加上robots.txt
 categories:
   - 站点
   - Hexo博客

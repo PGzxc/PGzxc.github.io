@@ -1,5 +1,5 @@
 ---
-title: Hexo博客开发之——留言功能
+title: Hexo站点建设之——留言功能
 categories:
   - 站点
   - Hexo博客

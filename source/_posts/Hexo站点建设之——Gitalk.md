@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Hexo博客开发之——Gitalk
+title: Hexo站点建设之——Gitalk
 categories:
   - 站点
   - Hexo博客

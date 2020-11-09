@@ -1,5 +1,5 @@
 ---
-title: Hexo博客开发之——Coding Pages 申请 SSL 证书错误
+title: Hexo站点建设之——Coding Pages 申请 SSL 证书错误
 categories:
   - 站点
   - Hexo博客

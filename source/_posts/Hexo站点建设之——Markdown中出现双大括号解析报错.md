@@ -1,5 +1,5 @@
 ---
-title: 'Hexo博客开发之——Markdown中出现“{{”号解析报错'
+title: 'Hexo站点建设之——Markdown中出现“{{”号解析报错'
 categories:
   - 站点
   - Hexo博客

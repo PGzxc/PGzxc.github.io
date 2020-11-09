@@ -1,5 +1,5 @@
 ---
-title: Hexo博客开发之——博客升级
+title: Hexo站点建设之——博客升级
 categories:
   - 站点
   - Hexo博客

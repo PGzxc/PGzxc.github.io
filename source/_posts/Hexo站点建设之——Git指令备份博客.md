@@ -1,5 +1,5 @@
 ---
-title: Hexo博客开发之——Git指令备份博客
+title: Hexo站点建设之——Git指令备份博客
 categories:
   - 站点
   - Hexo博客

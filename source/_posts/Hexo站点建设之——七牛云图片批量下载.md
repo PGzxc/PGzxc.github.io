@@ -1,5 +1,5 @@
 ---
-title: Hexo博客开发之——七牛云图片批量下载
+title: Hexo站点建设之——七牛云图片批量下载
 categories:
   - 站点
   - Hexo博客

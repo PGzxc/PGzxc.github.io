@@ -1,5 +1,5 @@
 ---
-title: Hexo博客开发之——JavaScript heap out of memory
+title: Hexo站点建设之——JavaScript heap out of memory
 categories:
   - 站点
   - Hexo博客

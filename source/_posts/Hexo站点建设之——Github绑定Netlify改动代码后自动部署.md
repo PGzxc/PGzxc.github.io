@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Hexo博客开发之——Github绑定Netlify改动代码后自动部署
+title: Hexo站点建设之——Github绑定Netlify改动代码后自动部署
 categories:
   - 站点
   - Hexo博客

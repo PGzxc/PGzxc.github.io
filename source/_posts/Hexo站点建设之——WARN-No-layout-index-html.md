@@ -1,5 +1,5 @@
 ---
-title: Hexo博客开发之——WARN No layout index.html
+title: Hexo站点建设之——WARN-No-layout-index-html
 categories:
   - 站点
   - Hexo博客

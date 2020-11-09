@@ -1,5 +1,5 @@
 ---
-title: Hexo博客开发之——jsDeliver+Github加速图片访问
+title: Hexo站点建设之——jsDeliver+Github加速图片访问
 categories:
   - 站点
   - Hexo博客

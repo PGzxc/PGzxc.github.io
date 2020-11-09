@@ -1,5 +1,5 @@
 ---
-title: Hexo博客开发之——电脑重装系统后如何恢复Hexo博客
+title: Hexo站点建设之——电脑重装系统后如何恢复Hexo博客
 categories:
   - 站点
   - Hexo博客

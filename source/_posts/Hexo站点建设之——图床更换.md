@@ -1,5 +1,5 @@
 ---
-title: Hexo博客开发之——图床更换
+title: Hexo站点建设之——图床更换
 categories:
   - 站点
   - Hexo博客
