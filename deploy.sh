@@ -128,11 +128,6 @@ echo "=============================================================="
 echo " ${yellow}Checking 'public' directory structure...${norm}"
 echo "=============================================================="
     cd public
-    git add .
-    msg="rebuilding site $(date)"
-    git commit -m "$msg"
-    # Push source and build repos.
-    git push origin hexo
     echo "${lcyan}`pwd`${norm}"
     du -sh
     du -sh *
