@@ -1,60 +1,38 @@
-name: Build and Deploy
 
-# 触发条件：在 push 到 master 分支后触发
-on:
-  push:
-    branches: 
-      - master
-
-env:
-  TZ: Asia/Shanghai
+name: Hexo Auto-Deploy
+on: [push]
 
 jobs:
-  blog-cicd:
-    name: Hexo blog build & deploy
-    runs-on: ubuntu-latest # 使用最新的 Ubuntu 系统作为编译部署的环境
+  build:
+    name: Hexo Auto-Deploy by GitHub Actions
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout codes
-      uses: actions/checkout@v2
-
-    - name: Setup node
-      # 设置 node.js 环境
+    - name: 1. git checkout...
+      uses: actions/checkout@v1
+      
+    - name: 2. setup nodejs...
       uses: actions/setup-node@v1
-      with:
-        node-version: '12.x'
-
-    - name: Cache node modules
-      # 设置包缓存目录，避免每次下载
-      uses: actions/cache@v1
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-
-    - name: Install hexo dependencies
-      # 下载 hexo-cli 脚手架及相关安装包
+    
+    - name: 3. install hexo...
       run: |
-        npm install -g hexo-cli
+        npm install hexo-cli -g
         npm install
-
-    - name: Generate files
-      # 编译 markdown 文件
+        
+    - name: 4. hexo generate public files...
       run: |
         hexo clean
-        hexo generate
+        hexo g  
 
-    - name: Deploy hexo blog
-      env: 
-        # Github 仓库
-        GITHUB_REPO: git@github.com:PGzxc/PGzxc.github.io.git
-        # Coding 仓库
-        CODING_REPO: git@e.coding.net:pgzxc/pgzxc/pgzxc.git
-      # 将编译后的博客文件推送到指定仓库
+    - name: 5. hexo deploy ...
       run: |
-        cd ./public && git init && git add .
-        git config user.name "PGzxc"
-        git config user.email "827489398@qq.com"
-        git add .
-        git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')"
-        git push --force --quiet "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO" origin:hexo
-        git push --force --quiet "https://JcwUpKlfjB:${{ secrets.CODING_TOKEN }}@$CODING_REPO" origin:hexo
+        mkdir -p ~/.ssh/
+        echo "${{ secrets.GITHUB_ACTION }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan github.com >> ~/.ssh/known_hosts
+        
+        git config --global user.name "PGzxc"
+        git config --global user.email "827489398@qq.com"
+        git config --global core.quotepath false
+        
+        hexo d
