@@ -35,12 +35,15 @@ jobs:
         hexo g  
 
     - name: 6. hexo deploy ...
-      env:
-        PERSONAL_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        PUBLISH_REPOSITORY: it-briefcode/it-briefcode.github.io # The repository the action should deploy to.
-        BRANCH: hexo  # The branch the action should deploy to.
-        PUBLISH_DIR: ./public # The folder the action should deploy.
+      id: deploy
+      uses: sma11black/hexo-action@v1.0.3
+      with:
+        deploy_key: ${{ secrets.ACCESS_TOKEN }}
+        deploy_key: ${{ secrets.CODING_TOKEN }}
+        user_name: PGzxc  # (or delete this input setting to use bot account)
+        user_email: 827489398@qq.com  # (or delete this input setting to use bot account)
+        commit_msg: ${{ github.event.head_commit.message }}  # (or delete this input setting to use hexo default settings)
+    # Use the output from the `deploy` step(use for test action)
+    - name: Get the output
       run: |
-        git config user.name "PGzxc"
-        git config user.email "827489398@qq.com"
-        hexo d
+        echo "${{ steps.deploy.outputs.notify }}"
