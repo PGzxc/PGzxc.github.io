@@ -35,15 +35,17 @@ jobs:
         hexo g  
 
     - name: 6. hexo deploy ...
-      id: deploy
-      uses: sma11black/hexo-action@v1.0.3
-      with:
-        deploy_key: ${{ secrets.ACCESS_TOKEN }}
-        deploy_key: ${{ secrets.CODING_TOKEN }}
-        user_name: PGzxc  # (or delete this input setting to use bot account)
-        user_email: 827489398@qq.com  # (or delete this input setting to use bot account)
-        commit_msg: ${{ github.event.head_commit.message }}  # (or delete this input setting to use hexo default settings)
-    # Use the output from the `deploy` step(use for test action)
-    - name: Get the output
+      env: 
+        # Github 仓库
+        GITHUB_REPO: git@github.com:PGzxc/PGzxc.github.io.git
+        # Coding 仓库
+        CODING_REPO: git@e.coding.net:pgzxc/pgzxc/pgzxc.git
+      # 将编译后的博客文件推送到指定仓库
       run: |
-        echo "${{ steps.deploy.outputs.notify }}"
+        cd ./public && git init && git add .
+        git config user.name "PGzxc"
+        git config user.email "827489398@qq.com"
+        git add .
+        git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')"
+        git push --force --quiet "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO" origin:hexo
+        git push --force --quiet "https://JcwUpKlfjB:${{ secrets.CODING_TOKEN }}@$CODING_REPO" origin:hexo
