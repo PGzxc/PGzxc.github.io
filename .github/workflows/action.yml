@@ -16,26 +16,30 @@ jobs:
       
     - name: 2. setup nodejs...
       uses: actions/setup-node@v1
-    
-    - name: 3. install hexo...
+      with:
+        node-version: '12.x'
+    - name: 3. Cache node modules
+      # 设置包缓存目录，避免每次下载
+      uses: actions/cache@v1
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+    - name: 4. Install hexo dependencies 
       run: |
         npm install hexo-cli -g
         npm install
         
-    - name: 4. hexo generate public files...
+    - name: 5. hexo generate public files...
       run: |
         hexo clean
         hexo g  
 
-    - name: 5. hexo deploy ...
+    - name: 6. hexo deploy ...
+      uses: y4code/hexo-deploy-action@master
+      env:
+        PERSONAL_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        PUBLISH_REPOSITORY: it-briefcode/it-briefcode.github.io # The repository the action should deploy to.
+        BRANCH: hexo  # The branch the action should deploy to.
+        PUBLISH_DIR: ./public # The folder the action should deploy.
       run: |
-        mkdir -p ~/.ssh/
-        echo "${{ secrets.GITHUB_ACTION }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan github.com >> ~/.ssh/known_hosts
-        
-        git config --global user.name "PGzxc"
-        git config --global user.email "827489398@qq.com"
-        git config --global core.quotepath false
-        
         hexo d
