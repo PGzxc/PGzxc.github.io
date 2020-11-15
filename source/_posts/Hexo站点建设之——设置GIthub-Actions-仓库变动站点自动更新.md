@@ -10,7 +10,7 @@ date: 2020-11-12 23:44:11
 ---
 ## 一 背景
 
-之前写过一篇文章[Hexo站点建设之——Github绑定Netlify改动代码后自动部署](e9afa1d2),介绍了将GitHub仓库绑定Netlify后，每次更新文章，Netlify检测到仓库代码变动，重新编译生成发布站点
+之前写过一篇文章[Hexo站点建设之——Github绑定Netlify改动代码后自动部署](e9afa1d2.md),介绍了将GitHub仓库绑定Netlify后，每次更新文章，Netlify检测到仓库代码变动，重新编译生成发布站点
 
 * 优点：每次将写好的文章更新到GitHub后，Netlify编译源码重新发布站点
 * 缺点：Netlify编译生成发布站点的时间过长(30分钟左右)；站点访问的速度较慢(与GitHub+Coding相比)
