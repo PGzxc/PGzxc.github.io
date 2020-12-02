@@ -4,7 +4,18 @@ title: 友链
 date: 2020-10-28 23:03:31
 tags: 
 ---
-<!--more-->
+{% tabs Fourth unique name %}
+<!-- tab 好友链接 -->
+<font style="font-family:verdana;font-size:150%;color:green;font-weight:bold">好友链接(排名不分先后)</font>
+{% linkgrid %}
+initcool | https://blog.nmslwsnd.com | 打倒了100个四大魔公的男人! | https://blog.nmslwsnd.com/medias/avatar.jpg
+长征部落格 |  https://www.cz5h.com | 胖五飞天！！ | https://cdn.jsdelivr.net/gh/TianZonglin/tuchuang/img/logo.jpg
+MuJin's Blog | https://xiabor.com | 君浅吟，叹落笔 | https://xiabor.com/img/avatar.png
+
+{% endlinkgrid %}
+<!-- endtab -->
+
+<!-- tab 技术大神 -->
 <font style="font-family:verdana;font-size:150%;color:green;font-weight:bold">技术大神(排名不分先后)</font>
 {% linkgrid %}
 阮一峰 | http://www.ruanyifeng.com/ | 阮一峰的个人网站 | /images/link_heads/ruanyifeng.jpg
@@ -19,16 +30,12 @@ Mr.Simple | https://blog.csdn.net/bboyfeiyu | LIFE IS LIKE A BATTLE. | /images/l
 张兴业 | https://blog.csdn.net/xyz_lmn/ | 张兴业 | /images/link_heads/xyz_lmn.jpg
 
 {% endlinkgrid %}
+<!-- endtab -->
 
-<font style="font-family:verdana;font-size:150%;color:green;font-weight:bold">好友链接(排名不分先后)</font>
-{% linkgrid %}
-initcool | https://blog.nmslwsnd.com | 打倒了100个四大魔公的男人! | https://blog.nmslwsnd.com/medias/avatar.jpg
-长征部落格 |  https://www.cz5h.com | 胖五飞天！！ | https://cdn.jsdelivr.net/gh/TianZonglin/tuchuang/img/logo.jpg
-MuJin's Blog | https://xiabor.com | 君浅吟，叹落笔 | https://xiabor.com/img/avatar.png
-
-
-{% endlinkgrid %}
-
+<!-- tab 我的后宫 -->
+**位置暂缺，速度留言吧**
+<!-- endtab -->
+{% endtabs %}
 
 <font style="font-family:verdana;font-size:150%;color:Chocolate;font-weight:bold">我的友链</font>
 ```
