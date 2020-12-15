@@ -12,6 +12,7 @@ tags:
 initcool | https://blog.nmslwsnd.com | 打倒了100个四大魔公的男人! | https://blog.nmslwsnd.com/medias/avatar.jpg
 长征部落格 |  https://www.cz5h.com | 胖五飞天！！ | https://cdn.jsdelivr.net/gh/TianZonglin/tuchuang/img/logo.jpg
 MuJin's Blog | https://xiabor.com | 君浅吟，叹落笔 | https://xiabor.com/img/avatar.png
+Jing Blog | https://jingine.com | 一个爱折腾的海外党，生活、技术、主机游戏、创业 | https://jingine.com/wp-content/uploads/2020/12/logo.png
 
 {% endlinkgrid %}
 
