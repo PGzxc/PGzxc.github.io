@@ -1,7 +1,7 @@
 ---
 title: Jenkins构建Android项目生成apk
 categories:
-  - 工具
+  - 自动化
   - Jenkins
 tags:
   - 项目构建
@@ -14,6 +14,7 @@ date: 2017-11-18 17:57:47
 # 创建项目
 ## 进入Jenkins主界面，点击新建或者创建一个任务，新建一个项目 
 <!--more-->
+
 ![Jenkins][2]  
 ## 输入要创建项目的名字(此处为Fragment)，选择类型(此处选择"构建一个自由风格的软件项目")  
 ![][3]  
@@ -75,18 +76,18 @@ Task里面填写gradle命令，显示clean，再执行assembleRelease打包命�
 
 
 [1]: http://blog.csdn.net/lsyz0021/article/details/72681988
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-new-task.png
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-project-name.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-project-configure.png
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-general-configure.png
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-git-configure.png
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-add-credentials.png
-[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-git-repositories.png
-[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-build-SCM.png
-[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-example-SCM.png
-[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-build-script.png
-[12]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-invoke-gradle-script.png
-[13]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-build-process.png
-[14]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-build-process.png
-[15]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-console-output.png 
-[16]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-release-result.png
+[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-new-task.png
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-project-name.png
+[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-project-configure.png
+[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-general-configure.png
+[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-git-configure.png
+[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-add-credentials.png
+[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-git-repositories.png
+[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-build-SCM.png
+[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-example-SCM.png
+[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-build-script.png
+[12]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-invoke-gradle-script.png
+[13]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-build-process.png
+[14]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-build-process.png
+[15]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-console-output.png 
+[16]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-release-result.png

@@ -1,7 +1,7 @@
 ---
 title: Jenkins开发之——工具集成
 categories:
-  - 工具
+  - 自动化
   - Jenkins
 tags:
   - Jenkins
@@ -102,26 +102,26 @@ Jenkins推荐2中插件安装方式，本文选择推荐方式(用户可自定�
 [1]:http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 [2]: https://tomcat.apache.org/download-90.cgi
 [3]: https://jenkins.io/download/
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-jar.png
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-war.png
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-install.png
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-tomcat-create.png
-[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-lock.png
-[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-lock-password.png
-[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-lock-password-put.png
-[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-recomond-plug.png
-[12]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-plugin-install.png
-[13]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-create-admin.png
-[14]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-url.png
-[15]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-finish.png
-[16]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-home.png
-[17]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-monitor.png
-[18]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-jdk-git.png
-[19]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-start-task.png
-[20]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-task.png
-[21]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-general.png
-[22]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-source.png
-[23]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-project.png
-[24]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-build.png
-[25]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-console.png
-[26]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkins-workspace.png
+[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-jar.png
+[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-war.png
+[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-install.png
+[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-tomcat-create.png
+[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-lock.png
+[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-lock-password.png
+[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-lock-password-put.png
+[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-recomond-plug.png
+[12]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-plugin-install.png
+[13]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-create-admin.png
+[14]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-url.png
+[15]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-finish.png
+[16]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-home.png
+[17]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-monitor.png
+[18]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-jdk-git.png
+[19]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-start-task.png
+[20]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-task.png
+[21]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-general.png
+[22]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-source.png
+[23]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-project.png
+[24]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-build.png
+[25]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-console.png
+[26]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-workspace.png

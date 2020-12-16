@@ -1,7 +1,7 @@
 ---
 title: Jenkins开发之——构建Android项目(2)
 categories:
-  - 工具
+  - 自动化
   - Jenkins
 tags:
   - 项目构建
@@ -74,12 +74,12 @@ date: 2017-11-18 16:47:38
 
 [1]: http://blog.csdn.net/lsyz0021/article/details/72681857
 [2]: https://www.pgyer.com/doc/view/jenkins
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkens-cmd.png  
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkens-install.png  
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tomcat-jenkins.png
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/unlock-Jenkins.png 
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/init-admin-password.png
-[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/install-plugins.png
-[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkens-plugins.png
-[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkens-new-user.png 
-[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/jenkens-homepage.png
+[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkens-cmd.png  
+[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkens-install.png  
+[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/tomcat-jenkins.png
+[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/unlock-Jenkins.png 
+[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/init-admin-password.png
+[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/install-plugins.png
+[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkens-plugins.png
+[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkens-new-user.png 
+[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkens-homepage.png
