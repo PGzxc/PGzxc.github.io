@@ -17,7 +17,9 @@ date: 2020-12-31 11:07:59
 ## 二 如何查看已安装插件
 
 打开Chrome浏览器，打击右上角`ミ`—>更多工具—>扩展程序(E)，打开扩展程序界面，查看已安装的插件
+
 ![][1]
+
 ## 三 打包已安装插件
 
 ### 3.1 打包扩展程序说明
@@ -85,7 +87,7 @@ https://download.csdn.net/download/Calvin_zhou/13985969
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-chrome-plugin/chrome-extend-software-view.png
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-chrome-plugin/chrome-extend-software.png
 [2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-chrome-plugin/chrome-extend-plugin-id.png
 [3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-chrome-plugin/chrome-extend-plugin-id-search.png
 [4]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-chrome-plugin/chrome-extend-package-path.png
