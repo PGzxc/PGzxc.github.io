@@ -96,24 +96,24 @@ ubuntu 的快捷方式都在/usr/share/applications/路径下创建Android studi
 ![][21]
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ubuntu-terminal.png
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ubuntu-jdk-01.png
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ubuntu-jdk-02.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ubuntu-jdk-03.png
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ubuntu-java-version.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-terminal.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-jdk-01.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-jdk-02.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-jdk-03.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-java-version.png
 [6]: https://developer.android.google.cn/studio/
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ubuntu-tool-download.png
-[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ubuntu-as-unzip.png
-[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ubuntu-as-position.png
-[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ubuntu-as-start.png
-[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ubuntu-as-proxy.png
-[12]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ubuntu-as-import.png
-[13]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ubuntu-config-01.png
-[14]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ubuntu-config-02.png
-[15]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ubuntu-config-03.png
-[16]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ubuntu-config-04.png
-[17]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ubuntu-config-05.png
-[18]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ubuntu-as-newpro.png
-[19]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ubuntu-as-pro-conf.png
-[20]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ubuntu-as-gradle-config.png
-[21]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ubuntu-as-add.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-tool-download.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-as-unzip.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-as-position.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-as-start.png
+[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-as-proxy.png
+[12]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-as-import.png
+[13]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-config-01.png
+[14]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-config-02.png
+[15]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-config-03.png
+[16]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-config-04.png
+[17]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-config-05.png
+[18]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-as-newpro.png
+[19]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-as-pro-conf.png
+[20]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-as-gradle-config.png
+[21]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-as-add.png

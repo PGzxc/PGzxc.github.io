@@ -124,19 +124,19 @@ http://localhost/wordpress/wp-admin/install.php
 
 ![][13]
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn/blog-wordpress/wordpress-web-get-wordpress.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn/blog-wordpress/wordpress-down-553.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/cdn/blog-wordpress/wordpress-apache-htdocs-copy.png
-[4]:https://cdn.jsdelivr.net/gh/pgzxc/cdn/blog-wordpress/wordpress-mysql-navicate-database.png
-[5]:https://cdn.jsdelivr.net/gh/pgzxc/cdn/blog-wordpress/wordpress-wp-admin-install.png
-[6]:https://cdn.jsdelivr.net/gh/pgzxc/cdn/blog-wordpress/wordpress-sitepage-info-set.png
-[7]:https://cdn.jsdelivr.net/gh/pgzxc/cdn/blog-wordpress/wordpress-install-finish.png
-[8]:https://cdn.jsdelivr.net/gh/pgzxc/cdn/blog-wordpress/wordpress-user-login.png
-[9]:https://cdn.jsdelivr.net/gh/pgzxc/cdn/blog-wordpress/wordpress-main-site.png
-[10]:https://cdn.jsdelivr.net/gh/pgzxc/cdn/blog-wordpress/wordpress-choice-site-theme.png
-[11]:https://cdn.jsdelivr.net/gh/pgzxc/cdn/blog-wordpress/wordpress-mysite-preview.png
-[12]:https://cdn.jsdelivr.net/gh/pgzxc/cdn/blog-wordpress/wordpress-org-themes-choice.png
-[13]:https://cdn.jsdelivr.net/gh/pgzxc/cdn/blog-wordpress/wordpress-new-theme-choice.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-wordpress/wordpress-web-get-wordpress.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-wordpress/wordpress-down-553.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-wordpress/wordpress-apache-htdocs-copy.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-wordpress/wordpress-mysql-navicate-database.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-wordpress/wordpress-wp-admin-install.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-wordpress/wordpress-sitepage-info-set.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-wordpress/wordpress-install-finish.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-wordpress/wordpress-user-login.png
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-wordpress/wordpress-main-site.png
+[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-wordpress/wordpress-choice-site-theme.png
+[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-wordpress/wordpress-mysite-preview.png
+[12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-wordpress/wordpress-org-themes-choice.png
+[13]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-wordpress/wordpress-new-theme-choice.png
 
 [21]:https://wordpress.org/
 [22]:https://cn.wordpress.org/

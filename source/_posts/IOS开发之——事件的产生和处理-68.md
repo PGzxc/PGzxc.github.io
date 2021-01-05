@@ -89,5 +89,5 @@ aplpa=0.0~0.01
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn/blog-ios/ios-event-touch-layout-multi.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-event-touch-layout-multi.png
 

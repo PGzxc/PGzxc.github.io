@@ -51,5 +51,5 @@ IOS可以通过XIB进行自定义视图，同Storyboard视图相比：
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-xib-new-dialog.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-xlb-add-view-property.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-xib-new-dialog.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-xlb-add-view-property.png

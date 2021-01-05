@@ -177,7 +177,7 @@ Quart 2D能做很多强大的事情，例如：
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-ios/ios-quart2d-drawn-line.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-ios/ios-quart2d-line-color-width.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-ios/ios-quart2d-draw-quxian.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-quart2d-drawn-line.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-quart2d-line-color-width.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-quart2d-draw-quxian.png
 

@@ -171,9 +171,9 @@ tvIdentifierStyle.setTextAppearance(this,styleID)
 * [【我的Android进阶之旅】Android使用getIdentifier()方法根据资源名来获取资源id][6]
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-identifier-view.png
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-identifier-struct.png
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-identifier-r.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-identifier-r-struct.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-identifier-view.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-identifier-struct.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-identifier-r.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-identifier-r-struct.png
 [5]: https://www.jianshu.com/p/d3aed93dfbc6
 [6]: https://blog.csdn.net/ouyang_peng/article/details/53328000#commentBox

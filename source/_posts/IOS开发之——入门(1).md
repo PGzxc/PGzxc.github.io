@@ -97,13 +97,13 @@ UI测试相关
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ios-xcode-search.png
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ios-xcode-main.png
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ios-playground-create.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ios-single-view.png
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/icon-project-config.png
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ios-app-create-position.png
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ios-project-iosapp.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ios-xcode-search.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ios-xcode-main.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ios-playground-create.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ios-single-view.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/icon-project-config.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ios-app-create-position.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ios-project-iosapp.png
 
 [8]: https://developer.apple.com/
 [9]: https://developer.apple.com/cn/

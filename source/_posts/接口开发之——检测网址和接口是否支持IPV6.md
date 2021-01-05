@@ -49,9 +49,9 @@ date: 2020-10-04 22:23:19
 * [阿里云服务器以及CDN支持IPV6的方法][13]
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ipv6-support.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ipv6-test-pass.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ipv6-test-fail.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ipv6-support.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ipv6-test-pass.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ipv6-test-fail.png
 
 [11]:https://www.php.cn/windows-413502.html
 [12]:http://ipv6-test.com/validate.php

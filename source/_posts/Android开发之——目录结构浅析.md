@@ -91,6 +91,6 @@ date: 2017-11-17 15:32:57
 
 
 
-[0]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/struct-eclipse.png
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/struct-android.png
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-src.png
+[0]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/struct-eclipse.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/struct-android.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-src.png

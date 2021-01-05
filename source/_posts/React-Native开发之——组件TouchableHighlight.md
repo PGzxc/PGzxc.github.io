@@ -57,10 +57,10 @@ TouchableHighlight，包装要显示的视图，点击时可用于高亮显示�
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/rn-touchable-underlinecolor-code.png
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/rn-touchable-underlinecolor.gif
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/rn-touchable-activeopacity-code.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/rn-touchable-activeopacity-code.gif
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/rn-touchable-onhideunderlay-code.png
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/rn-touchable-onhideunderlay-code.gif
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-touchable-underlinecolor-code.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-touchable-underlinecolor.gif
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-touchable-activeopacity-code.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-touchable-activeopacity-code.gif
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-touchable-onhideunderlay-code.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-touchable-onhideunderlay-code.gif
 [7]: https://github.com/PGzxc/RN_TouchableHighlight

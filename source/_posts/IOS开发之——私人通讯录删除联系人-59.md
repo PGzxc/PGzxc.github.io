@@ -80,5 +80,5 @@ date: 2020-10-14 23:53:11
   ![][2]
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-ios/ios-sirentongxunlu-delete-contact.gif
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-ios/ios-sirentongxunlu-local-add.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sirentongxunlu-delete-contact.gif
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sirentongxunlu-local-add.gif

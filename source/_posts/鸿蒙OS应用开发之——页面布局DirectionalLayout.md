@@ -298,10 +298,10 @@ color_gray_element.xml：
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-hmos/hmos-layout-create-resource-file.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-hmos/hmos-layout-create-file-name-type.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-hmos/hmos-layout-qiehuan-sample.gif
-[4]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-hmos/hmos-directionallayout-vertical-sample.png
-[5]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-hmos/hmos-directionallayout-horizontal-sample.png
-[6]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-hmos/hmos-directionallayout-aliment-sample.png
-[7]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-hmos/hmos-directionallayout-weight-sample.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-layout-create-resource-file.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-layout-create-file-name-type.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-layout-qiehuan-sample.gif
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-directionallayout-vertical-sample.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-directionallayout-horizontal-sample.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-directionallayout-aliment-sample.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-directionallayout-weight-sample.png

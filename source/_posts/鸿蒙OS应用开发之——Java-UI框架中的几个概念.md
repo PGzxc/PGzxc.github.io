@@ -65,5 +65,5 @@ date: 2020-12-31 15:15:14
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-hmos/hmos-component-struct.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-hmos/hmos-layoutconfig-view.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-component-struct.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-layoutconfig-view.png

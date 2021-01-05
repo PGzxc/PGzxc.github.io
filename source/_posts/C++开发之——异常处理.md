@@ -139,5 +139,5 @@ catch 块跟在 try 块后面，用于捕获异常。您可以指定想要捕捉
 	C++ Exception
 在这里，what() 是异常类提供的一个公共方法，它已被所有子异常类重载。这将返回异常产生的原因。
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-exception.jpg  
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-exception-table.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-exception.jpg  
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-exception-table.png

@@ -235,4 +235,4 @@ class Student
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-class-virtual-print.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-class-virtual-print.png

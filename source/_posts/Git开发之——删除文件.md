@@ -29,8 +29,8 @@ date: 2018-02-26 11:01:47
 ![][5]  
 现在，文件就从版本库中被删除了。  
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-rm-create-file.png
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-rm-add-commit.png
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-rm-del-test.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-rm-status.png
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-rm-re-set.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-rm-create-file.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-rm-add-commit.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-rm-del-test.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-rm-status.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-rm-re-set.png

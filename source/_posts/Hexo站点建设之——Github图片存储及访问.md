@@ -95,15 +95,15 @@ date: 2019-06-10 23:37:46
 
 
 [1]: https://desktop.github.com/
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-github-destop-file.png
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-github-local-files.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-github-desktop-push.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-github-destop-file.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-github-local-files.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-github-desktop-push.png
 [5]: https://github.com/Molunerfinn/PicGo/releases
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-github-picgo-download.png
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-github-new-person-access-token.png
-[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-github-access-token-save.png
-[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-github-picgo-setting.png
-[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-github-picgo-push.png
-[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-github-image-address-look.png
-[12]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-github-image-real-address.png
-[13]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-github-image-preview.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-github-picgo-download.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-github-new-person-access-token.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-github-access-token-save.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-github-picgo-setting.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-github-picgo-push.png
+[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-github-image-address-look.png
+[12]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-github-image-real-address.png
+[13]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-github-image-preview.png

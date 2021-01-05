@@ -14,4 +14,4 @@ date: 2018-05-23 09:35:45
 ![][1]
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-libraries.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-libraries.png

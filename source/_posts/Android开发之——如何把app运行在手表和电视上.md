@@ -56,13 +56,13 @@ app安装到手表或电视里，这里我们用自带的系统创建一个手�
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hardware-chose.png
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/wear-download.png
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/wear-start.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/wear-config.png
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/wear-git.gif
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/TV-chose.png
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tv-download.png
-[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tv-start.png
-[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tv-config.png
-[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tv-gif.gif
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hardware-chose.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/wear-download.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/wear-start.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/wear-config.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/wear-git.gif
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/TV-chose.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tv-download.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tv-start.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tv-config.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tv-gif.gif

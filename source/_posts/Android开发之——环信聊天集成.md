@@ -102,21 +102,21 @@ date: 2017-12-28 13:09:30
 
 
 [1]: http://www.easemob.com/
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/huanxin-login.png
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/huanxin-new-app.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/huanxin-key.png
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/huanxin-sdk-download.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/huanxin-login.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/huanxin-new-app.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/huanxin-key.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/huanxin-sdk-download.png
 [6]: http://www.easemob.com/download/im
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/huanxin-jieya.png
-[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/huanxin-easeui-lib.png
-[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/huanxin-easeui-module.png
-[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/app-easeui-include.png
-[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/huanxin-meta-value.png
-[12]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/huanxin-umeng.png
-[13]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/huanxin-sdk-init.png
-[14]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/huanxin-regist-login.png
-[15]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/huanxin-regist.png
-[16]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/huanxin-code-login.png
-[17]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/huanxin-main.png
-[18]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/huanxin-main-content.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/huanxin-jieya.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/huanxin-easeui-lib.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/huanxin-easeui-module.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/app-easeui-include.png
+[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/huanxin-meta-value.png
+[12]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/huanxin-umeng.png
+[13]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/huanxin-sdk-init.png
+[14]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/huanxin-regist-login.png
+[15]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/huanxin-regist.png
+[16]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/huanxin-code-login.png
+[17]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/huanxin-main.png
+[18]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/huanxin-main-content.png
 [19]: https://github.com/PGzxc/EaseDemo/tree/445d40e0da00330d66ddba067c7f06f66c650c50

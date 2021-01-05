@@ -110,4 +110,4 @@ date: 2020-10-07 23:33:26
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ios-sirentongxunlu-save-data.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ios-sirentongxunlu-save-data.gif

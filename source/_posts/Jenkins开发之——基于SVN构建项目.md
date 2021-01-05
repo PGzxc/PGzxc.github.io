@@ -161,16 +161,16 @@ https://192.168.200.142/svn/SoftManager
   ![][10]
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-svn-plugin-svn-install.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-svn-login-main-board.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-svn-create-freestyle-project.png
-[4]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-svn-general-select.png
-[5]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-svn-credentials-add.png
-[6]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-svn-credentials-username-password.png
-[7]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-svn-source-subversion-config.png
-[8]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-project-build-now.png
-[9]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-build-tag-view.png
-[10]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-build-output-apk.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-svn-plugin-svn-install.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-svn-login-main-board.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-svn-create-freestyle-project.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-svn-general-select.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-svn-credentials-add.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-svn-credentials-username-password.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-svn-source-subversion-config.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-project-build-now.png
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-build-tag-view.png
+[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-build-output-apk.png
 
 
 

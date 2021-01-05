@@ -51,14 +51,14 @@ date: 2017-11-16 18:39:56
 
 
 [1]: https://ibotpeaches.github.io/Apktool/install/  
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/apktool-web.png  
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/apktool-tools.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/apktool-bat.png  
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/apktool-download.png
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/apktool-colection.png  
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cmd-wind.png 
-[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cmd-into.png  
-[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/apktool-use.png
-[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/apktool-res1.png
-[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/apktool-res2.png
-[12]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/apktool-res3.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-web.png  
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-tools.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-bat.png  
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-download.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-colection.png  
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cmd-wind.png 
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cmd-into.png  
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-use.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-res1.png
+[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-res2.png
+[12]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-res3.png

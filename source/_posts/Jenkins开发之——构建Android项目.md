@@ -74,12 +74,12 @@ date: 2017-11-18 16:47:38
 
 [1]: http://blog.csdn.net/lsyz0021/article/details/72681857
 [2]: https://www.pgyer.com/doc/view/jenkins
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkens-cmd.png  
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkens-install.png  
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/tomcat-jenkins.png
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/unlock-Jenkins.png 
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/init-admin-password.png
-[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/install-plugins.png
-[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkens-plugins.png
-[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkens-new-user.png 
-[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkens-homepage.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkens-cmd.png  
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkens-install.png  
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/tomcat-jenkins.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/unlock-Jenkins.png 
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/init-admin-password.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/install-plugins.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkens-plugins.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkens-new-user.png 
+[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkens-homepage.png

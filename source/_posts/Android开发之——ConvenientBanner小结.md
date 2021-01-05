@@ -56,15 +56,15 @@ ConvenientBanner地址:[https://github.com/saiwu-bigkoo/Android-ConvenientBanner
 [Demo地址][12]
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-viewpager.gif
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-viewpager.gif
 [2]: https://github.com/saiwu-bigkoo/Android-ConvenientBanner
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_layout.png
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_holder.png
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_data.png
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_indicator.png
-[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_scroll.png
-[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_click.png
-[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_loop.png
-[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-banner_stop.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-banner.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-banner_layout.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-banner_holder.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-banner_data.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-banner_indicator.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-banner_scroll.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-banner_click.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-banner_loop.png
+[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-banner_stop.png
 [12]: https://github.com/PGzxc/ConvenientBannerDemo

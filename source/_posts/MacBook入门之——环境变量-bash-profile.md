@@ -45,7 +45,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/mac-bash-profile-terminal.png
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/mac-bash-profile-finder.png
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/mac-bash-profile-java-config.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/mac-bash-profile-source.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-bash-profile-terminal.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-bash-profile-finder.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-bash-profile-java-config.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-bash-profile-source.png

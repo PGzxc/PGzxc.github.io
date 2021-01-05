@@ -107,19 +107,19 @@ Reveal官网：[https://revealapp.com][21]
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-reveal-open-first.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-reveal-help-show-folder.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-reveal-copy-to-project.png
-[4]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-reveal-framework-search-path-config.png
-[5]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-reveal-other-linker-flags-config.png
-[6]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-reveal-buildsetting-runpath-search-path.png
-[7]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-reveal-buildphases-new-run-script.png
-[8]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-reveal-run-script-add-shell.png
-[9]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-reveal-choice-an-app-inspect.png
-[10]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-reveal-open-choice-app.png
-[11]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-reveal-refresh-view.png
-[12]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-reveal-big-small-view.png
-[13]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-reveal-reset-view.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-reveal-open-first.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-reveal-help-show-folder.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-reveal-copy-to-project.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-reveal-framework-search-path-config.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-reveal-other-linker-flags-config.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-reveal-buildsetting-runpath-search-path.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-reveal-buildphases-new-run-script.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-reveal-run-script-add-shell.png
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-reveal-choice-an-app-inspect.png
+[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-reveal-open-choice-app.png
+[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-reveal-refresh-view.png
+[12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-reveal-big-small-view.png
+[13]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-reveal-reset-view.png
 
 
 

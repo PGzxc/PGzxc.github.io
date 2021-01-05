@@ -33,7 +33,7 @@ pm uninstall -k --user 0 com.huawei.himovie
 ![][3]
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-android/android-system-app-delete-no.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-android/android-system-app-adb-delete.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-android/android-es-com.huawei.himovie.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-android/android-system-app-delete-no.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-android/android-system-app-adb-delete.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-android/android-es-com.huawei.himovie.png
 

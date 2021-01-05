@@ -98,4 +98,4 @@ Button——》开启一个线程，请求网络——》得到消息——》ha
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/yinlian-demo-analysis.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/yinlian-demo-analysis.png

@@ -66,17 +66,17 @@ Android系统的五层架构就讲到这，了解以上的知识对以后分析�
 参考：  
 [Android系统架构与系统源码目录][5]
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-system.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-system.png
 [2]: http://androidxref.com/
 [3]: https://mirrors.tuna.tsinghua.edu.cn/help/AOSP/ 
 [4]: http://pan.baidu.com/s/1ngsZs  
 [5]: http://blog.csdn.net/itachi85/article/details/54695046 
 
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-activity.png
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-native.png
-[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-c1.png
-[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-c2.png 
-[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-c3.png 
-[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-package.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-activity.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-native.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-c1.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-c2.png 
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-c3.png 
+[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-package.png
 [12]: https://raw.githubusercontent.com/PGzxc/images/master/blog-imagesm/android-framework.png
-[13]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-c++.png
+[13]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-c++.png

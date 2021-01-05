@@ -162,25 +162,25 @@ date: 2018-09-03 23:05:04
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/package-dependencies-normal.png
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/package-dependencies-optimize.png
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/package-dependencies-optimize-build.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/package-dependencies-optimize-import.png
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/package-dependencies-optimize-use.png
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/package-depend-exception.gif
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/package-depend-configuration.png
-[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/package-proguard-files.png
-[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/package-proguard-use.png
-[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/package-sign.png
-[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/package-sign-buildgradle.png
-[12]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/package-sign-gradle-properties.png
-[13]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/package-sign-config-gradle.png
-[14]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/package-apk.png
-[15]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/package-mapping-xml.png
-[16]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/package-apk-release.png
-[17]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/package-andresguard-build-gradle.png
-[18]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/package-resguard-file.png
-[19]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/package-and-res-import.png
-[20]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/package-andresguard-task.png
-[21]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/package-apk-aligned.png
-[22]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/package-analysis.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/package-dependencies-normal.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/package-dependencies-optimize.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/package-dependencies-optimize-build.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/package-dependencies-optimize-import.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/package-dependencies-optimize-use.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/package-depend-exception.gif
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/package-depend-configuration.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/package-proguard-files.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/package-proguard-use.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/package-sign.png
+[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/package-sign-buildgradle.png
+[12]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/package-sign-gradle-properties.png
+[13]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/package-sign-config-gradle.png
+[14]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/package-apk.png
+[15]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/package-mapping-xml.png
+[16]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/package-apk-release.png
+[17]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/package-andresguard-build-gradle.png
+[18]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/package-resguard-file.png
+[19]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/package-and-res-import.png
+[20]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/package-andresguard-task.png
+[21]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/package-apk-aligned.png
+[22]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/package-analysis.png

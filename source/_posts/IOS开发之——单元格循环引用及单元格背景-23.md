@@ -128,4 +128,4 @@ date: 2020-05-24 23:37:55
 ```
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-uitableview-xunhuan-use.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-uitableview-xunhuan-use.gif

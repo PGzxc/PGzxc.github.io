@@ -111,16 +111,16 @@ Manage Jenkins—>Configure System—>钉钉—>测试
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-manage-plugin-height.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-manage-plugin-upload.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-manage-plugin-installed.png
-[4]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-dingding-robot-jenkins.png
-[5]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-dingding-key-word.png
-[6]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-congif-dingding-robot.png
-[7]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-project-general-dingding-check.png
-[8]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-project-notify-define.png
-[9]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-test-configure-result.png
-[10]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-jenkins/jenkins-project-notify-test.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-manage-plugin-height.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-manage-plugin-upload.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-manage-plugin-installed.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-dingding-robot-jenkins.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-dingding-key-word.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-congif-dingding-robot.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-project-general-dingding-check.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-project-notify-define.png
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-test-configure-result.png
+[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-project-notify-test.png
 
 [21]:https://github.com/jenkinsci/dingtalk-plugin
 [22]:https://jenkinsci.github.io/dingtalk-plugin/

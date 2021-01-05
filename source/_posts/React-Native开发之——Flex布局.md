@@ -108,23 +108,23 @@ flex(数值型的属性值)：类似于Android中的layout-weight，用于收缩
 
 
 
-[0]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/react-native-flex-props.png
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/react-native-flex-layouts.png
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/react-native-flex-layout-flexdirection.png
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/react-native-flex-code-column.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/react-native-flex-look-column.png
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/react-native-flex-look-row.png
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/react-native-flex-code-flex-wrap.png
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/react-native-layout-flexwrap-no.png
-[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/react-native-layout-flexwrap-yes.png
-[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/react-native-prop-flexwrap.png
-[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/react-native-prop-justifyContent.png
-[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/react-native-flex-code-justifycontent.png
-[12]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/react-native-flex-look-justifycontent.png
-[13]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/react-native-prop-alignitems.png
-[14]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/react-native-layout-algnitems-code.png
-[15]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/react-native-algnitems-look.png
-[16]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/react-native-prop-flex.png
-[17]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/react-native-layout-flex-code.png
-[18]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/react-native-flex-look.png
+[0]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/react-native-flex-props.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/react-native-flex-layouts.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/react-native-flex-layout-flexdirection.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/react-native-flex-code-column.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/react-native-flex-look-column.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/react-native-flex-look-row.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/react-native-flex-code-flex-wrap.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/react-native-layout-flexwrap-no.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/react-native-layout-flexwrap-yes.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/react-native-prop-flexwrap.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/react-native-prop-justifyContent.png
+[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/react-native-flex-code-justifycontent.png
+[12]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/react-native-flex-look-justifycontent.png
+[13]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/react-native-prop-alignitems.png
+[14]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/react-native-layout-algnitems-code.png
+[15]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/react-native-algnitems-look.png
+[16]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/react-native-prop-flex.png
+[17]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/react-native-layout-flex-code.png
+[18]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/react-native-flex-look.png
 [19]: https://github.com/PGzxc/RNFlex

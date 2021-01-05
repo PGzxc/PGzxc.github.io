@@ -175,12 +175,12 @@ view后跟lparams对view的属性进行描述
 
 [1]: https://pgzxc.github.io/2017/11/27/Anko%E5%88%9D%E6%8E%A2/
 [2]: https://github.com/Kotlin/anko
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/anko-support.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/anko-intents.gif
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/anko-intent-smart.gif
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/anko-dialog.gif
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/anko-debug.gif
-[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/anko-resource-color.png
-[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/anko-resource-dimens.png
-[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/anko-resource-lparams.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/anko-support.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/anko-intents.gif
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/anko-intent-smart.gif
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/anko-dialog.gif
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/anko-debug.gif
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/anko-resource-color.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/anko-resource-dimens.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/anko-resource-lparams.png
 [11]: https://github.com/PGzxc/AnkoDemo

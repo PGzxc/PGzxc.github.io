@@ -49,7 +49,7 @@ TouchableNativeFeedback，用于使视图正确响应触摸的包装器(仅andro
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/rn-TouchableNativeFeedback.gif
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-TouchableNativeFeedback.gif
 [2]: https://github.com/PGzxc/RN_TouchableNativeFeedback
 
 

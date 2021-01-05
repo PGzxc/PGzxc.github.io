@@ -57,15 +57,15 @@ date: 2017-12-06 12:10:00
 [Demo][11]
 
 
-[0]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hidden-pic-state.png
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hidden_activity.png
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hidden_activity_result.png
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hidden_appcompat.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hidden_appcompat_result.png
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hidden_title_style.png
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hidden_title_style_result.png
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hidden_actionbar.png
-[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hidden_actionbar_result.png
-[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hidden_navigator.png
-[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hidden_navigator_result.png
+[0]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hidden-pic-state.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hidden_activity.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hidden_activity_result.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hidden_appcompat.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hidden_appcompat_result.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hidden_title_style.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hidden_title_style_result.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hidden_actionbar.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hidden_actionbar_result.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hidden_navigator.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hidden_navigator_result.png
 [11]: https://github.com/PGzxc/TitleHidden

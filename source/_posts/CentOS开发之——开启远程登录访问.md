@@ -70,9 +70,9 @@ date: 2019-10-08 22:56:40
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/centos7-login-error.png
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/centos7-ssh-check.png
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/centos7-yum-install-openssh.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/centos7-systemctl-enable-sshd.png
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/centos-iptables-22-open.png
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/centos-ssh-connect.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/centos7-login-error.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/centos7-ssh-check.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/centos7-yum-install-openssh.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/centos7-systemctl-enable-sshd.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/centos-iptables-22-open.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/centos-ssh-connect.png

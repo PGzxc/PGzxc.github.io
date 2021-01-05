@@ -67,13 +67,13 @@ CATALINA_HOME   D:\SoftWare\apache-tomcat-8.5.32
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/file-open-cmd.gif
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tomcat-open-cmder.png
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tomcat-service-install.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tomcat-service-installed.png
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tomcat-service-show-windows-msc.png
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tomcat-start-auto-set.png
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tomcat-delete-open-cmder.png
-[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tomcat-delete-tomcat-service.png
-[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/tomcat-modify-search-servicename.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/file-open-cmd.gif
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-open-cmder.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-service-install.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-service-installed.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-service-show-windows-msc.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-start-auto-set.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-delete-open-cmder.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-delete-tomcat-service.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-modify-search-servicename.png
 [10]:https://www.cnblogs.com/kengqiangmao/p/10861065.html

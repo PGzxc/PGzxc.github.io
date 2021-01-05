@@ -91,6 +91,6 @@ HarmonyOS应用发布形态为**APP Pack**(Application Package，简称APP)，�
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-hmos/hmos-hap-construct.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-hmos/hmos-project-struct-java-view.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-hmos/hmos-project-struct-js-view.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-hap-construct.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-project-struct-java-view.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-project-struct-js-view.png

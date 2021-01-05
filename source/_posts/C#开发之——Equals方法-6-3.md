@@ -62,4 +62,4 @@ namespace code_1
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-class-equals.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-class-equals.png

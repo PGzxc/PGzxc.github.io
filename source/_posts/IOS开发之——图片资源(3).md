@@ -50,8 +50,8 @@ iOS开发中，会展示大量的图片资源，除了网络图片资源外，�
 ![][4]
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/icon-namespace-example.png
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/icon-example.png
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/icon-move-object-c.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/icon-move-swift.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/icon-namespace-example.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/icon-example.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/icon-move-object-c.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/icon-move-swift.png
 

@@ -46,7 +46,7 @@ date: 2018-03-01 13:58:13
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/nfc-text-formate.png
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/nfc-state-formate.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/nfc-text-formate.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/nfc-state-formate.png
 [3]: https://github.com/PGzxc/NFCReadWriteText
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/nfc-read-write.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/nfc-read-write.png

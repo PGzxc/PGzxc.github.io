@@ -128,4 +128,4 @@ typedef enum
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-animal-move-suofang.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-animal-move-suofang.gif

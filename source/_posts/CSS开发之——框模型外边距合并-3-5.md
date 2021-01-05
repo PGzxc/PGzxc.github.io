@@ -49,8 +49,8 @@ date: 2020-09-24 21:49:13
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/css-ct_css_margin_collapsing_example_1.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/css-ct_css_margin_collapsing_example_2.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/css-ct_css_margin_collapsing_example_3.png
-[4]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/css-ct_css_margin_collapsing_example_4.png
-[5]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/css-ct_css_margin_collapsing.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/css-ct_css_margin_collapsing_example_1.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/css-ct_css_margin_collapsing_example_2.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/css-ct_css_margin_collapsing_example_3.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/css-ct_css_margin_collapsing_example_4.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/css-ct_css_margin_collapsing.png

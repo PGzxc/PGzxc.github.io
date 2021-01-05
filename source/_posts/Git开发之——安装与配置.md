@@ -56,10 +56,10 @@ Windows安装比较简单，下载软件后，一直下一步既可
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-install%20.png
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-install%20-process.png
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-install%20-version.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-win-sear.png
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-win-version.png
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-config-list.png
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-config-username.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-install%20.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-install%20-process.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-install%20-version.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-win-sear.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-win-version.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-config-list.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-config-username.png

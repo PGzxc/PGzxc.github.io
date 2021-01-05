@@ -104,5 +104,5 @@ date: 2019-10-26 10:50:20
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-chapter4-variable.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-chapter4-variable.png
 [2]:https://jingyan.baidu.com/article/495ba84109665338b30ede98.html

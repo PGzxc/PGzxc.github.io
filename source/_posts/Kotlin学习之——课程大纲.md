@@ -55,4 +55,4 @@ date: 2018-04-25 08:47:33
 # 思维导图
 ![Kotlin开发][1]
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/kotlin-outline.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/kotlin-outline.png

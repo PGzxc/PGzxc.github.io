@@ -34,8 +34,8 @@ date: 2019-09-01 18:56:26
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/mac-hidden-show-finder-file-open.png
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/mac-hidden-show-finder-file-show.png
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/mac-hidden-terminal-input-dir.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/mac-hidden-terminal-show.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-hidden-show-finder-file-open.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-hidden-show-finder-file-show.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-hidden-terminal-input-dir.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-hidden-terminal-show.png
 

@@ -54,6 +54,6 @@ NFC（Near Field Communication，近场通信），是一种数据传输技术�
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/nfc-tag.png
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/nfc-sticker.png
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/nfc-bluetooth-diff.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/nfc-tag.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/nfc-sticker.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/nfc-bluetooth-diff.png

@@ -236,7 +236,7 @@ button.setClickedListener(new Component.ClickedListener() {
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-hmos/hmos-button-normal.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-hmos/hmos-button-oval.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-hmos/hmos-button-capsule.png
-[4]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-hmos/hmos-button-circle.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-button-normal.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-button-oval.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-button-capsule.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-button-circle.png

@@ -77,14 +77,14 @@ date: 2018-10-30 22:03:23
 
 
 [1]: https://visualstudio.microsoft.com/zh-hans/?rr=https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3D2W1kCse-7RyGb8tqyjPNkWdpJFj2SWih3eqANtdgoaXjEtlSn3Jq8wl5LPt4Qp-p%26wd%3D%26eqid%3D9f5cb594000160a2000000035bd814bb
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-download-visual-studio
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-visual-install.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-visual-start.png
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-project-open-opt.png
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-project-open.png
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-mainApp.png
-[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-MainApp-Property.png
-[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-proper-open.png
-[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-project-output-path.png
-[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-copy-db.png
-[12]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-start-project.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-download-visual-studio
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-visual-install.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-visual-start.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-project-open-opt.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-project-open.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-mainApp.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-MainApp-Property.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-proper-open.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-project-output-path.png
+[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-copy-db.png
+[12]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-start-project.png

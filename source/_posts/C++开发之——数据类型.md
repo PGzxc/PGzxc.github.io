@@ -150,5 +150,5 @@ enum color { red, green=5, blue };
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-data-type.png
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/cpp-data-round.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-data-type.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-data-round.png

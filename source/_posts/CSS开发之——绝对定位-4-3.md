@@ -38,4 +38,4 @@ date: 2020-09-25 21:35:22
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/ct_css_positioning_absolute_example.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ct_css_positioning_absolute_example.png

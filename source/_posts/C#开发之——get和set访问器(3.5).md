@@ -167,6 +167,6 @@ namespace code_1
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-set-get-package-field.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-set-get-package-apply.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/csharp-set-get-quick-refact.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-set-get-package-field.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-set-get-package-apply.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-set-get-quick-refact.png

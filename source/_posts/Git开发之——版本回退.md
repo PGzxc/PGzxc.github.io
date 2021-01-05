@@ -71,13 +71,13 @@ date: 2018-02-26 09:21:32
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-back-modify.png  
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-back-commit.png
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-back-log.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-log-pretty.png
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-gitk-view.png
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-back-head1.png  
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-back-cat-readme.png
-[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-back-second-log.png
-[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-back-to-current.png
-[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/git-back-reflog.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-back-modify.png  
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-back-commit.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-back-log.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-log-pretty.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-gitk-view.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-back-head1.png  
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-back-cat-readme.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-back-second-log.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-back-to-current.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-back-reflog.png

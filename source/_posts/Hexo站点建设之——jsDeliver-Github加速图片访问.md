@@ -72,6 +72,7 @@ https://cdn.jsdelivr.net/gh/user/repo@version/file
 
 ```
 https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/dog.png
+https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dog.png
 ```
 
 ### 6.2 release 版本

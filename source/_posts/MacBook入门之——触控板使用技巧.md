@@ -68,6 +68,6 @@ date: 2019-08-28 22:59:29
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/mac-touch-single-click-fetch.png
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/mac-touch-double-click.png
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/mac-smooth-down.gif
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-touch-single-click-fetch.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-touch-double-click.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-smooth-down.gif

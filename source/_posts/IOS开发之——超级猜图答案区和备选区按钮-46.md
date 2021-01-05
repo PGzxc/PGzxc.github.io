@@ -78,4 +78,4 @@ date: 2020-06-22 23:25:23
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//ios-chaoji-chaitu-answer-option-view.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-chaoji-chaitu-answer-option-view.gif

@@ -105,12 +105,12 @@ date: 2018-03-29 22:26:54
 参考：[Github下载][8]
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/android-marqueeview.gif  
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-marqueeview.gif  
 [2]: https://github.com/sfsheng0322/MarqueeView
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/marqueeview-use.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/marqueeview-use.png
 [4]: https://github.com/xiaohaibin/XMarqueeView
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/xmarqueeview-use.png
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/viewfilpper.png
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/viewflipper.gif
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/xmarqueeview-use.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/viewfilpper.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/viewflipper.gif
 [8]: https://github.com/PGzxc/ViewFlipper
 

@@ -78,16 +78,16 @@ win10环境下Telnet服务端已被阉割，Telnet服务没有启动的情况下
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/telnet-position.png
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/telnet-win7.png
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/telnet-win10.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/telnet-client-select.png
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/telnet-client-install.png
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/telnet-cmd.png
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/telnet-baidu.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/telnet-position.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/telnet-win7.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/telnet-win10.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/telnet-client-select.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/telnet-client-install.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/telnet-cmd.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/telnet-baidu.png
 [8]: http://www.kpym.com/2/kpym/download.htm
-[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/telnet-kts119.png
-[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/telnet-kts-port-23.png
-[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/telnet-kts-setup.png
-[12]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/telnet-kts-regis.png
-[13]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/telnet-linux-win.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/telnet-kts119.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/telnet-kts-port-23.png
+[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/telnet-kts-setup.png
+[12]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/telnet-kts-regis.png
+[13]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/telnet-linux-win.png

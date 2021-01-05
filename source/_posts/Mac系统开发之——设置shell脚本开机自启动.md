@@ -49,5 +49,5 @@ Windows下的脚本后缀名是.bat，Mac系统下的脚本文件后缀名是.sh
 ![][2]
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mac-shell-open-way-terminal.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image//mac-shell-open-user-group.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//mac-shell-open-way-terminal.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//mac-shell-open-user-group.png

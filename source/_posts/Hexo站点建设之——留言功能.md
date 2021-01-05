@@ -60,14 +60,14 @@ date: 2017-12-16 15:48:15
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-gitment.png	
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-gitment.png	
 [2]: https://livere.com/
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-relive-site.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-relive-option.png
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-relive-uid.png
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-livere-config.png
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-coment-result.png
-[8]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-data-release.png
-[9]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-manger-comment.png
-[10]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-seting-comment.png
-[11]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/hexo-comment-intent.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-relive-site.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-relive-option.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-relive-uid.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-livere-config.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-coment-result.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-data-release.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-manger-comment.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-seting-comment.png
+[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-comment-intent.png

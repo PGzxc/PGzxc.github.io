@@ -152,4 +152,4 @@ p{margin:20px 30px 30px 20px;}
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/css-ct_css_margin_value.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/css-ct_css_margin_value.png

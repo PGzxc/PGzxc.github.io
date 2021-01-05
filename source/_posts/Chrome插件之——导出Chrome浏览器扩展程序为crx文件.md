@@ -88,11 +88,11 @@ https://download.csdn.net/download/Calvin_zhou/13985969
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-chrome-plugin/chrome-extend-software.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-chrome-plugin/chrome-extend-plugin-id.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-chrome-plugin/chrome-extend-plugin-id-search.png
-[4]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-chrome-plugin/chrome-extend-package-path.png
-[5]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-chrome-plugin/chrome-extend-plugin-output-info.png
-[6]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-chrome-plugin/chrome-extend-plugin-id-crx-file.png
-[7]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-chrome-plugin/chrome-extend-lack-list.png
-[8]:https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-chrome-plugin/chrome-extend-pem-exist-error.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-chrome-plugin/chrome-extend-software.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-chrome-plugin/chrome-extend-plugin-id.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-chrome-plugin/chrome-extend-plugin-id-search.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-chrome-plugin/chrome-extend-package-path.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-chrome-plugin/chrome-extend-plugin-output-info.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-chrome-plugin/chrome-extend-plugin-id-crx-file.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-chrome-plugin/chrome-extend-lack-list.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-chrome-plugin/chrome-extend-pem-exist-error.png

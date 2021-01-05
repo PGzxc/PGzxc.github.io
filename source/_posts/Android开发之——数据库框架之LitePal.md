@@ -109,10 +109,10 @@ LitePal是郭神（郭霖）在2014年的杰作，Github地址：[LitePal][1]。
 
 
 [1]: https://github.com/LitePalFramework/LitePal
-[2]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/litepal-compile.png
-[3]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/LiteApplication-1.png
-[4]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/LiteApplication-2.png
-[5]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/litepal-album.png
-[6]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/litepal-song.png  
-[7]: https://cdn.jsdelivr.net/gh/pgzxc/CDN/blog-image/litepal-list.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/litepal-compile.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/LiteApplication-1.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/LiteApplication-2.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/litepal-album.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/litepal-song.png  
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/litepal-list.png
 [8]: https://github.com/PGzxc/LitePalSample
