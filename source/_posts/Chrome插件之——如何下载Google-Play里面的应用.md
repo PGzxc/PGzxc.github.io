@@ -40,7 +40,7 @@ APKTurbo
 ![][4]
 ## 四 油猴脚本+外网+Google Play市场下载
 
-### 4.1 油猴插件安装
+[GooglePlay地址](https://play.google.com/)：https://play.google.com/
 
 插件未安装前
 ![][5]
