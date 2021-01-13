@@ -28,6 +28,25 @@ date: 2018-05-20 12:48:25
 ![][2]    
 ![][3]  
 ![][4]  
+
+### 若出现如下信息
+
+```
+Command 'java' not found, but can be installed with:
+
+sudo apt install default-jre              # version 2:1.11-72, or
+sudo apt install openjdk-11-jre-headless  # version 11.0.9.1+1-0ubuntu1~20.04
+sudo apt install openjdk-8-jre-headless   # version 8u275-b01-0ubuntu1~20.04
+sudo apt install openjdk-13-jre-headless  # version 13.0.4+8-1~20.04
+sudo apt install openjdk-14-jre-headless  # version 14.0.2+12-1~20.04
+```
+
+执行
+
+```
+sudo apt install default-jre
+```
+
 ### 检验JDK是否安装成功
 输入：  
 
@@ -40,8 +59,16 @@ date: 2018-05-20 12:48:25
 打开["https://developer.android.google.cn/studio/"][6]链接，下载AndroidStudio
 ![][7]   
 ### 解压AndroidStudio
-将Android复制到某个位置，并执行unzip指令解压
+将Android复制到某个位置，并执行unzip指令解压(后缀为.zip)
 ![][8]  
+若后缀文件名为`.tar.gz`
+
+```
+gzip -d android-studio-ide-201.6953283-linux.tar.gz
+tar -xvf android-studio-ide-201.6953283-linux.tar
+```
+
+
 ### 将解压后的文件移动到指定位置
 本文移动到：/home/orange/soft下
 
@@ -83,7 +110,7 @@ ubuntu 的快捷方式都在/usr/share/applications/路径下创建Android studi
 	Icon=/home/orange/tools/android-studio/bin/studio.png  
 	Terminal=false  
 	Type=Application 
- 
+
 注意：
 
 1. 路径问题： 
