@@ -73,20 +73,21 @@ StartupNotify=false
 
 ## 四 把软件的快捷方式添加到桌面
 
-### 4.1 依次点击：其他位置—>计算机—>usr—>share—>applications，找到Android Studio快捷方式存在的位置
+依次点击：其他位置—>计算机—>usr—>share—>applications，找到Android Studio快捷方式存在的位置
 ![][4]
 
-### 4.2 将应用的快捷方式拖放到桌面文件夹内
+将应用的快捷方式拖放到桌面文件夹内
 ![][5]
 
-### 4.3 修改桌面快捷方式的启动和属性
+修改桌面快捷方式的启动和属性
+![][6]
+
   ```
   桌面图标：右键——>允许启动
   		属性
 		   权限-->允许读写和作为执行文件
   		   打开方式——>运行软件
   ```
-![][6]
 
 
 [1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-linux/linux-desktop-studio-desktop-edit.png
