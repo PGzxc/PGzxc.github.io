@@ -1,8 +1,8 @@
 ---
-title: Linux开发之——基于SRS+OBS搭建直播系统
+title: Ubuntu开发之——基于SRS+OBS搭建直播系统
 categories:
   - 系统
-  - Linux
+  - Ubuntu
 tags:
   - 直播
 abbrlink: b85f9952

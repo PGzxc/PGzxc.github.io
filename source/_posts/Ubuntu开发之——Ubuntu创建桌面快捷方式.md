@@ -1,10 +1,10 @@
 ---
-title: Linux开发之——Ubuntu创建桌面快捷方式
+title: Ubuntu开发之——Ubuntu创建桌面快捷方式
 categories:
   - 系统
-  - Linux
+  - Ubuntu
 tags:
-  - Linux
+  - Ubuntu
 abbrlink: 59fd7563
 date: 2021-01-14 13:14:47
 ---

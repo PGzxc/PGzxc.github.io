@@ -1,8 +1,8 @@
 ---
-title: Linux开发之——VMWare安装Ubuntu
+title: Ubuntu开发之——VMWare安装Ubuntu
 categories:
   - 系统
-  - Linux
+  - Ubuntu
 tags:
   - VMWare
 abbrlink: f6328493

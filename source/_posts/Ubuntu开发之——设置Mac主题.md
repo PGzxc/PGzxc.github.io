@@ -1,8 +1,8 @@
 ---
-title: Linux开发之——设置Mac主题
+title: Ubuntu开发之——设置Mac主题
 categories:
   - 系统
-  - Linux
+  - Ubuntu
 tags:
   - Mac主题
 abbrlink: bab7a0bc

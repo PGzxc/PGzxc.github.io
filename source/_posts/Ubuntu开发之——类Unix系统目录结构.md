@@ -1,8 +1,8 @@
 ---
-title: Linux开发之——类Unix系统目录结构
+title: Ubuntu开发之——类Unix系统目录结构
 categories:
   - 系统
-  - Linux
+  - Ubuntu
 tags:
   - 目录结构
 abbrlink: 97511c81

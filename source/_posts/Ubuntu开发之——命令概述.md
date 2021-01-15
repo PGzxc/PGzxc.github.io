@@ -1,10 +1,10 @@
 ---
-title: Linux开发之——命令概述
+title: Ubuntu开发之——命令概述
 categories:
   - 系统
-  - Linux
+  - Ubuntu
 tags:
-  - Linux命令
+  - Ubuntu
 abbrlink: a9998d19
 date: 2017-12-12 12:05:27
 ---

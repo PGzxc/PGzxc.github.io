@@ -1,8 +1,8 @@
 ---
-title: Linux开发之——安装AndroidStudio
+title: Ubuntu开发之——安装AndroidStudio
 categories:
   - 系统
-  - Linux
+  - Ubuntu
 tags:
   - AndroidStudio
 abbrlink: 3d9c9766

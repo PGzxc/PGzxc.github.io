@@ -1,10 +1,10 @@
 ---
-title: Linux开发之——Ubuntu20.04.1开启SSH和Telnet服务
+title: Ubuntu开发之——Ubuntu20.04.1开启SSH和Telnet服务
 categories:
   - 系统
-  - Linux
+  - Ubuntu
 tags:
-  - Linux
+  - Ubuntu
 abbrlink: 76d860a
 date: 2021-01-12 10:29:47
 ---

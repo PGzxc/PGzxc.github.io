@@ -1,8 +1,8 @@
 ---
-title: Linux开发之——安装VMware Tools
+title: Ubuntu开发之——安装VMware Tools
 categories:
   - 系统
-  - Linux
+  - Ubuntu
 tags:
   - VMware Tools
 abbrlink: d0a73778

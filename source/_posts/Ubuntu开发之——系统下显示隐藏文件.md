@@ -1,10 +1,10 @@
 ---
-title: Linux开发之——系统下如何显示隐藏文件
+title: Ubuntu开发之——系统下如何显示隐藏文件
 categories:
   - 系统
-  - Linux
+  - Ubuntu
 tags:
-  - 显示隐藏文件
+  - Ubuntu
 abbrlink: baf9213a
 date: 2018-04-16 20:48:50
 ---

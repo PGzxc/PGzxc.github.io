@@ -1,8 +1,8 @@
 ---
-title: Linux开发之——访问权限限制下安装VMwareTools
+title: Ubuntu开发之——访问权限限制下安装VMwareTools
 categories:
   - 系统
-  - Linux
+  - Ubuntu
 tags:
   - VMware Tools
 abbrlink: 6815021d

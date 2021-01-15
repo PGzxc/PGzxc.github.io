@@ -1,10 +1,10 @@
 ---
-title: Linux开发之——开机报错Error found when loading etc profile
+title: Ubuntu开发之——开机报错Error found when loading etc profile
 categories:
   - 系统
-  - Linux
+  - Ubuntu
 tags:
-  - Linux
+  - Ubuntu
 abbrlink: e9322925
 date: 2021-01-14 13:01:05
 ---
