@@ -18,7 +18,6 @@ E: 无法获得锁 /var/lib/dpkg/lock-frontend。锁正由进程 2320（unattend
 N: 请注意，直接移除锁文件不一定是合适的解决方案，且可能损坏您的系统。
 E: 无法获取 dpkg 前端锁 (/var/lib/dpkg/lock-frontend)，是否有其他进程正占用它？
 ```
-![][1]
 <!--more-->
 
 ## 二 原因分析
@@ -35,6 +34,3 @@ sudo rm /var/cache/apt/archives/lock
 sudo rm /var/lib/dpkg/lock
 ```
 
-
-
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-linux/ubuntu-dpkg-used-error.png
