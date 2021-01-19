@@ -122,6 +122,25 @@ ubuntu 的快捷方式都在/usr/share/applications/路径下创建Android studi
 ### 将as快捷方式添加到收藏
 ![][21]
 
+## 配置环境变量
+
+### 配置环境变量
+
+```
+# android
+export ANDROID_HOME=/home/pgzxc/Android/Sdk
+export PATH=$ANDROID_HOME:$PATH
+export PATH=$ANDROID_HOME/tools:$PATH
+export PATH=$ANDROID_HOME/platform-tools:$PATH
+```
+
+####  使配置生效
+
+```
+source /etc/profile
+```
+
+
 
 [1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-terminal.png
 [2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-jdk-01.png
