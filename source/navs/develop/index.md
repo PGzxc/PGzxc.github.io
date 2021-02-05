@@ -11,8 +11,6 @@ comments: false
 | :--: | :--------------------------------------: | :--: |
 |  1   |   [菜鸟教程](https://www.runoob.com/)    | 全栈 |
 |  2   | [W3school](https://www.w3school.com.cn/) | Web  |
-|  2   |                                          |      |
-|      |                                          |      |
 
 ## 二 视频教程
 
@@ -31,7 +29,7 @@ comments: false
 |  3   |               [B站](https://www.bilibili.com/)               |      |
 |  4   |             [我要自学网](https://www.51zxw.net/)             |      |
 |  5   |            [大学资源网](http://www.dxzy163.com/)             |      |
-|  6   |             [**慕课网**](https://www.imooc.com/)             |      |
-|  7   |             [**51CTO**](https://www.51cto.com/)              |      |
-|  8   | [**实验楼**](http://demo.erdangjiade.com/modals/8/856/demo/courses/index.html) |      |
+|  6   |               [慕课网](https://www.imooc.com/)               |      |
+|  7   |               [51CTO](https://www.51cto.com/)                |      |
+|  8   | [实验楼](http://demo.erdangjiade.com/modals/8/856/demo/courses/index.html) |      |
 

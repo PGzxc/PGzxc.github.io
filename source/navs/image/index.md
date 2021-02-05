@@ -7,10 +7,10 @@ comments: false
 
 ## 素材
 
-| 编号 |                   名称(链接)                   |        备注        |
-| :--: | :--------------------------------------------: | :----------------: |
-|  1   |      [**千图网**](https://www.58pic.com/)      |                    |
-|  2   | [**Pixabay**](https://www.pexels.com/@pixabay) | 照片、插图、视频等 |
+| 编号 |                 名称(链接)                 |        备注        |
+| :--: | :----------------------------------------: | :----------------: |
+|  1   |      [千图网](https://www.58pic.com/)      |                    |
+|  2   | [Pixabay](https://www.pexels.com/@pixabay) | 照片、插图、视频等 |
 
 ### Icon整理
 
@@ -48,7 +48,7 @@ comments: false
 
 | 编号 |                             名称                             |                   链接                    |
 | :--: | :----------------------------------------------------------: | :---------------------------------------: |
-|  1   | [zhaoolee](https://github.com/zhaoolee)/**[ChineseBQB](https://github.com/zhaoolee/ChineseBQB)** | https://www.v2fy.com/asset/0i/ChineseBQB/ |
+|  1   | [zhaoolee](https://github.com/zhaoolee)/[ChineseBQB](https://github.com/zhaoolee/ChineseBQB) | https://www.v2fy.com/asset/0i/ChineseBQB/ |
 |  2   |                            斗图啦                            |         https://www.doutula.com/          |
 |  3   |                            斗图吧                            |          https://www.doutub.com/          |
 |  4   |                           斗图制作                           |     https://old.zhizuotu.com/joy.html     |

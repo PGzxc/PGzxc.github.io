@@ -18,7 +18,7 @@ comments: false
 |  7   |    [Coursera](https://www.coursera.org)     | 英文 |
 |  8   |   [新浪公开课](http://open.sina.com.cn/)    |      |
 |  9   |      [译学馆](https://www.yxgapp.com)       |      |
-|  10  |     [**一席**](https://yixi.tv/#/home)      |      |
+|  10  |       [一席](https://yixi.tv/#/home)        |      |
 |  11  |    [多贝公开课](http://www.duobei.com/)     |      |
 
 ## 二 课堂
@@ -34,11 +34,11 @@ comments: false
 | 编号 |                          名称(链接)                          |     备注     |
 | :--: | :----------------------------------------------------------: | :----------: |
 |  1   |      [中国教育在线开放资源平台](https://www.eduyun.cn/)      |              |
-|  2   |        [**超星尔雅**](http://erya.mooc.chaoxing.com)         |              |
-|  3   |            [**万门大学**](https://www.wanmen.org)            |              |
-|  4   |       [**可汗学院中文版**](https://zh.khanacademy.org)       |              |
-|  5   |       [**壹课堂**](http://www.1ketang.com/index.html)        |              |
-|  6   | [**Harvard Extension School**](https://www.extension.harvard.edu/course-catalog) | 哈佛在线课程 |
+|  2   |          [超星尔雅](http://erya.mooc.chaoxing.com)           |              |
+|  3   |              [万门大学](https://www.wanmen.org)              |              |
+|  4   |         [可汗学院中文版](https://zh.khanacademy.org)         |              |
+|  5   |         [壹课堂](http://www.1ketang.com/index.html)          |              |
+|  6   | [Harvard Extension School](https://www.extension.harvard.edu/course-catalog) | 哈佛在线课程 |
 
 ## 四 公务员课程
 
@@ -48,16 +48,16 @@ comments: false
 
 ## 五 课程导航
 
-| 编号 |                名称(链接)                |   备注   |
-| :--: | :--------------------------------------: | :------: |
-|  1   | [**1纳米学习网**](http://www.1nami.com/) |          |
-|  2   |   [Coursade](http://www.coursade.com)    | 搜索引擎 |
-|  3   |  [**问答库**](https://www.asklib.com/)   |          |
+| 编号 |              名称(链接)              |   备注   |
+| :--: | :----------------------------------: | :------: |
+|  1   | [1纳米学习网](http://www.1nami.com/) |          |
+|  2   | [Coursade](http://www.coursade.com)  | 搜索引擎 |
+|  3   |  [问答库](https://www.asklib.com/)   |          |
 
 ## 六 技能
 
-| 编号 |                  名称(链接)                   |  备注  |
-| :--: | :-------------------------------------------: | :----: |
-|  1   |     [**手工客**](https://www.kiinii.com)      | 手艺人 |
-|  2   | [**skillshare**](https://www.skillshare.com/) |        |
+| 编号 |                名称(链接)                 |  备注  |
+| :--: | :---------------------------------------: | :----: |
+|  1   |     [手工客](https://www.kiinii.com)      | 手艺人 |
+|  2   | [skillshare](https://www.skillshare.com/) |        |
 
