@@ -26,7 +26,7 @@ comments: false
 | :--: | :----------------------------------------------: | :------------: |
 |  1   |       [code-nav](https://www.code-nav.cn/)       | 资源+算法+面试 |
 |  2   |          [WEBJIKE](http://webjike.com/)          | 前端+设计+影视 |
-|  3   | [geek-navigation]([http://navigation.zcbing.cn]) | 前端+设计+工具 |
+|  3   | [geek-navigation](http://navigation.zcbing.cn) | 前端+设计+工具 |
 |  4   |   [SecNavi](https://www.coco413.com/navi.html)   | 安全+教育+软件 |
 
 
