@@ -11,10 +11,14 @@ comments: false
 
 ### 二 包含内容
 * [音影](av/)
+* [课程](course/)
 * [开发](develop/)
 * [图标](image/)
 * [外语](langs/)
 * [导航](nav/)
+* [资源](resource/)
 * [软件](software/)
+* [工具](tools/)
+* [工作](work/)
 * [网站](web/)
 

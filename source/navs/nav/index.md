@@ -1,5 +1,5 @@
 ---
-title: 导航
+title: 导航(源码搭建)
 date: 2021-02-01 15:23:50
 description: 
 comments: false
@@ -101,4 +101,11 @@ comments: false
 |  6   | **[wht-university-link](https://github.com/wht-im/wht-university-link)** |            https://wht.im/            |
 |  7   |     **[jianavi](https://github.com/appexplore/jianavi)**     | https://appexplore.github.io/jianavi/ |
 |  8   | **[personal.navigation.website](https://github.com/tojohnonly/personal.navigation.website)** |                                       |
+
+## 三 实用
+
+| 编号 |            名称(链接)             |           备注           |
+| :--: | :-------------------------------: | :----------------------: |
+|  1   | [今日热榜](https://tophub.today/) | 一张网页搜罗全网实时热点 |
+|      |                                   |                          |
 

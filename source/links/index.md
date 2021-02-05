@@ -3,6 +3,7 @@ layout: page
 title: 友链
 date: 2020-10-28 23:03:31
 tags: 
+comments: false
 ---
 
 {% note info %}
