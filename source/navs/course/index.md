@@ -48,11 +48,12 @@ comments: false
 
 ## 五 课程导航
 
-| 编号 |              名称(链接)              |   备注   |
-| :--: | :----------------------------------: | :------: |
-|  1   | [1纳米学习网](http://www.1nami.com/) |          |
-|  2   | [Coursade](http://www.coursade.com)  | 搜索引擎 |
-|  3   |  [问答库](https://www.asklib.com/)   |          |
+| 编号 |              名称(链接)              |       备注       |
+| :--: | :----------------------------------: | :--------------: |
+|  1   | [1纳米学习网](http://www.1nami.com/) |                  |
+|  2   | [Coursade](http://www.coursade.com)  |     搜索引擎     |
+|  3   |  [问答库](https://www.asklib.com/)   |                  |
+|  4   | [Classpert](https://classpert.com/)  | 在线课程搜索引擎 |
 
 ## 六 技能
 
