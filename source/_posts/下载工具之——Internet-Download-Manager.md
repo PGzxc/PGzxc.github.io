@@ -1,5 +1,5 @@
 ---
-title: 下载工具之 ——Internet Download Manager
+title: 下载工具之——Internet Download Manager
 categories:
   - 工具
   - 下载
