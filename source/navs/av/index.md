@@ -19,6 +19,9 @@ comments: false
 |  8   |   [滴哩哩](https://www.dililitv.com/)   |               |
 |  9   | [viki-亚洲影剧](https://www.viki.com/)  |               |
 |  10  |   [百尔视频](https://www.ibaier.com)    | 导航-有趣网站 |
+|  11  |    [片库网](http://www.pianku5.com/)    |   最新电影    |
+|  12  |  [南瓜影视](http://www.lukbox.com.cn/)  |               |
+|  13  |   [欧乐影视](https://www.olevod.com/)   |  最新，外网   |
 
 ## 二 视频解析
 
