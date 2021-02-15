@@ -22,6 +22,7 @@ comments: false
 |  11  |    [片库网](http://www.pianku5.com/)    |   最新电影    |
 |  12  |  [南瓜影视](http://www.lukbox.com.cn/)  |               |
 |  13  |   [欧乐影视](https://www.olevod.com/)   |  最新，外网   |
+|      |     [U管](https://www.youtube.com/)     |               |
 
 ## 二 视频解析
 
