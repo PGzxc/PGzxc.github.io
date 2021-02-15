@@ -15,7 +15,7 @@ comments: false
 |  4   | [电影推荐.MVCAT](http://www.mvcat.com/) |               |
 |  5   |      [低端影视](https://ddrk.me/)       |               |
 |  6   |  [奈菲影视](https://www.nfmovies.com/)  |               |
-|  7   |     [91美剧网](https://91mjw.com/)      |               |
+|  7   |   ~~[91美剧网](https://91mjw.com/)~~    |               |
 |  8   |   [滴哩哩](https://www.dililitv.com/)   |               |
 |  9   | [viki-亚洲影剧](https://www.viki.com/)  |               |
 |  10  |   [百尔视频](https://www.ibaier.com)    | 导航-有趣网站 |
