@@ -13,6 +13,7 @@ date: 2020-11-09 16:35:58
 当文章或留言板有人留言时，立即收到钉钉消息提醒(谁，说了什么内容)，这样你就可以收到消息进行相应的处理了
 
 ![][1]
+
 <!--more-->
 ## 二 前提条件
 
@@ -56,7 +57,6 @@ date: 2020-11-09 16:35:58
   ```
 
   ![][7]
-
 
 
 [1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-message-pre-result.png
