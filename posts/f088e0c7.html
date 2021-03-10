@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-CN,default">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.com","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="一 概述ScrollView是一种带滚动功能的组件，它采用滑动的方式在有限的区域内显示更多的内容。  创建ScrollView 设置ScrollView">
+<meta property="og:type" content="article">
+<meta property="og:title" content="鸿蒙OS应用开发之——Java UI框架-常用组件ScrollView">
+<meta property="og:url" content="https://pgzxc.com/posts/f088e0c7.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 概述ScrollView是一种带滚动功能的组件，它采用滑动的方式在有限的区域内显示更多的内容。  创建ScrollView 设置ScrollView">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-scrollview-create-xml.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-scrollview-scrollby-300.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-scrollview-scrollto-500.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-scrollview-orientation-horizontal.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-scrollview-rebound-effect.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-scrollview-viewport-effect.gif">
+<meta property="article:published_time" content="2021-01-07T09:00:42.000Z">
+<meta property="article:modified_time" content="2021-03-10T01:10:53.488Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="IOS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-scrollview-create-xml.gif">
+
+
+<link rel="canonical" href="https://pgzxc.com/posts/f088e0c7.html">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>鸿蒙OS应用开发之——Java UI框架-常用组件ScrollView | PGzxc</title>
+  
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">PGzxc</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-nav">
+
+    <a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a>
+
+  </li>
+
+
+      
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">104</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">1243</span></a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E5%88%9B%E5%BB%BAScrollView"><span class="nav-number">2.</span> <span class="nav-text">二 创建ScrollView</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-XML%E5%88%9B%E5%BB%BAScrollView"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 XML创建ScrollView</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-ScrollView%E6%95%88%E6%9E%9C%E5%9B%BE"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 ScrollView效果图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E8%AE%BE%E7%BD%AEScrollView"><span class="nav-number">3.</span> <span class="nav-text">三 设置ScrollView</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%A0%B9%E6%8D%AE%E5%83%8F%E7%B4%A0%E6%95%B0%E5%B9%B3%E6%BB%91%E6%BB%9A%E5%8A%A8"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 根据像素数平滑滚动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.1.1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E5%83%8F%E7%B4%A0%E6%95%B0%E5%B9%B3%E6%BB%91%E6%BB%9A%E5%8A%A8%E6%95%88%E6%9E%9C"><span class="nav-number">3.1.2.</span> <span class="nav-text">根据像素数平滑滚动效果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%B9%B3%E6%BB%91%E6%BB%9A%E5%8A%A8%E5%88%B0%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 平滑滚动到指定位置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%B3%E6%BB%91%E6%BB%9A%E5%8A%A8%E5%88%B0%E6%8C%87%E5%AE%9A%E4%BD%8D%E7%BD%AE%E6%95%88%E6%9E%9C"><span class="nav-number">3.2.2.</span> <span class="nav-text">平滑滚动到指定位置效果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E8%AE%BE%E7%BD%AE%E5%B8%83%E5%B1%80%E6%96%B9%E5%90%91"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 设置布局方向</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#xml%E4%B8%AD%E9%85%8D%E7%BD%AE"><span class="nav-number">3.3.1.</span> <span class="nav-text">xml中配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%B8%83%E5%B1%80%E6%96%B9%E5%90%91%E4%B8%BA%E6%A8%AA%E5%90%91%E5%B8%83%E5%B1%80%E6%95%88%E6%9E%9C"><span class="nav-number">3.3.2.</span> <span class="nav-text">设置布局方向为横向布局效果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E8%AE%BE%E7%BD%AE%E5%9B%9E%E5%BC%B9%E6%95%88%E6%9E%9C"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 设置回弹效果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8xml%E4%B8%AD%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.4.1.</span> <span class="nav-text">在xml中设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java%E4%BB%A3%E7%A0%81%E4%B8%AD%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.4.2.</span> <span class="nav-text">Java代码中设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%90%AF%E5%9B%9E%E5%BC%B9%E6%95%88%E6%9E%9C"><span class="nav-number">3.4.3.</span> <span class="nav-text">开启回弹效果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-%E8%AE%BE%E7%BD%AE%E7%BC%A9%E6%94%BE%E5%8C%B9%E9%85%8D%E6%95%88%E6%9E%9C"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 设置缩放匹配效果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#xml%E4%B8%AD%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.5.1.</span> <span class="nav-text">xml中设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java%E4%BB%A3%E7%A0%81%E4%B8%AD%E8%AE%BE%E7%BD%AE-1"><span class="nav-number">3.5.2.</span> <span class="nav-text">Java代码中设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%BC%A9%E6%94%BE%E5%8C%B9%E9%85%8D%E6%95%88%E6%9E%9C"><span class="nav-number">3.5.3.</span> <span class="nav-text">设置缩放匹配效果</span></a></li></ol></li></ol></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">1243</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">104</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">397</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY2FsdmluX3pob3U=" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou"><i class="fa fa-book fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3dlaWJvLmNvbS81NTgyMDM5OTIw" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920"><i class="fab fa-weibo fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3d3dy5qaWFuc2h1LmNvbS91L2M1Y2RjYjRkYzUyYg==" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b"><i class="fa fa-heartbeat fa-fw"></i></span>
+      </span>
+  </div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.com/posts/f088e0c7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          鸿蒙OS应用开发之——Java UI框架-常用组件ScrollView<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BHenhjL1BHenhjLmdpdGh1Yi5pby9lZGl0L21hc3Rlci9zb3VyY2UvX3Bvc3RzL+m4v+iSmU9T5bqU55So5byA5Y+R5LmL4oCU4oCUSmF2YS1VSeahhuaeti3luLjnlKjnu4Tku7ZTY3JvbGxWaWV3Lm1k" title="编辑"><i class="fa fa-pen-nib"></i></span>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-01-07 17:00:42" itemprop="dateCreated datePublished" datetime="2021-01-07T17:00:42+08:00">2021-01-07</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-03-10 09:10:53" itemprop="dateModified" datetime="2021-03-10T09:10:53+08:00">2021-03-10</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">移动开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><p>ScrollView是一种带滚动功能的组件，它采用滑动的方式在有限的区域内显示更多的内容。</p>
+<ul>
+<li>创建ScrollView</li>
+<li>设置ScrollView</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="二-创建ScrollView"><a href="#二-创建ScrollView" class="headerlink" title="二 创建ScrollView"></a>二 创建ScrollView</h2><h3 id="2-1-XML创建ScrollView"><a href="#2-1-XML创建ScrollView" class="headerlink" title="2.1 XML创建ScrollView"></a>2.1 XML创建ScrollView</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;DirectionalLayout</span><br><span class="line">    xmlns:ohos&#x3D;&quot;http:&#x2F;&#x2F;schemas.huawei.com&#x2F;res&#x2F;ohos&quot;</span><br><span class="line">    ohos:height&#x3D;&quot;match_content&quot;</span><br><span class="line">    ohos:width&#x3D;&quot;match_parent&quot;</span><br><span class="line">    ohos:orientation&#x3D;&quot;vertical&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;ScrollView</span><br><span class="line">        xmlns:ohos&#x3D;&quot;http:&#x2F;&#x2F;schemas.huawei.com&#x2F;res&#x2F;ohos&quot;</span><br><span class="line">        ohos:id&#x3D;&quot;$+id:scrollview&quot;</span><br><span class="line">        ohos:height&#x3D;&quot;300vp&quot;</span><br><span class="line">        ohos:width&#x3D;&quot;300vp&quot;</span><br><span class="line">        ohos:background_element&#x3D;&quot;#FFDEAD&quot;</span><br><span class="line">        ohos:bottom_padding&#x3D;&quot;16vp&quot;</span><br><span class="line">        ohos:layout_alignment&#x3D;&quot;horizontal_center&quot;</span><br><span class="line">        ohos:top_margin&#x3D;&quot;32vp&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;DirectionalLayout</span><br><span class="line">            ohos:height&#x3D;&quot;match_content&quot;</span><br><span class="line">            ohos:width&#x3D;&quot;match_content&quot;&gt;</span><br><span class="line"></span><br><span class="line">            &lt;Image</span><br><span class="line">                ohos:id&#x3D;&quot;$+id:img_1&quot;</span><br><span class="line">                ohos:height&#x3D;&quot;match_content&quot;</span><br><span class="line">                ohos:width&#x3D;&quot;match_parent&quot;</span><br><span class="line">                ohos:image_src&#x3D;&quot;$media:dog.jpg&quot;</span><br><span class="line">                ohos:top_margin&#x3D;&quot;16vp&quot;&#x2F;&gt;</span><br><span class="line">            &lt;!--    放置任意需要展示的组件--&gt;</span><br><span class="line">            &lt;Image</span><br><span class="line">                ohos:id&#x3D;&quot;$+id:img_2&quot;</span><br><span class="line">                ohos:height&#x3D;&quot;match_content&quot;</span><br><span class="line">                ohos:width&#x3D;&quot;match_parent&quot;</span><br><span class="line">                ohos:image_src&#x3D;&quot;$media:cat.jpg&quot;</span><br><span class="line">                ohos:top_margin&#x3D;&quot;16vp&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">            &lt;Image</span><br><span class="line">                ohos:id&#x3D;&quot;$+id:img_3&quot;</span><br><span class="line">                ohos:height&#x3D;&quot;match_content&quot;</span><br><span class="line">                ohos:width&#x3D;&quot;match_parent&quot;</span><br><span class="line">                ohos:image_src&#x3D;&quot;$media:dog.jpg&quot;</span><br><span class="line">                ohos:top_margin&#x3D;&quot;16vp&quot;&#x2F;&gt;</span><br><span class="line">            &lt;!--    放置任意需要展示的组件--&gt;</span><br><span class="line">            &lt;Image</span><br><span class="line">                ohos:id&#x3D;&quot;$+id:img_4&quot;</span><br><span class="line">                ohos:height&#x3D;&quot;match_content&quot;</span><br><span class="line">                ohos:width&#x3D;&quot;match_parent&quot;</span><br><span class="line">                ohos:image_src&#x3D;&quot;$media:cat.jpg&quot;</span><br><span class="line">                ohos:top_margin&#x3D;&quot;16vp&quot;&#x2F;&gt;</span><br><span class="line">        &lt;&#x2F;DirectionalLayout&gt;</span><br><span class="line">    &lt;&#x2F;ScrollView&gt;</span><br><span class="line"></span><br><span class="line">    &lt;DirectionalLayout</span><br><span class="line">        xmlns:ohos&#x3D;&quot;http:&#x2F;&#x2F;schemas.huawei.com&#x2F;res&#x2F;ohos&quot;</span><br><span class="line">        ohos:height&#x3D;&quot;match_content&quot;</span><br><span class="line">        ohos:width&#x3D;&quot;match_parent&quot;</span><br><span class="line">        ohos:orientation&#x3D;&quot;horizontal&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;Button</span><br><span class="line">            ohos:id&#x3D;&quot;$+id:btnScroll&quot;</span><br><span class="line">            ohos:height&#x3D;&quot;match_content&quot;</span><br><span class="line">            ohos:width&#x3D;&quot;match_content&quot;</span><br><span class="line">            ohos:background_element&#x3D;&quot;$graphic:background_button&quot;</span><br><span class="line">            ohos:bottom_margin&#x3D;&quot;15vp&quot;</span><br><span class="line">            ohos:left_margin&#x3D;&quot;15vp&quot;</span><br><span class="line">            ohos:left_padding&#x3D;&quot;8vp&quot;</span><br><span class="line">            ohos:right_padding&#x3D;&quot;8vp&quot;</span><br><span class="line">            ohos:text&#x3D;&quot;Scroll By Y:300&quot;</span><br><span class="line">            ohos:text_color&#x3D;&quot;#ffffff&quot;</span><br><span class="line">            ohos:text_size&#x3D;&quot;27fp&quot;</span><br><span class="line">            ohos:top_margin&#x3D;&quot;30vp&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;Button</span><br><span class="line">            ohos:id&#x3D;&quot;$+id:btnScrollTo&quot;</span><br><span class="line">            ohos:height&#x3D;&quot;match_content&quot;</span><br><span class="line">            ohos:width&#x3D;&quot;match_content&quot;</span><br><span class="line">            ohos:background_element&#x3D;&quot;$graphic:background_button&quot;</span><br><span class="line">            ohos:bottom_margin&#x3D;&quot;15vp&quot;</span><br><span class="line">            ohos:left_margin&#x3D;&quot;15vp&quot;</span><br><span class="line">            ohos:left_padding&#x3D;&quot;8vp&quot;</span><br><span class="line">            ohos:right_padding&#x3D;&quot;8vp&quot;</span><br><span class="line">            ohos:text&#x3D;&quot;Scroll To Y:500&quot;</span><br><span class="line">            ohos:text_color&#x3D;&quot;#ffffff&quot;</span><br><span class="line">            ohos:text_size&#x3D;&quot;27fp&quot;</span><br><span class="line">            ohos:top_margin&#x3D;&quot;30vp&quot;&#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;DirectionalLayout&gt;</span><br><span class="line">&lt;&#x2F;DirectionalLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-ScrollView效果图"><a href="#2-2-ScrollView效果图" class="headerlink" title="2.2 ScrollView效果图"></a>2.2 ScrollView效果图</h3><p><img data-src="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-scrollview-create-xml.gif" loading="lazy"></p>
+<h2 id="三-设置ScrollView"><a href="#三-设置ScrollView" class="headerlink" title="三 设置ScrollView"></a>三 设置ScrollView</h2><p>ScrollView的速度、滚动、回弹等常用接口如下</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>方法</strong></th>
+<th align="center"><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">doFling(int velocityX, int velocityY)<br>doFlingX(int velocityX)<br>doFlingY(int velocityY)</td>
+<td align="center">设置X轴和Y轴滚动的初始速度，单位（px）</td>
+</tr>
+<tr>
+<td align="center">fluentScrollBy(int dx, int dy)<br>fluentScrollByX(int dx)<br>fluentScrollByY(int dy)</td>
+<td align="center">根据像素数平滑滚动到指定位置，单位（px）</td>
+</tr>
+<tr>
+<td align="center">fluentScrollTo(int x, int y)<br>fluentScrollXTo(int x)<br>fluentScrollYTo(int y)</td>
+<td align="center">根据指定坐标平滑滚动到指定位置，单位（px）</td>
+</tr>
+<tr>
+<td align="center">setReboundEffect(boolean enabled)</td>
+<td align="center">设置是否启用回弹效果，默认false</td>
+</tr>
+<tr>
+<td align="center">setReboundEffectParams(int overscrollPercent, float overscrollRate, int remainVisiblePercent)<br>setReboundEffectParams(ReboundEffectParams reboundEffectParams)<br>setOverscrollPercent(int overscrollPercent)<br>setOverscrollRate(float overscrollRate)<br>setRemainVisiblePercent(int remainVisiblePercent)</td>
+<td align="center">配置回弹效果<br>overscrollPercent：过度滚动百分比，默认值40<br>overscrollRate：过度滚动率，默认值0.6<br>remainVisiblePercent：应保持可见内容的最小百分比，默认值20</td>
+</tr>
+</tbody></table>
+<h3 id="3-1-根据像素数平滑滚动"><a href="#3-1-根据像素数平滑滚动" class="headerlink" title="3.1 根据像素数平滑滚动"></a>3.1 根据像素数平滑滚动</h3><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Button btnScroll&#x3D; (Button) findComponentById(ResourceTable.Id_btnScroll);</span><br><span class="line">ScrollView scrollView&#x3D; (ScrollView) findComponentById(ResourceTable.Id_scrollview);</span><br><span class="line">btnScroll.setClickedListener(new Component.ClickedListener() &#123;</span><br><span class="line">      @Override</span><br><span class="line">      public void onClick(Component component) &#123;</span><br><span class="line">             scrollView.fluentScrollByY(300);</span><br><span class="line">      &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="根据像素数平滑滚动效果"><a href="#根据像素数平滑滚动效果" class="headerlink" title="根据像素数平滑滚动效果"></a>根据像素数平滑滚动效果</h4><p><img data-src="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-scrollview-scrollby-300.gif" loading="lazy"></p>
+<h3 id="3-2-平滑滚动到指定位置"><a href="#3-2-平滑滚动到指定位置" class="headerlink" title="3.2 平滑滚动到指定位置"></a>3.2 平滑滚动到指定位置</h3><h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Button btnScrollTo&#x3D; (Button) findComponentById(ResourceTable.Id_btnScrollTo);</span><br><span class="line">ScrollView scrollView&#x3D; (ScrollView) findComponentById(ResourceTable.Id_scrollview);</span><br><span class="line">btnScrollTo.setClickedListener(new Component.ClickedListener() &#123;</span><br><span class="line">         @Override</span><br><span class="line">         public void onClick(Component component) &#123;</span><br><span class="line">              scrollView.fluentScrollYTo(500);</span><br><span class="line">          &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="平滑滚动到指定位置效果"><a href="#平滑滚动到指定位置效果" class="headerlink" title="平滑滚动到指定位置效果"></a>平滑滚动到指定位置效果</h4><p><img data-src="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-scrollview-scrollto-500.gif" loading="lazy"></p>
+<h3 id="3-3-设置布局方向"><a href="#3-3-设置布局方向" class="headerlink" title="3.3 设置布局方向"></a>3.3 设置布局方向</h3><p>ScrollView自身没有设置布局方向的属性，所以需要在其子布局中设置。以横向布局horizontal为例</p>
+<h4 id="xml中配置"><a href="#xml中配置" class="headerlink" title="xml中配置"></a>xml中配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;ScrollView</span><br><span class="line">    ...</span><br><span class="line">    &gt;</span><br><span class="line">    &lt;DirectionalLayout</span><br><span class="line">        ...</span><br><span class="line">        ohos:orientation&#x3D;&quot;horizontal&quot;&gt;</span><br><span class="line">        ...</span><br><span class="line">    &lt;&#x2F;DirectionalLayout&gt;</span><br><span class="line">&lt;&#x2F;Scrollview&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="设置布局方向为横向布局效果"><a href="#设置布局方向为横向布局效果" class="headerlink" title="设置布局方向为横向布局效果"></a>设置布局方向为横向布局效果</h4><p><img data-src="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-scrollview-orientation-horizontal.gif" loading="lazy"></p>
+<h3 id="3-4-设置回弹效果"><a href="#3-4-设置回弹效果" class="headerlink" title="3.4 设置回弹效果"></a>3.4 设置回弹效果</h3><h4 id="在xml中设置"><a href="#在xml中设置" class="headerlink" title="在xml中设置"></a>在xml中设置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ScrollView</span><br><span class="line">    ...</span><br><span class="line">    ohos:rebound_effect&#x3D;&quot;true&quot;&gt;</span><br><span class="line">        ...</span><br><span class="line">&lt;&#x2F;ScrollView&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Java代码中设置"><a href="#Java代码中设置" class="headerlink" title="Java代码中设置"></a>Java代码中设置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrollView.setReboundEffect(true);</span><br></pre></td></tr></table></figure>
+
+<h4 id="开启回弹效果"><a href="#开启回弹效果" class="headerlink" title="开启回弹效果"></a>开启回弹效果</h4><p><img data-src="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-scrollview-rebound-effect.gif" loading="lazy"></p>
+<h3 id="3-5-设置缩放匹配效果"><a href="#3-5-设置缩放匹配效果" class="headerlink" title="3.5 设置缩放匹配效果"></a>3.5 设置缩放匹配效果</h3><h4 id="xml中设置"><a href="#xml中设置" class="headerlink" title="xml中设置"></a>xml中设置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ScrollView</span><br><span class="line">    ...</span><br><span class="line">    ohos:match_viewport&#x3D;&quot;true&quot;&gt;</span><br><span class="line">        ...</span><br><span class="line">&lt;&#x2F;ScrollView&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Java代码中设置-1"><a href="#Java代码中设置-1" class="headerlink" title="Java代码中设置"></a>Java代码中设置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrollView.setMatchViewportEnabled(true);</span><br></pre></td></tr></table></figure>
+
+<h4 id="设置缩放匹配效果"><a href="#设置缩放匹配效果" class="headerlink" title="设置缩放匹配效果"></a>设置缩放匹配效果</h4><p><img data-src="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-scrollview-viewport-effect.gif" loading="lazy"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/IOS/" rel="tag"># IOS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/5dbb9ac4.html" rel="prev" title="鸿蒙OS应用开发之——Java UI框架-常用组件ToastDialog">
+                  <i class="fa fa-chevron-left"></i> 鸿蒙OS应用开发之——Java UI框架-常用组件ToastDialog
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/e7b1c0dd.html" rel="next" title="鸿蒙OS应用开发之——Java UI框架-常用组件ListContainer">
+                  鸿蒙OS应用开发之——Java UI框架-常用组件ListContainer <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><span class="exturl" data-url="aHR0cHM6Ly9iZWlhbi5taWl0Lmdvdi5jbg==">京ICP备18061062号-1 </span>
+  </div>
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">PGzxc</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.1.0/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.1.0/source/js/motion.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.1.0/source/js/next-boot.js"></script><script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.1.0/source/js/local-search.js"></script>
+
+
+
+
+<script data-pjax>
+if (document.querySelectorAll('.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js', () => {
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+
+
+
+    <div class="pjax">
+
+  
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.css">
+
+<script>
+NexT.utils.loadComments('#gitalk-container', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '4d2d97c55a316dfcea73',
+      clientSecret: 'f55fe43764e8560484a13850e4a6d84792924fb0',
+      repo        : 'PGzxc.github.io',
+      owner       : 'PGzxc',
+      admin       : ['PGzxc'],
+      id          : '612f872317bcbc58768cad7493773671',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+</body>
+</html>

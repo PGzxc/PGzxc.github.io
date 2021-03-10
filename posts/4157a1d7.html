@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-CN,default">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pgzxc.com","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+<meta name="description" content="一 概述Image是Flttter中用于展示图片的组件。支持 JPEG、PNG、GIF、Animated GIF、WebP、Animated WebP、BMP 和 WBMP 等格式。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter开发之——基本组件-Image">
+<meta property="og:url" content="https://pgzxc.com/posts/4157a1d7.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 概述Image是Flttter中用于展示图片的组件。支持 JPEG、PNG、GIF、Animated GIF、WebP、Animated WebP、BMP 和 WBMP 等格式。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-image-imageprovider-imple.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-image-local-image-pubspec.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-image-file-path-provider.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-image-upload-files-phone.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-image-imageprovider-imple.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-image-preview.png">
+<meta property="article:published_time" content="2021-02-22T07:15:51.000Z">
+<meta property="article:modified_time" content="2021-03-10T01:10:53.448Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Flutter">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-image-imageprovider-imple.png">
+
+
+<link rel="canonical" href="https://pgzxc.com/posts/4157a1d7.html">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>Flutter开发之——基本组件-Image | PGzxc</title>
+  
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">PGzxc</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a>
+
+  </li>
+        
+            
+  <li class="menu-item menu-item-nav">
+
+    <a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a>
+
+  </li>
+
+
+      
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">104</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">1243</span></a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <section class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E7%94%A8%E4%BA%8E%E6%98%BE%E7%A4%BA%E5%9B%BE%E5%83%8F%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">二 用于显示图像的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 静态方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E7%A4%BA%E4%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">三 示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Image-asset"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Image.asset</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEpubspec-yaml"><span class="nav-number">3.1.1.</span> <span class="nav-text">设置pubspec.yaml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E8%AE%BE%E7%BD%AE-lib-main-dart"><span class="nav-number">3.1.2.</span> <span class="nav-text">代码设置(lib&#x2F;main.dart)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Image-network"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 Image.network</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Image-file"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Image.file</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0path-provider%E4%BE%9D%E8%B5%96"><span class="nav-number">3.3.1.</span> <span class="nav-text">添加path_provider依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#path-provider%E8%AF%B4%E6%98%8E"><span class="nav-number">3.3.2.</span> <span class="nav-text">path_provider说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%86%E8%A6%81%E6%98%BE%E7%A4%BA%E7%9A%84%E5%9B%BE%E7%89%87%E5%AF%BC%E5%85%A5%E5%88%B0%E6%89%8B%E6%9C%BA%E4%B8%AD"><span class="nav-number">3.3.3.</span> <span class="nav-text">将要显示的图片导入到手机中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-lib-main-dart"><span class="nav-number">3.3.4.</span> <span class="nav-text">完整代码(lib&#x2F;main.dart)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-%E6%95%88%E6%9E%9C%E5%9B%BE"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 效果图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E5%87%A0%E4%B8%AA%E5%B8%B8%E7%94%A8%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="nav-number">4.</span> <span class="nav-text">四 几个常用的属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%AE%BD%E5%92%8C%E9%AB%98"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 宽和高</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-color%E5%92%8CcolorBlendMode"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 color和colorBlendMode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-fit"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 fit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-alignment"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 alignment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-repeat"><span class="nav-number">4.5.</span> <span class="nav-text">4.5 repeat</span></a></li></ol></li></ol></div>
+        </section>
+        <!--/noindex-->
+
+        <section class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">1243</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">104</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">397</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY2FsdmluX3pob3U=" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou"><i class="fa fa-book fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3dlaWJvLmNvbS81NTgyMDM5OTIw" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920"><i class="fab fa-weibo fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3d3dy5qaWFuc2h1LmNvbS91L2M1Y2RjYjRkYzUyYg==" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b"><i class="fa fa-heartbeat fa-fw"></i></span>
+      </span>
+  </div>
+
+
+
+        </section>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.com/posts/4157a1d7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Flutter开发之——基本组件-Image<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BHenhjL1BHenhjLmdpdGh1Yi5pby9lZGl0L21hc3Rlci9zb3VyY2UvX3Bvc3RzL0ZsdXR0ZXLlvIDlj5HkuYvigJTigJTln7rmnKznu4Tku7YtSW1hZ2UubWQ=" title="编辑"><i class="fa fa-pen-nib"></i></span>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-22 15:15:51" itemprop="dateCreated datePublished" datetime="2021-02-22T15:15:51+08:00">2021-02-22</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-03-10 09:10:53" itemprop="dateModified" datetime="2021-03-10T09:10:53+08:00">2021-03-10</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">移动开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Flutter/" itemprop="url" rel="index"><span itemprop="name">Flutter</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><p>Image是Flttter中用于展示图片的组件。支持 JPEG、PNG、GIF、Animated GIF、WebP、Animated WebP、BMP 和 WBMP 等格式。</p>
+<a id="more"></a>
+
+<h2 id="二-用于显示图像的方法"><a href="#二-用于显示图像的方法" class="headerlink" title="二 用于显示图像的方法"></a>二 用于显示图像的方法</h2><h3 id="2-1-构造方法"><a href="#2-1-构造方法" class="headerlink" title="2.1 构造方法"></a>2.1 构造方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image(image: ImageProvider)</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-image-imageprovider-imple.png" loading="lazy"></p>
+<h3 id="2-2-静态方法"><a href="#2-2-静态方法" class="headerlink" title="2.2 静态方法"></a>2.2 静态方法</h3><ul>
+<li>Image.asset - 用于从资源目录的显示图片</li>
+<li>Image.network - 用于从网络上显示图片</li>
+<li>Image.file - 用于从文件里显示图片</li>
+<li>Image.memory - 用于从内存里（Uint8List）显示图片</li>
+</ul>
+<h2 id="三-示例"><a href="#三-示例" class="headerlink" title="三 示例"></a>三 示例</h2><h3 id="3-1-Image-asset"><a href="#3-1-Image-asset" class="headerlink" title="3.1 Image.asset"></a>3.1 Image.asset</h3><h4 id="设置pubspec-yaml"><a href="#设置pubspec-yaml" class="headerlink" title="设置pubspec.yaml"></a>设置pubspec.yaml</h4><p><img data-src="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-image-local-image-pubspec.png" loading="lazy"></p>
+<ul>
+<li><p>在项目路径下，新建images文件夹，并将图片<code>flutter.png</code>放到images路径下</p>
+</li>
+<li><p>在pubspec.yaml 文件中添加assets，如上图，注意images的路径(间隔两个字母)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flutter:</span><br><span class="line">  assets:</span><br><span class="line">     - images&#x2F;flutter.png</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="代码设置-lib-main-dart"><a href="#代码设置-lib-main-dart" class="headerlink" title="代码设置(lib/main.dart)"></a>代码设置(lib/main.dart)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.asset(&quot;images&#x2F;flutter.png&quot;),</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-Image-network"><a href="#3-2-Image-network" class="headerlink" title="3.2 Image.network"></a>3.2 Image.network</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.network(&quot;https:&#x2F;&#x2F;flutter.dev&#x2F;assets&#x2F;flutter-lockup-1caf6476beed76adec3c477586da54de6b552b2f42108ec5bc68dc63bae2df75.png&quot;),</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-Image-file"><a href="#3-3-Image-file" class="headerlink" title="3.3 Image.file"></a>3.3 Image.file</h3><h4 id="添加path-provider依赖"><a href="#添加path-provider依赖" class="headerlink" title="添加path_provider依赖"></a>添加path_provider依赖</h4><p>在pubspec.yaml 文件中添加path_provider依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dependencies:</span><br><span class="line">  path_provider: ^1.6.26</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-image-file-path-provider.png" loading="lazy"></p>
+<p>然后，执行<code>Pub get</code>获取path_provider依赖</p>
+<h4 id="path-provider说明"><a href="#path-provider说明" class="headerlink" title="path_provider说明"></a>path_provider说明</h4><p>对于Android系统</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Directory tempDir &#x3D; await getTemporaryDirectory();</span><br><span class="line">String tempPath &#x3D; tempDir.path;</span><br><span class="line"></span><br><span class="line">Directory appDocDir &#x3D; await getApplicationDocumentsDirectory();</span><br><span class="line">String appDocPath &#x3D; appDocDir.path;</span><br><span class="line"></span><br><span class="line">String storageDir &#x3D; (await getExternalStorageDirectory()).path;</span><br></pre></td></tr></table></figure>
+
+<p>加载sd卡图片需要读写权限，在AndroidManifest.xml中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name&#x3D;&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; &#x2F;&gt;</span><br><span class="line">&lt;uses-permission android:name&#x3D;&quot;android.permission.READ_EXTERNAL_STORAGE&quot; &#x2F;&gt;</span><br><span class="line">&lt;uses-permission android:name&#x3D;&quot;android.permission.INTERNET&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>打印文件路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Future&lt;void&gt; main() async &#123;</span><br><span class="line">  String appDir &#x3D; (await getApplicationDocumentsDirectory()).path;</span><br><span class="line">  String tempDir &#x3D; (await getTemporaryDirectory()).path;</span><br><span class="line">  String storageDir &#x3D; (await getExternalStorageDirectory()).path;</span><br><span class="line">  print(&quot;appDir&#x3D;&#x3D;$appDir&quot;);</span><br><span class="line">  print(&quot;tempDir&#x3D;&#x3D;$tempDir&quot;);</span><br><span class="line">  print(&quot;storageDir&#x3D;&#x3D;$storageDir&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">I&#x2F;flutter (10148): appDir&#x3D;&#x3D;&#x2F;data&#x2F;user&#x2F;0&#x2F;com.example.flutter_image&#x2F;app_flutter</span><br><span class="line">I&#x2F;flutter (10148): tempDir&#x3D;&#x3D;&#x2F;data&#x2F;user&#x2F;0&#x2F;com.example.flutter_image&#x2F;cache</span><br><span class="line">I&#x2F;flutter (10148): storageDir&#x3D;&#x3D;&#x2F;storage&#x2F;emulated&#x2F;0&#x2F;Android&#x2F;data&#x2F;com.example.flutter_image&#x2F;files</span><br></pre></td></tr></table></figure>
+
+<h4 id="将要显示的图片导入到手机中"><a href="#将要显示的图片导入到手机中" class="headerlink" title="将要显示的图片导入到手机中"></a>将要显示的图片导入到手机中</h4><p><img data-src="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-image-upload-files-phone.png" loading="lazy"></p>
+<h4 id="完整代码-lib-main-dart"><a href="#完整代码-lib-main-dart" class="headerlink" title="完整代码(lib/main.dart)"></a>完整代码(lib/main.dart)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">import &#39;dart:convert&#39;;</span><br><span class="line">import &#39;dart:io&#39;;</span><br><span class="line">import &#39;dart:typed_data&#39;;</span><br><span class="line">import &#39;package:flutter&#x2F;material.dart&#39;;</span><br><span class="line">import &#39;package:path_provider&#x2F;path_provider.dart&#39;;</span><br><span class="line"></span><br><span class="line">Future&lt;void&gt; main() async &#123;</span><br><span class="line">  runApp(MyApp());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class MyApp extends StatelessWidget &#123;</span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return MaterialApp(</span><br><span class="line">      title: &#39;Flutter Demo&#39;,</span><br><span class="line">      theme: ThemeData(</span><br><span class="line">        primarySwatch: Colors.blue,</span><br><span class="line">      ),</span><br><span class="line">      home: MyHomePage(title: &#39;Flutter Demo Home Page&#39;),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class MyHomePage extends StatefulWidget &#123;</span><br><span class="line">  MyHomePage(&#123;Key key, this.title&#125;) : super(key: key);</span><br><span class="line">  final String title;</span><br><span class="line">  @override</span><br><span class="line">  _MyHomePageState createState() &#x3D;&gt; _MyHomePageState();</span><br><span class="line">&#125;</span><br><span class="line">File file;</span><br><span class="line">class _MyHomePageState extends State&lt;MyHomePage&gt; &#123;</span><br><span class="line">  int _counter &#x3D; 0;</span><br><span class="line">  String _storageDir &#x3D; &#39;&#39;;</span><br><span class="line">  File file;</span><br><span class="line"></span><br><span class="line">  void _incrementCounter() &#123;</span><br><span class="line">    setState(() &#123;</span><br><span class="line">      _counter++;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    _getLocalFile();</span><br><span class="line">    return Scaffold(</span><br><span class="line">      appBar: AppBar(</span><br><span class="line">        title: Text(widget.title),</span><br><span class="line">      ),</span><br><span class="line">      body: Center(</span><br><span class="line">        child: Column(</span><br><span class="line">          mainAxisAlignment: MainAxisAlignment.center,</span><br><span class="line">          children: &lt;Widget&gt;[</span><br><span class="line">            Image.file(File(_storageDir+&quot;&#x2F;flutter.png&quot;)),</span><br><span class="line">            Image.file(File(&quot;$_storageDir&#x2F;flutter.png&quot;)),</span><br><span class="line">          ],</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">      floatingActionButton: FloatingActionButton(</span><br><span class="line">        onPressed: _incrementCounter,</span><br><span class="line">        tooltip: &#39;Increment&#39;,</span><br><span class="line">        child: Icon(Icons.add),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  _getLocalFile() async &#123;</span><br><span class="line">    String appDir &#x3D; (await getApplicationDocumentsDirectory()).path;</span><br><span class="line">    String tempDir &#x3D; (await getTemporaryDirectory()).path;</span><br><span class="line">    String storageDir &#x3D; (await getExternalStorageDirectory()).path;</span><br><span class="line">    setState(() &#123;</span><br><span class="line">      _storageDir &#x3D; storageDir;</span><br><span class="line">    &#125;);</span><br><span class="line">    return storageDir;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-构造方法"><a href="#3-4-构造方法" class="headerlink" title="3.4 构造方法"></a>3.4 构造方法</h3><p>ImageProvider的子类有</p>
+<p><img data-src="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-image-imageprovider-imple.png" loading="lazy"></p>
+<p>传入AssetImage后代码为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image(image: AssetImage(&quot;images&#x2F;flutter.png&quot;))</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-5-效果图"><a href="#3-5-效果图" class="headerlink" title="3.5 效果图"></a>3.5 效果图</h3><p><img data-src="https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-image-preview.png" loading="lazy"></p>
+<h2 id="四-几个常用的属性"><a href="#四-几个常用的属性" class="headerlink" title="四 几个常用的属性"></a>四 几个常用的属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">const Image(&#123;</span><br><span class="line">  Key? key,</span><br><span class="line">  required this.image,</span><br><span class="line">  this.frameBuilder,</span><br><span class="line">  this.loadingBuilder,</span><br><span class="line">  this.errorBuilder,</span><br><span class="line">  this.semanticLabel,</span><br><span class="line">  this.excludeFromSemantics &#x3D; false,</span><br><span class="line">  this.width,</span><br><span class="line">  this.height,</span><br><span class="line">  this.color,</span><br><span class="line">  this.colorBlendMode,</span><br><span class="line">  this.fit,</span><br><span class="line">  this.alignment &#x3D; Alignment.center,</span><br><span class="line">  this.repeat &#x3D; ImageRepeat.noRepeat,</span><br><span class="line">  this.centerSlice,</span><br><span class="line">  this.matchTextDirection &#x3D; false,</span><br><span class="line">  this.gaplessPlayback &#x3D; false,</span><br><span class="line">  this.isAntiAlias &#x3D; false,</span><br><span class="line">  this.filterQuality &#x3D; FilterQuality.low,</span><br><span class="line">&#125;) : assert(image !&#x3D; null),</span><br><span class="line">     assert(alignment !&#x3D; null),</span><br><span class="line">     assert(repeat !&#x3D; null),</span><br><span class="line">     assert(filterQuality !&#x3D; null),</span><br><span class="line">     assert(matchTextDirection !&#x3D; null),</span><br><span class="line">     assert(isAntiAlias !&#x3D; null),</span><br><span class="line">     super(key: key);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-1-宽和高"><a href="#4-1-宽和高" class="headerlink" title="4.1 宽和高"></a>4.1 宽和高</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image(image: AssetImage(&quot;images&#x2F;flutter.png&quot;),width: 100,height: 100,),</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-color和colorBlendMode"><a href="#4-2-color和colorBlendMode" class="headerlink" title="4.2 color和colorBlendMode"></a>4.2 color和colorBlendMode</h3><p>color：设置图片的背景色，从Colors类中查找对应颜色</p>
+<p>colorBlendMode：混合模式，取值BlendMode枚举类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image(image: AssetImage(&quot;images&#x2F;flutter.png&quot;),color:Colors.blue,colorBlendMode: BlendMode.difference,),</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-fit"><a href="#4-3-fit" class="headerlink" title="4.3 fit"></a>4.3 fit</h3><p>fit：用于设置图像在页面中的布局方式</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>fit</strong></th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">BoxFit.fill</td>
+<td align="center">全图显示，显示可能拉伸，充满</td>
+</tr>
+<tr>
+<td align="center">BoxFit.contain</td>
+<td align="center">全图显示，显示原比例，不需充满</td>
+</tr>
+<tr>
+<td align="center">BoxFit.cover</td>
+<td align="center">显示可能拉伸，可能裁剪，充满</td>
+</tr>
+<tr>
+<td align="center">BoxFit.fitWidth</td>
+<td align="center">显示可能拉伸，可能裁剪，宽度充满</td>
+</tr>
+<tr>
+<td align="center">BoxFit.fitHeight</td>
+<td align="center">显示可能拉伸，可能裁剪，高度充满</td>
+</tr>
+<tr>
+<td align="center">BoxFit.none</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">BoxFit.scaleDown</td>
+<td align="center">效果和contain差不多,但是此属性不允许显示超过源图片大小，可小不可大</td>
+</tr>
+</tbody></table>
+<h3 id="4-4-alignment"><a href="#4-4-alignment" class="headerlink" title="4.4 alignment"></a>4.4 alignment</h3><p>alignment：设置图片的对齐方式，取值<code>Alignment</code>类中值</p>
+<h3 id="4-5-repeat"><a href="#4-5-repeat" class="headerlink" title="4.5 repeat"></a>4.5 repeat</h3><p>repeat：设置图片是否重复，取值有：</p>
+<ul>
+<li>ImageRepeat.repeat</li>
+<li>ImageRepeat.noRepeat</li>
+<li>ImageRepeat.repeatX</li>
+<li>ImageRepeat.repeatY</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Flutter/" rel="tag"># Flutter</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/9c343c12.html" rel="prev" title="Flutter开发之——运行卡在gradle assembleDebug">
+                  <i class="fa fa-chevron-left"></i> Flutter开发之——运行卡在gradle assembleDebug
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/f055de45.html" rel="next" title="日语学习之——表达式及词语(28.4)">
+                  日语学习之——表达式及词语(28.4) <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><span class="exturl" data-url="aHR0cHM6Ly9iZWlhbi5taWl0Lmdvdi5jbg==">京ICP备18061062号-1 </span>
+  </div>
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">PGzxc</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.1.0/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.1.0/source/js/motion.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.1.0/source/js/next-boot.js"></script><script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-next@8.1.0/source/js/local-search.js"></script>
+
+
+
+
+<script data-pjax>
+if (document.querySelectorAll('.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js', () => {
+    mermaid.init({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    }, '.mermaid');
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+
+
+
+    <div class="pjax">
+
+  
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.css">
+
+<script>
+NexT.utils.loadComments('#gitalk-container', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '4d2d97c55a316dfcea73',
+      clientSecret: 'f55fe43764e8560484a13850e4a6d84792924fb0',
+      repo        : 'PGzxc.github.io',
+      owner       : 'PGzxc',
+      admin       : ['PGzxc'],
+      id          : 'a15b2c25ff6d7a004f349ef802b46f6c',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+</body>
+</html>
