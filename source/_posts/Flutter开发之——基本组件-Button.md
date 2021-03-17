@@ -44,6 +44,9 @@ Flutter 提供了 10 多种 **Button** 类组件，本文
 
 * DropdownButton
 
+### 2.5 悬浮按钮
+* FloatingActionButton
+
 ## 三 按钮常用方法
 
 flutter中的Button基本上都是继承MaterialButton，先来看看MaterialButton中的属性
@@ -252,6 +255,22 @@ DropdownButton(
 #### 4.4.2 效果图
 ![][4]
 
+### 4.5 悬浮按钮(FloatingActionButton)
+
+#### 4.5.1 示例代码
+
+```
+floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ),
+floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+```
+
+#### 4.5.2 效果图
+![][6]
+
 ## 五 Button的自定义
 
 ### 5.1 示例代码
@@ -285,3 +304,4 @@ RaisedButton(
 [3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-button-icon-single.png
 [4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-button-dropdown-style.gif
 [5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-button-self-define.gif
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-button-floating-action.png
