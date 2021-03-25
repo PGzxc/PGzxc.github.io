@@ -9,8 +9,6 @@ tags:
 abbrlink: e2fd5852
 date: 2021-03-25 11:17:03
 ---
-# Flutter开发之——Placeholder
-
 ## 一 概述
 
 * Placeholder是一个占位符空间，用于当没有准备好构建组件时，使用placeholder进行占位
