@@ -34,3 +34,11 @@ comments: false
 | :--: | :------------------------------------: | :--: |
 |  1   | [UUID Online](http://www.uuid.online/) |      |
 
+## 五 生活工具
+
+| 编号 |                          名称(链接)                          |            备注            |
+| :--: | :----------------------------------------------------------: | :------------------------: |
+|  1   |            [ZOL在线](https://mobile.zol.com.cn/)             | 手机，数码，电脑报价及性能 |
+|  2   | [ZOL数码相机](https://detail.zol.com.cn/digital_camera_index/subcate15_list_1.html) |        数码相机报价        |
+|  3   |        [ZOL CPU性能](https://mobile.zol.com.cn/soc/)         |       CPU型号及得分        |
+
