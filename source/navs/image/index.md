@@ -12,6 +12,12 @@ comments: false
 |  1   |      [千图网](https://www.58pic.com/)      |                    |
 |  2   | [Pixabay](https://www.pexels.com/@pixabay) | 照片、插图、视频等 |
 
+## 图片编辑
+
+| 编号 |               名称(链接)                |    备注     |
+| :--: | :-------------------------------------: | :---------: |
+|  1   | [Logoly Pro](https://www.logoly.pro/#/) | p站风格图标 |
+
 ### Icon整理
 
 | 编号 |                    名称(链接)                     | 备注 |
