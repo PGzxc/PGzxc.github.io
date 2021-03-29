@@ -25,3 +25,12 @@ comments: false
 |  7   |  [Mr.Simple](https://blog.csdn.net/bboyfeiyu)  |                   |
 |  8   |    [张兴业](https://blog.csdn.net/xyz_lmn)     |                   |
 
+## 三 代码仓库
+
+| 编号 |                        名称(博客地址)                        |      说明      |
+| :--: | :----------------------------------------------------------: | :------------: |
+|  1   |           [jcenter](https://jcenter.bintray.com/)            | 外网,网站关闭  |
+|  2   |         [MVNRepository](https://mvnrepository.com/)          |      常用      |
+|  3   |     [阿里云仓库Maven](https://maven.aliyun.com/mvn/view)     |    内网使用    |
+|  4   | [Gradle-distributions](https://services.gradle.org/distributions/) | Gradle下载地址 |
+
