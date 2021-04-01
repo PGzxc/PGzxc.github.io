@@ -39,6 +39,19 @@ warning:debug info can bu unavailable.please chose other application using ADB:M
 ```
 adb kill-server
 ```
+## 四 其他解决办法
+
+### 4.1 gradle.gradle中配置debugTypes
+
+```
+debug {debuggable true }
+```
+
+### 4.2 AndroidManifest.xml中application标签添加
+
+```
+ android:debuggable="true"
+```
 
 [1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-android/android-debug-waiting.png
 [2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-android/android-debug-run-attach-debugger.png
