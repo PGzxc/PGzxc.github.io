@@ -65,14 +65,13 @@ Row({
 
 #### crossAxisAlignment
 
-|     取值     |                      说明                      |
-| :----------: | :--------------------------------------------: |
-|    start     |                     上对齐                     |
-|     end      |                     下对齐                     |
-|    center    |                    居中对齐                    |
-| spaceBetween |               均匀分布对齐(顶格)               |
-| spaceAround  | 间隔分布对齐(开头和结尾间隔是子控件间隔的一半) |
-| spaceEvenly  |          间隔分布对齐(所有间隔都一样)          |
+|   取值   |      说明      |
+| :------: | :------------: |
+|  start   |     上对齐     |
+|   end    |     下对齐     |
+|  center  |    居中对齐    |
+| baseline |    基线对齐    |
+| stretch  | 拉伸充满父容器 |
 
 #### textDirection
 
