@@ -20,7 +20,16 @@ comments: false
 |  2   | [百度云搜索引擎](http://yun.java1234.com/) |          |
 |  2   |  [Funletu-磁力](https://funletu.com/bt/)   | 最全磁力 |
 
-## 二 系统
+## 三 版本控制
+
+| 编号 |                         名称(地址)                          |   备注    |
+| :--: | :---------------------------------------------------------: | :-------: |
+|  1   |        [SmartGit](https://www.syntevo.com/smartgit/)        |    git    |
+|  2   |        [sourcetree](https://www.sourcetreeapp.com/)         |    git    |
+|  3   | [SVN-visualsvn](https://www.visualsvn.com/server/download/) | svn服务端 |
+|  4   |     [[TortoiseSVN](https://tortoisesvn.net/about.html)]     | svn客户端 |
+
+## 四 系统
 
 ### Windows
 
@@ -48,7 +57,7 @@ comments: false
 | :--: | :--------------------------------------------: | :--: |
 |  1   | [Centos官网](https://www.centos.org/download/) |      |
 
-## 三 Mac软件
+## 五 Mac软件
 
 ### 软件列表
 
@@ -57,7 +66,7 @@ comments: false
 |  1   | [Awesome Mac](https://wangchujiang.com/awesome-mac/index.zh.html) | 精品软件 |
 |  2   |               [MacWk](https://www.macwk.com/)                |          |
 
-## 四 Windows软件
+## 六 Windows软件
 
 ###  下载
 
@@ -72,7 +81,7 @@ comments: false
 | :--: | :------------------------------------------------: | :--: |
 |  1   | [微PE工具箱](http://www.wepe.com.cn/download.html) |      |
 
-## 五 APK下载
+## 七 APK下载
 
 ### GooglePlay
 
@@ -84,19 +93,19 @@ comments: false
 |  4   |          [apk.support](https://apk.support/zh_cn/)           | 外网 |
 |  5   | [GooglePlay](https://play.google.com/)+[油猴插件](https://greasyfork.org/zh-CN/scripts/33005-direct-download-from-google-play) | 外网 |
 
-## 六 墙(收费)
+## 八 墙(收费)
 
 | 编号 |                 名称(地址)                 | 备注 |
 | :--: | :----------------------------------------: | :--: |
 |  1   | [namepilo](https://namepilo.com/index.php) |      |
 
-## 七 逻辑思维工具
+## 九 逻辑思维工具
 
 | 编号 |        名称(地址)         | 备注 |
 | :--: | :-----------------------: | :--: |
 |  1   | [幕布](https://mubu.com/) |      |
 
-## 八 软件教程
+## 十 软件教程
 
 | 编号 |             名称(地址)              | 备注 |
 | :--: | :---------------------------------: | :--: |
