@@ -5,7 +5,16 @@ description:
 comments: false
 ---
 
-### 一 影视资源
+## 一 影视播放器软件
+
+| 编号 |                  名称(地址)                  |     备注     |
+| :--: | :------------------------------------------: | :----------: |
+|  1   | [ZY Player 资源播放器](http://zyplayer.fun/) | 全网热门视频 |
+|  2   |        [腾讯视频](https://v.qq.com/)         |              |
+|  3   |       [爱奇艺](https://www.iqiyi.com/)       |              |
+|  4   |        [优酷](https://www.youku.com/)        |              |
+
+### 二 影视资源
 
 | 编号 |               名称(地址)                |     备注      |
 | :--: | :-------------------------------------: | :-----------: |
@@ -22,9 +31,9 @@ comments: false
 |  11  |    [片库网](http://www.pianku5.com/)    |   最新电影    |
 |  12  |  [南瓜影视](http://www.lukbox.com.cn/)  |               |
 |  13  |   [欧乐影视](https://www.olevod.com/)   |  最新，外网   |
-|      |     [U管](https://www.youtube.com/)     |               |
+|  14  |     [U管](https://www.youtube.com/)     |               |
 
-## 二 视频解析
+## 三 视频解析
 
 | 编号 |                     名称(地址)                     | 备注 |
 | :--: | :------------------------------------------------: | :--: |
@@ -32,7 +41,7 @@ comments: false
 |  2   |           [船长解析](http://czjx8.com/)            |      |
 |  3   | [全能VIP视频解析](http://tool.liumingye.cn/video/) |      |
 
-### 三 音效素材
+### 四 音效素材
 
 | 编号 |                           名称备注                           | 备注 |
 | :--: | :----------------------------------------------------------: | :--: |
@@ -45,7 +54,7 @@ comments: false
 |  7   | [youtube 音频图书馆](https://www.youtube.com/audiolibrary/soundeffects) |      |
 |  8   | [Partners in Rhyme](https://www.royaltyfreemusicclips.com/pir/free_music_loops.shtml) |      |
 
-### 四 歌曲资源整理
+### 五 歌曲资源整理
 
 | 编号 |                名称                | 备注 |
 | :--: | :--------------------------------: | :--: |
