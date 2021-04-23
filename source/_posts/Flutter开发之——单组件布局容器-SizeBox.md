@@ -49,4 +49,5 @@ SizedBox(
 
 ![][1]
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-sizebox-sample.png
+
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter_sizebox_sample.png
