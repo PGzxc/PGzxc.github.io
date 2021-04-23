@@ -146,6 +146,6 @@ Row(
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-flexible-sample.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter_flexible_sample.png
 [2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-expanded-sample.png
 [3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-spacer-sample.png
