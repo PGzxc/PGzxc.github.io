@@ -42,3 +42,16 @@ comments: false
 |  2   | [ZOL数码相机](https://detail.zol.com.cn/digital_camera_index/subcate15_list_1.html) |        数码相机报价        |
 |  3   |        [ZOL CPU性能](https://mobile.zol.com.cn/soc/)         |       CPU型号及得分        |
 
+## 六 笔记
+
+| 编号 |            名称(链接)            |       备注       |
+| :--: | :------------------------------: | :--------------: |
+|  1   | [notion](https://www.notion.so/) |   支持所有平台   |
+|  2   |  [语雀](https://www.yuque.com)   | 阿里开发(桌面端) |
+
+## 七 效率
+
+| 编号 |         名称(链接)         |  备注  |
+| :--: | :------------------------: | :----: |
+|  1   | [uTools](https://u.tools/) | 工具集 |
+
