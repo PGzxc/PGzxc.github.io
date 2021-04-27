@@ -13,6 +13,7 @@ comments: false
 |  2   | [ Flutter-learning](https://github.com/AweiLoveAndroid/Flutter-learning) | Flutter学习资料 |
 |  3   | [flutter-in-action](https://github.com/flutterchina/flutter-in-action) |    电子书籍     |
 |  4   | [flutter-study](https://github.com/yang7229693/flutter-study) |      文章       |
+|  5   | [Flutter实战](https://book.flutterchina.club/#%E7%BC%98%E8%B5%B7) |                 |
 
 ## 二 Flutter 组件/示例
 
