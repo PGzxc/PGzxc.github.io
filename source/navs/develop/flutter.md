@@ -14,6 +14,7 @@ comments: false
 |  3   | [flutter-in-action](https://github.com/flutterchina/flutter-in-action) |    电子书籍     |
 |  4   | [flutter-study](https://github.com/yang7229693/flutter-study) |      文章       |
 |  5   | [Flutter实战](https://book.flutterchina.club/#%E7%BC%98%E8%B5%B7) |                 |
+|  6   |             [Flutter老孟](http://laomengit.com/)             |                 |
 
 ## 二 Flutter 组件/示例
 
