@@ -92,7 +92,7 @@ double _size = 100;
   @override
   void initState() {
     super.initState();
-    _controller = _controller =  AnimationController(
+    _controller =  AnimationController(
         vsync: this,
         duration: Duration(milliseconds: 500),
         lowerBound: 100,
