@@ -31,62 +31,42 @@ date: 2021-05-08 16:21:42
 
 #### 插件安装
 
-* 打开CMD终端，执行如下指令
+* 打开CMD终端，执行如下指令(自动添加pubspec.yaml依赖)
 
   ```
   flutter pub add flare_flutter
   ```
-
-  指令执行后：pubspec.yaml后会自动添加flare_flutter依赖
-
-  ```
-  dependencies:
-    flare_flutter: ^3.0.0
-  ```
-![][1]
-
 #### 插件卸载
 
-* 打开CMD终端，执行如下指令
+* 打开CMD终端，执行如下指令(pubspec.yaml依赖被删除)
 
   ```
   flutter pub remove flare_flutter
   ```
-
-* 指令执行完毕后，pubspec.yaml后会自动添加flare_flutter依赖会被删除，且Dart Packages下的包会被删除
-
-
 ## 三 Flare素材
-
+### 3.1 素材资源
 [https://flare.rive.app/](https://flare.rive.app/)
 ![][2]
 
 从右上角处，下拉列表选择Flare文件
 ![][3]
+### 3.2 素材下载
+* Flare动画详情页，点击`OPEN IN RIVE1`
+  ![][4]
+* RIVE 1打开后，切换到`ANIMATE(animate)`选项卡，下面有相应的动画表情，点击可执行并查看(fail，test，success，idle)
+  ![][5]
+* 点击右上角导出按钮将文件导出
+  ![][6]
 
 ## 四 示例
 
-### 4.1 下载Flare文件并添加依赖
+### 4.1 添加Flare依赖(assets下所有文件)
 
-* Flare动画详情页，点击`OPEN IN RIVE1`
-
-  ![][4]
-  
-* RIVE 1打开后，切换到`ANIMATE(animate)`选项卡，下面有相应的动画表情，点击可执行并查看(fail，test，success，idle)
-
-  ![][5]
-  
-* 点击右上角导出按钮将文件导出
-
-  ![][6]
-  
-* 将下载的Flare文件放到项目的assets文件夹下，并添加依赖(assets下所有文件)
-
-  ```
-    assets:
-       - images/
-       - assets/
-  ```
+```
+  assets:
+     - images/
+     - assets/
+```
 
 ### 4.2 代码(通过设置不同名称，显示动画效果)
 
