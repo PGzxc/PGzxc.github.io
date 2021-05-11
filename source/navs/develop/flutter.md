@@ -46,3 +46,10 @@ comments: false
 |  2   | [FlutterWhatsAppClone](https://github.com/iampawan/FlutterWhatsAppClone) |                   |
 |  3   | [flutter_wanandroid](https://github.com/Sky24n/flutter_wanandroid) |                   |
 
+## 五 Flutter 官方资料
+
+| 编号 |                   名称(博客地址)                    |           说明           |
+| :--: | :-------------------------------------------------: | :----------------------: |
+|  1   | [Flutter API](https://api.flutter-io.cn/index.html) | 动画，组件使用说明及示例 |
+|  2   |       [Flutter 官方网站](https://flutter.cn/)       |         官方网站         |
+
