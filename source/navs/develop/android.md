@@ -43,3 +43,20 @@ comments: false
 |  3   | [NetKeeper](https://play.google.com/store/apps/details?id=com.minhui.networkcapture.pro) |    抓取http和https数据包     |
 |  4   | [Packet Capture](https://play.google.com/store/apps/details?id=app.greyshirts.sslcapture) |    抓取http和https数据包     |
 
+## 五 图表控件
+
+| 编号 |                        名称(博客地址)                        |   说明   |
+| :--: | :----------------------------------------------------------: | :------: |
+|  1   | [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart)  | 功能最全 |
+|  2   | [WilliamChart](https://github.com/diogobernardino/WilliamChart) |          |
+|  3   | [HelloCharts](https://github.com/lecho/hellocharts-android)  |          |
+
+## 六 底部导航
+
+| 编号 |                        名称(博客地址)                        |       说明        |
+| :--: | :----------------------------------------------------------: | :---------------: |
+|  1   | [BottomNavigationView](https://developer.android.google.cn/guide/navigation/navigation-ui) |  google官方控件   |
+|  2   | [BottomNavigation](https://github.com/Ashok-Varma/BottomNavigation) | GitHub上start最多 |
+|  3   | [BottomNavigationViewEx](https://github.com/ittianyu/BottomNavigationViewEx) |   支持显示消息    |
+|  4   | [Material-BottomNavigation](https://github.com/sephiroth74/Material-BottomNavigation) |   支持显示消息    |
+
