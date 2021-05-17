@@ -160,7 +160,7 @@ EasyRefresh(
           await Future<void>.delayed(const Duration(milliseconds: 1000));
           setState(() {_list.remove(_list.length);});
         },
-        
+)        
 ```
 
 #### 效果图
