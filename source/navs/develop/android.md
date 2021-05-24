@@ -60,3 +60,9 @@ comments: false
 |  3   | [BottomNavigationViewEx](https://github.com/ittianyu/BottomNavigationViewEx) |   支持显示消息    |
 |  4   | [Material-BottomNavigation](https://github.com/sephiroth74/Material-BottomNavigation) |   支持显示消息    |
 
+## 七 序列化
+
+| 编号 |             名称(博客地址)             |            说明            |
+| :--: | :------------------------------------: | :------------------------: |
+|  1   | [quicktype](https://app.quicktype.io/) | 任意语言json序列化(在线转) |
+
