@@ -43,7 +43,9 @@ date: 2021-05-24 15:09:38
 
 ### 3.1 网站(可能需要翻墙)
 
-https://app.quicktype.io/
+网站地址：https://app.quicktype.io/
+
+GitHub地址：https://github.com/quicktype/quicktype
 
 ### 3.2 解析过程
 
