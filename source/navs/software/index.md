@@ -111,3 +111,19 @@ comments: false
 | :--: | :---------------------------------: | :--: |
 |  1   | [软件自学网](http://www.rjzxw.com/) |      |
 
+## 十一 录屏软件
+
+| 编号 |                          名称(地址)                          |        备注        |
+| :--: | :----------------------------------------------------------: | :----------------: |
+|  1   |      [Captura](https://mathewsachin.github.io/Captura/)      | 免费+ffmpeg(支持)  |
+|  2   |     [Open Broadcaster Software](https://obsproject.com/)     |                    |
+|  3   |   [Camtasia](https://www.techsmith.com/video-editor.html)    |   收费+录制+剪辑   |
+|  4   | [Apowersoft 免费在线录屏](https://www.apowersoft.cn/free-online-screen-recorder) |      在线录制      |
+|  5   |             [bandicam](https://www.bandicam.cn/)             | 功能强大的录制软件 |
+
+## 十二 播放器
+
+| 编号 |                   名称(地址)                    |        备注        |
+| :--: | :---------------------------------------------: | :----------------: |
+|  1   | [Potplayer](https://potplayer.en.softonic.com/) | 免费全能视频播放器 |
+
