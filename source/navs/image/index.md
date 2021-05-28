@@ -43,6 +43,7 @@ comments: false
 |  13  |          [Icomoon](https://icomoon.io/)           |      |
 |  14  |     [Swifticons](https://www.swifticons.com/)     |      |
 |  15  | [Flat Icon Design](http://flat-icon-design.com/)  |      |
+|  16  |   [iconic](https://iconic.app/c/type/business/)   |      |
 
 ### 壁纸整理
 
