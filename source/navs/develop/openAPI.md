@@ -8,7 +8,7 @@ comments: false
 
 | 编号 |                          名称(链接)                          |      备注      |
 | :--: | :----------------------------------------------------------: | :------------: |
-|  1   | [public-apis/public-*apis*](https://github.com/public-apis/public-apis) | 开源+整理+国外 |
+|  1   | [public-apis/public-apis](https://github.com/public-apis/public-apis) | 开源+整理+国外 |
 |  1   |             [天行数据](https://www.tianapi.com/)             |   免费+收费    |
 |  2   |           [百度-API商城](https://apis.baidu.com/)            |      百度      |
 |  3   |             [聚合数据](https://www.juhe.cn/docs)             |   免费+收费    |
@@ -30,19 +30,19 @@ comments: false
 | :--: | :----------------------------------------------------------: | :-----------------: |
 |  1   |                 [strapi](https://strapi.io/)                 | 开源(收费)+界面管理 |
 |  2   |                [Swagger](https://swagger.io/)                |     开源(收费)      |
-|  2   |         [dingo/*api*](https://github.com/dingo/api)          |  开源+私有+github   |
+|  2   |         [dingo/api](https://github.com/dingo/api)          |  开源+私有+github   |
 |  3   | [puppeteer/puppeteer](https://github.com/puppeteer/puppeteer) |     开源+github     |
-|  4   | [typicode](https://github.com/typicode)/[json-server](https://github.com/typicode/json-server) |       github        |
-|  5   | [httpie](https://github.com/httpie)/**[httpie](https://github.com/httpie/httpie)** |       github        |
-|  6   | [Kong](https://github.com/Kong)/**[kong](https://github.com/Kong/kong)** |                     |
+|  4   | [typicode/json-server](https://github.com/typicode/json-server) |       github        |
+|  5   | [httpie/httpie](https://github.com/httpie/httpie) |       github        |
+|  6   | [Kong/kong](https://github.com/Kong/kong) |                     |
 
 ## 三 接口管理
 
-| 编号 |                          名称(链接)                          |         备注          |
-| :--: | :----------------------------------------------------------: | :-------------------: |
-|  1   |      [阿里-RAP](http://thx.github.io/RAP/index_zh.html)      |     接口管理工具      |
-|  2   |        [阿里-RAP2](https://github.com/thx/rap2-delos)        |       RAP升级版       |
-|  1   | [YMFE](https://github.com/YMFE)/**[yapi](https://github.com/YMFE/yapi)** | 本地部署+接口管理平台 |
-|  2   |              [Apizza](https://www.apizza.net/)               |       个人+收费       |
-|  3   |            [eoLinker](https://www.eolinker.com/)             |                       |
+| 编号 |                     名称(链接)                     |         备注          |
+| :--: | :------------------------------------------------: | :-------------------: |
+|  1   | [阿里-RAP](http://thx.github.io/RAP/index_zh.html) |     接口管理工具      |
+|  2   |   [阿里-RAP2](https://github.com/thx/rap2-delos)   |       RAP升级版       |
+|  3   |     [YMFE/yapi](https://github.com/YMFE/yapi)      | 本地部署+接口管理平台 |
+|  4   |         [Apizza](https://www.apizza.net/)          |       个人+收费       |
+|  5   |       [eoLinker](https://www.eolinker.com/)        |                       |
 

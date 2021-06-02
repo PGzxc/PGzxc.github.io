@@ -9,5 +9,5 @@ comments: false
 
 | 编号 |                          名称(链接)                          |  备注   |
 | :--: | :----------------------------------------------------------: | :-----: |
-|  1   | [fighting41love](https://github.com/fighting41love)/**[funNLP](https://github.com/fighting41love/funNLP)** | NLP整理 |
+|  1   | [fighting41love/funNLP](https://github.com/fighting41love/funNLP) | NLP整理 |
 
