@@ -9,14 +9,14 @@ comments: false
 | 编号 |                          名称(链接)                          |      备注      |
 | :--: | :----------------------------------------------------------: | :------------: |
 |  1   | [public-apis/public-apis](https://github.com/public-apis/public-apis) | 开源+整理+国外 |
-|  1   |             [天行数据](https://www.tianapi.com/)             |   免费+收费    |
-|  2   |           [百度-API商城](https://apis.baidu.com/)            |      百度      |
-|  3   |             [聚合数据](https://www.juhe.cn/docs)             |   免费+收费    |
-|  4   |            [二进制数据](https://www.binstd.com/)             |      收费      |
-|  5   |        [用友_APILink](https://api.yonyoucloud.com/#/)        |      收费      |
-|  6   |  [气象大数据API](http://data.cma.cn/market/marketList.html)  | 免费+气象接口  |
-|  7   | [蜻蜓FM-API](https://open.qingting.fm/documents/API%20%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/) |                |
-|  8   |               [mockapi](http://mock-api.com/)                |    模拟数据    |
+|  2   |             [天行数据](https://www.tianapi.com/)             |   免费+收费    |
+|  3   |           [百度-API商城](https://apis.baidu.com/)            |      百度      |
+|  4   |             [聚合数据](https://www.juhe.cn/docs)             |   免费+收费    |
+|  5   |            [二进制数据](https://www.binstd.com/)             |      收费      |
+|  6   |        [用友_APILink](https://api.yonyoucloud.com/#/)        |      收费      |
+|  7   |  [气象大数据API](http://data.cma.cn/market/marketList.html)  | 免费+气象接口  |
+|  8   | [蜻蜓FM-API](https://open.qingting.fm/documents/API%20%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/) |                |
+|  9   |               [mockapi](http://mock-api.com/)                |    模拟数据    |
 
 ## 二 模拟数据
 
@@ -30,11 +30,11 @@ comments: false
 | :--: | :----------------------------------------------------------: | :-----------------: |
 |  1   |                 [strapi](https://strapi.io/)                 | 开源(收费)+界面管理 |
 |  2   |                [Swagger](https://swagger.io/)                |     开源(收费)      |
-|  2   |         [dingo/api](https://github.com/dingo/api)          |  开源+私有+github   |
-|  3   | [puppeteer/puppeteer](https://github.com/puppeteer/puppeteer) |     开源+github     |
-|  4   | [typicode/json-server](https://github.com/typicode/json-server) |       github        |
-|  5   | [httpie/httpie](https://github.com/httpie/httpie) |       github        |
-|  6   | [Kong/kong](https://github.com/Kong/kong) |                     |
+|  3   |         [dingo/api](https://github.com/dingo/api)          |  开源+私有+github   |
+|  4   | [puppeteer/puppeteer](https://github.com/puppeteer/puppeteer) |     开源+github     |
+|  5   | [typicode/json-server](https://github.com/typicode/json-server) |       github        |
+|  6   | [httpie/httpie](https://github.com/httpie/httpie) |       github        |
+|  7   | [Kong/kong](https://github.com/Kong/kong) |                     |
 
 ## 三 接口管理
 
