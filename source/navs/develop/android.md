@@ -66,3 +66,17 @@ comments: false
 | :--: | :------------------------------------: | :------------------------: |
 |  1   | [quicktype](https://app.quicktype.io/) | 任意语言json序列化(在线转) |
 
+## 八 Android热门课程
+
+| 编号 |                        名称(博客地址)                        |                说明                 |
+| :--: | :----------------------------------------------------------: | :---------------------------------: |
+|  1   | [OpenCV入门到进阶：实战三大典型项目](https://coding.imooc.com/class/chapter/496.html#Anchor) | 车辆检测/人脸识别+图像拼接+文字识别 |
+|  2   | [FFmpeg音视频核心技术全面精讲](https://coding.imooc.com/class/chapter/279.html#Anchor) |                                     |
+|  3   |  [Android节目直播案例开发](https://www.imooc.com/learn/919)  |            直播+免费课程            |
+|  4   | [WebRTC实时互动直播技术入门](https://coding.imooc.com/class/chapter/329.html#Anchor) |             音视频服务              |
+|  5   | [编程必备基础-音视频小白系统入门课](https://coding.imooc.com/class/chapter/415.html#Anchor) |                                     |
+|  6   | [Android C++ OpenGL 教程](https://edu.csdn.net/course/detail/19367) |                                     |
+|  7   | [Android视频编码和直播推流教程](https://edu.csdn.net/course/detail/8942) |                                     |
+|  8   | [FFmpeg+OpenGL ES+OpenSL](https://edu.csdn.net/course/detail/8036) |                                     |
+|  9   | [FFmpeg打造Android万能音频播放器](https://edu.csdn.net/course/detail/6842) |                                     |
+
