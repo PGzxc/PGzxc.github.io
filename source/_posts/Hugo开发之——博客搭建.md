@@ -1,7 +1,7 @@
 ---
 title: Hugo开发之——博客搭建
 categories:
-  - 工具
+  - 站点
   - Hugo
 tags:
   - Hugo
