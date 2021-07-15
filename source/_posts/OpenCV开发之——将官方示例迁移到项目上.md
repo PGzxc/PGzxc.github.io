@@ -441,7 +441,9 @@ JNIEXPORT jlong JNICALL Java_com_example_myopencv_DetectionBasedTracker_nativeCr
 ### 4.7 效果图
 ![][11]
 
-
+## 五 说明
+* 因为添加了人脸识别导致apk的体积增大(700M左右)
+* 下面讲解如何通过修改依赖降低apk的体积
 
 
 [1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/opencv-fdactivity-native-jni-progress.png
