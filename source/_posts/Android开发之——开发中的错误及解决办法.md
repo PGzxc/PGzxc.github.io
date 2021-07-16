@@ -43,6 +43,49 @@ android {
 }
 ```
 
+### 2.2 Unable to find EOCD signature
+
+**现象1**
+
+```
+Execution failed for task ':app:packagexxxxRelease'.
+> A failure occurred while executing com.android.build.gradle.internal.tasks.Workers$ActionFacade
+   > Unable to find EOCD signature
+```
+**现象2**
+```
+Execution failed for task ':app:packageGame_ZHRelease'.
+> A failure occurred while executing com.android.build.gradle.internal.tasks.Workers$ActionFacade
+   > java.lang.IllegalArgumentException (no error message)
+```
+
+**原因**
+
+依赖中添加了有关`ABI`相关的配置，打包输出时，未指定`ABI`版本
+
+**解决办法（添加ABI输出）**
+
+```
+import com.android.build.OutputFile
+
+static def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("GMT+8"))
+}
+buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+                    project.ext { appName = 'YourApkName' }
+                    outputFileName = "${appName}-${output.getFilter(OutputFile.ABI)}-${variant.name}-${variant.versionName}.apk"
+                }
+            }
+        }
+    }
+```
+
 ## 三 警告类
 
 ### 3.1 The 'kotlin-android-extensions' Gradle plugin is deprecated
@@ -86,3 +129,19 @@ buildToolsVersion "30.0.3"
 compileSdkVersion 30
 buildToolsVersion "30.0.2"
 ```
+
+## 四 工具类
+
+### 4.1 Task list not build
+
+**现象**
+
+![][41]
+**解决办法**
+
+* 点击`Task list not build`，进入`Settings——>Experimental`，将`Do not build Gradle task list duraing Gradle sync`前面的勾选去掉，并应用
+* 点击`Sync Project with Gradle Files`同步一下项目
+
+
+[41]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-android/as-task-list-not-build.png
+
