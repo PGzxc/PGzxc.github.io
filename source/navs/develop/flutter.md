@@ -15,6 +15,7 @@ comments: false
 |  4   | [flutter-study](https://github.com/yang7229693/flutter-study) |      文章       |
 |  5   | [Flutter实战](https://book.flutterchina.club/#%E7%BC%98%E8%B5%B7) |                 |
 |  6   |             [Flutter老孟](http://laomengit.com/)             |                 |
+|  7   |            [Flutter中文社区](https://flutter.cn/)            |    中文文档     |
 
 ## 二 Flutter 组件/示例
 
