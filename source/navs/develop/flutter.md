@@ -4,55 +4,56 @@ date: 2021-04-23 10:44:50
 description: 
 comments: false
 ---
+##  一 Flutter 官方资料
 
-## 一 Flutter资料
+| 编号 |                       名称(博客地址)                       |      说明       |
+| :--: | :--------------------------------------------------------: | :-------------: |
+|  1   |          [Flutter 官方网站](https://flutter.dev/)          |      英文       |
+|  2   |         [Flutter 中文社区版](https://flutter.cn/)          |  官方中文网站   |
+|  3   |    [Flutter API](https://api.flutter-io.cn/index.html)     |       API       |
+|  4   |   [Flutter samples](https://github.com/flutter/samples)    | Flutter官方示例 |
+|  5   | [Flutter all samples](https://flutter.github.io/samples/#) |  官方示例集合   |
 
-| 编号 |                          名称(地址)                          |      说明       |
-| :--: | :----------------------------------------------------------: | :-------------: |
-|  1   |  [FlutterUnit](https://github.com/toly1994328/FlutterUnit)   |    集录指南     |
-|  2   | [ Flutter-learning](https://github.com/AweiLoveAndroid/Flutter-learning) | Flutter学习资料 |
-|  3   | [flutter-in-action](https://github.com/flutterchina/flutter-in-action) |    电子书籍     |
-|  4   | [flutter-study](https://github.com/yang7229693/flutter-study) |      文章       |
-|  5   | [Flutter实战](https://book.flutterchina.club/#%E7%BC%98%E8%B5%B7) |                 |
-|  6   |             [Flutter老孟](http://laomengit.com/)             |                 |
-|  7   |            [Flutter中文社区](https://flutter.cn/)            |    中文文档     |
+## 二 Flutter资料
 
-## 二 Flutter 组件/示例
+| 编号 |                          名称(地址)                          |         说明         |
+| :--: | :----------------------------------------------------------: | :------------------: |
+|  1   |  [FlutterUnit](https://github.com/toly1994328/FlutterUnit)   |       集录指南       |
+|  2   | [ Flutter-learning](https://github.com/AweiLoveAndroid/Flutter-learning) |   Flutter学习资料    |
+|  3   | [flutter-in-action](https://github.com/flutterchina/flutter-in-action) |       电子书籍       |
+|  4   | [flutter-study](https://github.com/yang7229693/flutter-study) |  Flutter文章(布局)   |
+|  5   | [Flutter实战](https://book.flutterchina.club/#%E7%BC%98%E8%B5%B7) | Flutter教程教程+示例 |
+|  6   |             [Flutter老孟](http://laomengit.com/)             |   Flutter教程+示例   |
 
-| 编号 |                        名称(博客地址)                        |    说明     |
-| :--: | :----------------------------------------------------------: | :---------: |
-|  1   | [FlutterExampleApps](https://github.com/iampawan/FlutterExampleApps) |   App/Web   |
-|  2   | [awesome-flutter](https://github.com/Solido/awesome-flutter) |   UI组件    |
-|  3   | [flutter_architecture_samples](https://github.com/brianegan/flutter_architecture_samples) |             |
-|  4   | [Best-Flutter-UI-Templates](https://github.com/mitesh77/Best-Flutter-UI-Templates) |             |
-|  5   | [flutter-examples](https://github.com/nisrulz/flutter-examples) |             |
-|  6   | [Flutter-Notebook](https://github.com/OpenFlutter/Flutter-Notebook) |             |
-|  7   | [flutter-tutorials](https://github.com/FilledStacks/flutter-tutorials) |             |
-|  8   | [flutter-samples](https://github.com/diegoveloper/flutter-samples) |             |
-|  9   |        [samples](https://github.com/flutter/samples)         | Flutter官方 |
-|  10  |  [flutter_deer](https://github.com/simplezhli/flutter_deer)  |             |
-|  11  |    [Flutter Samples](https://flutter.github.io/samples/#)    |             |
+## 三 Flutter 组件/示例
 
-## 三 plugin
+| 编号 |                        名称(博客地址)                        |             说明             |
+| :--: | :----------------------------------------------------------: | :--------------------------: |
+|  1   | [FlutterExampleApps](https://github.com/iampawan/FlutterExampleApps) |       App/Web项目源码        |
+|  2   | [awesome-flutter](https://github.com/Solido/awesome-flutter) |            UI组件            |
+|  3   | [flutter_architecture_samples](https://github.com/brianegan/flutter_architecture_samples) | flutter_architecture_samples |
+|  4   | [Best-Flutter-UI-Templates](https://github.com/mitesh77/Best-Flutter-UI-Templates) |          Flutter UI          |
+|  5   | [flutter-examples](https://github.com/nisrulz/flutter-examples) |           UI+网络            |
+|  6   | [Flutter-Notebook](https://github.com/OpenFlutter/Flutter-Notebook) |      视图+第三方库+动画      |
+|  7   | [flutter-tutorials](https://github.com/FilledStacks/flutter-tutorials) |      Flutter tutorials       |
+|  8   | [flutter-samples](https://github.com/diegoveloper/flutter-samples) |          GitHub示例          |
+|  10  |  [flutter_deer](https://github.com/simplezhli/flutter_deer)  |       Flutter 练习项目       |
 
-| 编号 |                        名称(博客地址)                        |    说明     |
-| :--: | :----------------------------------------------------------: | :---------: |
-|  1   |        [plugins](https://github.com/flutter/plugins)         | flutter插件 |
-|  2   |        [pub.dev](https://pub.flutter-io.cn/packages)         |  插件安装   |
-|  3   | [ flutterfire](https://github.com/FirebaseExtended/flutterfire) |             |
+## 四 plugin
 
-## 四 项目
+| 编号 |                        名称(博客地址)                        |       说明       |
+| :--: | :----------------------------------------------------------: | :--------------: |
+|  1   |        [plugins](https://github.com/flutter/plugins)         |   flutter插件    |
+|  2   |        [pub.dev](https://pub.flutter-io.cn/packages)         |     插件安装     |
+|  3   | [ flutterfire](https://github.com/FirebaseExtended/flutterfire) | Firebase plugins |
+
+## 五 项目
 
 | 编号 |                        名称(博客地址)                        |       说明        |
 | :--: | :----------------------------------------------------------: | :---------------: |
 |  1   |  [FlutterDouBan](https://github.com/kaina404/FlutterDouBan)  | Flutter豆瓣客户端 |
-|  2   | [FlutterWhatsAppClone](https://github.com/iampawan/FlutterWhatsAppClone) |                   |
-|  3   | [flutter_wanandroid](https://github.com/Sky24n/flutter_wanandroid) |                   |
+|  2   | [FlutterWhatsAppClone](https://github.com/iampawan/FlutterWhatsAppClone) |     WhatsApp      |
+|  3   | [flutter_wanandroid](https://github.com/Sky24n/flutter_wanandroid) |  wanandroid app   |
 
-## 五 Flutter 官方资料
 
-| 编号 |                   名称(博客地址)                    |           说明           |
-| :--: | :-------------------------------------------------: | :----------------------: |
-|  1   | [Flutter API](https://api.flutter-io.cn/index.html) | 动画，组件使用说明及示例 |
-|  2   |       [Flutter 官方网站](https://flutter.cn/)       |         官方网站         |
 
