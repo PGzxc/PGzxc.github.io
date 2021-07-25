@@ -30,13 +30,15 @@ comments: false
 |  8   | [flutter-samples](https://github.com/diegoveloper/flutter-samples) |             |
 |  9   |        [samples](https://github.com/flutter/samples)         | Flutter官方 |
 |  10  |  [flutter_deer](https://github.com/simplezhli/flutter_deer)  |             |
+|  11  |    [Flutter Samples](https://flutter.github.io/samples/#)    |             |
 
 ## 三 plugin
 
 | 编号 |                        名称(博客地址)                        |    说明     |
 | :--: | :----------------------------------------------------------: | :---------: |
 |  1   |        [plugins](https://github.com/flutter/plugins)         | flutter插件 |
-|  2   | [ flutterfire](https://github.com/FirebaseExtended/flutterfire) |             |
+|  2   |        [pub.dev](https://pub.flutter-io.cn/packages)         |  插件安装   |
+|  3   | [ flutterfire](https://github.com/FirebaseExtended/flutterfire) |             |
 
 ## 四 项目
 
