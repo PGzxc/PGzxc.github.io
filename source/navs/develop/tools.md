@@ -60,11 +60,19 @@ comments: false
 |  3   |    [MuMu模拟器](https://mumu.163.com/)    |   手游    |
 
 ## 六 工具
-| 编号 |                          名称及地址                          |     说明     |
-| :--: | :----------------------------------------------------------: | :----------: |
-|  1   | [lively wallpaper](https://github.com/rocksdanister/lively)  | 开源桌面壁纸 |
-|  2   |       [magnetw](https://github.com/xiandanin/magnetW)        |   搜索工具   |
-|  3   | [磁力资源搜索助手](https://www.mefcl.com/btresourcesearch/896) |              |
+| 编号 |                          名称及地址                          |       说明       |
+| :--: | :----------------------------------------------------------: | :--------------: |
+|  1   | [lively wallpaper](https://github.com/rocksdanister/lively)  |   开源桌面壁纸   |
+|  2   |       [magnetw](https://github.com/xiandanin/magnetW)        |     搜索工具     |
+|  3   | [磁力资源搜索助手](https://www.mefcl.com/btresourcesearch/896) |                  |
+|  4   | [MindMaster](https://www.edrawsoft.cn/mindmaster/lp-1.html)  | 专业思维导图软件 |
+|  5   |                [Xmind](https://www.xmind.cn/)                |                  |
+|  6   |         [MobaXterm](https://mobaxterm.mobatek.net/)          |    SSH client    |
+|  7   |        [Github Desktop](https://desktop.github.com/)         |   Github桌面版   |
+|  8   |      [EveryThings](https://everything.en.softonic.com/)      |   Windows搜索    |
+|  9   |               [7-zip](https://www.7-zip.org/)                |     压缩软件     |
+|  10  |           [Charles](https://www.charlesproxy.com/)           |                  |
+|  11  | [FastStone Capture](https://faststone-capture.en.softonic.com/) |                  |
 
 ## 七 音视频图像处理
 
