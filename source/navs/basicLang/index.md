@@ -24,11 +24,15 @@ comments: false
 
 ## 三 HTML课程
 
-| 编号 |                          名称(链接)                          | 备注 |
-| :--: | :----------------------------------------------------------: | :--: |
-|  1   | [W3School-HTML教程](https://www.w3school.com.cn/html/index.asp) |      |
-|  2   | [菜鸟教程-HTML教程](https://www.runoob.com/html/html-tutorial.html) |      |
-|  3   | [菜鸟教程-HTML5教程](https://www.runoob.com/html/html5-intro.html) |      |
+| 编号 |                          名称(链接)                          | 备注  |
+| :--: | :----------------------------------------------------------: | :---: |
+|  1   | [W3School-HTML教程](https://www.w3school.com.cn/html/index.asp) | HTML  |
+|  2   | [菜鸟教程-HTML教程](https://www.runoob.com/html/html-tutorial.html) | HTML  |
+|  3   | [菜鸟教程-HTML5教程](https://www.runoob.com/html/html5-intro.html) | HTML5 |
+|  4   | [菜鸟教程-XML教程](https://www.runoob.com/xml/xml-tutorial.html) |  XML  |
+|  5   | [W3School-XML教程](https://www.w3school.com.cn/xml/index.asp) |  XML  |
+|  6   | [菜鸟教程-ASP教程](https://www.runoob.com/asp/asp-tutorial.html) |  ASP  |
+|  7   | [W3School-ASP教程](https://www.w3school.com.cn/asp/index.asp) |  ASP  |
 
 ## 四 CSS课程
 
@@ -38,19 +42,19 @@ comments: false
 |  2   | [W3School-CSS教程](https://www.w3school.com.cn/css/index.asp) |      |
 |  3   | [W3School-CSS3教程](https://www.w3school.com.cn/css/index.asp) |      |
 
-## 五 JavaScript课程(JavaScript/jQuery/Ajax/ES6)
+## 五 JavaScript课程
 
-| 编号 |                          名称(链接)                          | 备注 |
-| :--: | :----------------------------------------------------------: | :--: |
-|  1   | [菜鸟教程-JavaScript课程](https://www.runoob.com/js/js-tutorial.html) |      |
-|  2   | [菜鸟教程-jQuery课程](https://www.runoob.com/jquery/jquery-tutorial.html) |      |
-|  3   | [菜鸟教程-Ajax教程](https://www.runoob.com/ajax/ajax-intro.html) |      |
-|  4   | [W3School-JavaScript课程](https://www.w3school.com.cn/js/index.asp) |      |
-|  5   | [W3School-jQuery课程](https://www.w3school.com.cn/jquery/index.asp) |      |
-|  6   | [W3School-Ajax课程](https://www.w3school.com.cn/ajax/index.asp) |      |
-|  7   |          [阮一峰-ES6](https://es6.ruanyifeng.com/)           |      |
-|  8   |      [W3School-ES6](https://www.w3cschool.cn/escript6/)      |      |
-|  9   | [菜鸟教程-ES6](https://www.runoob.com/w3cnote/es6-tutorial.html) |      |
+| 编号 |                          名称(链接)                          |    备注    |
+| :--: | :----------------------------------------------------------: | :--------: |
+|  1   | [菜鸟教程-JavaScript课程](https://www.runoob.com/js/js-tutorial.html) | JavaScript |
+|  2   | [菜鸟教程-jQuery课程](https://www.runoob.com/jquery/jquery-tutorial.html) |   jQuery   |
+|  3   | [菜鸟教程-Ajax教程](https://www.runoob.com/ajax/ajax-intro.html) |    Ajax    |
+|  4   | [W3School-JavaScript课程](https://www.w3school.com.cn/js/index.asp) | JavaScript |
+|  5   | [W3School-jQuery课程](https://www.w3school.com.cn/jquery/index.asp) |   jQuery   |
+|  6   | [W3School-Ajax课程](https://www.w3school.com.cn/ajax/index.asp) |    Ajax    |
+|  7   |          [阮一峰-ES6](https://es6.ruanyifeng.com/)           |    ES6     |
+|  8   |      [W3School-ES6](https://www.w3cschool.cn/escript6/)      |    ES6     |
+|  9   | [菜鸟教程-ES6](https://www.runoob.com/w3cnote/es6-tutorial.html) |    ES6     |
 
 ## 六 JSON
 
@@ -110,4 +114,20 @@ comments: false
 | 编号 |                          名称(链接)                          | 备注 |
 | :--: | :----------------------------------------------------------: | :--: |
 |  1   | [菜鸟教程-十大经典排序算法](https://www.runoob.com/w3cnote/ten-sorting-algorithm.html) |      |
+
+## 十四 Linux教程
+
+| 编号 |                          名称(链接)                          | 备注 |
+| :--: | :----------------------------------------------------------: | :--: |
+|  1   | [菜鸟教程-Linux 教程](https://www.runoob.com/linux/linux-tutorial.html) |      |
+
+## 十五 数据库教程
+
+| 编号 |                          名称(链接)                          |  备注   |
+| :--: | :----------------------------------------------------------: | :-----: |
+|  1   | [W3School-SQL 教程](https://www.w3school.com.cn/sql/index.asp) |   SQL   |
+|  2   | [菜鸟教程-SQL 教程](https://www.runoob.com/sql/sql-tutorial.html) |   SQL   |
+|  3   | [菜鸟教程-MongoDB 教程](https://www.runoob.com/mongodb/mongodb-tutorial.html) | MongoDB |
+|  4   |  [W3School-MongoDB教程](https://www.w3cschool.cn/mongodb/)   | MongoDB |
+|  5   |      [MongoDB中文手册](https://mongodb.net.cn/manual/)       | MongoDB |
 
