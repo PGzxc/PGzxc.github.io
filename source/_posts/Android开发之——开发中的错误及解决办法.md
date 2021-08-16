@@ -85,6 +85,27 @@ buildTypes {
         }
     }
 ```
+### 2.3 failed to read PNG signature: file does not start with PNG signature
+**现象**
+
+```
+AAPT: error: failed to read PNG signature: file does not start with PNG signature.
+```
+
+**解决办法**
+
+在app/build.gradle文件中加以下代码后，重构项目
+
+```
+android {
+    compileSdkVersion 28
+    flavorDimensions "mode"
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+    defaultConfig {
+    
+    }
+```
 
 ## 三 警告类
 
