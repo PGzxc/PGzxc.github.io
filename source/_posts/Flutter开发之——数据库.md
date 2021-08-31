@@ -46,12 +46,26 @@ dependencies:
 ```
 flutter pub get
 ```
+## 三 其他注意
 
-## 三 数据库初始化(创建数据库并返回创建后的数据库路径)
+### 3.1 项目中的其他依赖
+
+* fluttertoast：弹窗提示信息
+* path_provider：存储文件
+
+### 3.2 权限(Android为例，添加存储权限)
+
+```
+ <uses-permission android:name="android.permission.INTERNET" />
+ <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+ <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+```
+
+## 四 数据库初始化(创建数据库并返回创建后的数据库路径)
 
 database.dart
 
-### 3.1 有则返回，无则创建
+### 4.1 有则返回，无则创建
 
 ```
 Future<String> initDb(String dbName) async {
@@ -70,7 +84,7 @@ Future<String> initDb(String dbName) async {
 }
 ```
 
-### 3.2 每次初始化都是新的数据库
+### 4.2 每次初始化都是新的数据库
 
 ```
 Future<String> initDb(String dbName) async {
@@ -89,9 +103,9 @@ Future<String> initDb(String dbName) async {
 }
 ```
 
-## 四 RawData数据库操作
+## 五 RawData数据库操作
 
-### 4.1 创建数据库
+### 5.1 创建数据库
 
 ```
 rawDBTableCreate() async {
@@ -105,7 +119,7 @@ rawDBTableCreate() async {
   }
 ```
 
-### 4.2 插入数据库
+### 5.2 插入数据库
 
 ```
 rawDBInsert() async {
@@ -124,26 +138,30 @@ rawDBInsert() async {
   }
 ```
 
-### 4.3 查询数据库
+### 5.3 查询数据库
 
 ```
-rawDBInsert() async {
+  rawDBQuery() async {
     var path = await initDb('raw_simple.db');
     var db = await openDatabase(path);
     try {
-     var insertResult= await db.rawInsert('INSERT INTO Test (name) VALUES (?)', ['test']);
-     if (insertResult>0) {
-       Fluttertoast.showToast(msg: "数据插入成功",gravity: ToastGravity.CENTER);
-     }else {
-         print("其他");
-       }
+      var result = await db.query("Test");
+      if (result.isNotEmpty) {
+        Fluttertoast.showToast(
+            msg: "数据查询成功:$result", gravity: ToastGravity.CENTER);
+      } else {
+        Fluttertoast.showToast(
+            msg: "数据为空，请先写入数据", gravity: ToastGravity.CENTER);
+      }
+    } catch (ex) {
+      Fluttertoast.showToast(msg: "$ex", gravity: ToastGravity.CENTER);
     } finally {
       await db.close();
     }
   }
 ```
 
-### 4.4 更新数据库
+### 5.4 更新数据库
 
 ```
 rawDBUpdate() async {
@@ -164,7 +182,7 @@ rawDBUpdate() async {
   }
 ```
 
-### 4.5 删除数据库
+### 5.5 删除数据库
 
 ```
 rawDBDelete() async {
@@ -179,7 +197,7 @@ rawDBDelete() async {
   }
 ```
 
-### 4.6 界面布局
+### 5.6 界面布局
 
 ```
 ListView(
@@ -196,9 +214,9 @@ ListView(
 
 ![][1]
 
-## 五 Model数据库操作
+## 六 Model数据库操作
 
-### 5.1 Model类及数据库操作类
+### 6.1 Model类及数据库操作类
 
 ```
 import 'dart:io';
@@ -307,7 +325,7 @@ create table $tableTodo (
 }
 ```
 
-### 5.2 Model初始化
+### 6.2 Model初始化
 
 ```
 modelOpenDB() async {
@@ -318,7 +336,7 @@ modelOpenDB() async {
   }
 ```
 
-### 5.3 Model添加
+### 6.3 Model添加
 
 ```
  modelInsertDB() async {
@@ -334,7 +352,7 @@ modelOpenDB() async {
   }
 ```
 
-### 5.4 Model查询
+### 6.4 Model查询
 
 ```
  modelQuerytDB() async {
@@ -351,7 +369,7 @@ modelOpenDB() async {
   }
 ```
 
-### 5.5  Model更新
+### 6.5  Model更新
 
 ```
 modelUpdateDB() async {
@@ -371,7 +389,7 @@ modelUpdateDB() async {
   }
 ```
 
-### 5.6 Model删除(一个用户)
+### 6.6 Model删除(一个用户)
 
 ```
  modelDelete() async {
@@ -386,7 +404,7 @@ modelUpdateDB() async {
   }
 ```
 
-### 5.7 Model删除数据库
+### 6.7 Model删除数据库
 
 ```
  modelDeleteDB() async {
@@ -396,7 +414,7 @@ modelUpdateDB() async {
   }
 ```
 
-### 5.8 界面布局
+### 6.8 界面布局
 
 ```
  ListView(
@@ -414,12 +432,13 @@ modelUpdateDB() async {
 
 ![][2]
 
-### 5.9 数据库文件位置
+### 6.9 数据库文件位置
 
 ```
 /data/user/0/com.example.flutter_image/databases
 ```
-
+## 七  源码
+* [下载地址](https://download.csdn.net/download/Calvin_zhou/21760858)
 
 
 [1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-raw-operation.png
