@@ -102,9 +102,3 @@ comments: false
 |  7   |       [jianavi](https://github.com/appexplore/jianavi)       | https://appexplore.github.io/jianavi/ |
 |  8   | [personal.navigation.website](https://github.com/tojohnonly/personal.navigation.website) |                                       |
 
-## 三 实用
-
-| 编号 |            名称(链接)             |           备注           |
-| :--: | :-------------------------------: | :----------------------: |
-|  1   | [今日热榜](https://tophub.today/) | 一张网页搜罗全网实时热点 |
-

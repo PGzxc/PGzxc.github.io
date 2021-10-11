@@ -1,10 +1,9 @@
 ---
-title: 基础语言
-date: 2021-07-29 12:16:50
+title: 开发-基础开发语言
+date: 2021-07-29 10:46:50
 description: 
 comments: false
 ---
-
 # 一 Web端
 ## 1.1 HTML 课程
 
@@ -215,8 +214,4 @@ comments: false
 |  4   | [菜鸟教程-Git教程](https://www.runoob.com/git/git-tutorial.html) | Git  |
 |  5   |       [易百教程-Git教程](https://www.yiibai.com/git/)        | Git  |
 |  6   |      [W3School-Git教程](https://www.w3cschool.cn/git/)       | Git  |
-
-
-
-
 

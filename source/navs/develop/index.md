@@ -20,7 +20,7 @@ comments: false
 |  2   | [开课吧](https://www.kaikeba.com/) |      |
 |  3   |  [51CTO](https://edu.51cto.com/)   |      |
 
-## 三 公开课
+## 三 公开课|自学课
 
 | 编号 |                          名称(链接)                          | 备注 |
 | :--: | :----------------------------------------------------------: | :--: |
@@ -29,7 +29,5 @@ comments: false
 |  3   |               [B站](https://www.bilibili.com/)               |      |
 |  4   |             [我要自学网](https://www.51zxw.net/)             |      |
 |  5   |            [大学资源网](http://www.dxzy163.com/)             |      |
-|  6   |               [慕课网](https://www.imooc.com/)               |      |
-|  7   |               [51CTO](https://www.51cto.com/)                |      |
-|  8   | [实验楼](http://demo.erdangjiade.com/modals/8/856/demo/courses/index.html) |      |
+|  7   | [实验楼](http://demo.erdangjiade.com/modals/8/856/demo/courses/index.html) |      |
 
