@@ -44,4 +44,7 @@ comments: false
 | :--: | :----------------------------------------------------------: | :--: |
 |  1   | [B站up主：养乐多](https://www.bilibili.com/video/av17043038) |      |
 |  2   | [B站:讲师：李思皎](https://www.bilibili.com/video/BV1w4411e7Bz) |      |
+|  3   |   [知乎—自学推荐](https://www.zhihu.com/question/38757452)   |      |
+|  4   | [B站-韩国语基础学习视频](https://www.bilibili.com/video/BV1p741127Qv?p=1) |      |
+|  5   | [B站—韩语外教-马黎娜](https://space.bilibili.com/283802621?spm_id_from=333.788.b_765f7570696e666f.1) |      |
 
