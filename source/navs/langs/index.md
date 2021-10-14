@@ -15,6 +15,8 @@ comments: false
 |  4   |       [声同](http://www.somdom.com/)        |      小语种论坛      |
 |  5   | [Coffeestrap](https://www.coffeestrap.com/) |    学习一门新语言    |
 |  6   |     [Youtube](https://www.youtube.com/)     |                      |
+|  7   |     [沪江小D](https://www.hjdict.com/)      |    英/日/韩/法/德    |
+|  8   |  [词典](https://ko.dict.naver.com/#/main)   |                      |
 
 ## 二 英语
 
