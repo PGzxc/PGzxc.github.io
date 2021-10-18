@@ -3,6 +3,7 @@ title: NAS入门之——Mac系统My Cloud EX2 Ultra设置时间机器
 categories:
   - 工具
   - NAS
+  - My Cloud EX2
 tags:
   - My Cloud EX2 Ultra
 abbrlink: ec09a736

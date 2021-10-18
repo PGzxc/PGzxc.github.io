@@ -3,6 +3,7 @@ title: NAS入门之——My Cloud EX2 Ultra初始化设置
 categories:
   - 工具
   - NAS
+  - My Cloud EX2
 tags:
   - My Cloud EX2 Ultra
 abbrlink: f909c84b

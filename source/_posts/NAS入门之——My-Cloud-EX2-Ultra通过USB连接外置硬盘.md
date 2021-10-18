@@ -3,6 +3,7 @@ title: NAS入门之——My Cloud EX2 Ultra通过USB连接外置硬盘
 categories:
   - 工具
   - NAS
+  - My Cloud EX2
 tags:
   - My Cloud EX2 Ultra
 abbrlink: d662555e
