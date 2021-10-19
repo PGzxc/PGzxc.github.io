@@ -27,15 +27,18 @@ tags:
 
 ### 3.1 设备连接
 
-My Cloud EX2 通过网线连接到路由器的其中一个WLan接口上
+My Cloud EX2 通过网线连接到路由器的其中一个~W~Lan口上
 
 ![][1]
-### 3.2 查看路由器端接入设备情况
+注：注意WLan口和Lan口的区别
 ![][2]
+
+### 3.2 查看路由器端接入设备情况
+![][3]
 
 ### 3.3 用Windows端ping局域网内的NAS(ping通)
 
-![][3]
+![][4]
 
 ## 四 PC端(Windows端+Mac端)局域网访问NAS(接入路由网络)
 
@@ -48,7 +51,7 @@ My Cloud EX2 通过网线连接到路由器的其中一个WLan接口上
 ```
 
 #### 查看网络位置下的硬盘
-![][4]
+![][5]
 
 ### 4.2  Mac端访问NAS
 
@@ -59,19 +62,21 @@ My Cloud EX2 通过网线连接到路由器的其中一个WLan接口上
 ```
 
 #### 查看网络位置下的硬盘
-![][5]
+![][6]
 
 ## 五 移动端访问NAS
 
 西部数据的App为`My Cloud`，打开后显示，暂不支持离线访问
-![][6]
+![][7]
 
 
 
 
 [1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-image/nas-mycloud-route-nas-connect.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-image/nas-mycloud-route-device-connect.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-image/nas-mycloud-windos-ping-nas.png
-[4]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-image/nas-mycloud-windows-web-position.png
-[5]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-image/nas-mycloud-mac-web-position.png
-[6]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-image/nas-mycloud-phone-state.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-image/nas-mycloud-route-lan-wlan.png
+[3]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-image/nas-mycloud-route-device-connect.png
+[4]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-image/nas-mycloud-windos-ping-nas.png
+[5]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-image/nas-mycloud-windows-web-position.png
+[6]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-image/nas-mycloud-mac-web-position.png
+[7]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-image/nas-mycloud-phone-state.png
+
