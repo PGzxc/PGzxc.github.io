@@ -21,13 +21,13 @@ date: 2021-05-27 16:57:01
 
 ### 2.1 Cannot inline bytecode built with JVM target 1.8
 
-**现象**
+#### 现象
 
 ```
 Cannot inline bytecode built with JVM target 1.8 into bytecode that is being built with JVM target
 ```
 
-**解决方案**
+#### 解决方案
 
 ```
 android {
@@ -45,25 +45,25 @@ android {
 
 ### 2.2 Unable to find EOCD signature
 
-**现象1**
+#### 现象1
 
 ```
 Execution failed for task ':app:packagexxxxRelease'.
 > A failure occurred while executing com.android.build.gradle.internal.tasks.Workers$ActionFacade
    > Unable to find EOCD signature
 ```
-**现象2**
+#### 现象2
 ```
 Execution failed for task ':app:packageGame_ZHRelease'.
 > A failure occurred while executing com.android.build.gradle.internal.tasks.Workers$ActionFacade
    > java.lang.IllegalArgumentException (no error message)
 ```
 
-**原因**
+#### 原因
 
 依赖中添加了有关`ABI`相关的配置，打包输出时，未指定`ABI`版本
 
-**解决办法（添加ABI输出）**
+#### 解决办法（添加ABI输出）
 
 ```
 import com.android.build.OutputFile
@@ -86,13 +86,13 @@ buildTypes {
     }
 ```
 ### 2.3 failed to read PNG signature: file does not start with PNG signature
-**现象**
+#### 现象
 
 ```
 AAPT: error: failed to read PNG signature: file does not start with PNG signature.
 ```
 
-**解决办法**
+#### 解决办法
 
 在app/build.gradle文件中加以下代码后，重构项目
 
@@ -107,17 +107,34 @@ android {
     }
 ```
 
+### 2.4 Android Gradle plugin requires Java 11 to run. You are currently using Java 1.8
+#### 现象(项目创建时)
+
+```
+An exception occurred applying plugin request [id: 'com.android.application']
+> Failed to apply plugin 'com.android.internal.application'.
+   > Android Gradle plugin requires Java 11 to run. You are currently using Java 1.8.
+     You can try some of the following options:
+       - changing the IDE settings.
+       - changing the JAVA_HOME environment variable.
+       - changing `org.gradle.java.home` in `gradle.properties`.
+```
+
+#### 解决办法
+
+依次点击：File——>Project Struct——>SDK Location——>JDK location was moved to `Gradle Settings`，在打开的对话框中，将Gradle JDK修改为11
+
 ## 三 警告类
 
 ### 3.1 The 'kotlin-android-extensions' Gradle plugin is deprecated
 
-**现象**
+#### 现象
 
 ```
 The 'kotlin-android-extensions' Gradle plugin is deprecated. Please use this migration guide (https://goo.gle/kotlin-android-extensions-deprecation) to start working with View Binding (https://developer.android.com/topic/libraries/view-binding) and the 'kotlin-parcelize' plugin.
 ```
 
-**解决办法**
+#### 解决办法
 
 ```
 删除 apply plugin: 'kotlin-android-extensions'
@@ -127,7 +144,7 @@ binding.name.text = viewModel.nameString
 
 ### 3.2 Warning: Mapping new ns xx/common/02 to old ns xx/common/01
 
-**现象**
+#### 现象
 
 ```
 Warning: Mapping new ns http://schemas.android.com/repository/android/common/02 to old ns http://schemas.android.com/repository/android/common/01
@@ -137,14 +154,14 @@ Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/repository2/
 Warning: Mapping new ns http://schemas.android.com/sdk/android/repo/sys-img2/02 to old ns http://schemas.android.com/sdk/android/repo/sys-img2/01
 ```
 
-**解决办法(buildToolsVersion引起-修改前)**
+#### 解决办法(buildToolsVersion引起-修改前)
 
 ```
 compileSdkVersion 30
 buildToolsVersion "30.0.3"
 ```
 
-**去掉buildToolsVersion或将buildToolsVersion版本降低**
+#### 去掉buildToolsVersion或将buildToolsVersion版本降低
 
 ```
 compileSdkVersion 30
@@ -155,10 +172,10 @@ buildToolsVersion "30.0.2"
 
 ### 4.1 Task list not build
 
-**现象**
+#### 现象
 
 ![][41]
-**解决办法**
+#### 解决办法
 
 * 点击`Task list not build`，进入`Settings——>Experimental`，将`Do not build Gradle task list duraing Gradle sync`前面的勾选去掉，并应用
 * 点击`Sync Project with Gradle Files`同步一下项目
