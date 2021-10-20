@@ -164,6 +164,7 @@ date: 2021-10-19 17:24:07
 * [官方技术文档——快速上手](https://wechat-miniprogram.github.io/weui/docs/quickstart.html)
 * [官方文档——WeUI组件库简介](https://developers.weixin.qq.com/miniprogram/dev/platform-capabilities/extended/weui/)
 * [官方文档——快速上手](https://developers.weixin.qq.com/miniprogram/dev/platform-capabilities/extended/weui/quickstart.html)
+* [CSDN——参考代码](https://download.csdn.net/download/Calvin_zhou/33426379)
 
 
 
