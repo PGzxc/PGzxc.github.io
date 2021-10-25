@@ -1,15 +1,13 @@
 ---
-title: MacBook入门之——添加打印机
+title: 打印机之——Mac打印流程
 categories:
-  - 系统
-  - Mac
+  - 工具
+  - 打印机
 tags:
   - 打印机
 abbrlink: 29c983d5
 date: 2019-10-03 14:11:42
 ---
-# MacBook入门之——添加打印机
-
 ## 一 前言
 
 本文主要讲述如何在Mac系统下添加硬件设备打印机，并完成安装打印操作。  
