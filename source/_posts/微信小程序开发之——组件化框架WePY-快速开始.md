@@ -107,6 +107,9 @@ $ npm run dev # 监听并且编译项目
 * index.wpy：index页面
 * app.wpy：入口文件
 
+## 七 参考
+* [WePy-快速开始](https://wepyjs.gitee.io/wepy-docs/2.x/#/base/getstart)
+
 
 
 [1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wepy-init-standard-project.png
