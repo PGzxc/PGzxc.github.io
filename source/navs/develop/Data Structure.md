@@ -9,3 +9,4 @@ comments: false
 | 编号 |                          名称(地址)                          |     备注     |
 | :--: | :----------------------------------------------------------: | :----------: |
 |  1   | [LeetCode Cookbook](https://books.halfrost.com/leetcode/ChapterOne/Data_Structure/) | LeetCode题解 |
+|  2   | [教孩子和妻子编程-算法和数据结构](https://zhihua-lai.com/teaching/ch/) | 油管/B站视频 |
