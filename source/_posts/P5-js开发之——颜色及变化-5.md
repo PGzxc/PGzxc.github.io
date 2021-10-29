@@ -121,9 +121,54 @@ function draw()
 #### 效果图
 ![][3]
 
+## 五 颜色混合(lerpColor)
+
+### 5.1 用法说明lerpColor(c1, c2, amt)
+
+| 参数 |        示例         |                  说明                  |
+| :--: | :-----------------: | :------------------------------------: |
+|  c1  | color(218, 165, 32) |            从这颜色开始插入            |
+|  c2  |     color(100)      |            在这颜色结束插入            |
+| amt  |         0.5         | 两个值之间插入的量，介于 0 和 1 的数字 |
+
+### 5.2 示例
+
+#### 代码
+
+```
+function draw()
+{
+  let from = color(218, 165, 32);//混合颜色开始
+  let to = color(72, 61, 139); //混合颜色结束
+
+  let interA = lerpColor(from, to, 0.33); //混合颜色A
+  let interB = lerpColor(from, to, 0.66); //混合颜色B
+
+  fill(from);
+  rect(10, 20, 20, 60); //单独绘制颜色开始
+
+  fill(interA);
+  rect(30, 20, 20, 60); //单独绘制混合颜色A
+
+  fill(interB);
+  rect(50, 20, 20, 60); //单独绘制混合颜色B
+
+  fill(to);
+  rect(70, 20, 20, 60); //单独绘制颜色结束
+ 
+} 
+```
+
+#### 效果图
+![][4]
+
+## 六 参考
+* [参考文献——颜色](https://p5js.org/zh-Hans/reference/#group-Color)
+
 
 
 
 [1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-color-sample-view.png
 [2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-color-red-get-view.png
 [3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-color-light-view.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-color-lerpColor-view.png
