@@ -93,10 +93,10 @@ UIImage *image=[UIImage imageNamed:@“eat_001.jpg”];
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-IOS/ios-image-youhua-imagename-view.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-IOS/ios-image-youhua-path-view.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-IOS/ios-image-xcode-preference.png
-[4]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-IOS/ios-image-xcode-locations-deriveddata.png
-[5]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-IOS/ios-image-xcode-locations-app.png
-[6]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-IOS/ios-image-xcode-locations-app-package.png
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-image-youhua-imagename-view.png
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-image-youhua-path-view.png
+[3]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-image-xcode-preference.png
+[4]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-image-xcode-locations-deriveddata.png
+[5]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-image-xcode-locations-app.png
+[6]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-image-xcode-locations-app-package.png
 
