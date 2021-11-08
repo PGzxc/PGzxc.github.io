@@ -45,3 +45,9 @@ comments: false
 |  2   | [MongoDB](https://www.mongodb.com/try#community) | 非关系型数据库 |
 |  3   |     [DBeaver Community](https://dbeaver.io/)     | 通用数据库工具 |
 
+## 四 去重
+
+| 编号 |                           软件链接                           |     说明     |
+| :--: | :----------------------------------------------------------: | :----------: |
+|  1   | [Duplicate Files Search](http://malich.ru/duplicate_searcher) | 重复文件搜索 |
+
