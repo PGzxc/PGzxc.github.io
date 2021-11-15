@@ -23,12 +23,17 @@ comments: false
 
 ## 三 版本控制
 
-| 编号 |                         名称(地址)                          |   备注    |
-| :--: | :---------------------------------------------------------: | :-------: |
-|  1   |        [SmartGit](https://www.syntevo.com/smartgit/)        |    git    |
-|  2   |        [sourcetree](https://www.sourcetreeapp.com/)         |    git    |
-|  3   | [SVN-visualsvn](https://www.visualsvn.com/server/download/) | svn服务端 |
-|  4   |     [[TortoiseSVN](https://tortoisesvn.net/about.html)]     | svn客户端 |
+| 编号 |                         名称(地址)                          |        备注        |
+| :--: | :---------------------------------------------------------: | :----------------: |
+|  1   |        [SmartGit](https://www.syntevo.com/smartgit/)        |   git GUI客户端    |
+|  2   |        [sourcetree](https://www.sourcetreeapp.com/)         |     git客服端      |
+|  3   |              [GitStack](https://gitstack.com/)              | Windows端git服务端 |
+|  4   |                  [GoGs](https://gogs.io/)                   |   自助 Git 服务    |
+|  5   |        [gitblit](http://gitblit.github.io/gitblit/)         |     Git服务器      |
+|  6   |              [gitea](https://gitea.io/en-us/)               |  跨平台git服务器   |
+|  7   |             [gitlab](https://about.gitlab.com/)             |     Git服务器      |
+|  8   | [SVN-visualsvn](https://www.visualsvn.com/server/download/) |     svn服务端      |
+|  9   |     [[TortoiseSVN](https://tortoisesvn.net/about.html)]     |     svn客户端      |
 
 ## 四 系统
 
