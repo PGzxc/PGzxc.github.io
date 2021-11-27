@@ -40,8 +40,21 @@ comments: false
 |  1   |         [七星解析](https://vip.2kkkk.cn/)          |      |
 |  2   |           [船长解析](http://czjx8.com/)            |      |
 |  3   | [全能VIP视频解析](http://tool.liumingye.cn/video/) |      |
+|  4   |     [小七VIP视频解析](https://peng3.com/vip/)      |      |
+|  5   |        [vip视频解析](https://v.ctrlqq.com/)        |      |
+|  6   |                    [全网解析]()                    |      |
 
-### 四 音效素材
+## 四 视频-语言
+
+| 编号 |            名称(地址)            |  备注  |
+| :--: | :------------------------------: | :----: |
+|  1   | [日剧TV](https://www.rijutv.co/) | 日剧网 |
+|  2   |  [日剧TV网](http://jhyykj.cn/)   | 日剧网 |
+|  3   |  [看韩剧](https://www.kan.cc/)   |  韩剧  |
+|  4   | [韩剧TV](https://www.hanju0.cc/) |  韩剧  |
+
+
+### 五 音效素材
 
 | 编号 |                           名称备注                           | 备注 |
 | :--: | :----------------------------------------------------------: | :--: |
@@ -54,7 +67,7 @@ comments: false
 |  7   | [youtube 音频图书馆](https://www.youtube.com/audiolibrary/soundeffects) |      |
 |  8   | [Partners in Rhyme](https://www.royaltyfreemusicclips.com/pir/free_music_loops.shtml) |      |
 
-### 五 歌曲资源整理
+### 六 歌曲资源整理
 
 | 编号 |                名称                | 备注 |
 | :--: | :--------------------------------: | :--: |
