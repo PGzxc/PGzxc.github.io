@@ -26,10 +26,11 @@ comments: false
 
 ## 二 网页下载工具
 
-| 编号 |                      名称(地址)                      |  备注  |
-| :--: | :--------------------------------------------------: | :----: |
-|  1   |  [IDM官网](http://www.internetdownloadmanager.com/)  |        |
-|  2   | IDM破解 https://www.lanzous.com/b00t4x86b  密码:gr09 | 蓝奏云 |
+| 编号 |                      名称(地址)                       |      备注       |
+| :--: | :---------------------------------------------------: | :-------------: |
+|  1   |  [IDM官网](http://www.internetdownloadmanager.com/)   |                 |
+|  2   | IDM破解 https://www.lanzous.com/b00t4x86b  密码:gr09  |     蓝奏云      |
+|  3   | [闪豆视频下载器](https://www.lanzoui.com/ix5UBwxsqpe) | B站视频批量下载 |
 
 ## 三 网盘下载助手
 
