@@ -1,5 +1,5 @@
 ---
-title: P5.js开发之——文字(6)
+title: P5.js开发之——文字(7)
 categories:
   - 开发
   - 前端开发

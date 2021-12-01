@@ -1,5 +1,5 @@
 ---
-title: P5.js开发之——颜色及变化(5)
+title: P5.js开发之——颜色及变化(6)
 categories:
   - 开发
   - 前端开发
