@@ -86,4 +86,5 @@ comments: false
 |  7   | [Android视频编码和直播推流教程](https://edu.csdn.net/course/detail/8942) |                                     |
 |  8   | [FFmpeg+OpenGL ES+OpenSL](https://edu.csdn.net/course/detail/8036) |                                     |
 |  9   | [FFmpeg打造Android万能音频播放器](https://edu.csdn.net/course/detail/6842) |                                     |
+|  10  | [Android BLE蓝牙应用开发精讲](https://study.163.com/course/introduction.htm?courseId=1006381079#/courseDetail) |              蓝牙开发               |
 
