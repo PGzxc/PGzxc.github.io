@@ -77,5 +77,11 @@ comments: false
 |  3   | [酷狗音乐](https://www.kugou.com/) |      |
 |  4   |  [街声](https://streetvoice.cn/)   |      |
 
+## 七 直播
 
+| 编号 |            名称(地址)             |          备注          |
+| :--: | :-------------------------------: | :--------------------: |
+|  1   | [urlebird](https://urlebird.com/) |        国外网站        |
+|  2   | [LiveMe](https://www.liveme.com)  | 全球化国外主播直播平台 |
+|  3   |                B站                |         二次元         |
 
