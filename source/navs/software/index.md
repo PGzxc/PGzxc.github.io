@@ -101,9 +101,10 @@ comments: false
 
 ## 八 墙(收费)
 
-| 编号 |                 名称(地址)                 | 备注 |
-| :--: | :----------------------------------------: | :--: |
-|  1   | [namepilo](https://namepilo.com/index.php) |      |
+| 编号 |                    名称(地址)                     |       备注       |
+| :--: | :-----------------------------------------------: | :--------------: |
+|  1   |    [namepilo](https://namepilo.com/index.php)     |                  |
+|  2   | [Clash for Windows](https://docs.cfw.lbyczf.com/) | 多平台代理客户端 |
 
 ## 九 逻辑思维工具
 
