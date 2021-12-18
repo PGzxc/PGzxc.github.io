@@ -56,4 +56,4 @@ date: 2020-11-04 23:29:08
 [2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-nas/nas-my-cloud-ex2-main-view.png
 [3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-nas/nas-my-cloud-ex2-shutdown.png
 [4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-nas/nas-raid-struct.png
-[21]:http://192.168.3.104/
+[21]:http://mycloud.com/setup
