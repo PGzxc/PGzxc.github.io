@@ -1,6 +1,7 @@
 ---
 title: 服务器之——Android手机改造成Linux服务器
 categories:
+  - 开发
   - 后端
   - 服务器
 tags:

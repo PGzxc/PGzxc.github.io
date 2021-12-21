@@ -1,10 +1,11 @@
 ---
 title: Node开发之——npm install卡顿
 categories:
+  - 开发
   - 后端
   - Node
 tags:
-  - npm install
+  - Node
 abbrlink: fed8096f
 date: 2020-03-13 21:34:47
 ---

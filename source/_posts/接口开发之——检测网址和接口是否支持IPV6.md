@@ -1,6 +1,7 @@
 ---
 title: 接口开发之——检测网址和接口是否支持IPV6
 categories:
+  - 开发
   - 后端
   - 接口
 tags:

@@ -1,6 +1,7 @@
 ---
 title: 接口开发之——PostMan模拟Strapi接口(认证方式下)访问
 categories:
+  - 开发
   - 后端
   - 接口
 tags:

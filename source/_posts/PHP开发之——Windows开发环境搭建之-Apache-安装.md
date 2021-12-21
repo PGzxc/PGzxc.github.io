@@ -1,6 +1,7 @@
 ---
 title: PHP开发之——Windows开发环境搭建之-Apache 安装
 categories:
+  - 开发
   - 后端
   - PHP
 tags:

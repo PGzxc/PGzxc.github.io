@@ -1,6 +1,7 @@
 ---
 title: Python开发之——Pycharm破解
 categories:
+  - 开发
   - 后端
   - Python
 tags:
