@@ -20,3 +20,11 @@ comments: false
 |  9   |                [小木人印象]()                 |  知识库+资源+在线工具等   |
 |  9   |  [IT资源分享网](https://www.itresource.org/)  |       个人网站+资源       |
 
+## 二 开发者收费课程网站
+
+| 编号 |                  名称(链接)                  |                备注                |
+| :--: | :------------------------------------------: | :--------------------------------: |
+|  1   |       [IT营](https://www.itying.com/)        |     前端+Flutter+Electron+Node     |
+|  2   |     [小月博客](https://www.aliyue.net/)      |           web+软件+教程            |
+|  3   | [猿人部落](http://www.97yrbl.com/portal.php) | 前言+前端+后端+移动+大数据+运维+UI |
+
