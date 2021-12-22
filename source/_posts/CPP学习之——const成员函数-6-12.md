@@ -1,7 +1,8 @@
 ---
 title: CPP学习之——const成员函数(6.12)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - C++
 tags:
   - const

@@ -1,7 +1,8 @@
 ---
 title: Object-C开发之——学习大纲
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - Object-C
 tags:
   - 学习大纲

@@ -1,7 +1,8 @@
 ---
 title: OC开发之——协议protocol(51)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - Object-C
 tags:
   - OC

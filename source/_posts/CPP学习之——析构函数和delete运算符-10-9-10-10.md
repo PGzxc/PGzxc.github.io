@@ -1,7 +1,8 @@
 ---
 title: CPP学习之——析构函数和delete运算符(10.9-10.10)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - C++
 tags:
   - 函数

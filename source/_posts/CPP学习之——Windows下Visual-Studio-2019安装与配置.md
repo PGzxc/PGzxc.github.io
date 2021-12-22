@@ -1,7 +1,8 @@
 ---
 title: CPP学习之——Windows下Visual Studio 2019安装与配置
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - C++
 tags:
   - visual studio

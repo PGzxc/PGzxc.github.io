@@ -1,7 +1,8 @@
 ---
 title: OC开发之——@property其他参数设置(41)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - Object-C
 tags:
   - OC

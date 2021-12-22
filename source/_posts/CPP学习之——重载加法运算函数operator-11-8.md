@@ -1,7 +1,8 @@
 ---
 title: CPP学习之——重载加法运算函数operator+(11.8)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - C++
 tags:
   - 运算符

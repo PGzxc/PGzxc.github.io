@@ -1,7 +1,8 @@
 ---
 title: OC开发之——xcode新版本如何设置ARC(36)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - Object-C
 tags:
   - OC

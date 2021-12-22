@@ -1,7 +1,8 @@
 ---
 title: OC开发之——内存管理循环retain(43)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - Object-C
 tags:
   - OC

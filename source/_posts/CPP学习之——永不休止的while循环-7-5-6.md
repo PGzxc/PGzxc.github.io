@@ -1,7 +1,8 @@
 ---
 title: CPP学习之——永不休止的while循环(7.5-6)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - C++
 tags:
   - while循环

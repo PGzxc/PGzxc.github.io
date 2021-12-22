@@ -1,7 +1,8 @@
 ---
 title: Java开发之——开发中容易混淆的几个概念
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - Java
 tags:
   - Java

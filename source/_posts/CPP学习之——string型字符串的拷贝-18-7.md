@@ -1,7 +1,8 @@
 ---
 title: CPP学习之——string型字符串的拷贝(18.7)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - C++
 tags:
   - 字符串

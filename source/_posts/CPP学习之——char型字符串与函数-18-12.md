@@ -1,7 +1,8 @@
 ---
 title: CPP学习之——char型字符串与函数(18.12)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - C++
 tags:
   - 字符串

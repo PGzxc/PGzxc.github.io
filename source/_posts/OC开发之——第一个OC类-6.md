@@ -1,7 +1,8 @@
 ---
 title: OC开发之——第一个OC类(6)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - Object-C
 tags:
   - OC

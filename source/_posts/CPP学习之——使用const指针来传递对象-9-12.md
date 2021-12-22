@@ -1,7 +1,8 @@
 ---
 title: CPP学习之——使用const指针来传递对象(9.12)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - C++
 tags:
   - 指针

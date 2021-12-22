@@ -1,7 +1,8 @@
 ---
 title: CPP学习之——for循环(7.7-10)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - C++
 tags:
   - for循环

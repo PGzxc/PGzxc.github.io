@@ -1,7 +1,8 @@
 ---
 title: Java开发之——程序员计算器
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - Java
 tags:
   - 计算器

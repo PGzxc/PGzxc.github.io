@@ -1,7 +1,8 @@
 ---
 title: Java开发之——Java7的新特性
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - Java
 tags:
   - Java7

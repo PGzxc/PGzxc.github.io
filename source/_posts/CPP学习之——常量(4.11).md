@@ -1,7 +1,8 @@
 ---
 title: CPP学习之——常量(4.11)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - C++
 tags:
   - 常量

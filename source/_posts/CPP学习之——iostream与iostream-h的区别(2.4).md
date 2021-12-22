@@ -1,7 +1,8 @@
 ---
 title: CPP学习之——iostream与iostream.h的区别(2.4)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - C++
 tags:
   - iostream

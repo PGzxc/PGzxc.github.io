@@ -1,7 +1,8 @@
 ---
 title: C++开发之——注释
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - C++
 tags:
   - 注释

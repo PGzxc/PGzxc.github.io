@@ -1,7 +1,8 @@
 ---
 title: C++开发之——判断
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - C++
 tags:
   - 判断

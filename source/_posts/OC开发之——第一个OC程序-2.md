@@ -1,7 +1,8 @@
 ---
 title: OC开发之——第一个OC程序(2)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - Object-C
 tags:
   - OC

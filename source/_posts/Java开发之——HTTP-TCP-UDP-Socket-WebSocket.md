@@ -1,7 +1,8 @@
 ---
 title: Java开发之——HTTP-TCP-UDP-Socket-WebSocket
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - Java
 tags:
   - 网络通信

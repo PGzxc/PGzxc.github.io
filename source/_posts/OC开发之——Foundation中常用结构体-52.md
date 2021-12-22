@@ -1,7 +1,8 @@
 ---
 title: OC开发之——Foundation中常用结构体(52)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - Object-C
 tags:
   - OC

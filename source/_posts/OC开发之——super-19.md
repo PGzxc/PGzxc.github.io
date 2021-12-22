@@ -1,7 +1,8 @@
 ---
 title: OC开发之——super(19)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - Object-C
 tags:
   - OC

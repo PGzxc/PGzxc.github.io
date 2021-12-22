@@ -1,7 +1,8 @@
 ---
 title: CPP学习之——CPP与其他语言的区别(1.5)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - C++
 tags:
   - 区别

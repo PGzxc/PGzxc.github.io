@@ -1,7 +1,8 @@
 ---
 title: CPP学习之——循环语句的老祖宗——goto语句(7.1)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - C++
 tags:
   - goto

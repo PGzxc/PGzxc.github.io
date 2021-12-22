@@ -1,7 +1,8 @@
 ---
 title: CPP学习之——continue和break语句(7.4)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - C++
 tags:
   - 循环中断

@@ -1,7 +1,8 @@
 ---
 title: CPP学习之——使用typedef简化函数指针的声明(17.8)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - C++
 tags:
   - 特殊类

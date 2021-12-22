@@ -1,7 +1,8 @@
 ---
 title: CPP学习之——switch语句(7.11-13)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - C++
 tags:
   - switch

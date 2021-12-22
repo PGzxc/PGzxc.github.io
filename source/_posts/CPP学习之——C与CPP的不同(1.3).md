@@ -1,7 +1,8 @@
 ---
 title: CPP学习之——C与CPP的不同(1.3)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - C++
 tags:
   - C&CPP

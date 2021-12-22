@@ -1,7 +1,8 @@
 ---
 title: CPP学习之——while语句(7.2-3)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - C++
 tags:
   - while

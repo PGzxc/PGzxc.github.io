@@ -1,7 +1,8 @@
 ---
 title: CPP学习之——else语句(5.10)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - C++
 tags:
   - 语句

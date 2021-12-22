@@ -1,7 +1,8 @@
 ---
 title: CPP学习之——什么是块(5.2)
 categories:
-  - 基础语言
+  - 开发
+  - A-基础语言
   - C++
 tags:
   - 块
