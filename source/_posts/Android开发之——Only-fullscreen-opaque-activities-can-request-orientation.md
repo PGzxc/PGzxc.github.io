@@ -2,7 +2,7 @@
 title: Android开发之——Only fullscreen opaque activities can request orientation
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - Error

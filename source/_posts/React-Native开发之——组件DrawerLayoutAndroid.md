@@ -2,7 +2,7 @@
 title: React Native开发之——组件DrawerLayoutAndroid
 categories:
   - 开发
-  - 移动开发
+  - F-跨平台
   - React Native
 tags:
   - 组件DrawerLayoutAndroid

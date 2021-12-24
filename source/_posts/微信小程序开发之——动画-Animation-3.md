@@ -2,7 +2,7 @@
 title: 微信小程序开发之——动画-Animation(3)
 categories:
   - 开发
-  - 跨平台
+  - F-跨平台
   - 微信小程序
 tags:
   - 微信小程序

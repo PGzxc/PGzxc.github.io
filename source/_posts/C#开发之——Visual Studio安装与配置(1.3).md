@@ -2,7 +2,7 @@
 title: 'C#开发之——Visual Studio安装与配置(1.3)'
 categories:
   - 开发
-  - 桌面开发
+  - E-桌面开发
   - 'C#'
 tags:
   - 'C#'

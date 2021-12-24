@@ -2,7 +2,7 @@
 title: Android开发之——扫描工具Zxing
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - Zxing

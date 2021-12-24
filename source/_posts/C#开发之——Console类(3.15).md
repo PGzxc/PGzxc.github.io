@@ -2,7 +2,7 @@
 title: 'C#开发之——Console类(3.15)'
 categories:
   - 开发
-  - 桌面开发
+  - E-桌面开发
   - 'C#'
 tags:
   - 'C#'

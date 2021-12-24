@@ -1,7 +1,8 @@
 ---
 title: OpenCV开发之——在官方人脸检测的基础上添加人脸识别
 categories:
-  - 跨平台
+  - 开发
+  - H-音、视频开发
   - OpenCV
 tags:
   - OpenCV

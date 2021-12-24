@@ -2,7 +2,7 @@
 title: Cmake入门之——变量(八)
 categories:
   - 开发
-  - 跨平台
+  - F-跨平台
   - Cmake
 tags:
   - Cmake

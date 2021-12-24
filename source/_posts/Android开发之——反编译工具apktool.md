@@ -2,7 +2,7 @@
 title: Android开发之——反编译工具apktool
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - 反编译

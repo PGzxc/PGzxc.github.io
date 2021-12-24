@@ -2,7 +2,7 @@
 title: Flutter开发之——数据持久化存储-shared_preferences
 categories:
   - 开发
-  - 移动开发
+  - F-跨平台
   - Flutter
 tags:
   - Flutter

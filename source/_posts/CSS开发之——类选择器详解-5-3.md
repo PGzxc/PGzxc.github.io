@@ -2,7 +2,7 @@
 title: CSS开发之——类选择器详解(5.3)
 categories:
   - 开发
-  - 前端开发
+  - C-前端开发
   - CSS
 tags:
   - CSS

@@ -2,7 +2,7 @@
 title: Android开发之——依赖冲突Program type already present
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - 依赖冲突

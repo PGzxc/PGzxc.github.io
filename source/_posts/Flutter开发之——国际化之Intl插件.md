@@ -2,7 +2,7 @@
 title: Flutter开发之——国际化之Intl插件
 categories:
   - 开发
-  - 移动开发
+  - F-跨平台
   - Flutter
 tags:
   - Flutter

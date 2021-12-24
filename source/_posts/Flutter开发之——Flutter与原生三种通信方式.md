@@ -2,7 +2,7 @@
 title: Flutter开发之——Flutter与原生三种通信方式
 categories:
   - 开发
-  - 移动开发
+  - F-跨平台
   - Flutter
 tags:
   - Flutter

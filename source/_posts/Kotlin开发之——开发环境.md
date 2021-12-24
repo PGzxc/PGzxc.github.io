@@ -1,7 +1,8 @@
 ---
 title: Kotlin开发之——开发环境
 categories:
-  - 高级语言
+  - 开发
+  - B-高级语言
   - Kotlin
 tags:
   - 开发环境

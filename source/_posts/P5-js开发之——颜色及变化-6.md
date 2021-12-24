@@ -2,7 +2,7 @@
 title: P5.js开发之——颜色及变化(6)
 categories:
   - 开发
-  - 前端开发
+  - C-前端开发
   - P5.js
 tags:
   - P5.js

@@ -2,7 +2,7 @@
 title: 'C#开发之——ADO.NET数据库操作及常用类概述(15.1)'
 categories:
   - 开发
-  - 桌面开发
+  - E-桌面开发
   - 'C#'
 tags:
   - 'C#'

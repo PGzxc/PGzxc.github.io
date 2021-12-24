@@ -1,7 +1,8 @@
 ---
 title: OpenCV开发之——集成人脸识别后APP体积增大解决办法
 categories:
-  - 跨平台
+  - 开发
+  - H-音、视频开发
   - OpenCV
 tags:
   - OpenCV

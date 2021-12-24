@@ -2,7 +2,7 @@
 title: 鸿蒙OS应用开发之——This device type does not match the module profile
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - HarmonyOS
 tags:
   - HarmonyOS

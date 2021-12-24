@@ -1,7 +1,8 @@
 ---
 title: OpenCV开发之——将SDK替换为arr和so文件
 categories:
-  - 跨平台
+  - 开发
+  - H-音、视频开发
   - OpenCV
 tags:
   - OpenCV

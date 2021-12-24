@@ -2,7 +2,7 @@
 title: Android开发之——Dagger2入门教程
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - Dagger2

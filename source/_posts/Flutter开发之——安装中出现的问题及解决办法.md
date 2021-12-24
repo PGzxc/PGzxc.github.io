@@ -2,7 +2,7 @@
 title: Flutter开发之——安装中出现的问题及解决办法
 categories:
   - 开发
-  - 移动开发
+  - F-跨平台
   - Flutter
 tags:
   - Flutter

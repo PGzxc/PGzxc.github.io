@@ -1,7 +1,8 @@
 ---
 title: Kotlin学习之——课程大纲
 categories:
-  - 高级语言
+  - 开发
+  - B-高级语言
   - Kotlin
 tags:
   - 课程大纲

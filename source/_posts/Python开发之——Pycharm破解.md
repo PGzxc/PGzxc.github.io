@@ -2,7 +2,7 @@
 title: Python开发之——Pycharm破解
 categories:
   - 开发
-  - 后端
+  - G-后端开发
   - Python
 tags:
   - Pycharm激活

@@ -2,7 +2,7 @@
 title: Flutter开发之——序列化失败-have not been migrated to null-safety
 categories:
   - 开发
-  - 移动开发
+  - F-跨平台
   - Flutter
 tags:
   - Flutter

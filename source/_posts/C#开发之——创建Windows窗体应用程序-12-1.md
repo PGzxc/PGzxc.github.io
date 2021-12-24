@@ -2,7 +2,7 @@
 title: 'C#开发之——创建Windows窗体应用程序(12.1)'
 categories:
   - 开发
-  - 桌面开发
+  - E-桌面开发
   - 'C#'
 tags:
   - 'C#'

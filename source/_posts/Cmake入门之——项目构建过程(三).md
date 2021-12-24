@@ -2,7 +2,7 @@
 title: Cmake入门之——项目构建过程(三)
 categories:
   - 开发
-  - 跨平台
+  - F-跨平台
   - Cmake
 tags:
   - Cmake

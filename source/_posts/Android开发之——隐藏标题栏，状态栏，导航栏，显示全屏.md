@@ -2,7 +2,7 @@
 title: Android开发之——隐藏标题栏，状态栏，导航栏，显示全屏
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - 全屏

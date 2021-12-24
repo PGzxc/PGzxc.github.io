@@ -2,7 +2,7 @@
 title: IOS开发之——使用模型设置自定义视图的显示(34)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

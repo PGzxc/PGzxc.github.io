@@ -2,7 +2,7 @@
 title: Flutter开发之——文件系统目录-path_provider
 categories:
   - 开发
-  - 移动开发
+  - F-跨平台
   - Flutter
 tags:
   - Flutter

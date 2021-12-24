@@ -2,7 +2,7 @@
 title: Android开发之——腾讯热修复Tinker初探
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - 热修复

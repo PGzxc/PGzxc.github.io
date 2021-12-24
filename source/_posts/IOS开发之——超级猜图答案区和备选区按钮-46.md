@@ -2,7 +2,7 @@
 title: IOS开发之——超级猜图答案区和备选区按钮(46)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

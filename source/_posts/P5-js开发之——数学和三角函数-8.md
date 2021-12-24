@@ -2,7 +2,7 @@
 title: P5.js开发之——数学和三角函数(8)
 categories:
   - 开发
-  - 前端开发
+  - C-前端开发
   - P5.js
 tags:
   - P5.js

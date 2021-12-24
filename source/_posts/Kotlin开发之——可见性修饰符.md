@@ -1,7 +1,8 @@
 ---
 title: Kotlin开发之——可见性修饰符
 categories:
-  - 高级语言
+  - 开发
+  - B-高级语言
   - Kotlin
 tags:
   - 可见性修饰符

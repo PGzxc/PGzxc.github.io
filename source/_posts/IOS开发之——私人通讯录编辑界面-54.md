@@ -2,7 +2,7 @@
 title: IOS开发之——私人通讯录编辑界面(54)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

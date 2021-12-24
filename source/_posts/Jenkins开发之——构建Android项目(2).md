@@ -1,7 +1,8 @@
 ---
 title: Jenkins构建Android项目生成apk
 categories:
-  - 自动化
+  - 开发
+  - L-自动化
   - Jenkins
 tags:
   - 项目构建

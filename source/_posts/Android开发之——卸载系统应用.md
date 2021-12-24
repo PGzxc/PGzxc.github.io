@@ -2,7 +2,7 @@
 title: Android开发之——卸载系统应用
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - 系统应用

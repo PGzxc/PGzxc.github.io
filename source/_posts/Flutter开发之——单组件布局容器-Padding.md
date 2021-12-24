@@ -2,7 +2,7 @@
 title: Flutter开发之——单组件布局容器-Padding
 categories:
   - 开发
-  - 移动开发
+  - F-跨平台
   - Flutter
 tags:
   - Flutter

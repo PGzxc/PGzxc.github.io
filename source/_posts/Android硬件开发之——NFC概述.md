@@ -2,7 +2,7 @@
 title: Android硬件开发之——NFC概述
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - NFC概述

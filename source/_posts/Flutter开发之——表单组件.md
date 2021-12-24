@@ -2,7 +2,7 @@
 title: Flutter开发之——表单组件
 categories:
   - 开发
-  - 移动开发
+  - F-跨平台
   - Flutter
 tags:
   - Flutter

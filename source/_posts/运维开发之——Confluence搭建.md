@@ -1,8 +1,8 @@
 ---
 title: 运维开发之——Confluence搭建
 categories:
-  - 开发
   - 运维
+  - Confluence
 tags:
   - Confluence
 abbrlink: cddda75d

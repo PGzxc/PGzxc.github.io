@@ -2,7 +2,7 @@
 title: Android数据加密之——Base64编码算法
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - Base64编码算法

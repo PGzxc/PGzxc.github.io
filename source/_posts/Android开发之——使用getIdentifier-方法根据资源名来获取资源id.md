@@ -2,7 +2,7 @@
 title: Android开发之——使用getIdentifier()方法根据资源名来获取资源id
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - Identifier

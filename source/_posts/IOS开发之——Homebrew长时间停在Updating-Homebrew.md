@@ -2,7 +2,7 @@
 title: IOS开发之——Homebrew长时间停在Updating Homebrew
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

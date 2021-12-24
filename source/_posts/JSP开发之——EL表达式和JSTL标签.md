@@ -2,7 +2,7 @@
 title: JSP开发之——EL表达式和JSTL标签
 categories:
   - 开发
-  - 前端开发
+  - C-前端开发
   - JSP
 tags:
   - EL表达式

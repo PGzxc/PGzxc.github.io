@@ -2,7 +2,7 @@
 title: Android开发之——银联支付了解
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - 银联支付

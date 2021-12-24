@@ -2,7 +2,7 @@
 title: 'C#开发之——.NET Framework是什么(1.2)'
 categories:
   - 开发
-  - 桌面开发
+  - E-桌面开发
   - 'C#'
 tags:
   - 'C#'

@@ -2,7 +2,7 @@
 title: Flutter开发之——多组件布局容器-权重组件(Flexible、Expanded、Spacer)
 categories:
   - 开发
-  - 移动开发
+  - F-跨平台
   - Flutter
 tags:
   - Flutter

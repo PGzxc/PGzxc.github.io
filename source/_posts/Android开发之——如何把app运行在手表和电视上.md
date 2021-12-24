@@ -2,7 +2,7 @@
 title: Android开发之——如何把app运行在手表和电视上
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - Watch

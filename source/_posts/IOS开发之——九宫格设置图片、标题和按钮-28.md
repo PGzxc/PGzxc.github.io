@@ -2,7 +2,7 @@
 title: IOS开发之——九宫格设置图片、标题和按钮(28)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

@@ -2,7 +2,7 @@
 title: Android开发之——包含ABI的APK打包注意事项
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - Android

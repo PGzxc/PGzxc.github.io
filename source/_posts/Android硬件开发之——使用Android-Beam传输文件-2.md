@@ -2,7 +2,7 @@
 title: Android硬件开发之——使用Android Beam传输文件(2)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - Android Beam传输文件

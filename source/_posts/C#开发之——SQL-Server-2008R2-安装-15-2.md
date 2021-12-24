@@ -2,7 +2,7 @@
 title: 'C#开发之——SQL Server 2008R2 安装(15.2)'
 categories:
   - 开发
-  - 桌面开发
+  - E-桌面开发
   - 'C#'
 tags:
   - 'C#'

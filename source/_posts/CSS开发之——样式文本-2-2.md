@@ -2,7 +2,7 @@
 title: CSS开发之——样式文本(2.2)
 categories:
   - 开发
-  - 前端开发
+  - C-前端开发
   - CSS
 tags:
   - CSS

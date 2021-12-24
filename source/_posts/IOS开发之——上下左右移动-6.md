@@ -2,7 +2,7 @@
 title: IOS开发之——上下左右移动(6)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

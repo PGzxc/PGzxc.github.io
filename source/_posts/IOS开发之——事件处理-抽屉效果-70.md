@@ -2,7 +2,7 @@
 title: IOS开发之——事件处理-抽屉效果(70)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

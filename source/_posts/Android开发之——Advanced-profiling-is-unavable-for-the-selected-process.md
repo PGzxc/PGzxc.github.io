@@ -2,7 +2,7 @@
 title: Android开发之——Advanced profiling is unavable for the selected process
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - Profiler

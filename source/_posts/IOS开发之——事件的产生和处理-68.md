@@ -2,7 +2,7 @@
 title: IOS开发之——事件的产生和处理(68)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

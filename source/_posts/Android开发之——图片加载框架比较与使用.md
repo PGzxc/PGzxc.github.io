@@ -2,7 +2,7 @@
 title: Android开发之——图片加载框架比较与使用
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - 网络图片

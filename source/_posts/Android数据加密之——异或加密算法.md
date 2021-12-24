@@ -2,7 +2,7 @@
 title: Android数据加密之——异或加密算法
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - 异或加密算法

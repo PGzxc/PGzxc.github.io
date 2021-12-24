@@ -2,7 +2,7 @@
 title: Node开发之——清除项目缓存文件夹
 categories:
   - 开发
-  - 后端
+  - G-后端开发
   - Node
 tags:
   - Node

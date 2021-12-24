@@ -2,7 +2,7 @@
 title: Android硬件开发之——NDEF文本格式解析
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - NDEF文本格式解析

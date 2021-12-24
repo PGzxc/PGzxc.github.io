@@ -2,7 +2,7 @@
 title: Android开发之——Debug调试模式对数据筛选
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - Android

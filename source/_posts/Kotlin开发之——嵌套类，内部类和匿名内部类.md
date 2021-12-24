@@ -1,7 +1,8 @@
 ---
 title: Kotlin开发之——嵌套类，内部类和匿名内部类
 categories:
-  - 高级语言
+  - 开发
+  - B-高级语言
   - Kotlin
 tags:
   - 内部类

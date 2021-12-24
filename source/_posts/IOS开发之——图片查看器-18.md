@@ -2,7 +2,7 @@
 title: IOS开发之——图片查看器(18)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

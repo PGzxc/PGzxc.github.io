@@ -2,7 +2,7 @@
 title: IOS开发之——XIB自定义视图(33)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

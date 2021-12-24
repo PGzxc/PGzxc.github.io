@@ -2,7 +2,7 @@
 title: IOS开发之——Xcode生成的可执行文件位置(32)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

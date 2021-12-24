@@ -2,7 +2,7 @@
 title: 'C#开发之——BinaryWriter(10.12)'
 categories:
   - 开发
-  - 桌面开发
+  - E-桌面开发
   - 'C#'
 tags:
   - 'C#'

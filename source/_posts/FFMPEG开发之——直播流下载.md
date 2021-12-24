@@ -1,7 +1,8 @@
 ---
 title: FFMPEG开发之——直播流下载
 categories:
-  - 视频开发
+  - 开发
+  - H-音、视频开发
   - FFMPEG
 tags:
   - 直播流下载

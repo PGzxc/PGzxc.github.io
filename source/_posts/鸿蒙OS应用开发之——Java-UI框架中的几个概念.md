@@ -2,7 +2,7 @@
 title: 鸿蒙OS应用开发之——Java UI框架中的几个概念
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - HarmonyOS
 tags:
   - HarmonyOS

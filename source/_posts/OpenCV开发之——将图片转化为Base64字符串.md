@@ -1,7 +1,8 @@
 ---
 title: OpenCV开发之——将图片转化为Base64字符串
 categories:
-  - 跨平台
+  - 开发
+  - H-音、视频开发
   - OpenCV
 tags:
   - OpenCV

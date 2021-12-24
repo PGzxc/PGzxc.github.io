@@ -2,7 +2,7 @@
 title: Android开发之——Profiler-CPU性能分析
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - Android

@@ -2,7 +2,7 @@
 title: React Native开发之—— React Native将license修改为MIT意欲何为
 categories:
   - 开发
-  - 移动开发
+  - F-跨平台
   - React Native
 tags:
   - React Native将license修改为MIT

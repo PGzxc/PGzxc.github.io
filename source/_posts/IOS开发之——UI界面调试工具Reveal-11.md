@@ -2,7 +2,7 @@
 title: IOS开发之——UI界面调试工具Reveal(11)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

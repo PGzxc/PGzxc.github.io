@@ -2,7 +2,7 @@
 title: Android开发之——打包发布及其优化
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - 混淆

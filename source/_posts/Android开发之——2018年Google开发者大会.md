@@ -2,7 +2,7 @@
 title: Android开发之——2018年Google开发者大会
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - Google开发者大会

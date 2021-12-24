@@ -2,7 +2,7 @@
 title: IOS开发之——手势解锁-布局和圆的选中(84)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

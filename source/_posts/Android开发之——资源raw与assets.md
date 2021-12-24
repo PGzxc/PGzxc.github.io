@@ -2,7 +2,7 @@
 title: Android开发之——资源raw与assets
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - raw与assets

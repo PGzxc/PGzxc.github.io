@@ -2,7 +2,7 @@
 title: Android硬件开发之——动作传感器
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - 动作传感器

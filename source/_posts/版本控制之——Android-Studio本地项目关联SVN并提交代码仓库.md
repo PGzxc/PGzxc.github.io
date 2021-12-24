@@ -1,7 +1,8 @@
 ---
 title: 版本控制之——Android Studio本地项目关联SVN并提交代码仓库
 categories:
-  - 版本控制
+  - 开发
+  - I-版本控制
   - SVN
 tags:
   - SVN

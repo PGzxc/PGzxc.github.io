@@ -2,7 +2,7 @@
 title: Android开发之——给应用未读消息添加角标
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - 应用角标

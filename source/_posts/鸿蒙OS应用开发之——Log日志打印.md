@@ -2,7 +2,7 @@
 title: 鸿蒙OS应用开发之——Log日志打印
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - HarmonyOS
 tags:
   - HarmonyOS

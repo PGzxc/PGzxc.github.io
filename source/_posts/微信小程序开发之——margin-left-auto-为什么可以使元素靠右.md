@@ -2,7 +2,7 @@
 title: 微信小程序开发之——margin-left=auto 为什么可以使元素靠右
 categories:
   - 开发
-  - 跨平台
+  - F-跨平台
   - 微信小程序
 tags:
   - 微信小程序

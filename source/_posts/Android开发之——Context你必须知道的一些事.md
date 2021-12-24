@@ -2,7 +2,7 @@
 title: Android开发之——Context你必须知道的一些事
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - Context

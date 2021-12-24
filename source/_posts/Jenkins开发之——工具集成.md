@@ -1,7 +1,8 @@
 ---
 title: Jenkins开发之——工具集成
 categories:
-  - 自动化
+  - 开发
+  - L-自动化
   - Jenkins
 tags:
   - Jenkins

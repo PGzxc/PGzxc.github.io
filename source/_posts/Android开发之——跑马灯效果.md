@@ -2,7 +2,7 @@
 title: Android开发之——跑马灯效果
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - 跑马灯

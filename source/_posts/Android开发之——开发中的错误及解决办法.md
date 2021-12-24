@@ -2,7 +2,7 @@
 title: Android开发之——开发中的错误及解决办法
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - Android

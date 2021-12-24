@@ -2,7 +2,7 @@
 title: 'C#开发之——SQL Server 2008无法连接错误(15.3)'
 categories:
   - 开发
-  - 桌面开发
+  - E-桌面开发
   - 'C#'
 tags:
   - 'C#'

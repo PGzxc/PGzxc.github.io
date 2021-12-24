@@ -2,7 +2,7 @@
 title: Android开发之——Android系统架构与系统源码目录
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - 系统架构

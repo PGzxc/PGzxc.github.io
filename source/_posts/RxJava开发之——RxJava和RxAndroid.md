@@ -1,7 +1,8 @@
 ---
 title: RxJava开发之——RxJava和RxAndroid
 categories:
-  - 高级语言
+  - 开发
+  - B-高级语言
   - RxJava
 tags:
   - RxJava

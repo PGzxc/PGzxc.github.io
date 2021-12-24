@@ -2,7 +2,7 @@
 title: IOS开发之——单元格循环引用及单元格背景(23)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

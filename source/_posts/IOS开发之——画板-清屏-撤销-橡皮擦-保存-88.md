@@ -2,7 +2,7 @@
 title: IOS开发之——画板-清屏/撤销/橡皮擦/保存(88)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

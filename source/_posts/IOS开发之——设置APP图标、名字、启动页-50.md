@@ -2,7 +2,7 @@
 title: IOS开发之——设置APP图标、名字、启动页(50)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

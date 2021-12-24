@@ -1,7 +1,8 @@
 ---
 title: Jenkins开发之——基于SVN构建项目
 categories:
-  - 自动化
+  - 开发
+  - L-自动化
   - Jenkins
 tags:
   - Jenkins

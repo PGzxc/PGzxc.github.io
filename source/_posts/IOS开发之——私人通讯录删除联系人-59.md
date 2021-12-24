@@ -2,7 +2,7 @@
 title: IOS开发之——私人通讯录删除联系人(59)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

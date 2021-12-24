@@ -1,7 +1,8 @@
 ---
 title: 错误解决之——IDE控制台乱码
 categories:
-  - 错误
+  - 开发
+  - M-错误
   - 乱码
 tags:
   - 乱码

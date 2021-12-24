@@ -2,7 +2,7 @@
 title: IOS开发之——超级猜图答题区按钮点击处理(48)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

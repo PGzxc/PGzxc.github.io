@@ -2,7 +2,7 @@
 title: Android开发之——目录结构浅析
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - 目录结构

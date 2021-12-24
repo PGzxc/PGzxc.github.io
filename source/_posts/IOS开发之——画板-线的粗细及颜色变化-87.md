@@ -2,7 +2,7 @@
 title: IOS开发之——画板-线的粗细及颜色变化(87)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

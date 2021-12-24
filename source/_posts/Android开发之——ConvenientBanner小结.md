@@ -2,7 +2,7 @@
 title: Android开发之——ConvenientBanner小结
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - 轮播图

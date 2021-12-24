@@ -2,7 +2,7 @@
 title: IOS开发之——超级猜图备选按钮点击和胜负判断(47)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

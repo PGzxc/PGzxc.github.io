@@ -2,7 +2,7 @@
 title: Android开发之——通用流行框架大全
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - 第三方库

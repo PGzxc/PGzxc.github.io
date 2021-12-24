@@ -2,7 +2,7 @@
 title: Android开发之——快速发布开源项目到Jcenter
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - Jcenter

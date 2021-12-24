@@ -2,7 +2,7 @@
 title: Flutter开发之——Linux上搭建Flutter开发环境
 categories:
   - 开发
-  - 移动开发
+  - F-跨平台
   - Flutter
 tags:
   - Flutter

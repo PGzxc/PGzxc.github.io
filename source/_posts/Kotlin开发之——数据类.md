@@ -1,7 +1,8 @@
 ---
 title: Kotlin开发之——数据类
 categories:
-  - 高级语言
+  - 开发
+  - B-高级语言
   - Kotlin
 tags:
   - 数据类

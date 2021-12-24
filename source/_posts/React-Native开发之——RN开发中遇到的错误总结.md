@@ -2,7 +2,7 @@
 title: React Native开发之——RN开发中遇到的错误总结
 categories:
   - 开发
-  - 移动开发
+  - F-跨平台
   - React Native
 tags:
   - RN错误总结

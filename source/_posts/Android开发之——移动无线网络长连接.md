@@ -2,7 +2,7 @@
 title: Android开发之——移动无线网络长连接
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - 推送

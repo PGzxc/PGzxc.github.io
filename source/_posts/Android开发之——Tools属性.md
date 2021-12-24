@@ -2,7 +2,7 @@
 title: Android开发之——Tools属性
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - Tools

@@ -2,7 +2,7 @@
 title: 'C#开发之——Driveinfo(10.1)'
 categories:
   - 开发
-  - 桌面开发
+  - E-桌面开发
   - 'C#'
 tags:
   - 'C#'

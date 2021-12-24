@@ -2,7 +2,7 @@
 title: 'C#开发之——File(10.5)'
 categories:
   - 开发
-  - 桌面开发
+  - E-桌面开发
   - 'C#'
 tags:
   - 'C#'

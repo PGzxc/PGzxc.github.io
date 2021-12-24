@@ -2,7 +2,7 @@
 title: PHP开发之——Windows开发环境搭建
 categories:
   - 开发
-  - 后端
+  - G-后端开发
   - PHP
 tags:
   - PHP

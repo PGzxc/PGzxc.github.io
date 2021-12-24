@@ -1,7 +1,8 @@
 ---
 title: OpenCV开发之——人脸识别库生成so文件
 categories:
-  - 跨平台
+  - 开发
+  - H-音、视频开发
   - OpenCV
 tags:
   - OpenCV

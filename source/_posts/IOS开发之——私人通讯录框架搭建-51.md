@@ -2,7 +2,7 @@
 title: IOS开发之——私人通讯录框架搭建(51)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

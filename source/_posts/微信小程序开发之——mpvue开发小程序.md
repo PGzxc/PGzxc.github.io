@@ -2,7 +2,7 @@
 title: 微信小程序开发之——mpvue开发小程序
 categories:
   - 开发
-  - 跨平台
+  - F-跨平台
   - 微信小程序
 tags:
   - 微信小程序

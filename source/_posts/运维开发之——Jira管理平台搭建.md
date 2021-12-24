@@ -1,8 +1,8 @@
 ---
 title: 运维开发之——Jira管理平台搭建
 categories:
-  - 开发
   - 运维
+  - Jira
 tags:
   - Jira
 abbrlink: 1aa9da27

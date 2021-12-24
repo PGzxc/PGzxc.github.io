@@ -2,7 +2,7 @@
 title: 'C#开发之——StreamReader(10.8)'
 categories:
   - 开发
-  - 桌面开发
+  - E-桌面开发
   - 'C#'
 tags:
   - 'C#'

@@ -2,7 +2,7 @@
 title: Vue开发之——Vue环境搭建
 categories:
   - 开发
-  - 前端开发
+  - C-前端开发
   - Vue
 tags:
   - 环境搭建

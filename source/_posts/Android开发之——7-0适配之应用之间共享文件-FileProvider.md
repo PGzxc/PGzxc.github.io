@@ -2,7 +2,7 @@
 title: Android开发之——7.0适配之应用之间共享文件(FileProvider)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - FileProvider

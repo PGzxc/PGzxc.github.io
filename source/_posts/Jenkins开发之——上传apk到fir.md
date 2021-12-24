@@ -1,7 +1,8 @@
 ---
 title: Jenkins开发之——上传apk到fir
 categories:
-  - 自动化
+  - 开发
+  - L-自动化
   - Jenkins
 tags:
   - 项目构建

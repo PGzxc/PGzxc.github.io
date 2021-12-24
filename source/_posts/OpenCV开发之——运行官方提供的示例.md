@@ -1,7 +1,8 @@
 ---
 title: OpenCV开发之——运行官方提供的示例
 categories:
-  - 跨平台
+  - 开发
+  - H-音、视频开发
   - OpenCV
 tags:
   - OpenCV

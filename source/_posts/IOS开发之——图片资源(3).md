@@ -2,7 +2,7 @@
 title: IOS开发之——图片资源(3)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - 基础

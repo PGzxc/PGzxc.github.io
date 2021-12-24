@@ -2,7 +2,7 @@
 title: IOS开发之——图片的放大与缩小(15)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

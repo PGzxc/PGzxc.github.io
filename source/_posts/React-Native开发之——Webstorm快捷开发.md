@@ -2,7 +2,7 @@
 title: React Native开发之——Webstorm快捷开发
 categories:
   - 开发
-  - 移动开发
+  - F-跨平台
   - React Native
 tags:
   - Webstorm快捷开发

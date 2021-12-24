@@ -2,7 +2,7 @@
 title: Android开发之——刷新显示数据变化动画
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - 动画

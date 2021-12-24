@@ -1,7 +1,8 @@
 ---
 title: OpenCV开发之——将官方示例迁移到项目上
 categories:
-  - 跨平台
+  - 开发
+  - H-音、视频开发
   - OpenCV
 tags:
   - OpenCV

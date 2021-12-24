@@ -2,7 +2,7 @@
 title: 鸿蒙OS应用开发之——新建Ability没有Empty Page Ability
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - HarmonyOS
 tags:
   - HarmonyOS

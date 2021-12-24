@@ -2,7 +2,7 @@
 title: Android开发之——app启动秒开
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - APP秒开

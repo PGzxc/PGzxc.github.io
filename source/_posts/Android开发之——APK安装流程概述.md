@@ -2,7 +2,7 @@
 title: Android开发之——APK安装流程概述
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - APK安装

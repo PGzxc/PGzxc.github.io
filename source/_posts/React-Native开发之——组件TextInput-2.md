@@ -2,7 +2,7 @@
 title: React Native开发之——组件TextInput(2)
 categories:
   - 开发
-  - 移动开发
+  - F-跨平台
   - React Native
 tags:
   - 组件TextInput

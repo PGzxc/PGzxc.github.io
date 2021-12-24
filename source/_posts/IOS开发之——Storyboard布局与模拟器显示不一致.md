@@ -2,7 +2,7 @@
 title: IOS开发之——Storyboard布局与模拟器显示不一致
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

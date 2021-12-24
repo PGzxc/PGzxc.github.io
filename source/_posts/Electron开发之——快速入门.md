@@ -2,7 +2,7 @@
 title: Electron开发之——快速入门
 categories:
   - 开发
-  - 桌面开发
+  - E-桌面开发
   - Electron
 tags:
   - Electron

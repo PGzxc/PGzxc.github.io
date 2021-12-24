@@ -2,7 +2,7 @@
 title: 微信小程序开发之——WXS模块
 categories:
   - 开发
-  - 跨平台
+  - F-跨平台
   - 微信小程序
 abbrlink: d1eca38d
 date: 2021-11-10 09:50:39

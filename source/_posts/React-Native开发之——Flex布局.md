@@ -2,7 +2,7 @@
 title: React Native开发之——Flex布局
 categories:
   - 开发
-  - 移动开发
+  - F-跨平台
   - React Native
 tags:
   - Flex布局

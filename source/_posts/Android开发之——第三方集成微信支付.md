@@ -2,7 +2,7 @@
 title: Android开发之——第三方集成微信支付
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - 微信支付

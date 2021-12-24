@@ -2,7 +2,7 @@
 title: 'C#开发之——Debug和Trace(13.4)'
 categories:
   - 开发
-  - 桌面开发
+  - E-桌面开发
   - 'C#'
 tags:
   - 'C#'

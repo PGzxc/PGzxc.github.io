@@ -2,7 +2,7 @@
 title: IOS开发之——内容的放大与缩小(12)
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - IOS
 tags:
   - IOS

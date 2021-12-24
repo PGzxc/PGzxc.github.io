@@ -2,7 +2,7 @@
 title: Android开发之——Android广播机制
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - Android
 tags:
   - 广播

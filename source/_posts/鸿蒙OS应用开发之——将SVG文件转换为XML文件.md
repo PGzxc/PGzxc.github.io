@@ -2,7 +2,7 @@
 title: 鸿蒙OS应用开发之——将SVG文件转换为XML文件
 categories:
   - 开发
-  - 移动开发
+  - D-移动开发
   - HarmonyOS
 tags:
   - HarmonyOS

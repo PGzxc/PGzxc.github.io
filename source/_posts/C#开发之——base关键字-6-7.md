@@ -2,7 +2,7 @@
 title: 'C#开发之——base关键字(6.7)'
 categories:
   - 开发
-  - 桌面开发
+  - E-桌面开发
   - 'C#'
 tags:
   - 'C#'

@@ -1,7 +1,8 @@
 ---
 title: RxJava开发之——如何在Eclipse上使用Rxjava
 categories:
-  - 高级语言
+  - 开发
+  - B-高级语言
   - RxJava
 tags:
   - Rxjava开发工具

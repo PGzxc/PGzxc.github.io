@@ -2,7 +2,7 @@
 title: P5.js开发之——文字(7)
 categories:
   - 开发
-  - 前端开发
+  - C-前端开发
   - P5.js
 tags:
   - P5.js
