@@ -3,9 +3,9 @@ title: 鸿蒙OS应用开发之——Java UI框架-常用组件ToastDialog
 categories:
   - 开发
   - D-移动开发
-  - IOS
+  - HarmonyOS
 tags:
-  - IOS
+  - HarmonyOS
 abbrlink: 5dbb9ac4
 date: 2021-01-07 11:27:07
 ---

@@ -3,9 +3,9 @@ title: 鸿蒙OS应用开发之——Java UI框架-常用组件ScrollView
 categories:
   - 开发
   - D-移动开发
-  - IOS
+  - HarmonyOS
 tags:
-  - IOS
+  - HarmonyOS
 abbrlink: f088e0c7
 date: 2021-01-07 17:00:42
 ---
