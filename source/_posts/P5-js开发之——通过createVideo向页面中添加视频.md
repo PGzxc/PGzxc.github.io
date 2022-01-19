@@ -68,6 +68,7 @@ function vidLoad() {
 ## 四 参考
 
 * [P5.js官方文档—createVideo](https://p5js.org/zh-Hans/reference/#/p5/createVideo)
+* [P5.js官方文档—p5.MediaElement](https://p5js.org/zh-Hans/reference/#/p5.MediaElement)
 
 
 
