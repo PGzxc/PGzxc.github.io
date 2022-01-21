@@ -51,3 +51,9 @@ comments: false
 | :--: | :----------------------------------------------------------: | :----------: |
 |  1   | [Duplicate Files Search](http://malich.ru/duplicate_searcher) | 重复文件搜索 |
 
+## 五 文档
+
+| 编号 |                     软件链接                     |       说明        |
+| :--: | :----------------------------------------------: | :---------------: |
+|  1   | [Sumatra PDF](https://www.sumatrapdfreader.org/) | Windows PDF阅读器 |
+
