@@ -7,12 +7,13 @@ comments: false
 <!--下载在右侧-->
 <div style="display: flex; flex-direction: row;">
         <a style="margin-left:auto; padding-right: 10px;font-size: large;font-weight: bold;" href="./index.pdf"
-            download="index.pdf">下载简历PDF</a>
+            download="index.pdf">下载PDF简历</a>
 </div>
+
 <!--下载在中间-->
 <!-- <div style="display: flex; flex-direction: row;">
         <a style="display: flex;justify-content: center;align-items: center; width: 100%;font-size: large;font-weight: bold;"
-            href="./1.pdf" download="1.pdf">下载简历PDF</a>
+            href="./1.pdf" download="1.pdf">下载PDF简历</a>
 </div> -->
 
 ---
@@ -53,6 +54,7 @@ comments: false
 ### 工作描述：   
 
 - 驻场办公，负责日立中国-研发中心-养老项目组的研发工作；
+- 搭建项目管理服务器为开发组人员分配账号及进行项目管理
 - 根据日立中国-研发中心要求，完成日本项目的本地化及功能研发
 - 配合产品经理和测试人员，保证产品质量和准时上线；
 - 根据用户反馈，不断进行客户端产品的优化与改进； 
@@ -60,82 +62,131 @@ comments: false
 ### 项目介绍
 
 __1-Android项目—脑训练__   
-项目描述：听呗众包是听呗FM分类中的一个专辑，包含专辑列表，节目播放，节目下载，设置等功能；目前众包项目有：《宝贝听睡前故事》、《相声大全》等9个。   
-功能模块：专辑列表、播放、滑动切换节目、节目下载、缓存清理、定时关闭、设置等  
-负责模块：专辑列表、播放、滑动切换节目等  
+项目描述：脑训练是日立养老产品日本养老项目的本地化产品。包含有反应力、专注力、记忆力等分类的游戏，游戏前通过佩戴脑设备XB-01，在游戏时通过蓝牙传输将脑血流的结果通过颜色反映到游戏界面上，并展示相关音效(鼓励、加油等)。并根据训练结果进行推荐训练。    
+功能模块：设备检测配对、登录、设备连接、游戏选择、游戏说明、游戏、当前游戏结果、今天和一个月的结果、排行等  
+负责模块：本地化、设备检测配对、登录、游戏选择、新增游戏、排行等  
 技术要点：  
 
--  基于FFMPEG构建的PldPlayer播放直播推流和音乐文件；
--  基于EventBus优化Android的发布订阅事件；
--  基于RxPermissions管理app运行时动态权限；
+-  基于databing+Kodein构建MVVM开发框架；
+-  基于Fuel+kotlin Coroutine +fuel-jackson+MultiStateView构建网络请求和解析框架；
+-  基于couchbaseLite+sharepreferences+kotpref构建数据存储；
+-  基于EventBus+接口回调构建Android的发布订阅事件和事件回调；
+-  自定义view实现自定义输入键盘和人脸识别时人脸识别区域及排行；
+-  基于permissionsdispatcher管理app运行时动态权限；
 -  基于LeakCanary检测应用内存泄漏；
--  基于picasso加载图片并实现高斯模糊；
+-  基于qrcodeZxing识别二维码；
+-  基于OpenCV实现人脸识别；
+
+项目预览
+
+| ![][nfb-1] |  ![][nfb-2]  | ![][nfb-3] | ![][nfb-4] |
+| ---------- | -------------| ---------- | ---------- |
+| ![][nfb-5] | ![][nfb-6]   | ![][nfb-7] | ![][nfb-8] |
+| ![][nfb-9] | ![][nfb-10]  | ![][nfb-11]| ![][nfb-12]|
+| ![][nfb-13]| ![][nfb-14]  | ![][nfb-15]| ![][nfb-16]|
+| ![][nfb-17]| ![][nfb-18]  | ![][nfb-19]|            |
 
 __2-Android项目—脑检测__   
-项目描述：听呗众包是听呗FM分类中的一个专辑，包含专辑列表，节目播放，节目下载，设置等功能；目前众包项目有：《宝贝听睡前故事》、《相声大全》等9个。   
-功能模块：专辑列表、播放、滑动切换节目、节目下载、缓存清理、定时关闭、设置等  
-负责模块：专辑列表、播放、滑动切换节目等  
+项目描述：脑训练是日立养老产品日本养老项目的本地化产品。通过【数字】、【数字中文】、【数字中文字幕】游戏训练检测用户反应力、专注力、记忆力，游戏前通过佩戴脑设备XB-01，在游戏时通过蓝牙SDK获取游戏时佩戴设备的脑血量并记录下来，结合游戏结果并数据采样正态分布结果给出最终结果。并可以将结果打印。   
+功能模块：设备检测配对、登录、设备连接、游戏联系、游戏、游戏结果、游戏报告等  
+负责模块：本地化、设备检测配对、登录、游戏结果等  
 技术要点：  
 
--  基于FFMPEG构建的PldPlayer播放直播推流和音乐文件；
--  基于EventBus优化Android的发布订阅事件；
--  基于RxPermissions管理app运行时动态权限；
--  基于LeakCanary检测应用内存泄漏；
--  基于picasso加载图片并实现高斯模糊；
+-  基于databing+Kodein构建MVVM开发框架；
+-  基于Fuel+kotlin Coroutine +fuel-jackson+MultiStateView构建网络请求和解析框架；
+-  基于couchbaseLite+sharepreferences+kotpref构建数据存储；
+-  基于EventBus+接口回调构建Android的发布订阅事件和事件回调；
+-  自定义view实现自定义输入键盘和人脸识别时人脸识别区域；
+-  基于permissionsdispatcher管理app运行时动态权限；
+-  基于qrcodeZxing识别二维码；
+-  基于OpenCV实现人脸识别；
+
+项目预览
+
+| ![][kiosk-1]  | ![][kiosk-2]  | ![][kiosk-3]  | ![][kiosk-4]  |
+| ------------  | ------------  | ------------  | ------------  |
+| ![][kiosk-5]  | ![][kiosk-6]  | ![][kiosk-7]  | ![][kiosk-8]  |
+| ![][kiosk-9]  | ![][kiosk-10] | ![][kiosk-11] | ![][kiosk-12] |
+| ![][kiosk-13] | ![][kiosk-14] | ![][kiosk-15] | ![][kiosk-16] |
+| ![][kiosk-17] | ![][kiosk-18] | ![][kiosk-19] |               |
 
 __3-Android项目—记录app__   
-项目描述：听呗众包是听呗FM分类中的一个专辑，包含专辑列表，节目播放，节目下载，设置等功能；目前众包项目有：《宝贝听睡前故事》、《相声大全》等9个。   
-功能模块：专辑列表、播放、滑动切换节目、节目下载、缓存清理、定时关闭、设置等  
-负责模块：专辑列表、播放、滑动切换节目等  
+项目描述：记录app是一个用于收集整理合作企业数据信息的项目(魔法垫、黑金鱼、机器人等)，包含项目列表，登录，数据采集等功能；。   
+功能模块：项目列表、登录、数据采集等  
+负责模块：项目列表、登录、数据采集等  
 技术要点：  
 
--  基于FFMPEG构建的PldPlayer播放直播推流和音乐文件；
--  基于EventBus优化Android的发布订阅事件；
--  基于RxPermissions管理app运行时动态权限；
--  基于LeakCanary检测应用内存泄漏；
--  基于picasso加载图片并实现高斯模糊；
+-  基于databing+Kodein构建MVVM开发框架；
+-  基于Fuel+kotlin Coroutine +fuel-jackson+MultiStateView构建网络请求和解析框架；
+-  基于EventBus+接口回调构建Android的发布订阅事件和事件回调
+-  自定义view实现自定义输入键盘和人脸识别时人脸识别区域
+-  基于permissionsdispatcher管理app运行时动态权限；
+-  基于qrcodeZxing识别二维码；
+-  基于OpenCV实现人脸识别；
+-  基于BluetoothKit进行蓝牙数据的连接和采集
 
-__4-Android项目—统一管理软件__   
-项目描述：听呗众包是听呗FM分类中的一个专辑，包含专辑列表，节目播放，节目下载，设置等功能；目前众包项目有：《宝贝听睡前故事》、《相声大全》等9个。   
-功能模块：专辑列表、播放、滑动切换节目、节目下载、缓存清理、定时关闭、设置等  
-负责模块：专辑列表、播放、滑动切换节目等  
+项目预览
+
+| ![][recordapp-1]  | ![][recordapp-2] | ![][recordapp-3] |
+| ------------------| ---------------- | ---------------- |
+| ![][recordapp-4]  | ![][recordapp-6] |  ![][recordapp-6]|
+| ![][recordapp-7]  | ![][recordapp-8] |  ![][recordapp-9]|
+| ![][recordapp-10] |                  |                  |
+
+__4-前端项目—小游戏__   
+项目描述：前端游戏是一些P5.js小游戏和GitHub上开源游戏项目，并以此进行修改并进行页面适配。和安卓原生项目和小程序项目进行交互和数据传输。   
+功能模块：P5.js游戏，GitHub小游戏(麻将、象棋、台球、乒乓球)等  
+负责模块：P5.js游戏，GitHub小游戏(麻将、象棋、台球、乒乓球)等  
 技术要点：  
 
--  基于FFMPEG构建的PldPlayer播放直播推流和音乐文件；
--  基于EventBus优化Android的发布订阅事件；
--  基于RxPermissions管理app运行时动态权限；
--  基于LeakCanary检测应用内存泄漏；
--  基于picasso加载图片并实现高斯模糊；
+-  基于P5.js绘制小游戏；
+-  处理前端游戏数据与Android端及小程序端交互；
+
+项目预览
+
+| ![][webgame-1] | ![][webgame-2] | ![][webgame-3] | ![][webgame-4] |
+| -------------- | ---------------|----------------| -------------- |
+| ![][webgame-5] | ![][webgame-6] | ![][webgame-7] | ![][webgame-8] |
 
 __5-微信小程序—日立健康__   
-项目描述：听呗众包是听呗FM分类中的一个专辑，包含专辑列表，节目播放，节目下载，设置等功能；目前众包项目有：《宝贝听睡前故事》、《相声大全》等9个。   
-功能模块：专辑列表、播放、滑动切换节目、节目下载、缓存清理、定时关闭、设置等  
-负责模块：专辑列表、播放、滑动切换节目等  
+项目描述：日历健康小程序是日立养老项目组将现有的项目进行部分整合后开发的一款微信小程序，在不安装app的情况下，通过小程序实现部分需要app和硬件需要完成的功能。   
+功能模块：登录注册模块、用户信息修改模块、首页、慢病管理、认知管理、跌到管理(步态分析有硬件实现)、日常管理等  
+负责模块：认知管理、跌到管理(步态分析有硬件实现)等  
 技术要点：  
 
--  基于FFMPEG构建的PldPlayer播放直播推流和音乐文件；
--  基于EventBus优化Android的发布订阅事件；
--  基于RxPermissions管理app运行时动态权限；
--  基于LeakCanary检测应用内存泄漏；
--  基于picasso加载图片并实现高斯模糊；
+-  基于template构建模板组件；
+-  canvas绘制视频录制倒计时动画；
+-  小程序动态权限处理(地理位置、录像、拍照)；
+-  小程序与webview进行数据交互；
 
-__6#项目—磁感应型手指开闭运动检测__   
+项目预览
+
+| ![][w-health-1] | ![][w-health-2]  |![][w-health-3]  |
+| ----------------| -----------------| ----------------|
+| ![][w-health-4] | ![][w-health-5]  | ![][w-health-6] |
+| ![][w-health-7] | ![][w-health-8]  | ![][w-health-9] |
+| ![][w-health-10]| ![][w-health-11] |                 |
+
+__6 C#项目—磁感应型手指开闭运动检测__   
 项目简介：磁感应型手指开闭运动检测是一款桌面应用，借助于手指传感器，根据手势规则操作检测手指开合运动，采集手势样本，进而判断人体机能。                                          
 项目模块：登录、传感器(数据采样)、数据保存、雷达波形分析、数据上传等       
 负责模块：数据保存、雷达波形分析、数据上传等
 技术要点：		
-     
 
--  基于DataBinding构建MVVM开发框架；
--  基于Retrofit2+Rxlifecycle+okhttp定义API接口；
--  基于DiskLruCache制定本地缓存策略；
--  自定义WebView处理APP与JS协议交互事件；
--  基于环信聊天室实现直播间聊天；
--  基于七牛云实现音频推流、拉流、连麦功能；
--  基于MultiThreadDownloader歌曲文件的离线下载；
--  其他第三方组件如：直播流歌曲识别、弹幕、Glide、微信支付、分享、定位等；
+-  混合式WCF开发框架；
+-  组件依赖(Compos(图标、日志、数学计算))；
+-  硬件依赖(HidCom(蓝牙、USB))；
+-  将数据信息保存到access数据库中；
+- 将最终结果通过网络保存到mysql数据库中；
 
+项目预览
 
+| ![][c-sharp-1] | ![][c-sharp-2]     |   ![][c-sharp-3]   |
+| -------------- | ---- | ---- |
+| ![][c-sharp-4] | ![][c-sharp-5]     |  ![][c-sharp-6]    |
+| ![][c-sharp-7] | ![][c-sharp-8]     |  ![][c-sharp-9]    |
+| ![][c-sharp-10]| ![][c-sharp-11]    |  ![][c-sharp-12]   |
+| ![][c-sharp-13]| ![][c-sharp-14]    |                    |
 
 ---
 ## 2016/07 — 2018/07 &emsp;西藏远誉(北京)网络科技有限公司 &emsp;Android开发工程师
@@ -304,4 +355,96 @@ __E朝朝企业端__
 
 [1]: ../images/wechat-public-number.png
 
+<!--C#-->
+[c-sharp-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/justTap-id-1.png
+[c-sharp-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/justTap-login-2.png
+[c-sharp-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/just-admin-setting-3.png
+[c-sharp-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/just-admin-login-4.png
+[c-sharp-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/just-power-save-5.png
+[c-sharp-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/justTap-testuser-info-6.png
+[c-sharp-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/just-test-process-7.png
+[c-sharp-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/just-fingure-config-8.png
+[c-sharp-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/just-close-fingure-9.png
+[c-sharp-10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/just-dangban-test-10.png
+[c-sharp-11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/just-lianxi-pic-11.png
+[c-sharp-12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/just-fingure-lianxi-12.png
+[c-sharp-13]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/just-fingure-lianxi-2-13.png
+[c-sharp-14]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/just-fingure-result-14.png
 
+<!--android-脑训练-->
+
+[nfb-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-devices-find-1.png
+[nfb-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-devices-find-none-2.png
+[nfb-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-devices-find-connect-3.png
+[nfb-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-login-choice-4.png
+[nfb-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-login-scan-5.png
+[nfb-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-login-input-6.png
+[nfb-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-login-face-7.png
+[nfb-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-connect-on-8.png
+[nfb-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-choice-game-react-9.png
+[nfb-10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-choice-game-zhuanzhu-10.png
+[nfb-11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-choice-game-memory-11.png
+[nfb-12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-choice-game-activity-12.png
+[nfb-13]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-game-level-13.png
+[nfb-14]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-game-explain-14.png
+[nfb-15]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-game-info-15.png
+[nfb-16]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-game-wait-16.png
+[nfb-17]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-game-result-17.png
+[nfb-18]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-game-week-18.png
+[nfb-19]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-game-rank-19.png
+
+<!--android-脑检测-->
+[kiosk-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/kiosk-find-devices-1.png
+[kiosk-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/kiosk-device-find-none-2.png
+[kiosk-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/kiosk-device-serach-connected-3.png
+[kiosk-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/kiosk-login-scan-4.png
+[kiosk-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/kiosk-login-input-5.png
+[kiosk-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/kiosk-login-face-6.png
+[kiosk-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/kiosk-wear-video-anim-7.png
+[kiosk-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/kiosk-ware-connect-8.png
+[kiosk-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/kiosk-device-connecting-9.png
+[kiosk-10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/kiosk-device-connect-success-10.png
+[kiosk-11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/kiosk-game-choice-11.png
+[kiosk-12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/kiosk-game-demo-12.png
+[kiosk-13]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/kiosk-game-start-before-13.png
+[kiosk-14]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/kiosk-game-number-countdown-14.png
+[kiosk-15]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/kiosk-game-number-15.png
+[kiosk-16]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/kiosk-game-finish-waiting-16.png
+[kiosk-17]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/kiosk-result-17.png
+[kiosk-18]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/kiosk-game-resule-all-18.png
+[kiosk-19]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/kiosk-report-print-19.png
+
+<!--android-记录app-->
+[recordapp-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-mofadian-shiwu-1.png
+[recordapp-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-mofa-project-list-2.png
+[recordapp-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-mofadian-project-diff-3.png
+[recordapp-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-goldfish-shiwu-4.png
+[recordapp-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-project-list-5.png
+[recordapp-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-login-choice-6.png
+[recordapp-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-edit-info-7.png
+[recordapp-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-edit-mofa-input-8.png
+[recordapp-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-goldfish-result-9.png
+[recordapp-10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-record-finish-10.png
+
+<!--web前端-游戏-->
+[webgame-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/webgame-nfb007-1.png
+[webgame-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/webgame-nfb010-2.png
+[webgame-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/webgame-nfb011-3.png
+[webgame-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/webgame-nfb015-4.png
+[webgame-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/webgame-pingpang-5.png
+[webgame-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/webgame-snooker-6.png
+[webgame-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/webgame-tjmj-7.png
+[webgame-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/webgame-chess-8.png
+
+<!--小程序-日历健康-->
+[w-health-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w-health-login-1.png
+[w-health-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w-health-home-2.png
+[w-health-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w-health-manbing-3.png
+[w-health-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w-health-renzhi-4.png
+[w-health-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w-health-renzhi-5.png
+[w-health-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w-health-renzhi-report-6.png
+[w-health-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w-health-renzhi-game-7.png
+[w-health-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w-health-renzhi-score-8.png
+[w-health-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w-health-diedao-page-9.png
+[w-health-10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w-health-diedao-take-10.png
+[w-health-11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w-health-diedao-video-11.png
