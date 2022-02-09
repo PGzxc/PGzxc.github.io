@@ -29,13 +29,6 @@ Jing Blog | https://jingine.com | 一个爱折腾的海外党，生活、技术�
 
 
 {% note info %}
-<font style="font-family:verdana;font-size:150%;color:orange;font-weight:bold">我的后宫(排名不分先后)</font>
-{% endnote %}
-
-**位置暂缺，速度留言吧**
-
-
-{% note info %}
 <font style="font-family:verdana;font-size:150%;color:Chocolate;font-weight:bold">我的友链</font>
 ```
 name：PGzxc
