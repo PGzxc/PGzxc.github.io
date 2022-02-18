@@ -12,6 +12,7 @@ comments: false
 |  1   | [Android校招面试指南](https://lrh1993.gitbooks.io/android_interview_guide/content/) | Java+Android+数据结构+算法+设计模+计算机网络+操作系统+数据库 |
 |  2   |          [山月—面试题总结](https://q.shanyue.tech/)          |                       计算机基础+前端                        |
 |  3   | [Android Interview](https://interview-q-a-1gdnkgkla15afdbe-1258598664.tcloudbaseapp.com/) |                   性能优化+算法+大厂面试题                   |
+|  4   |  [腾讯文档—面经](https://docs.qq.com/doc/DWXBLbVB6bmNSaENF)  |                        大厂面试题整理                        |
 
 ## 二 java面试题
 
