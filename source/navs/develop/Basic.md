@@ -191,13 +191,14 @@ comments: false
 
 ## 8.1 C/C++ 教程
 
-| 编号 |                          名称(链接)                          | 备注  |
-| :--: | :----------------------------------------------------------: | :---: |
-|  1   | [菜鸟教程-C语言](https://www.runoob.com/cprogramming/c-tutorial.html) |       |
-|  2   | [菜鸟教程-C++语言](https://www.runoob.com/cplusplus/cpp-tutorial.html) |       |
-|  3   |          [W3School-C](https://www.w3cschool.cn/c/)           |       |
-|  4   |        [W3School-C++](https://www.w3cschool.cn/cpp/)         |       |
-|  5   |         [网道-C语言教程](https://wangdoc.com/clang/)         | C语言 |
+| 编号 |                          名称(链接)                          |  备注   |
+| :--: | :----------------------------------------------------------: | :-----: |
+|  1   | [菜鸟教程-C语言](https://www.runoob.com/cprogramming/c-tutorial.html) |         |
+|  2   | [菜鸟教程-C++语言](https://www.runoob.com/cplusplus/cpp-tutorial.html) |         |
+|  3   |          [W3School-C](https://www.w3cschool.cn/c/)           |         |
+|  4   |        [W3School-C++](https://www.w3cschool.cn/cpp/)         |         |
+|  5   |         [网道-C语言教程](https://wangdoc.com/clang/)         |  C语言  |
+|  6   |        [cpp-reference](https://en.cppreference.com/)         | 英文+墙 |
 
 ## 8.2 Linux 教程
 
