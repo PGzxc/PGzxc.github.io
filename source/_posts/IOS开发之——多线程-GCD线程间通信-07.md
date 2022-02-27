@@ -9,8 +9,6 @@ tags:
 abbrlink: 95f1f301
 date: 2022-02-23 08:49:17
 ---
-# IOS开发之——多线程- GCD线程间通信(07)
-
 ## 一 概述
 
 * 之前讲述过子线程下载完成后通过performSelectorOnMainThread将结果发送到主线程显示
