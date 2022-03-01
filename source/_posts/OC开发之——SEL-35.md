@@ -12,9 +12,9 @@ date: 2020-04-11 09:29:43
 ## 一 概述
 
 * 每个类的方法都存储在类对象中
-* 每个方法都有一个与之对象的SEL类型的对象
+* 每个方法都有一个与之对应的SEL类型的对象
 * 根据一个SEL对象就可以找到方法的地址，进而调用该方法
-* SEL类型的定义`typedef struct objc_selector *SEL;
+* SEL类型的定义`typedef struct objc_selector *SEL`;
 
 <!--more-->
 
