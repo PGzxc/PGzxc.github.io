@@ -84,7 +84,7 @@ __1-Android项目—脑训练__
 | ![][nfb-5] | ![][nfb-6]   | ![][nfb-7] | ![][nfb-8] |
 | ![][nfb-9] | ![][nfb-10]  | ![][nfb-11]| ![][nfb-12]|
 | ![][nfb-13]| ![][nfb-14]  | ![][nfb-15]| ![][nfb-16]|
-| ![][nfb-17]| ![][nfb-18]  | ![][nfb-19]|            |
+| ![][nfb-17]| ![][nfb-18]  | ![][nfb-19]| ![][nfb-20]|
 
 __2-Android项目—脑检测__   
 项目描述：脑训练是日立养老产品日本养老项目的本地化产品。通过【数字】、【数字中文】、【数字中文字母】游戏检测用户反应力、专注力、记忆力情况，游戏前通过佩戴脑设备XB-01，游戏进行时通过蓝牙SDK获取佩戴设备的脑血量并记录下来到CVS文件中，结合游戏结果并依据采样分布数据给出最终结果。并将结果信息打印。   
@@ -390,8 +390,9 @@ __E朝朝企业端__
 [nfb-15]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-game-info-15.png
 [nfb-16]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-game-wait-16.png
 [nfb-17]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-game-result-17.png
-[nfb-18]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-game-week-18.png
-[nfb-19]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-game-rank-19.png
+[nfb-18]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-game-result-18.png
+[nfb-19]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-game-week-19.png
+[nfb-20]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/nfb-game-rank-20.png
 
 <!--android-脑检测-->
 [kiosk-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/kiosk-find-devices-1.png
