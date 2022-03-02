@@ -71,7 +71,7 @@ NSNumber类能够通过一种基本数据类型生成NSNumber对象，并依据�
 
 * NSNumber是NSValue的子类, 但NSNumber只能包装数字类型
 * NSValue可以包装任意值
-* 因此, 可以用NSValue将结构体包装后,加入NSArray\NSDictionary中
+* 因此, 可以用NSValue将结构体包装后，加入NSArray\NSDictionary中
 
 ### 3.2 示例
 

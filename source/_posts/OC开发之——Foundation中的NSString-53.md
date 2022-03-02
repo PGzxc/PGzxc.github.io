@@ -41,15 +41,14 @@ const char *cs= [s4 UTF8String];
 
 ```
 NSString *s5= [[NSString alloc]initWithContentsOfFile:@"/Users/zxc/Desktop/1.txt" encoding:NSUTF8StringEncoding error:nil];
-        NSLog(@"\n%@",s5);
-        
-        [@"444" writeToFile:@"/Users/zxc/Desktop/1.txt" atomically:YES encoding:NSUTF8StringEncoding error: nil];   
+NSLog(@"\n%@",s5);
+[@"444" writeToFile:@"/Users/zxc/Desktop/1.txt" atomically:YES encoding:NSUTF8StringEncoding error: nil];   
 ```
 
 ### 4.2 URL
 
 ```
 NSURL *url=[[NSURL alloc]initWithString:@"file:/Users/zxc/Desktop/1.txt"];
-        NSString *s6=[[NSString alloc]initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-         NSLog(@"\n%@",s6);
+NSString *s6=[[NSString alloc]initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+NSLog(@"\n%@",s6);
 ```
