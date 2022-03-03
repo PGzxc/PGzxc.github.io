@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——上下左右移动(6)
+title: IOS开发之——上下左右移动
 categories:
   - 开发
   - D-移动开发
@@ -22,7 +22,7 @@ date: 2020-05-05 22:23:14
 2. 在main.storyboard上布局如下
    ![][2]
 
-## 三 代啊实现
+## 三 代码实现
 
 ### 3.1 OC
 
@@ -133,5 +133,5 @@ class ViewController: UIViewController {
 ```
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ios-move-assets-xcassets-resource.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ios-move-main-storyboard-view.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-move-assets-xcassets-resource.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-move-main-storyboard-view.png

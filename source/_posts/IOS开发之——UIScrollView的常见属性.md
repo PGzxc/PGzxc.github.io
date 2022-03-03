@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——UIScrollView的常见属性(10)
+title: IOS开发之——UIScrollView的常见属性
 categories:
   - 开发
   - D-移动开发
@@ -50,4 +50,4 @@ date: 2020-05-09 23:34:15
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-uiscrollview-property.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-uiscrollview-property.png

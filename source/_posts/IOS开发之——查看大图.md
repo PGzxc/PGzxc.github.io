@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——查看大图(9)
+title: IOS开发之——查看大图
 categories:
   - 开发
   - D-移动开发

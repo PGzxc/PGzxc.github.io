@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——UIKit复习(7)
+title: IOS开发之——UIKit复习
 categories:
   - 开发
   - D-移动开发
