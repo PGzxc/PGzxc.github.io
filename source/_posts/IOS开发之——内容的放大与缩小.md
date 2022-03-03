@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——内容的放大与缩小(12)
+title: IOS开发之——内容的放大与缩小
 categories:
   - 开发
   - D-移动开发

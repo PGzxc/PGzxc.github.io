@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——倒计时(13)
+title: IOS开发之——倒计时
 categories:
   - 开发
   - D-移动开发
@@ -111,4 +111,4 @@ class ViewController: UIViewController {
 }
 ```
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-timer-cutdown.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-timer-cutdown.gif

@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——图片的动画(16)
+title: IOS开发之——图片的动画
 categories:
   - 开发
   - D-移动开发
@@ -128,4 +128,4 @@ typedef enum
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-animal-move-suofang.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-animal-move-suofang.gif

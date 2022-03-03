@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——图片查看器(18)
+title: IOS开发之——图片查看器
 categories:
   - 开发
   - D-移动开发
@@ -195,4 +195,4 @@ date: 2020-05-18 22:51:34
 ```
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//iso-image-view-switch.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/iso-image-view-switch.gif

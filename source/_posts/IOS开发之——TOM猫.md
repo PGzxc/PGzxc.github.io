@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——TOM猫(19)
+title: IOS开发之——TOM猫
 categories:
   - 开发
   - D-移动开发
@@ -77,4 +77,4 @@ date: 2020-05-20 22:37:16
 ```
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-tom-cat-animal.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-tom-cat-animal.gif

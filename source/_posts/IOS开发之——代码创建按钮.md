@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——代码创建按钮(17)
+title: IOS开发之——代码创建按钮
 categories:
   - 开发
   - D-移动开发
@@ -45,8 +45,8 @@ date: 2020-05-17 23:24:39
 ### 2.2 Swift模式下(ViewController.swift)
 
 ```
-  let btn:UIButton=UIButton.init(frame: CGRect.init(x: 100, y: 100, width: 100, height: 100))
-  btn.backgroundColor=UIColor.darkGray
+ let btn:UIButton=UIButton.init(frame: CGRect.init(x: 100, y: 100, width: 100, height: 100))
+ btn.backgroundColor=UIColor.darkGray
   //设置背景图片
  btn.setBackgroundImage(UIImage.init(named: "btn_01"), for: UIControl.State.normal)
  btn.setBackgroundImage(UIImage.init(named: "btn_02"), for: UIControl.State.highlighted)
