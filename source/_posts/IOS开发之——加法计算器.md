@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——加法计算器(4)
+title: IOS开发之——加法计算器
 categories:
   - 开发
   - D-移动开发
@@ -118,9 +118,9 @@ class ViewController: UIViewController {
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-xcode-new-project-template-choice.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-xcode-new-project-projectname.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-xcode-new-project-create-finished.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-xcode-main-storyboard-preview.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-xcode-add-component-library.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-project-calc-layout-view.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-new-project-template-choice.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-new-project-projectname.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-new-project-create-finished.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-main-storyboard-preview.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-add-component-library.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-project-calc-layout-view.png
