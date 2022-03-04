@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——QQ主流框架(64)
+title: IOS开发之——QQ主流框架
 categories:
   - 开发
   - D-移动开发
