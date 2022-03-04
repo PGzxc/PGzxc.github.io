@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——屏幕截屏(83)
+title: IOS开发之——图形绘制-屏幕截屏(12)
 categories:
   - 开发
   - D-移动开发
