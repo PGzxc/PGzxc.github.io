@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——CAKeyPathAnimtaion(96)
+title: IOS开发之——动画-CAKeyPathAnimtaion(4)
 categories:
   - 开发
   - D-移动开发
