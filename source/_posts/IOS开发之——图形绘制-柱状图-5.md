@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——绘制柱状图(76)
+title: IOS开发之——图形绘制-柱状图(5)
 categories:
   - 开发
   - D-移动开发

@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——绘制雪花(79)
+title: IOS开发之——图形绘制-绘制雪花(8)
 categories:
   - 开发
   - D-移动开发
@@ -65,7 +65,7 @@ date: 2021-01-07 09:02:27
 - (void)awakeFromNib
 {
  	//屏幕刷新的时候调用
-	CADisplayLink *link=[CADisplayLink displayLinkWithTarget:self 		selector:@selector(setNeedsDisplay)];
+	CADisplayLink *link=[CADisplayLink displayLinkWithTarget:self selector:@selector(setNeedsDisplay)];
 	[link addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
        
 }

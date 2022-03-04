@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——绘制饼状图(75)
+title: IOS开发之——图形绘制-饼状图(4)
 categories:
   - 开发
   - D-移动开发

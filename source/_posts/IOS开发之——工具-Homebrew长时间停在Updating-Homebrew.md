@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——Homebrew长时间停在Updating Homebrew
+title: IOS开发之——工具-Homebrew长时间停在Updating Homebrew
 categories:
   - 开发
   - D-移动开发

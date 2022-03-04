@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——仿制UIImageView(78)
+title: IOS开发之——图形绘制-仿制UIImageView(7)
 categories:
   - 开发
   - D-移动开发
