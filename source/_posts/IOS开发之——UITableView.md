@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——UITableView(20)
+title: IOS开发之——UITableView
 categories:
   - 开发
   - D-移动开发
@@ -74,4 +74,4 @@ date: 2020-05-21 23:41:25
 ```
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-uitableview-guding.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-uitableview-guding.gif

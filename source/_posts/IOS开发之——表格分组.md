@@ -1,33 +1,77 @@
 ---
-title: IOS开发之——Cell类型右视图(22)
+title: IOS开发之——表格分组
 categories:
   - 开发
   - D-移动开发
   - IOS
 tags:
   - IOS
-abbrlink: 4d74368d
-date: 2020-05-24 23:36:00
+abbrlink: 248fb82c
+date: 2020-05-23 23:59:17
 ---
 ## 一 概述
 
-本文主要介绍给表格布局中的Cell类型设置右侧视图，及右侧视图的监听 
+本文介绍使用UITableVIew加载本地资源文件夹下的图片和文字，实现列表布局，并介绍相应的技术：
 
-常见的右侧视图：
-
-* ITableViewCellAccessoryDisclosureIndicator:右箭头
-* UITableViewCellAccessoryCheckmark:对号
-* UITableViewCellAccessoryDetailButton:按钮
-* UITableViewCellAccessoryDetailDisclosureButton:按钮+箭头
+* 如何将资源文件(.plist)映射为类文件(Hero)
+* 如何初始化UITableView及设置数据和代理
 
 <!--more-->
 
 ## 二 效果图
 
 ![][1]
-
 ## 三 代码
-### 3.1 OC模式下(ViewController.m)
+### 3.1 OC模式下
+
+#### Hero.h
+
+```
+#import <Foundation/Foundation.h>
+
+@interface Hero : NSObject
+@property (nonatomic,copy) NSString *name;
+@property (nonatomic,copy) NSString *icon;
+@property (nonatomic,copy) NSString *intro;
+
+-(instancetype)initWithDict:(NSDictionary *)dict;
++(instancetype)heroWithDict:(NSDictionary *)dict;
++(NSArray *)heros;
+
+@end
+```
+
+#### Hero.m
+
+```
+#import "Hero.h"
+@implementation Hero
+- (instancetype)initWithDict:(NSDictionary *)dict
+{
+    self=[super init];
+    if(self)
+    {
+        [self setValuesForKeysWithDictionary:dict];
+    }
+    return self;
+}
++ (instancetype)heroWithDict:(NSDictionary *)dict
+{
+    return [[self alloc]initWithDict:dict];
+}
++(NSArray *)heros
+{
+    NSArray *array=[NSArray arrayWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"heros.plist"ofType:nil]];
+    NSMutableArray *arrayM=[NSMutableArray array];
+    for (NSDictionary *dict in array) {
+        [arrayM addObject:[self heroWithDict:dict]];
+    }
+    return arrayM;
+}
+@end
+```
+
+#### ViewController.m
 
 ```
 #import "ViewController.h"
@@ -57,9 +101,11 @@ date: 2020-05-24 23:36:00
     }
     return _tableView;
 }
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //NSLog(@"%@",self.heros);
+    NSLog(@"%@",self.heros);
     [self tableView];
     //self.tableView.rowHeight=80;
 }
@@ -78,41 +124,18 @@ date: 2020-05-24 23:36:00
     cell.textLabel.text=hero.name;
     cell.imageView.image=[UIImage imageNamed:hero.icon];
     cell.detailTextLabel.text=hero.intro;
-    //设置右箭头
-    /**
-     1. UITableViewCellAccessoryDisclosureIndicator:右箭头
-     2. UITableViewCellAccessoryCheckmark:对号
-     3.UITableViewCellAccessoryDetailButton:按钮
-     3.UITableViewCellAccessoryDetailDisclosureButton:按钮+箭头
-     */
-    //cell.accessoryType=UITableViewCellAccessoryDetailButton;
-    UISwitch *switcher=[[UISwitch alloc]init];
-    [switcher addTarget:self action:@selector(switchChange:) forControlEvents:UIControlEventValueChanged];
-    
-    cell.accessoryView=switcher;
     return cell;
 }
 #pragma 代理方法设置
--(void)switchChange:(UISwitch *)sender
-{
-    NSLog(@"%s %@",__func__,sender);
-}
+
 //设置行高
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+{  
     return 60;
     //return (indexPath.row %2)?60:44;
-}
-//选中某一行
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"%s %@",__func__,indexPath);
-}
-//取消选中某一行
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{ 
 }
 @end
 ```
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-uitableview-cell-right.gif
+
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-uitableview-heros.gif
