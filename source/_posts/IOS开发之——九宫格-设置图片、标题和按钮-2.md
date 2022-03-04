@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——九宫格设置图片、标题和按钮(28)
+title: IOS开发之——九宫格-设置图片、标题和按钮(2)
 categories:
   - 开发
   - D-移动开发
@@ -112,4 +112,4 @@ date: 2020-05-29 23:28:04
 ```
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-jiugongge-image-label-button.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-jiugongge-image-label-button.png

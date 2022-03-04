@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——列表索引(25)
+title: IOS开发之——列表索引
 categories:
   - 开发
   - D-移动开发
@@ -207,4 +207,4 @@ date: 2020-05-27 00:17:13
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-cars-suoyin.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-cars-suoyin.gif

@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——headView和footView(24)
+title: IOS开发之——headView和footView
 categories:
   - 开发
   - D-移动开发
@@ -40,4 +40,4 @@ date: 2020-05-25 22:40:58
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-head-foot-view.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-head-foot-view.gif

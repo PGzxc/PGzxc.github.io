@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——数据的删除、添加及排序(26)
+title: IOS开发之——数据的删除、添加及排序
 categories:
   - 开发
   - D-移动开发
@@ -132,4 +132,4 @@ date: 2020-05-28 00:20:11
 @end
 ```
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-drag-add-delete.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-drag-add-delete.gif

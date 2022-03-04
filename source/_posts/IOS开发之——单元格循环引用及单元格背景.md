@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——单元格循环引用及单元格背景(23)
+title: IOS开发之——单元格循环引用及单元格背景
 categories:
   - 开发
   - D-移动开发
@@ -128,4 +128,4 @@ date: 2020-05-24 23:37:55
 ```
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-uitableview-xunhuan-use.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-uitableview-xunhuan-use.gif

@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——九宫格布局(27)
+title: IOS开发之——九宫格-布局(1)
 categories:
   - 开发
   - D-移动开发
@@ -65,4 +65,4 @@ date: 2020-05-28 22:51:58
 ```
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-jiugongge-view.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-jiugongge-view.png
