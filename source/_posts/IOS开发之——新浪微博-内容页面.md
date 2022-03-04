@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——新浪微博(42)
+title: IOS开发之——新浪微博-内容页面
 categories:
   - 开发
   - D-移动开发
@@ -358,5 +358,5 @@ static NSString *ID = @"Cell";
 ```
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-xinlang-weibo.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xinlang-weibo.gif
 

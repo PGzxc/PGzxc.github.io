@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——XIB自定义视图(33)
+title: IOS开发之——九宫格-XIB自定义视图(6)
 categories:
   - 开发
   - D-移动开发
@@ -51,5 +51,5 @@ IOS可以通过XIB进行自定义视图，同Storyboard视图相比：
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-xib-new-dialog.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-xlb-add-view-property.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xib-new-dialog.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xlb-add-view-property.png

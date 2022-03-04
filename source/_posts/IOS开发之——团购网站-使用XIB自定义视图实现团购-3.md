@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——使用XIB自定义视图实现团购(38)
+title: IOS开发之——团购网站-使用XIB自定义视图实现团购(3)
 categories:
   - 开发
   - D-移动开发
@@ -94,4 +94,4 @@ date: 2020-06-10 23:39:13
 ```
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-xib-tuangou.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xib-tuangou.png

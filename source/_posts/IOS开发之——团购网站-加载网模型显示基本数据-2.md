@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——团购加载网模型显示基本数据(37)
+title: IOS开发之——团购网站-加载网模型显示基本数据(2)
 categories:
   - 开发
   - D-移动开发
@@ -127,4 +127,4 @@ date: 2020-06-09 23:33:14
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-tuangou-jiben-view.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-tuangou-jiben-view.png

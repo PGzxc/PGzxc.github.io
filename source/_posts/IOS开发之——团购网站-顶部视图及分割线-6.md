@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——团购顶部视图及分割线(41)
+title: IOS开发之——团购网站-顶部视图及分割线(6)
 categories:
   - 开发
   - D-移动开发
@@ -48,5 +48,5 @@ date: 2020-06-14 23:53:28
   ```
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-tuangou-headerview-xib.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-tuangou-view-width-1.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-tuangou-headerview-xib.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-tuangou-view-width-1.png

@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——UITableViewController简介(36)
+title: IOS开发之——团购网站-UITableViewController简介(1)
 categories:
   - 开发
   - D-移动开发
@@ -80,4 +80,4 @@ date: 2020-06-08 23:15:28
 * 在`Main.storyboard`勾选`Is Initial View Controller`
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ios-uitableviewcontroller-simple-sample.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-uitableviewcontroller-simple-sample.png

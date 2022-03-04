@@ -1,23 +1,98 @@
 ---
-title: IOS开发之——类方法加载XIB(35)
+title: IOS开发之——九宫格-使用模型设置自定义视图的显示(7)
 categories:
   - 开发
   - D-移动开发
   - IOS
 tags:
   - IOS
-abbrlink: e40af26d
-date: 2020-06-07 22:14:53
+abbrlink: afa60372
+date: 2020-06-06 23:24:43
 ---
 ## 一 概述
 
-本文介绍将ViewController中XIB视图加载和数据的初始化放到与XIB相关联类方法中进行，简化ViewController的书写
+本文介绍自定义视图和自定义模型相关的操作
+
+* 如何创建自定义视图
+* 使用模型设置自定义视图的显示
 
 <!--more-->
 
-## 二 代码
+## 二 创建自定义视图
 
-### 2.1 OC模式下
+* 依次点击：Xcode——>New File——>Cocoa Touch Class，创建的文件继承UIView
+
+  ![][1]
+  
+* 点击AppView.xib，在Custom Class的Class下拉列表中选择AppView
+
+  ![][2]
+
+## 三 代码
+
+### 3.1 OC模式下
+
+#### AppInfo.h
+
+```
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+@interface AppInfo : NSObject
+@property (nonatomic,copy) NSString *name;
+@property (nonatomic,copy) NSString *icon;
+@property (nonatomic,strong,readonly) UIImage *image;
+
+/**使用字典实例化模型 */
+-(id)initWithDict:(NSDictionary *)dict;
+/**类方法，可以快速示例化一个对象 */
++(id)appInfoWithDict:(NSDictionary *)dict;
+/**返回所有plist中的数据模型数组*/
++(NSArray *)appList;
+
+@end
+```
+
+#### AppInfo.m
+
+```
+#import "AppInfo.h"
+@implementation AppInfo
+@synthesize image=_image;
+- (UIImage *)image
+{
+    if (_image==nil) {
+        _image=[UIImage imageNamed:self.icon];
+    }
+    return _image;
+}
+- (id)initWithDict:(NSDictionary *)dict
+{
+    self = [super init];
+    if (self) {
+        [self setValuesForKeysWithDictionary:dict];
+    }
+    return self;
+}
++(id)appInfoWithDict:(NSDictionary *)dict
+{
+    return [[self alloc]initWithDict:dict];
+}
++(NSArray *)appList
+{
+   NSArray *array=[NSArray arrayWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"app.plist" ofType:nil]];
+    //创建一个临时数组
+    NSMutableArray *arrayM=[NSMutableArray array];
+    //遍历数组，一次类型转换
+   for (NSDictionary  *dict in array)
+   {
+       AppInfo *appInfo=[AppInfo appInfoWithDict:dict];
+       [arrayM addObject:appInfo];    
+   }
+    return arrayM;
+}
+@end
+```
 
 #### AppView.h
 
@@ -26,10 +101,6 @@ date: 2020-06-07 22:14:53
 #import "AppInfo.h"
 @interface AppView : UIView
 
-//类方法，方便调用视图
-+ (instancetype)appView;
-//示例化视图，并使用appInfo设置视图的显示
-+(instancetype)appViewWithAppInfo:(AppInfo *)appInfo;
 //自定义视图中显示的数据来源是数据模型，使用模型设置自定义视图的显示
 @property (nonatomic,strong) AppInfo *appInfo;
 
@@ -41,26 +112,14 @@ date: 2020-06-07 22:14:53
 ```
 #import "AppView.h"
 #import "AppInfo.h"
+
 @interface AppView()
 @property (weak, nonatomic) IBOutlet UIImageView *iconView;
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @end
+
 @implementation AppView
 
-+ (instancetype)appView
-{
-    return [[[NSBundle mainBundle]loadNibNamed:@"AppView" owner:nil options:nil] lastObject];
-    
-}
-+(instancetype)appViewWithAppInfo:(AppInfo *)appInfo
-{
-    //1.示例化一个视图
-    AppView *view=[self appView];
-    //2.设置视图的显示
-    view.appInfo=appInfo;
-    //3。返回视图
-    return view;
-}
 //利用setter方法设置视图的界面显示
 -(void)setAppInfo:(AppInfo *)appInfo
 {
@@ -96,7 +155,7 @@ date: 2020-06-07 22:14:53
             button.enabled=YES;
         }];
         
-    }];   
+    }];    
 }
 @end
 ```
@@ -150,13 +209,19 @@ date: 2020-06-07 22:14:53
         CGFloat y=kStartY+ marginY+row*(marginY+kAppViewH);
         
         //从XIB来家长自定义视图
-        AppView *appView=[AppView appViewWithAppInfo:self.appList[i]];
+        AppView *appView=[[[NSBundle mainBundle]loadNibNamed:@"AppView" owner:nil options:nil] lastObject];
         //设置视图的位置
-        appView.frame=CGRectMake(x, y, kAppViewW, kAppViewH);
-        
+        appView.frame=CGRectMake(x, y, kAppViewW, kAppViewH); 
         [self.view addSubview:appView];
+        //AppInfo *appInfo=self.appList[i];
+        appView.appInfo=self.appList[i];
     }
 }
 @end
 ```
+
+
+
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-uiview-custom-view.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-uivew-xib-custom-class.png
 

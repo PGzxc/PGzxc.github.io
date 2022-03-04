@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——团购网站代码重构(39)
+title: IOS开发之——团购网站-代码重构(4)
 categories:
   - 开发
   - D-移动开发
@@ -93,4 +93,4 @@ date: 2020-06-11 23:25:05
 ```
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-tgcell-biaoshifu-cell.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-tgcell-biaoshifu-cell.png

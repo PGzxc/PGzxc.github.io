@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——团购加载更多数据(40)
+title: IOS开发之——团购网站-加载更多数据(5)
 categories:
   - 开发
   - D-移动开发
@@ -135,6 +135,6 @@ date: 2020-06-13 23:43:16
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//icon-tuangou-tgfooterview.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-tuangou-loadmore.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/icon-tuangou-tgfooterview.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-tuangou-loadmore.gif
 
