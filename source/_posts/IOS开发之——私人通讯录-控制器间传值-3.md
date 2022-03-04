@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——私人通讯录控制器间传值(53)
+title: IOS开发之——私人通讯录-控制器间传值(3)
 categories:
   - 开发
   - D-移动开发
@@ -27,7 +27,7 @@ date: 2020-07-01 23:24:09
 
 ### 3.1 prepareForSegue(Login->Contact)
 
-* 利用performSegueWithIdentifier:方法可以执行某个Segue，完成界面跳转
+* 利用performSegueWithIdentifier：方法可以执行某个Segue，完成界面跳转
 
 
 ### 3.2 顺传(Login->Contact)
@@ -77,4 +77,4 @@ date: 2020-07-01 23:24:09
 ```
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-sirentongxunlu-chuanzhi.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sirentongxunlu-chuanzhi.gif

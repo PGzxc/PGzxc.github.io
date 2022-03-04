@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——私人通讯录自定义Cell和分割线(55)
+title: IOS开发之——私人通讯录-自定义Cell和分割线(5)
 categories:
   - 开发
   - D-移动开发
@@ -94,4 +94,4 @@ date: 2020-07-05 23:34:50
 ```
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ios-sirentongxunlu-cell.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sirentongxunlu-cell.gif

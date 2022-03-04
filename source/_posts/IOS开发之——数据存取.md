@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——数据存取(57)
+title: IOS开发之——数据存取
 categories:
   - 开发
   - D-移动开发
@@ -72,11 +72,11 @@ date: 2020-07-09 22:48:46
 
 #### 存储位置
 
-* 偏好设置的存储路径是
+偏好设置的存储路径是
 
-  ```
-  应用沙盒/Library/Preferences
-  ```
+```
+ 应用沙盒/Library/Preferences
+```
 
 #### 代码
 
@@ -165,6 +165,6 @@ date: 2020-07-09 22:48:46
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ios-data-write-read-view.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ios-data-document-write.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ios-data-document-read.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-data-write-read-view.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-data-document-write.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-data-document-read.png

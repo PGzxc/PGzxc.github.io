@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——UITabBarController空项目(61)
+title: IOS开发之——UITabBarController-空项目(1)
 categories:
   - 开发
   - D-移动开发
@@ -21,13 +21,14 @@ date: 2020-10-19 23:49:15
 * 初始化UITabBarController
 * 设置UIWindow的rootViewController为UITabBarController
 * 根据具体情况，通过addChildViewController方法添加对应个数的子控制器
+
 ### 2.2 UITabBar
 
 * 如果UITabBarController有N个子控制器，那么UITabBar内部就会有N个UITabBarButton作为子控件
-
 * 如果UITabBarController有4个子控制器，那么UITabBar的结构大致如下图
 
   ![][1]
+
 ### 2.3 UITabBarButton
 
 * UITabBarButton里面显示什么内容，由对应子控制器的tabBarItem属性决定
@@ -86,8 +87,8 @@ date: 2020-10-19 23:49:15
     
     //c.添加子控制器到ITabBarController中
     //c.1第一种方式
-//    [tb addChildViewController:c1];
-//    [tb addChildViewController:c2];
+    //[tb addChildViewController:c1];
+    //[tb addChildViewController:c2];
     
     //c.2第二种方式
     tb.viewControllers=@[c1,c2,c3,c4];
