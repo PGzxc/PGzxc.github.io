@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——超级猜图答题区按钮点击处理(48)
+title: IOS开发之——超级猜图-答题区按钮点击处理(6)
 categories:
   - 开发
   - D-移动开发
@@ -61,4 +61,4 @@ date: 2020-06-26 22:52:58
 ```
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-chaoji-caitu-answer-click.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-chaoji-caitu-answer-click.gif

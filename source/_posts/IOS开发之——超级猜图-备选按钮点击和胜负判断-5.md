@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——超级猜图备选按钮点击和胜负判断(47)
+title: IOS开发之——超级猜图-备选按钮点击和胜负判断(5)
 categories:
   - 开发
   - D-移动开发
@@ -251,4 +251,4 @@ date: 2020-06-23 23:59:55
 @end
 ```
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ios-chaoji-caitu-answer-right.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-chaoji-caitu-answer-right.gif

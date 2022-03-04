@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——超级猜图下一题(45)
+title: IOS开发之——超级猜图-下一题(3)
 categories:
   - 开发
   - D-移动开发
@@ -20,11 +20,8 @@ date: 2020-06-21 22:42:13
 
 <!--more-->
 
-## 二 效果图
 
-![][1]
-
-## 三 代码
+## 二 代码
 
 ```
 	 //1.当前答题的索引，索引递增
@@ -39,6 +36,10 @@ date: 2020-06-21 22:42:13
     self.nextQuestButton.enabled=(self.index<self.questions.count-1);
 ```
 
+## 三 效果图
+
+![][1]
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-chaoji-caitu-nextquestion.gif
+
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-chaoji-caitu-nextquestion.gif

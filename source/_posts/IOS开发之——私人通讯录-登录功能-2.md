@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——私人通讯录登录功能(52)
+title: IOS开发之——私人通讯录-登录功能(2)
 categories:
   - 开发
   - D-移动开发
@@ -68,5 +68,5 @@ date: 2020-06-29 23:34:22
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-tongxunlu-login.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-tongxunlu-login.gif
 

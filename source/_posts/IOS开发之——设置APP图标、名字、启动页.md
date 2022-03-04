@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——设置APP图标、名字、启动页(50)
+title: IOS开发之——设置APP图标、名字、启动页
 categories:
   - 开发
   - D-移动开发
@@ -47,6 +47,6 @@ date: 2020-06-27 23:29:10
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-chaoji-caitu-appicon-create.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-chaoji-caitu-icon-setting.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-chaoji-caitu-bundlename-modify.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-chaoji-caitu-appicon-create.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-chaoji-caitu-icon-setting.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-chaoji-caitu-bundlename-modify.png

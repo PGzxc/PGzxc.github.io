@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——超级猜图答案区和备选区按钮(46)
+title: IOS开发之——超级猜图-答案区和备选区按钮(4)
 categories:
   - 开发
   - D-移动开发
@@ -20,13 +20,9 @@ date: 2020-06-22 23:25:23
 
 <!--more-->
 
-## 二 效果图
+##  二 代码
 
-![][1]
-
-## 三 代码
-
-### 3.1 答案区
+### 2.1 答案区
 
 ```
 #define kButtonWidth 35
@@ -54,7 +50,7 @@ date: 2020-06-22 23:25:23
     }
 ```
 
-### 3.2 备选区
+### 2.2 备选区
 
 ```
     //5.设置备选按钮
@@ -76,6 +72,9 @@ date: 2020-06-22 23:25:23
     }
 ```
 
+##  三 效果图
+
+![][1]
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-chaoji-chaitu-answer-option-view.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-chaoji-chaitu-answer-option-view.gif

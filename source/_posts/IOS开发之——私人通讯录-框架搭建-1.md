@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——私人通讯录框架搭建(51)
+title: IOS开发之——私人通讯录-框架搭建(1)
 categories:
   - 开发
   - D-移动开发
@@ -36,7 +36,7 @@ date: 2020-06-28 23:05:22
 
 * 设置代理:_accountField.delegate=self;
 
-* 继承代理类：**@interface** LoginControllerViewController ()<UITextFieldDelegate>
+* 继承代理类：@interface LoginControllerViewController ()<UITextFieldDelegate>
 
 * 调用代理的方法
 
@@ -82,7 +82,7 @@ date: 2020-06-28 23:05:22
 
   ```
    [_accountField addTarget:self action:@selector(textChange) forControlEvents:UIControlEventEditingChanged];
-      [_pwdField addTarget:self action:@selector(textChange) forControlEvents:UIControlEventEditingChanged];
+   [_pwdField addTarget:self action:@selector(textChange) forControlEvents:UIControlEventEditingChanged];
   ```
 
 * 设置Target中的方法(textChange)
@@ -97,4 +97,4 @@ date: 2020-06-28 23:05:22
 
   
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-tongxunlu-kuangjia.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-tongxunlu-kuangjia.gif

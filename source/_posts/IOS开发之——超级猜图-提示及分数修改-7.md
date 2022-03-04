@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——超级猜图提示及分数修改(49)
+title: IOS开发之——超级猜图-提示及分数修改(7)
 categories:
   - 开发
   - D-移动开发
@@ -58,4 +58,4 @@ date: 2020-06-26 22:54:40
 ```
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-chaoji-caitu-tishi.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-chaoji-caitu-tishi.gif

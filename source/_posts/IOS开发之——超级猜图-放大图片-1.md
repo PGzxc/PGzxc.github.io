@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——超级猜图之放大图片(43)
+title: IOS开发之——超级猜图-放大图片(1)
 categories:
   - 开发
   - D-移动开发
@@ -85,6 +85,5 @@ date: 2020-06-17 23:40:49
 
 
 
-
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-chaoji-caitu.gif
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ios-chaoji-caitu-bigimage.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-chaoji-caitu.gif
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-chaoji-caitu-bigimage.gif
