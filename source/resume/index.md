@@ -333,6 +333,14 @@ __E朝朝企业端__
 - 基于ViewAnimator实现聊天弹幕和礼物特效
 - 使用RAP模拟接口数据
 
+项目预览
+| ![][live-1] | ![][live-2]  | ![][live-3] | ![][live-4] |
+| ----------- | -------------| ----------- | ----------- |
+| ![][live-5] | ![][live-6]  | ![][live-7] | ![][live-8] |
+| ![][live-9] | ![][live-10] | ![][live-11]| ![][live-12]|
+| ![][live-13]| ![][live-14] | ![][live-15]| ![][live-16]|
+| ![][live-17]|              |             |             |
+
 ---
 
 # 技能清单
@@ -449,3 +457,22 @@ __E朝朝企业端__
 [w-health-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w-health-diedao-page-9.png
 [w-health-10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w-health-diedao-take-10.png
 [w-health-11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w-health-diedao-video-11.png
+
+<!--自己的项目-live-->
+[live-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-app-splash-1.png
+[live-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-main-recommend-2.png
+[live-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-main-recommend-update-3.png
+[live-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-main-small-video-4.png
+[live-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-main-game-chiji-5.png
+[live-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-nearby-live-6.png
+[live-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-nearby-live-update-7.png
+[live-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-play-type-choice-8.png
+[live-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-care-people-9.png
+[live-10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-care-people-change-10.png
+[live-11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-me-view-11.png
+[live-12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-rom-view-12.png
+[live-13]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-rom-view-update-13.png
+[live-14]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-rom-people-info-14.png
+[live-15]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-rom-gif-choice-15.png
+[live-16]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-rom-gif-send-16.png
+[live-17]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-rom-gif-send-17.png
