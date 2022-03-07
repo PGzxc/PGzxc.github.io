@@ -17,13 +17,13 @@ Jing Blog | https://jingine.com | 一个爱折腾的海外党，生活、技术�
 
 {% endlinkgrid %}
 
-
 {% note info %}
 <font style="font-family:verdana;font-size:150%;color:blue;font-weight:bold">技术大神(排名不分先后)</font>
 {% endnote %}
 {% linkgrid %}
 阮一峰 | http://www.ruanyifeng.com/ | 阮一峰的个人网站 | /images/link_heads/ruanyifeng.jpg
 鸿洋 | https://wanandroid.com/ | wanandroid CEO  | /images/avatar.jpg
+方糖气球 | http://ftqq.com/ | Easy同学和他做的那些东西  | 
 
 {% endlinkgrid %}
 
