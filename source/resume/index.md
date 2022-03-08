@@ -8,7 +8,7 @@ comments: false
 
 <div style="display: flex; flex-direction: column;">
      <a style="margin-left:auto; padding-right: 10px;font-size: large;font-weight: bold;" href="./index-backup.pdf" download="index.pdf">下载PDF简历</a>
-     <a style="margin-left:auto;margin-top:10px; padding-right: 10px;font-size: large;font-weight: bold;" href="./index.pdf" download="index.pdf">下载此页简历(有图)</a>
+     <a style="margin-left:auto;margin-top:10px; padding-right: 10px;font-size: large;font-weight: bold;" href="./index.pdf" download="index.pdf">此页简历(图)</a>
 </div>
 <!--下载在中间-->
 <!-- <div style="display: flex; flex-direction: row;">
