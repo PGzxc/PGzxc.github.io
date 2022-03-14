@@ -340,7 +340,7 @@ __E朝朝企业端__
 | ![][live-5] | ![][live-6]  | ![][live-7] | ![][live-8] |
 | ![][live-9] | ![][live-10] | ![][live-11]| ![][live-12]|
 | ![][live-13]| ![][live-14] | ![][live-15]| ![][live-16]|
-| ![][live-17]|              |             |             |
+| ![][live-17]| ![][live-18] | ![][live-19]| ![][live-20]|
 
 ---
 
@@ -477,3 +477,6 @@ __E朝朝企业端__
 [live-15]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-rom-gif-choice-15.png
 [live-16]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-rom-gif-send-16.png
 [live-17]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-rom-gif-send-17.png
+[live-18]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-user-login-18.png
+[live-19]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-room-input-message-19.png
+[live-20]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-room-message-20.png
