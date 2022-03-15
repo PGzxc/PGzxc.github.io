@@ -319,7 +319,7 @@ __E朝朝企业端__
 
 ---
 # 个人项目
-## 直播Live 
+## Android-直播Live 
 项目描述：直播Live是一款仿映客直播软件，为个人实战项目，整体界面仿映客布局，包含首页、附近、直播、关注和我，因时间有限，仅实现部分主要功能，待后期完善。     
 功能模块：首页，附近、直播、关注、我等；   
 技术要点：
@@ -480,3 +480,7 @@ __E朝朝企业端__
 [live-18]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-user-login-18.png
 [live-19]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-room-input-message-19.png
 [live-20]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-room-message-20.png
+<!--live-chat-->
+[live-hx-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-hx-user-register-1.png
+[live-hx-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-hx-room-manager-2.png
+[live-hx-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-hx-chat-room-3.png
