@@ -360,6 +360,8 @@ __E朝朝企业端__
 ---
 
 # 技能清单
+##  旧的
+
 -  具备扎实的Java编程基础
 -  熟练掌握C、C++编程语言
 -  熟练掌握Android编程知识
@@ -369,6 +371,16 @@ __E朝朝企业端__
 -  熟悉Git、SVN等版本管理工具
 -  熟悉React Native、Object-C、Swift
 -  了解逆向与安全防护
+
+## Android
+1.熟练掌握Android中四大组件、常用布局、动画、选择器，样式和主题的使用；
+2.熟悉Android平台内存管理机制、进程管理机制、任务管理机制；
+3.熟练使用数据库及第三方框架：OrmLite、LitePal、GreenDao、Real在开发中的使用；
+4.熟悉JNI开发，通过JNI机制实现对数据加密及fork子进程保证服务不被杀死；
+5.熟悉Android性能和内存优化，解决异常、崩溃、内存溢出和版本兼容性问题；
+6.熟悉Android框架 MVC、MVP和MVVM及Dragger2的使用；
+7.熟悉链式编程Rx(Rxlifecycle、RxView、RxPermissions、Rxbus)等在项目中的使用；
+8.熟悉Kotlin开发、Lambda表达式、热修复、插件开发、换肤及传感器、NFC、蓝牙、TTS等技术；
 
 ---
 # 微信公众号
