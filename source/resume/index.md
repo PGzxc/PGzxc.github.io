@@ -49,7 +49,7 @@ comments: false
 * 2013/06 — 2014/07&emsp;&emsp;广达上海制造城&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;测试助理工程师
 * 2014/10 — 2015/10&emsp;&emsp;乐易考(北京)教育科技有限公司&emsp;&emsp;&emsp;Android开发工程师
 * 2015/10 — 2016/07&emsp;&emsp;时间者互联网科技(北京)有限公司&emsp;&emsp;Android开发工程师
-* 2016/07 — 2018/07&emsp;&emsp;西藏远誉(北京)网络科技有限公司&emsp;&emsp;Android开发工程师
+* 2016/07 — 2018/06&emsp;&emsp;西藏远誉(北京)网络科技有限公司&emsp;&emsp;Android开发工程师
 * 2018/07 — 至今&emsp;&emsp;&emsp;&ensp;&nbsp; 中科航天(北京)科技有限公司&emsp;&emsp;&emsp;&emsp;Android开发工程师
 
 # 公司及工作内容
@@ -204,7 +204,7 @@ __6-C#项目—磁感应型手指开闭运动检测__
 | ![][c-sharp-13]| ![][c-sharp-14]    |                    |
 
 ---
-## <font color=red>4. 2016/07 — 2018/07 &emsp;西藏远誉(北京)网络科技有限公司 &emsp;Android开发工程师</font> 
+## <font color=red>4. 2016/07 — 2018/06 &emsp;西藏远誉(北京)网络科技有限公司 &emsp;Android开发工程师</font> 
 ### 公司简介
 **行业类别**：广告/公关|**企业性质**：外商独资|**规模**: 100-499人  
 **公司介绍**：西藏远誉(北京)网络科技有限公司，是一家涵盖全国广播广告业务和承包电台业务的媒体公司，同时提供策略制定、创意文案、广告制作、媒体购买等广播广告服务。
