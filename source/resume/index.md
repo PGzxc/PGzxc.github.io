@@ -37,7 +37,7 @@ comments: false
 # 求职意向
 
  - 工作性质：全职
- - 期望职位：Android开发工程师、IOS开发工程师、前端、小程序、Flutter等
+ - 期望职位：Android开发工程师、IOS开发工程师、前端、小程序、Flutter、全栈等
  - 期望薪资：面议
  - 工作地点：北京
 
@@ -50,10 +50,10 @@ comments: false
 * 2014/10 — 2015/10&emsp;&emsp;乐易考(北京)教育科技有限公司&emsp;&emsp;&emsp;Android开发工程师
 * 2015/10 — 2016/07&emsp;&emsp;时间者互联网科技(北京)有限公司&emsp;&emsp;Android开发工程师
 * 2016/07 — 2018/06&emsp;&emsp;西藏远誉(北京)网络科技有限公司&emsp;&emsp;Android开发工程师
-* 2018/07 — 至今&emsp;&emsp;&emsp;&ensp;&nbsp; 中科航天(北京)科技有限公司&emsp;&emsp;&emsp;&emsp;Android开发工程师
+* 2018/07 — 至今&emsp;&emsp;&emsp;&ensp;中科航天(北京)科技有限公司&emsp;&emsp;&emsp; &emsp;全栈工程师
 
 # 公司及工作内容
-## <font color=red>5. 2018/07 — 至今 &emsp;中科航天(北京)科技有限公司 &emsp;Android开发工程师</font> 
+## <font color=red>5. 2018/07 — 至今 &emsp;中科航天(北京)科技有限公司 &emsp;全栈工程师</font> 
 ### 公司简介
 **行业类别**：信息传输、软件和信息技术服务业|**企业性质**：有限责任公司(自然人投资或控股)|**规模**: 10-300人  
 **公司介绍**：中科航天（北京）科技有限公司，总部位于北京市海淀区上地国际孵化园。是一家专业的信息咨询、解决方案和IT服务外包供应商
