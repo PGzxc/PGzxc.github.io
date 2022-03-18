@@ -13,3 +13,9 @@ comments: false
 |  2   | [Github/studygolang](https://github.com/studygolang/studygolang) |       Go 语言中文网       |
 |  3   |  [Github/gopl-zh](https://github.com/golang-china/gopl-zh)   |     Go语言圣经中文版      |
 
+## 二 教程
+
+| 编号 |                          名称(链接)                          |   备注   |
+| :--: | :----------------------------------------------------------: | :------: |
+|  1   | [Go 语言简明教程](https://geektutu.com/post/quick-golang.html) | 简明教程 |
+
