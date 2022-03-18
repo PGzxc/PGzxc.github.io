@@ -4,6 +4,11 @@ date: 2021-06-02 16:05:50
 description: 
 comments: false
 ---
+## IOS学习路线
+
+| 学习路线1 | 学习路线2 |
+| :-------: | :-------: |
+|  ![][1]   |  ![][2]   |
 
 ## 一 官方教程
 
@@ -22,3 +27,7 @@ comments: false
 |  2   |    [编程学习网-IOS](http://www.phpxs.com/j/ios/1000712/)     |      |
 |  3   | [W3School-IOS](http://home.ustc.edu.cn/~xie1993/ios/ios-tutorial.html) |      |
 
+
+
+[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-learn-route/IOS-Learning-route-1.jpg
+[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-learn-route/IOS-Learning-route-2.jpg
