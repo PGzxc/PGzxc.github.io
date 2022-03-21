@@ -15,18 +15,28 @@ comments: false
 |  4   |  [腾讯文档—面经](https://docs.qq.com/doc/DWXBLbVB6bmNSaENF)  |                        大厂面试题整理                        |
 |  5   | [GitHub-Android-Notes](https://github.com/xfhy/Android-Notes) |                     基础+JVM+源码+Gradle                     |
 |  6   | [android-interview-questions-cn](https://github.com/stormzhang/android-interview-questions-cn) |                       Android 面试指南                       |
+|  7   | [【金三银四】2022 Android面经实录](https://blog.csdn.net/xfhy_/article/details/123285535) |                     2022 Android面经实录                     |
+|  8   | [CSDN/Android面试题大全(中高级)](https://blog.csdn.net/amogin/article/details/81450434) |                  Android+java+设计模式+网络                  |
 ## 二 IOS面试题
 
 | 编号 |                          名称(地址)                          |          备注           |
 | :--: | :----------------------------------------------------------: | :---------------------: |
 |  1   | [Github/iOSInterviewQuestions](https://github.com/ChenYilong/iOSInterviewQuestions) | iOS面试题集锦（附答案） |
 |  2   | [简书-2020iOS面试题大全](https://www.jianshu.com/p/8ecde6197f5a) |                         |
+|  3   | [CSDN/iOS 工程师技术要求](https://blog.csdn.net/u012439446/article/details/105478032) |       初/中/高/深       |
+|  4   | [CSDN/iOS工程师技能列表](https://blog.csdn.net/tyforfreedom/article/details/46700291) |      OC/操作系统等      |
 
 ## 三 java面试题
 
 | 编号 |                          名称(地址)                          |    备注    |
 | :--: | :----------------------------------------------------------: | :--------: |
 |  1   | [JavaGuide（Java学习&&面试指南）](https://javaguide.cn/home/) | java面试题 |
+
+## 四 .Net面试题
+
+| 编号 |                          名称(地址)                          | 备注 |
+| :--: | :----------------------------------------------------------: | :--: |
+|  1   | [博客园/NET高薪面试高频题库](https://www.cnblogs.com/humblexwang/p/13372476.html) |      |
 
 ## 四 面试题合集
 

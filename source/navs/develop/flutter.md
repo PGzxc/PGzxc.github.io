@@ -22,14 +22,15 @@ comments: false
 
 ## 二 Flutter资料
 
-| 编号 |                          名称(地址)                          |         说明         |
-| :--: | :----------------------------------------------------------: | :------------------: |
-|  1   |  [FlutterUnit](https://github.com/toly1994328/FlutterUnit)   |       集录指南       |
-|  2   | [ Flutter-learning](https://github.com/AweiLoveAndroid/Flutter-learning) |   Flutter学习资料    |
-|  3   | [flutter-in-action](https://github.com/flutterchina/flutter-in-action) |       电子书籍       |
-|  4   | [flutter-study](https://github.com/yang7229693/flutter-study) |  Flutter文章(布局)   |
-|  5   | [Flutter实战](https://book.flutterchina.club/#%E7%BC%98%E8%B5%B7) | Flutter教程教程+示例 |
-|  6   |             [Flutter老孟](http://laomengit.com/)             |   Flutter教程+示例   |
+| 编号 |                          名称(地址)                          |                说明                 |
+| :--: | :----------------------------------------------------------: | :---------------------------------: |
+|  1   |  [FlutterUnit](https://github.com/toly1994328/FlutterUnit)   |              集录指南               |
+|  2   | [ Flutter-learning](https://github.com/AweiLoveAndroid/Flutter-learning) |           Flutter学习资料           |
+|  3   | [flutter-in-action](https://github.com/flutterchina/flutter-in-action) |              电子书籍               |
+|  4   | [flutter-study](https://github.com/yang7229693/flutter-study) |          Flutter文章(布局)          |
+|  5   | [Flutter实战](https://book.flutterchina.club/#%E7%BC%98%E8%B5%B7) |        Flutter教程教程+示例         |
+|  6   |             [Flutter老孟](http://laomengit.com/)             |          Flutter教程+示例           |
+|  7   | [知乎-Flutter开发学习资料集合](https://zhuanlan.zhihu.com/p/457923294) | 社区+入门系列+进阶+优化+面试题+书籍 |
 
 ## 三 Flutter 组件/示例
 
