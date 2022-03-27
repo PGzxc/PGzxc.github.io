@@ -11,9 +11,10 @@ comments: false
 
 ## 一 基础教程
 
-| 编号 |                          名称(地址)                          | 说明 |
-| :--: | :----------------------------------------------------------: | :--: |
-|  1   | [Android基础入门教程](https://www.runoob.com/w3cnote/android-tutorial-intro.html) |      |
+| 编号 |                          名称(地址)                          |      说明       |
+| :--: | :----------------------------------------------------------: | :-------------: |
+|  1   | [Android基础入门教程](https://www.runoob.com/w3cnote/android-tutorial-intro.html) |                 |
+|  2   | [小缘你咋学的Android](https://mp.weixin.qq.com/s/5W2ZDReWmpIaaUXmBo0-nw) | 如何学习Android |
 
 ## 二 Android 社区
 

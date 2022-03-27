@@ -17,6 +17,8 @@ comments: false
 |  6   | [android-interview-questions-cn](https://github.com/stormzhang/android-interview-questions-cn) |                       Android 面试指南                       |
 |  7   | [【金三银四】2022 Android面经实录](https://blog.csdn.net/xfhy_/article/details/123285535) |                     2022 Android面经实录                     |
 |  8   | [CSDN/Android面试题大全(中高级)](https://blog.csdn.net/amogin/article/details/81450434) |                  Android+java+设计模式+网络                  |
+|  9   | [Android 中高级面试必知必会](https://mp.weixin.qq.com/s/17XeoP8DEj2KTnKCBv4H_A) |                        泓洋公众号分享                        |
+|  10  | [Android面试相关文章以及github整理](https://mp.weixin.qq.com/s/CQABJNacnsf8_s6l93JKUw) |                        泓洋公众号分享                        |
 ## 二 IOS面试题
 
 | 编号 |                          名称(地址)                          |          备注           |
@@ -46,10 +48,10 @@ comments: false
 
 ## 五 面试技巧
 
-| 编号 |          名称(地址)           |      备注       |
-| :--: | :---------------------------: | :-------------: |
-|  1   | [海外兔](https://osjobs.net/) | 求职指南+面试题 |
-
+| 编号 |                          名称(地址)                          |      备注       |
+| :--: | :----------------------------------------------------------: | :-------------: |
+|  1   |                [海外兔](https://osjobs.net/)                 | 求职指南+面试题 |
+|  2   | [给大家 3 个走心的面试建议](https://mp.weixin.qq.com/s/20g5tirh2jY9qfVtcl7W8A) | 泓洋公众号分享  |
 
 
 
