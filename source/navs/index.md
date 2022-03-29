@@ -10,15 +10,17 @@ comments: false
 * 大大节约了查询时间，方便查看
 
 ### 二 包含内容
-* [音影](av/)
-* [课程](course/)
 * [开发](develop/)
+* [课程](course/)
 * [图标](image/)
 * [外语](langs/)
-* [导航](nav/)
+* [音影](av/)
+* [导航](nav/) 
 * [资源](resource/)
 * [软件](software/)
 * [工具](tools/)
 * [工作](work/)
 * [网站](web/)
+* [简历](resume/)
+* [面试指南](interview/)
 
