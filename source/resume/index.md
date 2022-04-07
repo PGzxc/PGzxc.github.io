@@ -11,11 +11,10 @@ comments: false
    <a style="padding:0px 10px 0px 10px; " href="./index.pdf" download="index.pdf">本页简历</a>
 </div>
 
-
 ---
 # 联系方式
 
-- 手机：保密，请通过邮箱联系
+- 手机：15201120927
 - Email：zxc_developer@126.com
 - QQ：834228918
 
@@ -26,11 +25,6 @@ comments: false
 - 工作年限：2013年06月——至今
 - 现居地：北京昌平
 
-# 相关信息
-- 个人网站：https://pgzxc.github.io/
-- GitHub：https://github.com/PGzxc/
-- CSDN博客：http://blog.csdn.net/calvin_zhou
-
 # 求职意向
 
 - 工作性质：全职
@@ -38,13 +32,18 @@ comments: false
 - 期望薪资：面议
 - 工作地点：北京
 
+# 相关信息
+- 个人网站：https://pgzxc.github.io/
+- GitHub：https://github.com/PGzxc/
+- CSDN博客：http://blog.csdn.net/calvin_zhou
+
 # 教育经历
 
 - 2009/9至2013/6&emsp;&emsp;黄淮学院&emsp;&emsp;电子信息工程&emsp;&emsp;全日制本科
 
 # 工作经历
-* 2013/06 — 2014/07&emsp;&emsp;广达上海制造城&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;测试助理工程师
-* 2014/10 — 2015/10&emsp;&emsp;乐易考(北京)教育科技有限公司&emsp;&emsp;&emsp;Android开发工程师
+* 2013/06 — 2014/06&emsp;&emsp;广达上海制造城&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;测试助理工程师
+* 2015/04 — 2015/10&emsp;&emsp;乐易考(北京)教育科技有限公司&emsp;&emsp;&emsp;Android开发工程师
 * 2015/10 — 2016/07&emsp;&emsp;时间者互联网科技(北京)有限公司&emsp;&emsp;Android开发工程师
 * 2016/07 — 2018/06&emsp;&emsp;西藏远誉(北京)网络科技有限公司&emsp;&emsp;Android开发工程师
 * 2018/07 — 至今&emsp;&emsp;&emsp;&ensp;中科航天(北京)科技有限公司&emsp;&emsp;&emsp; &emsp;全栈工程师
@@ -282,7 +281,7 @@ __2-Android项目—E活动企业端__
 
 ---
 
-## <font color=red>2014/10 — 2015/10&emsp;乐易考（北京）教育科技有限公司&emsp; Android开发工程师</font> 
+## <font color=red>2015/04 — 2015/10&emsp;乐易考（北京）教育科技有限公司&emsp; Android开发工程师</font> 
 ### 公司简介
 **行业类别**：教育/培训/院校|**企业性质**：民营|**规模**:100-499人    
 **公司介绍**：乐易考教育科技集团，致力于为学习者尤其是大学生打造全新的学习就业教育服务平台，为高校提供基于“互联网+”的就创业教育完整解决方案。  
@@ -319,7 +318,7 @@ __2-Android项目—E朝朝企业端__
 
 ---
 
-## <font color=red>2013/06 — 2014/07&emsp;广达上海制造城&emsp;测试助理工程师</font> 
+## <font color=red>2013/06 — 2014/06&emsp;广达上海制造城&emsp;测试助理工程师</font> 
 ### 公司简介
 **行业类别**：电子技术/半导体/集成电路|**企业性质**：台资|**规模**:1万人以上    
 **公司介绍**：广达上海制造城是广达电脑集团设立在中国大陆的制造基地，专注于笔记本电脑、服务器、云端产品等的生产和制造。   
@@ -419,7 +418,6 @@ __2-Android项目—E朝朝企业端__
 -  熟悉Git、SVN等版本管理工具
 -  熟悉React Native、Object-C、Swift
 -  了解逆向与安全防护
-
 
 ---
 # 微信公众号
