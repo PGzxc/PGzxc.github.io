@@ -48,6 +48,16 @@ date: 2022-04-07 08:59:07
 ### 4.1 push方式 
 
 ```
+@interface ViewController ()
+@property(nonatomic,strong) CMMotionManager *mgr;
+@end
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+   [self push];
+}
+
 -(void)push
 {
     //1-创建CoreMotion管理者
@@ -83,6 +93,15 @@ date: 2022-04-07 08:59:07
 ### 4.2 pull方式
 
 ```
+@interface ViewController ()
+@property(nonatomic,strong) CMMotionManager *mgr;
+@end
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+   [self pull];
+}
 //pull方式
 -(void)pull
 {
