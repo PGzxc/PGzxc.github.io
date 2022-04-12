@@ -73,5 +73,9 @@ date: 2020-05-21 23:41:25
 @end
 ```
 
+### 3.2 设置DataSource
+![][2]
+
 
 [1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-uitableview-guding.gif
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-tableview-datasource.png
