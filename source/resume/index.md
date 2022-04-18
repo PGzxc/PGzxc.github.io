@@ -132,10 +132,10 @@ __3-Android项目—记录App__
 
 **项目预览**
 
-|![][recordapp-1]|![][recordapp-2] |![][recordapp-3]|![][recordapp-4]|
-| ---------------|-----------------|----------------| -------------- |
-|![][recordapp-5]|![][recordapp-6] |![][recordapp-7]|![][recordapp-8]|
-|![][recordapp-9]|![][recordapp-10]|![][recordapp-11]|               |
+|![][record-1]|![][record-2] |![][record-3]|![][record-4]|
+| ------------|--------------|-------------| ----------- |
+|![][record-5]|![][record-6] |![][record-7]|![][record-8]|
+|![][record-9]|![][record-10]|![][record-11]|![][record-12]|
 
 __4-前端项目—游戏__   
 **项目描述**：前端游戏是脑训练、脑检测及小程序中使用到的游戏项目，是基于P5.js引擎制作的游戏和收集整理GitHub上开源游戏项目而来；App项目游戏中，展示游戏说明和游戏内容，并与安卓原生项目进行交互和数据传输；微信小程序时，借助微信JS-SDK向小程序传输游戏结果。并适配了平板和小程序页面。   
@@ -487,19 +487,18 @@ __2-Android项目—E朝朝企业端__
 [kiosk-19]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/kiosk-report-print-19.png
 
 <!--android-记录app-->
-[recordapp-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-mofadian-shiwu-1.png
-[recordapp-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-mofa-project-list-2.png
-[recordapp-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-mofadian-project-diff-3.png
-[recordapp-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-mofadian-project-timer-4.png
-
-[recordapp-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-project-list.png
-[recordapp-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-login-choice.png
-[recordapp-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-edit-info.png
-[recordapp-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-edit-mofa-input.png
-
-[recordapp-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-goldfish-shiwu.png
-[recordapp-10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-goldfish-result.png
-[recordapp-11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-record-finish.png
+[record-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-mofadian-shiwu-1.png
+[record-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-mofa-project-list-2.png
+[record-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-mofadian-project-diff-3.png
+[record-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-mofadian-project-timer-4.png
+[record-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-project-list.png
+[record-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-login-choice.png
+[record-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-edit-info.png
+[record-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-edit-mofa-input.png
+[record-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-goldfish-shiwu.png
+[record-10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-goldfish-result.png
+[record-11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-goldfish-measure.png
+[record-12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/recordapp-record-finish.png
 
 <!--web前端-游戏-->
 [webgame-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/webgame-nfb007-1.png
