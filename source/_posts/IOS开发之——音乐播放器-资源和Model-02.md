@@ -1,5 +1,5 @@
 ---
-title: IOS开发之——音视频-音乐播放器资源和Model(04)
+title: IOS开发之——音乐播放器-资源和Model(02)
 categories:
   - 开发
   - D-移动开发
