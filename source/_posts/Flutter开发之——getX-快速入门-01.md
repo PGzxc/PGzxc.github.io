@@ -124,7 +124,7 @@ class Other extends StatelessWidget {
 
 说明：
 
-* 此页面为执行`Get.to`跳转后到耶main
+* 此页面为执行`Get.to`跳转后到页面
 * 在此页面通过`Get.find()`获取到Controller，并获取到Controller中的count变量显示
 
 ### 3.3 controller：控制器
