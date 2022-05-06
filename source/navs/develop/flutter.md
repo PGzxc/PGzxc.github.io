@@ -31,6 +31,7 @@ comments: false
 |  5   | [Flutter实战](https://book.flutterchina.club/#%E7%BC%98%E8%B5%B7) |        Flutter教程教程+示例         |
 |  6   |             [Flutter老孟](http://laomengit.com/)             |          Flutter教程+示例           |
 |  7   | [知乎-Flutter开发学习资料集合](https://zhuanlan.zhihu.com/p/457923294) | 社区+入门系列+进阶+优化+面试题+书籍 |
+|  8   | [Flutter实战.第2版](https://book.flutterchina.club/preface.html) |           Flutter章节教程           |
 
 ## 三 Flutter 组件/示例
 
