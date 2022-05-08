@@ -12,13 +12,14 @@ comments: false
 
 ##  一 Flutter 官方资料
 
-| 编号 |                       名称(博客地址)                       |      说明       |
-| :--: | :--------------------------------------------------------: | :-------------: |
-|  1   |          [Flutter 官方网站](https://flutter.dev/)          |      英文       |
-|  2   |         [Flutter 中文社区版](https://flutter.cn/)          |  官方中文网站   |
-|  3   |    [Flutter API](https://api.flutter-io.cn/index.html)     |       API       |
-|  4   |   [Flutter samples](https://github.com/flutter/samples)    | Flutter官方示例 |
-|  5   | [Flutter all samples](https://flutter.github.io/samples/#) |  官方示例集合   |
+| 编号 |                        名称(博客地址)                        |      说明       |
+| :--: | :----------------------------------------------------------: | :-------------: |
+|  1   |           [Flutter 官方网站](https://flutter.dev/)           |      英文       |
+|  2   | [Flutter中文网](https://flutter.cn/docs/get-started/install) |    中文文档     |
+|  3   |          [Flutter 中文社区版](https://flutter.cn/)           |  官方中文网站   |
+|  4   |     [Flutter API](https://api.flutter-io.cn/index.html)      |       API       |
+|  5   |    [Flutter samples](https://github.com/flutter/samples)     | Flutter官方示例 |
+|  6   |  [Flutter all samples](https://flutter.github.io/samples/#)  |  官方示例集合   |
 
 ## 二 Flutter资料
 
