@@ -75,6 +75,10 @@ class HomeProvider extends BaseProvider {
 }
 ```
 
+说明：
+
+* get前面拼接了`httpClient.baseUrl`
+
 ### 3.2 网络请求(HomeController)
 
 ```
