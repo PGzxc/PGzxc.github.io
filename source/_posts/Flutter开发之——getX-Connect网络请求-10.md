@@ -18,7 +18,7 @@ date: 2022-05-09 21:36:36
 
 <!--more-->
 
-## 二 getConnect快速入门
+## 二 GetConnect快速入门
 
 ### 2.1 添加getX依赖
 
