@@ -110,7 +110,7 @@ Response response= await Get.find<APIService>().getHomeProvider().getArticle(0);
 
 ## 四  参考
 
-* [Github-getx-GetxService官方文档]()
+* [Github-getx-GetxService官方文档](https://github.com/jonataslaw/getx#getxservice)
 * [CSDN下载-参考的代码](https://download.csdn.net/download/Calvin_zhou/85358794)
 
 
