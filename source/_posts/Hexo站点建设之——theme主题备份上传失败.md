@@ -96,9 +96,9 @@ Changes to be committed:
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-github-theme-next-backup-error.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-cached-themes-remove.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-next-branch-backup-success.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-github-theme-next-backup-error.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-cached-themes-remove.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-next-branch-backup-success.png
 
 
 

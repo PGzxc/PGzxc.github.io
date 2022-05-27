@@ -120,4 +120,4 @@ _buildExpansionPanelList() {
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-expansionPanelList-sample.gif
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-expansionPanelList-sample.gif

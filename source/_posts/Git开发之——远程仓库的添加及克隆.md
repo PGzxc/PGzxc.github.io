@@ -58,15 +58,15 @@ date: 2018-02-26 11:42:43
 ![][11]  
 
 
-[0]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-github-learn.png
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-create-file.png
-[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-init.png
-[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-ls.png
-[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-add-readme.png
-[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-commit-readme.png
-[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-remote-add.png
-[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-push-origin.png
-[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-has-show.png
-[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-clone-bash.png
-[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-clone-address.png
-[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-clone-clone-ls.png
+[0]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-github-learn.png
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-create-file.png
+[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-init.png
+[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-ls.png
+[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-add-readme.png
+[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-commit-readme.png
+[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-remote-add.png
+[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-push-origin.png
+[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-has-show.png
+[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-clone-bash.png
+[10]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-clone-address.png
+[11]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-clone-clone-ls.png

@@ -70,12 +70,12 @@ date: 2020-07-09 22:47:26
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-shahe-direct-devices-lists.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-shahe-direct-app-find.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-shahe-direct-data-folder.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-shahe-simpholders-try-download.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-shahe-simpholders-open.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-shahe-simsim-download.png
-[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-shahe-simsim-open.png
-[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-shahe-opensim-download.png
-[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-shahe-opensim-open.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-shahe-direct-devices-lists.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-shahe-direct-app-find.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-shahe-direct-data-folder.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-shahe-simpholders-try-download.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-shahe-simpholders-open.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-shahe-simsim-download.png
+[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-shahe-simsim-open.png
+[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-shahe-opensim-download.png
+[9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-shahe-opensim-open.png

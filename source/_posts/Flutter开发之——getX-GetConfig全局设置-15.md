@@ -146,6 +146,6 @@ Future<void> main() async{
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-getx-config-15-logger.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-getx-config-15-transition-downup.gif
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-getx-config-15-transition-zoom.gif
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-getx-config-15-logger.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-getx-config-15-transition-downup.gif
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-getx-config-15-transition-zoom.gif

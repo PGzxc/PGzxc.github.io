@@ -52,13 +52,13 @@ date: 2019-10-17 23:31:57
 
 [1]: https://bloodshed-dev-c.en.softonic.com/
 [2]: https://sourceforge.net/projects/orwelldevcpp/files/
-[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dev-cpp-bloodshed-download.png
-[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dev-cpp-sourceforge-download.png
-[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dev-cpp-install-finish.png
-[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dev-cpp-language-change.png
-[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dev-cpp-language-apply.png
-[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dev-cpp-compiler-select.png
-[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dev-cpp-new-project.png
-[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dev-cpp-project-setting.png
-[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dev-cpp-create-finish-preview.png
-[12]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dev-cpp-save-build-run.png
+[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dev-cpp-bloodshed-download.png
+[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dev-cpp-sourceforge-download.png
+[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dev-cpp-install-finish.png
+[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dev-cpp-language-change.png
+[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dev-cpp-language-apply.png
+[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dev-cpp-compiler-select.png
+[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dev-cpp-new-project.png
+[10]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dev-cpp-project-setting.png
+[11]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dev-cpp-create-finish-preview.png
+[12]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dev-cpp-save-build-run.png

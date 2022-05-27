@@ -82,8 +82,8 @@ added lines: 17969, removed lines: 1734, total lines: 16235
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-code-lines-statistic-install.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-code-lines-bottom-staticstic.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-code-line-statics-overview.png
-[4]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-code-lines-statistic-java.png
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-code-lines-statistic-install.png
+[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-code-lines-bottom-staticstic.png
+[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-code-line-statics-overview.png
+[4]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-code-lines-statistic-java.png
 

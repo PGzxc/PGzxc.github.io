@@ -52,4 +52,4 @@ date: 2020-07-07 22:49:41
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-netframework-struct.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-netframework-struct.png

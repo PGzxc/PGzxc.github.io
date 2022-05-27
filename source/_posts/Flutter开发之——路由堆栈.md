@@ -440,17 +440,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-push-pop.gif
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-m-push-b.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-b-pop.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-a-b-a-push.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-m-pop-none.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-push-pushReplacementNamed.gif
-[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-pushreplacement-duizhan.png
-[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-push-pushNamedAndRemoveUntil.gif
-[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-pushnamedAndRemoveUntil-dui.png
-[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-popUntil.gif
-[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-popUntil-dui.png
-[12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-push-construct-param.gif
-[13]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-push-param.gif
-[14]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-push--return-param.gif
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-push-pop.gif
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-m-push-b.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-b-pop.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-a-b-a-push.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-m-pop-none.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-push-pushReplacementNamed.gif
+[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-pushreplacement-duizhan.png
+[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-push-pushNamedAndRemoveUntil.gif
+[9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-pushnamedAndRemoveUntil-dui.png
+[10]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-popUntil.gif
+[11]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-popUntil-dui.png
+[12]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-push-construct-param.gif
+[13]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-push-param.gif
+[14]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-route-push--return-param.gif

@@ -133,5 +133,5 @@ class ViewController: UIViewController {
 ```
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-move-assets-xcassets-resource.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-move-main-storyboard-view.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-move-assets-xcassets-resource.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-move-main-storyboard-view.png

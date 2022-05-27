@@ -96,7 +96,7 @@ DecoratedBox(
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-decoratedbox-text-sample.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-decoratedbox-rectangle-sample.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-decoratedbox-circle-sample.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-decoratedbox-text-sample.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-decoratedbox-rectangle-sample.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-decoratedbox-circle-sample.png
 

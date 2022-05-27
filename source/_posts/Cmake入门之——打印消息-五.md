@@ -78,15 +78,15 @@ message([<mode>] "message to display" ...)
 * [Documentation » cmake-commands(7) »message][12]
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-debug-message-info.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-message-model-fatal-error-config.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-message-model-fatal-error-print.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-message-model-send-error-config.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-message-model-send-error-print.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-message-model-warning-config.png
-[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-message-model-warning-print.png
-[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-message-model-deprecation-config.png
-[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-message-model-deprecation-print.png
-[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-message-model-other-config.png
-[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-message-model-other-print.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-debug-message-info.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-message-model-fatal-error-config.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-message-model-fatal-error-print.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-message-model-send-error-config.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-message-model-send-error-print.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-message-model-warning-config.png
+[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-message-model-warning-print.png
+[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-message-model-deprecation-config.png
+[9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-message-model-deprecation-print.png
+[10]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-message-model-other-config.png
+[11]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-message-model-other-print.png
 [12]:https://cmake.org/cmake/help/latest/command/message.html

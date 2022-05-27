@@ -72,4 +72,4 @@ function vidLoad() {
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-createvideo-sample1.gif
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-createvideo-sample1.gif

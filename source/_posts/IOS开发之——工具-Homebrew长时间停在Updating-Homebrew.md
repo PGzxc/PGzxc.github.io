@@ -125,5 +125,5 @@ source ~/.bash_profile
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-brew-updating-homebrew-waiting.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-brew-updating-homebrew-waiting.png
 

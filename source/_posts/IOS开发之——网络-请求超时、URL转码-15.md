@@ -65,5 +65,5 @@ NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url];
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-request-url-nil.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-request-url-encoding.png
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-request-url-nil.png
+[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-request-url-encoding.png

@@ -263,5 +263,5 @@ Page({
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-websocket-client.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-websocket-service.png
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-websocket-client.png
+[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-websocket-service.png

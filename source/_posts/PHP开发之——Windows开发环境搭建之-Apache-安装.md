@@ -137,13 +137,13 @@ Apache与Tomcat都是Apache开源组织开发的用于处理HTTP服务的项目�
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-php/php-apache-webpage-download.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-php/php-apache-latest-version-windows.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-php/php-apache-download-alert.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-php/php-apache-httpd-64-download.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-php/php-apache-unzip-struct.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-php/php-apache-http-service-start.png
-[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-php/php-apache-error-443.png
-[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-php/php-apache-service-install.png
-[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-php/php-apache-service-sc-delete.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-php/php-apache-webpage-download.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-php/php-apache-latest-version-windows.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-php/php-apache-download-alert.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-php/php-apache-httpd-64-download.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-php/php-apache-unzip-struct.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-php/php-apache-http-service-start.png
+[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-php/php-apache-error-443.png
+[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-php/php-apache-service-install.png
+[9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-php/php-apache-service-sc-delete.png
 [21]:https://httpd.apache.org/

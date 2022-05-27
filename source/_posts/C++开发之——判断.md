@@ -28,5 +28,5 @@ date: 2018-02-21 13:00:32
 ? 表达式的值是由 Exp1 决定的。如果 Exp1 为真，则计算 Exp2 的值，结果即为整个 ? 表达式的值。如果 Exp1 为假，则计算 Exp3 的值，结果即为整个 ? 表达式的值。  
 
 
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp_condition.png
-[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-if.png
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp_condition.png
+[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-if.png

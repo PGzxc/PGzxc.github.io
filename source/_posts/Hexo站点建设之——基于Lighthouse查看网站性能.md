@@ -68,11 +68,11 @@ date: 2021-01-29 16:15:45
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/website-lighthouse-test-site.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/website-lighthouse-website-chrome-open.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/website-lighthouse-website-result.gif
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/website-lighthouse-chrome-plugin.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/website-lighthouse-plugin-result.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/website-lighthouse-test-site.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/website-lighthouse-website-chrome-open.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/website-lighthouse-website-result.gif
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/website-lighthouse-chrome-plugin.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/website-lighthouse-plugin-result.png
 
 [11]:https://ping.chinaz.com
 [12]:https://developers.google.com/speed/pagespeed/insights/

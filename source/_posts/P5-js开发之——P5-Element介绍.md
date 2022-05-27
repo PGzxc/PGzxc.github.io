@@ -93,4 +93,4 @@ function setup() {
 * [P5官方文档-P5.Element](https://p5js.org/zh-Hans/reference/#/p5.Element)
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-p5element-html-example.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-p5element-html-example.png

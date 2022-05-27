@@ -207,12 +207,12 @@ gradlew build
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-assembledebug-timeout.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-assembledebug-intellij-open-as.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-assembledebug-aliyun.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-assembledebug-proxy-open.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-assembledebug-as-proxy-set.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-assembleDebug-proxy-check.gif
-[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-assembledebug-as-terminal.png
-[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-assembledebug-as-terminal-gradlew-clean.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-assembledebug-timeout.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-assembledebug-intellij-open-as.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-assembledebug-aliyun.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-assembledebug-proxy-open.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-assembledebug-as-proxy-set.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-assembleDebug-proxy-check.gif
+[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-assembledebug-as-terminal.png
+[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-assembledebug-as-terminal-gradlew-clean.png
 

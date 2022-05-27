@@ -109,28 +109,28 @@ date: 2019-10-17 23:29:57
 
 
 [1]: https://osdn.net/projects/mingw/releases/
-[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-mingw-download-list.png
-[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-mingw-download.png
-[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-mingw-install-accept.png
-[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-mingw-install-position.png
-[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-mingw-install-position.png
-[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-mingw-install-choice.png
-[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-mingw-install-apply-change.png
-[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-mingw-config-mingw.png
-[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-mingw-path-add.png
-[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-mingw-version.png
+[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-mingw-download-list.png
+[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-mingw-download.png
+[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-mingw-install-accept.png
+[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-mingw-install-position.png
+[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-mingw-install-position.png
+[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-mingw-install-choice.png
+[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-mingw-install-apply-change.png
+[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-mingw-config-mingw.png
+[10]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-mingw-path-add.png
+[11]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-mingw-version.png
 [12]:http://www.codeblocks.org/downloads/26
-[13]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-download-list.png
-[14]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-download.png
-[15]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblcoks-install-component.png
-[16]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-mingw.png
-[17]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-mingw-version.png
-[18]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-directory-tools.png
-[19]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-new-project.png
-[20]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-console-application.png
-[21]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-c-cpp-select.png
-[22]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-file-create.png
-[23]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-compiler.png
-[24]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-create-finish.png
-[25]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-build-run.png
+[13]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-download-list.png
+[14]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-download.png
+[15]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblcoks-install-component.png
+[16]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-mingw.png
+[17]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-mingw-version.png
+[18]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-directory-tools.png
+[19]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-new-project.png
+[20]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-console-application.png
+[21]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-c-cpp-select.png
+[22]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-file-create.png
+[23]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-compiler.png
+[24]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-create-finish.png
+[25]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-codeblocks-build-run.png
 [26]:https://jingyan.baidu.com/article/915fc414e8838051394b209b.html

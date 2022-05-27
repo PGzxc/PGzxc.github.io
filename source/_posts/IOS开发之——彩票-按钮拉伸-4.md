@@ -77,7 +77,7 @@ date: 2022-02-07 09:46:15
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-stretching-property.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-stretching-image-view.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-stretching-image-storyboard.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-stretching-image-code.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-stretching-property.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-stretching-image-view.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-stretching-image-storyboard.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-stretching-image-code.png

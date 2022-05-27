@@ -84,14 +84,14 @@ Storyboard——>Show the File Inspector——>Interface Builder Document——>
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-03-use-trait-variations.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-03-use-trait-set.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-03-use-trait-property.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-03-size-classes.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-03-variations-image-man.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-03-variations-image-woman.png
-[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-03-variations-image.png
-[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-03-variations-font.png
-[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-03-variations-installed.png
-[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-03-variations-constant.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-03-use-trait-variations.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-03-use-trait-set.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-03-use-trait-property.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-03-size-classes.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-03-variations-image-man.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-03-variations-image-woman.png
+[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-03-variations-image.png
+[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-03-variations-font.png
+[9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-03-variations-installed.png
+[10]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-03-variations-constant.png
 

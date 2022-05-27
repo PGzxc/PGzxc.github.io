@@ -159,7 +159,7 @@ Delegates.vetoable()函数接受两个参数：第一个是初始化值，第二
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/kotlin-lazy.png
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/kotlin-lazy.png
 [2]: http://blog.csdn.net/IO_Field/article/details/53374809
 
 

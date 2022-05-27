@@ -67,5 +67,5 @@ class Program
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-trace-debug-view.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-debug-trace-change.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-trace-debug-view.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-debug-trace-change.png

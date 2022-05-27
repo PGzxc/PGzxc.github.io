@@ -362,4 +362,4 @@ date: 2022-02-07 09:53:28
 ![][1]
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-setting-cell.gif
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-setting-cell.gif

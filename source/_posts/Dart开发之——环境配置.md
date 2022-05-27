@@ -68,13 +68,13 @@ StageXL，一个Dart框架，用来开发2D游戏的，目前处于实验阶段
 
 
 [0]: https://www.dartlang.org/
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dart-web.png
-[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dart-vm.png
-[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dart-win.png
-[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dart-download.png
-[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/setup.png
-[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/setup-continue.png
-[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dart-path.png
-[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dart-version.png
-[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dart-file.png
-[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dart-file-run.png
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dart-web.png
+[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dart-vm.png
+[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dart-win.png
+[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dart-download.png
+[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/setup.png
+[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/setup-continue.png
+[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dart-path.png
+[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dart-version.png
+[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dart-file.png
+[10]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/dart-file-run.png

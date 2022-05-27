@@ -112,10 +112,10 @@ $ npm run dev # 监听并且编译项目
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wepy-init-standard-project.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wepy-project-config.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wepy-build-watch.png
-[4]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wepy-import-myproject-root.png
-[5]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wepy-tools-import-setting.png
-[6]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wepy-project-tools-preview.png
-[7]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wepy-project-tree.png
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wepy-init-standard-project.png
+[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wepy-project-config.png
+[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wepy-build-watch.png
+[4]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wepy-import-myproject-root.png
+[5]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wepy-tools-import-setting.png
+[6]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wepy-project-tools-preview.png
+[7]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wepy-project-tree.png

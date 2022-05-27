@@ -36,10 +36,10 @@ MacBook
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-active-language.png
-[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-active-keyboard.png
-[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-active-country.png
-[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-active-network.png
-[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-active-account.png
-[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-active-finish.png
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-active-language.png
+[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-active-keyboard.png
+[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-active-country.png
+[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-active-network.png
+[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-active-account.png
+[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-active-finish.png
 

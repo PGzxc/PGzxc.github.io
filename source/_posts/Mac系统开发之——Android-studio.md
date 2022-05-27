@@ -58,14 +58,14 @@ date: 2020-02-09 11:45:01
 
 
 [1]: https://developer.android.google.cn/studio
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//android-studio-download.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//android-studio-install-open.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//android-studio-install-wards-next.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//android-studio-ui-theme.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//android-studio-sdk-location.png
-[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//android-studio-install-progress.png
-[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//android-config-bash-profile.png
-[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//android-install-adb-version.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//android-studio-download.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//android-studio-install-open.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//android-studio-install-wards-next.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//android-studio-ui-theme.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//android-studio-sdk-location.png
+[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//android-studio-install-progress.png
+[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//android-config-bash-profile.png
+[9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//android-install-adb-version.png
 
 
 

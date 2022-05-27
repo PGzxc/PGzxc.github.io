@@ -169,6 +169,6 @@ static id _instance;
 * retainCount：返回1
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-instance-arc-setting-yes.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-instance-arc-setting-no.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-instance-arc-setting-no-problem.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-instance-arc-setting-yes.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-instance-arc-setting-no.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-instance-arc-setting-no-problem.png

@@ -38,4 +38,4 @@ AS3.0加入了新的功能，比如默认集成了Kotlin等，但是在使用中
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-annotation.png
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-annotation.png

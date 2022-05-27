@@ -96,23 +96,23 @@ date: 2020-08-10 21:32:34
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-2008-r2-webpage.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-x64-download.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-click-open.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-install-new.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-install-agree.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-installing-support.png
-[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-install-position.png
-[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-sql-config-default.png
-[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-start-config.png
-[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-database-password.png
-[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-reporting-service-config.png
-[12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-error-report.png
-[13]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-install-progress.png
-[14]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-install-finished.png
-[15]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/sql-server-management-studio-open.png
-[16]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/sql-server-connect-server-username-password.png
-[17]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/sql-server-connected-success-view.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-2008-r2-webpage.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-x64-download.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-click-open.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-install-new.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-install-agree.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-installing-support.png
+[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-install-position.png
+[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-sql-config-default.png
+[9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-start-config.png
+[10]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-database-password.png
+[11]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-reporting-service-config.png
+[12]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-error-report.png
+[13]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-install-progress.png
+[14]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-sql-server-install-finished.png
+[15]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/sql-server-management-studio-open.png
+[16]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/sql-server-connect-server-username-password.png
+[17]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/sql-server-connected-success-view.png
 
 
 

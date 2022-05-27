@@ -68,8 +68,8 @@ Path:%Cmake_HOME%\bin;
 ![][5]
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cmake-install-download-select.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cmake-windows-x64-download.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cmake-upzip-destion-folder.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cmake-clion-toolschains-setting.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cmake-environment-config.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cmake-install-download-select.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cmake-windows-x64-download.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cmake-upzip-destion-folder.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cmake-clion-toolschains-setting.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cmake-environment-config.png

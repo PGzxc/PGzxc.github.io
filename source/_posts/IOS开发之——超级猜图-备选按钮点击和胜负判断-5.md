@@ -251,4 +251,4 @@ date: 2020-06-23 23:59:55
 @end
 ```
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-chaoji-caitu-answer-right.gif
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-chaoji-caitu-answer-right.gif

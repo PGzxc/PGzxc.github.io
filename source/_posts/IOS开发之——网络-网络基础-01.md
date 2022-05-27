@@ -77,6 +77,6 @@ date: 2022-02-28 21:47:06
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-internet-dev-samples.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-internet-client-server-view.png
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-internet-dev-samples.png
+[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-internet-client-server-view.png
 

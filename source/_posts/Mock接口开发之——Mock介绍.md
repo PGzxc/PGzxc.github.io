@@ -136,4 +136,4 @@ console.log(JSON.stringify(data)) //将数据打印到控制台上
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-api/mock-project-open-vscode.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-api/mock-project-open-vscode.png

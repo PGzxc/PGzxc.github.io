@@ -88,17 +88,17 @@ File:local.properties
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-version-control/svn-command-line-install.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-version-control/svn-android-studio-absolute-path.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-version-control/svn-service-project-view.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-version-control/svn-local-folder-create.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-version-control/svn-vcs-subversion-choice.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-version-control/svn-service-project-copy.png
-[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-version-control/svn-android-studio-location-repository-relate.png
-[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-version-control/svn-android-studio-checkout.png
-[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-version-control/svn-checkout-destination.png
-[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-version-control/svn-commit-choice.png
-[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-version-control/svn-finish.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-version-control/svn-command-line-install.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-version-control/svn-android-studio-absolute-path.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-version-control/svn-service-project-view.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-version-control/svn-local-folder-create.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-version-control/svn-vcs-subversion-choice.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-version-control/svn-service-project-copy.png
+[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-version-control/svn-android-studio-location-repository-relate.png
+[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-version-control/svn-android-studio-checkout.png
+[9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-version-control/svn-checkout-destination.png
+[10]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-version-control/svn-commit-choice.png
+[11]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-version-control/svn-finish.png
 
 [21]:https://developer.android.google.cn/studio
 [22]:https://tortoisesvn.net/

@@ -228,6 +228,6 @@ webView.addJavascriptInterface(WebAppInterface(this), "Android")
 * [源码](https://download.csdn.net/download/Calvin_zhou/19895094)
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-android/android-webview-javaScriptEnabled.gif
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-android/android-webview-javaScriptEnabled.gif
 
 

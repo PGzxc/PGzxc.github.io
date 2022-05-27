@@ -125,18 +125,18 @@ Cornerstone中显示变化的代码，并标记为M(modify)
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-cornerstone-page.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-cornerstone-open-view.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-repository-view.png
-[4]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-repository-type-select.png
-[5]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-repository-service-add.png
-[6]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-repository-add-success.png
-[7]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-repository-trunk-import.png
-[8]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-repository-trunk-import-select.png
-[9]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-repository-trunk-import-msg.png
-[10]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-repository-trunk-app.png
-[11]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-check-local-repo.png
-[12]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-local-repo-view.png
-[13]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-local-repo-change.png
-[14]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-local-repo-change-commit.png
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-cornerstone-page.png
+[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-cornerstone-open-view.png
+[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-repository-view.png
+[4]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-repository-type-select.png
+[5]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-repository-service-add.png
+[6]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-repository-add-success.png
+[7]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-repository-trunk-import.png
+[8]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-repository-trunk-import-select.png
+[9]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-repository-trunk-import-msg.png
+[10]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-repository-trunk-app.png
+[11]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-check-local-repo.png
+[12]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-local-repo-view.png
+[13]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-local-repo-change.png
+[14]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-01-local-repo-change-commit.png
 

@@ -29,9 +29,9 @@ date: 2019-08-25 11:26:44
 ![][6]
 
 
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-finder-open.png
-[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-finder-setting.png
-[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-finder-desktop-show.png
-[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-finder-sidebar-seting.png
-[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-finder-drag-add.png
-[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-finder-item-remove.png
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-finder-open.png
+[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-finder-setting.png
+[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-finder-desktop-show.png
+[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-finder-sidebar-seting.png
+[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-finder-drag-add.png
+[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-finder-item-remove.png

@@ -113,6 +113,6 @@ Page({
 
 
 [00]:https://developers.weixin.qq.com/community/develop/doc/000e8451dbc5e0f2430a27ad551800
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-video-play-finish-no-play.gif
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-video-commit-answer.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/weichat-video-play-finish-has.gif
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-video-play-finish-no-play.gif
+[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-video-commit-answer.png
+[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/weichat-video-play-finish-has.gif

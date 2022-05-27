@@ -54,10 +54,10 @@ date: 2018-10-12 23:04:35
    
 
 
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/vm-tools-install.png
-[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/vmware-operate_authority.png
-[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/vmware-tar-xzvf.png
-[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/vmware-etc-file.png
-[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/vmware-install-into.png
-[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/vmware-install-cmd.png
-[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/vmware-enjoy.png
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/vm-tools-install.png
+[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/vmware-operate_authority.png
+[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/vmware-tar-xzvf.png
+[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/vmware-etc-file.png
+[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/vmware-install-into.png
+[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/vmware-install-cmd.png
+[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/vmware-enjoy.png

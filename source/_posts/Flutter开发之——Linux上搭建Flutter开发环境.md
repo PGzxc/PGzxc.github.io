@@ -226,11 +226,11 @@ flutter config --enable-web
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-linux-proxy-config.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-linux-sdk-choice.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-linux-flutter-doctor-info.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-linux-android-studio-plugin-install.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-linux-as-create-project.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-linux-run-chrome-view.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-linux-proxy-config.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-linux-sdk-choice.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-linux-flutter-doctor-info.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-linux-android-studio-plugin-install.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-linux-as-create-project.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-linux-run-chrome-view.png
 
 [21]:https://flutter.dev/docs/development/tools/sdk/releases?tab=linux#macos

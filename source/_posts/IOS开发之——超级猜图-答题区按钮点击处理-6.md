@@ -61,4 +61,4 @@ date: 2020-06-26 22:52:58
 ```
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-chaoji-caitu-answer-click.gif
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-chaoji-caitu-answer-click.gif

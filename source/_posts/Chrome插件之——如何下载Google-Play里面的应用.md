@@ -54,10 +54,10 @@ APKTurbo
 [如何在线下载Google Play里面的应用](https://zhuanlan.zhihu.com/p/87569815)
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-chrome-plugin/googleplay-apkdownload-cc-view.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-chrome-plugin/googleplay-apkturbo-view.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-chrome-plugin/googleplay-guandao-view.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-chrome-plugin/googleplay-apk-support-view.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-chrome-plugin/googleplay-plug-install-before.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-chrome-plugin/googleplay-greasy-plug-install.png
-[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-chrome-plugin/googleplay-plugin-install-after-view.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-chrome-plugin/googleplay-apkdownload-cc-view.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-chrome-plugin/googleplay-apkturbo-view.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-chrome-plugin/googleplay-guandao-view.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-chrome-plugin/googleplay-apk-support-view.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-chrome-plugin/googleplay-plug-install-before.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-chrome-plugin/googleplay-greasy-plug-install.png
+[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-chrome-plugin/googleplay-plugin-install-after-view.png

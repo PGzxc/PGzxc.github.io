@@ -221,7 +221,7 @@ public class RoundRectViewGroup extends FrameLayout {
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/opencv-default-samples.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/opencv-circle-effect.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/opencv-round-effect.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/opencv-ring-circle-view.gif
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/opencv-default-samples.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/opencv-circle-effect.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/opencv-round-effect.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/opencv-ring-circle-view.gif

@@ -162,8 +162,8 @@ date: 2022-03-28 07:17:29
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-03-rule-01.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-03-rule-02.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-03-rule-03.png
-[4]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-03-view-vertical.png
-[5]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-03-view-horizon.png
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-03-rule-01.png
+[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-03-rule-02.png
+[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-03-rule-03.png
+[4]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-03-view-vertical.png
+[5]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-03-view-horizon.png

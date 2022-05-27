@@ -93,10 +93,10 @@ date: 2021-05-08 16:21:42
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-flare-plugin.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-flare-resource-web.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-flare-resource-select.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-flare-open-in-rive1.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-flare-animate-qiehuan.gif
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-flare-animate-download.gif
-[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-flare-animate-result.gif
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-flare-plugin.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-flare-resource-web.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-flare-resource-select.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-flare-open-in-rive1.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-flare-animate-qiehuan.gif
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-flare-animate-download.gif
+[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-flare-animate-result.gif

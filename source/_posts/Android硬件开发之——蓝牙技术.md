@@ -72,7 +72,7 @@ UUID相当于Socket的端口，而蓝牙地址相当于Socket的IP。
 
 
 [1]: https://github.com/PGzxc/BluetoothSearch
-[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/bluetooth-search.png
+[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/bluetooth-search.png
 
 
 

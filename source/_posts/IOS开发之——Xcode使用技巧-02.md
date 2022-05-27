@@ -77,10 +77,10 @@ Storyboard界面——>右上角点击
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-02-developer-docment.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-02-source-property.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-02-assistant-editor.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-02-method-show.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-02-code-create.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-02-code-create-set.png
-[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-02-code-use.gif
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-02-developer-docment.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-02-source-property.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-02-assistant-editor.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-02-method-show.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-02-code-create.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-02-code-create-set.png
+[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-02-code-use.gif

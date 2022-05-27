@@ -77,4 +77,4 @@ function changeBG() {
 * [P5官方文档—createButton](https://p5js.org/zh-Hans/reference/#/p5/createButton)
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-createbutton-sample.gif
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-createbutton-sample.gif

@@ -103,12 +103,12 @@ date: 2022-04-21 22:38:54
 ![][8]
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-01-connect-sqlite.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-01-save-sqlite-file.gif
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-01-sqlite-create-success.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-01-create-table.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-01-table-keys.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-01-table-save.png
-[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-01-table-add-value.png
-[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-01-table-records.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-01-connect-sqlite.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-01-save-sqlite-file.gif
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-01-sqlite-create-success.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-01-create-table.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-01-table-keys.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-01-table-save.png
+[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-01-table-add-value.png
+[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-01-table-records.png
 

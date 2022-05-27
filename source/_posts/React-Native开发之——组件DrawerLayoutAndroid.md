@@ -85,6 +85,6 @@ date: 2018-03-22 23:42:18
 # 其他 
 参考：[Github下载][2]
 
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-drawerLayoutandroid.gif
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-drawerLayoutandroid.gif
 [2]: https://github.com/PGzxc/RN_DrawerLayoutAndroid
 

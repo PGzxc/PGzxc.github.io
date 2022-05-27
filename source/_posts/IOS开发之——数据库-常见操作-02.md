@@ -458,25 +458,25 @@ select s.name from t_student s, t_class c where s.id = c.id and c.name = '语文
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-table-new-query.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-create-table.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-create-table-result.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-drop-table-result.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-insert-table.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-update-table.png
-[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-delete-table.png
-[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-select-table-result.png
-[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-where-table.png
-[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-othername-table-result.png
-[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-count-table-result.png
-[12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-orderby-table.png
-[13]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-property-table.png
-[14]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-primary-key-table-result.png
-[15]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-forgain-table-class.png
-[16]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-forgain-table-student-property.png
-[17]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-forgain-table-student.png
-[18]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-forgain-table-class-values.png
-[19]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-forgain-table-student-values.png
-[20]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-join-table-class.png
-[21]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-join-table-student.png
-[22]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-join-table-result.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-table-new-query.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-create-table.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-create-table-result.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-drop-table-result.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-insert-table.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-update-table.png
+[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-delete-table.png
+[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-select-table-result.png
+[9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-where-table.png
+[10]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-othername-table-result.png
+[11]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-count-table-result.png
+[12]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-orderby-table.png
+[13]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-property-table.png
+[14]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-primary-key-table-result.png
+[15]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-forgain-table-class.png
+[16]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-forgain-table-student-property.png
+[17]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-query-forgain-table-student.png
+[18]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-forgain-table-class-values.png
+[19]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-forgain-table-student-values.png
+[20]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-join-table-class.png
+[21]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-join-table-student.png
+[22]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-02-join-table-result.png

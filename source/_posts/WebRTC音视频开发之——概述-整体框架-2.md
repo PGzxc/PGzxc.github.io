@@ -144,4 +144,4 @@ VideoEngine是WebRTC视频处理引擎，包含一系列视频处理的整体框
 
 [00]:https://www.w3.org/TR/webrtc/
 [01]:https://developer.mozilla.org/zh-CN/docs/Web/API/WebRTC_API
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-webrtc/webrtc-01-total-struct.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-webrtc/webrtc-01-total-struct.png

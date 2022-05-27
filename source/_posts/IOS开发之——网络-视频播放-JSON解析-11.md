@@ -184,5 +184,5 @@ MPMoviePlayerViewController *player=[[MPMoviePlayerViewController alloc]initWith
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-video-main-storyboard.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-video-list-click-play.gif
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-video-main-storyboard.png
+[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-video-list-click-play.gif

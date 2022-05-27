@@ -103,4 +103,4 @@ comments: false
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-learn-route/Android-Learning-route.jpg
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-learn-route/Android-Learning-route.jpg

@@ -112,4 +112,4 @@ body{
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ct_css_selector.gif
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ct_css_selector.gif

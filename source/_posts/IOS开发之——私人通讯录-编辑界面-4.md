@@ -104,4 +104,4 @@ date: 2020-07-05 23:33:02
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ios-sirentongxunlu-eidt.gif
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ios-sirentongxunlu-eidt.gif

@@ -68,12 +68,12 @@ Visual Studio 2019会把一些文件默认安装到C盘，如果C盘空间不足
   ![][6]
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-visual-studio-getfile.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-visual-studio2019-component-install.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-visual-studio2019-install-part.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-visual-studio2019-net-component.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-visual-studio2019-start-install.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-visual-studio2019-theme-config.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-visual-studio-getfile.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-visual-studio2019-component-install.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-visual-studio2019-install-part.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-visual-studio2019-net-component.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-visual-studio2019-start-install.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-visual-studio2019-theme-config.png
 
 
 

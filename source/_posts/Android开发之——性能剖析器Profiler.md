@@ -96,15 +96,15 @@ date: 2021-08-12 21:54:55
 
 [0]:https://developer.android.google.cn/studio/images/buttons/toolbar-android-profiler.png?hl=zh_cn
 [01]:https://developer.android.google.cn/studio/images/buttons/ic_plus.png?hl=zh_cn
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-as-view-open.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-as-profilericon-open.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-as-contents-profilersh.png
-[4]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-as-profilericon-open.png
-[5]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-tools-run.png
-[6]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-bottom-profiler.png
-[7]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-device-app-select.png
-[8]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-bottom-run.png
-[9]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-callouts.png
-[10]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-session-active.png
-[11]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-session-stop.png
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-as-view-open.png
+[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-as-profilericon-open.png
+[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-as-contents-profilersh.png
+[4]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-as-profilericon-open.png
+[5]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-tools-run.png
+[6]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-bottom-profiler.png
+[7]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-device-app-select.png
+[8]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-bottom-run.png
+[9]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-callouts.png
+[10]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-session-active.png
+[11]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-session-stop.png
 

@@ -203,4 +203,4 @@ date: 2021-08-31 17:06:24
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-web/html-navigator-sample.gif
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-web/html-navigator-sample.gif

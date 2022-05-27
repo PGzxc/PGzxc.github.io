@@ -371,8 +371,8 @@ RaisedButton(
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-android-view-textview.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-android-view-textview-param.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-android-view-value-pass.gif
-[4]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-android-view-value-pass-2.gif
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-android-view-textview.png
+[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-android-view-textview-param.png
+[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-android-view-value-pass.gif
+[4]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-android-view-value-pass-2.gif
 

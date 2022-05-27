@@ -34,7 +34,7 @@ Git是分布式版本控制系统，同一个Git仓库，可以分布到不同�
 至此，配置已经完成  
 
 
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-github-ssh.png
-[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-github-gui-key.png
-[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-github-ssh-config.png
-[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-github-new-ssh.png
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-github-ssh.png
+[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-github-gui-key.png
+[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-github-ssh-config.png
+[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-github-new-ssh.png

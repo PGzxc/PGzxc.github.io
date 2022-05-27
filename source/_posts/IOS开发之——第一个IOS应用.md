@@ -129,21 +129,21 @@ Main.storyboard文件就可以修改UI界面，左边的箭头表明：程序一
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-navigator-project.png
-[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-navigator-version.png
-[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-navigator-symbol.png
-[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-navigator-search.png
-[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-navigator-error.png
-[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-navigator-test.png
-[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-navigator-debug.png
-[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-navigator-breakpoint.png
-[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-navigator-report.png
-[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-show-hidden-area.png
-[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-component.png
-[12]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-project-object-c.png
-[13]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-project-h-file.png
-[14]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-project-h-file.png
-[15]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-object-run.png
-[16]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-project-swift.png
-[17]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-swift-project-code.png
-[18]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-swift-run.png
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-navigator-project.png
+[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-navigator-version.png
+[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-navigator-symbol.png
+[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-navigator-search.png
+[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-navigator-error.png
+[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-navigator-test.png
+[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-navigator-debug.png
+[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-navigator-breakpoint.png
+[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-navigator-report.png
+[10]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-show-hidden-area.png
+[11]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-component.png
+[12]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-project-object-c.png
+[13]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-project-h-file.png
+[14]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-project-h-file.png
+[15]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-object-run.png
+[16]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-project-swift.png
+[17]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-swift-project-code.png
+[18]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-swift-run.png

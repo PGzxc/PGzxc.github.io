@@ -137,9 +137,9 @@ date: 2020-09-25 21:36:16
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ct_css_positioning_floating_right_example.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ct_css_positioning_floating_left_example.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ct_css_positioning_floating_left_example_2.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ct_css_positioning_floating_linebox.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ct_css_positioning_floating_clear.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ct_css_positioning_floating_clear_div.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ct_css_positioning_floating_right_example.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ct_css_positioning_floating_left_example.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ct_css_positioning_floating_left_example_2.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ct_css_positioning_floating_linebox.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ct_css_positioning_floating_clear.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ct_css_positioning_floating_clear_div.png

@@ -202,9 +202,9 @@ TARGETS——>Build Settings——>Other Linker Flags——>-lxml2
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-request-xml-response.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-link-libxml2-add.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-user-header-path-libxml2.png
-[4]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-other-linker-flag-xml2.png
-[5]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-gdataxml-no-arc.png
-[6]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-gdataxml-view.gif
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-request-xml-response.png
+[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-link-libxml2-add.png
+[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-user-header-path-libxml2.png
+[4]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-other-linker-flag-xml2.png
+[5]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-gdataxml-no-arc.png
+[6]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-gdataxml-view.gif

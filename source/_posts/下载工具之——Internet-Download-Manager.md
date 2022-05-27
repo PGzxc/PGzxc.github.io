@@ -71,13 +71,13 @@ IDM 全名Internet Download Manager  是一款国外的多线程下载神器（�
 
 
 [1]:http://www.internetdownloadmanager.com/
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/idm-download-home-page.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/idm-download-for-try-download.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/idm-install-guide-instration.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/imd-crack-software.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/idm-crack-move-to-install-file.png
-[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/idm-crash-file-enable.png
-[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/idm-crack-enable-finished.png
-[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/idm-licence-finished.png
-[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/idm-brower-iscorrect.png
-[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/idm-brower-add-new.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/idm-download-home-page.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/idm-download-for-try-download.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/idm-install-guide-instration.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/imd-crack-software.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/idm-crack-move-to-install-file.png
+[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/idm-crash-file-enable.png
+[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/idm-crack-enable-finished.png
+[9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/idm-licence-finished.png
+[10]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/idm-brower-iscorrect.png
+[11]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/idm-brower-add-new.png

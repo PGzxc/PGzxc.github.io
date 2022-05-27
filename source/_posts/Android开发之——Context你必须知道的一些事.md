@@ -87,7 +87,7 @@ Context数量=Activity数量+Service数量+1(Application)
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-context.png
-[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-context-use.png
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-context.png
+[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-context-use.png
 [3]: http://blog.csdn.net/lmj623565791/article/details/40481055/
 [4]: http://www.jianshu.com/p/94e0f9ab3f1d

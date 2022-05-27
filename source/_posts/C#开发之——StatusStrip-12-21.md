@@ -32,6 +32,6 @@ date: 2020-07-30 21:20:59
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-winform-statusstrip-drag.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-winform-status-items.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-winform-statustrip-value-set.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-winform-statusstrip-drag.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-winform-status-items.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-winform-statustrip-value-set.png

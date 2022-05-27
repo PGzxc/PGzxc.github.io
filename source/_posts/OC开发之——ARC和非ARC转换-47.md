@@ -56,10 +56,10 @@ date: 2020-04-17 23:15:42
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-arc-project-view.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-arc-project-yes-or-no.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-target-buildphases-choice.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-target-buildphases-source-open.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-target-buildphases-m-fobjc-arc.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-edit-covert-to-arc.png
-[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-target-buildphases-arc-support-noarc.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-arc-project-view.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-arc-project-yes-or-no.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-target-buildphases-choice.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-target-buildphases-source-open.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-target-buildphases-m-fobjc-arc.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-edit-covert-to-arc.png
+[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-target-buildphases-arc-support-noarc.png

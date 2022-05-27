@@ -188,11 +188,11 @@ Wrap(
 * [老孟Flutter-Wrap](http://laomengit.com/flutter/widgets/Wrap.html)
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-wrap-normal-sample.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-wrap-direction-sample.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-wrap-aligment-sample.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-wrap-crossaxisalignment-sample.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-wrap-runAlignment-sample.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-wrap-spacing-runSpacing.png
-[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-wrap-textDirection.png
-[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-wrap-verticalDirection.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-wrap-normal-sample.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-wrap-direction-sample.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-wrap-aligment-sample.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-wrap-crossaxisalignment-sample.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-wrap-runAlignment-sample.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-wrap-spacing-runSpacing.png
+[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-wrap-textDirection.png
+[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-wrap-verticalDirection.png

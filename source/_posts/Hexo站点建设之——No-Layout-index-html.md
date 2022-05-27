@@ -39,5 +39,5 @@ date: 2019-06-13 21:29:59
 ### 3.2 执行npm install后安装提示信息，执行`npm audit fix`
 
 
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-no-layout-index-html.png
-[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-npm-ls-depth.png
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-no-layout-index-html.png
+[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-npm-ls-depth.png

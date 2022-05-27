@@ -51,8 +51,8 @@ date: 2021-07-17 23:11:50
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-android-add-support-preview.gif
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-ios-add-overview.gif
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-android-add-support-preview.gif
+[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-ios-add-overview.gif
 
 [11]:https://api.flutter.dev/javadoc/io/flutter/embedding/engine/plugins/FlutterPlugin.html
 [12]:https://api.flutter.dev/javadoc/io/flutter/embedding/engine/FlutterEngine.html

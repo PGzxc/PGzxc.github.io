@@ -136,4 +136,4 @@ onReady: function () {
 
 
 [00]:https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API/Tutorial/Getting_started_with_WebGL
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-canvas-old-view.png
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-canvas-old-view.png

@@ -66,5 +66,5 @@ comments: false
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-learn-route/Flutter-Learning-route-1.jpg
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-learn-route/Flutter-Learning-route-2.jpg
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-learn-route/Flutter-Learning-route-1.jpg
+[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-learn-route/Flutter-Learning-route-2.jpg

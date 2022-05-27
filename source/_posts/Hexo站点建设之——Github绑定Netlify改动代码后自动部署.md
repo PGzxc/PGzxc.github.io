@@ -81,23 +81,23 @@ Netlify的出现解决了这个问题： 本地运行Hexo程序创建文章、�
   ![][17]
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-webpage-set.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-github-login.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-github-permission.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-create-new-site.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-delplyment-github.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netify-person-select.png
-[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-select-repositories.png
-[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-deploy-branch-cmd.png
-[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-deploy-success.png
-[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-domains-register.png
-[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-domain-verify.png
-[12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-ns-setting.png
-[13]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-dns-modify.png
-[14]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-doman-netliry-dns.png
-[15]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netify-ssl_download.png
-[16]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netify-cetificate-install.png
-[17]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netify-ssl-success.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-webpage-set.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-github-login.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-github-permission.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-create-new-site.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-delplyment-github.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netify-person-select.png
+[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-select-repositories.png
+[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-deploy-branch-cmd.png
+[9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-deploy-success.png
+[10]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-domains-register.png
+[11]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-domain-verify.png
+[12]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-ns-setting.png
+[13]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-dns-modify.png
+[14]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netlify-doman-netliry-dns.png
+[15]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netify-ssl_download.png
+[16]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netify-cetificate-install.png
+[17]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-netify-ssl-success.png
 
 [21]:https://www.netlify.com/
 

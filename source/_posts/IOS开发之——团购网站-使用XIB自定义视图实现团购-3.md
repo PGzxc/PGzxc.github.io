@@ -94,4 +94,4 @@ date: 2020-06-10 23:39:13
 ```
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xib-tuangou.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xib-tuangou.png

@@ -118,7 +118,7 @@ Page({
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wxfor-view-preview.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wxfor-block-preview.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wxfor-for-index-item.png
-[4]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wxfor-wxkey-preview.gif
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wxfor-view-preview.png
+[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wxfor-block-preview.png
+[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wxfor-for-index-item.png
+[4]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-wxfor-wxkey-preview.gif

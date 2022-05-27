@@ -60,4 +60,4 @@ date: 2018-02-24 15:54:45
 ![][1]
 
 
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-quote.png
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-quote.png

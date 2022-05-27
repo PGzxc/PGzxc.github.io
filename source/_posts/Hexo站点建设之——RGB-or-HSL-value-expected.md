@@ -50,6 +50,6 @@ stylus 报错也是 highlight.js 的版本问题造成的，这一问题在 NexT
 * [Github——hexo-theme-next/issues/4](https://github.com/next-theme/hexo-theme-next/issues/4)
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-error-rgb-expected.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-error-public-main-none.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-error-reason-stylus.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-error-rgb-expected.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-error-public-main-none.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-error-reason-stylus.png

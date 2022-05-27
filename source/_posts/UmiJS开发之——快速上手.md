@@ -72,6 +72,6 @@ npx umi dev
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-umi/umi-struct-technology-view.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-umi/umi-struct-plugin-view.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-umi/umi-first-demo-preview.png
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-umi/umi-struct-technology-view.png
+[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-umi/umi-struct-plugin-view.png
+[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-umi/umi-first-demo-preview.png

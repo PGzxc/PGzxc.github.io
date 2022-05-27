@@ -96,4 +96,4 @@ function draw() {
 ```
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-environment-describe-sample.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-environment-describe-sample.png

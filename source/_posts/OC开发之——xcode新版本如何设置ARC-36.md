@@ -32,7 +32,7 @@ date: 2020-04-11 23:14:23
 	![][3]
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-arc-project-view.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-arc-buildsettings-search.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-arc-buildsettings-setting.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-arc-project-view.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-arc-buildsettings-search.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-arc-buildsettings-setting.png
 

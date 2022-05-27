@@ -118,13 +118,13 @@ date: 2022-03-27 21:38:43
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-02-autolayout-waring.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-02-autolayout-error.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-02-autolayout-align-explain.png
-[4]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-02-autolayout-margin-explain.png
-[5]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-02-autolayout-storyboard-view.png
-[6]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-02-autolayout-storyboard-blue.png
-[7]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-02-autolayout-storyboard-yellow-align.png
-[8]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-02-autolayout-storyboard-yellow-equals.png
-[9]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-02-autolayout-storyboard-yellow-top.png
-[10]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-02-autolayout-storyboard-yellow-width.png
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-02-autolayout-waring.png
+[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-02-autolayout-error.png
+[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-02-autolayout-align-explain.png
+[4]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-02-autolayout-margin-explain.png
+[5]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-02-autolayout-storyboard-view.png
+[6]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-02-autolayout-storyboard-blue.png
+[7]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-02-autolayout-storyboard-yellow-align.png
+[8]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-02-autolayout-storyboard-yellow-equals.png
+[9]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-02-autolayout-storyboard-yellow-top.png
+[10]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-02-autolayout-storyboard-yellow-width.png

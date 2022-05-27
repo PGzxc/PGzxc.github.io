@@ -46,8 +46,8 @@ date: 2019-08-21 22:30:27
 
 参考：[Android 黑科技之卸载系统应用][3]
 
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/adb-shell-dumpsys-current.png
-[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/adb-shell-uninstall-system-app.png
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/adb-shell-dumpsys-current.png
+[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/adb-shell-uninstall-system-app.png
 [3]:https://dwz.cn/Ryd8n3kT
 
 

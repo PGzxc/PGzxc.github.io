@@ -150,5 +150,5 @@ date: 2018-02-20 21:51:12
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-convert.png
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-convert.png
 

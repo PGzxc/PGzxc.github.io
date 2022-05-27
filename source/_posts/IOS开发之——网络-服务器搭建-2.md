@@ -60,8 +60,8 @@ http://localhost:8080/MJServer/resources/images/minion_01.png
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-internet-server-eclipse-workspace.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-internet-server-eclipse-import-code.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-internet-server-tomcat-add.png
-[4]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-internet-server-tomcat-start.png
-[5]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-internet-server-project-view.png
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-internet-server-eclipse-workspace.png
+[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-internet-server-eclipse-import-code.png
+[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-internet-server-tomcat-add.png
+[4]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-internet-server-tomcat-start.png
+[5]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-internet-server-project-view.png

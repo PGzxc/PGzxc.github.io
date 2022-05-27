@@ -247,4 +247,4 @@ flutter pub run build_runner build
 * [JSON and serialization](https://flutter.dev/docs/development/data-and-backend/json)
 * [Fetch data from the internet](https://flutter.dev/docs/cookbook/networking/fetch-data)
 
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-request-response-result-hand.png
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-request-response-result-hand.png

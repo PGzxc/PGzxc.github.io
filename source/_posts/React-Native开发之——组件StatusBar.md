@@ -107,7 +107,7 @@ React Native 在 Android 平台为 StatusBar 组件提供了一个静态常量 c
 参考：[Github下载地址][2]
 
 
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-statusbar.gif
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-statusbar.gif
 [2]: https://github.com/PGzxc/RN_StatusBar
 
 

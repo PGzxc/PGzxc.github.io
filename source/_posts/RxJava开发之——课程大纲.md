@@ -54,4 +54,4 @@ date: 2018-04-24 21:53:16
 # 思维导图
 ![思维导图][1]
 
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rxjava-outline.png
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rxjava-outline.png

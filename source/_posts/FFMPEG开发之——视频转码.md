@@ -126,4 +126,4 @@ pause
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ffmpeg-run-conver-mp4-finished.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ffmpeg-run-conver-mp4-finished.png

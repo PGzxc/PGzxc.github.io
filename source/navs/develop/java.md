@@ -30,6 +30,6 @@ comments: false
 | :--: | :---------------------------------: | :---------------: |
 |  1   | [未读代码](https://www.wdbyte.com/) | 博客-java源码解读 |
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-learn-route/Java-Learning-route-1.jpg
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-learn-route/Java-Learning-route-2.jpg
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-learn-route/Java-Learning-route-3.jpg
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-learn-route/Java-Learning-route-1.jpg
+[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-learn-route/Java-Learning-route-2.jpg
+[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-learn-route/Java-Learning-route-3.jpg

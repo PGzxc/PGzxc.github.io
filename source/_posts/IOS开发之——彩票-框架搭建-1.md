@@ -93,14 +93,14 @@ date: 2022-02-07 09:32:27
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-struct-tabbarcontroller.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-struct-tabbarcontroller-remove-view.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-struct-navigation-add.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-struct-navigation-add-preview.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-struct-tabbar-item-modify.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-struct-tabbar-item-modify-preview.png
-[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-struct-modify-title.png
-[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-struct-modify-title-preview.gif
-[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-struct-navgation-button.png
-[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-struct-navgation-button-event.png
-[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-struct-navgation-define.gif
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-struct-tabbarcontroller.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-struct-tabbarcontroller-remove-view.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-struct-navigation-add.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-struct-navigation-add-preview.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-struct-tabbar-item-modify.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-struct-tabbar-item-modify-preview.png
+[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-struct-modify-title.png
+[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-struct-modify-title-preview.gif
+[9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-struct-navgation-button.png
+[10]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-struct-navgation-button-event.png
+[11]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-struct-navgation-define.gif

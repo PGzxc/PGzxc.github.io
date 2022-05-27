@@ -75,12 +75,12 @@ Hugo是由Go语言实现的静态网站生成器。简单、易用、高效、�
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hugo-new-site-quickstart.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hugo-add-themes.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hugo-theme-config.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hugo-post-page-content.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hugo-server-d.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hugo-server-page-view.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hugo-new-site-quickstart.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hugo-add-themes.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hugo-theme-config.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hugo-post-page-content.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hugo-server-d.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hugo-server-page-view.png
 [21]:https://gomirrors.org/
 [22]:https://github.com/gohugoio/hugo/releases
 [23]:http://localhost:1313/

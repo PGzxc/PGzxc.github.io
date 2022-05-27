@@ -59,6 +59,6 @@ HTTP通信过程属于“你推一下，我走一下”的方式，客户端不�
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/net_seven_mode.png
-[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/net_mode.png
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/net_seven_mode.png
+[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/net_mode.png
 

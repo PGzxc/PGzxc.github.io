@@ -332,4 +332,4 @@ static NSMutableDictionary *_musicPlayers;
 
 ## 四 参考
 * [Github-参考代码](https://github.com/PGzxc/IOSPlayer)
-* [Xmind原图](https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-av-player-struct-view.xmind)
+* [Xmind原图](https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-av-player-struct-view.xmind)

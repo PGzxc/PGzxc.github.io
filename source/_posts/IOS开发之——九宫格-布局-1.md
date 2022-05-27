@@ -65,4 +65,4 @@ date: 2020-05-28 22:51:58
 ```
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-jiugongge-view.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-jiugongge-view.png

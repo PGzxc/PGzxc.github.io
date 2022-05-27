@@ -53,4 +53,4 @@ date: 2018-04-23 16:39:05
 # 思维导图
 ![思维导图][1] 
 
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/c-outline.png
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/c-outline.png

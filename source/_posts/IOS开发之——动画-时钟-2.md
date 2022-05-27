@@ -190,4 +190,4 @@ date: 2021-05-06 09:55:39
 ![][1]
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-calayer-click.gif
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-calayer-click.gif

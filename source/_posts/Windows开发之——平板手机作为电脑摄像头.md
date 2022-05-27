@@ -49,7 +49,7 @@ date: 2022-02-15 13:41:27
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-windows/windows-icam-softdownload-file.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-windows/windows-ivcam-desktop-open.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-windows/windows-ivcam-desktop-connect-view.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-windows/windows-ivcam-camera-switch.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-windows/windows-icam-softdownload-file.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-windows/windows-ivcam-desktop-open.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-windows/windows-ivcam-desktop-connect-view.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-windows/windows-ivcam-camera-switch.png

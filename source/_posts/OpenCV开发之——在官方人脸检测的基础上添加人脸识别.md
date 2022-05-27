@@ -423,8 +423,8 @@ FaceUtil.deleteRecFiles()
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/opencv-face-detection-project-struct.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/opencv-file-use-order.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/opencv-fdactivity-layout.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/opencv-people-recognize.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/opencv-face-detection-project-struct.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/opencv-file-use-order.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/opencv-fdactivity-layout.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/opencv-people-recognize.png
 

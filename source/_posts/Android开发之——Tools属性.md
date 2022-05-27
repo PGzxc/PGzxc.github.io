@@ -362,24 +362,24 @@ android
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-effect.png
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-effect.png
 [2]: https://dwz.cn/MHl1xA75
-[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-ignore-before.png
-[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-ignore-after.png
-[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-targetapi-before.png
-[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-targetapi-after.png
-[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-preview-view-tools-before.png
-[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-preview-view-tools-after.png
-[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-context-click.png
-[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-itemcount-2.png
-[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-layout-priview.png
-[12]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-listitem-header-footer.png
-[13]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-menu-before.png
-[14]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-layout-menu-preview.png
-[15]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-layout-menu-after.png
-[16]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-numberpicker-preview.png
-[17]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-drawaer-layout-preview.png
-[18]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-sample-preview.png
+[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-ignore-before.png
+[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-ignore-after.png
+[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-targetapi-before.png
+[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-targetapi-after.png
+[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-preview-view-tools-before.png
+[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-preview-view-tools-after.png
+[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-context-click.png
+[10]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-itemcount-2.png
+[11]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-layout-priview.png
+[12]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-listitem-header-footer.png
+[13]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-menu-before.png
+[14]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-layout-menu-preview.png
+[15]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-layout-menu-after.png
+[16]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-numberpicker-preview.png
+[17]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-drawaer-layout-preview.png
+[18]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-tools-sample-preview.png
 [19]: https://blog.csdn.net/p106786860/article/details/53943540
 [20]: https://developer.android.google.cn/studio/write/tool-attributes.html
 [21]: https://www.jianshu.com/p/2912bcba4465

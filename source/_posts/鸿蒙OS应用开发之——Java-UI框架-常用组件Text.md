@@ -209,9 +209,9 @@ text.startAutoScrolling();
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-text-background.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-text-color-size.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-text-font-weight.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-text-alignment.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-text-multiple-lines.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-text-audo-scrolling.gif
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-text-background.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-text-color-size.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-text-font-weight.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-text-alignment.png
+[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-text-multiple-lines.png
+[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-text-audo-scrolling.gif

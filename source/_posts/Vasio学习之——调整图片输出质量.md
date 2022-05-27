@@ -35,7 +35,7 @@ date: 2019-12-11 20:57:57
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/visio-export-bitmap-type.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/visio-export-bitmap-destion-file.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/visio-export-bitmap-property.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/visio-export-bitmap-jpg-define.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/visio-export-bitmap-type.png
+[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/visio-export-bitmap-destion-file.png
+[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/visio-export-bitmap-property.png
+[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/visio-export-bitmap-jpg-define.png

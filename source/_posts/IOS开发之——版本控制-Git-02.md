@@ -93,16 +93,16 @@ git clone http://192.168.1.8/AppGit.git
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-gitstack-create-repo.png
-[2]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-gitstack-repo-view.png
-[3]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-gitstack-add-user.png
-[4]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-xcode-git-clone.png
-[5]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-xcode-create-app.png
-[6]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-xcode-app-open-view.png
-[7]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-xcode-commit-noauthor.png
-[8]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-xcode-sourcegit-author.png
-[9]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-xcode-commit-push.png
-[10]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-gitstack-commit-view.png
-[11]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-xcode-show-repository.png
-[12]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-xcode-branch-create.png
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-gitstack-create-repo.png
+[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-gitstack-repo-view.png
+[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-gitstack-add-user.png
+[4]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-xcode-git-clone.png
+[5]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-xcode-create-app.png
+[6]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-xcode-app-open-view.png
+[7]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-xcode-commit-noauthor.png
+[8]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-xcode-sourcegit-author.png
+[9]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-xcode-commit-push.png
+[10]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-gitstack-commit-view.png
+[11]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-xcode-show-repository.png
+[12]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-versionc-02-xcode-branch-create.png
 

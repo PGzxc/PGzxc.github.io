@@ -9,7 +9,7 @@ tags:
 <font style="font-family:verdana;font-size:150%;color:green;font-weight:bold">好友链接(排名不分先后)</font>
 {% linkgrid %}
 initcool | https://blog.nmslwsnd.com | 打倒了100个四大魔公的男人! | https://blog.nmslwsnd.com/medias/avatar.jpg
-长征部落格 |  https://www.cz5h.com | 胖五飞天！！ | https://cdn.jsdelivr.net/gh/TianZonglin/tuchuang/img/logo.jpg
+长征部落格 |  https://www.cz5h.com | 胖五飞天！！ | https://fastly.jsdelivr.net/gh/TianZonglin/tuchuang/img/logo.jpg
 MuJin's Blog | https://xiabor.com | 君浅吟，叹落笔 | https://xiabor.com/img/avatar.png
 
 {% endlinkgrid %}
@@ -46,6 +46,6 @@ Mr.Simple | https://blog.csdn.net/bboyfeiyu | LIFE IS LIKE A BATTLE. | /images/l
 ```
 name：PGzxc
 link：https://pgzxc.com/
-avatar：https://cdn.jsdelivr.net/gh/pgzxc/CDN/popular-images/avatar.jpg
+avatar：https://fastly.jsdelivr.net/gh/pgzxc/CDN/popular-images/avatar.jpg
 descr：纸上得来终觉浅 绝知此事要躬行
 ```

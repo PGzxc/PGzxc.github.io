@@ -138,4 +138,4 @@ import Flutter
 ![][1]
 
 
-[1]:https://cdn.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-ios-eventchannel-result.gif
+[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-ios-eventchannel-result.gif

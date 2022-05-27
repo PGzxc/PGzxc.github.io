@@ -89,24 +89,24 @@ Windows系统的cmd，Mac，Linux系统的Terminal都是命令行操作的工具
 * 参考:[linux\mac 日常入门命令行使用——文件以及文件夹操作][21]
 
 
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-cd-root.png
-[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-cd-desktop.png
-[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-cd-preview.png
-[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-cd-pre-pre.png
-[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-ls.png
-[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-ls-l.png
-[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-ls-a.png
-[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-ls-la.png
-[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-touch-a-file.png
-[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-touch-more-file.png
-[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-mkdir-a-dir.png
-[12]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-mkdir-more-dir.png
-[13]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-mkdir-more-dir-p.png
-[14]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-cp-a-2-b.png
-[15]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-cp-dir.png
-[16]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-mv-2-other.png
-[17]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-rm.png
-[18]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-less.png
-[19]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-pwd.png
-[20]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-man-ls.png
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-cd-root.png
+[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-cd-desktop.png
+[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-cd-preview.png
+[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-cd-pre-pre.png
+[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-ls.png
+[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-ls-l.png
+[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-ls-a.png
+[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-ls-la.png
+[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-touch-a-file.png
+[10]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-touch-more-file.png
+[11]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-mkdir-a-dir.png
+[12]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-mkdir-more-dir.png
+[13]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-mkdir-more-dir-p.png
+[14]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-cp-a-2-b.png
+[15]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-cp-dir.png
+[16]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-mv-2-other.png
+[17]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-rm.png
+[18]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-less.png
+[19]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-pwd.png
+[20]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-shell-man-ls.png
 [21]: https://blog.csdn.net/fungleo/article/details/78488656

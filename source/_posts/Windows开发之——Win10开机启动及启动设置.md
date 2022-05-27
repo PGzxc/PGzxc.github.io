@@ -41,11 +41,11 @@ date: 2018-08-19 09:13:17
 
 
 
-[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows-shell-startup.png
-[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows-shell-open.png
-[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows-move-startup.png
-[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows-open-msconfig.png
-[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows-msconfig-start.png
-[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows-msconfig-open.png
-[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows-manager-start.png
-[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows-manager-jinyong.png
+[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows-shell-startup.png
+[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows-shell-open.png
+[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows-move-startup.png
+[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows-open-msconfig.png
+[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows-msconfig-start.png
+[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows-msconfig-open.png
+[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows-manager-start.png
+[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows-manager-jinyong.png

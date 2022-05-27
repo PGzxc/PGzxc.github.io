@@ -57,4 +57,4 @@ date: 2022-03-02 13:21:55
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN@master/blog-webrtc/webrtc-02-signal-server.png
+[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-webrtc/webrtc-02-signal-server.png
