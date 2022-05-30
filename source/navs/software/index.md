@@ -7,12 +7,13 @@ comments: false
 
 ##  一  软件破解
 
-| 编号 |                     名称(地址)                     | 备注 |
-| :--: | :------------------------------------------------: | :--: |
-|  1   |           [懒得勤快](https://masuit.com)           |      |
-|  2   | [吾爱破解](https://www.52pojie.cn/forum-16-1.html) |      |
-|  3   |          [Macnol](https://www.macno1.com)          |      |
-|  4   |       [AepNet破解](https://www.aepnet.com/)        |      |
+| 编号 |                     名称(地址)                     |   备注   |
+| :--: | :------------------------------------------------: | :------: |
+|  1   |           [懒得勤快](https://masuit.com)           |          |
+|  2   | [吾爱破解](https://www.52pojie.cn/forum-16-1.html) |          |
+|  3   |          [Macnol](https://www.macno1.com)          |          |
+|  4   |       [AepNet破解](https://www.aepnet.com/)        |          |
+|  5   |         [小白学堂](http://www.itmind.net)          | 破解软件 |
 ## 二 搜索
 
 | 编号 |                 名称(地址)                 |   备注   |
