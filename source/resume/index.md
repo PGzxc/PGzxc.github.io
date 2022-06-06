@@ -399,11 +399,14 @@ __2-Android项目—E朝朝企业端__
 ## Flutter
 
 * 熟悉Flutter中常用的布局、组件并进行UI开发
+* 熟悉GetX项目搭建框架，进行网络请求/状态管理/依赖管理/路由管理/国际化/主题设置等
 * 熟悉Flutter自带动画即第三方动画(Lottie、Flare、Nima、Rive)
 * 熟悉Flutter网络请求及返回数据解析
 * 熟悉文件文件及操作及数据数据持久化存储
+* 熟悉getwidget Google开源UIKit工具库中常用组件的使用
+* 熟悉pull-to-refresh下拉刷新、上拉加载工具的使用
+* 熟悉webview-flutter进行网页加载及显示
 * 了解Flutter与Android及IOS混合开发
-* 了解Flutter国际化
 
 ##  笼统
 
