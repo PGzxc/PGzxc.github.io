@@ -529,14 +529,14 @@ __2-Android项目—E朝朝企业端__
 [live-3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-main-recommend-3.png
 [live-4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-main-recommend-update-4.png
 [live-5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-main-small-video-5.png
-[live-6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-main-game-chiji-5.png
-[live-7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-nearby-live-6.png
+[live-6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-main-game-chiji-6.png
+[live-7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-nearby-live-7.png
 [live-8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-nearby-live-update-8.png
 [live-9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-play-type-choice-9.png
 [live-10]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-care-people-10.png
 [live-11]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-care-people-change-11.png
 [live-12]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-me-view-12.png
-[live-13]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-rom-view-12.png
+[live-13]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-rom-view-13.png
 [live-14]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-rom-view-update-14.png
 [live-15]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-rom-people-info-15.png
 [live-16]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-rom-gif-choice-16.png
