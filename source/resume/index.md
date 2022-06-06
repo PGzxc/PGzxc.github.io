@@ -330,15 +330,15 @@ __2-Android项目—E朝朝企业端__
 ---
 # 个人项目
 
-## 一 [Flutter-WanAndroid ](https://github.com/PGzxc/Live)
+## 一 [Flutter-WanAndroid ](https://github.com/PGzxc/flutter_wanandroid)
 项目描述：Flutter-WanAndroid是基于WanAndroid-API开发的一款支持Android/IOS跨平台项目。     
 功能模块：首页，导航，项目，消息，我，语言、主题   
 技术要点：
 
 - 基于GetX+getWidget构建开发框架
 - 基于GetX-GetConnect构建网络请求
-- 基于json_serializable+build_runner封装网络返回结果类
-- 基于shared_preference保持用户登录结果和语言/主题设置
+- 基于json_serializable+build_runner封装网络返回结果
+- 基于shared_preference保存用户登录结果和语言/主题设置
 - 基于flutter_pulltorefresh实现下拉刷新和上拉加载
 - 基于shimmer实现网络请求时预览效果显示
 - 基于webview-flutter显示网页效果
@@ -350,7 +350,7 @@ __2-Android项目—E朝朝企业端__
 
 | ![][w-1] | ![][w-2]  | ![][w-3] | ![][w-4] |
 | -------- | --------- | -------- | -------- |
-| ![][w-5] | ![][lw-6]  | ![][w-7]| ![][w-8] |
+| ![][w-5] | ![][w-6]  | ![][w-7]| ![][w-8] |
 | ![][w-9] | ![][w-10] | ![][w-11]| ![][w-12]|
 | ![][w-13]| ![][w-14] | ![][w-15]| ![][w-16]|
 
