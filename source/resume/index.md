@@ -329,7 +329,33 @@ __2-Android项目—E朝朝企业端__
 
 ---
 # 个人项目
-## [Android-直播Live ](https://github.com/PGzxc/Live)
+
+## 一 [Flutter-WanAndroid ](https://github.com/PGzxc/Live)
+项目描述：Flutter-WanAndroid是基于WanAndroid-API开发的一款支持Android/IOS跨平台项目。     
+功能模块：首页，导航，项目，消息，我，语言、主题   
+技术要点：
+
+- 基于GetX+getWidget构建开发框架
+- 基于GetX-GetConnect构建网络请求
+- 基于json_serializable+build_runner封装网络返回结果类
+- 基于shared_preference保持用户登录结果和语言/主题设置
+- 基于flutter_pulltorefresh实现下拉刷新和上拉加载
+- 基于shimmer实现网络请求时预览效果显示
+- 基于webview-flutter显示网页效果
+- 基于flutter_native_splash设置项目启动默认画面，防止白屏
+- 基于KeepAliveWrapper进行列表项缓存，防止多次加载
+- 基于Google组件getWidget-badges，显示未读消息
+
+项目预览
+
+| ![][w-1] | ![][w-2]  | ![][w-3] | ![][w-4] |
+| -------- | --------- | -------- | -------- |
+| ![][w-5] | ![][lw-6]  | ![][w-7]| ![][w-8] |
+| ![][w-9] | ![][w-10] | ![][w-11]| ![][w-12]|
+| ![][w-13]| ![][w-14] | ![][w-15]| ![][w-16]|
+
+
+## 二 [Android-直播Live ](https://github.com/PGzxc/Live)
 项目描述：直播Live是一款仿映客直播软件，为个人业余项目。整体界面仿映客布局，包含首页、附近、直播、关注和我，因时间有限，仅实现部分主要功能，待后期完善。     
 功能模块：首页，附近、直播、关注、我等   
 技术要点：
@@ -551,3 +577,22 @@ __2-Android项目—E朝朝企业端__
 [live-hx-1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-hx-user-register-1.png
 [live-hx-2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-hx-room-manager-2.png
 [live-hx-3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/live-hx-chat-room-3.png
+
+<!--自己的项目-flutter-wanandroid-->
+
+[w-1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w_login.png
+[w-2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w_register.png
+[w-3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w_home.png
+[w-4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w_left_drawer.png
+[w-5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w_nav_tree.png
+[w-6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w_nav_site.png
+[w-7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w_nav_wx.png
+[w-8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w_nav_project.png
+[w-9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w_message_unread_list.png
+[w-10]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w_message_read_list.png
+[w-11]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w_me_unlogin.png
+[w-12]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w_me_login.png
+[w-13]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w_coin_rank.png
+[w-14]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w_coin_sigin.png
+[w-15]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w_article_webpage.png
+[w-16]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-resume/w_message_webpage.png
