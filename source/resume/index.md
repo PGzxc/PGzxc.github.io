@@ -46,7 +46,7 @@ comments: false
 * 2015/04 — 2015/10&emsp;&emsp;乐易考(北京)教育科技有限公司&emsp;&emsp;&emsp;Android开发工程师
 * 2015/10 — 2016/07&emsp;&emsp;时间者互联网科技(北京)有限公司&emsp;&emsp;Android开发工程师
 * 2016/07 — 2018/06&emsp;&emsp;西藏远誉(北京)网络科技有限公司&emsp;&emsp;Android开发工程师
-* 2018/07 — 至今&emsp;&emsp;&emsp;&ensp;中科航天(北京)科技有限公司&emsp;&emsp;&emsp; &emsp;全栈工程师
+* 2018/07 — 2022/04&emsp;&emsp;中科航天(北京)科技有限公司&emsp;&emsp;&emsp;&emsp;全栈工程师
 
 # 公司及工作内容
 ## <font color=red>2018/07 — 至今 &emsp;中科航天(北京)科技有限公司 &emsp;全栈工程师</font> 
