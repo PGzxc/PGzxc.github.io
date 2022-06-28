@@ -10,39 +10,38 @@ abbrlink: 297b6664
 date: 2017-11-16 22:30:15
 ---
 转载声明：原文出处[Android App 构建流程分析][1]
-# 序言 
+## 一 序言 
 我们平时在Android studio中点击run按钮，就能把代码编译成一个app文件并安装到手机上。那么这么过程中具体发生了什么？我们是怎么把代码和资源文件打包成一个app文件，并安装到手机上的呢？今天就详细分析一下这个流程。  
 <!--more-->
-# APP构建基本流程 
 
-## 简易构建流程
+## 二 APP构建基本流程 
+
+### 2.1 简易构建流程
 ![简易流程][2]  
 
 上图的Android官方提供的打包简略流程图。清晰地展示了一个Android Project 经过编译和打包后生成的apk文件，然后在经过签名，就可以安装得到设备上；  
 我们将一个实际的apk文件后缀名改为zip并解压后，得到的内容如下：  
 ![解压apk][3]  
 和上图的描述一致。apk包内容包括：    
-  
+
 - classes.dex 
 - resources.arsc
 - assets
 - res
 - AndroidMainfest.xml  
-
-  其中：  
-
 - res中图片，assets文件和raw文件下内容保持原样，res中其他xml文件内容均转化为二进制形式；
 - res中的文件会被映射到R.java文件中，访问的时候直接使用资源ID即可即R.id.filename；assets文件夹下的文件不会被映射到R.java中，访问的时候需要AssetManager类；  
-## 详细构建流程  
+
+### 2.2 详细构建流程  
 ![详细构建1][4]  
 或  
 ![详细构建2][5]   
- 
+
 详细流程：  
 
 - 第一步：aapt打包资源文件，生成R.java和编译后的资源(二进制文件)
-	- 1：检查AndroidManifest.xml，主要做一些检查并使用parsePackage初始化并设置一些attribute，比如package，miniSdkVersion，uses-sdk;
-	- 2:添加被引用资源包；使用table.addincludeResources(bundle,assets)添加被引用资源包，比如系统的那些android:命名空间下的资源。
+	- 检查AndroidManifest.xml，主要做一些检查并使用parsePackage初始化并设置一些attribute，比如package，miniSdkVersion，uses-sdk;
+	- 添加被引用资源包；使用table.addincludeResources(bundle,assets)添加被引用资源包，比如系统的那些android:命名空间下的资源。
 	- 收集资源文件，处理overlay(重叠包，如果指定的重叠包有何当前编译宝重名的资源，则使用重叠包的)；
 	- 将收集到的资源文件加载到资源表(Resource Table);对res目录下的各个资源子目录进行处理，函数为makeFileResources:makeFileResources会对资源文件名做合法性检查，并将其添加到ResourceTable内；
 	- 编译values资源并添加到资源表；上一步添加过程中，其实并没有对values资源进行处理，因为values比较特殊，需要经过编译之后，才能添加到资源表中。
@@ -50,13 +49,13 @@ date: 2017-11-16 22:30:15
 	- 编译xml资源文件；最后我们终于可以编译xml文件了，因为我们已经为它准备好了一切可能引用到的东西(value，drawable)进行编译，内部流程会对layout,anims,animators等逐一调用ResourceTable.cpp进行编译，内部流程又可以分为：解析xml文件，赋予属性名称资源id，解析属性值，扁平化二进制文件；
 	- 编译AndroidMainfest.xml文件；拿到AndroidMainfest.xml文件，清空原来的数据，重新解析；处理package name 重载，把各种相对路径的名字改为绝对路径，编译mainfest.xml文件，生成最终资源表；
 	- 生成R.java文件；
- 
+
 生成我们解压后看到的那个resources.arsc文件；  
 
 - 第二步：AIDL  
  aidl，全名Android Interface Definition Language，即Android 接口定义语言；  
-输入：aidl后缀的文件；  
-输出：可用于进程通信的C/S端java代码，位于build/generated/source/aidl;  
+  输入：aidl后缀的文件；  
+  输出：可用于进程通信的C/S端java代码，位于build/generated/source/aidl;  
 
 - 第三步：java源码编译  
 我们有了R.java和aidl生成的java文件，再加上工程的源代码，现在可以使用javac进行正常的java编译生成class文件了。  
