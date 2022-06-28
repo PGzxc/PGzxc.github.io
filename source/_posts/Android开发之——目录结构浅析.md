@@ -10,13 +10,15 @@ abbrlink: ac8bb24
 date: 2017-11-17 15:32:57
 ---
 
+## 一 概述
+
 对于从Eclipe转向As的开发者和Android新手来说，明白Eclipse和As的区别，熟悉AS的目录结构，十分必要！  
 下面将Eclipse和AS对对比区别
 <!--more-->
 
-# AS与Eclipse的区别    
+## 二 AS与Eclipse的区别    
 
-## AS  
+### 2.1 AS  
 
 - 基于Gradle的构建支持
 - 构建程序界面更方便
@@ -24,7 +26,7 @@ date: 2017-11-17 15:32:57
 - 智能识别更强大
 - 布局实时预览 
 
-## Eclipse 
+### 2.2  Eclipse 
 
 - 基于ant的构建支持 
 - 创建项目更简单
@@ -33,12 +35,12 @@ date: 2017-11-17 15:32:57
 - 多项目管理很方便 
 
 
-# Eclipse目录结构浅析  
+## 三 Eclipse目录结构浅析  
 
 ![Eclipse目录][0]  
 
 主要介绍在入门阶段需要知道的几个文件夹：
-  
+
 - src目录：存放项目的源代码。比如MainActivity.java或者是需要自己构建的各种java文件；  
 
 - gen目录：自动生成的文件；其中R类存放资源文件的唯一ID，我们通过R.java可以很快的查找到需要的资源。编程过程中一般通过R.id.xx来访问资源；
@@ -55,10 +57,10 @@ date: 2017-11-17 15:32:57
 - 剩下的文件主要存放一些版本信息
 
 
-# As的目录结构   
- 
+## 四 As的目录结构   
+
 ![AS目录结构][1]  
- 
+
 - .gradle:Gradle编译系统，版本由wrapper指定
 - .idea：Android Studio IDE所需要的文件
 - build：代码编译后生成的文件存放的位置
@@ -71,9 +73,9 @@ date: 2017-11-17 15:32:57
 - loca.properties：本地属性设置(key设置，Android sdk位置等属性)，这个文件是
 不推荐上传到VCS中去的
 - settings.gradle：和设置相关的gradle脚本  
-这些事外部文件相关的一些文件的介绍；我们来看app模块里的文件  
-![app模块][2]  
-这是app模块下的文件结构  
+  这些事外部文件相关的一些文件的介绍；我们来看app模块里的文件  
+  ![app模块][2]  
+  这是app模块下的文件结构  
   
 - build:编译后的文件存在的位置(包括最终生成的apk也在这里面)
 - libs：依赖的库所在的位置(jar和arr)
@@ -86,8 +88,6 @@ date: 2017-11-17 15:32:57
 - src/main/AndroidMainfest.xml：AndroidMainfest项目配置文件 
 - build.gradle：和这个项目有关的gradle配置，相当于这个项目的makefile，一些项目的依赖就在这里面；
 - proguard.pro：代码混淆配置文件；
-
-
 
 
 
