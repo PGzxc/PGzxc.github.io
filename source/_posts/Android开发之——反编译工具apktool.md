@@ -11,20 +11,24 @@ tags:
 abbrlink: ad15ee8b
 date: 2017-11-16 18:39:56
 ---
-# 前言  
+## 一 前言 
 我们开发时，为防止自己的APP被破解使用了一系列措施，比如ProGuard，又比如第三方加密，如：爱加密，360加固等；同时，又有需求破解别人的APP，工欲善其事必先利其器，这个神器就是apktool，这篇简单介绍下如何使用apktool对apk文件进行反编译，拿到我们需要的信息；  
 下面将介绍这款工具的下载及使用  
-# 查找官网 
 <!--more-->
-打开[apktool官网][1]
+
+## 二 下载及安装
+
+### 2.1 查找官网 
+
+[apktool官网][1]
 ![apktool官网][2]  
 
-# 下载适合自己平台的工具  
+### 2.2 下载适合自己平台的工具  
 这里以windows为例讲解  
 
 ![tools][3]  
 
-# 安装 
+### 2.3  安装 
 - 点击windows下的第一个wrapper script链接，并将全部内容复制，保存到新建的apktool.bat文件内  
 ![apktool.bat][4]   
 - 点击find newest here，下载最新的apktool.jar文件，如图，下载apktool_2.3.0.jar  
@@ -33,10 +37,10 @@ date: 2017-11-16 18:39:56
 - 将重命名后的apktool.jar和apktoo.bat文件一起放到电脑目录中，到此apktool配置到此完成
 ![][6]   
 
-# 使用 
+## 三 使用 
 
 此处以反编译QQ为例讲解  
-  
+
 - 打开CMD窗口    
 ![][7]  
 - 进入apktool工具存放目录  
@@ -50,14 +54,14 @@ date: 2017-11-16 18:39:56
 
 
 
-[1]: https://ibotpeaches.github.io/Apktool/install/  
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-web.png  
+[1]: https://ibotpeaches.github.io/Apktool/install/
+[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-web.png
 [3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-tools.png
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-bat.png  
+[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-bat.png
 [5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-download.png
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-colection.png  
-[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cmd-wind.png 
-[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cmd-into.png  
+[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-colection.png
+[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cmd-wind.png
+[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cmd-into.png
 [9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-use.png
 [10]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-res1.png
 [11]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-res2.png
