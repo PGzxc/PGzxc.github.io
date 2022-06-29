@@ -9,48 +9,42 @@ tags:
 abbrlink: bb65b05d
 date: 2017-12-06 12:10:00
 ---
-![][0]   
-如上图：我们分别对标题栏，状态栏和导航栏进行隐藏操作
+## 一 概述
+如下图：我们分别对标题栏，状态栏和导航栏进行隐藏操作
+![][0]
+
 <!--more-->
-#  通过代码隐藏当前Activity标题栏
 
-- 在当前Activity中调用：this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+## 二 隐藏标题栏
+### 2.1 通过代码隐藏当前Activity标题栏
+
+在当前Activity中调用：this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 ![activity][1]
+效果 
+![效果][2]
 
-- 效果   
-
-![效果][2]  
-
-# 通过代码隐藏AppCompatActivity标题栏
-- 通过getSupportActionBar().hide()隐藏
-
+### 2.2 通过代码隐藏AppCompatActivity标题栏
+通过getSupportActionBar().hide()隐藏
 ![][3]
-- 效果   
-
+效果
 ![][4]
 
-# 通过style隐藏标题栏
-- 配置style文件  
-
+### 2.3 通过style隐藏标题栏
+配置style文件  
 ![][5]
-- 效果(activity与AppCompatActivity通用)
-
+效果(activity与AppCompatActivity通用)
 ![][6]
 
-# 通过代码隐藏状态栏
-- 代码设置   
-
+## 三 通过代码隐藏状态栏
+代码设置   
 ![][7]
-- 效果  
-
+效果  
 ![][8]
-# 隐藏Navigator导航条
+## 四 隐藏Navigator导航条
 
-- 设置  
-
+设置  
 ![][9]
-- 效果  
-
+效果  
 ![][10]
 
 参考：   
