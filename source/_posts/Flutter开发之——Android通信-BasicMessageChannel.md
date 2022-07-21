@@ -218,5 +218,5 @@ class MainActivity : FlutterActivity() {
 ![][2]
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-basicmessagechannel-sample.gif
-[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-basicmessagechannel-sample-timer.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-basicmessagechannel-sample.gif
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-basicmessagechannel-sample-timer.gif

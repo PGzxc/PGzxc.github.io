@@ -128,4 +128,4 @@ C++ 内置了丰富的数学函数，可对各种数字进行运算。下表列�
 
 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-function.png
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-function.png

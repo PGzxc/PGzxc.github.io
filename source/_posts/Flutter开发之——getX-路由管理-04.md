@@ -244,5 +244,5 @@ Navigator(
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-getx-04-nestednav-main.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-getx-04-nestednav-second.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-getx-04-nestednav-main.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-getx-04-nestednav-second.png

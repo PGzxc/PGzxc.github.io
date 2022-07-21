@@ -57,4 +57,4 @@ date: 2020-03-22 22:37:37
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-build-process.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//oc-build-process.png

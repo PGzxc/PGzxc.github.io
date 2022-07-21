@@ -140,10 +140,10 @@ npm run dev
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-mpvue-init-cmd-project.png
-[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-mpvue-project-firstapp-config.png
-[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-mpvue-vue-cli-firstapp.png
-[4]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-mpvue-cd-first-npm-install.png
-[5]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-mpvue-import-firstapp.png
-[6]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-mpvue-firstapp-preview.png
-[7]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-mpvue-project-struct.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-mpvue-init-cmd-project.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-mpvue-project-firstapp-config.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-mpvue-vue-cli-firstapp.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-mpvue-cd-first-npm-install.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-mpvue-import-firstapp.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-mpvue-firstapp-preview.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-mpvue-project-struct.png

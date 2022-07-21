@@ -55,14 +55,14 @@ date: 2017-11-16 18:39:56
 
 
 [1]: https://ibotpeaches.github.io/Apktool/install/
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-web.png
-[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-tools.png
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-bat.png
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-download.png
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-colection.png
-[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cmd-wind.png
-[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cmd-into.png
-[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-use.png
-[10]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-res1.png
-[11]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-res2.png
-[12]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/apktool-res3.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/apktool-web.png
+[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/apktool-tools.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/apktool-bat.png
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/apktool-download.png
+[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/apktool-colection.png
+[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cmd-wind.png
+[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cmd-into.png
+[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/apktool-use.png
+[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/apktool-res1.png
+[11]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/apktool-res2.png
+[12]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/apktool-res3.png

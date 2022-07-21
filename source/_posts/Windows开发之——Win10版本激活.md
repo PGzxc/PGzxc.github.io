@@ -47,9 +47,9 @@ date: 2020-07-31 18:38:21
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows-active-open-cmd.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows-active-slmgr-remove.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows-active-ipk-install.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows-active-sms-zhusto.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows-active-slmgr-ato.png
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows-active-view.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-active-open-cmd.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-active-slmgr-remove.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-active-ipk-install.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-active-sms-zhusto.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-active-slmgr-ato.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-active-view.png

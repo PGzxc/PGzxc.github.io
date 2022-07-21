@@ -126,5 +126,5 @@ date: 2020-12-14 09:09:13
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-point-convert-relate.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-hitest-exercise-view.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-point-convert-relate.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-hitest-exercise-view.png

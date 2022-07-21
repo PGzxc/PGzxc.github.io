@@ -158,5 +158,5 @@ body:AnimatedList(
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-animateslist-no-animal.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-animatedlist-add-remove.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-animateslist-no-animal.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-animatedlist-add-remove.gif

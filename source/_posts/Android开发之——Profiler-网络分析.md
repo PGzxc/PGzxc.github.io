@@ -75,8 +75,8 @@ httpAsync.join()
 * [利用网络性能剖析器检查网络流量](https://developer.android.google.cn/studio/profile/network-profiler?hl=zh_cn)
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-network-all-session.png
-[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-network-clickin.png
-[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-network-view.png
-[4]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-network-period.gif
-[5]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-network-response.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-network-all-session.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-network-clickin.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-network-view.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-network-period.gif
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-network-response.png

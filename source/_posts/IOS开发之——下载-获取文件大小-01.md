@@ -62,4 +62,4 @@ NSURLRequest *request=[NSURLRequest requestWithURL:url];
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-download-01-file-size.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-download-01-file-size.png

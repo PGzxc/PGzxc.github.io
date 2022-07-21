@@ -39,8 +39,8 @@ date: 2021-10-27 15:14:49
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-kbone-vue-preview.png
-[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-kbone-react-preview.png
-[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-kbone-ui-sample.png
-[4]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-kbone-preact-preview.png
-[5]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-kbone-omi-preview.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-kbone-vue-preview.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-kbone-react-preview.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-kbone-ui-sample.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-kbone-preact-preview.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-kbone-omi-preview.png

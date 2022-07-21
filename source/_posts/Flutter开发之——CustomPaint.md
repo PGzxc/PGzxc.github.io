@@ -93,4 +93,4 @@ CustomPaint(painter: DefineCustomPainter(),child: Container(width: 100,height: 1
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-customPaint-sample.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-customPaint-sample.png

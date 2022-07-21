@@ -317,12 +317,12 @@ RaisedButton(child: Text("showTimePicker"),
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-daypicker-sample.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-calender-daypicker-sample.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-monthpicker-sample.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutte-yearpicker-sample.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-showdatepicker-sample.gif
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-showdatepicker-dart-sample.gif
-[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-cupertinoDatePicker-sample.png
-[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-showtimepicker-sample.gif
-[9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-cupertinoTimePicker-sample.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-daypicker-sample.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-calender-daypicker-sample.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-monthpicker-sample.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutte-yearpicker-sample.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-showdatepicker-sample.gif
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-showdatepicker-dart-sample.gif
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-cupertinoDatePicker-sample.png
+[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-showtimepicker-sample.gif
+[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-cupertinoTimePicker-sample.png

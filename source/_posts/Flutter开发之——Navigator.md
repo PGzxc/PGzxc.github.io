@@ -420,7 +420,7 @@ class TwoPage extends StatelessWidget {
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-navigator-toutiao-sample.gif
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-navigator-toutiao-fang.gif
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-navigator-table-sample.gif
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-navigator-define.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-navigator-toutiao-sample.gif
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-navigator-toutiao-fang.gif
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-navigator-table-sample.gif
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-navigator-define.gif

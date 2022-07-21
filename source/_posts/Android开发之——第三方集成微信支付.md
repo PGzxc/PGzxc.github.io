@@ -53,15 +53,15 @@ app接入支付功能，必须先要完成认证，本文因为是个人账号�
 
 
 [1]: https://open.weixin.qq.com/cgi-bin/verifyprofile?t=setting/verify&lang=zh_CN&token=184658bcad355ddba7ab82987f2cdcfa87be7aa9
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/weichat-recog.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/weichat-recog.png
 [3]: https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=11_1
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/weichat-sdk-download.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/weichat-sdk-download.png
 [5]: https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_12&index=2
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/weichat-para.png
+[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/weichat-para.png
 [7]: https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_5#
-[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/weichat-android-doc.png
-[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/weichat-eclise.png
-[10]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/weichat-pay-para.png
-[11]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/weichat-pay-doc.png
-[12]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/weichat-pay-result.gif
+[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/weichat-android-doc.png
+[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/weichat-eclise.png
+[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/weichat-pay-para.png
+[11]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/weichat-pay-doc.png
+[12]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/weichat-pay-result.gif
 [13]: https://github.com/PGzxc/weichatPay

@@ -47,6 +47,6 @@ date: 2020-06-27 23:29:10
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-chaoji-caitu-appicon-create.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-chaoji-caitu-icon-setting.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-chaoji-caitu-bundlename-modify.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-chaoji-caitu-appicon-create.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-chaoji-caitu-icon-setting.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-chaoji-caitu-bundlename-modify.png

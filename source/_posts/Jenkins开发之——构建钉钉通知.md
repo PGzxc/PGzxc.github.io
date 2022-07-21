@@ -112,16 +112,16 @@ Manage Jenkins—>Configure System—>钉钉—>测试
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-manage-plugin-height.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-manage-plugin-upload.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-manage-plugin-installed.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-dingding-robot-jenkins.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-dingding-key-word.png
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-congif-dingding-robot.png
-[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-project-general-dingding-check.png
-[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-project-notify-define.png
-[9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-test-configure-result.png
-[10]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-project-notify-test.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-manage-plugin-height.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-manage-plugin-upload.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-manage-plugin-installed.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-dingding-robot-jenkins.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-dingding-key-word.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-congif-dingding-robot.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-project-general-dingding-check.png
+[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-project-notify-define.png
+[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-test-configure-result.png
+[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-project-notify-test.png
 
 [21]:https://github.com/jenkinsci/dingtalk-plugin
 [22]:https://jenkinsci.github.io/dingtalk-plugin/

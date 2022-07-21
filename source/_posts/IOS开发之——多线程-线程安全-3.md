@@ -164,7 +164,7 @@ date: 2022-02-21 09:08:02
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-thread-problem-01.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-thread-problem-02.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-thread-problem-cause.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-thread-problem-resolve.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-thread-problem-01.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-thread-problem-02.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-thread-problem-cause.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-thread-problem-resolve.png

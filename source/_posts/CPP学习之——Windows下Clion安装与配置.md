@@ -43,11 +43,11 @@ date: 2019-10-17 23:34:51
 
 
 [1]:http://www.jetbrains.com/clion/download/#section=windows
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-clion-download.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-clion-install-position.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-clion-mingw-config.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-clion-encodings-utf8.png
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-clion-toolschanins-change.png
-[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-clion-create-project.png
-[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-clion-project-preview.png
-[9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-clion-build-run.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-clion-download.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-clion-install-position.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-clion-mingw-config.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-clion-encodings-utf8.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-clion-toolschanins-change.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-clion-create-project.png
+[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-clion-project-preview.png
+[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-clion-build-run.png

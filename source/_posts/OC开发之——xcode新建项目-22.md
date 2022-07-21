@@ -89,11 +89,11 @@ int main(int argc, const char * argv[]) {
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-new-project.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-macos-commandline-tool.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-language-oc.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-choice-folder.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-run-result.png
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-new-file.png
-[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-new-file-language-cocoa-class.png
-[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//oc-xcode-new-file-filename.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//oc-xcode-new-project.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//oc-xcode-macos-commandline-tool.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//oc-xcode-language-oc.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//oc-xcode-choice-folder.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//oc-xcode-run-result.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//oc-xcode-new-file.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//oc-xcode-new-file-language-cocoa-class.png
+[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//oc-xcode-new-file-filename.png

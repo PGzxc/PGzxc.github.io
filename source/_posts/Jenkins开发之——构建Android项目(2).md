@@ -77,18 +77,18 @@ Task里面填写gradle命令，显示clean，再执行assembleRelease打包命�
 
 
 [1]: http://blog.csdn.net/lsyz0021/article/details/72681988
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-new-task.png
-[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-project-name.png
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-project-configure.png
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-general-configure.png
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-git-configure.png
-[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-add-credentials.png
-[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-git-repositories.png
-[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-build-SCM.png
-[10]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-example-SCM.png
-[11]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-build-script.png
-[12]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-invoke-gradle-script.png
-[13]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-build-process.png
-[14]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-build-process.png
-[15]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-console-output.png 
-[16]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-jenkins/jenkins-release-result.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-new-task.png
+[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-project-name.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-project-configure.png
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-general-configure.png
+[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-git-configure.png
+[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-add-credentials.png
+[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-git-repositories.png
+[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-build-SCM.png
+[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-example-SCM.png
+[11]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-build-script.png
+[12]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-invoke-gradle-script.png
+[13]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-build-process.png
+[14]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-build-process.png
+[15]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-console-output.png 
+[16]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-release-result.png

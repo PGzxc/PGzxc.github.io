@@ -52,11 +52,11 @@ date: 2018-05-23 10:43:13
 
 
 [1]: https://open.unionpay.com/ajweb/product/newProDetail?proId=3&cataId=30
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/yinlian-doc.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/yinlian-doc.png
 [3]: https://open.unionpay.com/ajweb/help/file/toDetailPage?id=633
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/yinlian-sdk.png
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/yinlian-sdk-jieya.png
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/yinlian-app.png
-[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/yinlian-app-eclipses.png
-[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/yinlian-app-run.png
-[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/yinlian-pay.gif
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/yinlian-sdk.png
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/yinlian-sdk-jieya.png
+[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/yinlian-app.png
+[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/yinlian-app-eclipses.png
+[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/yinlian-app-run.png
+[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/yinlian-pay.gif

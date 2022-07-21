@@ -11,5 +11,5 @@ comments: false
 | :--------: | :--------: |
 |   ![][1]   |   ![][2]   |
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-learn-route/Csharp-Learning-route-1.jpg
-[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-learn-route/Csharp-Learning-route-2.jpg
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-learn-route/Csharp-Learning-route-1.jpg
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-learn-route/Csharp-Learning-route-2.jpg

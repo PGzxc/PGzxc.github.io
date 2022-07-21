@@ -115,4 +115,4 @@ date: 2020-05-24 23:36:00
 @end
 ```
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-uitableview-cell-right.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-uitableview-cell-right.gif

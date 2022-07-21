@@ -62,15 +62,15 @@ date: 2021-10-24 09:02:45
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-storyboard-right-new-file.png
-[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-storyboard-user-interface-new.png
-[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-storyboard-named-storyboard.png
-[4]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-storyboard-main-new-relation.png
-[5]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-storyboard-new-view.png
-[6]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-storyboard-new-init-view-controller.png
-[7]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-storyboard-new-localization-before.png
-[8]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-storyboard-new-localization-after.png
-[9]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-storyboard-new-background.png
-[10]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-storyboard-main-interface-replace.png
-[11]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-storyboard-info-plist-modify.png
-[12]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-storyboard-new-monitor-view.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-right-new-file.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-user-interface-new.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-named-storyboard.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-main-new-relation.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-new-view.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-new-init-view-controller.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-new-localization-before.png
+[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-new-localization-after.png
+[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-new-background.png
+[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-main-interface-replace.png
+[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-info-plist-modify.png
+[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-new-monitor-view.png

@@ -103,4 +103,4 @@ date: 2020-12-31 08:45:57
 
 ![][1]
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-draw-down-progress.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-draw-down-progress.gif

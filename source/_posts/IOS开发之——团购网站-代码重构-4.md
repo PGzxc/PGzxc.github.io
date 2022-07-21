@@ -93,4 +93,4 @@ date: 2020-06-11 23:25:05
 ```
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-tgcell-biaoshifu-cell.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-tgcell-biaoshifu-cell.png

@@ -99,4 +99,4 @@ self.myview.layer.position=CGPointMake(10,10);
 ![][1]
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-calayer-implicit-animal.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-calayer-implicit-animal.gif

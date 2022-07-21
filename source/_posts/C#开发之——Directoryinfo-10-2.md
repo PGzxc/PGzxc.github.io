@@ -136,5 +136,5 @@ class Program
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-file-directoryinfo-create.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-file-directoryinfo-list.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-file-directoryinfo-create.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-file-directoryinfo-list.png

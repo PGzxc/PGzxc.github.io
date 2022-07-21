@@ -65,9 +65,9 @@ date: 2022-02-07 09:49:11
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-navigation-barbuttonitem-setting.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-navigation-button-setting.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-navigation-color-theme-before.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-navigation-color-theme-after.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-navigation-background-before.gif
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caipiao-navigation-background-after.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-caipiao-navigation-barbuttonitem-setting.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-caipiao-navigation-button-setting.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-caipiao-navigation-color-theme-before.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-caipiao-navigation-color-theme-after.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-caipiao-navigation-background-before.gif
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-caipiao-navigation-background-after.gif

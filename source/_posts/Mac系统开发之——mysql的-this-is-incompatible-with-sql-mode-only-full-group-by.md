@@ -50,8 +50,8 @@ ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and c
 * [5分钟学会MySQL-this is incompatible with sql_mode=only_full_group_by错误解决方案][11]
 * [this is incompatible with sql_mode=only_full_group_by][12]
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//mac-mysql-errot-terminal-login.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//mac-mysql-error-sql-model.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//mac-mysql-errot-terminal-login.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//mac-mysql-error-sql-model.png
 
 
 

@@ -124,23 +124,23 @@ date: 2021-09-17 17:34:37
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-debug-install-failure-eventlog.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-run-congigure-project.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-run-generate-key-csr-new.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-generate-key-csr-kyes.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-generate-p12-csr.png
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-run-folder-generate-p12-csr.png
-[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-run-login.png
-[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-appgallery-connect-login.png
-[9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-run-myproject-project-name.png
-[10]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-run-project-add-application.png
-[11]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-run-app-config.png
-[12]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-run-appgallery-user-vister.png
-[13]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-run-user-device-manager.png
-[14]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-run-add-cert.png
-[15]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-run-cert-download.png
-[16]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-run-hap-provision.png
-[17]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-run-hap-profile-config.png
-[18]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-run-profile-p7b-download.png
-[19]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-run-devtool-signing-configs.png
-[20]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-run-device-preview.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-debug-install-failure-eventlog.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-run-congigure-project.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-run-generate-key-csr-new.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-generate-key-csr-kyes.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-generate-p12-csr.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-run-folder-generate-p12-csr.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-run-login.png
+[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-appgallery-connect-login.png
+[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-run-myproject-project-name.png
+[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-run-project-add-application.png
+[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-run-app-config.png
+[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-run-appgallery-user-vister.png
+[13]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-run-user-device-manager.png
+[14]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-run-add-cert.png
+[15]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-run-cert-download.png
+[16]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-run-hap-provision.png
+[17]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-run-hap-profile-config.png
+[18]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-run-profile-p7b-download.png
+[19]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-run-devtool-signing-configs.png
+[20]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-run-device-preview.png

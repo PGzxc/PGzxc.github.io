@@ -73,10 +73,10 @@ date: 2022-03-31 08:54:15
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-01-behavior-editor.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-01-behavior-preference.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-01-behavior-setting.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-01-devices-list.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-01-devices-delete.png
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-01-devices-add.png
-[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-01-name-identifier.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-01-behavior-editor.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-01-behavior-preference.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-01-behavior-setting.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-01-devices-list.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-01-devices-delete.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-01-devices-add.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-01-name-identifier.png

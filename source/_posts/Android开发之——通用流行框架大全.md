@@ -104,7 +104,7 @@ Android自带很多测试工具：JUnit，Monkeyrunner，UiAutomator，Espresso�
 
 
 [0]: https://www.oschina.net/news/73836/15-android-general-popular-frameworks
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android_utils.png
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android_utils.png
 [2]: https://github.com/JakeWharton/DiskLruCache
 [3]: https://github.com/nostra13/Android-Universal-Image-Loader
 [4]: https://github.com/square/picasso

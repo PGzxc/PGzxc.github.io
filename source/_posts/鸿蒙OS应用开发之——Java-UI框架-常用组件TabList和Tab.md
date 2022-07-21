@@ -97,4 +97,4 @@ tabList.addTabSelectedListener(new TabList.TabSelectedListener() {
   });
 ```
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-tablelist-switch.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-tablelist-switch.gif

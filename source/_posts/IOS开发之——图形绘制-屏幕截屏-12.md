@@ -47,4 +47,4 @@ date: 2021-01-21 09:38:57
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-screen-cut-view.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-screen-cut-view.png

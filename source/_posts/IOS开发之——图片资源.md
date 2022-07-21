@@ -51,8 +51,8 @@ module_identifier_type_state
 ![][4]
 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-icon-namespace-example.png
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-icon-example.png
-[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-icon-move-object-c.png
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-icon-move-swift.png
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-icon-namespace-example.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-icon-example.png
+[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-icon-move-object-c.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-icon-move-swift.png
 

@@ -104,4 +104,4 @@ class Program
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-thread-monitor-console.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-thread-monitor-console.png

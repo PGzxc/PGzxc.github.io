@@ -272,5 +272,5 @@ date: 2022-03-23 20:52:45
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-webview-03-storyboard-view.png
-[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-webview-03-oc-invoke-js.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-webview-03-storyboard-view.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-webview-03-oc-invoke-js.gif

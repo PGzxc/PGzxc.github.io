@@ -112,8 +112,8 @@ ls abc/def
 
 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/window_category.png
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/windows_tree.png
-[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/unix_catalog.png
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/unix_tree.png
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/unix_authority.png
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/window_category.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows_tree.png
+[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/unix_catalog.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/unix_tree.png
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/unix_authority.png

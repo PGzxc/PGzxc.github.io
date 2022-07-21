@@ -168,9 +168,9 @@ storageInfo(){
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-wechat/wechat-storange-log-preview.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-wechat/wechat-storage-operate-preview.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-wechat/wechat-storage-add-preview.gif
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-wechat/wechat-storage-remove-preview.gif
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-wechat/wechat-storage-getStroageinfo.png
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-wechat/wechat-storage-clearInfo-preview.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-storange-log-preview.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-storage-operate-preview.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-storage-add-preview.gif
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-storage-remove-preview.gif
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-storage-getStroageinfo.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-storage-clearInfo-preview.gif

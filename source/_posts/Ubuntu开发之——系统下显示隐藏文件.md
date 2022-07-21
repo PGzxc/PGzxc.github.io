@@ -24,5 +24,5 @@ Linux系统下，显示隐藏文件，可以通过命令行方式和快捷键方
 
 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/Linux-hidden.png
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/Linux-show.png   
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/Linux-hidden.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/Linux-show.png   

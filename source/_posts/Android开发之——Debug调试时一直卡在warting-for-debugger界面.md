@@ -53,7 +53,7 @@ debug {debuggable true }
  android:debuggable="true"
 ```
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-android/android-debug-waiting.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-android/android-debug-run-attach-debugger.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-android/android-debug-choose-process.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-android/android-debug-process-warning.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-debug-waiting.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-debug-run-attach-debugger.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-debug-choose-process.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-debug-process-warning.png

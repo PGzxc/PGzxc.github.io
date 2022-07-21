@@ -66,11 +66,11 @@ date: 2019-10-21 21:29:38
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-eclipse-create-new-project-cpp.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-eclipse-cpp-managed-build-select.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-eclipse-cpp-project-params.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-eclipse-new-folder-src.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-eclipse-new-source-cpp-file.png
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-eclipse-cpp-source-create.png
-[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-eclipse-source-file-content-console.png
-[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-eclipse-simple-app-build-run.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-eclipse-create-new-project-cpp.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-eclipse-cpp-managed-build-select.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-eclipse-cpp-project-params.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-eclipse-new-folder-src.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-eclipse-new-source-cpp-file.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-eclipse-cpp-source-create.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-eclipse-source-file-content-console.png
+[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-eclipse-simple-app-build-run.gif

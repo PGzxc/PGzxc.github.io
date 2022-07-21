@@ -239,4 +239,4 @@ GridView.extent(
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-gridView-construct-sample.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-gridView-construct-sample.gif

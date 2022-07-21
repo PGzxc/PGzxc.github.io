@@ -129,4 +129,4 @@ retain和release方法操作的是引用计数，当引用计数为零时，便�
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-instance-arc-mrc-compare.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-instance-arc-mrc-compare.png

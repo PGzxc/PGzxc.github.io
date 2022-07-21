@@ -165,6 +165,6 @@ date: 2020-07-09 22:48:46
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-data-write-read-view.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-data-document-write.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-data-document-read.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-data-write-read-view.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-data-document-write.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-data-document-read.png

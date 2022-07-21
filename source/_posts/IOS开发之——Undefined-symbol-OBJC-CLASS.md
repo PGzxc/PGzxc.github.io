@@ -87,9 +87,9 @@ MBProgressHUD.bundle
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-mbprogress-project-struct.png
-[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-mbprogress-project-struct-replace.png
-[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-mbprogress-compile-sources-add-m.png
-[4]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-mbprogress-bundle-resources-add.png
-[5]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-mbprogress-modify-use-show-error.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-mbprogress-project-struct.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-mbprogress-project-struct-replace.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-mbprogress-compile-sources-add-m.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-mbprogress-bundle-resources-add.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-mbprogress-modify-use-show-error.png
 

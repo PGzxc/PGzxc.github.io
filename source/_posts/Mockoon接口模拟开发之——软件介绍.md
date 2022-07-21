@@ -47,6 +47,6 @@ HTTPS：默认http，勾选后使用Https
 ![][2]
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-api/mockoon-cheat-sheet-main.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-api/mockoon-environment-setting-view.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-api/mockoon-cheat-sheet-main.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-api/mockoon-environment-setting-view.png
 

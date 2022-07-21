@@ -65,5 +65,5 @@ date: 2020-12-31 15:15:14
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-component-struct.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-layoutconfig-view.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-component-struct.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-layoutconfig-view.png

@@ -111,4 +111,4 @@ class MainActivity : FlutterActivity() {
 ![][1]
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-event-channel-android-sample.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-event-channel-android-sample.gif

@@ -156,4 +156,4 @@ date: 2022-03-15 08:33:09
 ![][1]
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-download-06-continue.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-download-06-continue.gif

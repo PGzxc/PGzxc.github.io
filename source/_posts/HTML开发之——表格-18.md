@@ -149,4 +149,4 @@ date: 2020-08-26 22:23:02
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/table_td_empty.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/table_td_empty.gif

@@ -298,10 +298,10 @@ color_gray_element.xml：
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-layout-create-resource-file.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-layout-create-file-name-type.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-layout-qiehuan-sample.gif
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-directionallayout-vertical-sample.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-directionallayout-horizontal-sample.png
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-directionallayout-aliment-sample.png
-[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-directionallayout-weight-sample.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-layout-create-resource-file.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-layout-create-file-name-type.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-layout-qiehuan-sample.gif
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-directionallayout-vertical-sample.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-directionallayout-horizontal-sample.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-directionallayout-aliment-sample.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-directionallayout-weight-sample.png

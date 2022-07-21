@@ -42,6 +42,6 @@ deviceType同时设置了phone和table时，新建Ability时，只有`Empty Data
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/homs-new-ability-lack-view.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/homs-ability-template-choice.gif
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-create-abillity-second-sample.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/homs-new-ability-lack-view.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/homs-ability-template-choice.gif
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-create-abillity-second-sample.gif

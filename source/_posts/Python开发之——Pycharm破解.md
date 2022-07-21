@@ -62,11 +62,11 @@ pycharm的激活方式，分为注册码激活和破解补丁激活
 ![][5]
 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/pycharm_hosts-position.png
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/pycharm_hosts_modify.png
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/pycharm_hosts-position.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/pycharm_hosts_modify.png
 [3]: http://idea.lanyus.com/
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/pycharm_lanyus_active.png
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/pycharm_activity_input.png
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/pycharm_licensed_to_lanyu.png
-[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/pycharm-crack-bin.png
-[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/pycharm-crack-vmoptions.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/pycharm_lanyus_active.png
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/pycharm_activity_input.png
+[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/pycharm_licensed_to_lanyu.png
+[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/pycharm-crack-bin.png
+[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/pycharm-crack-vmoptions.png

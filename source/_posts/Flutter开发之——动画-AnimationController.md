@@ -136,4 +136,4 @@ double _size = 100;
 ![][1]
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-animationController-sample.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-animationController-sample.gif

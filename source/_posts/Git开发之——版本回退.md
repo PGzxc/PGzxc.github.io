@@ -71,13 +71,13 @@ date: 2018-02-26 09:21:32
 
 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-back-modify.png  
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-back-commit.png
-[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-back-log.png
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-log-pretty.png
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-gitk-view.png
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-back-head1.png  
-[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-back-cat-readme.png
-[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-back-second-log.png
-[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-back-to-current.png
-[10]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/git-back-reflog.png
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-back-modify.png  
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-back-commit.png
+[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-back-log.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-log-pretty.png
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-gitk-view.png
+[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-back-head1.png  
+[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-back-cat-readme.png
+[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-back-second-log.png
+[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-back-to-current.png
+[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-back-reflog.png

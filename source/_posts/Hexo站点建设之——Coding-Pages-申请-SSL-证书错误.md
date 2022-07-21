@@ -33,7 +33,7 @@ acme:error:unauthorized: During secondary validation: Invalid response from http
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/coding-bang-error.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/coding-github-pause.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/coding-yuming-bang-success.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/coding-bang-error.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/coding-github-pause.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/coding-yuming-bang-success.png
 

@@ -75,4 +75,4 @@ function draw() {
 * [P5.js官方文档—createCapture](https://p5js.org/zh-Hans/reference/#/p5/createCapture)
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-createCapture-sample1.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-p5js/p5js-createCapture-sample1.png

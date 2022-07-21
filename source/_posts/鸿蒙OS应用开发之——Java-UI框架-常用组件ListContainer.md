@@ -310,10 +310,10 @@ listContainer.setShaderColor(new Color(Color.getIntColor("#90EE90")));
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-listcontainer-priview.gif
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-listcontainer-click.gif
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-listcontainer-longclick.gif
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-listcontainer-horizontal.gif
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-listcontainer-offset.gif
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-listcontainer-rebound-effect.gif
-[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-listcontainer-shader-color.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-listcontainer-priview.gif
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-listcontainer-click.gif
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-listcontainer-longclick.gif
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-listcontainer-horizontal.gif
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-listcontainer-offset.gif
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-listcontainer-rebound-effect.gif
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-listcontainer-shader-color.gif

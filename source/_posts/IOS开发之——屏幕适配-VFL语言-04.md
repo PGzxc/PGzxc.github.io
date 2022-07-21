@@ -147,6 +147,6 @@ H:|-10-[Find]-[FindNext]-[FindField(>=20)]-|
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-04-vfl-ui.png
-[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-04-vfl-vertical.png
-[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-screen-adapter-04-vfl-horizon.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-screen-adapter-04-vfl-ui.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-screen-adapter-04-vfl-vertical.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-screen-adapter-04-vfl-horizon.png

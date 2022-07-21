@@ -92,6 +92,6 @@ public class Main {
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/opencv-base64-image.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/opencv-base64-image-string.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/opencv-base64-2-image.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/opencv-base64-image.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/opencv-base64-image-string.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/opencv-base64-2-image.png

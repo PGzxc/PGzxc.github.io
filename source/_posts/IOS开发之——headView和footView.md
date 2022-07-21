@@ -40,4 +40,4 @@ date: 2020-05-25 22:40:58
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-head-foot-view.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-head-foot-view.gif

@@ -70,15 +70,15 @@ Axure是收费软件，截止本文稿发布时间，Axure版本为Axure RP 9 Be
 [1]: https://pan.baidu.com/s/1m-dUSfri5OZXa0lnUunNRg
 [2]: https://pan.baidu.com/s/1w3uCoFBRvJTHw9ZDfFrPJQ
 [3]: https://pan.baidu.com/s/1jOtlt_S1iGbWtIgYD8Y_oQ
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/axure-install-dir.png
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/axure-install-finish.png
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/axure-language-unzip.png
-[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/axure-lang-move.png
-[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/axure-lang-already.png
-[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/axure-not-grant.png
-[10]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/axure-manager-grant.png
-[11]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/axure-manager-grant-commit.png
-[12]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/axure-grant-has.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/axure-install-dir.png
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/axure-install-finish.png
+[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/axure-language-unzip.png
+[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/axure-lang-move.png
+[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/axure-lang-already.png
+[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/axure-not-grant.png
+[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/axure-manager-grant.png
+[11]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/axure-manager-grant-commit.png
+[12]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/axure-grant-has.png
 
 
 

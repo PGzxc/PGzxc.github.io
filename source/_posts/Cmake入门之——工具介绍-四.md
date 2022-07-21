@@ -106,14 +106,14 @@ date: 2020-01-12 21:12:27
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-cmd-bin-list.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-cmd-help.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-cmd--s-d-sample.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-cmd-build-b.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-tools-build-project.png
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-tools-run-params.png
-[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cpack-tools-help.png
-[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//ctest-tools-help.png
-[9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-tools-gui-open.png
-[10]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-tools-generator-choice.png
-[11]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image//cmake-tools-gui-source-generate.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//cmake-cmd-bin-list.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//cmake-cmd-help.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//cmake-cmd--s-d-sample.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//cmake-cmd-build-b.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//cmake-tools-build-project.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//cmake-tools-run-params.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//cpack-tools-help.png
+[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//ctest-tools-help.png
+[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//cmake-tools-gui-open.png
+[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//cmake-tools-generator-choice.png
+[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//cmake-tools-gui-source-generate.png

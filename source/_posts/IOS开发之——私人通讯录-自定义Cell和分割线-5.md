@@ -94,4 +94,4 @@ date: 2020-07-05 23:34:50
 ```
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sirentongxunlu-cell.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-sirentongxunlu-cell.gif

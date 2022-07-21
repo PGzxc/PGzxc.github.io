@@ -200,5 +200,5 @@ date: 2022-03-04 23:00:17
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-cell-image-operation-process.png
-[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-cell-image-operation-view.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-http-cell-image-operation-process.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-http-cell-image-operation-view.gif

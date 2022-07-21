@@ -35,4 +35,4 @@ date: 2020-09-25 21:34:17
 注意，在使用相对定位时，无论是否进行移动，元素仍然占据原来的空间。因此，移动元素会导致它覆盖其他框
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/css-ct_css_positioning_relative_example.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/css-ct_css_positioning_relative_example.png

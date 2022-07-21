@@ -34,10 +34,10 @@ Mac系统已安装了typora，双击markdown文档，打开的却是Xcode。如�
 
 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-default-setting-open-xcode.png
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-default-setting-show-brief.png
-[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-default-setting-open-way.png
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-default-setting-open-typora.png
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-default-setting-open-other.png
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-default-setting-all-config.png
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-default-setting-open-xcode.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-default-setting-show-brief.png
+[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-default-setting-open-way.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-default-setting-open-typora.png
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-default-setting-open-other.png
+[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-default-setting-all-config.png
 

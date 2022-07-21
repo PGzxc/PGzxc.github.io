@@ -40,8 +40,8 @@ http://192.168.1.4
 ![][5]
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-nas/nas-ex2-net-connect.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-nas/nas-ex2-guanfang-director.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-nas/nas-ex2-guanfang-director-error.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-nas/nas-ex2-zhongji-device-list-nas.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-nas/nas-ex2-zhongji-web-info.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-ex2-net-connect.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-ex2-guanfang-director.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-ex2-guanfang-director-error.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-ex2-zhongji-device-list-nas.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-ex2-zhongji-web-info.png

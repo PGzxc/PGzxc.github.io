@@ -142,24 +142,24 @@ source /etc/profile
 
 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-terminal.png
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-jdk-01.png
-[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-jdk-02.png
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-jdk-03.png
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-java-version.png
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ubuntu-terminal.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ubuntu-jdk-01.png
+[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ubuntu-jdk-02.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ubuntu-jdk-03.png
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ubuntu-java-version.png
 [6]: https://developer.android.google.cn/studio/
-[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-tool-download.png
-[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-as-unzip.png
-[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-as-position.png
-[10]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-as-start.png
-[11]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-as-proxy.png
-[12]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-as-import.png
-[13]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-config-01.png
-[14]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-config-02.png
-[15]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-config-03.png
-[16]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-config-04.png
-[17]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-config-05.png
-[18]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-as-newpro.png
-[19]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-as-pro-conf.png
-[20]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-as-gradle-config.png
-[21]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/ubuntu-as-add.png
+[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ubuntu-tool-download.png
+[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ubuntu-as-unzip.png
+[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ubuntu-as-position.png
+[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ubuntu-as-start.png
+[11]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ubuntu-as-proxy.png
+[12]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ubuntu-as-import.png
+[13]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ubuntu-config-01.png
+[14]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ubuntu-config-02.png
+[15]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ubuntu-config-03.png
+[16]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ubuntu-config-04.png
+[17]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ubuntu-config-05.png
+[18]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ubuntu-as-newpro.png
+[19]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ubuntu-as-pro-conf.png
+[20]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ubuntu-as-gradle-config.png
+[21]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ubuntu-as-add.png

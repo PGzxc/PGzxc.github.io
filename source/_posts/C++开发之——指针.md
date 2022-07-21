@@ -80,4 +80,4 @@ date: 2018-02-24 13:03:50
 在 C++ 中，有很多指针相关的概念，这些概念都很简单，但是都很重要。下面列出了 C++ 程序员必须清楚的一些与指针相关的重要概念：  
 ![][1]
  
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-point.png
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-point.png

@@ -96,22 +96,22 @@ MobaXterm又名MobaXVT，是一款增强型远程连接工具，类似xshell。�
 
 
 [1]: https://mobaxterm.mobatek.net/download-home-edition.html
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mobaxterm-install-wizard.png
-[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mobaxterm-intall-wizard-position.png
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mobaxterm-install-shortcut.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mobaxterm-install-wizard.png
+[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mobaxterm-intall-wizard-position.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mobaxterm-install-shortcut.png
 [5]:https://www.52pojie.cn/thread-1025639-1-1.html
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mobaxterm-keygen-click.png
-[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mobaXterm-crack-get-from-file.png
-[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mobaxterm-crack-generate.png
-[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mobaxterm-crack-finish.png
-[10]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mobaxterm-remote-centos7.png
-[11]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mobaxterm-remote-ubuntu.png
-[12]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mobaxterm-add-sessions.png
-[13]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mobaxterm-ssh-session.png
-[14]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mobaxterm-ssh-connect.png
-[15]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mobaxterm-ssh-login-root.png
-[16]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mobaxterm-connect-sftp-file.png
-[17]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mobaxterm-remote-file-function.png
+[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mobaxterm-keygen-click.png
+[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mobaXterm-crack-get-from-file.png
+[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mobaxterm-crack-generate.png
+[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mobaxterm-crack-finish.png
+[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mobaxterm-remote-centos7.png
+[11]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mobaxterm-remote-ubuntu.png
+[12]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mobaxterm-add-sessions.png
+[13]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mobaxterm-ssh-session.png
+[14]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mobaxterm-ssh-connect.png
+[15]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mobaxterm-ssh-login-root.png
+[16]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mobaxterm-connect-sftp-file.png
+[17]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mobaxterm-remote-file-function.png
 
 
 

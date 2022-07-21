@@ -190,8 +190,8 @@ class Login extends StatelessWidget {
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-getx-06-login-agree-error.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-getx-06-login-username-error.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-getx-06-login-pwd-error.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-getx-06-login-success-info.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-getx-06-login-project-struct.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-getx-06-login-agree-error.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-getx-06-login-username-error.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-getx-06-login-pwd-error.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-getx-06-login-success-info.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-getx-06-login-project-struct.png

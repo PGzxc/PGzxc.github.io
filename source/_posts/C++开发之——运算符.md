@@ -333,11 +333,11 @@ A^B = 0011 0001
 
 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-perator.png
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-relate-operate.png
-[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-logat-operate.png
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-byte-operate.png
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-byte-2.png
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-equals-operate.png
-[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-more-operate.png
-[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-prority-operate.png
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-perator.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-relate-operate.png
+[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-logat-operate.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-byte-operate.png
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-byte-2.png
+[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-equals-operate.png
+[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-more-operate.png
+[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-prority-operate.png

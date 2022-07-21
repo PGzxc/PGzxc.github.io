@@ -114,5 +114,5 @@ function setup() {
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-createselect-sample1.gif
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-createselect-sample2.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-p5js/p5js-createselect-sample1.gif
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-p5js/p5js-createselect-sample2.gif

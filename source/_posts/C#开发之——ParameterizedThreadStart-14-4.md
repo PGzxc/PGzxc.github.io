@@ -108,5 +108,5 @@ public class ParameterTest
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-parameterized-threadstart-even.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-parameterized-threadstart-more-param.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-parameterized-threadstart-even.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-parameterized-threadstart-more-param.png

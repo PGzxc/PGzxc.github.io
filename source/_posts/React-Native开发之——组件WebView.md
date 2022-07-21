@@ -86,5 +86,5 @@ date: 2018-03-21 10:41:06
 # 其他
 参考：[Github下载][2] 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-webview.png
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-webview.png
 [2]: https://github.com/PGzxc/RN_WebView/

@@ -90,9 +90,9 @@ StartupNotify=false
   ```
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-linux/linux-desktop-studio-desktop-edit.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-linux/linux-desktop-android-desktop-view.gif
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-linux/linux-desktop-android-add-collect.gif
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-linux/linux-desktop-as-position.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-linux/linux-desktop-as-to-desktop.gif
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-linux/linux-desktop-as-shorcut.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-linux/linux-desktop-studio-desktop-edit.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-linux/linux-desktop-android-desktop-view.gif
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-linux/linux-desktop-android-add-collect.gif
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-linux/linux-desktop-as-position.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-linux/linux-desktop-as-to-desktop.gif
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-linux/linux-desktop-as-shorcut.gif

@@ -67,27 +67,27 @@ date: 2021-08-05 23:57:42
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-life/ipad-guan-price.png
-[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-life/ipad-xianyu-price-info.png
-[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-life/ipad-xianyu-price-charge.png
-[4]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-life/ipad-xianyu-address-charge.png
-[5]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-life/ipad-xianyu-exchange-ipad.png
-[6]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-life/ipad-xianyu-care-date.png
-[7]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-life/ipad-jihuo-hello.png
-[8]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-life/ipad-jihuo-language-set.png
-[9]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-life/ipad-jihuo-country.png
-[10]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-life/ipad-jihuo-keyboard-listen.png
-[11]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-life/ipad-jihuo-wifi.png
-[12]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-life/ipad-jihuo-wait-jihuo.png
-[13]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-life/ipad-setting-data-secute.png
-[14]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-life/ipad-setting-face-id.png
-[15]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-life/ipad-setting-password.png
-[16]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-life/ipad-move-apk-download.png
-[17]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-life/ipad-move-from-android.png
-[18]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-life/ipad-move-ios-num.png
-[19]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-life/ipad-move-android-number.png
-[20]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-life/ipad-move-android-content.png
-[21]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-life/ipad-move-phone-progress.png
-[22]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-life/ipad-move-finish-use.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-life/ipad-guan-price.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-life/ipad-xianyu-price-info.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-life/ipad-xianyu-price-charge.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-life/ipad-xianyu-address-charge.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-life/ipad-xianyu-exchange-ipad.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-life/ipad-xianyu-care-date.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-life/ipad-jihuo-hello.png
+[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-life/ipad-jihuo-language-set.png
+[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-life/ipad-jihuo-country.png
+[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-life/ipad-jihuo-keyboard-listen.png
+[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-life/ipad-jihuo-wifi.png
+[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-life/ipad-jihuo-wait-jihuo.png
+[13]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-life/ipad-setting-data-secute.png
+[14]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-life/ipad-setting-face-id.png
+[15]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-life/ipad-setting-password.png
+[16]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-life/ipad-move-apk-download.png
+[17]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-life/ipad-move-from-android.png
+[18]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-life/ipad-move-ios-num.png
+[19]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-life/ipad-move-android-number.png
+[20]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-life/ipad-move-android-content.png
+[21]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-life/ipad-move-phone-progress.png
+[22]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-life/ipad-move-finish-use.png
 
 

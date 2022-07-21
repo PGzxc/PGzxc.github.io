@@ -56,13 +56,13 @@ date: 2017-12-17 20:40:31
 
 
 [1]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/jdk-version.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/jdk-version.png
 [3]: https://kotlinlang.org/
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/kotlin-compiler.png
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/kotlin-home.png
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/kotlin-home-bin.png
-[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/kotliln-version.png
-[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/kotlin-compiler-pro.png
-[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/kotlin-compiler-jar.png
-[10]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/kotlin-compiler-jar-run.png
-[11]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/kotlin-build-process.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/kotlin-compiler.png
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/kotlin-home.png
+[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/kotlin-home-bin.png
+[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/kotliln-version.png
+[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/kotlin-compiler-pro.png
+[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/kotlin-compiler-jar.png
+[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/kotlin-compiler-jar-run.png
+[11]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/kotlin-build-process.png

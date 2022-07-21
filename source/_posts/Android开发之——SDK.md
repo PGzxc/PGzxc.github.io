@@ -103,4 +103,4 @@ date: 2018-05-23 09:17:40
 # 思维导图
 ![][1]  
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-sdk-outline.png
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-sdk-outline.png

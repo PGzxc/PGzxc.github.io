@@ -127,21 +127,21 @@ hexo d
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/coding-ras-setting.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/coding-auth-disable.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/coding-auth-set-phone-after.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/coding-auth-success.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/coding-ssh-list.png
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/coding-ssh-setting.png
-[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/coding-create-project-devops.png
-[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/coding-devops-info.png
-[9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/coding-ssh-gitcopy.png
-[10]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/coding-deploy-coding.png
-[11]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/coding-code-property-view.png
-[12]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/coding-static-webview-list.png
-[13]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/coding-static-webview-deply-quick.png
-[14]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/coding-aliyun-jiexi.png
-[15]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/coding-yuming-bang-success.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/coding-ras-setting.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/coding-auth-disable.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/coding-auth-set-phone-after.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/coding-auth-success.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/coding-ssh-list.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/coding-ssh-setting.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/coding-create-project-devops.png
+[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/coding-devops-info.png
+[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/coding-ssh-gitcopy.png
+[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/coding-deploy-coding.png
+[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/coding-code-property-view.png
+[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/coding-static-webview-list.png
+[13]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/coding-static-webview-deply-quick.png
+[14]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/coding-aliyun-jiexi.png
+[15]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/coding-yuming-bang-success.png
 
 
 [21]:https://coding.net/

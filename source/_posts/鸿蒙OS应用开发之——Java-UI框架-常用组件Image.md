@@ -148,8 +148,8 @@ Image组件需要结合布局文件使用
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-component-plant.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-image-alpha.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-image-scale.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-image-scale-mode.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-image-clip.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-component-plant.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-image-alpha.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-image-scale.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-image-scale-mode.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-image-clip.png

@@ -96,5 +96,5 @@ if (![MFMailComposeViewController canSendMail]) return;
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-caipiao-mail-share-way-1.png
-[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-caipiao-mail-share-way-2.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-caipiao-mail-share-way-1.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-caipiao-mail-share-way-2.png

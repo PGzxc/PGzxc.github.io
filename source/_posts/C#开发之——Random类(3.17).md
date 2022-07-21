@@ -63,4 +63,4 @@ class Program
 ![][1]
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-random-sample.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-random-sample.png

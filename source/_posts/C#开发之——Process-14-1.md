@@ -185,6 +185,6 @@ public partial class ListBoxForm : Form
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-process-all-process.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-process-start-process-mspaint.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-process-kill-notepad.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-process-all-process.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-process-start-process-mspaint.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-process-kill-notepad.png

@@ -68,5 +68,5 @@ date: 2020-06-29 23:34:22
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-tongxunlu-login.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-tongxunlu-login.gif
 

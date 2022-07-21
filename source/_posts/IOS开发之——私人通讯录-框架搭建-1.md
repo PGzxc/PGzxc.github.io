@@ -97,4 +97,4 @@ date: 2020-06-28 23:05:22
 
   
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-tongxunlu-kuangjia.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-tongxunlu-kuangjia.gif

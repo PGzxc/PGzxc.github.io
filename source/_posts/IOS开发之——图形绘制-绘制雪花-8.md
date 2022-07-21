@@ -76,5 +76,5 @@ date: 2021-01-07 09:02:27
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-draw-snowflake-timer.gif
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-draw-snowflake-refresh.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-draw-snowflake-timer.gif
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-draw-snowflake-refresh.gif

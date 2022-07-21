@@ -176,4 +176,4 @@ typedef NS_ENUM(NSInteger, UITouchPhase) {
 ![][1]
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-touch-view.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-touch-view.gif

@@ -42,8 +42,8 @@ date: 2020-08-20 22:05:02
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/html-eclipse-new-static-web-project.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/html-eclipse-project-webpage.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/html-eclipse-new-html-file.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/html-eclipse-webcontent-filename.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/html-eclipse-webpage-open.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/html-eclipse-new-static-web-project.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/html-eclipse-project-webpage.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/html-eclipse-new-html-file.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/html-eclipse-webcontent-filename.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/html-eclipse-webpage-open.png

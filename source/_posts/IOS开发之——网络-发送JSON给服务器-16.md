@@ -92,4 +92,4 @@ request.HTTPBody=json;
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-send-json-service.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-http-send-json-service.gif

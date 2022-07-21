@@ -88,4 +88,4 @@ date: 2021-06-02 09:34:32
 ![][1]
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-anim-transition.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-anim-transition.gif

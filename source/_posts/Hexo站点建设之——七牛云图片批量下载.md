@@ -97,11 +97,11 @@ date: 2019-06-05 14:06:53
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-qiniu-ssl-certificate.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-qiniu-images-no-all-download.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-qiniu-ssl-certificate.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-qiniu-images-no-all-download.png
 [3]: https://pan.baidu.com/s/1W8lycyhT9ulYp9qZXJYYmg
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-qiniu-local-file.png
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-qiniu-images-show.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-qiniu-local-file.png
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-qiniu-images-show.png
 [6]: https://portal.qiniu.com/user/key
-[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-qiniu-person-central-key-management.png
-[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-qiniu-qshell-download.png
+[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-qiniu-person-central-key-management.png
+[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-qiniu-qshell-download.png

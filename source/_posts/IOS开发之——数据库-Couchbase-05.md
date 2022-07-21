@@ -436,9 +436,9 @@ Couchbase位置：沙盒路径/Library/Application Support/CouchbaseLite/mydb.cb
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-05-couchbase-project-struct.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-05-couchbase-dest-position.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-05-couchbase-table-kvdefault.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-05-couchbase-table-kvinfo.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-05-couchbase-table-kvmeeta.png
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-sqlite-05-couchbase-dest-sample.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-sqlite-05-couchbase-project-struct.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-sqlite-05-couchbase-dest-position.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-sqlite-05-couchbase-table-kvdefault.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-sqlite-05-couchbase-table-kvinfo.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-sqlite-05-couchbase-table-kvmeeta.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-sqlite-05-couchbase-dest-sample.png

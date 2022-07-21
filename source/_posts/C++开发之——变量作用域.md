@@ -82,4 +82,4 @@ date: 2018-02-20 20:39:47
 正确地初始化变量是一个良好的编程习惯，否则有时候程序可能会产生意想不到的结果。
 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-data-default.png
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-data-default.png

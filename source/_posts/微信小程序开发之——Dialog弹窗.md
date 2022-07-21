@@ -163,5 +163,5 @@ Page({
 
 
 [00]:https://pgzxc.github.io/posts/66aabbca.html
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-modal-dialog-preview.png
-[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-dialog-dialog-preview.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-modal-dialog-preview.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-dialog-dialog-preview.gif

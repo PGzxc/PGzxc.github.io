@@ -127,4 +127,4 @@ date: 2020-06-09 23:33:14
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-tuangou-jiben-view.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-tuangou-jiben-view.png

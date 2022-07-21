@@ -94,7 +94,7 @@ ASF允许我们访问很多传感器类型，这些传感器有一些是基于�
 
 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/sense-type.png
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/sense-list-phone.png  
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/sense-type.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/sense-list-phone.png  
 [3]: https://github.com/PGzxc/SenseList
   

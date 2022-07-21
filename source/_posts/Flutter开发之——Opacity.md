@@ -64,5 +64,5 @@ Opacity(opacity: 0.5,child: Image.asset("images/flutter.png"),),
 ![][2]
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-opacity-image.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-opacity-ani-sample.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-opacity-image.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-opacity-ani-sample.gif

@@ -136,10 +136,10 @@ externalNativeBuild {
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/android-opencv-arr-project-struct.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/android-opencv-arr-build-make.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/android-opencv-arr-build-outputs-arr.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/andriod-opencv-arr-gradle-assemble.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/android-opencv-arr-analyze-apk.png
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/android-opencv-arr-analyze-arr-result-abi.png
-[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-opencv/android-opencv-arr-cmakeclean-build.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/android-opencv-arr-project-struct.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/android-opencv-arr-build-make.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/android-opencv-arr-build-outputs-arr.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/andriod-opencv-arr-gradle-assemble.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/android-opencv-arr-analyze-apk.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/android-opencv-arr-analyze-arr-result-abi.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/android-opencv-arr-cmakeclean-build.png

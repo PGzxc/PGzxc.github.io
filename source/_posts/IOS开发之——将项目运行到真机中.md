@@ -132,22 +132,22 @@ Alternatively,build in profile or release modes to enable launching from the hom
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-devices-monitor-state.png
-[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-devices-state-error.png
-[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-devices-program-error.png
-[4]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-devices-regist-error-apple-response.png
-[5]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-devices-addid-xocde-preference.png
-[6]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-devices-addid-xocde-accounts.png
-[7]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-devices-addid-xocde-add.png
-[8]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-devices-addid-xocde-appleid.png
-[9]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-devices-addid-xocde-added.png
-[10]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-devices-addid-xocde-delete.png
-[11]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-devices-normalrun-add-team.png
-[12]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-devices-normalrun-xcode-info.png
-[13]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-devices-normalrun-device-info.png
-[14]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-devices-normalrun-setting-manager.png
-[15]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-devices-normalrun-account-belive.png
-[16]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-devices-normalrun-expried.png
-[17]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-devices-flutterrun-info.png
-[18]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-devices-model-product-sheme.png
-[19]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-devices-model-product-sheme-select.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-monitor-state.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-state-error.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-program-error.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-regist-error-apple-response.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-addid-xocde-preference.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-addid-xocde-accounts.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-addid-xocde-add.png
+[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-addid-xocde-appleid.png
+[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-addid-xocde-added.png
+[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-addid-xocde-delete.png
+[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-normalrun-add-team.png
+[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-normalrun-xcode-info.png
+[13]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-normalrun-device-info.png
+[14]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-normalrun-setting-manager.png
+[15]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-normalrun-account-belive.png
+[16]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-normalrun-expried.png
+[17]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-flutterrun-info.png
+[18]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-model-product-sheme.png
+[19]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-model-product-sheme-select.png

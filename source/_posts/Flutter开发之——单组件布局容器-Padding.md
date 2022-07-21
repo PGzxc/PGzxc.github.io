@@ -58,5 +58,5 @@ Padding(padding: EdgeInsets.symmetric(vertical: 5,horizontal: 5),child:TextButto
 ![][2]
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-padding-property-method.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-flutter/flutter-padding-sample.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-padding-property-method.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-padding-sample.png

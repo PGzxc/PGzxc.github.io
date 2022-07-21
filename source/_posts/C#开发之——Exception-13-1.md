@@ -36,4 +36,4 @@ date: 2020-08-03 20:44:19
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/csharp-exception-struct.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-exception-struct.png

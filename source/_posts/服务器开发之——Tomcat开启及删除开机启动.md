@@ -68,13 +68,13 @@ CATALINA_HOME   D:\SoftWare\apache-tomcat-8.5.32
 
 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/file-open-cmd.gif
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-open-cmder.png
-[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-service-install.png
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-service-installed.png
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-service-show-windows-msc.png
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-start-auto-set.png
-[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-delete-open-cmder.png
-[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-delete-tomcat-service.png
-[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-modify-search-servicename.png
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/file-open-cmd.gif
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-open-cmder.png
+[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-service-install.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-service-installed.png
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-service-show-windows-msc.png
+[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-start-auto-set.png
+[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-delete-open-cmder.png
+[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-delete-tomcat-service.png
+[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-modify-search-servicename.png
 [10]:https://www.cnblogs.com/kengqiangmao/p/10861065.html

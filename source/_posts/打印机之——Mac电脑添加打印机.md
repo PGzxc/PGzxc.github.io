@@ -85,17 +85,17 @@ mac——>扫描仪与打印机——>`+`号，添加打印机，查看打印机
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-tools/printer-mac-device-connect-view.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-print-scanner.png
-[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-tools/printer-mac-setting-add-button.png
-[4]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-tools/printer-mac-connect-list-none.png
-[5]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-tools/printer-mac-connect-list-device-usb.png
-[6]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-tools/printer-mac-connect-list-device-usb-add.png
-[7]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-tools/printer-mac-print-usb-on-list.png
-[8]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-tools/printer-mac-software-net-settings.png
-[9]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-tools/printer-mac-software-net-tools-device.png
-[10]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-tools/printer-mac-software-net-tools-connect.png
-[11]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-tools/printer-mac-software-net-tools-admin-password.png
-[12]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-tools/printer-mac-printer-serial-no.png
-[13]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-tools/printer-mac-connect-wifi-list.png
-[14]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-tools/printer-mac-wifi-device-add.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-tools/printer-mac-device-connect-view.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-print-scanner.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-tools/printer-mac-setting-add-button.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-tools/printer-mac-connect-list-none.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-tools/printer-mac-connect-list-device-usb.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-tools/printer-mac-connect-list-device-usb-add.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-tools/printer-mac-print-usb-on-list.png
+[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-tools/printer-mac-software-net-settings.png
+[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-tools/printer-mac-software-net-tools-device.png
+[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-tools/printer-mac-software-net-tools-connect.png
+[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-tools/printer-mac-software-net-tools-admin-password.png
+[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-tools/printer-mac-printer-serial-no.png
+[13]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-tools/printer-mac-connect-wifi-list.png
+[14]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-tools/printer-mac-wifi-device-add.png

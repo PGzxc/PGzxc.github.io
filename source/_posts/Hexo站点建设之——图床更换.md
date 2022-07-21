@@ -116,13 +116,13 @@ date: 2019-06-13 21:46:54
 
 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-qiniu-store.png
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-qiniu-store.png
 [2]: https://portal.qiniu.com/user/key
-[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-qiniu-accesskey-secretkey.png
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-qiniu-images-download.png
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-qiniu-images-download-after.png
+[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-qiniu-accesskey-secretkey.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-qiniu-images-download.png
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-qiniu-images-download-after.png
 [6]: https://github.com/Molunerfinn/PicGo
-[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-github-picgo-download.png
-[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-picgo-github-setting.png
-[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-picgo-github-upload.png
-[10]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-vscode-open.png
+[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-github-picgo-download.png
+[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-picgo-github-setting.png
+[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-picgo-github-upload.png
+[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-vscode-open.png

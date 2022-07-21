@@ -68,11 +68,11 @@ VS Code打开Dart项目文件夹，并新建`demo.dart`文件
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-dart/dart-intellij-plugin-install.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-dart/dart-intellij-dart-project-create.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-dart/dart-intellij-create-project-demo.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-dart/dart-intellij-demo-code.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-dart/dart-intellij-code-run.png
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-dart/dart-vscode-plugin-dart-search.png
-[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-dart/dart-vscode-project-create.png
-[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-dart/dart-vscode-ide-code-run.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-dart/dart-intellij-plugin-install.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-dart/dart-intellij-dart-project-create.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-dart/dart-intellij-create-project-demo.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-dart/dart-intellij-demo-code.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-dart/dart-intellij-code-run.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-dart/dart-vscode-plugin-dart-search.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-dart/dart-vscode-project-create.png
+[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-dart/dart-vscode-ide-code-run.png

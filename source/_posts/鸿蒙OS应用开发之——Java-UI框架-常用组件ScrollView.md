@@ -225,9 +225,9 @@ scrollView.setMatchViewportEnabled(true);
 ![][6]
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-scrollview-create-xml.gif
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-scrollview-scrollby-300.gif
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-scrollview-scrollto-500.gif
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-scrollview-orientation-horizontal.gif
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-scrollview-rebound-effect.gif
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hmos/hmos-scrollview-viewport-effect.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-scrollview-create-xml.gif
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-scrollview-scrollby-300.gif
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-scrollview-scrollto-500.gif
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-scrollview-orientation-horizontal.gif
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-scrollview-rebound-effect.gif
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-scrollview-viewport-effect.gif

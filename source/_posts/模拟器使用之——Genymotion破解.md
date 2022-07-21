@@ -47,12 +47,12 @@ Genymotion2.10
 ![start][9]
 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/genymotion-error.png
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/genymotion-sale.png
-[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/genymotion-trial.png
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/genymotion-licence.png
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/genymotion-error.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/genymotion-sale.png
+[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/genymotion-trial.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/genymotion-licence.png
 [5]: https://pan.baidu.com/s/1AhbR9JJfJYeE0atoqTKrCA
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/genymotion-replace.png
-[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/genymotion-free.png
-[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/genymotion-download.png
-[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/genymotion-start.pngs
+[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/genymotion-replace.png
+[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/genymotion-free.png
+[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/genymotion-download.png
+[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/genymotion-start.pngs

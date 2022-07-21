@@ -130,12 +130,12 @@ http://127.0.0.1:5500/
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-web-editor-open-default.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-web-editor-project-files.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-web-editor-run.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-web-editor-stop.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-vscode-plugin-search.png
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-vscode-create-project-new-p5.png
-[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-vscode-create-project-projectname.png
-[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-vscode-create-project-create-files.png
-[9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-p5js/p5js-vscode-golive-run.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-p5js/p5js-web-editor-open-default.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-p5js/p5js-web-editor-project-files.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-p5js/p5js-web-editor-run.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-p5js/p5js-web-editor-stop.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-p5js/p5js-vscode-plugin-search.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-p5js/p5js-vscode-create-project-new-p5.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-p5js/p5js-vscode-create-project-projectname.png
+[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-p5js/p5js-vscode-create-project-create-files.png
+[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-p5js/p5js-vscode-golive-run.png

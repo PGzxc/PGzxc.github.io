@@ -33,5 +33,5 @@ date: 2018-03-01 18:19:19
 
 
 [1]: https://github.com/PGzxc/NFCMifareUltralight
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/nfc-mifareul-tralight.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/nfc-mifareul-tralight.png
 

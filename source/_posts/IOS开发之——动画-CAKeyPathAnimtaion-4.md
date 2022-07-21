@@ -66,5 +66,5 @@ Main.storyboard中添加UiView
 ![][2]
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-cabaseanimation-value.gif
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-cabaseanimation-path.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-cabaseanimation-value.gif
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-cabaseanimation-path.gif

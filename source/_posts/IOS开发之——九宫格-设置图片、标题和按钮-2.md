@@ -112,4 +112,4 @@ date: 2020-05-29 23:28:04
 ```
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-jiugongge-image-label-button.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-jiugongge-image-label-button.png

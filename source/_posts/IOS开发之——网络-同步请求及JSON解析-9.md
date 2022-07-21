@@ -160,4 +160,4 @@ username=123&pwd=123
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-http-json-sync-parse.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-http-json-sync-parse.gif

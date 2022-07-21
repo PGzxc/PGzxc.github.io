@@ -77,4 +77,4 @@ date: 2020-06-22 23:25:23
 ![][1]
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-chaoji-chaitu-answer-option-view.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-chaoji-chaitu-answer-option-view.gif

@@ -44,11 +44,11 @@ Android Studio中的代码出现错误时，会被红线标记，把鼠标放到
 
 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-copy-error-info.png
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-copy-error-code-show.png
-[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-copy-error-code.png
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-copy-error-code-copy.png
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-copy-error-layout-show.png
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-copy-error-layout-design-model.png
-[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-copy-error-layout-design-model-more.png
-[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/android-copy-error-layout-design-model-detail.png
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-copy-error-info.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-copy-error-code-show.png
+[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-copy-error-code.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-copy-error-code-copy.png
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-copy-error-layout-show.png
+[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-copy-error-layout-design-model.png
+[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-copy-error-layout-design-model-more.png
+[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-copy-error-layout-design-model-detail.png

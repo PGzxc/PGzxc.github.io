@@ -37,7 +37,7 @@ Xcode编译成功后生成了可执行文件，但是可执行文件并没有在
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-locations-view.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-locations-folder-deriveddata.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-build-product-app.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-build-custom.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-locations-view.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-locations-folder-deriveddata.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-build-product-app.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-build-custom.png

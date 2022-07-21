@@ -52,11 +52,11 @@ date: 2018-03-04 17:19:35
 参考： [RN_TextInput][7]
 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-textinput-editable.png
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-textinput-editable-look.png
-[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-textinput-onchange.png
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-textinput-onchange.gif
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-textinput-statechange.png
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-textinput-statechange.gif
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-textinput-editable.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-textinput-editable-look.png
+[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-textinput-onchange.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-textinput-onchange.gif
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-textinput-statechange.png
+[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-textinput-statechange.gif
 [7]: https://github.com/PGzxc/RN_TextInput
 

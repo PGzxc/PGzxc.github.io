@@ -45,12 +45,12 @@ Debug调试时，返回了数据列表，且列表数据较多时，如何筛选
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-android/android-debug-list-data.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-android/android-debug-datalist-inspect.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-android/android-debug-datalist-choice-evaluate.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-android/android-debug-datalist-expression.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-android/android-debug-datalist-expression-result.png
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-android/android-debug-datalist-filter-select.png
-[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-android/android-debug-datalist-filterdby.png
-[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-android/android-debug-datalist-filtered-error.png
-[9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-android/android-debug-datalist-filtered-error-evaluate.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-debug-list-data.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-debug-datalist-inspect.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-debug-datalist-choice-evaluate.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-debug-datalist-expression.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-debug-datalist-expression-result.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-debug-datalist-filter-select.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-debug-datalist-filterdby.png
+[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-debug-datalist-filtered-error.png
+[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-debug-datalist-filtered-error-evaluate.png

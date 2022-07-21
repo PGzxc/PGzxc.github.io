@@ -140,12 +140,12 @@ android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|lay
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-android-studio-plugin-flutter-install.png
-[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-android-studio-create-project.png
-[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-android-create-project-setting.png
-[4]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-android-new-model.png
-[5]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-android-new-module-setting.png
-[6]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-android-module-package.png
-[7]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-android-import-flutter-struct.png
-[8]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-android-add-flutter-result.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-android-studio-plugin-flutter-install.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-android-studio-create-project.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-android-create-project-setting.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-android-new-model.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-android-new-module-setting.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-android-module-package.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-android-import-flutter-struct.png
+[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-android-add-flutter-result.gif
 

@@ -69,17 +69,17 @@ Mac系统软件有两种格式：.dmg和.pkg，.dmg是官方专用格式，是�
 参考：[苹果电脑怎么安装和卸载软件][14]
 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-software-appstore.png
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-software-find.png
-[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-software-appstore-install.png
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-software-site.png
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-software-site-download.png
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-software-download-open.png
-[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-software-site-download-open.png
-[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-software-site-process.png
-[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-software-site-drag-install-process.png
-[10]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-software-site-already-install.png
-[11]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-software-uninstall-x.png
-[12]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-software-uninstall-move-remove.png
-[13]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/mac-software-uninstall-other-guanjia.png
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-software-appstore.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-software-find.png
+[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-software-appstore-install.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-software-site.png
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-software-site-download.png
+[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-software-download-open.png
+[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-software-site-download-open.png
+[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-software-site-process.png
+[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-software-site-drag-install-process.png
+[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-software-site-already-install.png
+[11]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-software-uninstall-x.png
+[12]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-software-uninstall-move-remove.png
+[13]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-software-uninstall-other-guanjia.png
 [14]: https://jingyan.baidu.com/article/22fe7cedfbe3c03002617fba.html

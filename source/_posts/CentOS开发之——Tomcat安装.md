@@ -70,16 +70,16 @@ Centos SSH 的安装与配置，前文已经讲过，本文主要讲述Tomcat的
 
 
 [1]: https://tomcat.apache.org/
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-guanfang.png
-[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-download.png
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-remote-conn.png
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-ssh-shell.png
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-download-move.png
-[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-unzip-tar.png
-[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-open-8080.png
-[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-startup.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-guanfang.png
+[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-download.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-remote-conn.png
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-ssh-shell.png
+[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-download-move.png
+[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-unzip-tar.png
+[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-open-8080.png
+[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-startup.png
 [10]: http://192.168.174.132:8080
-[11]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-internet-open.png
-[12]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tomcat-shutdown.png
+[11]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-internet-open.png
+[12]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-shutdown.png
 
 

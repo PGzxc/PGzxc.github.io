@@ -53,5 +53,5 @@ setting.json中配置
 ```
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/vscode-error-terminal-not-show.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/vscode-terminal-setting-compatible.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/vscode-error-terminal-not-show.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/vscode-terminal-setting-compatible.png

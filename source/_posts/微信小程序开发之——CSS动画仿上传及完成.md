@@ -223,8 +223,8 @@ Page({
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-wechat/wechat-css-animal-loading.gif
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-wechat/wechat-css-animal-finished.gif
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-wechat/wechat-css-animal-loadingfinished.gif
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-wechat/weichat-css-animal-icon-loading.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-css-animal-loading.gif
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-css-animal-finished.gif
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-css-animal-loadingfinished.gif
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/weichat-css-animal-icon-loading.png
 

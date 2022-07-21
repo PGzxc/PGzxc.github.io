@@ -174,23 +174,23 @@ date: 2021-08-13 17:44:41
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-memory-all-view.png
-[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-memory-click-open.png
-[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-memory-profiler-callouts.png
-[4]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-memory-profiler-number.png
-[5]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-memory-record-type.png
-[6]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-memory-trace.gif
-[7]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-memory-heap-dump.png
-[8]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-memory-trace-menu.gif
-[9]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-memory-native-trace.gif
-[10]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-memory-native-allocate.png
-[11]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-memory-java-trace.gif
-[12]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-memory-export.png
-[13]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-memory-import.png
-[14]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-memory-leak.png
-[15]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-memory-leak-list.png
-[16]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-memory-leak-instance.png
-[17]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-memory-leak-details.png
-[18]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-memory-leak-reference.png
-[19]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-memory-leak-jumpsource.png
-[20]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-android/android-profiler-memory-leak-jumpsource-info.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-memory-all-view.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-memory-click-open.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-memory-profiler-callouts.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-memory-profiler-number.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-memory-record-type.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-memory-trace.gif
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-memory-heap-dump.png
+[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-memory-trace-menu.gif
+[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-memory-native-trace.gif
+[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-memory-native-allocate.png
+[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-memory-java-trace.gif
+[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-memory-export.png
+[13]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-memory-import.png
+[14]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-memory-leak.png
+[15]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-memory-leak-list.png
+[16]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-memory-leak-instance.png
+[17]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-memory-leak-details.png
+[18]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-memory-leak-reference.png
+[19]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-memory-leak-jumpsource.png
+[20]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-memory-leak-jumpsource-info.png

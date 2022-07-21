@@ -37,10 +37,10 @@ date: 2019-10-20 11:31:31
 
 
 [1]: https://visualstudio.microsoft.com/zh-hans/downloads/?rr=https%3A%2F%2Fmsdn.microsoft.com%2Fzh-cn%2Flibrary%2Faa468128
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-visual-studio-page.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-visual-studio-c-plugin.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-visual-studio-tool-install-plugin.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-visual-studio-choice-template.png
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-visual-studio-create-config.png
-[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-visual-studio-project-preview.png
-[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-visual-studio-debug-run.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-visual-studio-page.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-visual-studio-c-plugin.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-visual-studio-tool-install-plugin.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-visual-studio-choice-template.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-visual-studio-create-config.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-visual-studio-project-preview.png
+[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-visual-studio-debug-run.png

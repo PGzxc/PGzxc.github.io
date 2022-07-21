@@ -101,4 +101,4 @@ class ViewController: UIViewController,UITextFieldDelegate{
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-login-username-password.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-login-username-password.gif

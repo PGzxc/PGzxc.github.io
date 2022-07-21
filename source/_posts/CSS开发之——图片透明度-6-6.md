@@ -132,7 +132,7 @@ This is some text that is placed in the transparent box.
 首先，我们创建一个div元素(class="background")，它有固定的高度和宽度、背景图像，以及边框。然后我们在第一个div内创建稍小的div(class="transbox")。“transbox”div有固定的宽度、背景色和边框-并且它是透明的。在透明div内部，我们在p元素中加入了一些文本。
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tulip_peach_blossom_w_s.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tulip_peach_blossom_w_s-hidden.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tulip_peach_blossom_w_s-animal.gif
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/tulip_peach_blossom_w_s-text.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tulip_peach_blossom_w_s.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tulip_peach_blossom_w_s-hidden.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tulip_peach_blossom_w_s-animal.gif
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tulip_peach_blossom_w_s-text.png

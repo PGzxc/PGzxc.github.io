@@ -179,9 +179,9 @@ layer.contents=(id)[UIImage imageNamed:@"jump"].CGImage;
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-caanimation-struct.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-animation-position.gif
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-animation-rotate.gif
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-animation-scale.gif
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-animation-jupm.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-caanimation-struct.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-animation-position.gif
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-animation-rotate.gif
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-animation-scale.gif
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-animation-jupm.gif
 

@@ -44,6 +44,6 @@ C++ 提供了下列的控制语句。点击链接查看每个语句的细节。
   
 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-loop.png
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-loop-type.png
-[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/cpp-loop-break.png
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-loop.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-loop-type.png
+[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-loop-break.png

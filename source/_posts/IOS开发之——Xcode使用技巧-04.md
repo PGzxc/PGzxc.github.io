@@ -53,12 +53,12 @@ date: 2022-04-03 08:29:17
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-04-lanch-targets.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-04-lanch-storyboard.png
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-04-lanch-view.gif
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-04-view-hierachy.png
-[5]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-04-view-hierachy-tree.png
-[6]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-04-view-hierachy-position.png
-[7]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-04-view-hierachy-layout.png
-[8]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-04-class-prefix.png
-[9]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-ios/ios-xcode-04-class-prefix-newfile.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-04-lanch-targets.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-04-lanch-storyboard.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-04-lanch-view.gif
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-04-view-hierachy.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-04-view-hierachy-tree.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-04-view-hierachy-position.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-04-view-hierachy-layout.png
+[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-04-class-prefix.png
+[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-04-class-prefix-newfile.png

@@ -59,11 +59,11 @@ React Native构建时，下方会出现构建过程，如没有出错，出现Do
 ![][7]
 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/webstorm-react-new.png
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/webstorm-react-create.png
-[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/webstorm-react-file.png
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/webstorm-react-modify.png
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/webstorm-react-modify-down.png
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/webstorm-react-run.png
-[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/webstorm-react-run-effect.png
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/webstorm-react-new.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/webstorm-react-create.png
+[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/webstorm-react-file.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/webstorm-react-modify.png
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/webstorm-react-modify-down.png
+[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/webstorm-react-run.png
+[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/webstorm-react-run-effect.png
 

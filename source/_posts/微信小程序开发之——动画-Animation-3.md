@@ -132,4 +132,4 @@ Page({
 * [小程序官方文档—Animation](https://developers.weixin.qq.com/miniprogram/dev/api/ui/animation/wx.createAnimation.html)
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-wechat/wechat-animate-animation-rotate.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-animate-animation-rotate.gif

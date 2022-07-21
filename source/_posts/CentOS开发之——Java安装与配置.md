@@ -59,11 +59,11 @@ date: 2018-07-27 21:39:15
 
 
 [1]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/java-linux-download.png
-[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/java-grep.png
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/java-upload.png
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/java-upload-after.png
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/java-tar-xvf.png
-[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/java-path.png
-[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/java-source-etc-profile.png
-[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/java-version.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/java-linux-download.png
+[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/java-grep.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/java-upload.png
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/java-upload-after.png
+[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/java-tar-xvf.png
+[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/java-path.png
+[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/java-source-etc-profile.png
+[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/java-version.png

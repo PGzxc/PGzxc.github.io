@@ -62,14 +62,14 @@ selectTextOnFocus和selectionColor，用于设置获取焦点时，选中文本�
 
 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-textinput-maxlength-code.png
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-textinput-maxlength.gif
-[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-textinput-multiline-code.png
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-textinput-multiline-look.png
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-textinput-placeholder.png
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-textinput-placeholder.gif
-[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-textinput-securetextentry.png
-[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-textinput-securetextentry.gif
-[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-textinput-selectonfocus.png
-[10]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/rn-textinput-selectTextOnFocus.gif
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-textinput-maxlength-code.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-textinput-maxlength.gif
+[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-textinput-multiline-code.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-textinput-multiline-look.png
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-textinput-placeholder.png
+[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-textinput-placeholder.gif
+[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-textinput-securetextentry.png
+[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-textinput-securetextentry.gif
+[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-textinput-selectonfocus.png
+[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-textinput-selectTextOnFocus.gif
 [11]: https://github.com/PGzxc/RN_TextInput

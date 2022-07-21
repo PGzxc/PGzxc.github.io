@@ -75,14 +75,14 @@ date: 2017-11-13 23:10:22
 
 
 [1]: https://github.com/coneycode/hexo-git-backup
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-install-git-backup.png
-[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-add-backup-info.png
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-branches.png
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-back-folder.png
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-backup-git-bash.png
-[7]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-git-clone.png
-[8]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-git-clone-local.png
-[9]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-install-hexo-g.png
-[10]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-install-hexo-deplyer-git.png
-[11]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-backup-hexo-g.png
-[12]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/hexo-localhost-4000.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-install-git-backup.png
+[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-add-backup-info.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-branches.png
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-back-folder.png
+[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-backup-git-bash.png
+[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-git-clone.png
+[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-git-clone-local.png
+[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-install-hexo-g.png
+[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-install-hexo-deplyer-git.png
+[11]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-backup-hexo-g.png
+[12]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-localhost-4000.png

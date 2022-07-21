@@ -47,7 +47,7 @@ favicon:
 
 
 [1]:../images/favicon-next/favicon-32x32-next.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-hexo/hexo-web-site-head-default-next.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hexo/hexo-web-site-head-default-next.png
 [3]:../images/favicon/favicon-32x32.png
 
 [11]:https://www.iconfont.cn/

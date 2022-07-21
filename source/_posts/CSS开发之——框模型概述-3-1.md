@@ -66,5 +66,5 @@ CSS框模型(Box Model)规定了元素框处理元素内容、内边距、边框
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/css-ct_boxmodel.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/css-ct_css_boxmodel_example.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/css-ct_boxmodel.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/css-ct_css_boxmodel_example.png

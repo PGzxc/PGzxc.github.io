@@ -35,5 +35,5 @@ date: 2017-12-19 18:16:06
 
 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/java-express.png
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/kotlin-express.png
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/java-express.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/kotlin-express.png

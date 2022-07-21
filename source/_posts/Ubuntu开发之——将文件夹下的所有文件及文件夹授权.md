@@ -89,9 +89,9 @@ sudo chmod 777 name name/*
 [Ubuntu修改文件夹下面所有文件权限的方法][12]
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-linux/ubuntu-authorize-folder-operate-before.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-linux/ubuntu-authorize-r-operate.gif
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-linux/ubuntu-anth-xing-opera.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-linux/ubuntu-authorize-folder-operate-before.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-linux/ubuntu-authorize-r-operate.gif
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-linux/ubuntu-anth-xing-opera.gif
 
 [11]:https://zhidao.baidu.com/question/616700383589139052.html
 [12]:https://blog.csdn.net/woshilaoli_csdn/article/details/109093102

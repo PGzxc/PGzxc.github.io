@@ -76,10 +76,10 @@ compile 'com.mcxiaoke.volley:library:1.0.19' //volley引用
 
 
 
-[1]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/fresco-layout.png
-[2]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/fresco-code.png
-[3]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/glide-base-use.png
-[4]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/picaso-base-use.png
-[5]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/imageloader-base-use.png
-[6]: https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/volley-base-use.png
+[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/fresco-layout.png
+[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/fresco-code.png
+[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/glide-base-use.png
+[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/picaso-base-use.png
+[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/imageloader-base-use.png
+[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/volley-base-use.png
 [7]: https://github.com/PGzxc/ImageNet

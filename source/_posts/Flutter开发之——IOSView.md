@@ -303,13 +303,13 @@ class MyFlutterView: NSObject,FlutterPlatformView {
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-intellij-create-flutter-iosview.png
-[2]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-intellij-create-flutter-iosview-settings.png
-[3]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-intellij-create-flutter-iosview-struct.png
-[4]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-intellij-flutterios-open-xcode.png
-[5]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-intellij-iosview-open-xcode.png
-[6]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-intellij-iosview-maindart.png
-[7]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-intellij-iosview-result.png
-[8]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-intellij-iosview-params-result.png
-[9]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-flutter/flutter-iosview-reactwith-ios.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-intellij-create-flutter-iosview.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-intellij-create-flutter-iosview-settings.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-intellij-create-flutter-iosview-struct.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-intellij-flutterios-open-xcode.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-intellij-iosview-open-xcode.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-intellij-iosview-maindart.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-intellij-iosview-result.png
+[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-intellij-iosview-params-result.png
+[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-iosview-reactwith-ios.gif
 

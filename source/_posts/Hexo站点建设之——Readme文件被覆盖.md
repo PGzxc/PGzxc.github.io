@@ -27,7 +27,7 @@ date: 2017-11-13 15:43:35
 
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/github_readme-messy.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/github_readme-modify-before.png 
-[3]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/github_readme-modify-after.png
-[4]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-image/gtihub_blog_readme.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/github_readme-messy.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/github_readme-modify-before.png 
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/github_readme-modify-after.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/gtihub_blog_readme.png

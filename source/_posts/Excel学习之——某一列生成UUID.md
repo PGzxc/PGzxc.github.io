@@ -45,5 +45,5 @@ date: 2021-01-26 17:19:12
 ![][2]
 
 
-[1]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-excel/excel-uuid-table-select.png
-[2]:https://fastly.jsdelivr.net/gh/PGzxc/CDN@master/blog-excel/excel-uuid-make.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-excel/excel-uuid-table-select.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-excel/excel-uuid-make.gif

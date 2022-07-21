@@ -212,4 +212,4 @@ date: 2022-02-12 22:40:55
 ![][1]
 
 
-[1]:https://fastly.jsdelivr.net/gh/pgzxc/cdn@master/blog-ios/ios-caipiao-push-setting-time-save.gif
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-caipiao-push-setting-time-save.gif
