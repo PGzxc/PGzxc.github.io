@@ -11,7 +11,6 @@ comments: false
    <a style="padding:0px 10px 0px 10px; " href="./index.pdf" download="index.pdf">本页简历</a>
 </div>
 
----
 # 联系方式
 
 - 手机：15201120927
@@ -47,9 +46,48 @@ comments: false
 * 2015/10 — 2016/07&emsp;&emsp;时间者互联网科技(北京)有限公司&emsp;&emsp;Android开发工程师
 * 2016/07 — 2018/06&emsp;&emsp;西藏远誉(北京)网络科技有限公司&emsp;&emsp;Android开发工程师
 * 2018/07 — 2022/04&emsp;&emsp;中科航天(北京)科技有限公司&emsp;&emsp;&emsp;&emsp;全栈工程师
+* 2022/06 — 2022/09&emsp;&emsp;贝思畅想科技有限公司 &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;Android开发工程师
 
 # 公司及工作内容
-## <font color=red>2018/07 — 至今 &emsp;中科航天(北京)科技有限公司 &emsp;全栈工程师</font> 
+
+## <font color=red>2022/06 — 2022/09 &emsp;贝思畅想科技有限公司 &emsp;Android开发工程师</font> 
+### 公司简介
+**行业类别**：科技推广和应用服务业|**企业性质**：有限责任公司(法人独资)|**规模**: 100-300人  
+**公司介绍**：贝思畅想科技有限公司，总部位于北京市昌平区赛迪产业园。是有不同行业、不同领取、有多年创业经验的多位连续创业者，联合发起并创立。是一个专注于创业知识分享的平台，致力为创业者提供创业所必备的知识和优质的创业项目，让创业者对创业拥有全新认知，为创业者有供项目特刊制作、项目信息推送、商业计划书撰写等有偿服务，并通过可落地、可执行的创业项目，真真正正创造收入，更轻松地实现创业梦想。
+
+### 工作描述：   
+
+- 负责开发公司与流线传媒科技(北京)有限公司签署的足球直播联赛“西甲+”安卓移动端开发
+- 负责产品的需求分析、功能开发、性能优化、打包发布及版本维护
+- 配合产品经理和测试人员，保证产品质量和准时上线
+- 根据用户反馈，不断进行客户端产品的优化与改进
+
+### 项目介绍
+__1-西甲+(足球直播联赛)__   
+**项目描述**：西甲+是贝斯畅想科技有限公司与流线传媒科技公司合作开发的一款足球直播联赛项目。包含赛程直播回访、赛程预约、直播间聊天、直播投屏，搜索、通知、横竖屏播放、球队数据、VIP会员/球队卡/赛季卡等。    
+**功能模块**：首页、赛程、数据、我的等 
+**负责模块**：首页、赛程、数据、我的等
+**技术要点**：  
+
+-  基于组件化功能拆分，将项目分为基础库、组件层和业务层
+-  基于基础库XUI快速集成项目UI开发框架
+-  基于基础库pay集成支付宝和微信支付
+-  基于基础库阿里云短视频SDK播放视频回放及短视频列表
+-  基于基础库Android播放器播放直播赛程
+-  基于OkHttp+Retrofit构建网络访问框架
+-  基于极光SDK实现消息推送和直播聊天室聊天
+
+**项目预览**
+
+| ![][xj-1]  | ![][xj-2]  | ![][xj-3]  | ![][xj-4]  |
+| ---------- | ---------- | ---------- | ---------- |
+| ![][xj-5]  | ![][xj-6]  | ![][xj-7]  | ![][xj-8]  |
+| ![][xj-9]  | ![][xj-10] | ![][xj-11] | ![][xj-12] |
+| ![][xj-13] | ![][xj-14] | ![][xj-15] | ![][xj-16] |
+| ![][xj-17] | ![][xj-18] | ![][xj-19] | ![][xj-20] |
+
+
+## <font color=red>2018/07 — 2022/04 &emsp;中科航天(北京)科技有限公司 &emsp;全栈工程师</font> 
 ### 公司简介
 **行业类别**：信息传输、软件和信息技术服务业|**企业性质**：有限责任公司(自然人投资或控股)|**规模**: 100-300人  
 **公司介绍**：中科航天（北京）科技有限公司，总部位于北京市海淀区上地国际孵化园。是一家专业的信息咨询、解决方案和IT服务外包供应商
@@ -596,3 +634,27 @@ __2-Android项目—E朝朝企业端__
 [w-14]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/w_coin_sigin.png
 [w-15]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/w_article_webpage.png
 [w-16]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/w_message_webpage.png
+
+<!--西甲-->
+[xj-1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_home.jpg
+[xj-2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_schedule.jpg
+[xj-3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_data-board_score.jpg
+[xj-4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_me.jpg
+[xj-5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_board_player.jpg
+[xj-6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_board_team.jpg
+[xj-7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_calendar_book.jpg
+[xj-8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_category_view.jpg
+[xj-9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_data_about.jpg
+[xj-10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_data_ballteam.jpg
+[xj-11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_live_chat.jpg
+[xj-12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_live_data.jpg
+[xj-13]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_live_outs.jpg
+[xj-14]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_live_zr.jpg
+[xj-15]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_notice.jpg
+[xj-16]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_schedule_xy.jpg
+[xj-17]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_search.jpg
+[xj-18]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_serach_result.jpg
+[xj-19]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_team_data.jpg
+[xj-20]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_team_detail.jpg
+[xj-21]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_team_player.jpg
+[xj-22]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_update.jpg
