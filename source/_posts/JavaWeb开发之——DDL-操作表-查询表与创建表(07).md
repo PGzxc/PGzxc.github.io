@@ -3,7 +3,12 @@ title: JavaWeb开发之——DDL-操作表-查询表与创建表(07)
 abbrlink: 86a7481d
 date: 2022-09-14 22:56:11
 categories:
+  - 开发
+  - G-后端开发
+  - Java
 tags:
+  - Java
+  - JavaWeb
 ---
 ## 一 概述
 
