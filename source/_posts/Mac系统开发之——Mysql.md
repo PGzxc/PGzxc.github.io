@@ -91,10 +91,10 @@ export PATH=$Mysql_Home/support-files:$PATH
 * 使用终端设置新密码
 
   - 停止Mysql服务 `sudo /usr/local/mysql/support-files/mysql.server stop`(输入电脑密码)
-  -  进入终端输入：`cd /usr/local/mysql/bin/ `回车后
-  - 登录管理员权限 sudo su 回车后;
-  - 输入以下命令来禁止mysql验证功能` ./mysqld_safe --skip-grant-tables & ` 回车后mysql会自动重启
-  - 输入命令` ./mysql `回车后，
+  - 进入终端输入：`cd /usr/local/mysql/bin/`回车后
+  - 登录管理员权限 sudo su回车后;
+  - 输入以下命令来禁止mysql验证功能` ./mysqld_safe --skip-grant-tables &` 回车后mysql会自动重启
+  - 输入命令` ./mysql`回车后，
   - 输入命令 `FLUSH PRIVILEGES; `回车后
   - 输入命令 `ALTER USER 'root'@'localhost' IDENTIFIED BY '你的新密码';`
 
@@ -126,19 +126,19 @@ export PATH=$Mysql_Home/support-files:$PATH
 [4]:https://blog.csdn.net/pariese/article/details/77527813
 
 
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//java-config-bash-profile.png
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//mysql-webpage-download.png
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//mysql-install-click-open.png
-[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//mysql-install-yindao.png
-[13]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//mysql-install-configuration.png
-[14]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//mysql-install-weak-password.png
-[15]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//mysql-install-finish.png
-[16]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//mysql-setting-open.png
-[17]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//mysql-config-start-stop-uninstall.png
-[18]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//mysql-setting-configuration.png
-[19]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//mysql-terminal-not-found.png
-[20]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//mysql-terminal-config.png
-[21]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//mysql-terminal-login.png
-[22]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//mysql-terminal-modify-password.png
-[23]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//mysql-service-status-download-restart.png
-[24]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//mysql-navicat-premium.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/java-config-bash-profile.png
+[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mysql-webpage-download.png
+[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mysql-install-click-open.png
+[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mysql-install-yindao.png
+[13]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mysql-install-configuration.png
+[14]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mysql-install-weak-password.png
+[15]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mysql-install-finish.png
+[16]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mysql-setting-open.png
+[17]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mysql-config-start-stop-uninstall.png
+[18]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mysql-setting-configuration.png
+[19]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mysql-terminal-not-found.png
+[20]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mysql-terminal-config.png
+[21]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mysql-terminal-login.png
+[22]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mysql-terminal-modify-password.png
+[23]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mysql-service-status-download-restart.png
+[24]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mysql-navicat-premium.png

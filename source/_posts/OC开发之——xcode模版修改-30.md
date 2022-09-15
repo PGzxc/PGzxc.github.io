@@ -74,6 +74,6 @@ date: 2020-04-09 22:59:38
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//oc-xcode-command-line-template.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//oc-xcode-command-line-templateinfo-xcode-open.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//oc-xcode-command-line-template-modify.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/oc-xcode-command-line-template.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/oc-xcode-command-line-templateinfo-xcode-open.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/oc-xcode-command-line-template-modify.png

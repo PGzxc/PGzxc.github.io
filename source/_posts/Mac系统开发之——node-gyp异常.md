@@ -68,7 +68,7 @@ gyp ERR! not ok
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//mac-npm-install-gyp-error.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//mac-npm-xcode-select.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-npm-install-gyp-error.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-npm-xcode-select.png
 
 [11]:https://www.cnblogs.com/zhuxiaoxi/p/12088359.html

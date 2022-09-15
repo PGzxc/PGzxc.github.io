@@ -74,6 +74,6 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 [1]:https://brew.sh/index_zh-cn
 [2]:https://zhuanlan.zhihu.com/p/59805070
 
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//homebrew-websit.png
-[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//homebrew-install-progress.png
-[13]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//homebrew-install-success.png
+[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/homebrew-websit.png
+[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/homebrew-install-progress.png
+[13]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/homebrew-install-success.png

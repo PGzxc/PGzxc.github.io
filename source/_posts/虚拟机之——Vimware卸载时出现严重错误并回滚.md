@@ -40,9 +40,9 @@ date: 2020-01-11 23:03:00
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//virtualbox-uninstall-error.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//virtualbox-system-service.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//virtual-sc-delete.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//virtualbox-extract.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//virtualbox-loca-temp-file.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image//virtualbox-repair.png
+[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/virtualbox-uninstall-error.png
+[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/virtualbox-system-service.png
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/virtual-sc-delete.png
+[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/virtualbox-extract.png
+[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/virtualbox-loca-temp-file.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/virtualbox-repair.png
