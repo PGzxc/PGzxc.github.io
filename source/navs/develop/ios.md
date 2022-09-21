@@ -6,9 +6,9 @@ comments: false
 ---
 ## IOS学习路线
 
-| 学习路线1 | 学习路线2 |
-| :-------: | :-------: |
-|  ![][1]   |  ![][2]   |
+| 学习路线1 | 学习路线2 | 学习路线3 |
+| :-------: | :-------: | --------- |
+|  ![][1]   |  ![][2]   | ![][3]    |
 
 ## 一 官方教程
 
@@ -31,3 +31,4 @@ comments: false
 
 [1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-learn-route/IOS-Learning-route-1.jpg
 [2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-learn-route/IOS-Learning-route-2.jpg
+[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-learn-route/IOS-Learning-route-3.jpg
