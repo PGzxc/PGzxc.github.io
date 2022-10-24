@@ -5,7 +5,7 @@ categories:
   - C-前端开发
   - Vue
 tags:
-  - 环境搭建
+  - Vue2
 abbrlink: 873db7ef
 date: 2022-10-24 10:17:44
 ---
