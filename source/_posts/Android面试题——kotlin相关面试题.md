@@ -143,9 +143,23 @@ coroutineScope.launch(Dispatchers.Main) {
 | T.also  |         是         |           it           |            调用本身            |
 | T.apply |         是         |          this          |            调用本身            |
 
-### 2.5 安卓中扫码区域大小(分别率-自定义)
+### 2.5 [安卓中扫码区域大小(分别率-自定义)][00]
 
-修改zxing.camera.CameraManager
+Zxing包中有个类CameraManager，它是来设置扫描框的大小
+
+扫描框框初始化数值
+
+```
+ private static  int MIN_FRAME_WIDTH = 240;
+
+  private static  int MIN_FRAME_HEIGHT = 240;
+
+  private static  int MAX_FRAME_WIDTH = 480;
+
+  private static  int MAX_FRAME_HEIGHT = 360;
+```
+
+此类里面有个getFramingRect方法用来设置扫描的框的大小，如果要修改扫描框的大小可以在这个方法里修改
 
 ### 2.6 多语言适配(多语言占位符)
 
@@ -240,3 +254,7 @@ ConstraintLayout 是一个 ViewGroup，它的出现是为了解决复杂布局�
 * MethodChannel
 * BasicMessageChannel
 * EventChannel
+
+
+
+[00]:https://www.lmlphp.com/user/57886/article/item/1661313/
