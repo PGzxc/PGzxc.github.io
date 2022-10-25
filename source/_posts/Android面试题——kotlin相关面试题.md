@@ -10,7 +10,7 @@ date: 2022-10-25 17:55:08
 ---
 ## 一 面试主要知识点
 1. kotlin协程
-2. 携程异常处理
+2. 协程异常处理
 3. kotlin中高阶函数
 4. kotlin中with,run,apply,let函数
 5. 安卓中扫码区域大小(分别率-自定义)
@@ -84,7 +84,7 @@ coroutineScope.launch(Dispatchers.Main) {
 
 4-协程的挂起(suspend)
 
-### 2.2 携程异常处理
+### 2.2 协程异常处理
 
 * 协程的异常，一般使用`try/catch`或者`runCatching`内置函数来处理
 * 协程处理异常的第二个方法是使用`CoroutineExceptionHandler`
