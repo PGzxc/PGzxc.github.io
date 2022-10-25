@@ -28,7 +28,7 @@ date: 2022-10-25 17:55:08
 
 ## 二 面试题解答
 
-### 2.1 kotlin协程
+### 2.1 [kotlin协程][03]
 
 1- 协程是我们在 Android 上进行异步编程的推荐解决方案。它的特点包括：
 
@@ -89,7 +89,7 @@ coroutineScope.launch(Dispatchers.Main) {
 * 协程的异常，一般使用`try/catch`或者`runCatching`内置函数来处理
 * 协程处理异常的第二个方法是使用`CoroutineExceptionHandler`
 
-### 2.3 kotlin中高阶函数
+### 2.3 [kotlin中高阶函数][02]
 
 1-定义
 
@@ -174,12 +174,12 @@ Zxing包中有个类CameraManager，它是来设置扫描框的大小
 * 静态代理：由程序创建或者特定工具自动生成源代码，在程序运行前，代理类的.class文件已经存在
 * 动态代理：在程序运行时，运用反射机制动态创建而成，无需手动编写代码
 
-### 2.8 Android网络访问框架(Okhttp+retrofit)
+### 2.8 [Android网络访问框架(Okhttp+retrofit)][01]
 
 OkHttp拦截器链
 
-* RetryAndFollowUpInterceptor拦截器
-* BridgeInterceptor拦截器（桥接模式？）
+* RetryAndFollowUpInterceptor：重试和失败定向拦截器，会创建StreamAllocation对象，用来传递给后面的拦截器
+* BridgeInterceptor：桥接和适配拦截器
 * CacheInterceptor：缓存拦截器
 * ConnectInterceptor：连接拦截器，建立可用的连接，是下面拦截器的基础
 * CallServerInterceptor：负责将我们的请求写进网络流中，别切会从IO流中读取服务器返回给我们的客户端的数据
@@ -258,3 +258,6 @@ ConstraintLayout 是一个 ViewGroup，它的出现是为了解决复杂布局�
 
 
 [00]:https://www.lmlphp.com/user/57886/article/item/1661313/
+[01]:https://developer.aliyun.com/article/1047840
+[02]:https://www.jianshu.com/p/3f456edae550
+[03]:http://events.jianshu.io/p/d3be141d5244
