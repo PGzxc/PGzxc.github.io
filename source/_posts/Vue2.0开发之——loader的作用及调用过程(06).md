@@ -11,14 +11,14 @@ date: 2022-10-27 09:22:14
 ---
 ## 一 概述
 
-* Vue如何处理css
+* webpack如何处理css文件
 * loader概述
 * loader的安装与配置
 * loader的调用过程说明
 
 <!--more-->
 
-## 二 Vue如何处理css
+## 二 webpack如何处理css文件
 
 之前介绍了通过js处理li列表奇数行和偶数行颜色显示。如果是通过css样式文件将圆点去除。webpack能否处理呢。
 
@@ -41,7 +41,7 @@ You may need an appropriate loader to handle this file type, currently no loader
 
 ![][2]
 
-说明：此问题后面会通过loader来解决
+说明：此问题后面会通过css-loader来解决
 
 ## 三 loader概述
 
