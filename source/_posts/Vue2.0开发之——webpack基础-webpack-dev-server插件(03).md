@@ -1,5 +1,5 @@
 ---
-title: Vue2.0开发之webpack-dev-server(03)
+title: Vue2.0开发之——webpack基础-webpack-dev-server插件(03)
 categories:
   - 开发
   - C-前端开发

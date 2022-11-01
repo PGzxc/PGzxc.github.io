@@ -1,5 +1,5 @@
 ---
-title: Vue2.0开发之——loader处理图片问题(08)
+title: Vue2.0开发之——webpack基础-file-loader插件(08)
 categories:
   - 开发
   - C-前端开发

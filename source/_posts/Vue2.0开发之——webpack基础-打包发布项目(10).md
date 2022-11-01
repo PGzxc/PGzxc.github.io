@@ -1,5 +1,5 @@
 ---
-title: Vue2.0开发之——webpack打包发布项目(10)
+title: Vue2.0开发之——webpack基础-打包发布项目(10)
 categories:
   - 开发
   - C-前端开发

@@ -1,5 +1,5 @@
 ---
-title: Vue2.0开发之——babel-loader处理高级JS语法(09)
+title: Vue2.0开发之——webpack基础-babel-loader插件(09)
 categories:
   - 开发
   - C-前端开发

@@ -1,5 +1,5 @@
 ---
-title: Vue2.0开发之html-webpack-plugin插件(05)
+title: Vue2.0开发之——webpack基础-html-webpack-plugin插件(05)
 categories:
   - 开发
   - C-前端开发

@@ -1,5 +1,5 @@
 ---
-title: Vue2.0开发之——webpack安装与配置(01)
+title: Vue2.0开发之——webpack基础-了解webpack(01)
 categories:
   - 开发
   - C-前端开发
