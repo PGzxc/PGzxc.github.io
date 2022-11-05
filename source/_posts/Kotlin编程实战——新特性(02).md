@@ -1,5 +1,5 @@
 ---
-title: Kotlin编程实战——型特性(02)
+title: Kotlin编程实战——新特性(02)
 categories:
   - 开发
   - B-高级语言
