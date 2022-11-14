@@ -430,7 +430,7 @@ __2-Android项目—E朝朝企业端__
 6. 熟悉Android性能和内存优化，解决异常、崩溃、内存溢出
 7. 熟悉Android构建框架 MVC、MVP和MVVM的使用
 8. 熟悉 Android 原生与 WebView(js)交互的实现
-9. 熟悉Kotlin开发、Lambda表达式、热修复、插件开发、换肤及传感器、NFC、蓝牙、支付等技术
+9. 熟悉Kotlin开发、Jetpack Compose、Lambda表达式、热修复、插件开发、换肤及传感器、NFC、蓝牙、支付等技术
 
 ## IOS
 1. 熟悉 Objective-C 与 Swift 语言，并依此进行项目开发
