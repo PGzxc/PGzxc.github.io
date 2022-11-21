@@ -2,7 +2,7 @@
 title: Weex开发之——入门之搭建开发环境
 categories:
   - 开发
-  - D-移动开发
+  - F-跨平台
   - Weex
 tags:
   - 环境搭建
