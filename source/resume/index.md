@@ -32,7 +32,7 @@ comments: false
 - 工作地点：北京
 
 # 相关信息
-- 个人网站：https://pgzxc.github.io/
+- 网站地址：https://pgzxc.github.io/
 - GitHub：https://github.com/PGzxc/
 - CSDN博客：http://blog.csdn.net/calvin_zhou
 
@@ -58,7 +58,7 @@ comments: false
 ### 工作描述：   
 
 - 负责开发公司与流线传媒科技(北京)有限公司签署的足球直播联赛“西甲+”安卓移动端开发
-- 负责产品的需求分析、功能开发、性能优化、打包发布及版本维护
+- 负责产品的需求分析、功能开发、性能优化、打包发布及版本迭代
 - 配合产品经理和测试人员，保证产品质量和准时上线
 - 根据用户反馈，不断进行客户端产品的优化与改进
 
@@ -71,9 +71,8 @@ __1-西甲+(足球直播联赛)__
 
 -  基于组件化功能拆分，将项目分为基础库、组件层和业务层
 -  基于基础库XUI快速集成项目UI开发框架
--  基于基础库pay集成支付宝和微信支付
--  基于基础库阿里云短视频SDK播放视频回放及短视频列表
--  基于基础库Android播放器播放直播赛程
+-  基于基础库AndroidPay集成支付宝和微信支付
+-  基于基础库阿里云视频 SDK 播放短视频列表、赛程直播和回放
 -  基于 XPopup 构建应用内各类弹窗
 -  基于OkHttp+Retrofit构建网络访问框架
 -  基于极光SDK实现消息推送和直播聊天室聊天
@@ -110,7 +109,7 @@ __1-Android项目—脑训练(平板)__
 **负责模块**：本地化、设备搜索配对、登录、设备连接、游戏选择、游戏说明、游戏、游戏结果、结果展示、排行等 
 **技术要点**：  
 
--  基于DataBinding+Kodein构建MVVM开发框架
+-  基于ViewModel+DataBinding+Kodein构建MVVM开发框架
 -  基于Fuel+Kotlin Coroutine +fuel-jackson+MultiStateView构建网络请求、解析、显示框架
 -  基于couchbaseLite+sharepreferences+kotpref构建数据存储
 -  基于EventBus+接口回调构建Android的发布订阅事件和事件回调
@@ -118,7 +117,7 @@ __1-Android项目—脑训练(平板)__
 -  基于permissionsdispatcher管理app运行时动态权限
 -  基于LeakCanary检测应用内存泄漏
 -  Android 原生与 WebView(js)游戏交互
--  基于OpenCV实现人脸识别
+-  基于 OpenCV 实现人脸识别及登录功能
 
 **项目预览**
 
@@ -135,7 +134,7 @@ __2-Android项目—脑检测(平板)__
 **负责模块**：本地化、设备搜索配对、登录、设备连接、游戏练习、游戏、游戏结果、游戏报告等  
 **技术要点**：  
 
--  基于DataBinding+Kodein构建MVVM开发框架
+-  基于ViewModel+DataBinding+Kodein构建MVVM开发框架
 -  基于Fuel+Kotlin Coroutine +fuel-jackson+MultiStateView构建网络请求、解析、显示框架
 -  基于couchbaseLite+sharepreferences+kotpref构建数据存储
 -  基于EventBus+接口回调构建Android的发布订阅事件和事件回调
@@ -143,7 +142,7 @@ __2-Android项目—脑检测(平板)__
 -  基于permissionsdispatcher管理app运行时动态权限
 -  基于爱普生SDK打印结果报告
 -  基于qrcodeZxing识别二维码
--  基于OpenCV实现人脸识别
+-  基于 OpenCV 实现人脸识别及登录功能
 
 **项目预览**
 
@@ -160,14 +159,14 @@ __3-Android项目—记录App__
 **负责模块**：项目列表、登录、数据采集等  
 **技术要点**：  
 
--  基于DataBinding+Kodein构建MVVM开发框架
+-  基于ViewModel+DataBinding+Kodein构建MVVM开发框架
 -  基于Fuel+Kotlin Coroutine +fuel-jackson+MultiStateView构建网络请求、解析、显示框架
 -  基于EventBus+接口回调构建Android的发布订阅事件和事件回调
 -  自定义view实现自定义输入键盘和人脸识别时人脸识别区域
 -  基于permissionsdispatcher管理app运行时动态权限
 -  基于BluetoothKit进行蓝牙数据的连接和采集
 -  基于qrcodeZxing识别二维码
--  基于OpenCV实现人脸识别
+-  基于 OpenCV 实现人脸识别及登录功能
 
 **项目预览**
 
@@ -207,7 +206,7 @@ __5-微信小程序—日立健康__
 -  小程序动态权限处理(地理位置、录像、拍照)
 -  基于JS-SDK处理小程序与webview数据交互
 -  基于腾讯地图获取用户位置及显示地图组件
--  封装数据接口及必要数据存储读取
+-  封装网络接口请求及必要数据存储读取
 
 **项目预览**
 
@@ -370,7 +369,7 @@ __2-Android项目—E朝朝企业端__
 # 个人项目
 
 ## 一 [Flutter-WanAndroid ](https://github.com/PGzxc/flutter_wanandroid)
-**项目描述**：Flutter-WanAndroid是基于WanAndroid-API开发的一款支持Android/IOS跨平台项目。     
+**项目描述**：Flutter-WanAndroid 是基于 WanAndroid 网站开源的接口 API，利用 GetX 搭建网 络和网络框架+Google 开源 UI 库开发的一款支持 Android/IOS 跨平台项目。     
 **功能模块**：首页，导航，项目，消息，我，语言、主题   
 **技术要点**：
 
@@ -422,15 +421,15 @@ __2-Android项目—E朝朝企业端__
 # 技能清单
 
 ## Android
-1. 熟练掌握Android中四大组件、常用布局、动画、选择器，样式和主题的使用
-2. 熟悉Android设备不同屏幕及分别率差异并进行设备兼容适配
-3. 熟悉Android各个版本新特性及版本兼容性处理
-4. 熟练使用数据库及第三方框架：OrmLite、LitePal、GreenDao、Real在开发中的使用
+1. 有良好的 Java 语言基础，熟悉 Kotlin、Jetpack Compose、Flutter 等编程语言
+2. 熟悉常用的数据结构、算法和设计模式
+3. .熟悉 Android 构建框架 MVC、MVP 和 MVVM 的使用
+4. 熟练掌握 Android 设备不同屏幕、分辨率及 Android 版本并进行设备兼容适配
 5. 熟悉JNI开发，Java层调用C/CPP层实现具体的业务逻辑
-6. 熟悉Android性能和内存优化，解决异常、崩溃、内存溢出
-7. 熟悉Android构建框架 MVC、MVP和MVVM的使用
+6. 熟练使用三方框架：短信验证、三方登录、推送、地图、即时通讯、支付、直播视频等
+7. 熟悉 Android 性能优化及内存调优，解决启动、异常、崩溃、内存溢出等
 8. 熟悉 Android 原生与 WebView(js)交互的实现
-9. 熟悉Kotlin开发、Jetpack Compose、Lambda表达式、热修复、插件开发、换肤及传感器、NFC、蓝牙、支付等技术
+9. 熟悉 JNI(NDK)、热修复、插件开发、传感器、NFC、蓝牙等
 
 ## IOS
 1. 熟悉 Objective-C 与 Swift 语言，并依此进行项目开发
