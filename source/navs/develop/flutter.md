@@ -64,6 +64,16 @@ comments: false
 |  2   | [FlutterWhatsAppClone](https://github.com/iampawan/FlutterWhatsAppClone) |     WhatsApp      |
 |  3   | [flutter_wanandroid](https://github.com/Sky24n/flutter_wanandroid) |  wanandroid app   |
 
+## 六 开源Flutter UI套件
+
+| 编号 |                          名称(地址)                          |         说明         |
+| :--: | :----------------------------------------------------------: | :------------------: |
+|  1   | [Flutter UIKit](https://github.com/iampawan/Flutter-UI-Kit)  |   应用UI的最终集合   |
+|  2   | [Flutter-UI-nice](https://github.com/nb312/flutter-ui-nice)  |   超过130多个页面    |
+|  3   |       [Flukit](https://github.com/flutterchina/flukit)       | 一个Flutter UI组件库 |
+|  4   | [Flutter Dribble Challenge](https://github.com/singhbhavneet/Flutter-Dribbble-Challenge) |  初学者学习的UI项目  |
+|  5   | [Flutter UI Kits](https://github.com/leoelstin/Flutter-UI-Kits) |        UI套件        |
+
 
 
 [1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-learn-route/Flutter-Learning-route-1.jpg
