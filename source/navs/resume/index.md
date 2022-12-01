@@ -13,6 +13,7 @@ comments: false
 |  2   |  [木及简历](https://resume.mdedit.online/)  |      简历编辑      |
 |  3   | [Python作者](https://gvanrossum.github.io/) |        大神        |
 |  4   | [Hey，我是Korey](https://resume.flqin.com/) |        前端        |
+|  5   |    [下位子](http://xiaweizi.cn/resume/)     |    Android简历     |
 
 ## 二 简历指南
 
