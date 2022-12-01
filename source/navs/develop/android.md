@@ -25,7 +25,7 @@ comments: false
 
 ## 三 大牛博客
 
-| 编号 |                       名称(博客地址)                        |        说明        |
+| 编号 |                         名称(地址)                          |        说明        |
 | :--: | :---------------------------------------------------------: | :----------------: |
 |  0   | [简书-Google开发者](https://www.jianshu.com/u/301cd40bf3e6) | google官方技术文章 |
 |  1   |          [郭霖](https://blog.csdn.net/guolin_blog)          |     第一行代码     |
@@ -36,11 +36,11 @@ comments: false
 |  6   |         [徐医生](https://blog.csdn.net/eclipsexys)          |                    |
 |  7   |        [Mr.Simple](https://blog.csdn.net/bboyfeiyu)         |                    |
 |  8   |           [张兴业](https://blog.csdn.net/xyz_lmn)           |                    |
-|  9   | [灰信网](https://www.freesion.com/article/10361316005/)     |                    |
+|  9   |   [灰信网](https://www.freesion.com/article/10361316005/)   |                    |
 
 ## 四 代码仓库
 
-| 编号 |                        名称(博客地址)                        |      说明      |
+| 编号 |                          名称(地址)                          |      说明      |
 | :--: | :----------------------------------------------------------: | :------------: |
 |  1   |           [jcenter](https://jcenter.bintray.com/)            | 外网,网站关闭  |
 |  2   |         [MVNRepository](https://mvnrepository.com/)          |      常用      |
@@ -58,7 +58,7 @@ comments: false
 
 ## 六 图表控件
 
-| 编号 |                        名称(博客地址)                        |   说明   |
+| 编号 |                          名称(地址)                          |   说明   |
 | :--: | :----------------------------------------------------------: | :------: |
 |  1   | [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart)  | 功能最全 |
 |  2   | [WilliamChart](https://github.com/diogobernardino/WilliamChart) |          |
@@ -66,7 +66,7 @@ comments: false
 
 ## 七 底部导航
 
-| 编号 |                        名称(博客地址)                        |       说明        |
+| 编号 |                          名称(地址)                          |       说明        |
 | :--: | :----------------------------------------------------------: | :---------------: |
 |  1   | [BottomNavigationView](https://developer.android.google.cn/guide/navigation/navigation-ui) |  google官方控件   |
 |  2   | [BottomNavigation](https://github.com/Ashok-Varma/BottomNavigation) | GitHub上start最多 |
@@ -75,13 +75,13 @@ comments: false
 
 ## 八 序列化
 
-| 编号 |             名称(博客地址)             |            说明            |
+| 编号 |               名称(地址)               |            说明            |
 | :--: | :------------------------------------: | :------------------------: |
 |  1   | [quicktype](https://app.quicktype.io/) | 任意语言json序列化(在线转) |
 
 ## 九 Android热门课程
 
-| 编号 |                        名称(博客地址)                        |                说明                 |
+| 编号 |                          名称(地址)                          |                说明                 |
 | :--: | :----------------------------------------------------------: | :---------------------------------: |
 |  1   | [OpenCV入门到进阶：实战三大典型项目](https://coding.imooc.com/class/chapter/496.html#Anchor) | 车辆检测/人脸识别+图像拼接+文字识别 |
 |  2   | [FFmpeg音视频核心技术全面精讲](https://coding.imooc.com/class/chapter/279.html#Anchor) |                                     |
@@ -96,11 +96,16 @@ comments: false
 
 ## 十 源码
 
-| 编号 |             名称(博客地址)             |   说明   |
+| 编号 |               名称(地址)               |   说明   |
 | :--: | :------------------------------------: | :------: |
 |  1   | [AndroidxRef](http://androidxref.com/) | 源码查看 |
 
+## 十一 常用SDK
 
+| 编号 |                          名称(地址)                          |     说明      |
+| :--: | :----------------------------------------------------------: | :-----------: |
+|  1   | [阿里云-播放器]([SDK简介与下载 (aliyun.com)](https://help.aliyun.com/document_detail/51992.html)) | 视频点播+直播 |
+|  2   | [阿里云-号码认证](https://help.aliyun.com/document_detail/121113.html) | 号码一键登录  |
 
 
 
