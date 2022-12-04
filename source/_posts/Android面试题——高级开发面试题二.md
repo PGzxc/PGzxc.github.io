@@ -359,6 +359,7 @@ ANR(Application Not Responding)即应用程序无响应
 ## 三 参考
 
 * [java中多线程常见面试题_李大寶的博客-CSDN博客_多线程面试题](https://blog.csdn.net/libaowen609/article/details/125159135)
+* [继承Thread类、实现Runnable接口、实现Callable接口](https://blog.csdn.net/xixiyuguang/article/details/115161911)
 * [Java集合框架最全详解(看这篇就够了)](https://blog.csdn.net/m0_67322837/article/details/124322953)
 * [JAVA虚引用介绍](https://blog.csdn.net/baidu_37313657/article/details/104145199)
 * [封装、继承、多态 详解](https://blog.csdn.net/qq_49190652/article/details/124596001)
