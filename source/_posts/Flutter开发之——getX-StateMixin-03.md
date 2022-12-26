@@ -26,7 +26,7 @@ date: 2022-05-01 16:35:42
 * StateMixin\<T>中T是数据模型，比如User，StateMixin\<User>
 *  当数据模型的数据改变时(如：空/完成/出错等)时，调用个`change(data, status;`方法
 
-### 2.2  RxStatus中等状态
+### 2.2  RxStatus中的状态
 
 ```
 RxStatus.loading();
