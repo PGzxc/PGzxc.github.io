@@ -65,7 +65,7 @@ class AwesomeView extends GetView<AwesomeController> {
 
 ![][1]
 
-##三 GetResponsiveView示例
+## 三 GetResponsiveView示例
 
 ### 3.1 GetResponsiveView-Controller 控制器(控制器内容相同)
 
