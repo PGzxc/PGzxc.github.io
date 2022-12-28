@@ -15,7 +15,7 @@ date: 2020-10-19 23:49:15
 
 <!--more-->
 
-## 二 UITabBarController的简单实用
+## 二 UITabBarController的简单使用
 ### 2.1 UITabBarController的使用步骤
 
 * 初始化UITabBarController
