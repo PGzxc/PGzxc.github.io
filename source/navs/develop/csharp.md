@@ -11,5 +11,16 @@ comments: false
 | :--------: | :--------: |
 |   ![][1]   |   ![][2]   |
 
+
+## 一 教程
+
+| 编号 |                          名称(链接)                          |   备注   |
+| :--: | :----------------------------------------------------------: | :------: |
+|  1   | [菜鸟教程-C#教程](https://www.runoob.com/csharp/csharp-tutorial.html) | 菜鸟教程 |
+|  2   | [易百教程](https://www.yiibai.com/csharp/what-is-c-sharp.html) |          |
+
+
+
+
 [1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-learn-route/Csharp-Learning-route-1.jpg
 [2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-learn-route/Csharp-Learning-route-2.jpg
