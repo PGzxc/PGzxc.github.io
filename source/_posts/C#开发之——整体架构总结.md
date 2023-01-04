@@ -1,5 +1,5 @@
 ---
-title: C#开发之——C#架构图总结
+title: C#开发之——整体架构总结
 categories:
   - 开发
   - E-桌面开发
