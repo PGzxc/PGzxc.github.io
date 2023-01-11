@@ -25,7 +25,6 @@ date: 2023-01-11 11:05:09
 ### 2.1 生命周期&生命周期函数
 
 * <font color=red>生命周期</font>（Life Cycle）是指一个组件从<font color=red>创建</font>-> <font color=red>运行</font> -> <font color=red>销毁</font>的整个阶段，<font color=red>强调的是一个时间段</font>。
-
 * <font color=red>生命周期函数</font>：是由 vue 框架提供的<font color=red>内置函数</font>，会伴随着组件的生命周期，<font color=red>自动按次序执行</font>。
 
 注意：<font color=red>生命周期</font>强调的是<font color=red>时间段</font>，<font color=red>生命周期函数</font>强调的是<font color=red>时间点</font>
