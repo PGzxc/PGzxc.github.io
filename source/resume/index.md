@@ -423,7 +423,7 @@ __2-Android项目—E朝朝企业端__
 ## Android
 1. 有良好的 Java 语言基础，熟悉 Kotlin、Jetpack Compose、Flutter 等编程语言
 2. 熟悉常用的数据结构、算法和设计模式
-3. .熟悉 Android 构建框架 MVC、MVP 和 MVVM 的使用
+3. 熟悉 Android 构建框架 MVC、MVP 和 MVVM 的使用
 4. 熟练掌握 Android 设备不同屏幕、分辨率及 Android 版本并进行设备兼容适配
 5. 熟悉JNI开发，Java层调用C/CPP层实现具体的业务逻辑
 6. 熟练使用三方框架：短信验证、三方登录、推送、地图、即时通讯、支付、直播视频等
@@ -432,14 +432,21 @@ __2-Android项目—E朝朝企业端__
 9. 熟悉 JNI(NDK)、热修复、插件开发、传感器、NFC、蓝牙等
 
 ## IOS
-1. 熟悉 Objective-C 与 Swift 语言，并依此进行项目开发
-2. 掌握 iOS 开发中用代码与Storyboard实现 UI
-3. 熟悉网络通信，数据库等的基础知识
-4. 掌握 XCode 常用的调试技巧与测试方法
-5. 懂得 iOS 性能优化的常见思路。
-6. 熟悉IOS动画
-7. 熟悉多线程开发
-8. 熟悉网络请求及上传及下载
+1. 熟练掌握Object-C、Swift及其混用
+2. 熟练使用Core Animation、UIView开发动画
+3. 熟练并掌握H5与iOS原生交互
+4. 熟悉并掌握多线程技术，如 NSThread、GCD、NSOpeartion
+5. 熟练使用支付宝支付、微信支付、银联支付等多种支付方式
+6. 熟悉APP上架的流程及访问真机设备的能力
+7. 熟练使用AFNetworking、SDWebImage,Masonry第三方框架
+8. 熟练掌握百度地图、高德地图的定位、导航、自定义标注、地理编码等功能
+9. 熟悉常用的设计模式，如MVVM模式、代理模式、单例模式、观察者模式等设计模式
+10. 可直接阅读 apple developer 官方文档
+11. 熟练使用推送通知，自定义消息的处理
+12. 掌握Instruments leaks内存检测以及单元测试提升程序的稳定性
+13. 熟悉 SourceTree、Github 代码管理工具,jenkins可持续开发
+14. 熟悉MRC、ARC内存管理机制
+15. 熟练运用runtime，理解runloop原理
 
 ## 微信小程序
 1. 熟练掌握标记语言、样式表、JS，进行功能开发
