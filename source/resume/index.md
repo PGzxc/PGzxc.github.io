@@ -265,6 +265,12 @@ __1-Android项目—听呗FM直播__
 -  基于MultiThreadDownloader歌曲文件的离线下载
 -  其他第三方组件如：直播流歌曲识别、弹幕、Glide、微信支付、分享、定位等
 
+**项目预览**
+
+| ![][tinber-1] | ![][tinber-2]|![][tinber-3]|
+| --------------| ------------ | ----------- |
+| ![][tinber-4] | ![][tinber-5]|             |
+
 __2-Android项目—听呗众包__   
 **项目描述**：听呗众包是听呗FM分类中的一个专辑，包含专辑列表，节目播放，节目下载，设置等功能；目前众包项目有：《宝贝听睡前故事》、《相声大全》等9个。   
 **功能模块**：专辑列表、播放、滑动切换节目、节目下载、缓存清理、定时关闭、设置等  
@@ -665,3 +671,10 @@ __2-Android项目—E朝朝企业端__
 [xj-20]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_team_detail.jpg
 [xj-21]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_team_player.jpg
 [xj-22]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_update.jpg
+
+<!--android-听呗FM-->
+[tinber-1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/tinber-fm-activity.jpg
+[tinber-2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/tinber-fm-category.jpg
+[tinber-3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/tinber-fm-radio.jpg
+[tinber-4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/tinber-fm-red.jpg
+[tinber-5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/tinber-fm-story.jpg
