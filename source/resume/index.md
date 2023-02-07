@@ -462,6 +462,18 @@ __2-Android项目—E朝朝企业端__
 6. 熟悉小程序动画即画布Canvas绘制
 7. 熟悉小程序第三方SDK使用
 
+## 前端
+
+1. 精通HTML+CSS,HTML5+CSS3,弹性盒子布局模式等前端web开发技术
+2. 熟悉使用jQuery、ajax，完成服务器交互，页面动画效果
+3. 熟悉使用Bootstrap，Element-ui，Vant,Swiper等插件
+4. 熟悉使用vue框架、vue-router、axios、vue-cli脚手架
+5. 熟悉使用Git控制工具进行项目开发
+6. 熟悉微信小程序开发
+7. 熟悉css常用预处理器sass
+8. 了解前端打包工具webPack,包管理器npm,cnpm,yarn
+
+
 ## C#
 
 1. 熟练掌握基于C#语言.NET框架下的ASP.NET和WinForm应用的开发
