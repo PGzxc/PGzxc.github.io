@@ -498,18 +498,6 @@ __2-Android项目—E朝朝企业端__
 * 熟悉webview-flutter进行网页加载及显示
 * 了解Flutter与Android及IOS混合开发
 
-##  笼统
-
--  具备扎实的Java编程基础
--  熟练掌握C、C++编程语言
--  熟练掌握Android编程知识
--  熟悉常用SDK及第三方库
--  熟悉链式编程Rx、Kotlin、Anko开发
--  熟悉常用的设计模式、数据结构
--  熟悉Git、SVN等版本管理工具
--  熟悉React Native、Object-C、Swift
--  了解逆向与安全防护
-
 ---
 # 微信公众号
 ![weixin][1]
