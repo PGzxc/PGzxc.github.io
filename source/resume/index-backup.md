@@ -1,14 +1,15 @@
 ---
-title: 我的简历
+title: 简历
 date: 2021-11-26 16:51:58
 type: "resume"
 comments: false  
 ---
 <!--简历下载位置-->
 
-|        Android简历         |        IOS简历         |        Flutter简历         |         前端简历         |        NET简历         |        完整简历         |
-| :------------------------: | :--------------------: | :------------------------: | :----------------------: | :--------------------: | :---------------------: |
-| [点击下载][resume-android] | [点击下载][resume-ios] | [点击下载][resume-flutter] | [点击下载][resume-front] | [点击下载][resume-net] | [点击下载][resume-inex] |
+<div style="display: flex; flex-direction:row;justify-content:center; font-size: x-large;font-weight: bold;">
+   <a style="margin-right: 20px;padding:0px 10px 0px 10px; " href="./周向成_Android开发工程师.pdf" download="pdf">我的简历</a>
+   <a style="padding:0px 10px 0px 10px; " href="./index.pdf" download="index.pdf">本页简历</a>
+</div>
 
 # 联系方式
 
@@ -504,13 +505,7 @@ __2-Android项目—E朝朝企业端__
 感谢您花时间阅读我的简历，期待能有机会和您共事。
 
 [1]: ../images/wechat-public-number.png
-<!--简历下载地址-->
-[resume-android]:folder/周向成_Android开发工程师.pdf
-[resume-ios]:folder/周向成_IOS开发工程师.pdf
-[resume-flutter]:folder/周向成_Flutter开发工程师.pdf
-[resume-front]:folder/周向成_前端开发工程师.pdf
-[resume-net]:folder/周向成_NET开发工程师.pdf
-[resume-inex]:folder/index.pdf
+
 <!--C#-->
 [c-sharp-1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/justTap-id-1.png
 [c-sharp-2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/justTap-login-2.png
