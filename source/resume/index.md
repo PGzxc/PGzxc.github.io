@@ -507,11 +507,12 @@ __2-Android项目—E朝朝企业端__
 
 [1]: ../images/wechat-public-number.png
 <!--简历下载地址-->
-[resume-android]:folder/周向成_Android开发工程师.pdf
-[resume-ios]:folder/周向成_IOS开发工程师.pdf
-[resume-flutter]:folder/周向成_Flutter开发工程师.pdf
-[resume-front]:folder/周向成_前端开发工程师.pdf
-[resume-net]:folder/周向成_NET开发工程师.pdf
+
+[resume-android]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/folder/周向成_Android开发工程师.pdf
+[resume-ios]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/folder/周向成_IOS开发工程师.pdf
+[resume-flutter]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/folder/周向成_Flutter开发工程师.pdf
+[resume-front]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/folder/周向成_前端开发工程师.pdf
+[resume-net]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/folder/周向成_NET开发工程师.pdf
 [resume-inex]:folder/index.pdf
 <!--C#-->
 [c-sharp-1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/justTap-id-1.png
