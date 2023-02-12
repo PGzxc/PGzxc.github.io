@@ -97,6 +97,27 @@ pub finished with exit code 1
 
 管理员模式下启动IDE或CMD，然后执行`Pub get`等
 
+### 3.2 Could not get unknown property 'ndkVersion'
+
+#### 现象
+
+```
+Could not get unknown property 'ndkVersion' for object of type com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+```
+
+#### 解决办法
+
+在flutter-3.7.3\packages\flutter_tools\gradle\flutter.gradle配置如下
+
+```
+int pluginCompileSdkVersion = pluginProject.android.compileSdkVersion.substring(8) as int
+maxPluginCompileSdkVersion = Math.max(pluginCompileSdkVersion,maxPluginCompileSdkVersion)
+ //String pluginNdkVersion = pluginProject.android.ndkVersion ?: ndkVersionIfUnspecified
+String pluginNdkVersion =  ndkVersionIfUnspecified
+```
+
+说明：`pluginProject.android.ndkVersion ?: ndkVersionIfUnspecified`替换为`ndkVersionIfUnspecified`
+
 ## 四 参考
 * [入门: 在Windows上搭建Flutter开发环境](https://flutterchina.club/setup-windows/)
 * [flutter-Issues-windows-version](https://github.com/flutter/flutter/issues/119927)
