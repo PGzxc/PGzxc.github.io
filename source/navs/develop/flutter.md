@@ -73,6 +73,7 @@ comments: false
 |  3   |       [Flukit](https://github.com/flutterchina/flukit)       | 一个Flutter UI组件库 |
 |  4   | [Flutter Dribble Challenge](https://github.com/singhbhavneet/Flutter-Dribbble-Challenge) |  初学者学习的UI项目  |
 |  5   | [Flutter UI Kits](https://github.com/leoelstin/Flutter-UI-Kits) |        UI套件        |
+|  6   | [getwidget-app-kit](https://github.com/ionicfirebaseapp/getwidget-app-kit) |   getWidget工具包    |
 
 
 
