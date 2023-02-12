@@ -82,7 +82,20 @@ flutter upgrade
 
 ## 三 项目开发中
 
+### 3.1 Pub failed to delete entry ...
 
+#### 现象
+
+```
+Pub failed to delete entry because it was in use by another process.
+This may be caused by a virus scanner or having a file
+in the directory open in another application.
+pub finished with exit code 1
+```
+
+#### 解决办法
+
+管理员模式下启动IDE或CMD，然后执行`Pub get`等
 
 ## 四 参考
 * [入门: 在Windows上搭建Flutter开发环境](https://flutterchina.club/setup-windows/)
