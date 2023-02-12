@@ -118,6 +118,38 @@ String pluginNdkVersion =  ndkVersionIfUnspecified
 
 说明：`pluginProject.android.ndkVersion ?: ndkVersionIfUnspecified`替换为`ndkVersionIfUnspecified`
 
+### 3.3 AndroidManifest.xml could not be found.
+
+#### 现象
+
+```
+AndroidManifest.xml could not be found.
+Please check D:\Code\FlutterCode\FlutterScreens-master\android\AndroidManifest.xml for errors.
+No application found for TargetPlatform.android_x64.
+Is your project missing an android\AndroidManifest.xml?
+Consider running "flutter create ." to create one.
+```
+
+#### 解决办法(打开终端执行如下指令)
+
+```
+flutter create .
+```
+
+### 3.4 "FlutterScreens-master" is not a valid Dart package name
+
+#### 现象
+
+```
+"FlutterScreens-master" is not a valid Dart package name.
+
+See https://dart.dev/tools/pub/pubspec#name for more information.
+```
+
+#### 解决办法
+
+dart package name 必须全部小写命名，由数字、小写字母、下划线组成，对应的正则表达式为 [a-z0-9_]
+
 ## 四 参考
 * [入门: 在Windows上搭建Flutter开发环境](https://flutterchina.club/setup-windows/)
 * [flutter-Issues-windows-version](https://github.com/flutter/flutter/issues/119927)
