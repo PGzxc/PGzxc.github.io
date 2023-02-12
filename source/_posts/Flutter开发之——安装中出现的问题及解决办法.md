@@ -60,7 +60,7 @@ Android Studio的安装目录中"没有jre文件夹或jre下文件不完整"
 
 #### 解决办法
 
-将**JDK文件**丢到**Android Studio安装目录**的**"jre"文件夹**中即可
+将**JDK文件**丢到**Android Studio安装目录**的"jre"文件夹中即可
 
 
 ## 三 项目开发中
