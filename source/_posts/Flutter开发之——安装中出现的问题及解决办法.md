@@ -62,13 +62,31 @@ Android Studio的安装目录中"没有jre文件夹或jre下文件不完整"
 
 将**JDK文件**丢到**Android Studio安装目录**的"jre"文件夹中即可
 
+### 2.3 flutter doctor——Windows Version
+
+#### 现象
+![][6]
+
+#### 解决办法
+
+执行如下指令
+
+```
+flutter channel master
+flutter upgrade
+```
+
+官方给出解释
+![][7]
+
 
 ## 三 项目开发中
 
 
 
 ## 四 参考
-[入门: 在Windows上搭建Flutter开发环境](https://flutterchina.club/setup-windows/)
+* [入门: 在Windows上搭建Flutter开发环境](https://flutterchina.club/setup-windows/)
+* [flutter-Issues-windows-version](https://github.com/flutter/flutter/issues/119927)
 
 
 [1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-bits-transfer.png
@@ -76,3 +94,5 @@ Android Studio的安装目录中"没有jre文件夹或jre下文件不完整"
 [3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-running-pub-update.png
 [4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-proxy-config-after.png
 [5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-doctor-bundle-java-error.png
+[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-doctor-windows-version-error.png
+[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-doctor-unable-to-confirm-resolve.png
