@@ -174,6 +174,23 @@ environment:
 2-File—>Setting—>Languages& Frameworks—>Flutter重新指定Flutter SDK path
 ![][8]
 
+### 3.6 Android Gradle plugin requires Java 11 to run
+
+#### 现象
+
+```
+Android Gradle plugin requires Java 11 to run. You are currently using Java 1.8.
+You can try some of the following options:
+  - changing the IDE settings.
+  - changing the JAVA_HOME environment variable.
+  - changing `org.gradle.java.home` in `gradle.properties`.
+Gradle settings
+```
+
+#### 解决办法
+
+点击`Gradle settings`重新选择java版本
+
 ## 四 参考
 * [入门: 在Windows上搭建Flutter开发环境](https://flutterchina.club/setup-windows/)
 * [flutter-Issues-windows-version](https://github.com/flutter/flutter/issues/119927)
