@@ -150,6 +150,30 @@ See https://dart.dev/tools/pub/pubspec#name for more information.
 
 dart package name 必须全部小写命名，由数字、小写字母、下划线组成，对应的正则表达式为 [a-z0-9_]
 
+### 3.5 pubspec.yaml has no lower-bound SDK constraint
+
+#### 现象
+
+```
+pubspec.yaml has no lower-bound SDK constraint.
+You should edit pubspec.yaml to contain an SDK constraint:
+
+environment:
+  sdk: '^2.12.0'
+```
+
+#### 解决办法
+
+1-pubspec.yaml中设置sdk版本
+
+```
+environment:
+  sdk: '>=2.16.2 <3.0.0'
+```
+
+2-File—>Setting—>Languages& Frameworks—>Flutter重新指定Flutter SDK path
+![][8]
+
 ## 四 参考
 * [入门: 在Windows上搭建Flutter开发环境](https://flutterchina.club/setup-windows/)
 * [flutter-Issues-windows-version](https://github.com/flutter/flutter/issues/119927)
@@ -162,3 +186,4 @@ dart package name 必须全部小写命名，由数字、小写字母、下划�
 [5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-doctor-bundle-java-error.png
 [6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-doctor-windows-version-error.png
 [7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-doctor-unable-to-confirm-resolve.png
+[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-running-error-sdk-lower.png
