@@ -211,11 +211,28 @@ Caused by: java.lang.ClassNotFoundException: java.util.logging.Level
 
 ```
 
-#### 解决
+#### 解决办法
 
 jdk不完整，替换Android Studio下的jre
 
+### 3.8 You need Java 11 or higher to build your app with this version of Gradle
 
+#### 现象
+
+```
+┌─ Flutter Fix ─────────────────────────────────────────────────────────────────┐
+│ [!] You need Java 11 or higher to build your app with this version of Gradle. │
+│                                                                               │
+│ To get Java 11, update to the latest version of Android Studio on             │
+│ https://developer.android.com/studio/install.                                 │
+│                                                                               │
+│ To check the Java version used by Flutter, run `flutter doctor -v`.           │
+└───────────────────────────────────────────────────────────────────────────────┘
+```
+
+#### 解决办法
+
+Android Studio下的jre为高版本jre(大于等于11)
 
 ## 四 参考
 * [入门: 在Windows上搭建Flutter开发环境](https://flutterchina.club/setup-windows/)
