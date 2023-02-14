@@ -191,6 +191,32 @@ Gradle settings
 
 点击`Gradle settings`重新选择java版本
 
+### 3.7 java.lang.NoClassDefFoundError: java/util/logging/Level
+
+#### 现象
+
+```
+java.lang.NoClassDefFoundError: java/util/logging/Level
+	at org.gradle.internal.logging.source.JavaUtilLoggingSystem.<clinit>(JavaUtilLoggingSystem.java:42)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.gradle.wrapper.BootstrapMainStarter.start(BootstrapMainStarter.java:30)
+	at org.gradle.wrapper.WrapperExecutor.execute(WrapperExecutor.java:129)
+	at org.gradle.wrapper.GradleWrapperMain.main(GradleWrapperMain.java:61)
+Caused by: java.lang.ClassNotFoundException: java.util.logging.Level
+	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:445)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:588)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:521)
+	... 30 more
+
+```
+
+#### 解决
+
+jdk不完整，替换Android Studio下的jre
+
+
+
 ## 四 参考
 * [入门: 在Windows上搭建Flutter开发环境](https://flutterchina.club/setup-windows/)
 * [flutter-Issues-windows-version](https://github.com/flutter/flutter/issues/119927)
