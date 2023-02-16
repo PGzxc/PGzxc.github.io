@@ -234,6 +234,43 @@ jdk不完整，替换Android Studio下的jre
 
 Android Studio下的jre为高版本jre(大于等于11)
 
+### 3.9 RenderCustomMultiChildLayoutBox object was given an infinite size during layout
+
+#### 现象
+
+```
+RenderCustomMultiChildLayoutBox object was given an infinite size during layout.
+
+...  parentData: not positioned; offset=Offset(0.0, 0.0) (can use size)
+...  constraints: BoxConstraints(0.0<=w<=392.7, 0.0<=h<=827.6)
+...  size: MISSING
+...  direction: vertical
+...  mainAxisAlignment: start
+...  mainAxisSize: max
+...  crossAxisAlignment: center
+...  verticalDirection: down
+The constraints that applied to the RenderCustomMultiChildLayoutBox were: BoxConstraints(0.0<=w<=392.7, 0.0<=h<=Infinity)
+The exact size it was given was: Size(392.7, Infinity)
+
+See https://flutter.dev/docs/development/ui/layout/box-constraints for more information.
+
+The relevant error-causing widget was: 
+  Scaffold Scaffold:file:///D:/Code/FlutterCode/flutter_zhihu_getX/lib/provider/refresh/refresh_paging_state_page.dart:80:12
+When the exception was thrown, this was the stack: 
+#0      RenderBox.debugAssertDoesMeetConstraints.<anonymous closure> (package:flutter/src/rendering/box.dart:2298:9)
+#1      RenderBox.debugAssertDoesMeetConstraints (package:flutter/src/rendering/box.dart:2394:6)
+#2      RenderBox.size=.<anonymous closure> (package:flutter/src/rendering/box.dart:2074:7)
+#3      RenderBox.size= (package:flutter/src/rendering/box.dart:2076:6)
+#4      RenderCustomMultiChildLayoutBox.performLayout (package:flutter/src/rendering/custom_layout.dart:409:5)
+#5      RenderObject.layout (package:flutter/src/rendering/object.dart:2189:7)
+#6      RenderBox.layout (package:flutter/src/rendering/box.dart:2430:11)
+#7      RenderProxyBoxMixin.performLayout (package:flutter/src/rendering/proxy_box.dart:120:14)
+```
+
+#### 解决办法
+
+根据定位，找到`RenderCustomMultiChildLayoutBox`报错位置，把试图Widget包在一个Expanded布局里，然后设置flex:1,将Column展开，就解决了这个问题
+
 ## 四 参考
 * [入门: 在Windows上搭建Flutter开发环境](https://flutterchina.club/setup-windows/)
 * [flutter-Issues-windows-version](https://github.com/flutter/flutter/issues/119927)
