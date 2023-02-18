@@ -271,6 +271,40 @@ When the exception was thrown, this was the stack:
 
 根据定位，找到`RenderCustomMultiChildLayoutBox`报错位置，把试图Widget包在一个Expanded布局里，然后设置flex:1,将Column展开，就解决了这个问题
 
+### 3.10 'child.hasSize': is not true
+
+#### 现象
+
+```
+RenderBox was not laid out: RenderViewport#2c443 NEEDS-LAYOUT NEEDS-PAINT NEEDS-COMPOSITING-BITS-UPDATE
+'package:flutter/src/rendering/box.dart':
+Failed assertion: line 2009 pos 12: 'hasSize'
+```
+
+#### 解决办法
+
+给GridView或ListView设置`shrinkWrap`属性为`true`
+
+### 3.11 SingleChildScrollView嵌套ListView无法滚动
+
+#### 现象
+
+SingleChildScrollView中有一个ListView，导致SingleChildScrollView无法滚动
+
+#### 原因
+
+因为listview和SingleChildScrollView都有scroll
+
+#### 解决办法
+
+需停止listview的滚动，在listview中加入
+
+```
+physics: NeverScrollableScrollPhysics()
+```
+
+
+
 ## 四 参考
 * [入门: 在Windows上搭建Flutter开发环境](https://flutterchina.club/setup-windows/)
 * [flutter-Issues-windows-version](https://github.com/flutter/flutter/issues/119927)
