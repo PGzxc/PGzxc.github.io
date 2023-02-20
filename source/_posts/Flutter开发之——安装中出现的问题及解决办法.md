@@ -303,6 +303,41 @@ SingleChildScrollView中有一个ListView，导致SingleChildScrollView无法滚
 physics: NeverScrollableScrollPhysics()
 ```
 
+### 3.12 don't support null safety
+
+#### 现象
+
+```
+Error: Cannot run with sound null safety, because the following dependencies
+don't support null safety:
+
+ - package:flutter_tindercard
+
+For solutions, see https://dart.dev/go/unsound-null-safety
+Target kernel_snapshot failed: Exception
+```
+
+#### 原因
+
+这是因为在flutter**2**中使用了null safety(空安全)技术，即定义的所有变量在使用中都不能为空null,如果出现null,就会报错.这种安全机制大大减少了null error。
+
+#### 解决办法
+
+但是在一些框架中并没有使用空安全技术，所以在我们引入第三方框架运行后就会出现以上错误，这个时候的解决方法如下
+
+方法一：cmd终端执行如下指令：
+
+```
+flutter run --no-sound-null-safety
+flutter build apk --no-sound-null-safety
+```
+
+方法2：Run/Debug Configurations的Additional run args：中添加如下参数
+
+```
+--no-sound-null-safety
+```
+
 
 
 ## 四 参考
