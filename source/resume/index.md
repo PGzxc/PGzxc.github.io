@@ -26,7 +26,7 @@ comments: false
 # 求职意向
 
 - 工作性质：全职
-- 期望职位：Android开发工程师、IOS开发工程师、Flutter开发工程师、前端开发工程师、.NET开发工程师等
+- 期望职位：Android开发工程师、Flutter开发工程师、IOS开发工程师、前端开发工程师、.NET开发工程师等
 - 期望薪资：面议
 - 工作地点：北京
 
@@ -374,7 +374,7 @@ __2-Android项目—E朝朝企业端__
 # 个人项目
 
 ## 一 [Flutter-WanAndroid ](https://github.com/PGzxc/flutter_wanandroid)
-**项目描述**：Flutter-WanAndroid 是基于 WanAndroid 网站开源的接口 API，利用 GetX 搭建网 络和网络框架+Google 开源 UI 库开发的一款支持 Android/IOS 跨平台项目。     
+**项目描述**：Flutter-WanAndroid 是基于 WanAndroid 网站开源的接口 API制作的一款开源App。本项目基于 GetX +一系列开源 UI 库开发的一款支持 Android/IOS 跨平台项目。     
 **功能模块**：首页，导航，项目，消息，我，语言、主题   
 **技术要点**：
 
@@ -421,7 +421,7 @@ __2-Android项目—E朝朝企业端__
 
 
 ## 三 [Android-直播Live ](https://github.com/PGzxc/Live)
-**项目描述**：直播Live是一款仿映客直播软件，为个人业余项目。整体界面仿映客布局，包含首页、附近、直播、关注和我，因时间有限，仅实现部分主要功能，待后期完善。     
+**项目描述**：直播Live是一款仿映客直播软件，为个人业余开源项目。整体界面仿映客布局，包含首页、附近、直播、关注和我，因时间有限，仅实现部分主要功能，待后期完善。     
 **功能模块**：首页，附近、直播、关注、我等   
 **技术要点**：
 
