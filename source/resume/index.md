@@ -397,6 +397,28 @@ __2-Android项目—E朝朝企业端__
 | ![][w-9] | ![][w-10] | ![][w-11]| ![][w-12]|
 | ![][w-13]| ![][w-14] | ![][w-15]| ![][w-16]|
 
+## 二 [Flutter-zhihu-getx](https://github.com/PGzxc/flutter_zhihu_getx)
+
+**项目描述**：Flutter-zhihu-getx是仿制知乎app开发的个人项目。利用 GetX 搭建网络和网络框架+Google 开源 UI 库开发的一款支持 Android/IOS 跨平台项目。     
+**功能模块**：首页、关注、发布、会员、我的   
+**技术要点**：
+
+- 基于GetX+nav_sheet构建项目开发框架
+- 基于GetX将视图View和控制器Controller分隔开，并通过bindings将两者结合
+- 基于flutter_pulltorefresh实现下拉刷新和上拉加载
+- 基于staggered_grid_view实现错开显示的图片列表
+- 基于flutter_quill实现富文本编辑器
+- 基于flutter_tindercard实现滑动移除上一张获取下一张卡片信息
+- 基于KeepAliveWrapper进行列表项缓存，防止多次加载
+- 基于getwidget、remixicon、font_awesome_flutter实现项目中的图标和组件
+
+**项目预览**
+
+| ![][zh-1] | ![][zh-2]  | ![][zh-3] | ![][zh-4] |
+| --------- | ---------- | --------- | --------- |
+| ![][zh-5] | ![][zh-6]  | ![][zh-7] | ![][zh-8] |
+| ![][zh-9] | ![][zh-10] |           |           |
+
 
 ## 二 [Android-直播Live ](https://github.com/PGzxc/Live)
 **项目描述**：直播Live是一款仿映客直播软件，为个人业余项目。整体界面仿映客布局，包含首页、附近、直播、关注和我，因时间有限，仅实现部分主要功能，待后期完善。     
@@ -656,6 +678,17 @@ __2-Android项目—E朝朝企业端__
 [w-15]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/w_article_webpage.png
 [w-16]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/w_message_webpage.png
 
+<!--自己的项目-flutter-zhihu-->
+[zh-1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/zh-home-idea.png
+[zh-2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/zh-home-idea-refresh.png
+[zh-3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/zh-home-recommend.png
+[zh-4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/zh-home-hot-rank.png
+[zh-5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/zh-home-pub.png
+[zh-6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/zh-focus.png
+[zh-7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/zh-vip-find.png
+[zh-8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/zh-me-unlogin.png
+[zh-9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/zh-me-login.png
+[zh-10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/zh-user-login.png
 <!--西甲-->
 [xj-1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_home.jpg
 [xj-2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/xj_schedule.jpg
