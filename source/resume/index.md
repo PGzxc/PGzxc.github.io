@@ -420,7 +420,7 @@ __2-Android项目—E朝朝企业端__
 | ![][zh-9] | ![][zh-10] |           |           |
 
 
-## 二 [Android-直播Live ](https://github.com/PGzxc/Live)
+## 三 [Android-直播Live ](https://github.com/PGzxc/Live)
 **项目描述**：直播Live是一款仿映客直播软件，为个人业余项目。整体界面仿映客布局，包含首页、附近、直播、关注和我，因时间有限，仅实现部分主要功能，待后期完善。     
 **功能模块**：首页，附近、直播、关注、我等   
 **技术要点**：
