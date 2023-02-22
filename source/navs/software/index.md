@@ -44,6 +44,7 @@ comments: false
 | :--: | :----------------------------------------------------------: | :-------: |
 |  1   |       [I Tell You-Windows](https://msdn.itellyou.cn/)        | 系统+工具 |
 |  2   | [微软官方系统](https://www.microsoft.com/zh-cn/software-download/windows10) |           |
+|  3   | [Microsoft-Activation-Scripts](https://github.com/massgravel/Microsoft-Activation-Scripts/releases) | 系统激活  |
 ### Mac
 
 | 编号 |                         名称(地址)                          | 备注 |
