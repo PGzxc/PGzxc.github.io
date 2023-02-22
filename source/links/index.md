@@ -15,6 +15,7 @@ initcool | https://blog.nmslwsnd.com | 打倒了100个四大魔公的男人! | h
 MuJin's Blog | https://xiabor.com | 君浅吟，叹落笔 | https://xiabor.com/img/avatar.png
 Jing Blog | https://jingine.com | 一个爱折腾的海外党，生活、技术、主机游戏、创业 | https://jingine.com/wp-content/uploads/2020/12/logo.png
 郑羊羊 | https://zanjie1999.github.io/ | 郑羊羊咩的窝 | https://zyyme.com/usr/themes/zyymeTheme/screenshot.png
+miniLV Blog | https://zanjie1999.github.io/ | IOS开发者 | https://minilv.github.io/img/avatar-lyh.jpg
 
 {% endlinkgrid %}
 
