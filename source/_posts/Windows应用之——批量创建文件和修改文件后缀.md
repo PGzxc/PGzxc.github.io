@@ -1,5 +1,5 @@
 ---
-title: Windows开发之——批量创建文件和修改文件后缀
+title: Windows应用之——批量创建文件和修改文件后缀
 categories:
   - 系统
   - Windows

@@ -1,5 +1,5 @@
 ---
-title: Windows工具之——动态壁纸软件lively
+title: Windows应用之——动态壁纸软件lively
 categories:
   - 系统
   - Windows

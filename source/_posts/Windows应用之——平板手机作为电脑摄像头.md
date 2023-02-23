@@ -1,5 +1,5 @@
 ---
-title: Windows开发之——平板手机作为电脑摄像头
+title: Windows应用之——平板手机作为电脑摄像头
 categories:
   - 系统
   - Windows

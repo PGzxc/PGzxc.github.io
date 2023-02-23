@@ -1,5 +1,5 @@
 ---
-title: Windows开发之——软件环境变量及配置
+title: Windows应用之——软件环境变量及配置
 categories:
   - 系统
   - Windows

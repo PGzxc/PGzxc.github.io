@@ -1,5 +1,5 @@
 ---
-title: Windows开发之——网络连接工具ping、telnet、tracert、rout
+title: Windows应用之——网络连接工具ping、telnet、tracert、rout
 categories:
   - 系统
   - Windows

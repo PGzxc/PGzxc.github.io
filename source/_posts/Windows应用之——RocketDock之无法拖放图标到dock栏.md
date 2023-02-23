@@ -1,5 +1,5 @@
 ---
-title: Windows软件之——RocketDock之无法拖放图标到dock栏
+title: Windows应用之——RocketDock之无法拖放图标到dock栏
 categories:
   - 系统
   - Windows

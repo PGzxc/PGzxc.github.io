@@ -1,5 +1,5 @@
 ---
-title: Windows开发之——超好用的快速搜索工具
+title: Windows应用之——超好用的快速搜索工具
 categories:
   - 系统
   - Windows

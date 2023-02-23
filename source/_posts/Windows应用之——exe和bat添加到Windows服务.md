@@ -1,5 +1,5 @@
 ---
-title: Windows开发之——exe和bat添加到Windows服务
+title: Windows应用之——exe和bat添加到Windows服务
 categories:
   - 系统
   - Windows
