@@ -98,3 +98,11 @@ comments: false
 |  1   | [IDM](http://www.internetdownloadmanager.com/) | 多线程+网页下载 |
 |  2   |        [迅雷](https://www.xunlei.com/)         |                 |
 
+## 10 ChatGPT
+
+| 编号 |                          名称及地址                          |      说明      |
+| :--: | :----------------------------------------------------------: | :------------: |
+|  1   |              [https://xc.com/](https://xc.com/)              |  内网指令输入  |
+|  2   | [lencx](https://github.com/lencx)/**[ChatGPT](https://github.com/lencx/ChatGPT)** |  Github客户端  |
+|  3   |      [ChatGPT验证码购买](https://sms-activate.org/buy)       | 短信验证码接收 |
+
