@@ -7,9 +7,10 @@ comments: false
 
 ## 一 综合资源
 
-| 编号 |                          名称(地址)                          |      备注      |
-| :--: | :----------------------------------------------------------: | :------------: |
-|  1   | [Funletu-资源Download](https://funletu.com/category/resource-download/) | 教程+软件+游戏 |
+| 编号 |                          名称(地址)                          |          备注          |
+| :--: | :----------------------------------------------------------: | :--------------------: |
+|  1   | [Funletu-资源Download](https://funletu.com/category/resource-download/) |     教程+软件+游戏     |
+|  2   |           [QiuQuan's Blog](http://www.qiuquan.cc/)           | 电脑软件+安卓+单机游戏 |
 
 ## 二 开发教程
 
