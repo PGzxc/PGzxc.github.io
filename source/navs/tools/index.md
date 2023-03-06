@@ -23,9 +23,10 @@ comments: false
 
 ## 三 插件
 
-| 编号 |                          名称(地址)                          |   备注   |
-| :--: | :----------------------------------------------------------: | :------: |
-|  1   | [Chrome扩展程序安装包下载](https://chrome-extension-downloader.com/) | 离线下载 |
+| 编号 |                          名称(地址)                          |          备注          |
+| :--: | :----------------------------------------------------------: | :--------------------: |
+|  1   | [Chrome扩展程序安装包下载](https://chrome-extension-downloader.com/) |        离线下载        |
+|  2   | [Chrome扩展商店](https://www.crxsoso.com/webstore/category/extensions) | 完美克隆了下列应用商店 |
 
 ##  四 图片工具
 
