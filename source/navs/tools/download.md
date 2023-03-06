@@ -7,22 +7,23 @@ comments: false
 
 ## 一 BT/磁力/HTTP 下载工具
 
-| 编号 |                          名称(地址)                          |   平台    |   备注   |
-| :--: | :----------------------------------------------------------: | :-------: | :------: |
-|  1   |               [迅雷](https://www.xunlei.com/)                | 电脑+手机 | BT+网页  |
-|  2   |        [比特彗星BitComet](http://www.bitcomet.com/cn)        | 电脑+手机 |    BT    |
-|  3   |         [qBittorrent](https://www.qbittorrent.org/)          |   电脑    |          |
-|  4   |              [MYDM](https://www.mydmplus.com/)               |   电脑    |          |
-|  5   |           [猎鹰EagleGet](http://www.eagleget.com/)           |           |   免费   |
-|  6   |              [Motrix](https://www.motrix.app/)               |   电脑    |          |
-|  7   |                 [xdown](https://xdown.org/)                  |   电脑    |          |
-|  8   |            [uTorrent](https://www.utorrent.com/)             |   电脑    |          |
-|  9   |             [BiglyBT](https://www.biglybt.com/)              | 电脑+手机 |          |
-|  10  |          [Transmission](https://transmissionbt.com)          |   电脑    |          |
-|  11  |        [FDM](https://www.freedownloadmanager.org/zh/)        | 电脑+手机 |   免费   |
-|  12  |            [闪电下载](http://bbs.xiaokanba.com/)             | 电脑+手机 |          |
-|  13  | [视频下载王](https://www.apowersoft.cn/video-download-capture) |           | 网站视频 |
-|  14  |              [BT种子](https://10086-10086.com/)              |           |   地址   |
+| 编号 |                          名称(地址)                          |   平台    |      备注      |
+| :--: | :----------------------------------------------------------: | :-------: | :------------: |
+|  1   |               [迅雷](https://www.xunlei.com/)                | 电脑+手机 |    BT+网页     |
+|  2   |        [比特彗星BitComet](http://www.bitcomet.com/cn)        | 电脑+手机 |       BT       |
+|  3   |         [qBittorrent](https://www.qbittorrent.org/)          |   电脑    |                |
+|  4   |              [MYDM](https://www.mydmplus.com/)               |   电脑    |                |
+|  5   |           [猎鹰EagleGet](http://www.eagleget.com/)           |           |      免费      |
+|  6   |              [Motrix](https://www.motrix.app/)               |   电脑    |                |
+|  7   |                 [xdown](https://xdown.org/)                  |   电脑    |                |
+|  8   |            [uTorrent](https://www.utorrent.com/)             |   电脑    |                |
+|  9   |             [BiglyBT](https://www.biglybt.com/)              | 电脑+手机 |                |
+|  10  |          [Transmission](https://transmissionbt.com)          |   电脑    |                |
+|  11  |        [FDM](https://www.freedownloadmanager.org/zh/)        | 电脑+手机 |      免费      |
+|  12  |            [闪电下载](http://bbs.xiaokanba.com/)             | 电脑+手机 |                |
+|  13  | [视频下载王](https://www.apowersoft.cn/video-download-capture) |           |    网站视频    |
+|  14  |              [BT种子](https://10086-10086.com/)              |           |      地址      |
+|  15  |             [Motrix](https://motrix.app/zh-CN/)              |           | 全能的下载工具 |
 
 ## 二 网页下载工具
 
