@@ -85,6 +85,7 @@ const IntrinsicWidth({ Key? key, this.stepWidth, this.stepHeight, Widget? child 
 * 当stepHeight不为null的时候，效果跟stepWidth相同
 * 当stepHeight为null的时候，高度取最大高度
 ![][3]
+
 ### 3.3 示例
 
 #### 代码
