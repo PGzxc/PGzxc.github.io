@@ -107,6 +107,12 @@ comments: false
 |  1   | [阿里云-播放器]([SDK简介与下载 (aliyun.com)](https://help.aliyun.com/document_detail/51992.html)) | 视频点播+直播 |
 |  2   | [阿里云-号码认证](https://help.aliyun.com/document_detail/121113.html) | 号码一键登录  |
 
+## 十二 机器学习
+
+| 编号 |                          名称(地址)                          |                    说明                     |
+| :--: | :----------------------------------------------------------: | :-----------------------------------------: |
+|  1   | [Google机器学习技术](https://developers.google.cn/ml-kit?hl=zh-cn) | 条形码扫描/人脸检测/人脸网格检测/文字识别等 |
+
 
 
 [1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-learn-route/Android-Learning-route.jpg
