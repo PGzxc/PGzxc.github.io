@@ -19,6 +19,8 @@ comments: false
 |  8   | [CSDN/Android面试题大全(中高级)](https://blog.csdn.net/amogin/article/details/81450434) |                  Android+java+设计模式+网络                  |
 |  9   | [Android 中高级面试必知必会](https://mp.weixin.qq.com/s/17XeoP8DEj2KTnKCBv4H_A) |                        泓洋公众号分享                        |
 |  10  | [Android面试相关文章以及github整理](https://mp.weixin.qq.com/s/CQABJNacnsf8_s6l93JKUw) |                        泓洋公众号分享                        |
+|  11  |    [Android-MS](https://github.com/xiangjiana/Android-MS)    | Github+包含音视频初-中-高；Flutter，kotlin;Compose;Framework;性能优化等 |
+|  12  |    [Android-Notes](https://github.com/xfhy/Android-Notes)    | Github+计算机基础+数据结构与算法+设计模式+Java+Kotlin+Android |
 
 ## 二 高级面试题
 
