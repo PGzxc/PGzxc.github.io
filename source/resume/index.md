@@ -388,6 +388,7 @@ __2-Android项目—E朝朝企业端__
 - 基于flutter_native_splash设置项目启动默认画面，防止白屏
 - 基于KeepAliveWrapper进行列表项缓存，防止多次加载
 - 基于Google组件getWidget-badges，显示未读消息
+- 使用flutter_screenutil进行屏幕适配
 
 **项目预览**
 
