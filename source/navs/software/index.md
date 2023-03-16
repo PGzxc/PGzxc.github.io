@@ -76,11 +76,12 @@ Centos
 
 ## 六 VPN
 
-| 编号 |                    名称(地址)                     |       备注       |
-| :--: | :-----------------------------------------------: | :--------------: |
-|  1   |    [namepilo](https://namepilo.com/index.php)     |                  |
-|  2   | [Clash for Windows](https://docs.cfw.lbyczf.com/) | 多平台代理客户端 |
-|  3   |         [ 轻蜂加速器](https://qfacc.cn/)          |   移动端+终端    |
+| 编号 |                       名称(地址)                       |       备注       |
+| :--: | :----------------------------------------------------: | :--------------: |
+|  1   |       [namepilo](https://namepilo.com/index.php)       |                  |
+|  2   |   [Clash for Windows](https://docs.cfw.lbyczf.com/)    | 多平台代理客户端 |
+|  3   |            [ 轻蜂加速器](https://qfacc.cn/)            |   移动端+终端    |
+|  4   | [v2rayNvpn](https://github.com/githubvpn007/v2rayNvpn) |      多平台      |
 
 ## 七 逻辑思维工具
 
