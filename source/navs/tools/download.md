@@ -29,7 +29,7 @@ comments: false
 
 | 编号 |                         名称(地址)                         |      备注       |
 | :--: | :--------------------------------------------------------: | :-------------: |
-|  1   |     [IDM官网](http://www.internetdownloadmanager.com/)     |                 |
+|  1   |     [IDM官网](http://www.internetdownloadmanager.com/)     | 多线程+网页下载 |
 |  2   |    IDM破解 https://www.lanzous.com/b00t4x86b  密码:gr09    |     蓝奏云      |
 |  3   | [IDM破解版](http://www.xywpan.com/space_qiuquan_6489.html) | 星耀云盘-各版本 |
 |  4   |   [闪豆视频下载器](https://www.lanzoui.com/ix5UBwxsqpe)    | B站视频批量下载 |
