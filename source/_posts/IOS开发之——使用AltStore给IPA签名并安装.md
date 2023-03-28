@@ -93,7 +93,7 @@ Apple Id和密码填写正确后，弹出安装Mail Plugin-in，安装邮箱插�
 
 ### 5.3 安装AltStore到设备上
 
-在菜单栏中找到AltStore，依次选择：Install AltStore——>设备，稍等片刻，AltStore安装到桌面山
+在菜单栏中找到AltStore，依次选择：Install AltStore——>设备，稍等片刻，AltStore安装到桌面上
 
 ![][11]
 
