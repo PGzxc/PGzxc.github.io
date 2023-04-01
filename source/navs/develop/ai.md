@@ -21,9 +21,10 @@ comments: false
 
 ## 三 ChatGPT
 
-| 编号 |                          名称及地址                          |      说明      |
-| :--: | :----------------------------------------------------------: | :------------: |
-|  1   |              [https://xc.com/](https://xc.com/)              |  内网指令输入  |
-|  2   | [lencx](https://github.com/lencx)/**[ChatGPT](https://github.com/lencx/ChatGPT)** |  Github客户端  |
-|  3   |      [ChatGPT验证码购买](https://sms-activate.org/buy)       | 短信验证码接收 |
-|  4   |   [chatbox](https://github.com/Bin-Huang/chatbox/releases)   |  Github客户端  |
+| 编号 |                          名称及地址                          |        说明         |
+| :--: | :----------------------------------------------------------: | :-----------------: |
+|  1   |              [https://xc.com/](https://xc.com/)              |    内网指令输入     |
+|  2   | [lencx](https://github.com/lencx)/**[ChatGPT](https://github.com/lencx/ChatGPT)** |    Github客户端     |
+|  3   |      [ChatGPT验证码购买](https://sms-activate.org/buy)       |   短信验证码接收    |
+|  4   |   [chatbox](https://github.com/Bin-Huang/chatbox/releases)   |    Github客户端     |
+|  5   |         [nat.dev](https://accounts.nat.dev/sign-in)          | 集成chatgpt的第三方 |
