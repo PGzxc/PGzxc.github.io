@@ -28,3 +28,11 @@ comments: false
 |  3   |      [ChatGPT验证码购买](https://sms-activate.org/buy)       |   短信验证码接收    |
 |  4   |   [chatbox](https://github.com/Bin-Huang/chatbox/releases)   |    Github客户端     |
 |  5   |         [nat.dev](https://accounts.nat.dev/sign-in)          | 集成chatgpt的第三方 |
+|  6   | [CHatGPT学习手册](https://nujuo8y1qx.feishu.cn/docx/AdqEdlT52oBiawx6Vv2cc89DnLb) |    教程+相关指南    |
+
+## 四 AI
+
+| 编号 |                       名称及地址                        |     说明      |
+| :--: | :-----------------------------------------------------: | :-----------: |
+|  1   | [Ai 资源大汇总](https://github.com/getActivity/AiIndex) | Ai 资源大汇总 |
+
