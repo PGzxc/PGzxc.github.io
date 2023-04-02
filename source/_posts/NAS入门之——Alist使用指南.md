@@ -1,8 +1,8 @@
 ---
 title: NAS入门之——Alist使用指南
 categories:
-  - 工具
-  - NAS
+  - 开发
+  - J-NAS
   - Alist
 tags:
   - Alist

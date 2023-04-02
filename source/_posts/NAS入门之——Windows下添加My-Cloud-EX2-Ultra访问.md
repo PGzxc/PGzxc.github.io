@@ -1,8 +1,8 @@
 ---
 title: NAS入门之——Windows下添加My Cloud EX2 Ultra访问
 categories:
-  - 工具
-  - NAS
+  - 开发
+  - J-NAS
   - My Cloud EX2
 tags:
   - My Cloud EX2 Ultra

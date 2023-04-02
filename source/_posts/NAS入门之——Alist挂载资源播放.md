@@ -1,8 +1,8 @@
 ---
 title: NAS入门之——Alist挂载资源播放
 categories:
-  - 工具
-  - NAS
+  - 开发
+  - J-NAS
   - Alist
 tags:
   - Alist

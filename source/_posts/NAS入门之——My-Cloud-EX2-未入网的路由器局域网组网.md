@@ -1,8 +1,8 @@
 ---
 title: NAS入门之——My Cloud EX2+未入网的路由器局域网组网
 categories:
-  - 工具
-  - NAS
+  - 开发
+  - J-NAS
   - My Cloud EX2
 abbrlink: ce44e24c
 date: 2021-10-18 22:40:00
