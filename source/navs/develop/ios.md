@@ -27,6 +27,13 @@ comments: false
 |  2   |    [编程学习网-IOS](http://www.phpxs.com/j/ios/1000712/)     |      |
 |  3   | [W3School-IOS](http://home.ustc.edu.cn/~xie1993/ios/ios-tutorial.html) |      |
 
+## 三 工具
+
+| 编号 |                          名称(链接)                          |      备注      |
+| :--: | :----------------------------------------------------------: | :------------: |
+|  1   | [iOS App Signer](https://github.com/DanTheMan827/ios-app-signer) |  IOS签名工具   |
+|  2   |               [AltStore](https://altstore.io/)               | 第三方应用商店 |
+
 
 
 [1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-learn-route/IOS-Learning-route-1.jpg
