@@ -8,5 +8,6 @@ comments: false
 
 |  No  |               网站链接               |   说明   |
 | :--: | :----------------------------------: | :------: |
-|  1   | [编程词典](http://dict.code-nav.cn/) | 学科导航 |
+|  1   | [书栈网](https://www.bookstack.cn/)  | 学科导航 |
+|  2   | [编程词典](http://dict.code-nav.cn/) | 学科导航 |
 
