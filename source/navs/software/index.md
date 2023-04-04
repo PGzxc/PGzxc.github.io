@@ -76,17 +76,19 @@ Centos
 
 ## 六 VPN
 
-| 编号 |                          名称(地址)                          |       备注       |
-| :--: | :----------------------------------------------------------: | :--------------: |
-|  1   |          [namepilo](https://namepilo.com/index.php)          |                  |
-|  2   |      [Clash for Windows](https://docs.cfw.lbyczf.com/)       | 多平台代理客户端 |
-|  3   |               [ 轻蜂加速器](https://qfacc.cn/)               |   移动端+终端    |
-|  4   |    [v2rayNvpn](https://github.com/githubvpn007/v2rayNvpn)    |      多平台      |
-|  5   |            [free](https://github.com/freefq/free)            |  V2Ray免费节点   |
-|  6   |   [v2ray-free](https://github.com/v2ray-links/v2ray-free)    |  V2Ray免费节点   |
-|  7   | [Share-SSR-V2ray](https://github.com/selierlin/Share-SSR-V2ray) |  V2Ray免费节点   |
-|  8   | [free-ssr-ss-v2ray-vpn-clash](https://github.com/xrayfree/free-ssr-ss-v2ray-vpn-clash) |     免费节点     |
-|  9   |         [share](https://github.com/mianfeifq/share)          |     免费节点     |
+| 编号 |                          名称(地址)                          |         备注         |
+| :--: | :----------------------------------------------------------: | :------------------: |
+|  1   |          [namepilo](https://namepilo.com/index.php)          |                      |
+|  2   |      [Clash for Windows](https://docs.cfw.lbyczf.com/)       |   多平台代理客户端   |
+|  3   |               [ 轻蜂加速器](https://qfacc.cn/)               |     移动端+终端      |
+|  4   |    [v2rayNvpn](https://github.com/githubvpn007/v2rayNvpn)    |        多平台        |
+|  5   |            [free](https://github.com/freefq/free)            |    V2Ray免费节点     |
+|  6   |   [v2ray-free](https://github.com/v2ray-links/v2ray-free)    |    V2Ray免费节点     |
+|  7   | [Share-SSR-V2ray](https://github.com/selierlin/Share-SSR-V2ray) |    V2Ray免费节点     |
+|  8   | [free-ssr-ss-v2ray-vpn-clash](https://github.com/xrayfree/free-ssr-ss-v2ray-vpn-clash) |       免费节点       |
+|  9   |         [share](https://github.com/mianfeifq/share)          |       免费节点       |
+|  10  | [clash_for_windows_pkg](https://github.com/Fndroid/clash_for_windows_pkg) | 基于Electron的客户端 |
+|  11  |       [clashX](https://github.com/yichengchen/clashX)        |      代理客户端      |
 
 ## 七 逻辑思维工具
 
