@@ -3,7 +3,7 @@ title: Vue2.0开发之——Vue基础用法-事件绑定-按键修饰符(21)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: b6f02d1a

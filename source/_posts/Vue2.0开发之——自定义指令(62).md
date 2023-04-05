@@ -3,7 +3,7 @@ title: Vue2.0开发之——自定义指令(62)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: c2393029

@@ -3,7 +3,7 @@ title: Vue2.0开发之——webpack基础-resolve指定默认路径(12)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: 2a97c34e

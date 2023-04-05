@@ -3,7 +3,7 @@ title: Vue2.0开发之——Vue基础用法-品牌列表案例(25)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: 3c259c50

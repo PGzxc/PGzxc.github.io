@@ -3,7 +3,7 @@ title: Vue2.0开发之——购物车案例-案例说明及导入Header(44)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: fc70cee7

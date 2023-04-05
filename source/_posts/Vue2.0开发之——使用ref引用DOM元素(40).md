@@ -3,7 +3,7 @@ title: Vue2.0开发之——使用ref引用DOM元素(40)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: ac79c0de

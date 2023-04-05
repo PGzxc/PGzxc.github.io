@@ -3,7 +3,7 @@ title: Vue2.0开发之——动态组件-组件注册名称和组件声明时名
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: 47548e0c

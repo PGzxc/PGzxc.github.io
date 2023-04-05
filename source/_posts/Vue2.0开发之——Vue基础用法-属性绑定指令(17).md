@@ -3,7 +3,7 @@ title: Vue2.0开发之——Vue基础用法-属性绑定指令(17)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: 90cf7ee

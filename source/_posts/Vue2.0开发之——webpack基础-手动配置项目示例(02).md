@@ -3,7 +3,7 @@ title: Vue2.0开发之——webpack基础-手动配置项目示例(02)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: b28a19a7

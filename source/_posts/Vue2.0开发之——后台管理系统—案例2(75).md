@@ -3,7 +3,7 @@ title: Vue2.0开发之——后台管理系统—案例2(75)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: 7bd5d586

@@ -3,7 +3,7 @@ title: Vue2.0开发之——动态组件-component标签的基础用法(54)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: 7b61f19d

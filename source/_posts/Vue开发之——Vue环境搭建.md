@@ -3,7 +3,7 @@ title: Vue开发之——Vue环境搭建
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - 环境搭建
 abbrlink: aa2507cb

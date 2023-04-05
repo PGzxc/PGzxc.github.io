@@ -3,7 +3,7 @@ title: Vue2.0开发之——ref引用实例-文本框和按钮的按需展示(42
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: 2cc37c0d

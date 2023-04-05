@@ -3,7 +3,7 @@ title: Vue2.0开发之——路由—动态路由(71)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: 150eebe1

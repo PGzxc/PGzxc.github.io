@@ -3,7 +3,7 @@ title: Vue2.0开发之——webpack基础-loader的作用及调用过程(06)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: 44cec30e

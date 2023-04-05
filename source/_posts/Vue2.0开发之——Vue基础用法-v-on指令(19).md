@@ -3,7 +3,7 @@ title: Vue2.0开发之——Vue基础用法-v-on指令(19)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: 890ceb09

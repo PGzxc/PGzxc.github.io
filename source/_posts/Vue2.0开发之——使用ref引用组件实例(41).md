@@ -5,7 +5,7 @@ date: 2023-02-26 10:28:56
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 ---

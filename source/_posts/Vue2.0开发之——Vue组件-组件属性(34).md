@@ -3,7 +3,7 @@ title: Vue2.0开发之——Vue组件-组件属性(34)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: f04d2926

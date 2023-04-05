@@ -3,7 +3,7 @@ title: Vue2.0开发之——了解Vue(13)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: f9f8f559

@@ -3,7 +3,7 @@ title: Vue2.0开发之——Vue基础用法-双向绑定-v-model指令(22)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: 5272d24f

@@ -3,7 +3,7 @@ title: Vue2.0开发之——动态组件-keep-alive组件的include和exclude属
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: 1c5c8324

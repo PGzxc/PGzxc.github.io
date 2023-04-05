@@ -3,7 +3,7 @@ title: Vue2.0开发之——购物车案例-Goods组件封装-商品价格和选
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: 799aa284

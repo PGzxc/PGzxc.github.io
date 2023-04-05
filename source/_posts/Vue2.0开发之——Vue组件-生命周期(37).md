@@ -3,7 +3,7 @@ title: Vue2.0开发之——Vue组件-生命周期(37)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: 60004c1

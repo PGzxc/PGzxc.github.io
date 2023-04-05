@@ -3,7 +3,7 @@ title: Vue2.0开发之——购物车案例-Goods组件封装-修改商品的勾
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: b2d4bc8d

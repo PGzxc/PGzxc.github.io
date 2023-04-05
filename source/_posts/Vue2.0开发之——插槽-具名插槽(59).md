@@ -3,7 +3,7 @@ title: Vue2.0开发之——插槽-具名插槽(59)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: cd981aa9

@@ -3,7 +3,7 @@ title: Vue2.0开发之——购物车案例-axios请求列表数据(45)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: 2cb5c72f

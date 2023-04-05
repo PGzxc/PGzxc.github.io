@@ -3,7 +3,7 @@ title: Vue2.0开发之——Vue组件-组件的基本使用(31)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: aa4f0a3f

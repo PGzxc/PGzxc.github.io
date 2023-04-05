@@ -3,7 +3,7 @@ title: Vue2.0开发之——Vue组件-使用组件的三个步骤(32)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: d3d57326

@@ -3,7 +3,7 @@ title: Vue2.0开发之——ESLint—ESLint开发指南3(65)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: c54dec4f

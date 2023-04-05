@@ -3,7 +3,7 @@ title: Vue2.0开发之——组件数据共享-Eventbus(39)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: 62dfb34e

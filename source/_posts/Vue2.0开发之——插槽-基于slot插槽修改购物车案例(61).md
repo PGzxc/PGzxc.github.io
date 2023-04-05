@@ -3,7 +3,7 @@ title: Vue2.0开发之——插槽-基于slot插槽修改购物车案例(61)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: 8a3d9a4c

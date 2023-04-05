@@ -3,7 +3,7 @@ title: Vue2.0开发之——路由—前端路由的概念与原理(67)
 categories:
   - 开发
   - C-前端开发
-  - Vue
+  - Vue2
 tags:
   - Vue2
 abbrlink: 3f68fdc6
