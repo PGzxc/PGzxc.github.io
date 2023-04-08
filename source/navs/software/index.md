@@ -12,6 +12,7 @@ comments: false
 |  1   |  [softonic](https://en.softonic.com/)   |         欧洲领先的软件下载网站         |
 |  2   |   [fosshub](https://www.fosshub.com/)   |     国外的一家致力于软件托管的平台     |
 |  3   | [sourceforge](https://sourceforge.net/) | 全球最大的开放源代码软件开发平台和仓库 |
+|  4   |       [Aspose](https://jprj.com/)       |              精挑精品软件              |
 
 ##  二  软件破解
 
