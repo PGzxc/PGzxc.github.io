@@ -14,18 +14,7 @@ comments: false
 |  3   |       [爱奇艺](https://www.iqiyi.com/)       |              |
 |  4   |        [优酷](https://www.youku.com/)        |              |
 
-## 三 视频解析
-
-| 编号 |                     名称(地址)                     | 备注 |
-| :--: | :------------------------------------------------: | :--: |
-|  1   |         [七星解析](https://vip.2kkkk.cn/)          |      |
-|  2   |           [船长解析](http://czjx8.com/)            |      |
-|  3   | [全能VIP视频解析](http://tool.liumingye.cn/video/) |      |
-|  4   |     [小七VIP视频解析](https://peng3.com/vip/)      |      |
-|  5   |        [vip视频解析](https://v.ctrlqq.com/)        |      |
-|  6   |                    [全网解析]()                    |      |
-
-## 四 视频-语言
+## 二 视频-语言
 
 | 编号 |            名称(地址)            |  备注  |
 | :--: | :------------------------------: | :----: |
@@ -34,8 +23,7 @@ comments: false
 |  3   |  [看韩剧](https://www.kan.cc/)   |  韩剧  |
 |  4   | [韩剧TV](https://www.hanju0.cc/) |  韩剧  |
 
-
-### 五 音效素材
+### 三 音效素材
 
 | 编号 |                           名称备注                           | 备注 |
 | :--: | :----------------------------------------------------------: | :--: |
@@ -48,7 +36,7 @@ comments: false
 |  7   | [youtube 音频图书馆](https://www.youtube.com/audiolibrary/soundeffects) |      |
 |  8   | [Partners in Rhyme](https://www.royaltyfreemusicclips.com/pir/free_music_loops.shtml) |      |
 
-### 六 歌曲资源整理
+### 四 歌曲资源整理
 
 | 编号 |                名称                | 备注 |
 | :--: | :--------------------------------: | :--: |
@@ -57,7 +45,7 @@ comments: false
 |  3   | [酷狗音乐](https://www.kugou.com/) |      |
 |  4   |  [街声](https://streetvoice.cn/)   |      |
 
-## 七 直播
+## 五 直播
 
 | 编号 |            名称(地址)             |          备注          |
 | :--: | :-------------------------------: | :--------------------: |
@@ -65,7 +53,7 @@ comments: false
 |  2   | [LiveMe](https://www.liveme.com)  | 全球化国外主播直播平台 |
 |  3   |                B站                |         二次元         |
 
-## 八 直播源
+## 六 直播源
 
 | 编号 |              名称(地址)              |      备注       |
 | :--: | :----------------------------------: | :-------------: |
