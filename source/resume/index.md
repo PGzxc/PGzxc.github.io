@@ -174,7 +174,47 @@ __3-Android项目—记录App__
 |![][record-5]|![][record-6] |![][record-7]|![][record-8]|
 |![][record-9]|![][record-10]|![][record-11]|![][record-12]|
 
-__4-前端项目—游戏__   
+__4-uni-app小程序-24H安全守护系统__   
+**项目描述**：24H安全守护系统是日立养老项目组中众多项目之一，通过硬件手环(手佩戴)+垫子(铺在床上)检测用户的睡眠状态及活动信息，并在监控异常时给出报警提醒。
+**功能模块**：状态、预警、统计、我的  
+**负责模块**：状态、预警、统计、我的  
+**技术要点**：  
+
+-  基于Vue+css构建布局页面
+-  创建Vue组件，供页面重复使用
+-  基于u-charts绘制心率、睡眠、行动、体温等图表
+-  基于uni-load-more刷新页面数据
+-  项目中uni-app常用组件如：area-picker(省市区地址选择器)、jyf-parser(字符串转化为html)、uni-calendar(日历)、uni-collapse(折叠面板)、uni-fab(悬浮按钮)、uni-popup(弹出层)、xfl-select(下拉框)等
+
+**项目预览**
+
+| ![][rl-24-1] | ![][rl-24-2] | ![][rl-24-3] |
+| ------------ | ------------ | ------------ |
+| ![][rl-24-4] | ![][rl-24-5] | ![][rl-24-6] |
+
+
+__5-微信小程序—日立健康__   
+**项目描述**：日立健康小程序是日立养老项目组将现有的项目(步态+脑训练+睡眠健康等)进行部分整合后开发的一款微信小程序，方便快捷，即用即走，在不安装app的情况下，通过小程序实现部分需要app和硬件需要完成的功能。   
+**功能模块**：登录注册模块、用户信息修改模块、首页、慢病管理、认知管理、跌到管理(步态分析有硬件实现)、日常管理等  
+**负责模块**：认知管理、跌到管理(步态分析有硬件实现)等  
+**技术要点**：  
+
+-  基于Flex布局+css构建小程序布局页面
+-  基于template构建模板组件，供页面重复利用
+-  canvas绘制视频录制倒计时动画
+-  小程序动态权限处理(地理位置、录像、拍照)
+-  基于JS-SDK处理小程序与webview数据交互
+-  基于腾讯地图获取用户位置及显示地图组件
+-  封装网络接口请求及必要数据存储读取
+
+**项目预览**
+
+|![][w-health-1]|![][w-health-2] |![][w-health-3] |![][w-health-4]|
+| ------------- | -------------- | -------------- | ------------- |
+|![][w-health-5]|![][w-health-6] |![][w-health-7] |![][w-health-8]|
+|![][w-health-9]|![][w-health-10]|![][w-health-11]|               |
+
+__6-前端项目—游戏__   
 **项目描述**：前端游戏是脑训练、脑检测及小程序中使用到的游戏项目，是基于P5.js引擎制作的游戏和收集整理GitHub上开源游戏项目而来；App项目游戏中，展示游戏说明和游戏内容，并与安卓原生项目进行交互和数据传输；微信小程序时，借助微信JS-SDK向小程序传输游戏结果。并适配了平板和小程序页面。   
 **功能模块**：P5.js游戏(40多个独立游戏)，GitHub小游戏(麻将、象棋、台球、乒乓球)等  
 **负责模块**：P5.js游戏(40多个独立游戏)，GitHub小游戏(麻将、象棋、台球、乒乓球)等  
@@ -193,28 +233,7 @@ __4-前端项目—游戏__
 | -------------- | ---------------|----------------| -------------- |
 | ![][webgame-5] | ![][webgame-6] | ![][webgame-7] | ![][webgame-8] |
 
-__5-微信小程序—日立健康__   
-**项目描述**：日立健康小程序是日立养老项目组将现有的项目(步态+脑训练+睡眠健康等)进行部分整合后开发的一款微信小程序，方便快捷，即用即走，在不安装app的情况下，通过小程序实现部分需要app和硬件需要完成的功能。   
-**功能模块**：登录注册模块、用户信息修改模块、首页、慢病管理、认知管理、跌到管理(步态分析有硬件实现)、日常管理等  
-**负责模块**：认知管理、跌到管理(步态分析有硬件实现)等  
-**技术要点**：  
-
--  基于Flex+css构建小程序布局页面
--  基于template构建模板组件，供页面重复利用
--  canvas绘制视频录制倒计时动画
--  小程序动态权限处理(地理位置、录像、拍照)
--  基于JS-SDK处理小程序与webview数据交互
--  基于腾讯地图获取用户位置及显示地图组件
--  封装网络接口请求及必要数据存储读取
-
-**项目预览**
-
-|![][w-health-1]|![][w-health-2] |![][w-health-3] |![][w-health-4]|
-| ------------- | -------------- | -------------- | ------------- |
-|![][w-health-5]|![][w-health-6] |![][w-health-7] |![][w-health-8]|
-|![][w-health-9]|![][w-health-10]|![][w-health-11]|               |
-
-__6-C#项目—磁感应型手指开闭运动检测__   
+__7-C#项目—磁感应型手指开闭运动检测__   
 **项目简介**：磁感应型手指开闭运动检测是一款桌面应用，借助手指传感器，根据手势规则操作检测手指开合运动，采集手势样本，进而判断人体机能。   
 **项目模块**：登录、传感器(数据采样)、数据保存、雷达波形分析、数据上传等       
 **负责模块**：数据保存、雷达波形分析、数据上传等
@@ -633,6 +652,15 @@ __2-Android项目—E朝朝企业端__
 [w-health-9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/w-health-diedao-page-9.png
 [w-health-10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/w-health-diedao-take-10.png
 [w-health-11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/w-health-diedao-video-11.png
+
+<!--uni-app-24H安全守护系统-->
+
+[rl-24-1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/rl-uni-24h-login-1.png
+[rl-24-2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/rl-uni-24h-home-2.png
+[rl-24-3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/rl-uni-24h-warn-3.png
+[rl-24-4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/rl-uni-24h-warn-choice-4.png
+[rl-24-5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/rl-uni-24h-table-5.png
+[rl-24-6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/rl-uni-24h-me-6.png
 
 <!--自己的项目-live-->
 [live-1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/live-app-splash-1.png
