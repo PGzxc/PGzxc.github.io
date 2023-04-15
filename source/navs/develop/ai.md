@@ -21,6 +21,8 @@ comments: false
 
 ## 三 ChatGPT
 
+注册
+
 | 编号 |                          名称及地址                          |        说明         |
 | :--: | :----------------------------------------------------------: | :-----------------: |
 |  1   |              [https://xc.com/](https://xc.com/)              |    内网指令输入     |
@@ -29,6 +31,13 @@ comments: false
 |  4   |   [chatbox](https://github.com/Bin-Huang/chatbox/releases)   |    Github客户端     |
 |  5   |         [nat.dev](https://accounts.nat.dev/sign-in)          | 集成chatgpt的第三方 |
 |  6   | [CHatGPT学习手册](https://nujuo8y1qx.feishu.cn/docx/AdqEdlT52oBiawx6Vv2cc89DnLb) |    教程+相关指南    |
+
+国内使用
+
+| 编号 |                 名称及地址                 | 说明 |
+| :--: | :----------------------------------------: | :--: |
+|  1   |    [Talk AI](https://www.talkai.club/)     |      |
+|  2   | [WebTab-桌面插件](https://www.wetab.link/) |      |
 
 ## 四 AI
 
