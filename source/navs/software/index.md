@@ -49,11 +49,14 @@ comments: false
 
 Windows
 
-| 编号 |                          名称(地址)                          |   备注    |
-| :--: | :----------------------------------------------------------: | :-------: |
-|  1   |       [I Tell You-Windows](https://msdn.itellyou.cn/)        | 系统+工具 |
-|  2   | [微软官方系统](https://www.microsoft.com/zh-cn/software-download/windows10) |           |
-|  3   | [Microsoft-Activation-Scripts](https://github.com/massgravel/Microsoft-Activation-Scripts/releases) | 系统激活  |
+| 编号 |                          名称(地址)                          |           备注            |
+| :--: | :----------------------------------------------------------: | :-----------------------: |
+|  1   |       [I Tell You-Windows](https://msdn.itellyou.cn/)        |         系统+工具         |
+|  2   | [微软官方系统](https://www.microsoft.com/zh-cn/software-download/windows10) |                           |
+|  3   | [Microsoft-Activation-Scripts](https://github.com/massgravel/Microsoft-Activation-Scripts/releases) |         系统激活          |
+|  4   |            [OSSQ](https://www.ossq.cn/index.html)            | 云计算-存储-运维-系统工具 |
+|  5   |           [HeloWindows](https://hellowindows.cn/)            |   Windows系统下载仓储站   |
+|  6   | [optimizer](https://github.com/hellzerg/optimizer/releases)  | 高级 Windows 系统优化工具 |
 
 Mac
 
