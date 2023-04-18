@@ -57,6 +57,8 @@ Windows
 |  4   |            [OSSQ](https://www.ossq.cn/index.html)            | 云计算-存储-运维-系统工具 |
 |  5   |           [HeloWindows](https://hellowindows.cn/)            |   Windows系统下载仓储站   |
 |  6   | [optimizer](https://github.com/hellzerg/optimizer/releases)  | 高级 Windows 系统优化工具 |
+|  7   |  [暴风侠-win11激活](https://xitongmac.com/jihuo/66003.html)  |       密钥+激活方法       |
+|  8   | [暴风侠-win10激活](https://www.shangyouw.cn/zml/arc252211.html) |         激活方法          |
 
 Mac
 
