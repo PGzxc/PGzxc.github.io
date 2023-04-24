@@ -98,8 +98,7 @@ const First = () => <p>页面一的内容</p>
       {/* 4 指定路由入口 */}
       <Link to="/first">页面一</Link>
       <Routes>
-        {/* 5 指定路由出口 */}
-        <Route path="/first" component={First} />
+        <Route path="/first" element={<First />} />
       </Routes>
     </div>
 </Router>
