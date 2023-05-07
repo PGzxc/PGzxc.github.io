@@ -41,7 +41,19 @@ npm config set registry https://registry.npm.taobao.org
 https://registry.npm.taobao.org/
 ```
 
-## 四 执行npm install
+## 四 清除缓存和代理
+
+```
+npm config set proxy false    	清除npm中的代理
+npm cache clean --force    		清除npm中的缓存
+```
+
+## 五 查看配置信息文件
+
+* npm的配置文件是 .npmrc ，默认在用户目录C:\Users\用户\下
+* 如果找不到，可以使用如下命令查看配置文件的位置 npm config get userconfig 查看配置文件路径
+
+## 六 执行npm install
 
 ```
 npm install
@@ -53,7 +65,7 @@ npm install
 npm install --registry=https://registry.npm.taobao.org
 ```
 
-## 五 还原默认镜像
+## 七 还原默认镜像
 
 ```
 npm config set registryhttps://registry.npmjs.org
