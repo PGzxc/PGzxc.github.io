@@ -13,7 +13,7 @@ comments: false
 # 联系方式
 
 - 手机：15201120927
-- Email：zxc_developer@126.com
+- Email：developer_zxc@126.com
 - QQ：834228918
 
 # 基本信息
