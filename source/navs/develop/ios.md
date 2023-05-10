@@ -34,6 +34,15 @@ comments: false
 |  1   | [iOS App Signer](https://github.com/DanTheMan827/ios-app-signer) |  IOS签名工具   |
 |  2   |               [AltStore](https://altstore.io/)               | 第三方应用商店 |
 
+## 四 基础语言
+
+| 编号 |                          名称(链接)                          |      备注      |
+| :--: | :----------------------------------------------------------: | :------------: |
+|  1   |      [W3Cschool-swift](https://www.w3cschool.cn/swift/)      | swift教程+拓展 |
+|  2   | [菜鸟教程-swift](https://www.runoob.com/swift/swift-tutorial.html) |   swift教程    |
+|  3   | [知乎-swift入门指南](https://zhuanlan.zhihu.com/p/584335834) |  开发课程整理  |
+|  4   | [B站-Swift编程基础](https://www.bilibili.com/video/BV144411C7Gg/) |    培训课程    |
+
 
 
 [1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-learn-route/IOS-Learning-route-1.jpg
