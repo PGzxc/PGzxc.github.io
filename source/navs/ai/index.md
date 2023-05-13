@@ -9,3 +9,10 @@ comments: false
 
 本文介绍AI相关知识内容：ChatGPT、newbing、Leonardo等
 
+## 二 AI大全
+
+| 编号 |                       名称及地址                        |     说明      |
+| :--: | :-----------------------------------------------------: | :-----------: |
+|  1   | [Ai 资源大汇总](https://github.com/getActivity/AiIndex) | Ai 资源大汇总 |
+|  2   |      [AI助手](https://www.talkai.club/model/share)      |  常用AI工具   |
+
