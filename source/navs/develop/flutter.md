@@ -76,6 +76,12 @@ comments: false
 |  6   | [getwidget-app-kit](https://github.com/ionicfirebaseapp/getwidget-app-kit) |   getWidget工具包    |
 |  7   | [FlutterScreens](https://github.com/samarthagarwal/FlutterScreens) |      全屏登录UI      |
 
+## 七 第三方库
+
+| 编号 |                    名称(地址)                     |  说明  |
+| :--: | :-----------------------------------------------: | :----: |
+|  1   | [drift](https://pub.flutter-io.cn/packages/drift) | 数据库 |
+
 
 
 [1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-learn-route/Flutter-Learning-route-1.jpg
