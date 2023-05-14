@@ -28,7 +28,7 @@ date: 2023-05-13 11:59:21
 
 * node_modules ：第三方依赖包存放的目录
 * src：应用源代码目录
-* angular-cli.json： Angular命令行工具的配置文件，后期可能会去修改它，引一些其他的第三方包，比如jquery
+* angular.json： Angular命令行工具的配置文件，后期可能会去修改它，引一些其他的第三方包，比如jquery
 * package.json：这是一个标准的npm工具的配置文件，这个文件里面列出了该应用程序所使用的第三方依赖包。实际上我们在新项目的时候，等了半天就是在下载第三方依赖包。下载完成后会放在node_modules这个目录 中， 后期我们可能会修改这个文件
 * README.md：说明文件
 * tsconfig.app.json：TypeScript编译器的配置，添加第三方依赖的时候会修改这个文件
@@ -47,7 +47,6 @@ date: 2023-05-13 11:59:21
 
 * app/app.component.ts：为应用的根组件定义逻辑，名为 `AppComponent`
 * app/app.component.html：定义与根组件 `AppComponent` 关联的 HTML 模板
-* app/app.component.css：定义与根组件 `AppComponent` 关联的 HTML 模板
 * app/app.component.css：为根组件 `AppComponent` 定义了基本的 CSS 样式表
 * app/app.component.spec.ts：为根组件 `AppComponent` 定义了一个单元测试
 * app/app.module.ts：定义了名为 `AppModule` 的根模块，它会告诉 Angular 如何组装应用
