@@ -119,6 +119,15 @@ comments: false
 | :--: | :----------------------------------------------: | :-------: |
 |  1   | [Dagger2](https://zhuanlan.zhihu.com/p/24454466) | 使用+源码 |
 
+## 十四 智能家居
+
+| 编号 |                          名称(地址)                          |       说明       |
+| :--: | :----------------------------------------------------------: | :--------------: |
+|  1   | [网易云课堂-HomeAssistant智能家居实战篇](https://study.163.com/course/introduction.htm?courseId=1006189053) |     收费课程     |
+|  2   | [Home-Assistant-DIY](https://github.com/zhujisheng/Home-Assistant-DIY) |  GitHub对应源码  |
+|  3   | [B站-全网最全智能家居物联网开发教程200集](https://www.bilibili.com/video/BV1cZ4y1f7WX?p=26&vd_source=2219affc775c383551bb041784ab3515) | 智能家居整套开发 |
+|  4   | [B站—智能家居Home Assistant搭建从入门到入坑](https://www.bilibili.com/video/BV1UV411273h/?spm_id_from=333.337.search-card.all.click&vd_source=2219affc775c383551bb041784ab3515) |  Home Assistant  |
+
 
 
 [1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-learn-route/Android-Learning-route.jpg
