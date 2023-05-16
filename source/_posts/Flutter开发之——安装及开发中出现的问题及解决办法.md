@@ -359,6 +359,65 @@ flutter.versionName=1.0.0
 flutter.versionCode=1
 ```
 
+### 3.14 We recommend using a newer Android Gradle plugin to...
+
+#### 现象
+
+```
+We recommend using a newer Android Gradle plugin to use compileSdk = 33
+
+This Android Gradle plugin (7.2.0) was tested up to compileSdk = 32
+
+This warning can be suppressed by adding
+    android.suppressUnsupportedCompileSdk=33
+to this project's gradle.properties
+
+The build will continue, but you are strongly encouraged to update your project to
+use a newer Android Gradle Plugin that has been tested with compileSdk = 33
+```
+
+#### 解释
+
+```
+这句警告的意思是
+建议使用一个新的Android Gradle插件去使用compileSdk = 33
+这个 Android Gradle 插件 (7.1.2)已经通过了compileSdk = 32的测试
+可以通过添加
+android.suppressUnsupportedCompileSdk=33这条代码
+来抑制此警告
+```
+
+#### 解决办法
+
+将compileSdk设置为32
+
+```
+compileSdk = 32
+```
+
+### 3.15 ..\package_config.json does not exist.
+
+#### 现象
+
+```
+D:\Code\FlutterCode\wechat_flutter-master\.dart_tool\package_config.json does not exist.
+Did you run this command from the same directory as your pubspec.yaml file?
+Target gen_dart_plugin_registrant failed: Exception: 
+```
+
+#### 原因
+
+进入D:..\android.dart_tool目录发现没有package_config.json 这个文件
+
+#### 解决办法
+
+在项目的android目录下执行如下命令
+
+```
+flutter clean
+flutter pub get
+```
+
 
 
 ## 四 参考
