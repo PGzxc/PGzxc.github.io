@@ -353,7 +353,10 @@ flutter项目/android/local.properties下面未设置flutter.sdk
 #### 解决办法(给local.properties设置flutter.sdk)
 
 ```
+sdk.dir=D\:\\SoftWare\\DevTools\\Android\\SDK
 flutter.sdk=D:\\SoftWare\\DevTools\\flutter\\flutter-3.7.3
+flutter.versionName=1.0.0
+flutter.versionCode=1
 ```
 
 
