@@ -338,6 +338,24 @@ flutter build apk --no-sound-null-safety
 --no-sound-null-safety
 ```
 
+### 3.13 flutter.sdk not set in local.properties
+
+#### 现象
+
+```
+flutter.sdk not set in local.properties. Expression: (flutterSdkPath != null). Values: flutterSdkPath = null
+```
+
+#### 原因
+
+flutter项目/android/local.properties下面未设置flutter.sdk
+
+#### 解决办法(给local.properties设置flutter.sdk)
+
+```
+flutter.sdk=D:\\SoftWare\\DevTools\\flutter\\flutter-3.7.3
+```
+
 
 
 ## 四 参考
