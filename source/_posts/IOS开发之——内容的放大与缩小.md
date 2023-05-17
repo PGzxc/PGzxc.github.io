@@ -24,12 +24,9 @@ date: 2020-05-10 23:21:14
 
 ## 三 缩放的实现步骤
 
-1. 1.设置UIScrollView的id<UISCrollViewDelegate> delegate代理对象
-
+1. 设置UIScrollView的id<UISCrollViewDelegate> delegate代理对象
 2. 设置minmumZoomScale：缩小的最小比例
-
 3. 设置maximumZoomScale：放大的最大比例
-
 4. 让代理对象实现下面的方法，返回需要缩放的视图控件
 
    ```
