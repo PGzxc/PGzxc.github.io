@@ -44,7 +44,7 @@ ILPerson *p=[[ILPerson alloc]init];
 
 * +(void)load方法：当类被加载进内存时调用1次
 * +(void)initialize：当这个类第一次使用时才会被调用
-* +(instancetype)alloccWithZone：初始化对象的两种方法，一个时alloc，一个是alloccWithZone
+* +(instancetype)alloccWithZone：初始化对象的两种方法，一个是alloc，一个是alloccWithZone
 * -(id)copyWithZone：当类调用copy复制对象时，使用此方法
 
 ## 四 如何确保创建出来的是单一示例
