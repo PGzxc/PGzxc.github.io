@@ -32,7 +32,7 @@ date: 2022-02-27 11:59:44
 
 ### 2.2 NSOperation的子类
 
-NSOperation是个抽象类，并不具备封装操作的能力，必须使用它的子类，使用NSOperation子嘞的方式有3种：
+NSOperation是个抽象类，并不具备封装操作的能力，必须使用它的子类，使用NSOperation子类的方式有3种：
 
 * NSInvocationOperation
 * NSBlockOperation
