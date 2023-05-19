@@ -184,7 +184,7 @@ int main()
 
 ### 4.4 OC方法和函数的区别
 
-* OC方法只能声明在@interface和@end之间，只能实现在@implementation和@end之间。也就是会所OC方法不能独立与类存在
+* OC方法只能声明在@interface和@end之间，只能实现在@implementation和@end之间。也就是会说OC方法不能独立与类存在
 * C 函数不属于类，跟类没有联系，C函数只规定函数的文件所有
 * C函数不能访问OC对象的成员
 * 低级错误：方法有声明，但是实现的时候写成了函数
