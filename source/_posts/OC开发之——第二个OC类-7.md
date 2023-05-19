@@ -72,10 +72,10 @@ int main()
 #### 代码
 
 ```
-    Person *p=[Person new];
-    p->age=20;
-    p->weight=50.0;
-    [p walk];
+Person *p=[Person new];
+p->age=20;
+p->weight=50.0;
+[p walk];
 ```
 
 #### 示意图
@@ -87,13 +87,13 @@ int main()
 #### 代码
 
 ```
-   Person *p=[Person new];
-    p->age=20;
-    p->weight=40;
+Person *p=[Person new];
+p->age=20;
+p->weight=40;
     
-    Person *p2=p;
-    p2->age=30;
-    [p walk];
+Person *p2=p;
+p2->age=30;
+[p walk];
 ```
 
 #### 示例图
@@ -102,36 +102,36 @@ int main()
 #### 代码
 
 ```
-    Person *p= [Person new];
-    p->age=20;
-    p->weight2=40;
+Person *p= [Person new];
+p->age=20;
+p->weight2=40;
     
-    Person *p2=[Person new];
-    p2->age=30;
-    p2->weight=50;
-    p=p2;
-    p->age=40;
-    [p2 walk];
+Person *p2=[Person new];
+p2->age=30;
+p2->weight=50;
+p=p2;
+p->age=40;
+[p2 walk];
 ```
 
 #### 示意图
 ![][3]
 
-### 3.4 内存分配四
+### 3.4 内存分配四(对象指向同一个类)
 #### 代码
 
 ```
-	Person *p=[Person new];
-	p->age=20;
-	p->weight=40;
-	[p eat];
-	[p walk];
+Person *p=[Person new];
+p->age=20;
+p->weight=40;
+[p eat];
+[p walk];
     
-   Person *p2=[Person new];
-   p->age=30;
-   p->weight=60;
-   [p2 eat];
-   [p2 walk];
+Person *p2=[Person new];
+p->age=30;
+p->weight=60;
+[p2 eat];
+[p2 walk];
 ```
 
 #### 示意图
