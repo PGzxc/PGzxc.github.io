@@ -11,7 +11,7 @@ date: 2020-04-15 23:44:56
 ---
 ## 一 概述
 
-不使用ARC，自己管理内存，可以通过@property和@retain实现代码优化，可以依然需要在main.m调用结束后，使用[对象 release]来释放内存，不然会有僵尸对象产生。通过本文autorelease的学习将解决这一问题。
+不使用ARC，自己管理内存，可以通过@property和@retain实现代码优化，可是依然需要在main.m调用结束后，使用[对象 release]来释放内存，不然会有僵尸对象产生。通过本文autorelease的学习将解决这一问题。
 
 <!--more-->
 
