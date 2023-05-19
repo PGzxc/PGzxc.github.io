@@ -92,7 +92,7 @@ date: 2020-04-07 20:53:38
 
   ```
   -(void)setAge{_age=age;};
-  -(int)age}{return _age};
+  -(int)age{return _age};
   ```
 
 ## 三 省略成员变量的写法
