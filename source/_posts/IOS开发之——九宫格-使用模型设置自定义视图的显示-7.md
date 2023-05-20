@@ -208,7 +208,7 @@ date: 2020-06-06 23:24:43
         CGFloat x=marginX+col*(marginX+kAppViewW);
         CGFloat y=kStartY+ marginY+row*(marginY+kAppViewH);
         
-        //从XIB来家长自定义视图
+        //从XIB来加载自定义视图
         AppView *appView=[[[NSBundle mainBundle]loadNibNamed:@"AppView" owner:nil options:nil] lastObject];
         //设置视图的位置
         appView.frame=CGRectMake(x, y, kAppViewW, kAppViewH); 
