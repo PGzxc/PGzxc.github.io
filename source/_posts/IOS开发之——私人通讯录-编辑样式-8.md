@@ -37,7 +37,7 @@ date: 2020-10-17 23:46:45
 
 * 现获取布局中的“add”按钮
 * 通过代码新建一个“delete”按钮
-* 通过avigationItem.rightBarButtonItems将上面的两个按钮添加进来
+* 通过navigationItem.rightBarButtonItems将上面的两个按钮添加进来
 
 #### 代码实现
 
@@ -46,7 +46,7 @@ date: 2020-10-17 23:46:45
  UIBarButtonItem *add=self.navigationItem.rightBarButtonItem;
     
  //添加一个垃圾箱按钮
- UIBarButtonItem *trash=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemTrash    target:self action:@selector(delete)];
+ UIBarButtonItem *trash=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(delete)];
  self.navigationItem.rightBarButtonItems=@[add,trash];
 ```
 
