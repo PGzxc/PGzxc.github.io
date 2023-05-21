@@ -50,7 +50,7 @@ date: 2020-07-09 22:47:26
 
 ### 4.2  simsim
 
-* 进入[simsim Releases](https://github.com/dsmelov/simsim/releases页面，进行下载，解压后双击安装
+* 进入[simsim Releases](https://github.com/dsmelov/simsim/releases)页面，进行下载，解压后双击安装
 
   ![][6]
   
