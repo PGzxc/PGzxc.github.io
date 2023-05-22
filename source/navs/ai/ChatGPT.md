@@ -24,3 +24,4 @@ comments: false
 | :--: | :----------------------------------------: | :--: |
 |  1   |    [Talk AI](https://www.talkai.club/)     |      |
 |  2   | [WebTab-桌面插件](https://www.wetab.link/) |      |
+|  3   |        [chatgptbot](chatgptbot.me)         |      |
