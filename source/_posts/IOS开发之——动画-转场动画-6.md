@@ -17,12 +17,12 @@ date: 2021-06-02 09:34:32
 
 <!--more-->
 
-## 二 CATransition专场动画介绍
+## 二 CATransition转场动画介绍
 
 * CATransition是CAAnimation的子类，用于做转场动画，能够为层提供移出屏幕和移入屏幕的动画效果。iOS比Mac OS X的转场动画效果少一点
 * UINavigationController就是通过CATransition实现了将控制器的视图推入屏幕的动画效果
 
-## 三 专场动画属性及效果
+## 三 转场动画属性及效果
 
 ### 3.1 属性
 
