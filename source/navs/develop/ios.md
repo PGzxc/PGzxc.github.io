@@ -43,7 +43,17 @@ comments: false
 |  3   | [知乎-swift入门指南](https://zhuanlan.zhihu.com/p/584335834) |  开发课程整理  |
 |  4   | [B站-Swift编程基础](https://www.bilibili.com/video/BV144411C7Gg/) |    培训课程    |
 
-## 五 大神博客
+## 五 三方框架
+
+| 编号 |                          名称(链接)                          | 备注 |
+| :--: | :----------------------------------------------------------: | :--: |
+|  1   | [简书—史上最全iOS开发之第三方库整理汇总](https://www.jianshu.com/p/2f73d3c4c61c) |      |
+|  2   | [开源博客—iOS 开发常用第三方框架](https://my.oschina.net/jimolengsha/blog/1576186) |      |
+|  3   | [开源博客—iOS开发常用第三方框架2](http://www.taodudu.cc/news/show-4943569.html) |      |
+|  4   | [Github—TimLiu-iOS](https://github.com/Tim9Liu9/TimLiu-iOS/blob/master/Swift.md) |      |
+|  5   | [Github—TimLiu-iOS](https://github.com/Tim9Liu9/TimLiu-iOS)  |      |
+
+## 六 大神博客
 
 | 编号 |                          名称(链接)                          |          备注          |
 | :--: | :----------------------------------------------------------: | :--------------------: |
@@ -53,7 +63,7 @@ comments: false
 |  4   |    [简书-YungFan](https://www.jianshu.com/u/ab557ce505cd)    | ios+安卓+swift+swiftUI |
 |  5   | [简书-时光啊混蛋_97boy](https://www.jianshu.com/u/1ceb4a330607) | ios+安卓+swift+swiftUI |
 
-## 六 视频教程
+## 七 视频教程
 
 | 编号 |                          名称(链接)                          | 备注 |
 | :--: | :----------------------------------------------------------: | :--: |
