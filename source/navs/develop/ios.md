@@ -52,6 +52,7 @@ comments: false
 |  3   | [开源博客—iOS开发常用第三方框架2](http://www.taodudu.cc/news/show-4943569.html) |      |
 |  4   | [Github—TimLiu-iOS](https://github.com/Tim9Liu9/TimLiu-iOS/blob/master/Swift.md) |      |
 |  5   | [Github—TimLiu-iOS](https://github.com/Tim9Liu9/TimLiu-iOS)  |      |
+|  6   | [CSDN—常用第三方开源框架介绍](https://blog.csdn.net/xiaoyuertongxue/article/details/46982879) |      |
 
 ## 六 大神博客
 
