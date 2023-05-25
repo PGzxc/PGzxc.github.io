@@ -50,8 +50,8 @@ comments: false
 |  1   | [简书—史上最全iOS开发之第三方库整理汇总](https://www.jianshu.com/p/2f73d3c4c61c) |      |
 |  2   | [开源博客—iOS 开发常用第三方框架](https://my.oschina.net/jimolengsha/blog/1576186) |      |
 |  3   | [开源博客—iOS开发常用第三方框架2](http://www.taodudu.cc/news/show-4943569.html) |      |
-|  4   | [Github—TimLiu-iOS](https://github.com/Tim9Liu9/TimLiu-iOS/blob/master/Swift.md) |      |
-|  5   | [Github—TimLiu-iOS](https://github.com/Tim9Liu9/TimLiu-iOS)  |      |
+|  4   | [Github—TimLiu-iOS](https://github.com/Tim9Liu9/TimLiu-iOS)  |      |
+|  5   | [简书—iOS系统架构和常用框架](https://www.jianshu.com/p/a6eecad49b8e) |      |
 |  6   | [CSDN—常用第三方开源框架介绍](https://blog.csdn.net/xiaoyuertongxue/article/details/46982879) |      |
 |  7   | [IOS常用第三方库大全，史上最全第三方库收集](https://www.lmlphp.com/user/64320/article/item/825525/) |      |
 |  8   | [CSDN-iOS 第三方库汇总(超全)](https://blog.csdn.net/iOS_Pop/article/details/50428089) |      |
