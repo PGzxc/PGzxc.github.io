@@ -13,8 +13,12 @@ comments: false
 
 | 编号 |                          名称(地址)                          |      说明       |
 | :--: | :----------------------------------------------------------: | :-------------: |
-|  1   | [Android基础入门教程](https://www.runoob.com/w3cnote/android-tutorial-intro.html) |                 |
-|  2   | [小缘你咋学的Android](https://mp.weixin.qq.com/s/5W2ZDReWmpIaaUXmBo0-nw) | 如何学习Android |
+|  1   | [菜鸟—Android基础入门教程](https://www.runoob.com/w3cnote/android-tutorial-intro.html) |                 |
+|  2   | [kesenhoo—Android基础入门](https://docs.kilvn.com/android-training-course-in-chinese/basics/) |                 |
+|  3   | [W3School—Android基础入门教程](https://www.w3cschool.cn/uawnhh/gi3sdozt.html) |                 |
+|  4   | [Google官方—开发者指南](https://developer.android.google.cn/guide?hl=zh-cn) |                 |
+|  5   | [CSDN—2015最新Android基础入门教程](https://blog.csdn.net/coder_pig/category_5663115.html) |                 |
+|  5   | [小缘你咋学的Android](https://mp.weixin.qq.com/s/5W2ZDReWmpIaaUXmBo0-nw) | 如何学习Android |
 
 ## 二 Android 社区
 
@@ -56,7 +60,15 @@ comments: false
 |  3   | [NetKeeper](https://play.google.com/store/apps/details?id=com.minhui.networkcapture.pro) |    抓取http和https数据包     |
 |  4   | [Packet Capture](https://play.google.com/store/apps/details?id=app.greyshirts.sslcapture) |    抓取http和https数据包     |
 
-## 六 图表控件
+## 六 示例项目
+
+| 编号 |                          名称(地址)                          | 说明 |
+| :--: | :----------------------------------------------------------: | :--: |
+|  1   | [官方示例—samples](https://developer.android.google.cn/samples?hl=zh-cn) |      |
+
+## 七 三方控件
+
+### 图表控件
 
 | 编号 |                          名称(地址)                          |   说明   |
 | :--: | :----------------------------------------------------------: | :------: |
@@ -64,7 +76,7 @@ comments: false
 |  2   | [WilliamChart](https://github.com/diogobernardino/WilliamChart) |          |
 |  3   | [HelloCharts](https://github.com/lecho/hellocharts-android)  |          |
 
-## 七 底部导航
+###  底部导航
 
 | 编号 |                          名称(地址)                          |       说明        |
 | :--: | :----------------------------------------------------------: | :---------------: |
@@ -73,13 +85,28 @@ comments: false
 |  3   | [BottomNavigationViewEx](https://github.com/ittianyu/BottomNavigationViewEx) |   支持显示消息    |
 |  4   | [Material-BottomNavigation](https://github.com/sephiroth74/Material-BottomNavigation) |   支持显示消息    |
 
-## 八 序列化
+###  序列化
 
 | 编号 |               名称(地址)               |            说明            |
 | :--: | :------------------------------------: | :------------------------: |
 |  1   | [quicktype](https://app.quicktype.io/) | 任意语言json序列化(在线转) |
 
-## 九 Android热门课程
+###  常用SDK
+
+| 编号 |                          名称(地址)                          |     说明      |
+| :--: | :----------------------------------------------------------: | :-----------: |
+|  1   | [阿里云-播放器]([SDK简介与下载 (aliyun.com)](https://help.aliyun.com/document_detail/51992.html)) | 视频点播+直播 |
+|  2   | [阿里云-号码认证](https://help.aliyun.com/document_detail/121113.html) | 号码一键登录  |
+
+###  机器学习
+
+| 编号 |                          名称(地址)                          |                    说明                     |
+| :--: | :----------------------------------------------------------: | :-----------------------------------------: |
+|  1   | [Google机器学习技术](https://developers.google.cn/ml-kit?hl=zh-cn) | 条形码扫描/人脸检测/人脸网格检测/文字识别等 |
+
+## 八 Android热门课程
+
+### 音视频开发
 
 | 编号 |                          名称(地址)                          |                说明                 |
 | :--: | :----------------------------------------------------------: | :---------------------------------: |
@@ -94,32 +121,7 @@ comments: false
 |  9   | [FFmpeg打造Android万能音频播放器](https://edu.csdn.net/course/detail/6842) |                                     |
 |  10  | [Android BLE蓝牙应用开发精讲](https://study.163.com/course/introduction.htm?courseId=1006381079#/courseDetail) |              蓝牙开发               |
 
-## 十 安卓源码
-
-| 编号 |               名称(地址)               |   说明   |
-| :--: | :------------------------------------: | :------: |
-|  1   | [AndroidxRef](http://androidxref.com/) | 源码查看 |
-
-## 十一 常用SDK
-
-| 编号 |                          名称(地址)                          |     说明      |
-| :--: | :----------------------------------------------------------: | :-----------: |
-|  1   | [阿里云-播放器]([SDK简介与下载 (aliyun.com)](https://help.aliyun.com/document_detail/51992.html)) | 视频点播+直播 |
-|  2   | [阿里云-号码认证](https://help.aliyun.com/document_detail/121113.html) | 号码一键登录  |
-
-## 十二 机器学习
-
-| 编号 |                          名称(地址)                          |                    说明                     |
-| :--: | :----------------------------------------------------------: | :-----------------------------------------: |
-|  1   | [Google机器学习技术](https://developers.google.cn/ml-kit?hl=zh-cn) | 条形码扫描/人脸检测/人脸网格检测/文字识别等 |
-
-## 十三  源码分析
-
-| 编号 |                    名称(地址)                    |   说明    |
-| :--: | :----------------------------------------------: | :-------: |
-|  1   | [Dagger2](https://zhuanlan.zhihu.com/p/24454466) | 使用+源码 |
-
-## 十四 智能家居
+###  智能家居
 
 | 编号 |                          名称(地址)                          |       说明       |
 | :--: | :----------------------------------------------------------: | :--------------: |
@@ -127,6 +129,19 @@ comments: false
 |  2   | [Home-Assistant-DIY](https://github.com/zhujisheng/Home-Assistant-DIY) |  GitHub对应源码  |
 |  3   | [B站-全网最全智能家居物联网开发教程200集](https://www.bilibili.com/video/BV1cZ4y1f7WX?p=26&vd_source=2219affc775c383551bb041784ab3515) | 智能家居整套开发 |
 |  4   | [B站—智能家居Home Assistant搭建从入门到入坑](https://www.bilibili.com/video/BV1UV411273h/?spm_id_from=333.337.search-card.all.click&vd_source=2219affc775c383551bb041784ab3515) |  Home Assistant  |
+
+## 九 安卓源码
+
+| 编号 |               名称(地址)               |   说明   |
+| :--: | :------------------------------------: | :------: |
+|  1   | [AndroidxRef](http://androidxref.com/) | 源码查看 |
+
+
+## 十  源码分析
+
+| 编号 |                    名称(地址)                    |   说明    |
+| :--: | :----------------------------------------------: | :-------: |
+|  1   | [Dagger2](https://zhuanlan.zhihu.com/p/24454466) | 使用+源码 |
 
 
 
