@@ -13,13 +13,14 @@ comments: false
 
 | 编号 |                          名称(地址)                          |      说明       |
 | :--: | :----------------------------------------------------------: | :-------------: |
-|  1   | [菜鸟—Android基础入门教程](https://www.runoob.com/w3cnote/android-tutorial-intro.html) |                 |
-|  2   | [kesenhoo—Android基础入门](https://docs.kilvn.com/android-training-course-in-chinese/basics/) |                 |
-|  3   | [W3School—Android基础入门教程](https://www.w3cschool.cn/uawnhh/gi3sdozt.html) |                 |
-|  4   | [Google官方—开发者指南](https://developer.android.google.cn/guide?hl=zh-cn) |                 |
-|  5   | [CSDN—2015最新Android基础入门教程](https://blog.csdn.net/coder_pig/category_5663115.html) |                 |
-|  6   |    [易百教程—Android教程](https://www.yiibai.com/android)    |                 |
-|  7   | [小缘你咋学的Android](https://mp.weixin.qq.com/s/5W2ZDReWmpIaaUXmBo0-nw) | 如何学习Android |
+|  1   | [菜鸟—Android基础入门教程](https://www.runoob.com/w3cnote/android-tutorial-intro.html) |      丰富       |
+|  2   | [菜鸟—Android教程](https://www.runoob.com/android/android-overview.html) |     少+简单     |
+|  3   | [kesenhoo—Android基础入门](https://docs.kilvn.com/android-training-course-in-chinese/basics/) |                 |
+|  4   | [W3School—Android基础入门教程](https://www.w3cschool.cn/uawnhh/gi3sdozt.html) |                 |
+|  5   | [Google官方—开发者指南](https://developer.android.google.cn/guide?hl=zh-cn) |                 |
+|  6   | [CSDN—2015最新Android基础入门教程](https://blog.csdn.net/coder_pig/category_5663115.html) |                 |
+|  7   |    [易百教程—Android教程](https://www.yiibai.com/android)    |                 |
+|  8   | [小缘你咋学的Android](https://mp.weixin.qq.com/s/5W2ZDReWmpIaaUXmBo0-nw) | 如何学习Android |
 
 ## 二 Android 社区
 
