@@ -13,3 +13,9 @@ comments: false
 |  2   | [猫狸盘搜](https://www.alipansou.com/) |  百度+夸克+天翼云   |
 |  3   | [阿里盘搜](https://www.alipansou.com/) |        阿里         |
 
+## 二 软件
+
+| 编号 |                     名称(地址)                     | 备注 |
+| :--: | :------------------------------------------------: | :--: |
+|  1   | [PanDownload ](https://pandownload.net/index.html) |      |
+
