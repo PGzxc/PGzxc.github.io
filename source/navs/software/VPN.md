@@ -39,3 +39,10 @@ comments: false
 |  3   |  [Express VPN](https://www.expressvpn.com/)   | 老牌大厂不跑路 |
 |  4   | [快柠檬](https://knmvb.site/s/mac108/qnijgry) |                |
 
+## 五 节点
+
+| 编号 |                          名称(地址)                          |         备注          |
+| :--: | :----------------------------------------------------------: | :-------------------: |
+|  1   | [HSL-福利！靠谱稳定机场推荐](https://haoshangle.com/?p=1749) | 客户端+机场推荐(付费) |
+|  2   | [HSL—免费订阅地址(V2ray小火箭clash等可用)](https://haoshangle.com/?p=16) | clash/v2ray/流量订阅  |
+
