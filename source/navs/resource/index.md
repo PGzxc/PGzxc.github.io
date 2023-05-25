@@ -70,3 +70,9 @@ comments: false
 |  1   |     [申请方](https://www.applysquare.com/)      |      |
 |  2   | [一亩三分地](https://www.1point3acres.com/bbs/) |      |
 
+## 九 资源
+
+| 编号 |           名称(地址)           |      备注      |
+| :--: | :----------------------------: | :------------: |
+|  1   | [HSL](https://haoshangle.com/) | 资源+机场+美食 |
+
