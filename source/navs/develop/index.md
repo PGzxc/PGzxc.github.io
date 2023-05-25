@@ -31,3 +31,9 @@ comments: false
 |  5   |            [大学资源网](http://www.dxzy163.com/)             |      |
 |  7   | [实验楼](http://demo.erdangjiade.com/modals/8/856/demo/courses/index.html) |      |
 
+## 四 网络资源
+
+| 编号 |           名称(链接)            |            备注             |
+| :--: | :-----------------------------: | :-------------------------: |
+|  1   | [爱帮吧](http://www.28828.net/) | 课程+网站源码+软件+商业教程 |
+
