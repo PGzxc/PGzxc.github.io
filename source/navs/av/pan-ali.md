@@ -13,15 +13,17 @@ comments: false
 |  2   | [邵氏影视系列338部4K电影](https://www.aliyundrive.com/s/TeMawSyhwnE) |          邵氏4K          |
 |  3   | [北美好莱坞影视](https://www.aliyundrive.com/s/tBiAuhLpanb)  | 动作片+全球华语+北美影视 |
 |  4   |      [影音](https://www.aliyundrive.com/s/23cnLiB65vt)       |           电影           |
+|  5   | [杀人小钢炮-国外4K电影大合集40T+](https://www.aliyundrive.com/s/hd9wmi7qD89) |                          |
 
 ## 二 阿里云影视资源—电视剧
 
-|  No  |                             链接                             |  备注  |
-| :--: | :----------------------------------------------------------: | :----: |
-|  1   |   [仙剑奇侠传](https://www.aliyundrive.com/s/7mDr6upo2Fx)    | S1+S3  |
-|  2   |  [乡村爱情故事](https://www.aliyundrive.com/s/eAUNWJ1LEom)   | 1-15季 |
-|  3   |   [金庸武侠剧](https://www.aliyundrive.com/s/nbupDo9nuhn)    |  16部  |
-|  4   | [金庸影视最经典版本](https://www.aliyundrive.com/s/5mnig4JoQbv) |  22部  |
+|  No  |                             链接                             |        备注         |
+| :--: | :----------------------------------------------------------: | :-----------------: |
+|  1   |   [仙剑奇侠传](https://www.aliyundrive.com/s/7mDr6upo2Fx)    |        S1+S3        |
+|  2   |  [乡村爱情故事](https://www.aliyundrive.com/s/eAUNWJ1LEom)   |       1-15季        |
+|  3   |   [金庸武侠剧](https://www.aliyundrive.com/s/nbupDo9nuhn)    |        16部         |
+|  4   | [金庸影视最经典版本](https://www.aliyundrive.com/s/5mnig4JoQbv) |        22部         |
+|  5   |   [180T影视剧](https://www.aliyundrive.com/s/4bGRVUdUtct)    | 国内+欧美+港剧+日剧 |
 
 ## 三 春晚
 
