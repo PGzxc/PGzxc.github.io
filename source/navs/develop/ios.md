@@ -21,11 +21,12 @@ comments: false
 
 ## 二 教程
 
-| 编号 |                          名称(链接)                          | 备注 |
-| :--: | :----------------------------------------------------------: | :--: |
-|  1   | [菜鸟教程-IOS](https://www.runoob.com/ios/ios-tutorial.html) |      |
-|  2   |    [编程学习网-IOS](http://www.phpxs.com/j/ios/1000712/)     |      |
-|  3   | [W3School-IOS](http://home.ustc.edu.cn/~xie1993/ios/ios-tutorial.html) |      |
+| 编号 |                          名称(链接)                          |   备注    |
+| :--: | :----------------------------------------------------------: | :-------: |
+|  1   |             [Swift编程](http://www.swift51.com/)             | Swift教程 |
+|  2   | [菜鸟教程-IOS](https://www.runoob.com/ios/ios-tutorial.html) |           |
+|  3   |    [编程学习网-IOS](http://www.phpxs.com/j/ios/1000712/)     |           |
+|  4   | [W3School-IOS](http://home.ustc.edu.cn/~xie1993/ios/ios-tutorial.html) |           |
 
 ## 三 工具
 
