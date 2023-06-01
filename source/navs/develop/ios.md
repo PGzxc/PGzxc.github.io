@@ -69,13 +69,19 @@ comments: false
 
 ## 七 视频教程
 
-| 编号 |                          名称(链接)                          | 备注 |
-| :--: | :----------------------------------------------------------: | :--: |
-|  1   | [腾讯课堂-SwiftUI 3.0 实用教程](https://ke.qq.com/course/4001865#term_id=104153713) | 免费 |
-|  2   | [腾讯课堂-一口气学完SwiftUI新特性](https://ke.qq.com/course/5957187?quicklink=1#term_id=106179640) | 免费 |
-|  3   | [腾讯课堂-SwiftUI讲解与APP开发](https://ke.qq.com/course/4031190#term_id=104183428) | 免费 |
-|  4   | [B站-iOS开发 SwiftUI 62集入门教程](https://www.bilibili.com/video/BV1KY411f7in/?spm_id_from=333.337.search-card.all.click&vd_source=2219affc775c383551bb041784ab3515) |      |
-|  5   | [B站-用SwiftUI开发IOS15的APP](https://www.bilibili.com/video/BV15Y411s7WU/?spm_id_from=333.337.search-card.all.click&vd_source=2219affc775c383551bb041784ab3515) |      |
+| 编号 |                          名称(链接)                          |    备注     |
+| :--: | :----------------------------------------------------------: | :---------: |
+|  1   | [腾讯课堂-SwiftUI 3.0 实用教程](https://ke.qq.com/course/4001865#term_id=104153713) |    免费     |
+|  2   | [腾讯课堂-一口气学完SwiftUI新特性](https://ke.qq.com/course/5957187?quicklink=1#term_id=106179640) |    免费     |
+|  3   | [腾讯课堂-SwiftUI讲解与APP开发](https://ke.qq.com/course/4031190#term_id=104183428) |    免费     |
+|  4   | [B站-iOS开发 SwiftUI 62集入门教程](https://www.bilibili.com/video/BV1KY411f7in/?spm_id_from=333.337.search-card.all.click&vd_source=2219affc775c383551bb041784ab3515) |             |
+|  5   | [B站-用SwiftUI开发IOS15的APP](https://www.bilibili.com/video/BV15Y411s7WU/?spm_id_from=333.337.search-card.all.click&vd_source=2219affc775c383551bb041784ab3515) |             |
+|  6   | [B站—SwiftUI 高级教程(中文字幕)](https://www.bilibili.com/video/BV13341117BR?p=2&vd_source=2219affc775c383551bb041784ab3515) | swiftUI开发 |
+|  7   | [腾讯课堂—2020更新录制 SwiftUI界面开发](https://ke.qq.com/course/428798#term_id=100511935) |    免费     |
+|  8   | [B站—用SwiftUI开发IOS15的APP](https://www.bilibili.com/video/BV15Y411s7WU/?spm_id_from=333.337.search-card.all.click&vd_source=2219affc775c383551bb041784ab3515) |     App     |
+|  9   | [B站—SwiftUI 新手入门教程介绍](https://www.bilibili.com/video/BV1TV4y1K7Ew/?spm_id_from=333.337.search-card.all.click&vd_source=2219affc775c383551bb041784ab3515) |  基础入门   |
+|  10  | [B站—2021春季SwiftUI 2.0课程](https://www.bilibili.com/video/BV1q64y1d7x5/?spm_id_from=333.337.search-card.all.click&vd_source=2219affc775c383551bb041784ab3515) |             |
+|  11  | [B站—Swift编程基础](https://www.bilibili.com/video/BV144411C7Gg/?spm_id_from=333.337.search-card.all.click&vd_source=2219affc775c383551bb041784ab3515) |             |
 
 
 
