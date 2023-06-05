@@ -30,6 +30,10 @@ comments: false
 |  3   |   [金庸武侠剧](https://www.aliyundrive.com/s/nbupDo9nuhn)    |        16部         |
 |  4   | [金庸影视最经典版本](https://www.aliyundrive.com/s/5mnig4JoQbv) |        22部         |
 |  5   |   [180T影视剧](https://www.aliyundrive.com/s/4bGRVUdUtct)    | 国内+欧美+港剧+日剧 |
+|  6   |      [聊斋](https://www.aliyundrive.com/s/LbGhymMx51F)       |       4K修复        |
+|  7   |  [圆月弯刀-1997](https://www.aliyundrive.com/s/yJn5TFAjH1n)  |   古天乐、温碧霞    |
+|  8   |     [寻秦记](https://www.aliyundrive.com/s/1a1UFbUEeYE)      |                     |
+|  9   |      [亮剑](https://www.aliyundrive.com/s/J5AryJFcZgF)       |                     |
 
 ## 四 春晚
 
