@@ -463,6 +463,28 @@ __2-Android项目—E朝朝企业端__
 | ![][live-13]| ![][live-14] | ![][live-15]| ![][live-16]|
 | ![][live-17]| ![][live-18] | ![][live-19]| ![][live-20]|
 
+## 四 [WanAndroid_SwiftUI](https://github.com/PGzxc/WanAndroid_SwiftUI)
+
+**项目描述**：WanAndroid-SwiftUI 是基于 WanAndroid 网站开源的接口 API制作的一款IOS开源App。利用SwiftUI提供的布局(HStack、VStack、ZStack)和组件(Text、Button、Section等)  快速实现布局并及时查看界面预览，利用Alamofire+ AlamofireObjectMapper执行网络请求和数据封装，快速实现个人App开发。  
+**功能模块**：首页，导航、项目、消息、我的等   
+**技术要点**：
+
+- 基于TabView+NavigationStack构建项目主体框架
+- 网络部分：API接口+Router封装BaseURL、method、path、params+APIService具体实现
+- Alamofire执行网络请求并将请求结果通过AlamofireObjectMapper解析为Swift对象
+- 基于MVVM(Modal数据类+View视图+ViewModel-继承ObservableObject)设计模式简化开发
+- 基于SDWebImageSwiftUI显示网络图片
+- 基于AppStorage实现数据的持久化存储
+- 基于environmentObject共享应用数据并在需要时获取
+- 基于ImageCarousel实现SwiftUI首页轮播图
+
+**项目预览**
+
+|![][swift-waz-1]| ![][swift-waz-2]|![][swift-waz-3] |![][swift-waz-4]|
+| -------------- | --------------- | --------------  | -------------- |
+|![][swift-waz-5]|![][swift-waz-6] |![][swift-waz-7] |![][swift-waz-8]|
+|![][swift-waz-9]|![][swift-waz-10]|![][swift-waz-11]|                |
+
 ---
 
 # 技能清单
@@ -748,3 +770,16 @@ __2-Android项目—E朝朝企业端__
 [tinber-3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/tinber-fm-radio.jpg
 [tinber-4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/tinber-fm-red.jpg
 [tinber-5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/tinber-fm-story.jpg
+
+<!--IOS-Wanandroid-SwiftUI-->
+[swift-waz-1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/swiftui-waz-home-1.png
+[swift-waz-2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/swiftui-waz-detail-2.png
+[swift-waz-3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/swiftui-waz-navigator-3.png
+[swift-waz-4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/swiftui-waz-project-4.png
+[swift-waz-5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/swiftui-waz-message-unread-5.png
+[swift-waz-6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/swiftui-waz-message-read-6.png
+[swift-waz-7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/swiftui-waz-message-info-7.png
+[swift-waz-8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/swiftui-waz-me-info-8.png
+[swift-waz-9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/swiftui-waz-me-info-no-9.png
+[swift-waz-10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/swiftui-waz-login-10.png
+[swift-waz-11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/swiftui-waz-register-11.png
