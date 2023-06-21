@@ -507,7 +507,7 @@ __2-Android项目—E朝朝企业端__
 4. 熟悉并掌握多线程技术，如 NSThread、GCD、NSOpeartion
 5. 熟练使用支付宝支付、微信支付、银联支付等多种支付方式
 6. 熟悉APP上架的流程及访问真机设备的能力
-7. 熟练使用AFNetworking、SDWebImage,Masonry第三方框架
+7. 熟练使用AFNetworking、SDWebImage、Masonry第三方框架
 8. 熟练掌握百度地图、高德地图的定位、导航、自定义标注、地理编码等功能
 9. 熟悉常用的设计模式，如MVVM模式、代理模式、单例模式、观察者模式等设计模式
 10. 可直接阅读 apple developer 官方文档
