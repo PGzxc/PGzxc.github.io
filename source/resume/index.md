@@ -393,6 +393,12 @@ __2-Android项目—E朝朝企业端__
 # 个人项目
 
 ## 一 [Flutter-WanAndroid ](https://github.com/PGzxc/flutter_wanandroid)
+
+**项目归属** ：个人项目
+**项目名称**：Flutter-wanandroid
+**项目地址**：https://github.com/PGzxc/flutter_wanandroid
+**软件支持**：安卓+IOS
+**开发工具**：IDEA 社区版 2022.1+Flutter(3.0.2) 
 **项目描述**：Flutter-WanAndroid 是基于 WanAndroid 网站开源的接口 API制作的一款开源App。本项目基于 GetX +一系列开源 UI 库开发的一款支持 Android/IOS 跨平台项目。     
 **功能模块**：首页，导航，项目，消息，我，语言、主题   
 **技术要点**：
@@ -419,6 +425,11 @@ __2-Android项目—E朝朝企业端__
 
 ## 二 [Flutter-zhihu-getx](https://github.com/PGzxc/flutter_zhihu_getx)
 
+**项目归属**：个人项目
+**项目名称**：Flutter_zhihu_getx
+**项目地址**：https://github.com/PGzxc/flutter_zhihu_getx
+**软件支持**：安卓+IOS
+**开发工具**：IDEA 社区版 2022.2.4+Flutter(3.7.3)
 **项目描述**：Flutter-zhihu-getx是仿制知乎app开发的个人项目。利用 GetX 搭建网络和网络框架+Google 开源 UI 库开发的一款支持 Android/IOS 跨平台项目。     
 **功能模块**：首页、关注、发布、会员、我的   
 **技术要点**：
@@ -441,6 +452,12 @@ __2-Android项目—E朝朝企业端__
 
 
 ## 三 [Android-直播Live ](https://github.com/PGzxc/Live)
+
+**项目归属** ：个人项目
+**项目名称**：Android 项目—直播 Live
+**软件支持**：Android 6.0 以上
+**项目地址**：https://github.com/PGzxc/Live
+**开发工具**：Android Studio + Github
 **项目描述**：直播Live是一款仿映客直播软件，为个人业余开源项目。整体界面仿映客布局，包含首页、附近、直播、关注和我，因时间有限，仅实现部分主要功能，待后期完善。     
 **功能模块**：首页，附近、直播、关注、我等   
 **技术要点**：
@@ -465,7 +482,12 @@ __2-Android项目—E朝朝企业端__
 
 ## 四 [WanAndroid_SwiftUI](https://github.com/PGzxc/WanAndroid_SwiftUI)
 
-**项目描述**：WanAndroid-SwiftUI 是基于 WanAndroid 网站开源的接口 API制作的一款IOS开源App。利用SwiftUI提供的布局(HStack、VStack、ZStack)和组件(Text、Button、Section等)  快速实现布局并及时查看界面预览，利用Alamofire+ AlamofireObjectMapper执行网络请求和数据封装，快速实现个人App开发。  
+**项目归属**：个人项目
+**项目名称**：WanAndroid_SwiftUI
+**项目地址**：https://github.com/PGzxc/WanAndroid_SwiftUI
+**软件支持**：IOS
+**开发工具**：MacOS(13.4)+Xcode(14.3.1)+Swift(5.8.1)
+**项目描述**：WanAndroid-SwiftUI 是基于 WanAndroid 网站开源的接口 API制作的一款IOS开源App。借助于SwiftUI提供的布局(HStack、VStack、ZStack)和组件(Text、Button、Section等) 快速实现界面布局并及时查看界面预览，利用Alamofire+ AlamofireObjectMapper执行网络请求和数据封装，快速实现个人App开发。  
 **功能模块**：首页，导航、项目、消息、我的等   
 **技术要点**：
 
