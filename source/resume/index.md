@@ -507,6 +507,30 @@ __2-Android项目—E朝朝企业端__
 |![][swift-waz-5]|![][swift-waz-6] |![][swift-waz-7] |![][swift-waz-8]|
 |![][swift-waz-9]|![][swift-waz-10]|![][swift-waz-11]|                |
 
+## 五 [wanandroid_uni_app](https://github.com/PGzxc/wanandroid_uni_app)
+
+**项目归属**：个人项目
+**项目名称**：wanandroid_uni_app
+**项目地址**：https://github.com/PGzxc/wanandroid_uni_app
+**软件支持**：H5+微信小程序+其他小程序
+**开发工具**：HBuilder X 3.8.4.20230531+Swift(2.x)
+**项目描述**：该项目是基于wanandroid API开发的uni-app开源项目。借助该项目，用户可登录、注册用户，并及时查看文章、项目、导航、消息等网站信息。  
+**功能模块**：首页，导航、项目、消息、我的等   
+**技术要点**：
+
+- 基于uni-ui组件构建布局页面
+- 基于uni-api发起网络请求
+- 基于uni-api-EventChannel,监听页面间事件通信
+- 基于uni-api-页面和路由,实现页面切换和导航
+- 基于uni-api-数据缓存,保存应用数据
+- 创建Vue组件,供页面重复使用
+
+**项目预览**
+
+|![][uni-az-1]| ![][uni-az-2]|![][uni-az-3] |![][uni-az-4]|
+| ----------- | ------------ | ------------ | ----------- |
+|![][uni-az-5]|![][uni-az-6] |![][uni-az-7] |![][uni-az-8]|
+
 ---
 
 # 技能清单
@@ -550,14 +574,14 @@ __2-Android项目—E朝朝企业端__
 
 ## 前端
 
-1. 精通HTML+CSS,HTML5+CSS3,弹性盒子布局模式等前端web开发技术
+1. 熟悉HTML、CSS、盒子布局模式等前端web开发技术
 2. 熟悉使用jQuery、ajax，完成服务器交互，页面动画效果
-3. 熟悉使用Bootstrap，Element-ui，Vant,Swiper等插件
+3. 熟悉使用Bootstrap，Element-ui、Vant,Swiper等插件
 4. 熟悉使用vue框架、vue-router、axios、vue-cli脚手架
 5. 熟悉使用Git控制工具进行项目开发
-6. 熟悉微信小程序开发
+6. 熟悉微信小程序开发，熟悉uni-app开发
 7. 熟悉css常用预处理器sass
-8. 了解前端打包工具webPack,包管理器npm,cnpm,yarn
+8. 了解前端打包工具webPack,包管理器npm、cnpm、yarn
 
 
 ## C#
@@ -707,6 +731,16 @@ __2-Android项目—E朝朝企业端__
 [rl-24-5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/rl-uni-24h-table-5.png
 [rl-24-6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/rl-uni-24h-me-6.png
 
+<!--uni-app-wanandroid-->
+
+[uni-az-1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/uni-az-home-1.png
+[uni-az-2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/uni-az-navigator-2.png
+[uni-az-3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/uni-az-project-3.png
+[uni-az-4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/uni-az-article-web-4.png
+[uni-az-5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/uni-az-mine-login-no-5.png
+[uni-az-6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/uni-az-mine-login-yes-6.png
+[uni-az-7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/uni-az-user-login-7.png
+[uni-az-8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/uni-az-user-register-8.png
 <!--自己的项目-live-->
 [live-1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/live-app-splash-1.png
 [live-2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/live-user-login.png
