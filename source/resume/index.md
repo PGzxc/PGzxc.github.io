@@ -26,7 +26,7 @@ comments: false
 # 求职意向
 
 - 工作性质：全职
-- 期望职位：Android开发工程师、Flutter开发工程师、IOS开发工程师、前端开发工程师、微信小程序开发工程师、uni-app开发工程师、.NET开发工程师等
+- 期望职位：Android开发、IOS开发、Flutter开发、前端开发、小程序开发、.NET开发工程师等
 - 期望薪资：面议
 - 工作地点：北京
 
@@ -392,7 +392,7 @@ __2-Android项目—E朝朝企业端__
 ---
 # 个人项目
 
-## 一 [Flutter-WanAndroid ](https://github.com/PGzxc/flutter_wanandroid)
+## 一 Flutter—[Flutter-WanAndroid ](https://github.com/PGzxc/flutter_wanandroid)
 
 **项目归属** ：个人项目
 **项目名称**：Flutter-wanandroid
@@ -423,7 +423,7 @@ __2-Android项目—E朝朝企业端__
 | ![][w-9] | ![][w-10] | ![][w-11]| ![][w-12]|
 | ![][w-13]| ![][w-14] | ![][w-15]| ![][w-16]|
 
-## 二 [Flutter-zhihu-getx](https://github.com/PGzxc/flutter_zhihu_getx)
+## 二 Flutter—[Flutter-zhihu-getx](https://github.com/PGzxc/flutter_zhihu_getx)
 
 **项目归属**：个人项目
 **项目名称**：Flutter_zhihu_getx
@@ -451,7 +451,7 @@ __2-Android项目—E朝朝企业端__
 | ![][zh-9] | ![][zh-10] |           |           |
 
 
-## 三 [Android-直播Live ](https://github.com/PGzxc/Live)
+## 三 Android-[直播Live ](https://github.com/PGzxc/Live)
 
 **项目归属** ：个人项目
 **项目名称**：Android 项目—直播 Live
@@ -480,7 +480,7 @@ __2-Android项目—E朝朝企业端__
 | ![][live-13]| ![][live-14] | ![][live-15]| ![][live-16]|
 | ![][live-17]| ![][live-18] | ![][live-19]| ![][live-20]|
 
-## 四 [WanAndroid_SwiftUI](https://github.com/PGzxc/WanAndroid_SwiftUI)
+## 四 IOS—[WanAndroid_SwiftUI](https://github.com/PGzxc/WanAndroid_SwiftUI)
 
 **项目归属**：个人项目
 **项目名称**：WanAndroid_SwiftUI
@@ -507,7 +507,7 @@ __2-Android项目—E朝朝企业端__
 |![][swift-waz-5]|![][swift-waz-6] |![][swift-waz-7] |![][swift-waz-8]|
 |![][swift-waz-9]|![][swift-waz-10]|![][swift-waz-11]|                |
 
-## 五 [wanandroid_uni_app](https://github.com/PGzxc/wanandroid_uni_app)
+## 五 Uni-app—[wanandroid_uni_app](https://github.com/PGzxc/wanandroid_uni_app)
 
 **项目归属**：个人项目
 **项目名称**：wanandroid_uni_app
@@ -559,7 +559,7 @@ __2-Android项目—E朝朝企业端__
 10. 可直接阅读 apple developer 官方文档
 11. 熟练使用推送通知，自定义消息的处理
 12. 掌握Instruments leaks内存检测以及单元测试提升程序的稳定性
-13. 熟悉 SourceTree、Github 代码管理工具,jenkins可持续开发
+13. 熟悉 SourceTree、Github 代码管理工具，jenkins可持续开发
 14. 熟悉MRC、ARC内存管理机制
 15. 熟练运用runtime，理解runloop原理
 
@@ -581,7 +581,7 @@ __2-Android项目—E朝朝企业端__
 5. 熟悉使用Git控制工具进行项目开发
 6. 熟悉微信小程序开发，熟悉uni-app开发
 7. 熟悉css常用预处理器sass
-8. 了解前端打包工具webPack,包管理器npm、cnpm、yarn
+8. 了解前端打包工具webPack，包管理器npm、cnpm、yarn
 
 
 ## C#
@@ -592,9 +592,9 @@ __2-Android项目—E朝朝企业端__
 4. 熟悉三层架构设计思想，熟练掌握B/S及C/S应用模式开发
 5. 熟悉掌握使用常用的设计模式，如单例模式、工厂模式等
 6. 熟悉常用源码管理工具的配置与使用，如SVN、Git
-7. 熟练使用SQL Server、MySQL、ACCESS等数据库进行项目开发，并可熟练使用ADO.NET进行数据库的访问操作
-8. 沟通能力良好，有团队合作精神
-9. 学习能力良好，有技术文件编写经验
+7. 沟通能力良好，有团队合作精神
+8. 学习能力良好，有技术文件编写经验
+9. 熟练使用SQL Server、MySQL、ACCESS等数据库进行项目开发，并可熟练使用ADO.NET进行数据库的访问操作
 
 ## Flutter
 
