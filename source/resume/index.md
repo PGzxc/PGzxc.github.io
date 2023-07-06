@@ -6,7 +6,7 @@ comments: false
 ---
 <!--简历下载位置-->
 
-|      Android简历       |      IOS简历       |      Flutter简历       |     小程序简历     |       前端简历       |      .NET简历      |        完整简历         |
+|        Android         |        IOS         |        Flutter         |      小程序简      |         前端         |        .NET        |        完整简历         |
 | :--------------------: | :----------------: | :--------------------: | :----------------: | :------------------: | :----------------: | :---------------------: |
 | [下载][resume-android] | [下载][resume-ios] | [下载][resume-flutter] | [下载][resume-xcx] | [下载][resume-front] | [下载][resume-net] | [点击下载][resume-inex] |
 
