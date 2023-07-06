@@ -44,6 +44,9 @@ comments: false
 |  2   | [Clash for Windows](https://github.com/Fndroid/clash_for_windows_pkg/releases) |      |
 |  3   |   [ClashX](https://github.com/yichengchen/clashX/releases)   |      |
 |  4   | [ClashX Pro](https://install.appcenter.ms/users/clashx/apps/clashx-pro/distribution_groups/public) |      |
+|  5   | [ShadowsocksX-NG](https://github.com/shadowsocks/ShadowsocksX-NG/releases) |      |
+|  6   |      [V2rayU](https://github.com/yanue/V2rayU/releases)      |      |
+|  7   |     [V2RayXS](https://github.com/tzmax/V2RayXS/releases)     |      |
 
 ### 1.5 多端
 
