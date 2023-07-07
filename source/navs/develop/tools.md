@@ -35,11 +35,12 @@ comments: false
 | 编号 |                          名称及地址                          |         说明          |
 | :--: | :----------------------------------------------------------: | :-------------------: |
 |  1   | [JDK](https://www.oracle.com/java/technologies/javase-downloads.html) |  Oracle+java开发套件  |
-|  2   |              [Kotlin](https://kotlinlang.org/)               |      Kotlin官网       |
-|  3   |  [NDK](https://developer.android.google.cn/ndk/downloads/)   |    NDK官网下载地址    |
-|  4   |              [Node](https://nodejs.org/zh-cn/)               | JavaScript 运行时环境 |
-|  5   |               [Flutter](https://flutter.dev/)                |      跨平台开发       |
-|  6   |           [React Native](http://reactnative.dev/)            |      跨平台开发       |
+|  2   | [OpenJDK](https://adoptium.net/zh-CN/temurin/releases/?version=11) |        OpenJDK        |
+|  3   |              [Kotlin](https://kotlinlang.org/)               |      Kotlin官网       |
+|  4   |  [NDK](https://developer.android.google.cn/ndk/downloads/)   |    NDK官网下载地址    |
+|  5   |              [Node](https://nodejs.org/zh-cn/)               | JavaScript 运行时环境 |
+|  6   |               [Flutter](https://flutter.dev/)                |      跨平台开发       |
+|  7   |           [React Native](http://reactnative.dev/)            |      跨平台开发       |
 
 ## 三 接口工具
 
