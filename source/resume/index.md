@@ -6,9 +6,9 @@ comments: false
 ---
 <!--简历下载位置-->
 
-|        Android         |        IOS         |        Flutter         |      小程序简      |         前端         |        .NET        |        完整简历         |
+|        Android         |        IOS         |        Flutter         |      小程序      |         前端         |         C#         |        完整简历         |
 | :--------------------: | :----------------: | :--------------------: | :----------------: | :------------------: | :----------------: | :---------------------: |
-| [下载][resume-android] | [下载][resume-ios] | [下载][resume-flutter] | [下载][resume-xcx] | [下载][resume-front] | [下载][resume-net] | [点击下载][resume-inex] |
+| [下载][resume-android] | [下载][resume-ios] | [下载][resume-flutter] | [下载][resume-xcx] | [下载][resume-front] | [下载][resume-csharp] | [点击下载][resume-inex] |
 
 # 联系方式
 
@@ -623,7 +623,7 @@ __2-Android项目—E朝朝企业端__
 [resume-flutter]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/resumes/周向成_Flutter开发工程师.pdf
 [resume-front]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/resumes/周向成_前端开发工程师.pdf
 [resume-xcx]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/resumes/周向成_小程序开发.pdf
-[resume-net]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/resumes/周向成_NET开发工程师.pdf
+[resume-csharp]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/resumes/周向成_WinForm开发工程师.pdf
 [resume-inex]:folder/index.pdf
 <!--C#-->
 [c-sharp-1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/justTap-id-1.png
