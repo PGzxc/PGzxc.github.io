@@ -6,7 +6,7 @@ comments: false
 ---
 <!--简历下载位置-->
 
-|        Android         |        IOS         |        Flutter         |      小程序      |         前端         |         C#         |        完整简历         |
+|        Android       |        IOS         |        Flutter         |      小程序      |         前端         |         C#         |        完整简历         |
 | :--------------------: | :----------------: | :--------------------: | :----------------: | :------------------: | :----------------: | :---------------------: |
 | [下载][resume-android] | [下载][resume-ios] | [下载][resume-flutter] | [下载][resume-xcx] | [下载][resume-front] | [下载][resume-csharp] | [点击下载][resume-inex] |
 
