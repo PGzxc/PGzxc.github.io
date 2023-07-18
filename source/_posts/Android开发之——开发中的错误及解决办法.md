@@ -211,3 +211,6 @@ buildToolsVersion "30.0.2"
 
 [41]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/as-task-list-not-build.png
 
+## 五 参考
+
+* [Stackoverflow-java.lang.IllegalAccessError](https://stackoverflow.com/questions/71525731/java-lang-illegalaccesserror-class-org-jetbrains-kotlin-kapt3-base-kaptcontext/75319139)
