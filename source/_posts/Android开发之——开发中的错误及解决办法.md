@@ -124,6 +124,34 @@ An exception occurred applying plugin request [id: 'com.android.application']
 
 依次点击：File——>Project Struct——>SDK Location——>JDK location was moved to `Gradle Settings`，在打开的对话框中，将Gradle JDK修改为11
 
+### 2.5 java.lang.IllegalAccessError: class org.jetbrains.kotlin.kapt3.base.KaptContext Android
+
+#### 现象
+
+```
+java.lang.IllegalAccessError: class org.jetbrains.kotlin.kapt3.base.KaptContext (in unnamed module @0x6acdb135) cannot access class com.sun.tools.javac.util.Context (in module jdk.compiler) because module jdk.compiler does not export com.sun.tools.javac.util to unnamed module @0x6acdb135
+    at org.jetbrains.kotlin.kapt3.base.KaptContext.<init>(KaptContext.kt:28)
+    at org.jetbrains.kotlin.kapt3.KaptContextForStubGeneration.<init>(KaptContextForStubGeneration.kt:40)
+    at 
+```
+
+#### 解决办法
+
+1-在gradle.properties添加如下内容
+
+```
+gradle.jvmargs=-Dfile.encoding=UTF-8 \
+                   --add-opens jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED \
+                   --add-opens jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED \
+                   --add-opens jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED \
+                   --add-opens jdk.compiler/com.sun.tools.javac.jvm=ALL-UNNAMED  \
+                   --add-opens jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED \
+                   --add-opens jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED \
+                   --add-opens jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED
+```
+
+2-在gradle-jdk中使用JDK-11
+
 ## 三 警告类
 
 ### 3.1 The 'kotlin-android-extensions' Gradle plugin is deprecated
