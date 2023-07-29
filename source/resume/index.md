@@ -391,8 +391,37 @@ __2-Android项目—E朝朝企业端__
 
 ---
 # 个人项目
+## 一 Android-[WanAndroid_ComposeUI](https://github.com/PGzxc/WanAndroid_ComposeUI)
 
-## 一 Flutter—[Flutter-WanAndroid ](https://github.com/PGzxc/flutter_wanandroid)
+**项目归属**：个人项目
+**项目名称**：WanAndroid_ComposeUI
+**项目地址**：https://github.com/PGzxc/WanAndroid_ComposeUI
+**软件支持**：安卓
+**开发工具**：Android Studio(2022.2.1)+Java(17.0.6)+Gradle(8.0-bin)+Kotlin(1.7.20)
+**项目描述**：该项目是基于WanAndroid 网站开源的接口 API制作的一款Android ComposeUI开源App。借助于ComposeUI提供的布局(Row、Column、Box)和组件(Text、Button、Card、TabRow等) 快速实现界面布局并及时查看界面预览，利用Okhttp3+ Retrofit2+Converter-Gson执行网络请求和数据封装，快速实现个人App开发。     
+**功能模块**：首页、导航、项目、消息、我、设置等   
+**技术要点**：
+
+- 基于Okhttp3+ Retrofit2+Converter-Gson构建项目网络访问框架
+- 基于PersistentCookieJar自动保存登录Cookie
+- 基于Lifecycle-Viewmodel构建MVVM框架
+- 基于navigation-compose构建页面导航
+- 基于accompanist-pager实现分页布局支持
+- 基于accompanist-swiperefresh实现页面刷新
+- 基于accompanist-webview显示网页详情
+- 基于accompanist-flowlayout实现流式布局
+- 基于mmkv保存永久存储数据
+- material-icons-core、material-icons-extended使用系统图标
+
+**项目预览**
+
+
+| ![][com-az-1] | ![][com-az-2]  | ![][com-az-3]  | ![][com-az-4]  |
+| ------------- | -------------- | -------------- | -------------- |
+| ![][com-az-5] | ![][com-az-6]  | ![][com-az-7]  | ![][com-az-8]  |
+| ![][com-az-9] | ![][com-az-10] | ![][com-az-11] | ![][com-az-12] |
+
+## 二 Flutter—[Flutter-WanAndroid ](https://github.com/PGzxc/flutter_wanandroid)
 
 **项目归属** ：个人项目
 **项目名称**：Flutter-wanandroid
@@ -423,7 +452,7 @@ __2-Android项目—E朝朝企业端__
 | ![][w-9] | ![][w-10] | ![][w-11]| ![][w-12]|
 | ![][w-13]| ![][w-14] | ![][w-15]| ![][w-16]|
 
-## 二 Flutter—[Flutter-zhihu-getx](https://github.com/PGzxc/flutter_zhihu_getx)
+## 三 Flutter—[Flutter-zhihu-getx](https://github.com/PGzxc/flutter_zhihu_getx)
 
 **项目归属**：个人项目
 **项目名称**：Flutter_zhihu_getx
@@ -451,7 +480,7 @@ __2-Android项目—E朝朝企业端__
 | ![][zh-9] | ![][zh-10] |           |           |
 
 
-## 三 Android-[直播Live ](https://github.com/PGzxc/Live)
+## 四 Android-[直播Live ](https://github.com/PGzxc/Live)
 
 **项目归属** ：个人项目
 **项目名称**：Android 项目—直播 Live
@@ -480,7 +509,7 @@ __2-Android项目—E朝朝企业端__
 | ![][live-13]| ![][live-14] | ![][live-15]| ![][live-16]|
 | ![][live-17]| ![][live-18] | ![][live-19]| ![][live-20]|
 
-## 四 IOS—[WanAndroid_SwiftUI](https://github.com/PGzxc/WanAndroid_SwiftUI)
+## 五 IOS—[WanAndroid_SwiftUI](https://github.com/PGzxc/WanAndroid_SwiftUI)
 
 **项目归属**：个人项目
 **项目名称**：WanAndroid_SwiftUI
@@ -507,7 +536,7 @@ __2-Android项目—E朝朝企业端__
 |![][swift-waz-5]|![][swift-waz-6] |![][swift-waz-7] |![][swift-waz-8]|
 |![][swift-waz-9]|![][swift-waz-10]|![][swift-waz-11]|                |
 
-## 五 Uni-app—[wanandroid_uni_app](https://github.com/PGzxc/wanandroid_uni_app)
+## 六 Uni-app—[wanandroid_uni_app](https://github.com/PGzxc/wanandroid_uni_app)
 
 **项目归属**：个人项目
 **项目名称**：wanandroid_uni_app
@@ -840,3 +869,17 @@ __2-Android项目—E朝朝企业端__
 [swift-waz-9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/swiftui-waz-me-info-no-9.png
 [swift-waz-10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/swiftui-waz-login-10.png
 [swift-waz-11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/swiftui-waz-register-11.png
+
+<!--android-WanAndroid_ComposeUI-->
+[com-az-1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/compose-az-home-1.png
+[com-az-2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/compose-az-tree-2.png
+[com-az-3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/compose-az-project-3.png
+[com-az-4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/compose-az-msg-4.png
+[com-az-5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/compose-az-msg-5.png
+[com-az-6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/compose-az-msg-6.png
+[com-az-7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/compose-az-me-7.png
+[com-az-8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/compose-az-me-8.png
+[com-az-9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/compose-az-login-9.png
+[com-az-10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/compose-az-login-10.png
+[com-az-11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/compose-az-setting-11.png
+[com-az-12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/compose-az-web-12.png
