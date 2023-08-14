@@ -419,6 +419,7 @@ Android截图
 | -------------------- | -------------------- | -------------------- | -------------------- |
 | ![][multi-az-waz-5] | ![][multi-az-waz-6] | ![][multi-az-waz-7] | ![][multi-az-waz-8] |
 | ![][multi-az-waz-9] |                      |                      |                      |
+
 IOS截图
 
 | ![][multi-ios-waz-1] | ![][multi-ios-waz-2] | ![][multi-ios-waz-3] | ![][multi-ios-waz-4] |
