@@ -6,9 +6,9 @@ comments: false
 ---
 <!--简历下载位置-->
 
-|        Android       |        IOS         |        Flutter         |      小程序      |         C#         |        完整简历         |
-| :--------------------: | :----------------: | :--------------------: | :----------------: | :----------------: | :---------------------: |
-| [下载][resume-android] | [下载][resume-ios] | [下载][resume-flutter] | [下载][resume-xcx] | [下载][resume-csharp] | [点击下载][resume-inex] |
+|        Android       |        IOS         |        Flutter         | Compose |      小程序      |         C#         |        完整简历         |
+| :--------------------: | :----------------: | :--------------------: | :----------------: | :----------------: | :---------------------: | :---------------------: |
+| [下载][resume-android] | [下载][resume-ios] | [下载][resume-flutter] | [下载][resume-compose] | [下载][resume-xcx] | [下载][resume-csharp] | [点击下载][resume-inex] |
 
 # 联系方式
 
@@ -26,7 +26,7 @@ comments: false
 # 求职意向
 
 - 工作性质：全职
-- 期望职位：Android开发、IOS开发、Flutter开发、前端开发、小程序开发、.NET开发工程师等
+- 期望职位：Android开发、IOS开发、Flutter开发、Compose Multiplatform开发、前端开发、小程序开发、.NET开发工程师等
 - 期望薪资：面议
 - 工作地点：北京
 
@@ -391,7 +391,43 @@ __2-Android项目—E朝朝企业端__
 
 ---
 # 个人项目
-## 一 Android-[WanAndroid_ComposeUI](https://github.com/PGzxc/WanAndroid_ComposeUI)
+## 一 Compose Multiplatform跨平台-[WanAndroid-Compose-Multiplatform](https://github.com/PGzxc/WanAndroid-Compose-Multiplatform)
+
+**项目归属**：个人项目
+**项目名称**：WanAndroid-Compose-Multiplatform
+**项目地址**：https://github.com/PGzxc/WanAndroid-Compose-Multiplatform
+**软件支持**：安卓+IOS+Desk(Mac/Windows/Linux)
+**开发工具**：Android Studio(2022.3.1)+Java(17.0.6)+Gradle(8.0.2-bin)+Kotlin(1.9.0)
+**项目描述**：该项目是基于wanandroid API开发的uni-app开源项目。借助该项目，用户可登录、注册用户，并及时查看文章、项目、导航、消息等网站信息。     
+**功能模块**：首页、导航、项目、消息、我、设置等   
+**技术要点**：
+
+- 基于模版compose-multiplatform-template创建项目
+- 基于NavigationBar搭建底部导航框架
+- 网络部分：ktor-core核心库+ktor-serialization-kotlinx-json序列化
+- 基于Navigator实现界面间导航
+- 基于kamel-image显示并加载网络图片
+- 基于kstore-file和kstore实现跨平台文件及数据存储
+- 基于compose.materialIconsExtended显示Icons图标
+
+**项目预览**
+
+
+Android截图
+
+| ![][multi-az-waz-1] | ![][multi-az-waz-2] | ![][multi-az-waz-3] | ![][multi-az-waz-4] |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| ![][multi-az-waz-5] | ![][multi-az-waz-6] | ![][multi-az-waz-7] | ![][multi-az-waz-8] |
+| ![][multi-az-waz-9] |                      |                      |                      |
+IOS截图
+
+| ![][multi-ios-waz-1] | ![][multi-ios-waz-2] | ![][multi-ios-waz-3] | ![][multi-ios-waz-4] |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| ![][multi-ios-waz-5] | ![][multi-ios-waz-6] | ![][multi-ios-waz-7] | ![][multi-ios-waz-8] |
+| ![][multi-ios-waz-9] |                      |                      |                      |
+
+
+## 二 Android-[WanAndroid_ComposeUI](https://github.com/PGzxc/WanAndroid_ComposeUI)
 
 **项目归属**：个人项目
 **项目名称**：WanAndroid_ComposeUI
@@ -421,7 +457,7 @@ __2-Android项目—E朝朝企业端__
 | ![][com-az-5] | ![][com-az-6]  | ![][com-az-7]  | ![][com-az-8]  |
 | ![][com-az-9] | ![][com-az-10] | ![][com-az-11] | ![][com-az-12] |
 
-## 二 Flutter—[Flutter-WanAndroid ](https://github.com/PGzxc/flutter_wanandroid)
+## 三 Flutter—[Flutter-WanAndroid ](https://github.com/PGzxc/flutter_wanandroid)
 
 **项目归属** ：个人项目
 **项目名称**：Flutter-wanandroid
@@ -452,7 +488,7 @@ __2-Android项目—E朝朝企业端__
 | ![][w-9] | ![][w-10] | ![][w-11]| ![][w-12]|
 | ![][w-13]| ![][w-14] | ![][w-15]| ![][w-16]|
 
-## 三 Flutter—[Flutter-zhihu-getx](https://github.com/PGzxc/flutter_zhihu_getx)
+## 四 Flutter—[Flutter-zhihu-getx](https://github.com/PGzxc/flutter_zhihu_getx)
 
 **项目归属**：个人项目
 **项目名称**：Flutter_zhihu_getx
@@ -480,7 +516,7 @@ __2-Android项目—E朝朝企业端__
 | ![][zh-9] | ![][zh-10] |           |           |
 
 
-## 四 Android-[直播Live ](https://github.com/PGzxc/Live)
+## 五 Android-[直播Live ](https://github.com/PGzxc/Live)
 
 **项目归属** ：个人项目
 **项目名称**：Android 项目—直播 Live
@@ -509,7 +545,7 @@ __2-Android项目—E朝朝企业端__
 | ![][live-13]| ![][live-14] | ![][live-15]| ![][live-16]|
 | ![][live-17]| ![][live-18] | ![][live-19]| ![][live-20]|
 
-## 五 IOS—[WanAndroid_SwiftUI](https://github.com/PGzxc/WanAndroid_SwiftUI)
+## 六 IOS—[WanAndroid_SwiftUI](https://github.com/PGzxc/WanAndroid_SwiftUI)
 
 **项目归属**：个人项目
 **项目名称**：WanAndroid_SwiftUI
@@ -536,7 +572,7 @@ __2-Android项目—E朝朝企业端__
 |![][swift-waz-5]|![][swift-waz-6] |![][swift-waz-7] |![][swift-waz-8]|
 |![][swift-waz-9]|![][swift-waz-10]|![][swift-waz-11]|                |
 
-## 六 Uni-app—[wanandroid_uni_app](https://github.com/PGzxc/wanandroid_uni_app)
+## 七 Uni-app—[wanandroid_uni_app](https://github.com/PGzxc/wanandroid_uni_app)
 
 **项目归属**：个人项目
 **项目名称**：wanandroid_uni_app
@@ -637,6 +673,17 @@ __2-Android项目—E朝朝企业端__
 * 熟悉webview-flutter进行网页加载及显示
 * 了解Flutter与Android及IOS混合开发
 
+## Compose Multiplatform
+
+* 熟练使用compose进行界面布局和组件开发
+* 熟练使用expect/actual进行共享模块及跨平台模块代码开发
+* 熟练使用moko-multiplatform-resources进行资源的引用及开发
+* 熟练使用ktor、ktor-serialization-kotlinx-json进行网络访问及结果解析
+* 熟练使用voyager进行viewmodel开发和Navigator进行界面间导航
+* 熟悉定义网络请求的各种状态并根据状态进行界面显示的MVI模式
+* 熟悉SQLDelight跨平台数据库的配置及使用
+* 熟悉Kstore-file跨平台文件设置及Kstore跨平台数据保存
+
 ---
 # 微信公众号
 ![weixin][1]
@@ -650,6 +697,7 @@ __2-Android项目—E朝朝企业端__
 [resume-android]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/resume/周向成_Android开发工程师.pdf
 [resume-ios]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/resume/周向成_IOS开发工程师.pdf
 [resume-flutter]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/resume/周向成_Flutter开发工程师.pdf
+[resume-compose]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/resume/周向成_Compose_Multiplatform开发工程师.pdf
 [resume-front]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/resume/周向成_前端开发工程师.pdf
 [resume-xcx]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/resume/周向成_小程序开发.pdf
 [resume-csharp]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/resume/周向成_WinForm开发工程师.pdf
@@ -883,3 +931,24 @@ __2-Android项目—E朝朝企业端__
 [com-az-10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/compose-az-login-10.png
 [com-az-11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/compose-az-setting-11.png
 [com-az-12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/compose-az-web-12.png
+<!--android-WanAndroid_Compose-multiplatform-->
+<!--az-->
+[multi-az-waz-1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/multiplatform-az-waz-home-1.png
+[multi-az-waz-2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/multiplatform-az-waz-navigator-2.png
+[multi-az-waz-3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/multiplatform-az-waz-project-3.png
+[multi-az-waz-4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/multiplatform-az-waz-msg-4.png
+[multi-az-waz-5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/multiplatform-az-waz-msg-5.png
+[multi-az-waz-6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/multiplatform-az-waz-me-6.png
+[multi-az-waz-7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/multiplatform-az-waz-me-7.png
+[multi-az-waz-8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/multiplatform-az-waz-login-8.png
+[multi-az-waz-9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/multiplatform-az-waz-register-9.png
+<!--ios-->
+[multi-ios-waz-1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/multiplatform-ios-waz-home-1.png
+[multi-ios-waz-2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/multiplatform-ios-waz-navigator-2.png
+[multi-ios-waz-3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/multiplatform-ios-waz-project-3.png
+[multi-ios-waz-4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/multiplatform-ios-waz-msg-4.png
+[multi-ios-waz-5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/multiplatform-ios-waz-msg-5.png
+[multi-ios-waz-6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/multiplatform-ios-waz-me-6.png
+[multi-ios-waz-7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/multiplatform-ios-waz-me-7.png
+[multi-ios-waz-8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/multiplatform-ios-waz-login-8.png
+[multi-ios-waz-9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/multiplatform-ios-waz-register-9.png
