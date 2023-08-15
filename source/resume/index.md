@@ -6,9 +6,9 @@ comments: false
 ---
 <!--简历下载位置-->
 
-|        Android       |        IOS         |        Flutter         | Compose |      小程序      |         C#         |        完整简历         |
+|        Android       |        IOS         |        Flutter         | KMM |      小程序      |         C#         |        完整简历         |
 | :--------------------: | :----------------: | :--------------------: | :----------------: | :----------------: | :---------------------: | :---------------------: |
-| [下载][resume-android] | [下载][resume-ios] | [下载][resume-flutter] | [下载][resume-compose] | [下载][resume-xcx] | [下载][resume-csharp] | [点击下载][resume-inex] |
+| [下载][resume-android] | [下载][resume-ios] | [下载][resume-flutter] | [下载][resume-kmm] | [下载][resume-xcx] | [下载][resume-csharp] | [点击下载][resume-inex] |
 
 # 联系方式
 
@@ -698,7 +698,7 @@ IOS截图
 [resume-android]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/resume/周向成_Android开发工程师.pdf
 [resume-ios]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/resume/周向成_IOS开发工程师.pdf
 [resume-flutter]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/resume/周向成_Flutter开发工程师.pdf
-[resume-compose]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/resume/周向成_Compose_Multiplatform开发工程师.pdf
+[resume-kmm]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/resume/周向成_KMM开发工程师.pdf
 [resume-front]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/resume/周向成_前端开发工程师.pdf
 [resume-xcx]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/resume/周向成_小程序开发.pdf
 [resume-csharp]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-resume/resume/周向成_WinForm开发工程师.pdf
