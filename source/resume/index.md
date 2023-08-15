@@ -398,7 +398,7 @@ __2-Android项目—E朝朝企业端__
 **项目地址**：https://github.com/PGzxc/WanAndroid-Compose-Multiplatform
 **软件支持**：安卓+IOS+Desk(Mac/Windows/Linux)
 **开发工具**：Android Studio(2022.3.1)+Java(17.0.6)+Gradle(8.0.2-bin)+Kotlin(1.9.0)
-**项目描述**：该项目是基于wanandroid API开发的uni-app开源项目。借助该项目，用户可登录、注册用户，并及时查看文章、项目、导航、消息等网站信息。     
+**项目描述**：该项目是基于wanandroid API开发的Kotlin Multiplatform Mobile开源项目。借助该项目，用户可登录、注册用户，并及时查看文章、项目、导航、消息等网站信息。     
 **功能模块**：首页、导航、项目、消息、我、设置等   
 **技术要点**：
 
