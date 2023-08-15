@@ -26,7 +26,7 @@ comments: false
 # 求职意向
 
 - 工作性质：全职
-- 期望职位：Android开发、IOS开发、Flutter开发、Compose Multiplatform开发、前端开发、小程序开发、.NET开发工程师等
+- 期望职位：Android开发、IOS开发、Flutter开发、KMM开发、前端开发、小程序开发、.NET开发工程师等
 - 期望薪资：面议
 - 工作地点：北京
 
