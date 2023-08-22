@@ -391,12 +391,12 @@ __2-Android项目—E朝朝企业端__
 
 ---
 # 个人项目
-## 一 Compose Multiplatform跨平台-[WanAndroid-Compose-Multiplatform](https://github.com/PGzxc/WanAndroid-Compose-Multiplatform)
+## 一 KMM跨平台—[WanAndroid-Compose-Multiplatform](https://github.com/PGzxc/WanAndroid-Compose-Multiplatform)
 
 **项目归属**：个人项目
 **项目名称**：WanAndroid-Compose-Multiplatform
 **项目地址**：https://github.com/PGzxc/WanAndroid-Compose-Multiplatform
-**软件支持**：安卓+IOS+Desk(Mac/Windows/Linux)
+**软件支持**：Android+IOS+Desk(Mac/Windows/Linux)
 **开发工具**：Android Studio(2022.3.1)+Java(17.0.6)+Gradle(8.0.2-bin)+Kotlin(1.9.0)
 **项目描述**：该项目是基于wanandroid API开发的Kotlin Multiplatform Mobile开源项目。借助该项目，用户可登录、注册用户，并及时查看文章、项目、导航、消息等网站信息。     
 **功能模块**：首页、导航、项目、消息、我、设置等   
@@ -433,7 +433,7 @@ IOS截图
 **项目归属**：个人项目
 **项目名称**：WanAndroid_ComposeUI
 **项目地址**：https://github.com/PGzxc/WanAndroid_ComposeUI
-**软件支持**：安卓
+**软件支持**：Android
 **开发工具**：Android Studio(2022.2.1)+Java(17.0.6)+Gradle(8.0-bin)+Kotlin(1.7.20)
 **项目描述**：该项目是基于WanAndroid 网站开源的接口 API制作的一款Android ComposeUI开源App。借助于ComposeUI提供的布局(Row、Column、Box)和组件(Text、Button、Card、TabRow等) 快速实现界面布局并及时查看界面预览，利用Okhttp3+ Retrofit2+Converter-Gson执行网络请求和数据封装，快速实现个人App开发。     
 **功能模块**：首页、导航、项目、消息、我、设置等   
@@ -463,7 +463,7 @@ IOS截图
 **项目归属** ：个人项目
 **项目名称**：Flutter-wanandroid
 **项目地址**：https://github.com/PGzxc/flutter_wanandroid
-**软件支持**：安卓+IOS
+**软件支持**：Android+IOS
 **开发工具**：IDEA 社区版 2022.1+Flutter(3.0.2) 
 **项目描述**：Flutter-WanAndroid 是基于 WanAndroid 网站开源的接口 API制作的一款开源App。本项目基于 GetX +一系列开源 UI 库开发的一款支持 Android/IOS 跨平台项目。     
 **功能模块**：首页、导航、项目、消息、我、语言、主题   
@@ -489,12 +489,12 @@ IOS截图
 | ![][w-9] | ![][w-10] | ![][w-11]| ![][w-12]|
 | ![][w-13]| ![][w-14] | ![][w-15]| ![][w-16]|
 
-## 四 Flutter—[Flutter-zhihu-getx](https://github.com/PGzxc/flutter_zhihu_getx)
+##  四 Flutter—[Flutter-zhihu-getx](https://github.com/PGzxc/flutter_zhihu_getx)
 
 **项目归属**：个人项目
 **项目名称**：Flutter_zhihu_getx
 **项目地址**：https://github.com/PGzxc/flutter_zhihu_getx
-**软件支持**：安卓+IOS
+**软件支持**：Android+IOS
 **开发工具**：IDEA 社区版 2022.2.4+Flutter(3.7.3)
 **项目描述**：Flutter-zhihu-getx是仿制知乎app开发的个人项目。利用 GetX 搭建网络和网络框架+Google 开源 UI 库开发的一款支持 Android/IOS 跨平台项目。     
 **功能模块**：首页、关注、发布、会员、我的   
@@ -579,17 +579,17 @@ IOS截图
 **项目名称**：wanandroid_uni_app
 **项目地址**：https://github.com/PGzxc/wanandroid_uni_app
 **软件支持**：H5+微信小程序+其他小程序
-**开发工具**：HBuilder X 3.8.4.20230531+Swift(2.x)
+**开发工具**：HBuilder X 3.8.4.20230531+Vue(2.x)
 **项目描述**：该项目是基于wanandroid API开发的uni-app开源项目。借助该项目，用户可登录、注册用户，并及时查看文章、项目、导航、消息等网站信息。  
 **功能模块**：首页，导航、项目、消息、我的等   
 **技术要点**：
 
 - 基于uni-ui组件构建布局页面
 - 基于uni-api发起网络请求
-- 基于uni-api-EventChannel,监听页面间事件通信
-- 基于uni-api-页面和路由,实现页面切换和导航
-- 基于uni-api-数据缓存,保存应用数据
-- 创建Vue组件,供页面重复使用
+- 基于uni-api-EventChannel监听页面间事件通信
+- 基于uni-api-页面和路由实现页面切换和导航
+- 基于uni-api-数据缓存保存应用数据
+- 创建Vue组件供页面重复使用
 
 **项目预览**
 
