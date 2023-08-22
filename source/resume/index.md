@@ -674,7 +674,7 @@ IOS截图
 * 熟悉webview-flutter进行网页加载及显示
 * 了解Flutter与Android及IOS混合开发
 
-## Compose Multiplatform
+## Kotlin Multiplatform Mobile
 
 * 熟练使用compose进行界面布局和组件开发
 * 熟练使用expect/actual进行共享模块及跨平台模块代码开发
