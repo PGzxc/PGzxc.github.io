@@ -19,4 +19,5 @@ comments: false
 |  2   | [土狗搜索](https://www.tugousou.com/)  |  阿里云盘资源分享   |
 |  3   | [奇妙搜索](https://magicalsearch.top/) |                     |
 |  4   | [猫狸盘搜](https://www.alipansou.com/) |  百度+夸克+天翼云   |
+|  5   | [盘么么](http://www.panmeme.com/query) |   电影+资源+软件    |
 
