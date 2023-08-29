@@ -20,4 +20,5 @@ comments: false
 |  3   | [奇妙搜索](https://magicalsearch.top/) |                     |
 |  4   | [猫狸盘搜](https://www.alipansou.com/) |  百度+夸克+天翼云   |
 |  5   | [盘么么](http://www.panmeme.com/query) |   电影+资源+软件    |
+|  6   |   [小纸条](https://ali.gitcafe.ink/)   |   电影+资源+软件    |
 
