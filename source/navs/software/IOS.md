@@ -43,7 +43,7 @@ comments: false
 |  1   |                           My Cloud                           | 西部数据NAS  |
 |  2   |                             Plex                             | 聚合影音中心 |
 |  3   |                       Kodi/Kodi Remote                       | 聚合影音中心 |
-|  4   | Drive/Photos Mobile/DS file/Active Insight/DS video/Moments/DSDownload/群晖管家/DS cloud/DS photo/DS audio/DS note |   群晖NAS    |
+|  4   | Drive/Photos Mobile/DS file/Active Insight/DS video/Moments/<br/>DSDownload/群晖管家/DS cloud/DS photo/DS audio/DS note |   群晖NAS    |
 
 ## 五 三方软件安装
 
@@ -59,4 +59,10 @@ comments: false
 |  1   |     Developer     |          软件开发工具           |
 |  2   |    TestFlight     |       进行内部和外部测试        |
 |  3   | App Store Connect | 管理和测试App/查看趋势/回复评论 |
+
+## 七 TestFlight
+
+| 编号 |                          名称(地址)                          |     备注     |
+| :--: | :----------------------------------------------------------: | :----------: |
+|  1   | [awesome-testflight-link](https://github.com/pluwen/awesome-testflight-link) | mac/ipad/app |
 
