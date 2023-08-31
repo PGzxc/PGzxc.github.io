@@ -65,4 +65,6 @@ comments: false
 | 编号 |                          名称(地址)                          |     备注     |
 | :--: | :----------------------------------------------------------: | :----------: |
 |  1   | [awesome-testflight-link](https://github.com/pluwen/awesome-testflight-link) | mac/ipad/app |
+|  2   |          [Airport](https://app.airport.community/)           |  TestFlight  |
+|  3   |             [Departures](https://departures.to/)             |  TestFlight  |
 
