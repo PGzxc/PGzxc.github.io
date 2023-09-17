@@ -44,5 +44,5 @@ vue-template-compiler将Left.vue、Right.vue、Count.vue处理后的文件放到
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-36-vue-chrome-src.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-36-vue-template-compiler.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-36-vue-chrome-src.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-36-vue-template-compiler.png

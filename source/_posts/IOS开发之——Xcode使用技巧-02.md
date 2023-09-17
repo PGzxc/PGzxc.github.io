@@ -77,10 +77,10 @@ Storyboard界面——>右上角点击
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-02-developer-docment.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-02-source-property.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-02-assistant-editor.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-02-method-show.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-02-code-create.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-02-code-create-set.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-02-code-use.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-02-developer-docment.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-02-source-property.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-02-assistant-editor.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-02-method-show.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-02-code-create.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-02-code-create-set.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-02-code-use.gif

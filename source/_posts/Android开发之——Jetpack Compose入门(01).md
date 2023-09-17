@@ -57,5 +57,5 @@ date: 2022-11-13 18:29:32
 ![][1]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/Jetpack-Compose-01.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-android/Jetpack-Compose-01.png
 

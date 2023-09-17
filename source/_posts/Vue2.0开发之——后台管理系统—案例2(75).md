@@ -189,5 +189,5 @@ const router = new VueRouter({
 ![][2]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-75-service-manager-layout.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-75-service-manager-tab-switch.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-75-service-manager-layout.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-75-service-manager-tab-switch.gif

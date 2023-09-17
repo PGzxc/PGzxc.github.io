@@ -158,4 +158,4 @@ C++ 类可以从多个类继承成员，语法如下：
 	Total area: 35
 	Total paint cost: $2450
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-class-type.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-class-type.png

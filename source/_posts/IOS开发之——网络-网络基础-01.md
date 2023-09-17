@@ -77,6 +77,6 @@ date: 2022-02-28 21:47:06
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-internet-dev-samples.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-internet-client-server-view.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-internet-dev-samples.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-internet-client-server-view.png
 

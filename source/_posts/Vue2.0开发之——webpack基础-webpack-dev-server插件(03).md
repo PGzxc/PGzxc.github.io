@@ -105,9 +105,9 @@ http://localhost:8080/bundle.js
 
 
 [00]:https://www.webpackjs.com/guides/development/#%E4%BD%BF%E7%94%A8-webpack-dev-server
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-03-webpack-dev-server-install.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-03-webpack-dev-server-run-dev.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-03-webpack-dev-server-run-preview.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-03-webpack-dev-server-run-preview-src.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-03-webpack-dev-server-root-bundle.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-03-webpack-dev-server-root-bundle-view.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-03-webpack-dev-server-install.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-03-webpack-dev-server-run-dev.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-03-webpack-dev-server-run-preview.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-03-webpack-dev-server-run-preview-src.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-03-webpack-dev-server-root-bundle.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-03-webpack-dev-server-root-bundle-view.png

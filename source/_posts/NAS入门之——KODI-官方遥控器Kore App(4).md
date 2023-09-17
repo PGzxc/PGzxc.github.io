@@ -98,16 +98,16 @@ http://localhost:8080/
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-download-platform.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-kodi-service.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-kodi-open-http.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-windows-share.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-kodi-web-view.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-open.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-search.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-search-result.png
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-connect.png
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-connect-finish.png
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-control.png
-[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-control-play.png
-[13]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-home-view.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-download-platform.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-kodi-service.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-kodi-open-http.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-windows-share.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-kodi-web-view.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-open.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-search.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-search-result.png
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-connect.png
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-connect-finish.png
+[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-control.png
+[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-control-play.png
+[13]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-4-kore-home-view.png

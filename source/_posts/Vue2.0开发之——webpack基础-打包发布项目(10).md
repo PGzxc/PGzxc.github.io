@@ -109,5 +109,5 @@ npm run dev
 
 
 [00]:https://www.npmjs.com/package/clean-webpack-plugin
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-10-js-file-build.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-10-images-file-build.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-10-js-file-build.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-10-images-file-build.png

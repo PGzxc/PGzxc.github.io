@@ -33,6 +33,6 @@ Thread 1: "Could not instantiate class named WKWebView because no class named WK
 ![][2]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-webview-02-target-buildphases.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-webview-02-framework-add.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-webview-02-target-buildphases.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-webview-02-framework-add.png
 

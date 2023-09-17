@@ -62,14 +62,14 @@ date: 2018-03-05 12:40:09
 # 其他 
 参考： [RN_Image][11]
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-image-local.png
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-image-local-look.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-image-uri-code.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-image-uri-look.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-image-app-clean.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-image-app-code.png
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-image-app-look.png
-[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-image-sdcard-dir.png
-[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-image-sdcard-code.png
-[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-image-sdcard-look.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-image-local.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-image-local-look.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-image-uri-code.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-image-uri-look.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-image-app-clean.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-image-app-code.png
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-image-app-look.png
+[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-image-sdcard-dir.png
+[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-image-sdcard-code.png
+[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-image-sdcard-look.png
 [11]: https://github.com/PGzxc/RN_Image

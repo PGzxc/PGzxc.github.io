@@ -129,21 +129,21 @@ Main.storyboard文件就可以修改UI界面，左边的箭头表明：程序一
 
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-navigator-project.png
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-navigator-version.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-navigator-symbol.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-navigator-search.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-navigator-error.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-navigator-test.png
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-navigator-debug.png
-[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-navigator-breakpoint.png
-[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-navigator-report.png
-[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-show-hidden-area.png
-[11]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-component.png
-[12]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-project-object-c.png
-[13]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-project-h-file.png
-[14]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-project-h-file.png
-[15]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-object-run.png
-[16]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-project-swift.png
-[17]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-swift-project-code.png
-[18]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-swift-run.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-navigator-project.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-navigator-version.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-navigator-symbol.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-navigator-search.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-navigator-error.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-navigator-test.png
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-navigator-debug.png
+[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-navigator-breakpoint.png
+[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-navigator-report.png
+[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-show-hidden-area.png
+[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-component.png
+[12]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-project-object-c.png
+[13]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-project-h-file.png
+[14]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-project-h-file.png
+[15]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-object-run.png
+[16]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-project-swift.png
+[17]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-swift-project-code.png
+[18]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-swift-run.png

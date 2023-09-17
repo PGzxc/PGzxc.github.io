@@ -63,15 +63,15 @@ date: 2018-12-22 20:51:01
 
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-retore-software-info.png
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-restore-create-ssh.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-resote-add-ssh-key.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-restore-ssh-test.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-restore-git-username-email.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-restore-bolg-folder-remove.png
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-restore-git-init-remote.png
-[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-restore-install-hexo.png
-[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-restore-npm-install.png
-[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-restore-npm-install.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-retore-software-info.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-restore-create-ssh.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-resote-add-ssh-key.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-restore-ssh-test.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-restore-git-username-email.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-restore-bolg-folder-remove.png
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-restore-git-init-remote.png
+[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-restore-install-hexo.png
+[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-restore-npm-install.png
+[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-restore-npm-install.png
 [11]: http://localhost:4000/
-[12]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-restore-hexo-s.png
+[12]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-restore-hexo-s.png

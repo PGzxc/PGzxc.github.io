@@ -201,10 +201,10 @@ Vue.directive('color',function(el,binding){
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-62-direct-v-color-error-info.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-62-direct-v-color-use-view.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-62-direct-update-view.gif
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-62-direct-whole-view.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-62-direct-v-color-error-info.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-62-direct-v-color-use-view.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-62-direct-update-view.gif
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-62-direct-whole-view.png
 
 
 

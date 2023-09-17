@@ -107,7 +107,7 @@ findViewById(R.id.btn_click).setOnClickListener(view->
 
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/lambda-jdk_8.png
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/lambda-compileoptions.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/lambda_sample.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/lambda-jdk_8.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/lambda-compileoptions.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/lambda_sample.png
 [4]: https://github.com/PGzxc/LambdaDemo

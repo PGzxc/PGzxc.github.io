@@ -88,4 +88,4 @@ root.render(
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-react/react-day1-img3-createelement-problem.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day1-img3-createelement-problem.png

@@ -155,8 +155,8 @@ alter table emp add CONSTRAINT fk_emp_dept FOREIGN key(dep_id) REFERENCES dept(i
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-19-foreign-key-tabs.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-19-foreign-model-none.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-19-foreign-model-has.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-19-foreign-delete-success.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-19-foreign-delete-fail.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-19-foreign-key-tabs.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-19-foreign-model-none.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-19-foreign-model-has.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-19-foreign-delete-success.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-19-foreign-delete-fail.png

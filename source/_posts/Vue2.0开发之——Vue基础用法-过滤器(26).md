@@ -218,5 +218,5 @@ Vue.filter('maxLength',(str,len=10)=>{
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-26-filter-sample-1.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-26-filter-global-sample-2.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-26-filter-sample-1.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-26-filter-global-sample-2.png

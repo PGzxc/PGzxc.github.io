@@ -51,4 +51,4 @@ date: 2022-11-05 09:29:46
 
 ![][1]
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-kotlin/kotlin-learn-struct-4.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-kotlin/kotlin-learn-struct-4.png

@@ -173,10 +173,10 @@ onLoad: function (options) {
 
 [00]:https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission
 [01]:https://developers.weixin.qq.com/miniprogram/dev/component/map.html
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-map-first-view.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-map-getlocation-permission.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-map-permission-object.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-map-permission-dyamic.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-map-my-location.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-map-location-compass.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-map-marker-preview.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-map-first-view.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-map-getlocation-permission.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-map-permission-object.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-map-permission-dyamic.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-map-my-location.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-map-location-compass.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-map-marker-preview.gif

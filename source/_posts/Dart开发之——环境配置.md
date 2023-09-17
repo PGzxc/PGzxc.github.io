@@ -68,13 +68,13 @@ StageXL，一个Dart框架，用来开发2D游戏的，目前处于实验阶段
 
 
 [0]: https://www.dartlang.org/
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/dart-web.png
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/dart-vm.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/dart-win.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/dart-download.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/setup.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/setup-continue.png
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/dart-path.png
-[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/dart-version.png
-[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/dart-file.png
-[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/dart-file-run.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/dart-web.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/dart-vm.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/dart-win.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/dart-download.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/setup.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/setup-continue.png
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/dart-path.png
+[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/dart-version.png
+[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/dart-file.png
+[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/dart-file-run.png

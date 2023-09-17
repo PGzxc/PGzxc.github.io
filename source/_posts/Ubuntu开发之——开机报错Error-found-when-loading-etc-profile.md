@@ -36,4 +36,4 @@ export PATH=$ANDROID_HOME/platform-tools:$PATH
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-linux/ubuntu-error-loading-etc.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-linux/ubuntu-error-loading-etc.png

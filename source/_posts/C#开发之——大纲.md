@@ -27,4 +27,4 @@ date: 2023-01-04 11:05:00
 
 ![][1]
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-all-xmind-summary.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-all-xmind-summary.png

@@ -214,10 +214,10 @@ picker.setWheelModeEnabled(!isWheel);
 ![][7]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-picker-min-max.gif
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-picker-setformatter.gif
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-picker-selected-color.gif
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-picker-top-bottom-line.gif
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-picker-shader-color.gif
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-picker-margin.gif
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-picker-wheel-mode.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-picker-min-max.gif
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-picker-setformatter.gif
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-picker-selected-color.gif
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-picker-top-bottom-line.gif
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-picker-shader-color.gif
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-picker-margin.gif
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-picker-wheel-mode.gif

@@ -171,6 +171,6 @@ EasyRefresh(
 * [CupertinoSliverRefreshControl class](https://api.flutter-io.cn/flutter/cupertino/CupertinoSliverRefreshControl-class.html)
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-refresh-material.gif
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-refresh-CupertinoSliverRefreshControl.gif
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-refresh-easyrefresh.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-refresh-material.gif
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-refresh-CupertinoSliverRefreshControl.gif
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-refresh-easyrefresh.gif

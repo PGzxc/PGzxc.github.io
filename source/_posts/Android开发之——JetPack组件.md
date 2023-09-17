@@ -95,6 +95,6 @@ Jetpack 包含与平台 API 解除捆绑的 androidx.* 软件包库。这意味�
 
 
 [1]: https://developer.android.google.cn/jetpack
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-jetpack-composition.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-jetpack-composition.png
 [3]: https://developer.android.google.cn/jetpack/androidx
 [4]: https://developer.android.google.cn/jetpack/compose/

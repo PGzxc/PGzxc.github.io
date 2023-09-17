@@ -50,8 +50,8 @@ vue-devtools插件下载地址：https://devtools.vuejs.org/guide/installation.h
 
 [00]:https://devtools.vuejs.org/guide/installation.html
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-15-devtools-install-site.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-15-devtools-config.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-15-devtools-debug-open.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-15-devtools-debug-click-line.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-15-devtools-debug-eidt.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-15-devtools-install-site.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-15-devtools-config.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-15-devtools-debug-open.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-15-devtools-debug-click-line.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-15-devtools-debug-eidt.png

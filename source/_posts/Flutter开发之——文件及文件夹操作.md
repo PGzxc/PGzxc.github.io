@@ -252,4 +252,4 @@ _loadAsset(BuildContext context) async{
 ![][1]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-file-folder-sample.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-file-folder-sample.png

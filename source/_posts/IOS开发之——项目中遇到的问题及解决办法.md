@@ -104,4 +104,4 @@ File not found: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefau
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-error-project-format.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-error-project-format.png

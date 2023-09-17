@@ -88,7 +88,7 @@ Resources：
 
 * AppIcon：图标
 * Fonts：字体
-* https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-net：图片
+* https://raw.githubusercontent.com/PGzxc/CDN/master/blog-net：图片
 * Raw：文本、音视频等文件
 * Splash：启动文件
 * Styles：样式文件
@@ -114,15 +114,15 @@ Resources：
 * [什么是 .NET MAUI？](https://learn.microsoft.com/zh-cn/dotnet/maui/what-is-maui)
 
 
-[01]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-net/net-maui-install-choice-01.png
-[02]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-net/net-maui-create-maui-app-01.png
-[03]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-net/net-maui-create-app-config-01.png
-[04]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-net/net-maui-create-app-struct-01.png
-[05]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-net/net-maui-pravacy-open-01.png
-[06]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-net/net-maui-run-windows-config-01.png
-[07]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-net/net-maui-run-windows-view-01.png
-[08]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-net/net-maui-run-android-config-01.png
-[09]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-net/net-maui-run-android-view-01.png
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-net/net-maui-project-struct-01.png
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-net/net-maui-layout-view-01.png
-[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-net/net-maui-code-view-01.png
+[01]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-net/net-maui-install-choice-01.png
+[02]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-net/net-maui-create-maui-app-01.png
+[03]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-net/net-maui-create-app-config-01.png
+[04]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-net/net-maui-create-app-struct-01.png
+[05]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-net/net-maui-pravacy-open-01.png
+[06]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-net/net-maui-run-windows-config-01.png
+[07]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-net/net-maui-run-windows-view-01.png
+[08]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-net/net-maui-run-android-config-01.png
+[09]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-net/net-maui-run-android-view-01.png
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-net/net-maui-project-struct-01.png
+[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-net/net-maui-layout-view-01.png
+[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-net/net-maui-code-view-01.png

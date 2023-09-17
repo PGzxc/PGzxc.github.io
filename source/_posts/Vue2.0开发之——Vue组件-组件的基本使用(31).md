@@ -172,4 +172,4 @@ export default {
 ![][1]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-31-vue-component-sample.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-31-vue-component-sample.gif

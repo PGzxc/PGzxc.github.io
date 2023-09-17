@@ -99,5 +99,5 @@ async initCartList() {
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-45-cart-axios-getlist.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-45-cart-data-list.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-45-cart-axios-getlist.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-45-cart-data-list.png

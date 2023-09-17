@@ -32,6 +32,6 @@ date: 2020-03-25 13:27:54
 	![][3]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-update-move-project.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-move-project-open-files.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mac-update-move-explain.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-update-move-project.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-move-project-open-files.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-update-move-explain.png

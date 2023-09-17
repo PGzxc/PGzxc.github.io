@@ -109,28 +109,28 @@ date: 2019-10-17 23:29:57
 
 
 [1]: https://osdn.net/projects/mingw/releases/
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-mingw-download-list.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-mingw-download.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-mingw-install-accept.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-mingw-install-position.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-mingw-install-position.png
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-mingw-install-choice.png
-[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-mingw-install-apply-change.png
-[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-mingw-config-mingw.png
-[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-mingw-path-add.png
-[11]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-mingw-version.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-mingw-download-list.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-mingw-download.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-mingw-install-accept.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-mingw-install-position.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-mingw-install-position.png
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-mingw-install-choice.png
+[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-mingw-install-apply-change.png
+[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-mingw-config-mingw.png
+[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-mingw-path-add.png
+[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-mingw-version.png
 [12]:http://www.codeblocks.org/downloads/26
-[13]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-codeblocks-download-list.png
-[14]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-codeblocks-download.png
-[15]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-codeblcoks-install-component.png
-[16]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-codeblocks-mingw.png
-[17]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-codeblocks-mingw-version.png
-[18]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-codeblocks-directory-tools.png
-[19]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-codeblocks-new-project.png
-[20]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-codeblocks-console-application.png
-[21]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-codeblocks-c-cpp-select.png
-[22]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-codeblocks-file-create.png
-[23]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-codeblocks-compiler.png
-[24]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-codeblocks-create-finish.png
-[25]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-codeblocks-build-run.png
+[13]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-codeblocks-download-list.png
+[14]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-codeblocks-download.png
+[15]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-codeblcoks-install-component.png
+[16]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-codeblocks-mingw.png
+[17]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-codeblocks-mingw-version.png
+[18]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-codeblocks-directory-tools.png
+[19]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-codeblocks-new-project.png
+[20]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-codeblocks-console-application.png
+[21]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-codeblocks-c-cpp-select.png
+[22]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-codeblocks-file-create.png
+[23]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-codeblocks-compiler.png
+[24]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-codeblocks-create-finish.png
+[25]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-codeblocks-build-run.png
 [26]:https://jingyan.baidu.com/article/915fc414e8838051394b209b.html

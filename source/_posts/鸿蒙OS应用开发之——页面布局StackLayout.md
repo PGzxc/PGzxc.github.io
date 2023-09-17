@@ -80,4 +80,4 @@ textFirst.setClickedListener(new Component.ClickedListener() {
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-layout-stacklayout-sample.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-layout-stacklayout-sample.gif

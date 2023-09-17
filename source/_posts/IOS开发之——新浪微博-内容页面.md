@@ -358,5 +358,5 @@ static NSString *ID = @"Cell";
 ```
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xinlang-weibo.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xinlang-weibo.gif
 

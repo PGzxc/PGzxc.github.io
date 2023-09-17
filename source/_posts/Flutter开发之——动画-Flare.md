@@ -93,10 +93,10 @@ date: 2021-05-08 16:21:42
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-flare-plugin.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-flare-resource-web.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-flare-resource-select.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-flare-open-in-rive1.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-flare-animate-qiehuan.gif
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-flare-animate-download.gif
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-flare-animate-result.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-flare-plugin.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-flare-resource-web.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-flare-resource-select.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-flare-open-in-rive1.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-flare-animate-qiehuan.gif
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-flare-animate-download.gif
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-flare-animate-result.gif

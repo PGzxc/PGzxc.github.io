@@ -95,11 +95,11 @@ date: 2020-02-12 21:23:30
 [6]:https://www.cnblogs.com/HoverM/p/11897638.html
 
 
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mongodb-service-download-page.png
-[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/monogo-upzip-mv-usr-local.png
-[13]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mongodb-terminal-version.png
-[14]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mongodb-mkdir-data-dbpath.png
-[15]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mongodb-mongod-in-use.png
-[16]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mongodb-compass-tools.png
-[17]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mongodb-compass-install.png
-[18]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/mongodb-compass-open.png
+[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mongodb-service-download-page.png
+[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/monogo-upzip-mv-usr-local.png
+[13]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mongodb-terminal-version.png
+[14]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mongodb-mkdir-data-dbpath.png
+[15]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mongodb-mongod-in-use.png
+[16]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mongodb-compass-tools.png
+[17]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mongodb-compass-install.png
+[18]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mongodb-compass-open.png

@@ -43,16 +43,16 @@ date: 2018-02-26 18:07:50
 ![][13]  
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-conflict-show.png 
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-config-checkout-b.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-config-add-content.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-conflict-show.png 
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-config-checkout-b.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-config-add-content.png
 [4]: https://raw.githubusercontent.com/PGzxc/images/master/blog-imagesgit-config-add-commit.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-config-master.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-config-master-modify.png
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-config-master-add-commit.png
-[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-config-merge-fail.png
-[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-config-merge-status.png
-[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-config-confile.png
-[11]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-config-confile-after.png
-[12]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-config-fixed.png
-[13]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-config-del-branch.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-config-master.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-config-master-modify.png
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-config-master-add-commit.png
+[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-config-merge-fail.png
+[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-config-merge-status.png
+[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-config-confile.png
+[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-config-confile-after.png
+[12]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-config-fixed.png
+[13]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-config-del-branch.png

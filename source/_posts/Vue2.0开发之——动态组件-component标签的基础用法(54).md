@@ -184,8 +184,8 @@ xl-content.js:1 Uncaught (in promise) TypeError: Cannot read properties of undef
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-54-component-process.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-54-component-modify-before.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-54-component-compoent-import.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-54-component-left-preview.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-54-component-switch.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-54-component-process.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-54-component-modify-before.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-54-component-compoent-import.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-54-component-left-preview.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-54-component-switch.gif

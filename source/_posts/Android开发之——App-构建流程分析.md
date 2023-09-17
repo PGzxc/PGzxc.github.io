@@ -101,9 +101,9 @@ date: 2017-11-16 22:30:15
 
 
 [1]: http://www.jianshu.com/p/4962634901fb
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-build-simple.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-apk-component.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-build-comple1.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-build-comple2.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-build-simple.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-apk-component.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-build-comple1.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-build-comple2.png
 [6]: https://segmentfault.com/a/1190000004916563
 

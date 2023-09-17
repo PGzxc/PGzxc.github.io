@@ -105,25 +105,25 @@ maxSdkVersion 26 标明App最高应用版本为API 26(Android 8.0)，高于Andro
 
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-version-problem-show.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-version-problem-show.png
 [2]: https://developer.android.google.cn/guide/topics/manifest/uses-sdk-element.html#provisional
 [3]: https://developer.android.google.cn/about/dashboards/index.html
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-api-version.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/version-default.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-compilesdk.png
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-target-26.png
-[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-target-27.png
-[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-api-15.png
-[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-other-version.png
-[11]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-min-error.png
-[12]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-targetsdk.png
-[13]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-max-sdk.png
-[14]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-resolve-promte.png
-[15]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-target-api.png
-[16]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-suppresslint.png
-[17]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-build-sdk-int.png
-[18]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-flect.png
-[19]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-supprots.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-api-version.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/version-default.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-compilesdk.png
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-target-26.png
+[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-target-27.png
+[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-api-15.png
+[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-other-version.png
+[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-min-error.png
+[12]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-targetsdk.png
+[13]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-max-sdk.png
+[14]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-resolve-promte.png
+[15]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-target-api.png
+[16]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-suppresslint.png
+[17]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-build-sdk-int.png
+[18]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-flect.png
+[19]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-supprots.png
 
 
 

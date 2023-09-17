@@ -83,4 +83,4 @@ date: 2022-11-05 09:25:45
 ![][1]
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-kotlin/kotlin-learn-struct-3.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-kotlin/kotlin-learn-struct-3.png

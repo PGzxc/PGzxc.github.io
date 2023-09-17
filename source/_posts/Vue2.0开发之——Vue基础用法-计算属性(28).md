@@ -154,4 +154,4 @@ var vm = new Vue({
 
 ![][1]
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-28-computer-normal-sample.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-28-computer-normal-sample.gif

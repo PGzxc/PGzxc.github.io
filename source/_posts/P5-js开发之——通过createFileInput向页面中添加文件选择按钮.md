@@ -81,4 +81,4 @@ function handleFile(file) {
 * [P5.js官方文档—createFileInput](https://p5js.org/zh-Hans/reference/#/p5/createFileInput)
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-p5js/p5js-createFileInput-sample1.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-p5js/p5js-createFileInput-sample1.gif

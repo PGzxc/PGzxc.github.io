@@ -163,6 +163,6 @@ end
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-caipiao-mbprogress-pod-install.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-caipiao-mbprogress-show.gif
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-caipiao-alert-show.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-caipiao-mbprogress-pod-install.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-caipiao-mbprogress-show.gif
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-caipiao-alert-show.png

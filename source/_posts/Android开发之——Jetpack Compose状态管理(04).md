@@ -72,4 +72,4 @@ ViewModel
 ![][1]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/Jetpack-Compose-04.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-android/Jetpack-Compose-04.png

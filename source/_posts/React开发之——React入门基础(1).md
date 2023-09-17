@@ -135,6 +135,6 @@ ReactDOM.render(el, document.getElementById('root'))
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-react/react-day1-img1-compose-construct.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-react/react-day1-img1-all-use.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-react/react-day1-img1-hello-react.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day1-img1-compose-construct.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day1-img1-all-use.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day1-img1-hello-react.png

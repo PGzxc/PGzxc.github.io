@@ -190,7 +190,7 @@ const Child2 = (props) => {
 ![][4]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-react/react-day2-img12-communite-p2z.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-react/react-day2-img12-communite-z2f.gif
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-react/react-day2-img12-communite-xd.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-react/react-day2-img12-communite-xd-counter.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day2-img12-communite-p2z.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day2-img12-communite-z2f.gif
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day2-img12-communite-xd.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day2-img12-communite-xd-counter.gif

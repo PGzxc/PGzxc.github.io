@@ -93,13 +93,13 @@ date: 2023-04-02 22:25:13
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-1-install.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-1-install-finish.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-1-set-skin-click.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-1-set-skin-interface.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-1-set-skin-fonts-arial.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-1-set-language-chinese.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-1-set-language-finish.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-1-home-view-default.png
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-1-home-view-set-skin.png
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-1-home-view-set-show.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-1-install.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-1-install-finish.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-1-set-skin-click.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-1-set-skin-interface.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-1-set-skin-fonts-arial.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-1-set-language-chinese.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-1-set-language-finish.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-1-home-view-default.png
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-1-home-view-set-skin.png
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-1-home-view-set-show.png

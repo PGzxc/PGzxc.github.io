@@ -127,7 +127,7 @@ GitHub地址：https://github.com/quicktype/quicktype
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-json-online-left-select.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-json-online-language.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-json-onlie-code.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-request-response-result-hand.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-json-online-left-select.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-json-online-language.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-json-onlie-code.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-request-response-result-hand.png

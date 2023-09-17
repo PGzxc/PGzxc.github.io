@@ -123,5 +123,5 @@ Column(
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-column-crossAxisAlignment.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-column-sample.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-column-crossAxisAlignment.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-column-sample.png

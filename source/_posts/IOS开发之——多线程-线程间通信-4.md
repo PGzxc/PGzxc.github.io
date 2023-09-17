@@ -94,4 +94,4 @@ date: 2022-02-22 09:02:46
 ![][1]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-thread-communite-sample.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-thread-communite-sample.gif

@@ -53,8 +53,8 @@ github无法正常访问
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-github-443-prot-443.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-github-443-go-private.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-github-443-etc-lock.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-github-443-etc-read-write.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-github-443-etc-host-read-write.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-github-443-prot-443.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-github-443-go-private.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-github-443-etc-lock.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-github-443-etc-read-write.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-github-443-etc-host-read-write.png

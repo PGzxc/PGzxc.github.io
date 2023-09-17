@@ -107,4 +107,4 @@ _animation = Tween(begin: 100.0, end: 200.0)
 ![][1]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter_tween_sequence.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter_tween_sequence.gif

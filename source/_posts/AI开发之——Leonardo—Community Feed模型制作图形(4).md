@@ -46,7 +46,7 @@ Leonardo主页，点击左侧的`Community Feed`切换到Community Feed页面
 ![][4]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-community-feed-open.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-community-feed-trending-choice.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-community-feed-trending-use-model.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-community-feed-trending-use-generate.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-community-feed-open.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-community-feed-trending-choice.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-community-feed-trending-use-model.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-community-feed-trending-use-generate.png

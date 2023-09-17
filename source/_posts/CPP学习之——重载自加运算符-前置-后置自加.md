@@ -77,7 +77,7 @@ int main() {
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-operator-reference-overloading-click.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-operator-precedence.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-operator-increment-decrement.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cpp-operator-prototype-overload.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-operator-reference-overloading-click.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-operator-precedence.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-operator-increment-decrement.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-operator-prototype-overload.png

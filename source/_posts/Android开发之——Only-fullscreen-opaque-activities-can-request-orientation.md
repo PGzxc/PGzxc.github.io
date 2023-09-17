@@ -25,6 +25,6 @@ date: 2017-12-25 12:48:44
 
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/orientation-error.png
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/orientation-solve-1.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/orientation-solve-2.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/orientation-error.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/orientation-solve-1.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/orientation-solve-2.png

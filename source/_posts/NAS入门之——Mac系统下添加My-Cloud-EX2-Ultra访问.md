@@ -37,9 +37,9 @@ date: 2020-03-08 08:37:24
 	![][6]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/nas-mycloudex2-ultra-mac-net-open.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/nas-mycloudex2-ultra-mac-share-setting.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/nas-mycloudex2-ultra-mac-switch-login.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/nas-mycloudex2-ultra-mac-login-admin.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/nas-mycloudex2-ultra-mac-public-open-tag.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/nas-mycloudex2-ultra-mac-public-yingshe.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/nas-mycloudex2-ultra-mac-net-open.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/nas-mycloudex2-ultra-mac-share-setting.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/nas-mycloudex2-ultra-mac-switch-login.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/nas-mycloudex2-ultra-mac-login-admin.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/nas-mycloudex2-ultra-mac-public-open-tag.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/nas-mycloudex2-ultra-mac-public-yingshe.png

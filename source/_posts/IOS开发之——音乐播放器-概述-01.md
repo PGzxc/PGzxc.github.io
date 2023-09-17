@@ -25,15 +25,15 @@ date: 2022-04-16 22:39:31
 ## 三 参考
 
 * [Github-参考代码](https://github.com/PGzxc/IOSPlayer)
-* [Xmind原图](https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-av-player-struct-view.xmind)
+* [Xmind原图](https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-av-player-struct-view.xmind)
 
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-av-03-player-playlist.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-av-03-player-play-view.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-av-03-player-play-lrc.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-av-03-player-play-drag.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-av-player-struct-view.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-av-player-struct-view.xmind
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-av-03-player-playlist.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-av-03-player-play-view.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-av-03-player-play-lrc.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-av-03-player-play-drag.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-av-player-struct-view.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-av-player-struct-view.xmind
 

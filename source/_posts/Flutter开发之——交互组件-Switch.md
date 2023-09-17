@@ -180,6 +180,6 @@ const CupertinoSwitch({
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-switch-sample.gif
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-switchListTitle-sample.gif
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-cupertinoSwitch-sample.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-switch-sample.gif
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-switchListTitle-sample.gif
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-cupertinoSwitch-sample.gif

@@ -23,4 +23,4 @@ date: 2023-04-09 21:10:38
 ![][1]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue3.0-summary-day5.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue3.0-summary-day5.png

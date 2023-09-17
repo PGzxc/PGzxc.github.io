@@ -206,7 +206,7 @@ onLoad: function (options) {
 
 [00]:https://github.com/icindy/wxParse
 [01]:https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-webview-iis-service.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-webview-basic-use.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-webview-handleGetMessage.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-webview-jump-param.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-webview-iis-service.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-webview-basic-use.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-webview-handleGetMessage.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-webview-jump-param.gif

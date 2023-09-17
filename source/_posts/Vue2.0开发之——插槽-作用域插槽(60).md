@@ -111,7 +111,7 @@ App.vue中接收数据对象
 ![][3]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-60-solt-scope-msg.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-60-solt-scope-user.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-60-solt-scope-user-xigou.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-60-solt-scope-msg.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-60-solt-scope-user.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-60-solt-scope-user-xigou.png
 

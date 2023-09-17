@@ -66,16 +66,16 @@ date: 2023-03-24 16:02:55
 ![][12]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-training-create-new.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-training-create-new-desc.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-training-create-new-finish.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-training-create-new-upload-train.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-training-create-new-train-model.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-training-create-new--training-progress.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-training-create-new-job-status.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-training-create-new-job-finish.png
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-training-use-your-models.png
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-training-use-view.png
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-training-use-detail-with.png
-[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-training-use-result.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-training-create-new.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-training-create-new-desc.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-training-create-new-finish.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-training-create-new-upload-train.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-training-create-new-train-model.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-training-create-new--training-progress.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-training-create-new-job-status.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-training-create-new-job-finish.png
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-training-use-your-models.png
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-training-use-view.png
+[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-training-use-detail-with.png
+[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-training-use-result.png
 

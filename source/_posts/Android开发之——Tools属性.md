@@ -362,24 +362,24 @@ android
 
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-tools-effect.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-tools-effect.png
 [2]: https://dwz.cn/MHl1xA75
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-tools-ignore-before.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-tools-ignore-after.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-tools-targetapi-before.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-tools-targetapi-after.png
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-tools-preview-view-tools-before.png
-[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-tools-preview-view-tools-after.png
-[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-tools-context-click.png
-[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-tools-itemcount-2.png
-[11]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-tools-layout-priview.png
-[12]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-tools-listitem-header-footer.png
-[13]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-tools-menu-before.png
-[14]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-tools-layout-menu-preview.png
-[15]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-tools-layout-menu-after.png
-[16]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-tools-numberpicker-preview.png
-[17]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-tools-drawaer-layout-preview.png
-[18]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-tools-sample-preview.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-tools-ignore-before.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-tools-ignore-after.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-tools-targetapi-before.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-tools-targetapi-after.png
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-tools-preview-view-tools-before.png
+[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-tools-preview-view-tools-after.png
+[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-tools-context-click.png
+[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-tools-itemcount-2.png
+[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-tools-layout-priview.png
+[12]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-tools-listitem-header-footer.png
+[13]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-tools-menu-before.png
+[14]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-tools-layout-menu-preview.png
+[15]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-tools-layout-menu-after.png
+[16]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-tools-numberpicker-preview.png
+[17]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-tools-drawaer-layout-preview.png
+[18]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-tools-sample-preview.png
 [19]: https://blog.csdn.net/p106786860/article/details/53943540
 [20]: https://developer.android.google.cn/studio/write/tool-attributes.html
 [21]: https://www.jianshu.com/p/2912bcba4465

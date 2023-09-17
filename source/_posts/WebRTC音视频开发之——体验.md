@@ -58,14 +58,14 @@ date: 2022-02-16 09:21:51
 [01]:https://github.com/flutter-webrtc
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-webrtc/webrtc-experience-websit-samples.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-webrtc/webrtc-web-sample-getusermedia.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-webrtc/webrtc-web-sample-capturestrem-videotovideo.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-webrtc/webrtc-web-sample-peer-connection.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-webrtc/webrtc-web-sample-insertable-streams.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-webrtc/webrtc-flutter-samples-site.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-webrtc/webrtc-flutter-sample-import.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-webrtc/webrtc-flutter-sample-home.png
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-webrtc/webrtc-flutter-sample-getusermedia.png
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-webrtc/webrtc-flutter-sample-getdisplaymedia.png
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-webrtc/webrtc-flutter-sample-data-channel.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-webrtc/webrtc-experience-websit-samples.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-webrtc/webrtc-web-sample-getusermedia.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-webrtc/webrtc-web-sample-capturestrem-videotovideo.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-webrtc/webrtc-web-sample-peer-connection.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-webrtc/webrtc-web-sample-insertable-streams.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-webrtc/webrtc-flutter-samples-site.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-webrtc/webrtc-flutter-sample-import.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-webrtc/webrtc-flutter-sample-home.png
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-webrtc/webrtc-flutter-sample-getusermedia.png
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-webrtc/webrtc-flutter-sample-getdisplaymedia.png
+[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-webrtc/webrtc-flutter-sample-data-channel.png

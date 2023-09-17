@@ -136,14 +136,14 @@ paramName2: 2
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-api/mockoon-api-request-user-sample.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-api/mockoon-head-setting-default.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-api/mockoon-head-common-add-connection.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-api/mockoon-head-api-add-token.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-api/mockoon-head-request-response.gif
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-api/mockoon-route-add-request.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-api/mockoon-route-params-sample.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-api/mockoon-route-add-one-200.png
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-api/mockoon-route-response-random-sequen.png
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-api/mockoon-route-rules-setting.png
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-api/mockoon-route-rules-sample.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-api/mockoon-api-request-user-sample.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-api/mockoon-head-setting-default.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-api/mockoon-head-common-add-connection.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-api/mockoon-head-api-add-token.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-api/mockoon-head-request-response.gif
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-api/mockoon-route-add-request.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-api/mockoon-route-params-sample.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-api/mockoon-route-add-one-200.png
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-api/mockoon-route-response-random-sequen.png
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-api/mockoon-route-rules-setting.png
+[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-api/mockoon-route-rules-sample.png

@@ -55,4 +55,4 @@ class Program
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-while-sample.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-while-sample.png

@@ -96,14 +96,14 @@ date: 2020-04-05 23:15:26
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/oc-xcode-code-preview-full.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/oc-xcode-code-preview-left-hidden.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/oc-xcode-code-preview-middle-show.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/oc-xcode-code-preview-right-hide.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/oc-xcode-code-debug-point-add.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/oc-xcode-code-debug-run.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/oc-xcode-code-debug-point-first.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/oc-xcode-code-debug-point-revalue.png
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/oc-xcode-code-debug-point-delete.png
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/oc-xcode-code-pragram-mark.png
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/oc-xcode-code-suggest-code.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/oc-xcode-code-preview-full.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/oc-xcode-code-preview-left-hidden.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/oc-xcode-code-preview-middle-show.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/oc-xcode-code-preview-right-hide.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/oc-xcode-code-debug-point-add.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/oc-xcode-code-debug-run.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/oc-xcode-code-debug-point-first.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/oc-xcode-code-debug-point-revalue.png
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/oc-xcode-code-debug-point-delete.png
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/oc-xcode-code-pragram-mark.png
+[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/oc-xcode-code-suggest-code.png

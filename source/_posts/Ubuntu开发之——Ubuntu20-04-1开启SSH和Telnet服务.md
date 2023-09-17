@@ -235,5 +235,5 @@ sudo reboot
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-linux/linux-terminal-telnet-login.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-linux/linux-terminal-ssh-login.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-linux/linux-terminal-telnet-login.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-linux/linux-terminal-ssh-login.png

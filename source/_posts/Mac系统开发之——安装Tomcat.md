@@ -73,10 +73,10 @@ date: 2020-02-12 21:27:00
 
 
 
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-page-downloadpng.png
-[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-unzip-mv-library.png
-[13]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-folder-quanxian-before.png
-[14]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-terminal-startup.png
-[15]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-start-webview.png
-[16]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/tomcat-terminal-shutdown.png
+[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/tomcat-page-downloadpng.png
+[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/tomcat-unzip-mv-library.png
+[13]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/tomcat-folder-quanxian-before.png
+[14]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/tomcat-terminal-startup.png
+[15]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/tomcat-start-webview.png
+[16]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/tomcat-terminal-shutdown.png
 

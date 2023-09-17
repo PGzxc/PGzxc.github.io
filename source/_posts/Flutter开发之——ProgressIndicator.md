@@ -162,7 +162,7 @@ const RefreshProgressIndicator({
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-linearProgressIndicator-sample.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-circularProgressIndicator-sample.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-cupertinoActivityIndicator-sample.gif
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-refreshProgressIndicator-sample.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-linearProgressIndicator-sample.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-circularProgressIndicator-sample.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-cupertinoActivityIndicator-sample.gif
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-refreshProgressIndicator-sample.png

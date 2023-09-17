@@ -67,5 +67,5 @@ body: AspectRatio(
 ![][2]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-aspect-ration-05.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-aspect-ration-2.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-aspect-ration-05.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-aspect-ration-2.png

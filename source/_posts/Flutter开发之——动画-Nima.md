@@ -104,9 +104,9 @@ body: Column(
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-nima-resource-web.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-nima-resource-select.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-nima-open-nima.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-nima-animate-options.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-nima-engine-export.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-nima-animate-result.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-nima-resource-web.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-nima-resource-select.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-nima-open-nima.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-nima-animate-options.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-nima-engine-export.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-nima-animate-result.gif

@@ -237,6 +237,6 @@ TabBar 图片尺寸引起的问题
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-caipiao-tabbar-normal.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-caipiao-tabbar-oversize.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-caipiao-tabbar-preview.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-caipiao-tabbar-normal.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-caipiao-tabbar-oversize.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-caipiao-tabbar-preview.gif

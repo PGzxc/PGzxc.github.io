@@ -86,4 +86,4 @@ floatingActionButton: FloatingActionButton(
 ![][1]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-floatingactionbutton-toast.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-floatingactionbutton-toast.gif

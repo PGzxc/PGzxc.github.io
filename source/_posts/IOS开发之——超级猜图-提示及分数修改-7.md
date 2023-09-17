@@ -58,4 +58,4 @@ date: 2020-06-26 22:54:40
 ```
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-chaoji-caitu-tishi.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-chaoji-caitu-tishi.gif

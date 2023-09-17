@@ -167,6 +167,6 @@ namespace code_1
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-set-get-package-field.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-set-get-package-apply.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-set-get-quick-refact.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-set-get-package-field.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-set-get-package-apply.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-set-get-quick-refact.png

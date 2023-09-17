@@ -115,13 +115,13 @@ date: 2019-09-19 22:02:04
 * [程序员计算器][22]
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/java-calc-program.png
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/java-calc-ce-c.gif
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/java-calc-ms.gif
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/java-calc-mr.gif
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/java-calc-mc.gif
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/java-calc-binary.png
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/java-calc-operator.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/java-calc-program.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/java-calc-ce-c.gif
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/java-calc-ms.gif
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/java-calc-mr.gif
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/java-calc-mc.gif
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/java-calc-binary.png
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/java-calc-operator.png
 
 
 [20]: https://jingyan.baidu.com/article/b87fe19e72f7b35219356851.html

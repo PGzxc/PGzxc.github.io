@@ -62,15 +62,15 @@ date: 2021-10-24 09:02:45
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-right-new-file.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-user-interface-new.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-named-storyboard.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-main-new-relation.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-new-view.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-new-init-view-controller.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-new-localization-before.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-new-localization-after.png
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-new-background.png
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-main-interface-replace.png
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-info-plist-modify.png
-[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-new-monitor-view.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-storyboard-right-new-file.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-storyboard-user-interface-new.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-storyboard-named-storyboard.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-storyboard-main-new-relation.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-storyboard-new-view.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-storyboard-new-init-view-controller.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-storyboard-new-localization-before.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-storyboard-new-localization-after.png
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-storyboard-new-background.png
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-storyboard-main-interface-replace.png
+[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-storyboard-info-plist-modify.png
+[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-storyboard-new-monitor-view.png

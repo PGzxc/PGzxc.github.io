@@ -189,7 +189,7 @@ date: 2022-04-11 21:50:38
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-06-view.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-06-info-bluetooth-usage.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-06-info-bluetooth-view.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-06-corebluetooth-preview.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-devices-06-view.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-devices-06-info-bluetooth-usage.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-devices-06-info-bluetooth-view.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-devices-06-corebluetooth-preview.gif

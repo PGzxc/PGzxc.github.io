@@ -180,5 +180,5 @@ public class ExampleAbilitySlice extends AbilitySlice {
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-code-layout-view.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-xml-layout.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-code-layout-view.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-xml-layout.png

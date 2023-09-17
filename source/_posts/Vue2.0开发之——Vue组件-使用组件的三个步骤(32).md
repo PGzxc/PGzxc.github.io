@@ -100,5 +100,5 @@ export default {
 ![][2]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-32-component-relate.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-32-component-left-right.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-32-component-relate.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-32-component-left-right.png

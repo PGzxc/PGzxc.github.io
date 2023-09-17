@@ -46,7 +46,7 @@ project.private.config.json
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-gitignore-file-exist.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-gitignore-not-setting.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-gitignore-file-list.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-gitignore-workplace-no.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-gitignore-file-exist.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-gitignore-not-setting.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-gitignore-file-list.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-gitignore-workplace-no.png

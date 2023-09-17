@@ -95,7 +95,7 @@ const vm = new Vue({
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-18-add-func.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-18-ok-no.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-18-reverse.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-18-div-add.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-18-add-func.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-18-ok-no.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-18-reverse.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-18-div-add.png

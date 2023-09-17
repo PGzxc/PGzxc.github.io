@@ -94,8 +94,8 @@ Android Jetpack组件共分为四大类，Architecture、Foundation、Behavior�
 ![][2]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-jetpack.webp
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/Jetpack-struct-image.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-android/android-jetpack.webp
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-android/Jetpack-struct-image.png
 
 
 

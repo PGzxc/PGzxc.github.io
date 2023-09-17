@@ -208,6 +208,6 @@ Row(
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-radio-sample.gif
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-radio-muti-sample.gif
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-radioCheckList-sample.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-radio-sample.gif
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-radio-muti-sample.gif
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-radioCheckList-sample.gif

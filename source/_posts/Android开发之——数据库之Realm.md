@@ -475,9 +475,9 @@ sum,min,max,average只支持整形数据字段
 
 
 [1]: https://bintray.com/
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/realm-bintray.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/realm-compile.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/realm-as-config.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/realm-application.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/realm-bintray.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/realm-compile.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/realm-as-config.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/realm-application.png
 [6]: https://www.jianshu.com/p/28912c2f31db
 [7]: https://github.com/PGzxc/RealmSample/

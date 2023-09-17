@@ -120,8 +120,8 @@ module: { //所有第三方文件模块的匹配规则
 
 
 [00]:https://www.webpackjs.com/guides/asset-management/#%E5%8A%A0%E8%BD%BD-css
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-06-loader-css-li-style.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-06-loader-css-process-error.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-06-loader-process.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-06-loader-use-before.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-06-loader-use-after.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-06-loader-css-li-style.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-06-loader-css-process-error.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-06-loader-process.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-06-loader-use-before.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-06-loader-use-after.png

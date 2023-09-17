@@ -188,11 +188,11 @@ Wrap(
 * [老孟Flutter-Wrap](http://laomengit.com/flutter/widgets/Wrap.html)
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-wrap-normal-sample.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-wrap-direction-sample.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-wrap-aligment-sample.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-wrap-crossaxisalignment-sample.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-wrap-runAlignment-sample.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-wrap-spacing-runSpacing.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-wrap-textDirection.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-wrap-verticalDirection.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-wrap-normal-sample.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-wrap-direction-sample.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-wrap-aligment-sample.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-wrap-crossaxisalignment-sample.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-wrap-runAlignment-sample.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-wrap-spacing-runSpacing.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-wrap-textDirection.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-wrap-verticalDirection.png

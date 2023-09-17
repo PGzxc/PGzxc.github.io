@@ -188,4 +188,4 @@ root.render(<App />)
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-react/react-day5-img25-mohu-match.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day5-img25-mohu-match.png

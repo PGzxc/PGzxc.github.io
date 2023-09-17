@@ -259,5 +259,5 @@ class MainActivity : AppCompatActivity() {
 ## 七 参考
 * [Flutter官方文档-Adding a Flutter Fragment to an Android app](https://flutter.dev/docs/development/add-to-app/android/add-flutter-fragment?tab=add-fragment-kotlin-tab)
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-android-fragment-default.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-android-fragment-route-cache.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-android-fragment-default.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-android-fragment-route-cache.png

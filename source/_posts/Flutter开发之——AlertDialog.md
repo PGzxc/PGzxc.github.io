@@ -162,6 +162,6 @@ RaisedButton(
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-showdialog-alertDialog-sample.gif
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-showdialog-alertDialog-style-sample.gif
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-showdialog-cupertinoAlertDialog-sample.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-showdialog-alertDialog-sample.gif
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-showdialog-alertDialog-style-sample.gif
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-showdialog-cupertinoAlertDialog-sample.gif

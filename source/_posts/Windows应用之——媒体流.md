@@ -92,21 +92,21 @@ date: 2023-02-23 14:54:34
 * [媒体流设置(媒体流启用)](http://www.ekangw.net/a/diannaojiqiao/2022/1113/565594.html)
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-stream-media-control-search.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-steam-media-internet.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-steam-media-internet-share.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-steam-media-internet-share-center.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-steam-media-deal-option.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-steam-media-is-open.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-steam-media-share-change.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-steam-media-internet-all.png
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-steam-media-open-media.png
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-steam-media--open-set.png
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-steam-media-internet-position-show.png
-[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-steam-media--folder.png
-[13]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-steam-media-nas-folder-relate.png
-[14]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-steam-media-phone-1.png
-[15]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-steam-media-phone-2.png
-[16]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-steam-media-phone-3.png
-[17]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-steam-media-phone-4.png
-[18]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-steam-media-stop.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-stream-media-control-search.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-steam-media-internet.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-steam-media-internet-share.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-steam-media-internet-share-center.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-steam-media-deal-option.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-steam-media-is-open.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-steam-media-share-change.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-steam-media-internet-all.png
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-steam-media-open-media.png
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-steam-media--open-set.png
+[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-steam-media-internet-position-show.png
+[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-steam-media--folder.png
+[13]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-steam-media-nas-folder-relate.png
+[14]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-steam-media-phone-1.png
+[15]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-steam-media-phone-2.png
+[16]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-steam-media-phone-3.png
+[17]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-steam-media-phone-4.png
+[18]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-steam-media-stop.png

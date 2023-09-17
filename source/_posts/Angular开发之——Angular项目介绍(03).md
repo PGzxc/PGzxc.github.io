@@ -158,5 +158,5 @@ export class AppComponent {
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-angular/angular-03-project-struct-view.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-angular/angular-03-project-start-process.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-angular/angular-03-project-struct-view.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-angular/angular-03-project-start-process.png

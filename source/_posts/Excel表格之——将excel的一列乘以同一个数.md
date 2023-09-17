@@ -28,5 +28,5 @@ date: 2021-02-01 14:31:47
 ![][2]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-excel/excel-multi-target.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-excel/excel-mutipy-2.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-excel/excel-multi-target.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-excel/excel-mutipy-2.gif

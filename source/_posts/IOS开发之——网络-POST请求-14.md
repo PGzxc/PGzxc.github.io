@@ -176,6 +176,6 @@ Date: Tue, 08 Mar 2022 14:11:38 GMT  //响应的时间
 
  
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-http-request-response-process.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-http-client-server-request.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-http-request-response-process.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-http-client-server-request.png
 

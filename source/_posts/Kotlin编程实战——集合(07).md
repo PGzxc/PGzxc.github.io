@@ -82,4 +82,4 @@ toList()、toMutableList()、toSet()
 
 ![][1]
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-kotlin/kotlin-learn-struct-7.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-kotlin/kotlin-learn-struct-7.png

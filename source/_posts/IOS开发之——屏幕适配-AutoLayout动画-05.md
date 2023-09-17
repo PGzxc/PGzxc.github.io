@@ -83,4 +83,4 @@ Autolayout约束说明：
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-screen-adapter-05-autolayout-view.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-screen-adapter-05-autolayout-view.gif

@@ -447,15 +447,15 @@ JNIEXPORT jlong JNICALL Java_com_example_myopencv_DetectionBasedTracker_nativeCr
 * 下面讲解如何通过修改依赖降低apk的体积
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/opencv-fdactivity-native-jni-progress.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/opencv-file-use-order.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/opencv-new-project-create.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/opencv-project-import-opencv-sdk.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/opencv-sdk-import-not-configure-eror.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/opencv-ndk-camke-download.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/opencv-project-ndk-config.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/opencv-face-detection-move-new-project.png
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/opencv-native-fun-error.png
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/opencv-javah-hfile-make.png
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/opencv-porject-move-result.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-fdactivity-native-jni-progress.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-file-use-order.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-new-project-create.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-project-import-opencv-sdk.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-sdk-import-not-configure-eror.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-ndk-camke-download.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-project-ndk-config.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-face-detection-move-new-project.png
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-native-fun-error.png
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-javah-hfile-make.png
+[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-porject-move-result.png
 

@@ -82,5 +82,5 @@ submit(){
 
 
 [00]:https://v2.cn.vuejs.org/v2/guide/events.html#%E6%8C%89%E9%94%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-21-event-keyup-esc.gif
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-21-event-keyup-enter.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-21-event-keyup-esc.gif
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-21-event-keyup-enter.gif

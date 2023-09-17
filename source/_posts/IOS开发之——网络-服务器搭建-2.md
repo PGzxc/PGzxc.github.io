@@ -60,8 +60,8 @@ http://localhost:8080/MJServer/resources/images/minion_01.png
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-internet-server-eclipse-workspace.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-internet-server-eclipse-import-code.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-internet-server-tomcat-add.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-internet-server-tomcat-start.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-internet-server-project-view.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-internet-server-eclipse-workspace.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-internet-server-eclipse-import-code.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-internet-server-tomcat-add.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-internet-server-tomcat-start.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-internet-server-project-view.png

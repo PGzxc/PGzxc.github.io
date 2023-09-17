@@ -134,7 +134,7 @@ export default {
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-46-cart-good-list.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-46-cart-goods-name-modify.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-46-cart-goods-pic-modify.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-46-cart-good-list.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-46-cart-goods-name-modify.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-46-cart-goods-pic-modify.png
 

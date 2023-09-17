@@ -80,8 +80,8 @@ a lofi girl wiht haedphones
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-aiimage-left-menu.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-aiimage-tools-intro.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-aiimage-tools-generate.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-aiimage-tools-generate-imgs.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-aiimage-img-tool-explain.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-aiimage-left-menu.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-aiimage-tools-intro.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-aiimage-tools-generate.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-aiimage-tools-generate-imgs.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-aiimage-img-tool-explain.png

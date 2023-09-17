@@ -36,5 +36,5 @@ tags:
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/Jetpack-Compose-08.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-android/Jetpack-Compose-08.png
 

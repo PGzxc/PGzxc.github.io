@@ -263,4 +263,4 @@ dept.did = t1.dept_id
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-22-more-relate-graph.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-22-more-relate-graph.png

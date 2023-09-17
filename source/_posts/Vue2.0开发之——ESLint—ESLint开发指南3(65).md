@@ -196,13 +196,13 @@ ESLint 由 JavaScript 红宝书 作者 Nicholas C. Zakas 编写， 2013 年发�
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-65-eslint-plugin-install-eslint.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-65-eslint-plugin-install-veture.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-65-eslint-plugin-install-prettier.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-65-eslint-plugin-vscode-config.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-65-eslint-plugin-prettierrc-file.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-65-eslint-plugin-install-prettier-configpath.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-65-eslint-plugin-format-doc-look.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-65-eslint-plugin-format-doc-default.png
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-65-eslint-plugin-format-doc-modify.png
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-65-eslint-plugin-code-preview.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-65-eslint-plugin-install-eslint.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-65-eslint-plugin-install-veture.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-65-eslint-plugin-install-prettier.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-65-eslint-plugin-vscode-config.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-65-eslint-plugin-prettierrc-file.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-65-eslint-plugin-install-prettier-configpath.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-65-eslint-plugin-format-doc-look.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-65-eslint-plugin-format-doc-default.png
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-65-eslint-plugin-format-doc-modify.png
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-65-eslint-plugin-code-preview.gif

@@ -152,4 +152,4 @@ p{margin:20px 30px 30px 20px;}
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/css-ct_css_margin_value.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/css-ct_css_margin_value.png

@@ -212,12 +212,12 @@ progressBar.setDividerLineColor(Color.MAGENTA);
 ![][9]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-progressbar-default.gif
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-progressbar-vertical.gif
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-progressbar-progress-element.gif
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-progressbar-background-element.gif
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-progressbar-divider.gif
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-progressbar-divider-color.gif
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-progressbar-progress-text.gif
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-roundprogressbar-default.gif
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-roundprogressbar-min-max.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-progressbar-default.gif
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-progressbar-vertical.gif
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-progressbar-progress-element.gif
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-progressbar-background-element.gif
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-progressbar-divider.gif
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-progressbar-divider-color.gif
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-progressbar-progress-text.gif
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-roundprogressbar-default.gif
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-roundprogressbar-min-max.gif

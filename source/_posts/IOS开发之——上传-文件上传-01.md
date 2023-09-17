@@ -192,7 +192,7 @@ public class UploadAction extends BaseAction <UploadServiceResult> {
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-upload-01-webpage-view.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-upload-01-webpage-request.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-upload-01-service-sucess.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-upload-01-app-sucess.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-upload-01-webpage-view.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-upload-01-webpage-request.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-upload-01-service-sucess.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-upload-01-app-sucess.png

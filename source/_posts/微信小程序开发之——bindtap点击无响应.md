@@ -82,5 +82,5 @@ Page({
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-position-zindex-no.gif
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-position-zindex-yes.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-position-zindex-no.gif
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-position-zindex-yes.gif

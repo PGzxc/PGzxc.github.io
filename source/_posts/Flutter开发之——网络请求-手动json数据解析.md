@@ -377,9 +377,9 @@ FutureBuilder<Article>(
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-request-resopnse-string.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-request-response-struct.gif
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-request-response-string-json.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-request-response-article-1.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-request-response-article-2.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-request-response-result-hand.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-request-resopnse-string.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-request-response-struct.gif
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-request-response-string-json.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-request-response-article-1.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-request-response-article-2.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-request-response-result-hand.png

@@ -25,5 +25,5 @@ date: 2023-04-24 12:56:38
 ![][1]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-react/react-summary-day2.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-summary-day2.png
 

@@ -79,14 +79,14 @@ date: 2023-04-02 22:28:36
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-3-nas-movies-named.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-3-nas-movies-no-view.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-3-nas-movies-select.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-3-nas-movies-add-dialog.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-3-nas-movies-add-net.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-3-nas-movies-net-set.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-3-nas-movies-add-resource.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-3-nas-movies-add-set-content.png
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-3-nas-movies-add-resource-commond.png
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-3-nas-movies-add-resource-scan.png
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-3-nas-movies-add-resource-finish.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-3-nas-movies-named.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-3-nas-movies-no-view.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-3-nas-movies-select.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-3-nas-movies-add-dialog.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-3-nas-movies-add-net.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-3-nas-movies-net-set.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-3-nas-movies-add-resource.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-3-nas-movies-add-set-content.png
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-3-nas-movies-add-resource-commond.png
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-3-nas-movies-add-resource-scan.png
+[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-3-nas-movies-add-resource-finish.png

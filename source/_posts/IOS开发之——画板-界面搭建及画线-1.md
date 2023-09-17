@@ -124,8 +124,8 @@ date: 2021-04-06 09:50:05
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-draw-line-toolbar-view.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-draw-line-bottom-button-align.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-draw-line-layout-view.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-draw-line-func-view.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-draw-line-toolbar-view.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-draw-line-bottom-button-align.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-draw-line-layout-view.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-draw-line-func-view.gif
 

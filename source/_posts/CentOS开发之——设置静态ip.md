@@ -39,9 +39,9 @@ date: 2018-07-28 16:09:42
 
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/centos-ip-connect.png
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/centos-ip-network-script.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/centos-ip-ens33-open.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/centos-ip-modify-before.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/centos-ip-modify-after.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/centos-ip-save-yes.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/centos-ip-connect.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/centos-ip-network-script.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/centos-ip-ens33-open.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/centos-ip-modify-before.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/centos-ip-modify-after.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/centos-ip-save-yes.png

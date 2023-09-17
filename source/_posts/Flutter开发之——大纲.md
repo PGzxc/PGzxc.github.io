@@ -36,4 +36,4 @@ date: 2023-01-04 22:17:34
 
 ![][1]
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-all-xmind-summary.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-all-xmind-summary.png

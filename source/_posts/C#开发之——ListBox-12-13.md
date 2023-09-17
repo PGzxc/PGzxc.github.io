@@ -131,9 +131,9 @@ private void button3_Click(object sender, EventArgs e)
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-windform-listbox-default-layout.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-windform-listbox-edit.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-windform-listbox-add-content.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-windform-listbox-view.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-windform-listbox-add-remove-layout.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-windform-listbox-addmove-view.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-windform-listbox-default-layout.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-windform-listbox-edit.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-windform-listbox-add-content.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-windform-listbox-view.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-windform-listbox-add-remove-layout.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-windform-listbox-addmove-view.gif

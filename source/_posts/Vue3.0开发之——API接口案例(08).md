@@ -197,6 +197,6 @@ nodemon .\app.js
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue3.0-day1-08-api-mysql-table.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue3.0-day1-08-api-request-result.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue3.0-day1-08-api-mysql-table.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue3.0-day1-08-api-request-result.png
 

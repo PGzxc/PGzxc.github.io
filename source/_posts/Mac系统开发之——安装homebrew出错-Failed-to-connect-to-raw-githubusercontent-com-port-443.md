@@ -47,14 +47,14 @@ Mac 装homebrew时，执行如下指令出现错误
 ## 三 参考
 * [安装homebrew报错curl: (7) Failed to connect to raw.githubusercontent.com port 443: Operation][10]
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/homebrew-error-view.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/homebrew-error-commandlinetools-sdks.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/homebrew-error-rm-old-commandline.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/homebrew-error-select-install.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/homebrew-error-install-webpage.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/homebrew-error-install-save.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/homebrew-error-ruby-install.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/homebrew-error-install-finish.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/homebrew-error-view.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/homebrew-error-commandlinetools-sdks.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/homebrew-error-rm-old-commandline.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/homebrew-error-select-install.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/homebrew-error-install-webpage.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/homebrew-error-install-save.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/homebrew-error-ruby-install.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/homebrew-error-install-finish.png
 
 [10]:https://www.jianshu.com/p/68efabd2e32b
 

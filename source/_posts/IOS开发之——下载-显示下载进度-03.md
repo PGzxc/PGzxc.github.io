@@ -165,5 +165,5 @@ self.totalLength=response.expectedContentLength;
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-download-03-progress-view.gif
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-download-03-memory-big.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-download-03-progress-view.gif
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-download-03-memory-big.png

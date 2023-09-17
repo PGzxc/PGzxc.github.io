@@ -194,21 +194,21 @@ module.exports = {
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-vscode-open.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-vscode-init.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-vscode-install.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-vscode-src.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-vscode-indexs-create.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-vscode-index-default.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-vscode-html-table.png
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-vscode-install-jq.png
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-vscode-html-preview-first.png
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-config-webpack-mode.png
-[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-config-scripts-dev.png
-[13]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-config-run-dev.png
-[14]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-config-run-dev-suc.png
-[15]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-mode-development.png
-[16]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-mode-production.png
-[17]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-config-output-error.png
-[18]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-config-output-suc.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-vscode-open.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-vscode-init.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-vscode-install.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-vscode-src.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-vscode-indexs-create.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-vscode-index-default.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-vscode-html-table.png
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-vscode-install-jq.png
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-vscode-html-preview-first.png
+[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-config-webpack-mode.png
+[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-config-scripts-dev.png
+[13]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-config-run-dev.png
+[14]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-config-run-dev-suc.png
+[15]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-mode-development.png
+[16]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-mode-production.png
+[17]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-config-output-error.png
+[18]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-02-vue-demo-empty-config-output-suc.png

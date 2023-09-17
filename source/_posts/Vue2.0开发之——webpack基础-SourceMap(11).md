@@ -95,11 +95,11 @@ nosources-source-map
 
 
 [00]:https://webpack.js.org/configuration/devtool/
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-11-console-error-info.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-11-console-error-index-make.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-11-console-error-index-souce.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-11-console-error-eval-source-map.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-11-console-error-product-error.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-11-console-error-product-code.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-11-console-error-nosource-info.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2-11-console-error-nosource-code.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-11-console-error-info.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-11-console-error-index-make.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-11-console-error-index-souce.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-11-console-error-eval-source-map.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-11-console-error-product-error.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-11-console-error-product-code.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-11-console-error-nosource-info.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2-11-console-error-nosource-code.png

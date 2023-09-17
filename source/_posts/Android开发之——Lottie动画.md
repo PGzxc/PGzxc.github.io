@@ -391,14 +391,14 @@ Lottie动画在未开启硬件加速的情况下，帧率、内存，CPU都比�
 
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/lottie_sample_1.gif
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/lottie_sample_2.gif
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/lottie-react-native.gif
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/lottie-before-after.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/lottie-yuanli.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/lottie-leitu.png
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/lottie-anim-sunxu.jpg
-[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/lottie-move.jpg
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/lottie_sample_1.gif
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/lottie_sample_2.gif
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/lottie-react-native.gif
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/lottie-before-after.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/lottie-yuanli.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/lottie-leitu.png
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/lottie-anim-sunxu.jpg
+[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/lottie-move.jpg
 [9]: https://www.qcloud.com/community/article/494397
 [10]: https://github.com/airbnb/lottie-android
 [11]: http://blog.csdn.net/XSF50717/article/details/55121478

@@ -135,8 +135,8 @@ date: 2018-01-09 17:16:01
 
 
 [1]: http://p0kng3270.bkt.clouddn.com/create-gesture
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/gesture-draw.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/gesture-sample.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/gesture-draw.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/gesture-sample.png
 [4]: https://www.cnblogs.com/xyzlmn/p/3442241.html
 [5]: https://www.cnblogs.com/everhad/p/6075716.html  
 [6]: http://blog.csdn.net/LABLENET/article/details/48105089  

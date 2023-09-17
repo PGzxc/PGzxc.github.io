@@ -50,4 +50,4 @@ date: 2020-05-09 23:34:15
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-uiscrollview-property.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-uiscrollview-property.png

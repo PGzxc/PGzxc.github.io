@@ -133,6 +133,6 @@ static class Program
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-messagebox-delete-sample.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-message-form-create.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-messagebox-show.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-messagebox-delete-sample.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-message-form-create.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-messagebox-show.png

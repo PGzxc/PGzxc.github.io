@@ -112,5 +112,5 @@ date: 2021-04-29 17:43:55
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-tween-sequence-interval.gif
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter_tween_sequence_item.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-tween-sequence-interval.gif
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter_tween_sequence_item.gif

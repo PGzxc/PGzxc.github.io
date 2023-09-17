@@ -77,4 +77,4 @@ preBuild.dependsOn modifyVersionCode
 
 *  [java修改文件内容](https://www.cnblogs.com/wangjinyu/p/10803596.html)
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-jenkins/jenkins-modify-version-animal.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-jenkins/jenkins-modify-version-animal.gif

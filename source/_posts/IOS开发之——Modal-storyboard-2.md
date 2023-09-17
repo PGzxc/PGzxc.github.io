@@ -92,6 +92,6 @@ date: 2020-12-10 00:04:20
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-modal-storyboard-line-modal.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-button-jump-viewcontroller.gif
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-button-jump-navigation.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-modal-storyboard-line-modal.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-storyboard-button-jump-viewcontroller.gif
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-storyboard-button-jump-navigation.gif

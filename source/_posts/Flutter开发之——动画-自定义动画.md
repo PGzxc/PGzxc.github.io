@@ -77,4 +77,4 @@ class _AnimationDemo extends State<AnimationDemo> with SingleTickerProviderState
 ![][1]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-tween-define-sample.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-tween-define-sample.gif

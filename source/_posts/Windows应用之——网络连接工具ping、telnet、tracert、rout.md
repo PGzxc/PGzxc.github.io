@@ -85,8 +85,8 @@ telnet baidu.com
 
   ![][5]
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-ping-ip-host.png
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-telnet-ip-port.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-tracert-cmd.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-host.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-route-print.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/windows-ping-ip-host.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/windows-telnet-ip-port.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/windows-tracert-cmd.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/windows-host.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/windows-route-print.png

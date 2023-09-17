@@ -212,4 +212,4 @@ node client.js
 [03]:https://developers.weixin.qq.com/miniprogram/dev/api/network/websocket/wx.onSocketOpen.html
 [04]:https://developers.weixin.qq.com/miniprogram/dev/api/network/websocket/wx.sendSocketMessage.html
 [05]:https://developers.weixin.qq.com/miniprogram/dev/api/network/websocket/wx.onSocketMessage.html
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-websocket-github-sample.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-websocket-github-sample.png

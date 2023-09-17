@@ -137,13 +137,13 @@ Apache与Tomcat都是Apache开源组织开发的用于处理HTTP服务的项目�
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-php/php-apache-webpage-download.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-php/php-apache-latest-version-windows.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-php/php-apache-download-alert.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-php/php-apache-httpd-64-download.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-php/php-apache-unzip-struct.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-php/php-apache-http-service-start.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-php/php-apache-error-443.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-php/php-apache-service-install.png
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-php/php-apache-service-sc-delete.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-php/php-apache-webpage-download.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-php/php-apache-latest-version-windows.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-php/php-apache-download-alert.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-php/php-apache-httpd-64-download.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-php/php-apache-unzip-struct.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-php/php-apache-http-service-start.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-php/php-apache-error-443.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-php/php-apache-service-install.png
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-php/php-apache-service-sc-delete.png
 [21]:https://httpd.apache.org/

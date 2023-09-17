@@ -54,9 +54,9 @@ git clone https://github.com/theme-next/hexo-theme-next themes/next
 ![][6]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-error-no-layout-view.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-error-npm-depth.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-error-install-save.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-error-themes-view.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-error-themes-clone-local.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-error-gene-file.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-error-no-layout-view.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-error-npm-depth.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-error-install-save.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-error-themes-view.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-error-themes-clone-local.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-error-gene-file.png

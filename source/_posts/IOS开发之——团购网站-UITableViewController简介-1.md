@@ -80,4 +80,4 @@ date: 2020-06-08 23:15:28
 * 在`Main.storyboard`勾选`Is Initial View Controller`
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-uitableviewcontroller-simple-sample.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-uitableviewcontroller-simple-sample.png

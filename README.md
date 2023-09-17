@@ -8,13 +8,13 @@
  - 申请一个github账号
  - 安装了node.js、npm，并了解相关基础知识
  - 安装了git for windows（或者其它git客户端）
- 
+
 ### 创建Github仓库
 
 新建一个名为你的用户名.github.io的仓库
 
 ### 配置SSH key并添加到Github
-	
+
 	ssh-keygen -t rsa -C "邮件地址"
 
 ### 配置全局变量
@@ -40,5 +40,6 @@
 
 	$ hexo g # 生成
 	$ hexo s # 启动服务
-    $ hexo d #提交
+	$ hexo d #提交
 ### 博客的备份及还原请见个人博客
+

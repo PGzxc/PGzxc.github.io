@@ -56,4 +56,4 @@ date: 2018-04-25 08:47:33
 # 思维导图
 ![Kotlin开发][1]
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/kotlin-outline.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/kotlin-outline.png

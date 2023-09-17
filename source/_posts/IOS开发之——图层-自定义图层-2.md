@@ -56,4 +56,4 @@ date: 2021-05-06 09:23:48
 
 ![][1]
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-calayer-define.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-calayer-define.png

@@ -207,6 +207,6 @@ props: {
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-53-cart-goods-num-add.gif
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-53-cart-goods-num-sub.gif
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-53-cart-footer-total.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-53-cart-goods-num-add.gif
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-53-cart-goods-num-sub.gif
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-53-cart-footer-total.gif

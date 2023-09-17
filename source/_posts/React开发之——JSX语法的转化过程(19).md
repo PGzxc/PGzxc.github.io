@@ -70,4 +70,4 @@ ReactDOM.render(element, document.getElementById('root'))
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-react/react-day4-img19-jsx-element.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day4-img19-jsx-element.png

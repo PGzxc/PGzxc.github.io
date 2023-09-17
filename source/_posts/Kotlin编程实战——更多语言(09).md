@@ -71,4 +71,4 @@ val (name, age) = person
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-kotlin/kotlin-learn-struct-9.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-kotlin/kotlin-learn-struct-9.png

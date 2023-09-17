@@ -112,4 +112,4 @@ body{
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ct_css_selector.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ct_css_selector.gif

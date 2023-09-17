@@ -202,6 +202,6 @@ async postInfo () {
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-66-axios-get-post-request.gif
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-66-axios-get-post-request-question.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-66-axios-get-post-request.gif
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-66-axios-get-post-request-question.png
 

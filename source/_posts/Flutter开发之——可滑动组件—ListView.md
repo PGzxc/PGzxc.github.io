@@ -183,4 +183,4 @@ ListView.custom(
 ```
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-listView-construct-sample.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-listView-construct-sample.gif

@@ -141,19 +141,19 @@ android 文件夹用于存放build后的.so文件和其他文件
 
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ffmpeg-make.png
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ffmpeg-git.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ffmpeg-make.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ffmpeg-git.png
 [3]: http://www.androiddevtools.cn/
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ffmpeg-down-ffmp.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ffmpeg-unzip-ff.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ffmpeg-modify-config.png
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ffmpeg-modify-config-after.png
-[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ffmpeg-create-sh.png
-[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ffmpeg-create-sh-after.png
-[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ffmpeg-create-android.png
-[11]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ffmpeg-change-x.png
-[12]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ffmpeg-build-sh.png
-[13]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ffmpeg-build-process.png
-[14]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ffmpeg-build-file.png
-[15]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ffmpeg-so.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ffmpeg-down-ffmp.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ffmpeg-unzip-ff.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ffmpeg-modify-config.png
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ffmpeg-modify-config-after.png
+[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ffmpeg-create-sh.png
+[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ffmpeg-create-sh-after.png
+[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ffmpeg-create-android.png
+[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ffmpeg-change-x.png
+[12]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ffmpeg-build-sh.png
+[13]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ffmpeg-build-process.png
+[14]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ffmpeg-build-file.png
+[15]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ffmpeg-so.png
 

@@ -88,14 +88,14 @@ FFmpeg是一款多媒体视频处理工具，有非常强大的功能包括视�
 
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/vlc-stream-select.png
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/vlc-stream-network.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/vlc-stream-play.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/vlc-stream-select.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/vlc-stream-network.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/vlc-stream-play.png
 [4]: http://www.ffmpeg.org/download.html
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ffmpeg-guanwang.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ffmpeg-unzip.png
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ffmpeg-add-path.png
-[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ffmpeg-make-up.png
-[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/ffmpeg-mp4-play.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ffmpeg-guanwang.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ffmpeg-unzip.png
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ffmpeg-add-path.png
+[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ffmpeg-make-up.png
+[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ffmpeg-mp4-play.png
 
 

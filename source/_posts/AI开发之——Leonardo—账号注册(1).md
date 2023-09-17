@@ -80,13 +80,13 @@ https://leonardo.ai/
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-try-use-access-email.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-try-use-wait-join.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-try-use-wait-join-username.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-try-use-homeview.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-login-to-leonardo-launch.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-signup-wait-join-whitelisted.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-login-to-leonardo-googleplay.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-login-to-leonardo-getstarted.png
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-login-to-leonardo.png
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-login-leonardo-home-view.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-try-use-access-email.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-try-use-wait-join.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-try-use-wait-join-username.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-try-use-homeview.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-login-to-leonardo-launch.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-signup-wait-join-whitelisted.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-login-to-leonardo-googleplay.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-login-to-leonardo-getstarted.png
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-login-to-leonardo.png
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-login-leonardo-home-view.png

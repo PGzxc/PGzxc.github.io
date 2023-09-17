@@ -71,14 +71,14 @@ date: 2023-04-02 22:27:40
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-2-local-movie-view.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-2-local-movie-no-resource.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-2-local-movie-choice-movie.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-2-local-movie-file.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-2-local-movie-add-movie.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-2-local-movie-add-movie-look.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-2-local-movie-add-movie-view.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-2-local-movie-add-movie-set.png
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-2-local-movie-add-movie-set-category.png
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-2-local-movie-add-movie-database.png
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-kodi-2-local-movie-add-movie-infoview.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-2-local-movie-view.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-2-local-movie-no-resource.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-2-local-movie-choice-movie.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-2-local-movie-file.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-2-local-movie-add-movie.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-2-local-movie-add-movie-look.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-2-local-movie-add-movie-view.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-2-local-movie-add-movie-set.png
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-2-local-movie-add-movie-set-category.png
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-2-local-movie-add-movie-database.png
+[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-kodi-2-local-movie-add-movie-infoview.png

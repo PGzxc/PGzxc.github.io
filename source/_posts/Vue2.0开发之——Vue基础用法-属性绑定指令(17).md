@@ -47,4 +47,4 @@ date: 2022-11-09 11:03:45
 
 ![][1]
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-17-v-bind-view.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-17-v-bind-view.png

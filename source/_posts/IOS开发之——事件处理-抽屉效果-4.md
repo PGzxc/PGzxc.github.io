@@ -236,5 +236,5 @@ date: 2020-12-16 09:14:19
 ## 七 效果图
 ![][2]
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-event-drawa-move-layout.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-event-draw-view.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-event-drawa-move-layout.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-event-draw-view.gif

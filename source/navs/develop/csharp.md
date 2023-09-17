@@ -22,5 +22,5 @@ comments: false
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-learn-route/Csharp-Learning-route-1.jpg
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-learn-route/Csharp-Learning-route-2.jpg
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-learn-route/Csharp-Learning-route-1.jpg
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-learn-route/Csharp-Learning-route-2.jpg

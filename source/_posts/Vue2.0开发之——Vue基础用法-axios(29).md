@@ -184,7 +184,7 @@ document.querySelector('#btnGet').addEventListener('click', async function () {
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-29-axios-package.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-29-axios-get-result.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-29-axios-post-sample.gif
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-29-axios-get-post-sample.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-29-axios-package.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-29-axios-get-result.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-29-axios-post-sample.gif
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-29-axios-get-post-sample.gif

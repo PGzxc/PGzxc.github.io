@@ -209,7 +209,7 @@ buildToolsVersion "30.0.2"
 * 点击`Sync Project with Gradle Files`同步一下项目
 
 
-[41]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/as-task-list-not-build.png
+[41]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-android/as-task-list-not-build.png
 
 ## 五 参考
 

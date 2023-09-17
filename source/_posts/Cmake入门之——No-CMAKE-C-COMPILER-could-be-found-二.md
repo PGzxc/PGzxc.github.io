@@ -60,11 +60,11 @@ date: 2020-01-12 21:10:09
 
 
 
-[0]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cmake-cmake-gui-open.png
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cmake-c-cpp-unknow.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cmake-error-no-compiler-found.png
+[0]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cmake-cmake-gui-open.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cmake-c-cpp-unknow.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cmake-error-no-compiler-found.png
 [3]:https://developer.microsoft.com/zh-cn/windows/downloads/sdk-archive
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cmake-windows-10-sdk-download.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cmake-development-kit.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cmake-visual-studio-install-sdk.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cmake-c-cpp-done.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cmake-windows-10-sdk-download.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cmake-development-kit.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cmake-visual-studio-install-sdk.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cmake-c-cpp-done.png

@@ -91,12 +91,12 @@ Android进程分为前台进程，可见进程，服务进程，后台进程，�
 
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/activity-fout-state.png
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/activity-life.jpg
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/activity-start.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/activity-to-home.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/activity-return.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/activity-stop.png
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-progre.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/activity-fout-state.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/activity-life.jpg
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/activity-start.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/activity-to-home.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/activity-return.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/activity-stop.png
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-progre.png
 
 

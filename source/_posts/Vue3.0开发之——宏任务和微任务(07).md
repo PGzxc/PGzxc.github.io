@@ -143,5 +143,5 @@ setTimeout(function () {
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue3.0-day1-07-task-macro-micro.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue3.0-day1-07-task-macro-micro-progress.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue3.0-day1-07-task-macro-micro.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue3.0-day1-07-task-macro-micro-progress.png

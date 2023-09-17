@@ -50,10 +50,10 @@ date: 2020-10-21 23:35:12
 ![][7]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-uitabbar-viewcontroller-delete-mainstory-view.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-uitabbar-viewcontroller-add-tabbar.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-tabbar-viewcontroller-add-controller.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-tabbar-viewcontroller-connect-viewcontroller.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-tabbar-viewcontroller-isinitial-select.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-tabbar-viewcontroller-baritem-setting.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-uitabbar-viewcontroller-storyboard-view.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-uitabbar-viewcontroller-delete-mainstory-view.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-uitabbar-viewcontroller-add-tabbar.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-tabbar-viewcontroller-add-controller.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-tabbar-viewcontroller-connect-viewcontroller.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-tabbar-viewcontroller-isinitial-select.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-tabbar-viewcontroller-baritem-setting.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-uitabbar-viewcontroller-storyboard-view.gif

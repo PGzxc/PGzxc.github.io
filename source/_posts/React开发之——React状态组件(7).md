@@ -189,5 +189,5 @@ Uncaught TypeError: Cannot read properties of undefined (reading 'setState')
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-react/react-day1-img7-state-counter.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-react/react-day1-img7-setstate.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day1-img7-state-counter.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day1-img7-setstate.gif

@@ -129,5 +129,5 @@ date: 2021-01-27 08:34:18
 ![][2]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-unlock-layout-view.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-unlock-touch-move.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-unlock-layout-view.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-unlock-touch-move.gif

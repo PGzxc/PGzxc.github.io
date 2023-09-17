@@ -14,4 +14,4 @@ date: 2018-05-23 09:35:45
 ![][1]
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-libraries.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-libraries.png

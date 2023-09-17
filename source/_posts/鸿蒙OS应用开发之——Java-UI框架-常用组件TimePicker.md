@@ -255,18 +255,18 @@ timePicker.enableSecond(false);
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-timepicker-default.gif
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-timepicker-12-hour-mode.gif
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-timepicker-normal-color-size.gif
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-timepicker-selected-color-size.gif
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-timepicker-operated-color.gif
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-timepicker-margin-radio.gif
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-timepicker-shader-color.gif
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-timepicker-line-element.gif
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-timepicker-am-pm-order.gif
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-timepicker-shou-hour.gif
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-timepicker-show-minute.gif
-[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-timepicker-show-second.gif
-[13]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-timepicker-enable-hour.gif
-[14]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-timepicker-enable-minute.gif
-[15]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-timepicker-enable-second.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-timepicker-default.gif
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-timepicker-12-hour-mode.gif
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-timepicker-normal-color-size.gif
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-timepicker-selected-color-size.gif
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-timepicker-operated-color.gif
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-timepicker-margin-radio.gif
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-timepicker-shader-color.gif
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-timepicker-line-element.gif
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-timepicker-am-pm-order.gif
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-timepicker-shou-hour.gif
+[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-timepicker-show-minute.gif
+[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-timepicker-show-second.gif
+[13]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-timepicker-enable-hour.gif
+[14]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-timepicker-enable-minute.gif
+[15]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-timepicker-enable-second.gif

@@ -56,4 +56,4 @@ Container(width: 200,height: 200,
 ![][1]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-placeholder-sample.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-placeholder-sample.png

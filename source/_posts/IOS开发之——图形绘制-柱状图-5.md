@@ -92,5 +92,5 @@ y=viewH-H
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-draw-bar-explain.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-draw-bar.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-draw-bar-explain.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-draw-bar.gif

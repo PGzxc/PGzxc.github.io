@@ -32,5 +32,5 @@ date: 2021-11-11 09:35:44
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-margin-left-none.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-margin-left-auto.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-margin-left-none.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-margin-left-auto.png

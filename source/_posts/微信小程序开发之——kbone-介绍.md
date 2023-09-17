@@ -236,11 +236,11 @@ npm run build
 
 
 [00]:https://wechat-miniprogram.github.io/kbone/docs/guide/tutorial.html#%E7%BC%96%E5%86%99-webpack-%E9%85%8D%E7%BD%AE
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-kbone-init-app-no-exist.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-kbone-webpack-project-terminal.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-kbone-project-create-language.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-kbone-project-create-success.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-kbone-project-create-file-struct.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-kbone-npm-run-mp.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-kbone-import-mp.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-kbone-project-import-preview.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-kbone-init-app-no-exist.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-kbone-webpack-project-terminal.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-kbone-project-create-language.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-kbone-project-create-success.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-kbone-project-create-file-struct.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-kbone-npm-run-mp.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-kbone-import-mp.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-kbone-project-import-preview.png

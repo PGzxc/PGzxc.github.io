@@ -173,4 +173,4 @@ root.render(<App />)
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-react/react-day4-img2-component-update.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day4-img2-component-update.png

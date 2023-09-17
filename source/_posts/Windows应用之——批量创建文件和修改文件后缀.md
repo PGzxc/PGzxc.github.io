@@ -54,8 +54,8 @@ ren *.txt *.txt1
 ### 3.4 双金rename.bat，执行批量修改文件后缀指令
 ![][4]
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-dos-make-bat.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-dos-make-create.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-dos-rename-bat.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-dos-rename-done.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/windows-dos-make-bat.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/windows-dos-make-create.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/windows-dos-rename-bat.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/windows-dos-rename-done.png
 

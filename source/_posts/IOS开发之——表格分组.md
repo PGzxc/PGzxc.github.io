@@ -138,4 +138,4 @@ date: 2020-05-23 23:59:17
 ```
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-uitableview-heros.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-uitableview-heros.gif

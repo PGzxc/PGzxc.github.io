@@ -46,7 +46,7 @@ Storyboard布局文件和模拟器显示效果一致
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-simulator-diff.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-choice-device.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-monitor-choose.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-storyboard-monitor-equal.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-storyboard-simulator-diff.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-storyboard-choice-device.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-storyboard-monitor-choose.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-storyboard-monitor-equal.png

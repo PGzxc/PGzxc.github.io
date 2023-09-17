@@ -33,11 +33,11 @@ date: 2018-03-28 11:48:27
 ## 出现重启(restart)说明安装成功，重启后生效
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/vm-tools-install.png
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/vm-tools-show.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/vm-tools-copy-desk.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/vm-tools-open-cmd.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/vm-tools-tar.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/vm-tools-cd-tar.png
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/vm-tools-install-order.png
-[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/vm-tools-install-process.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/vm-tools-install.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/vm-tools-show.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/vm-tools-copy-desk.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/vm-tools-open-cmd.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/vm-tools-tar.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/vm-tools-cd-tar.png
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/vm-tools-install-order.png
+[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/vm-tools-install-process.png

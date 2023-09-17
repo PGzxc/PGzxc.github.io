@@ -72,10 +72,10 @@ Anko为Android开发者提供了一整套的工具集合，它们包含了以下
 
 [1]: https://github.com/Kotlin/anko#anko-layouts-wiki
 [2]: https://github.com/Kotlin/kotlinx.coroutines/releases
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/anko-activity-view.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/anko-support.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/anko-preview.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/anko-layout-convert.png
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/anko-convert-result.png
-[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/anko-convert-rename.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/anko-activity-view.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/anko-support.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/anko-preview.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/anko-layout-convert.png
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/anko-convert-result.png
+[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/anko-convert-rename.png
 [9]: https://github.com/PGzxc/AnkoDemo

@@ -168,9 +168,9 @@ date: 2021-10-19 17:24:07
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-weui-open-develop-tools.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-weui-style-copy-project.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-weui-uselib-style-preview.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-weui-uselib-npm-preview.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-weui-npm-tool-ok.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-weui-tool-npm-preview.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-weui-open-develop-tools.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-weui-style-copy-project.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-weui-uselib-style-preview.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-weui-uselib-npm-preview.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-weui-npm-tool-ok.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-weui-tool-npm-preview.png

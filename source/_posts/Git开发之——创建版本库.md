@@ -36,12 +36,12 @@ date: 2018-02-25 22:52:44
 ### 远端仓库查看文件
 ![][8]
 
-[0]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-github-learn.png
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-create-file.png
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-init.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-ls.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-add-readme.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-commit-readme.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-remote-add.png
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-push-origin.png
-[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/git-has-show.png
+[0]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-github-learn.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-create-file.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-init.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-ls.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-add-readme.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-commit-readme.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-remote-add.png
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-push-origin.png
+[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-has-show.png

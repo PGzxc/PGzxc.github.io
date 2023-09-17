@@ -189,21 +189,21 @@ Game of Thrones
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-info.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-download-info.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-set-movie-source.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-set-movie-language.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-board.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-movie-view.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-movie-directory.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-movie-scraper.png
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-movie-info.png
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-movie-img-named.png
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-scraper-scan.png
-[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-scraper-rename.png
-[13]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-scraper-info.png
-[14]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-add-movie-local.png
-[15]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-add-movie-success.png
-[16]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-rename-rules.png
-[17]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-rename-task.png
-[18]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-rename-result.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-info.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-download-info.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-set-movie-source.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-set-movie-language.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-board.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-movie-view.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-movie-directory.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-movie-scraper.png
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-movie-info.png
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-movie-img-named.png
+[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-scraper-scan.png
+[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-scraper-rename.png
+[13]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-scraper-info.png
+[14]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-add-movie-local.png
+[15]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-add-movie-success.png
+[16]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-rename-rules.png
+[17]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-rename-task.png
+[18]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-scraper-tinym-rename-result.png

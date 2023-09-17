@@ -63,7 +63,7 @@ date: 2021-08-15 19:11:18
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-energy-all.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-energy-clickin.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-energy-sample-point.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-profiler-energy-position.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-android/android-profiler-energy-all.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-android/android-profiler-energy-clickin.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-android/android-profiler-energy-sample-point.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-android/android-profiler-energy-position.png

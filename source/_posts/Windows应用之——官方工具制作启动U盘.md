@@ -48,15 +48,15 @@ date: 2019-09-04 21:57:42
 
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-pure-win-10.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/windows-pure-win-10.png
 [2]: https://www.microsoft.com/zh-cn/software-download/windows10/
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-win-10-tools-site.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-win-10-tool-download.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-win-10-software-install.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-win-10-what-to-do.png
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-win-10-language-other.png
-[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-win-10-u-pan.png
-[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-win-10-u-pan-select.png
-[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-win-10-make.png
-[11]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-win-10-finish.png
-[12]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/windows-win-10-finish-upan-files.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/windows-win-10-tools-site.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/windows-win-10-tool-download.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/windows-win-10-software-install.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/windows-win-10-what-to-do.png
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/windows-win-10-language-other.png
+[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/windows-win-10-u-pan.png
+[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/windows-win-10-u-pan-select.png
+[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/windows-win-10-make.png
+[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/windows-win-10-finish.png
+[12]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/windows-win-10-finish-upan-files.png

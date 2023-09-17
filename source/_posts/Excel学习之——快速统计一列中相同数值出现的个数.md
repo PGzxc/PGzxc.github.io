@@ -42,13 +42,13 @@ date: 2019-11-03 10:50:48
 * [excel如何快速统计一列中相同数值出现的个数][10]
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/excel-statis-raw-data.png
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/excel-statis-insert-table.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/excel-statis-select-raw-data.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/excel-statis-drag-line-value.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/excel-statis-raw-sum.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/excel-statis-change-num.gif
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/excel-statis-make-right.png
-[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/excel-statis-table-border-set.png
-[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/excel-statis-number.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/excel-statis-raw-data.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/excel-statis-insert-table.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/excel-statis-select-raw-data.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/excel-statis-drag-line-value.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/excel-statis-raw-sum.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/excel-statis-change-num.gif
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/excel-statis-make-right.png
+[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/excel-statis-table-border-set.png
+[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/excel-statis-number.png
 [10]:https://jingyan.baidu.com/article/9113f81b2c16822b3214c785.html

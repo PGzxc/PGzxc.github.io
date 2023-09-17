@@ -58,10 +58,10 @@ Android Profiler要求设备的版本必须大于android 5.0(Api 21)，否则无
 ![][7]
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-profiler-devices.png
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-profiler-advnced-profiling.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-profiler-profiling-enable.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-profiler-api-1.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-profiler-api2.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-profiler-sync.png
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/android-profiler-well.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-profiler-devices.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-profiler-advnced-profiling.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-profiler-profiling-enable.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-profiler-api-1.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-profiler-api2.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-profiler-sync.png
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-profiler-well.png

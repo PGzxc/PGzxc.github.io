@@ -80,11 +80,11 @@ Warp 是一个非常快的、基于 Rust 的终端，它使您和您的团队在
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-mac/mac-warp-open-login.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-mac/mac-warp-open-login-github.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-mac/mac-warp-open-login-role.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-mac/mac-warp-open-login-finish.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-mac/mac-warp-struct-view.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-mac/mac-warp-user-cmd-java.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-mac/mac-warp-user-cmd-copy.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-mac/mac-warp-user-cmd-paste.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-mac/mac-warp-open-login.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-mac/mac-warp-open-login-github.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-mac/mac-warp-open-login-role.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-mac/mac-warp-open-login-finish.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-mac/mac-warp-struct-view.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-mac/mac-warp-user-cmd-java.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-mac/mac-warp-user-cmd-copy.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-mac/mac-warp-user-cmd-paste.png

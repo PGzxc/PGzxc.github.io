@@ -441,5 +441,5 @@ modelUpdateDB() async {
 * [下载地址](https://download.csdn.net/download/Calvin_zhou/21760858)
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-raw-operation.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-model-operator.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-raw-operation.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-model-operator.png

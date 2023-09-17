@@ -42,7 +42,7 @@ ohos:element_left="$graphic:ic_btn_reload"
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-btn-svg-xml-sample.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-icon-reload-svg-download.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-new-svg-to-xml.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-svg-xml-convert.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-btn-svg-xml-sample.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-icon-reload-svg-download.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-new-svg-to-xml.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-svg-xml-convert.png

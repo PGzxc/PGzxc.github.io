@@ -93,16 +93,16 @@ git clone http://192.168.1.8/AppGit.git
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-versionc-02-gitstack-create-repo.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-versionc-02-gitstack-repo-view.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-versionc-02-gitstack-add-user.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-versionc-02-xcode-git-clone.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-versionc-02-xcode-create-app.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-versionc-02-xcode-app-open-view.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-versionc-02-xcode-commit-noauthor.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-versionc-02-xcode-sourcegit-author.png
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-versionc-02-xcode-commit-push.png
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-versionc-02-gitstack-commit-view.png
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-versionc-02-xcode-show-repository.png
-[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-versionc-02-xcode-branch-create.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-02-gitstack-create-repo.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-02-gitstack-repo-view.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-02-gitstack-add-user.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-02-xcode-git-clone.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-02-xcode-create-app.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-02-xcode-app-open-view.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-02-xcode-commit-noauthor.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-02-xcode-sourcegit-author.png
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-02-xcode-commit-push.png
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-02-gitstack-commit-view.png
+[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-02-xcode-show-repository.png
+[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-02-xcode-branch-create.png
 

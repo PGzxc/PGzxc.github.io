@@ -118,6 +118,6 @@ example:示例文件,类似于sketch.js
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-p5js/p5js-p5shape-preview.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-p5js/p5js-p5-shape-github.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-p5js/p5js-p5shape-vscode-project.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-p5js/p5js-p5shape-preview.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-p5js/p5js-p5-shape-github.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-p5js/p5js-p5shape-vscode-project.png

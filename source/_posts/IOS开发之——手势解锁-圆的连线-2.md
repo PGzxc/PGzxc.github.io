@@ -85,4 +85,4 @@ date: 2021-02-25 22:20:05
 ![][1]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-unlock-touch-yuan-line.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-unlock-touch-yuan-line.gif

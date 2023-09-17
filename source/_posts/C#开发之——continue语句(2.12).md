@@ -47,4 +47,4 @@ class Program
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-continue-sample.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-continue-sample.png

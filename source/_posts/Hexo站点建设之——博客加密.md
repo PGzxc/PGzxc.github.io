@@ -99,5 +99,5 @@ wrong_hash_message: 抱歉，这个文章不能被纠正，不过您还是能看
 文章信息头 > _config.yml (站点根目录下的) > 默认配置
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hexo/hexo-wenzhang-encrypt-preview.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hexo/hexo-wenzhang-password-error-view.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-wenzhang-encrypt-preview.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-wenzhang-password-error-view.png

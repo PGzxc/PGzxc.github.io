@@ -77,4 +77,4 @@ date: 2020-05-20 22:37:16
 ```
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-tom-cat-animal.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-tom-cat-animal.gif

@@ -66,13 +66,13 @@ gitalk:
 * 仓库下面的issue，会显示刚才的那条评论，可进行管理
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hexo/hexo-gitalk-websit.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hexo/hexo-gitalk-github-register.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hexo/hexo-gitalk-register-oauth-info.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hexo/hexo-gitalk-register-success.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hexo/hexo-gitalk-upload-logo.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hexo/hexo-gitalk-github-project.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hexo/hexo-gitalk-not-login-comment.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hexo/hexo-gitalk-login-comment.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-gitalk-websit.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-gitalk-github-register.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-gitalk-register-oauth-info.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-gitalk-register-success.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-gitalk-upload-logo.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-gitalk-github-project.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-gitalk-not-login-comment.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-gitalk-login-comment.png
 
 [11]:https://gitalk.github.io/

@@ -158,10 +158,10 @@ root.render(
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-react/react-day1-img2-node-npx.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-react/react-day1-img2-yarn-enable.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-react/react-day1-img2-yarn-version.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-react/react-day1-img2-create-my-app.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-react/react-day1-img2-npm-start.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-react/react-day1-img2-start-site.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-react/react-day1-img2-node-start-view.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day1-img2-node-npx.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day1-img2-yarn-enable.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day1-img2-yarn-version.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day1-img2-create-my-app.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day1-img2-npm-start.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day1-img2-start-site.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day1-img2-node-start-view.png

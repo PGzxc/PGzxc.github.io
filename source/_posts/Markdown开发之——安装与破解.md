@@ -44,13 +44,13 @@ Markdown是一种可以使用普通文本编辑器编写的标记语言，通过
 
 
 [1]: http://markdownpad.com/
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/markdown-preview.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/markdown-install.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/markdown-active.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/markdown-unlock.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/markdown-preview-error.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/markdown-preview.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/markdown-install.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/markdown-active.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/markdown-unlock.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/markdown-preview-error.png
 [7]: http://markdownpad.com/faq.html#livepreview-directx
-[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/markdown-view-issue.png
+[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/markdown-view-issue.png
 [9]: http://markdownpad.com/download/awesomium_v1.6.6_sdk_win.exe
 [10]: http://www.microsoft.com/en-us/download/details.aspx?id=8109
-[11]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/markdown_ok.png
+[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/markdown_ok.png

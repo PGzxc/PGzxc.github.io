@@ -85,8 +85,8 @@ arm64-v8a-release.apk：16.2M
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/opencv-package-release-size-big.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/opencv-sample-list-size.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/opencv-facedetect-apk-analyze.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/opencv-import-opencv-javacpp-analyze.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-opencv/opencv-javacpp-platform-imported.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-package-release-size-big.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-sample-list-size.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-facedetect-apk-analyze.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-import-opencv-javacpp-analyze.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-javacpp-platform-imported.png

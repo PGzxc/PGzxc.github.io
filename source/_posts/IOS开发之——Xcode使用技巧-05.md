@@ -114,10 +114,10 @@ date: 2022-04-04 07:17:39
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-05-main-storyboard.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-05-main-storyboard-interface.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-05-main-storyboard-remove.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-05-info-dele-before.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-05-info-dele-after.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-05-four-storyboard-add.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-xcode-05-code-preview.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-05-main-storyboard.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-05-main-storyboard-interface.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-05-main-storyboard-remove.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-05-info-dele-before.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-05-info-dele-after.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-05-four-storyboard-add.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-05-code-preview.gif

@@ -373,11 +373,11 @@ ANR(Application Not Responding)即应用程序无响应
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-interview-jvm-struct.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-interview-jvm-class-loader.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-interview-jvm-runtimedata-areas.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-interview-collect-struct.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-interview-map-submit.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-interview-activity-life.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-interview-handler-table.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-android/android-interview-event-process.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-android/android-interview-jvm-struct.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-android/android-interview-jvm-class-loader.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-android/android-interview-jvm-runtimedata-areas.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-android/android-interview-collect-struct.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-android/android-interview-map-submit.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-android/android-interview-activity-life.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-android/android-interview-handler-table.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-android/android-interview-event-process.png

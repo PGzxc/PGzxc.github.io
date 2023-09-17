@@ -161,5 +161,5 @@ page {
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-animal-this-preview.gif
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-wechat/wechat-animal-wxcreate-preview.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-animal-this-preview.gif
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-animal-wxcreate-preview.gif

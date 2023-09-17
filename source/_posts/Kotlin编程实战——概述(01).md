@@ -108,4 +108,4 @@ DeepLearning4J、ND4J、Dex、Smile、Apache Commons Math、OptaPlanner、Charts
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-kotlin/kotlin-learn-struct-1.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-kotlin/kotlin-learn-struct-1.png

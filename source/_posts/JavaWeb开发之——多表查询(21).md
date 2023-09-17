@@ -271,7 +271,7 @@ t1.dep_id = dept.did;
 ```
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-21-sql-query-all.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-21-sql-query-relate.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-21-two-table-relate.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-21-sql-query-inner-join.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-21-sql-query-all.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-21-sql-query-relate.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-21-two-table-relate.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-21-sql-query-inner-join.png

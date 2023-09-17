@@ -88,9 +88,9 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
 
 
 [00]:https:/go.microsoft.com/fwlink/
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hexo/hexo-run-error-priview.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hexo/hexo-run-error-powershell-open.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hexo/hexo-run-error-powershell-policy-list.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hexo/hexo-run-error-powershell-policy-remotedsigned.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hexo/hexo-run-error-powershell-localMachine-change.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hexo/hexo-run-error-modify-run.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-run-error-priview.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-run-error-powershell-open.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-run-error-powershell-policy-list.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-run-error-powershell-policy-remotedsigned.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-run-error-powershell-localMachine-change.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-run-error-modify-run.png

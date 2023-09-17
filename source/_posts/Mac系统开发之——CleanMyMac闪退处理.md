@@ -29,4 +29,4 @@ Mac系统升级后，在使用CleanMyMac X 4.5.2 时，突然出现了如下问�
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cleanmy-mac-exception.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cleanmy-mac-exception.png

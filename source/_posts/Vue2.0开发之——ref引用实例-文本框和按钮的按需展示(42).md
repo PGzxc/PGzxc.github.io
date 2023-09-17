@@ -151,5 +151,5 @@ found in
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-42-ref-vuecomponent-button-input-show.gif
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-42-ref-vuecomponent-update.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-42-ref-vuecomponent-button-input-show.gif
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-42-ref-vuecomponent-update.png

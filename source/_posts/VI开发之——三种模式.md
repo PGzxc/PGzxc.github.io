@@ -74,10 +74,10 @@ VI有三种基本的工作模式：
 ![][6]
 
 
-[0]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/vi-touch-file.png
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/vi-file-save.png
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/vi-file-read.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/vi-order-mode.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/vi-add-mode.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/vi-see-mode.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/vi-hangmo-mode.png
+[0]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/vi-touch-file.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/vi-file-save.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/vi-file-read.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/vi-order-mode.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/vi-add-mode.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/vi-see-mode.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/vi-hangmo-mode.png

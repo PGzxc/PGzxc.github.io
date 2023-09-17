@@ -114,6 +114,6 @@ data:{
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-23-v-if-show-sample.gif
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-23-v-if-show-diff.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-23-v-else-if-sample.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-23-v-if-show-sample.gif
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-23-v-if-show-diff.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-23-v-else-if-sample.gif

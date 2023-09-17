@@ -86,8 +86,8 @@ $ which dart
   ```
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-dart/dart-flutter-page-download.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-dart/dart-stable-channel-select.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-dart/dart-flutter-page-download.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-dart/dart-stable-channel-select.png
 
 [21]:https://flutter.cn/docs/get-started/install
 [22]:https://dart.cn/tools/sdk/archive

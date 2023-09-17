@@ -140,13 +140,13 @@ Compose Multiplatform 项目包括三个模块
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-plugin-kotlin-01.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-create-choice-01.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-create-android-01.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-create-multiapp-info2-01.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-struct-project-view-01.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-struct-shared-view-01.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-struct-android-view-01.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-struct-ios-view-01.png
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-android-view-01.png
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-ios-view-01.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-plugin-kotlin-01.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-create-choice-01.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-create-android-01.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-create-multiapp-info2-01.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-struct-project-view-01.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-struct-shared-view-01.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-struct-android-view-01.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-struct-ios-view-01.png
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-android-view-01.png
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-ios-view-01.png

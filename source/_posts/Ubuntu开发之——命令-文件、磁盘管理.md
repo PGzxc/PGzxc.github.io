@@ -437,22 +437,22 @@ tar只负责打包文件，但不压缩，用bzip2压缩tar打包后的文件，
 
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/linux-order-ls.png
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/linux-order-ls_a.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/linux-order-ls_l.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/linux_file_type.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/linux-ls-redirect.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/linux-more_file.png
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/linux-more_open.png
-[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/linux-pip.png
-[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/linux-order-mkdir.png
-[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/linux-order-rmdir.png
-[11]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/linux-order-li-ln.png
-[12]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/linux-order-cat.png
-[13]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/linux-order-cp.png
-[14]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/linux-order-mv.png
-[15]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/linux-order-tar.png
-[16]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/linux-order-tar_xvf.png
-[17]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/linux-order-gzip-r.png
-[18]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/linux-order-gzip-d.png
-[19]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/linux-order-which.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/linux-order-ls.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/linux-order-ls_a.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/linux-order-ls_l.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/linux_file_type.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/linux-ls-redirect.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/linux-more_file.png
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/linux-more_open.png
+[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/linux-pip.png
+[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/linux-order-mkdir.png
+[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/linux-order-rmdir.png
+[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/linux-order-li-ln.png
+[12]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/linux-order-cat.png
+[13]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/linux-order-cp.png
+[14]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/linux-order-mv.png
+[15]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/linux-order-tar.png
+[16]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/linux-order-tar_xvf.png
+[17]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/linux-order-gzip-r.png
+[18]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/linux-order-gzip-d.png
+[19]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/linux-order-which.png

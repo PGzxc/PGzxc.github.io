@@ -85,12 +85,12 @@ https://www.bing.com/new
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-bing-cn-website.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-bing-new-website.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-bing-bing-login.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-bing-join-apply.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-bing-join.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-bing-reward-error.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-bing-success-talk.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-bing-chat-zuowen.png
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-bing-chat-program.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-bing-cn-website.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-bing-new-website.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-bing-bing-login.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-bing-join-apply.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-bing-join.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-bing-reward-error.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-bing-success-talk.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-bing-chat-zuowen.png
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-bing-chat-program.png

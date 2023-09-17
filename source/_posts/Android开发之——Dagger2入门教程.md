@@ -745,6 +745,6 @@ public class MainActivity extends AppCompatActivity
 
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/dagger2.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/dagger2.png
 [2]: https://github.com/PGzxc/Dagger2Demo
 

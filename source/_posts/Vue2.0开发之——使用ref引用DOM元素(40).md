@@ -85,6 +85,6 @@ methods:{
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/web2.0-40-ref-vuecomponent-print-null.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/web2.0-40-ref-vuecomponent-print-h1.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/web2.0-40-ref-vuecomponent-change-dom.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/web2.0-40-ref-vuecomponent-print-null.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/web2.0-40-ref-vuecomponent-print-h1.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/web2.0-40-ref-vuecomponent-change-dom.gif

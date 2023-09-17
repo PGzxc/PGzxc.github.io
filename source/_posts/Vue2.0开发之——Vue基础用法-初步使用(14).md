@@ -108,10 +108,10 @@ const vm = new Vue({
 [01]:https://dayjs.fenxianglu.cn/category
 [02]: https://www.bootcss.com/
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-14-vue-download-site.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-14-vue-lib-import.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-14-vue-create-obj.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-14-vue-div-control.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-14-vue-data-username.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-14-vue-div-view.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-14-vue-mvvm.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-14-vue-download-site.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-14-vue-lib-import.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-14-vue-create-obj.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-14-vue-div-control.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-14-vue-data-username.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-14-vue-div-view.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-14-vue-mvvm.png

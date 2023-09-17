@@ -33,7 +33,7 @@ date: 2018-03-22 18:08:49
 
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-error-cache.png
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-error-clear-cache.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-error-set-registry.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/rn-error-init.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-error-cache.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-error-clear-cache.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-error-set-registry.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-error-init.png

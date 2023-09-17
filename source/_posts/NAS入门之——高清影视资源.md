@@ -54,11 +54,11 @@ date: 2023-04-03 11:50:45
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-resource-4k-4ksj.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-resource-movie-stuo-express.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-resource-movie-cjtyy.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-resource-movie-nfyingshi.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-resource-movie-magedn.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-resource-movie-hbcxxdc.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-resource-movie-ccine.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-resource-4k-4ksj.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-resource-movie-stuo-express.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-resource-movie-cjtyy.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-resource-movie-nfyingshi.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-resource-movie-magedn.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-resource-movie-hbcxxdc.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-resource-movie-ccine.png
 

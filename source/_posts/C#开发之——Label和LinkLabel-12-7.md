@@ -70,6 +70,6 @@ public partial class ChangeTextForm : Form
 ![][3]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-windform-label-link-create.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-windows-label-default-value.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-windform-linklabel-view.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-windform-label-link-create.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-windows-label-default-value.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-windform-linklabel-view.gif

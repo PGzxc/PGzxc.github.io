@@ -252,10 +252,10 @@ DefaultTextStyle(style: TextStyle(
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-text-property.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-text-textstyle-view.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-text-textspan.gif
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-text-default-textstyle.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-text-font-sdk.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-text-font-folder-set.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-text-font-preview.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-text-property.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-text-textstyle-view.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-text-textspan.gif
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-text-default-textstyle.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-text-font-sdk.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-text-font-folder-set.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-text-font-preview.png

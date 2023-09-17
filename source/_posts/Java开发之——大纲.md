@@ -26,4 +26,4 @@ date: 2023-01-04 16:51:35
 ![][1]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/java-all-xmind-summary.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/java-all-xmind-summary.png

@@ -42,8 +42,8 @@ Xcode中设备恢复正常状态
 ![][5]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-disable-view.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-disable-ipad-developer-disabled.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-disable-ipad-developer-reset.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-disable-ipad-developer-enabled.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-disable-enable-view.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-disable-view.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-disable-ipad-developer-disabled.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-disable-ipad-developer-reset.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-disable-ipad-developer-enabled.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-disable-enable-view.png

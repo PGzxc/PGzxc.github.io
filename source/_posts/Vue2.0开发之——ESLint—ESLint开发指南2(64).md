@@ -272,5 +272,5 @@ D:\Code\Vue2\vue-eslint-demo\src\App.vue
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-64-eslint-rules-no-trailing-spaces.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-64-eslint-rules-modify-explain.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-64-eslint-rules-no-trailing-spaces.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-64-eslint-rules-modify-explain.png

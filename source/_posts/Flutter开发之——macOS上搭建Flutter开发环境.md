@@ -185,20 +185,20 @@ open -a Simulator
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-mac-pub-host-base-url.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-mac-flutter-sdk.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-mac-flutter-sdk-folder.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-doctor-inspect.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-mac-cocoapods-install-success.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-mac-cocoapods-flutter-doctor.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-mac-as-plugin-flutter-install.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-mac-flutter-dart-config.png
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-mac-flutter-plugin-doctor.png
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-mac-vs-code-flutter-install.png
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-mac-vs-code-flutter-doctor.png
-[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-mac-vs-code-create-project.png
-[13]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-project-run-ios.png
-[14]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-flutter/flutter-project-run-android.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-mac-pub-host-base-url.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-mac-flutter-sdk.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-mac-flutter-sdk-folder.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-doctor-inspect.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-mac-cocoapods-install-success.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-mac-cocoapods-flutter-doctor.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-mac-as-plugin-flutter-install.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-mac-flutter-dart-config.png
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-mac-flutter-plugin-doctor.png
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-mac-vs-code-flutter-install.png
+[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-mac-vs-code-flutter-doctor.png
+[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-mac-vs-code-create-project.png
+[13]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-project-run-ios.png
+[14]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-project-run-android.png
 
 [31]:https://flutter.dev/docs/development/tools/sdk/releases?tab=macos#macos
 

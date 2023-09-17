@@ -72,5 +72,5 @@ sudo unrar e name.rar
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-linux/ubuntu-rar-open-terminal.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-linux/ubuntu-rar-unzip-x-commond.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-linux/ubuntu-rar-open-terminal.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-linux/ubuntu-rar-unzip-x-commond.png

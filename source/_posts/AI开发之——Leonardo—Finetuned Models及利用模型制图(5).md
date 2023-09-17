@@ -64,10 +64,10 @@ Finetuned Models包含四个选显卡
 ![][6]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-models-select.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-models-platform-model.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-models-platform-model-diffusion.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-models-platform-model-dpg4.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-models-platform-model-deliberate.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ai/ai-leonardo-models-platform-model-vintage.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-models-select.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-models-platform-model.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-models-platform-model-diffusion.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-models-platform-model-dpg4.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-models-platform-model-deliberate.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-models-platform-model-vintage.png
 

@@ -119,5 +119,5 @@ function draw() {
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-p5js/p5js-createradio-sample1.gif
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-p5js/p5js-createradio-sample2.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-p5js/p5js-createradio-sample1.gif
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-p5js/p5js-createradio-sample2.gif

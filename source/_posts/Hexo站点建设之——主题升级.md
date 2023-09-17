@@ -194,17 +194,17 @@ date: 2019-06-13 23:28:10
 
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-theme-update-doc.png
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-theme-git-clone-v7.1.1.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-theme-v7.11-clone-done.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-config-theme-modify.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-menu-setting.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-menu-badges-setting.png
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-schemes-setting.png
-[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-social-setting.png
-[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-links-setting.png
-[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-avatar-setting.png
-[11]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-comment-zh-cn.png
-[12]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-npm-install-symbols-count-time.png
-[13]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-reward-setting.png
-[14]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hexo-beian-open-setting.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-theme-update-doc.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-theme-git-clone-v7.1.1.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-theme-v7.11-clone-done.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-config-theme-modify.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-menu-setting.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-menu-badges-setting.png
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-schemes-setting.png
+[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-social-setting.png
+[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-links-setting.png
+[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-avatar-setting.png
+[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-comment-zh-cn.png
+[12]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-npm-install-symbols-count-time.png
+[13]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-reward-setting.png
+[14]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-beian-open-setting.png

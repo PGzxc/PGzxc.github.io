@@ -132,4 +132,4 @@ date: 2022-11-22 10:12:38
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-25-band-list-sample.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-25-band-list-sample.gif

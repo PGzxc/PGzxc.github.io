@@ -204,16 +204,16 @@ CONSTRAINT fk_user_desc FOREIGN KEY(desc_id) REFERENCES tb_user_desc(id)
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-20-software-design.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-20-one2one-table.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-20-one2one-table-relate.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-20-one2one-table-relate-model.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-20-more2more-tables.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-20-more2more-table-relate.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-20-more2more-table-model.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-20-one2one-table-relate.png
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-20-one2one-table-relates.png
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-20-one2one-table-model.png
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-20-sample-analysis.png
-[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-20-sample-analysis-result.png
-[13]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-java/javaweb-20-sample-analysis-result-relate.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-20-software-design.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-20-one2one-table.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-20-one2one-table-relate.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-20-one2one-table-relate-model.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-20-more2more-tables.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-20-more2more-table-relate.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-20-more2more-table-model.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-20-one2one-table-relate.png
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-20-one2one-table-relates.png
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-20-one2one-table-model.png
+[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-20-sample-analysis.png
+[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-20-sample-analysis-result.png
+[13]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-20-sample-analysis-result-relate.png

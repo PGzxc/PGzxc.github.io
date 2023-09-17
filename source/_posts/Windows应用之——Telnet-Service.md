@@ -78,16 +78,16 @@ win10环境下Telnet服务端已被阉割，Telnet服务没有启动的情况下
 
 
 
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/telnet-position.png
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/telnet-win7.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/telnet-win10.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/telnet-client-select.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/telnet-client-install.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/telnet-cmd.png
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/telnet-baidu.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/telnet-position.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/telnet-win7.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/telnet-win10.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/telnet-client-select.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/telnet-client-install.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/telnet-cmd.png
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/telnet-baidu.png
 [8]: http://www.kpym.com/2/kpym/download.htm
-[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/telnet-kts119.png
-[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/telnet-kts-port-23.png
-[11]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/telnet-kts-setup.png
-[12]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/telnet-kts-regis.png
-[13]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/telnet-linux-win.png
+[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/telnet-kts119.png
+[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/telnet-kts-port-23.png
+[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/telnet-kts-setup.png
+[12]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/telnet-kts-regis.png
+[13]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/telnet-linux-win.png

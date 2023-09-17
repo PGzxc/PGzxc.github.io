@@ -55,11 +55,11 @@ date: 2023-03-23 20:25:36
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-alist-play-webpage.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-alist-play-webpage-jump-potplayer.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-alist-play-webpage-jump-potplayer-alert.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-alist-play-webpage-jump-potplayer-view.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-alist-play-potplayer-playlist.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-alist-play-potplayer-add-list.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-alist-play-potplayer-playlist-folder.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-nas/nas-alist-play-potplayer-list-play.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-alist-play-webpage.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-alist-play-webpage-jump-potplayer.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-alist-play-webpage-jump-potplayer-alert.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-alist-play-webpage-jump-potplayer-view.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-alist-play-potplayer-playlist.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-alist-play-potplayer-add-list.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-alist-play-potplayer-playlist-folder.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-nas/nas-alist-play-potplayer-list-play.png

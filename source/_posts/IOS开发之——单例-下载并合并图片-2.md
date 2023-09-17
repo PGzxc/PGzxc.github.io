@@ -194,4 +194,4 @@ date: 2022-02-24 09:10:53
 ![][1]
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-image-download-cover.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-image-download-cover.gif

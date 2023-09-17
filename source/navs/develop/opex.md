@@ -8,4 +8,4 @@ comments: false
 
 ![][1]
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-learn-route/dev-opex.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-learn-route/dev-opex.png

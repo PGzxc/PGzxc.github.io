@@ -136,7 +136,7 @@ h5 {
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-35-conflict-left-all-show.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-35-confict-data-v-value.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue02-35-conflict-deep-efect.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-35-conflict-left-all-show.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-35-confict-data-v-value.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-35-conflict-deep-efect.png
 

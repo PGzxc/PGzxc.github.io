@@ -94,12 +94,12 @@ static class Program
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-winform-project-open-dialog.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-winform-project-setting.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-project-create-done-struct.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-comm-tools.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-tools-right-see.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-tools-right-select-choice.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-tools-add-before.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/csharp-tools-add-after.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-winform-project-open-dialog.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-winform-project-setting.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-project-create-done-struct.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-comm-tools.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-tools-right-see.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-tools-right-select-choice.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-tools-add-before.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-tools-add-after.png
 

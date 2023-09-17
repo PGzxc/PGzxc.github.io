@@ -66,9 +66,9 @@ EventBus是[http://greenrobot.org/][0]出的一个发布者/订阅者（Publishe
 
 [0]: http://greenrobot.org/
 [1]: https://github.com/greenrobot/EventBus
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/eventbus1.gif
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/eventbus2.gif
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/eventbus_method1.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/eventbus_send.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/eventbus_receive.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/eventbus1.gif
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/eventbus2.gif
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/eventbus_method1.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/eventbus_send.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/eventbus_receive.png
 [7]: https://github.com/PGzxc/EventBusSample

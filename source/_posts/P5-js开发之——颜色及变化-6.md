@@ -168,7 +168,7 @@ function draw()
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-p5js/p5js-color-sample-view.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-p5js/p5js-color-red-get-view.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-p5js/p5js-color-light-view.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-p5js/p5js-color-lerpColor-view.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-p5js/p5js-color-sample-view.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-p5js/p5js-color-red-get-view.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-p5js/p5js-color-light-view.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-p5js/p5js-color-lerpColor-view.png

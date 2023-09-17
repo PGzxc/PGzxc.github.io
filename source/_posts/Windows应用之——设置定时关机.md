@@ -102,18 +102,18 @@ shutdown -a
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-shutdown-cmd-open-admin.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-shutdown-cmd-3600.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-shutdown-reminder-dialog.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-shutdown-cancel-reminder.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-shutdown-task-computer-manager.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-shutdown-task-open-computer-manager.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-shutdown-task-computer-manager-libs.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-shutdown-task-computer-manager-create-task.png
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-shutdown-task-computer-manager-task-name.png
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-shutdown-task-computer-operation-task-time.png
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-shutdown-task-computer-operation-settime.png
-[12]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-shutdown-task-computer-operation-operation.png
-[13]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-shutdown-task-computer-operation-task-start.png
-[14]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-shutdown-task-compute-operation-task-finish.png
-[15]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-windows/windows-shutdown-task-delete.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-shutdown-cmd-open-admin.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-shutdown-cmd-3600.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-shutdown-reminder-dialog.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-shutdown-cancel-reminder.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-shutdown-task-computer-manager.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-shutdown-task-open-computer-manager.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-shutdown-task-computer-manager-libs.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-shutdown-task-computer-manager-create-task.png
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-shutdown-task-computer-manager-task-name.png
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-shutdown-task-computer-operation-task-time.png
+[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-shutdown-task-computer-operation-settime.png
+[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-shutdown-task-computer-operation-operation.png
+[13]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-shutdown-task-computer-operation-task-start.png
+[14]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-shutdown-task-compute-operation-task-finish.png
+[15]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-shutdown-task-delete.png

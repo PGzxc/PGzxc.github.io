@@ -104,11 +104,11 @@ date: 2020-01-02 21:07:45
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cmake-cmd-create-two-file.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cmake-cmd-mkdir-build-folder.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cmake-cmd-pre-build.png
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cmake-cmd-build-file.png
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cmake-cmd-debug-run-effect.png
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cmake-clion-create-project.png
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cmake-clion-auto-build.png
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/cmake-clion-run-result.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cmake-cmd-create-two-file.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cmake-cmd-mkdir-build-folder.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cmake-cmd-pre-build.png
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cmake-cmd-build-file.png
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cmake-cmd-debug-run-effect.png
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cmake-clion-create-project.png
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cmake-clion-auto-build.png
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cmake-clion-run-result.png

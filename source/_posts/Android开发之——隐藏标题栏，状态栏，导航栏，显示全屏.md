@@ -51,15 +51,15 @@ date: 2017-12-06 12:10:00
 [Demo][11]
 
 
-[0]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hidden-pic-state.png
-[1]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hidden_activity.png
-[2]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hidden_activity_result.png
-[3]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hidden_appcompat.png
-[4]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hidden_appcompat_result.png
-[5]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hidden_title_style.png
-[6]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hidden_title_style_result.png
-[7]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hidden_actionbar.png
-[8]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hidden_actionbar_result.png
-[9]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hidden_navigator.png
-[10]: https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-image/hidden_navigator_result.png
+[0]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hidden-pic-state.png
+[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hidden_activity.png
+[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hidden_activity_result.png
+[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hidden_appcompat.png
+[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hidden_appcompat_result.png
+[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hidden_title_style.png
+[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hidden_title_style_result.png
+[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hidden_actionbar.png
+[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hidden_actionbar_result.png
+[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hidden_navigator.png
+[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hidden_navigator_result.png
 [11]: https://github.com/PGzxc/TitleHidden

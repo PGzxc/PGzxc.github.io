@@ -197,6 +197,6 @@ self.centralManager connectPeripheral连接设备后，有三种情况回调：�
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-07-tableview-delegate.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-07-connect-fail.png
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-ios/ios-devices-07-connect-sucess.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-devices-07-tableview-delegate.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-devices-07-connect-fail.png
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-devices-07-connect-sucess.png

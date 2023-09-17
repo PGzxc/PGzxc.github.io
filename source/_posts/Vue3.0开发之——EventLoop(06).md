@@ -101,5 +101,5 @@ B
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue3.0-day1-06-eventloop-javascript-process.png
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue3.0-day1-06-eventloop-javascript-progress.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue3.0-day1-06-eventloop-javascript-process.png
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue3.0-day1-06-eventloop-javascript-progress.png

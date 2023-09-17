@@ -325,14 +325,14 @@ datePicker.setShaderColor(new Color(Color.getIntColor("#00CED1")));
 
 
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-datepicker-default.gif
-[2]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-datepicker-valuechange.gif
-[3]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-datepicker-mindate.gif
-[4]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-datepicker-maxdate.gif
-[5]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-datepicker-text-color-size.gif
-[6]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-datepicker-select-size-color.gif
-[7]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-datepicker-operate-color.gif
-[8]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-datepicker-operate-color.gif
-[9]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-datepicker-wheel-mode.gif
-[10]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-datepicker-top-bottom-line.gif
-[11]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-hmos/hmos-datepicker-shader-color.gif
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-datepicker-default.gif
+[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-datepicker-valuechange.gif
+[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-datepicker-mindate.gif
+[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-datepicker-maxdate.gif
+[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-datepicker-text-color-size.gif
+[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-datepicker-select-size-color.gif
+[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-datepicker-operate-color.gif
+[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-datepicker-operate-color.gif
+[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-datepicker-wheel-mode.gif
+[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-datepicker-top-bottom-line.gif
+[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-datepicker-shader-color.gif

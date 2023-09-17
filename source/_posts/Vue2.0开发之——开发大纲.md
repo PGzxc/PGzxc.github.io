@@ -21,4 +21,4 @@ date: 2023-04-01 16:32:16
 
 ![][1]
 
-[1]:https://cdn.staticaly.com/gh/PGzxc/CDN/master/blog-vue/vue2.0-xmind-summary.png
+[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-xmind-summary.png
