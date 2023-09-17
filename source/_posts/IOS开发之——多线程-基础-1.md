@@ -107,6 +107,6 @@ date: 2022-02-21 09:05:45
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-thread-main-dead.gif
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-thread-main-dead-process.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-thread-main-dead-deal.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-thread-main-dead.gif
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-thread-main-dead-process.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-thread-main-dead-deal.png

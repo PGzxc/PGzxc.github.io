@@ -114,4 +114,4 @@ Response response= await Get.find<APIService>().getHomeProvider().getArticle(0);
 * [CSDN下载-参考的代码](https://download.csdn.net/download/Calvin_zhou/85358794)
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-getx-service-14-getxservice-sample.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-getx-service-14-getxservice-sample.png

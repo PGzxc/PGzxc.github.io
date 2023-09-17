@@ -47,12 +47,12 @@ Genymotion2.10
 ![start][9]
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/genymotion-error.png
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/genymotion-sale.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/genymotion-trial.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/genymotion-licence.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/genymotion-error.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/genymotion-sale.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/genymotion-trial.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/genymotion-licence.png
 [5]: https://pan.baidu.com/s/1AhbR9JJfJYeE0atoqTKrCA
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/genymotion-replace.png
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/genymotion-free.png
-[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/genymotion-download.png
-[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/genymotion-start.pngs
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/genymotion-replace.png
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/genymotion-free.png
+[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/genymotion-download.png
+[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/genymotion-start.pngs

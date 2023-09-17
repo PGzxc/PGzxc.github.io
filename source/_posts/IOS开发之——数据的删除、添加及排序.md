@@ -132,4 +132,4 @@ date: 2020-05-28 00:20:11
 @end
 ```
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-drag-add-delete.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-drag-add-delete.gif

@@ -84,13 +84,13 @@ Devices下是设备对应文件夹(对于不常用的设备，可以尝试删除
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-mac/mac-disk-inventory-install.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-mac/mac-disk-inventory-choice-disk.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-mac/mac-disk-inventory-fenxi.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-mac/mac-disk-inventory-folder-open.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-mac/mac-disk-xcode-library-cache.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-mac/mac-disk-device-folder-relate.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-mac/mac-disk-inventory-folder-tx-ts.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-mac/mac-disk-inventory-install.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-mac/mac-disk-inventory-choice-disk.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-mac/mac-disk-inventory-fenxi.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-mac/mac-disk-inventory-folder-open.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-mac/mac-disk-xcode-library-cache.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-mac/mac-disk-device-folder-relate.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-mac/mac-disk-inventory-folder-tx-ts.png
 
 [11]:http://www.derlien.com
 

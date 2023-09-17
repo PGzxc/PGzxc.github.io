@@ -62,4 +62,4 @@ class Program
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-thread-mutex-console.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-thread-mutex-console.png

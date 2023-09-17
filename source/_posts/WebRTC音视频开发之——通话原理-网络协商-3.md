@@ -110,8 +110,8 @@ WebRTC的防火墙穿透技术就是基于上述思路来实现的。在WebRTC�
 [00]:https://github.com/coturn/coturn
 [01]:https://github.com/pion/turn
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-webrtc/webrtc-02-net-protocol-idea.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-webrtc/webrtc-02-net-protocol-firewall.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-webrtc/webrtc-02-net-route-struct.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-webrtc/webrtc-02-stun-server-through.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-webrtc/webrtc-02-turn-traversal-relay.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-webrtc/webrtc-02-net-protocol-idea.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-webrtc/webrtc-02-net-protocol-firewall.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-webrtc/webrtc-02-net-route-struct.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-webrtc/webrtc-02-stun-server-through.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-webrtc/webrtc-02-turn-traversal-relay.png

@@ -44,11 +44,11 @@ date: 2019-10-17 23:33:30
 
 
 [1]: https://www.eclipse.org/downloads/
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-eclipse-download-packages.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-eclipse-c-download-select.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-eclipse-marketplace-c-install.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-eclipse-cpp-build-tools-config.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-eclipse-new-project.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-eclipse-c-select.png
-[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-eclipse-create-preview.png
-[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-eclipse-c-run.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-eclipse-download-packages.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-eclipse-c-download-select.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-eclipse-marketplace-c-install.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-eclipse-cpp-build-tools-config.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-eclipse-new-project.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-eclipse-c-select.png
+[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-eclipse-create-preview.png
+[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-eclipse-c-run.png

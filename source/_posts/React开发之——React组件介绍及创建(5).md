@@ -140,5 +140,5 @@ root.render(<Hello />)
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day1-img5-react-construct-view.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-react/react-day1-img5-react-construct-view.png
 

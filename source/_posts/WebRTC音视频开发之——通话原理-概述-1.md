@@ -48,4 +48,4 @@ Peer-A与Peer-B如果没有建立起直连，则通过TURN中转服务器转发�
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-webrtc/webrtc-02-peer-communite-progress.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-webrtc/webrtc-02-peer-communite-progress.png

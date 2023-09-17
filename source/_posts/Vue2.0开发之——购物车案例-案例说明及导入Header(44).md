@@ -106,9 +106,9 @@ export default {
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-44-cart-app-init-view.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-44-cart-app-finish-view.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-44-cart-components-view.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-44-cart-struct-view.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-44-cart-header-view.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-44-cart-header-title.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-44-cart-app-init-view.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-44-cart-app-finish-view.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-44-cart-components-view.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-44-cart-struct-view.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-44-cart-header-view.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-44-cart-header-title.png

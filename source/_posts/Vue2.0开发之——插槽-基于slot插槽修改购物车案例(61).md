@@ -159,8 +159,8 @@ getNewNum(item,event){
 ![][3]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-61-cart-before-event-flow.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-61-cart-slot-count-value.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-61-cart-slot-modify.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-61-cart-before-event-flow.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-61-cart-slot-count-value.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-61-cart-slot-modify.gif
 
 

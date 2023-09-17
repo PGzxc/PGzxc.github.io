@@ -93,10 +93,10 @@ UIImage *image=[UIImage imageNamed:@“eat_001.jpg”];
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-image-youhua-imagename-view.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-image-youhua-path-view.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-image-xcode-preference.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-image-xcode-locations-deriveddata.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-image-xcode-locations-app.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-image-xcode-locations-app-package.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-image-youhua-imagename-view.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-image-youhua-path-view.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-image-xcode-preference.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-image-xcode-locations-deriveddata.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-image-xcode-locations-app.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-image-xcode-locations-app-package.png
 

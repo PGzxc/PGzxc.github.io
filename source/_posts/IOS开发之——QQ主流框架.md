@@ -82,5 +82,5 @@ date: 2020-12-02 00:17:20
 ![][2]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-qq-struct-navigation-controller-text-image.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-qq-struct-preview.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-qq-struct-navigation-controller-text-image.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-qq-struct-preview.gif

@@ -47,9 +47,9 @@ date: 2017-12-29 15:42:43
 
 [1]: https://github.com/leolin310148/ShortcutBadger
 [2]: https://github.com/xuyisheng/ShortcutHelper
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/shortcut.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/shortcut-add.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/shortcut-reduce.png
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-lg-show.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/shortcut.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/shortcut-add.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/shortcut-reduce.png
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-lg-show.png
 [7]: https://www.cnblogs.com/dmtyoung/p/6477531.html
 [8]: https://github.com/PGzxc/ShortcutBadgerSample

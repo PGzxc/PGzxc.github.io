@@ -108,6 +108,6 @@ date: 2020-10-17 23:46:45
 
 
 
-[0]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-sirentongxunlu-baritem-delete.gif
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xirentongxunlu-baritem-trash-add-mainstorey.png
+[0]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-sirentongxunlu-baritem-delete.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-xirentongxunlu-baritem-trash-add-mainstorey.png
 

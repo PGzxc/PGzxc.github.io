@@ -32,7 +32,7 @@ date: 2018-03-01 17:28:58
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/nfc-uri-state.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/nfc-uri-state.png
 [2]: https://github.com/PGzxc/NFCReadWriteUri
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/nfc-read-write-uri.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/nfc-uri-read.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/nfc-read-write-uri.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/nfc-uri-read.png

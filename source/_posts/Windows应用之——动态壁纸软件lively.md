@@ -49,9 +49,9 @@ date: 2021-01-13 10:01:25
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-lively-preview.gif
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-lively-choice-file.gif
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-lively-url-set.gif
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-lively-define-set.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-windows/windows-lively-preview.gif
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-windows/windows-lively-choice-file.gif
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-windows/windows-lively-url-set.gif
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-windows/windows-lively-define-set.gif
 
 [21]:https://github.com/rocksdanister/lively

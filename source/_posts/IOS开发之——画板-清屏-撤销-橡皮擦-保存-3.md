@@ -196,8 +196,8 @@ dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 ![][4]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-draw-clean-screen.gif
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-draw-undo.gif
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-draw-eraser.gif
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-draw-capture-save.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-draw-clean-screen.gif
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-draw-undo.gif
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-draw-eraser.gif
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-draw-capture-save.gif
 

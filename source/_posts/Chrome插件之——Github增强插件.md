@@ -76,6 +76,6 @@ https://download.csdn.net/download/Calvin_zhou/13985969
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-chrome-plugin/github-plugin-octotree.gif
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-chrome-plugin/github-plugin-enhanced-github.gif
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-chrome-plugin/github-plugin-gitHub-file-icons.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-chrome-plugin/github-plugin-octotree.gif
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-chrome-plugin/github-plugin-enhanced-github.gif
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-chrome-plugin/github-plugin-gitHub-file-icons.png

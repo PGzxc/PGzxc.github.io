@@ -112,8 +112,8 @@ export default {
 ![][5]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-55-component-keepalive-no.gif
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-55-component-keepalive-no-life.gif
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-55-component-keepalive-yes.gif
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-55-component-keepalive-yes-life.gif
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-55-component-keepalive-life.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-55-component-keepalive-no.gif
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-55-component-keepalive-no-life.gif
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-55-component-keepalive-yes.gif
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-55-component-keepalive-yes-life.gif
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-55-component-keepalive-life.gif

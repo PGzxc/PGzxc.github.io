@@ -132,7 +132,7 @@ onReset(){
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-41-ref-vuecomponent-left.gif
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/web2.0-41-left-component-refs-print.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/web2.0-41-left-component-reset-button-add.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-41-ref-vuecomponent-father-modify.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-41-ref-vuecomponent-left.gif
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/web2.0-41-left-component-refs-print.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/web2.0-41-left-component-reset-button-add.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-41-ref-vuecomponent-father-modify.gif

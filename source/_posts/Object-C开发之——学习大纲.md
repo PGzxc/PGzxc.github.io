@@ -402,4 +402,4 @@ _cmd：代表当前方法的sel
 # 思维导图
 ![][1]
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/objectc-outline.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/objectc-outline.png

@@ -51,15 +51,15 @@ date: 2017-12-06 12:10:00
 [Demo][11]
 
 
-[0]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hidden-pic-state.png
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hidden_activity.png
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hidden_activity_result.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hidden_appcompat.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hidden_appcompat_result.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hidden_title_style.png
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hidden_title_style_result.png
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hidden_actionbar.png
-[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hidden_actionbar_result.png
-[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hidden_navigator.png
-[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hidden_navigator_result.png
+[0]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hidden-pic-state.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hidden_activity.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hidden_activity_result.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hidden_appcompat.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hidden_appcompat_result.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hidden_title_style.png
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hidden_title_style_result.png
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hidden_actionbar.png
+[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hidden_actionbar_result.png
+[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hidden_navigator.png
+[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hidden_navigator_result.png
 [11]: https://github.com/PGzxc/TitleHidden

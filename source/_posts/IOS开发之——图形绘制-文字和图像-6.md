@@ -82,7 +82,7 @@ date: 2021-01-05 09:03:52
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-draw-text.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-draw-image-normal.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-draw-image-cut.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-draw-text.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-draw-image-normal.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-draw-image-cut.png
 

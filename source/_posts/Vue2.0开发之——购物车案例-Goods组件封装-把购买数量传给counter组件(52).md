@@ -80,5 +80,5 @@ export default {
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-52-cart-goods-counter-import.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-52-cart-goods-counter-result.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-52-cart-goods-counter-import.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-52-cart-goods-counter-result.png

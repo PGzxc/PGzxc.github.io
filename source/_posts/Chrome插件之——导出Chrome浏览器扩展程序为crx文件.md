@@ -88,11 +88,11 @@ https://download.csdn.net/download/Calvin_zhou/13985969
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-chrome-plugin/chrome-extend-software.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-chrome-plugin/chrome-extend-plugin-id.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-chrome-plugin/chrome-extend-plugin-id-search.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-chrome-plugin/chrome-extend-package-path.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-chrome-plugin/chrome-extend-plugin-output-info.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-chrome-plugin/chrome-extend-plugin-id-crx-file.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-chrome-plugin/chrome-extend-lack-list.png
-[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-chrome-plugin/chrome-extend-pem-exist-error.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-chrome-plugin/chrome-extend-software.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-chrome-plugin/chrome-extend-plugin-id.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-chrome-plugin/chrome-extend-plugin-id-search.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-chrome-plugin/chrome-extend-package-path.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-chrome-plugin/chrome-extend-plugin-output-info.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-chrome-plugin/chrome-extend-plugin-id-crx-file.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-chrome-plugin/chrome-extend-lack-list.png
+[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-chrome-plugin/chrome-extend-pem-exist-error.png

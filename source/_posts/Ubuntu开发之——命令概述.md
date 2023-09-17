@@ -60,6 +60,6 @@ man中各个section意义如下：
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/linux_command_opt.png
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/linux-order-ls_help.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/linux_history.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/linux_command_opt.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/linux-order-ls_help.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/linux_history.png

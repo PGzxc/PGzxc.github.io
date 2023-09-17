@@ -110,12 +110,12 @@ Visual Studio 2019：文件——>打开——>文件夹(flutter windows)
 * [Flutter官网-Desktop support for Flutter](https://docs.flutter.dev/desktop)
 
 
-[0]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-desktop-visual-studio-support.png
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-desktop-intellij-project-platform-type.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-desktop-intellij-project-platform-types.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-desktop-project-platform-file.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-desktop-project-platform-files.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-desktop-run-windows-select.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-desktop-run-project-preview.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-desktop-run-project-windows-files.png
-[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-desktop-visual-studio2019-view.png
+[0]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-desktop-visual-studio-support.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-desktop-intellij-project-platform-type.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-desktop-intellij-project-platform-types.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-desktop-project-platform-file.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-desktop-project-platform-files.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-desktop-run-windows-select.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-desktop-run-project-preview.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-desktop-run-project-windows-files.png
+[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-desktop-visual-studio2019-view.png

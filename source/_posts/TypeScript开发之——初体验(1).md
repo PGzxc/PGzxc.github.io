@@ -140,6 +140,6 @@ ts-node hello.ts
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ts/ts-day1-img1-tools-build.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ts/ts-day1-img1-tsc-build.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ts/ts-day1-img1-ts-build-process.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ts/ts-day1-img1-tools-build.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ts/ts-day1-img1-tsc-build.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ts/ts-day1-img1-ts-build-process.png

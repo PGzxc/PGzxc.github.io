@@ -43,11 +43,11 @@ date: 2019-10-17 23:34:51
 
 
 [1]:http://www.jetbrains.com/clion/download/#section=windows
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-clion-download.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-clion-install-position.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-clion-mingw-config.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-clion-encodings-utf8.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-clion-toolschanins-change.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-clion-create-project.png
-[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-clion-project-preview.png
-[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-clion-build-run.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-clion-download.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-clion-install-position.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-clion-mingw-config.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-clion-encodings-utf8.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-clion-toolschanins-change.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-clion-create-project.png
+[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-clion-project-preview.png
+[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-clion-build-run.png

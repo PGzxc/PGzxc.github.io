@@ -155,7 +155,7 @@ function mouseClicked()
 ![][4]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-p5js/p5js-setting-background-sample.gif
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-p5js/p5js-setting-fill-sample.gif
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-p5js/p5js-setting-stroke-sample.gif
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-p5js/p5js-setting-erase-sample.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-setting-background-sample.gif
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-setting-fill-sample.gif
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-setting-stroke-sample.gif
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-setting-erase-sample.gif

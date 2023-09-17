@@ -57,9 +57,9 @@ date: 2020-02-09 11:48:35
 [2]:https://docs.gradle.org/current/userguide/installation.html
 [3]:https://www.jianshu.com/p/b78d0eec430a
 
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/java-config-bash-profile.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-config-bash-profile.png
 
-[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/gradle-download-net-select.png
-[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/gradle-unzip-gradle-folder.png
-[13]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/gradle-version.png
+[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/gradle-download-net-select.png
+[12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/gradle-unzip-gradle-folder.png
+[13]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/gradle-version.png
 

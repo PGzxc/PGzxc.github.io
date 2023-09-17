@@ -137,9 +137,9 @@ date: 2020-09-25 21:36:16
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ct_css_positioning_floating_right_example.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ct_css_positioning_floating_left_example.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ct_css_positioning_floating_left_example_2.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ct_css_positioning_floating_linebox.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ct_css_positioning_floating_clear.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ct_css_positioning_floating_clear_div.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ct_css_positioning_floating_right_example.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ct_css_positioning_floating_left_example.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ct_css_positioning_floating_left_example_2.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ct_css_positioning_floating_linebox.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ct_css_positioning_floating_clear.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ct_css_positioning_floating_clear_div.png

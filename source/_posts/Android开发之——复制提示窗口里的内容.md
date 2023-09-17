@@ -44,11 +44,11 @@ Android Studio中的代码出现错误时，会被红线标记，把鼠标放到
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-copy-error-info.png
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-copy-error-code-show.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-copy-error-code.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-copy-error-code-copy.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-copy-error-layout-show.png
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-copy-error-layout-design-model.png
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-copy-error-layout-design-model-more.png
-[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-copy-error-layout-design-model-detail.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-copy-error-info.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-copy-error-code-show.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-copy-error-code.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-copy-error-code-copy.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-copy-error-layout-show.png
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-copy-error-layout-design-model.png
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-copy-error-layout-design-model-more.png
+[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-copy-error-layout-design-model-detail.png

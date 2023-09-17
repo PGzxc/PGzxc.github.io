@@ -40,9 +40,9 @@ date: 2020-01-11 23:03:00
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/virtualbox-uninstall-error.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/virtualbox-system-service.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/virtual-sc-delete.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/virtualbox-extract.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/virtualbox-loca-temp-file.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/virtualbox-repair.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/virtualbox-uninstall-error.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/virtualbox-system-service.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/virtual-sc-delete.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/virtualbox-extract.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/virtualbox-loca-temp-file.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/virtualbox-repair.png

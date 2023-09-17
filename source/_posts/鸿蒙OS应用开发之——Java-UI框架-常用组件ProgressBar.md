@@ -212,12 +212,12 @@ progressBar.setDividerLineColor(Color.MAGENTA);
 ![][9]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-progressbar-default.gif
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-progressbar-vertical.gif
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-progressbar-progress-element.gif
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-progressbar-background-element.gif
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-progressbar-divider.gif
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-progressbar-divider-color.gif
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-progressbar-progress-text.gif
-[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-roundprogressbar-default.gif
-[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-roundprogressbar-min-max.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-progressbar-default.gif
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-progressbar-vertical.gif
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-progressbar-progress-element.gif
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-progressbar-background-element.gif
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-progressbar-divider.gif
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-progressbar-divider-color.gif
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-progressbar-progress-text.gif
+[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-roundprogressbar-default.gif
+[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-roundprogressbar-min-max.gif

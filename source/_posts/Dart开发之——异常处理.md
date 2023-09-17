@@ -110,5 +110,5 @@ main() {
 ```
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-dart/dart-exception-deal-type.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-dart/dart-exception-deal-type.png
 

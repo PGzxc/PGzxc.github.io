@@ -189,6 +189,6 @@ http://localhost:8080/#/movie/2?name=zs&age=20
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-71-route-dynamic-print-this.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-71-route-dynamic-path.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-71-route-dynamic-print-this.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-71-route-dynamic-path.png
 

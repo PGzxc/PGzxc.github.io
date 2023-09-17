@@ -45,7 +45,7 @@ date: 2018-03-20 09:44:24
 参考：[Github下载][3]
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-viewpagerandroid-code.png
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-viewpagerandroid.gif
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-viewpagerandroid-code.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-viewpagerandroid.gif
 [3]: https://github.com/PGzxc/RN_ViewPagerAndroid
 	

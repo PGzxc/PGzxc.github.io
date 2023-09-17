@@ -13,7 +13,7 @@ date: 2020-02-09 11:51:17
 Mac 装homebrew时，执行如下指令出现错误
 
 ```
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/usr/bin/ruby -e "$(curl -fsSL https://jsd.onmicrosoft.cn/gh/Homebrew/install/master/install)"
 ```
 
 ![][1]
@@ -25,7 +25,7 @@ Mac 装homebrew时，执行如下指令出现错误
 * 在浏览器中打开网页
 
   ```
-  https://raw.githubusercontent.com/Homebrew/install/master/install
+  https://jsd.onmicrosoft.cn/gh/Homebrew/install/master/install
   ```
 
 * 打开后如图所示
@@ -47,14 +47,14 @@ Mac 装homebrew时，执行如下指令出现错误
 ## 三 参考
 * [安装homebrew报错curl: (7) Failed to connect to raw.githubusercontent.com port 443: Operation][10]
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/homebrew-error-view.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/homebrew-error-commandlinetools-sdks.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/homebrew-error-rm-old-commandline.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/homebrew-error-select-install.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/homebrew-error-install-webpage.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/homebrew-error-install-save.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/homebrew-error-ruby-install.png
-[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/homebrew-error-install-finish.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/homebrew-error-view.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/homebrew-error-commandlinetools-sdks.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/homebrew-error-rm-old-commandline.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/homebrew-error-select-install.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/homebrew-error-install-webpage.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/homebrew-error-install-save.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/homebrew-error-ruby-install.png
+[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/homebrew-error-install-finish.png
 
 [10]:https://www.jianshu.com/p/68efabd2e32b
 

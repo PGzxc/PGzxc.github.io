@@ -98,6 +98,6 @@ module: { //所有第三方文件模块的匹配规则
 
 
 [00]:https://webpack.js.org/loaders/less-loader/#root
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-07-index-less-create.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-07-index-less-run-error.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-07-index-less-run-correct.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-07-index-less-create.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-07-index-less-run-error.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-07-index-less-run-correct.png

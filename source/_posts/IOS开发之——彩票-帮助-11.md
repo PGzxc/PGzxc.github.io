@@ -223,4 +223,4 @@ date: 2022-02-13 12:09:21
 ![][1]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-caipiao-help-view.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-caipiao-help-view.gif

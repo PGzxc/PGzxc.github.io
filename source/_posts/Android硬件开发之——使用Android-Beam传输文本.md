@@ -42,9 +42,9 @@ Android SDK提供了如下两个用于传递消息的方法。
 
 
 [1]: https://github.com/PGzxc/NFCBeam
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/nfc-beam.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/nfc-beam-words.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/nfc-beam-calc.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/nfc-beam.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/nfc-beam-words.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/nfc-beam-calc.png
 
 
 

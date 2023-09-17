@@ -145,4 +145,4 @@ date: 2022-03-15 08:34:26
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-download-07-downloadtask.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-download-07-downloadtask.gif

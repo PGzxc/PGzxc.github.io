@@ -196,7 +196,7 @@ props: {
 * 在声明自定义属性时，可以通过 <font color=red>required</font> 选项，将属性设置为<font color=red>必填项</font>，强制用户必须传递属性的值
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-34-props-define-preview.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-34-vbing-no-string.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-34-vbing-yes-number.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-34-props-modify-preview.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-34-props-define-preview.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-34-vbing-no-string.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-34-vbing-yes-number.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-34-props-modify-preview.gif

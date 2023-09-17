@@ -37,5 +37,5 @@ date: 2022-09-14 01:05:55
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-01-struct.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-01-struct.png
 

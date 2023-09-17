@@ -89,11 +89,11 @@ int main(int argc, const char * argv[]) {
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/oc-xcode-new-project.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/oc-xcode-macos-commandline-tool.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/oc-xcode-language-oc.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/oc-xcode-choice-folder.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/oc-xcode-run-result.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/oc-xcode-new-file.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/oc-xcode-new-file-language-cocoa-class.png
-[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/oc-xcode-new-file-filename.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/oc-xcode-new-project.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/oc-xcode-macos-commandline-tool.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/oc-xcode-language-oc.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/oc-xcode-choice-folder.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/oc-xcode-run-result.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/oc-xcode-new-file.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/oc-xcode-new-file-language-cocoa-class.png
+[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/oc-xcode-new-file-filename.png

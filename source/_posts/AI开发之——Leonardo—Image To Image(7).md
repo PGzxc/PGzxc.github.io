@@ -33,7 +33,7 @@ date: 2023-03-24 16:03:48
 ![][3]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonard-image-to-image-upload-image.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonard-image-to-image-set.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonard-image-to-image-generate.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonard-image-to-image-upload-image.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonard-image-to-image-set.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonard-image-to-image-generate.png
 

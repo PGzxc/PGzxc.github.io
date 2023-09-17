@@ -110,4 +110,4 @@ show databases;/*查询所有数据库名称*/
 * DCL：对数据库进行权限控制
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-java/javaweb-05-mysql-category.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-05-mysql-category.png

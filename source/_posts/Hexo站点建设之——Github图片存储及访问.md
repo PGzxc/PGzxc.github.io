@@ -95,15 +95,15 @@ date: 2019-06-10 23:37:46
 
 
 [1]: https://desktop.github.com/
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-github-destop-file.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-github-local-files.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-github-desktop-push.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-github-destop-file.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-github-local-files.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-github-desktop-push.png
 [5]: https://github.com/Molunerfinn/PicGo/releases
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-github-picgo-download.png
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-github-new-person-access-token.png
-[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-github-access-token-save.png
-[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-github-picgo-setting.png
-[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-github-picgo-push.png
-[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-github-image-address-look.png
-[12]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-github-image-real-address.png
-[13]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-github-image-preview.png
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-github-picgo-download.png
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-github-new-person-access-token.png
+[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-github-access-token-save.png
+[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-github-picgo-setting.png
+[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-github-picgo-push.png
+[11]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-github-image-address-look.png
+[12]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-github-image-real-address.png
+[13]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-github-image-preview.png

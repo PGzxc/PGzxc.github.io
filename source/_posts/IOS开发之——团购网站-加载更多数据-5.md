@@ -135,6 +135,6 @@ date: 2020-06-13 23:43:16
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/icon-tuangou-tgfooterview.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-tuangou-loadmore.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/icon-tuangou-tgfooterview.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-tuangou-loadmore.gif
 

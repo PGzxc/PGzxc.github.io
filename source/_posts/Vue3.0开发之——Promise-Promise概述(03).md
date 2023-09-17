@@ -142,4 +142,4 @@ thenFs
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue3.0-day1-03-thenfs-print.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue3.0-day1-03-thenfs-print.png

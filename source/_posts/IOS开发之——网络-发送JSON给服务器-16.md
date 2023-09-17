@@ -92,4 +92,4 @@ request.HTTPBody=json;
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-http-send-json-service.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-http-send-json-service.gif

@@ -66,4 +66,4 @@ function draw() {
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-p5js/p5-js-day-time.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5-js-day-time.png

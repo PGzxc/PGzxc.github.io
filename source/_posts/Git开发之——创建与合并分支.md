@@ -60,13 +60,13 @@ git branch命令会列出所有分支，当前分支前面会标一个*号。
 ![][10]
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/master-and-dev-ff.mp4
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-branch-create-dev.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-branch-look-dev.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-branch-add-content.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-branch-add-commit.png
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-branch-swich-master.png  
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-branch-merge-dev.png
-[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-branch-del-dev.png
-[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-branch-del-branch.png
-[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-branch-cat-readme-last.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/master-and-dev-ff.mp4
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-branch-create-dev.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-branch-look-dev.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-branch-add-content.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-branch-add-commit.png
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-branch-swich-master.png  
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-branch-merge-dev.png
+[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-branch-del-dev.png
+[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-branch-del-branch.png
+[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-branch-cat-readme-last.png

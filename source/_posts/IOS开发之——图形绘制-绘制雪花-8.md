@@ -76,5 +76,5 @@ date: 2021-01-07 09:02:27
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-draw-snowflake-timer.gif
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-draw-snowflake-refresh.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-draw-snowflake-timer.gif
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-draw-snowflake-refresh.gif

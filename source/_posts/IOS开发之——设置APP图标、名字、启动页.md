@@ -47,6 +47,6 @@ date: 2020-06-27 23:29:10
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-chaoji-caitu-appicon-create.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-chaoji-caitu-icon-setting.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-chaoji-caitu-bundlename-modify.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-chaoji-caitu-appicon-create.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-chaoji-caitu-icon-setting.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-chaoji-caitu-bundlename-modify.png

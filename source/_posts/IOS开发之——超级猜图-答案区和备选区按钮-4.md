@@ -77,4 +77,4 @@ date: 2020-06-22 23:25:23
 ![][1]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-chaoji-chaitu-answer-option-view.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-chaoji-chaitu-answer-option-view.gif

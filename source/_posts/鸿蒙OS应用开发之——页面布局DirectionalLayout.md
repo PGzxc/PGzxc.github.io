@@ -298,10 +298,10 @@ color_gray_element.xml：
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-layout-create-resource-file.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-layout-create-file-name-type.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-layout-qiehuan-sample.gif
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-directionallayout-vertical-sample.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-directionallayout-horizontal-sample.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-directionallayout-aliment-sample.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-directionallayout-weight-sample.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-layout-create-resource-file.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-layout-create-file-name-type.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-layout-qiehuan-sample.gif
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-directionallayout-vertical-sample.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-directionallayout-horizontal-sample.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-directionallayout-aliment-sample.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-directionallayout-weight-sample.png

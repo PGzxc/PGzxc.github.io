@@ -69,17 +69,17 @@ Mac系统软件有两种格式：.dmg和.pkg，.dmg是官方专用格式，是�
 参考：[苹果电脑怎么安装和卸载软件][14]
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-software-appstore.png
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-software-find.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-software-appstore-install.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-software-site.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-software-site-download.png
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-software-download-open.png
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-software-site-download-open.png
-[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-software-site-process.png
-[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-software-site-drag-install-process.png
-[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-software-site-already-install.png
-[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-software-uninstall-x.png
-[12]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-software-uninstall-move-remove.png
-[13]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-software-uninstall-other-guanjia.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-software-appstore.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-software-find.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-software-appstore-install.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-software-site.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-software-site-download.png
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-software-download-open.png
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-software-site-download-open.png
+[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-software-site-process.png
+[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-software-site-drag-install-process.png
+[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-software-site-already-install.png
+[11]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-software-uninstall-x.png
+[12]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-software-uninstall-move-remove.png
+[13]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-software-uninstall-other-guanjia.png
 [14]: https://jingyan.baidu.com/article/22fe7cedfbe3c03002617fba.html

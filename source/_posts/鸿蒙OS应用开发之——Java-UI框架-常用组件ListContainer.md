@@ -310,10 +310,10 @@ listContainer.setShaderColor(new Color(Color.getIntColor("#90EE90")));
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-listcontainer-priview.gif
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-listcontainer-click.gif
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-listcontainer-longclick.gif
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-listcontainer-horizontal.gif
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-listcontainer-offset.gif
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-listcontainer-rebound-effect.gif
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-listcontainer-shader-color.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-listcontainer-priview.gif
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-listcontainer-click.gif
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-listcontainer-longclick.gif
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-listcontainer-horizontal.gif
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-listcontainer-offset.gif
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-listcontainer-rebound-effect.gif
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-listcontainer-shader-color.gif

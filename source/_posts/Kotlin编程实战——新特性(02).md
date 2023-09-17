@@ -77,4 +77,4 @@ date: 2022-11-05 09:22:26
 
 
 
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-kotlin/kotlin-learn-struct-2.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-kotlin/kotlin-learn-struct-2.png

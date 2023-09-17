@@ -216,7 +216,7 @@ const router = new VueRouter({
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-70-route-nest-no-sample.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-70-route-nest-yes-sample.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-70-route-project-struct.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-70-route-nest-tab-switch.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-70-route-nest-no-sample.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-70-route-nest-yes-sample.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-70-route-project-struct.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-70-route-nest-tab-switch.gif

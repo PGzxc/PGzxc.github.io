@@ -80,4 +80,4 @@ imgV.image=[UIImage imageNamed:@"dog"];
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-define-uiimageview.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-define-uiimageview.gif

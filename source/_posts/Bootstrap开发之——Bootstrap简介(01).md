@@ -85,7 +85,7 @@ date: 2023-05-15 22:05:29
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-bootstrap/bootstrap-img01-bt2-web-view.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-bootstrap/bootstrap-img01-bt3-web-view.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-bootstrap/bootstrap-img01-bt4-web-view.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-bootstrap/bootstrap-img01-bt5-web-view.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-bootstrap/bootstrap-img01-bt2-web-view.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-bootstrap/bootstrap-img01-bt3-web-view.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-bootstrap/bootstrap-img01-bt4-web-view.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-bootstrap/bootstrap-img01-bt5-web-view.png

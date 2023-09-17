@@ -62,13 +62,13 @@ date: 2019-10-03 14:11:42
 
 
 [1]: https://www.canon.com.cn
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-print-search-type.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-print-download-soft.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-print-install-software.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-print-software-install-finish.png
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-print-scanner.png
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-print-add-scanner.png
-[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-print-add-a-scanner.png
-[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-print-add-scanner-finish.png
-[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-print-document-print.png
-[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-print-image-print.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-print-search-type.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-print-download-soft.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-print-install-software.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-print-software-install-finish.png
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-print-scanner.png
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-print-add-scanner.png
+[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-print-add-a-scanner.png
+[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-print-add-scanner-finish.png
+[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-print-document-print.png
+[11]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-print-image-print.png

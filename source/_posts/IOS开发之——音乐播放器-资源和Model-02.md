@@ -102,11 +102,11 @@ Targets——>Build Phases——>Copy Bundle Resources
 
 ## 四 参考
 * [Github-参考代码](https://github.com/PGzxc/IOSPlayer)
-* [Xmind原图](https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-av-player-struct-view.xmind)
+* [Xmind原图](https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-av-player-struct-view.xmind)
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-av-04-player-images-resources.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-av-04-player-resources-files.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-av-04-player-build-phases.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-av-04-player-music-plist.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-av-04-player-lrc-file.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-av-04-player-images-resources.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-av-04-player-resources-files.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-av-04-player-build-phases.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-av-04-player-music-plist.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-av-04-player-lrc-file.png

@@ -278,13 +278,13 @@ android的粘性广播，是指广播接收器一注册马上就能接收到广�
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/broadcast.png
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/boradcast-ams.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/boradcast-detail.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/boradcast-life.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/broadcast-style.png
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/system-broadcast1.png  
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/system-broadcast2.png  
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/broadcast.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/boradcast-ams.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/boradcast-detail.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/boradcast-life.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/broadcast-style.png
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/system-broadcast1.png  
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/system-broadcast2.png  
 [8]: https://www.jianshu.com/p/ca3d87a4cdf3  
 [9]: https://www.jianshu.com/p/c85ee69553b5 
 [10]: https://github.com/PGzxc/BroadCastSample 

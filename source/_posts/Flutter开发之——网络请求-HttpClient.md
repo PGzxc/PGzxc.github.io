@@ -152,5 +152,5 @@ I/flutter (13964): {"data":{"admin":false,"chapterTops":[],"coinCount":0,"collec
 * [Flutter-HttpClient class](https://api.dart.dev/stable/2.13.0/dart-io/HttpClient-class.html)
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-http-process.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-httpclient-sample.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-http-process.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-httpclient-sample.png

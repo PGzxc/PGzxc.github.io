@@ -56,8 +56,8 @@ date: 2019-08-21 22:35:05
   
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-proguard-warning-unresolved.png
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-proguard-warning-detail.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-proguard-warning-resolve.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-proguard-dummy-size-0.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-proguard-warning-unresolved.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-proguard-warning-detail.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-proguard-warning-resolve.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-proguard-dummy-size-0.png
 

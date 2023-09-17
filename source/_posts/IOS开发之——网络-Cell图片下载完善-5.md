@@ -200,5 +200,5 @@ date: 2022-03-04 23:00:17
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-http-cell-image-operation-process.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-http-cell-image-operation-view.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-http-cell-image-operation-process.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-http-cell-image-operation-view.gif

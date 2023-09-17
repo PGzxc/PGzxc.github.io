@@ -48,6 +48,6 @@ Node项目在执行npm install时，会安装项目所需依赖，依赖文件�
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/node-project_view.png
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/node-rm-help.png  
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/npm-rm-clean.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/node-project_view.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/node-rm-help.png  
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/npm-rm-clean.png

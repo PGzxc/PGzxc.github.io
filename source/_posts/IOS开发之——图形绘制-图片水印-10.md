@@ -63,5 +63,5 @@ date: 2021-01-11 08:44:33
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-draw-watermark-img.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-draw-watermater-after.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-draw-watermark-img.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-draw-watermater-after.png

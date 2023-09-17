@@ -112,4 +112,4 @@ body{
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ct_css_selector.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ct_css_selector.gif

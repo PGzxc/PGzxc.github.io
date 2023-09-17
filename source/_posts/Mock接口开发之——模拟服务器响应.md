@@ -122,4 +122,4 @@ app.listen(3000)
 ```
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-api/mock-api-response-postman.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-api/mock-api-response-postman.png

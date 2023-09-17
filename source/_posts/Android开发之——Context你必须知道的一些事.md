@@ -95,7 +95,7 @@ public class MainActivity extends Activity {
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-context.png
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-context-use.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-context.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-context-use.png
 [3]: http://blog.csdn.net/lmj623565791/article/details/40481055/
 [4]: http://www.jianshu.com/p/94e0f9ab3f1d

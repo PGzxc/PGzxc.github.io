@@ -127,5 +127,5 @@ class Student:Person
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-class-base-print.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-base-apply.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-class-base-print.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-base-apply.png

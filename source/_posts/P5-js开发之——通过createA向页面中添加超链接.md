@@ -63,4 +63,4 @@ function setup() {
 * [P5官方文档—createA](https://p5js.org/zh-Hans/reference/#/p5/createA)
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-p5js/p5js-createa-sample.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-createa-sample.png

@@ -89,24 +89,24 @@ Windows系统的cmd，Mac，Linux系统的Terminal都是命令行操作的工具
 * 参考:[linux\mac 日常入门命令行使用——文件以及文件夹操作][21]
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-shell-cd-root.png
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-shell-cd-desktop.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-shell-cd-preview.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-shell-cd-pre-pre.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-shell-ls.png
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-shell-ls-l.png
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-shell-ls-a.png
-[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-shell-ls-la.png
-[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-shell-touch-a-file.png
-[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-shell-touch-more-file.png
-[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-shell-mkdir-a-dir.png
-[12]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-shell-mkdir-more-dir.png
-[13]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-shell-mkdir-more-dir-p.png
-[14]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-shell-cp-a-2-b.png
-[15]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-shell-cp-dir.png
-[16]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-shell-mv-2-other.png
-[17]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-shell-rm.png
-[18]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-shell-less.png
-[19]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-shell-pwd.png
-[20]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mac-shell-man-ls.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-shell-cd-root.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-shell-cd-desktop.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-shell-cd-preview.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-shell-cd-pre-pre.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-shell-ls.png
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-shell-ls-l.png
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-shell-ls-a.png
+[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-shell-ls-la.png
+[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-shell-touch-a-file.png
+[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-shell-touch-more-file.png
+[11]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-shell-mkdir-a-dir.png
+[12]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-shell-mkdir-more-dir.png
+[13]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-shell-mkdir-more-dir-p.png
+[14]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-shell-cp-a-2-b.png
+[15]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-shell-cp-dir.png
+[16]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-shell-mv-2-other.png
+[17]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-shell-rm.png
+[18]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-shell-less.png
+[19]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-shell-pwd.png
+[20]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-shell-man-ls.png
 [21]: https://blog.csdn.net/fungleo/article/details/78488656

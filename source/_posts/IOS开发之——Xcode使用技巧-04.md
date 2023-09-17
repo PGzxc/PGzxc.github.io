@@ -53,12 +53,12 @@ date: 2022-04-03 08:29:17
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-04-lanch-targets.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-04-lanch-storyboard.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-04-lanch-view.gif
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-04-view-hierachy.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-04-view-hierachy-tree.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-04-view-hierachy-position.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-04-view-hierachy-layout.png
-[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-04-class-prefix.png
-[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-04-class-prefix-newfile.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-xcode-04-lanch-targets.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-xcode-04-lanch-storyboard.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-xcode-04-lanch-view.gif
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-xcode-04-view-hierachy.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-xcode-04-view-hierachy-tree.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-xcode-04-view-hierachy-position.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-xcode-04-view-hierachy-layout.png
+[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-xcode-04-class-prefix.png
+[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-xcode-04-class-prefix-newfile.png

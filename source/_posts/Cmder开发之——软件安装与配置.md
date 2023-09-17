@@ -68,9 +68,9 @@ local lambda = "$"
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cmder-download-select.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cmder-exe-run.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cmder-register-all.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cmder-setup-tasks.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cmder-startup-environment-zh.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmder-download-select.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmder-exe-run.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmder-register-all.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmder-setup-tasks.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmder-startup-environment-zh.png
 [11]:https://cmder.net

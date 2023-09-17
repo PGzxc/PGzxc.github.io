@@ -97,13 +97,13 @@ UI测试相关
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ios-xcode-search.png
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ios-xcode-main.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ios-playground-create.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ios-single-view.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/icon-project-config.png
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ios-app-create-position.png
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ios-project-iosapp.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ios-xcode-search.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ios-xcode-main.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ios-playground-create.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ios-single-view.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/icon-project-config.png
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ios-app-create-position.png
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ios-project-iosapp.png
 
 [8]: https://developer.apple.com/
 [9]: https://developer.apple.com/cn/

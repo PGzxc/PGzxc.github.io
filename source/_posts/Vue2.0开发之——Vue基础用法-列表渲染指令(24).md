@@ -183,7 +183,7 @@ const vm = new Vue({
 ![][4]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-24-v-for-sample-1.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-24-v-for-sample.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-24-v-for-key-error.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-24-v-for-index-error.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-24-v-for-sample-1.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-24-v-for-sample.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-24-v-for-key-error.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-24-v-for-index-error.gif

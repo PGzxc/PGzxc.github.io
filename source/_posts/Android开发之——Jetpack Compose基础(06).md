@@ -64,4 +64,4 @@ NavController、NavHost、navigate、navArgument、NavBackStackEntry 、 NavDeep
 ![][1]
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-android/Jetpack-Compose-06.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/Jetpack-Compose-06.png

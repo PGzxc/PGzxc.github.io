@@ -77,18 +77,18 @@ Task里面填写gradle命令，显示clean，再执行assembleRelease打包命�
 
 
 [1]: http://blog.csdn.net/lsyz0021/article/details/72681988
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-jenkins/jenkins-new-task.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-jenkins/jenkins-project-name.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-jenkins/jenkins-project-configure.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-jenkins/jenkins-general-configure.png
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-jenkins/jenkins-git-configure.png
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-jenkins/jenkins-add-credentials.png
-[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-jenkins/jenkins-git-repositories.png
-[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-jenkins/jenkins-build-SCM.png
-[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-jenkins/jenkins-example-SCM.png
-[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-jenkins/jenkins-build-script.png
-[12]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-jenkins/jenkins-invoke-gradle-script.png
-[13]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-jenkins/jenkins-build-process.png
-[14]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-jenkins/jenkins-build-process.png
-[15]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-jenkins/jenkins-console-output.png 
-[16]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-jenkins/jenkins-release-result.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-jenkins/jenkins-new-task.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-jenkins/jenkins-project-name.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-jenkins/jenkins-project-configure.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-jenkins/jenkins-general-configure.png
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-jenkins/jenkins-git-configure.png
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-jenkins/jenkins-add-credentials.png
+[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-jenkins/jenkins-git-repositories.png
+[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-jenkins/jenkins-build-SCM.png
+[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-jenkins/jenkins-example-SCM.png
+[11]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-jenkins/jenkins-build-script.png
+[12]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-jenkins/jenkins-invoke-gradle-script.png
+[13]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-jenkins/jenkins-build-process.png
+[14]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-jenkins/jenkins-build-process.png
+[15]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-jenkins/jenkins-console-output.png 
+[16]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-jenkins/jenkins-release-result.png

@@ -73,4 +73,4 @@ function myInputEvent() {
 * [P5.js官方文档—createInput](https://p5js.org/zh-Hans/reference/#/p5/createInput)
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-p5js/p5js-createInput-sample1.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-createInput-sample1.gif

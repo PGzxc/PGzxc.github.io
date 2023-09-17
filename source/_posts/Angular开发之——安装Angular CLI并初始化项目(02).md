@@ -102,6 +102,6 @@ ng serve --open
 * [关于Angular CLI](https://angular.cn/guide/setup-local)
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-angular/angular-02-ng-version.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-angular/angular-02-ng-myapp.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-angular/angular-02-ng-serve-view.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-angular/angular-02-ng-version.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-angular/angular-02-ng-myapp.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-angular/angular-02-ng-serve-view.png

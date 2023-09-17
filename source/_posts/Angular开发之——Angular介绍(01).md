@@ -118,5 +118,5 @@ date: 2023-05-13 11:42:09
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-angular/angular-01-angularjs-website.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-angular/angular-01-angular-website.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-angular/angular-01-angularjs-website.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-angular/angular-01-angular-website.png

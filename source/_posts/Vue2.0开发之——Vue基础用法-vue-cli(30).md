@@ -220,23 +220,23 @@ new Vue({
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-30-vue-cli-spa-project-struct.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-30-vue-cli-install-g.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-30-vue-cli-vue-v.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-30-vue-cli-dist-open-cmd.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-30-vue-cli-create-project-name.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-30-vue-cli-create-project-preset.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-30-vue-cli-create-project-features.png
-[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-30-vue-cli-create-project-vue.png
-[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-30-vue-cli-create-project-less.png
-[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-30-vue-cli-create-project-config.png
-[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-30-vue-cli-create-project-config-save.png
-[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-30-vue-cli-create-project-config-save-name.png
-[13]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-30-vue-cli-create-project-start-create.png
-[14]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-30-vue-cli-create-project-create-finish.png
-[15]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-30-vue-cli-run-project-cmd.png
-[16]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-30-vue-cli-start-project-cmd.png
-[17]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-30-vue-cli-open-webpage.png
-[18]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-30-vue-cli-open-vscode.png
-[19]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-30-vue-cli-public-index-app.png
-[20]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-30-vue-cli-public-index-app-preview.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-30-vue-cli-spa-project-struct.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-30-vue-cli-install-g.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-30-vue-cli-vue-v.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-30-vue-cli-dist-open-cmd.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-30-vue-cli-create-project-name.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-30-vue-cli-create-project-preset.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-30-vue-cli-create-project-features.png
+[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-30-vue-cli-create-project-vue.png
+[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-30-vue-cli-create-project-less.png
+[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-30-vue-cli-create-project-config.png
+[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-30-vue-cli-create-project-config-save.png
+[12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-30-vue-cli-create-project-config-save-name.png
+[13]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-30-vue-cli-create-project-start-create.png
+[14]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-30-vue-cli-create-project-create-finish.png
+[15]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-30-vue-cli-run-project-cmd.png
+[16]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-30-vue-cli-start-project-cmd.png
+[17]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-30-vue-cli-open-webpage.png
+[18]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-30-vue-cli-open-vscode.png
+[19]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-30-vue-cli-public-index-app.png
+[20]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-30-vue-cli-public-index-app-preview.png

@@ -27,7 +27,7 @@ date: 2017-11-13 15:43:35
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/github_readme-messy.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/github_readme-modify-before.png 
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/github_readme-modify-after.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/gtihub_blog_readme.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/github_readme-messy.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/github_readme-modify-before.png 
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/github_readme-modify-after.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/gtihub_blog_readme.png

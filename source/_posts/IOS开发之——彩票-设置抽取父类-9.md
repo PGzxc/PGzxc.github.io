@@ -330,5 +330,5 @@ date: 2022-02-11 08:41:00
 ```
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-caipiao-setting-extract-view.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-caipiao-setting-push-extract-view.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-caipiao-setting-extract-view.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-caipiao-setting-push-extract-view.png

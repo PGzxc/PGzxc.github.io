@@ -55,5 +55,5 @@ date: 2017-12-26 01:03:23
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/raw_asset.gif
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/raw_asset.gif
 [2]: https://github.com/PGzxc/AndroidResource

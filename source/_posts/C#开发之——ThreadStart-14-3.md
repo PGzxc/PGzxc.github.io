@@ -102,5 +102,5 @@ class Program
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-thread-start-evenum.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-thread-print-eveandodd.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-thread-start-evenum.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-thread-print-eveandodd.png

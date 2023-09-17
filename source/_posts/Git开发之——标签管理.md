@@ -53,13 +53,13 @@ date: 2018-02-26 19:37:07
 ![][10]  
 
  
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-tag-branch.png
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-tag-v1.0.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-tag-show-tag.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-tag-log.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-tag-commit-id.png
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-tag-two.png
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-show-v0.1.png
-[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-tag-del-v0.1.png
-[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-tag-push-v1.0.png
-[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-tag-push-all.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-tag-branch.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-tag-v1.0.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-tag-show-tag.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-tag-log.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-tag-commit-id.png
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-tag-two.png
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-show-v0.1.png
+[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-tag-del-v0.1.png
+[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-tag-push-v1.0.png
+[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-tag-push-all.png

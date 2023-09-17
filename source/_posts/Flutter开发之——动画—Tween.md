@@ -179,5 +179,5 @@ AnimationController _controller;
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-tween-replace-old.gif
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-colortween-sample.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-tween-replace-old.gif
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-colortween-sample.gif

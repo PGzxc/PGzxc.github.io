@@ -142,24 +142,24 @@ source /etc/profile
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ubuntu-terminal.png
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ubuntu-jdk-01.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ubuntu-jdk-02.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ubuntu-jdk-03.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ubuntu-java-version.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ubuntu-terminal.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ubuntu-jdk-01.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ubuntu-jdk-02.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ubuntu-jdk-03.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ubuntu-java-version.png
 [6]: https://developer.android.google.cn/studio/
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ubuntu-tool-download.png
-[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ubuntu-as-unzip.png
-[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ubuntu-as-position.png
-[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ubuntu-as-start.png
-[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ubuntu-as-proxy.png
-[12]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ubuntu-as-import.png
-[13]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ubuntu-config-01.png
-[14]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ubuntu-config-02.png
-[15]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ubuntu-config-03.png
-[16]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ubuntu-config-04.png
-[17]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ubuntu-config-05.png
-[18]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ubuntu-as-newpro.png
-[19]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ubuntu-as-pro-conf.png
-[20]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ubuntu-as-gradle-config.png
-[21]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ubuntu-as-add.png
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ubuntu-tool-download.png
+[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ubuntu-as-unzip.png
+[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ubuntu-as-position.png
+[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ubuntu-as-start.png
+[11]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ubuntu-as-proxy.png
+[12]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ubuntu-as-import.png
+[13]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ubuntu-config-01.png
+[14]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ubuntu-config-02.png
+[15]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ubuntu-config-03.png
+[16]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ubuntu-config-04.png
+[17]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ubuntu-config-05.png
+[18]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ubuntu-as-newpro.png
+[19]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ubuntu-as-pro-conf.png
+[20]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ubuntu-as-gradle-config.png
+[21]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ubuntu-as-add.png

@@ -162,25 +162,25 @@ date: 2018-09-03 23:05:04
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/package-dependencies-normal.png
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/package-dependencies-optimize.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/package-dependencies-optimize-build.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/package-dependencies-optimize-import.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/package-dependencies-optimize-use.png
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/package-depend-exception.gif
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/package-depend-configuration.png
-[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/package-proguard-files.png
-[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/package-proguard-use.png
-[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/package-sign.png
-[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/package-sign-buildgradle.png
-[12]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/package-sign-gradle-properties.png
-[13]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/package-sign-config-gradle.png
-[14]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/package-apk.png
-[15]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/package-mapping-xml.png
-[16]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/package-apk-release.png
-[17]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/package-andresguard-build-gradle.png
-[18]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/package-resguard-file.png
-[19]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/package-and-res-import.png
-[20]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/package-andresguard-task.png
-[21]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/package-apk-aligned.png
-[22]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/package-analysis.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/package-dependencies-normal.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/package-dependencies-optimize.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/package-dependencies-optimize-build.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/package-dependencies-optimize-import.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/package-dependencies-optimize-use.png
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/package-depend-exception.gif
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/package-depend-configuration.png
+[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/package-proguard-files.png
+[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/package-proguard-use.png
+[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/package-sign.png
+[11]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/package-sign-buildgradle.png
+[12]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/package-sign-gradle-properties.png
+[13]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/package-sign-config-gradle.png
+[14]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/package-apk.png
+[15]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/package-mapping-xml.png
+[16]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/package-apk-release.png
+[17]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/package-andresguard-build-gradle.png
+[18]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/package-resguard-file.png
+[19]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/package-and-res-import.png
+[20]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/package-andresguard-task.png
+[21]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/package-apk-aligned.png
+[22]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/package-analysis.png

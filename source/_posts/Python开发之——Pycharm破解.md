@@ -62,11 +62,11 @@ pycharm的激活方式，分为注册码激活和破解补丁激活
 ![][5]
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/pycharm_hosts-position.png
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/pycharm_hosts_modify.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/pycharm_hosts-position.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/pycharm_hosts_modify.png
 [3]: http://idea.lanyus.com/
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/pycharm_lanyus_active.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/pycharm_activity_input.png
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/pycharm_licensed_to_lanyu.png
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/pycharm-crack-bin.png
-[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/pycharm-crack-vmoptions.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/pycharm_lanyus_active.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/pycharm_activity_input.png
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/pycharm_licensed_to_lanyu.png
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/pycharm-crack-bin.png
+[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/pycharm-crack-vmoptions.png

@@ -61,15 +61,15 @@ ConvenientBanner地址:[https://github.com/saiwu-bigkoo/Android-ConvenientBanner
 [Demo地址][12]
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-viewpager.gif
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-viewpager.gif
 [2]: https://github.com/saiwu-bigkoo/Android-ConvenientBanner
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-banner.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-banner_layout.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-banner_holder.png
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-banner_data.png
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-banner_indicator.png
-[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-banner_scroll.png
-[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-banner_click.png
-[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-banner_loop.png
-[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-banner_stop.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-banner.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-banner_layout.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-banner_holder.png
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-banner_data.png
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-banner_indicator.png
+[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-banner_scroll.png
+[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-banner_click.png
+[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-banner_loop.png
+[11]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-banner_stop.png
 [12]: https://github.com/PGzxc/ConvenientBannerDemo

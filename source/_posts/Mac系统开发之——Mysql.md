@@ -126,19 +126,19 @@ export PATH=$Mysql_Home/support-files:$PATH
 [4]:https://blog.csdn.net/pariese/article/details/77527813
 
 
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/java-config-bash-profile.png
-[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mysql-webpage-download.png
-[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mysql-install-click-open.png
-[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mysql-install-yindao.png
-[13]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mysql-install-configuration.png
-[14]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mysql-install-weak-password.png
-[15]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mysql-install-finish.png
-[16]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mysql-setting-open.png
-[17]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mysql-config-start-stop-uninstall.png
-[18]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mysql-setting-configuration.png
-[19]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mysql-terminal-not-found.png
-[20]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mysql-terminal-config.png
-[21]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mysql-terminal-login.png
-[22]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mysql-terminal-modify-password.png
-[23]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mysql-service-status-download-restart.png
-[24]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mysql-navicat-premium.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-config-bash-profile.png
+[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mysql-webpage-download.png
+[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mysql-install-click-open.png
+[12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mysql-install-yindao.png
+[13]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mysql-install-configuration.png
+[14]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mysql-install-weak-password.png
+[15]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mysql-install-finish.png
+[16]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mysql-setting-open.png
+[17]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mysql-config-start-stop-uninstall.png
+[18]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mysql-setting-configuration.png
+[19]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mysql-terminal-not-found.png
+[20]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mysql-terminal-config.png
+[21]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mysql-terminal-login.png
+[22]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mysql-terminal-modify-password.png
+[23]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mysql-service-status-download-restart.png
+[24]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mysql-navicat-premium.png

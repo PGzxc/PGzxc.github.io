@@ -140,13 +140,13 @@ Compose Multiplatform 项目包括三个模块
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-plugin-kotlin-01.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-create-choice-01.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-create-android-01.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-create-multiapp-info2-01.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-struct-project-view-01.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-struct-shared-view-01.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-struct-android-view-01.png
-[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-struct-ios-view-01.png
-[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-android-view-01.png
-[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-compose-multiplatform/compose-multiplatform-ios-view-01.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-compose-multiplatform/compose-multiplatform-plugin-kotlin-01.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-compose-multiplatform/compose-multiplatform-create-choice-01.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-compose-multiplatform/compose-multiplatform-create-android-01.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-compose-multiplatform/compose-multiplatform-create-multiapp-info2-01.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-compose-multiplatform/compose-multiplatform-struct-project-view-01.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-compose-multiplatform/compose-multiplatform-struct-shared-view-01.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-compose-multiplatform/compose-multiplatform-struct-android-view-01.png
+[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-compose-multiplatform/compose-multiplatform-struct-ios-view-01.png
+[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-compose-multiplatform/compose-multiplatform-android-view-01.png
+[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-compose-multiplatform/compose-multiplatform-ios-view-01.png

@@ -81,23 +81,23 @@ Netlify的出现解决了这个问题： 本地运行Hexo程序创建文章、�
   ![][17]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-netlify-webpage-set.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-netlify-github-login.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-netlify-github-permission.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-netlify-create-new-site.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-netlify-delplyment-github.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-netify-person-select.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-netlify-select-repositories.png
-[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-netlify-deploy-branch-cmd.png
-[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-netlify-deploy-success.png
-[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-netlify-domains-register.png
-[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-netlify-domain-verify.png
-[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-netlify-ns-setting.png
-[13]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-netlify-dns-modify.png
-[14]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-netlify-doman-netliry-dns.png
-[15]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-netify-ssl_download.png
-[16]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-netify-cetificate-install.png
-[17]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-netify-ssl-success.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-netlify-webpage-set.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-netlify-github-login.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-netlify-github-permission.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-netlify-create-new-site.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-netlify-delplyment-github.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-netify-person-select.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-netlify-select-repositories.png
+[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-netlify-deploy-branch-cmd.png
+[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-netlify-deploy-success.png
+[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-netlify-domains-register.png
+[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-netlify-domain-verify.png
+[12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-netlify-ns-setting.png
+[13]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-netlify-dns-modify.png
+[14]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-netlify-doman-netliry-dns.png
+[15]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-netify-ssl_download.png
+[16]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-netify-cetificate-install.png
+[17]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-netify-ssl-success.png
 
 [21]:https://www.netlify.com/
 

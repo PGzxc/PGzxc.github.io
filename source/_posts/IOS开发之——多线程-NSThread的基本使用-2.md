@@ -201,4 +201,4 @@ NSThread *current=[NSThread currentThread];
 注意：一旦线程停止(死亡)了，就不能再次开启任务
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-thread-state-view.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-thread-state-view.png

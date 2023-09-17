@@ -144,11 +144,11 @@ return Scaffold(
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-intl-intellij-plugin-install.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-intl-tools-init-project.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-intl-libs-i10n.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-intl-tools-add-local.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-intl-tools-add-local-zh.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-intl-local-zh-files-auto.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-intl-result.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-intl-intellij-plugin-install.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-intl-tools-init-project.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-intl-libs-i10n.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-intl-tools-add-local.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-intl-tools-add-local-zh.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-intl-local-zh-files-auto.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-intl-result.gif
 

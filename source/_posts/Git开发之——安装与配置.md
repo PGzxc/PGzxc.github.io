@@ -56,10 +56,10 @@ Windows安装比较简单，下载软件后，一直下一步既可
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-install%20.png
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-install%20-process.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-install%20-version.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-win-sear.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-win-version.png
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-config-list.png
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/git-config-username.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-install%20.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-install%20-process.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-install%20-version.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-win-sear.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-win-version.png
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-config-list.png
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-config-username.png

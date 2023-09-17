@@ -60,4 +60,4 @@ date: 2018-02-24 15:54:45
 ![][1]
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-quote.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-quote.png

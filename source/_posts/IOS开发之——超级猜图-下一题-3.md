@@ -42,4 +42,4 @@ date: 2020-06-21 22:42:13
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-chaoji-caitu-nextquestion.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-chaoji-caitu-nextquestion.gif

@@ -47,4 +47,4 @@ date: 2021-01-21 09:38:57
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-screen-cut-view.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-screen-cut-view.png

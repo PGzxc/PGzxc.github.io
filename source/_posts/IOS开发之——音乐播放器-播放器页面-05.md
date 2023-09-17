@@ -235,8 +235,8 @@ date: 2022-04-20 10:12:19
 ## 五 参考
 
 * [Github-参考代码](https://github.com/PGzxc/IOSPlayer)
-* [Xmind原图](https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-av-player-struct-view.xmind)
+* [Xmind原图](https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-av-player-struct-view.xmind)
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-av-07-player-play-storyboard.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-av-07-player-play-storyboard.png
 

@@ -104,7 +104,7 @@ source/
 * [Multilingual switch button support ][12]
 * [hexo-generator-index-i18n][13]
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hexo/hexo-i18n-view.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-i18n-view.gif
 [11]:https://hexo.io/zh-cn/docs/internationalization.html
 [12]:https://github.com/theme-next/hexo-theme-next/pull/1391
 [13]:https://github.com/xcatliu/hexo-generator-index-i18n

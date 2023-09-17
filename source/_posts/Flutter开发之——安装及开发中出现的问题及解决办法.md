@@ -425,11 +425,11 @@ flutter pub get
 * [flutter-Issues-windows-version](https://github.com/flutter/flutter/issues/119927)
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-bits-transfer.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-running-pub-update.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-running-pub-update.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-proxy-config-after.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-doctor-bundle-java-error.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-doctor-windows-version-error.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-doctor-unable-to-confirm-resolve.png
-[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-running-error-sdk-lower.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-bits-transfer.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-running-pub-update.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-running-pub-update.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-proxy-config-after.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-doctor-bundle-java-error.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-doctor-windows-version-error.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-doctor-unable-to-confirm-resolve.png
+[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-running-error-sdk-lower.png

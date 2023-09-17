@@ -84,11 +84,11 @@ project(':opencv').projectDir = new File(opencvsdk + '/sdk')
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv_website.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-release-choice.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-sourceforge-download.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-github-website.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-github-android-choice.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-ndk-location.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-commond-project-build.png
-[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-sample-face-detection.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/opencv_website.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/opencv-release-choice.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/opencv-sourceforge-download.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/opencv-github-website.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/opencv-github-android-choice.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/opencv-ndk-location.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/opencv-commond-project-build.png
+[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/opencv-sample-face-detection.png

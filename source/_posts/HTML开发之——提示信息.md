@@ -161,10 +161,10 @@ html{
 ![][7]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-web/html-message-preview-layout.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-web/html-message-alert-info.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-web/html-message-console-info.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-web/html-message-write-info.gif
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-web/html-message-innerhtml-info.gif
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-web/html-message-screen-rotate.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-web/html-message-screen-oration-preview.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-web/html-message-preview-layout.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-web/html-message-alert-info.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-web/html-message-console-info.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-web/html-message-write-info.gif
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-web/html-message-innerhtml-info.gif
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-web/html-message-screen-rotate.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-web/html-message-screen-oration-preview.png

@@ -35,7 +35,7 @@ date: 2019-12-11 20:57:57
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/visio-export-bitmap-type.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/visio-export-bitmap-destion-file.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/visio-export-bitmap-property.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/visio-export-bitmap-jpg-define.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/visio-export-bitmap-type.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/visio-export-bitmap-destion-file.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/visio-export-bitmap-property.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/visio-export-bitmap-jpg-define.png

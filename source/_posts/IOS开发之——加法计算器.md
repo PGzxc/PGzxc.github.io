@@ -118,9 +118,9 @@ class ViewController: UIViewController {
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-new-project-template-choice.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-new-project-projectname.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-new-project-create-finished.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-main-storyboard-preview.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-xcode-add-component-library.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-project-calc-layout-view.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-xcode-new-project-template-choice.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-xcode-new-project-projectname.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-xcode-new-project-create-finished.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-xcode-main-storyboard-preview.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-xcode-add-component-library.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-project-calc-layout-view.png

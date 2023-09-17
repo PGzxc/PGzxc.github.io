@@ -147,5 +147,5 @@ index.css
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day2-img13-context-app2child.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day2-img13-context-sample.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-react/react-day2-img13-context-app2child.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-react/react-day2-img13-context-sample.png

@@ -80,4 +80,4 @@ date: 2021-06-03 12:27:08
 * 给整个页面添加UIVIew动画，传值为self.view
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-uiview-animal-sample.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-uiview-animal-sample.gif

@@ -112,10 +112,10 @@ $ npm run dev # 监听并且编译项目
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-wepy-init-standard-project.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-wepy-project-config.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-wepy-build-watch.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-wepy-import-myproject-root.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-wepy-tools-import-setting.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-wepy-project-tools-preview.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-wepy-project-tree.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-wepy-init-standard-project.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-wepy-project-config.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-wepy-build-watch.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-wepy-import-myproject-root.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-wepy-tools-import-setting.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-wepy-project-tools-preview.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-wepy-project-tree.png

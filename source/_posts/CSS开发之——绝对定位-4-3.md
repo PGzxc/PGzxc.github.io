@@ -38,4 +38,4 @@ date: 2020-09-25 21:35:22
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/ct_css_positioning_absolute_example.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ct_css_positioning_absolute_example.png

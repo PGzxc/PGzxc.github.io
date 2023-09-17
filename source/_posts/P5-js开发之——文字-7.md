@@ -142,5 +142,5 @@ function draw()
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-p5js/p5js-text-preview.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-p5js/p5-js-text-font-preview.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-text-preview.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5-js-text-font-preview.png

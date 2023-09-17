@@ -93,16 +93,16 @@ Github上Zxing三方库比较多，如果有适合自己的项目可以不用改
 
 
 [1]: https://github.com/zxing/zxing
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/zxing-struct.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/zxing-android-struct.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/zxing-intellij-new.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/zxing-intellij-pom.png
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/zxing-intellij-app.png
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/zxing-intellij-run.png
-[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/zxing-eclipse-import.png
-[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/zxing-eclipse-android-core.png
-[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/zxing-eclipse-core.png
-[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/zxing-eclipse-libs.png
-[12]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/zxing-run.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/zxing-struct.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/zxing-android-struct.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/zxing-intellij-new.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/zxing-intellij-pom.png
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/zxing-intellij-app.png
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/zxing-intellij-run.png
+[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/zxing-eclipse-import.png
+[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/zxing-eclipse-android-core.png
+[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/zxing-eclipse-core.png
+[11]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/zxing-eclipse-libs.png
+[12]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/zxing-run.png
 [13]: https://github.com/yipianfengye/android-zxingLibrary
 [14]: https://github.com/journeyapps/zxing-android-embedded

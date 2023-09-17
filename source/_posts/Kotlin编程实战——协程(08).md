@@ -74,4 +74,4 @@ date: 2022-11-05 09:40:47
 
 ![][1]
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-kotlin/kotlin-learn-struct-8.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-kotlin/kotlin-learn-struct-8.png

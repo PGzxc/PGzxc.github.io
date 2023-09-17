@@ -54,4 +54,4 @@ date: 2018-04-24 21:53:16
 # 思维导图
 ![思维导图][1]
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rxjava-outline.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rxjava-outline.png

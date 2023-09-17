@@ -96,22 +96,22 @@ MobaXterm又名MobaXVT，是一款增强型远程连接工具，类似xshell。�
 
 
 [1]: https://mobaxterm.mobatek.net/download-home-edition.html
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mobaxterm-install-wizard.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mobaxterm-intall-wizard-position.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mobaxterm-install-shortcut.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mobaxterm-install-wizard.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mobaxterm-intall-wizard-position.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mobaxterm-install-shortcut.png
 [5]:https://www.52pojie.cn/thread-1025639-1-1.html
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mobaxterm-keygen-click.png
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mobaXterm-crack-get-from-file.png
-[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mobaxterm-crack-generate.png
-[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mobaxterm-crack-finish.png
-[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mobaxterm-remote-centos7.png
-[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mobaxterm-remote-ubuntu.png
-[12]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mobaxterm-add-sessions.png
-[13]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mobaxterm-ssh-session.png
-[14]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mobaxterm-ssh-connect.png
-[15]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mobaxterm-ssh-login-root.png
-[16]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mobaxterm-connect-sftp-file.png
-[17]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/mobaxterm-remote-file-function.png
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mobaxterm-keygen-click.png
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mobaXterm-crack-get-from-file.png
+[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mobaxterm-crack-generate.png
+[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mobaxterm-crack-finish.png
+[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mobaxterm-remote-centos7.png
+[11]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mobaxterm-remote-ubuntu.png
+[12]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mobaxterm-add-sessions.png
+[13]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mobaxterm-ssh-session.png
+[14]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mobaxterm-ssh-connect.png
+[15]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mobaxterm-ssh-login-root.png
+[16]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mobaxterm-connect-sftp-file.png
+[17]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mobaxterm-remote-file-function.png
 
 
 

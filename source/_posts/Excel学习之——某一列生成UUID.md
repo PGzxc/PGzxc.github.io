@@ -45,5 +45,5 @@ date: 2021-01-26 17:19:12
 ![][2]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-excel/excel-uuid-table-select.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-excel/excel-uuid-make.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-excel/excel-uuid-table-select.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-excel/excel-uuid-make.gif

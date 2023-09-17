@@ -111,6 +111,6 @@ date: 2021-01-19 09:59:52
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-cut-circle-image.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-cut-circle-circle-image.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-cut-circle-image.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-cut-circle-circle-image.png
 

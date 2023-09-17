@@ -49,7 +49,7 @@ date: 2022-02-15 13:41:27
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-icam-softdownload-file.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-ivcam-desktop-open.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-ivcam-desktop-connect-view.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-ivcam-camera-switch.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-windows/windows-icam-softdownload-file.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-windows/windows-ivcam-desktop-open.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-windows/windows-ivcam-desktop-connect-view.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-windows/windows-ivcam-camera-switch.png

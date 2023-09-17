@@ -140,6 +140,6 @@ void changeEn() {
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-getx-08-i18n-zh.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-getx-08-i18n-en.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-getx-08-i18n-project-struct.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-getx-08-i18n-zh.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-getx-08-i18n-en.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-getx-08-i18n-project-struct.png

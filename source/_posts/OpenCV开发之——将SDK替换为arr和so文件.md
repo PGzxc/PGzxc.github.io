@@ -167,8 +167,8 @@ static def releaseTime() {
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/android-opencv-jnilibs-new.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/android-opencv-jni-folder.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/android-opencv-jnilibs-copy.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/android-opencv-package-not-found.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/android-opencv-abis-supports.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-jnilibs-new.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-jni-folder.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-jnilibs-copy.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-package-not-found.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-abis-supports.png

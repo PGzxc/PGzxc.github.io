@@ -112,8 +112,8 @@ ls abc/def
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/window_category.png
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/windows_tree.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/unix_catalog.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/unix_tree.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/unix_authority.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/window_category.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/windows_tree.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/unix_catalog.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/unix_tree.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/unix_authority.png

@@ -41,9 +41,9 @@ date: 2023-03-24 16:00:22
 ![][6]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-editor-canvas-click.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-editor-canvas-click-open.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-editor-choice-tools.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-editor-canvas-make-new.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-editor-canvas-make-new-switch.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-leonardo-editor-canvas-make-finish.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-editor-canvas-click.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-editor-canvas-click-open.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-editor-choice-tools.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-editor-canvas-make-new.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-editor-canvas-make-new-switch.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-editor-canvas-make-finish.png

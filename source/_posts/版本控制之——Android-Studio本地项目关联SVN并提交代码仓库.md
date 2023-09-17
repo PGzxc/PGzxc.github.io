@@ -88,17 +88,17 @@ File:local.properties
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-version-control/svn-command-line-install.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-version-control/svn-android-studio-absolute-path.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-version-control/svn-service-project-view.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-version-control/svn-local-folder-create.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-version-control/svn-vcs-subversion-choice.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-version-control/svn-service-project-copy.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-version-control/svn-android-studio-location-repository-relate.png
-[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-version-control/svn-android-studio-checkout.png
-[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-version-control/svn-checkout-destination.png
-[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-version-control/svn-commit-choice.png
-[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-version-control/svn-finish.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-version-control/svn-command-line-install.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-version-control/svn-android-studio-absolute-path.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-version-control/svn-service-project-view.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-version-control/svn-local-folder-create.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-version-control/svn-vcs-subversion-choice.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-version-control/svn-service-project-copy.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-version-control/svn-android-studio-location-repository-relate.png
+[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-version-control/svn-android-studio-checkout.png
+[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-version-control/svn-checkout-destination.png
+[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-version-control/svn-commit-choice.png
+[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-version-control/svn-finish.png
 
 [21]:https://developer.android.google.cn/studio
 [22]:https://tortoisesvn.net/

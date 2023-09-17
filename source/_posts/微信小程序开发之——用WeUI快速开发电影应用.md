@@ -183,8 +183,8 @@ npm install @miniprogram-component-plus/tabs
 
 [00]:https://github.com/Tencent/weui-wxss/
 [01]:https://github.com/wechat-miniprogram/miniprogram-component-plus/blob/master/docs/tabs.md
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-weui-movie-other-view.gif
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-weui-movie-my-view.gif
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-weui-movie-meui-component.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-weui-movie-tabs-weui.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-wechat/wechat-weui-movie-tabs-values.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-weui-movie-other-view.gif
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-weui-movie-my-view.gif
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-weui-movie-meui-component.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-weui-movie-tabs-weui.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-weui-movie-tabs-values.png

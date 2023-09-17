@@ -31,6 +31,6 @@ Windows10环境下，将桌面上的快捷图标无法拖放到dock栏
 ![][3]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-rocketdock-move-unable.gif
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-rocketdock-manager-close.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/windows-rocketdock-compatible-move.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-windows/windows-rocketdock-move-unable.gif
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-windows/windows-rocketdock-manager-close.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-windows/windows-rocketdock-compatible-move.png

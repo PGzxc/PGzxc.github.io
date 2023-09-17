@@ -183,6 +183,6 @@ class GetWidgetSample extends GetWidget<GetWidgetController>{
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-getx-view-13-getview-preview.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-getx-view-13-getresponsive-preview.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-getx-view-13-getwidget-preview.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-getx-view-13-getview-preview.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-getx-view-13-getresponsive-preview.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-getx-view-13-getwidget-preview.png

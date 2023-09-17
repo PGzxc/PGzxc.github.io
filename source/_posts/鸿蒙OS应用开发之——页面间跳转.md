@@ -252,5 +252,5 @@ public class SecondAbility extends Ability {
 ![][2]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-project-struct-layout.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-page-jump.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-project-struct-layout.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-page-jump.gif

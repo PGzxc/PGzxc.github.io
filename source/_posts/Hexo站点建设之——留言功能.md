@@ -60,14 +60,14 @@ date: 2017-12-16 15:48:15
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-gitment.png	
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-gitment.png	
 [2]: https://livere.com/
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-relive-site.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-relive-option.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-relive-uid.png
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-livere-config.png
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-coment-result.png
-[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-data-release.png
-[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-manger-comment.png
-[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-seting-comment.png
-[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-comment-intent.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-relive-site.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-relive-option.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-relive-uid.png
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-livere-config.png
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-coment-result.png
+[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-data-release.png
+[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-manger-comment.png
+[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-seting-comment.png
+[11]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-comment-intent.png

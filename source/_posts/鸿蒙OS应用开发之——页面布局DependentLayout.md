@@ -355,7 +355,7 @@ color_gray_element.xml
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-dependentlayout-same-level-layout.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-dependentlayout-same-level-below.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-depentlayout-parent-layout.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-depentlayout-complex-layout.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-dependentlayout-same-level-layout.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-dependentlayout-same-level-below.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-depentlayout-parent-layout.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-depentlayout-complex-layout.png

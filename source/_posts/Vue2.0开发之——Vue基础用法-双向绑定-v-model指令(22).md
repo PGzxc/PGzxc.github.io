@@ -190,9 +190,9 @@ data:{
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-22-v-model-sample1.gif
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-22-v-model-bind-sample.gif
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-22-v-model-select-sample.gif
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-22-v-model-number-sample.gif
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-22-v-model-trim-sample.gif
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-22-v-model-lazy-sample.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-22-v-model-sample1.gif
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-22-v-model-bind-sample.gif
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-22-v-model-select-sample.gif
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-22-v-model-number-sample.gif
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-22-v-model-trim-sample.gif
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-22-v-model-lazy-sample.gif

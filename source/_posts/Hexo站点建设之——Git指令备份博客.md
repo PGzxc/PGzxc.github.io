@@ -49,11 +49,11 @@ date: 2017-12-06 16:45:59
 
 
 [1]: https://github.com/coneycode/hexo-git-backup
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo_backup_error.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-git-fetch.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-git-push.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hxo-git-branch.png
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-git-add.png
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-git-commit-m.png
-[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-git-push-hexo.png
-[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-update-bolg.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo_backup_error.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-git-fetch.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-git-push.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hxo-git-branch.png
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-git-add.png
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-git-commit-m.png
+[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-git-push-hexo.png
+[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-update-bolg.png

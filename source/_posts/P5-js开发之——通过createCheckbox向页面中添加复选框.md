@@ -87,4 +87,4 @@ function myCheckedEvent() {
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-p5js/p5js-createcheckbox-sample.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-createcheckbox-sample.gif

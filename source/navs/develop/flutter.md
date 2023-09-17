@@ -84,5 +84,5 @@ comments: false
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-learn-route/Flutter-Learning-route-1.jpg
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-learn-route/Flutter-Learning-route-2.jpg
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-learn-route/Flutter-Learning-route-1.jpg
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-learn-route/Flutter-Learning-route-2.jpg

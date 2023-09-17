@@ -99,6 +99,6 @@ afconvert -f adts -d aac buyao.wav
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-av-01-terminal-cd-target.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-av-01-terminal-conver-help.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-av-01-terminal-conver-success.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-av-01-terminal-cd-target.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-av-01-terminal-conver-help.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-av-01-terminal-conver-success.png

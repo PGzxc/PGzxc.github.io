@@ -107,19 +107,19 @@ Reveal官网：[https://revealapp.com][21]
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-reveal-open-first.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-reveal-help-show-folder.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-reveal-copy-to-project.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-reveal-framework-search-path-config.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-reveal-other-linker-flags-config.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-reveal-buildsetting-runpath-search-path.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-reveal-buildphases-new-run-script.png
-[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-reveal-run-script-add-shell.png
-[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-reveal-choice-an-app-inspect.png
-[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-reveal-open-choice-app.png
-[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-reveal-refresh-view.png
-[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-reveal-big-small-view.png
-[13]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-reveal-reset-view.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-reveal-open-first.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-reveal-help-show-folder.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-reveal-copy-to-project.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-reveal-framework-search-path-config.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-reveal-other-linker-flags-config.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-reveal-buildsetting-runpath-search-path.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-reveal-buildphases-new-run-script.png
+[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-reveal-run-script-add-shell.png
+[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-reveal-choice-an-app-inspect.png
+[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-reveal-open-choice-app.png
+[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-reveal-refresh-view.png
+[12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-reveal-big-small-view.png
+[13]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-reveal-reset-view.png
 
 
 

@@ -292,8 +292,8 @@ repeat：设置图片是否重复，取值有：
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-image-imageprovider-imple.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-image-local-image-pubspec.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-image-file-path-provider.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-image-upload-files-phone.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-flutter/flutter-image-preview.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-image-imageprovider-imple.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-image-local-image-pubspec.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-image-file-path-provider.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-image-upload-files-phone.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-image-preview.png

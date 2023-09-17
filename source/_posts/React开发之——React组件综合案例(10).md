@@ -216,6 +216,6 @@ this.setState({
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day2-img10-comment-fenxi.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day2-img10-comment-form.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-react/react-day2-img10-comment-add.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-react/react-day2-img10-comment-fenxi.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-react/react-day2-img10-comment-form.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-react/react-day2-img10-comment-add.gif

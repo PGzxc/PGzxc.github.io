@@ -97,7 +97,7 @@ date: 2018-02-04 16:48:42
 参考：  
 [RefreshAnimal][4]
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-refresh_animal.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-refresh_animal.png
 [2]: https://github.com/florent37/ViewAnimator
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-refresh.gif
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-refresh.gif
 [4]: https://github.com/PGzxc/RefreshAnimal

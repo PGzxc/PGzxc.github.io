@@ -72,6 +72,6 @@ npx umi dev
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-umi/umi-struct-technology-view.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-umi/umi-struct-plugin-view.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-umi/umi-first-demo-preview.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-umi/umi-struct-technology-view.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-umi/umi-struct-plugin-view.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-umi/umi-first-demo-preview.png

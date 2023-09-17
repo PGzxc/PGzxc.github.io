@@ -124,23 +124,23 @@ date: 2021-09-17 17:34:37
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-debug-install-failure-eventlog.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-run-congigure-project.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-run-generate-key-csr-new.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-generate-key-csr-kyes.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-generate-p12-csr.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-run-folder-generate-p12-csr.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-run-login.png
-[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-appgallery-connect-login.png
-[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-run-myproject-project-name.png
-[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-run-project-add-application.png
-[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-run-app-config.png
-[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-run-appgallery-user-vister.png
-[13]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-run-user-device-manager.png
-[14]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-run-add-cert.png
-[15]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-run-cert-download.png
-[16]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-run-hap-provision.png
-[17]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-run-hap-profile-config.png
-[18]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-run-profile-p7b-download.png
-[19]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-run-devtool-signing-configs.png
-[20]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-hmos/hmos-run-device-preview.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-debug-install-failure-eventlog.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-run-congigure-project.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-run-generate-key-csr-new.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-generate-key-csr-kyes.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-generate-p12-csr.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-run-folder-generate-p12-csr.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-run-login.png
+[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-appgallery-connect-login.png
+[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-run-myproject-project-name.png
+[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-run-project-add-application.png
+[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-run-app-config.png
+[12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-run-appgallery-user-vister.png
+[13]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-run-user-device-manager.png
+[14]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-run-add-cert.png
+[15]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-run-cert-download.png
+[16]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-run-hap-provision.png
+[17]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-run-hap-profile-config.png
+[18]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-run-profile-p7b-download.png
+[19]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-run-devtool-signing-configs.png
+[20]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-run-device-preview.png

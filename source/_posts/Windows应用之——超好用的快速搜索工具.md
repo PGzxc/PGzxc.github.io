@@ -67,6 +67,6 @@ Windows自带的搜索功能，速度非常之慢。借助于搜索工具极大�
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/huoying-use-view.gif
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/everything-search-window.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-windows/listary-use-view.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-windows/huoying-use-view.gif
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-windows/everything-search-window.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-windows/listary-use-view.gif

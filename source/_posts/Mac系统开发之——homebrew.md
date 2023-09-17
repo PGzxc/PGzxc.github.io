@@ -20,7 +20,7 @@ brew 是 Mac 下的一个包管理工具，类似于 centos 下的 yum，可以�
 * 将下面的指令复制到终端，并回车
 
   ```
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /usr/bin/ruby -e "$(curl -fsSL https://jsd.onmicrosoft.cn/gh/Homebrew/install/master/install)"
   ```
 
 * 出现如下界面时，按回车键确认安装
@@ -57,12 +57,12 @@ brew 是 Mac 下的一个包管理工具，类似于 centos 下的 yum，可以�
 ### 4.1 方法一
 
 ```
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+ruby -e "$(curl -fsSL https://jsd.onmicrosoft.cn/gh/Homebrew/install/master/uninstall)"
 ```
 
 ### 4.2 方法二
 
-下载卸载脚本 [uninstall script](https://raw.githubusercontent.com/Homebrew/install/master/uninstall) 并执行卸载操作.如要查看更多卸载相关操作查看 `./uninstall --help` 
+下载卸载脚本 [uninstall script](https://jsd.onmicrosoft.cn/gh/Homebrew/install/master/uninstall) 并执行卸载操作.如要查看更多卸载相关操作查看 `./uninstall --help` 
 
 ## 五 参考
 
@@ -74,6 +74,6 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 [1]:https://brew.sh/index_zh-cn
 [2]:https://zhuanlan.zhihu.com/p/59805070
 
-[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/homebrew-websit.png
-[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/homebrew-install-progress.png
-[13]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/homebrew-install-success.png
+[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/homebrew-websit.png
+[12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/homebrew-install-progress.png
+[13]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/homebrew-install-success.png

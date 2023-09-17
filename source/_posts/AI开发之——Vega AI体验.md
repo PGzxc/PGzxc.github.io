@@ -60,7 +60,7 @@ https://rightbrain.art/text2Image
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-vega-login.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-vega-produce-text2img.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-vega-produce-img2img.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ai/ai-vega-train-img.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-vega-login.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-vega-produce-text2img.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-vega-produce-img2img.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-vega-train-img.png

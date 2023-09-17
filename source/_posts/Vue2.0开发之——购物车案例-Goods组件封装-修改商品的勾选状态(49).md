@@ -185,5 +185,5 @@ getNewState(e){
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-49-cart-check-change.gif
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue2.0-49-cart-check-change-problem.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-49-cart-check-change.gif
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-49-cart-check-change-problem.gif

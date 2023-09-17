@@ -32,6 +32,6 @@ date: 2020-07-30 21:20:59
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-winform-statusstrip-drag.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-winform-status-items.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-winform-statustrip-value-set.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-winform-statusstrip-drag.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-winform-status-items.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-winform-statustrip-value-set.png

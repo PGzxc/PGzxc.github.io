@@ -102,7 +102,7 @@ date: 2020-08-20 22:01:41
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/html-webset-sample-preview.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/html-webset--web-tree-view.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/html-webset-server-look.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/html-webset-server-gui-look.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/html-webset-sample-preview.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/html-webset--web-tree-view.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/html-webset-server-look.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/html-webset-server-gui-look.png

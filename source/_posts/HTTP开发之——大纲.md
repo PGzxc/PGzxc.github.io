@@ -244,4 +244,4 @@ date: 2018-06-21 10:50:11
 # 思维导图
 ![HTTP][1]
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/http-outline.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/http-outline.png

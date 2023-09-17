@@ -58,14 +58,14 @@ date: 2020-02-09 11:45:01
 
 
 [1]: https://developer.android.google.cn/studio
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-studio-download.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-studio-install-open.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-studio-install-wards-next.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-studio-ui-theme.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-studio-sdk-location.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-studio-install-progress.png
-[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-config-bash-profile.png
-[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/android-install-adb-version.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-studio-download.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-studio-install-open.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-studio-install-wards-next.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-studio-ui-theme.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-studio-sdk-location.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-studio-install-progress.png
+[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-config-bash-profile.png
+[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-install-adb-version.png
 
 
 

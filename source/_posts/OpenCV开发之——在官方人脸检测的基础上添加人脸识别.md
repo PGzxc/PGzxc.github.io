@@ -423,8 +423,8 @@ FaceUtil.deleteRecFiles()
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-face-detection-project-struct.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-file-use-order.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-fdactivity-layout.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-people-recognize.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/opencv-face-detection-project-struct.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/opencv-file-use-order.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/opencv-fdactivity-layout.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/opencv-people-recognize.png
 

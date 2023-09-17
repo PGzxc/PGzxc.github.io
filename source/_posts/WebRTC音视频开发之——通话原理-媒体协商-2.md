@@ -135,5 +135,5 @@ SDP由一行或多行UTF-8文本构成，每行以一个字符的类型开头，
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-webrtc/webrtc-02-communicate-sdp.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-webrtc/webrtc-02-communicate-sdp-progress.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-webrtc/webrtc-02-communicate-sdp.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-webrtc/webrtc-02-communicate-sdp-progress.png

@@ -182,5 +182,5 @@ listBox1.DisplayMember = dt.Columns[0].ToStiring();
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-sql-dataset-layout.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-sql-dataset-view.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-sql-dataset-layout.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-sql-dataset-view.gif

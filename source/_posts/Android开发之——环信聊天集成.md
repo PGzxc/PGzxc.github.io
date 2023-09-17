@@ -102,21 +102,21 @@ date: 2017-12-28 13:09:30
 
 
 [1]: http://www.easemob.com/
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/huanxin-login.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/huanxin-new-app.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/huanxin-key.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/huanxin-sdk-download.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/huanxin-login.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/huanxin-new-app.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/huanxin-key.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/huanxin-sdk-download.png
 [6]: http://www.easemob.com/download/im
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/huanxin-jieya.png
-[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/huanxin-easeui-lib.png
-[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/huanxin-easeui-module.png
-[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/app-easeui-include.png
-[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/huanxin-meta-value.png
-[12]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/huanxin-umeng.png
-[13]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/huanxin-sdk-init.png
-[14]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/huanxin-regist-login.png
-[15]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/huanxin-regist.png
-[16]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/huanxin-code-login.png
-[17]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/huanxin-main.png
-[18]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/huanxin-main-content.png
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/huanxin-jieya.png
+[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/huanxin-easeui-lib.png
+[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/huanxin-easeui-module.png
+[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/app-easeui-include.png
+[11]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/huanxin-meta-value.png
+[12]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/huanxin-umeng.png
+[13]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/huanxin-sdk-init.png
+[14]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/huanxin-regist-login.png
+[15]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/huanxin-regist.png
+[16]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/huanxin-code-login.png
+[17]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/huanxin-main.png
+[18]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/huanxin-main-content.png
 [19]: https://github.com/PGzxc/EaseDemo/tree/445d40e0da00330d66ddba067c7f06f66c650c50

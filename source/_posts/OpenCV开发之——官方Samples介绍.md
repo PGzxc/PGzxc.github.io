@@ -137,12 +137,12 @@ It converts the image from Camera into the shuffled image
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-15-puzzle.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-acircles_pattern.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-camera-calibration.gif
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-color-blob-detection.gif
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-face-detection.gif
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-image-manipulations.gif
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-fps-show.png
-[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-mixed-processing.gif
-[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/opencv-camera-controler.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/opencv-15-puzzle.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/opencv-acircles_pattern.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/opencv-camera-calibration.gif
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/opencv-color-blob-detection.gif
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/opencv-face-detection.gif
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/opencv-image-manipulations.gif
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/opencv-fps-show.png
+[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/opencv-mixed-processing.gif
+[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/opencv-camera-controler.gif

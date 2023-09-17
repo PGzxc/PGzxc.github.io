@@ -174,4 +174,4 @@ import './05-模块中的代码.js'
 说明：直接导入并执行代码，不需要得到模块向外共享的成员
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue3.0-day1-02-es6-export-more-error.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue3.0-day1-02-es6-export-more-error.png

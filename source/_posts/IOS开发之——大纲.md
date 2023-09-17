@@ -26,4 +26,4 @@ date: 2023-01-04 16:39:01
 ![][1]
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-all-xmind-summary.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-all-xmind-summary.png

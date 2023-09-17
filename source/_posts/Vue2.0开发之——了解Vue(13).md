@@ -77,7 +77,7 @@ MVVM 是 vue 实现数据驱动视图和双向数据绑定的核心原理。MVVM
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-13-data-view-struct.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-13-data-view-binding.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-13-mvvm-struct.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-13-data-view-struct.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-13-data-view-binding.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-13-mvvm-struct.png
 

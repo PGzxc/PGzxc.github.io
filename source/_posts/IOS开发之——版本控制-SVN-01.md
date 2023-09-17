@@ -125,18 +125,18 @@ Cornerstone中显示变化的代码，并标记为M(modify)
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-01-cornerstone-page.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-01-cornerstone-open-view.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-01-repository-view.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-01-repository-type-select.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-01-repository-service-add.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-01-repository-add-success.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-01-repository-trunk-import.png
-[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-01-repository-trunk-import-select.png
-[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-01-repository-trunk-import-msg.png
-[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-01-repository-trunk-app.png
-[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-01-check-local-repo.png
-[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-01-local-repo-view.png
-[13]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-01-local-repo-change.png
-[14]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-versionc-01-local-repo-change-commit.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-versionc-01-cornerstone-page.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-versionc-01-cornerstone-open-view.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-versionc-01-repository-view.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-versionc-01-repository-type-select.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-versionc-01-repository-service-add.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-versionc-01-repository-add-success.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-versionc-01-repository-trunk-import.png
+[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-versionc-01-repository-trunk-import-select.png
+[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-versionc-01-repository-trunk-import-msg.png
+[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-versionc-01-repository-trunk-app.png
+[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-versionc-01-check-local-repo.png
+[12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-versionc-01-local-repo-view.png
+[13]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-versionc-01-local-repo-change.png
+[14]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-versionc-01-local-repo-change-commit.png
 

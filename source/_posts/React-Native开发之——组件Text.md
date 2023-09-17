@@ -108,15 +108,15 @@ Text组件可以使用View组件所有的Style，View组件的所有Style可以�
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-compontent-text.png
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-compontent-tv-prop-type.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-compontent-tv-style-1.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-compontent-tv-style-2.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-compontent-tv-prop.png
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-compontent-tv-nesting.png
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-compontent-tv-combinat.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-compontent-text.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-compontent-tv-prop-type.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-compontent-tv-style-1.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-compontent-tv-style-2.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-compontent-tv-prop.png
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-compontent-tv-nesting.png
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-compontent-tv-combinat.png
 [8]: https://github.com/PGzxc/RN_Text
-[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-text-onpress.png
-[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-text-onlongpress.gif
-[11]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-text-onlayout-code.png
-[12]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/rn-text-onlayout-look.png
+[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-text-onpress.png
+[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-text-onlongpress.gif
+[11]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-text-onlayout-code.png
+[12]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-text-onlayout-look.png

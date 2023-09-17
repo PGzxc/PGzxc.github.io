@@ -333,11 +333,11 @@ A^B = 0011 0001
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-perator.png
-[2]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-relate-operate.png
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-logat-operate.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-byte-operate.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-byte-2.png
-[6]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-equals-operate.png
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-more-operate.png
-[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-prority-operate.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-perator.png
+[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-relate-operate.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-logat-operate.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-byte-operate.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-byte-2.png
+[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-equals-operate.png
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-more-operate.png
+[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-prority-operate.png

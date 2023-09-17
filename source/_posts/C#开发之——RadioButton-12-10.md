@@ -61,5 +61,5 @@ public partial class RadioButtonForm : Form
 * Checked属性可用于判断单选按钮是否被选中
 * 如果该属性的返回值为True，则代表选中；如果返回值为False，则表示未被选中
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-windform-radiobutton-layout.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-windform-radiobutton-view.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-windform-radiobutton-layout.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-windform-radiobutton-view.gif

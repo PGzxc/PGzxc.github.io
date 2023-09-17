@@ -53,7 +53,7 @@ Intellij激活补丁：
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/jetbrains-agent-active.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/jetbrains-agent-active.png
 [2]:https://zhile.io/custom-license.html
 [3]:https://zhile.io/2018/08/25/jetbrains-license-server-crack.html
 [4]:https://www.jb51.net/softs/669519.html

@@ -105,8 +105,8 @@ url-loader、filder-loader安装完成后，package.json-devDependencies中配�
 
 [00]:https://v4.webpack.js.org/loaders/url-loader/
 [01]:https://v4.webpack.js.org/loaders/file-loader
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-08-images-logo-add.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-08-images-logo-run-dev-error.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-08-images-logo-run-dev-success.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-08-images-logo-limit-1.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-vue/vue02-08-images-logo-limit-2.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-08-images-logo-add.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-08-images-logo-run-dev-error.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-08-images-logo-run-dev-success.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-08-images-logo-limit-1.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-08-images-logo-limit-2.png

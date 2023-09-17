@@ -136,10 +136,10 @@ externalNativeBuild {
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/android-opencv-arr-project-struct.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/android-opencv-arr-build-make.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/android-opencv-arr-build-outputs-arr.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/andriod-opencv-arr-gradle-assemble.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/android-opencv-arr-analyze-apk.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/android-opencv-arr-analyze-arr-result-abi.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-opencv/android-opencv-arr-cmakeclean-build.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-arr-project-struct.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-arr-build-make.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-arr-build-outputs-arr.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/andriod-opencv-arr-gradle-assemble.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-arr-analyze-apk.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-arr-analyze-arr-result-abi.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-arr-cmakeclean-build.png

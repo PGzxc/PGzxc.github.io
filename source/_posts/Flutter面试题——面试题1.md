@@ -198,4 +198,4 @@ pub.dev中opengle类库
 [01]:http://laomengit.com/guide/widgets/DrawingBoard.html
 [02]:https://pub.dev/packages/opengl
 [03]:https://pub.dev/packages/flutter_gl
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-interview/flutter-01-widget-life.webp
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-interview/flutter-01-widget-life.webp

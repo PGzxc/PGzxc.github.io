@@ -99,5 +99,5 @@ public partial class LoginForm : Form
 * 从上面的运行效果可以看出，输入密码的文本框中由于在PasswordChar属性中设置了`*`，因此在文本框中输入的文本全部使用`*`来替换
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-winform-textbox-view.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/csharp-windform-textbox-login.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-winform-textbox-view.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-windform-textbox-login.png

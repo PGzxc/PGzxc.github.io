@@ -272,5 +272,5 @@ date: 2022-03-23 20:52:45
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-webview-03-storyboard-view.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-webview-03-oc-invoke-js.gif
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-webview-03-storyboard-view.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-webview-03-oc-invoke-js.gif

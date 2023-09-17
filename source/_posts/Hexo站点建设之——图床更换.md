@@ -109,20 +109,20 @@ date: 2019-06-13 21:46:54
 
 2. Github上图片显示方式    
 
-		https://raw.githubusercontent.com/[Github文件夹存储路径][PGzxc/images/master/blog-images]/acra-app-run.png  
+		https://jsd.onmicrosoft.cn/gh/[Github文件夹存储路径][PGzxc/images/master/blog-images]/acra-app-run.png  
 
 
 3. 使用vscode搜索七牛域名替换为Github域名访问
 
 
 
-[1]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-qiniu-store.png
+[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-qiniu-store.png
 [2]: https://portal.qiniu.com/user/key
-[3]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-qiniu-accesskey-secretkey.png
-[4]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-qiniu-images-download.png
-[5]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-qiniu-images-download-after.png
+[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-qiniu-accesskey-secretkey.png
+[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-qiniu-images-download.png
+[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-qiniu-images-download-after.png
 [6]: https://github.com/Molunerfinn/PicGo
-[7]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-github-picgo-download.png
-[8]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-picgo-github-setting.png
-[9]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-picgo-github-upload.png
-[10]: https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-vscode-open.png
+[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-github-picgo-download.png
+[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-picgo-github-setting.png
+[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-picgo-github-upload.png
+[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-vscode-open.png

@@ -37,10 +37,10 @@ date: 2019-10-20 11:31:31
 
 
 [1]: https://visualstudio.microsoft.com/zh-hans/downloads/?rr=https%3A%2F%2Fmsdn.microsoft.com%2Fzh-cn%2Flibrary%2Faa468128
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-visual-studio-page.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-visual-studio-c-plugin.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-visual-studio-tool-install-plugin.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-visual-studio-choice-template.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-visual-studio-create-config.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-visual-studio-project-preview.png
-[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/cpp-visual-studio-debug-run.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-visual-studio-page.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-visual-studio-c-plugin.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-visual-studio-tool-install-plugin.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-visual-studio-choice-template.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-visual-studio-create-config.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-visual-studio-project-preview.png
+[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-visual-studio-debug-run.png

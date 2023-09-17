@@ -218,5 +218,5 @@ NSURLRequest的子类
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-network-nsurlconnection-process.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-ios/ios-network-http-app-request-view.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-network-nsurlconnection-process.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-network-http-app-request-view.png

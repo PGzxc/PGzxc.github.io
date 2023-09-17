@@ -127,21 +127,21 @@ hexo d
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/coding-ras-setting.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/coding-auth-disable.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/coding-auth-set-phone-after.png
-[4]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/coding-auth-success.png
-[5]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/coding-ssh-list.png
-[6]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/coding-ssh-setting.png
-[7]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/coding-create-project-devops.png
-[8]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/coding-devops-info.png
-[9]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/coding-ssh-gitcopy.png
-[10]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/coding-deploy-coding.png
-[11]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/coding-code-property-view.png
-[12]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/coding-static-webview-list.png
-[13]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/coding-static-webview-deply-quick.png
-[14]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/coding-aliyun-jiexi.png
-[15]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/coding-yuming-bang-success.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/coding-ras-setting.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/coding-auth-disable.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/coding-auth-set-phone-after.png
+[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/coding-auth-success.png
+[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/coding-ssh-list.png
+[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/coding-ssh-setting.png
+[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/coding-create-project-devops.png
+[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/coding-devops-info.png
+[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/coding-ssh-gitcopy.png
+[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/coding-deploy-coding.png
+[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/coding-code-property-view.png
+[12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/coding-static-webview-list.png
+[13]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/coding-static-webview-deply-quick.png
+[14]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/coding-aliyun-jiexi.png
+[15]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/coding-yuming-bang-success.png
 
 
 [21]:https://coding.net/

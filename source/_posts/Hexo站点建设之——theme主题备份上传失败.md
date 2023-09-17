@@ -96,9 +96,9 @@ Changes to be committed:
 
 
 
-[1]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-github-theme-next-backup-error.png
-[2]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-cached-themes-remove.png
-[3]:https://raw.githubusercontent.com/PGzxc/CDN/master/blog-image/hexo-next-branch-backup-success.png
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-github-theme-next-backup-error.png
+[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-cached-themes-remove.png
+[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-next-branch-backup-success.png
 
 
 
