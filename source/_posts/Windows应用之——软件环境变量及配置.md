@@ -45,7 +45,7 @@ date: 2018-10-20 13:37:13
 ## 配置
 ### Java
 ####  变量
-	
+
 	JAVA_HOME  D:\SoftWare\Java\jdk1.8.0_191    
 	CLASSPATH  .;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar
 
@@ -58,10 +58,12 @@ date: 2018-10-20 13:37:13
 ###  Android
 #### 变量
 	ANDROID_HOME 	D:\SoftWare\SDK  
+	ANDROID_SDK_ROOT  D:\SoftWare\SDK 
 #### Path	
 	%ANDROID_HOME%;  
 	%ANDROID_HOME%\platform-tools;	 
 	%ANDROID_HOME%\tools;
+	%ANDROID_HOME%\tools\bin
 
 ------
 ###  Tomcat  
@@ -163,7 +165,7 @@ date: 2018-10-20 13:37:13
 #### Path
 	%GIT_HOM%\cmd;
 
------- 
+------
 ### vscode
 #### 变量
 	VS_HOME D:\SoftWare\VsCode\Microsoft VS Code
