@@ -43,3 +43,19 @@ Node.js v18.16.0
 npm install -g nrm open@8.4.2 --save
 ```
 
+### 2.2 error Command failed with exit code 1: yarn install
+
+#### 现象
+
+```
+error Command failed with exit code 1: yarn install
+warning react-native > @react-native/codegen > jscodeshift > @babel/plugin-proposal-nullish-coalescing-operator@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-nullish-coalescing-operator instead.
+```
+
+#### 解决办法
+
+```
+yarn install
+yarn react-native run-android
+```
+
