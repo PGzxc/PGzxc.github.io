@@ -11,6 +11,7 @@ comments: false
 |  1   | [F-Droid](https://f-droid.org/zh_Hans/packages/) | Android 平台上的自由应用商店 |
 |  2   |                    GooglePlay                    |           应用商店           |
 |  3   |      [APKpremier](https://apkpremier.com/)       |       非翻墙的应用商店       |
+|  4   |  [Freeapk](https://freeapk.mobi/Productivity/)   |           开源Apk            |
 
 ## 二 GooglePlay
 
