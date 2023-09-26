@@ -59,3 +59,88 @@ yarn install
 yarn react-native run-android
 ```
 
+### 2.3 React Native v0.72.4 is now available (your project is running on v0.71.8)
+
+#### 现象
+
+```
+info React Native v0.72.4 is now available (your project is running on v0.71.8).
+info Changelog: https://github.com/facebook/react-native/releases/tag/v0.72.4
+info Diff: https://react-native-community.github.io/upgrade-helper/?from=0.71.8
+info For more info, check out "https://reactnative.dev/docs/upgrading".
+```
+
+#### 解决办法
+
+```
+ 查看react版本信息 yarn info react
+ 查看react-native版本信息 yarn info react-native 
+ 将package.json中的react-native从v0.71.8修改为"0.72.4"
+```
+
+### 2.4 Included build '....\node_modules\react-native-gradle-plugin' does not exist
+
+#### 现象
+
+```
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Included build 'D:\Code\ReactNativeDode\RN_WanAndroid-master\node_modules\react-native-gradle-plugin' does not exist.
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+```
+
+#### [解决办法(android\settings.gradle)](https://github.com/facebook/react-native/issues/36643)
+
+```
+修改前
+includeBuild('../node_modules/react-native-gradle-plugin')
+修改为
+includeBuild('../node_modules/@react-native/gradle-plugin')
+```
+
+### 2.5 关闭prettier—.eslintrc.js，并如下配置
+
+```
+module.exports = {
+  root: true,
+  extends: '@react-native',
+  parserOptions: {
+    parser: 'babel-eslint'
+  },
+  rules: {
+    //严格的检查缩进问题，不是报错，我们可以关闭这个检查规则,然后在终端输入npm run dev
+    "indent": ["off", 2],
+    //使用eslint时，严格模式下，报错Missing space before function parentheses的问题，意思是在方法名和扩号之间需要有一格空格。
+    'space-before-function-paren': 0,
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    //关闭prettier
+    'prettier/prettier': "off"
+  }
+};
+```
+
+### 2.6 Task :react-native-reanimated:configureCMakeDebug[arm64-v8a] FAILED
+
+#### 错误现象
+
+```
+> Configure project :react-native-reanimated
+Android gradle plugin: 7.4.2
+Gradle: 8.0.1
+WARNING:Software Components will not be created automatically for Maven publishing from Android Gradle Plugin 8.0. To opt-in to the future behavior, set the Gradle property android.disableAutomaticComponentCreation=true in the `gradle.properties` file or use the new publishing DSL.
+```
+
+#### 解决办法
+
+在文件 `gradle.properties` 中启用 AGP 8.0 默认行为的预览时
+
+```
+android.disableAutomaticComponentCreation=true
+```
+
