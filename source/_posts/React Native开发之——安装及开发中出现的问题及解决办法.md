@@ -56,7 +56,7 @@ warning react-native > @react-native/codegen > jscodeshift > @babel/plugin-propo
 
 ```
 yarn install
-yarn react-native run-android
+yarn react-native run-android或npx react-native start
 ```
 
 ### 2.3 React Native v0.72.4 is now available (your project is running on v0.71.8)
