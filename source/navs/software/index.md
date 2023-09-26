@@ -62,6 +62,9 @@ Windows
 |  6   | [optimizer](https://github.com/hellzerg/optimizer/releases)  | 高级 Windows 系统优化工具 |
 |  7   |  [暴风侠-win11激活](https://xitongmac.com/jihuo/66003.html)  |       密钥+激活方法       |
 |  8   | [暴风侠-win10激活](https://www.shangyouw.cn/zml/arc252211.html) |         激活方法          |
+|  9   |           [HelloWindows](https://hellowindows.cn/)           | Windows+Office+激活+工具  |
+|  10  |             [极简系统](https://www.sysmini.com/)             |     Windows+办公软件      |
+|  11  |             [系统库](https://www.xitongku.com/)              |     Windows+办公软件      |
 
 Mac
 
