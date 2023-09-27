@@ -144,3 +144,4 @@ WARNING:Software Components will not be created automatically for Maven publishi
 android.disableAutomaticComponentCreation=true
 ```
 
+
