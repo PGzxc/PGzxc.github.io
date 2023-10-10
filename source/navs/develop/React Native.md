@@ -33,7 +33,7 @@ comments: false
 |  3   | [React-Native学习指南](https://github.com/reactnativecn/react-native-guide) | 教程+开源App+组件+工具 |
 |  4   | [你应该知道的11个RN组件库](http://www.hzhcontrols.com/new-3778.html) |       11个组件库       |
 
-## 四 UI库 
+## 四 UI组件库 
 
 | 编号 |                        名称(博客地址)                        |                            说明                             |
 | :--: | :----------------------------------------------------------: | :---------------------------------------------------------: |
@@ -44,8 +44,22 @@ comments: false
 |  5   | [Material-UI](https://mui.com/material-ui/getting-started/installation/) | 全球顶级 React 组件库 Google Material 设计标准 android 首先 |
 |  6   | [React WeUI](https://weui.github.io/react-weui/docs/#/react-weui/docs/page/2/articles/0) |     微信出品，面向微信移动端，完整的微信生态 UI 组件库      |
 |  7   |         [Zarm Design React](https://zarm.design/#/)          |                 宝藏 React 移动端 UI 组件库                 |
-|  8   |  [React Native Elements](https://reactnativeelements.com/)   |             跨平台应用程序的 React Native 框架              |
+|  8   | [React Native Elements](https://githubfast.com/react-native-elements/react-native-elements) |             跨平台应用程序的 React Native 框架              |
+|  9   |  [NativeBase](https://githubfast.com/GeekyAnts/NativeBase)   |                   React Native UI 组件库                    |
+|  10  | [React Native Material UI](https://github.com/xotahal/react-native-material-ui) |                   20 多个不同的自定义组件                   |
+|  11  | [React Native UI Kitten](https://github.com/akveo/kittenTricks) |           基于 Eva 设计体系，提供超过 480 个 icon           |
+|  12  |       [beeshell](https://github.com/meituan/beeshell)        |                   美团React Native 组件库                   |
+|  13  | [Teaset](https://githubfast.com/rilyu/teaset/blob/master/docs/cn/README.md#teaset) |      React Native UI 组件库, 超过 20 个纯 JS(ES6) 组件      |
+|  14  | [react-native-ui-lib](https://githubfast.com/wix/react-native-ui-lib) |                   React Native UI 组件库                    |
 
-## 五 参考
+## 五 UI库
+
+| 编号 |                     名称(博客地址)                     |     说明     |
+| :--: | :----------------------------------------------------: | :----------: |
+|  1   | [Lottie for React Native](https://airbnb.io/lottie/#/) | 动画 UI 框架 |
+
+## 六 参考
 
 * [7 款最棒的 React 移动端 UI 组件库 - 特别针对国内使用场景推荐](https://blog.csdn.net/weixin_48201324/article/details/124969239)
+* [推荐 5 个不错的 React Native UI 库](https://blog.csdn.net/YopenLang/article/details/128065199)
+* [好到炸的ReactNativeUI库](https://blog.csdn.net/weixin_34387284/article/details/91466524)
