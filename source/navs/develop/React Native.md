@@ -39,9 +39,9 @@ comments: false
 | :--: | :----------------------------------------------------------: | :---------------------------------------------------------: |
 |  1   | [Taro UI for React](https://taro-ui.jd.com/#/docs/introduction) |    京东出品，多端合一，所向披靡-`ReactNative` 端暂不支持    |
 |  2   | [Ant Design Mobile of React](https://mobile.ant.design/guide/quick-start/) |      阿里前端 UI 库，面向企业级中后台-`RN` 端暂不支持       |
-|  3   | [Ant Design Mobile RN](https://github.com/ant-design/ant-design-mobile-rn#ant-design-mobile-rn) |                                                             |
+|  3   | [Ant Design Mobile RN](https://github.com/ant-design/ant-design-mobile-rn#ant-design-mobile-rn) |                  阿里前端 UI 库，支持`RN`                   |
 |  4   | [TDesign React Mobile](https://tdesign.tencent.com/react/overview) |      腾讯 UI 组件库，配套工具完满，设计工整，文档清晰       |
-|  5   | [NutUI for React](https://nutui.jd.com/h5/react/2x/#/zh-CN/guide/intro-react) |           京东出品，移动端友好，面向电商业务场景            |
+|  5   | [NutUI for React](https://nutui.jd.com/h5/react/2x/#/zh-CN/guide/intro-react) |      京东出品，移动端友好，支持移动端 H5 和小程序开发       |
 |  6   | [Material-UI](https://mui.com/material-ui/getting-started/installation/) | 全球顶级 React 组件库 Google Material 设计标准 android 首先 |
 |  7   | [React WeUI](https://weui.github.io/react-weui/docs/#/react-weui/docs/page/2/articles/0) |     微信出品，面向微信移动端，完整的微信生态 UI 组件库      |
 |  8   |         [Zarm Design React](https://zarm.design/#/)          |                 宝藏 React 移动端 UI 组件库                 |
