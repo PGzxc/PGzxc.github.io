@@ -144,4 +144,29 @@ WARNING:Software Components will not be created automatically for Maven publishi
 android.disableAutomaticComponentCreation=true
 ```
 
+### 2.7  Failed to transform react-android-0.72.3-debug.aar
+
+#### 错误现象
+
+```
+Failed to transform react-android-0.72.3-debug.aar (com.facebook.react:react-android:0.72.3) to match attributes {artifactType=android-aar-metadata, com.android.build.api.attributes.BuildTypeAttr=debug, org.gradle.category=library, org.gradle.dependency.bundling=external, org.gradle.libraryelements=aar, org.gradle.status=release, org.gradle.usage=java-runtime}.
+
+ Could not download react-android-0.72.3-debug.aar (com.facebook.react:react-android:0.72.3)
+         > Could not get resource 'https://repo.maven.apache.org/maven2/com/facebook/react/react-android/0.72.3/react-android-0.72.3-debug.aar'.
+            > Read timed out
+```
+
+#### 解决办法
+
+1-复制下载链接下载：
+
+```
+https://repo.maven.apache.org/maven2/com/facebook/react/react-android/0.72.3/react-android-0.72.3-debug.aar
+```
+
+2-将react-android-0.72.3-debug.aar文件复制到如下内容
+
+```
+C:Users\用户名\.gradle\caches\modules-2\files-2.1\com.facebook.react\hermes-android\0.72.3有含有pom文件的文件夹
+```
 
