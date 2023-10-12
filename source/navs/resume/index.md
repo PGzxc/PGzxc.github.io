@@ -24,5 +24,9 @@ comments: false
 |  1   | [Github-Awesome Resume](https://github.com/resumejob/awesome-resume) | 专业地道的简历例句 |
 |  2   | [简历投了2个月没有面试，看这趋势，不发力是不行了](http://t.csdn.cn/nUDGz) |    简历注意事项    |
 
+## 三 简历模板
 
+| 编号 |                          名称(地址)                          |    备注    |
+| :--: | :----------------------------------------------------------: | :--------: |
+|  1   | [MD简历模板](https://codeleilei.gitee.io/markdown2pdf/#/template) | MD简历模板 |
 
