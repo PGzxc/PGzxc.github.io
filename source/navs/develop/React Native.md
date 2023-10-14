@@ -32,6 +32,7 @@ comments: false
 |  2   | [react-native-elements](https://github.com/react-native-elements/react-native-elements) |         RN元素         |
 |  3   | [React-Native学习指南](https://github.com/reactnativecn/react-native-guide) | 教程+开源App+组件+工具 |
 |  4   | [你应该知道的11个RN组件库](http://www.hzhcontrols.com/new-3778.html) |       11个组件库       |
+|  5   | [awesome-react-native](https://githubfast.com/jondot/awesome-react-native) |     RN组件、工具等     |
 
 ## 四 UI组件库 
 
@@ -47,11 +48,11 @@ comments: false
 |  8   |         [Zarm Design React](https://zarm.design/#/)          |         宝藏 React 移动端 UI 组件库-`RN` 端暂不支持          |
 |  9   | [React Native Elements](https://githubfast.com/react-native-elements/react-native-elements) |              跨平台应用程序的 React Native 框架              |
 |  10  |  [NativeBase](https://githubfast.com/GeekyAnts/NativeBase)   |                    React Native UI 组件库                    |
-|  11  | [React Native Material UI](https://github.com/xotahal/react-native-material-ui) |                   20 多个不同的自定义组件                    |
-|  12  | [React Native UI Kitten](https://github.com/akveo/kittenTricks) |           基于 Eva 设计体系，提供超过 480 个 icon            |
-|  13  |       [beeshell](https://github.com/meituan/beeshell)        |                   美团React Native 组件库                    |
-|  14  | [Teaset](https://githubfast.com/rilyu/teaset/blob/master/docs/cn/README.md#teaset) |      React Native UI 组件库, 超过 20 个纯 JS(ES6) 组件       |
-|  15  | [react-native-ui-lib](https://githubfast.com/wix/react-native-ui-lib) |                    React Native UI 组件库                    |
+|  11  | [React Native Material UI](https://github.com/xotahal/react-native-material-ui) |              20 多个不同的自定义组件-`暂不更新`              |
+|  12  | [React Native UI Kitten](https://github.com/akveo/kittenTricks) |                 基于 Eva 设计体系-`暂不推荐`                 |
+|  13  |       [beeshell](https://github.com/meituan/beeshell)        |              美团React Native 组件库-`暂不推荐`              |
+|  14  | [Teaset](https://githubfast.com/rilyu/teaset/blob/master/docs/cn/README.md#teaset) |              React Native UI 组件库-`暂不推荐`               |
+|  15  | [react-native-ui-lib](https://githubfast.com/wix/react-native-ui-lib) |              React Native UI 组件库-`暂不推荐`               |
 
 ## 五 UI库
 
@@ -71,3 +72,4 @@ comments: false
 * [推荐 5 个不错的 React Native UI 库](https://blog.csdn.net/YopenLang/article/details/128065199)
 * [好到炸的ReactNativeUI库](https://blog.csdn.net/weixin_34387284/article/details/91466524)
 * [React Navigation](https://reactnavigation.org/)
+* [2023年10月14日，你应该知道的11个React Native组件库](http://www.hzhcontrols.com/new-3778.html)
