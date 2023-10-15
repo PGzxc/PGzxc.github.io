@@ -53,6 +53,7 @@ comments: false
 |  13  |       [beeshell](https://github.com/meituan/beeshell)        |              美团React Native 组件库-`暂不推荐`              |
 |  14  | [Teaset](https://githubfast.com/rilyu/teaset/blob/master/docs/cn/README.md#teaset) |              React Native UI 组件库-`暂不推荐`               |
 |  15  | [react-native-ui-lib](https://githubfast.com/wix/react-native-ui-lib) |              React Native UI 组件库-`暂不推荐`               |
+|  16  | [gluestackui](https://gluestack.io/ui/docs/overview/introduction) |                    React Native UI 组件库                    |
 
 ## 五 UI库
 
