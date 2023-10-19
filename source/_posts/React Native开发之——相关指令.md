@@ -55,6 +55,12 @@ npx nrm use taobao
 npx nrm use npm
 ```
 
+### 2.4 更新npm
+
+```
+npm install -g npm@latest
+```
+
 ## 三 Yarn
 
 ### 3.1 安装
@@ -161,6 +167,22 @@ npm uninstall -g react-native-cli @react-native-community/cli
 npx react-native@latest init AwesomeProject
 ```
 
+### 6.3 项目依赖
+
+查看过时依赖
+
+```
+npm outdated
+yarn outdated
+```
+
+更新过时依赖
+
+```
+npm update
+yarn upgrade
+```
+
 ## 八 运行
 
 指令
@@ -171,3 +193,6 @@ yarn android
 yarn react-native run-android
 ```
 
+## 九  参考
+
+* [知乎—细说包管理器yarn和npm](https://zhuanlan.zhihu.com/p/446995365)
