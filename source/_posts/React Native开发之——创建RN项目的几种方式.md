@@ -57,7 +57,11 @@ npx create-expo-app expo-sample
 * 支持：android、ios、web
 * 创建完的项目，没有android、ios、web等model
 
-#### 生成android、ios、web对应model
+#### 安装Expo客户端
+
+下载地址：https://expo.dev/client
+
+#### 运行或生成android、ios、web
 
 1-web
 
