@@ -391,7 +391,32 @@ __2-Android项目—E朝朝企业端__
 
 ---
 # 个人项目
-## 一 KMM跨平台—[WanAndroid-Compose-Multiplatform](https://github.com/PGzxc/WanAndroid-Compose-Multiplatform)
+
+## 一 React Native—[WanAndroidRN](https://github.com/PGzxc/WanAndroidRN)
+
+**项目归属**：个人项目
+**项目名称**：WanAndroid_ComposeUI
+**项目地址**：https://github.com/PGzxc/WanAndroidRN
+**软件支持**：Android+IOS
+**开发工具**：IntelliJ IDEA+Java(11.0.19)+Node(18.18.2)+Yarn(1.22.19)+react-native(0.72.6)+Android SDK Build_tools(33.0.0)
+**项目描述**：该项目是基于WanAndroid 网站开源的接口 API制作的一款React Native开源App。利用 Expo Go+@ant-design/react-native蚂蚁金服UI库开发的一款支持 Android/IOS 跨平台项目。     
+**功能模块**：首页、导航、项目、消息、我等   
+**技术要点**：
+
+- 基于React Navigation导航库构建底部导航框架
+- 基于Fetch进行网络请求，返回一个Promise，简化异步操作
+- 基于React Hooks(useEffect+useState)获取网络数据并更新状态
+- 自定义组件，减少复用代码
+- 基于ant-design/react-native-Carousel实现轮播图效果
+- 基于ant-design/react-native-Tabs实现标签页切换
+
+**项目预览**
+
+| ![][rn-waz-1] | ![][rn-waz-2] | ![][rn-waz-3] |
+| ------------- | ------------- | ------------- |
+| ![][rn-waz-4] | ![][rn-waz-5] | ![][rn-waz-6] |
+
+## 二 KMM跨平台—[WanAndroid-Compose-Multiplatform](https://github.com/PGzxc/WanAndroid-Compose-Multiplatform)
 
 **项目归属**：个人项目
 **项目名称**：WanAndroid-Compose-Multiplatform
@@ -428,7 +453,7 @@ IOS截图
 | ![][multi-ios-waz-9] |                      |                      |                      |
 
 
-## 二 Android-[WanAndroid_ComposeUI](https://github.com/PGzxc/WanAndroid_ComposeUI)
+## 三 Android-[WanAndroid_ComposeUI](https://github.com/PGzxc/WanAndroid_ComposeUI)
 
 **项目归属**：个人项目
 **项目名称**：WanAndroid_ComposeUI
@@ -458,7 +483,7 @@ IOS截图
 | ![][com-az-5] | ![][com-az-6]  | ![][com-az-7]  | ![][com-az-8]  |
 | ![][com-az-9] | ![][com-az-10] | ![][com-az-11] | ![][com-az-12] |
 
-## 三 Flutter—[Flutter-WanAndroid ](https://github.com/PGzxc/flutter_wanandroid)
+## 四 Flutter—[Flutter-WanAndroid ](https://github.com/PGzxc/flutter_wanandroid)
 
 **项目归属** ：个人项目
 **项目名称**：Flutter-wanandroid
@@ -489,7 +514,7 @@ IOS截图
 | ![][w-9] | ![][w-10] | ![][w-11]| ![][w-12]|
 | ![][w-13]| ![][w-14] | ![][w-15]| ![][w-16]|
 
-##  四 Flutter—[Flutter-zhihu-getx](https://github.com/PGzxc/flutter_zhihu_getx)
+##  五 Flutter—[Flutter-zhihu-getx](https://github.com/PGzxc/flutter_zhihu_getx)
 
 **项目归属**：个人项目
 **项目名称**：Flutter_zhihu_getx
@@ -517,7 +542,7 @@ IOS截图
 | ![][zh-9] | ![][zh-10] |           |           |
 
 
-## 五 Android-[直播Live ](https://github.com/PGzxc/Live)
+## 六 Android-[直播Live ](https://github.com/PGzxc/Live)
 
 **项目归属** ：个人项目
 **项目名称**：Android 项目—直播 Live
@@ -546,7 +571,7 @@ IOS截图
 | ![][live-13]| ![][live-14] | ![][live-15]| ![][live-16]|
 | ![][live-17]| ![][live-18] | ![][live-19]| ![][live-20]|
 
-## 六 IOS—[WanAndroid_SwiftUI](https://github.com/PGzxc/WanAndroid_SwiftUI)
+## 七 IOS—[WanAndroid_SwiftUI](https://github.com/PGzxc/WanAndroid_SwiftUI)
 
 **项目归属**：个人项目
 **项目名称**：WanAndroid_SwiftUI
@@ -573,7 +598,7 @@ IOS截图
 |![][swift-waz-5]|![][swift-waz-6] |![][swift-waz-7] |![][swift-waz-8]|
 |![][swift-waz-9]|![][swift-waz-10]|![][swift-waz-11]|                |
 
-## 七 Uni-app—[wanandroid_uni_app](https://github.com/PGzxc/wanandroid_uni_app)
+## 八 Uni-app—[wanandroid_uni_app](https://github.com/PGzxc/wanandroid_uni_app)
 
 **项目归属**：个人项目
 **项目名称**：wanandroid_uni_app
@@ -673,6 +698,17 @@ IOS截图
 * 熟悉pull-to-refresh下拉刷新、上拉加载工具的使用
 * 熟悉webview-flutter进行网页加载及显示
 * 了解Flutter与Android及IOS混合开发
+
+## React Native
+
+* 熟悉FlexBox布局、ES6语法、JSX及Style样式
+* 熟悉常用组件：View、Text、Image、FlatList、SectionList等
+* 熟悉常用API：AppRegistry、StyleSheet、AsyncStorage等
+* 熟悉自定义组件的封装与使用
+* 熟悉fetch网络请求及Promise机制
+* 熟悉常用三方UI库：Ant Design Mobile RN、React Native Element等
+* 熟悉expo构建跨平台应用并使用预览及测试服务
+* 熟悉React Native开发中的问题解决及项目调试
 
 ## Kotlin Multiplatform Mobile
 
@@ -953,3 +989,11 @@ IOS截图
 [multi-ios-waz-7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-me-7.png
 [multi-ios-waz-8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-login-8.png
 [multi-ios-waz-9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-register-9.png
+
+<!--rn-waz-->
+[rn-waz-1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-home-1.jpg
+[rn-waz-2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-nav-2.jpg
+[rn-waz-3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-project-3.jpg
+[rn-waz-4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-msg-unread-4.jpg
+[rn-waz-5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-me-unlogin-5.jpg
+[rn-waz-6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-me-login-6.jpg
