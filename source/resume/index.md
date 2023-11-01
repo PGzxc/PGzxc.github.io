@@ -440,17 +440,17 @@ __2-Android项目—E朝朝企业端__
 
 Android截图
 
-| ![][multi-az-waz-1] | ![][multi-az-waz-2] | ![][multi-az-waz-3] | ![][multi-az-waz-4] |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| ![][multi-az-waz-5] | ![][multi-az-waz-6] | ![][multi-az-waz-7] | ![][multi-az-waz-8] |
-| ![][multi-az-waz-9] |                      |                      |                      |
+| ![][kmm-az-waz-1] | ![][kmm-az-waz-2] | ![][kmm-az-waz-3] | ![][kmm-az-waz-4] |
+| ----------------- | ----------------- | ----------------- | ------------------- |
+| ![][kmm-az-waz-5] | ![][kmm-az-waz-6] | ![][kmm-az-waz-7] | ![][kmm-az-waz-8] |
+| ![][kmm-az-waz-9] |                      |                      |                      |
 
 IOS截图
 
-| ![][multi-ios-waz-1] | ![][multi-ios-waz-2] | ![][multi-ios-waz-3] | ![][multi-ios-waz-4] |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| ![][multi-ios-waz-5] | ![][multi-ios-waz-6] | ![][multi-ios-waz-7] | ![][multi-ios-waz-8] |
-| ![][multi-ios-waz-9] |                      |                      |                      |
+| ![][kmm-ios-waz-1] | ![][kmm-ios-waz-2] | ![][kmm-ios-waz-3] | ![][kmm-ios-waz-4] |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| ![][kmm-ios-waz-5] | ![][kmm-ios-waz-6] | ![][kmm-ios-waz-7] | ![][kmm-ios-waz-8] |
+| ![][kmm-ios-waz-9] |                      |                      |                      |
 
 ## 三 Android-[WanAndroid_ComposeUI](https://github.com/PGzxc/WanAndroid_ComposeUI)
 
@@ -968,25 +968,25 @@ IOS截图
 [com-az-12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/compose-az-web-12.png
 <!--android-WanAndroid_Compose-multiplatform-->
 <!--az-->
-[multi-az-waz-1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-home-1.png
-[multi-az-waz-2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-navigator-2.png
-[multi-az-waz-3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-project-3.png
-[multi-az-waz-4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-msg-4.png
-[multi-az-waz-5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-msg-5.png
-[multi-az-waz-6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-me-6.png
-[multi-az-waz-7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-me-7.png
-[multi-az-waz-8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-login-8.png
-[multi-az-waz-9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-register-9.png
+[kmm-az-waz-1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-home-1.png
+[kmm-az-waz-2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-navigator-2.png
+[kmm-az-waz-3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-project-3.png
+[kmm-az-waz-4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-msg-4.png
+[kmm-az-waz-5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-msg-5.png
+[kmm-az-waz-6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-me-6.png
+[kmm-az-waz-7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-me-7.png
+[kmm-az-waz-8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-login-8.png
+[kmm-az-waz-9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-register-9.png
 <!--ios-->
-[multi-ios-waz-1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-home-1.png
-[multi-ios-waz-2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-navigator-2.png
-[multi-ios-waz-3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-project-3.png
-[multi-ios-waz-4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-msg-4.png
-[multi-ios-waz-5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-msg-5.png
-[multi-ios-waz-6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-me-6.png
-[multi-ios-waz-7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-me-7.png
-[multi-ios-waz-8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-login-8.png
-[multi-ios-waz-9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-register-9.png
+[kmm-ios-waz-1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-home-1.png
+[kmm-ios-waz-2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-navigator-2.png
+[kmm-ios-waz-3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-project-3.png
+[kmm-ios-waz-4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-msg-4.png
+[kmm-ios-waz-5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-msg-5.png
+[kmm-ios-waz-6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-me-6.png
+[kmm-ios-waz-7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-me-7.png
+[kmm-ios-waz-8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-login-8.png
+[kmm-ios-waz-9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-register-9.png
 
 <!--rn-waz-->
 [rn-waz-1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-home-1.jpg
