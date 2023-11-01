@@ -395,7 +395,7 @@ __2-Android项目—E朝朝企业端__
 ## 一 React Native—[WanAndroidRN](https://github.com/PGzxc/WanAndroidRN)
 
 **项目归属**：个人项目
-**项目名称**：WanAndroid_ComposeUI
+**项目名称**：WanAndroidRN
 **项目地址**：https://github.com/PGzxc/WanAndroidRN
 **软件支持**：Android+IOS
 **开发工具**：IntelliJ IDEA+Java(11.0.19)+Node(18.18.2)+Yarn(1.22.19)+react-native(0.72.6)+Android SDK Build_tools(33.0.0)
@@ -451,7 +451,6 @@ IOS截图
 | -------------------- | -------------------- | -------------------- | -------------------- |
 | ![][multi-ios-waz-5] | ![][multi-ios-waz-6] | ![][multi-ios-waz-7] | ![][multi-ios-waz-8] |
 | ![][multi-ios-waz-9] |                      |                      |                      |
-
 
 ## 三 Android-[WanAndroid_ComposeUI](https://github.com/PGzxc/WanAndroid_ComposeUI)
 
@@ -541,8 +540,59 @@ IOS截图
 | ![][zh-5] | ![][zh-6]  | ![][zh-7] | ![][zh-8] |
 | ![][zh-9] | ![][zh-10] |           |           |
 
+## 六 IOS—[WanAndroid_SwiftUI](https://github.com/PGzxc/WanAndroid_SwiftUI)
 
-## 六 Android-[直播Live ](https://github.com/PGzxc/Live)
+**项目归属**：个人项目
+**项目名称**：WanAndroid_SwiftUI
+**项目地址**：https://github.com/PGzxc/WanAndroid_SwiftUI
+**软件支持**：IOS
+**开发工具**：MacOS(13.4)+Xcode(14.3.1)+Swift(5.8.1)
+**项目描述**：WanAndroid-SwiftUI 是基于 WanAndroid 网站开源的接口 API制作的一款IOS开源App。借助于SwiftUI提供的布局(HStack、VStack、ZStack)和组件(Text、Button、Section等) 快速实现界面布局并及时查看界面预览，利用Alamofire+ AlamofireObjectMapper执行网络请求和数据封装，快速实现个人App开发。  
+**功能模块**：首页，导航、项目、消息、我的等   
+**技术要点**：
+
+- 基于TabView+NavigationStack构建项目主体框架
+- 网络部分：API接口+Router封装BaseURL、method、path、params+APIService具体实现
+- Alamofire执行网络请求并将请求结果通过AlamofireObjectMapper解析为Swift对象
+- 基于MVVM(Modal数据类+View视图+ViewModel-继承ObservableObject)设计模式简化开发
+- 基于SDWebImageSwiftUI显示网络图片
+- 基于AppStorage实现数据的持久化存储
+- 基于environmentObject共享应用数据并在需要时获取
+- 基于ImageCarousel实现SwiftUI首页轮播图
+
+**项目预览**
+
+|![][swift-waz-1]| ![][swift-waz-2]|![][swift-waz-3] |![][swift-waz-4]|
+| -------------- | --------------- | --------------  | -------------- |
+|![][swift-waz-5]|![][swift-waz-6] |![][swift-waz-7] |![][swift-waz-8]|
+|![][swift-waz-9]|![][swift-waz-10]|![][swift-waz-11]|                |
+
+## 七 Uni-app—[wanandroid_uni_app](https://github.com/PGzxc/wanandroid_uni_app)
+
+**项目归属**：个人项目
+**项目名称**：wanandroid_uni_app
+**项目地址**：https://github.com/PGzxc/wanandroid_uni_app
+**软件支持**：H5+微信小程序+其他小程序
+**开发工具**：HBuilder X 3.8.4.20230531+Vue(2.x)
+**项目描述**：该项目是基于wanandroid API开发的uni-app开源项目。借助该项目，用户可登录、注册用户，并及时查看文章、项目、导航、消息等网站信息。  
+**功能模块**：首页，导航、项目、消息、我的等   
+**技术要点**：
+
+- 基于uni-ui组件构建布局页面
+- 基于uni-api发起网络请求
+- 基于uni-api-EventChannel监听页面间事件通信
+- 基于uni-api-页面和路由实现页面切换和导航
+- 基于uni-api-数据缓存保存应用数据
+- 创建Vue组件供页面重复使用
+
+**项目预览**
+
+|![][uni-az-1]| ![][uni-az-2]|![][uni-az-3] |![][uni-az-4]|
+| ----------- | ------------ | ------------ | ----------- |
+|![][uni-az-5]|![][uni-az-6] |![][uni-az-7] |![][uni-az-8]|
+
+
+## 八 Android-[直播Live ](https://github.com/PGzxc/Live)
 
 **项目归属** ：个人项目
 **项目名称**：Android 项目—直播 Live
@@ -570,57 +620,6 @@ IOS截图
 | ![][live-9] | ![][live-10] | ![][live-11]| ![][live-12]|
 | ![][live-13]| ![][live-14] | ![][live-15]| ![][live-16]|
 | ![][live-17]| ![][live-18] | ![][live-19]| ![][live-20]|
-
-## 七 IOS—[WanAndroid_SwiftUI](https://github.com/PGzxc/WanAndroid_SwiftUI)
-
-**项目归属**：个人项目
-**项目名称**：WanAndroid_SwiftUI
-**项目地址**：https://github.com/PGzxc/WanAndroid_SwiftUI
-**软件支持**：IOS
-**开发工具**：MacOS(13.4)+Xcode(14.3.1)+Swift(5.8.1)
-**项目描述**：WanAndroid-SwiftUI 是基于 WanAndroid 网站开源的接口 API制作的一款IOS开源App。借助于SwiftUI提供的布局(HStack、VStack、ZStack)和组件(Text、Button、Section等) 快速实现界面布局并及时查看界面预览，利用Alamofire+ AlamofireObjectMapper执行网络请求和数据封装，快速实现个人App开发。  
-**功能模块**：首页，导航、项目、消息、我的等   
-**技术要点**：
-
-- 基于TabView+NavigationStack构建项目主体框架
-- 网络部分：API接口+Router封装BaseURL、method、path、params+APIService具体实现
-- Alamofire执行网络请求并将请求结果通过AlamofireObjectMapper解析为Swift对象
-- 基于MVVM(Modal数据类+View视图+ViewModel-继承ObservableObject)设计模式简化开发
-- 基于SDWebImageSwiftUI显示网络图片
-- 基于AppStorage实现数据的持久化存储
-- 基于environmentObject共享应用数据并在需要时获取
-- 基于ImageCarousel实现SwiftUI首页轮播图
-
-**项目预览**
-
-|![][swift-waz-1]| ![][swift-waz-2]|![][swift-waz-3] |![][swift-waz-4]|
-| -------------- | --------------- | --------------  | -------------- |
-|![][swift-waz-5]|![][swift-waz-6] |![][swift-waz-7] |![][swift-waz-8]|
-|![][swift-waz-9]|![][swift-waz-10]|![][swift-waz-11]|                |
-
-## 八 Uni-app—[wanandroid_uni_app](https://github.com/PGzxc/wanandroid_uni_app)
-
-**项目归属**：个人项目
-**项目名称**：wanandroid_uni_app
-**项目地址**：https://github.com/PGzxc/wanandroid_uni_app
-**软件支持**：H5+微信小程序+其他小程序
-**开发工具**：HBuilder X 3.8.4.20230531+Vue(2.x)
-**项目描述**：该项目是基于wanandroid API开发的uni-app开源项目。借助该项目，用户可登录、注册用户，并及时查看文章、项目、导航、消息等网站信息。  
-**功能模块**：首页，导航、项目、消息、我的等   
-**技术要点**：
-
-- 基于uni-ui组件构建布局页面
-- 基于uni-api发起网络请求
-- 基于uni-api-EventChannel监听页面间事件通信
-- 基于uni-api-页面和路由实现页面切换和导航
-- 基于uni-api-数据缓存保存应用数据
-- 创建Vue组件供页面重复使用
-
-**项目预览**
-
-|![][uni-az-1]| ![][uni-az-2]|![][uni-az-3] |![][uni-az-4]|
-| ----------- | ------------ | ------------ | ----------- |
-|![][uni-az-5]|![][uni-az-6] |![][uni-az-7] |![][uni-az-8]|
 
 ---
 
