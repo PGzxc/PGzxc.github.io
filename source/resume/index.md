@@ -653,39 +653,6 @@ IOS截图
 14. 熟悉MRC、ARC内存管理机制
 15. 熟练运用runtime，理解runloop原理
 
-## 微信小程序
-1. 熟练掌握标记语言、样式表、JS，进行功能开发
-2. 熟悉常用组件的使用及相关API
-3. 熟悉小程序网络API功能的封装及返回数据处理
-4. 熟悉小程序功能调试及异常问题解决
-5. 熟悉小程序模板template封装及调用
-6. 熟悉小程序动画即画布Canvas绘制
-7. 熟悉小程序第三方SDK使用
-
-## 前端
-
-1. 熟悉HTML、CSS、盒子布局模式等前端web开发技术
-2. 熟悉使用jQuery、ajax，完成服务器交互，页面动画效果
-3. 熟悉使用Bootstrap，Element-ui、Vant,Swiper等插件
-4. 熟悉使用vue框架、vue-router、axios、vue-cli脚手架
-5. 熟悉使用Git控制工具进行项目开发
-6. 熟悉微信小程序开发，熟悉uni-app开发
-7. 熟悉css常用预处理器sass
-8. 了解前端打包工具webPack，包管理器npm、cnpm、yarn
-
-
-## C#
-
-1. 熟练掌握基于C#语言.NET框架下的ASP.NET和WinForm应用的开发
-2. 熟练掌握用于WEB开发的Flex+CSS、JS、XML、WebServic等技术
-3. 熟练掌握用于WinForm应用程序开发的GDI+，IO，网络编程，多线程等技术
-4. 熟悉三层架构设计思想，熟练掌握B/S及C/S应用模式开发
-5. 熟悉掌握使用常用的设计模式，如单例模式、工厂模式等
-6. 熟悉常用源码管理工具的配置与使用，如SVN、Git
-7. 沟通能力良好，有团队合作精神
-8. 学习能力良好，有技术文件编写经验
-9. 熟练使用SQL Server、MySQL、ACCESS等数据库进行项目开发，并可熟练使用ADO.NET进行数据库的访问操作
-
 ## Flutter
 
 * 熟悉Flutter中常用的布局、组件并进行UI开发
@@ -719,6 +686,38 @@ IOS截图
 * 熟悉定义网络请求的各种状态并根据状态进行界面显示的MVI模式
 * 熟悉SQLDelight跨平台数据库的配置及使用
 * 熟悉Kstore-file跨平台文件设置及Kstore跨平台数据保存
+
+## 微信小程序
+1. 熟练掌握标记语言、样式表、JS，进行功能开发
+2. 熟悉常用组件的使用及相关API
+3. 熟悉小程序网络API功能的封装及返回数据处理
+4. 熟悉小程序功能调试及异常问题解决
+5. 熟悉小程序模板template封装及调用
+6. 熟悉小程序动画即画布Canvas绘制
+7. 熟悉小程序第三方SDK使用
+
+## 前端
+
+1. 熟悉HTML、CSS、盒子布局模式等前端web开发技术
+2. 熟悉使用jQuery、ajax，完成服务器交互，页面动画效果
+3. 熟悉使用Bootstrap，Element-ui、Vant,Swiper等插件
+4. 熟悉使用vue框架、vue-router、axios、vue-cli脚手架
+5. 熟悉使用Git控制工具进行项目开发
+6. 熟悉微信小程序开发，熟悉uni-app开发
+7. 熟悉css常用预处理器sass
+8. 了解前端打包工具webPack，包管理器npm、cnpm、yarn
+
+## C#
+
+1. 熟练掌握基于C#语言.NET框架下的ASP.NET和WinForm应用的开发
+2. 熟练掌握用于WEB开发的Flex+CSS、JS、XML、WebServic等技术
+3. 熟练掌握用于WinForm应用程序开发的GDI+，IO，网络编程，多线程等技术
+4. 熟悉三层架构设计思想，熟练掌握B/S及C/S应用模式开发
+5. 熟悉掌握使用常用的设计模式，如单例模式、工厂模式等
+6. 熟悉常用源码管理工具的配置与使用，如SVN、Git
+7. 沟通能力良好，有团队合作精神
+8. 学习能力良好，有技术文件编写经验
+9. 熟练使用SQL Server、MySQL、ACCESS等数据库进行项目开发，并可熟练使用ADO.NET进行数据库的访问操作
 
 ---
 # 微信公众号
