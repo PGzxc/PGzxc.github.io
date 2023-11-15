@@ -37,14 +37,15 @@ comments: false
 |  2   | [TVBoxOSC](https://github.com/CatVodTVOfficial/TVBoxOSC) |     原版开源库      |
 |  3   |   [TVBoxOSC](https://github.com/o0HalfLife0o/TVBoxOSC)   |      开源库Apk      |
 
-### 2.3 接口合集
+## 三 资源
+### 3.1 接口合集
 
 | 编号 |                   名称(地址)                    |   备注    |
 | :--: | :---------------------------------------------: | :-------: |
 |  1   |     [TVBox](https://github.com/2hacc/TVBox)     | TVBox接口 |
 |  2   | [qist/tvbox](https://githubfast.com/qist/tvbox) | app&配置  |
 
-### 2.4 常用接口
+### 3.2 常用接口
 
 | 编号 |                          名称(地址)                          |   备注   |
 | :--: | :----------------------------------------------------------: | :------: |
@@ -52,9 +53,16 @@ comments: false
 |  2   | https://github.moeyy.xyz/raw.githubusercontent.com/qist/tvbox/master/jsm.json | 电视使用 |
 |  3   |     https://cdn.jsdelivr.net/gh/liu673cn/box@main/m.json     | 网络提供 |
 
-### 2.5 接口网站
+### 3.3 接口网站
 
 | 编号 |            名称(地址)             |   备注   |
 | :--: | :-------------------------------: | :------: |
 |  1   | [肥猫](https://xn--z7x900a.love/) | 接口网站 |
+
+## 四 直播源
+### 4.1 直播源
+
+| 编号 |                          名称(地址)                          | 备注 |
+| :--: | :----------------------------------------------------------: | :--: |
+|  1   | [直播源汇总](https://githubfast.com/imDazui/Tvlist-awesome-m3u-m3u8) | 汇总 |
 
