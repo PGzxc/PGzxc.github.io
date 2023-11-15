@@ -66,3 +66,9 @@ comments: false
 | :--: | :----------------------------------------------------------: | :--: |
 |  1   | [直播源汇总](https://githubfast.com/imDazui/Tvlist-awesome-m3u-m3u8) | 汇总 |
 
+## 五 zyplayer配置
+
+| 编号 |                  名称(地址)                   |       备注       |
+| :--: | :-------------------------------------------: | :--------------: |
+|  1   | https://pan.shangui.cc/f/Nz4Ncj/zyplayer.json | zyplayer一键导入 |
+
