@@ -20,7 +20,11 @@ comments: false
 |  2   | [开源三方库资源汇总](https://gitee.com/openharmony-tpc/tpc_resource) |    三方库资源汇总    |
 |  3   | [应用及服务组件](https://repo.harmonyos.com/#/cn/application/atomService?sort=downloads&page=1&tag=UI) |         组件         |
 
+## 三 Libs
 
+| 编号 |                             地址                             |  说明  |
+| :--: | :----------------------------------------------------------: | :----: |
+|  1   | [OpenHarmony三方库中心仓](https://ohpm.openharmony.cn/#/cn/home) | 三方库 |
 
 
 
