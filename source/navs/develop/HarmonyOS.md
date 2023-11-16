@@ -17,6 +17,8 @@ comments: false
 | 编号 |                             地址                             |         说明         |
 | :--: | :----------------------------------------------------------: | :------------------: |
 |  1   | [HarmonyOS三方库](https://developer.huawei.com/consumer/cn/forum/topic/0202539543310340012?fid=0101303901040230869) | 7个大类，400多种组件 |
+|  2   | [开源三方库资源汇总](https://gitee.com/openharmony-tpc/tpc_resource) |    三方库资源汇总    |
+|  3   | [应用及服务组件](https://repo.harmonyos.com/#/cn/application/atomService?sort=downloads&page=1&tag=UI) |         组件         |
 
 
 
