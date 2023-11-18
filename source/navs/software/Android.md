@@ -22,6 +22,7 @@ comments: false
 |  3   |                [观道](http://www.guandao.cc/)                | 内网 |
 |  4   |          [apk.support](https://apk.support/zh_cn/)           | 外网 |
 |  5   | [GooglePlay](https://play.google.com/)+[油猴插件](https://greasyfork.org/zh-CN/scripts/33005-direct-download-from-google-play) | 外网 |
+|  6   | [Google Play Store](https://www.divxland.org/en/google-play-store/last-version/#google_vignette) | 内网 |
 
 ## 三 邮箱
 
