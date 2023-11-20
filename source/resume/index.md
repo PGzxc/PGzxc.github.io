@@ -6,9 +6,9 @@ comments: false
 ---
 <!--简历下载位置-->
 
-|        Android       |        IOS         |        鸿蒙       |        Flutter         |        RN        | KMM |      小程序      |      前端      |         C#         |        完整简历         |
+|        Android       |        IOS         |       Harmony       |        Flutter         |        RN        | KMM |      小程序      |      前端      |         C#         |        完整简历         |
 | :--------------------: | :----------------: | :--------------------: | :----------------: | :----------------: | :---------------------: | :---------------------: | :---------------------: | :---------------------: | :---------------------: |
-| [下载][resume-android] | [下载][resume-ios] | 制作中 | [下载][resume-flutter] | [下载][resume-rn] | [下载][resume-kmm] | [下载][resume-xcx] | [下载][resume-front] | [下载][resume-csharp] | [点击下载][resume-inex] |
+| [下载][resume-android] | [下载][resume-ios] | [下载][resume-hm] | [下载][resume-flutter] | [下载][resume-rn] | [下载][resume-kmm] | [下载][resume-xcx] | [下载][resume-front] | [下载][resume-csharp] | [点击下载][resume-inex] |
 
 # 联系方式
 
@@ -766,6 +766,7 @@ IOS截图
 
 [resume-android]:folder/周向成_Android开发工程师.pdf
 [resume-ios]:folder/周向成_IOS开发工程师.pdf
+[resume-hm]:folder/周向成_Harmony开发工程师.pdf
 [resume-flutter]:folder/周向成_Flutter开发工程师.pdf
 [resume-rn]:folder/周向成_ReactNative开发工程师.pdf
 [resume-kmm]:folder/周向成_KMM开发工程师.pdf
