@@ -26,7 +26,7 @@ comments: false
 # 求职意向
 
 - 工作性质：全职
-- 期望职位：Android开发、IOS开发、Flutter开发、ReactNative开发、KMM开发、前端开发、小程序开发、.NET开发工程师等
+- 期望职位：Android开发、IOS开发、Harmony开发、Flutter开发、ReactNative开发、KMM开发、前端开发、小程序开发、.NET开发工程师等
 - 期望薪资：面议
 - 工作地点：北京
 
@@ -391,8 +391,32 @@ __2-Android项目—E朝朝企业端__
 
 ---
 # 个人项目
+## 一 Harmony—[WanAndroidHM](https://githubfast.com/PGzxc/WanAndroidHM)
 
-## 一 React Native—[WanAndroidRN](https://github.com/PGzxc/WanAndroidRN)
+**项目归属**：个人项目
+**项目名称**：WanAndroidHM
+**项目地址**：https://githubfast.com/PGzxc/WanAndroidHM
+**软件支持**：鸿蒙全系列
+**开发工具**：DevEco Studio 3.1.1 Release+Node(16.19.1)+ohpm(1.2.0)
+**项目描述**：该项目是基于WanAndroid 网站开源的接口 API制作的一款Harmony开源hap。利用Harmony布局、组件、API开发的一款支持Harmony全系列应用。     
+**功能模块**：首页、导航、项目、消息、我等   
+**技术要点**：
+
+- 基于Tabs+tabBar构建底部导航框架
+- 基于@ohos.net.http进行网络请求，返回一个Promise，简化异步操作
+- 基于@State、@Prop等装饰器获取网络数据并更新状态
+- 基于@Builder、@Extend等装饰器自定义组件，减少复用代码
+- 基于preferences、PersistentStorage等数据持久化存储方案保存用户数据
+- 基于router、Navigator页面路由和组件导航及pageTransition转场动画
+
+**项目预览**
+
+| ![][waz-hm-1] | ![][waz-hm-2]  | ![][waz-hm-3]  | ![][waz-hm-4]  |
+| :-----------: | :------------: | :------------: | :------------: |
+| ![][waz-hm-5] | ![][waz-hm-6]  | ![][waz-hm-7]  | ![][waz-hm-8]  |
+| ![][waz-hm-9] | ![][waz-hm-10] | ![][waz-hm-11] | ![][waz-hm-12] |
+
+## 二 React Native—[WanAndroidRN](https://github.com/PGzxc/WanAndroidRN)
 
 **项目归属**：个人项目
 **项目名称**：WanAndroidRN
@@ -416,7 +440,7 @@ __2-Android项目—E朝朝企业端__
 | ------------- | ------------- | ------------- |
 | ![][rn-waz-4] | ![][rn-waz-5] | ![][rn-waz-6] |
 
-## 二 KMM跨平台—[WanAndroid-Compose-Multiplatform](https://github.com/PGzxc/WanAndroid-Compose-Multiplatform)
+## 三 KMM跨平台—[WanAndroid-Compose-Multiplatform](https://github.com/PGzxc/WanAndroid-Compose-Multiplatform)
 
 **项目归属**：个人项目
 **项目名称**：WanAndroid-Compose-Multiplatform
@@ -452,7 +476,7 @@ IOS截图
 | ![][kmm-ios-waz-5] | ![][kmm-ios-waz-6] | ![][kmm-ios-waz-7] | ![][kmm-ios-waz-8] |
 | ![][kmm-ios-waz-9] |                      |                      |                      |
 
-## 三 Android-[WanAndroid_ComposeUI](https://github.com/PGzxc/WanAndroid_ComposeUI)
+## 四 Android-[WanAndroid_ComposeUI](https://github.com/PGzxc/WanAndroid_ComposeUI)
 
 **项目归属**：个人项目
 **项目名称**：WanAndroid_ComposeUI
@@ -482,7 +506,7 @@ IOS截图
 | ![][com-az-5] | ![][com-az-6]  | ![][com-az-7]  | ![][com-az-8]  |
 | ![][com-az-9] | ![][com-az-10] | ![][com-az-11] | ![][com-az-12] |
 
-## 四 Flutter—[Flutter-WanAndroid ](https://github.com/PGzxc/flutter_wanandroid)
+## 五 Flutter—[Flutter-WanAndroid ](https://github.com/PGzxc/flutter_wanandroid)
 
 **项目归属** ：个人项目
 **项目名称**：Flutter-wanandroid
@@ -513,7 +537,7 @@ IOS截图
 | ![][w-9] | ![][w-10] | ![][w-11]| ![][w-12]|
 | ![][w-13]| ![][w-14] | ![][w-15]| ![][w-16]|
 
-##  五 Flutter—[Flutter-zhihu-getx](https://github.com/PGzxc/flutter_zhihu_getx)
+##  六 Flutter—[Flutter-zhihu-getx](https://github.com/PGzxc/flutter_zhihu_getx)
 
 **项目归属**：个人项目
 **项目名称**：Flutter_zhihu_getx
@@ -540,7 +564,7 @@ IOS截图
 | ![][zh-5] | ![][zh-6]  | ![][zh-7] | ![][zh-8] |
 | ![][zh-9] | ![][zh-10] |           |           |
 
-## 六 IOS—[WanAndroid_SwiftUI](https://github.com/PGzxc/WanAndroid_SwiftUI)
+## 七 IOS—[WanAndroid_SwiftUI](https://github.com/PGzxc/WanAndroid_SwiftUI)
 
 **项目归属**：个人项目
 **项目名称**：WanAndroid_SwiftUI
@@ -567,7 +591,7 @@ IOS截图
 |![][swift-waz-5]|![][swift-waz-6] |![][swift-waz-7] |![][swift-waz-8]|
 |![][swift-waz-9]|![][swift-waz-10]|![][swift-waz-11]|                |
 
-## 七 Uni-app—[wanandroid_uni_app](https://github.com/PGzxc/wanandroid_uni_app)
+## 八 Uni-app—[wanandroid_uni_app](https://github.com/PGzxc/wanandroid_uni_app)
 
 **项目归属**：个人项目
 **项目名称**：wanandroid_uni_app
@@ -592,7 +616,7 @@ IOS截图
 |![][uni-az-5]|![][uni-az-6] |![][uni-az-7] |![][uni-az-8]|
 
 
-## 八 Android-[直播Live ](https://github.com/PGzxc/Live)
+## 九 Android-[直播Live ](https://github.com/PGzxc/Live)
 
 **项目归属** ：个人项目
 **项目名称**：Android 项目—直播 Live
@@ -652,6 +676,17 @@ IOS截图
 13. 熟悉 SourceTree、Github 代码管理工具，jenkins可持续开发
 14. 熟悉MRC、ARC内存管理机制
 15. 熟练运用runtime，理解runloop原理
+
+## Harmony
+
+* 熟悉ArkTS开发语言，熟悉ArkTS语法规范
+* 熟悉Harmony中常用布局、组件并进行UI开发
+* 熟悉通过Builder装饰器、Extend装饰器等自定义组件
+* 熟悉@State、@Prop等状态管理，并进行数据传递和接收
+* 熟悉preferences、PersistentStorage等数据持久化存储方案
+* 熟悉router、Navigator页面路由和组件导航及pageTransition转场动画
+* 熟悉@ohos.net.http或@ohos/axios等网络请求框架
+* 熟悉常见开源三方库：@ohos/pulltorefres、@ohos/axios、@ohos/mmkv等
 
 ## Flutter
 
@@ -996,3 +1031,17 @@ IOS截图
 [rn-waz-4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-msg-unread-4.jpg
 [rn-waz-5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-me-unlogin-5.jpg
 [rn-waz-6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-me-login-6.jpg
+
+<!--hm-waz-->
+[waz-hm-1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/waz-hm-splash-0.png
+[waz-hm-2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/waz-hm-home-1.png
+[waz-hm-3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/waz-hm-nav-2.png
+[waz-hm-4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/waz-hm-navlist-3.png
+[waz-hm-5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/waz-hm-project-4.png
+[waz-hm-6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/waz-hm-msg-5.png
+[waz-hm-7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/waz-hm-msg-6.png
+[waz-hm-8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/waz-hm-me-7.png
+[waz-hm-9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/waz-hm-me-8.png
+[waz-hm-10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/waz-hm-login-9.png
+[waz-hm-11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/waz-hm-register-10.png
+[waz-hm-12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/waz-hm-me-set-11.png
