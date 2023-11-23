@@ -391,10 +391,7 @@ __2-Android项目—E朝朝企业端__
 
 ---
 # 个人项目
-
-## 一 Harmony项目
-
-### 1—[WanAndroidHM](https://githubfast.com/PGzxc/WanAndroidHM)
+## 一 Harmony—[WanAndroidHM](https://githubfast.com/PGzxc/WanAndroidHM)
 
 **项目归属**：个人项目
 **项目名称**：WanAndroidHM
@@ -421,159 +418,7 @@ __2-Android项目—E朝朝企业端__
 | ![][waz-hm-9] | ![][waz-hm-10] | ![][waz-hm-11] | ![][waz-hm-12] |
 | ![][waz-hm-13]| ![][waz-hm-14] |                |                |
 
-## 二 Android项目
-
-### 1—[WanAndroid_ComposeUI](https://github.com/PGzxc/WanAndroid_ComposeUI)
-
-**项目归属**：个人项目
-**项目名称**：WanAndroid_ComposeUI
-**项目地址**：https://github.com/PGzxc/WanAndroid_ComposeUI
-**软件支持**：Android
-**开发工具**：Android Studio(2022.2.1)+Java(17.0.6)+Gradle(8.0-bin)+Kotlin(1.7.20)
-**项目描述**：该项目是基于WanAndroid 网站开源的接口 API制作的一款Android ComposeUI开源App。借助于ComposeUI提供的布局(Row、Column、Box)和组件(Text、Button、Card、TabRow等) 快速实现界面布局并及时查看界面预览，利用Okhttp3+ Retrofit2+Converter-Gson执行网络请求和数据封装，快速实现个人App开发。     
-**功能模块**：首页、导航、项目、消息、我、设置等   
-**技术要点**：
-
-- 基于Okhttp3+ Retrofit2+Converter-Gson构建项目网络访问框架
-- 基于PersistentCookieJar自动保存登录Cookie
-- 基于Lifecycle-Viewmodel构建MVVM框架
-- 基于navigation-compose构建页面导航
-- 基于accompanist-pager实现分页布局支持
-- 基于accompanist-swiperefresh实现页面刷新
-- 基于accompanist-webview显示网页详情
-- 基于accompanist-flowlayout实现流式布局
-- 基于mmkv保存永久存储数据
-- material-icons-core、material-icons-extended使用系统图标
-
-**项目预览**
-
-
-| ![][com-az-1] | ![][com-az-2]  | ![][com-az-3]  | ![][com-az-4]  |
-| ------------- | -------------- | -------------- | -------------- |
-| ![][com-az-5] | ![][com-az-6]  | ![][com-az-7]  | ![][com-az-8]  |
-| ![][com-az-9] | ![][com-az-10] | ![][com-az-11] | ![][com-az-12] |
-
-### 2—[直播Live ](https://github.com/PGzxc/Live)
-
-**项目归属** ：个人项目
-**项目名称**：Android 项目—直播 Live
-**软件支持**：Android 6.0 以上
-**项目地址**：https://github.com/PGzxc/Live
-**开发工具**：Android Studio + Github
-**项目描述**：直播Live是一款仿映客直播软件，为个人业余开源项目。整体界面仿映客布局，包含首页、附近、直播、关注和我，因时间有限，仅实现部分主要功能，待后期完善。     
-**功能模块**：首页，附近、直播、关注、我等   
-**技术要点**：
-
-- 基于Bottom Bar+Fragmentation+DataBinding构建开发框架
-- 基于七牛云实现推流(PLDroidMediaStreaming)和拉流(PLDroidPlayer)
-- 基于环信聊天室实现直播间聊天
-- 基于BaseRecycleViewAdapterHelper实现多种布局
-- 基于SmartReFreshLayout实现下拉刷新和上拉加载
-- 基于HeartLayout实现点心动画
-- 基于ViewAnimator实现聊天弹幕和礼物特效
-- 使用RAP模拟接口数据
-
-**项目预览**
-
-| ![][live-1] | ![][live-2]  | ![][live-3] | ![][live-4] |
-| ----------- | ------------ | ----------- | ----------- |
-| ![][live-5] | ![][live-6]  | ![][live-7] | ![][live-8] |
-| ![][live-9] | ![][live-10] | ![][live-11]| ![][live-12]|
-| ![][live-13]| ![][live-14] | ![][live-15]| ![][live-16]|
-| ![][live-17]| ![][live-18] | ![][live-19]| ![][live-20]|
-
-## 三 IOS项目
-
-### 1—[WanAndroid_SwiftUI](https://github.com/PGzxc/WanAndroid_SwiftUI)
-
-**项目归属**：个人项目
-**项目名称**：WanAndroid_SwiftUI
-**项目地址**：https://github.com/PGzxc/WanAndroid_SwiftUI
-**软件支持**：IOS
-**开发工具**：MacOS(13.4)+Xcode(14.3.1)+Swift(5.8.1)
-**项目描述**：WanAndroid-SwiftUI 是基于 WanAndroid 网站开源的接口 API制作的一款IOS开源App。借助于SwiftUI提供的布局(HStack、VStack、ZStack)和组件(Text、Button、Section等) 快速实现界面布局并及时查看界面预览，利用Alamofire+ AlamofireObjectMapper执行网络请求和数据封装，快速实现个人App开发。  
-**功能模块**：首页，导航、项目、消息、我的等   
-**技术要点**：
-
-- 基于TabView+NavigationStack构建项目主体框架
-- 网络部分：API接口+Router封装BaseURL、method、path、params+APIService具体实现
-- Alamofire执行网络请求并将请求结果通过AlamofireObjectMapper解析为Swift对象
-- 基于MVVM(Modal数据类+View视图+ViewModel-继承ObservableObject)设计模式简化开发
-- 基于SDWebImageSwiftUI显示网络图片
-- 基于AppStorage实现数据的持久化存储
-- 基于environmentObject共享应用数据并在需要时获取
-- 基于ImageCarousel实现SwiftUI首页轮播图
-
-**项目预览**
-
-|![][swift-waz-1]| ![][swift-waz-2]|![][swift-waz-3] |![][swift-waz-4]|
-| -------------- | --------------- | --------------  | -------------- |
-|![][swift-waz-5]|![][swift-waz-6] |![][swift-waz-7] |![][swift-waz-8]|
-|![][swift-waz-9]|![][swift-waz-10]|![][swift-waz-11]|                |
-
-## 四 Flutter项目
-
-### 1—[Flutter-WanAndroid ](https://github.com/PGzxc/flutter_wanandroid)
-
-**项目归属** ：个人项目
-**项目名称**：Flutter-wanandroid
-**项目地址**：https://github.com/PGzxc/flutter_wanandroid
-**软件支持**：Android+IOS
-**开发工具**：IDEA 社区版 2022.1+Flutter(3.0.2) 
-**项目描述**：Flutter-WanAndroid 是基于 WanAndroid 网站开源的接口 API制作的一款开源App。本项目基于 GetX +一系列开源 UI 库开发的一款支持 Android/IOS 跨平台项目。     
-**功能模块**：首页、导航、项目、消息、我、语言、主题   
-**技术要点**：
-
-- 基于GetX+getWidget构建开发框架
-- 基于GetX-GetConnect构建网络请求
-- 基于json_serializable+build_runner封装网络返回结果
-- 基于shared_preference保存用户登录结果和语言/主题设置
-- 基于flutter_pulltorefresh实现下拉刷新和上拉加载
-- 基于shimmer实现网络请求时预览效果显示
-- 基于webview-flutter显示网页效果
-- 基于flutter_native_splash设置项目启动默认画面，防止白屏
-- 基于KeepAliveWrapper进行列表项缓存，防止多次加载
-- 基于Google组件getWidget-badges，显示未读消息
-- 使用flutter_screenutil进行屏幕适配
-
-**项目预览**
-
-| ![][w-1] | ![][w-2]  | ![][w-3] | ![][w-4] |
-| -------- | --------- | -------- | -------- |
-| ![][w-5] | ![][w-6]  | ![][w-7]| ![][w-8] |
-| ![][w-9] | ![][w-10] | ![][w-11]| ![][w-12]|
-| ![][w-13]| ![][w-14] | ![][w-15]| ![][w-16]|
-
-###  2—[Flutter-zhihu-getx](https://github.com/PGzxc/flutter_zhihu_getx)
-
-**项目归属**：个人项目
-**项目名称**：Flutter_zhihu_getx
-**项目地址**：https://github.com/PGzxc/flutter_zhihu_getx
-**软件支持**：Android+IOS
-**开发工具**：IDEA 社区版 2022.2.4+Flutter(3.7.3)
-**项目描述**：Flutter-zhihu-getx是仿制知乎app开发的个人项目。利用 GetX 搭建网络和网络框架+Google 开源 UI 库开发的一款支持 Android/IOS 跨平台项目。     
-**功能模块**：首页、关注、发布、会员、我的   
-**技术要点**：
-
-- 基于GetX+nav_sheet构建项目开发框架
-- 基于GetX将视图View和控制器Controller分隔开，并通过bindings将两者结合
-- 基于flutter_pulltorefresh实现下拉刷新和上拉加载
-- 基于staggered_grid_view实现错开显示的图片列表
-- 基于flutter_quill实现富文本编辑器
-- 基于flutter_tindercard实现滑动移除上一张获取下一张卡片信息
-- 基于KeepAliveWrapper进行列表项缓存，防止多次加载
-- 基于getwidget、remixicon、font_awesome_flutter实现项目中的图标和组件
-
-**项目预览**
-
-| ![][zh-1] | ![][zh-2]  | ![][zh-3] | ![][zh-4] |
-| --------- | ---------- | --------- | --------- |
-| ![][zh-5] | ![][zh-6]  | ![][zh-7] | ![][zh-8] |
-| ![][zh-9] | ![][zh-10] |           |           |
-
-## 五 React Native项目
-
-### 1—[WanAndroidRN](https://github.com/PGzxc/WanAndroidRN)
+## 二 React Native—[WanAndroidRN](https://github.com/PGzxc/WanAndroidRN)
 
 **项目归属**：个人项目
 **项目名称**：WanAndroidRN
@@ -597,9 +442,7 @@ __2-Android项目—E朝朝企业端__
 | ------------- | ------------- | ------------- |
 | ![][rn-waz-4] | ![][rn-waz-5] | ![][rn-waz-6] |
 
-## 六 Kotlin Multiplatform Mobile项目
-
-### 1—[WanAndroid-Compose-Multiplatform](https://github.com/PGzxc/WanAndroid-Compose-Multiplatform)
+## 三 KMM跨平台—[WanAndroid-Compose-Multiplatform](https://github.com/PGzxc/WanAndroid-Compose-Multiplatform)
 
 **项目归属**：个人项目
 **项目名称**：WanAndroid-Compose-Multiplatform
@@ -635,9 +478,122 @@ IOS截图
 | ![][kmm-ios-waz-5] | ![][kmm-ios-waz-6] | ![][kmm-ios-waz-7] | ![][kmm-ios-waz-8] |
 | ![][kmm-ios-waz-9] |                      |                      |                      |
 
-## 七 Uni-app项目
+## 四 Android-[WanAndroid_ComposeUI](https://github.com/PGzxc/WanAndroid_ComposeUI)
 
-### 1—[wanandroid_uni_app](https://github.com/PGzxc/wanandroid_uni_app)
+**项目归属**：个人项目
+**项目名称**：WanAndroid_ComposeUI
+**项目地址**：https://github.com/PGzxc/WanAndroid_ComposeUI
+**软件支持**：Android
+**开发工具**：Android Studio(2022.2.1)+Java(17.0.6)+Gradle(8.0-bin)+Kotlin(1.7.20)
+**项目描述**：该项目是基于WanAndroid 网站开源的接口 API制作的一款Android ComposeUI开源App。借助于ComposeUI提供的布局(Row、Column、Box)和组件(Text、Button、Card、TabRow等) 快速实现界面布局并及时查看界面预览，利用Okhttp3+ Retrofit2+Converter-Gson执行网络请求和数据封装，快速实现个人App开发。     
+**功能模块**：首页、导航、项目、消息、我、设置等   
+**技术要点**：
+
+- 基于Okhttp3+ Retrofit2+Converter-Gson构建项目网络访问框架
+- 基于PersistentCookieJar自动保存登录Cookie
+- 基于Lifecycle-Viewmodel构建MVVM框架
+- 基于navigation-compose构建页面导航
+- 基于accompanist-pager实现分页布局支持
+- 基于accompanist-swiperefresh实现页面刷新
+- 基于accompanist-webview显示网页详情
+- 基于accompanist-flowlayout实现流式布局
+- 基于mmkv保存永久存储数据
+- material-icons-core、material-icons-extended使用系统图标
+
+**项目预览**
+
+
+| ![][com-az-1] | ![][com-az-2]  | ![][com-az-3]  | ![][com-az-4]  |
+| ------------- | -------------- | -------------- | -------------- |
+| ![][com-az-5] | ![][com-az-6]  | ![][com-az-7]  | ![][com-az-8]  |
+| ![][com-az-9] | ![][com-az-10] | ![][com-az-11] | ![][com-az-12] |
+
+## 五 Flutter—[Flutter-WanAndroid ](https://github.com/PGzxc/flutter_wanandroid)
+
+**项目归属** ：个人项目
+**项目名称**：Flutter-wanandroid
+**项目地址**：https://github.com/PGzxc/flutter_wanandroid
+**软件支持**：Android+IOS
+**开发工具**：IDEA 社区版 2022.1+Flutter(3.0.2) 
+**项目描述**：Flutter-WanAndroid 是基于 WanAndroid 网站开源的接口 API制作的一款开源App。本项目基于 GetX +一系列开源 UI 库开发的一款支持 Android/IOS 跨平台项目。     
+**功能模块**：首页、导航、项目、消息、我、语言、主题   
+**技术要点**：
+
+- 基于GetX+getWidget构建开发框架
+- 基于GetX-GetConnect构建网络请求
+- 基于json_serializable+build_runner封装网络返回结果
+- 基于shared_preference保存用户登录结果和语言/主题设置
+- 基于flutter_pulltorefresh实现下拉刷新和上拉加载
+- 基于shimmer实现网络请求时预览效果显示
+- 基于webview-flutter显示网页效果
+- 基于flutter_native_splash设置项目启动默认画面，防止白屏
+- 基于KeepAliveWrapper进行列表项缓存，防止多次加载
+- 基于Google组件getWidget-badges，显示未读消息
+- 使用flutter_screenutil进行屏幕适配
+
+**项目预览**
+
+| ![][w-1] | ![][w-2]  | ![][w-3] | ![][w-4] |
+| -------- | --------- | -------- | -------- |
+| ![][w-5] | ![][w-6]  | ![][w-7]| ![][w-8] |
+| ![][w-9] | ![][w-10] | ![][w-11]| ![][w-12]|
+| ![][w-13]| ![][w-14] | ![][w-15]| ![][w-16]|
+
+##  六 Flutter—[Flutter-zhihu-getx](https://github.com/PGzxc/flutter_zhihu_getx)
+
+**项目归属**：个人项目
+**项目名称**：Flutter_zhihu_getx
+**项目地址**：https://github.com/PGzxc/flutter_zhihu_getx
+**软件支持**：Android+IOS
+**开发工具**：IDEA 社区版 2022.2.4+Flutter(3.7.3)
+**项目描述**：Flutter-zhihu-getx是仿制知乎app开发的个人项目。利用 GetX 搭建网络和网络框架+Google 开源 UI 库开发的一款支持 Android/IOS 跨平台项目。     
+**功能模块**：首页、关注、发布、会员、我的   
+**技术要点**：
+
+- 基于GetX+nav_sheet构建项目开发框架
+- 基于GetX将视图View和控制器Controller分隔开，并通过bindings将两者结合
+- 基于flutter_pulltorefresh实现下拉刷新和上拉加载
+- 基于staggered_grid_view实现错开显示的图片列表
+- 基于flutter_quill实现富文本编辑器
+- 基于flutter_tindercard实现滑动移除上一张获取下一张卡片信息
+- 基于KeepAliveWrapper进行列表项缓存，防止多次加载
+- 基于getwidget、remixicon、font_awesome_flutter实现项目中的图标和组件
+
+**项目预览**
+
+| ![][zh-1] | ![][zh-2]  | ![][zh-3] | ![][zh-4] |
+| --------- | ---------- | --------- | --------- |
+| ![][zh-5] | ![][zh-6]  | ![][zh-7] | ![][zh-8] |
+| ![][zh-9] | ![][zh-10] |           |           |
+
+## 七 IOS—[WanAndroid_SwiftUI](https://github.com/PGzxc/WanAndroid_SwiftUI)
+
+**项目归属**：个人项目
+**项目名称**：WanAndroid_SwiftUI
+**项目地址**：https://github.com/PGzxc/WanAndroid_SwiftUI
+**软件支持**：IOS
+**开发工具**：MacOS(13.4)+Xcode(14.3.1)+Swift(5.8.1)
+**项目描述**：WanAndroid-SwiftUI 是基于 WanAndroid 网站开源的接口 API制作的一款IOS开源App。借助于SwiftUI提供的布局(HStack、VStack、ZStack)和组件(Text、Button、Section等) 快速实现界面布局并及时查看界面预览，利用Alamofire+ AlamofireObjectMapper执行网络请求和数据封装，快速实现个人App开发。  
+**功能模块**：首页，导航、项目、消息、我的等   
+**技术要点**：
+
+- 基于TabView+NavigationStack构建项目主体框架
+- 网络部分：API接口+Router封装BaseURL、method、path、params+APIService具体实现
+- Alamofire执行网络请求并将请求结果通过AlamofireObjectMapper解析为Swift对象
+- 基于MVVM(Modal数据类+View视图+ViewModel-继承ObservableObject)设计模式简化开发
+- 基于SDWebImageSwiftUI显示网络图片
+- 基于AppStorage实现数据的持久化存储
+- 基于environmentObject共享应用数据并在需要时获取
+- 基于ImageCarousel实现SwiftUI首页轮播图
+
+**项目预览**
+
+|![][swift-waz-1]| ![][swift-waz-2]|![][swift-waz-3] |![][swift-waz-4]|
+| -------------- | --------------- | --------------  | -------------- |
+|![][swift-waz-5]|![][swift-waz-6] |![][swift-waz-7] |![][swift-waz-8]|
+|![][swift-waz-9]|![][swift-waz-10]|![][swift-waz-11]|                |
+
+## 八 Uni-app—[wanandroid_uni_app](https://github.com/PGzxc/wanandroid_uni_app)
 
 **项目归属**：个人项目
 **项目名称**：wanandroid_uni_app
@@ -660,6 +616,36 @@ IOS截图
 |![][uni-az-1]| ![][uni-az-2]|![][uni-az-3] |![][uni-az-4]|
 | ----------- | ------------ | ------------ | ----------- |
 |![][uni-az-5]|![][uni-az-6] |![][uni-az-7] |![][uni-az-8]|
+
+
+## 九 Android-[直播Live ](https://github.com/PGzxc/Live)
+
+**项目归属** ：个人项目
+**项目名称**：Android 项目—直播 Live
+**软件支持**：Android 6.0 以上
+**项目地址**：https://github.com/PGzxc/Live
+**开发工具**：Android Studio + Github
+**项目描述**：直播Live是一款仿映客直播软件，为个人业余开源项目。整体界面仿映客布局，包含首页、附近、直播、关注和我，因时间有限，仅实现部分主要功能，待后期完善。     
+**功能模块**：首页，附近、直播、关注、我等   
+**技术要点**：
+
+- 基于Bottom Bar+Fragmentation+DataBinding构建开发框架
+- 基于七牛云实现推流(PLDroidMediaStreaming)和拉流(PLDroidPlayer)
+- 基于环信聊天室实现直播间聊天
+- 基于BaseRecycleViewAdapterHelper实现多种布局
+- 基于SmartReFreshLayout实现下拉刷新和上拉加载
+- 基于HeartLayout实现点心动画
+- 基于ViewAnimator实现聊天弹幕和礼物特效
+- 使用RAP模拟接口数据
+
+**项目预览**
+
+| ![][live-1] | ![][live-2]  | ![][live-3] | ![][live-4] |
+| ----------- | ------------ | ----------- | ----------- |
+| ![][live-5] | ![][live-6]  | ![][live-7] | ![][live-8] |
+| ![][live-9] | ![][live-10] | ![][live-11]| ![][live-12]|
+| ![][live-13]| ![][live-14] | ![][live-15]| ![][live-16]|
+| ![][live-17]| ![][live-18] | ![][live-19]| ![][live-20]|
 
 ---
 
