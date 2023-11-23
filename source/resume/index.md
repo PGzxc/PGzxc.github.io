@@ -397,7 +397,7 @@ __2-Android项目—E朝朝企业端__
 **项目名称**：WanAndroidHM
 **项目地址**：https://githubfast.com/PGzxc/WanAndroidHM
 **软件支持**：鸿蒙全系列
-**开发工具**：DevEco Studio 3.1.1 Release+Node(16.19.1)+ohpm(1.2.0)
+**开发工具**：DevEco Studio 4.0 Release+Node(16.20.1)+ohpm(1.2.5)
 **项目描述**：该项目是基于WanAndroid 网站开源的接口 API制作的一款Harmony开源hap。利用Harmony布局、组件、API开发的一款支持Harmony全系列应用。     
 **功能模块**：首页、导航、项目、消息、我等   
 **技术要点**：
@@ -408,6 +408,7 @@ __2-Android项目—E朝朝企业端__
 - 基于@Builder、@Extend等装饰器自定义组件，减少复用代码
 - 基于preferences、PersistentStorage等数据持久化存储方案保存用户数据
 - 基于router、Navigator页面路由和组件导航及pageTransition转场动画
+- 基于@ohos/pulltorefres实现下拉刷新和上拉加载
 
 **项目预览**
 
