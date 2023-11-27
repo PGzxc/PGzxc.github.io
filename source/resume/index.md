@@ -419,7 +419,7 @@ __2-Android项目—E朝朝企业端__
 | :-----------: | :------------: | :------------: | :------------: |
 | ![][waz-hm-5] | ![][waz-hm-6]  | ![][waz-hm-7]  | ![][waz-hm-8]  |
 | ![][waz-hm-9] | ![][waz-hm-10] | ![][waz-hm-11] | ![][waz-hm-12] |
-| ![][waz-hm-13]| ![][waz-hm-14] |                |                |
+| ![][waz-hm-13]| ![][waz-hm-14] | ![][waz-hm-15] | ![][waz-hm-16] |
 
 ## <font color=red>二 Android项目</font>
 
@@ -1064,3 +1064,5 @@ IOS截图
 [waz-hm-12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/waz-hm-me-set-11.png
 [waz-hm-13]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/waz-hm-home-refresh-12.png
 [waz-hm-14]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/waz-hm-home-loadmore-13.png
+[waz-hm-15]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/waz-hm-rank-14.png
+[waz-hm-16]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/waz-hm-coin-15.png
