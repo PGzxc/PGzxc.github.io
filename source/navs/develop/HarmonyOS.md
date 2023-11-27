@@ -7,10 +7,11 @@ comments: false
 
 ## 一 教程
 
-| 编号 |                             地址                             |   说明   |
-| :--: | :----------------------------------------------------------: | :------: |
-|  1   | [ArkUI实战](https://www.arkui.club/chapter1/1_2_language.html) | PDF文章  |
-|  2   | [HarmonyOS 文档](https://developer.harmonyos.com/cn/docs/documentation/doc-guides-V3) | 官网文档 |
+| 编号 |                             地址                             |     说明     |
+| :--: | :----------------------------------------------------------: | :----------: |
+|  1   | [ArkUI实战](https://www.arkui.club/chapter1/1_2_language.html) |   PDF文章    |
+|  2   | [HarmonyOS 文档](https://developer.harmonyos.com/cn/docs/documentation/doc-guides-V3) |   官网文档   |
+|  3   | [HarmonyOS视频教程](https://developer.harmonyos.com/cn/docs/documentation/doc-guides-V3/video-tutorials-0000001443535745-V3) | 官网视频教程 |
 
 ## 二 开发工具
 
