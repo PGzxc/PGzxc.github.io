@@ -5,14 +5,21 @@ description:
 comments: false
 ---
 
-## 一 开发工具
+## 一 教程
+
+| 编号 |                             地址                             |   说明   |
+| :--: | :----------------------------------------------------------: | :------: |
+|  1   | [ArkUI实战](https://www.arkui.club/chapter1/1_2_language.html) | PDF文章  |
+|  2   | [HarmonyOS 文档](https://developer.harmonyos.com/cn/docs/documentation/doc-guides-V3) | 官网文档 |
+
+## 二 开发工具
 
 | 编号 |          地址          |         说明          |
 | :--: | :--------------------: | :-------------------: |
 |  1   | [gitee/OpenHarmony][1] | gitee开源网站下载地址 |
 |  2   |     [官网下载][2]      |     官网下载地址      |
 
-## 二 第三方库
+## 三 第三方库
 
 | 编号 |                             地址                             |         说明         |
 | :--: | :----------------------------------------------------------: | :------------------: |
@@ -20,7 +27,7 @@ comments: false
 |  2   | [开源三方库资源汇总](https://gitee.com/openharmony-tpc/tpc_resource) |    三方库资源汇总    |
 |  3   | [应用及服务组件](https://repo.harmonyos.com/#/cn/application/atomService?sort=downloads&page=1&tag=UI) |         组件         |
 
-## 三 Libs
+## 四 Libs
 
 | 编号 |                             地址                             |  说明  |
 | :--: | :----------------------------------------------------------: | :----: |
