@@ -36,14 +36,16 @@ comments: false
 |  1   |          [box](https://github.com/liu673cn/box)          | 开源版+多仓版—>下载 |
 |  2   | [TVBoxOSC](https://github.com/CatVodTVOfficial/TVBoxOSC) |     原版开源库      |
 |  3   |   [TVBoxOSC](https://github.com/o0HalfLife0o/TVBoxOSC)   |      开源库Apk      |
+|  4   |        [tvbos](https://pan.lanzoui.com/b0ah4ju9a)        |     蓝奏云链接      |
 
 ## 三 资源
 ### 3.1 接口合集
 
-| 编号 |                   名称(地址)                    |   备注    |
-| :--: | :---------------------------------------------: | :-------: |
-|  1   |     [TVBox](https://github.com/2hacc/TVBox)     | TVBox接口 |
-|  2   | [qist/tvbox](https://githubfast.com/qist/tvbox) | app&配置  |
+| 编号 |                          名称(地址)                          |   备注    |
+| :--: | :----------------------------------------------------------: | :-------: |
+|  1   |           [TVBox](https://github.com/2hacc/TVBox)            | TVBox接口 |
+|  2   |       [qist/tvbox](https://githubfast.com/qist/tvbox)        | app&配置  |
+|  3   | [18个Tvbox接口](https://mp.weixin.qq.com/s/QN4vSFLESISgyx7iaJVIbw) | Tvbox接口 |
 
 ### 3.2 常用接口
 
