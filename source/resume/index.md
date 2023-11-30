@@ -996,7 +996,7 @@ IOS截图
 <!--IOS-Wanandroid-SwiftUI-->
 [swift-waz-1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-home-1.png
 [swift-waz-2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-detail-2.png
-[swift-waz-3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-navigator-3.png
+[swift-waz-3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-tree-3.png
 [swift-waz-4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-project-4.png
 [swift-waz-5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-message-unread-5.png
 [swift-waz-6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-message-read-6.png
