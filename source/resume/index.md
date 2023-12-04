@@ -506,10 +506,10 @@ __2-Android项目—E朝朝企业端__
 
 **项目预览**
 
-|![][swift-waz-1]| ![][swift-waz-2]|![][swift-waz-3] |![][swift-waz-4]|
-| -------------- | --------------- | --------------  | -------------- |
-|![][swift-waz-5]|![][swift-waz-6] |![][swift-waz-7] |![][swift-waz-8]|
-|![][swift-waz-9]|![][swift-waz-10]|![][swift-waz-11]|                |
+|![][swift-waz-1]| ![][swift-waz-2]|![][swift-waz-3] |![][swift-waz-4] |
+| -------------- | --------------- | --------------  | --------------  |
+|![][swift-waz-5]|![][swift-waz-6] |![][swift-waz-7] |![][swift-waz-8] |
+|![][swift-waz-9]|![][swift-waz-10]|![][swift-waz-11]|![][swift-waz-12]|
 
 ## <font color=red>四 Flutter项目</font>
 
@@ -994,9 +994,9 @@ IOS截图
 [tinber-5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/tinber-fm-story.jpg
 
 <!--IOS-Wanandroid-SwiftUI-->
-[swift-waz-1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-home-1.png
-[swift-waz-2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-detail-2.png
-[swift-waz-3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-tree-3.png
+[swift-waz-1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-1-home.png
+[swift-waz-2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-2-tree.png
+[swift-waz-3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-3-treetab.png
 [swift-waz-4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-project-4.png
 [swift-waz-5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-message-unread-5.png
 [swift-waz-6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-message-read-6.png
@@ -1005,6 +1005,7 @@ IOS截图
 [swift-waz-9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-me-info-no-9.png
 [swift-waz-10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-login-10.png
 [swift-waz-11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-register-11.png
+[swift-waz-12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-12-web.png
 
 <!--android-WanAndroid_ComposeUI-->
 [com-az-1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/compose-az-home-1.png
