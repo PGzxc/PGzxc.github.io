@@ -47,6 +47,7 @@ comments: false
 |  5   | [ShadowsocksX-NG](https://github.com/shadowsocks/ShadowsocksX-NG/releases) |      |
 |  6   |      [V2rayU](https://github.com/yanue/V2rayU/releases)      |      |
 |  7   |     [V2RayXS](https://github.com/tzmax/V2RayXS/releases)     |      |
+|  8   | [Clash Verge](https://github.com/zzzgydi/clash-verge/releases) |      |
 
 ### 1.5 多端
 
