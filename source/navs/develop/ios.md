@@ -12,12 +12,13 @@ comments: false
 
 ## 一 官方教程
 
-| 编号 |                          名称(链接)                          | 备注 |
-| :--: | :----------------------------------------------------------: | :--: |
-|  1   |        [IOS开发者官网](https://developer.apple.com/)         |      |
-|  2   |  [IOS中文开发地址](https://developer.apple.com/cn/develop/)  |      |
-|  3   | [Swift 开发资源](https://developer.apple.com/cn/swift/resources/) |      |
-|  4   | [SwiftUI](https://developer.apple.com/documentation/swiftui/) |      |
+| 编号 |                          名称(链接)                          |   备注   |
+| :--: | :----------------------------------------------------------: | :------: |
+|  1   |        [IOS开发者官网](https://developer.apple.com/)         |          |
+|  2   |  [IOS中文开发地址](https://developer.apple.com/cn/develop/)  |          |
+|  3   | [Swift 开发资源](https://developer.apple.com/cn/swift/resources/) |          |
+|  4   | [SwiftUI](https://developer.apple.com/documentation/swiftui/) | 英文教程 |
+|  5   | [SwiftUI-中文教程](https://developer.apple.com/cn/documentation/swiftui/) | 中文教程 |
 
 ## 二 教程
 
