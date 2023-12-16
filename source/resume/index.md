@@ -596,6 +596,7 @@ __2-Android项目—E朝朝企业端__
 | ![][rn-waz-1] | ![][rn-waz-2] | ![][rn-waz-3] |
 | ------------- | ------------- | ------------- |
 | ![][rn-waz-4] | ![][rn-waz-5] | ![][rn-waz-6] |
+| ![][rn-waz-7] | ![][rn-waz-8] | ![][rn-waz-9] |
 
 ## <font color=red>六 Kotlin Multiplatform Mobile项目</font>
 
@@ -1043,12 +1044,16 @@ IOS截图
 [kmm-ios-waz-9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-register-9.png
 
 <!--rn-waz-->
-[rn-waz-1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-home-1.jpg
-[rn-waz-2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-nav-2.jpg
-[rn-waz-3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-project-3.jpg
-[rn-waz-4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-msg-unread-4.jpg
-[rn-waz-5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-me-unlogin-5.jpg
-[rn-waz-6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-me-login-6.jpg
+[rn-waz-1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-1-home.png
+[rn-waz-2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-2-nav.png
+[rn-waz-3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-3-project.png
+[rn-waz-4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-4-msgunread.png
+[rn-waz-5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-5-msgread.png
+[rn-waz-6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-6-meunlogin.png
+[rn-waz-7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-7-melogin.png
+[rn-waz-8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-8-login.png
+[rn-waz-9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/rn-waz-9-register.png
+
 
 <!--hm-waz-->
 [waz-hm-1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/waz-hm-splash-0.png
