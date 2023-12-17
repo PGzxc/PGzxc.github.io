@@ -58,10 +58,12 @@ comments: false
 
 ## 五 UI库
 
-| 编号 |                     名称(博客地址)                     |     说明     |
-| :--: | :----------------------------------------------------: | :----------: |
-|  1   | [Lottie for React Native](https://airbnb.io/lottie/#/) | 动画 UI 框架 |
-|  2   |    [React Navigation](https://reactnavigation.org/)    |  路由和导航  |
+| 编号 |                        名称(博客地址)                        |     说明     |
+| :--: | :----------------------------------------------------------: | :----------: |
+|  1   |    [Lottie for React Native](https://airbnb.io/lottie/#/)    | 动画 UI 框架 |
+|  2   |       [React Navigation](https://reactnavigation.org/)       |  路由和导航  |
+|  3   | [react-native-toast-notifications](https://githubfast.com/arnnis/react-native-toast-notifications) |     土司     |
+|  4   | [react-native-swiper-flatlist](https://www.npmjs.com/package/react-native-swiper-flatlist) |    轮播图    |
 
 ## 六 工具
 
