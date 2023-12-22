@@ -35,6 +35,14 @@ comments: false
 | :--: | :----------------------------------------------------------: | :----: |
 |  1   | [OpenHarmony三方库中心仓](https://ohpm.openharmony.cn/#/cn/home) | 三方库 |
 
+## 五 示例代码
+
+| 编号 |                             地址                             |   说明    |
+| :--: | :----------------------------------------------------------: | :-------: |
+|  1   | [官方文档-示例](https://developer.harmonyos.com/cn/documentation/Samples/) | 标签筛选  |
+|  2   |     [gitee/Samples](https://gitee.com/harmonyos/samples)     | gitee示例 |
+|  3   |    [gitee/Codelabs](https://gitee.com/harmonyos/codelabs)    | gitee示例 |
+
 
 
 [1]:https://gitee.com/openharmony/docs/tree/master/zh-cn/release-notes
