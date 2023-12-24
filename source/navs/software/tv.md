@@ -64,10 +64,10 @@ comments: false
 ## 四 直播源
 ### 4.1 直播源
 
-| 编号 |                          名称(地址)                          |           备注           |
-| :--: | :----------------------------------------------------------: | :----------------------: |
-|  1   | [直播源汇总](https://githubfast.com/imDazui/Tvlist-awesome-m3u-m3u8) |           汇总           |
-|  2   |            [Live](https://live.fanmingming.com/)             | 可用于ntPlayer(ios)和VLC |
+| 编号 |   名称(地址)    |           备注           |
+| :--: | :-------------: | :----------------------: |
+|  1   | [直播源汇总][3] |           汇总           |
+|  2   |    [Live][2]    | 可用于ntPlayer(ios)和VLC |
 
 ## 五 zyplayer配置
 
@@ -75,3 +75,14 @@ comments: false
 | :--: | :-------------------------------------------: | :--------------: |
 |  1   | https://pan.shangui.cc/f/Nz4Ncj/zyplayer.json | zyplayer一键导入 |
 
+## 六 电视节目
+
+| 编号 |                    名称(地址)                    |       备注       |
+| :--: | :----------------------------------------------: | :--------------: |
+|  1   | [全国各省地面数字电视节目参数表查询—中文寻星][1] | 全国各省电视节目 |
+
+
+
+[1]:http://dtmb.saoing.com/sheng.htm
+[2]:https://live.fanmingming.com/
+[3]:https://githubfast.com/imDazui/Tvlist-awesome-m3u-m3u8
