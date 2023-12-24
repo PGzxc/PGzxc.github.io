@@ -64,9 +64,10 @@ comments: false
 ## 四 直播源
 ### 4.1 直播源
 
-| 编号 |                          名称(地址)                          | 备注 |
-| :--: | :----------------------------------------------------------: | :--: |
-|  1   | [直播源汇总](https://githubfast.com/imDazui/Tvlist-awesome-m3u-m3u8) | 汇总 |
+| 编号 |                          名称(地址)                          |           备注           |
+| :--: | :----------------------------------------------------------: | :----------------------: |
+|  1   | [直播源汇总](https://githubfast.com/imDazui/Tvlist-awesome-m3u-m3u8) |           汇总           |
+|  2   |            [Live](https://live.fanmingming.com/)             | 可用于ntPlayer(ios)和VLC |
 
 ## 五 zyplayer配置
 
