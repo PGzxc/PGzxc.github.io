@@ -400,6 +400,7 @@ __2-Android项目—E朝朝企业端__
 **项目名称**：WanAndroidHM
 **项目地址**：https://githubfast.com/PGzxc/WanAndroidHM
 **软件支持**：鸿蒙全系列
+**API版本**：API Version 9
 **开发工具**：DevEco Studio 4.0 Release+Node(16.20.1)+ohpm(1.2.5)
 **项目描述**：该项目是基于WanAndroid 网站开源的接口 API制作的一款Harmony开源hap。利用Harmony布局、组件、API开发的一款支持Harmony全系列应用。     
 **功能模块**：首页、导航、项目、消息、我等   
@@ -420,6 +421,32 @@ __2-Android项目—E朝朝企业端__
 | ![][waz-hm-5] | ![][waz-hm-6]  | ![][waz-hm-7]  | ![][waz-hm-8]  |
 | ![][waz-hm-9] | ![][waz-hm-10] | ![][waz-hm-11] | ![][waz-hm-12] |
 | ![][waz-hm-13]| ![][waz-hm-14] | ![][waz-hm-15] | ![][waz-hm-16] |
+
+
+### 2—[BookHM](https://github.com/PGzxc/BookHM)
+
+**项目归属**：个人项目
+**项目名称**：BookHM
+**项目地址**：https://github.com/PGzxc/BookHM
+**软件支持**：鸿蒙全系列
+**API版本**：API Version 9
+**开发工具**：DevEco Studio 4.0 Release+Node(16.20.1)+ohpm(1.2.5)
+**项目描述**：这是一个读书app OpenHarmony版本。使用List 和Grid来处理图书信息的展示，底部使用Tabs导航组件使用。本应用数据使用本地数据模拟返回。
+**功能模块**：阅读、书架、读书、我的   
+**技术要点**：
+
+- 基于Tabs+tabBar构建底部导航框架
+- 基于@State、@Prop等装饰器更新状态
+- 基于`@Watch('changeTab')`监听tab切换并设置对应Tab数据
+- 基于@Builder、@Extend等装饰器自定义组件，减少复用代码
+- 基于router、Navigator页面路由和组件导航及pageTransition转场动画
+
+**项目预览**
+
+| ![][hm-read-1] | ![][hm-read-2] |![][hm-read-3]|
+| -------------- | -------------- | ------------ |
+| ![][hm-read-4] | ![][hm-read-5] |![][hm-read-6]|
+
 
 ## <font color=red>二 Android项目</font>
 
@@ -1072,3 +1099,11 @@ IOS截图
 [waz-hm-14]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/waz-hm-home-loadmore-13.png
 [waz-hm-15]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/waz-hm-rank-14.png
 [waz-hm-16]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/waz-hm-coin-15.png
+
+<!--hm-read-->
+[hm-read-1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hm_read_1_read.png
+[hm-read-2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hm_read_2_book_pro.png
+[hm-read-3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hm_read_3_book_rec.png
+[hm-read-4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hm_read_4_voice_his.png
+[hm-read-5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hm_read_5_voice_per.png
+[hm-read-6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hm_read_6_me.png
