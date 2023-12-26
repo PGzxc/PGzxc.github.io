@@ -72,7 +72,13 @@ comments: false
 | :--: | :----------------------------: | :------------: |
 |  1   | [Expo](https://docs.expo.dev/) | 开源跨平台工具 |
 
-## 七 参考
+## 七 仓库/依赖
+
+| 编号 |                      名称(博客地址)                      |  说明  |
+| :--: | :------------------------------------------------------: | :----: |
+|  1   | [React Native Directory](https://reactnative.directory/) | rn仓库 |
+
+## 八 参考
 
 * [7 款最棒的 React 移动端 UI 组件库 - 特别针对国内使用场景推荐](https://blog.csdn.net/weixin_48201324/article/details/124969239)
 * [推荐 5 个不错的 React Native UI 库](https://blog.csdn.net/YopenLang/article/details/128065199)
