@@ -37,24 +37,25 @@ comments: false
 
 ## 四 UI组件库 
 
-| 编号 |                        名称(博客地址)                        |                             说明                             |
-| :--: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|  1   | [Taro UI for React](https://taro-ui.jd.com/#/docs/introduction) |    京东出品，多端合一，所向披靡-`ReactNative` 端暂不支持     |
-|  2   | [Ant Design Mobile of React](https://mobile.ant.design/guide/quick-start/) |       阿里前端 UI 库，面向企业级中后台-`RN` 端暂不支持       |
-|  3   | [Ant Design Mobile RN](https://github.com/ant-design/ant-design-mobile-rn#ant-design-mobile-rn) |                   阿里前端 UI 库，支持`RN`                   |
-|  4   | [TDesign React Mobile](https://tdesign.tencent.com/react/overview) |         腾讯 UI 组件库，配套工具完满-`RN` 端暂不支持         |
-|  5   | [NutUI for React](https://nutui.jd.com/h5/react/2x/#/zh-CN/guide/intro-react) |          京东出品，移动端友好，支持H5 和小程序开发           |
-|  6   | [Material-UI](https://mui.com/material-ui/getting-started/installation/) | 全球顶级 React 组件库 Google Material 设计标准-`RN` 端暂不支持 |
-|  7   | [React WeUI](https://weui.github.io/react-weui/docs/#/react-weui/docs/page/2/articles/0) |           微信出品，面向微信移动端-`RN` 端暂不支持           |
-|  8   |         [Zarm Design React](https://zarm.design/#/)          |         宝藏 React 移动端 UI 组件库-`RN` 端暂不支持          |
-|  9   | [React Native Elements](https://githubfast.com/react-native-elements/react-native-elements) |              跨平台应用程序的 React Native 框架              |
-|  10  |  [NativeBase](https://githubfast.com/GeekyAnts/NativeBase)   |                    React Native UI 组件库                    |
-|  11  | [React Native Material UI](https://github.com/xotahal/react-native-material-ui) |              20 多个不同的自定义组件-`暂不更新`              |
-|  12  | [React Native UI Kitten](https://github.com/akveo/kittenTricks) |                 基于 Eva 设计体系-`暂不推荐`                 |
-|  13  |       [beeshell](https://github.com/meituan/beeshell)        |              美团React Native 组件库-`暂不推荐`              |
-|  14  | [Teaset](https://githubfast.com/rilyu/teaset/blob/master/docs/cn/README.md#teaset) |              React Native UI 组件库-`暂不推荐`               |
-|  15  | [react-native-ui-lib](https://githubfast.com/wix/react-native-ui-lib) |              React Native UI 组件库-`暂不推荐`               |
-|  16  | [gluestackui](https://gluestack.io/ui/docs/overview/introduction) |                    React Native UI 组件库                    |
+| 编号 |                     名称(博客地址)                      |                             说明                             |
+| :--: | :-----------------------------------------------------: | :----------------------------------------------------------: |
+|  1   |          [Taro UI for React][rn-taro-ui-react]          |    京东出品，多端合一，所向披靡-`ReactNative` 端暂不支持     |
+|  2   | [Ant Design Mobile of React][rn-antdesign-mobile-react] |       阿里前端 UI 库，面向企业级中后台-`RN` 端暂不支持       |
+|  3   |      [Ant Design Mobile RN][rn-ant-design-mobile]       |                   阿里前端 UI 库，支持`RN`                   |
+|  4   |     [TDesign React Mobile][rn-tdesign react mobile]     |         腾讯 UI 组件库，配套工具完满-`RN` 端暂不支持         |
+|  5   |               [NutUI for React][rn-nutui]               |          京东出品，移动端友好，支持H5 和小程序开发           |
+|  6   |              [Material-UI][rn-materialUI]               | 全球顶级 React 组件库 Google Material 设计标准-`RN` 端暂不支持 |
+|  7   |                  [React WeUI][rn-weui]                  |           微信出品，面向微信移动端-`RN` 端暂不支持           |
+|  8   |              [Zarm Design React][rn-zarm]               |         宝藏 React 移动端 UI 组件库-`RN` 端暂不支持          |
+|  9   |          [React Native Elements][rn-elements]           |              跨平台应用程序的 React Native 框架              |
+|  10  |               [NativeBase][rn-nativebase]               |                    React Native UI 组件库                    |
+|  11  |        [React Native Material UI][rn-materailui]        |              20 多个不同的自定义组件-`暂不更新`              |
+|  12  |           [React Native UI Kitten][rn-kitten]           |                 基于 Eva 设计体系-`暂不推荐`                 |
+|  13  |                 [beeshell][rn-beeshell]                 |              美团React Native 组件库-`暂不推荐`              |
+|  14  |                   [Teaset][rn-teaset]                   |              React Native UI 组件库-`暂不推荐`               |
+|  15  |             [react-native-ui-lib][rn-uilib]             |              React Native UI 组件库-`暂不推荐`               |
+|  16  |                 [gluestackui][rn-glues]                 |                    React Native UI 组件库                    |
+|  17  |             [React Native Paper][rn-paper]              |                    React Native UI 组件库                    |
 
 ## 五 UI库
 
@@ -78,3 +79,21 @@ comments: false
 * [好到炸的ReactNativeUI库](https://blog.csdn.net/weixin_34387284/article/details/91466524)
 * [React Navigation](https://reactnavigation.org/)
 * [2023年10月14日，你应该知道的11个React Native组件库](http://www.hzhcontrols.com/new-3778.html)
+
+[rn-paper]:https://callstack.github.io/react-native-paper/
+[rn-glues]:https://gluestack.io/ui/docs/overview/introduction
+[rn-uilib]:https://githubfast.com/wix/react-native-ui-lib
+[rn-teaset]:https://githubfast.com/rilyu/teaset/blob/master/docs/cn/README.md#teaset
+[rn-beeshell]:https://github.com/meituan/beeshell
+[rn-kitten]:https://github.com/akveo/kittenTricks
+[rn-materailui]:https://github.com/xotahal/react-native-material-ui
+[rn-nativebase]:https://githubfast.com/GeekyAnts/NativeBase
+[rn-elements]:https://githubfast.com/react-native-elements/react-native-elements
+[rn-zarm]:https://zarm.design/#/
+[rn-weui]:https://weui.github.io/react-weui/docs/#/react-weui/docs/page/2/articles/0
+[rn-materialUI]:https://mui.com/material-ui/getting-started/installation/
+[rn-nutui]:https://nutui.jd.com/h5/react/2x/#/zh-CN/guide/intro-react
+[rn-tdesign react mobile]:https://tdesign.tencent.com/react/overview
+[rn-ant-design-mobile]:https://github.com/ant-design/ant-design-mobile-rn#ant-design-mobile-rn
+[rn-antdesign-mobile-react]:https://mobile.ant.design/guide/quick-start/
+[rn-taro-ui-react]:https://taro-ui.jd.com/#/docs/introduction
