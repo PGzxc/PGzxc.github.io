@@ -38,7 +38,7 @@ comments: false
 		<a href="folder/周向成_小程序开发.pdf" target="_blank">小程序</a>
 		</td>
 		<td width="8%">
-		<a href="folder/周向成_前端开发工程师.pdf" target="_blank">Web前端</a>
+		<a href="folder/周向成_前端开发工程师.pdf" target="_blank">前端</a>
 		</td>
 		<td width="8%">
 		<a href="folder/周向成_WinForm开发工程师.pdf" target="_blank">C#</a>
