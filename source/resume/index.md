@@ -6,9 +6,49 @@ comments: false
 ---
 <!--简历下载位置-->
 
-|        Android       |        IOS         |       Harmony       |        Flutter         |        RN        | KMM |      小程序      |      前端      |         C#         |        完整简历         |
-| :--------------------: | :----------------: | :--------------------: | :----------------: | :----------------: | :---------------------: | :---------------------: | :---------------------: | :---------------------: | :---------------------: |
-| [下载][resume-android] | [下载][resume-ios] | [下载][resume-hm] | [下载][resume-flutter] | [下载][resume-rn] | [下载][resume-kmm] | [下载][resume-xcx] | [下载][resume-front] | [下载][resume-csharp] | [点击下载][resume-inex] |
+<table width="100%" border="0" cellspacing="1" cellpadding="4" style="text-align:center;" bgcolor="#cccccc" align="center">
+<tbody>
+	<tr style="background-color:#fff;line-height:150%;text-align:center;color:#255e95;font-weight: bold;font-size: 16px;">
+		<td colspan="3" >移动端</td>
+		<td colspan="4" >跨平台</td>
+		<td colspan="1">前端</td>
+		<td colspan="1">桌面端</td>
+		<td colspan="1">完整版</td>
+	</tr>
+	<tr  style="background-color:#fff">
+		<td width="8%">
+		<a href="folder/周向成_Android开发工程师.pdf" target="_blank">Android</a>
+		</td>
+		<td width="8%">
+		<a href="folder/周向成_IOS开发工程师.pdf" target="_blank">IOS</a>
+		</td>
+		<td width="8%">
+		<a href="folder/周向成_Harmony开发工程师.pdf" target="_blank">Harmony</a>
+		</td>
+		<td width="8%">
+		<a href="folder/周向成_Flutter开发工程师.pdf" target="_blank">Flutter</a>
+		</td>
+		<td width="8%">
+		<a href="folder/周向成_ReactNative开发工程师.pdf" target="_blank">React Native</a>
+		</td>
+		<td width="8%">
+		<a href="folder/周向成_KMM开发工程师.pdf" target="_blank">KMM</a>
+		</td>
+		<td width="8%">
+		<a href="folder/周向成_小程序开发.pdf" target="_blank">小程序</a>
+		</td>
+		<td width="8%">
+		<a href="folder/周向成_前端开发工程师.pdf" target="_blank">Web前端</a>
+		</td>
+		<td width="8%">
+		<a href="folder/周向成_WinForm开发工程师.pdf" target="_blank">C#</a>
+		</td>
+		<td width="8%">
+		<a href="folder/index.pdf" target="_blank">完整版</a>
+		</td>
+	</tr>
+</tbody>
+</table>
 
 # 联系方式
 
