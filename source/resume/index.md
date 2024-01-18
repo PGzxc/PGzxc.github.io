@@ -1091,7 +1091,7 @@ IOS截图
 [swift-waz-1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-1-home.png
 [swift-waz-2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-2-tree.png
 [swift-waz-3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-3-treetab.png
-[swift-waz-4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-project-4.png
+[swift-waz-4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-4-project.png
 [swift-waz-5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-message-unread-5.png
 [swift-waz-6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-message-read-6.png
 [swift-waz-7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/swiftui-waz-message-info-7.png
