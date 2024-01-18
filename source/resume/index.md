@@ -212,7 +212,7 @@ __3-Android项目—记录App__
 |![][record-1]|![][record-2] |![][record-3]|![][record-4]|
 | ------------|--------------|-------------| ----------- |
 |![][record-5]|![][record-6] |![][record-7]|![][record-8]|
-|![][record-9]|![][record-10]|![][record-11]|![][record-12]|
+|![][record-9]|![][record-10]|![][record-11]|            |
 
 __4-uni-app小程序-24H安全守护系统__   
 **项目描述**：24H安全守护系统是日立养老项目组中众多项目之一，通过硬件手环(手佩戴)+垫子(铺在床上)检测用户的睡眠状态及活动信息，并在监控异常时给出报警提醒。
@@ -955,8 +955,8 @@ IOS截图
 [record-8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/recordapp-edit-mofa-input.png
 [record-9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/recordapp-goldfish-shiwu.png
 [record-10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/recordapp-goldfish-result.png
-[record-11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/recordapp-goldfish-measure.png
-[record-12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/recordapp-record-finish.png
+[record-11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/recordapp-record-finish.png
+<!--[record-11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/recordapp-goldfish-measure.png-->
 
 <!--web前端-游戏-->
 [webgame-1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/webgame-nfb007-1.png
