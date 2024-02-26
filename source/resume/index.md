@@ -438,7 +438,7 @@ __2-Android项目—E朝朝企业端__
 
 **项目归属**：个人项目
 **项目名称**：WanAndroidHM
-**项目地址**：https://githubfast.com/PGzxc/WanAndroidHM
+**项目地址**：https://github.com/PGzxc/WanAndroidHM
 **软件支持**：鸿蒙全系列
 **API版本**：API Version 9
 **开发工具**：DevEco Studio 4.0 Release+Node(16.20.1)+ohpm(1.2.5)
