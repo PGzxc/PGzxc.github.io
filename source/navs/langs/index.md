@@ -49,3 +49,9 @@ comments: false
 |  4   | [B站-韩国语基础学习视频](https://www.bilibili.com/video/BV1p741127Qv?p=1) |      |
 |  5   | [B站—韩语外教-马黎娜](https://space.bilibili.com/283802621?spm_id_from=333.788.b_765f7570696e666f.1) |      |
 
+## 四 影视剧
+
+| 编号 |                名称(链接)                 |   备注    |
+| :--: | :---------------------------------------: | :-------: |
+|  1   | [gogumaplayer](https://gogumaplayer.com/) | 韩语-剧院 |
+
