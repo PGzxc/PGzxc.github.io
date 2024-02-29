@@ -6,16 +6,16 @@ comments: false
 ---
 <!--简历下载位置-->
 
-<table width="100%" border="0" cellspacing="1" cellpadding="4" style="text-align:center;" bgcolor="#cccccc" align="center">
+<table width="100%" border="0" cellspacing="1" cellpadding="4" style="text-align:center;"  align="center">
 <tbody>
-	<tr style="background-color:#fff;line-height:110%;text-align:center;color:#255e95;font-weight: bold;font-size: 16px;">
+	<tr style="line-height:110%;text-align:center;color:#255e95;font-weight: bold;font-size: 16px;">
 		<td colspan="3" >移动端</td>
 		<td colspan="4" >跨平台</td>
 		<td colspan="1">前端</td>
 		<td colspan="1">桌面端</td>
 		<td colspan="1">完整版</td>
 	</tr>
-	<tr  style="background-color:#fff">
+	<tr  style="">
 		<td width="8%">
 		<a href="folder/周向成_Android开发工程师.pdf" target="_blank">Android</a>
 		</td>
