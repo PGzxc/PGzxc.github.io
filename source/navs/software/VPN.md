@@ -102,3 +102,9 @@ comments: false
 |  4   |      [API 4](https://agwa.page/)      |      |
 |  5   | [API 5](https://acl4ssr.netlify.app/) |      |
 
+## 七 免费应用或节点
+
+| 编号 |                    名称(地址)                     |    备注     |
+| :--: | :-----------------------------------------------: | :---------: |
+|  1   | [shadowrocket](https://shadowrocket.v2cross.com/) | android+ios |
+
