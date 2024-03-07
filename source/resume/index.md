@@ -847,7 +847,7 @@ IOS截图
 
 1. 熟悉HTML、CSS、盒子布局模式等前端web开发技术
 2. 熟悉使用jQuery、ajax，完成服务器交互，页面动画效果
-3. 熟悉使用Bootstrap，Element-ui、Vant,Swiper等插件
+3. 熟悉使用Bootstrap、Element-ui、Vant、Swiper等插件
 4. 熟悉使用vue框架、vue-router、axios、vue-cli脚手架
 5. 熟悉使用Git控制工具进行项目开发
 6. 熟悉微信小程序开发，熟悉uni-app开发
@@ -858,7 +858,7 @@ IOS截图
 
 1. 熟练掌握基于C#语言.NET框架下的ASP.NET和WinForm应用的开发
 2. 熟练掌握用于WEB开发的Flex+CSS、JS、XML、WebServic等技术
-3. 熟练掌握用于WinForm应用程序开发的GDI+，IO，网络编程，多线程等技术
+3. 熟练掌握用于WinForm应用程序开发的GDI+、IO、网络编程、多线程等技术
 4. 熟悉三层架构设计思想，熟练掌握B/S及C/S应用模式开发
 5. 熟悉掌握使用常用的设计模式，如单例模式、工厂模式等
 6. 熟悉常用源码管理工具的配置与使用，如SVN、Git
