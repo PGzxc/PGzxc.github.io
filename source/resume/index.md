@@ -442,7 +442,7 @@ __2-Android项目—E朝朝企业端__
 **项目名称**：WanAndroidHM
 **项目地址**：https://github.com/PGzxc/WanAndroidHM
 **软件支持**：鸿蒙全系列
-**API版本**：API Version 9
+**API版本**：API Version 10
 **开发工具**：DevEco Studio 4.0 Release+Node(16.20.1)+ohpm(1.2.5)
 **项目描述**：该项目是基于WanAndroid 网站开源的接口 API制作的一款Harmony开源hap。利用Harmony布局、组件、API开发的一款支持Harmony全系列应用。     
 **功能模块**：首页、导航、项目、消息、我等   
@@ -471,7 +471,7 @@ __2-Android项目—E朝朝企业端__
 **项目名称**：BookHM
 **项目地址**：https://github.com/PGzxc/BookHM
 **软件支持**：鸿蒙全系列
-**API版本**：API Version 9
+**API版本**：API Version 10
 **开发工具**：DevEco Studio 4.0 Release+Node(16.20.1)+ohpm(1.2.5)
 **项目描述**：这是一个读书app OpenHarmony版本。使用List 和Grid来处理图书信息的展示，底部使用Tabs导航组件使用。本应用数据使用本地数据模拟返回。
 **功能模块**：阅读、书架、读书、我的   
