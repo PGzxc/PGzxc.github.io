@@ -958,7 +958,6 @@ IOS截图
 [record-9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/recordapp-goldfish-shiwu.png
 [record-10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/recordapp-goldfish-result.png
 [record-11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/recordapp-record-finish.png
-<!--[record-11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/recordapp-goldfish-measure.png-->
 
 <!--web前端-游戏-->
 [webgame-1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/webgame-nfb007-1.png
