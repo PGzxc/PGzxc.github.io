@@ -108,3 +108,18 @@ comments: false
 | :--: | :-----------------------------------------------: | :---------: |
 |  1   | [shadowrocket](https://shadowrocket.v2cross.com/) | android+ios |
 
+## 八 Cloudflare
+
+| 编号 |                          名称(地址)                          |      备注      |
+| :--: | :----------------------------------------------------------: | :------------: |
+|  1   |            [Cloudflare官网](dash.cloudflare.com)             | 注册、下载软件 |
+|  2   | [Cloudflare WARP白嫖无限流量VPN](https://www.techxiaofei.com/post/vpn/warp/) |    文档说明    |
+|  3   | [Zero Trust篇](https://www.youtube.com/watch?v=dkUMb60KIFw)  |  Youtube视频   |
+
+## 九 工具
+
+| 编号 |                  名称(地址)                   |    备注    |
+| :--: | :-------------------------------------------: | :--------: |
+|  1   | [MyIPAddress](https://whatismyipaddress.com/) | ip地址查询 |
+|  2   |           [fast](https://fast.com/)           |    网速    |
+
