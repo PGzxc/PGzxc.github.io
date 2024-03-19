@@ -109,6 +109,10 @@ code push 调用 react native 的打包命令，将当前环境的非 native 代
 
 同步只返回一个普通 action 对象。而异步操作中途会返回一个 promise 函数。当然在 promise 函数处理完毕后也会返回一个普通 action 对象。thunk 中间件就是判断如果返回的是函数，则不传导给 reducer，直到检测到是普通 action 对象，才交由 reducer 处理。
 
+## 三 参考
+
+* [react-native-interview](https://github.com/forrest23/react-native-interview)
+
 
 
 
