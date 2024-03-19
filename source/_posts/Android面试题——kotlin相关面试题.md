@@ -2,7 +2,7 @@
 title: Android面试题——kotlin相关面试题
 categories:
   - 面试相关
-  - Android面试
+  - Android面试题
 tags:
   - Kotlin
 abbrlink: b0d4b11c
