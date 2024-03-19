@@ -72,7 +72,9 @@ this.props.children 的值有三种可能：
 
 1.当前组件没有子节点，它就是 undefined; 
 2.有一个子节点，数据类型是 object ；
-3.有多个子节点，数据类型就是 array 。 系统提供React.Children.map()方法安全的遍历子节点对象
+3.有多个子节点，数据类型就是 array 。 
+
+系统提供React.Children.map()方法安全的遍历子节点对象
 
 ## 7.redux状态管理的流程
 
@@ -94,7 +96,13 @@ action是用户触发或程序触发的一个普通对象。 reducer是根据act
 
 项目默认沿主轴排列。单个项目占据的主轴空间叫做main size，占据的交叉轴空间叫做cross size。
 
-容器的属性 以下6个属性设置在容器上。 flex-direction 属性决定主轴的方向（即项目的排列方向)。 flex-wrap 属性定义，如果一条轴线排不下，如何换行。 flex-flow flex-flow属性是flex-direction属性和flex-wrap属性的简写形式。 justify-content 定义了项目在主轴上的对齐方式。 align-items 属性定义项目在交叉轴上如何对齐。 align-content align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
+容器的属性 以下6个属性设置在容器上。 
+1.flex-direction 属性决定主轴的方向（即项目的排列方向)。 
+2.flex-wrap 属性定义，如果一条轴线排不下，如何换行。 
+3.flex-flow flex-flow属性是flex-direction属性和flex-wrap属性的简写形式。 
+4.justify-content 定义了项目在主轴上的对齐方式。 
+5.align-items 属性定义项目在交叉轴上如何对齐。 
+6.align-content align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
 
 ## 10.请简述 code push 的原理
 
