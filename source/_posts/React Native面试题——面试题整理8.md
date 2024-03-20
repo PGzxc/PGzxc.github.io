@@ -255,7 +255,8 @@ useState()是React Hooks中最常用的函数之一。
 ### 2.25 什么是useEffect()？
 
 ```
-useEffect()是React Hooks中的一个函数，它允许我们在函数组件中执行副作用操作，例如获取数据或添加事件监听器。它类似于componentDidMount()和componentDidUpdate()生命周期方法的组合。
+useEffect()是React Hooks中的一个函数，它允许我们在函数组件中执行副作用操作，例如获取数据或添加事件监听器。
+它类似于componentDidMount()和componentDidUpdate()生命周期方法的组合。
 ```
 
 ### 2.26 什么是useContext()？
@@ -275,13 +276,15 @@ useReducer()是React Hooks中的一个函数，它允许我们在函数组件中
 ### 2.28 什么是useCallback()？
 
 ```
-useCallback()是React Hooks中的一个函数，它允许我们在函数组件中缓存回调函数，以避免在每次渲染时重新创建它们。这可以提高组件的性能。
+useCallback()是React Hooks中的一个函数，它允许我们在函数组件中缓存回调函数，以避免在每次渲染时重新创建它们。
+这可以提高组件的性能。
 ```
 
 ### 2.29 什么是useMemo()？
 
 ```
-useMemo()是React Hooks中的一个函数，它允许我们在函数组件中缓存计算结果，以避免在每次渲染时重新计算它们。这可以提高组件的性能。
+useMemo()是React Hooks中的一个函数，它允许我们在函数组件中缓存计算结果，以避免在每次渲染时重新计算它们。
+这可以提高组件的性能。
 ```
 
 ### 2.30 什么是useRef()？
@@ -294,13 +297,15 @@ useRef()是React Hooks中的一个函数，它允许我们在函数组件中创�
 ### 2.31  什么是useImperativeHandle()？
 
 ```
-useImperativeHandle()是React Hooks中的一个函数，它允许我们在函数组件中自定义暴露给父组件的实例值。这可以用于创建可重用的组件。
+useImperativeHandle()是React Hooks中的一个函数，它允许我们在函数组件中自定义暴露给父组件的实例值。
+这可以用于创建可重用的组件。
 ```
 
 ### 2.32 什么是useLayoutEffect()？
 
 ```
-useLayoutEffect()是React Hooks中的一个函数，它类似于useEffect()，但是它在DOM更新之前同步触发。这可以用于处理需要同步更新DOM的情况。
+useLayoutEffect()是React Hooks中的一个函数，它类似于useEffect()，但是它在DOM更新之前同步触发。
+这可以用于处理需要同步更新DOM的情况。
 ```
 
 ### 2.33 什么是useDebugValue()？
@@ -345,7 +350,10 @@ Expo是一个用于构建React Native应用程序的开发工具和服务平台�
 #### 2.38 什么是React Native Navigation？
 
 ```
-React Native Navigation是一个用于在React Native应用程序中实现导航的库。它提供了一组易于使用的API，用于管理应用程序的导航栈和屏幕之间的转换。它支持多种导航类型，例如堆栈导航、标签导航和抽屉导航，并且可以与Redux等状态管理库集成使用。React Native Navigation还具有高性能、流畅的动画效果和自定义主题的能力，使得开发人员可以轻松地创建美观、易于使用的导航界面。
+React Native Navigation是一个用于在React Native应用程序中实现导航的库。
+它提供了一组易于使用的API，用于管理应用程序的导航栈和屏幕之间的转换。
+它支持多种导航类型，例如堆栈导航、标签导航和抽屉导航，并且可以与Redux等状态管理库集成使用。
+React Native Navigation还具有高性能、流畅的动画效果和自定义主题的能力，使得开发人员可以轻松地创建美观、易于使用的导航界面。
 ```
 
 ## 三 参考
