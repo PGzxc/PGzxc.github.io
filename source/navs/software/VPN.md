@@ -10,11 +10,12 @@ comments: false
 
 | 编号 |                          名称(地址)                          |     备注     |
 | :--: | :----------------------------------------------------------: | :----------: |
-|  1   | [Clash for Windows](https://github.com/Fndroid/clash_for_windows_pkg/releases) | Window端下载 |
-|  2   | [CFW汉化包—下载地址1](https://github.com/HoldOnBro/LocalizeCFW/releases) |              |
-|  3   | [CFW汉化包—下载地址2](https://github.com/BoyceLig/Clash_Chinese_Patch/releases) |              |
-|  4   |       [SSTap](https://github.com/FQrabbit/SSTap-Rule)        |              |
-|  5   |      [Netch](https://github.com/netchx/netch/releases)       |              |
+|  1   |          [Clash Verge](https://en.clashverge.org/)           | 多平台+好用  |
+|  2   | [Clash for Windows](https://github.com/Fndroid/clash_for_windows_pkg/releases) | Window端下载 |
+|  3   | [CFW汉化包—下载地址1](https://github.com/HoldOnBro/LocalizeCFW/releases) |              |
+|  4   | [CFW汉化包—下载地址2](https://github.com/BoyceLig/Clash_Chinese_Patch/releases) |              |
+|  5   |       [SSTap](https://github.com/FQrabbit/SSTap-Rule)        |              |
+|  6   |      [Netch](https://github.com/netchx/netch/releases)       |              |
 
 ### 1.2 Android客户端
 
