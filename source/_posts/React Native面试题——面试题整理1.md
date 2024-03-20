@@ -37,17 +37,35 @@ date: 2024-03-19 09:53:45
 5.跟编写网页一般，修改代码后即可自动刷新，不需要慢慢编译，节省很多编译等待时间 
 6.支持APP热更新，更新无需重新安装APP
 
-缺点： 内存占用相对较高 版本还不稳定，一直在更新，现在还没有推出稳定的1.0版本
+缺点： 
+
+1.内存占用相对较高 
+2.版本还不稳定，一直在更新，现在还没有推出稳定的1.0版本
 
 ## 2.React Native组件的生命周期
 
 ![][1]
 
-生命周期 调用次数 能否使用 setSate() getDefaultProps 1(全局调用一次) 否 getInitialState 1 否 componentWillMount 1 是 render >=1 否 componentDidMount 1 是 componentWillReceiveProps >=0 是 shouldComponentUpdate >=0 否 componentWillUpdate >=0 否 componentDidUpdate >=0 否 componentWillUnmount 1 否
+生命周期 调用次数 能否使用 setSate() 
+
+|      周期名称以及调用次数       | 能否使用 setSate() |
+| :-----------------------------: | :----------------: |
+| getDefaultProps 1(全局调用一次) |         否         |
+|        getInitialState 1        |         否         |
+|      componentWillMount 1       |         是         |
+|           render >=1            |         否         |
+|       componentDidMount 1       |         是         |
+|  componentWillReceiveProps >=0  |         是         |
+|    shouldComponentUpdate >=0    |         否         |
+|     componentWillUpdate >=0     |         否         |
+|     componentDidUpdate >=0      |         否         |
+|      componentWillUnmount       |         否         |
 
 ## 3.当你调用setState的时候，发生了什么事？
 
-当调用 setState 时，React会做的第一件事情是将传递给 setState 的对象合并到组件的当前状态。 这将启动一个称为和解（reconciliation）的过程。 和解（reconciliation）的最终目标是以最有效的方式，根据这个新的状态来更新UI。 为此，React将构建一个新的 React 元素树（您可以将其视为 UI 的对象表示）。 一旦有了这个树，为了弄清 UI 如何响应新的状态而改变，React 会将这个新树与上一个元素树相比较（ diff ）。 通过这样做， React 将会知道发生的确切变化，并且通过了解发生什么变化，只需在绝对必要的情况下进行更新即可最小化 UI 的占用空间。
+当调用 setState 时，React会做的第一件事情是将传递给 setState 的对象合并到组件的当前状态。 这将启动一个称为和解（reconciliation）的过程。
+
+ 和解（reconciliation）的最终目标是以最有效的方式，根据这个新的状态来更新UI。 为此，React将构建一个新的 React 元素树（您可以将其视为 UI 的对象表示）。 一旦有了这个树，为了弄清 UI 如何响应新的状态而改变，React 会将这个新树与上一个元素树相比较（ diff ）。 通过这样做， React 将会知道发生的确切变化，并且通过了解发生什么变化，只需在绝对必要的情况下进行更新即可最小化 UI 的占用空间。
 
 ## 4.props和state相同点和不同点
 
@@ -64,7 +82,12 @@ date: 2024-03-19 09:53:45
 
 ## 5.shouldComponentUpdate 应该做什么
 
-其实这个问题也是跟reconciliation有关系。 “和解（ reconciliation ）的最终目标是以最有效的方式，根据新的状态更新用户界面”。 如果我们知道我们的用户界面（UI）的某一部分不会改变， 那么没有理由让 React 很麻烦地试图去弄清楚它是否应该渲染。 通过从 shouldComponentUpdate 返回 false， React 将假定当前组件及其所有子组件将保持与当前组件相同
+其实这个问题也是跟reconciliation有关系。
+“和解（ reconciliation ）的最终目标是以最有效的方式，根据新的状态更新用户界面”。
+如果我们知道我们的用户界面（UI）的某一部分不会改变，
+那么没有理由让 React 很麻烦地试图去弄清楚它是否应该渲染。
+通过从 shouldComponentUpdate 返回 false，
+React 将假定当前组件及其所有子组件将保持与当前组件相同
 
 ## 6.reactJS的props.children.map函数来遍历会收到异常提示，为什么？应该如何遍历？
 
@@ -80,7 +103,10 @@ this.props.children 的值有三种可能：
 
 ![][2]
 
-action是用户触发或程序触发的一个普通对象。 reducer是根据action操作来做出不同的数据响应，返回一个新的state。 store的最终值就是由reducer的值来确定的。（一个store是一个对象, reducer会改变store中的某些值） action -> reducer -> 新store -> 反馈到UI上有所改变。
+action是用户触发或程序触发的一个普通对象。
+reducer是根据action操作来做出不同的数据响应，返回一个新的state。
+store的最终值就是由reducer的值来确定的。（一个store是一个对象, reducer会改变store中的某些值）
+action -> reducer -> 新store -> 反馈到UI上有所改变。
 
 ## 8.加载bundle的机制
 
@@ -114,7 +140,7 @@ code push 调用 react native 的打包命令，将当前环境的非 native 代
 
 ## 三 参考
 
-* [react-native-interview](https://github.com/forrest23/react-native-interview)
+* [React Native面试题库](https://webcc.gitee.io/blog/2018/04/09/React%20Native%E9%9D%A2%E8%AF%95%E9%A2%98%E5%BA%93(%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0)/)
 
 
 
