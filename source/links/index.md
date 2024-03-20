@@ -22,6 +22,7 @@ Jing Blog | https://jingine.com | 一个爱折腾的海外党，生活、技术�
 {% endnote %}
 {% linkgrid %}
 阮一峰 | http://www.ruanyifeng.com/ | 阮一峰的个人网站 | /images/link_heads/ruanyifeng.jpg
+廖雪峰 | https://www.liaoxuefeng.com/ | 廖雪峰官方网站 | /images/link_heads/liaoxuefeng.jpg
 鸿洋 | https://wanandroid.com/ | wanandroid CEO  | /images/avatar.jpg
 方糖气球 | http://ftqq.com/ | Easy同学和他做的那些东西  | 
 零度解说 | https://www.freedidi.com/ | 零度博客  | 
