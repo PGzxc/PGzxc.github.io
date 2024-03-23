@@ -14,7 +14,7 @@ date: 2024-03-21 22:13:31
 2. uniapp的配置文件、入口文件、主组件、页面管理部分
 3. uni-app 基本开发流程
 4. vue , 微信小程序 , uni-app属性的绑定
-5. jQuery、vue、小程序、uni-app中的本地数据存储和接收
+5. jQuery、vue、小程序、uni-app中的本地数据存储和接收 <!--more-->
 6. 页面调用接口
 7. 全局变量globalData
 8. vue,小程序,uni-app的生命周期
@@ -27,8 +27,6 @@ date: 2024-03-21 22:13:31
 15. uni.request封装
 16. uniapp下拉刷新上拉加载
 17. scroll-view吸顶问题
-
-<!--more-->
 
 ## 二  面试题解答(仅供参考)
 

@@ -14,14 +14,12 @@ date: 2024-03-23 12:19:34
 2. 简要介绍一下React组件的生命周期
 3. 简要介绍一下React中的refs以及它的作用
 4. 简要介绍一下key以及它的作用
-5. 在实际开发中shouldComponentUpdate有什么作用
+5. 在实际开发中shouldComponentUpdate有什么作用 <!--more-->
 6. 简要介绍一下Redux
 7. setState的第二个参数是什么，作用又是什么？
 8. 简要介绍一下你所了解的flux架构的思想？
 9. 聊一聊你对React的DOM diff算法的理解
 10. 虚拟DOM的优缺点有哪些？
-
-<!--more-->
 
 ## 二 面试题解答(仅供参考)
 
