@@ -15,7 +15,7 @@ date: 2024-03-20 11:15:37
 3. 什么是JSX？
 4. React中的组件有哪些类型？
 5. 什么是props？
-6. 什么是state？
+6. 什么是state？ <!--more-->
 7. 什么是生命周期方法？
 8. React中有哪些生命周期方法？
 9. 什么是constructor()方法？
@@ -48,8 +48,6 @@ date: 2024-03-20 11:15:37
 36. 什么是React Native CLI？
 37. 什么是Expo？
 38. 什么是React Native Navigation？
-
-<!--more-->
 
 ## 二 面试题解答(仅供参考)
 

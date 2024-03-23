@@ -14,7 +14,7 @@ date: 2024-03-19 15:55:14
 2. setState为什么是异步的？
 3. reactJS的props.children.map函数来遍历会收到异常提示，为什么？应该如何遍历？
 4. reactJS中和子组件如何通信
-5. reactJS兄弟组件之间如何通信
+5. reactJS兄弟组件之间如何通信 <!--more-->
 6. Redux中同步 action 与异步 action 最大的区别是什么
 7. React 的 refs 有什么了解
 8. Redux遵循的三个原则是什么？
@@ -23,8 +23,6 @@ date: 2024-03-19 15:55:14
 11. 解释 Reducer 的作用
 12. Store 在 Redux 中的意义是什么？
 13. Redux与Flux有何不同？
-
-<!--more-->
 
 ## 二 面试题解答(仅供参考)
 

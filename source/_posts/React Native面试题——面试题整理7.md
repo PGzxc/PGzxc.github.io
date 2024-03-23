@@ -14,7 +14,7 @@ date: 2024-03-19 16:54:41
 2. React Native组件的生命周期
 3.  当你调用setState的时候，发生了什么事？
 4. props和state相同点和不同点
-5. shouldComponentUpdate 应该做什么
+5. shouldComponentUpdate 应该做什么 <!--more-->
 6. reactJS的props.children.map函数来遍历会收到异常提示，为什么？应该如何遍历？
 7. redux状态管理的流程
 8. 加载bundle的机制
@@ -30,8 +30,6 @@ date: 2024-03-19 16:54:41
 18. Rect Native 增量更新方案
 19. codePush 接入教程
 20. React Native 打包参数
-
-<!--more-->
 
 ## 二 面试题解答(仅供参考)
 

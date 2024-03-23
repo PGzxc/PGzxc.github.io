@@ -15,7 +15,7 @@ date: 2024-03-20 15:41:51
 3. 父传子，子传父数据传递方式？
 4. 如何实现底部TabBar的高度不一样呢？（类似新浪微博底部加号）
 5. 你的项目有没有使用redux或者是mobx来管理数据呢？
-6. 请您简单介绍一下redux？dva? mobx？
+6. 请您简单介绍一下redux？dva? mobx？ <!--more-->
 7. 当你调用setState的时候，发生了什么事？
 8. React中Element 和 Component 有何区别？
 9. shouldComponentUpdate 应该做什么
@@ -24,8 +24,6 @@ date: 2024-03-20 15:41:51
 12. 面试中的一道题
 13. XSS与CSRF介绍
 14. 在使用redux过程中，如何防止定义的action-type的常量重复？
-
-<!--more-->
 
 ## 二 面试题解答(仅供参考)
 
