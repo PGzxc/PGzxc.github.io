@@ -82,6 +82,14 @@ comments: false
 | :--: | :-----------------------------------------------: | :----: |
 |  1   | [drift](https://pub.flutter-io.cn/packages/drift) | 数据库 |
 
+## 八 flutter教程
+
+| 编号 |                         名称(地址)                          |   说明   |
+| :--: | :---------------------------------------------------------: | :------: |
+|  1   | [Flutter完整开发实战详解系列](https://guoshuyu.cn/home/wx/) | 系列专栏 |
+
+
+
 
 
 [1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-learn-route/Flutter-Learning-route-1.jpg
