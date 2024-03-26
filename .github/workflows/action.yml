@@ -2,51 +2,40 @@
 name: Hexo Auto-Deploy
 on:
   push:
-    branches: 
-      - master
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  schedule:
+    - cron: "3 6 * * 3"
 
 jobs:
-  build:
-    name: Hexo Auto-Deploy by GitHub Actions
+  analyze:
+    name: Analyze
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ javascript ]
 
     steps:
-    - name: 1. git checkout...
-      uses: actions/checkout@v3
-      
-    - name: 2. setup nodejs...
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16.x'
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: 3. Cache node modules
-      uses: actions/cache@v3
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          queries: +security-and-quality
 
-    - name: 4. Install hexo dependencies 
-      run: |
-        npm install hexo-cli -g
-        npm install
-        
-    - name: 5. hexo generate public files...
-      run: |
-        hexo clean
-        hexo generate  
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
 
-    - name: 6. hexo deploy ...
-      env: 
-        # Github 仓库
-        GITHUB_REPO: github.com/PGzxc/PGzxc.github.io.git
-        # Coding 仓库
-        CODING_REPO: e.coding.net/pgzxc/pgzxc/pgzxc.git
-      # 将编译后的博客文件推送到指定仓库
-      run: |
-        cd ./public && git init && git add .
-        git config user.name "PGzxc"
-        git config user.email "827489398@qq.com"
-        git add .
-        git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')"
-        git push --force --quiet "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO" master:hexo
-      # git push --force --quiet "https://JcwUpKlfjB:${{ secrets.CODING_TOKEN }}@$CODING_REPO" master:hexo
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{ matrix.language }}"
