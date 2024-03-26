@@ -237,6 +237,8 @@ MyClass *object = [MyClass new];
 因为它们将两个步骤合并成一个步骤，但是在使用上没有太大的区别。
 ```
 
+## 三 参考
 
+* [简书—OC之类与对象原理](https://www.jianshu.com/p/b4d237dcc252)
 
 

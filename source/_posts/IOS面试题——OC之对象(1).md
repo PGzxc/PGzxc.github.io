@@ -14,12 +14,10 @@ date: 2024-03-25 21:36:53
 2. 内存对齐计算`(x + (8-1)) & ~(8-1)` 和 `(x + (8-1)) >> 3 << 3`
 3. 结构体实际占用内存计算，系统给该结构体开辟空间内存大小计算，他们的区别是什么？
 4. class_getInstanceSize , malloc_size, sizeof 区别？
-5. instance对象，class对象，mate-class对象的区别与关系? 在内存中各自存储哪些信息
+5. instance对象，class对象，mate-class对象的区别与关系? 在内存中各自存储哪些信息<!--more-->
 6. `- (Class)class` ，`+ (Class)class`，`object_getClass(id _Nullable obj)` 的区别
 7. 怎么判断一个Class对象是否为meta-class？
 8. isa指针和superClass指针分别是如何指向的？
-
-<!--more-->
 
 ## 二 面试题解答(仅供参考)
 
@@ -156,3 +154,6 @@ isa 指针用于确定一个对象的类，从而找到对应类中的方法实�
 superClass 指针用于在继承链中向上查找方法或属性的实现，以及访问父类的成员。
 ```
 
+## 三 参考
+
+* [简书—OC之对象](https://www.jianshu.com/p/b4d237dcc252)
