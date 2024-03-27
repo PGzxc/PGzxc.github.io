@@ -1,5 +1,5 @@
 ---
-title: IOS面试题——swift方法、闭包(4)
+title: IOS面试题——Swift方法、闭包(4)
 categories:
   - 面试相关
   - IOS面试题
