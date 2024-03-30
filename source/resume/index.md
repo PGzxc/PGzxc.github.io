@@ -10,7 +10,8 @@ comments: false
 <tbody>
 	<tr style="line-height:110%;text-align:center;color:#255e95;font-weight: bold;font-size: 16px;">
 		<td colspan="3" >移动端</td>
-		<td colspan="4" >跨平台</td>
+		<td colspan="3" >跨平台</td>
+        <td colspan="1">小程序</td>
 		<td colspan="1">前端</td>
 		<td colspan="1">桌面端</td>
 		<td colspan="1">完整版</td>
@@ -49,6 +50,7 @@ comments: false
 	</tr>
 </tbody>
 </table>
+
 
 # 联系方式
 
