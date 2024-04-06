@@ -124,3 +124,13 @@ comments: false
 |  1   | [MyIPAddress](https://whatismyipaddress.com/) | ip地址查询 |
 |  2   |           [fast](https://fast.com/)           |    网速    |
 
+## 十 教程
+
+| 编号 |                          名称(地址)                          |        备注         |
+| :--: | :----------------------------------------------------------: | :-----------------: |
+|  1   | [Clash for Andriod 详细教程](https://www.v2rayfree.eu.org/post/clash-for-android-tutorial/) |  Clash for Android  |
+|  2   | [clash for windows 详细教程](https://www.v2rayfree.eu.org/post/clash-for-windows-tutorial/) |  clash for windows  |
+|  3   | [ClashX 详细教程 macOS端](https://www.v2rayfree.eu.org/post/clash-for-mac-tutorial/) |   ClashX  macOS端   |
+|  4   | [v2rayNG版 Android端](https://www.v2rayfree.eu.org/post/v2rayNg-tutorial/) | v2rayNG版 Android端 |
+|  5   | [v2rayN版 windows端](https://www.v2rayfree.eu.org/post/v2rayN-tutorial/) | v2rayN版 windows端  |
+
