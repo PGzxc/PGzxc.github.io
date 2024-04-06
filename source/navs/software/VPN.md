@@ -95,6 +95,7 @@ comments: false
 |  3   |      [shadowrocket](https://shadowrocket.v2cross.com/)       |      app节点合集      |
 |  4   | [长风-免费节点日更](https://www.cfmem.com/search/label/free) |       日更节点        |
 |  5   |           [玩转节点](https://www.wanzhuanmi.com/)            |       日更节点        |
+|  6   |            [Clash节点](https://clashgithub.com/)             |       日更节点        |
 
 ## 六 订阅转换器
 
