@@ -86,12 +86,15 @@ comments: false
 |  4   |        [快柠檬](https://knmvb.site/s/mac108/qnijgry)         |                |
 |  5   | [一元机场](https://xn--4gq62f52gdss.com/#/register?code=qoq1kwab) |      机场      |
 
-## 五 节点
+## 五 免费应用或节点
 
 | 编号 |                          名称(地址)                          |         备注          |
 | :--: | :----------------------------------------------------------: | :-------------------: |
 |  1   | [HSL-福利！靠谱稳定机场推荐](https://haoshangle.com/?p=1749) | 客户端+机场推荐(付费) |
 |  2   | [HSL—免费订阅地址(V2ray小火箭clash等可用)](https://haoshangle.com/?p=16) | clash/v2ray/流量订阅  |
+|  3   |      [shadowrocket](https://shadowrocket.v2cross.com/)       |      app节点合集      |
+|  4   | [长风-免费节点日更](https://www.cfmem.com/search/label/free) |       日更节点        |
+|  5   |           [玩转节点](https://www.wanzhuanmi.com/)            |       日更节点        |
 
 ## 六 订阅转换器
 
@@ -103,13 +106,7 @@ comments: false
 |  4   |      [API 4](https://agwa.page/)      |      |
 |  5   | [API 5](https://acl4ssr.netlify.app/) |      |
 
-## 七 免费应用或节点
-
-| 编号 |                    名称(地址)                     |    备注     |
-| :--: | :-----------------------------------------------: | :---------: |
-|  1   | [shadowrocket](https://shadowrocket.v2cross.com/) | android+ios |
-
-## 八 Cloudflare
+## 七 Cloudflare
 
 | 编号 |                          名称(地址)                          |      备注      |
 | :--: | :----------------------------------------------------------: | :------------: |
@@ -117,14 +114,14 @@ comments: false
 |  2   | [Cloudflare WARP白嫖无限流量VPN](https://www.techxiaofei.com/post/vpn/warp/) |    文档说明    |
 |  3   | [Zero Trust篇](https://www.youtube.com/watch?v=dkUMb60KIFw)  |  Youtube视频   |
 
-## 九 工具
+## 八 工具
 
 | 编号 |                  名称(地址)                   |    备注    |
 | :--: | :-------------------------------------------: | :--------: |
 |  1   | [MyIPAddress](https://whatismyipaddress.com/) | ip地址查询 |
 |  2   |           [fast](https://fast.com/)           |    网速    |
 
-## 十 教程
+## 九 教程
 
 | 编号 |                          名称(地址)                          |        备注         |
 | :--: | :----------------------------------------------------------: | :-----------------: |
