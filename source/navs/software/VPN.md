@@ -114,6 +114,7 @@ comments: false
 |  1   |            [Cloudflare官网](dash.cloudflare.com)             | 注册、下载软件 |
 |  2   | [Cloudflare WARP白嫖无限流量VPN](https://www.techxiaofei.com/post/vpn/warp/) |    文档说明    |
 |  3   | [Zero Trust篇](https://www.youtube.com/watch?v=dkUMb60KIFw)  |  Youtube视频   |
+|  4   | [申请Cloudflare Zero Trust](https://www.smallstep.one/article/cloudflare-1) |      文档      |
 
 ## 八 工具
 
