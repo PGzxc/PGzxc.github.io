@@ -8,6 +8,7 @@ tags:
 abbrlink: 2d4a6e06
 date: 2017-11-14 16:41:25
 ---
+## 一 前言
 
 Activity作为四大组件之一，在软件开发中占据着非常重要的地位，也是面试中必问的知识点和考点，作为开发者，Activity相关知识点你都掌握了吗？
 
@@ -23,7 +24,8 @@ Activity作为四大组件之一，在软件开发中占据着非常重要的地
 - Activity的生命周期分析
 - Android进程优先级
 
-# Activity四种状态
+## 二 Activity三方面
+###  2.1 Activity四种状态
 
 Activity分为四种状态：running运行状态，paused暂停状态，stoped停止状态，killed销毁状态
 ![Activity四种状态][1]
@@ -34,21 +36,21 @@ Activity分为四种状态：running运行状态，paused暂停状态，stoped�
 - killed：与ondestory相对应，是Activity生命周期的最后一个方法；执行后Activity被系统回收；内存信息，变量信息都不复存在；
 
 
-# Activity生命周期分析
+### 2.2  Activity生命周期分析
 
  先看一张官方给出的Activity完整生命周期图
 ![Activity生命周期图][2]
 
 此处对Activity生命周期归结了一下，总结出4状态：Activity启动，点击Home回到主界面或被另外的Activity覆盖，重新回到原Activity，退出当前Activity
 
-## Activity启动：Activiy启动时依次走了onCreate(),onStart(),onResume()三个方法
+#### Activity启动：Activiy启动时依次走了onCreate(),onStart(),onResume()三个方法
  ![Activity启动][3]  
 
 - onCreate :当Activity被创建时回调，activity启动时执行的第一个方法；onCreate中调用setContentView，设置布局资源；还可以在该方法中进行数据的初始化工作；
 -  onStart：当Activity正在启动时调用；此时activity可以看到但未置于栈顶，不能与用户进行交互操作；
 -  onResume：此时Activity处于最前端，可与用户进行交互操作
-	  
-## 点击Home回到主界面或者被另外的Activity覆盖：此时依次执行了onPause，onStop方法
+	
+#### 点击Home回到主界面或者被另外的Activity覆盖：此时依次执行了onPause，onStop方法
 
 ![点击home回到主界面][4] 
 	
@@ -56,7 +58,7 @@ Activity分为四种状态：running运行状态，paused暂停状态，stoped�
 
 - onStop：当onPause执行完后会执行此方法；当activity被完全覆盖后执行此方法；activity由可见变为完全不可见，处在后台运行；当内存不足时会被系统回收；
 	
-## 重新回到原Activity：此时依次执行onRestart，onStart，onResume
+#### 重新回到原Activity：此时依次执行onRestart，onStart，onResume
 
 ![回到原Activity][5]
 
@@ -64,7 +66,7 @@ Activity分为四种状态：running运行状态，paused暂停状态，stoped�
 - onStart：Activity变为可见；此时并为位于栈顶，不能与用户交互；
 - onResume：Activity位于栈顶；可以与用户进行交互；
 	
-## 退出当前Activity：此时依次执行onPause，onStop，onDestory  
+#### 退出当前Activity：此时依次执行onPause，onStop，onDestory  
 ![activity退出][6]
 
 - onPause： 如上面
@@ -72,7 +74,7 @@ Activity分为四种状态：running运行状态，paused暂停状态，stoped�
 - onDestory:  整个生命周期的最后一个方法，执行完毕后，生命周期结束；Activity正在被销毁；此生命周期做一些资源回收工作
 	
 
-#  Android进程优先级
+### 2.3 Android进程优先级
 进程属于什么类别是组件层面发生的事情决定的
 
 ![Android进程][7]
@@ -80,14 +82,11 @@ Activity分为四种状态：running运行状态，paused暂停状态，stoped�
 Android进程分为前台进程，可见进程，服务进程，后台进程，空进程
 
 - 前台进程：与用户交互的Activity;绑定前台activity的服务；与前台服务交互的content provider
-
 - 可见进程：可见但不可点击的进程
 - 服务进程：在后台开启Service的进程
 - 后台进程：前台进程被另外的Activity或Dialog覆盖变的不可见；按Home按键	
 回到桌面；后台进程不会被立即杀死，根据最近最少使用顺序回收；
 - 空进程：不属于以上任何组件的进程；没有活跃的组件；为了缓存的目的而被保留；系统会随时对其回收
-
-
 
 
 
