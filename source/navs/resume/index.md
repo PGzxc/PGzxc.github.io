@@ -7,15 +7,16 @@ comments: false
 
 ## 一 优秀简历
 
-| 编号 |                        名称(地址)                        |        备注        |
-| :--: | :------------------------------------------------------: | :----------------: |
-|  1   |          [吴浩麟](https://resume.wuhaolin.cn/)           | Web前端+GoLang后端 |
-|  2   |        [木及简历](https://resume.mdedit.online/)         |      简历编辑      |
-|  3   |       [Python作者](https://gvanrossum.github.io/)        |        大神        |
-|  4   |       [Hey，我是Korey](https://resume.flqin.com/)        |        前端        |
-|  5   |           [下位子](http://xiaweizi.cn/resume/)           |    Android简历     |
-|  6   | [前端工程师—陈功](https://success-cg.github.io/resumer/) |     前端工程师     |
-|  7   |    [前端工程师—曹惠琳](https://resume.caohuilin.com/)    |     前端工程师     |
+| 编号 |                          名称(地址)                          |        备注        |
+| :--: | :----------------------------------------------------------: | :----------------: |
+|  1   |            [吴浩麟](https://resume.wuhaolin.cn/)             | Web前端+GoLang后端 |
+|  2   |          [木及简历](https://resume.mdedit.online/)           |      简历编辑      |
+|  3   |         [Python作者](https://gvanrossum.github.io/)          |        大神        |
+|  4   |         [Hey，我是Korey](https://resume.flqin.com/)          |        前端        |
+|  5   |             [下位子](http://xiaweizi.cn/resume/)             |    Android简历     |
+|  6   |   [前端工程师—陈功](https://success-cg.github.io/resumer/)   |     前端工程师     |
+|  7   |      [前端工程师—曹惠琳](https://resume.caohuilin.com/)      |     前端工程师     |
+|  8   | [Flutter简历-英文](https://profile.indeed.com/p/wangz-6cslzw7) |  Flutter简历+英文  |
 
 ## 二 简历指南
 
