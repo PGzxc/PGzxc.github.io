@@ -184,6 +184,18 @@ class DrawingBoardPainter extends CustomPainter {
 
 结合2.5说明
 
+```
+Flutter 是一个用于构建跨平台移动应用的框架，它提供了丰富的 UI 组件和工具，但是在直接支持手绘方面相对有限。
+然而，你可以使用 Flutter 来构建与手绘相关的项目，例如绘画应用或涂色应用。
+你可以利用 Flutter 提供的绘图功能（如 CustomPainter）来实现手绘的功能，
+同时结合手势检测库（如 GestureDetector）来捕获用户的手绘动作。
+
+同时，Flutter 社区也有一些第三方库和插件，可以帮助你更轻松地实现手绘相关的功能。
+在 GitHub 等开源平台上搜索相关的插件或库，可能会找到适合你项目需求的工具。
+
+总的来说，虽然 Flutter 没有直接的手绘支持，但你可以利用其强大的绘图和手势检测功能来实现手绘应用
+```
+
 ### 2.7 Flutter中使用Opengl
 
 pub.dev中opengle类库
@@ -198,4 +210,4 @@ pub.dev中opengle类库
 [01]:http://laomengit.com/guide/widgets/DrawingBoard.html
 [02]:https://pub.dev/packages/opengl
 [03]:https://pub.dev/packages/flutter_gl
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-interview/flutter-01-widget-life.webp
+[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-interview-01-widget-life.png
