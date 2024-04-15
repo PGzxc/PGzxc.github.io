@@ -48,7 +48,7 @@ flutter中widget主要分为 StatelessWidget 和 StatefulWidget 两种 二者生
 
 ### 2.2 Flutter中的三棵树
 
-[Flutter](https://so.csdn.net/so/search?q=Flutter&spm=1001.2101.3001.7020) 中存在 `Widget` 、 `Element` 、`RenderObject` 三棵树，其中 **`Widget`与 `Element` 是一对多的关系** ，**`Element` 与 `RenderObject` 是一一对应的关系**。
+Flutter中存在 `Widget` 、 `Element` 、`RenderObject` 三棵树，其中 `Widget`与 `Element` 是一对多的关系 ，`Element` 与 `RenderObject` 是一一对应的关系。
 
  三棵树介绍：
 
