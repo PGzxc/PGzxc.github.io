@@ -14,7 +14,7 @@ comments: false
 |  4   |       [前端常见面试题总结](https://q.shanyue.tech/fe)        | 面试题汇总 |
 |  5   | [大前端面试宝典 - 图解前端](https://lucifer.ren/fe-interview/#/?id=大前端面试宝典-图解前端) | 面试题汇总 |
 |  6   | [面试指南 + 知识库](https://github.com/evestorm/front-end-interview) | 面试题汇总 |
-|  7   |       [前端大厂面试宝典](https://www.mianshibook.com/)       | 面试题汇总 |
+|  7   |  [Redux跳转-前端大厂面试宝典](https://www.mianshibook.com/)  | 面试题汇总 |
 
 ## 二 面试宝典
 
