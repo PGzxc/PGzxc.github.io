@@ -223,7 +223,9 @@ const NewComponent = simpleHOC(Dog);
 
 ### 2.14 如何在React Native中调用一个Web API？
 
-下面的代码显示了我们如何在React Native中调用Web API的一个例子。
+要在React Native中调用Web API，你可以使用内置的`fetch` API或者一些第三方库，比如`axios`。
+
+下面是使用`fetch`的简单示例：
 
 ```
 fetch("http://**sampleurl**", {
