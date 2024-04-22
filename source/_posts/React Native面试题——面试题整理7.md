@@ -54,9 +54,14 @@ date: 2024-03-19 16:54:41
 
 ### 2.4 props和state相同点和不同点
 
-- 1.不管是`props`还是`state`的改变，都会引发render的重新渲染。 2.都能由自身组件的相应初始化函数设定初始值。
+#### 相同点
 
-不同点 1.初始值来源：`state`的初始值来自于自身的`getInitalState（constructor）`函数；`props`来自于父组件或者自身`getDefaultProps`（若key相同前者可覆盖后者）。
+- 1.不管是`props`还是`state`的改变，都会引发render的重新渲染。
+-  2.都能由自身组件的相应初始化函数设定初始值。
+
+#### 不同点
+
+1. 初始值来源：`state`的初始值来自于自身的`getInitalState（constructor）`函数；`props`来自于父组件或者自身`getDefaultProps`（若key相同前者可覆盖后者）。
 
 - 2.修改方式：`state`只能在自身组件中`setState`，不能由父组件修改；  `props`只能由父组件修改，不能在自身组件修改。
 - 3.对子组件：``props是一个父组件传递给子组件的数据流，这个数据流可以一直传递到子孙组件；`state`代表的是一个组件内部自身的状态，只能在自身组件中存在。
