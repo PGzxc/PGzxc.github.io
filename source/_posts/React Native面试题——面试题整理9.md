@@ -66,11 +66,105 @@ React Native 作为一种跨平台移动应用开发框架，有着许多优点�
 简答：props state refs 方面回答
 ```
 
+在React Native中，你可以使用props来实现从父组件向子组件传递数据，而要从子组件向父组件传递数据，则可以通过回调函数的方式。以下是一些简单的示例代码：
+
+1-父组件向子组件传递数据（props）：
+
+```
+javascriptCopy code// ParentComponent.js
+import React from 'react';
+import ChildComponent from './ChildComponent';
+
+export default function ParentComponent() {
+  const dataFromParent = 'Hello from Parent';
+
+  return (
+    <ChildComponent data={dataFromParent} />
+  );
+}
+
+// ChildComponent.js
+import React from 'react';
+import { Text } from 'react-native';
+
+export default function ChildComponent(props) {
+  return (
+    <Text>{props.data}</Text>
+  );
+}
+```
+
+2-子组件向父组件传递数据（回调函数）：
+
+```
+javascriptCopy code// ParentComponent.js
+import React, { useState } from 'react';
+import ChildComponent from './ChildComponent';
+
+export default function ParentComponent() {
+  const [dataFromChild, setDataFromChild] = useState('');
+
+  const handleDataFromChild = (data) => {
+    setDataFromChild(data);
+  };
+
+  return (
+    <>
+      <ChildComponent onDataReceived={handleDataFromChild} />
+      <Text>Data from child: {dataFromChild}</Text>
+    </>
+  );
+}
+
+// ChildComponent.js
+import React from 'react';
+import { Button } from 'react-native';
+
+export default function ChildComponent(props) {
+  const sendDataToParent = () => {
+    const dataToParent = 'Hello from Child';
+    props.onDataReceived(dataToParent);
+  };
+
+  return (
+    <Button title="Send Data to Parent" onPress={sendDataToParent} />
+  );
+}
+```
+
+在这两个例子中，父组件通过props将数据传递给子组件，而子组件则通过调用父组件传递的回调函数来将数据传递回去
+
 ### 2.4 如何实现底部TabBar的高度不一样呢？（类似新浪微博底部加号）
 
 ```
 简答：主要考察flex布局绝对定位问题
 ```
+
+要实现底部TabBar的高度不一样，你可以使用自定义样式来调整每个Tab的高度。在React Navigation中，你可以使用`tabBarOptions`属性来自定义TabBar的样式，包括每个Tab的高度。以下是一个示例代码：
+
+```
+javascriptCopy codeimport React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const Tab = createBottomTabNavigator();
+
+export default function MyTabs() {
+  return (
+    <Tab.Navigator
+      tabBarOptions={{
+        tabStyle: {
+          height: 60, // 设置Tab的高度
+        },
+      }}
+    >
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+    </Tab.Navigator>
+  );
+}
+```
+
+在上面的示例中，通过设置`tabStyle`属性来指定每个Tab的样式，包括高度。你可以根据需要调整`height`的值来实现不同高度的Tab。
 
 ### 2.5 你的项目有没有使用redux或者是mobx来管理数据呢？
 
