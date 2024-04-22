@@ -225,7 +225,8 @@ React Redux是一个用于在React应用程序中使用Redux的库。
 ### 2.22 什么是React Hooks？
 
 ```
-React Hooks是React 16.8中引入的一组函数，它们使我们能够在函数组件中使用状态和其他React功能，而无需使用类组件。
+React Hooks是React 16.8中引入的一组函数，
+它们使我们能够在函数组件中使用状态和其他React功能，而无需使用类组件。
 ```
 
 ### 2.23 React Hooks有哪些？
