@@ -87,7 +87,7 @@ comments: false
 * 2015/10 — 2016/07&emsp;&emsp;时间者互联网科技(北京)有限公司&emsp;&emsp;Android开发工程师
 * 2016/07 — 2018/06&emsp;&emsp;西藏远誉(北京)网络科技有限公司&emsp;&emsp;Android开发工程师
 * 2018/07 — 2022/04&emsp;&emsp;中科航天(北京)科技有限公司&emsp;&emsp;&emsp;&emsp;全栈工程师
-* 2022/06 — 2022/09&emsp;&emsp;贝思畅想科技有限公司 &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;Android开发工程师
+* 2022/06 — 2022/09&emsp;&emsp;贝思畅想科技有限公司 &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;全栈工程师
 
 # 公司及工作内容
 
@@ -764,9 +764,9 @@ IOS截图
 # 技能清单
 
 ## Android
-1. 有良好的 Java 语言基础，熟悉 Kotlin、Jetpack Compose、Flutter 等编程语言
+1. 有良好的Java、Kotlin语言基础，熟悉Jetpack Compose、Flutter、RN等编程语言
 2. 熟悉常用的数据结构、算法和设计模式
-3. 熟悉 Android 构建框架 MVC、MVP 和 MVVM 的使用
+3. 熟悉 Android 构建框架 MVC、MVP 、MVVM、MVI 的使用
 4. 熟练掌握 Android 设备不同屏幕、分辨率及 Android 版本并进行设备兼容适配
 5. 熟悉JNI开发，Java层调用C/CPP层实现具体的业务逻辑
 6. 熟练使用三方框架：短信验证、三方登录、推送、地图、即时通讯、支付、直播视频等
@@ -796,7 +796,7 @@ IOS截图
 * 熟悉ArkTS开发语言，熟悉ArkTS语法规范
 * 熟悉Harmony中常用布局、组件并进行UI开发
 * 熟悉通过Builder装饰器、Extend装饰器等自定义组件
-* 熟悉@State、@Prop等状态管理，并进行数据传递和接收
+* 熟悉@State、@Prop、@Link等状态管理，并进行数据传递和接收
 * 熟悉preferences、PersistentStorage等数据持久化存储方案
 * 熟悉router、Navigator页面路由和组件导航及pageTransition转场动画
 * 熟悉@ohos.net.http或@ohos/axios等网络请求框架
