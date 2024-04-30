@@ -26,7 +26,13 @@ comments: false
 |  3   |          [Macnol](https://www.macno1.com)          |          |
 |  4   |       [AepNet破解](https://www.aepnet.com/)        |          |
 |  5   |         [小白学堂](http://www.itmind.net)          | 破解软件 |
-## 三 搜索
+## 三 开发软件
+
+| 编号 |                          名称(地址)                          |  备注  |
+| :--: | :----------------------------------------------------------: | :----: |
+|  1   | [IDEA激活工具](https://ziby0nwxdov.feishu.cn/docx/W5w9dya9LoDlNDxo6Y2cUXZOnlh) | 全系列 |
+
+## 四 搜索
 
 | 编号 |                 名称(地址)                 |   备注   |
 | :--: | :----------------------------------------: | :------: |
@@ -34,7 +40,7 @@ comments: false
 |  2   | [百度云搜索引擎](http://yun.java1234.com/) |          |
 |  2   |  [Funletu-磁力](https://funletu.com/bt/)   | 最全磁力 |
 
-## 四 版本控制
+## 五 版本控制
 
 | 编号 |                         名称(地址)                          |        备注        |
 | :--: | :---------------------------------------------------------: | :----------------: |
@@ -48,7 +54,7 @@ comments: false
 |  8   | [SVN-visualsvn](https://www.visualsvn.com/server/download/) |     svn服务端      |
 |  9   |     [[TortoiseSVN](https://tortoisesvn.net/about.html)]     |     svn客户端      |
 
-## 五 系统
+## 六 系统
 
 Windows
 
