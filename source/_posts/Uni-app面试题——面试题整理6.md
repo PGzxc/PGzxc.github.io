@@ -293,7 +293,7 @@ App 端，uni-app的 runtime 更复杂，DCloud 有一套小程序引擎，打�
 ### 2.25 uni-app 的编译器是如何特定编译的？
 
 ```
-在 web、app平台，将.vue 文件 编译成 js 代码，小程序则拆分生成wx,l,wxss ,js等
+在 web、app平台，将.vue 文件 编译成 js 代码，小程序则拆分生成wxml,wxss ,js等
 如果涉及uts代码，安卓编译为kotlin代码，ios 编译成swift 代码。
 vue2版本的编译器基于webpack实现，vue3通过 vite 实现，性能更快。
 同时也支持条件编译，可以指定代码至编译到特定的终端平台。
