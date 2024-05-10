@@ -796,6 +796,7 @@ IOS截图
 * 熟悉ArkTS开发语言，熟悉ArkTS语法规范
 * 熟悉Harmony中常用布局、组件并进行UI开发
 * 熟悉通过Builder装饰器、Extend装饰器等自定义组件
+* 熟悉UIAbility组件生命周期、页面生命周期、组件生命周期等
 * 熟悉@State、@Prop、@Link等状态管理，并进行数据传递和接收
 * 熟悉preferences、PersistentStorage等数据持久化存储方案
 * 熟悉router、Navigator页面路由和组件导航及pageTransition转场动画
