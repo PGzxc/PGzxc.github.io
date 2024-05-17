@@ -10,7 +10,7 @@ date: 2022-10-26 17:19:46
 ---
 ## 一 面试题知识点
 
-* Flutter种Widget视图的生命周期
+* Flutter中Widget视图的生命周期
 * Flutter中的三棵树
 * Flutter动画
 * Flutter中手势操作
@@ -22,7 +22,7 @@ date: 2022-10-26 17:19:46
 
 ## 二 面试题解答
 
-### 2.1 Flutter种Widget视图的生命周期
+### 2.1 Flutter中Widget视图的生命周期
 
 flutter中widget主要分为 StatelessWidget 和 StatefulWidget 两种 二者生命周期不太一样
 
