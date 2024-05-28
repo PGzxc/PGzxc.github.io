@@ -99,6 +99,11 @@ class ViewController: UIViewController,UITextFieldDelegate{
 }
 ```
 
+说明：
+
+* `  login(_ sender: UIButton)`中，下划线`_`是用来省略参数标签（parameter label）的
+* 不省略时` login(from sender: UIButton)`，需要使用参数标签`from`
 
 
 [1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-login-username-password.gif
+
