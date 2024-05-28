@@ -40,8 +40,7 @@ date: 2020-05-09 23:34:15
 ### 2.2 Swift模式下
 
 ```
-  scrollView.contentInset=UIEdgeInsets.init(top: 20, left: 20, bottom:
-            20, right: 20);
+  scrollView.contentInset=UIEdgeInsets.init(top: 20, left: 20, bottom:20, right: 20);
   scrollView.showsVerticalScrollIndicator=false;
   scrollView.showsHorizontalScrollIndicator=false;
   scrollView.contentOffset=CGPoint.init(x: 100, y: 100);
