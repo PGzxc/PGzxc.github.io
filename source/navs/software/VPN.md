@@ -97,6 +97,7 @@ comments: false
 |  4   | [长风-免费节点日更](https://www.cfmem.com/search/label/free) |       日更节点        |
 |  5   |           [玩转节点](https://www.wanzhuanmi.com/)            |       日更节点        |
 |  6   |            [Clash节点](https://clashgithub.com/)             |       日更节点        |
+|  7   | [菜鸟科技](https://cainiaokeji.blogspot.com/2024/06/hiddify.html) |  hiddify免费节点分享  |
 
 ## 六 订阅转换器
 
