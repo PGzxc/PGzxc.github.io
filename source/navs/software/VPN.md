@@ -72,14 +72,15 @@ comments: false
 
 ## 三 节点
 
-| 编号 |                          名称(地址)                          |     备注      |
-| :--: | :----------------------------------------------------------: | :-----------: |
-|  1   |   [v2ray-free](https://github.com/v2ray-links/v2ray-free)    | V2Ray免费节点 |
-|  2   | [free-ssr-ss-v2ray-vpn-clash](https://github.com/xrayfree/free-ssr-ss-v2ray-vpn-clash) |   免费节点    |
-|  3   |         [share](https://github.com/mianfeifq/share)          |   免费节点    |
-|  4   | [AutoMergePublicNodes](https://github.com/chengaopan/AutoMergePublicNodes) | 免费节点+更新 |
-|  5   | [V2RayAggregator](https://github.com/mahdibland/V2RayAggregator) | 免费节点+更新 |
-|  6   | [V2ray-Configs](https://github.com/barry-far/V2ray-Configs)  | 免费节点+更新 |
+| 编号 |                          名称(地址)                          |       备注        |
+| :--: | :----------------------------------------------------------: | :---------------: |
+|  1   |   [v2ray-free](https://github.com/v2ray-links/v2ray-free)    |   V2Ray免费节点   |
+|  2   | [free-ssr-ss-v2ray-vpn-clash](https://github.com/xrayfree/free-ssr-ss-v2ray-vpn-clash) |     免费节点      |
+|  3   |         [share](https://github.com/mianfeifq/share)          |     免费节点      |
+|  4   | [AutoMergePublicNodes](https://github.com/chengaopan/AutoMergePublicNodes) |   免费节点+更新   |
+|  5   | [V2RayAggregator](https://github.com/mahdibland/V2RayAggregator) |   免费节点+更新   |
+|  6   | [V2ray-Configs](https://github.com/barry-far/V2ray-Configs)  |   免费节点+更新   |
+|  7   |     [Hiddify+无限节点](https://ybfl.net/sites/411.html)      | 网站(包含上面3个) |
 
 ## 四 第3方收费
 
