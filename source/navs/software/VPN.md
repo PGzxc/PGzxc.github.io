@@ -60,6 +60,7 @@ comments: false
 |  4   |            [free](https://github.com/freefq/free)            | 终端(Android+windows)+免费节点 |
 |  5   | [clash_for_windows_pkg](https://github.com/Fndroid/clash_for_windows_pkg) |      基于Electron的客户端      |
 |  6   |       [clashX](https://github.com/yichengchen/clashX)        |           代理客户端           |
+|  7   |   [hiddify-next](https://github.com/hiddify/hiddify-next)    |             多平台             |
 
 ## 二 相关文档
 
