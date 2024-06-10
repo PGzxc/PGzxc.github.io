@@ -16,3 +16,11 @@ comments: false
 |  1   | [Ai 资源大汇总](https://github.com/getActivity/AiIndex) | Ai 资源大汇总 |
 |  2   |      [AI助手](https://www.talkai.club/model/share)      |  常用AI工具   |
 
+## 二 工具
+
+| 编号 |                          名称及地址                          |               说明                |
+| :--: | :----------------------------------------------------------: | :-------------------------------: |
+|  1   | [NextChat](https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web) | 支持 GPT3, GPT4 & Gemini Pro 模型 |
+|  2   |                                                              |                                   |
+|      |                                                              |                                   |
+
