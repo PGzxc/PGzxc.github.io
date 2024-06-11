@@ -21,6 +21,5 @@ comments: false
 | 编号 |                          名称及地址                          |               说明                |
 | :--: | :----------------------------------------------------------: | :-------------------------------: |
 |  1   | [NextChat](https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web) | 支持 GPT3, GPT4 & Gemini Pro 模型 |
-|  2   |                                                              |                                   |
-|      |                                                              |                                   |
+|  2   |         [ChatGPT](https://github.com/lencx/ChatGPT)          |      Mac, Windows, and Linux      |
 
