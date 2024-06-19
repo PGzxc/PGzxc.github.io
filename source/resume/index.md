@@ -298,6 +298,64 @@ __7-C#项目—磁感应型手指开闭运动检测__
 | ![][c-sharp-10]| ![][c-sharp-11]    |  ![][c-sharp-12]   |
 | ![][c-sharp-13]| ![][c-sharp-14]    |                    |
 
+__8-前端-日立健康养老系统Ver1.0__
+
+**项目简介**：本系统是步态分析POC，利用摄像设备采集老人步行、完成指定动作等图像信息，通过运动能力可视化体验及评价，辅助老人改善运动能力。
+**项目模块**：步态分析、动作分析、问卷调查
+**负责模块**：步态分析、动作分析、问卷调查
+**技术要点**：
+
+- 基于LigerUI搭建项目整体框架
+- 基于jQuery-ajax执行网络请求和前后端交互 
+- 基于Highcharts绘制步态分析结果和历史数据图表
+- 基于jQuery-UI使用jQuery组件快速绘制界面
+- 基于jquery-validation进行表单数据验证
+- 基于jQuery-Cookie操作Cookie缓存数据
+- 基于json2.js-json实现网络请求结果的序列化和反序列化
+- 基于jquery.scrollstop.js解决滚动事件问题
+
+**项目预览**
+
+| ![][hitachiv1-1] | ![][hitachiv1-2] | ![][hitachiv1-3] |
+| :--------------: | :--------------: | :--------------: |
+| ![][hitachiv1-4] | ![][hitachiv1-5] | ![][hitachiv1-6] |
+| ![][hitachiv1-7] | ![][hitachiv1-8] | ![][hitachiv1-9] |
+
+__8-前端-日立智能养老管理系统Ver2.0__
+
+**项目简介**：日立智能养老管理系统是Ver1.0的全新升级版本和全新改版。该系统分为管理员账户和机构账户。管理员账户相当于超级用户，可以登录机构账户，用于管理机构、管理app、管理数据库等。机构账户用于管理用户、训练项目、排名、状态预览、数据分析等。
+**项目模块**：管理员账户、机构账户
+**负责模块**：管理员账户、机构账户
+**技术要点**：
+
+- 基于layui主流前端框架搭建项目整体框架
+- 基于bootstrap实现响应式布局和图标、样式、组件等
+- 基于echarts绘制测试结果和统计分析
+- 基于jQuery-ajax执行网络请求和前后端交互 
+- 基于qrcode生成用户二维码
+- 基于tracking-min.js和face-min.js开发的人脸识别库
+- 基于ckplayer控制播放器步态视频
+- 基于Toastr创建和管理通知消息
+
+**项目预览**
+
+管理员账户
+
+| ![][hitachiv2-1]  | ![][hitachiv2-2]  | ![][hitachiv2-3]  |
+| ----------------- | ----------------- | ----------------- |
+| ![][hitachiv2-4]  | ![][hitachiv2-5]  | ![][hitachiv2-6]  |
+| ![][hitachiv2-7]  | ![][hitachiv2-8]  | ![][hitachiv2-9]  |
+| ![][hitachiv2-10] | ![][hitachiv2-11] | ![][hitachiv2-12] |
+
+机构账户
+
+| ![][hitachiv2-21] | ![][hitachiv2-22] | ![][hitachiv2-23]  |
+| ----------------- | ----------------- | ------------------ |
+| ![][hitachiv2-24] | ![][hitachiv2-25] | !![][hitachiv2-26] |
+| ![][hitachiv2-27] | ![][hitachiv2-28] | ![][hitachiv2-29]  |
+| ![][hitachiv2-30] | ![][hitachiv2-31] | ![][hitachiv2-32]  |
+
+
 ---
 ## <font color=red>2016/07 — 2018/06 &emsp;西藏远誉(北京)网络科技有限公司 &emsp;Android开发工程师</font> 
 ### 公司简介
@@ -1185,3 +1243,43 @@ IOS截图
 [hm-read-4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hm_read_4_voice_his.png
 [hm-read-5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hm_read_5_voice_per.png
 [hm-read-6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hm_read_6_me.png
+
+<!--日历健康-界面v1-->
+[hitachiv1-1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v1-main-page-1.png
+[hitachiv1-2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v1-data-analysis-2.png
+[hitachiv1-3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v1-history-data-compare-3.png
+[hitachiv1-4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v1-history-action-analysis-4.png
+[hitachiv1-5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v1-test-manager-5.png
+[hitachiv1-6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v1-test-add-6.png
+[hitachiv1-7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v1-test-modify-7.png
+[hitachiv1-8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v1-test-evalua-before-8.png
+[hitachiv1-9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v1-test-info-9.png
+[hitachiv1-10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v1-feedback-10.png
+
+<!--日历健康-界面v2-->
+[hitachiv2-1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-login-01.png
+[hitachiv2-2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-use-manager-02.png
+[hitachiv2-3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-origan-info-03.png
+[hitachiv2-4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-apk-upload-04.png
+[hitachiv2-5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-origan-edit-05.png
+[hitachiv2-6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-origan-del-06.png
+[hitachiv2-7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-database-edit-08.png
+[hitachiv2-8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-database-add-10.png
+[hitachiv2-9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-origan-add-11.png
+[hitachiv2-10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-use-info-12.png
+[hitachiv2-11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-use-edit-13.png
+[hitachiv2-12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-use-add-15.png
+
+
+[hitachiv2-21]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-login-21.png
+[hitachiv2-22]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-use-add-22.png
+[hitachiv2-23]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-use-add-22.png
+[hitachiv2-24]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-train-add-24.png
+[hitachiv2-25]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-rank-27.png
+[hitachiv2-26]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-stat-info-28.png
+[hitachiv2-27]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-code-print-30.png
+[hitachiv2-28]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-code-print-30.png
+[hitachiv2-29]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-take-part-analysis-32.png
+[hitachiv2-30]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-finger-histogram-59.png
+[hitachiv2-31]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-report-recommend-65.png
+[hitachiv2-32]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-resume/hitachi-v2-sys-setting-81.png
