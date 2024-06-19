@@ -312,7 +312,7 @@ __8-前端-日立健康养老系统Ver1.0__
 - 基于jquery-validation进行表单数据验证
 - 基于jQuery-Cookie操作Cookie缓存数据
 - 基于json2.js-json实现网络请求结果的序列化和反序列化
-- 基于jquery.scrollstop.js解决滚动事件问题
+- 基于jquery.scrollstop解决滚动事件问题
 
 **项目预览**
 
@@ -354,7 +354,6 @@ __8-前端-日立智能养老管理系统Ver2.0__
 | ![][hitachiv2-24] | ![][hitachiv2-25] | !![][hitachiv2-26] |
 | ![][hitachiv2-27] | ![][hitachiv2-28] | ![][hitachiv2-29]  |
 | ![][hitachiv2-30] | ![][hitachiv2-31] | ![][hitachiv2-32]  |
-
 
 ---
 ## <font color=red>2016/07 — 2018/06 &emsp;西藏远誉(北京)网络科技有限公司 &emsp;Android开发工程师</font> 
