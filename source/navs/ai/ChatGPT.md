@@ -25,3 +25,14 @@ comments: false
 |  1   |    [Talk AI](https://www.talkai.club/)     |      |
 |  2   | [WebTab-桌面插件](https://www.wetab.link/) |      |
 |  3   |        [chatgptbot](chatgptbot.me)         |      |
+
+免费使用
+
+| 编号 |                    名称及地址                    |    说明    |
+| :--: | :----------------------------------------------: | :--------: |
+|  1   | [TexttoSpeech.im](https://texttospeech.im/zh-CN) | 文字转语音 |
+|  2   |     [Humanize.im](https://humanize.im/zh-CN)     |   AI文本   |
+|  3   |         [开搜 AI](https://kaisouai.com/)         |  无需登录  |
+|  4   |        [GPT4o.so](https://gpt4o.so/zh-CN)        |  免费使用  |
+|  5   |          [Math Bot](https://math.bot/)           | 求解数学题 |
+
