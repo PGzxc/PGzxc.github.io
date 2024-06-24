@@ -20,6 +20,7 @@ date: 2024-06-22 11:58:24
 7. Type 'null' is not assignable to type 'UserData'. \<ArkTSCheck>
 8. try catch报错
 9. 传值null问题
+10. Property 'searchEvent' has no initializer and is not definitely assigned in the constructor
 
 <!--more-->
 
@@ -255,7 +256,27 @@ new SettingItem($r('app.string.setting_list_theme'), $r('app.media.ic_theme'), n
 new SettingItem($r('app.string.setting_list_theme'), $r('app.media.ic_theme'), $r(null))
 ```
 
+### 2.10 Property 'searchEvent' has no initializer and is not definitely assigned in the constructor
 
+1-api10之前
+
+```
+export default struct BookDefaultItem {
+  item: Book
+  searchEvent: (event: ClickEvent) => void
+  moreEvent: (event: ClickEvent) => void
+}  
+```
+
+2-api10之后
+
+```
+export default struct BookDefaultItem {
+  item: Book = new Book()
+  searchEvent: (event: ClickEvent) => void = ()=>{}
+  moreEvent: (event: ClickEvent) => void = ()=>{}
+}
+```
 
 ## 三 参考
 
