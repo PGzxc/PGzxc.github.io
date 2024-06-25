@@ -71,9 +71,10 @@ comments: false
 
 ## 五 zyplayer配置
 
-| 编号 |                  名称(地址)                   |       备注       |
-| :--: | :-------------------------------------------: | :--------------: |
-|  1   | https://pan.shangui.cc/f/Nz4Ncj/zyplayer.json | zyplayer一键导入 |
+| 编号 |                          名称(地址)                          |       备注       |
+| :--: | :----------------------------------------------------------: | :--------------: |
+|  1   |        https://pan.shangui.cc/f/Nz4Ncj/zyplayer.json         | zyplayer一键导入 |
+|  2   | [有效的源](https://github.com/Hiram-Wong/ZyPlayer/issues/43) |  作者及别人分享  |
 
 ## 六 户户通
 
