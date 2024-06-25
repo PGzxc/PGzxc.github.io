@@ -75,6 +75,7 @@ comments: false
 | :--: | :----------------------------------------------------------: | :--------------: |
 |  1   |        https://pan.shangui.cc/f/Nz4Ncj/zyplayer.json         | zyplayer一键导入 |
 |  2   | [有效的源](https://github.com/Hiram-Wong/ZyPlayer/issues/43) |  作者及别人分享  |
+|  3   |      [zyplayer文档](https://zy.catni.cn/app-data.html)       |     说明文档     |
 
 ## 六 户户通
 
