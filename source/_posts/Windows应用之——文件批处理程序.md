@@ -16,6 +16,7 @@ date: 2023-10-02 21:01:40
 * 修改文件的类型
 * 批量为当前目录下的文件添加前缀或后缀
 * 视频文件格式转换
+* 批量为文件创建同名文件夹并将文件移动到同名文件夹中
 
 <!--more-->
 
@@ -82,3 +83,28 @@ pause
 
 * 将bat批处理文件与要修改的文件放在同一个目录下
 * 双击运行bat批处理文件
+
+## 五 批量为文件创建同名文件夹并将文件移动到同名文件夹中(使用 PowerShell)
+
+### 5.1 打开 PowerShell 
+
+```
+按下 `Win + X` 键，然后选择“Windows PowerShell”
+```
+
+### 5.2 导航到目标文件夹
+
+```
+使用 cd 命令导航到包含要创建文件夹的文件的目录。
+```
+
+### 5.3 执行命令：输入以下命令并按回车键
+
+```
+Get-ChildItem | ForEach-Object { 
+    New-Item -ItemType Directory -Name $_.BaseName
+    Move-Item -Path $_.FullName -Destination "$($_.BaseName)\$($_.Name)" 
+}
+
+```
+
