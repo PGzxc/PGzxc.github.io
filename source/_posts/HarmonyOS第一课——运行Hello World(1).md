@@ -5,7 +5,7 @@ categories:
   - D-移动开发
   - HarmonyOS
 tags:
-  - HarmonyOS
+  - HarmonyOS第一课
 abbrlink: 978824cf
 date: 2023-11-24 16:18:22
 ---
