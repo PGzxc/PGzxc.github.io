@@ -91,7 +91,7 @@ rowHasChanged函数也是ListView的必需属性。这里我们只是简单的�
 
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-listview.gif
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-listview.gif
 [2]: https://github.com/PGzxc/RN_ListView
 
 

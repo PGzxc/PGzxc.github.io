@@ -222,6 +222,6 @@ date: 2020-06-06 23:24:43
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-uiview-custom-view.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-uivew-xib-custom-class.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-uiview-custom-view.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-uivew-xib-custom-class.png
 

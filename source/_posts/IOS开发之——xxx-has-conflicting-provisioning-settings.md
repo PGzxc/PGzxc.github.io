@@ -38,7 +38,7 @@ UMengComDemo is automatically signed, but provisioning profile ce77059f-c89f-4a6
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-error-conficting-provisioning-setting.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-error-provisioning-profile-exist.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-error-conficting-provisioning-buildsetting-remove.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-error-conficting-provisioning-setting.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-error-provisioning-profile-exist.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-error-conficting-provisioning-buildsetting-remove.png
 

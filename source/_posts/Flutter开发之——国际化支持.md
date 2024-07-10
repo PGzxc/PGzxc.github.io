@@ -316,9 +316,9 @@ MaterialApp(
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-i18n-localizations-zh-error.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-i18n-localizations.gif
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-i18n-localizations-globalmaterialocalization.gif
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-i18n-localizations-material-title-error.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-i18n-localizations-material-title-result.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-i18n-localizations-zh-error.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-i18n-localizations.gif
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-i18n-localizations-globalmaterialocalization.gif
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-i18n-localizations-material-title-error.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-i18n-localizations-material-title-result.png
 

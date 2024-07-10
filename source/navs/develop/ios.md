@@ -87,6 +87,6 @@ comments: false
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-learn-route/IOS-Learning-route-1.jpg
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-learn-route/IOS-Learning-route-2.jpg
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-learn-route/IOS-Learning-route-3.jpg
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-learn-route/IOS-Learning-route-1.jpg
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-learn-route/IOS-Learning-route-2.jpg
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-learn-route/IOS-Learning-route-3.jpg

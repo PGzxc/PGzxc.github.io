@@ -252,10 +252,10 @@ DefaultTextStyle(style: TextStyle(
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-text-property.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-text-textstyle-view.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-text-textspan.gif
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-text-default-textstyle.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-text-font-sdk.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-text-font-folder-set.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-text-font-preview.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-text-property.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-text-textstyle-view.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-text-textspan.gif
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-text-default-textstyle.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-text-font-sdk.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-text-font-folder-set.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-text-font-preview.png

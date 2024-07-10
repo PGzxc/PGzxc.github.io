@@ -106,14 +106,14 @@ date: 2020-01-12 21:12:27
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmake-cmd-bin-list.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmake-cmd-help.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmake-cmd--s-d-sample.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmake-cmd-build-b.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmake-tools-build-project.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmake-tools-run-params.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpack-tools-help.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ctest-tools-help.png
-[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmake-tools-gui-open.png
-[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmake-tools-generator-choice.png
-[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmake-tools-gui-source-generate.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmake-cmd-bin-list.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmake-cmd-help.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmake-cmd--s-d-sample.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmake-cmd-build-b.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmake-tools-build-project.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmake-tools-run-params.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cpack-tools-help.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/ctest-tools-help.png
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmake-tools-gui-open.png
+[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmake-tools-generator-choice.png
+[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmake-tools-gui-source-generate.png

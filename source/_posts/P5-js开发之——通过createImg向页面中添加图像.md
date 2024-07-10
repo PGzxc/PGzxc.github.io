@@ -84,5 +84,5 @@ function setup() {
 * [P5.js官方文档](https://p5js.org/zh-Hans/reference/#/p5/createImg)
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-createimg-img-local.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-createimg-img-network.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-p5js/p5js-createimg-img-local.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-p5js/p5js-createimg-img-network.png

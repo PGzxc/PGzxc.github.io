@@ -12,4 +12,4 @@ date: 2018-05-09 11:05:26
 # 2018年Google开发者大会
 ![2018年Google开发者大会][1]
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/2018-google-develope.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/2018-google-develope.png

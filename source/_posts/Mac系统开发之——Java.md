@@ -78,16 +78,16 @@ date: 2020-02-09 11:34:47
 * [如何为 Mac 更新 Java？][13]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-version-look-uninstall.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-uninstall-progress.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-version-look-uninstall.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-uninstall-progress.png
 [3]:https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-net-download.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-install-start.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-install-success.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-config-bash-profile.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-version.png
-[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-update-pianhao.png
-[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java_update-setting.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-net-download.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-install-start.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-install-success.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-config-bash-profile.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-version.png
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-update-pianhao.png
+[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java_update-setting.png
 [11]:https://www.java.com/zh_CN/download/help/mac_uninstall_java.xml
 [12]:https://blog.csdn.net/qq_43212747/article/details/88140407
 [13]:https://www.java.com/zh_CN/download/help/mac_java_update.xml

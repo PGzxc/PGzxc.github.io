@@ -80,11 +80,11 @@ Warp 是一个非常快的、基于 Rust 的终端，它使您和您的团队在
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-mac/mac-warp-open-login.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-mac/mac-warp-open-login-github.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-mac/mac-warp-open-login-role.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-mac/mac-warp-open-login-finish.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-mac/mac-warp-struct-view.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-mac/mac-warp-user-cmd-java.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-mac/mac-warp-user-cmd-copy.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-mac/mac-warp-user-cmd-paste.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-mac/mac-warp-open-login.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-mac/mac-warp-open-login-github.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-mac/mac-warp-open-login-role.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-mac/mac-warp-open-login-finish.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-mac/mac-warp-struct-view.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-mac/mac-warp-user-cmd-java.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-mac/mac-warp-user-cmd-copy.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-mac/mac-warp-user-cmd-paste.png

@@ -225,9 +225,9 @@ scrollView.setMatchViewportEnabled(true);
 ![][6]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-scrollview-create-xml.gif
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-scrollview-scrollby-300.gif
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-scrollview-scrollto-500.gif
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-scrollview-orientation-horizontal.gif
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-scrollview-rebound-effect.gif
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-scrollview-viewport-effect.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-scrollview-create-xml.gif
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-scrollview-scrollby-300.gif
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-scrollview-scrollto-500.gif
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-scrollview-orientation-horizontal.gif
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-scrollview-rebound-effect.gif
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-scrollview-viewport-effect.gif

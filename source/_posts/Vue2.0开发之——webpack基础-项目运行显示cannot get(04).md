@@ -50,7 +50,7 @@ devServer:{
 
 
 [00]: https://webpack.docschina.org/configuration/dev-server/#devserverstatic00
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-04-canot-get-preview.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-04-canot-get-reason.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-04-canot-get-reason-solve-1.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-04-canot-get-preview.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-04-canot-get-reason.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-04-canot-get-reason-solve-1.png
 

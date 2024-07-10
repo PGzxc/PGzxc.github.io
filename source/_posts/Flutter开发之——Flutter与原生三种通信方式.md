@@ -45,4 +45,4 @@ Flutter与Native原生端通信有三种方法：
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-channel-native-flutter.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-channel-native-flutter.png

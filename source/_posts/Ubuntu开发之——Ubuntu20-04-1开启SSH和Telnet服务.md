@@ -235,5 +235,5 @@ sudo reboot
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-linux/linux-terminal-telnet-login.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-linux/linux-terminal-ssh-login.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-linux/linux-terminal-telnet-login.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-linux/linux-terminal-ssh-login.png

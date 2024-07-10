@@ -183,7 +183,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-getx-statefulwidget-12-flutter.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-getx-statefulwidget-12-valuebuilder.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-getx-statefulwidget-12-obxvalue.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-getx-statefulwidget-12-flutter.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-getx-statefulwidget-12-valuebuilder.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-getx-statefulwidget-12-obxvalue.png
 

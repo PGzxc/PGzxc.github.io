@@ -31,4 +31,4 @@ Code Signing Error: Cannot create a iOS App Development provisioning profile for
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-error-push-aps-environment.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-error-push-aps-environment.png

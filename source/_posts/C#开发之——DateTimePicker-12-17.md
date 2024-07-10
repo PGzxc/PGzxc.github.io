@@ -62,5 +62,5 @@ public partial class DateTimePickerForm : Form
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-winform-datetimepicker-layout.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-winform-datetimerpicker-view.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/csharp-winform-datetimepicker-layout.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/csharp-winform-datetimerpicker-view.gif

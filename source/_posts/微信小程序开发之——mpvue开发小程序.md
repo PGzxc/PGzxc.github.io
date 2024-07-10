@@ -140,10 +140,10 @@ npm run dev
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-mpvue-init-cmd-project.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-mpvue-project-firstapp-config.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-mpvue-vue-cli-firstapp.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-mpvue-cd-first-npm-install.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-mpvue-import-firstapp.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-mpvue-firstapp-preview.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-mpvue-project-struct.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-mpvue-init-cmd-project.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-mpvue-project-firstapp-config.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-mpvue-vue-cli-firstapp.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-mpvue-cd-first-npm-install.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-mpvue-import-firstapp.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-mpvue-firstapp-preview.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-mpvue-project-struct.png

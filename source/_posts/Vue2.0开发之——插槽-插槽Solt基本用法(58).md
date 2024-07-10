@@ -166,6 +166,6 @@ App.vue中指定插槽的内容时，后备内容将被替换
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-58-solt-mycom-define.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-58-solt-mycom-use-p.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-58-solt-mycom-default-content.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-58-solt-mycom-define.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-58-solt-mycom-use-p.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-58-solt-mycom-default-content.png

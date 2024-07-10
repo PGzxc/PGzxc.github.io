@@ -115,13 +115,13 @@ date: 2019-09-19 22:02:04
 * [程序员计算器][22]
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-calc-program.png
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-calc-ce-c.gif
-[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-calc-ms.gif
-[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-calc-mr.gif
-[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-calc-mc.gif
-[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-calc-binary.png
-[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-calc-operator.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-calc-program.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-calc-ce-c.gif
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-calc-ms.gif
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-calc-mr.gif
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-calc-mc.gif
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-calc-binary.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-calc-operator.png
 
 
 [20]: https://jingyan.baidu.com/article/b87fe19e72f7b35219356851.html

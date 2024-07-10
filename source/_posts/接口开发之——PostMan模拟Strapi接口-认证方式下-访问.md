@@ -86,11 +86,11 @@ Post请求的方式，Body下选择Json，把要请求的参数放在json中，�
 
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/user-register.png
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/user-register-authorization-type.png  
-[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/user-register-content.png
-[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/user-register-response.png
-[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/user-login-example.png
-[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/user-login-authorization.png
-[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/user-login-content.png
-[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/user-login-response.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/user-register.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/user-register-authorization-type.png  
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/user-register-content.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/user-register-response.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/user-login-example.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/user-login-authorization.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/user-login-content.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/user-login-response.png

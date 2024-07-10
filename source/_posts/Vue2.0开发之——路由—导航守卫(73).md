@@ -183,7 +183,7 @@ router.beforeEach(function (to, from, next) {
 ![][4]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-73-route-nav-login-view.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-73-route-nav-next-view.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-73-route-nav-login-token-no.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-73-route-nav-login-token-yes.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-73-route-nav-login-view.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-73-route-nav-next-view.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-73-route-nav-login-token-no.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-73-route-nav-login-token-yes.png

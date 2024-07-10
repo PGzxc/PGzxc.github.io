@@ -225,5 +225,5 @@ class App extends React.Component {
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-react/react-day1-img9-react-state.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-react/react-day1-img9-input-text.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-react/react-day1-img9-react-state.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-react/react-day1-img9-input-text.png

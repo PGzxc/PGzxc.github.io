@@ -77,5 +77,5 @@ date: 2020-05-21 23:41:25
 ![][2]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-uitableview-guding.gif
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-tableview-datasource.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-uitableview-guding.gif
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-tableview-datasource.png

@@ -185,6 +185,6 @@ addCount(n){
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-19-vm-print.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-19-add-minus.gif
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-19-add-params.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-19-vm-print.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-19-add-minus.gif
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-19-add-params.gif

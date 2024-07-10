@@ -303,5 +303,5 @@ console.log('add()', add(1, 4))
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ts/ts-day3-img10-type-axios.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ts/ts-day3-img10-type-axios-typings.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ts/ts-day3-img10-type-axios.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ts/ts-day3-img10-type-axios-typings.png

@@ -44,10 +44,10 @@ date: 2021-09-03 12:45:08
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/vscode-browser-plugin-search-borwser.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/vscode-browser-plugin-install.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/vscode-browser-plugin-uninstall.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/vscode-browser-html-open-default.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/vscode-browser-computer-browser-default.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/vscode-browser-open-default-browser.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/vscode-browser-pc-change-default.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/vscode-browser-plugin-search-borwser.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/vscode-browser-plugin-install.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/vscode-browser-plugin-uninstall.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/vscode-browser-html-open-default.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/vscode-browser-computer-browser-default.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/vscode-browser-open-default-browser.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/vscode-browser-pc-change-default.png

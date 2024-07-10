@@ -54,11 +54,11 @@ date: 2023-04-03 11:50:45
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-resource-4k-4ksj.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-resource-movie-stuo-express.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-resource-movie-cjtyy.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-resource-movie-nfyingshi.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-resource-movie-magedn.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-resource-movie-hbcxxdc.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-resource-movie-ccine.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-resource-4k-4ksj.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-resource-movie-stuo-express.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-resource-movie-cjtyy.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-resource-movie-nfyingshi.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-resource-movie-magedn.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-resource-movie-hbcxxdc.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-resource-movie-ccine.png
 

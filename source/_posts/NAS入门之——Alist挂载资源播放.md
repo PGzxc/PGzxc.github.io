@@ -55,11 +55,11 @@ date: 2023-03-23 20:25:36
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-alist-play-webpage.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-alist-play-webpage-jump-potplayer.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-alist-play-webpage-jump-potplayer-alert.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-alist-play-webpage-jump-potplayer-view.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-alist-play-potplayer-playlist.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-alist-play-potplayer-add-list.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-alist-play-potplayer-playlist-folder.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-alist-play-potplayer-list-play.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-alist-play-webpage.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-alist-play-webpage-jump-potplayer.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-alist-play-webpage-jump-potplayer-alert.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-alist-play-webpage-jump-potplayer-view.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-alist-play-potplayer-playlist.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-alist-play-potplayer-add-list.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-alist-play-potplayer-playlist-folder.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-alist-play-potplayer-list-play.png

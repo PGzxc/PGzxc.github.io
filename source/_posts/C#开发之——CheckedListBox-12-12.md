@@ -77,7 +77,7 @@ public partial class CheckedListBox : Form
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-windform-checkedlistbox-create-layout.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-windform-checkedlistbox-eidit.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-windform-checkedlistbox-add-content.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-windform-checkedlistbox-view.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/csharp-windform-checkedlistbox-create-layout.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/csharp-windform-checkedlistbox-eidit.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/csharp-windform-checkedlistbox-add-content.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/csharp-windform-checkedlistbox-view.png

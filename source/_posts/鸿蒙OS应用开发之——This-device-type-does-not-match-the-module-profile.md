@@ -55,6 +55,6 @@ Error while Deploying HAP
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-deploying-hap-not-match.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-deploying-hap-not-match.png
 
 [21]:https://developer.harmonyos.com/cn/docs/documentation/doc-guides/basic-config-file-elements-0000000000034463#ZH-CN_TOPIC_0000001050708780__table29242051154512

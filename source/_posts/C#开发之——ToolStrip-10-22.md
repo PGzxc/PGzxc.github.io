@@ -28,5 +28,5 @@ date: 2020-07-30 21:22:21
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-winform-toolstrip-drag.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-winform-toolstrip-view.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/csharp-winform-toolstrip-drag.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/csharp-winform-toolstrip-view.png

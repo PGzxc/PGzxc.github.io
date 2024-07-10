@@ -175,23 +175,23 @@ date: 2021-08-13 17:44:41
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-profiler-memory-all-view.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-profiler-memory-click-open.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-profiler-memory-profiler-callouts.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-profiler-memory-profiler-number.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-profiler-memory-record-type.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-profiler-memory-trace.gif
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-profiler-memory-heap-dump.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-profiler-memory-trace-menu.gif
-[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-profiler-memory-native-trace.gif
-[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-profiler-memory-native-allocate.png
-[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-profiler-memory-java-trace.gif
-[12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-profiler-memory-export.png
-[13]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-profiler-memory-import.png
-[14]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak.png
-[15]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-list.png
-[16]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-instance.png
-[17]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-details.png
-[18]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-reference.png
-[19]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-jumpsource.png
-[20]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-jumpsource-info.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-all-view.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-click-open.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-profiler-callouts.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-profiler-number.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-record-type.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-trace.gif
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-heap-dump.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-trace-menu.gif
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-native-trace.gif
+[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-native-allocate.png
+[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-java-trace.gif
+[12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-export.png
+[13]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-import.png
+[14]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak.png
+[15]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-list.png
+[16]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-instance.png
+[17]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-details.png
+[18]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-reference.png
+[19]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-jumpsource.png
+[20]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-jumpsource-info.png

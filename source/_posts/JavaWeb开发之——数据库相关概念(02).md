@@ -58,6 +58,6 @@ date: 2022-09-14 01:09:27
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-02-sql-dbms-db.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-02-sql-tools.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-02-sql-dbms-db.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-02-sql-tools.png
 

@@ -34,6 +34,6 @@ N_m3u8DL-CLI_v2.9.5_with_ffmpeg_and_SimpleG.zip：选择下载目录后，点击
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/idm-download-error-protect.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/idm-m3u8-cli-download.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/idm-m3u8-imple-down.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/idm-download-error-protect.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/idm-m3u8-cli-download.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/idm-m3u8-imple-down.png

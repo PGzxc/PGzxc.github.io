@@ -214,10 +214,10 @@ picker.setWheelModeEnabled(!isWheel);
 ![][7]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-picker-min-max.gif
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-picker-setformatter.gif
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-picker-selected-color.gif
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-picker-top-bottom-line.gif
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-picker-shader-color.gif
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-picker-margin.gif
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-picker-wheel-mode.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-picker-min-max.gif
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-picker-setformatter.gif
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-picker-selected-color.gif
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-picker-top-bottom-line.gif
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-picker-shader-color.gif
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-picker-margin.gif
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-picker-wheel-mode.gif

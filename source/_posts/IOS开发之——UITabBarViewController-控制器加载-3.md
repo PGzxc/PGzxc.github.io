@@ -100,5 +100,5 @@ date: 2020-10-25 23:23:24
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-uitabbarviewcontroller-viewcontroller-define-log.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-uitabbarviewcontroller-mainstoryboard-bing-viewcontroller.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-uitabbarviewcontroller-viewcontroller-define-log.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-uitabbarviewcontroller-mainstoryboard-bing-viewcontroller.png

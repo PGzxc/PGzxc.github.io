@@ -67,27 +67,27 @@ date: 2021-08-05 23:57:42
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-life/ipad-guan-price.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-life/ipad-xianyu-price-info.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-life/ipad-xianyu-price-charge.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-life/ipad-xianyu-address-charge.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-life/ipad-xianyu-exchange-ipad.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-life/ipad-xianyu-care-date.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-life/ipad-jihuo-hello.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-life/ipad-jihuo-language-set.png
-[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-life/ipad-jihuo-country.png
-[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-life/ipad-jihuo-keyboard-listen.png
-[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-life/ipad-jihuo-wifi.png
-[12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-life/ipad-jihuo-wait-jihuo.png
-[13]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-life/ipad-setting-data-secute.png
-[14]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-life/ipad-setting-face-id.png
-[15]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-life/ipad-setting-password.png
-[16]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-life/ipad-move-apk-download.png
-[17]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-life/ipad-move-from-android.png
-[18]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-life/ipad-move-ios-num.png
-[19]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-life/ipad-move-android-number.png
-[20]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-life/ipad-move-android-content.png
-[21]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-life/ipad-move-phone-progress.png
-[22]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-life/ipad-move-finish-use.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-life/ipad-guan-price.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-life/ipad-xianyu-price-info.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-life/ipad-xianyu-price-charge.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-life/ipad-xianyu-address-charge.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-life/ipad-xianyu-exchange-ipad.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-life/ipad-xianyu-care-date.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-life/ipad-jihuo-hello.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-life/ipad-jihuo-language-set.png
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-life/ipad-jihuo-country.png
+[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-life/ipad-jihuo-keyboard-listen.png
+[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-life/ipad-jihuo-wifi.png
+[12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-life/ipad-jihuo-wait-jihuo.png
+[13]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-life/ipad-setting-data-secute.png
+[14]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-life/ipad-setting-face-id.png
+[15]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-life/ipad-setting-password.png
+[16]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-life/ipad-move-apk-download.png
+[17]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-life/ipad-move-from-android.png
+[18]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-life/ipad-move-ios-num.png
+[19]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-life/ipad-move-android-number.png
+[20]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-life/ipad-move-android-content.png
+[21]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-life/ipad-move-phone-progress.png
+[22]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-life/ipad-move-finish-use.png
 
 

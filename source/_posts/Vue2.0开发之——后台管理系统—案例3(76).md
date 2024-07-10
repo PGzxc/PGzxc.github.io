@@ -169,5 +169,5 @@ router.beforeEach(function(to, from, next) {
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-76-service-manager-userinfo-jump.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-76-service-manager-userinfo-jump.gif
 

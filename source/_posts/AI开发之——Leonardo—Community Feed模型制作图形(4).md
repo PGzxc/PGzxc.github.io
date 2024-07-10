@@ -46,7 +46,7 @@ Leonardo主页，点击左侧的`Community Feed`切换到Community Feed页面
 ![][4]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-community-feed-open.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-community-feed-trending-choice.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-community-feed-trending-use-model.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-community-feed-trending-use-generate.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-community-feed-open.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-community-feed-trending-choice.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-community-feed-trending-use-model.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-community-feed-trending-use-generate.png

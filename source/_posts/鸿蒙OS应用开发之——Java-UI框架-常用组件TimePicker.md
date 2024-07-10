@@ -255,18 +255,18 @@ timePicker.enableSecond(false);
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-default.gif
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-12-hour-mode.gif
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-normal-color-size.gif
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-selected-color-size.gif
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-operated-color.gif
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-margin-radio.gif
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-shader-color.gif
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-line-element.gif
-[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-am-pm-order.gif
-[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-shou-hour.gif
-[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-show-minute.gif
-[12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-show-second.gif
-[13]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-enable-hour.gif
-[14]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-enable-minute.gif
-[15]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-enable-second.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-default.gif
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-12-hour-mode.gif
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-normal-color-size.gif
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-selected-color-size.gif
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-operated-color.gif
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-margin-radio.gif
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-shader-color.gif
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-line-element.gif
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-am-pm-order.gif
+[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-shou-hour.gif
+[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-show-minute.gif
+[12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-show-second.gif
+[13]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-enable-hour.gif
+[14]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-enable-minute.gif
+[15]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-timepicker-enable-second.gif

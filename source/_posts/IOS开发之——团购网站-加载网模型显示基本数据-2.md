@@ -127,4 +127,4 @@ date: 2020-06-09 23:33:14
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-tuangou-jiben-view.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-tuangou-jiben-view.png

@@ -274,5 +274,5 @@ Vue 2 和 Vue 3 都使用虚拟 DOM 和 diff 算法来更新 DOM，但是在 Vue
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-web/web-font-interview-vue_lifecycle.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-web/web-font-interview-vue_init_process.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-web/web-font-interview-vue_lifecycle.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-web/web-font-interview-vue_init_process.png

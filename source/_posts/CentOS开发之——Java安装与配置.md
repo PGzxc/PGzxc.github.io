@@ -59,11 +59,11 @@ date: 2018-07-27 21:39:15
 
 
 [1]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-linux-download.png
-[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-grep.png
-[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-upload.png
-[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-upload-after.png
-[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-tar-xvf.png
-[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-path.png
-[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-source-etc-profile.png
-[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-version.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-linux-download.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-grep.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-upload.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-upload-after.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-tar-xvf.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-path.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-source-etc-profile.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-version.png

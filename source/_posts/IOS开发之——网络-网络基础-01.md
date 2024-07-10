@@ -77,6 +77,6 @@ date: 2022-02-28 21:47:06
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-internet-dev-samples.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-internet-client-server-view.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-internet-dev-samples.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-internet-client-server-view.png
 

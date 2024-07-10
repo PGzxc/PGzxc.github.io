@@ -49,4 +49,4 @@ javaCompileOptions {
 
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-annotation.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-annotation.png

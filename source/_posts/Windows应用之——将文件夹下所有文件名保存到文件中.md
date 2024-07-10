@@ -61,6 +61,6 @@ IMG_20240417_185134.jpg
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-windows/windows-file-cmd-before.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-windows/windows-file-cmd-after.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-windows/windows-file-cmd-after2.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-windows/windows-file-cmd-before.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-windows/windows-file-cmd-after.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-windows/windows-file-cmd-after2.png

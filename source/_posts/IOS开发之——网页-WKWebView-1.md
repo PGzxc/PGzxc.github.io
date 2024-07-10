@@ -217,10 +217,10 @@ IOS中用于展示网页内容的组件是UIWebView(过时了)和 WKWebView，�
 ![][6]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-webview-01-webview-show.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-webview-01-navigator-embed.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-webview-01-navigator-embed-view.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-webview-01-webview-title.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-webview-01-barbutton-item-add.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-webview-01-back-forward.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-webview-01-webview-show.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-webview-01-navigator-embed.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-webview-01-navigator-embed-view.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-webview-01-webview-title.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-webview-01-barbutton-item-add.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-webview-01-back-forward.gif
 

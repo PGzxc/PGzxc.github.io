@@ -437,22 +437,22 @@ tar只负责打包文件，但不压缩，用bzip2压缩tar打包后的文件，
 
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/linux-order-ls.png
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/linux-order-ls_a.png
-[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/linux-order-ls_l.png
-[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/linux_file_type.png
-[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/linux-ls-redirect.png
-[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/linux-more_file.png
-[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/linux-more_open.png
-[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/linux-pip.png
-[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/linux-order-mkdir.png
-[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/linux-order-rmdir.png
-[11]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/linux-order-li-ln.png
-[12]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/linux-order-cat.png
-[13]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/linux-order-cp.png
-[14]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/linux-order-mv.png
-[15]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/linux-order-tar.png
-[16]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/linux-order-tar_xvf.png
-[17]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/linux-order-gzip-r.png
-[18]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/linux-order-gzip-d.png
-[19]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/linux-order-which.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-ls.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-ls_a.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-ls_l.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux_file_type.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-ls-redirect.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-more_file.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-more_open.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-pip.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-mkdir.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-rmdir.png
+[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-li-ln.png
+[12]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-cat.png
+[13]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-cp.png
+[14]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-mv.png
+[15]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-tar.png
+[16]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-tar_xvf.png
+[17]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-gzip-r.png
+[18]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-gzip-d.png
+[19]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-which.png

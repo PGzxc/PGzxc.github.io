@@ -94,4 +94,4 @@ date: 2022-02-22 09:02:46
 ![][1]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-thread-communite-sample.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-thread-communite-sample.gif

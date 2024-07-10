@@ -62,4 +62,4 @@ NSURLRequest *request=[NSURLRequest requestWithURL:url];
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-download-01-file-size.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-download-01-file-size.png

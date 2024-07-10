@@ -105,25 +105,25 @@ maxSdkVersion 26 标明App最高应用版本为API 26(Android 8.0)，高于Andro
 
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-version-problem-show.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-version-problem-show.png
 [2]: https://developer.android.google.cn/guide/topics/manifest/uses-sdk-element.html#provisional
 [3]: https://developer.android.google.cn/about/dashboards/index.html
-[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-api-version.png
-[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/version-default.png
-[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-compilesdk.png
-[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-target-26.png
-[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-target-27.png
-[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-api-15.png
-[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-other-version.png
-[11]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-min-error.png
-[12]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-targetsdk.png
-[13]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-max-sdk.png
-[14]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-resolve-promte.png
-[15]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-target-api.png
-[16]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-suppresslint.png
-[17]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-build-sdk-int.png
-[18]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-flect.png
-[19]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-supprots.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-api-version.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/version-default.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-compilesdk.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-target-26.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-target-27.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-api-15.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-other-version.png
+[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-min-error.png
+[12]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-targetsdk.png
+[13]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-max-sdk.png
+[14]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-resolve-promte.png
+[15]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-target-api.png
+[16]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-suppresslint.png
+[17]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-build-sdk-int.png
+[18]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-flect.png
+[19]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-supprots.png
 
 
 

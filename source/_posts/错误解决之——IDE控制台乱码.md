@@ -32,8 +32,8 @@ IDE控制台调试时，打印信息出现乱码，现象如下：
 ![][5]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/error-idea-luanma-info.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/error-idea-utf8-check.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/error-idea-vmoptions.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/error-idea-vmoptions-dfileencoding.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/error-idea-luanma-correct.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/error-idea-luanma-info.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/error-idea-utf8-check.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/error-idea-vmoptions.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/error-idea-vmoptions-dfileencoding.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/error-idea-luanma-correct.png

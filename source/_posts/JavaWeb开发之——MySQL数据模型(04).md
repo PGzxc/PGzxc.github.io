@@ -54,5 +54,5 @@ tags:
 * 一张表格里面可以存放多条数据
 * 表格和数据都是db1文件夹下的文件
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-04-mysql-model.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-04-mysql-model.png
 

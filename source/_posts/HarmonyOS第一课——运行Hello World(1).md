@@ -115,8 +115,8 @@ D-模块类型
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/harmonyos-lesson1-single-1.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/harmonyos-lesson1-multiple-2.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/harmonyos-lesson1-result-3.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/harmonyos-lesson1-certify-4.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/harmonyos-lesson1-xmind.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/harmonyos-lesson1-single-1.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/harmonyos-lesson1-multiple-2.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/harmonyos-lesson1-result-3.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/harmonyos-lesson1-certify-4.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/harmonyos-lesson1-xmind.png

@@ -95,4 +95,4 @@ HiLog.info(HiLogLabel label, String format, Object... args)
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-log-info-sample.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-log-info-sample.png

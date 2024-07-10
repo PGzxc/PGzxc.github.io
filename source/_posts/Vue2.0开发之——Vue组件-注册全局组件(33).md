@@ -85,5 +85,5 @@ Vue.component('MyCount',Count)
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-33-components-private-ac.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-33-component-whole-preview.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-33-components-private-ac.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-33-component-whole-preview.png

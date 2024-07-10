@@ -223,6 +223,6 @@ UINib *xib=[UINib nibWithNibName:@"ILProductViewCell" bundle:nil];
 ![][3]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-caipiao-productview-controller.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-caipiao-productview-cell-xib.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-caipiao-productview-preview.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-caipiao-productview-controller.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-caipiao-productview-cell-xib.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-caipiao-productview-preview.png

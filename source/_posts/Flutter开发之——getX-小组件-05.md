@@ -121,8 +121,8 @@ void showBottomSheets() {
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-getx-05-snackbar-preview.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-getx-05-dialog-default.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-getx-05-dialog-custom.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-getx-05-bottom-sheet.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-getx-05-snackbar-preview.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-getx-05-dialog-default.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-getx-05-dialog-custom.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-getx-05-bottom-sheet.png
 

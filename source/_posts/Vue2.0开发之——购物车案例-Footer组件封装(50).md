@@ -175,7 +175,7 @@ getFullState(val){
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-50-cart-footer-import-preview.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-50-cart-footer-fullstate.gif
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-50-cart-footer-setstate.gif
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-50-cart-footer-allcheck.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-50-cart-footer-import-preview.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-50-cart-footer-fullstate.gif
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-50-cart-footer-setstate.gif
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-50-cart-footer-allcheck.gif

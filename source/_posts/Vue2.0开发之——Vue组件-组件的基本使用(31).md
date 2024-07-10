@@ -172,4 +172,4 @@ export default {
 ![][1]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-31-vue-component-sample.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-31-vue-component-sample.gif

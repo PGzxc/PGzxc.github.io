@@ -197,8 +197,8 @@ divHandle(){
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-20-event-param-print.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-20-event-effect.gif
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-20-event-prevent.gif
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-20-event-stop.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-20-event-param-print.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-20-event-effect.gif
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-20-event-prevent.gif
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-20-event-stop.gif
 

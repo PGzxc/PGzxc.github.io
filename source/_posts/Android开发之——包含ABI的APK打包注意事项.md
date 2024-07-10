@@ -145,9 +145,9 @@ APK split 允许我们自动生成多个APK文件，通过处理架构配制(请
 [00]:https://developer.android.google.cn/ndk/guides/abis?hl=zh_cn#gradle
 [01]:https://www.bianchengquan.com/article/240058.html
 [02]:https://blog.csdn.net/eric4784510/article/details/53609165
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-abi-jniLibs-src.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-abi-jniLibs-set.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-abi-all-release-oversize.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-abi-abifilter-set.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-abi-productFlavors.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-abi-split-apk.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-abi-jniLibs-src.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-abi-jniLibs-set.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-abi-all-release-oversize.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-abi-abifilter-set.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-abi-productFlavors.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-abi-split-apk.png

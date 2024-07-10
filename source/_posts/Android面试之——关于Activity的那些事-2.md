@@ -58,4 +58,4 @@ Android中的scheme是一种页面内跳转协议，通过自定义scheme协议�
 
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/activity-stack.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/activity-stack.png

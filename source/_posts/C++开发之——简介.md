@@ -54,4 +54,4 @@ C++ 广泛用于教学和研究。
 
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-standard.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cpp-standard.png

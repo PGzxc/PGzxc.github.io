@@ -140,11 +140,11 @@ UIViewAutoresizingFlexibleBottomMargin = 1 << 5, 自动调整与父视图的下�
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-screen-adapter-01-autoresizing-explain.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-screen-adapter-01-board-father.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-screen-adapter-01-board-son-view1.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-screen-adapter-01-board-son-view2.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-screen-adapter-01-board-effect.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios//ios-screen-adapter-01-code-view1.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios//ios-screen-adapter-01-code-view2.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-screen-adapter-01-autoresizing-explain.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-screen-adapter-01-board-father.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-screen-adapter-01-board-son-view1.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-screen-adapter-01-board-son-view2.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-screen-adapter-01-board-effect.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios//ios-screen-adapter-01-code-view1.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios//ios-screen-adapter-01-code-view2.png
 

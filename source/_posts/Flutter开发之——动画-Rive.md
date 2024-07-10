@@ -134,8 +134,8 @@ class _MyHomePageState extends State<MyHomePage>
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-rive-web-resouce.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-rive-anim-open-player.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-rive-animation-name.gif
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-rive-animals-download.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-rive-animal-result.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-rive-web-resouce.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-rive-anim-open-player.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-rive-animation-name.gif
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-rive-animals-download.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-rive-animal-result.gif

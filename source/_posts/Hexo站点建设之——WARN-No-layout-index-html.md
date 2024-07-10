@@ -54,9 +54,9 @@ git clone https://github.com/theme-next/hexo-theme-next themes/next
 ![][6]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-error-no-layout-view.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-error-npm-depth.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-error-install-save.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-error-themes-view.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-error-themes-clone-local.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-error-gene-file.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-error-no-layout-view.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-error-npm-depth.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-error-install-save.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-error-themes-view.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-error-themes-clone-local.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-error-gene-file.png

@@ -130,12 +130,12 @@ http://127.0.0.1:5500/
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-web-editor-open-default.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-web-editor-project-files.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-web-editor-run.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-web-editor-stop.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-vscode-plugin-search.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-vscode-create-project-new-p5.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-vscode-create-project-projectname.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-vscode-create-project-create-files.png
-[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-vscode-golive-run.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-p5js/p5js-web-editor-open-default.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-p5js/p5js-web-editor-project-files.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-p5js/p5js-web-editor-run.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-p5js/p5js-web-editor-stop.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-p5js/p5js-vscode-plugin-search.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-p5js/p5js-vscode-create-project-new-p5.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-p5js/p5js-vscode-create-project-projectname.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-p5js/p5js-vscode-create-project-create-files.png
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-p5js/p5js-vscode-golive-run.png

@@ -68,5 +68,5 @@ date: 2020-06-29 23:34:22
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-tongxunlu-login.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-tongxunlu-login.gif
 

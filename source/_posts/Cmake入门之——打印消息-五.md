@@ -78,15 +78,15 @@ message([<mode>] "message to display" ...)
 * [Documentation » cmake-commands(7) »message][12]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmake-debug-message-info.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmake-message-model-fatal-error-config.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmake-message-model-fatal-error-print.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmake-message-model-send-error-config.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmake-message-model-send-error-print.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmake-message-model-warning-config.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmake-message-model-warning-print.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmake-message-model-deprecation-config.png
-[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmake-message-model-deprecation-print.png
-[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmake-message-model-other-config.png
-[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cmake-message-model-other-print.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmake-debug-message-info.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmake-message-model-fatal-error-config.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmake-message-model-fatal-error-print.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmake-message-model-send-error-config.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmake-message-model-send-error-print.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmake-message-model-warning-config.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmake-message-model-warning-print.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmake-message-model-deprecation-config.png
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmake-message-model-deprecation-print.png
+[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmake-message-model-other-config.png
+[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmake-message-model-other-print.png
 [12]:https://cmake.org/cmake/help/latest/command/message.html

@@ -236,5 +236,5 @@ date: 2020-12-16 09:14:19
 ## 七 效果图
 ![][2]
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-event-drawa-move-layout.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-event-draw-view.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-event-drawa-move-layout.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-event-draw-view.gif

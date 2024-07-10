@@ -189,7 +189,7 @@ date: 2022-04-11 21:50:38
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-devices-06-view.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-devices-06-info-bluetooth-usage.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-devices-06-info-bluetooth-view.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-devices-06-corebluetooth-preview.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-devices-06-view.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-devices-06-info-bluetooth-usage.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-devices-06-info-bluetooth-view.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-devices-06-corebluetooth-preview.gif

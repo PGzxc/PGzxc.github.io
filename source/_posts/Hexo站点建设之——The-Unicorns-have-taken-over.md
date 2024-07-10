@@ -47,6 +47,6 @@ The Unicorns have taken over. We're doing our best to get them under control and
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-error-unicorns.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-error-unicorns-github-pages-dedicated.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-error-unicorns-pages-settings.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hexo/hexo-error-unicorns.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hexo/hexo-error-unicorns-github-pages-dedicated.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hexo/hexo-error-unicorns-pages-settings.png

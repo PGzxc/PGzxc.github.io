@@ -179,9 +179,9 @@ layer.contents=(id)[UIImage imageNamed:@"jump"].CGImage;
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-caanimation-struct.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-animation-position.gif
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-animation-rotate.gif
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-animation-scale.gif
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-animation-jupm.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-caanimation-struct.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-animation-position.gif
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-animation-rotate.gif
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-animation-scale.gif
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-animation-jupm.gif
 

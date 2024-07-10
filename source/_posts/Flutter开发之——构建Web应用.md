@@ -146,8 +146,8 @@ flutter create .
 ```
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-web-create-config.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-ide-chrome-run.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-ide-run-chrome-view.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-cmd-chrome-run.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-web-create-config.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-ide-chrome-run.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-ide-run-chrome-view.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-cmd-chrome-run.png
 

@@ -270,12 +270,12 @@ class Counter extends React.Component {
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-react/react-day3-img15-lifecycle.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-react/react-day3-img15-lefecycle-create-order.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-react/react-day3-img15-lefecycle-create-function.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-react/react-day3-img15-lefecycle-update-order.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-react/react-day3-img15-lefecycle-update-function.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-react/react-day3-img15-lefecycle-unmount-function.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-react/react-day3-img15-lefecycle-whole-old.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-react/react-day3-img15-lefecycle-whole-new.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-react/react-day3-img15-lifecycle.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-react/react-day3-img15-lefecycle-create-order.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-react/react-day3-img15-lefecycle-create-function.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-react/react-day3-img15-lefecycle-update-order.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-react/react-day3-img15-lefecycle-update-function.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-react/react-day3-img15-lefecycle-unmount-function.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-react/react-day3-img15-lefecycle-whole-old.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-react/react-day3-img15-lefecycle-whole-new.png
 

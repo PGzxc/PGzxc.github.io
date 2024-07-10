@@ -204,16 +204,16 @@ CONSTRAINT fk_user_desc FOREIGN KEY(desc_id) REFERENCES tb_user_desc(id)
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-20-software-design.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-20-one2one-table.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-20-one2one-table-relate.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-20-one2one-table-relate-model.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-20-more2more-tables.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-20-more2more-table-relate.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-20-more2more-table-model.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-20-one2one-table-relate.png
-[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-20-one2one-table-relates.png
-[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-20-one2one-table-model.png
-[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-20-sample-analysis.png
-[12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-20-sample-analysis-result.png
-[13]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-20-sample-analysis-result-relate.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-20-software-design.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-20-one2one-table.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-20-one2one-table-relate.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-20-one2one-table-relate-model.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-20-more2more-tables.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-20-more2more-table-relate.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-20-more2more-table-model.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-20-one2one-table-relate.png
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-20-one2one-table-relates.png
+[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-20-one2one-table-model.png
+[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-20-sample-analysis.png
+[12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-20-sample-analysis-result.png
+[13]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-20-sample-analysis-result-relate.png

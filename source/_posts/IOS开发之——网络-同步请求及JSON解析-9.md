@@ -160,4 +160,4 @@ username=123&pwd=123
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-http-json-sync-parse.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-http-json-sync-parse.gif

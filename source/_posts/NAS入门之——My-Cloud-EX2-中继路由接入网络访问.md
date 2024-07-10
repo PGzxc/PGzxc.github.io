@@ -40,8 +40,8 @@ http://192.168.1.4
 ![][5]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-ex2-net-connect.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-ex2-guanfang-director.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-ex2-guanfang-director-error.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-ex2-zhongji-device-list-nas.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-ex2-zhongji-web-info.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-ex2-net-connect.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-ex2-guanfang-director.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-ex2-guanfang-director-error.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-ex2-zhongji-device-list-nas.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-ex2-zhongji-web-info.png

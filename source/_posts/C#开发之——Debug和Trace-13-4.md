@@ -67,5 +67,5 @@ class Program
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-trace-debug-view.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-debug-trace-change.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/csharp-trace-debug-view.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/csharp-debug-trace-change.png

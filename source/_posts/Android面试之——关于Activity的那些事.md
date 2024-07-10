@@ -90,12 +90,12 @@ Android进程分为前台进程，可见进程，服务进程，后台进程，�
 
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/activity-fout-state.png
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/activity-life.jpg
-[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/activity-start.png
-[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/activity-to-home.png
-[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/activity-return.png
-[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/activity-stop.png
-[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/android-progre.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/activity-fout-state.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/activity-life.jpg
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/activity-start.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/activity-to-home.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/activity-return.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/activity-stop.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-progre.png
 
 

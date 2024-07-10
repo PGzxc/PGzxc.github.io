@@ -144,6 +144,6 @@ new Vue({
 * [Vue Router官网—介绍](https://router.vuejs.org/zh/introduction.html)
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-68-route-index-name-error.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-68-route-index-name-error.png
 
 

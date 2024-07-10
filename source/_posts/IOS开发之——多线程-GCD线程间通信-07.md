@@ -62,4 +62,4 @@ date: 2022-02-23 08:49:17
 ![][1]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-gcd-thread-commit.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-gcd-thread-commit.gif

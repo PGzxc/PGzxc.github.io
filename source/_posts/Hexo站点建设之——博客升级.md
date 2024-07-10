@@ -76,17 +76,17 @@ date: 2019-06-13 23:19:16
 
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-open-vscode.png
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-install-hexo-cli.png
-[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-npm-install-depend.png
-[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/npm-install-error.png
-[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-package-json.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-open-vscode.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-install-hexo-cli.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-npm-install-depend.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/npm-install-error.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-package-json.png
 [6]: https://www.npmjs.com/package/npm-check-updates
-[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/npm-check-update.png
-[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/npm-audit-fix.png
-[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-npm-audit-fix.png
-[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-npm-audit-after-warn.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/npm-check-update.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/npm-audit-fix.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-npm-audit-fix.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-npm-audit-after-warn.png
 [11]: https://www.npmjs.com/package/eslint
-[12]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-install-eslint.png
-[20]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-g-old-version.png
-[21]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-s-old-version.png
+[12]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-install-eslint.png
+[20]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-g-old-version.png
+[21]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-s-old-version.png

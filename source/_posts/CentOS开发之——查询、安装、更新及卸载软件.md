@@ -131,22 +131,22 @@ rpm命令是RPM软件包的管理工具。rpm原本是Red Hat Linux发行版专�
 
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/centos7-software-rpm-qa-grep.png
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/centos7-software-rpm-q.png
-[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/centos7-software-rpm-ql.png
-[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/centos7-software-rpm-qal-grep.png
-[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/centos-software-rpm-ivh.png
-[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/centos7-software-tar-zxvf.png
-[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/centos7-software-ect-profile-config.png
-[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/centos7-software-source-etc-profile.png
-[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/centos7-software-yum-list.png
-[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/centos7-software-yum-install.png
-[11]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/centos7-software-yum-remove.png
-[12]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/centos7-software-rpm-e-remove.png
-[13]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/centos7-software-check-update.png
-[14]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/centos7-software-yum-update.png
-[15]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/centos7-software-yum-update-all.png
-[16]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/centos7-software-yum-upgrade-all.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/centos7-software-rpm-qa-grep.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/centos7-software-rpm-q.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/centos7-software-rpm-ql.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/centos7-software-rpm-qal-grep.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/centos-software-rpm-ivh.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/centos7-software-tar-zxvf.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/centos7-software-ect-profile-config.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/centos7-software-source-etc-profile.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/centos7-software-yum-list.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/centos7-software-yum-install.png
+[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/centos7-software-yum-remove.png
+[12]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/centos7-software-rpm-e-remove.png
+[13]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/centos7-software-check-update.png
+[14]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/centos7-software-yum-update.png
+[15]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/centos7-software-yum-update-all.png
+[16]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/centos7-software-yum-upgrade-all.png
 
 
 [30]: https://www.cnblogs.com/zhi-leaf/p/10315125.html

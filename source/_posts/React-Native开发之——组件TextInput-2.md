@@ -62,14 +62,14 @@ selectTextOnFocus和selectionColor，用于设置获取焦点时，选中文本�
 
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-textinput-maxlength-code.png
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-textinput-maxlength.gif
-[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-textinput-multiline-code.png
-[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-textinput-multiline-look.png
-[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-textinput-placeholder.png
-[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-textinput-placeholder.gif
-[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-textinput-securetextentry.png
-[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-textinput-securetextentry.gif
-[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-textinput-selectonfocus.png
-[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-textinput-selectTextOnFocus.gif
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-textinput-maxlength-code.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-textinput-maxlength.gif
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-textinput-multiline-code.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-textinput-multiline-look.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-textinput-placeholder.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-textinput-placeholder.gif
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-textinput-securetextentry.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-textinput-securetextentry.gif
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-textinput-selectonfocus.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-textinput-selectTextOnFocus.gif
 [11]: https://github.com/PGzxc/RN_TextInput

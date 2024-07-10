@@ -40,4 +40,4 @@ date: 2020-05-25 22:40:58
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-head-foot-view.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-head-foot-view.gif

@@ -83,4 +83,4 @@ date: 2022-11-05 09:25:45
 ![][1]
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-kotlin/kotlin-learn-struct-3.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-kotlin/kotlin-learn-struct-3.png

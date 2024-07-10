@@ -90,9 +90,9 @@ StartupNotify=false
   ```
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-linux/linux-desktop-studio-desktop-edit.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-linux/linux-desktop-android-desktop-view.gif
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-linux/linux-desktop-android-add-collect.gif
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-linux/linux-desktop-as-position.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-linux/linux-desktop-as-to-desktop.gif
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-linux/linux-desktop-as-shorcut.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-linux/linux-desktop-studio-desktop-edit.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-linux/linux-desktop-android-desktop-view.gif
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-linux/linux-desktop-android-add-collect.gif
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-linux/linux-desktop-as-position.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-linux/linux-desktop-as-to-desktop.gif
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-linux/linux-desktop-as-shorcut.gif

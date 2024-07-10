@@ -80,6 +80,6 @@ TARGETS——>JumpApp——>Info——>URL Types中点击“+”，添加一个U
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-caipiao-jumpapp-url-types.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-caipiao-jumpapp-define-sample.gif
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-caipiao-jumpapp-appstore-sample.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-caipiao-jumpapp-url-types.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-caipiao-jumpapp-define-sample.gif
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-caipiao-jumpapp-appstore-sample.gif

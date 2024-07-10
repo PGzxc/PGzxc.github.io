@@ -66,5 +66,5 @@ boolean类型值，设置Button是否可以点击。
 参考： [RN_Button][2]
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-button-look.gif
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-button-look.gif
 [2]: https://github.com/PGzxc/RN_Button

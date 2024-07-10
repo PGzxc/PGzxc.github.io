@@ -45,12 +45,12 @@ date: 2018-02-26 10:05:40
 
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-revoke-add-content.png  
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-revoke-status.png
-[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-revoke-checkout.png
-[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-revoke-cat-readme.png
-[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-revoke-add-second.png
-[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-revoke-status-second.png
-[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-revoke-checkout-status.png
-[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-revoke-reset-head.png
-[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-revoke-status-reset.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/git-revoke-add-content.png  
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/git-revoke-status.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/git-revoke-checkout.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/git-revoke-cat-readme.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/git-revoke-add-second.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/git-revoke-status-second.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/git-revoke-checkout-status.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/git-revoke-reset-head.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/git-revoke-status-reset.png

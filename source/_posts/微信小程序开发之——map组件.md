@@ -173,10 +173,10 @@ onLoad: function (options) {
 
 [00]:https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#permission
 [01]:https://developers.weixin.qq.com/miniprogram/dev/component/map.html
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-map-first-view.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-map-getlocation-permission.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-map-permission-object.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-map-permission-dyamic.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-map-my-location.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-map-location-compass.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-map-marker-preview.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-map-first-view.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-map-getlocation-permission.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-map-permission-object.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-map-permission-dyamic.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-map-my-location.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-map-location-compass.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-map-marker-preview.gif

@@ -182,7 +182,7 @@ var p = {
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ts/ts-day4-img11-react-ts-create.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ts/ts-day4-img11-react-ts-create-start.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ts/ts-day4-img11-react-ts-demo-struct.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ts/ts-day4-img11-react-ts-tsconfig.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ts/ts-day4-img11-react-ts-create.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ts/ts-day4-img11-react-ts-create-start.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ts/ts-day4-img11-react-ts-demo-struct.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ts/ts-day4-img11-react-ts-tsconfig.png

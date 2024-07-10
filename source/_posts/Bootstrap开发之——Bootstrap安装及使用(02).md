@@ -188,7 +188,7 @@ import "bootstrap/dist/js/bootstrap.min.js";
   
 
 [00]:https://v3.bootcss.com/getting-started/
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-bootstrap/bootstrap-img02-bt-download.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-bootstrap/bootstrap-img02-npm-vue-view.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-bootstrap/bootstrap-img02-libs-import.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-bootstrap/bootstrap-img02-libs-view.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-bootstrap/bootstrap-img02-bt-download.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-bootstrap/bootstrap-img02-npm-vue-view.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-bootstrap/bootstrap-img02-libs-import.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-bootstrap/bootstrap-img02-libs-view.png

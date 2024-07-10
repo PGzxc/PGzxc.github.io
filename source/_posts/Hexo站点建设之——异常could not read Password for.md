@@ -67,7 +67,7 @@ fatal: could not read Password for 'https://***@github.com': No such device or a
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/github-error-password-read.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/github-error-access-token-make.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/github-error-secrets-token-add.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/github-error-actions-success.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hexo/github-error-password-read.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hexo/github-error-access-token-make.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hexo/github-error-secrets-token-add.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hexo/github-error-actions-success.png

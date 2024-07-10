@@ -44,7 +44,7 @@ Page({
 * [CSDN下载-示例代码](https://download.csdn.net/download/Calvin_zhou/51969907)
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-button-state-primary.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-button-state-warning.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-button-state-change.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-button-state-primary.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-button-state-warning.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-button-state-change.gif
 

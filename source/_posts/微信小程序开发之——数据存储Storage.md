@@ -168,9 +168,9 @@ storageInfo(){
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-storange-log-preview.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-storage-operate-preview.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-storage-add-preview.gif
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-storage-remove-preview.gif
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-storage-getStroageinfo.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-storage-clearInfo-preview.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-storange-log-preview.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-storage-operate-preview.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-storage-add-preview.gif
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-storage-remove-preview.gif
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-storage-getStroageinfo.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-storage-clearInfo-preview.gif

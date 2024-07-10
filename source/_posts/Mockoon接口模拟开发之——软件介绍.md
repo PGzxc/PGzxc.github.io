@@ -47,6 +47,6 @@ HTTPS：默认http，勾选后使用Https
 ![][2]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-api/mockoon-cheat-sheet-main.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-api/mockoon-environment-setting-view.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-api/mockoon-cheat-sheet-main.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-api/mockoon-environment-setting-view.png
 

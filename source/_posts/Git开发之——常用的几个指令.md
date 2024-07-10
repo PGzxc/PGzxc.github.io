@@ -44,8 +44,8 @@ date: 2018-02-25 23:26:44
 
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-add-content.png
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-add-status.png
-[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-add-diff.png
-[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-add-commit.png
-[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/git-add-commit-status.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/git-add-content.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/git-add-status.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/git-add-diff.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/git-add-commit.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/git-add-commit-status.png

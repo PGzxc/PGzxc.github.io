@@ -436,9 +436,9 @@ Couchbase位置：沙盒路径/Library/Application Support/CouchbaseLite/mydb.cb
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-sqlite-05-couchbase-project-struct.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-sqlite-05-couchbase-dest-position.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-sqlite-05-couchbase-table-kvdefault.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-sqlite-05-couchbase-table-kvinfo.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-sqlite-05-couchbase-table-kvmeeta.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-sqlite-05-couchbase-dest-sample.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-05-couchbase-project-struct.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-05-couchbase-dest-position.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-05-couchbase-table-kvdefault.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-05-couchbase-table-kvinfo.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-05-couchbase-table-kvmeeta.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-05-couchbase-dest-sample.png

@@ -210,5 +210,5 @@ componentWillUnmount() {
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-react/react-day1-img16-render-props-view.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-react/react-day1-img16-render-props-view.gif
 

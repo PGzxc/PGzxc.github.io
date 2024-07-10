@@ -80,13 +80,13 @@ https://leonardo.ai/
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-try-use-access-email.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-try-use-wait-join.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-try-use-wait-join-username.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-try-use-homeview.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-login-to-leonardo-launch.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-signup-wait-join-whitelisted.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-login-to-leonardo-googleplay.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-login-to-leonardo-getstarted.png
-[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-login-to-leonardo.png
-[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-login-leonardo-home-view.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-try-use-access-email.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-try-use-wait-join.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-try-use-wait-join-username.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-try-use-homeview.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-login-to-leonardo-launch.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-signup-wait-join-whitelisted.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-login-to-leonardo-googleplay.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-login-to-leonardo-getstarted.png
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-login-to-leonardo.png
+[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-login-leonardo-home-view.png

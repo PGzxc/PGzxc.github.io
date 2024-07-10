@@ -104,9 +104,9 @@ body: Column(
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-nima-resource-web.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-nima-resource-select.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-nima-open-nima.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-nima-animate-options.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-nima-engine-export.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-nima-animate-result.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-nima-resource-web.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-nima-resource-select.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-nima-open-nima.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-nima-animate-options.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-nima-engine-export.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-nima-animate-result.gif

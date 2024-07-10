@@ -136,5 +136,5 @@ class Program
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-file-directoryinfo-create.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-file-directoryinfo-list.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/csharp-file-directoryinfo-create.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/csharp-file-directoryinfo-list.png

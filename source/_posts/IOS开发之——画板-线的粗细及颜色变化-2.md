@@ -124,5 +124,5 @@ date: 2021-04-06 10:01:06
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-draw-board-line-width.gif
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-draw-board-line-color.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-draw-board-line-width.gif
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-draw-board-line-color.gif

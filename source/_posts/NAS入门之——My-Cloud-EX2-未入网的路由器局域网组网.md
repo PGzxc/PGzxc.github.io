@@ -72,11 +72,11 @@ My Cloud EX2 通过网线连接到路由器的其中一个~W~Lan口上
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/nas-mycloud-route-nas-connect.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/nas-mycloud-route-lan-wlan.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/nas-mycloud-route-device-connect.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/nas-mycloud-windos-ping-nas.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/nas-mycloud-windows-web-position.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/nas-mycloud-mac-web-position.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/nas-mycloud-phone-state.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/nas-mycloud-route-nas-connect.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/nas-mycloud-route-lan-wlan.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/nas-mycloud-route-device-connect.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/nas-mycloud-windos-ping-nas.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/nas-mycloud-windows-web-position.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/nas-mycloud-mac-web-position.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/nas-mycloud-phone-state.png
 

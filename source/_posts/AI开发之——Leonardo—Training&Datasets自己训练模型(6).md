@@ -66,16 +66,16 @@ date: 2023-03-24 16:02:55
 ![][12]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-create-new.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-create-new-desc.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-create-new-finish.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-create-new-upload-train.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-create-new-train-model.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-create-new--training-progress.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-create-new-job-status.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-create-new-job-finish.png
-[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-use-your-models.png
-[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-use-view.png
-[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-use-detail-with.png
-[12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-use-result.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-create-new.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-create-new-desc.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-create-new-finish.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-create-new-upload-train.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-create-new-train-model.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-create-new--training-progress.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-create-new-job-status.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-create-new-job-finish.png
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-use-your-models.png
+[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-use-view.png
+[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-use-detail-with.png
+[12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-leonardo-training-use-result.png
 

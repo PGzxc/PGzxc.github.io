@@ -126,4 +126,4 @@ pause
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ffmpeg-run-conver-mp4-finished.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/ffmpeg-run-conver-mp4-finished.png

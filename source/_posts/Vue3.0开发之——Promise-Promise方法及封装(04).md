@@ -229,5 +229,5 @@ getFile('./files/1.txt').then(
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue3.0-day1-04-promise-resolve-reject.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue3.0-day1-04-promise-resolve-reject-deal.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue3.0-day1-04-promise-resolve-reject.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue3.0-day1-04-promise-resolve-reject-deal.png

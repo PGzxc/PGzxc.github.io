@@ -221,5 +221,5 @@ env: GitHub和Coding仓库(https模式下)
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-github-action-secrets-tokens.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-github-action-all-workflows.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hexo/hexo-github-action-secrets-tokens.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hexo/hexo-github-action-all-workflows.png

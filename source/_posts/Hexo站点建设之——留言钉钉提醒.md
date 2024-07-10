@@ -59,10 +59,10 @@ date: 2020-11-09 16:35:58
   ![][7]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-message-pre-result.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-message-dingding-robot-manage.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-message-robot-mange-list-github.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-message-github-robot-info.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-message-github-webhook-make.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-message-github-project-add-webhook.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-message-add-webhook-set.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hexo/hexo-message-pre-result.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hexo/hexo-message-dingding-robot-manage.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hexo/hexo-message-robot-mange-list-github.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hexo/hexo-message-github-robot-info.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hexo/hexo-message-github-webhook-make.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hexo/hexo-message-github-project-add-webhook.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hexo/hexo-message-add-webhook-set.png

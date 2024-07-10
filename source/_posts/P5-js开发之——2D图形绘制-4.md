@@ -257,12 +257,12 @@ triangle(x1, y1, x2, y2, x3, y3)
 [08]:https://p5js.org/zh-Hans/reference/#/p5/triangle
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-2d-arc.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-2d-ellipse.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-2d-circle.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-2d-line.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-2d-point.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-2d-quad.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-2d-rect.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-2d-square.png
-[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-p5js/p5js-2d-triangle.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-p5js/p5js-2d-arc.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-p5js/p5js-2d-ellipse.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-p5js/p5js-2d-circle.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-p5js/p5js-2d-line.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-p5js/p5js-2d-point.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-p5js/p5js-2d-quad.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-p5js/p5js-2d-rect.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-p5js/p5js-2d-square.png
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-p5js/p5js-2d-triangle.png

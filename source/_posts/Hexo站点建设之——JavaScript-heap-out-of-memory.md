@@ -56,6 +56,6 @@ FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaS
 
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-error-heap-outof-memory.png
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-script-space-size.png
-[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-error-hexo-s.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-error-heap-outof-memory.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-script-space-size.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-error-hexo-s.png

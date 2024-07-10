@@ -102,5 +102,5 @@ class Program
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-thread-start-evenum.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-thread-print-eveandodd.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/csharp-thread-start-evenum.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/csharp-thread-print-eveandodd.png

@@ -56,13 +56,13 @@ date: 2017-12-17 20:40:31
 
 
 [1]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/jdk-version.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/jdk-version.png
 [3]: https://kotlinlang.org/
-[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/kotlin-compiler.png
-[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/kotlin-home.png
-[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/kotlin-home-bin.png
-[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/kotliln-version.png
-[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/kotlin-compiler-pro.png
-[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/kotlin-compiler-jar.png
-[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/kotlin-compiler-jar-run.png
-[11]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/kotlin-build-process.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/kotlin-compiler.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/kotlin-home.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/kotlin-home-bin.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/kotliln-version.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/kotlin-compiler-pro.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/kotlin-compiler-jar.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/kotlin-compiler-jar-run.png
+[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/kotlin-build-process.png

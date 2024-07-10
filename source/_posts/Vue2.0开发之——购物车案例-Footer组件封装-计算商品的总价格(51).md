@@ -87,4 +87,4 @@ props: {
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-51-cart-footer-total-price.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-51-cart-footer-total-price.gif

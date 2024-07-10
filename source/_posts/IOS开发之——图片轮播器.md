@@ -138,4 +138,4 @@ date: 2020-05-12 23:54:17
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-images-lunbo.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-images-lunbo.gif

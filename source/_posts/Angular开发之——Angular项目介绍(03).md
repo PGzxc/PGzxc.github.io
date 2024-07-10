@@ -158,5 +158,5 @@ export class AppComponent {
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-angular/angular-03-project-struct-view.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-angular/angular-03-project-start-process.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-angular/angular-03-project-struct-view.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-angular/angular-03-project-start-process.png

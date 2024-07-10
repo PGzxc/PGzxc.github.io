@@ -79,5 +79,5 @@ btnSwitch.setCheckedStateChangedListener(new AbsButton.CheckedStateChangedListen
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-switch-xml-run.gif
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-switch-on-off-text.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-switch-xml-run.gif
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-switch-on-off-text.gif

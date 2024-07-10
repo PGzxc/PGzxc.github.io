@@ -358,5 +358,5 @@ NSOperation之间可以设置依赖来保证执行顺序
 ```
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-thread-operation-dependency.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-thread-operation-define-process.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-thread-operation-dependency.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-thread-operation-define-process.png

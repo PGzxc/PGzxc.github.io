@@ -279,8 +279,8 @@ add image效果图
 ![][5]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-toastdialog-all-sample.gif
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-toastdialog-basic.gif
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-toastdialog-position-center.gif
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-toastdialog-custom.gif
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-toastdialog-add-image.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-toastdialog-all-sample.gif
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-toastdialog-basic.gif
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-toastdialog-position-center.gif
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-toastdialog-custom.gif
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-toastdialog-add-image.gif

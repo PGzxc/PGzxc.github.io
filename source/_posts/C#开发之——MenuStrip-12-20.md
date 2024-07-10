@@ -36,6 +36,6 @@ MenuStrip是Windows窗体中的菜单栏控件，直接按住MenuStrip不放，�
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-winform-menustrip-drag-layout.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-menustrip-edit.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-winform-menustrip-view.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/csharp-winform-menustrip-drag-layout.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/csharp-menustrip-edit.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/csharp-winform-menustrip-view.gif

@@ -69,14 +69,14 @@ date: 2023-09-29 08:52:44
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-altstore-shortcat-add-siri.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-altstore-shortcat-set-name.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-altstore-shortcat-add-finish.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-altstore-shortcat-auto-menu.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-altstore-shortcat-auto-add.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-altstore-shortcat-auto-setting.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-altstore-shortcat-auto-choice.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-altstore-shortcat-auto-add-view.png
-[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-altstore-shortcat-start.png
-[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-altstore-shortcat-starting.png
-[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-altstore-shortcat-finish.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-altstore-shortcat-add-siri.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-altstore-shortcat-set-name.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-altstore-shortcat-add-finish.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-altstore-shortcat-auto-menu.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-altstore-shortcat-auto-add.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-altstore-shortcat-auto-setting.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-altstore-shortcat-auto-choice.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-altstore-shortcat-auto-add-view.png
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-altstore-shortcat-start.png
+[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-altstore-shortcat-starting.png
+[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-altstore-shortcat-finish.png

@@ -249,6 +249,6 @@ react-native bundle --entry-file index.ios.js --bundle-output ./ios/bundle/index
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-rn/rn-interview-md1-component-life.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-rn/rn-interview-md1-redux.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-rn/rn-interview-md1-flex.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-rn/rn-interview-md1-component-life.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-rn/rn-interview-md1-redux.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-rn/rn-interview-md1-flex.png

@@ -71,5 +71,5 @@ fun main() {
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-kotlin/kotlin-param-fun-define.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-kotlin/kotlin-param-fun-use.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-kotlin/kotlin-param-fun-define.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-kotlin/kotlin-param-fun-use.png

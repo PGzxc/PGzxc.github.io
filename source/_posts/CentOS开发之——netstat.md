@@ -45,7 +45,7 @@ netstat是net-tools里面的一个命令，yum install net-tools组件
 
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/centos7-netstat-no.png
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/centos7-netstat-yum-install.png
-[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/centos7-netstat-help.png
-[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/centos7-netstat-ano.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/centos7-netstat-no.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/centos7-netstat-yum-install.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/centos7-netstat-help.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/centos7-netstat-ano.png

@@ -140,10 +140,10 @@ C:\Users\Admin\AppData\Local\Temp\tmp-20584-ywmo7dOFTDP8
 
 [00]:https://github.com/electron/electron-quick-start
 [01]:https://www.electronjs.org/fiddle
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-electron/electron-application-construct-preview.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-electron/electron-github-project-preview.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-electron/electron-github-project-npm-start.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-electron/electron-fiddle-software-download.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-electron/electron-fiddle-project-create-temp.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-electron/electron-fiddle-project-run.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-electron/electron-fiddle-tasks-package.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-electron/electron-application-construct-preview.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-electron/electron-github-project-preview.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-electron/electron-github-project-npm-start.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-electron/electron-fiddle-software-download.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-electron/electron-fiddle-project-create-temp.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-electron/electron-fiddle-project-run.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-electron/electron-fiddle-tasks-package.png

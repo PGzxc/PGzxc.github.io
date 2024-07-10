@@ -105,5 +105,5 @@ class ViewController: UIViewController,UITextFieldDelegate{
 * 不省略时` login(from sender: UIButton)`，需要使用参数标签`from`
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-login-username-password.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-login-username-password.gif
 

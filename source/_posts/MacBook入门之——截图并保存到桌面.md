@@ -40,10 +40,10 @@ Applestore搜索截图，可以看到很多截图软件如：Xnip和QQ截图等�
 	![][6]
 	
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-cut-image-keyboard.png
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-cut-image-keyboard-area.png
-[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-cut-image-keyboard-save.png
-[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-cut-image-software-setting.png
-[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-cut-image-software-setting-config.png
-[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-cut-image-software-save.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/mac-cut-image-keyboard.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/mac-cut-image-keyboard-area.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/mac-cut-image-keyboard-save.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/mac-cut-image-software-setting.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/mac-cut-image-software-setting-config.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/mac-cut-image-software-save.png
 

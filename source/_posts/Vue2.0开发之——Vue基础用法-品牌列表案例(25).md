@@ -132,4 +132,4 @@ date: 2022-11-22 10:12:38
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-25-band-list-sample.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-25-band-list-sample.gif

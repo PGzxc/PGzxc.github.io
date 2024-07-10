@@ -701,5 +701,5 @@ Zepto不能进行事件捕获，所以需要用原生js，并将绑定事件默�
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-web/zepto-src-download.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-web/zepto-vscode-project-struct.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-web/zepto-src-download.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-web/zepto-vscode-project-struct.png

@@ -122,6 +122,6 @@ HttpResponse<String> resp = client.send(req, HttpResponse.BodyHandler.asString()
 
 
 [1]: http://www.importnew.com/24528.html
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java-9-module.png
-[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java9-shell.png
-[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/java9_doc.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java-9-module.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java9-shell.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/java9_doc.png

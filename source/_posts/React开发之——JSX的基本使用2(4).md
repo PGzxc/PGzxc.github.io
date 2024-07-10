@@ -239,5 +239,5 @@ import './index.css'
 ![][2]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-react/react-day1-img4-jsx-style-1.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-react/react-day1-img4-jsx-style-2.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-react/react-day1-img4-jsx-style-1.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-react/react-day1-img4-jsx-style-2.png

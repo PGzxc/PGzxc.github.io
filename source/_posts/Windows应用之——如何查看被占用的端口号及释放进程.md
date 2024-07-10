@@ -46,8 +46,8 @@ date: 2019-12-26 21:31:18
   
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/windows-port-in-used.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/windows-netstat-find-pid.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/windows-tasklist-find-application.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/windows-manager-open.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/windows-manager-close-port.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/windows-port-in-used.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/windows-netstat-find-pid.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/windows-tasklist-find-application.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/windows-manager-open.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/windows-manager-close-port.png

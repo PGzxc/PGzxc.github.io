@@ -156,4 +156,4 @@ date: 2022-03-15 08:33:09
 ![][1]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-download-06-continue.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-download-06-continue.gif

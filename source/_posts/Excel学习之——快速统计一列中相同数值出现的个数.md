@@ -42,13 +42,13 @@ date: 2019-11-03 10:50:48
 * [excel如何快速统计一列中相同数值出现的个数][10]
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/excel-statis-raw-data.png
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/excel-statis-insert-table.png
-[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/excel-statis-select-raw-data.png
-[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/excel-statis-drag-line-value.png
-[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/excel-statis-raw-sum.png
-[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/excel-statis-change-num.gif
-[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/excel-statis-make-right.png
-[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/excel-statis-table-border-set.png
-[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/excel-statis-number.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/excel-statis-raw-data.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/excel-statis-insert-table.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/excel-statis-select-raw-data.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/excel-statis-drag-line-value.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/excel-statis-raw-sum.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/excel-statis-change-num.gif
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/excel-statis-make-right.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/excel-statis-table-border-set.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/excel-statis-number.png
 [10]:https://jingyan.baidu.com/article/9113f81b2c16822b3214c785.html

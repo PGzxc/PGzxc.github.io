@@ -25,6 +25,6 @@ date: 2017-12-25 12:48:44
 
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/orientation-error.png
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/orientation-solve-1.png
-[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/orientation-solve-2.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/orientation-error.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/orientation-solve-1.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/orientation-solve-2.png

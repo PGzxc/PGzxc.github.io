@@ -27,4 +27,4 @@ date: 2023-01-04 17:52:31
 ![][1]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-all-xmind-summary.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cpp-all-xmind-summary.png

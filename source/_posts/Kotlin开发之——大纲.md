@@ -34,5 +34,5 @@ date: 2023-01-05 09:04:07
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-kotlin/kotlin-all-xmind-struct-1.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-kotlin/kotlin-all-xmind-struct-2.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-kotlin/kotlin-all-xmind-struct-1.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-kotlin/kotlin-all-xmind-struct-2.png

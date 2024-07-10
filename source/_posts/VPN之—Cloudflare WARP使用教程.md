@@ -126,20 +126,20 @@ date: 2024-04-06 11:25:11
 
 
 
-[00]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vpn/vpn-wrap-website.png
-[01]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vpn/vpn-wrap-telegram-generate.png
-[02]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vpn/vpn-wrap-choice.png
-[03]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vpn/vpn-wrap-cloudflare-setting.png
-[04]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vpn/vpn-wrap-cloudflare-preference.png
-[05]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vpn/vpn-wrap-account-default.png
-[06]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vpn/vpn-wrap-account-key-set.png
-[07]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vpn/vpn-wrap-account-login-data.png
-[08]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vpn/vpn-wrap-toggle-begin.png
-[09]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vpn/vpn-wrap-connected.png
-[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vpn/vpn-wrap-ios-setting.png
-[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vpn/vpn-wrap-ios-account.png
-[12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vpn/vpn-wrap-ios-account-change.png
-[13]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vpn/vpn-wrap-ios-begin.png
-[14]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vpn/vpn-wrap-ios-end.png
+[00]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vpn/vpn-wrap-website.png
+[01]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vpn/vpn-wrap-telegram-generate.png
+[02]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vpn/vpn-wrap-choice.png
+[03]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vpn/vpn-wrap-cloudflare-setting.png
+[04]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vpn/vpn-wrap-cloudflare-preference.png
+[05]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vpn/vpn-wrap-account-default.png
+[06]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vpn/vpn-wrap-account-key-set.png
+[07]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vpn/vpn-wrap-account-login-data.png
+[08]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vpn/vpn-wrap-toggle-begin.png
+[09]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vpn/vpn-wrap-connected.png
+[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vpn/vpn-wrap-ios-setting.png
+[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vpn/vpn-wrap-ios-account.png
+[12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vpn/vpn-wrap-ios-account-change.png
+[13]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vpn/vpn-wrap-ios-begin.png
+[14]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vpn/vpn-wrap-ios-end.png
 
 

@@ -264,10 +264,10 @@ export default {
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-37-vue-life-stage.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-37-vue-lifecycle.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-37-test-class-method.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-37-beforecreate-console.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-37-initBookList-result.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-37-lefecyle-destory.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-37-vue-life-stage.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-37-vue-lifecycle.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-37-test-class-method.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-37-beforecreate-console.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-37-initBookList-result.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-37-lefecyle-destory.gif
 

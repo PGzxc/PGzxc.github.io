@@ -191,4 +191,4 @@ typedef void(^HandleImageViewBlock) (UIImage *image);
 ![][1]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-draw-photo-sample.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-draw-photo-sample.gif

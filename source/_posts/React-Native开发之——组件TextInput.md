@@ -83,15 +83,15 @@ returnKeyType，用于设置返回键类型，它有以下几个通用类型：
 
 
 [0]: https://facebook.github.io/react-native/docs/textinput.html
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-textInput.png
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-textinput-autoCapitalize-code.png
-[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-textinput-autocap.gif
-[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-textinput-autocorrect-code.png
-[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-textinput-autocorrect.gif
-[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-textinput-autofocus-code.png
-[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-textinput-autofocus.gif
-[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-textinput-keyboardtype.png
-[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-textinput-keyboardtype-look.png
-[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-textinput-returnkeytype.png
-[11]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/rn-textinput-returnkeytype-look.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-textInput.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-textinput-autoCapitalize-code.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-textinput-autocap.gif
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-textinput-autocorrect-code.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-textinput-autocorrect.gif
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-textinput-autofocus-code.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-textinput-autofocus.gif
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-textinput-keyboardtype.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-textinput-keyboardtype-look.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-textinput-returnkeytype.png
+[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/rn-textinput-returnkeytype-look.png
 [12]: https://github.com/PGzxc/RN_TextInput

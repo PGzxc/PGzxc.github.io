@@ -58,4 +58,4 @@ date: 2020-06-26 22:54:40
 ```
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-chaoji-caitu-tishi.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-chaoji-caitu-tishi.gif

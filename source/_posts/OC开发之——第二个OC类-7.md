@@ -138,7 +138,7 @@ p->weight=60;
 
 ![][4]
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/oc-memory-allocation-1.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/oc-memory-allocation-2.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/oc-memory-allocation-3.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/oc-memory-allocation-4.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/oc-memory-allocation-1.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/oc-memory-allocation-2.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/oc-memory-allocation-3.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/oc-memory-allocation-4.png

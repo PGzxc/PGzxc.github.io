@@ -86,8 +86,8 @@ Android系统会依次匹配NDEF_DISCOVERED、TECH_DISCOVERED和TAG_DISCOVERED�
 
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/nfc-three-match.png
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/nfc-open.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/nfc-three-match.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/nfc-open.png
   
 
 

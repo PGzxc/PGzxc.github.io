@@ -124,19 +124,19 @@ http://localhost/wordpress/wp-admin/install.php
 
 ![][13]
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wordpress/wordpress-web-get-wordpress.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wordpress/wordpress-down-553.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wordpress/wordpress-apache-htdocs-copy.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wordpress/wordpress-mysql-navicate-database.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wordpress/wordpress-wp-admin-install.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wordpress/wordpress-sitepage-info-set.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wordpress/wordpress-install-finish.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wordpress/wordpress-user-login.png
-[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wordpress/wordpress-main-site.png
-[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wordpress/wordpress-choice-site-theme.png
-[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wordpress/wordpress-mysite-preview.png
-[12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wordpress/wordpress-org-themes-choice.png
-[13]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wordpress/wordpress-new-theme-choice.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wordpress/wordpress-web-get-wordpress.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wordpress/wordpress-down-553.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wordpress/wordpress-apache-htdocs-copy.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wordpress/wordpress-mysql-navicate-database.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wordpress/wordpress-wp-admin-install.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wordpress/wordpress-sitepage-info-set.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wordpress/wordpress-install-finish.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wordpress/wordpress-user-login.png
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wordpress/wordpress-main-site.png
+[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wordpress/wordpress-choice-site-theme.png
+[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wordpress/wordpress-mysite-preview.png
+[12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wordpress/wordpress-org-themes-choice.png
+[13]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wordpress/wordpress-new-theme-choice.png
 
 [21]:https://wordpress.org/
 [22]:https://cn.wordpress.org/

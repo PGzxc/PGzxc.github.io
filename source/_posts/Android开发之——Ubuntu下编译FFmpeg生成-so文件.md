@@ -141,19 +141,19 @@ android 文件夹用于存放build后的.so文件和其他文件
 
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ffmpeg-make.png
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ffmpeg-git.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/ffmpeg-make.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/ffmpeg-git.png
 [3]: http://www.androiddevtools.cn/
-[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ffmpeg-down-ffmp.png
-[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ffmpeg-unzip-ff.png
-[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ffmpeg-modify-config.png
-[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ffmpeg-modify-config-after.png
-[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ffmpeg-create-sh.png
-[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ffmpeg-create-sh-after.png
-[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ffmpeg-create-android.png
-[11]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ffmpeg-change-x.png
-[12]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ffmpeg-build-sh.png
-[13]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ffmpeg-build-process.png
-[14]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ffmpeg-build-file.png
-[15]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/ffmpeg-so.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/ffmpeg-down-ffmp.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/ffmpeg-unzip-ff.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/ffmpeg-modify-config.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/ffmpeg-modify-config-after.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/ffmpeg-create-sh.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/ffmpeg-create-sh-after.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/ffmpeg-create-android.png
+[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/ffmpeg-change-x.png
+[12]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/ffmpeg-build-sh.png
+[13]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/ffmpeg-build-process.png
+[14]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/ffmpeg-build-file.png
+[15]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/ffmpeg-so.png
 

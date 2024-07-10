@@ -98,16 +98,16 @@ http://localhost:8080/
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-download-platform.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-kodi-service.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-kodi-open-http.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-windows-share.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-kodi-web-view.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-open.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-search.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-search-result.png
-[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-connect.png
-[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-connect-finish.png
-[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-control.png
-[12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-control-play.png
-[13]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-home-view.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-download-platform.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-kodi-service.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-kodi-open-http.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-windows-share.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-kodi-web-view.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-open.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-search.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-search-result.png
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-connect.png
+[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-connect-finish.png
+[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-control.png
+[12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-control-play.png
+[13]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-kodi-4-kore-home-view.png

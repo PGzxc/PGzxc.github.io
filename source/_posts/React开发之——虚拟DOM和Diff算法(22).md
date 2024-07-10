@@ -77,5 +77,5 @@ date: 2023-04-23 17:51:04
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-react/react-day4-img22-virtual-dom.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-react/react-day4-img22-diff-dom.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-react/react-day4-img22-virtual-dom.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-react/react-day4-img22-diff-dom.png

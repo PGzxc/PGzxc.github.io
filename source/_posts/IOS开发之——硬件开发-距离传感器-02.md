@@ -87,5 +87,5 @@ NSLog(@"环境传感器=%d",[UIDevice currentDevice].proximityMonitoringEnabled)
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-device-02-ipad-sensor.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-device-02-iphone-sensor.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-device-02-ipad-sensor.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-device-02-iphone-sensor.png

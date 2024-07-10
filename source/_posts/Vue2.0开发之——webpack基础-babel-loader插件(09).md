@@ -119,5 +119,5 @@ module.exports = {
 
 [00]:https://v4.webpack.js.org/loaders/babel-loader/#install
 [01]:https://babeljs.io/docs/en/babel-plugin-proposal-decorators
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-09-babel-loader-error.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-09-babel-loader-success.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-09-babel-loader-error.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-09-babel-loader-success.png

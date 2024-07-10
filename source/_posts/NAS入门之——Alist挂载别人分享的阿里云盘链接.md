@@ -95,15 +95,15 @@ http://127.0.0.1:5244/
 
 
 [00]:https://alist.nn.ci/zh/guide/drivers/aliyundrive.html
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-alist-add-account-info.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-alist-add-share-content.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-alist-add-manager-home.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-alist-add-manager-storage-add.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-alist-add-manager-storage-add-drive.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-alist-add-manager-storage-add-path.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-alist-add-account-token-get.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-alist-add-account-token-set.png
-[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-alist-add-account-shareid-set.png
-[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-alist-add-share-finish-home.png
-[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-alist-add-computer-disk-pan.png
-[12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-alist-add-computer-res-play.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-alist-add-account-info.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-alist-add-share-content.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-alist-add-manager-home.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-alist-add-manager-storage-add.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-alist-add-manager-storage-add-drive.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-alist-add-manager-storage-add-path.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-alist-add-account-token-get.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-alist-add-account-token-set.png
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-alist-add-account-shareid-set.png
+[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-alist-add-share-finish-home.png
+[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-alist-add-computer-disk-pan.png
+[12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-alist-add-computer-res-play.png

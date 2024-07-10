@@ -143,6 +143,6 @@ const router = new VueRouter({
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-69-route-switch-router-view.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-69-route-switch-router-view.gif
 
 

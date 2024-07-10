@@ -108,10 +108,10 @@ const vm = new Vue({
 [01]:https://dayjs.fenxianglu.cn/category
 [02]: https://www.bootcss.com/
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-14-vue-download-site.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-14-vue-lib-import.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-14-vue-create-obj.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-14-vue-div-control.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-14-vue-data-username.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-14-vue-div-view.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-14-vue-mvvm.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-14-vue-download-site.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-14-vue-lib-import.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-14-vue-create-obj.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-14-vue-div-control.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-14-vue-data-username.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-14-vue-div-view.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-14-vue-mvvm.png

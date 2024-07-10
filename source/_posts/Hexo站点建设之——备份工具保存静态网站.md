@@ -75,14 +75,14 @@ date: 2017-11-13 23:10:22
 
 
 [1]: https://github.com/coneycode/hexo-git-backup
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-install-git-backup.png
-[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-add-backup-info.png
-[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-branches.png
-[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-back-folder.png
-[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-backup-git-bash.png
-[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-git-clone.png
-[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-git-clone-local.png
-[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-install-hexo-g.png
-[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-install-hexo-deplyer-git.png
-[11]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-backup-hexo-g.png
-[12]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-localhost-4000.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-install-git-backup.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-add-backup-info.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-branches.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-back-folder.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-backup-git-bash.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-git-clone.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-git-clone-local.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-install-hexo-g.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-install-hexo-deplyer-git.png
+[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-backup-hexo-g.png
+[12]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-localhost-4000.png

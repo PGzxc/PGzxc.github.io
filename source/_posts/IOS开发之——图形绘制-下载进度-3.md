@@ -103,4 +103,4 @@ date: 2020-12-31 08:45:57
 
 ![][1]
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-draw-down-progress.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-draw-down-progress.gif

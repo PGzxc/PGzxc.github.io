@@ -63,15 +63,15 @@ date: 2018-12-22 20:51:01
 
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-retore-software-info.png
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-restore-create-ssh.png
-[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-resote-add-ssh-key.png
-[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-restore-ssh-test.png
-[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-restore-git-username-email.png
-[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-restore-bolg-folder-remove.png
-[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-restore-git-init-remote.png
-[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-restore-install-hexo.png
-[9]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-restore-npm-install.png
-[10]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-restore-npm-install.png
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-retore-software-info.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-restore-create-ssh.png
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-resote-add-ssh-key.png
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-restore-ssh-test.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-restore-git-username-email.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-restore-bolg-folder-remove.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-restore-git-init-remote.png
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-restore-install-hexo.png
+[9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-restore-npm-install.png
+[10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-restore-npm-install.png
 [11]: http://localhost:4000/
-[12]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/hexo-restore-hexo-s.png
+[12]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/hexo-restore-hexo-s.png

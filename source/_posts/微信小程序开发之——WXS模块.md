@@ -216,5 +216,5 @@ console.log(tools.msg);
 [03]:https://developers.weixin.qq.com/miniprogram/dev/reference/wxs/05statement.html
 [04]:https://developers.weixin.qq.com/miniprogram/dev/reference/wxs/07basiclibrary.html
 [05]:https://developers.weixin.qq.com/miniprogram/dev/reference/wxs/01wxs-module.html
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-wxs-two-way-preview.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-wxs-two-way-preview.png
 

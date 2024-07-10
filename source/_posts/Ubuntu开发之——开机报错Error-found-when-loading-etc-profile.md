@@ -36,4 +36,4 @@ export PATH=$ANDROID_HOME/platform-tools:$PATH
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-linux/ubuntu-error-loading-etc.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-linux/ubuntu-error-loading-etc.png

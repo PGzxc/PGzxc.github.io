@@ -202,7 +202,7 @@ export default {
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-38-component-relates.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-38-relate-parent-son-result.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-38-relate-parent-son-props.gif
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue02-38-relate-son-parent.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-38-component-relates.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-38-relate-parent-son-result.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-38-relate-parent-son-props.gif
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue02-38-relate-son-parent.gif

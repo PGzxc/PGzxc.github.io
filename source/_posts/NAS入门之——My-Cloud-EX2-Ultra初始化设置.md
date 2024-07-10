@@ -52,8 +52,8 @@ date: 2020-11-04 23:29:08
 * [RAID有哪几种？有什么区别](https://www.zhihu.com/question/20131784/answer/199454382)
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-my-cloud-ex2-login.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-my-cloud-ex2-main-view.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-my-cloud-ex2-shutdown.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-raid-struct.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-my-cloud-ex2-login.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-my-cloud-ex2-main-view.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-my-cloud-ex2-shutdown.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-raid-struct.png
 [21]:http://mycloud.com/setup

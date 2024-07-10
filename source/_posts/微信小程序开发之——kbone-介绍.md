@@ -236,11 +236,11 @@ npm run build
 
 
 [00]:https://wechat-miniprogram.github.io/kbone/docs/guide/tutorial.html#%E7%BC%96%E5%86%99-webpack-%E9%85%8D%E7%BD%AE
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-kbone-init-app-no-exist.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-kbone-webpack-project-terminal.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-kbone-project-create-language.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-kbone-project-create-success.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-kbone-project-create-file-struct.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-kbone-npm-run-mp.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-kbone-import-mp.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/wechat-kbone-project-import-preview.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-kbone-init-app-no-exist.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-kbone-webpack-project-terminal.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-kbone-project-create-language.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-kbone-project-create-success.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-kbone-project-create-file-struct.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-kbone-npm-run-mp.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-kbone-import-mp.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-kbone-project-import-preview.png

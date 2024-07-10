@@ -276,5 +276,5 @@ static FMDatabase *_db;
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-sqlite-04-fmdb-project-struct.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-sqlite-04-fmdb-table-operate.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-04-fmdb-project-struct.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-04-fmdb-table-operate.png

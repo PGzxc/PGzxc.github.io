@@ -69,4 +69,4 @@ date: 2021-06-03 12:23:16
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-anim-group-sample.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-anim-group-sample.gif

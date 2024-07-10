@@ -192,4 +192,4 @@ Diff 算法的时间复杂度是 O(n)，其中 n 表示节点数目。因为它�
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-web/web-front-interview-react-md-life.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-web/web-front-interview-react-md-life.png

@@ -85,11 +85,11 @@ lite-server --baseDir="dist/project-name"
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-angular/angular-04-project-ng-build.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-angular/angular-04-project-ng-build-dist.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-angular/angular-04-project-dist-open-direct.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-angular/angular-04-lite-server-start.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-angular/angular-04-project-start-view.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-angular/angular-04-iis-install.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-angular/angular-04-iis-add-dist-app.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-angular/angular-04-iis-dist-start.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-angular/angular-04-project-ng-build.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-angular/angular-04-project-ng-build-dist.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-angular/angular-04-project-dist-open-direct.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-angular/angular-04-lite-server-start.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-angular/angular-04-project-start-view.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-angular/angular-04-iis-install.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-angular/angular-04-iis-add-dist-app.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-angular/angular-04-iis-dist-start.png

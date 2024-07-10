@@ -102,17 +102,17 @@ rules: {
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-vs-tabsize.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-vs-editor-on-save.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-create-pick-preset.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-create-select-features.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-create-vue-version.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-create-less-choice.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-create-standard-choice.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-create-link-on-save.png
-[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-create-dedicated-config.png
-[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-create-finish.png
-[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-create-eslintrc-file.png
-[12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-rules-doc-open.png
-[13]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-rules-console-explain.png
-[14]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-rules-console-detail.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-vs-tabsize.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-vs-editor-on-save.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-create-pick-preset.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-create-select-features.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-create-vue-version.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-create-less-choice.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-create-standard-choice.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-create-link-on-save.png
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-create-dedicated-config.png
+[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-create-finish.png
+[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-create-eslintrc-file.png
+[12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-rules-doc-open.png
+[13]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-rules-console-explain.png
+[14]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2.0-63-eslint-rules-console-detail.png

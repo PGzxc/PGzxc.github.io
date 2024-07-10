@@ -133,6 +133,6 @@ static class Program
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-messagebox-delete-sample.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-message-form-create.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/csharp-messagebox-show.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/csharp-messagebox-delete-sample.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/csharp-message-form-create.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/csharp-messagebox-show.png

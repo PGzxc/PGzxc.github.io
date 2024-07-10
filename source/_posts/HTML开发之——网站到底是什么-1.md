@@ -102,7 +102,7 @@ date: 2020-08-20 22:01:41
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/html-webset-sample-preview.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/html-webset--web-tree-view.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/html-webset-server-look.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/html-webset-server-gui-look.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/html-webset-sample-preview.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/html-webset--web-tree-view.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/html-webset-server-look.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/html-webset-server-gui-look.png

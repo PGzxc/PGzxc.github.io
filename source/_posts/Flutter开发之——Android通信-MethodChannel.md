@@ -221,5 +221,5 @@ class MethodChannelDemo(var activity: Activity, messenger: BinaryMessenger): Met
 ![][2]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-channel-native-result.gif
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-channel-native-2-flutter.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-channel-native-result.gif
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-channel-native-2-flutter.gif

@@ -40,7 +40,7 @@ bin\jlink.exe --module-path jmods --add-modules java.desktop --output jre
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/jdk-install-jre-no-exist.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/jdk-install-cmd-open.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/jdk-install-jre-jlink.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/jdk-install-jre-make.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/jdk-install-jre-no-exist.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/jdk-install-cmd-open.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/jdk-install-jre-jlink.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/jdk-install-jre-make.png

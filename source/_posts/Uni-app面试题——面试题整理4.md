@@ -404,5 +404,5 @@ onUnload() {
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/uni-app-interview-md4-ifdef.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/uni-app-interview-md4-ifdef-sample.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/uni-app-interview-md4-ifdef.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/uni-app-interview-md4-ifdef-sample.png

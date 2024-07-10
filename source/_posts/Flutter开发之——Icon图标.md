@@ -81,4 +81,4 @@ static const IconData favorite = IconData(0xe721, fontFamily: 'MaterialIcons')
 ## 四 参考
 * [Unicode与中文互转 16进制Unicode编码转换、还原](http://www.msxindl.com/tools/unicode16.asp)
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-flutter/flutter-icon-text-icon.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-icon-text-icon.png

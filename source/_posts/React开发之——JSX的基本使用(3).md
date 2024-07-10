@@ -88,4 +88,4 @@ root.render(
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-react/react-day1-img3-createelement-problem.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-react/react-day1-img3-createelement-problem.png

@@ -181,7 +181,7 @@ LoadModule rewrite_module modules/mod_rewrite.so
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-php/php-soft-windows-select.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-php/php-soft-thread-safe.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-php/php-soft-indep-php.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-php/php-soft-windows-select.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-php/php-soft-thread-safe.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-php/php-soft-indep-php.png
 [21]:https://www.php.net/downloads.php

@@ -120,24 +120,24 @@ date: 2023-04-03 11:03:32
 * [字幕组、字幕库、观影看剧、分享21个字幕网站](https://zhuanlan.zhihu.com/p/586438684)
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-zimu-sunhd.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-zimu-assrt.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-zimu-zimuku.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-zimu-a4k.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-zimu-r3sub.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-zimu-opensubtitles.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-zimu-subscene.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-zimu-bbs-sfile2012.png
-[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-zimu-mcar.png
-[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-zimu-zimuxia.png
-[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-zimu-subs-kamigami.png
-[12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-zimu-newzmz.png
-[13]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-zimu-yysub.png
-[14]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-zimu-mytvbt.png
-[15]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-zimu-shenbibi.png
-[16]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-zimu-hysub.png
-[17]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-zimu-podnapisi.png
-[18]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-zimu-fanxinzhui.png
-[19]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-zimu-zimuzimu.png
-[20]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-zimu-ddzimu.png
-[21]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-zimu-weibo.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-zimu-sunhd.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-zimu-assrt.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-zimu-zimuku.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-zimu-a4k.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-zimu-r3sub.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-zimu-opensubtitles.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-zimu-subscene.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-zimu-bbs-sfile2012.png
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-zimu-mcar.png
+[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-zimu-zimuxia.png
+[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-zimu-subs-kamigami.png
+[12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-zimu-newzmz.png
+[13]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-zimu-yysub.png
+[14]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-zimu-mytvbt.png
+[15]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-zimu-shenbibi.png
+[16]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-zimu-hysub.png
+[17]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-zimu-podnapisi.png
+[18]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-zimu-fanxinzhui.png
+[19]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-zimu-zimuzimu.png
+[20]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-zimu-ddzimu.png
+[21]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-zimu-weibo.png

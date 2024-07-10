@@ -65,7 +65,7 @@ My Cloud EX2 Ultra	\\MYCLOUDEX2ULTRA
 3. [官网](https://www.mycloud.com/#/)
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-my-cloud-ex2-web-login.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nax-my-cloud-ex2-device-name.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-my-cloud-ex2-naivgator-in.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-nas/nas-my-cloud-ex2-power-off.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-my-cloud-ex2-web-login.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nax-my-cloud-ex2-device-name.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-my-cloud-ex2-naivgator-in.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-nas/nas-my-cloud-ex2-power-off.png

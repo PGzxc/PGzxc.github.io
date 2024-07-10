@@ -77,7 +77,7 @@ int main() {
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-operator-reference-overloading-click.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-operator-precedence.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-operator-increment-decrement.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/cpp-operator-prototype-overload.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cpp-operator-reference-overloading-click.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cpp-operator-precedence.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cpp-operator-increment-decrement.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cpp-operator-prototype-overload.png

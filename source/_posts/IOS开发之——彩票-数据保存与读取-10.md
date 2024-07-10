@@ -212,4 +212,4 @@ date: 2022-02-12 22:40:55
 ![][1]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-caipiao-push-setting-time-save.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-caipiao-push-setting-time-save.gif

@@ -300,6 +300,6 @@ vw	视窗宽度，1vw等于视窗宽度的1%
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/uni-app-interview-md1-project.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/uni-app-interview-md1-life.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-wechat/uni-app-interview-md1-navigator.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/uni-app-interview-md1-project.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/uni-app-interview-md1-life.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/uni-app-interview-md1-navigator.png

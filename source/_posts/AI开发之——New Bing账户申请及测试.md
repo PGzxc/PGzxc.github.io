@@ -85,12 +85,12 @@ https://www.bing.com/new
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-bing-cn-website.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-bing-new-website.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-bing-bing-login.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-bing-join-apply.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-bing-join.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-bing-reward-error.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-bing-success-talk.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-bing-chat-zuowen.png
-[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ai/ai-bing-chat-program.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-bing-cn-website.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-bing-new-website.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-bing-bing-login.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-bing-join-apply.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-bing-join.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-bing-reward-error.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-bing-success-talk.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-bing-chat-zuowen.png
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ai/ai-bing-chat-program.png

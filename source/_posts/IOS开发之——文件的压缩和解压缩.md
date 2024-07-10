@@ -104,5 +104,5 @@ Zip解压缩
 ![][2]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-sszip-file-zip.gif
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-sszip-file-unzip.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sszip-file-zip.gif
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sszip-file-unzip.gif

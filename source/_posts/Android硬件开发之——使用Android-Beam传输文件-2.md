@@ -37,4 +37,4 @@ date: 2018-03-01 22:03:44
 
 
 [1]: https://github.com/PGzxc/NFCFile
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/nfc-file.png
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/nfc-file.png

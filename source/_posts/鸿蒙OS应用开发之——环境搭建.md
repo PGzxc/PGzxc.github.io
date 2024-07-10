@@ -159,22 +159,22 @@ Apperance&Behavior—>System Settings—>HarmonyOS SDK，下载SDK Platforms和S
 
 
 
-[00]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-hvd-manager-start-tools.png
-[01]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-tools-svd-login.png
-[02]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-deveco-studio-login-allow.png
-[03]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-virtual-devices-start.png
-[04]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-appearance-theme-setting.png
-[05]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-software-install-setup.png
-[06]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-software-sdk-install-jump.png
-[07]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-software-sdk-edit-install.png
-[08]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-software-sdk-edit-install.png
-[09]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-file-encodings-utf8.png
-[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-project-structure-sdk-node.png
-[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-sdk-sdktools.png
-[12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-create-device-template-choice.png
-[13]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-create-configure-project.png
-[14]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-create-project-run-device.png
-[15]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/hmos-create-project-run-effect.png
+[00]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-hvd-manager-start-tools.png
+[01]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-tools-svd-login.png
+[02]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-deveco-studio-login-allow.png
+[03]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-virtual-devices-start.png
+[04]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-appearance-theme-setting.png
+[05]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-software-install-setup.png
+[06]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-software-sdk-install-jump.png
+[07]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-software-sdk-edit-install.png
+[08]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-software-sdk-edit-install.png
+[09]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-file-encodings-utf8.png
+[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-project-structure-sdk-node.png
+[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-sdk-sdktools.png
+[12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-create-device-template-choice.png
+[13]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-create-configure-project.png
+[14]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-create-project-run-device.png
+[15]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/hmos-create-project-run-effect.png
 
 [21]:https://developer.harmonyos.com/cn/develop/deveco-studio#download
 [22]:https://developer.harmonyos.com/cn/docs/documentation/doc-guides/basic-config-file-elements-0000000000034463#ZH-CN_TOPIC_0000001050708780__table29242051154512

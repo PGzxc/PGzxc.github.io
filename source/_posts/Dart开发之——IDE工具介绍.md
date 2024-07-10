@@ -68,11 +68,11 @@ VS Code打开Dart项目文件夹，并新建`demo.dart`文件
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-dart/dart-intellij-plugin-install.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-dart/dart-intellij-dart-project-create.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-dart/dart-intellij-create-project-demo.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-dart/dart-intellij-demo-code.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-dart/dart-intellij-code-run.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-dart/dart-vscode-plugin-dart-search.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-dart/dart-vscode-project-create.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-dart/dart-vscode-ide-code-run.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-dart/dart-intellij-plugin-install.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-dart/dart-intellij-dart-project-create.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-dart/dart-intellij-create-project-demo.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-dart/dart-intellij-demo-code.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-dart/dart-intellij-code-run.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-dart/dart-vscode-plugin-dart-search.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-dart/dart-vscode-project-create.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-dart/dart-vscode-ide-code-run.png

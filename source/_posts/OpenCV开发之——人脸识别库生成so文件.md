@@ -176,18 +176,18 @@ path=C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC
 * [在命令行中使用 cl.exe 编译器](https://zhuanlan.zhihu.com/p/98384105)
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-face-jni-terminal.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-face-androidmk-modify.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-face-ndk-so.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-face-cmake-open-terminal.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-face-cmake-terminal-run.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-cmake-gui.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-cmake-gui-source-build.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-cmake-gui-configure.png
-[9]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-cmake-gui-configure-error.png
-[10]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-cmake-gui-opencvdir-lack.png
-[11]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-cmake-gui-correct-configure.png
-[12]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-cmake-gui-x64-build.png
-[13]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-task-build.png
-[14]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-as-cmake-abi.png
-[15]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-opencv/android-opencv-sdk-build-abi.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-opencv/android-opencv-face-jni-terminal.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-opencv/android-opencv-face-androidmk-modify.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-opencv/android-opencv-face-ndk-so.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-opencv/android-opencv-face-cmake-open-terminal.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-opencv/android-opencv-face-cmake-terminal-run.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-opencv/android-opencv-cmake-gui.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-opencv/android-opencv-cmake-gui-source-build.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-opencv/android-opencv-cmake-gui-configure.png
+[9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-opencv/android-opencv-cmake-gui-configure-error.png
+[10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-opencv/android-opencv-cmake-gui-opencvdir-lack.png
+[11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-opencv/android-opencv-cmake-gui-correct-configure.png
+[12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-opencv/android-opencv-cmake-gui-x64-build.png
+[13]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-opencv/android-opencv-task-build.png
+[14]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-opencv/android-opencv-as-cmake-abi.png
+[15]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-opencv/android-opencv-sdk-build-abi.png

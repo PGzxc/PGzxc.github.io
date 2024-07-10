@@ -391,14 +391,14 @@ Lottie动画在未开启硬件加速的情况下，帧率、内存，CPU都比�
 
 
 
-[1]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/lottie_sample_1.gif
-[2]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/lottie_sample_2.gif
-[3]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/lottie-react-native.gif
-[4]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/lottie-before-after.png
-[5]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/lottie-yuanli.png
-[6]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/lottie-leitu.png
-[7]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/lottie-anim-sunxu.jpg
-[8]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/lottie-move.jpg
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/lottie_sample_1.gif
+[2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/lottie_sample_2.gif
+[3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/lottie-react-native.gif
+[4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/lottie-before-after.png
+[5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/lottie-yuanli.png
+[6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/lottie-leitu.png
+[7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/lottie-anim-sunxu.jpg
+[8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/lottie-move.jpg
 [9]: https://www.qcloud.com/community/article/494397
 [10]: https://github.com/airbnb/lottie-android
 [11]: http://blog.csdn.net/XSF50717/article/details/55121478

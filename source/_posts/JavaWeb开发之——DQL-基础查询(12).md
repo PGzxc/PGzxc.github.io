@@ -180,10 +180,10 @@ select name as 姓名,math as 数学成绩,english as 英语成绩 from stu;
 ![][7]
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-sql-12-create-stu.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-sql-12-sql-all.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-sql-12-sql-name-age.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-sql-12-sql-address.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-sql-12-sql-address-distin.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-sql-12-sql-math-englist.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-java/javaweb-sql-12-sql-math-englist-as.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-sql-12-create-stu.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-sql-12-sql-all.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-sql-12-sql-name-age.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-sql-12-sql-address.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-sql-12-sql-address-distin.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-sql-12-sql-math-englist.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-sql-12-sql-math-englist-as.png

@@ -65,5 +65,5 @@ date: 2018-04-24 21:26:38
 # 参考
 [ReactiveX官网][1]
 
-[0]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/reactivex-outline.png
+[0]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/reactivex-outline.png
 [1]: http://reactivex.io/

@@ -24,5 +24,5 @@ date: 2023-01-04 21:46:20
 
 ![][1]
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-dart/dart-all-xmind-struct.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-dart/dart-all-xmind-struct.png
 

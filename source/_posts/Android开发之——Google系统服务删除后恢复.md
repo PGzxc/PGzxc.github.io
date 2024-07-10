@@ -47,8 +47,8 @@ adb shell pm uninstall --user 0 'com.google.android.gms'
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-google-service-apk-compat-error.jpg
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-google-service-apk-sign-error.jpg
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-google-service-goinstall-issue.jpg
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-android/android-google-service-goinstall-ok.jpg
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-google-service-apk-compat-error.jpg
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-google-service-apk-sign-error.jpg
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-google-service-goinstall-issue.jpg
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-google-service-goinstall-ok.jpg
 

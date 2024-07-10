@@ -72,5 +72,5 @@ Hello {{ world }}
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hexo/hexo-error-unhandled-nunjucks-info.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hexo/hexo-error-unhandled-nunjucks-info.png
 [11]:https://hexo.io/docs/troubleshooting.html

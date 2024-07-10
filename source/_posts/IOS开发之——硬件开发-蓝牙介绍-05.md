@@ -66,4 +66,4 @@ IOS中提供了4个框架用于实现蓝牙连接
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-device-05-bluetooth-core-struct.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-device-05-bluetooth-core-struct.png

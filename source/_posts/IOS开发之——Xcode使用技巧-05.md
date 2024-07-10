@@ -114,10 +114,10 @@ date: 2022-04-04 07:17:39
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-xcode-05-main-storyboard.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-xcode-05-main-storyboard-interface.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-xcode-05-main-storyboard-remove.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-xcode-05-info-dele-before.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-xcode-05-info-dele-after.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-xcode-05-four-storyboard-add.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-ios/ios-xcode-05-code-preview.gif
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-xcode-05-main-storyboard.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-xcode-05-main-storyboard-interface.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-xcode-05-main-storyboard-remove.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-xcode-05-info-dele-before.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-xcode-05-info-dele-after.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-xcode-05-four-storyboard-add.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-xcode-05-code-preview.gif

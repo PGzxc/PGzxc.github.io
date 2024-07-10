@@ -96,4 +96,4 @@ int main(int argc, const char * argv[]) {
 
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/oc-arc-strong-weak-use.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/oc-arc-strong-weak-use.png

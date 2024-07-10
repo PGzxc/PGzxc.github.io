@@ -95,11 +95,11 @@ nosources-source-map
 
 
 [00]:https://webpack.js.org/configuration/devtool/
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2-11-console-error-info.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2-11-console-error-index-make.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2-11-console-error-index-souce.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2-11-console-error-eval-source-map.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2-11-console-error-product-error.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2-11-console-error-product-code.png
-[7]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2-11-console-error-nosource-info.png
-[8]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-vue/vue2-11-console-error-nosource-code.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-11-console-error-info.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-11-console-error-index-make.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-11-console-error-index-souce.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-11-console-error-eval-source-map.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-11-console-error-product-error.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-11-console-error-product-code.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-11-console-error-nosource-info.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-11-console-error-nosource-code.png

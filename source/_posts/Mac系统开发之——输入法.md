@@ -61,12 +61,12 @@ date: 2020-02-17 17:35:21
 [3]:https://jingyan.baidu.com/article/1612d500fbc363e20f1eee7e.html
 
 
-[11]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-input-num-view-zhuangtailan.png
-[12]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-input-num-view-pianhao.png
-[13]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-add-input-japan-dialog.png
-[14]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-add-input-config.png
-[15]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-move-input-view-piaohao.png
-[16]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-move-input-view-piaohao-after.png
-[17]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-input-switch-look.png
-[18]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-input-switch-redone.png
-[19]: https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-image/mac-input-switch-language.png
+[11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/mac-input-num-view-zhuangtailan.png
+[12]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/mac-input-num-view-pianhao.png
+[13]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/mac-add-input-japan-dialog.png
+[14]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/mac-add-input-config.png
+[15]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/mac-move-input-view-piaohao.png
+[16]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/mac-move-input-view-piaohao-after.png
+[17]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/mac-input-switch-look.png
+[18]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/mac-input-switch-redone.png
+[19]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/mac-input-switch-language.png

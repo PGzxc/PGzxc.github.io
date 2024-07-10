@@ -65,10 +65,10 @@ REACT_NATIVE_PACKAGER_HOSTNAME:192.168.1.12
 * [Stack overflow——React native expo - Reponse timed out](https://stackoverflow.com/questions/45759758/react-native-expo-reponse-timed-out)
 
 
-[1]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-rn/rn-expo-01-error-view.png
-[2]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-rn/rn-expo-01-error-open-fire.png
-[3]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-rn/rn-expo-01-error-fire-in-new.png
-[4]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-rn/rn-expo-01-error-fire-port.png
-[5]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-rn/rn-expo-01-error-cmd-restart.png
-[6]:https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-rn/rn-expo-01-error-phone-view.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-rn/rn-expo-01-error-view.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-rn/rn-expo-01-error-open-fire.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-rn/rn-expo-01-error-fire-in-new.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-rn/rn-expo-01-error-fire-port.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-rn/rn-expo-01-error-cmd-restart.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-rn/rn-expo-01-error-phone-view.png
 
