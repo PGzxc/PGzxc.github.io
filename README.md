@@ -45,7 +45,16 @@
 
 ## 二 github图床加速
 
-### 2.1 jsdelivr
+### 2.1 githubusercontent(raw默认-不加速)
+
+```
+格式
+https://raw.githubusercontent.com/{user}/{repo}/master/{folderpath}/{filename}
+示例
+https://raw.githubusercontent.com/PGzxc/CDN/master/blog-Interview/flutter-01-widget-life.webp
+```
+
+### 2.2 jsdelivr
 
 ```
 格式
@@ -54,16 +63,12 @@ https://cdn.jsdelivr.net/gh/{user}/{repo}/{folderpath}/{filename}
 https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/harmonyos-lesson1-xmind.png
 ```
 
-### 2.2 onmicrosoft
+### 2.3 onmicrosoft
 
 ```
 示例
 https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/harmonyos-lesson1-xmind.png
 ```
 
-### 2.3 githubusercontent(默认-不加速)
 
-```
-https://raw.githubusercontent.com/{user}/{repo}/master/{folderpath}/{filename}
-```
 
