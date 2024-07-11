@@ -28,7 +28,7 @@ A-正确(True)
 B-错误(False)
 ```
 
-2-Harmonyos应用可以兼容OpenHarmony生态<font color=red>(A)</font>
+2-Harmonyos应用可以兼容OpenHarmony生态 <font color=red>(A)</font>
 
 ```
 A-正确(True)
@@ -114,7 +114,7 @@ B-错误(False)
 
 ### 2.2 单选题
 
-14-@State修饰的状态数据被修改时会触发组件的什么方法进行UI界面更新 <font color=red>(A)</font>
+1-@State修饰的状态数据被修改时会触发组件的什么方法进行UI界面更新 <font color=red>(A)</font>
 
 ```
 A. build方法
@@ -122,14 +122,14 @@ B. aboutToAppear方法
 C. onPageShow方法
 ```
 
-15-HarmonyOS提供的Webview能力是否支持与H5双向通信  <font color=red>(B)</font>
+2-HarmonyOS提供的Webview能力是否支持与H5双向通信  <font color=red>(A)</font>
 
 ```
 A. 不支持
 B. 支持
 ```
 
-16-HUKS中文全称是什么   <font color=red>(B)</font>
+3-HUKS中文全称是什么   <font color=red>(B)</font>
 
 ```
 A. 加解密系统
@@ -138,7 +138,7 @@ C. 访问控制系统
 D. 密码管理系统
 ```
 
-17-Row组件中有两个Text组件，如果使用justifyContent对齐方式，下面哪个属性可以实现左右两端对齐 <font color=red>(A)</font>
+4-Row组件中有两个Text组件，如果使用justifyContent对齐方式，下面哪个属性可以实现左右两端对齐 <font color=red>(A)</font>
 
 ```
 A. FlexAlign.SpaceBetween
@@ -147,7 +147,7 @@ C. FlexAlign.SpaceEvenly
 D. FlexAlign.Start
 ```
 
-18-Webview在HarmonyOS中的入口是通过什么组件体现的 <font color=red>(D)</font>
+5-Webview在HarmonyOS中的入口是通过什么组件体现的 <font color=red>(D)</font>
 
 ```
 A. RichText
@@ -156,7 +156,7 @@ C. HTTP
 D. Web组件
 ```
 
-19-Worker线程最大同时激活数 <font color=red>(C)</font>
+6-Worker线程最大同时激活数 <font color=red>(C)</font>
 
 ```
 A. 6
@@ -165,7 +165,7 @@ C. 8
 D. 7
 ```
 
-20-创建应用时，应用包名需要和app.json5文件中哪个字段保持一致？ <font color=red>(C)</font>
+7-创建应用时，应用包名需要和app.json5文件中哪个字段保持一致？ <font color=red>(C)</font>
 
 ```
 A. name
@@ -173,7 +173,7 @@ B. package
 C. bundleName
 ```
 
-21-端云一体化当前支持最低的鸿蒙API版本是 <font color=red>(D)</font>
+8-端云一体化当前支持最低的鸿蒙API版本是 <font color=red>(D)</font>
 
 ```
 A. 6
@@ -182,7 +182,7 @@ C. 7
 D. 9
 ```
 
-22-发布后的鸿蒙应用可以在哪里获取？ <font color=red>(C)</font>
+9-发布后的鸿蒙应用可以在哪里获取？ <font color=red>(C)</font>
 
 ```
 A. 华为服务中心
@@ -190,42 +190,42 @@ B. 华为生态市场
 C. 华为应用市场
 ```
 
-23-发布开放式测试版本，测试时间有限制吗？ <font color=red>(A)</font>
+10-发布开放式测试版本，测试时间有限制吗？ <font color=red>(A)</font>
 
 ```
 A. 有
 B. 没有
 ```
 
-24-发布开放式测试版本后，还可以再更新版本吗？ <font color=red>(B)</font>
+11-发布开放式测试版本后，还可以再更新版本吗？ <font color=red>(B)</font>
 
 ```
 A. 不可以
 B. 可以
 ```
 
-25-发布开放式测试版本后，怎么追加测试用户？ <font color=red>(B)</font>
+12-发布开放式测试版本后，怎么追加测试用户？ <font color=red>(B)</font>
 
 ```
 A. 直接在当前版本追加新的测试用户，然后手动发送邀请
 B. 需要重新发布新的测试版本追加用户
 ```
 
-26-发布应用时需要创建Profile时，类型选择什么类型？ <font color=red>(B)</font>
+13-发布应用时需要创建Profile时，类型选择什么类型？ <font color=red>(B)</font>
 
 ```
 A. 调试
 B. 发布
 ```
 
-27-发布应用时要创建证书，证书类型选择什么类型？ <font color=red>(B)</font>
+14-发布应用时要创建证书，证书类型选择什么类型？ <font color=red>(B)</font>
 
 ```
 A. 调试证书
 B. 发布证书
 ```
 
-28-关于Tabs组件页签的位置设置，下面描述错误的是 <font color=red>(C)</font>
+15-关于Tabs组件页签的位置设置，下面描述错误的是 <font color=red>(C)</font>
 
 ```
 A. 当barPosition为Start（默认值），vertical属性为false时（默认值），页签位于容器顶部。
@@ -234,7 +234,7 @@ C. 当barPosition为End ，vertical属性为true时，页签位于容器底部�
 D. 当barPosition为Start（默认值） ，vertical属性为true时，页签位于容器左侧
 ```
 
-29-关于UIAbility的启动模式，下列说法错误的是  <font color=red>(B)</font>
+16-关于UIAbility的启动模式，下列说法错误的是  <font color=red>(B)</font>
 
 ```
 A. UIAbility支持单实例、多实例模式和指定实例3种启动模式，在module.json中通过launchType配置。
@@ -243,7 +243,7 @@ C. singleton为单实例模式，系统中只存在唯一一个实例，startAbi
 D. specified为指定实例模式，运行时由Ability内部业务决定是否创建多实例。
 ```
 
-30-关于Video组件的回调事件，下列说法错误的是 <font color=red>(D)</font>
+17-关于Video组件的回调事件，下列说法错误的是 <font color=red>(D)</font>
 
 ```
 A. onPrepared视频准备完成时触发该事件。
@@ -252,7 +252,7 @@ C. onUpdate播放进度变化时触发该事件，单位为s，更新时间间�
 D. onStart视频播放时触发该事件，可以在这里获取视频时长。
 ```
 
-31-关于容器组件Row和Column，下面说法错误的是 <font color=red>(D)</font>
+18-关于容器组件Row和Column，下面说法错误的是 <font color=red>(D)</font>
 
 ```
 A. Column的子组件在主轴方向上的对齐使用justifyContent属性来设置，其参数类型是FlexAlign。
@@ -261,7 +261,7 @@ C. Column容器的主轴是垂直方向，交叉轴是水平方向；Row容器�
 D. Row的子组件在交叉轴方向上的对齐方式使用alignItems属性来设置，其参数类型为HorizontalAlign
 ```
 
-32-开发者在DevEco Studio中，可以通过什么方式使用端云一体化？ <font color=red>(C)</font>
+19-开发者在DevEco Studio中，可以通过什么方式使用端云一体化？ <font color=red>(C)</font>
 
 ```
 A. 可视化工具
@@ -270,16 +270,17 @@ C. 工程模板
 D. IDE插件
 ```
 
-33-跨端迁移和协同是哪个鸿蒙特征的能力 <font color=red>(A)</font>
+20-元服务创建测试用户时，用户列表存储位置需要选择 <font color=red>(B)</font>
 
 ```
-A. 自由流转
-B. 一次开发多端部署
-C. 可分可合
-D. 统一生态
+A. 所有站点
+B. 中国
+C. 俄罗斯
+D. 德国
+E. 新加坡
 ```
 
-34-认证服务支持下列哪种帐号认证 <font color=red>(C)</font>
+21-认证服务支持下列哪种帐号认证 <font color=red>(C)</font>
 
 ```
 A. 支付宝
@@ -288,7 +289,7 @@ C. 华为帐号
 D. QQ
 ```
 
-35-上传鸿蒙应用或元服务软件包时，软件包的格式是什么？<font color=red>(B)</font>
+22-上传鸿蒙应用或元服务软件包时，软件包的格式是什么？<font color=red>(B)</font>
 
 ```
 A. .app
@@ -297,7 +298,7 @@ C. .zip
 D. .apk
 ```
 
-36-添加用户信息时，如果帐号使用手机号码，以下哪种输入格式正确？<font color=red>(B)</font>
+23-添加用户信息时，如果帐号使用手机号码，以下哪种输入格式正确？<font color=red>(B)</font>
 
 ```
 A. 189****1234
@@ -306,7 +307,7 @@ C. +86189****1234
 D. 0086-189****1234
 ```
 
-37-下面哪个方法，可以跳转到一个新页面，并销毁当前页面 <font color=red>(A)</font>
+24-下面哪个方法，可以跳转到一个新页面，并销毁当前页面 <font color=red>(A)</font>
 
 ```
 A. router.replaceUrl()
@@ -315,7 +316,7 @@ C. router.clear()
 D. router.back()
 ```
 
-38-下面哪个组件不能包含子组件 <font color=red>(A)</font>
+25-下面哪个组件不能包含子组件 <font color=red>(A)</font>
 
 ```
 A. LoadingProgress
@@ -324,14 +325,14 @@ C. Text
 D. Button
 ```
 
-39-一个完整的软件包是否需要有一个Profile文件？ <font color=red>(B)</font>
+26-一个完整的软件包是否需要有一个Profile文件？ <font color=red>(B)</font>
 
 ```
 A. 不需要
 B. 需要
 ```
 
-40-应用包名不能包含一些保留字段，以下哪个字段符合规范? <font color=red>(C)</font>
+27-应用包名不能包含一些保留字段，以下哪个字段符合规范? <font color=red>(C)</font>
 
 ```
 A. .harmony.
@@ -340,7 +341,7 @@ C. .test.
 D. .ohos.
 ```
 
-41-元服务包每个HAP包不得超过（），以提供秒开体验 <font color=red>(B)</font>
+28-元服务包每个HAP包不得超过（），以提供秒开体验 <font color=red>(B)</font>
 
 ```
 A. 2GB
@@ -348,7 +349,7 @@ B. 2MB
 C. 无限制
 ```
 
-42-在下面哪个文件中可以设置页面的路径配置信息？ <font color=red>(A)</font>
+29-在下面哪个文件中可以设置页面的路径配置信息？ <font color=red>(A)</font>
 
 ```
 A. main_pages.json
@@ -357,7 +358,7 @@ C. app.json5
 D. package.json
 ```
 
-43-自定义组件的aboutToAppear()在什么时机执行 <font color=red>(C)</font>
+30-自定义组件的aboutToAppear()在什么时机执行 <font color=red>(C)</font>
 
 ```
 A. build函数之后
@@ -365,50 +366,78 @@ B. 页面进入之时
 C. build函数之前
 ```
 
-### 2.3 多选题
-
-1-entry下的modulejson5中包含以下哪些信息 <font color=red>(ABC)</font>
+31-引用ohpm三方库的包依赖是在哪个配置文件中 <font color=red>(C)</font>
 
 ```
-A.Ability的配置信息
-B.设备类型信息
-C.应用权限申请列表
+A. packagejson5
+B. modulejson5
+C. oh-package.json5
+D. main pagesjson
+```
+
+32-模块提供了全双工通信协议  <font color=red>(B)</font>
+
+```
+A. HTTP
+B. WebSocket
+C. Socket
+D. Request
+```
+
+33-开放式测试版本发布后，受邀测试用户如何体验?  <font color=red>(B)</font>
+
+```
+A.不接受邀请，直接进入应用市场搜索待体验的元服务名称
+B.点击邀请链接接受邀请，自动跳转到应用市场或者进入应用市场搜索待体验的元服务名称
+```
+
+### 2.3 多选题
+
+1-entry下的module.json5中包含以下哪些信息 <font color=red>(BCD)</font>
+
+```
+A. 应用包名和版本号信息
+B. Ability的配置信息
+C. 设备类型信息
+D. 应用权限申请列表
+```
+
+注解：
+
+```
+应用包名和版本信息在AppScope/app.json5内
 ```
 
 2-UIAbility的启动模式有哪些 <font color=red>(ABC)</font>
 
 ```
-A.singleton
-B.specified
-C.multition
+A. singleton
+B. specified
+C. multition
+D. Builder
 ```
 
-3-UIAbility的生命周期包括哪些函数? <font color=red>(ABCD)</font>
+3-UIAbility的生命周期包括哪些函数? <font color=red>(ABEF)</font>
 
 ```
-A.onCreate
-B.onForeground
-C.onBackground
-D.onDestroy
+A. onCreate
+B. onDestroy
+C. onPageShow
+D. onPageHide
+E. onForeground
+F.onBackground
 ```
 
-4-端云一体化工程目录结构分为哪些部分 <font color=red>(ABC)</font>
+4-端云一体化已经集成以下哪些服务SDK <font color=red>(ABC)</font>
 
 ```
-A.端开发工程(Application)
-B.云开发工程(CloudProgram)
-C.端侧公共库(External Libraries)
+A.云函数
+B.云数据库
+C.云存储
+D.云托管
 ```
 
-5-端云一体化已经集成以下哪些服务SDK <font color=red>(ABC)</font>
-
-```
-A.云数据库
-B.云存储
-C.云托管
-```
-
-6-端云一体化中的云函数支持哪些操作 <font color=red>(ABCD)</font>
+5-端云一体化中的云函数支持哪些操作 <font color=red>(ABCD)</font>
 
 ```
 A.编写函数
@@ -417,23 +446,25 @@ C.打包函数
 D.部署函数
 ```
 
-7-公共事件服务为应用程序提供哪些能力<font color=red>(ABC)</font>
+6-公共事件服务为应用程序提供哪些能力<font color=red>(BCD)</font>
 
 ```
-A.订阅公共事件
-B.发布公共事件
-C.取消订阅公共事件
+A.取消发布公共事件
+B.订阅公共事件
+C.发布公共事件
+D.取消订阅公共事件
 ```
 
-8-鸿蒙特征包含哪些场景化能力<font color=red>(ABC)</font>
+7-鸿蒙特征包含哪些场景化能力<font color=red>(ABC)</font>
 
 ```
-A.一次开发、多端部警
+A.一次开发、多端部署
 B.可分可合、自由流转
 C.统一生态、原生智能
+D.高频操作、提升效率
 ```
 
-9-鸿蒙应用/元服务上架过程上传软件包常见的问题有哪些<font color=red>(ABCD)</font>
+8-鸿蒙应用/元服务上架过程上传软件包常见的问题有哪些<font color=red>(ABCD)</font>
 
 ```
 A.软件包中的发布Profile文件和当前上传软件包的应用不匹配
@@ -442,28 +473,33 @@ C.软件包未签名导制提示非法软件包
 D.软件包中使用证书已经失效过者过期
 ```
 
-10-下面哪些容器组件是可以滚动的<font color=red>(ABC)</font>
+10-下面哪些容器组件是可以滚动的 <font color=red>(ABD)</font>
 
 ```
-A.Scroll
-B.List
-C.Grid
+A. Scroll
+B. List
+C. Row
+D. Grid
+E. Column
 ```
 
-11-下面哪些组件层次结构是正确的<font color=red>(ABC)</font>
+11-下面哪些组件层次结构是正确的<font color=red>(ABE)</font>
 
 ```
-A.Text>Span
-B.Button>Column>lmage
-C.Column>Row>Button
+A. Text>Span
+B. Button>Column>lmage
+C. Button>lmage> Text
+D. Image>Text> Span
+E. Column>Row>Button
 ```
 
 12-一次开发多端部署的三个层次有哪些<font color=red>(ABC)</font>
 
 ```
-A.界面级一多
-B.功能级一多
-C.工程级一多
+A. 界面级一多
+B. 功能级一多
+C. 工程级一多
+D. 系统级一多
 ```
 
 13-以下关于ArkTS声明式开发范式的基本组成说明正确的是<font color=red>(ABCDEF)</font>
@@ -496,6 +532,7 @@ D.数据驱动更新
 * [刚拿到的《HarmonyOS应用开发者高级认证》，全网整理的题目](https://blog.csdn.net/jifashihan/article/details/136297913)
 * [HarmonyOS云开发基础认证考试满分答案(100分)](https://download.csdn.net/blog/column/12051302/135049637)
 * [HarmonyOS应用开发者高级认证](https://www.cnblogs.com/Megasu/p/17884698.html)
+* [HarmonyOS应用开发者高级认证学习认证知识答疑笔记（五）](HarmonyOS应用开发者高级认证学习认证知识答疑笔记（五）)
 
 
 [1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/harmonyos-hight-test-centify.png
