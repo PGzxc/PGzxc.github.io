@@ -641,7 +641,32 @@ __2-Android项目—E朝朝企业端__
 
 ## <font color=red>四 Flutter项目</font>
 
-### 1—[Flutter-WanAndroid ](https://github.com/PGzxc/flutter_wanandroid)
+### 1—[FlutterGeminiAI ](https://github.com/PGzxc/FlutterGeminiAI)
+
+**项目归属** ：个人项目
+**项目名称**：FlutterGeminiAI
+**项目地址**：https://github.com/PGzxc/FlutterGeminiAI
+**软件支持**：Android+IOS
+**开发工具**：IDEA 2024.1.3+Flutter(3.22.2) 
+**项目描述**：FlutterGeminiAI 是基于gemini-1.5-flash模型制作的一款AI软件。本应用支持纯文本输入生成文本、根据文本和图片输入生成文本(多模态)，界面类似于聊天窗口，用户输入的内容位于右侧，Gemini API返回的结果位于左侧，打造属于自己的AI应用。
+**功能模块**：聊天  
+**技术要点**：
+
+- 基于GenerativeModel(model: 'gemini-1.5-flash', apiKey: apiKey)初始化模型
+- 基于model.generateContent([Content.text('Text')])输入生成文本
+- 基于model.generateContent([Content.multi([prompt, ...imageParts])])图文多模态
+- 自定义底部输入模块(输入框+图片选择+消息发送)
+- 根据role选择是左侧Gemini布局还是右边User用户布局
+- 基于image_picker选择图库图片
+- 发送消息后自动滚动到底部
+
+**项目预览**
+
+| ![][gemai-2] | ![][gemai-3]  | ![][gemai-4] | ![][gemai-5] |
+| ------------ | ------------- | ------------ | ------------ |
+| ![][gemai-6] | ![][gemai-7]  | ![][gemai-8] | ![][gemai-9] |
+
+### 2—[Flutter-WanAndroid ](https://github.com/PGzxc/flutter_wanandroid)
 
 **项目归属** ：个人项目
 **项目名称**：Flutter-wanandroid
@@ -672,7 +697,7 @@ __2-Android项目—E朝朝企业端__
 | ![][w-9] | ![][w-10] | ![][w-11]| ![][w-12]|
 | ![][w-13]| ![][w-14] | ![][w-15]| ![][w-16]|
 
-###  2—[Flutter-zhihu-getx](https://github.com/PGzxc/flutter_zhihu_getx)
+###  3—[Flutter-zhihu-getx](https://github.com/PGzxc/flutter_zhihu_getx)
 
 **项目归属**：个人项目
 **项目名称**：Flutter_zhihu_getx
@@ -1117,6 +1142,17 @@ IOS截图
 [zh-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-me-unlogin.png
 [zh-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-me-login.png
 [zh-10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-user-login.png
+
+[gemai-0]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/gemini-price.png
+[gemai-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/flutter-gemini-start-1.png
+[gemai-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/flutter-gemini-text-request-2.png
+[gemai-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/flutter-gemini-text-response-3.png
+[gemai-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/flutter-gemini-img-send-4.png
+[gemai-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/flutter-gemini-img-response-5.png
+[gemai-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/flutter-gemini-img-rec-6.png
+[gemai-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/flutter-gemini-img-rec-result-7.png
+[gemai-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/flutter-gemini-chat-list-8.png
+[gemai-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/flutter-gemini-chat-list-9.png
 <!--西甲-->
 [xj-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/xj_home.jpg
 [xj-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/xj_schedule.jpg
