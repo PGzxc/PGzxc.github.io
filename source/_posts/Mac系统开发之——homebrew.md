@@ -64,7 +64,32 @@ ruby -e "$(curl -fsSL https://cdn.jsdelivr.net/gh/Homebrew/install/master/uninst
 
 下载卸载脚本 [uninstall script](https://cdn.jsdelivr.net/gh/Homebrew/install/master/uninstall) 并执行卸载操作.如要查看更多卸载相关操作查看 `./uninstall --help` 
 
-## 五 参考
+## 五 卸载旧版本安装包
+
+### 5.1 卸载旧版本
+
+```
+brew cleanup
+sudo brew cleanup --prune=all  
+```
+
+### 5.2 可能出现的问题
+
+```
+==> This operation has freed approximately 1.8GB of disk space.
+Error: Could not cleanup old kegs! Fix your permissions on:
+  /usr/local/Cellar/node@16/16.15.0
+  /usr/local/Cellar/ruby/3.2.2_1
+```
+
+### 5.3 解决办法
+
+```
+sudo chown -R "$USER":admin /usr/local/Cellar/node@16/16.15.0
+sudo chown -R "$USER":admin /usr/local/Cellar/ruby/3.2.2_1
+```
+
+## 六 参考
 
 * [Homebrew Documentation](https://docs.brew.sh/)
 * [Homebrew](https://brew.sh/)
