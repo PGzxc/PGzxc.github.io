@@ -101,6 +101,14 @@ Google Analytics(分析)会收集您的应用的使用情况和行为数据。SD
 
 ![][16]
 
+## 四 参考
+
+* [Firebase示例项目](https://firebase.google.com/docs/samples)
+* [Firebase文档](https://firebase.google.cn/docs/analytics?hl=zh-cn)
+* [quickstart-android](https://github.com/firebase/quickstart-android)
+
+
+
 
 
 [1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/firebase-website-home-1.png
