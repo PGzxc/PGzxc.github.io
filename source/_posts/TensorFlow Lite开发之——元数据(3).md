@@ -1,12 +1,12 @@
 ---
-title: TensorFlow Lite开发之——元数据
+title: TensorFlow Lite开发之——元数据(3)
 categories:
   - 开发
   - Q-AI
   - TensorFlow Lite
 tags:
   - TensorFlow Lite
-abbrlink: ba61b02d
+abbrlink: '91231969'
 date: 2024-07-27 10:25:18
 ---
 ## 一 概述
