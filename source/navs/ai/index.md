@@ -15,6 +15,7 @@ comments: false
 | :--: | :-----------------------------------------------------: | :-----------: |
 |  1   | [Ai 资源大汇总](https://github.com/getActivity/AiIndex) | Ai 资源大汇总 |
 |  2   |      [AI助手](https://www.talkai.club/model/share)      |  常用AI工具   |
+|  3   |          [浦源](https://openxlab.org.cn/apps)           | 模型开源应用  |
 
 ## 二 工具
 
