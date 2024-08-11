@@ -73,4 +73,4 @@ local lambda = "$"
 [3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmder-register-all.png
 [4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmder-setup-tasks.png
 [5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmder-startup-environment-zh.png
-[11]:https://cmder.net
+[11]:https://github.com/cmderdev/cmder/releases
