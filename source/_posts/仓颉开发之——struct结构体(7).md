@@ -239,7 +239,13 @@ struct Foo {
 * mut 只能修饰实例成员函数，不能修饰静态成员函数。
 * mut 函数中的 this 不能被捕获，也不能作为表达式。不能在 mut 函数中对 struct 的实例成员变量进行捕获
 
-## 五 参考
+## 五 思维导图
+
+![][1]
+
+## 六 参考
 
 * [仓颉官方文档](https://developer.huawei.com/consumer/cn/doc/openharmony-cangjie/define_struct)
 * [仓颉编程语言入门教程](https://developer.huawei.com/consumer/cn/training/course/slightMooc/C101718903607800132)
+
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/cangjie-xmind-4-struct.png
