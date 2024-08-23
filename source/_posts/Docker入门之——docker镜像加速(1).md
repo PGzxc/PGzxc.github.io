@@ -52,6 +52,8 @@ https://hub.docker.com
 
 ## 四 镜像配置
 
+### 4.1 Docker desktop
+
 以 Docker desktop为例，Settings—>Docker Engine
 
 ```
@@ -74,3 +76,10 @@ https://hub.docker.com
 }
 ```
 
+### 4.2 群晖配置
+
+![][1]
+
+
+
+[1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-docker/docker-syn-mirror-config.png
