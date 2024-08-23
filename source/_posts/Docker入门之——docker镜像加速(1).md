@@ -41,6 +41,13 @@ https://docker.m.daocloud.io
 https://docker.rainbond.cc
 最推荐官方仓库，使用代理魔法通道加速下载
 https://hub.docker.com
+//加速镜像2
+"https://dockerhub.icu",
+"https://docker.ckyl.me",
+"https://docker.awsl9527.cn",
+“https://hub.uuuadc.top",
+“https://docker.anyhub.us.kg",
+"https://dockerhub.jobcher.com"
 ```
 
 ## 四 镜像配置
