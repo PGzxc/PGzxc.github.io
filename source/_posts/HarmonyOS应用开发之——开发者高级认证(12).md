@@ -1,5 +1,5 @@
 ---
-title: HarmonyOS应用开发者——开发者高级认证(12)
+title: HarmonyOS应用开发之——开发者高级认证(12)
 categories:
   - 开发
   - D-移动开发

@@ -1,5 +1,5 @@
 ---
-title: HarmonyOS应用开发者——基础认证考试(11)
+title: HarmonyOS应用开发之——基础认证考试(11)
 categories:
   - 开发
   - D-移动开发

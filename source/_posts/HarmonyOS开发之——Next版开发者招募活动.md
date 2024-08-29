@@ -1,5 +1,5 @@
 ---
-title: HarmonyOS开发者——Next版开发者招募活动
+title: HarmonyOS开发之——Next版开发者招募活动
 categories:
   - 开发
   - D-移动开发

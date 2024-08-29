@@ -1,5 +1,5 @@
 ---
-title: HarmonyOS开发者——Next第三期开发者招募
+title: HarmonyOS开发之——Next第三期开发者招募
 categories:
   - 开发
   - D-移动开发
