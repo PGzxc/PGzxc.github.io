@@ -495,7 +495,7 @@ __2-Android项目—E朝朝企业端__
 
 ## <font color=red>一 Harmony项目</font>
 
-### 1—[WanAndroidHM](https://githubfast.com/PGzxc/WanAndroidHM)
+### 1—[WanAndroidHM](https://github.com/PGzxc/WanAndroidHM)
 
 **项目归属**：个人项目
 **项目名称**：WanAndroidHM
