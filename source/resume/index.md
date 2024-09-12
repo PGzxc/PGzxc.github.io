@@ -50,8 +50,6 @@ comments: false
 	</tr>
 </tbody>
 </table>
-
-
 # 联系方式
 
 - 手机：15201120927
@@ -128,7 +126,6 @@ __1-西甲+(足球直播联赛)__
 | ![][xj-9]  | ![][xj-10] | ![][xj-11] | ![][xj-12] |
 | ![][xj-13] | ![][xj-14] | ![][xj-15] | ![][xj-16] |
 | ![][xj-17] | ![][xj-18] | ![][xj-19] | ![][xj-20] |
-
 
 ## <font color=red>2018/07 — 2022/04 &emsp;中科航天(北京)科技有限公司 &emsp;全栈工程师</font> 
 ### 公司简介
@@ -236,7 +233,6 @@ __4-uni-app小程序-24H安全守护系统__
 | ------------ | ------------ | ------------ |
 | ![][rl-24-4] | ![][rl-24-5] | ![][rl-24-6] |
 
-
 __5-微信小程序—日立健康__   
 **项目描述**：日立健康小程序是日立养老项目组将现有的项目(步态+脑训练+睡眠健康等)进行部分整合后开发的一款微信小程序，方便快捷，即用即走，在不安装app的情况下，通过小程序实现部分需要app和硬件需要完成的功能。   
 **功能模块**：登录注册模块、用户信息修改模块、首页、慢病管理、认知管理、跌到管理(步态分析有硬件实现)、日常管理等  
@@ -321,7 +317,7 @@ __8-Web前端-日立健康养老系统Ver1.0__
 | ![][hitachiv1-4] | ![][hitachiv1-5] | ![][hitachiv1-6] |
 | ![][hitachiv1-7] | ![][hitachiv1-8] | ![][hitachiv1-9] |
 
-__8-Web前端-日立智能养老管理系统Ver2.0__
+__9-Web前端-日立智能养老管理系统Ver2.0__
 
 **项目简介**：日立智能养老管理系统是Ver1.0的全新升级版本和全新改版。该系统分为管理员账户和机构账户。管理员账户相当于超级用户，可以登录机构账户，用于管理机构、管理app、管理数据库等。机构账户用于管理用户、训练项目、排名、状态预览、数据分析等。
 **项目模块**：管理员账户、机构账户
@@ -495,13 +491,40 @@ __2-Android项目—E朝朝企业端__
 
 ## <font color=red>一 Harmony项目</font>
 
-### 1—[WanAndroidHM](https://github.com/PGzxc/WanAndroidHM)
+### 1—[WanCJ](https://github.com/PGzxc/WanCJ)
+
+**项目归属**：个人项目
+**项目名称**：WanCJ
+**项目地址**：https://github.com/PGzxc/WanCJ
+**软件支持**：鸿蒙全系列
+**API版本**：API Version 12
+**开发语言**：仓颉(.cj)+ArkUI
+**开发工具**：DevEco Studio NEXT Beta1+Node(18.18.2)
+**项目描述**：鸿蒙开发中将以ArkTS语言转化为仓颉(.cj)开发语言的个人项目，熟练搭建项目框架，并封装网络访问模块，自定义组件等的基础上快速完成功能开发。     
+**功能模块**：首页、课程、工具、我的   
+**技术要点**：
+
+- 基于Tabs+TabContent构建底部导航框架
+- 基于ohos.net.http进行网络请求，封装Get、Post请求
+- 数据类的序列化和反序列化
+- 构造工具类将JsonObject转换为Bean和String转换为JsonObject
+- 基于@State、@Prop等装饰器获取网络数据并更新状态
+- 基于@Builder、@Extend等装饰器自定义组件，减少复用代码
+
+**项目预览**
+
+| ![][wancj-1] | ![][wancj-2] |
+| :-----------:| :-----------:|
+| ![][wancj-3] | ![][wancj-4] |
+
+### 2—[WanAndroidHM](https://github.com/PGzxc/WanAndroidHM)
 
 **项目归属**：个人项目
 **项目名称**：WanAndroidHM
 **项目地址**：https://github.com/PGzxc/WanAndroidHM
 **软件支持**：鸿蒙全系列
-**API版本**：API Version 10
+**API版本**：API Version 12
+**开发语言**：ArkTS+ArkUI
 **开发工具**：DevEco Studio 4.0 Release+Node(16.20.1)+ohpm(1.2.5)
 **项目描述**：该项目是基于WanAndroid 网站开源的接口 API制作的一款Harmony开源hap。利用Harmony布局、组件、API开发的一款支持Harmony全系列应用。     
 **功能模块**：首页、导航、项目、消息、我等   
@@ -524,13 +547,14 @@ __2-Android项目—E朝朝企业端__
 | ![][waz-hm-13]| ![][waz-hm-14] | ![][waz-hm-15] | ![][waz-hm-16] |
 
 
-### 2—[BookHM](https://github.com/PGzxc/BookHM)
+### 3—[BookHM](https://github.com/PGzxc/BookHM)
 
 **项目归属**：个人项目
 **项目名称**：BookHM
 **项目地址**：https://github.com/PGzxc/BookHM
 **软件支持**：鸿蒙全系列
 **API版本**：API Version 10
+**开发语言**：ArkTS+ArkUI
 **开发工具**：DevEco Studio 4.0 Release+Node(16.20.1)+ohpm(1.2.5)
 **项目描述**：这是一个读书app OpenHarmony版本。使用List 和Grid来处理图书信息的展示，底部使用Tabs导航组件使用。本应用数据使用本地数据模拟返回。
 **功能模块**：阅读、书架、读书、我的   
@@ -751,7 +775,6 @@ __2-Android项目—E朝朝企业端__
 | ![][rn-waz-4] | ![][rn-waz-5] | ![][rn-waz-6] |
 | ![][rn-waz-7] | ![][rn-waz-8] | ![][rn-waz-9] |
 
-
 ### 2—[expo-todo](https://github.com/PGzxc/expo-todo)
 
 **项目归属**：个人项目
@@ -776,7 +799,6 @@ __2-Android项目—E朝朝企业端__
 | :------------: | :------------: | :------------: |
 | ![][rn-todo-4] | ![][rn-todo-5] | ![][rn-todo-6] |
 
-
 ## <font color=red>六 Kotlin Multiplatform Mobile项目</font>
 
 ### 1—[WanAndroid-Compose-Multiplatform](https://github.com/PGzxc/WanAndroid-Compose-Multiplatform)
@@ -799,7 +821,6 @@ __2-Android项目—E朝朝企业端__
 - 基于compose.materialIconsExtended显示Icons图标
 
 **项目预览**
-
 
 Android截图
 
@@ -875,7 +896,7 @@ IOS截图
 
 ## Harmony
 
-* 熟悉ArkTS开发语言，熟悉ArkTS语法规范
+* 熟悉ArkTS/仓颉开发语言，熟悉ArkTS/仓颉语法规范
 * 熟悉Harmony中常用布局、组件并进行UI开发
 * 熟悉通过Builder装饰器、Extend装饰器等自定义组件
 * 熟悉UIAbility组件生命周期、页面生命周期、组件生命周期等
@@ -1252,6 +1273,11 @@ IOS截图
 [rn-todo-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/rn-todo-5-todo-choice.png
 [rn-todo-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/rn-todo-6-todo-calendar.png
 
+<!--hm-wancj-->
+[wancj-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/wancj-1-home.png
+[wancj-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/wancj-2-course.png
+[wancj-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/wancj-3-tool.png
+[wancj-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/wancj-4-me.png
 
 <!--hm-waz-->
 [waz-hm-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/waz-hm-splash-0.png
