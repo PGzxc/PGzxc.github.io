@@ -50,6 +50,7 @@ comments: false
 	</tr>
 </tbody>
 </table>
+
 # 联系方式
 
 - 手机：15201120927
@@ -66,7 +67,7 @@ comments: false
 # 求职意向
 
 - 工作性质：全职
-- 期望职位：Android开发、IOS开发、Harmony开发、Flutter开发、ReactNative开发、KMM开发、前端开发、小程序开发、.NET开发工程师等
+- 期望职位：Harmony开发、Android开发、IOS开发、Flutter开发、ReactNative开发、KMM开发、前端开发、小程序开发、.NET开发工程师等
 - 期望薪资：面议
 - 工作地点：北京
 
