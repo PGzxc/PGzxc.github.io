@@ -514,9 +514,9 @@ __2-Android项目—E朝朝企业端__
 
 **项目预览**
 
-| ![][wancj-1] | ![][wancj-2] |
-| :-----------:| :-----------:|
-| ![][wancj-3] | ![][wancj-4] |
+| ![][wancj-1] | ![][wancj-2] | ![][wancj-3] | ![][wancj-4] |
+| :----------: | :----------: | :----------: | :----------: |
+| ![][wancj-5] | ![][wancj-6] | ![][wancj-7] | ![][wancj-8] |
 
 ### 2—[WanAndroidHM](https://github.com/PGzxc/WanAndroidHM)
 
@@ -547,7 +547,6 @@ __2-Android项目—E朝朝企业端__
 | ![][waz-hm-9] | ![][waz-hm-10] | ![][waz-hm-11] | ![][waz-hm-12] |
 | ![][waz-hm-13]| ![][waz-hm-14] | ![][waz-hm-15] | ![][waz-hm-16] |
 
-
 ### 3—[BookHM](https://github.com/PGzxc/BookHM)
 
 **项目归属**：个人项目
@@ -572,7 +571,6 @@ __2-Android项目—E朝朝企业端__
 | ![][hm-read-1] | ![][hm-read-2] |![][hm-read-3]|
 | -------------- | -------------- | ------------ |
 | ![][hm-read-4] | ![][hm-read-5] |![][hm-read-6]|
-
 
 ## <font color=red>二 Android项目</font>
 
@@ -599,7 +597,6 @@ __2-Android项目—E朝朝企业端__
 - material-icons-core、material-icons-extended使用系统图标
 
 **项目预览**
-
 
 | ![][com-az-1] | ![][com-az-2]  | ![][com-az-3]  | ![][com-az-4]  |
 | ------------- | -------------- | -------------- | -------------- |
@@ -1275,10 +1272,15 @@ IOS截图
 [rn-todo-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/rn-todo-6-todo-calendar.png
 
 <!--hm-wancj-->
-[wancj-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/wancj-1-home.png
-[wancj-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/wancj-2-course.png
-[wancj-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/wancj-3-tool.png
-[wancj-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/wancj-4-me.png
+[wancj-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/wancj-1-home-normal.png
+[wancj-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/wancj-2-home-fresh.png
+[wancj-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/wancj-3-course.png
+[wancj-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/wancj-4-course-list.png
+[wancj-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/wancj-5-tool.png
+[wancj-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/wancj-6-me.png
+[wancj-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/wancj-7-me-data.png
+[wancj-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/wancj-8-login.png
+[wancj-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/wancj-9-register.png
 
 <!--hm-waz-->
 [waz-hm-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/waz-hm-splash-0.png
