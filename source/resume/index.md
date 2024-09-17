@@ -511,7 +511,7 @@ __2-Android项目—E朝朝企业端__
 - 数据类的序列化和反序列化
 - 构造工具类将JsonObject转换为Bean和String转换为JsonObject
 - 基于@State、@Prop等装饰器获取网络数据并更新状态
-- 基于@Builder、@Extend等装饰器自定义组件，减少复用代码
+- 基于@Builder装饰器自定义组件、extend扩展原有组件(方法)，减少复用代码
 
 **项目预览**
 
