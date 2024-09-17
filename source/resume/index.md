@@ -4,8 +4,6 @@ date: 2021-11-26 16:51:58
 type: "resume"
 comments: false  
 ---
-<!--简历下载位置-->
-
 <table width="100%" border="0" cellspacing="1" cellpadding="4" style="text-align:center;"  align="center">
 <tbody>
 	<tr style="line-height:110%;text-align:center;color:#255e95;font-weight: bold;font-size: 16px;">
@@ -50,7 +48,6 @@ comments: false
 	</tr>
 </tbody>
 </table>
-
 
 # 联系方式
 
