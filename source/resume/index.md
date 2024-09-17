@@ -24,13 +24,13 @@ comments: false
 		<a href="folder/周向成_IOS开发工程师.pdf" target="_blank">IOS</a>
 		</td>
 		<td width="8%">
-		<a href="folder/周向成_Harmony开发工程师.pdf" target="_blank">Harmony</a>
+		<a href="folder/周向成_Harmony开发工程师.pdf" target="_blank">鸿蒙</a>
 		</td>
 		<td width="8%">
 		<a href="folder/周向成_Flutter开发工程师.pdf" target="_blank">Flutter</a>
 		</td>
 		<td width="8%">
-		<a href="folder/周向成_ReactNative开发工程师.pdf" target="_blank">React Native</a>
+		<a href="folder/周向成_ReactNative开发工程师.pdf" target="_blank">RN</a>
 		</td>
 		<td width="8%">
 		<a href="folder/周向成_KMM开发工程师.pdf" target="_blank">KMM</a>
@@ -50,6 +50,7 @@ comments: false
 	</tr>
 </tbody>
 </table>
+
 
 # 联系方式
 
@@ -531,7 +532,7 @@ __2-Android项目—E朝朝企业端__
 **功能模块**：首页、导航、项目、消息、我等   
 **技术要点**：
 
-- 基于Tabs+tabBar构建底部导航框架
+- 基于Tabs+TabContent构建底部导航框架
 - 基于@ohos.net.http进行网络请求，返回一个Promise，简化异步操作
 - 基于@State、@Prop等装饰器获取网络数据并更新状态
 - 基于@Builder、@Extend等装饰器自定义组件，减少复用代码
