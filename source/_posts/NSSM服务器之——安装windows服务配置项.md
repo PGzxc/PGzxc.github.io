@@ -63,6 +63,12 @@ nssm install nssm
 
 Application配置项(指定要执行的程序，可以有参数)
 
+```
+metatube-server-windows-amd64-v3.exe -dsn metatube.db
+```
+
+图示
+
 ![][3]
 
 IO配置项(配置日志文件，非必填，事先创建好文件夹，OutPut和Error会指定同一个文件)
