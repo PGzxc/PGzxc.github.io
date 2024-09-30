@@ -1,12 +1,12 @@
 ---
-title: Docker入门之——Ubuntu安装(4)
+title: Docker入门之——Docker安装Ubuntu(4)
 categories:
   - 开发
   - G-后端开发
   - Docker
 tags:
   - Docker
-abbrlink: b7c80a14
+abbrlink: ae83e2d1
 date: 2024-09-30 10:52:29
 ---
 ## 一 概述
