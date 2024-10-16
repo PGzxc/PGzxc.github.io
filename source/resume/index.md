@@ -11,12 +11,13 @@ comments: false
 		<td colspan="3" >跨平台</td>
         <td colspan="1">小程序</td>
 		<td colspan="1">前端</td>
+        <td colspan="1">AI</td>
 		<td colspan="1">桌面端</td>
 		<td colspan="1">完整版</td>
 	</tr>
 	<tr  style="">
 		<td width="8%">
-		<a href="folder/周向成_Android开发工程师.pdf" target="_blank">Android</a>
+		<a href="folder/周向成_Android开发工程师.pdf" target="_blank">安卓</a>
 		</td>
 		<td width="8%">
 		<a href="folder/周向成_IOS开发工程师.pdf" target="_blank">IOS</a>
@@ -39,6 +40,9 @@ comments: false
 		<td width="8%">
 		<a href="folder/周向成_前端开发工程师.pdf" target="_blank">前端</a>
 		</td>
+        <td width="8%">
+		<a href="folder/周向成_AI开发工程师.pdf" target="_blank">AI</a>
+		</td>
 		<td width="8%">
 		<a href="folder/周向成_WinForm开发工程师.pdf" target="_blank">C#</a>
 		</td>
@@ -48,6 +52,7 @@ comments: false
 	</tr>
 </tbody>
 </table>
+
 
 # 联系方式
 
