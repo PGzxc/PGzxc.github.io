@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.19.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/config.min.js"></script>
+
+    <meta name="description" content="一 面试题汇总 什么是计算属性，什么是存储属性？只读计算属性，延迟存储属性呢？ 枚举的原始值属于计算属性还是存储属性？ 什么是属性观察器？willSet，didSet 实例属性和类型属性有什么区别？ Swift单例如何实现？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IOS面试题——Swift属性，单例(5)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/119e3701.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 面试题汇总 什么是计算属性，什么是存储属性？只读计算属性，延迟存储属性呢？ 枚举的原始值属于计算属性还是存储属性？ 什么是属性观察器？willSet，didSet 实例属性和类型属性有什么区别？ Swift单例如何实现？">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-27T03:36:08.000Z">
+<meta property="article:modified_time" content="2024-10-17T01:28:52.666Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Swift面试题">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/119e3701.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/119e3701.html","path":"posts/119e3701.html","title":"IOS面试题——Swift属性，单例(5)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>IOS面试题——Swift属性，单例(5) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">180</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">3212</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB"><span class="nav-number">1.</span> <span class="nav-text">一 面试题汇总</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%EF%BC%8C%E4%BB%80%E4%B9%88%E6%98%AF%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7%EF%BC%9F%E5%8F%AA%E8%AF%BB%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%EF%BC%8C%E5%BB%B6%E8%BF%9F%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7%E5%91%A2%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 什么是计算属性，什么是存储属性？只读计算属性，延迟存储属性呢？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%9E%9A%E4%B8%BE%E7%9A%84%E5%8E%9F%E5%A7%8B%E5%80%BC%E5%B1%9E%E4%BA%8E%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E8%BF%98%E6%98%AF%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 枚举的原始值属于计算属性还是存储属性？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E4%BB%80%E4%B9%88%E6%98%AF%E5%B1%9E%E6%80%A7%E8%A7%82%E5%AF%9F%E5%99%A8%EF%BC%9FwillSet%EF%BC%8CdidSet"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 什么是属性观察器？willSet，didSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E5%AE%9E%E4%BE%8B%E5%B1%9E%E6%80%A7%E5%92%8C%E7%B1%BB%E5%9E%8B%E5%B1%9E%E6%80%A7%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 实例属性和类型属性有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-Swift%E5%8D%95%E4%BE%8B%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 Swift单例如何实现？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E5%AD%98%E5%82%A8%E7%B1%BB%E5%9E%8B%E5%B1%9E%E6%80%A7%E6%9C%89%E4%BB%80%E4%B9%88%E7%89%B9%E7%82%B9-%E5%9C%A8%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%9F%E5%A4%9A%E4%B8%AA%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%97%B6%E8%AE%BF%E9%97%AE%E5%91%A2%EF%BC%9F"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 存储类型属性有什么特点? 在什么时候初始化？多个线程同时访问呢？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">3212</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">180</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">518</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY2FsdmluX3pob3U=" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou"><i class="fa fa-book fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3dlaWJvLmNvbS81NTgyMDM5OTIw" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920"><i class="fab fa-weibo fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3d3dy5qaWFuc2h1LmNvbS91L2M1Y2RjYjRkYzUyYg==" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b"><i class="fa fa-heartbeat fa-fw"></i></span>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/119e3701.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="IOS面试题——Swift属性，单例(5) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          IOS面试题——Swift属性，单例(5)<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BHenhjL1BHenhjLmdpdGh1Yi5pby9lZGl0L21hc3Rlci9zb3VyY2UvX3Bvc3RzL0lPU+mdouivlemimOKAlOKAlFN3aWZ05bGe5oCn77yM5Y2V5L6LKDUpLm1k" title="编辑"><i class="fa fa-pen-nib"></i></span>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-03-27 11:36:08" itemprop="dateCreated datePublished" datetime="2024-03-27T11:36:08+08:00">2024-03-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/IOS%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">IOS面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-面试题汇总"><a href="#一-面试题汇总" class="headerlink" title="一 面试题汇总"></a>一 面试题汇总</h2><ol>
+<li>什么是计算属性，什么是存储属性？只读计算属性，延迟存储属性呢？</li>
+<li>枚举的原始值属于计算属性还是存储属性？</li>
+<li>什么是属性观察器？willSet，didSet</li>
+<li>实例属性和类型属性有什么区别？</li>
+<li>Swift单例如何实现？<span id="more"></span></li>
+<li>存储类型属性有什么特点? 在什么时候初始化？多个线程同时访问呢？</li>
+</ol>
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-什么是计算属性，什么是存储属性？只读计算属性，延迟存储属性呢？"><a href="#2-1-什么是计算属性，什么是存储属性？只读计算属性，延迟存储属性呢？" class="headerlink" title="2.1 什么是计算属性，什么是存储属性？只读计算属性，延迟存储属性呢？"></a>2.1 什么是计算属性，什么是存储属性？只读计算属性，延迟存储属性呢？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">在Swift中，属性可以分为计算属性(Computed Properties)和存储属性（Stored Properties）。</span><br><span class="line">此外，还有只读计算属性（Read-Only Computed Properties）和延迟存储属性（Lazy Stored Properties）等特殊类型。</span><br><span class="line"></span><br><span class="line">1-存储属性（Stored Properties）：</span><br><span class="line">存储属性是直接存储在实例的内存中的属性。它们可以是常量属性（用 let 声明）或变量属性（用 var 声明）。</span><br><span class="line">当创建一个新的实例时，存储属性会分配内存并设置初始值，</span><br><span class="line">这些初始值可以通过构造函数参数进行设置，也可以在定义时给出默认值。</span><br><span class="line"></span><br><span class="line">struct Person &#123;</span><br><span class="line">    var name: String  // 存储属性</span><br><span class="line">    var age: Int      // 存储属性</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var person = Person(name: &quot;Alice&quot;, age: 30)</span><br><span class="line"></span><br><span class="line">2-计算属性（Computed Properties）：</span><br><span class="line">计算属性是通过 getter 和 optional setter 方法来间接获取和设置值的属性。</span><br><span class="line">它们不直接存储值，而是提供一个 getter 方法来获取值，并可以提供一个可选的 setter 方法来设置值。</span><br><span class="line">计算属性可以提供额外的计算逻辑，例如对其他存储属性的操作。</span><br><span class="line"></span><br><span class="line">struct Circle &#123;</span><br><span class="line">    var radius: Double  // 存储属性</span><br><span class="line"></span><br><span class="line">    var area: Double &#123;  // 计算属性</span><br><span class="line">        return Double.pi * radius * radius</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">3-只读计算属性（Read-Only Computed Properties）：</span><br><span class="line">只读计算属性只有 getter 方法，没有 setter 方法，</span><br><span class="line">因此它们的值只能在 getter 方法中计算并返回，而不能被修改。</span><br><span class="line">在计算属性的声明前加上 get 关键字，即可声明只读计算属性。</span><br><span class="line"></span><br><span class="line">struct Circle &#123;</span><br><span class="line">    var radius: Double</span><br><span class="line"></span><br><span class="line">    var area: Double &#123;  // 只读计算属性</span><br><span class="line">        return Double.pi * radius * radius</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">4-延迟存储属性（Lazy Stored Properties）：</span><br><span class="line">延迟存储属性是指当属性首次被访问时才进行初始化的属性。</span><br><span class="line">这种属性通常用于初始化需要复杂或者大量资源的属性，</span><br><span class="line">可以延迟到实际需要时再进行初始化，以提高性能和节省资源。</span><br><span class="line"></span><br><span class="line">class DataManager &#123;</span><br><span class="line">    lazy var data: [String] = &#123;</span><br><span class="line">        var data = [String]()</span><br><span class="line">        // 加载数据的耗时操作</span><br><span class="line">        return data</span><br><span class="line">    &#125;()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在这个示例中，data 属性是一个延迟存储属性，它在首次被访问时执行闭包并进行初始化。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-枚举的原始值属于计算属性还是存储属性？"><a href="#2-2-枚举的原始值属于计算属性还是存储属性？" class="headerlink" title="2.2 枚举的原始值属于计算属性还是存储属性？"></a>2.2 枚举的原始值属于计算属性还是存储属性？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">枚举的原始值属于存储属性。</span><br><span class="line"></span><br><span class="line">枚举可以关联一个或多个原始值，这些原始值可以是字符串、字符、整数或浮点数类型。</span><br><span class="line">原始值可以用于快速比较枚举成员的相等性，以及在不同的数据类型之间进行转换。</span><br><span class="line"></span><br><span class="line">当你为枚举定义原始值时，Swift 会自动为每个枚举成员分配对应的原始值，</span><br><span class="line">并将这些值存储在枚举实例的内存中。</span><br><span class="line">因此，枚举的原始值属于存储属性，而不是计算属性。</span><br><span class="line"></span><br><span class="line">下面是一个示例，演示了枚举的原始值的定义和使用：</span><br><span class="line"></span><br><span class="line">enum CompassPoint: Int &#123;</span><br><span class="line">    case north = 1</span><br><span class="line">    case south = 2</span><br><span class="line">    case east = 3</span><br><span class="line">    case west = 4</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">print(CompassPoint.north.rawValue) // 输出：1</span><br><span class="line">print(CompassPoint.east.rawValue)  // 输出：3</span><br><span class="line">在这个示例中，rawValue 是一个存储在枚举实例中的存储属性，用于存储枚举成员的原始值。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-什么是属性观察器？willSet，didSet"><a href="#2-3-什么是属性观察器？willSet，didSet" class="headerlink" title="2.3 什么是属性观察器？willSet，didSet"></a>2.3 什么是属性观察器？willSet，didSet</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">属性观察器是一种用于监视和响应属性值变化的机制，</span><br><span class="line">在 Swift 中，可以通过 willSet 和 didSet 来实现属性观察器。</span><br><span class="line"></span><br><span class="line">1-willSet：在属性值即将发生改变之前被调用，可以在 willSet 中访问新值，</span><br><span class="line">也可以使用默认参数名 newValue。</span><br><span class="line">2-didSet：在属性值已经发生改变之后被调用，可以在 didSet 中访问旧值，</span><br><span class="line">也可以使用默认参数名 oldValue。</span><br><span class="line"></span><br><span class="line">属性观察器可以用于检测属性值的变化，并在值变化时执行特定的代码。</span><br><span class="line">这种机制使得我们可以在属性值发生变化时进行一些额外的操作，例如更新用户界面、触发其他事件等。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-实例属性和类型属性有什么区别？"><a href="#2-4-实例属性和类型属性有什么区别？" class="headerlink" title="2.4 实例属性和类型属性有什么区别？"></a>2.4 实例属性和类型属性有什么区别？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">实例属性(Instance Properties)和类型属性(Type Properties)是Swift中的两种不同类型的属性，</span><br><span class="line">它们有以下区别：</span><br><span class="line"></span><br><span class="line">1-实例属性（Instance Properties）：</span><br><span class="line">1.1-属于实例：实例属性是属于特定实例的属性，每个实例都有自己的一组实例属性。</span><br><span class="line">每个实例都拥有自己的一份属性值，它们在内存中独立存在。</span><br><span class="line">1.2-用于存储实例特定的数据：实例属性用于存储实例特定的数据，每个实例的属性值可以不同。</span><br><span class="line">1.3-声明在类、结构体或枚举中：实例属性可以声明在类、结构体或枚举中，并且必须在实例化之后才能访问或修改。</span><br><span class="line"></span><br><span class="line">2-类型属性（Type Properties）：</span><br><span class="line"></span><br><span class="line">2.1-属于类型：类型属性是属于整个类型本身的属性，而不是属于类型的实例。</span><br><span class="line">无论创建了多少个实例，类型属性只有一份拷贝，它是共享的。</span><br><span class="line">2.2-用于存储类型相关的数据：类型属性用于存储与类型本身相关的数据，</span><br><span class="line">这些数据对于类型的所有实例来说都是相同的。</span><br><span class="line"></span><br><span class="line">2.3-使用 static 或 class 关键字声明：类型属性可以使用 static 关键字来声明存储属性，</span><br><span class="line">也可以使用 class 关键字来声明计算属性。</span><br><span class="line">类可以使用 class 关键字来声明类属性，而结构体和枚举则只能使用 static 关键字。</span><br><span class="line"></span><br><span class="line">3-区别总结：</span><br><span class="line">所属范围不同：实例属性属于实例，类型属性属于类型本身。</span><br><span class="line">存储方式不同：实例属性存储在每个实例中，类型属性只有一份拷贝，共享于所有实例。</span><br><span class="line">声明方式不同：实例属性声明在类、结构体或枚举中，类型属性使用 static 或 class 关键字声明。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-Swift单例如何实现？"><a href="#2-5-Swift单例如何实现？" class="headerlink" title="2.5 Swift单例如何实现？"></a>2.5 Swift单例如何实现？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">在 Swift 中，你可以使用 struct 关键字来定义一个单例。</span><br><span class="line">一个简单的单例实现通常包括一个私有的静态存储属性来存储唯一的实例，并提供一个公共的静态方法来访问该实例。</span><br><span class="line"></span><br><span class="line">下面是一个使用 struct 来实现单例的示例：</span><br><span class="line"></span><br><span class="line">struct MySingleton &#123;</span><br><span class="line">    // 私有的静态存储属性，用于存储唯一的实例</span><br><span class="line">    private static var sharedInstance: MySingleton = MySingleton()</span><br><span class="line"></span><br><span class="line">    // 私有的初始化方法，防止外部通过 init 创建实例</span><br><span class="line">    private init() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    // 公共的静态方法，用于访问单例实例</span><br><span class="line">    static func shared() -&gt; MySingleton &#123;</span><br><span class="line">        return sharedInstance</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 添加其他实例方法和属性</span><br><span class="line">    func doSomething() &#123;</span><br><span class="line">        print(&quot;Singleton is doing something&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 使用单例</span><br><span class="line">let singleton = MySingleton.shared()</span><br><span class="line">singleton.doSomething()</span><br><span class="line"></span><br><span class="line">在这个示例中，MySingleton 结构体中有一个私有的静态存储属性 sharedInstance，</span><br><span class="line">用于存储唯一的实例。构造函数被标记为私有，以防止外部通过 init 创建新的实例。</span><br><span class="line">通过公共的静态方法 shared() 来访问单例实例，这个方法会返回存储在sharedInstance 中的唯一实例。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-存储类型属性有什么特点-在什么时候初始化？多个线程同时访问呢？"><a href="#2-6-存储类型属性有什么特点-在什么时候初始化？多个线程同时访问呢？" class="headerlink" title="2.6 存储类型属性有什么特点? 在什么时候初始化？多个线程同时访问呢？"></a>2.6 存储类型属性有什么特点? 在什么时候初始化？多个线程同时访问呢？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">存储类型属性（Stored Type Properties）是属于类型本身的属性，而不是属于类型的实例。</span><br><span class="line">它们与类型相关联，而不是与类型的实例相关联。存储类型属性具有以下特点：</span><br><span class="line"></span><br><span class="line">1-共享性： 存储类型属性是共享的，即它们的值在所有实例之间共享。</span><br><span class="line">不管创建了多少个该类型的实例，存储类型属性只有一份拷贝。</span><br><span class="line"></span><br><span class="line">2-延迟初始化： 存储类型属性默认情况下是延迟初始化的。</span><br><span class="line">它们的初始值直到首次被访问时才会被计算并分配内存空间。</span><br><span class="line">延迟初始化确保了存储类型属性的值只有在需要时才会被计算，从而节省了资源。</span><br><span class="line"></span><br><span class="line">3-线程安全： 存储类型属性的初始化是线程安全的。</span><br><span class="line">即使多个线程同时访问存储类型属性，也不会导致重复初始化或者竞态条件的问题。</span><br><span class="line">Swift 会保证存储类型属性的初始化在多线程环境下是安全的。</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-参考"><a href="#三-参考" class="headerlink" title="三 参考"></a>三 参考</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC80MTBmMDFkOWU2Mzg=">简书—Swift属性，单例<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Swift%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># Swift面试题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/6a64650.html" rel="prev" title="IOS面试题——Swift方法、闭包(4)">
+                  <i class="fa fa-angle-left"></i> IOS面试题——Swift方法、闭包(4)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/be577ac1.html" rel="next" title="IOS面试题——Swift 泛型，关联类型，协议类型，不透明类型(6)">
+                  IOS面试题——Swift 泛型，关联类型，协议类型，不透明类型(6) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/comments.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/motion.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/next-boot.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/pjax.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/third-party/search/local-search.min.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js","integrity":"sha256-mm3Re3y7xlvh+yCD+l/Zs1d+PU0AEad93MkWvljfm/s="}}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/third-party/tags/mermaid.min.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/third-party/math/mathjax.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"4d2dabe31f81c092d78da3ea9e4103d4"}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/third-party/comments/gitalk.min.js"></script>
+
+</body>
+</html>

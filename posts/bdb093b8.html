@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.19.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/config.min.js"></script>
+
+    <meta name="description" content="一 面试题汇总 值类型并不支持继承，只有类支持继承 Swift中是否有类似NSObject的基类？ Swift如何重写父类的下标、方法、属性？override 如何限制不能被重写，或者不能被继承？final 是否可以重写存储属性？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IOS面试题——Swift继承(11)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/bdb093b8.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 面试题汇总 值类型并不支持继承，只有类支持继承 Swift中是否有类似NSObject的基类？ Swift如何重写父类的下标、方法、属性？override 如何限制不能被重写，或者不能被继承？final 是否可以重写存储属性？">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-27T08:25:41.000Z">
+<meta property="article:modified_time" content="2024-10-17T01:28:52.666Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Swift面试题">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/bdb093b8.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/bdb093b8.html","path":"posts/bdb093b8.html","title":"IOS面试题——Swift继承(11)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>IOS面试题——Swift继承(11) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">180</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">3212</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB"><span class="nav-number">1.</span> <span class="nav-text">一 面试题汇总</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%B9%B6%E4%B8%8D%E6%94%AF%E6%8C%81%E7%BB%A7%E6%89%BF%EF%BC%8C%E5%8F%AA%E6%9C%89%E7%B1%BB%E6%94%AF%E6%8C%81%E7%BB%A7%E6%89%BF"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 值类型并不支持继承，只有类支持继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Swift%E4%B8%AD%E6%98%AF%E5%90%A6%E6%9C%89%E7%B1%BB%E4%BC%BCNSObject%E7%9A%84%E5%9F%BA%E7%B1%BB%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Swift中是否有类似NSObject的基类？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Swift%E5%A6%82%E4%BD%95%E9%87%8D%E5%86%99%E7%88%B6%E7%B1%BB%E7%9A%84%E4%B8%8B%E6%A0%87%E3%80%81%E6%96%B9%E6%B3%95%E3%80%81%E5%B1%9E%E6%80%A7%EF%BC%9Foverride"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Swift如何重写父类的下标、方法、属性？override</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E5%A6%82%E4%BD%95%E9%99%90%E5%88%B6%E4%B8%8D%E8%83%BD%E8%A2%AB%E9%87%8D%E5%86%99%EF%BC%8C%E6%88%96%E8%80%85%E4%B8%8D%E8%83%BD%E8%A2%AB%E7%BB%A7%E6%89%BF%EF%BC%9Ffinal"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 如何限制不能被重写，或者不能被继承？final</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E9%87%8D%E5%86%99%E5%AD%98%E5%82%A8%E5%B1%9E%E6%80%A7%EF%BC%9F"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 是否可以重写存储属性？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-let%E4%BF%AE%E9%A5%B0%E7%9A%84%E5%B1%9E%E6%80%A7%E8%83%BD%E5%90%A6%E9%87%8D%E5%86%99%EF%BC%9F"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 let修饰的属性能否重写？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-static%E4%BF%AE%E9%A5%B0%E7%9A%84%E5%B1%9E%E6%80%A7%E8%83%BD%E5%90%A6%E8%A2%AB%E9%87%8D%E5%86%99%EF%BC%9F"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 static修饰的属性能否被重写？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">3212</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">180</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">518</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY2FsdmluX3pob3U=" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou"><i class="fa fa-book fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3dlaWJvLmNvbS81NTgyMDM5OTIw" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920"><i class="fab fa-weibo fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3d3dy5qaWFuc2h1LmNvbS91L2M1Y2RjYjRkYzUyYg==" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b"><i class="fa fa-heartbeat fa-fw"></i></span>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/bdb093b8.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="IOS面试题——Swift继承(11) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          IOS面试题——Swift继承(11)<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BHenhjL1BHenhjLmdpdGh1Yi5pby9lZGl0L21hc3Rlci9zb3VyY2UvX3Bvc3RzL0lPU+mdouivlemimOKAlOKAlFN3aWZ057un5om/KDExKS5tZA==" title="编辑"><i class="fa fa-pen-nib"></i></span>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-03-27 16:25:41" itemprop="dateCreated datePublished" datetime="2024-03-27T16:25:41+08:00">2024-03-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/IOS%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">IOS面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-面试题汇总"><a href="#一-面试题汇总" class="headerlink" title="一 面试题汇总"></a>一 面试题汇总</h2><ol>
+<li>值类型并不支持继承，只有类支持继承</li>
+<li>Swift中是否有类似NSObject的基类？</li>
+<li>Swift如何重写父类的下标、方法、属性？override</li>
+<li>如何限制不能被重写，或者不能被继承？final</li>
+<li>是否可以重写存储属性？<span id="more"></span></li>
+<li>let修饰的属性能否重写？</li>
+<li>static修饰的属性能否被重写？</li>
+</ol>
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-值类型并不支持继承，只有类支持继承"><a href="#2-1-值类型并不支持继承，只有类支持继承" class="headerlink" title="2.1 值类型并不支持继承，只有类支持继承"></a>2.1 值类型并不支持继承，只有类支持继承</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">值类型（例如结构体和枚举）在Swift中不支持继承，只有类支持继承。</span><br><span class="line"></span><br><span class="line">在Swift中，结构体和枚举是值类型，它们被设计为简单且轻量级的数据抽象，</span><br><span class="line">用于表示一些具有值语义的数据结构。</span><br><span class="line">由于值类型的特性，它们通常用于封装少量相关的数据，并且在传递和赋值时进行值拷贝。</span><br><span class="line"></span><br><span class="line">而类是引用类型，它们允许通过继承来共享和扩展类的功能。</span><br><span class="line">子类可以继承父类的属性和方法，并且可以添加新的属性和方法，或者覆盖父类的方法以实现不同的行为。</span><br><span class="line">这使得类在面向对象编程中起到了非常重要的作用，允许建立复杂的类层次结构以及实现多态性</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-Swift中是否有类似NSObject的基类？"><a href="#2-2-Swift中是否有类似NSObject的基类？" class="headerlink" title="2.2 Swift中是否有类似NSObject的基类？"></a>2.2 Swift中是否有类似NSObject的基类？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">在 Swift 中，并没有类似于 Objective-C 中的 NSObject 的基类。</span><br><span class="line">在Objective-C中，所有类都继承自 NSObject，它提供了许多 Objective-C 运行时系统所需的功能，</span><br><span class="line">例如内存管理、动态类型识别等。但在Swift中，所有的类都是直接继承自Swift的基类AnyObject或Any。</span><br><span class="line"></span><br><span class="line">1-AnyObject： </span><br><span class="line">AnyObject 是一个可以表示任何类类型的 Swift 类型。</span><br><span class="line">它是 Swift 中引用类型的根基类。</span><br><span class="line">所有Swift类型都可以被转换为AnyObject类型，也可以将任何AnyObject 类型的实例转换为其他类类型。</span><br><span class="line"></span><br><span class="line">2-Any： </span><br><span class="line">Any 是一个可以表示任何类型的 Swift 类型，包括值类型和引用类型。</span><br><span class="line">它是 Swift 中所有类型的根基类，包括结构体、枚举、类和协议。</span><br><span class="line"></span><br><span class="line">在 Swift 中，由于引入了强大的类型系统和自动引用计数（ARC）机制，</span><br><span class="line">不再需要像 NSObject 那样的基类来提供 Objective-C 运行时所需的功能。</span><br><span class="line">Swift 类型系统已经足够强大，可以满足大多数编程需求，因此不需要继承自特定的基类。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-Swift如何重写父类的下标、方法、属性？override"><a href="#2-3-Swift如何重写父类的下标、方法、属性？override" class="headerlink" title="2.3 Swift如何重写父类的下标、方法、属性？override"></a>2.3 Swift如何重写父类的下标、方法、属性？override</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">在 Swift 中，你可以通过override关键字来重写父类的下标、方法和属性。</span><br><span class="line">下面分别介绍如何重写这些成员：</span><br><span class="line"></span><br><span class="line">1-重写下标：</span><br><span class="line"></span><br><span class="line">class BaseClass &#123;</span><br><span class="line">    subscript(index: Int) -&gt; Int &#123;</span><br><span class="line">        return index</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class SubClass: BaseClass &#123;</span><br><span class="line">    override subscript(index: Int) -&gt; Int &#123;</span><br><span class="line">        return super[index] * 2 // 调用父类的下标并做修改</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">2-重写方法：</span><br><span class="line"></span><br><span class="line">class BaseClass &#123;</span><br><span class="line">    func myMethod() &#123;</span><br><span class="line">        print(&quot;BaseClass method&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class SubClass: BaseClass &#123;</span><br><span class="line">    override func myMethod() &#123;</span><br><span class="line">        super.myMethod() // 调用父类的方法</span><br><span class="line">        print(&quot;SubClass method&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">3-重写属性：</span><br><span class="line"></span><br><span class="line">class BaseClass &#123;</span><br><span class="line">    var myProperty: Int &#123;</span><br><span class="line">        return 5</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class SubClass: BaseClass &#123;</span><br><span class="line">    override var myProperty: Int &#123;</span><br><span class="line">        return super.myProperty * 2 // 修改父类的属性值</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在上述示例中，我们使用 override 关键字来重写了父类的下标、方法和属性。</span><br><span class="line">在子类中，可以使用 super 关键字来调用父类的方法、下标和属性，并在此基础上进行修改。</span><br><span class="line">注意的是，重写方法时必须使用override关键字，否则会被视为定义了一个新的方法而不是重写父类的方法。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-如何限制不能被重写，或者不能被继承？final"><a href="#2-4-如何限制不能被重写，或者不能被继承？final" class="headerlink" title="2.4 如何限制不能被重写，或者不能被继承？final"></a>2.4 如何限制不能被重写，或者不能被继承？final</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">在 Swift 中，你可以使用 final 关键字来限制类、方法、属性或者下标不被继承或者重写。</span><br><span class="line"></span><br><span class="line">1-限制类不被继承：</span><br><span class="line"></span><br><span class="line">final class FinalClass &#123;</span><br><span class="line">    // 类的定义</span><br><span class="line">&#125;</span><br><span class="line">通过将类声明为 final，你可以阻止其他类从该类继承。</span><br><span class="line"></span><br><span class="line">2-限制方法不被重写：</span><br><span class="line"></span><br><span class="line">class BaseClass &#123;</span><br><span class="line">    final func finalMethod() &#123;</span><br><span class="line">        // 方法的实现</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class SubClass: BaseClass &#123;</span><br><span class="line">    // 不能重写 finalMethod</span><br><span class="line">&#125;</span><br><span class="line">通过将方法声明为 final，你可以阻止子类重写该方法。</span><br><span class="line"></span><br><span class="line">3-限制属性不被重写：</span><br><span class="line"></span><br><span class="line">class BaseClass &#123;</span><br><span class="line">    final var finalProperty: Int &#123;</span><br><span class="line">        return 5</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class SubClass: BaseClass &#123;</span><br><span class="line">    // 不能重写 finalProperty</span><br><span class="line">&#125;</span><br><span class="line">通过将属性声明为 final，你可以阻止子类重写该属性的 getter 和 setter。</span><br><span class="line"></span><br><span class="line">4-限制下标不被重写：</span><br><span class="line"></span><br><span class="line">class BaseClass &#123;</span><br><span class="line">    final subscript(index: Int) -&gt; Int &#123;</span><br><span class="line">        return index</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class SubClass: BaseClass &#123;</span><br><span class="line">    // 不能重写下标</span><br><span class="line">&#125;</span><br><span class="line">通过将下标声明为 final，你可以阻止子类重写该下标。</span><br><span class="line">使用 final 关键字可以帮助你设计更加安全和稳定的代码，尤其是在框架或者库的开发中。</span><br></pre></td></tr></table></figure>
+<h3 id="2-5-是否可以重写存储属性？"><a href="#2-5-是否可以重写存储属性？" class="headerlink" title="2.5 是否可以重写存储属性？"></a>2.5 是否可以重写存储属性？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">在 Swift 中，存储属性是不能被重写的。当你在子类中声明一个与父类相同名称的存储属性时，</span><br><span class="line">实际上是在子类中创建了一个新的存储属性，而不是重写父类的存储属性。</span><br><span class="line"></span><br><span class="line">例如，假设有一个父类 BaseClass：</span><br><span class="line"></span><br><span class="line">class BaseClass &#123;</span><br><span class="line">    var value: Int = 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">然后在子类 SubClass 中声明一个与父类相同名称的存储属性：</span><br><span class="line"></span><br><span class="line">class SubClass: BaseClass &#123;</span><br><span class="line">    var value: Int = 1</span><br><span class="line">&#125;</span><br><span class="line">在这个示例中，SubClass 中的 value 属性并不是重写父类的 value 属性，</span><br><span class="line">而是在子类中创建了一个新的 value 属性，因此这两个属性是完全独立的。</span><br><span class="line"></span><br><span class="line">如果你想在子类中修改父类的属性行为，你可以使用计算属性并提供 getter 和 setter 方法来实现。</span><br><span class="line">但需要注意的是，存储属性不能被重写，因为它们在编译时已经分配了内存空间，而且无法动态改变。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-let修饰的属性能否重写？"><a href="#2-6-let修饰的属性能否重写？" class="headerlink" title="2.6 let修饰的属性能否重写？"></a>2.6 let修饰的属性能否重写？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在 Swift 中，使用 let 关键字声明的属性是常量属性，也就是说它们的值在初始化之后不能被修改。</span><br><span class="line">因为常量属性的值在初始化后是不可变的，所以它们不能被子类重写</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-static修饰的属性能否被重写？"><a href="#2-7-static修饰的属性能否被重写？" class="headerlink" title="2.7 static修饰的属性能否被重写？"></a>2.7 static修饰的属性能否被重写？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">在 Swift 中，使用 static 关键字声明的属性是类型属性，它们属于类型本身而不是实例。</span><br><span class="line">因此，类型属性不能被子类重写。</span><br><span class="line"></span><br><span class="line">尝试在子类中重写父类中使用 static 声明的属性会导致编译错误。</span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line"></span><br><span class="line">class BaseClass &#123;</span><br><span class="line">    static var staticValue: Int = 5</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class SubClass: BaseClass &#123;</span><br><span class="line">    override static var staticValue: Int = 10 // 这里会导致编译错误</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在这个示例中，BaseClass 中声明了一个类型属性 staticValue，</span><br><span class="line">它属于类 BaseClass 而不是它的实例。</span><br><span class="line">然后，在子类SubClass中尝试重写staticValue属性，但由于类型属性不能被重写，因此会导致编译错误。</span><br><span class="line"></span><br><span class="line">因此，使用 static 声明的属性不能被子类重写，它们属于类型本身而不是实例</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-参考"><a href="#三-参考" class="headerlink" title="三 参考"></a>三 参考</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC80MTBmMDFkOWU2Mzg=">简书—Swift继承<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Swift%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># Swift面试题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/c949b59.html" rel="prev" title="IOS面试题——Swift扩展(10)">
+                  <i class="fa fa-angle-left"></i> IOS面试题——Swift扩展(10)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/8bd99169.html" rel="next" title="IOS面试题——Swift模式匹配(12)">
+                  IOS面试题——Swift模式匹配(12) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/comments.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/motion.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/next-boot.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/pjax.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/third-party/search/local-search.min.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js","integrity":"sha256-mm3Re3y7xlvh+yCD+l/Zs1d+PU0AEad93MkWvljfm/s="}}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/third-party/tags/mermaid.min.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/third-party/math/mathjax.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"2a16861263ea8d561fdb755012b95fce"}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/third-party/comments/gitalk.min.js"></script>
+
+</body>
+</html>
