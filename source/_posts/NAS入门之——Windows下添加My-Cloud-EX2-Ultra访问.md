@@ -36,7 +36,23 @@ Windows 10系统下，通过网上邻居的方式添加My Cloud EX2 Ultra文件�
 * 添加完成后，如下图所示(可以按照本地磁盘的操作类似执行操作)
 ![][7]
 
-## 四 参考
+## 四 网络访问
+
+### 4.1 输入如下地址
+
+```
+http://mycloudex2ultra/
+```
+
+### 4.2 输入管理员用户名和密码
+
+```
+管理员用户名：admin
+密码：
+```
+
+## 五 参考
+
 * [如何在Windows 10上映射WD网络驱动器][11]
 
 [1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/mycloud-ext2-net-add-no.png
