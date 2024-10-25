@@ -67,4 +67,4 @@ date: 2024-10-24 11:07:01
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-html-1.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-xmind-html-1.png
