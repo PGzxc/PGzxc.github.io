@@ -973,6 +973,17 @@ IOS截图
 8. 学习能力良好，有技术文件编写经验
 9. 熟练使用SQL Server、MySQL、ACCESS等数据库进行项目开发，并可熟练使用ADO.NET进行数据库的访问操作
 
+## AI
+
+1. 熟悉开发 Flutter 基于 gemini-1.5-flash 模型制作 AI 图文软件
+2. 熟悉基于 TensorFlow Lite 模型进行图像识别分类
+3. 熟悉基于 TensorFlow Lite 模型进行对象检测
+4. 熟悉基于 TensorFlow Lite 模型识别单人或多人姿势
+5. 熟悉基于 TensorFlow Lite 模型识别语音指令
+6. 熟悉基于 TensorFlow Lite 模型进行智能回复
+7. 熟悉基于 TensorFlow Lite 模型识别视频片段中人体动作
+8. 熟悉基于 TensorFlow LLte 模型进行自然语言处理回答问题
+
 ---
 # 微信公众号
 ![weixin][1]
