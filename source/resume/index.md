@@ -32,7 +32,7 @@ comments: false
 		<a href="folder/周向成_ReactNative开发工程师.pdf" target="_blank">RN</a>
 		</td>
 		<td width="8%">
-		<a href="folder/周向成_KMM开发工程师.pdf" target="_blank">KMP</a>
+		<a href="folder/周向成_KMP开发工程师.pdf" target="_blank">KMP</a>
 		</td>
 		<td width="8%">
 		<a href="folder/周向成_小程序开发.pdf" target="_blank">小程序</a>
