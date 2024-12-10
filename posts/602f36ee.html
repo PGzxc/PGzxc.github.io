@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.19.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/config.min.js"></script>
+
+    <meta name="description" content="一 面试题汇总 swift 中内存管理方案？ARC引用类型有几种？strong、weak、unowned Swift闭包循环引用如何产生，怎么解决？ 能否在定义闭包属性的同时引用self？lazy 如果lazy属性是闭包调用的结果，是否需要考虑循环引用问题？ 什么是逃逸闭包?逃逸闭包能否捕获inout参数？@escaping">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IOS面试题——Swift内存管理(9)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/602f36ee.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 面试题汇总 swift 中内存管理方案？ARC引用类型有几种？strong、weak、unowned Swift闭包循环引用如何产生，怎么解决？ 能否在定义闭包属性的同时引用self？lazy 如果lazy属性是闭包调用的结果，是否需要考虑循环引用问题？ 什么是逃逸闭包?逃逸闭包能否捕获inout参数？@escaping">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-27T07:55:38.000Z">
+<meta property="article:modified_time" content="2024-12-10T00:54:48.919Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Swift面试题">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/602f36ee.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/602f36ee.html","path":"posts/602f36ee.html","title":"IOS面试题——Swift内存管理(9)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>IOS面试题——Swift内存管理(9) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">182</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">3315</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB"><span class="nav-number">1.</span> <span class="nav-text">一 面试题汇总</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-swift-%E4%B8%AD%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%96%B9%E6%A1%88%EF%BC%9FARC%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E6%9C%89%E5%87%A0%E7%A7%8D%EF%BC%9Fstrong%E3%80%81weak%E3%80%81unowned"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 swift 中内存管理方案？ARC引用类型有几种？strong、weak、unowned</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Swift%E9%97%AD%E5%8C%85%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8%E5%A6%82%E4%BD%95%E4%BA%A7%E7%94%9F%EF%BC%8C%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Swift闭包循环引用如何产生，怎么解决？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E8%83%BD%E5%90%A6%E5%9C%A8%E5%AE%9A%E4%B9%89%E9%97%AD%E5%8C%85%E5%B1%9E%E6%80%A7%E7%9A%84%E5%90%8C%E6%97%B6%E5%BC%95%E7%94%A8self%EF%BC%9Flazy"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 能否在定义闭包属性的同时引用self？lazy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E5%A6%82%E6%9E%9Clazy%E5%B1%9E%E6%80%A7%E6%98%AF%E9%97%AD%E5%8C%85%E8%B0%83%E7%94%A8%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%8C%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E8%80%83%E8%99%91%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 如果lazy属性是闭包调用的结果，是否需要考虑循环引用问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E4%BB%80%E4%B9%88%E6%98%AF%E9%80%83%E9%80%B8%E9%97%AD%E5%8C%85-%E9%80%83%E9%80%B8%E9%97%AD%E5%8C%85%E8%83%BD%E5%90%A6%E6%8D%95%E8%8E%B7inout%E5%8F%82%E6%95%B0%EF%BC%9F-escaping"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 什么是逃逸闭包?逃逸闭包能否捕获inout参数？@escaping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-Swift%E4%B8%AD%E6%8C%87%E9%92%88%E7%B1%BB%E5%9E%8B%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%EF%BC%9F"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 Swift中指针类型有哪几种？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">3315</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">182</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">520</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY2FsdmluX3pob3U=" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou"><i class="fa fa-book fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3dlaWJvLmNvbS81NTgyMDM5OTIw" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920"><i class="fab fa-weibo fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3d3dy5qaWFuc2h1LmNvbS91L2M1Y2RjYjRkYzUyYg==" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b"><i class="fa fa-heartbeat fa-fw"></i></span>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/602f36ee.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="IOS面试题——Swift内存管理(9) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          IOS面试题——Swift内存管理(9)<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BHenhjL1BHenhjLmdpdGh1Yi5pby9lZGl0L21hc3Rlci9zb3VyY2UvX3Bvc3RzL0lPU+mdouivlemimOKAlOKAlFN3aWZ05YaF5a2Y566h55CGKDkpLm1k" title="编辑"><i class="fa fa-pen-nib"></i></span>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-03-27 15:55:38" itemprop="dateCreated datePublished" datetime="2024-03-27T15:55:38+08:00">2024-03-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/IOS%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">IOS面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-面试题汇总"><a href="#一-面试题汇总" class="headerlink" title="一 面试题汇总"></a>一 面试题汇总</h2><ol>
+<li>swift 中内存管理方案？ARC引用类型有几种？strong、weak、unowned</li>
+<li>Swift闭包循环引用如何产生，怎么解决？</li>
+<li>能否在定义闭包属性的同时引用self？lazy</li>
+<li>如果lazy属性是闭包调用的结果，是否需要考虑循环引用问题？</li>
+<li>什么是逃逸闭包?逃逸闭包能否捕获inout参数？@escaping<span id="more"></span></li>
+<li>Swift中指针类型有哪几种？</li>
+</ol>
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-swift-中内存管理方案？ARC引用类型有几种？strong、weak、unowned"><a href="#2-1-swift-中内存管理方案？ARC引用类型有几种？strong、weak、unowned" class="headerlink" title="2.1 swift 中内存管理方案？ARC引用类型有几种？strong、weak、unowned"></a>2.1 swift 中内存管理方案？ARC引用类型有几种？strong、weak、unowned</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">在 Swift 中，内存管理是通过 ARC（Automatic Reference Counting，自动引用计数）来实现的。</span><br><span class="line">ARC 负责追踪和管理引用类型(类实例)的内存，确保在不再需要时释放它们所占用的内存空间，避免内存泄漏。</span><br><span class="line"></span><br><span class="line">ARC 引用类型主要有三种：strong、weak 和 unowned。</span><br><span class="line"></span><br><span class="line">1-strong 引用：</span><br><span class="line">默认情况下，Swift 中的引用都是强引用。</span><br><span class="line">强引用会增加对象的引用计数，使其在有至少一个强引用时保持在内存中。</span><br><span class="line">只要还有至少一个强引用指向对象，对象就不会被销毁。</span><br><span class="line"></span><br><span class="line">class Person &#123;</span><br><span class="line">    var name: String</span><br><span class="line">    </span><br><span class="line">    init(name: String) &#123;</span><br><span class="line">        self.name = name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var person1: Person? = Person(name: &quot;Alice&quot;) // 强引用</span><br><span class="line">var person2 = person1 // 强引用</span><br><span class="line">person1 = nil // 引用计数减一，但仍有一个强引用存在</span><br><span class="line">person2 = nil // 引用计数为零，对象销毁</span><br><span class="line"></span><br><span class="line">2-weak 引用：</span><br><span class="line">弱引用不会增加对象的引用计数，因此不会保持对象在内存中。</span><br><span class="line">当对象被释放后，弱引用会自动置为 nil。</span><br><span class="line">弱引用通常用于避免循环引用。</span><br><span class="line"></span><br><span class="line">class Apartment &#123;</span><br><span class="line">    var number: Int</span><br><span class="line">    </span><br><span class="line">    init(number: Int) &#123;</span><br><span class="line">        self.number = number</span><br><span class="line">    &#125;</span><br><span class="line">    weak var tenant: Person? // 弱引用</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var alice: Person? = Person(name: &quot;Alice&quot;)</span><br><span class="line">var apt: Apartment? = Apartment(number: 123)</span><br><span class="line">apt?.tenant = alice // 强引用和弱引用</span><br><span class="line">alice = nil // Person 实例被释放，弱引用自动置为 nil</span><br><span class="line"></span><br><span class="line">3-unowned 引用：</span><br><span class="line">与弱引用类似，但是前提是对象不会在引用释放后变为 nil。</span><br><span class="line">使用 unowned 引用要确保对象在引用释放后不会被访问，</span><br><span class="line">否则会导致访问已释放的对象，产生运行时错误。</span><br><span class="line"></span><br><span class="line">class Country &#123;</span><br><span class="line">    let name: String</span><br><span class="line">    </span><br><span class="line">    init(name: String) &#123;</span><br><span class="line">        self.name = name</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    var capitalCity: City!</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class City &#123;</span><br><span class="line">    let name: String</span><br><span class="line">    unowned let country: Country // 无主引用</span><br><span class="line">    </span><br><span class="line">    init(name: String, country: Country) &#123;</span><br><span class="line">        self.name = name</span><br><span class="line">        self.country = country</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var country = Country(name: &quot;Canada&quot;)</span><br><span class="line">var city = City(name: &quot;Ottawa&quot;, country: country) // 强引用和无主引用</span><br><span class="line">country.capitalCity = city // 循环引用</span><br><span class="line"></span><br><span class="line">ARC 会在编译时自动插入适当的引用计数代码，因此开发者通常无需手动管理引用计数。</span><br><span class="line">然而，在处理循环引用时，需要特别注意使用 weak 和 unowned 引用来避免内存泄漏。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-Swift闭包循环引用如何产生，怎么解决？"><a href="#2-2-Swift闭包循环引用如何产生，怎么解决？" class="headerlink" title="2.2 Swift闭包循环引用如何产生，怎么解决？"></a>2.2 Swift闭包循环引用如何产生，怎么解决？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">闭包循环引用在 Swift 中很常见，特别是当闭包内部捕获了包含该闭包的对象时，容易导致循环引用。</span><br><span class="line">这种情况下，闭包持有了对象的强引用，而对象又持有了闭包的强引用，</span><br><span class="line">导致它们互相保持，无法释放，从而产生内存泄漏</span><br><span class="line"></span><br><span class="line">下面是一个典型的闭包循环引用示例：</span><br><span class="line">class Person &#123;</span><br><span class="line">    var name: String</span><br><span class="line">    lazy var printName: () -&gt; () = &#123;</span><br><span class="line">        print(self.name) // 闭包捕获了 self，持有了 Person 的强引用</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    init(name: String) &#123;</span><br><span class="line">        self.name = name</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    deinit &#123;</span><br><span class="line">        print(&quot;Person \(name) is being deinitialized&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var person: Person? = Person(name: &quot;Alice&quot;)</span><br><span class="line">person?.printName() // &quot;Alice&quot;</span><br><span class="line">person = nil // Person 实例无法被释放，因为闭包持有了它的强引用</span><br><span class="line"></span><br><span class="line">要解决闭包循环引用，可以使用 weak 或 unowned 弱引用来打破循环。</span><br><span class="line"></span><br><span class="line">1-使用 weak 弱引用：</span><br><span class="line">class Person &#123;</span><br><span class="line">    var name: String</span><br><span class="line">    lazy var printName: () -&gt; () = &#123; [weak self] in // 使用 weak self</span><br><span class="line">        guard let strongSelf = self else &#123; return &#125;</span><br><span class="line">        print(strongSelf.name)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    init(name: String) &#123;</span><br><span class="line">        self.name = name</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    deinit &#123;</span><br><span class="line">        print(&quot;Person \(name) is being deinitialized&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var person: Person? = Person(name: &quot;Alice&quot;)</span><br><span class="line">person?.printName() // &quot;Alice&quot;</span><br><span class="line">person = nil // Person 实例可以被释放</span><br><span class="line"></span><br><span class="line">2-使用 unowned 无主引用：</span><br><span class="line">class Person &#123;</span><br><span class="line">    var name: String</span><br><span class="line">    lazy var printName: () -&gt; () = &#123; [unowned self] in // 使用 unowned self</span><br><span class="line">        print(self.name)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    init(name: String) &#123;</span><br><span class="line">        self.name = name</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    deinit &#123;</span><br><span class="line">        print(&quot;Person \(name) is being deinitialized&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var person: Person? = Person(name: &quot;Alice&quot;)</span><br><span class="line">person?.printName() // &quot;Alice&quot;</span><br><span class="line">person = nil // Person 实例可以被释放</span><br><span class="line"></span><br><span class="line">在选择使用 weak 还是 unowned 时，需要考虑闭包在访问对象时，对象是否有可能已经被释放。</span><br><span class="line">如果对象可能在闭包执行过程中被销毁，则应该使用 weak 引用。</span><br><span class="line">如果可以确定闭包执行期间对象不会被销毁，则可以使用 unowned 引用来避免可选绑定</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-能否在定义闭包属性的同时引用self？lazy"><a href="#2-3-能否在定义闭包属性的同时引用self？lazy" class="headerlink" title="2.3 能否在定义闭包属性的同时引用self？lazy"></a>2.3 能否在定义闭包属性的同时引用self？lazy</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">在 Swift 中，闭包属性的定义通常是通过延迟初始化的 lazy 关键字来实现的。</span><br><span class="line">然而，当你在闭包属性的定义中需要引用 self 时，需要注意闭包内部捕获了当前对象，可能会导致循环引用。</span><br><span class="line">在这种情况下，你需要小心处理，以避免产生循环引用。</span><br><span class="line"></span><br><span class="line">你可以在闭包内使用 lazy 关键字，但在捕获 self 时，</span><br><span class="line">需要使用 weak 或者 unowned 来避免循环引用。</span><br><span class="line">这就要求你在闭包内部使用 [weak self] 或者 [unowned self] 来标记捕获的 self。</span><br><span class="line"></span><br><span class="line">下面是一个使用 lazy 和 [weak self] 的示例：</span><br><span class="line"></span><br><span class="line">class Person &#123;</span><br><span class="line">    var name: String</span><br><span class="line">    lazy var printName: () -&gt; () = &#123; [weak self] in</span><br><span class="line">        guard let strongSelf = self else &#123; return &#125;</span><br><span class="line">        print(&quot;My name is \(strongSelf.name)&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    init(name: String) &#123;</span><br><span class="line">        self.name = name</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    deinit &#123;</span><br><span class="line">        print(&quot;Person \(name) is being deinitialized&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var person: Person? = Person(name: &quot;Alice&quot;)</span><br><span class="line">person?.printName() // &quot;My name is Alice&quot;</span><br><span class="line">person = nil // Person 实例可以被释放</span><br><span class="line"></span><br><span class="line">这个例子中，printName 是一个闭包属性，使用 lazy 进行延迟初始化。</span><br><span class="line">同时，使用了 [weak self] 来捕获 self，以避免循环引用。</span><br><span class="line"></span><br><span class="line">如果你能确定在闭包执行期间 self 不会被释放，你也可以使用 [unowned self]。</span><br><span class="line">但是要小心，确保在闭包执行期间 self 仍然是有效的</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-如果lazy属性是闭包调用的结果，是否需要考虑循环引用问题？"><a href="#2-4-如果lazy属性是闭包调用的结果，是否需要考虑循环引用问题？" class="headerlink" title="2.4 如果lazy属性是闭包调用的结果，是否需要考虑循环引用问题？"></a>2.4 如果lazy属性是闭包调用的结果，是否需要考虑循环引用问题？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">如果 lazy 属性是一个闭包调用的结果，并且这个闭包不捕获 self，那么就不需要特别考虑循环引用的问题。</span><br><span class="line">因为在这种情况下，闭包并不持有对当前对象的强引用，也就不会造成循环引用。</span><br><span class="line"></span><br><span class="line">例如，如果 lazy 属性是通过一个闭包调用的结果，</span><br><span class="line">而这个闭包并没有捕获 self，那么就不存在循环引用的风险。</span><br><span class="line"></span><br><span class="line">class MyClass &#123;</span><br><span class="line">    lazy var someProperty: String = &#123;</span><br><span class="line">        return &quot;Hello, world!&quot;</span><br><span class="line">    &#125;()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在上面的例子中，闭包 &#123; return &quot;Hello, world!&quot; &#125; 并不捕获 self</span><br><span class="line">，它只是返回一个字符串。因此，不需要担心循环引用问题。</span><br><span class="line"></span><br><span class="line">但是，如果闭包内部捕获了 self，那么就需要考虑循环引用的问题，</span><br><span class="line">并根据实际情况使用 [weak self] 或者 [unowned self] 来避免循环引用。</span><br></pre></td></tr></table></figure>
+<h3 id="2-5-什么是逃逸闭包-逃逸闭包能否捕获inout参数？-escaping"><a href="#2-5-什么是逃逸闭包-逃逸闭包能否捕获inout参数？-escaping" class="headerlink" title="2.5 什么是逃逸闭包?逃逸闭包能否捕获inout参数？@escaping"></a>2.5 什么是逃逸闭包?逃逸闭包能否捕获inout参数？@escaping</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">逃逸闭包是指在函数中定义的闭包，但在函数返回之后才被执行的闭包。</span><br><span class="line">换句话说，逃逸闭包是在函数作用域之外被调用的闭包。</span><br><span class="line">在 Swift 中，默认情况下，闭包是非逃逸的，即闭包会在函数返回之前执行完毕。</span><br><span class="line">但是，如果你希望闭包在函数返回之后执行，你需要标记闭包为 @escaping。</span><br><span class="line"></span><br><span class="line">逃逸闭包通常用于异步操作，或者当闭包作为函数参数，但在函数返回后仍需要执行的情况。</span><br><span class="line">典型的例子包括将闭包传递给异步 API，或者将闭包保存在一个变量中以供稍后调用。</span><br><span class="line"></span><br><span class="line">逃逸闭包能够捕获 inout 参数。</span><br><span class="line">当你将逃逸闭包作为函数参数，并且该闭包捕获了函数中的 inout 参数时，</span><br><span class="line">Swift 会自动将 inout 参数转换为对应的引用类型，以便在闭包的生命周期内能够修改它</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-Swift中指针类型有哪几种？"><a href="#2-6-Swift中指针类型有哪几种？" class="headerlink" title="2.6 Swift中指针类型有哪几种？"></a>2.6 Swift中指针类型有哪几种？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">在 Swift 中，指针类型主要有以下几种：</span><br><span class="line"></span><br><span class="line">1-UnsafePointer：</span><br><span class="line">用于表示对内存中某个类型的非变异引用。</span><br><span class="line">这个指针不允许修改指向的内存内容。</span><br><span class="line">可以通过 pointee 属性来访问指针所指向的值，但不能修改。</span><br><span class="line">使用 UnsafePointer 时需要特别小心，因为它不提供任何安全检查，可能导致内存安全问题。</span><br><span class="line"></span><br><span class="line">2-UnsafeMutablePointer：</span><br><span class="line">与 UnsafePointer 类似，但它允许修改指向的内存内容。</span><br><span class="line">可以使用 pointee 属性访问和修改指针所指向的值。</span><br><span class="line">同样地，使用 UnsafeMutablePointer 也需要小心，因为它也不提供任何安全检查。</span><br><span class="line"></span><br><span class="line">3-UnsafeRawPointer：</span><br><span class="line">类似于 UnsafePointer，但它用于表示对内存中某个值的原始非变异引用，而不考虑其类型。</span><br><span class="line">与 UnsafePointer 类似，它也不允许修改指向的内存内容，但可以访问内存中的原始数据。</span><br><span class="line"></span><br><span class="line">4-UnsafeMutableRawPointer：</span><br><span class="line">与 UnsafeRawPointer 类似，但允许修改指向的内存内容。</span><br><span class="line">可以用来进行原始内存操作，但也需要小心使用以避免导致内存安全问题。</span><br><span class="line"></span><br><span class="line">这些指针类型通常用于与 C 语言接口进行交互、进行底层内存操作或者实现高性能的算法。</span><br><span class="line">在 Swift 中，使用这些指针类型需要谨慎，因为它们绕过了 Swift 的类型系统和内存安全性检查</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-参考"><a href="#三-参考" class="headerlink" title="三 参考"></a>三 参考</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC80MTBmMDFkOWU2Mzg=">简书—Swift内存管理<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Swift%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># Swift面试题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/8ac988f1.html" rel="prev" title="IOS面试题——Swift初始化器(8)">
+                  <i class="fa fa-angle-left"></i> IOS面试题——Swift初始化器(8)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/c949b59.html" rel="next" title="IOS面试题——Swift扩展(10)">
+                  IOS面试题——Swift扩展(10) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/comments.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/motion.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/next-boot.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/pjax.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/third-party/search/local-search.min.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js","integrity":"sha256-mm3Re3y7xlvh+yCD+l/Zs1d+PU0AEad93MkWvljfm/s="}}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/third-party/tags/mermaid.min.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/third-party/math/mathjax.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"34a3dc5f8c4a95cc9271a58faa5f03e3"}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/third-party/comments/gitalk.min.js"></script>
+
+</body>
+</html>
