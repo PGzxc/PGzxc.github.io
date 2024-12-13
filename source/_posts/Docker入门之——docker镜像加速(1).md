@@ -48,6 +48,14 @@ https://hub.docker.com
 “https://hub.uuuadc.top",
 “https://docker.anyhub.us.kg",
 "https://dockerhub.jobcher.com"
+//nas加速
+https://docker.m.daocloud.io
+https://ghcr.io
+https://dockerhub.timeweb.cloud
+https://docker.agsv.top
+https://docker.agsvpt.work
+https://dockerhub.icu
+https://docker.ckyl.me
 ```
 
 ## 四 镜像配置
