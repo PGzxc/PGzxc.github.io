@@ -46,3 +46,10 @@ comments: false
 |  4   |         [Apizza](https://www.apizza.net/)          |       个人+收费       |
 |  5   |       [eoLinker](https://www.eolinker.com/)        |                       |
 
+## 四 大佬免费提供API
+
+| 编号 |                     名称(链接)                      |     备注     |
+| :--: | :-------------------------------------------------: | :----------: |
+|  1   | [WanAndrdoiAPI](https://wanandroid.com/blog/show/2) | 鸿洋大佬网站 |
+|  2   |         [APIOpen](https://api.apiopen.top/)         |   开源社区   |
+
