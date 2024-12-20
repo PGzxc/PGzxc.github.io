@@ -15,3 +15,9 @@ comments: false
 |  4   |               [MacV.com](https://www.macv.com)               | 会员制(收费) |
 |  5   |            [未来Mac下载](https://mac.orsoon.com)             | 会员制(收费) |
 
+## 二 破解网站
+
+| 编号 |          名称(地址)           |     备注     |
+| :--: | :---------------------------: | :----------: |
+|  1   | [V8GB](https://www.v8gb.com/) | Mac免费+限速 |
+
