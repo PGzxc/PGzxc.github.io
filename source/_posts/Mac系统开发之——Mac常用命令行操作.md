@@ -1,5 +1,5 @@
 ---
-title: MacBook入门之——Mac常用命令行操作
+title: Mac系统开发之——Mac常用命令行操作
 categories:
   - 系统
   - Mac

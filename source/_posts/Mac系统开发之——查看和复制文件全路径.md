@@ -1,5 +1,5 @@
 ---
-title: MacBook入门之——查看和复制文件全路径
+title: Mac系统开发之——查看和复制文件全路径
 categories:
   - 系统
   - Mac

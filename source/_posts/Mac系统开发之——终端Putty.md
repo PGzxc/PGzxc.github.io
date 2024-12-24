@@ -1,5 +1,5 @@
 ---
-title: MacBook入门之——终端Putty
+title: Mac系统开发之——终端Putty
 categories:
   - 系统
   - Mac

@@ -1,5 +1,5 @@
 ---
-title: MacBook入门之——环境变量(.bash_profile)
+title: Mac系统开发之——环境变量(.bash_profile)
 categories:
   - 系统
   - Mac

@@ -1,5 +1,5 @@
 ---
-title: MacBook入门之——清理磁盘空间
+title: Mac系统开发之——清理磁盘空间
 categories:
   - 系统
   - Mac

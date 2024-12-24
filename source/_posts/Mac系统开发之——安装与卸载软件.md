@@ -1,5 +1,5 @@
 ---
-title: MacBook入门之——安装与卸载软件
+title: Mac系统开发之——安装与卸载软件
 categories:
   - 系统
   - Mac

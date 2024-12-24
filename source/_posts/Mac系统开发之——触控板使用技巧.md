@@ -1,5 +1,5 @@
 ---
-title: MacBook入门之——触控板使用技巧
+title: Mac系统开发之——触控板使用技巧
 categories:
   - 系统
   - Mac

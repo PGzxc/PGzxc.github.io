@@ -1,5 +1,5 @@
 ---
-title: MacBook入门之——开机激活教程
+title: Mac系统开发之——开机激活教程
 categories:
   - 系统
   - Mac

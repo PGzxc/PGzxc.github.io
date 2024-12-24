@@ -1,5 +1,5 @@
 ---
-title: MacBook入门之——自定义Finder个人收藏
+title: Mac系统开发之——自定义Finder个人收藏
 categories:
   - 系统
   - Mac

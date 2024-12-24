@@ -1,5 +1,5 @@
 ---
-title: MacBook入门之——截图并保存到桌面
+title: Mac系统开发之——截图并保存到桌面
 categories:
   - 系统
   - Mac

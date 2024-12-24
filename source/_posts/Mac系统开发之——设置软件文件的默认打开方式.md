@@ -1,5 +1,5 @@
 ---
-title: MacBook入门之——设置软件文件的默认打开方式
+title: Mac系统开发之——设置软件文件的默认打开方式
 categories:
   - 系统
   - Mac

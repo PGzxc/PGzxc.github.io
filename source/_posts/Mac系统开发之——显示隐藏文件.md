@@ -1,5 +1,5 @@
 ---
-title: MacBook入门之——显示隐藏文件
+title: Mac系统开发之——显示隐藏文件
 categories:
   - 系统
   - Mac
