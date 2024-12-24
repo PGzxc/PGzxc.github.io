@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.loli.net/css?family=Lato:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.19.1","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/config.min.js"></script>
+
+    <meta name="description" content="一 面试题汇总 什么是协议？协议能添加什么？ 协议中定义的内容是否必须全部都实现？如果想要实现可选协议呢？ 实现协议时的属性权限要不小于协议中定义的属性权限 协议中定义的init方法，能否用init?来实现？ 枚举值如何进行遍历？遵守CaseIterable协议">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IOS面试题——Swift协议与面向协议编程,协议实现前缀(13)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/daad147f.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 面试题汇总 什么是协议？协议能添加什么？ 协议中定义的内容是否必须全部都实现？如果想要实现可选协议呢？ 实现协议时的属性权限要不小于协议中定义的属性权限 协议中定义的init方法，能否用init?来实现？ 枚举值如何进行遍历？遵守CaseIterable协议">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-27T09:13:38.000Z">
+<meta property="article:modified_time" content="2024-12-24T02:51:40.353Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Swift面试题">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/daad147f.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/daad147f.html","path":"posts/daad147f.html","title":"IOS面试题——Swift协议与面向协议编程,协议实现前缀(13)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>IOS面试题——Swift协议与面向协议编程,协议实现前缀(13) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">184</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">3347</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB"><span class="nav-number">1.</span> <span class="nav-text">一 面试题汇总</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%8F%E8%AE%AE%EF%BC%9F%E5%8D%8F%E8%AE%AE%E8%83%BD%E6%B7%BB%E5%8A%A0%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 什么是协议？协议能添加什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%8D%8F%E8%AE%AE%E4%B8%AD%E5%AE%9A%E4%B9%89%E7%9A%84%E5%86%85%E5%AE%B9%E6%98%AF%E5%90%A6%E5%BF%85%E9%A1%BB%E5%85%A8%E9%83%A8%E9%83%BD%E5%AE%9E%E7%8E%B0%EF%BC%9F%E5%A6%82%E6%9E%9C%E6%83%B3%E8%A6%81%E5%AE%9E%E7%8E%B0%E5%8F%AF%E9%80%89%E5%8D%8F%E8%AE%AE%E5%91%A2%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 协议中定义的内容是否必须全部都实现？如果想要实现可选协议呢？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%AE%9E%E7%8E%B0%E5%8D%8F%E8%AE%AE%E6%97%B6%E7%9A%84%E5%B1%9E%E6%80%A7%E6%9D%83%E9%99%90%E8%A6%81%E4%B8%8D%E5%B0%8F%E4%BA%8E%E5%8D%8F%E8%AE%AE%E4%B8%AD%E5%AE%9A%E4%B9%89%E7%9A%84%E5%B1%9E%E6%80%A7%E6%9D%83%E9%99%90"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 实现协议时的属性权限要不小于协议中定义的属性权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E5%8D%8F%E8%AE%AE%E4%B8%AD%E5%AE%9A%E4%B9%89%E7%9A%84init%E6%96%B9%E6%B3%95%EF%BC%8C%E8%83%BD%E5%90%A6%E7%94%A8init-%E6%9D%A5%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 协议中定义的init方法，能否用init?来实现？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E6%9E%9A%E4%B8%BE%E5%80%BC%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E9%81%8D%E5%8E%86%EF%BC%9F%E9%81%B5%E5%AE%88CaseIterable%E5%8D%8F%E8%AE%AE"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 枚举值如何进行遍历？遵守CaseIterable协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%89%93%E5%8D%B0%E9%9C%80%E8%A6%81%E9%81%B5%E5%BE%AA%E4%BB%80%E4%B9%88%E5%8D%8F%E8%AE%AE%EF%BC%9FCustomStringConvertible%E3%80%81-CustomDebugStringConvertible"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 自定义打印需要遵循什么协议？CustomStringConvertible、 CustomDebugStringConvertible</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-Any%E3%80%81AnyObject%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F%E5%A6%82%E4%BD%95%E5%AE%9A%E4%B9%89%E5%8F%AA%E8%83%BD%E7%B1%BB%E9%81%B5%E5%AE%88%E7%9A%84%E5%8D%8F%E8%AE%AE%EF%BC%9F"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 Any、AnyObject有什么区别？如何定义只能类遵守的协议？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%A2%E5%90%91%E5%8D%8F%E8%AE%AE%E7%BC%96%E7%A8%8B%EF%BC%9F%E8%A7%A3%E5%86%B3%E4%BA%86%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E5%93%AA%E4%BA%9B%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 什么是面向协议编程？解决了面向对象编程哪些问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E5%8D%8F%E8%AE%AE%E5%AE%9E%E7%8E%B0%E5%89%8D%E7%BC%80%E6%95%88%E6%9E%9C%EF%BC%9F"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 如何利用协议实现前缀效果？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">3347</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">184</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">522</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY2FsdmluX3pob3U=" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou"><i class="fa fa-book fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3dlaWJvLmNvbS81NTgyMDM5OTIw" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920"><i class="fab fa-weibo fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3d3dy5qaWFuc2h1LmNvbS91L2M1Y2RjYjRkYzUyYg==" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b"><i class="fa fa-heartbeat fa-fw"></i></span>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/daad147f.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="IOS面试题——Swift协议与面向协议编程,协议实现前缀(13) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          IOS面试题——Swift协议与面向协议编程,协议实现前缀(13)<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BHenhjL1BHenhjLmdpdGh1Yi5pby9lZGl0L21hc3Rlci9zb3VyY2UvX3Bvc3RzL0lPU+mdouivlemimOKAlOKAlFN3aWZ05Y2P6K6u5LiO6Z2i5ZCR5Y2P6K6u57yW56iLLOWNj+iuruWunueOsOWJjee8gCgxMykubWQ=" title="编辑"><i class="fa fa-pen-nib"></i></span>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-03-27 17:13:38" itemprop="dateCreated datePublished" datetime="2024-03-27T17:13:38+08:00">2024-03-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/IOS%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">IOS面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-面试题汇总"><a href="#一-面试题汇总" class="headerlink" title="一 面试题汇总"></a>一 面试题汇总</h2><ol>
+<li>什么是协议？协议能添加什么？</li>
+<li>协议中定义的内容是否必须全部都实现？如果想要实现可选协议呢？</li>
+<li>实现协议时的属性权限要不小于协议中定义的属性权限</li>
+<li>协议中定义的<code>init</code>方法，能否用<code>init?</code>来实现？</li>
+<li>枚举值如何进行遍历？遵守CaseIterable协议<span id="more"></span></li>
+<li>自定义打印需要遵循什么协议？CustomStringConvertible、 CustomDebugStringConvertible</li>
+<li>Any、AnyObject有什么区别？如何定义只能类遵守的协议？</li>
+<li>什么是面向协议编程？解决了面向对象编程哪些问题？</li>
+<li>如何利用协议实现前缀效果？</li>
+</ol>
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-什么是协议？协议能添加什么？"><a href="#2-1-什么是协议？协议能添加什么？" class="headerlink" title="2.1 什么是协议？协议能添加什么？"></a>2.1 什么是协议？协议能添加什么？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">在 Swift 中，协议是一种定义了方法、属性和其他成员的蓝图，用于描述某种特定的功能或行为。</span><br><span class="line">它定义了一组要求，任何符合（或遵循）这些要求的类型都必须实现这些方法、属性等。</span><br><span class="line">协议本身并不提供任何实现，而是定义了一种规范，具体的实现由遵循协议的类型提供。</span><br><span class="line"></span><br><span class="line">协议可以用来实现面向协议的编程（Protocol-oriented Programming），</span><br><span class="line">这种编程方式能够提高代码的灵活性、可重用性和可扩展性。</span><br><span class="line"></span><br><span class="line">在 Swift 中，协议可以添加以下内容：</span><br><span class="line"></span><br><span class="line">1-方法要求（Method Requirements）： </span><br><span class="line">定义了一个方法的名称、参数、返回值以及方法的类型（实例方法或者类型方法）。</span><br><span class="line">遵循协议的类型必须实现这些方法。</span><br><span class="line"></span><br><span class="line">protocol MyProtocol &#123;</span><br><span class="line">    func myMethod()</span><br><span class="line">    static func myStaticMethod()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">2-属性要求（Property Requirements）： </span><br><span class="line">定义了一个属性的名称、类型以及读写权限。遵循协议的类型必须提供对应的属性实现。</span><br><span class="line"></span><br><span class="line">protocol MyProtocol &#123;</span><br><span class="line">    var myProperty: Int &#123; get set &#125;</span><br><span class="line">    static var myStaticProperty: String &#123; get &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">3-下标要求（Subscript Requirements）：</span><br><span class="line">定义了一个下标的参数、返回类型以及读写权限。遵循协议的类型必须提供对应的下标实现。</span><br><span class="line"></span><br><span class="line">protocol MyProtocol &#123;</span><br><span class="line">    subscript(index: Int) -&gt; String &#123; get set &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">4-初始化器要求（Initializer Requirements）： </span><br><span class="line">定义了一个初始化器的参数、返回类型以及可能的异常情况。</span><br><span class="line">遵循协议的类型必须提供对应的初始化器实现。</span><br><span class="line"></span><br><span class="line">protocol MyProtocol &#123;</span><br><span class="line">    init(value: Int)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">5-关联类型（Associated Types）：</span><br><span class="line">定义了一个或多个关联类型，用来表示协议中某些类型的占位符。</span><br><span class="line">遵循协议的类型必须提供关联类型的具体实现。</span><br><span class="line"></span><br><span class="line">protocol Container &#123;</span><br><span class="line">    associatedtype Item</span><br><span class="line">    mutating func append(_ item: Item)</span><br><span class="line">    var count: Int &#123; get &#125;</span><br><span class="line">    subscript(index: Int) -&gt; Item &#123; get &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">6-约束（Constraints）： </span><br><span class="line">定义了遵循协议的类型必须满足的条件，例如遵循某个协议、具有某种父类、或者某种类型关系。</span><br><span class="line"></span><br><span class="line">protocol MyProtocol: Equatable &#123;</span><br><span class="line">    func myMethod()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">通过协议，可以定义一组抽象的接口要求，并由具体类型来实现这些接口，从而实现了代码的解耦和灵活性。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-协议中定义的内容是否必须全部都实现？如果想要实现可选协议呢？"><a href="#2-2-协议中定义的内容是否必须全部都实现？如果想要实现可选协议呢？" class="headerlink" title="2.2 协议中定义的内容是否必须全部都实现？如果想要实现可选协议呢？"></a>2.2 协议中定义的内容是否必须全部都实现？如果想要实现可选协议呢？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">在 Swift 中，协议中定义的内容不都必须被遵循（或实现）。</span><br><span class="line">协议可以定义必须实现的内容，也可以定义可选实现的内容。</span><br><span class="line"></span><br><span class="line">1-必须实现的内容： </span><br><span class="line">如果协议中定义的方法、属性、下标或初始化器要求没有被标记为可选的，</span><br><span class="line">则遵循该协议的类型必须实现所有这些要求。</span><br><span class="line"></span><br><span class="line">protocol MyProtocol &#123;</span><br><span class="line">    func requiredMethod()</span><br><span class="line">    var requiredProperty: Int &#123; get &#125;</span><br><span class="line">&#125;</span><br><span class="line">如果一个类或结构体遵循了 MyProtocol 协议，</span><br><span class="line">那么它必须实现 requiredMethod() 和 requiredProperty。</span><br><span class="line"></span><br><span class="line">2-可选实现的内容： </span><br><span class="line">如果协议中定义的方法、属性、下标或初始化器要求被标记为可选的，</span><br><span class="line">则遵循该协议的类型可以选择性地实现这些要求。</span><br><span class="line"></span><br><span class="line">@objc protocol MyProtocol &#123;</span><br><span class="line">    @objc optional func optionalMethod()</span><br><span class="line">    @objc optional var optionalProperty: Int &#123; get &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在上述示例中，optionalMethod() 和 optionalProperty 被标记为可选的。</span><br><span class="line">如果一个类遵循了 MyProtocol 协议，则可以选择性地实现或者不实现这些可选要求。</span><br><span class="line"></span><br><span class="line">值得注意的是，在非 @objc 的协议中，Swift 不支持可选的方法、属性或者下标要求。</span><br><span class="line">可选要求只能在使用了 @objc 属性的协议中使用，并且只能被类类型遵循。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-实现协议时的属性权限要不小于协议中定义的属性权限"><a href="#2-3-实现协议时的属性权限要不小于协议中定义的属性权限" class="headerlink" title="2.3 实现协议时的属性权限要不小于协议中定义的属性权限"></a>2.3 实现协议时的属性权限要不小于协议中定义的属性权限</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">在 Swift 中，实现协议时的属性权限要不小于协议中定义的属性权限。</span><br><span class="line">换句话说，如果协议中的属性是只读的，那么在遵循该协议时，可以将其实现为只读或读写；</span><br><span class="line">但如果协议中的属性是读写的，那么在遵循该协议时，必须将其实现为读写。</span><br><span class="line"></span><br><span class="line">举个例子，假设有一个名为 MyProtocol 的协议：</span><br><span class="line"></span><br><span class="line">protocol MyProtocol &#123;</span><br><span class="line">    var myProperty: Int &#123; get &#125; // 只读属性</span><br><span class="line">&#125;</span><br><span class="line">如果一个类型要遵循 MyProtocol 协议，则可以这样实现：</span><br><span class="line"></span><br><span class="line">struct MyStruct: MyProtocol &#123;</span><br><span class="line">    let myProperty: Int</span><br><span class="line">&#125;</span><br><span class="line">或者：</span><br><span class="line"></span><br><span class="line">struct MyStruct: MyProtocol &#123;</span><br><span class="line">    var myProperty: Int</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在上述示例中，MyStruct 结构体遵循了 MyProtocol 协议，实现了 myProperty 属性。</span><br><span class="line">由于协议中的 myProperty 属性是只读的，因此 MyStruct 可以选择将其实现为只读或者读写属性。</span><br><span class="line"></span><br><span class="line">然而，如果协议中的属性权限是读写的，那么实现时必须保证它至少是读写的，否则会产生编译错误。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-协议中定义的init方法，能否用init-来实现？"><a href="#2-4-协议中定义的init方法，能否用init-来实现？" class="headerlink" title="2.4 协议中定义的init方法，能否用init?来实现？"></a>2.4 协议中定义的<code>init</code>方法，能否用<code>init?</code>来实现？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">在 Swift 中，协议中定义的 init 方法可以被实现为可失败初始化器（failable initializer），</span><br><span class="line">即使用 init? 来实现。</span><br><span class="line">这意味着遵循协议的类型可以选择性地实现一个可能失败的初始化器。</span><br><span class="line"></span><br><span class="line">举个例子，假设有一个名为 MyProtocol 的协议，其中定义了一个 init 方法：</span><br><span class="line"></span><br><span class="line">protocol MyProtocol &#123;</span><br><span class="line">    init(value: Int)</span><br><span class="line">&#125;</span><br><span class="line">如果一个类型要遵循 MyProtocol 协议，并且使用可失败初始化器来实现该协议，可以这样做：</span><br><span class="line"></span><br><span class="line">struct MyStruct: MyProtocol &#123;</span><br><span class="line">    let value: Int</span><br><span class="line">    </span><br><span class="line">    init?(value: Int) &#123;</span><br><span class="line">        guard value &gt;= 0 else &#123;</span><br><span class="line">            return nil</span><br><span class="line">        &#125;</span><br><span class="line">        self.value = value</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在这个示例中，MyStruct 结构体遵循了 MyProtocol 协议，</span><br><span class="line">并且实现了一个可失败初始化器来满足协议中定义的 init 要求。</span><br><span class="line">初始化器中使用了 guard 语句来判断参数值是否符合条件，</span><br><span class="line">如果不符合，则返回 nil 表示初始化失败，否则将参数值赋给属性并继续初始化。</span><br><span class="line"></span><br><span class="line">需要注意的是，如果协议中定义的是普通的 init 方法，</span><br><span class="line">那么实现时也可以使用可失败初始化器 init? 来满足协议要求。</span><br><span class="line">但如果协议中定义的是可失败初始化器 init?，则实现时必须使用相同的或者更具体的初始化器</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-枚举值如何进行遍历？遵守CaseIterable协议"><a href="#2-5-枚举值如何进行遍历？遵守CaseIterable协议" class="headerlink" title="2.5 枚举值如何进行遍历？遵守CaseIterable协议"></a>2.5 枚举值如何进行遍历？遵守CaseIterable协议</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">要对遵循 CaseIterable 协议的枚举进行遍历，可以使用枚举的 allCases 属性。</span><br><span class="line">allCases 是一个只读的静态属性，它返回一个包含枚举所有 case 的数组。</span><br><span class="line">通过遍历这个数组，可以访问到枚举的每一个 case。</span><br><span class="line"></span><br><span class="line">下面是一个示例：</span><br><span class="line"></span><br><span class="line">enum Direction: CaseIterable &#123;</span><br><span class="line">    case north</span><br><span class="line">    case south</span><br><span class="line">    case east</span><br><span class="line">    case west</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 遍历枚举的所有 case</span><br><span class="line">for direction in Direction.allCases &#123;</span><br><span class="line">    print(direction)</span><br><span class="line">&#125;</span><br><span class="line">在这个示例中，我们定义了一个名为 Direction 的枚举，并让它遵循 CaseIterable 协议。</span><br><span class="line">然后我们使用 allCases 属性来获取枚举的所有 case，将它们放入一个数组中</span><br><span class="line">。最后，我们使用 for-in 循环来遍历这个数组，并打印出每一个 case。</span><br><span class="line"></span><br><span class="line">通过 CaseIterable 协议，可以方便地对枚举进行遍历，而不需要手动列出所有的 case。</span><br><span class="line">这对于需要在运行时动态处理枚举值的情况下非常有用。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-自定义打印需要遵循什么协议？CustomStringConvertible、-CustomDebugStringConvertible"><a href="#2-6-自定义打印需要遵循什么协议？CustomStringConvertible、-CustomDebugStringConvertible" class="headerlink" title="2.6 自定义打印需要遵循什么协议？CustomStringConvertible、 CustomDebugStringConvertible"></a>2.6 自定义打印需要遵循什么协议？CustomStringConvertible、 CustomDebugStringConvertible</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">在 Swift 中，如果你想要自定义类型的实例在被打印输出时具有自定义的字符串描述，</span><br><span class="line">你可以让你的类型遵循 CustomStringConvertible 或 CustomDebugStringConvertible 协议。</span><br><span class="line"></span><br><span class="line">1-CustomStringConvertible 协议： </span><br><span class="line">如果你的类型遵循了 CustomStringConvertible 协议，你需要实现 description 属性，</span><br><span class="line">它应该返回该类型的字符串描述。这个字符串描述将会在 print 函数中被使用。</span><br><span class="line"></span><br><span class="line">struct MyStruct: CustomStringConvertible &#123;</span><br><span class="line">    let value: Int</span><br><span class="line">    </span><br><span class="line">    var description: String &#123;</span><br><span class="line">        return &quot;MyStruct with value \(value)&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let myInstance = MyStruct(value: 10)</span><br><span class="line">print(myInstance) // 输出: MyStruct with value 10</span><br><span class="line"></span><br><span class="line">2-CustomDebugStringConvertible 协议： </span><br><span class="line">类似地，如果你的类型遵循了 CustomDebugStringConvertible 协议，</span><br><span class="line">你需要实现 debugDescription 属性，它应该返回该类型的调试字符串描述。</span><br><span class="line">这个调试字符串描述将会在调试环境中被使用，比如在 Xcode 的调试器中。</span><br><span class="line"></span><br><span class="line">struct MyStruct: CustomDebugStringConvertible &#123;</span><br><span class="line">    let value: Int</span><br><span class="line">    </span><br><span class="line">    var debugDescription: String &#123;</span><br><span class="line">        return &quot;Debugging MyStruct with value \(value)&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let myInstance = MyStruct(value: 10)</span><br><span class="line">debugPrint(myInstance) // 输出: Debugging MyStruct with value 10</span><br><span class="line"></span><br><span class="line">通过让你的类型遵循这些协议，你可以自定义该类型的实例在被打印输出时的表现形式，</span><br><span class="line">使得它更符合你的需求，并且更易于调试。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-Any、AnyObject有什么区别？如何定义只能类遵守的协议？"><a href="#2-7-Any、AnyObject有什么区别？如何定义只能类遵守的协议？" class="headerlink" title="2.7 Any、AnyObject有什么区别？如何定义只能类遵守的协议？"></a>2.7 Any、AnyObject有什么区别？如何定义只能类遵守的协议？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">在 Swift 中，Any 和 AnyObject 是两个不同的类型，它们有着不同的含义和用法。</span><br><span class="line"></span><br><span class="line">1-Any： </span><br><span class="line">Any 是 Swift 中的一个特殊类型，它可以表示任意类型的实例，包括值类型和引用类型。</span><br><span class="line">可以将任何值赋给 Any 类型的变量或常量。</span><br><span class="line"></span><br><span class="line">var anyValue: Any</span><br><span class="line">anyValue = 5</span><br><span class="line">anyValue = &quot;Hello&quot;</span><br><span class="line">anyValue = [1, 2, 3]</span><br><span class="line"></span><br><span class="line">2-AnyObject： </span><br><span class="line">AnyObject 是一个协议，它用来表示任意类类型（class type）。</span><br><span class="line">在 Swift 中，结构体和枚举是值类型，而类是引用类型。AnyObject 协议只能被类类型遵循。</span><br><span class="line"></span><br><span class="line">protocol MyProtocol: AnyObject &#123;</span><br><span class="line">    func myMethod()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class MyClass: MyProtocol &#123;</span><br><span class="line">    func myMethod() &#123;</span><br><span class="line">        print(&quot;MyMethod called&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在上述示例中，MyProtocol 协议要求遵循它的类型必须是类类型，</span><br><span class="line">因此使用了 AnyObject 关键字进行限定。MyClass 类遵循了 MyProtocol 协议，因为它是一个类。</span><br><span class="line"></span><br><span class="line">如果你想要定义一个只能被类遵循的协议，可以像上面的示例一样，</span><br><span class="line">使用 AnyObject 关键字来限定协议的遵循类型。这样，只有类能够遵循这个协议，而结构体和枚举则不能。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-8-什么是面向协议编程？解决了面向对象编程哪些问题？"><a href="#2-8-什么是面向协议编程？解决了面向对象编程哪些问题？" class="headerlink" title="2.8 什么是面向协议编程？解决了面向对象编程哪些问题？"></a>2.8 什么是面向协议编程？解决了面向对象编程哪些问题？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">面向协议编程（Protocol-oriented Programming，POP）是一种编程范式，</span><br><span class="line">它强调使用协议来定义抽象接口，并通过组合和泛型来实现代码的复用和组合。</span><br><span class="line">在面向协议编程中，协议被用来描述类型的共同行为和特征，而不是抽象类或基类。</span><br><span class="line"></span><br><span class="line">面向协议编程主要解决了面向对象编程中的一些问题，包括：</span><br><span class="line"></span><br><span class="line">1-多继承问题： </span><br><span class="line">在面向对象编程中，类只能单继承，这限制了代码的复用和灵活性。而在面向协议编程中，</span><br><span class="line">可以通过遵循多个协议来实现类似多继承的效果，使得类型可以拥有多个不同的行为和特征。</span><br><span class="line"></span><br><span class="line">2-类的耦合问题： </span><br><span class="line">面向对象编程中，类之间的关系通常是通过继承来实现的，这导致了类之间的耦合性较高。</span><br><span class="line">而在面向协议编程中，可以通过协议来定义接口和约束，降低了类之间的耦合度，使得代码更加灵活和可维护。</span><br><span class="line"></span><br><span class="line">3-单一职责原则： </span><br><span class="line">面向协议编程倾向于将功能分解为更小的、可组合的部分，每个部分都是一个独立的协议，</span><br><span class="line">从而更好地遵循单一职责原则。这样可以使代码更加模块化、可测试和可重用。</span><br><span class="line"></span><br><span class="line">4-代码复用问题： </span><br><span class="line">面向对象编程中，代码复用主要通过继承和组合来实现，但继承会导致代码的耦合性增加，</span><br><span class="line">而组合需要手动编写委托代码。在面向协议编程中，</span><br><span class="line">可以使用协议的组合和默认实现来实现代码复用，使得代码更加简洁和可读。</span><br><span class="line"></span><br><span class="line">总的来说，面向协议编程通过将接口抽象为协议，通过组合和泛型来实现代码的复用和灵活性，</span><br><span class="line">从而解决了面向对象编程中的一些问题，使得代码更加模块化、可测试和可维护</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-9-如何利用协议实现前缀效果？"><a href="#2-9-如何利用协议实现前缀效果？" class="headerlink" title="2.9 如何利用协议实现前缀效果？"></a>2.9 如何利用协议实现前缀效果？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">你可以使用协议扩展来实现前缀效果。通过定义一个包含 prefix 属性的协议，</span><br><span class="line">并为该协议提供一个默认实现，你可以让遵循该协议的类型具有前缀的能力。</span><br><span class="line"></span><br><span class="line">下面是一个示例，演示了如何使用协议扩展来实现前缀效果：</span><br><span class="line"></span><br><span class="line">protocol Prefixable &#123;</span><br><span class="line">    var prefix: String &#123; get &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extension Prefixable &#123;</span><br><span class="line">    func withPrefix(_ value: String) -&gt; String &#123;</span><br><span class="line">        return &quot;\(prefix)\(value)&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 遵循 Prefixable 协议的类型</span><br><span class="line">struct MyType: Prefixable &#123;</span><br><span class="line">    let prefix: String = &quot;Prefix: &quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let myInstance = MyType()</span><br><span class="line">print(myInstance.withPrefix(&quot;Value&quot;)) // 输出: Prefix: Value</span><br><span class="line"></span><br><span class="line">在这个示例中，我们定义了一个名为 Prefixable 的协议，其中包含一个 prefix 属性。</span><br><span class="line">然后，我们为该协议提供了一个默认的实现，实现了一个名为 withPrefix 的方法，</span><br><span class="line">该方法接受一个字符串作为参数，然后将该字符串添加到 prefix 属性之前。</span><br><span class="line">最后，我们创建了一个结构体 MyType 并让它遵循 Prefixable 协议，</span><br><span class="line">然后使用 withPrefix 方法给实例添加了一个前缀。</span><br><span class="line"></span><br><span class="line">通过这种方式，我们可以利用协议和协议扩展来实现前缀效果，从而使代码更加灵活和可复用</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-参考"><a href="#三-参考" class="headerlink" title="三 参考"></a>三 参考</h2><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC80MTBmMDFkOWU2Mzg=">简书—Swift协议与面向协议编程,协议实现前缀<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Swift%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># Swift面试题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/8bd99169.html" rel="prev" title="IOS面试题——Swift模式匹配(12)">
+                  <i class="fa fa-angle-left"></i> IOS面试题——Swift模式匹配(12)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/c7e6abe1.html" rel="next" title="IOS面试题——Swift访问控制(14)">
+                  IOS面试题——Swift访问控制(14) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/comments.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/motion.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/next-boot.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/pjax.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/third-party/search/local-search.min.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js","integrity":"sha256-mm3Re3y7xlvh+yCD+l/Zs1d+PU0AEad93MkWvljfm/s="}}</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/third-party/tags/mermaid.min.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/third-party/math/mathjax.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"50b4ee0947b618460343f28eabca9a23"}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-next/8.19.1/third-party/comments/gitalk.min.js"></script>
+
+</body>
+</html>
