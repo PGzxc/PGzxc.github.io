@@ -17,8 +17,11 @@ comments: false
 
 ## 二 破解网站
 
-| 编号 |               名称(地址)                |     备注     |
-| :--: | :-------------------------------------: | :----------: |
-|  1   |      [V8GB](https://www.v8gb.com/)      | Mac免费+限速 |
-|  2   | [luoxx-mac下载](https://www.luoxx.top/) |   Mac免费    |
+| 编号 |                 名称(地址)                 |     备注     |
+| :--: | :----------------------------------------: | :----------: |
+|  1   |       [V8GB](https://www.v8gb.com/)        | Mac免费+限速 |
+|  2   |  [luoxx-mac下载](https://www.luoxx.top/)   |   Mac免费    |
+|  3   | [appstorrent.ru](https://appstorrent.ru/)  |   VPN+外语   |
+|  4   |         [MacWK](https://macwk.cn/)         |  免费+中文   |
+|  5   | [MacTorrents](https://www.torrentmac.net/) |   VPN+免费   |
 
