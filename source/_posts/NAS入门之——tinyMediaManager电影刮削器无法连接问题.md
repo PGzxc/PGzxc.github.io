@@ -34,7 +34,7 @@ failed to connect to api.themoviedb.org/19.149.206:443
 
 ### 4.1 打开dnschecker，检索api.tmdb.org
 
-dnschecker: https://dnschecker.org/
+dnschecker: https://dnschecker.org/country/cn/
 
 检索后
 
