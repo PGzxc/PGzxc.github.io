@@ -70,4 +70,4 @@ date: 2025-01-08 08:51:12
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-xmind-mybatis-tables-11.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-xmind-mybatis-sql-12.png
