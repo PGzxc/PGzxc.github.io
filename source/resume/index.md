@@ -10,6 +10,7 @@ comments: false
 		<td colspan="3" >移动端</td>
 		<td colspan="3" >跨平台</td>
         <td colspan="1">小程序</td>
+        <td colspan="1">后端</td>
 		<td colspan="1">前端</td>
         <td colspan="1">AI</td>
 		<td colspan="1">桌面端</td>
@@ -38,6 +39,9 @@ comments: false
 		<a href="folder/周向成_小程序开发.pdf" target="_blank">小程序</a>
 		</td>
 		<td width="8%">
+		<a href="folder/周向成_Java开发工程师.pdf" target="_blank">Java</a>
+		</td>
+		<td width="8%">
 		<a href="folder/周向成_前端开发工程师.pdf" target="_blank">前端</a>
 		</td>
         <td width="8%">
@@ -52,7 +56,6 @@ comments: false
 	</tr>
 </tbody>
 </table>
-
 
 # 联系方式
 
@@ -70,7 +73,7 @@ comments: false
 # 求职意向
 
 - 工作性质：全职
-- 期望职位：Harmony开发、Android开发、IOS开发、Flutter开发、ReactNative开发、KMM开发、前端开发、小程序开发、Winform开发工程师等
+- 期望职位：Harmony开发、Android开发、IOS开发、Flutter开发、ReactNative开发、KMM开发、Java开发、前端开发、小程序开发、Winform开发工程师等
 - 期望薪资：面议
 - 工作地点：北京
 
@@ -89,11 +92,11 @@ comments: false
 * 2015/10 — 2016/07&emsp;&emsp;时间者互联网科技(北京)有限公司&emsp;&emsp;Android开发工程师
 * 2016/07 — 2018/06&emsp;&emsp;西藏远誉(北京)网络科技有限公司&emsp;&emsp;Android开发工程师
 * 2018/07 — 2022/04&emsp;&emsp;中科航天(北京)科技有限公司&emsp;&emsp;&emsp;&emsp;全栈工程师
-* 2022/06 — 2022/09&emsp;&emsp;贝思畅想科技有限公司 &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;全栈工程师
+* 2022/06 — 2023/11&emsp;&emsp;贝思畅想科技有限公司 &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;全栈工程师
 
 # 公司及工作内容
 
-## <font color=red>2022/06 — 2022/09 &emsp;贝思畅想科技有限公司 &emsp;全栈开发工程师</font> 
+## <font color=red>2022/06 — 2023/11 &emsp;贝思畅想科技有限公司 &emsp;全栈开发工程师</font> 
 ### 公司简介
 **行业类别**：科技推广和应用服务业|**企业性质**：有限责任公司(法人独资)|**规模**: 100人以下  
 **公司介绍**：贝思畅想科技有限公司，总部位于北京市昌平区赛迪产业园。是有不同行业、不同领取、有多年创业经验的多位连续创业者，联合发起并创立。是一个专注于创业知识分享的平台，致力为创业者提供创业所必备的知识和优质的创业项目，让创业者对创业拥有全新认知，为创业者有供项目特刊制作、项目信息推送、商业计划书撰写等有偿服务，并通过可落地、可执行的创业项目，真真正正创造收入，更轻松地实现创业梦想。
@@ -1013,6 +1016,7 @@ IOS截图
 [resume-rn]:folder/周向成_ReactNative开发工程师.pdf
 [resume-kmm]:folder/周向成_KMM开发工程师.pdf
 [resume-front]:folder/周向成_前端开发工程师.pdf
+[resume-java]:folder/周向成_Java开发工程师.pdf
 [resume-xcx]:folder/周向成_小程序开发.pdf
 [resume-csharp]:folder/周向成_WinForm开发工程师.pdf
 [resume-inex]:folder/index.pdf
