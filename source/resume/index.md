@@ -73,7 +73,7 @@ comments: false
 # 求职意向
 
 - 工作性质：全职
-- 期望职位：Harmony开发、Android开发、IOS开发、Flutter开发、ReactNative开发、KMP开发、Java开发、前端开发、小程序开发、Winform开发工程师等
+- 期望职位：移动端(鸿蒙、安卓、IOS)开发、跨平台(Flutter、ReactNative、KMP)开发、后端(Java)开发、前端开发、小程序(微信小程序+uni-app)开发、桌面端(Winform)开发等
 - 期望薪资：面议
 - 工作地点：北京
 
