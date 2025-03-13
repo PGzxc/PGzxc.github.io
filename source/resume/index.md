@@ -736,7 +736,7 @@ __2-Android项目—E朝朝企业端__
 **项目地址**：https://github.com/PGzxc/WanAndroidRN
 **软件支持**：Android+IOS
 **开发工具**：IntelliJ IDEA+Java(11.0.19)+Node(18.18.2)+Yarn(1.22.19)+react-native(0.72.6)+Android SDK Build_tools(33.0.0)
-**项目描述**：该项目是基于WanAndroid 网站开源的接口 API制作的一款React Native开源App。利用 Expo Go+@ant-design/react-native蚂蚁金服UI库开发的一款支持 Android/IOS 跨平台项目。     
+**项目描述**：该项目是一款基于 WanAndroid 网站开源接口 API 构建的 React Native 开源 App。借助 Expo Go 开发工具，搭配 @ant - design/react-native 蚂蚁金服 UI 库，实现了对 Android 和 iOS 系统的跨平台支持，方便用户访问网站。     
 **功能模块**：首页、导航、项目、消息、我等   
 **技术要点**：
 
