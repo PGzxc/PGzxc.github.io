@@ -74,9 +74,10 @@ comments: false
 
 ## 七 仓库/依赖
 
-| 编号 |                      名称(博客地址)                      |  说明  |
-| :--: | :------------------------------------------------------: | :----: |
-|  1   | [React Native Directory](https://reactnative.directory/) | rn仓库 |
+| 编号 |                      名称(博客地址)                      |  说明   |
+| :--: | :------------------------------------------------------: | :-----: |
+|  1   | [React Native Directory](https://reactnative.directory/) | rn仓库  |
+|  2   |            [npm仓库](https://www.npmjs.com/)             | npm仓库 |
 
 ## 八 参考
 
