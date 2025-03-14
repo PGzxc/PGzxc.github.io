@@ -56,15 +56,28 @@ comments: false
 |  15  |             [react-native-ui-lib][rn-uilib]             |              React Native UI 组件库-`暂不推荐`               |
 |  16  |                 [gluestackui][rn-glues]                 |                    React Native UI 组件库                    |
 |  17  |             [React Native Paper][rn-paper]              |                    React Native UI 组件库                    |
+|  18  |        [Teaset](https://github.com/rilyu/teaset)        |                        20 多个ES6组件                        |
 
 ## 五 UI库
 
-| 编号 |                        名称(博客地址)                        |     说明     |
-| :--: | :----------------------------------------------------------: | :----------: |
-|  1   |    [Lottie for React Native](https://airbnb.io/lottie/#/)    | 动画 UI 框架 |
-|  2   |       [React Navigation](https://reactnavigation.org/)       |  路由和导航  |
-|  3   | [react-native-toast-notifications](https://githubfast.com/arnnis/react-native-toast-notifications) |     土司     |
-|  4   | [react-native-swiper-flatlist](https://www.npmjs.com/package/react-native-swiper-flatlist) |    轮播图    |
+| 编号 |                        名称(博客地址)                        |             说明             |
+| :--: | :----------------------------------------------------------: | :--------------------------: |
+|  1   |    [Lottie for React Native](https://airbnb.io/lottie/#/)    |         动画 UI 框架         |
+|  2   |       [React Navigation](https://reactnavigation.org/)       |          路由和导航          |
+|  3   | [react-native-toast-notifications](https://githubfast.com/arnnis/react-native-toast-notifications) |             土司             |
+|  4   | [react-native-swiper-flatlist](https://www.npmjs.com/package/react-native-swiper-flatlist) |            轮播图            |
+|  5   | [react-native-image-viewer](https://github.com/ascoders/react-native-image-viewer) |       图片大图浏览的库       |
+|  6   | [react-native-image-picker](https://github.com/react-community/react-native-image-picker) |   多个图像选择、裁剪、压缩   |
+|  7   | [react-native-picker](https://github.com/beefe/react-native-picker) |           滚轮控件           |
+|  8   | [react-native-scrollable-tab-view](https://github.com/happypancake/react-native-scrollable-tab-view) | 带有TabBar和可切换页面的控件 |
+|  9   | [react-native-app-intro](https://github.com/fuyaode/react-native-app-intro) |          引导页的库          |
+|  10  | [3D Touch](https://github.com/jordanbyron/react-native-quick-actions) |            3D效果            |
+|  11  | [react-native-snap-carousel](https://github.com/archriss/react-native-snap-carousel) |           轮播图库           |
+|  12  | [react-native-blur](https://github.com/react-native-community/react-native-blur) |          毛玻璃效果          |
+|  13  | [react-native-actionsheet](https://github.com/beefe/react-native-actionsheet) |           底部弹框           |
+|  14  | [react-native-popover](https://www.npmjs.com/package/react-native-popover-view) |          弹出提示框          |
+|  15  | [react-native-charts-wrapper](https://github.com/wuxudong/react-native-charts-wrapper) |            图标库            |
+|  16  | [react-native-spinkit](https://github.com/maxs15/react-native-spinkit) |           加载动画           |
 
 ## 六 工具
 
@@ -79,7 +92,13 @@ comments: false
 |  1   | [React Native Directory](https://reactnative.directory/) | rn仓库  |
 |  2   |            [npm仓库](https://www.npmjs.com/)             | npm仓库 |
 
-## 八 参考
+## 八 图标
+
+| 编号 |                        名称(博客地址)                        | 说明 |
+| :--: | :----------------------------------------------------------: | :--: |
+|  1   | [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons) | 图标 |
+
+## 九 参考
 
 * [7 款最棒的 React 移动端 UI 组件库 - 特别针对国内使用场景推荐](https://blog.csdn.net/weixin_48201324/article/details/124969239)
 * [推荐 5 个不错的 React Native UI 库](https://blog.csdn.net/YopenLang/article/details/128065199)
