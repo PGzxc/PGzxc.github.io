@@ -735,7 +735,7 @@ __2-Android项目—E朝朝企业端__
 **项目名称**：WanAndroidRN
 **项目地址**：https://github.com/PGzxc/WanAndroidRN
 **软件支持**：Android+IOS
-**开发工具**：IntelliJ IDEA+Java(11.0.19)+Node(18.18.2)+Yarn(1.22.19)+react-native(0.72.6)+Android SDK Build_tools(33.0.0)
+**开发工具**：IntelliJ IDEA+Java(11.0.19)+Node(18.18.2)+Yarn(1.22.19)+react-native(0.72.6)+Expo(49)
 **项目描述**：该项目是一款基于 WanAndroid 网站开源接口 API 构建的 React Native 开源 App。借助 Expo Go 开发工具，搭配 @ant - design/react-native 蚂蚁金服 UI 库，实现了对 Android 和 iOS 系统的跨平台支持，方便用户访问网站。     
 **功能模块**：首页、导航、项目、消息、我等   
 **技术要点**：
@@ -754,7 +754,32 @@ __2-Android项目—E朝朝企业端__
 | ![][rn-waz-4] | ![][rn-waz-5] | ![][rn-waz-6] |
 | ![][rn-waz-7] | ![][rn-waz-8] | ![][rn-waz-9] |
 
-### 2—[expo-todo](https://github.com/PGzxc/expo-todo)
+### 2—[ZhiHuRN](https://github.com/PGzxc/ZhiHuRN)
+
+**项目归属**：个人项目
+**项目名称**：ZhiHuRN
+**项目地址**：https://github.com/PGzxc/ZhiHuRN
+**软件支持**：Android+IOS
+**开发工具**：IntelliJ IDEA+Java(11.0.19)+Node(22.14.0)+Yarn(1.22.22)+react-native(0.76.7)+Expo(52)
+**项目描述**：本项目是基于 React Native 开发的仿知乎移动应用。已实现众多核心页面功能，涵盖登录注册、首页帖子浏览与发布、发现页的帖子搜索、搜索历史记录展示及热门话题呈现、消息通知以及个人信息管理等功能。      
+**功能模块**：登录注册、首页、发现、通知、我的   
+**技术要点**：
+
+- 基于React Navigation导航库构建底部导航框架
+- 基于Redux进行状态管理
+- 自定义组件，减少复用代码
+- 基于async-storage和expo-secure-store进行本地存储
+- 基于expo-image-picker(图片选择)、expo-image-manipulator(图片处理)、expo-file-system (文件操作)
+- 基于react-native-safe-area-context (安全区域处理)、react-native-screens (原生屏幕容器)处理显示和性能问题
+
+**项目预览**
+
+| ![][zh-rn-1] | ![][zh-rn-2]  | ![][zh-rn-3]  | ![][zh-rn-4] |
+| :----------: | :-----------: | :-----------: | :----------: |
+| ![][zh-rn-5] | ![][zh-rn-6]  | ![][zh-rn-7]  | ![][zh-rn-8] |
+| ![][zh-rn-9] | ![][zh-rn-10] | ![][zh-rn-11] |              |
+
+### 3—[expo-todo](https://github.com/PGzxc/expo-todo)
 
 **项目归属**：个人项目
 **项目名称**：expo-todo
@@ -1301,6 +1326,19 @@ IOS截图
 [rn-waz-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/rn-waz-7-melogin.png
 [rn-waz-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/rn-waz-8-login.png
 [rn-waz-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/rn-waz-9-register.png
+
+<!--rn-zhihu-->
+[zh-rn-1]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-rn-login-1.png
+[zh-rn-2]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-rn-register-2.png
+[zh-rn-3]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-rn-login-3.png
+[zh-rn-4]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-rn-home-4.png
+[zh-rn-5]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-rn-detail-5.png
+[zh-rn-6]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-rn-pub-6.png
+[zh-rn-7]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-rn-fresh-7.png
+[zh-rn-8]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-rn-dis-8.png
+[zh-rn-9]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-rn-search-9.png
+[zh-rn-10]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-rn-msg-10.png
+[zh-rn-11]: https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-rn-me-11.png
 
 <!--rn-todo-->
 [rn-todo-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/rn-todo-1-login.png
