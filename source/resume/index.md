@@ -667,6 +667,32 @@ __2-Android项目—E朝朝企业端__
 |![][swift-waz-5]|![][swift-waz-6] |![][swift-waz-7] |![][swift-waz-8] |
 |![][swift-waz-9]|![][swift-waz-10]|![][swift-waz-11]|![][swift-waz-12]|
 
+### 2—[ZhiHuSwiftUI](https://github.com/PGzxc/ZhiHuSwiftUI)
+
+**项目归属**：个人项目
+**项目名称**：ZhiHuSwiftUI
+**项目地址**：https://github.com/PGzxc/ZhiHuSwiftUI
+**软件支持**：IOS
+**开发工具**：MacOS(15.3.2)+Xcode(16.2)+Swift(6.0.3)
+**项目描述**：这是一款用 SwiftUI 开发的 iOS 版知乎社区客户端，采用 MVVM 架构，具备完整社区功能。首页可查看帖子列表与详情；市场分栏展示话题和专栏；发布按钮支持用户发布文章和问题；消息列表分栏呈现点赞、评论、关注等互动信息；还有个人中心，方便用户管理个人事务。  
+**功能模块**：首页，市场、发布、消息、我的等   
+**技术要点**：
+
+- 基于TabView+TabItem构建项目主体框架
+- 基于MVVM(Modal数据类+View视图+ViewModel-继承ObservableObject)设计模式简化开发
+- 基于URLSession+async/await处理网络请求和异步编程
+- 基于UserDefaults进行数据持久化存储
+- 基于@StateObject、@Published、@EnvironmentObject进行状态管理
+- 自定义组件View，提高代码复用性
+- Mock模拟临时数据
+
+**项目预览**
+
+| ![][ios-zh-1] | ![][ios-zh-2]  | ![][ios-zh-3]  | ![][ios-zh-4]  |
+| ------------- | -------------- | -------------- | -------------- |
+| ![][ios-zh-5] | ![][ios-zh-6]  | ![][ios-zh-7]  | ![][ios-zh-8]  |
+| ![][ios-zh-9] | ![][ios-zh-10] | ![][ios-zh-11] | ![][ios-zh-12] |
+
 ## <font color=red>四 Flutter项目</font>
 
 ### 1—[Flutter-WanAndroid ](https://github.com/PGzxc/flutter_wanandroid)
@@ -1280,6 +1306,21 @@ IOS截图
 [swift-waz-10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiftui-waz-login-10.png
 [swift-waz-11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiftui-waz-register-11.png
 [swift-waz-12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiftui-waz-12-web.png
+
+<!--IOS SwiftUI版本—仿知乎-->
+
+[ios-zh-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-ios-1-login.png
+[ios-zh-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-ios-2-register.png
+[ios-zh-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-ios-3-home.png
+[ios-zh-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-ios-4-home-detail.png
+[ios-zh-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-ios-5-market.png
+[ios-zh-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-ios-6-market-detail.png
+[ios-zh-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-ios-7-pub.png
+[ios-zh-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-ios-8-msg.png
+[ios-zh-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-ios-9-msg-detail.png
+[ios-zh-10]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-ios-10-me.png
+[ios-zh-11]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-ios-11-me-edit.png
+[ios-zh-12]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/zh-ios-12-set.png
 
 <!--android-WanAndroid_ComposeUI-->
 [com-az-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/compose-az-home-1.png
