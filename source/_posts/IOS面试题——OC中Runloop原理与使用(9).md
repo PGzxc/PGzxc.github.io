@@ -107,7 +107,8 @@ NSPort 和 NSMachPort：用于创建端口对象，可以通过端口与其他�
 并将端口添加到 Runloop 中监听事件。
 
 这些类提供了在 Objective-C 中操作 Runloop 的相关接口和功能，
-开发者可以通过这些类来创建、配置和管理 Runloop，添加事件源和定时器，监视 Runloop 的状态变化等。通过这些类，开发者可以更方便地使用 Runloop 来管理线程的事件循环和任务执行。
+开发者可以通过这些类来创建、配置和管理 Runloop，添加事件源和定时器，监视 Runloop 的状态变化等。
+通过这些类，开发者可以更方便地使用 Runloop 来管理线程的事件循环和任务执行。
 ```
 
 ### 2.5 CFRunLoopModeRef是什么？有哪几种mode?
