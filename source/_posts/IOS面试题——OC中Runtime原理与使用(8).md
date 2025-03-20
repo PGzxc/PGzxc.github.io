@@ -204,12 +204,12 @@ Objective-C（OC）和 Swift 在方法调用上有一些区别，主要体现在
 开发者可以在这两个方法中根据需要动态地添加方法实现，从而使得未知方法调用得到解决。
 ```
 
-### 2.7 消息转发过程关键方法有哪几个？`forwardInvocation:`，`methodSignatureForSelector:`，`forwardInvocation`
+### 2.7 消息转发过程关键方法有哪几个？`forwardInvocation:`，`methodSignatureForSelector:`，`doesNotRecognizeSelector`
 
 ```
-在 Objective-C 的消息转发过程中，
-关键的方法包括 forwardInvocation:、methodSignatureForSelector:，以及 doesNotRecognizeSelector:。这些方法共同组成了完整的消息转发机制，
-用于在对象无法识别或处理某个消息时，将消息转发给其他对象处理。
+在Objective-C的消息转发过程中，关键的方法包括 forwardInvocation:、methodSignatureForSelector:
+，以及 doesNotRecognizeSelector:。
+这些方法共同组成了完整的消息转发机制，用于在对象无法识别或处理某个消息时，将消息转发给其他对象处理。
 
 1-forwardInvocation:：
 1.1-当一个对象无法识别或处理某个消息时，Objective-C 运行时会调用该方法。
@@ -288,7 +288,6 @@ Objective-C Runtime 是 Objective-C 的运行时系统，它提供了一系列�
 以下是一些常用的 Objective-C Runtime API：
 
 类与对象操作：
-
 objc_allocateClassPair
 objc_registerClassPair
 objc_disposeClassPair
@@ -302,8 +301,8 @@ object_getClass
 object_setClass
 object_getClassName
 objc_enumerationMutation
-方法操作：
 
+方法操作
 class_copyMethodList
 class_addMethod
 class_replaceMethod
@@ -312,47 +311,48 @@ method_getImplementation
 method_getTypeEncoding
 method_setImplementation
 method_exchangeImplementations
-成员变量操作：
 
+成员变量操作
 class_copyIvarList
 ivar_getName
 ivar_getTypeEncoding
 ivar_getOffset
-属性操作：
 
+属性操作：
 class_copyPropertyList
 property_getName
 property_getAttributes
 property_getMethod
 property_copyAttributeValue
 property_copyAttributeList
-协议操作：
 
+协议操作：
 objc_getProtocol
 objc_copyProtocolList
 protocol_getName
 protocol_copyMethodDescriptionList
 protocol_copyPropertyList
-protocol_copyProtocolList
-消息传递：
+protocol_copyProtocolLis
 
+消息传递：
 objc_msgSend
 objc_msgSendSuper
 objc_msgSend_stret
 objc_msgSendSuper_stret
-消息转发：
 
+消息转发：
 resolveInstanceMethod:
 resolveClassMethod:
 forwardInvocation:
 methodSignatureForSelector:
 doesNotRecognizeSelector:
-其他功能：
 
+其他功能：
 sel_registerName
 sel_getName
 sel_isEqual
 IMP
+
 以上是一些常用的 Objective-C Runtime API，它们提供了丰富的功能，
 使得开发者可以在运行时动态地操作类和对象、调用方法、处理消息等，
 为 Objective-C 的动态特性提供了支持。
