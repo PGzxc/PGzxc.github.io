@@ -1,5 +1,5 @@
 ---
-title: Android面试题——高级开发面试题一
+title: Android面试题——高级开发面试题1
 categories:
   - 面试相关
   - Android面试题
@@ -14,40 +14,53 @@ date: 2022-11-30 21:53:01
 2. App启动状态有哪几种，各自的启动流程是怎么样的？
 3. 当项目中遇到黑白屏问题，你有什么好的解决方案？
 4. 如何查看方法内的耗时时间与方法分析？
-5. 介绍一下AMS加载Applicaton流程？
+5. 介绍一下AMS加载Applicaton流程？<!--more-->
 6. 启动过程中有那几个问题需要处理？
 7. WMS管理UI的流程对启动优化的意义什么？
-
-<!--more-->
 
 ## 二 面试题解答
 
 ### 2.1 请简单的分析一下Android系统启动流程的原理？
 
-过程简化分析：
+1-过程简化分析：
 
-* **BootLoader**：接通电源后，Boot ROM加载BootLoader到RAM
-* **Linux kernel**：Linux内核负责初始化各种软硬件环境，加载驱动程序，挂载根文件系统等
-* **init进程**：在init进程中，挂载虚拟文件系统、启动property服务、当然更重要的是包括了启动的各种系统服务：serviceManager、adbd、mediasever、zygote、bootanmation等。
-* **zygote进程**：zygote进程是Android系统最重要的进程之一。后续Android中的应用进程都是由zygote进程fork出来的。因此，zygote是Android系统所有应用进程的父进程
-* **systemServer进程**：SystemServer进程，被称为系统服务进程，属于Android framework层的源码实现，通过android studio打开SystemServer.java，能够看到其中声明了大量的android的系统服务
-* **launcher的启动**：就是laucher程序的启动的入口函数
-* **BootAnimation退出**：Launcher启动完成之后，开机动画会进行出，这样给用户的体验就是开机后，就直接进入到桌面了
+```
+* BootLoader：接通电源后，Boot ROM加载BootLoader到RAM
 
-启动架构图：
+* Linux kernel：Linux内核负责初始化各种软硬件环境，加载驱动程序，挂载根文件系统等
+
+* init进程：在init进程中，挂载虚拟文件系统、启动property服务、当然更重要的是包括了启动的各种系统服务：
+serviceManager、adbd、mediasever、zygote、bootanmation等。
+
+* zygote进程：zygote进程是Android系统最重要的进程之一。
+后续Android中的应用进程都是由zygote进程fork出来的。
+因此，zygote是Android系统所有应用进程的父进程
+
+* systemServer进程：SystemServer进程，被称为系统服务进程，属于Android framework层的源码实现，
+通过android studio打开SystemServer.java，能够看到其中声明了大量的android的系统服务
+
+* launcher的启动：就是laucher程序的启动的入口函数
+
+* BootAnimation退出：Launcher启动完成之后，开机动画会进行出，
+这样给用户的体验就是开机后，就直接进入到桌面了
+```
+
+2-启动架构图：
 ![][1]
 
 ### 2.2 App启动状态有哪几种，各自的启动流程是怎么样的？
 
-#### APP启动状态
+#### 2.2.1 APP启动状态
 
+```
 * 冷启动：App进程创建
 * 热启动：Activity已创建，从后台到前台
 * 温启动：App进程存在，但Activity结束
+```
 
-#### 各自启动流程
+#### 2.2.2 各自启动流程
 
-**冷启动**
+**1-冷启动**
 
 系统不存在App进程（APP首次启动或APP被完全杀死）时启动APP，此时，APP的启动将经历两个阶段：
 
@@ -70,13 +83,13 @@ date: 2022-11-30 21:53:01
 * 执行onDraw
 * 完成第一次绘制后，把mainActivity替换已经展示的BackgroundWindow，即空白window。
 
-**热启动**
+**2-热启动**
 
 * 当我们按了Home键或其它情况app被切换到后台，再次启动app的过程。
 * 热启动时，系统将activity带回前台。如果应用程序的所有activity存在内存中，则应用程序可以避免重复对象初始化、渲染、绘制操作
 * 如果由于内存不足导致对象被回收，则需要在热启动时重建对象，此时与冷启动时将界面显示到手机屏幕上一样。
 
-**温启动**
+**3-温启动**
 
 温启动包含了冷启动的一些操作，由于app进程依然在，温启动只执行冷启动的第二阶段，这代表着它比热启动有更多的开销。
 
@@ -87,24 +100,36 @@ date: 2022-11-30 21:53:01
 
 ### 2.3 当项目中遇到黑白屏问题，你有什么好的解决方案？
 
-#### 为什么会有黑白屏
+#### 2.3.1 为什么会有黑白屏
 
-在桌面点击应用图标后，在app进程没有创建的情况下，需要时间创建app进程，初始化资源，以及启动首页Activity的（这里讨论的首页是指AndroidManifest里面标志的启动页），这就意味点击图标不能马上看到启动页。为了不让用户有卡顿的感觉，谷歌有了Preview Window，在启动页没有绘制完成时，会先初始化一个Window，我们通常看到的黑屏或白屏，就是这个预览窗口。
+```
+在桌面点击应用图标后，在app进程没有创建的情况下，需要时间创建app进程，初始化资源，
+以及启动首页Activity的（这里讨论的首页是指AndroidManifest里面标志的启动页），
+这就意味点击图标不能马上看到启动页。
 
-#### 怎么知道是黑屏还是白屏？
+为了不让用户有卡顿的感觉，谷歌有了Preview Window，在启动页没有绘制完成时，
+会先初始化一个Window，我们通常看到的黑屏或白屏，就是这个预览窗口。
+```
 
-查看这个AppTheme,找到`name="android:windowBackground"`这个属性，查看属性下的内容，就能知道是黑屏还是白屏，这个属性就是设置预览窗口的背景。
+#### 2.3.2 怎么知道是黑屏还是白屏？
 
-#### 如何解决黑白屏
+```
+查看这个AppTheme,找到`name="android:windowBackground"`这个属性，
+查看属性下的内容，就能知道是黑屏还是白屏，这个属性就是设置预览窗口的背景。
+```
 
+#### 2.3.3 如何解决黑白屏
+
+```
 1. theme下面的`android:windowIsTranslucent`属性
 2. 启动activity的theme设置启动图片
+```
 
 ### 2.4 如何查看方法内的耗时时间与方法分析？
 
 借助于Android自带的分析工具：
 
-#### Traceview
+#### 1-Traceview
 
 ```
 Android Traceview是Android开发中的性能分析工具，
@@ -123,7 +148,7 @@ Traceview是Android开发中非常有用的工具，可以帮助开发者找出�
 并进行相应的优化，提高应用程序的性能和用户体验
 ```
 
-#### systrace
+#### 2-systrace
 
 ```
 Systrace是Android开发中用于系统级性能分析的工具，
@@ -145,20 +170,25 @@ Systrace是一种强大的性能分析工具，可以帮助开发者发现应用
 并进行相应的优化，提高应用程序的性能和用户体验
 ```
 
-
-
 ### 2.5 介绍一下AMS加载Applicaton流程？
 
+1-AMS
+
+```
 AMS: ActivityManagerService
 
-AMS是Android中最核心的服务，主要负责系统中四大组件的启动、切换、调度及应用进程的管理和调度等工作，其职责与操作系统中的进程管理和调度模块相类似，因此它在Android中非常重要。
+AMS是Android中最核心的服务，主要负责系统中四大组件的启动、切换、调度及应用进程的管理和调度等工作，
+其职责与操作系统中的进程管理和调度模块相类似，因此它在Android中非常重要。
+```
 
-ActivityManagerService启动
+2-ActivityManagerService启动
 
+```
 * 创建AMS对象
 * 调用ams.setSystemProcess
 * 调用ams.installSystemProviders
 * 调用ams.systemReady
+```
 
 ### 2.6 启动过程中有那几个问题需要处理？
 ![][2]
