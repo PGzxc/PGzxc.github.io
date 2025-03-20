@@ -1,5 +1,5 @@
 ---
-title: Android面试之——关于Activity的那些事(2)
+title: Android面试之——关于Activity的那些事2
 categories:
   - 面试相关
   - Android面试题
