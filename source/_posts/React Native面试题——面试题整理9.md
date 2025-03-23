@@ -29,243 +29,346 @@ date: 2024-03-20 15:41:51
 
 ## 2.1 React Native相对于原生的ios和Android有哪些优势？
 
+```
 React Native 相对于原生的 iOS 和 Android 具有以下优势：
 
-1. **跨平台开发**：React Native 允许开发人员使用 JavaScript 构建单个代码库，以跨平台的方式开发应用程序，这意味着可以使用相同的代码库在 iOS 和 Android 上开发应用程序，从而节省时间和资源。
-2. **快速开发**：React Native 提供了丰富的 UI 组件库和开发工具，可以快速构建用户界面。同时，使用热加载功能，可以即时预览代码更改的效果，加速开发过程。
-3. **性能优化**：React Native 借助底层原生组件实现了高性能，尤其是在处理图形和动画方面。此外，React Native 支持原生代码的集成，可以通过编写原生模块来实现更高的性能要求。
-4. **社区支持**：React Native 拥有庞大而活跃的开发者社区，提供了大量的文档、教程和第三方库，方便开发人员解决问题和获取支持。
-5. **热更新**：React Native 支持热更新功能，允许在不重新发布应用程序的情况下更新应用程序的部分内容，从而可以更快地修复 bug 和推出新功能。
-6. **简化学习曲线**：相对于学习两种完全不同的原生开发技术，React Native 提供了一种更为统一的开发体验，使得前端开发人员可以更快地适应移动应用程序开发。
+1. 跨平台开发：
+React Native 允许开发人员使用 JavaScript 构建单个代码库，以跨平台的方式开发应用程序，
+这意味着可以使用相同的代码库在 iOS 和 Android 上开发应用程序，从而节省时间和资源。
 
-总的来说，React Native 在跨平台开发、快速开发、性能优化和社区支持等方面具有明显优势，尤其适合中小型团队或需要快速迭代的项目。然而，在某些特定场景下，如对性能要求非常高或需要直接访问硬件功能的应用程序，原生开发仍然是更好的选择。
+2. 快速开发：
+React Native 提供了丰富的 UI 组件库和开发工具，可以快速构建用户界面。
+同时，使用热加载功能，可以即时预览代码更改的效果，加速开发过程。
+
+3. 性能优化：
+React Native 借助底层原生组件实现了高性能，尤其是在处理图形和动画方面。
+此外，React Native 支持原生代码的集成，可以通过编写原生模块来实现更高的性能要求。
+
+4. 社区支持：
+React Native 拥有庞大而活跃的开发者社区，提供了大量的文档、教程和第三方库，方便开发人员解决问题和获取支持。
+
+5. 热更新：
+React Native 支持热更新功能，允许在不重新发布应用程序的情况下更新应用程序的部分内容，
+从而可以更快地修复 bug 和推出新功能。
+
+6. 简化学习曲线：
+相对于学习两种完全不同的原生开发技术，React Native 提供了一种更为统一的开发体验，
+使得前端开发人员可以更快地适应移动应用程序开发。
+
+总的来说，React Native 在跨平台开发、快速开发、性能优化和社区支持等方面具有明显优势，
+尤其适合中小型团队或需要快速迭代的项目。
+然而，在某些特定场景下，如对性能要求非常高或需要直接访问硬件功能的应用程序，原生开发仍然是更好的选择。
+```
 
 ### 2.2 React Native的优点和缺点在哪里？
 
-React Native 作为一种跨平台移动应用开发框架，有着许多优点和一些缺点。以下是它们的主要特点：
+1-优点：
 
-**优点：**
+```
+1.跨平台开发：一套代码同时支持 iOS 和 Android，节省时间和成本。
+2.热重载：修改代码后无需重启应用，开发效率更高。
+3.接近原生性能：使用原生组件渲染，体验接近原生应用。
+4.强大社区支持：丰富的第三方库和活跃的社区，问题解决更快捷。
+5.代码复用率高：逻辑和 UI 组件可复用，减少重复开发工作。
+```
 
-1. **跨平台开发**：React Native 允许开发者使用相同的代码库构建 iOS 和 Android 应用程序，从而节省了开发时间和成本。
-2. **快速开发**：React Native 提供了丰富的 UI 组件库和开发工具，可以快速构建用户界面，并通过热加载实时预览代码更改的效果，加速开发过程。
-3. **性能优化**：React Native 使用原生组件来实现高性能，尤其是在处理图形和动画方面。同时，可以通过集成原生代码来满足更高的性能需求。
-4. **热更新**：React Native 支持热更新功能，允许在不重新发布应用程序的情况下更新应用程序的部分内容，从而可以更快地修复 bug 和推出新功能。
-5. **活跃的社区支持**：React Native 拥有庞大而活跃的开发者社区，提供了大量的文档、教程和第三方库，方便开发人员解决问题和获取支持。
+2-缺点：
 
-**缺点：**
-
-1. **性能问题**：虽然 React Native 在大多数情况下表现良好，但在处理复杂的动画或大量数据时可能会出现性能问题。
-2. **不适用于所有应用**：某些需要直接访问硬件功能或对性能要求非常高的应用程序可能不适合使用 React Native，原生开发仍然是更好的选择。
-3. **依赖于第三方库**：由于 React Native 是一个开源项目，因此在某些情况下，可能需要依赖于第三方库来解决特定的问题，这可能会增加应用程序的复杂性。
-4. **不稳定的 API**：React Native 的 API 可能会在不同版本之间发生变化，这可能会导致一些代码需要频繁更新以适应新的 API。
-5. **调试困难**：由于 React Native 应用程序运行在原生容器中，因此调试可能会比较困难，尤其是在处理原生代码和 JavaScript 代码交互时。
+```
+1.性能略逊于原生：在复杂动画、大量计算等场景下，性能可能不如原生开发。
+2.原生依赖：部分功能仍需编写原生代码，增加开发复杂度。
+3.版本兼容性问题：RN 版本更新较快，可能导致第三方库或原生代码不兼容。
+4.调试困难：错误信息有时不直观，排查问题可能比较费时。
+```
 
 ### 2.3 父传子，子传父数据传递方式？
 
-```
-简答：props state refs 方面回答
-```
-
-在React Native中，你可以使用props来实现从父组件向子组件传递数据，而要从子组件向父组件传递数据，则可以通过回调函数的方式。以下是一些简单的示例代码：
-
-1-父组件向子组件传递数据（props）：
+1-父传子：通过 props 传递数据或方法给子组件。
 
 ```
-javascriptCopy code// ParentComponent.js
-import React from 'react';
-import ChildComponent from './ChildComponent';
+// 父组件
+const Parent = () => (
+  <Child message="Hello from Parent" />
+);
 
-export default function ParentComponent() {
-  const dataFromParent = 'Hello from Parent';
-
-  return (
-    <ChildComponent data={dataFromParent} />
-  );
-}
-
-// ChildComponent.js
-import React from 'react';
-import { Text } from 'react-native';
-
-export default function ChildComponent(props) {
-  return (
-    <Text>{props.data}</Text>
-  );
-}
+// 子组件
+const Child = ({ message }) => (
+  <Text>{message}</Text>
+);
 ```
 
-2-子组件向父组件传递数据（回调函数）：
+2-子传父：子组件调用父组件传递下来的回调函数，把数据传回去
 
 ```
-javascriptCopy code// ParentComponent.js
-import React, { useState } from 'react';
-import ChildComponent from './ChildComponent';
+// 父组件
+const Parent = () => {
+  const handleDataFromChild = (data) => alert(data);
 
-export default function ParentComponent() {
-  const [dataFromChild, setDataFromChild] = useState('');
+  return <Child sendData={handleDataFromChild} />;
+};
 
-  const handleDataFromChild = (data) => {
-    setDataFromChild(data);
-  };
-
-  return (
-    <>
-      <ChildComponent onDataReceived={handleDataFromChild} />
-      <Text>Data from child: {dataFromChild}</Text>
-    </>
-  );
-}
-
-// ChildComponent.js
-import React from 'react';
-import { Button } from 'react-native';
-
-export default function ChildComponent(props) {
-  const sendDataToParent = () => {
-    const dataToParent = 'Hello from Child';
-    props.onDataReceived(dataToParent);
-  };
-
-  return (
-    <Button title="Send Data to Parent" onPress={sendDataToParent} />
-  );
-}
+// 子组件
+const Child = ({ sendData }) => (
+  <Button title="Send Data" onPress={() => sendData("Hello from Child")} />
+);
 ```
-
-在这两个例子中，父组件通过props将数据传递给子组件，而子组件则通过调用父组件传递的回调函数来将数据传递回去
 
 ### 2.4 如何实现底部TabBar的高度不一样呢？（类似新浪微博底部加号）
 
 ```
-简答：主要考察flex布局绝对定位问题
+实现底部 TabBar 高度不一样，特别是像新浪微博那样中间按钮突出，主要有几种方法：
+
+1.自定义TabBar组件: 
+这是最灵活的方法。 
+你可以创建一个自定义的 TabBar 组件，而不是使用 React Navigation 或其他库提供的默认 TabBar。 
+在这个自定义组件中，你可以使用View和StyleSheet精确控制每个Tab按钮的大小和位置，从而实现中间按钮突出，高度不同的效果。 
+这需要你对布局和样式有较好的掌握。
+
+2.使用第三方库: 
+一些第三方库提供了自定义 TabBar 的能力，可能已经内置了类似新浪微博底部导航栏的功能，
+或者提供了足够的自定义选项来实现这个效果。 
+你需要调研一些 React Native 的导航库，看看它们是否支持这种自定义。
+
+3.利用flex布局和absolute定位: 
+你可以使用 flex 布局来安排 Tab 按钮，然后使用 absolute 定位来放置中间的突出按钮，精确控制它的位置和大小。
+这需要对 flex 布局和 absolute 定位有深入的理解。
+
+4.使用React Native的LayoutAnimation: 
+如果需要中间按钮的出现或消失有动画效果，可以使用LayoutAnimation来实现动画过渡。
+
+选择哪种方法取决于你的项目复杂度和对自定义程度的要求。 
+如果只是简单的调整高度，方法3可能就足够了；
+如果需要更复杂的样式和动画，自定义组件是更好的选择。 记住要考虑整体UI的一致性和用户体验。
 ```
-
-要实现底部TabBar的高度不一样，你可以使用自定义样式来调整每个Tab的高度。在React Navigation中，你可以使用`tabBarOptions`属性来自定义TabBar的样式，包括每个Tab的高度。以下是一个示例代码：
-
-```
-javascriptCopy codeimport React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-const Tab = createBottomTabNavigator();
-
-export default function MyTabs() {
-  return (
-    <Tab.Navigator
-      tabBarOptions={{
-        tabStyle: {
-          height: 60, // 设置Tab的高度
-        },
-      }}
-    >
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
-    </Tab.Navigator>
-  );
-}
-```
-
-在上面的示例中，通过设置`tabStyle`属性来指定每个Tab的样式，包括高度。你可以根据需要调整`height`的值来实现不同高度的Tab。
 
 ### 2.5 你的项目有没有使用redux或者是mobx来管理数据呢？
 
-Redux 和 MobX 都是流行的状态管理工具，它们可以帮助你在 React Native 项目中有效地管理应用程序的状态和数据流。它们的主要区别在于设计和使用方式：
+```
+用过 Redux 和 MobX 来管理数据，根据项目需求选择合适的状态管理工具：
 
-1. **Redux**：
-   - Redux 是一个单向数据流管理库，它使用不可变的状态来管理应用程序的数据。
-   - Redux 通过创建一个全局的单一数据源（Store）来存储应用程序的状态，通过 dispatching action 来修改状态。
-   - Redux 采用纯函数的方式来处理状态变更，通过 reducers 来处理 action 并更新状态。
-   - Redux 的设计理念是通过预测性的数据流来管理应用程序的状态。
-2. **MobX**：
-   - MobX 是一个响应式状态管理库，它可以使你的应用程序更具可观察性，更易于理解和维护。
-   - MobX 的核心概念是可观察对象（Observable）和响应式行为，通过使用装饰器或 observable API 来声明可观察对象。
-   - MobX 通过自动追踪对象的属性和计算属性之间的依赖关系，并在相关数据变更时自动更新相关的 UI。
+1.Redux:
+-适合管理复杂的全局状态，比如用户信息、权限、购物车等。
+-用 actions 触发状态变更，reducers 处理逻辑，store 统一管理数据，方便追踪状态变化
 
-在 React Native 项目中使用 Redux 或 MobX，你需要做以下几个步骤：
-
-1. **安装 Redux 或 MobX**：通过 npm 或 yarn 安装 Redux 或 MobX 及其相关的依赖。
-2. **创建 Store**：如果使用 Redux，你需要创建一个 Redux Store 来存储应用程序的状态。如果使用 MobX，则需要创建一个 MobX Store 并声明可观察对象。
-3. **定义 Actions 和 Reducers（Redux）或 Actions 和响应式函数（MobX）**：定义用于修改状态的 actions 和 reducers（Redux）或定义响应式函数来更新状态（MobX）。
-4. **连接组件**：将你的 React Native 组件连接到 Store，以便能够访问状态并更新它。
-5. **使用 Provider（Redux）或 Provider 和 observer（MobX）**：在应用的最顶层使用 Provider（Redux）或 Provider 和 observer（MobX）来将状态管理功能注入到整个应用中。
-
-这些是在 React Native 项目中使用 Redux 或 MobX 的基本步骤，具体实现方式可以根据项目的需求和个人偏好来进行调整和扩展。
+2.MobX：
+-更灵活、简洁，适合中小型项目或者状态逻辑相对简单的场景。
+-通过可观察的状态（observable）、动作（actions）、计算属性（computed）等机制，现响应式的数据管理。
+```
 
 ### 2.6 请您简单介绍一下redux？dva? mobx？
 
-当然，让我简单介绍一下 Redux、Dva 和 MobX 这三个在 React 生态中常用的状态管理库：
+1-Redux
 
-1. **Redux**：
-   - Redux 是一个用于 JavaScript 应用程序的可预测状态容器，特别适用于 React 应用程序。
-   - Redux 的核心思想是将整个应用程序的状态存储在一个单一的可预测的状态树中（也称为 Store）。
-   - Redux 的数据流是单向的，通过派发 actions 来修改状态，然后通过纯函数的 reducers 来处理这些 actions 并更新状态。
-   - Redux 强调了可预测性和不可变性，所有的状态修改都是通过纯函数完成的，使得状态变更变得可控和易于调试。
-2. **Dva**：
-   - Dva 是一个基于 Redux、Redux-saga 和 React-router 的轻量级前端框架，用于简化 React 应用程序的开发。
-   - Dva 提供了一种更简洁的方式来组织 Redux 应用程序的代码结构，并且内置了一些常用的功能，如数据异步请求、路由等。
-   - Dva 使用了约定优于配置的理念，使得开发者能够更快速地构建出功能完善的 React 应用程序。
-3. **MobX**：
-   - MobX 是一个简单、可扩展的状态管理库，它允许你以响应式方式来管理应用程序的状态。
-   - MobX 的核心概念是可观察对象（Observable）和响应式函数（Reactions），通过使用装饰器或 observable API 来声明可观察对象。
-   - MobX 通过自动追踪对象的属性和计算属性之间的依赖关系，并在相关数据变更时自动更新相关的 UI。
-   - MobX 的设计理念是让状态管理变得简单、直观，使得开发者能够更专注于业务逻辑的实现。
+```
+Redux 是一个 可预测的状态管理 库，适用于大型应用的全局状态管理。核心概念包括：
 
-简而言之，Redux 是一个可预测的状态管理库，Dva 是基于 Redux 的前端框架，而 MobX 是一个简单、可扩展的响应式状态管理库。这三个库都在 React 生态中发挥着重要作用，开发者可以根据项目需求和个人偏好选择适合的库来管理应用程序的状态。
+-Store：全局状态存储中心。
+-Action：描述状态变化的行为
+-Reducer：根据 Action 更新 Store。
+-Dispatch：触发 Action，进而更新 Store。
+
+适用于复杂应用，但 代码冗长，异步处理复杂（需用 redux-thunk / redux-saga）
+```
+
+2-DVA（基于 Redux 的封装）
+
+```
+DVA 是 阿里基于 Redux 和 Redux-saga 封装的状态管理框架，简化了 Redux 复杂的配置，特点：
+
+-内置 Redux、Redux-Saga，简化数据流。
+-基于 Model 组织代码，每个 Model 包含 state、reducers、effects 等
+-支持异步数据流，更加直观。
+
+适用于 React / React Native 项目，简化 Redux 代码量。
+```
+
+3-MobX
+
+```
+MobX 是 响应式、轻量级的状态管理库，相比 Redux 更加简单、直观，特点：
+
+-observable（可观察数据） 自动追踪状态变化。
+-computed（计算属性） 自动根据状态派生新数据。
+-action（动作） 触发状态变更。
+-更少的样板代码，使用更直观。
+
+适用于 小中型项目或需要高响应式的数据管理。
+```
 
 ### 2.7 当你调用setState的时候，发生了什么事？
 
 ```
-当调用 setState 时，React会做的第一件事情是将传递给 setState 的对象合并到组件的当前状态。
-这将启动一个称为和解（reconciliation）的过程。
-和解（reconciliation）的最终目标是以最有效的方式，根据这个新的状态来更新UI。
-为此，React将构建一个新的 React 元素树（您可以将其视为 UI 的对象表示）。
-一旦有了这个树，为了弄清 UI 如何响应新的状态而改变，React 会将这个新树与上一个元素树相比较（ diff ）。
-通过这样做， React 将会知道发生的确切变化，并且通过了解发生什么变化，只需在绝对必要的情况下进行更新即可最小化 UI 的占用空间。
-```
+在 React Native 中，当你调用 setState 时，会触发以下过程：
 
+1.更新状态：setState 将传入的状态变更合并到组件的当前状态。
+2.触发重新渲染：React 会对比更新前后的状态（浅合并），决定是否需要重新渲染组件。
+3.调用render方法：如果状态变化影响 UI，React 会重新调用render方法生成新的虚拟 DOM。
+4.更新UI：React 比较新旧虚拟 DOM（Diff 算法），只更新必要的部分，优化性能
+5.异步执行：setState 是异步操作，状态更新后不会立刻生效，
+若需在状态更新后执行操作，可以用 setState 的回调函数：
+
+总结：setState 触发状态更新、重新渲染、优化更新，且是异步操作
+```
 
 ### 2.8 React中Element 和 Component 有何区别？
 
 ```undefined
-简单地说，一个 React element 描述了你想在屏幕上看到什么。
-换个说法就是，一个 React element 是一些 UI 的对象表示。
-一个 React Component 是一个函数或一个类，
-它可以接受输入并返回一个 React element 
-(通常是通过 JSX ，它被转化成一个 createElement 调用）。
+在 React 中，Element 和 Component是两个不同的概念：
+```
+
+1-Element（元素）
+
+```
+-是 React 应用的最小单元，描述 UI 的结构。
+-本质是一个普通的 JavaScript 对象，代表组件的“实例”或“快照”。
+-通常由 JSX 创建，像这样：const element = <Text>Hello World</Text>;
+```
+
+2-Component（组件）：
+
+```
+-是可复用的 UI 单位，封装了逻辑和界面。
+-可以是函数组件或类组件，返回 React 元素来描述 UI
+3-示例
+function Greeting() {
+  return <Text>Hello World</Text>;
+}
+```
+
+3-总结
+
+```
+Element 是 UI 的“描述”，不可改变，创建后不会再更新
+Component 是逻辑单元，接受 props，返回 Element 来渲染界面
 ```
 
 ### 2.9 shouldComponentUpdate 应该做什么
 
 ```
-其实这个问题也是跟reconciliation有关系。
-“和解（ reconciliation ）的最终目标是以最有效的方式，根据新的状态更新用户界面”。
-如果我们知道我们的用户界面（UI）的某一部分不会改变，
-那么没有理由让 React 很麻烦地试图去弄清楚它是否应该渲染。
-通过从 shouldComponentUpdate 返回 false，
-React 将假定当前组件及其所有子组件将保持与当前组件相同
+在 React Native 中，shouldComponentUpdate 是类组件中的生命周期方法，用来控制组件是否需要重新渲染。
+
+1.作用：
+-默认情况下，父组件更新时，子组件也会跟着重新渲染
+-通过 shouldComponentUpdate 可以优化性能，避免不必要的渲染
+-当组件的 props 或 state 变化时，它会自动被调用，返回 true 则重新渲染，返回 false 则跳过渲染。
+
+2.示例：
+class MyComponent extends React.Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    // 只有当 count 改变时才重新渲染
+    return nextProps.count !== this.props.count;
+  }
+
+  render() {
+    return <Text>{this.props.count}</Text>;
+  }
+}
+
+3.注意：
+-在函数组件里，可以用 React.memo() 来实现类似的优化。
+-如果逻辑复杂，推荐使用 PureComponent 或 React.memo 来自动优化。
 ```
 
 
 ### 2.10 描述事件在React中的处理方式
 
 ```
-为了解决跨浏览器兼容性问题，
-您的 React 中的事件处理程序将传递 SyntheticEvent 的实例，
-它是 React 的浏览器本机事件的跨浏览器包装器。
+在 React 中，事件的处理方式与传统的 DOM 事件略有不同，
+React 封装了原生事件，并提供了一些优化和跨平台的支持。具体来说，React 事件处理具有以下特点：
 
-这些 SyntheticEvent 与您习惯的原生事件具有相同的接口，除了它们在所有浏览器中都兼容。
-有趣的是，React 实际上并没有将事件附加到子节点本身。
-React 将使用单个事件监听器监听顶层的所有事件。
-这对于性能是有好处的，这也意味着在更新DOM时，React 不需要担心跟踪事件监听器
+1.使用虚拟 DOM 事件系统
+React 使用虚拟 DOM 来优化事件处理，而不直接操作原生 DOM。
+因此，React 为事件提供了一个事件池（Event Pooling），
+当事件处理完成后，React 会回收事件对象，避免内存泄漏。
+
+2.使用驼峰式命名法:React 使用驼峰式命名来处理事件名称，例如：
+-原生 DOM 事件是 onclick，而 React 使用 onClick。
+-原生事件 onkeydown 在 React 中写作 onKeyDown。
+
+3.事件处理程序是函数
+React 的事件处理程序和传统 DOM 一样是函数。你可以在 JSX 中直接传入函数来处理事件，例如：
+class MyComponent extends React.Component {
+  handleClick = () => {
+    alert('Button clicked');
+  };
+
+  render() {
+    return <Button onClick={this.handleClick}>Click Me</Button>;
+  }
+}
+
+4.事件绑定方式
+-在 React 中，事件处理函数默认是 自动绑定 的，不需要显式地绑定 this，如果你是用箭头函数定义的事件处理函数。
+-如果使用常规函数定义，this 需要通过 .bind() 来显式绑定
+
+// 使用箭头函数，无需显式绑定
+handleClick = () => {};
+
+// 普通方法需要显式绑定
+handleClick() {
+  // this 需要绑定
+}
+
+5.事件对象
+React 会将原生事件对象包装成一个合成事件（SyntheticEvent）。
+这些合成事件跨浏览器一致，提供了与原生事件类似的 API。
+
+handleClick = (event) => {
+  // event 是合成事件对象，类似于原生的 event 对象
+  console.log(event.type); // 'click'
+};
+
+6.事件的性能优化
+React 的事件是通过事件委托机制处理的，所有的事件处理程序都挂载到根 DOM 元素上，
+然后通过事件冒泡传播到子组件。
+这样可以避免为每个 DOM 元素单独绑定事件，提升性能。
+
+总结
+-事件处理函数通常是类方法或箭头函数。
+-事件名称采用驼峰命名法（例如：onClick，onKeyDown）。
+-React 使用合成事件系统来优化性能和兼容性。
+-可以通过 Event Pooling 机制优化内存管理。
 ```
 
 ### 2.11 reactJS的props.children.map函数来遍历会收到异常提示，为什么？应该如何遍历？
 
 ```css
-this.props.children 的值有三种可能：
-    1.当前组件没有子节点，它就是 undefined;
-    2.有一个子节点，数据类型是 object ；
-    3.有多个子节点，数据类型就是 array 。
-系统提供React.Children.map()方法安全的遍历子节点对象
+在 React 中，props.children 是一个特殊的属性，包含组件的子元素。
+如果子元素是多个 React 元素或组件，props.children 将是一个 对象 或 数组。
+但直接调用 map() 遍历时，可能会收到异常提示，原因在于：
+
+1.问题原因：
+-props.children 的类型问题：props.children 的值并不总是一个数组或可以直接使用 map 的结构，
+可能是 string、number、boolean 或 null，这些类型无法直接使用 map。
+-React 会将单个子元素包装成一个普通的对象，而不是数组，因此直接使用 map 会抛出异常。
+
+-2.解决方法：你可以通过以下方式处理和遍历 props.children：
+-检查 props.children 类型：你可以先判断 props.children 是否是数组，或者是需要进行遍历的对象。
+
+import React from 'react';
+const MyComponent = (props) => {
+  // 确保 props.children 是一个数组
+  const childrenArray = React.Children.toArray(props.children);
+
+  return (
+    <div>
+      {childrenArray.map((child, index) => (
+        <div key={index}>{child}</div>
+      ))}
+    </div>
+  );
+};
+
+export default MyComponent;
+
+-React.Children.toArray：
+React.Children.toArray() 会确保无论子元素是单个元素还是多个元素，都会被转换为一个数组。
+因此，使用 map 遍历时不会出错。
+
+
+3-总结
+直接对 props.children 使用 map 时，如果 children 不是数组，会抛出异常。
+使用 React.Children.toArray(props.children) 来确保 props.children 为数组后再调用 map 遍历
 ```
 
 ### 2.12 面试中的一道题:
@@ -306,24 +409,72 @@ this.props.children 的值有三种可能：
 答案
 
 ```
-答案：4 次 log 的值分别是：0、0、2、3。
- （如果想知道到底为什么，可以看另一篇文章，《React中this.setState到底做了什么？》）
+第 1 次 console.log 输出：0
+第 2 次 console.log 输出：0
+第 3 次 console.log 输出：0
+第 4 次 console.log 输出：1
+
+所以，四次 console.log 打印的 val 分别是：0, 0, 0, 1。
 ```
 
 ### 2.13 XSS与CSRF介绍
 
-```
-XSS是一种跨站脚本攻击，是属于代码注入的一种，攻击者通过将代码注入网页中，其他用户看到会受到影响(代码内容有请求外部服务器);
+1.XSS（Cross-Site Scripting）跨站脚本攻击
 
-CSRF是一种跨站请求伪造，冒充用户发起请求，完成一些违背用户请求的行为(删帖，改密码，发邮件，发帖等)
+```
+XSS 是一种安全漏洞，攻击者通过将恶意脚本注入到网页中，
+当其他用户浏览该页面时，恶意脚本会在受害者的浏览器中执行，进而窃取用户信息或执行未授权的操作。
+
+1.XSS 类型：
+-存储型 XSS：恶意脚本被存储在服务器上，例如评论、文章内容等，其他用户访问时会执行该脚本。
+-反射型 XSS：恶意脚本通过 URL、表单等传递给服务器，服务器将其直接返回给用户，脚本在用户浏览器中执行。
+-OM-based XSS：攻击脚本通过操作页面的 DOM 结构引发攻击。
+
+2.防御方法：
+-对用户输入进行严格的过滤和转义。
+-使用安全的模板引擎，避免直接在网页中插入未经处理的用户输入。
+-设置 HTTP 安全头部，如 Content-Security-Policy (CSP)。
+-使用框架的自动防护功能，如 React 会自动转义插入的 HTML。
+```
+
+2.CSRF（Cross-Site Request Forgery）跨站请求伪造
+
+```
+CSRF 是一种通过伪造用户的请求来执行恶意操作的攻击。
+攻击者利用用户已登录的身份，在受害者不知情的情况下发起请求，
+从而执行一些不应有的操作，如转账、修改用户信息等。
+
+1.CSRF 攻击过程：
+-用户已登录并有有效的身份验证信息（如 cookie）。
+-攻击者通过诱导用户点击恶意链接、访问恶意网站等方式，触发用户的浏览器向目标网站发送请求。
+-由于浏览器会自动携带用户的认证信息（如 cookie），目标网站无法区分请求是合法用户发出的还是攻击者伪造的。
+
+2.防御方法：
+-使用 token 验证：通过在每个请求中加入随机生成的 CSRF token，服务器验证该 token 来确保请求来自合法用户
+-使用SameSite Cookie属性：设置SameSite 属性为Strict或Lax，限制浏览器跨站请求时不会自动发送cookie。
+-验证请求来源：检查请求的来源（如 Referer 头）来确认请求是否来自合法页面
+```
+
+3.总结
+
+```
+XSS 攻击通过在页面中注入恶意脚本，执行未授权操作，通常窃取用户信息。
+CSRF 攻击通过伪造用户的请求，执行用户未授权的操作，通常是在用户已登录的情况下发起。
+
+这两者都涉及到 Web 安全问题，但攻击方式不同，防御方法也有区别。
 ```
 
 ### 2.14 在使用redux过程中，如何防止定义的action-type的常量重复？
 
 ```
-ES6引入了一种新的原始数据类型Symbol，表示独一无二的值。
-Symbol函数前不能使用new命令，否则会报错。这是因为生成的Symbol是一个原始类型的值，不是对象
-Symbol函数可以接受一个字符串作为参数，表示对Symbol实例的描述，主要是为了在控制台显示，或者转为字符串时，比较容易区分。
+在使用 Redux 的过程中，为了防止定义的 action-type 常量重复，可以采用以下几种方式：
+
+1.集中管理：将常量放在单独的文件中集中管理，避免重复。
+2.命名空间：通过模块名前缀来区分不同模块的常量。
+3.Redux Toolkit：使用 createSlice 自动生成 action-type，减少手动操作。
+4.TypeScript 枚举：使用枚举来组织常量，避免重复。
+
+这些方式能有效地防止 action-type 常量的重复定义。
 ```
 
 ## 三 参考
