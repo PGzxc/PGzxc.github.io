@@ -16,7 +16,7 @@ date: 2024-03-20 11:15:37
 4. React中的组件有哪些类型？
 5. 什么是props？
 6. 什么是state？ <!--more-->
-7. 什么是生命周期方法？(React中有哪些生命周期方法？)
+7. 什么是生命周期方法？(React中有哪些生命周期方法？/React Native组件的生命周期)
 9. 什么是constructor()方法？
 10. 什么是render()方法？
 11. 什么是componentDidMount()方法？
@@ -242,7 +242,7 @@ class Counter extends React.Component {
 -State 则让组件自己管理数据，是「内部可变数据」
 ```
 
-### 2.7 什么是生命周期方法？(React中有哪些生命周期方法？)
+### 2.7 什么是生命周期方法？(React中有哪些生命周期方法？/React Native组件的生命周期)
 
 ```
 生命周期方法是类组件在创建、更新和销毁的过程中，
