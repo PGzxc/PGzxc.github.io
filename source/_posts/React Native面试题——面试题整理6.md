@@ -11,227 +11,523 @@ date: 2024-03-19 16:28:39
 ## 一 面试题汇总
 
 1. 简单介绍下React Native，以及和React.js的区别
-2. React Native 相对于原生 IOS、Android 有哪些优、劣势
 3.  什么是JSX语法
 4. 什么是高阶组件（HOC）
-5. 简单介绍下功能组件和类组件的区别 <!--more-->
-6. 调用setState后会发生什么
-7. 简单介绍下React Native组件的生命周期函数
-8. 简单介绍下useEffect生命周期钩子函数
-9. React Native如何实现异步存储
-10. Immutable有什么作用
-11. 简单介绍下Redux状态管理工具
-12. 简单介绍下Bundle 加载机制
-13. React Native如何实现热更新
+5. 简单介绍下功能组件(Functional Component)和类组件(Class Component)的区别 
+9. React Native如何实现异步存储<!--more-->
 14. 如何开发React Native插件
 
 ## 二 面试题解答(仅供参考)
 
 ## 2.1 简单介绍下React Native，以及和React.js的区别
 
-React Native是一个JavaScript框架，由Facebook开发，以满足日益增长的移动应用开发的需求。它是开源的，基于JavaScript的。它被设计为用可重复使用的组件构建本地移动应用程序。它使用了大量的ReactJS组件，但在不同的设备上以原生方式实现它们。它调用Objective-C（用于iOS）和Java（用于Android）中的本地渲染API。
-
-ReactJS也是由Facebook开发的一个开源的JavaScript库，主要用于为移动和网络应用开发响应式的用户界面开发场景。它有一个可重复使用的组件库，旨在帮助开发者为他们的应用程序建立基础。 
-
-和ReactJS相比，React Native使用的JSX语法等其他方面有如下的一些区别：
-
-- 语法：React Native和ReactJS都使用JSX，但ReactJS使用HTML标签，而React Native不使用。
-- 导航：React Native使用自己的内置导航库，而ReactJS使用react-router。
-- 动画：ReactJS使用CSS动画。React Native使用其动画API。
-- DOM：ReactJS使用部分刷新的虚拟DOM。React Native在渲染UI组件时需要使用其本地API。
-- 用法：ReactJS主要用于Web应用开发，而React Native则专注于移动应用。
-
-### 2.2 React Native 相对于原生 IOS、Android 有哪些优、劣势
-
-**优势：**
-
-- 性能方面媲美原生App。
-- 绝大部分代码同时适用IOS/Android，一套代码两套系统适用。
-- 使用Javascript编码，上手容易。
-- 组件式开发，易于管理维护，代码复用率高。
-- 代码更改后会自动刷新，节省等待时间。
-- 支持热更新，更新无需重新安装App。
-
-**劣势：**
-
-- RN组件库并不是全面，当遇到某些特殊功能，需要花费大量时间、精力进行插件开发；
-- 系统适配方面， IOS版本略好，android发展较慢；
-- 编程方面， iOS和Android代码并非通用，有可能需要维护两套代码或者在代码中做一些条件判断或编译；
-- 开发复杂应用必须精通原生开发，开发效率并不比原生开发的熟手快。很多问题（包括兼容性问题解决）任然需要原生开发。
-- 升级RN版本或需要大动干戈，尤其向下兼容不好；
-
-### 2.3 什么是JSX语法
-
-JSX，是React使用的一种XML/HTML模板语法。它扩展了ECMAScript，允许XML/HTML类文本与JavaScript和React代码重合。它允许我们把HTML放到JavaScript中。它比普通的JavaScript更快，使创建模板更容易，支持使用组件来构建应用的界面，如下所示。
-
 ```
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+1.不同
+虽然 React 和 React Native 都使用 JavaScript 和 React 语法来构建应用，
+但它们的使用场景和实现方式有所不同：
+
+1.1用途
+-React.js：
+-用于构建 Web 应用。通过虚拟 DOM（Virtual DOM）来更新网页上的元素。
+-React Native：
+-用于构建 移动应用。
+-通过桥接（bridge）技术将 JavaScript 代码与原生平台的 API 进行交互，实现原生控件的渲染。
+
+1.2 渲染方式
+-React.js：渲染成 HTML，然后通过浏览器的 DOM 来展示页面。
+-React Native：渲染成 原生组件，如iOS的UIView和Android的View，直接在原生平台上显示。
+
+1.3 开发环境
+-React.js：主要开发和运行在 浏览器 中，使用 HTML 和 CSS 来样式化组件。
+-React Native：
+-通过原生开发工具（如 Xcode 和 Android Studio）构建和调试，
+-样式使用的是类似于 CSS 的 Flexbox。
+
+1.4 组件
+-React.js：使用 HTML 标签（如 <div>、<span>）来构建界面。
+-React Native：
+提供了一组专门的组件（如 <View>、<Text>、<Image>）来替代 HTML 元素，
+这些组件会被转换为原生的 UI 控件。
+
+1.5 代码重用性
+React.js：只能在 Web 应用中使用。
+React Native：虽然主要用于移动应用，但也可以与 Web 技术（如 React DOM）进行集成，实现一定的代码重用。
+
+2.总结
+-React.js 主要用于 Web 开发，通过 HTML 渲染内容。
+-React Native 主要用于 移动应用开发，通过原生控件渲染 UI。
+-两者的主要区别在于渲染方式、开发环境和目标平台，React Native 采用原生渲染，
+而 React.js 在 Web 上渲染为 HTML 元素。
+
+一句话总结：React Native是React的一个分支，用于构建跨平台的移动应用，而React.js则专注于构建 Web 应用
 ```
 
-### 2.4 什么是高阶组件（HOC）
-
-高阶组件是纯函数，它接收组件并返回新组件，它们的主要目的是浓缩和重用不同组件的有状态逻辑，它被认为是高级技术，而且它们不是React API的一部分。下面是一个HOC的例子：
+### 2.2 什么是JSX语法
 
 ```
-function simpleHOC(WrappedComponent) {
-  ... 
+1.概念
+JSX（JavaScript XML） 是一种 JavaScript 的语法扩展，它允许在JavaScript代码中直接编写类似HTML的语法。
+React 使用 JSX 来描述 UI，简化了组件的结构和渲染。
+
+2.JSX 的基本特点：
+2.1 语法类似 HTML：
+JSX 看起来像是 HTML，但实际上它是 JavaScript 语法扩展。
+你可以在 JSX 中写标签，如 <div>, <button>, <h1> 等。
+
+2.2 需要返回一个单一根元素：
+在 JSX 中，返回的内容必须是一个单一的父元素。这意味着你不能返回多个元素直接并列在一起。
+如果需要多个元素，可以将它们包裹在一个父元素中，通常是 div 或者使用 React.Fragment。
+
+2.3 属性采用驼峰命名法：
+与 HTML 中的属性不同，JSX 中的属性名称采用驼峰命名法。例如：
+HTML: <input type="text">
+JSX: <input type="text" />
+
+2.4 JavaScript 表达式：
+在 JSX 中，可以在大括号 {} 内嵌入任何有效的 JavaScript 表达式。
+例如，可以插入变量、函数或计算值：
+const name = 'React';
+const element = <h1>Hello, {name}!</h1>;
+
+2.5 条件渲染：
+可以使用 JavaScript 的条件语句（如 if、&&、三元运算符等）来动态渲染 JSX 内容：
+const isLoggedIn = true;
+const greeting = isLoggedIn ? <h1>Welcome Back!</h1> : <h1>Please Log In</h1>;
+
+2.6 事件处理：
+在 JSX 中，事件名称采用驼峰命名法，例如 onClick、onChange 等
+<button onClick={handleClick}>Click Me</button>
+
+2.7 样式：
+在 JSX 中，内联样式必须以 JavaScript 对象的形式传递，属性名称采用驼峰命名法：
+const style = { color: 'blue', fontSize: '20px' };
+<div style={style}>Hello</div>
+
+3.JSX 示例
+import React from 'react';
+
+function Welcome(props) {
+  return <h1>Hello, {props.name}!</h1>;
 }
-```
 
-然后，我们就可以像使用其他组件一样使用NewComponent组件
-
-### 2.5 简单介绍下功能组件和类组件的区别
-
-功能组件也被称为无状态组件，功能组件接受属性和参数并返回HTML，它们在不使用状态的情况下给出解决方案，它们可以定义为有或没有箭头函数。
-
-类组件也被称为有状态组件。，它们是ES6类，扩展了React库中的组件类，它们实现了逻辑和状态。类组件在返回HTML时需要有一个render()方法，开发中可以向它们传递属性和参数，并通过this.props访问它们。
-
-### 2.6 调用setState后会发生什么
-
-将传入的参数对象与当前的状态合并，然后触发调和过程。在调和过程中react会根据新的状态以相对高效的方式构建react元素树。react会对新旧元素树进行diff算法计算出差异，然后根据差异进行最小化渲染
-
-### 2.7 简单介绍下React Native组件的生命周期函数
-
-React Native组件的生命周期大体可以分为：创建阶段、实例化阶段、运行（更新）阶段、销毁阶段。
-
-其中，创建阶段中会初始化组件的属性类型和默认属性。实例化阶段主要是实例化组件类的时候，也就是该组件类被调用的时候触发，主要由constructor、componentWillMount、render、componentDidMount等生命周期函数构成。运行（更新）阶段则主要由componentWillReceiveProps、shouldComponentUpdate、componentWillUpdate、render以及componentDidUpdate构成。销毁阶段主要是在组件消亡的时候触发，主要由componentWillUnmount构成。
-
-![][1]
-
-不过，随着函数组件的流程，现在开发RN应用基本都是使用函数组件的方式进行开发，配合React的Hooks函数，就可以实现类组件生命周期功能。
-
-### 2.8 简单介绍下useEffect生命周期钩子函数
-
-我们可以使用 useEffect 钩子在函数组件中运行副作用。 轮询请求、直接 DOM 操作以及使用诸如 setTimeout() 之类的计时器函数都是副作用的示例。
-
-以前，这些副作用是通过使用生命周期方法来实现的，例如 componentDidMount()、componentDidUpdate() 和 componentWillUnmount()。 useEffect Hook 是所有这些方法的组合，它接受在渲染操作发生时调用的回调函数。
-
-默认情况下，useEffect Hook 在第一次渲染后和每次更新后运行。 useEffect 挂钩有助于避免冗余代码和组相关代码，使用示例如下。
-
-```
-function Counter() {
-  const [count, setCount] = useState(0);
- 
-  useEffect(() => {
-    document.title = `You clicked ${count} times`;
-  });
- 
+function App() {
+  const name = 'World';
   return (
     <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
+      <Welcome name={name} />
     </div>
   );
 }
+
+export default App;
+
+4. 总结
+JSX 是一种方便的语法扩展，使得我们可以在 JavaScript 中直接编写类似 HTML 的代码来描述界面。
+它通过将 HTML 和 JavaScript 合并，让代码更简洁、更易读
+
+5. 一句话总结：JSX 是React中用来定义UI结构的语法扩展，类似于HTML，但具有JavaScript的功能性
 ```
 
-### 2.9 React Native如何实现异步存储
 
-Async Storage 是一个 React Native 社区维护的模块，它提供了一个异步的、未加密的键值对存储。 它本质上是 React Native 的基于 Web 的本地存储版本。当我们需要存储全局应用程序范围的变量、持久的 GraphQL 或 Redux 状态或我们希望在用户关闭应用程序后保留的其他非敏感数据时，异步存储非常有用。
-
-因为异步存储只能存储字符串数据，所以对象数据必须先序列化后才能存储。此外，我们不应该在异步存储中存储敏感数据，例如令牌或大量数据。
-
-### 2.10 Immutable有什么作用
-
-Javascript 中的对象一般是可变的(Mutable)。 由于使用了引用赋值，新对象简单引用原始对象后，新旧对象值的修改都将影响到彼此。虽然这样做可以节省内存，但应用变得复杂后，这就造成了非常大的隐患，Mutable带来的优点变得得不偿失。为了解决这个问题，一般的做法是使用深浅拷贝来避免修改，但这样又造成了CPU和内存的浪费。而Immutable可以很好地解决这些问题。 
-
-目前流行的Immutable库有两个：immutable.js和seamless-immutable。
-
-**Imutable的优点**
-
-- 降低了Mutable带来的复杂度；
-- 节省内存；
-- Undo/Redo, Copy/Paste, 甚至时间旅行这些功能做起来都是小菜一碟；
-- 并发安全；
-- 拥抱函数式编程；
-
-**Immutable的缺点**
-
-- 需要学习新的API；
-- 增加了资源文件的大小；
-- 容易和原生对象混淆；
-
-Immutable Data是一旦被创建，就不能被更改的数据。对Immutable 对象的任何修改或添加删除操作都会返回一个新的Immutable 对象。Immutable 实现原理是持久化数据结构（Persistent Data Structure）,也就是使用旧数据创建新数据的同时要保证旧数据的可用且不变。同时又为了避免深拷贝把所有节点都复制一遍带来的性能损耗，Immutable 使用了Structure Sharing(结构共享)，即如果对象树中一个节点发生变化，只修改这个节点和受它影响的父节点，其他节点则进行共享。
-
-### 2.11 简单介绍下Redux状态管理工具
-
-Redux是前端开发中的一个状态管理工具，主要由Action、Store和Reducers三部分组成。其中，Store用于存储应用程序的状态数据，组件通过dispatch()方法触发Action，Action将接收的用户事件转发给Store，Store接收Action并转发给Reducer，Reducer根据Action类型对状态数据进行处理并将处理结果返回给Store执行数据存储，整个执行的流程如下。
-
-![][2]
-
-接着，其他组件通过订阅Store状态的来刷新自身的状态，从而实现组件之间的状态数据共享。
-
-### 2.12 简单介绍下Bundle 加载机制
-
-在编写业务逻辑的时候，我们会有许多个js文件，打包的时候RN会将这些个js文件打包成一个叫index.android.bundle(ios的是index.ios.bundle)的文件，所有的js代码(包括rn源代码、第三方库、业务逻辑代码)都在这一个文件里，启动App时会第一时间加载bundle文件，所以脚本热更新要做的事情就是替换掉这个bundle文件。
-
-### 2.13 React Native如何实现热更新
-
-在React Native项目集成热更新目前有4个方案。
-
-**CodePush**
-
-由鼎鼎大名的微软出品，是App Center的一部分。如果不考虑稳定性，这绝对是不二选择。但是非常可惜，因某些不可言表的原因，其服务在中国非常不稳定。有人说不选择CodePush的原因是因为它的服务器在海外，速度慢。其实慢与快不是考虑的重点（除非慢到极端），一个React Native App的Js bound通常只有几M，能达到20M的都是罕见的了，在如今的网络环境下，这根本就不是个事。所以考虑的重点其实是稳定性。
-
-经本人在公司的网络环境下测试，发布新版不成功的概率超过10%，更新不成功（无法连接、中断、以及不知是何原因）的概率超过20%。这还仅仅是在一个网络环境下和某个时间段内，如果放大到全国和所有时间段，那这个概率应该还会提高。
-
-因此，如果你的产品是面向海外用户的，那么就选择CodePush，不用考虑其它。如果是面向国内用户的，那么不建议使用。
-
-**中文社区的CodePush**
-
-由CodePush中文社区出品。其实就是微软的CodePush，将服务器改在了国内，然后在用法上进行了一些封装和简化。我们公司现在用的是这个。之所以选择它，是因为我最早测试的是微软的CodePush，然后顺理成章就选择了这个。
-
-其特点是使用简单。虽然仍然是微软的CodePush，但经过二次封装，其用法要比微软的CodePush更简单直接。当然，之所以有这种感觉，也有可能是我在折腾微软的CodePush时是刚开始接触，而在使用中文社区的CodePush时已经有了前面的积累，所以就感觉上更简单了。
-
-**Pushy**
-
-由React Native中文社区出品。正是由于微软的CodePush在中国不稳定，所以促使中文社区的开发者们开发出了一些类似功能的服务。Pushy应该算是其中的佼佼者。
-
-经在公司的网络环境下测试，其服务还算比较稳健。
-
-从用法上来看，其实也能看到一些CodePush的影子。当然，热更新功能最核心的无外乎就是上传与更新，也不可能玩出朵花来。
-
-对比中文社区的两个产品，感觉中文社区的CodePush是在微软的CodePush上做减法，而Pushy是在微软的CodePush上做的自定义开发。
-
-**自建CodePush服务器**
-
-由于微软的CodePush在中国不稳定，所以网上有些文章介绍用一些开源项目搭建自己的CodePush服务器，不过这需要开发者具备全栈的技术能力。
-
-### 2.14 如何开发React Native插件
-
-在React Native中，开发插件需要全局安装react-native-cli和react-native-create-library两个插件。然后，我们就可以使用命令react-native-create-library创建一个插件项目。
+### 2.3 什么是高阶组件（HOC）
 
 ```
-react-native-create-library --package-identifier 包名 --platforms android,ios 插件名
+1.概念
+高阶组件（Higher-Order Component, HOC） 是一种设计模式，是 React 中用于重用组件逻辑的技术。
+它是一个 函数，接受一个组件作为参数并返回一个新的组件。
+HOC 不会修改原有组件的代码，而是通过包装原组件来扩展其功能。
+
+2.HOC 的特点：
+-接受组件作为参数：HOC 接受一个 React 组件并返回一个新的组件。
+-增强组件功能：HOC 通常用于为组件添加新的功能或行为，例如：添加状态管理、处理副作用、权限控制等。
+-不修改原组件：HOC 不会直接修改原组件，而是返回一个新的组件，保持原组件的纯粹性。
+-可以链式调用：多个 HOC 可以通过链式调用来增强同一个组件的功能。
+
+3.HOC 的例子
+
+import React from 'react';
+// 一个简单的 HOC，给组件添加新的功能（例如：计时器）
+function withTimer(Component) {
+  return class extends React.Component {
+    state = {
+      time: new Date().toLocaleTimeString(),
+    };
+
+    componentDidMount() {
+      this.timer = setInterval(() => {
+        this.setState({
+          time: new Date().toLocaleTimeString(),
+        });
+      }, 1000);
+    }
+
+    componentWillUnmount() {
+      clearInterval(this.timer);
+    }
+
+    render() {
+      return <Component {...this.props} time={this.state.time} />;
+    }
+  };
+}
+
+// 一个普通的展示组件
+function ShowTime({ time }) {
+  return <h1>The current time is: {time}</h1>;
+}
+
+// 使用 HOC 增强 ShowTime 组件
+const ShowTimeWithTimer = withTimer(ShowTime);
+
+// 在应用中使用
+function App() {
+  return <ShowTimeWithTimer />;
+}
+
+export default App;
+
+4. HOC 的应用场景
+-状态共享：多个组件之间共享相同的状态逻辑。
+-代码复用：将多个组件中相同的逻辑提取到 HOC 中，避免重复代码。
+-权限控制：在组件渲染前进行权限检查，决定是否渲染该组件。
+-数据获取：HOC 可以负责从服务器获取数据并将其传递给组件。
+
+5.总结
+高阶组件HOC是React中的一种设计模式，它通过函数包装现有组件并返回新的组件来扩展功能，而不是直接修改原组件。
+通过 HOC，可以实现代码复用、逻辑分离以及增强组件功能。
 ```
 
-紧接着，我们需要到原生Android，iOS工程中去开发功能，然后再通过RN的NativeModules实现和原生原生Android，iOS的方法调用，比如原生Android，iOS提供了一个alipay方法，那么我们可以在RN中使用如下的方式进行调用：
+### 2.4 简单介绍下功能组件(Functional Component)和类组件(Class Component)的区别 
 
 ```
-NativeModules.RNAlipay.alipay(orderInfo)
+在 React 中，功能组件和类组件是两种创建组件的方式。
+随着 React Hooks 的引入，功能组件逐渐成为更常用的组件形式，但类组件依然在一些项目中存在。
+以下是两者的区别：
+
+1.定义方式
+1.1 功能组件（Functional Component）：
+使用 JavaScript 函数来定义组件。
+const MyComponent = (props) => {
+  return <div>{props.text}</div>;
+};
+
+1.2 类组件（Class Component）：
+使用 ES6 类来定义组件，并继承自 React.Component
+class MyComponent extends React.Component {
+  render() {
+    return <div>{this.props.text}</div>;
+  }
+}
+
+2. 使用状态（State）
+2.1 功能组件：
+之前功能组件没有状态，但引入 React Hooks 后，功能组件也可以使用 useState 来管理状态。
+const Counter = () => {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <p>{count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+};
+2.2 类组件：
+类组件使用 this.state 来管理状态，并通过 this.setState() 来更新状态。
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
+  increment = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+  render() {
+    return (
+      <div>
+        <p>{this.state.count}</p>
+        <button onClick={this.increment}>Increment</button>
+      </div>
+    );
+  }
+}
+
+3 生命周期方法
+3.1 功能组件：
+在功能组件中，没有传统的生命周期方法，但通过 React Hooks（如 useEffect）可以模拟生命周期的行为。
+const MyComponent = () => {
+  useEffect(() => {
+    // 类似 componentDidMount, componentDidUpdate 和 componentWillUnmount
+    console.log('Component Mounted');
+    return () => console.log('Component Unmounted');
+  }, []);
+  return <div>My Component</div>;
+};
+3.2 类组件：
+类组件可以使用生命周期方法，例如 componentDidMount, componentDidUpdate, componentWillUnmount。
+class MyComponent extends React.Component {
+  componentDidMount() {
+    console.log('Component Mounted');
+  }
+  componentWillUnmount() {
+    console.log('Component Unmounted');
+  }
+  render() {
+    return <div>My Component</div>;
+  }
+}
+
+4.代码简洁性
+
+4.1 功能组件：
+功能组件代码更简洁，尤其是在没有状态或生命周期方法时。
+引入 React Hooks 后，功能组件比类组件更直观和简洁。
+4.2 类组件：
+类组件比功能组件要复杂一些，特别是需要使用 constructor 和 this 关键字时。
+
+5.性能
+5.1 功能组件：
+在 React 16.8 版本之前，功能组件不能处理状态和副作用，因此在性能方面通常更轻量。
+随着 Hooks 的加入，性能差异已经非常小。
+
+5.2 类组件：
+类组件会涉及更多的内存分配和复杂性，但 React 已经做了优化，性能差距非常小。
+
+6.一句话总结
+功能组件更简洁、轻量，使用 React Hooks 后功能更强大，
+而类组件则提供了传统的状态管理和生命周期方法，适用于需要复杂功能的情况
+```
+
+总结
+
+|     特性     |                功能组件                |                      类组件                      |
+| :----------: | :------------------------------------: | :----------------------------------------------: |
+|   定义方式   |              使用函数定义              |        使用类定义，继承 `React.Component`        |
+|   状态管理   | 通过 `useState`（React Hooks）管理状态 |  通过 `this.state` 和 `this.setState` 管理状态   |
+| 生命周期方法 |   使用 `useEffect` 模拟生命周期方法    | 使用内建的生命周期方法（如 `componentDidMount`） |
+|  代码简洁性  |                 更简洁                 |                      更复杂                      |
+|     性能     |                性能相似                |                     性能相似                     |
+|              |                                        |                                                  |
+
+### 2.5 React Native如何实现异步存储
+
+```
+1.概念
+在React Native中，异步存储（AsyncStorage）
+是一个用于存储和读取小型数据（如设置、用户偏好、会话信息等）的简单解决方案。
+它基于键值对的形式进行存储，并支持异步操作。
+
+在 React Native 中，之前使用的是 AsyncStorage，但它现在已经被移到独立的包中，
+即 @react-native-async-storage/async-storage。
+这个库提供了一个简单的 API 来进行数据存储和读取。
+
+2. 使用
+2.1 安装 AsyncStorage
+要在React Native项目中使用异步存储，需要首先安装 @react-native-async-storage/async-storage 库：
+npm install @react-native-async-storage/async-storage
+
+2.2 常见的 API 操作
+2.2.1 存储数据（setItem）：使用 setItem 方法将数据存储到异步存储中。
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
+const storeData = async (value) => {
+  try {
+    await AsyncStorage.setItem('key', value);
+  } catch (e) {
+    console.error("Error saving data", e);
+  }
+};
+2.2.2 读取数据（getItem）：使用 getItem 方法从异步存储中获取数据
+const getData = async () => {
+  try {
+    const value = await AsyncStorage.getItem('key');
+    if(value !== null) {
+      console.log(value);
+    }
+  } catch (e) {
+    console.error("Error reading value", e);
+  }
+};
+2.2.3 删除数据（removeItem）：使用 removeItem 方法删除存储的数据
+const removeData = async () => {
+  try {
+    await AsyncStorage.removeItem('key');
+  } catch (e) {
+    console.error("Error removing value", e);
+  }
+};
+2.2.4 清除所有数据（clear）：清空所有的存储数据。
+const clearAllData = async () => {
+  try {
+    await AsyncStorage.clear();
+  } catch (e) {
+    console.error("Error clearing data", e);
+  }
+};
+2.2.5 多项存储/读取（multiSet, multiGet）：可以同时存储或读取多个键值对。
+const multiSet = async () => {
+  try {
+    await AsyncStorage.multiSet([['key1', 'value1'], ['key2', 'value2']]);
+  } catch (e) {
+    console.error("Error setting multiple values", e);
+  }
+};
+
+const multiGet = async () => {
+  try {
+    const values = await AsyncStorage.multiGet(['key1', 'key2']);
+    console.log(values); // [['key1', 'value1'], ['key2', 'value2']]
+  } catch (e) {
+    console.error("Error getting multiple values", e);
+  }
+};
+
+3. 使用场景
+-存储用户偏好设置：如保存语言设置、主题（暗黑/亮白）等。
+-会话管理：存储用户的登录信息、身份验证 token 等。
+-小型数据缓存：缓存一些简单的应用数据，以便在没有网络连接时使用。
+
+4.注意事项
+-容量限制：
+AsyncStorage 适合存储少量数据（例如：少于 6MB 的数据），不适合存储大量的文件或数据库。
+
+-数据类型：
+AsyncStorage 存储的数据必须是字符串类型，如果需要存储对象，需要先将对象转换成字符串
+（如 JSON.stringify()）存储，读取时再进行解析（如 JSON.parse()）。
+
+5.总结
+React Native实现异步存储通过
+@react-native-async-storage/async-storage库提供的API来进行数据的存储、读取和删除操作，
+适合用于存储少量数据，如用户设置、会话信息等。它采用异步操作，保证不会阻塞主线程，从而提升应用的性能
+```
+
+### 2.6 如何开发React Native插件
+
+```
+React Native 插件（也称为原生模块或原生扩展）是 React Native 中与原生代码进行交互的桥梁。
+它允许你在 React Native 中调用 Android 和 iOS 平台的原生 API，或将一些平台特有的功能封装成组件或模块。
+
+开发 React Native 插件的过程可以分为以下几个步骤：
+
+1.步骤 1：创建一个新的 React Native 项目
+首先，确保你已经安装了 React Native 环境，并创建一个新的 React Native 项目。
+npx react-native init MyNativePluginApp
+cd MyNativePluginApp
+
+2.步骤 2：创建一个新的原生模块（插件）
+
+你可以通过手动创建一个原生模块来实现插件。
+原生模块分为 Android 和 iOS 两部分，开发时需要分别处理。
+
+2.1  创建 Android 原生模块
+
+2.1.1 在 android 文件夹下创建一个新的 Java 类，继承 ReactContextBaseJavaModule。
+例如，创建一个 ToastModule.java 文件
+
+package com.mynativeplugin;
+import android.widget.Toast;
+import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.ReactContextBaseJavaModule;
+import com.facebook.react.bridge.ReactMethod;
+
+public class ToastModule extends ReactContextBaseJavaModule {
+
+  public ToastModule(ReactApplicationContext reactContext) {
+    super(reactContext);
+  }
+
+  @Override
+  public String getName() {
+    return "ToastModule";
+  }
+
+  @ReactMethod
+  public void show(String message) {
+    Toast.makeText(getReactApplicationContext(), message, Toast.LENGTH_LONG).show();
+  }
+}
+
+2.1.2 在 MainApplication.java 中注册这个模块：
+
+import com.mynativeplugin.ToastModule;  // 导入你的模块
+@Override
+public List<ReactPackage> getPackages() {
+  return Arrays.<ReactPackage>asList(
+    new MainReactPackage(),
+    new ToastModule()  // 注册你的模块
+  );
+}
+
+2.2 创建 iOS 原生模块
+2.2.1 在 ios 文件夹下创建一个新的 Objective-C 类，继承 RCTBridgeModule。
+例如，创建一个 ToastModule.m 文件：
+
+#import "React/RCTBridgeModule.h"
+#import "React/RCTLog.h"
+@interface ToastModule : NSObject <RCTBridgeModule>
+@end
+
+@implementation ToastModule
+
+RCT_EXPORT_MODULE();  // 将模块导出为 React Native 模块
+
+RCT_EXPORT_METHOD(show:(NSString *)message) {
+  RCTLogInfo(@"Showing toast with message: %@", message);
+  // 这里可以调用原生的 iOS Toast 功能，或使用 UIAlertController 等
+}
+
+@end
+
+2.2.2 在 AppDelegate.m 中注册该模块
+
+3.步骤 3：创建 JavaScript 端的接口
+为了在JavaScript中调用原生模块，需要在JavaScript中创建一个接口，使用NativeModules来调用原生模块的方法。
+例如，创建一个 Toast.js 文件，调用刚才在原生代码中定义的方法：
+
+import { NativeModules } from 'react-native';
+const { ToastModule } = NativeModules;
+
+const showToast = (message) => {
+  ToastModule.show(message);  // 调用原生模块的 show 方法
+};
+export default showToast;
+
+4.步骤 4：在 React Native 中使用插件
+现在，你已经创建了一个原生模块，可以在 React Native 中调用它
+
+import React from 'react';
+import { Button } from 'react-native';
+import showToast from './Toast';  // 导入刚才创建的 JS 接口
+
+const App = () => {
+  return (
+    <Button
+      title="Show Toast"
+      onPress={() => showToast('Hello from Native!')}
+    />
+  );
+};
+export default App;
+
+5.步骤 5：测试插件
+运行 React Native 项目，确保插件能够在设备上正常工作。
+npx react-native run-android   # 对于 Android
+npx react-native run-ios       # 对于 iOS
+
+6.步骤 6：发布插件（可选）
+如果你想将插件发布给其他开发者使用，可以创建一个 NPM 包，并通过 NPM 或 Yarn 发布。
+
+-在插件的根目录下创建 package.json 文件。
+-添加适当的包信息，并确保插件支持 React Native 的链接（如果需要的话）。
+-发布到 npm：npm publish
+
+7.总结
+开发一个 React Native 插件主要包括以下几个步骤：
+-在原生平台（Android 和 iOS）中创建模块，定义原生代码。
+-使用 JavaScript 创建接口，通过 NativeModules 访问原生功能。
+-在 React Native 项目中调用该接口，并测试功能。
+-如果需要，发布插件到 npm。
+
+通过这些步骤，你可以扩展React Native的功能，封装原生代码并使其在JavaScript中可用，满足不同的应用需求
 ```
 
 ## 三 参考
