@@ -11,7 +11,6 @@ date: 2024-03-19 10:53:13
 ## 一 面试题汇总
 
 1. RN生命周期？哪些能setState？
-2. Code Push的原理是什么？
 3. 有没有做过动画？
 4. 极光推送有没有遇到什么问题？怎么解决的？
 5. 自己有没有封装过什么组件？ <!--more-->
@@ -24,32 +23,37 @@ date: 2024-03-19 10:53:13
 
 ## 2.1 RN生命周期？哪些能setState？
 
+```
 React Native（RN）组件的生命周期包括以下几个阶段：
 
-1. **挂载阶段（Mounting）**：组件被创建并插入到DOM中。这个阶段包括以下生命周期方法：
+1. 挂载阶段（Mounting）：组件被创建并插入到DOM中。这个阶段包括以下生命周期方法：
    - `constructor()`
    - `static getDerivedStateFromProps()`
    - `render()`
    - `componentDidMount()`
-2. **更新阶段（Updating）**：组件重新渲染，一般由状态或属性的改变引起。这个阶段包括以下生命周期方法：
+2. 更新阶段（Updating）：组件重新渲染，一般由状态或属性的改变引起。这个阶段包括以下生命周期方法：
    - `static getDerivedStateFromProps()`
    - `shouldComponentUpdate()`
    - `render()`
    - `getSnapshotBeforeUpdate()`
    - `componentDidUpdate()`
-3. **卸载阶段（Unmounting）**：组件从DOM中移除。这个阶段包括以下生命周期方法：
+3. 卸载阶段（Unmounting）：组件从DOM中移除。这个阶段包括以下生命周期方法：
    - `componentWillUnmount()`
-4. **错误处理阶段（Error Handling）**：组件在渲染过程中发生错误时调用。这个阶段包括以下生命周期方法：
+4. 错误处理阶段（Error Handling）：组件在渲染过程中发生错误时调用。这个阶段包括以下生命周期方法：
    - `static getDerivedStateFromError()`
    - `componentDidCatch()`
 
-在React Native中，`setState()` 方法可以在组件中用于更新状态。可以调用 `setState()` 方法的生命周期方法包括：
+在React Native中，`setState()` 方法可以在组件中用于更新状态。
+可以调用 `setState()` 方法的生命周期方法包括：
 
 - 在挂载阶段：`constructor()` 和 `componentDidMount()`
-- 在更新阶段：`componentDidUpdate()` 和 `shouldComponentUpdate()`（在 `shouldComponentUpdate()` 中使用 `setState()` 通常是不推荐的，因为可能导致无限循环更新）
+- 在更新阶段：`componentDidUpdate()` 和 `shouldComponentUpdate()`
+（在 `shouldComponentUpdate()` 中使用 `setState()` 通常是不推荐的，
+因为可能导致无限循环更新）
 - 在卸载阶段：`componentWillUnmount()`
 
 需要注意的是，不能在 `render()` 方法中直接调用 `setState()`，因为这可能导致循环更新。
+```
 
 ### 2.2 Code Push的原理是什么？
 
@@ -66,21 +70,38 @@ CodePush 的优势在于，它允许开发人员在不通过应用商店审核�
 
 ### 2.3 有没有做过动画？
 
-React Native 中有一些自带的动画组件和库，同时也有许多第三方动画库可供选择。下面是一些 React Native 中常用的自带动画组件和三方动画库：
+```
+React Native 中有一些自带的动画组件和库，同时也有许多第三方动画库可供选择。
+下面是一些 React Native 中常用的自带动画组件和三方动画库：
 
-### 自带动画组件
+1.自带动画组件
 
-1. **`Animated` API：** React Native 提供了 `Animated` API，允许你创建各种动画效果，包括平移、缩放、旋转、透明度变化等。这是 React Native 中最常用的动画工具。
-2. **`LayoutAnimation`：** `LayoutAnimation` 是 React Native 提供的另一个动画工具，用于在组件布局发生变化时创建动画效果。它可以用来实现简单的布局动画，比如元素的插入、删除、更新等。
+1. `Animated` API：
+React Native 提供了 `Animated` API，
+允许你创建各种动画效果，包括平移、缩放、旋转、透明度变化等。
+这是 React Native 中最常用的动画工具。
+2. `LayoutAnimation`：
+`LayoutAnimation` 是 React Native 提供的另一个动画工具，
+用于在组件布局发生变化时创建动画效果。
+它可以用来实现简单的布局动画，比如元素的插入、删除、更新等。
 
-### 第三方动画库
+2.第三方动画库
 
-1. **`react-native-animatable`：** 这是一个简单易用的动画库，提供了一系列预定义的动画效果，可以通过简单的配置来使用。
-2. **`react-native-reanimated`：** 这是一个强大的动画库，提供了更高级的动画特性和性能优化。它使用了原生动画驱动器，能够实现更流畅的动画效果，并支持更复杂的交互式动画。
-3. **`react-native-gesture-handler`：** 这个库提供了一些手势处理器，可以用来实现各种手势交互效果，比如拖拽、缩放、旋转等。它与 `react-native-reanimated` 结合使用时，可以实现更复杂的手势动画效果。
-4. **`react-native-svg`：** 如果你需要在 React Native 中使用 SVG 图形，并且希望实现动画效果，`react-native-svg` 提供了一些工具和组件来实现 SVG 动画。
+1. `react-native-animatable`：
+这是一个简单易用的动画库，提供了一系列预定义的动画效果，可以通过简单的配置来使用。
+2. `react-native-reanimated`：
+这是一个强大的动画库，提供了更高级的动画特性和性能优化。
+它使用了原生动画驱动器，能够实现更流畅的动画效果，并支持更复杂的交互式动画。
+3. `react-native-gesture-handler`：
+这个库提供了一些手势处理器，可以用来实现各种手势交互效果，比如拖拽、缩放、旋转等。
+它与 `react-native-reanimated` 结合使用时，可以实现更复杂的手势动画效果。
+4. `react-native-svg`：
+如果你需要在 React Native 中使用 SVG 图形，并且希望实现动画效果，
+`react-native-svg` 提供了一些工具和组件来实现 SVG 动画。
 
-这些都是 React Native 中常用的动画工具和库，你可以根据项目需求和个人偏好选择合适的动画工具来使用。
+这些都是 React Native 中常用的动画工具和库，
+你可以根据项目需求和个人偏好选择合适的动画工具来使用。
+```
 
 ### 2.4 极光推送有没有遇到什么问题？怎么解决的？
 
