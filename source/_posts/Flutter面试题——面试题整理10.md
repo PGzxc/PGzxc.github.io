@@ -6,193 +6,317 @@ categories:
 tags:
   - Flutter面试题
 abbrlink: 4d656e39
-date: 2024-05-17 20:53:29
+date: 2024-05-17 17:16:41
 ---
-## 一 面试题汇总
+## 一 面试题整理
 
-1. Flutter Widget和App的生命周期
-2. Flutter三棵树
-3. Flutter中key
-4. Flutter中的Mixin
-5. Flutter中的Sliver
-6. Flutter从启动到显示
-7. flutter overflow问题
+* 自我介绍
+* 项目中遇到过哪些比较棘手的问题，如何解决
+* flutter中用的哪些组件多一些
+* flutter防止白屏是如何做的呢？(靠什么机制)
+* Handler、Message Queue、Looper是什么关系
+* postdelay是什么原理，如何保证postdelay的有序
+* volatitle关键字(如何保证可见性，没有用这个变量会出什么问题)
 
 <!--more-->
 
-## 二 面试题解答(仅供参考)
-
-### 2.1 Flutter Widget和App的生命周期
-
-1-StatefulWidget 生命周期
-
-StatefulWidget 组件生命周期分为三组：
-
-- 1.初始化期：createState() ,initState()
-- 2.更新期：didChangeDependencies(),build(BuildContext context),didUpdateWidget()
-- 3.销毁期：deactivate()，dispose()
-
-2-StatelessWidget 组件生命周期函数
-
-StatelessWidget 组件生命周期函数 : 只有两个 , 分别是 
-
-* createElement() , 
-* build() 
-
-### 2.2 Flutter三棵树
-
-即Widget树、Element树和RenderObject树。
-
-* Widget树：控件的配置信息，不涉及渲染，更新代价极低。
-* RenderObject树：真正的UI渲染树，负责渲染UI，更新代价极大。
-* Element树：Widget树和RenderObject树之间的粘合剂,负责将Widget树的变更以最低的代价映射到 RenderObject树上
-
-### 2.3 Flutter中key
-
-1-什么是key
+## 二 自我介绍
 
 ```
-Widget中有个可选属性key，顾名思义，它是组件的标识符，
-当设置了key，组件更新时会根据新老组件的key是否相等来进行更新，可以提高更新效率。
-但一般我们不会去设置它，除非对某些具备状态且相同的组件进行添加、移除、或者排序时，
-就需要使用到key，不然就会出现一些莫名奇妙的问题
+Flutter 面试中的自我介绍应该简洁明了，重点突出与 Flutter 相关的技能和经验，并展现你的个人特质。
+介绍应包含以下几个方面：
+
+1.简短的个人信息: 姓名、工作年限（或学习年限）、专业背景。
+2.Flutter 相关技能: 
+列举你精通的 Flutter 技能，例如：Widget 使用、状态管理（Provider、BLoC、Riverpod 等）、
+网络请求、动画、异步编程、平台通道、性能优化等。 
+可以使用具体的项目或技术点来支撑你的描述，
+例如："我曾经使用 Provider 完成过一个复杂的电商应用的状态管理，并成功优化了其性能。"
+3.项目经验 (可选):
+简要介绍 1-2 个你参与过的 Flutter 项目，重点突出你的贡献和从中获得的经验。
+避免过于详细的描述，只需要概括性地说明项目类型、你的角色和取得的成果。
+4.个人特质: 
+展现你的积极主动、学习能力强、团队合作能力好等积极的个人品质。 
+可以结合具体的例子来证明你的这些特质
+
+5.求职意向: 简要说明你对这份工作的期待和职业规划
+
+总而言之，自我介绍应该在 1-2 分钟内完成，重点突出与 Flutter 相关的技能和经验，
+并展现你的个人魅力，为后续的面试环节打下良好的基础。 
+记住要真诚、自信，并保持良好的沟通技巧。
 ```
 
-2-key的分类
+## 三 flutter方面
 
-key有两个子类GlobalKey和LocalKey
-
-* GlobalKey：GlobalKey全局唯一key，每次build的时候都不会重建，可以长期保持组件的状态，一般用来进行跨组件访问Widget的状态
-* LocalKey：LocalKey局部key，可以保持当前组件内的子组件状态，用法跟GlobalKey类似，可以访问组件内部的数据。LocalKey有3个子类ValueKey、ObjectKey、UniqueKey。
-
-### 2.4 Flutter中的Mixin
-
-1-什么是Mixin？
+### 3.1 项目中遇到过哪些比较棘手的问题，如何解决
 
 ```
-Mixin是一种将一个类的功能注入到另一个类中的方式，而不涉及继承。
-它允许你将代码模块化，使得不同的类可以共享相同的功能，从而减少重复代码，提高代码的可维护性。
+在Flutter项目中，一些常见的棘手问题及其解决方法包括：
 
-Mixin在Dart语言中通过with关键字实现
-一个类可以通过with关键字引入一个或多个Mixin，从而获得Mixin中定义的功能
+1.性能问题：卡顿和掉帧：在UI复杂或列表项较多时可能会出现卡顿。
+
+解决方法
+- 使用`ListView.builder`或`GridView.builder`来惰性加载列表项。
+- 使用`const`构造函数优化不可变的小部件。
+- 使用`Profiler`工具找出性能瓶颈。
+- 将复杂计算移到后台进行处理（如使用`compute`函数）。
+
+2.状态管理：状态同步问题：在多个组件之间共享状态时，状态可能不同步。
+
+解决方法
+- 选择合适的状态管理方案，如`Provider`、`Riverpod`、`Bloc`、`Redux`等。
+- 了解并正确使用这些包的特性，确保状态在预期时机更新。
+
+3.依赖包冲突：版本冲突：不同依赖包之间可能有版本冲突，导致构建失败。
+
+解决方法
+- 查看`pubspec.yaml`中的依赖版本，手动调整版本号使之兼容。
+- 使用`flutter pub outdated`查看过期包，并升级到兼容版本。
+- 在可能的情况下，选择使用更广泛兼容的版本号（如使用`^`符号）。
+
+4.平台特定问题：iOS和Android差异：有些功能在iOS和Android上的表现不同，或特定平台上的功能无法正常工作。
+
+解决方法
+- 查看官方文档中针对平台的特定指南。
+- 使用`Platform`类或`Platform.isIOS`、`Platform.isAndroid`进行平台区分处理。
+- 如果需要调用原生代码，使用`MethodChannel`与平台原生代码通信。
+
+5.构建和发布问题：构建失败：在不同环境下（如开发、测试、生产）可能会遇到构建失败的问题。
+
+解决方法
+- 确保所有依赖都正确配置，并且没有未解决的依赖冲突。
+- 检查并设置正确的签名配置（尤其是Android的`keystore`和iOS的证书配置）。
+- 使用`flutter clean`清理构建缓存，再重新构建项目。
+
+6.网络请求和数据处理：API请求失败：处理网络请求时可能会遇到超时或数据格式错误等问题。
+
+解决方法
+- 使用`http`包或`dio`包进行网络请求，并处理超时和错误。
+- 确保服务器API返回的数据格式正确，并在客户端进行严格的格式校验。
+- 使用`FutureBuilder`或`StreamBuilder`处理异步数据加载。
 ```
 
-2-Mixin的基本用法
+### 3.2 flutter中用的哪些组件多一些
 
 ```
-// 定义一个简单的Mixin
-mixin LoggerMixin {
-  void log(String message) {
-    print('Log: $message');
-  }
+1.基础组件：
+- Container：一个多功能容器，支持布局、装饰、定位等属性。
+- Text：用于显示一段文本。
+- Image：用于显示图片，可以从网络、文件、内存等加载。
+- Icon：用于显示图标。
+- Scaffold：应用程序页面的基础结构，包含AppBar、Drawer、Snackbar等常用组件。
+- AppBar：顶部应用栏，通常包含标题和操作按钮。
+
+2.布局组件：
+- Column：垂直方向布局多个子组件。
+- Row：水平方向布局多个子组件。
+- Stack：重叠布局，可以让子组件堆叠显示。
+- ListView：可滚动列表，用于显示大量子组件。
+- GridView：网格布局，用于显示两维的子组件列表。
+- Expanded和Flexible：控制子组件在Flex布局（如Row和Column）中的伸缩行为。
+
+3.输入组件：
+- TextField：文本输入框。
+- Checkbox：复选框。
+- Radio：单选按钮。
+- Switch：开关按钮。
+- Slider：滑块。
+- DropdownButton：下拉按钮。
+
+4.按钮组件：
+- RaisedButton（已废弃，推荐使用ElevatedButton）：凸起按钮。
+- FlatButton（已废弃，推荐使用TextButton）：扁平按钮。
+- OutlinedButton：带边框按钮。
+- IconButton：带图标按钮。
+- FloatingActionButton：悬浮按钮，通常用于突出某个重要操作。
+
+5.导航和路由：
+- Navigator：管理应用程序页面的堆栈。
+- Drawer：侧边栏菜单。
+- BottomNavigationBar：底部导航栏。
+- TabBar和TabBarView：标签栏和标签内容视图。
+
+6.高级组件：
+- FutureBuilder：基于异步操作的组件，用于处理Future的结果。
+- StreamBuilder：基于流数据的组件，用于处理Stream的结果。
+- CustomPaint：自定义绘制组件，允许开发者自己绘制图形。
+- AnimationController和AnimatedBuilder：动画控制和构建组件。
+```
+
+### 3.3 flutter防止白屏是如何做的呢？(靠什么机制)
+
+白屏问题的成因
+
+```
+Flutter Android端启动时出现白屏，主要原因是Flutter应用的启动过程相对耗时。
+在Android平台上，应用启动需要经历一系列步骤，包括系统初始化、
+Java虚拟机启动、应用加载、Flutter初始化、Dart虚拟机启动、Flutter应用加载等。
+每一个步骤都会消耗一定的时间，导致白屏现象。
+```
+
+优化方案
+
+```
+1. 启动过程分析
+2. 代码预热
+3. 资源预加载
+4. 异步初始化
+5. 热重载优化
+```
+
+## 四 Android方面
+
+### 4.1 Handler、Message Queue、Looper是什么关系
+
+```
+- Handler封装了消息的发送，也负责接收消。内部会跟Looper关联。
+- Looper 消息封装的载，内部包含了MessageQueue，负责从MessageQueue取出消息，然后交给Handler处理
+- MessageQueue 就是一个消息队列，负责存储消息，有消息过来就存储起来，
+Looper会循环的从MessageQueue读取消息
+```
+
+### 4.2 postdelay是什么原理，如何保证postdelay的有序
+
+1-概念
+
+```
+postdelay是一个在并发编程和分布式系统中常见的概念，通常用于描述在一定延迟之后执行某个操作的机制。
+为了保证postdelay的有序性，需要考虑几个关键因素，
+包括延迟的精确控制、操作执行的顺序控制，以及系统时钟的同步等。
+```
+
+2-postdelay的原理
+
+```
+1. 延迟队列（Delay Queue）:
+   - 延迟队列是一种特殊的优先级队列，其中每个元素都有一个关联的到期时间（即延迟时间）。
+   - 元素按到期时间排序，只有到期时间到了的元素才会出队执行。
+2. 定时器（Timers）:
+   - 系统会设置一个定时器，当定时器到期时触发特定的操作。
+   - 定时器可以是单次触发，也可以是周期性触发。
+3. 时间轮（Time Wheel）:
+   - 一种高效的定时器实现，使用一个循环数组模拟时间的流逝。
+   - 每个槽代表一个时间单位，槽中存储将在对应时间单位执行的任务。
+```
+
+3- 确保postdelay的有序性
+
+```
+为了保证 `postdelay` 操作的有序性，通常需要从以下几个方面进行设计：
+
+1. 系统时钟同步:
+   - 在分布式系统中，确保各个节点的时钟同步是至关重要的。可以使用网络时间协议（NTP）来同步各个节点的时钟。
+   - 这样可以确保不同节点上的定时器能够按照预期的时间触发。
+2. 使用有序的数据结构:
+   - 使用优先级队列或者延迟队列，这些数据结构能够按照到期时间顺序处理任务。
+   - 在插入任务时，根据其到期时间将其放在合适的位置，确保出队时的有序性。
+3. 时间轮实现:
+   - 如果系统需要处理大量的定时任务，可以使用时间轮来高效管理这些任务。
+   - 时间轮的槽中任务按照到期时间顺序执行，保证了在每个时间单位内任务的有序性。
+4. 一致性哈希和分区:
+   - 在分布式系统中，可以使用一致性哈希将任务分配到不同的节点处理。
+   - 确保同一时间段的任务被分配到相同或相近的节点，可以减少由于网络延迟带来的不确定性。
+5. 事务和锁机制:
+   - 使用事务来确保任务的原子性和一致性，避免由于并发导致的任务顺序混乱。
+   - 使用锁机制来控制对队列的并发访问，确保任务插入和出队的顺序正确。
+```
+
+### 4.3 volatitle关键字(如何保证可见性，没有用这个变量会出什么问题)
+
+1.概念
+
+```
+`volatile` 关键字是 Java 中的一种用于变量的修饰符，主要用于保证变量在多个线程之间的可见性。
+理解 `volatile` 的作用以及它如何确保可见性，对编写正确的并发程序至关重要。
+```
+
+2.volatile的原理
+
+```
+`volatile` 关键字的主要作用是确保一个变量的可见性和防止指令重排序。具体来说：
+
+- 可见性：
+当一个线程修改了一个 `volatile` 变量的值，新的值会立即被刷新到主内存中，
+其他线程在读取这个变量时能立即看到最新的值。
+- 防止指令重排序：`volatile` 变量的读写操作不会与其他内存操作一起被重排序，确保了读写顺序的可预测性。
+```
+
+3.保证可见性
+
+```
+在多线程环境中，如果一个变量没有用 `volatile` 修饰，不同线程对这个变量的修改可能不会立即对其他线程可见。
+这是因为每个线程都有自己的高速缓存，变量的修改可能首先会被写入线程的本地缓存，而不是主内存中。
+
+使用 `volatile` 关键字后，任何对这个变量的写操作都会立即被刷入主内存，而不是保留在线程的本地缓存中。
+任何线程读取这个变量时，都会直接从主内存读取，从而保证了变量的最新值对所有线程可见。
+```
+
+4.没有使用 `volatile` 可能出现的问题
+
+```
+如果在一个多线程程序中，不使用 `volatile` 来修饰共享变量，可能会导致以下问题：
+
+- 不可见性：
+一个线程修改了变量的值，但其他线程看不到这个修改，仍然使用旧值。
+这会导致程序的行为不可预测。
+例如，一个线程更新了一个标志变量，表示某个任务已经完成，而其他线程可能看不到这个更新，继续等待这个任务完成。
+
+- 重排序问题：
+由于没有 `volatile`，编译器和处理器可能会对指令进行重排序，导致程序执行顺序不一致，影响程序的正确性。
+例如，在双重检查锁（Double-Checked Locking）中，如果没有使用 `volatile` 修饰 `instance` 变量，
+可能会导致 `instance` 变量被重排序，从而导致其他线程看到一个不完整的对象。
+```
+
+5.实例说明
+
+以下是一个简单的例子，展示了使用 `volatile` 和不使用 `volatile` 的区别：
+
+```
+public class VolatileExample {
+    private volatile boolean flag = false;
+    // private boolean flag = false; // 不使用 volatile 的情况
+
+    public void writer() {
+        flag = true; // 修改 flag 的值
+    }
+
+    public void reader() {
+        if (flag) { // 读取 flag 的值
+            System.out.println("Flag is true");
+        }
+    }
+
+    public static void main(String[] args) {
+        VolatileExample example = new VolatileExample();
+
+        Thread writerThread = new Thread(() -> {
+            example.writer();
+        });
+
+        Thread readerThread = new Thread(() -> {
+            example.reader();
+        });
+
+        writerThread.start();
+        readerThread.start();
+    }
 }
-
-// 使用Mixin
-class MyClass with LoggerMixin {
-  void performAction() {
-    log('Performing action');
-    // 其他操作
-  }
-}
-
-void main() {
-  var myObject = MyClass();
-  myObject.performAction();
-}
 ```
 
-3-Mixin的高级用法
+在这个例子中：
 
-* Mixin的有状态
-* 多个Mixin的组合
+- **使用 `volatile`**：当 `writer` 方法将 `flag` 设置为 `true` 后，`reader` 方法中的读取操作会立即看到这个修改，输出 "Flag is true"。
+- **不使用 `volatile`**：`writer` 方法将 `flag` 设置为 `true` 后，`reader` 方法可能看不到这个修改，`flag` 仍然为 `false`，不会输出任何内容。
 
-### 2.5 Flutter中的Sliver
-
-1-什么是Sliver
+6.总结
 
 ```
-Sliver是Flutter中的一种特殊的滚动元素，它可以用来构建复杂的滚动效果，例如可伸缩的头部、悬浮的导航栏等。 Sliver通常用于CustomScrollView中，这是一个可以容纳多个Sliver的滚动视图。
-
-Sliver的特点在于其灵活性，你可以通过组合不同类型的Sliver来实现各种滚动行为。
-Flutter提供了许多内置的Sliver，例如SliverAppBar、SliverList、SliverGrid等，
-同时你也可以创建自定义的Sliver以满足特定需求
+`volatile` 关键字在 Java 并发编程中用于保证变量的可见性和防止指令重排序。
+使用 `volatile` 能确保多个线程能够正确地看到变量的最新值，避免因可见性问题导致的错误。
+未使用 `volatile` 时，可能会导致数据不一致、不可预测的行为和难以调试的并发问题。
+因此，在需要确保变量可见性的场景下，应该使用 `volatile` 关键字
 ```
 
-2-Sliver的基本结构
+## 五 参考
 
-* **SliverAppBar**：用于创建可伸缩的头部，可以随着滚动改变高度、显示/隐藏标题等
-* **SliverList/SliverGrid：** 用于创建滚动的列表或网格。
-* **SliverToBoxAdapter：** 允许将普通的Widget包装成Sliver，使其能够在CustomScrollView中使用
-
-3-使用场景
-
-* 复杂的滚动效果
-* 列表和网格的高级定制
-* 头部悬浮导航栏
-* 多层级滚动
-
-### 2.6 Flutter从启动到显示
-
-在 Flutter 应用程序启动后，到其内容最终显示在屏幕上，通常涉及以下主要步骤：
-
-#### 1. Flutter 引擎初始化：
-
-- Flutter 引擎初始化是应用程序启动的第一步。在这个阶段，Flutter 引擎会初始化运行时环境，加载 Flutter 框架和原生平台的相关代码。
-
-#### 2. Dart 代码执行：
-
-- 一旦引擎初始化完成，Flutter 会加载并执行 Dart 代码。Dart 代码包括应用程序的入口点 `main()` 函数以及应用程序的其他逻辑。
-
-#### 3. Widget 树构建：
-
-- Flutter 使用一种称为 Widget 的组件模型来构建用户界面。在 Dart 代码执行阶段，Flutter 应用程序会通过调用 `build()` 方法构建 Widget 树。
-- 在构建 Widget 树期间，Flutter 会创建并配置一系列 Widget，这些 Widget 最终会渲染为用户界面的组件。
-
-#### 4. 绘制和布局：
-
-- 一旦 Widget 树构建完成，Flutter 引擎会执行布局（Layout）和绘制（Painting）阶段。在布局阶段，Flutter 计算每个 Widget 的位置和大小。在绘制阶段，Flutter 将每个 Widget 绘制为屏幕上的图像。
-
-#### 5. 合成：
-
-- 在绘制阶段完成后，Flutter 引擎会将所有绘制的内容合成为一张图像，并将其显示在屏幕上。
-- Flutter 使用了一种称为“图层合成”的技术，它能够有效地管理屏幕上的图层，提高绘制效率，并允许 Flutter 应用程序以 60 帧每秒的速度渲染动画和交互效果。
-
-#### 6. 显示：
-
-- 最后，一旦合成完成，图像就会被显示在屏幕上，用户就能够看到应用程序的内容了。
-
-总的来说，从 Flutter 应用程序启动到其内容显示在屏幕上，涉及到一系列复杂的过程，包括引擎初始化、Dart 代码执行、Widget 树构建、布局和绘制、合成和显示等阶段。Flutter 通过这些阶段来实现高性能、流畅的用户界面渲染。
-
-### 2.7 flutter overflow问题
-
-```
-在Flutter中，"overflow"问题通常指的是一个widget的内容超出了其可用空间。这可能发生在水平或垂直方向上。为了解决这个问题，你可以使用以下几种方法：
-
-Container 控制大小：使用Container来包装内容，并通过设置width和height来限制其大小。
-
-Center、Align和FittedBox：如果你想居中内容，并且允许内容在必要时溢出（例如，文本过长时使用省略号），可以使用Center、Align或FittedBox。
-
-OverflowBox：允许子widget超出其父widget的范围。
-
-SingleChildScrollView：如果内容超过屏幕大小，使用SingleChildScrollView来滚动查看全部内容。
-
-SizedBox.expand：使用SizedBox.expand来让子widget充满可用空间。
-
-Flexible：在Row或Column中使用Flexible widget，允许其中一些子widget根据可用空间进行伸缩。
-
-Expanded：在Row、Column或Flex中使用Expanded，它会填充剩余的空间。
-
-具体使用哪种方法取决于你的具体需求。例如，如果你希望文本自动换行并且容器大小固定，可以使用SingleChildScrollView；如果你想要的是内容根据屏幕大小自适应，可以使用Flexible或Expanded
-```
-
-
-
-## 三 参考
-
-1. [一文详解Flutter Widget和App的生命周期](https://www.jb51.net/program/2943396fy.htm)
-2. [Flutter 三棵树](https://blog.csdn.net/sziitjin/article/details/134231544)
-3. [详解Flutter中key的正确使用方式](https://www.jb51.net/article/273195.htm)
-4. [Flutter 完整的生命周期](https://www.jianshu.com/p/6c214a054f90)
-5. [深入了解Flutter中的Mixin](https://blog.csdn.net/qq_42698421/article/details/135698462)
-6. [深入了解Flutter中的Sliver](https://blog.csdn.net/qq_42698421/article/details/135931334)
-7. [Flutter从启动到显示](https://blog.csdn.net/rnZuoZuo/article/details/119358063)
+* [告别白屏：优化Flutter Android端启动速度，带来顺滑体验](https://www.bytezonex.com/archives/0pGoOocV.html)
