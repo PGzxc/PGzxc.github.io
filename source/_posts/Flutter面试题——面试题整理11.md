@@ -11,7 +11,7 @@ date: 2024-05-17 20:53:29
 ## 一 面试题汇总
 
 1. Flutter Widget和App的生命周期
-2. Flutter三棵树
+2. Flutter三棵树及对应关系
 3. Flutter中key
 4. Flutter中的Mixin
 5. Flutter中的Sliver
@@ -69,30 +69,52 @@ Flutter App 生命周期：
 5.dispose (App)：App 销毁时会调用 dispose 方法，通常用于清理资源。
 ```
 
-### 2.2 Flutter三棵树
+### 2.2 Flutter三棵树及对应关系
 
 ```
+1.三棵树
+
 在 Flutter 中，有三棵重要的树，分别是：Widget 树、Element 树 和 RenderObject 树。
 简单解释如下：
 
-1. Widget 树：
+1.1 Widget 树：
 -描述 UI 的结构，是开发者直接操作的部分。
 -Widget 是不可变的，仅用于配置 UI。每次更新 UI 时，Flutter 会创建新的 Widget 树。
 
-2.Element 树
+1.2 Element 树
 -充当 Widget 和 RenderObject 之间的桥梁，管理 Widget 的生命周期和状态。
 -Element 是持久的，能在 Widget 更新时复用，避免不必要的重建。
 
-3.RenderObject 树
+1.3 RenderObject 树
 -负责布局、绘制和事件处理，是最底层的渲染机制。
 -每个可视化的 Widget 都对应一个 RenderObject，用于真正的像素绘制
 
-4.总结
+总结
 -Widget 树描述 UI 结构。
 -Element 树管理 Widget 的生命周期和状态。
 -RenderObject 树负责绘制和布局。
 
 三棵树各司其职，共同实现 Flutter 高效的 UI 构建与渲染
+
+2 对应关系
+2.1 Widget 树 vs Element 树：一对一关系
+-每个 Widget 对应一个 Element，Element 作为 Widget 的实例化对象，管理 Widget 的生命周期和位置。
+-当 Widget 树更新时，Flutter 会尝试重用现有的 Element，避免重复创建，提升性能。
+-例子：Text('Hello') 这个 Widget 会创建一个对应的 Element（StatelessElement）。
+
+2.2 Element 树 vs Render 树：一对多关系
+-非所有 Element 都有对应的 RenderObject。
+只有涉及渲染的 Widget（如 Container、Text）才会创建 RenderObject。
+
+-某些布局类的 Widget（如 GestureDetector、StreamBuilder）并不直接参与渲染，
+因此它们的 Element 没有对应的 RenderObject。
+
+-例子：Column 创建一个对应的 Element，
+同时生成一个 RenderObject；GestureDetector 只有 Element，没有 RenderObject。
+
+总结：
+-Widget 树 vs Element 树 → 一对一（每个 Widget 对应一个 Element）。
+-Element 树 vs Render 树 → 一对多（只有可视 Widget 的 Element 才对应 RenderObject）。
 ```
 
 ### 2.3 Flutter中key
