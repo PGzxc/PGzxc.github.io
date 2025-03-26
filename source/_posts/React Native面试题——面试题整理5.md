@@ -61,292 +61,98 @@ React 会通过批量更新和优化渲染流程，减少不必要的 DOM 更新
 
 ### 2.2 reactJS兄弟组件之间如何通信 
 
-```
-1.兄弟组件间通信
-在 React 中，兄弟组件直接的通信并不直接支持，因为 React 中的数据流是单向的（父到子）。
-但是，可以通过父组件作为桥梁来实现兄弟组件之间的通信。
-常见的方式包括：
-1.通过父组件进行通信
-2.使用 Context API
-3.使用状态管理库（如 Redux）
-
-2.兄弟组件间通信详解
-
-2.1 通过父组件进行通信
-2.1.1 概念
-兄弟组件之间的通信可以通过父组件来实现。
-父组件将一个共享的状态或回调函数传递给两个子组件，
-当其中一个子组件需要与另一个子组件通信时，可以通过父组件进行数据传递。
-
-2.1.2 步骤：
--父组件保存共享的状态或回调函数。
--父组件将状态或回调函数传递给两个子组件。
--子组件通过调用父组件传递的函数来进行通信。
-
-2.1.3 示例
-
-// 父组件
-import React, { useState } from 'react';
-import Brother1 from './Brother1';
-import Brother2 from './Brother2';
-
-const Parent = () => {
-  const [message, setMessage] = useState("");
-
-  const handleMessageChange = (newMessage) => {
-    setMessage(newMessage);
-  };
-
-  return (
-    <div>
-      <Brother1 onMessageChange={handleMessageChange} />
-      <Brother2 message={message} />
-    </div>
-  );
-};
-
-export default Parent;
-
-// 兄弟1组件
-import React from 'react';
-
-const Brother1 = ({ onMessageChange }) => {
-  return (
-    <button onClick={() => onMessageChange("Hello from Brother 1!")}>
-      Send Message to Brother 2
-    </button>
-  );
-};
-
-export default Brother1;
-
-// 兄弟2组件
-import React from 'react';
-
-const Brother2 = ({ message }) => {
-  return <h1>{message}</h1>;
-};
-
-export default Brother2;
-解释：
--父组件Parent将handleMessageChange函数作为props传递给Brother1，
-并将message传递给 Brother2。
--Brother1通过调用onMessageChange来更新父组件的状态，从而间接地通知Brother2组件更新内容。
-
-2.2 使用 Context API 进行通信
-2.2.1 概念
-如果兄弟组件之间的通信不止一次，并且组件层级较深，
-可以使用 React Context API 来实现跨层级的通信，避免逐层传递 props
-
-2.2.2 示例
-// 创建 Context
-import React, { createContext, useState } from 'react';
-
-const MessageContext = createContext();
-
-const Parent = () => {
-  const [message, setMessage] = useState("");
-
-  return (
-    <MessageContext.Provider value={{ message, setMessage }}>
-      <Brother1 />
-      <Brother2 />
-    </MessageContext.Provider>
-  );
-};
-
-// 兄弟1组件
-import React, { useContext } from 'react';
-import { MessageContext } from './Parent';
-
-const Brother1 = () => {
-  const { setMessage } = useContext(MessageContext);
-
-  return (
-    <button onClick={() => setMessage("Hello from Brother 1!")}>
-      Send Message to Brother 2
-    </button>
-  );
-};
-
-export default Brother1;
-
-// 兄弟2组件
-import React, { useContext } from 'react';
-import { MessageContext } from './Parent';
-
-const Brother2 = () => {
-  const { message } = useContext(MessageContext);
-
-  return <h1>{message}</h1>;
-};
-
-export default Brother2;
-
-2.2.3 解释：
--MessageContext共享了一个message和setMessage，
-Brother1和Brother2通过useContext直接访问共享的数据，从而实现兄弟组件之间的通信。
--Brother1 更新 message，而 Brother2 通过 Context 自动接收更新。
-
-2.3 使用状态管理库（如 Redux）
-2.3.1 概念
-对于较大的应用，使用 Redux 等状态管理库可以更方便地处理跨组件的数据共享和通信。
-兄弟组件可以通过 Redux 来共享状态，而不需要通过父组件传递。
-
-2.3.2 步骤：
--使用 Redux 创建一个全局状态存储。
--兄弟组件通过连接到 Redux store 来获取和修改状态。
-
-2.3.3 示例
-
-// Redux action
-const setMessage = (message) => ({
-  type: 'SET_MESSAGE',
-  payload: message,
-});
-
-// Redux reducer
-const messageReducer = (state = "", action) => {
-  switch (action.type) {
-    case 'SET_MESSAGE':
-      return action.payload;
-    default:
-      return state;
-  }
-};
-
-export default messageReducer;
-
-// 兄弟1组件
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { setMessage } from './redux/actions';
-
-const Brother1 = () => {
-  const dispatch = useDispatch();
-
-  return (
-    <button onClick={() => dispatch(setMessage("Hello from Brother 1!"))}>
-      Send Message to Brother 2
-    </button>
-  );
-};
-
-export default Brother1;
-
-// 兄弟2组件
-import React from 'react';
-import { useSelector } from 'react-redux';
-
-const Brother2 = () => {
-  const message = useSelector(state => state.message);
-
-  return <h1>{message}</h1>;
-};
-
-export default Brother2;
-
-2.3.4 解释：
--使用 Redux 管理全局状态，setMessage 用于更新 message。
--Brother1 通过 dispatch 修改 Redux 中的 message，
-Brother2 通过 useSelector 获取 Redux 中的最新 message。
-
-3. 总结
--父组件作为桥梁：
-通过父组件将数据传递给兄弟组件，或者通过回调函数让兄弟组件相互通信。
--Context API：
-对于深层嵌套的组件，使用 Context 可以避免逐层传递 props，轻松实现跨层级组件之间的通信。
--Redux：
-对于大型应用，使用Redux等状态管理库可以更方便地管理全局状态，
-兄弟组件可以通过Redux来共享状态和实现通信。
-```
+|         方法          |        适用场景        |                          优缺点                          |
+| :-------------------: | :--------------------: | :------------------------------------------------------: |
+|     1. 父组件中转     |   适用于简单组件通信   |  **优点**：简单易用；**缺点**：`props` 传递层级深时麻烦  |
+|    2. Context API     | 适用于多层组件共享状态 | **优点**：避免 `props` 层层传递；**缺点**：可能影响性能  |
+|  3. Redux / Zustand   |     适用于大型应用     | **优点**：全局管理数据；**缺点**：需要额外库，增加复杂度 |
+|      4. 事件总线      |    适用于松耦合组件    |  **优点**：组件间解耦；**缺点**：难以维护，可能导致 Bug  |
+| 5. LocalStorage / URL |    适用于数据持久化    |    **优点**：数据可存储；**缺点**：仅适用于持久化需求    |
 
 ### 2.3 React 的 refs 有什么了解
 
 ```
-在 React Native 中，refs（引用）主要用于直接访问组件实例或 DOM 元素（在 React Native 中是原生视图），
-让你可以操作它们，比如获取输入框值、控制焦点、触发动画等。
-以下是对 refs 的一些关键理解
+在 React Native（以及 React）中，refs（引用）用于直接访问 DOM 节点或组件实例。
+关于 refs，你可以了解以下几个关键点
 
-1. 创建 Refs：
-可以使用 useRef（函数组件）或 createRef（类组件）来创建引用
+1. refs 的作用
+-在需要直接操作 DOM 或组件实例的情况下使用 refs，
+例如获取组件的值、调用方法、控制焦点、执行动画等。
 
-1.1 函数组件（推荐用 useRef）：
+-适用于无法通过 state 和 props 实现的需求
 
-import React, { useRef } from 'react';
-import { TextInput, Button, View } from 'react-native';
+2. 创建 refs 的方式
+React 提供了两种主要的方式来创建 refs
+
+2.1 useRef（函数式组件）
+
+import { useRef, useEffect } from 'react';
+import { TextInput } from 'react-native';
 const MyComponent = () => {
-  const inputRef = useRef(null);
+  const inputRef = useRef<TextInput>(null);
 
-  const focusInput = () => inputRef.current.focus();
+  useEffect(() => {
+    inputRef.current?.focus(); // 组件挂载后自动聚焦
+  }, []);
 
-  return (
-    <View>
-      <TextInput ref={inputRef} placeholder="输入点什么..." />
-      <Button title="点击聚焦" onPress={focusInput} />
-    </View>
-  );
+  return <TextInput ref={inputRef} placeholder="输入文本" />;
 };
+代码说明
+-useRef 返回一个可变对象 { current: null }，不会因组件重新渲染而改变。
+-适用于存储 DOM 或组件实例的引用。
 
-1.2 类组件（用 createRef）：
+2.2 createRef（类组件）
 
 import React, { Component, createRef } from 'react';
 import { TextInput, Button, View } from 'react-native';
 class MyComponent extends Component {
-  inputRef = createRef();
+  inputRef = createRef<TextInput>();
 
-  focusInput = () => this.inputRef.current.focus();
+  handleFocus = () => {
+    this.inputRef.current?.focus();
+  };
 
   render() {
     return (
       <View>
-        <TextInput ref={this.inputRef} placeholder="输入点什么..." />
-        <Button title="点击聚焦" onPress={this.focusInput} />
+        <TextInput ref={this.inputRef} placeholder="输入文本" />
+        <Button title="聚焦输入框" onPress={this.handleFocus} />
       </View>
     );
   }
 }
+代码说明：createRef 适用于类组件，每次调用 createRef 都会返回一个新的 ref。
 
-2. Refs 的使用场景
+3. refs 的使用场景
+-操作原生组件（如 TextInput、ScrollView）
+-触发组件内部方法（如手动调用 focus()、scrollTo()）
+-保存状态但不引发重渲染（如存储计时器 ID）
+-与第三方库集成（如访问原生模块）
 
--获取原生组件实例（如 TextInput、ScrollView、Modal 等）。
--控制焦点（focus()、blur()）。
--获取组件值（如 inputRef.current.value）。
--触发动画（Animated、LottieView 等库）。
--强制更新（不推荐，通常用 state）。
+4. forwardRef 转发 ref
+默认情况下，父组件无法直接获取子组件内部的 ref。
+如果要让 ref 透传到子组件，需要使用 forwardRef：
 
-3. Forwarding Refs（转发 refs）：
-如果你封装了一个组件，想让外部能访问内部的原生视图或方法，可以用 forwardRef
+import React, { forwardRef } from 'react';
+import { TextInput } from 'react-native';
 
-import React, { forwardRef, useImperativeHandle, useRef } from 'react';
-import { TextInput, Button, View } from 'react-native';
-
-const CustomInput = forwardRef((props, ref) => {
-  const inputRef = useRef(null);
-
-  // 暴露 focus 方法给外部调用
-  useImperativeHandle(ref, () => ({
-    focus: () => inputRef.current.focus(),
-  }));
-
-  return <TextInput ref={inputRef} {...props} />;
+const MyInput = forwardRef<TextInput, any>((props, ref) => {
+  return <TextInput ref={ref} {...props} />;
 });
 
-const App = () => {
-  const customInputRef = useRef(null);
+export default MyInput;
+代码说明：这样，外部组件就可以直接访问 MyInput 内部的 TextInput 实例
 
-  return (
-    <View>
-      <CustomInput ref={customInputRef} placeholder="点我聚焦" />
-      <Button title="聚焦输入框" onPress={() => customInputRef.current.focus()} />
-    </View>
-  );
-};
+5. refs 的注意事项
+-尽量少用 refs，避免过度依赖直接操作 DOM/组件实例。
+-不要在 render 过程中修改 ref，ref 应该在 useEffect、event handler 等生命周期方法中使用。
+-对于函数式组件，推荐使用 useRef，而不是 createRef
 
-4. 注意事项：
--避免滥用 refs：多数场景用 state 和 props 是更合适的。
--不能在函数组件直接用 createRef：要用 useRef。
--不能操作函数组件的实例：refs 只能用于类组件或原生组件，函数组件需要用 forwardRef。
+6.总结
+-refs 允许我们直接访问组件实例或原生 DOM 组件。
+-React Native 中常用于 TextInput、ScrollView 等需要手动控制的组件。
+-推荐在函数式组件中使用 useRef，在类组件中使用 createRef。
+-forwardRef 允许子组件透传 ref 给内部组件。
 ```
 
 ##  三 参考
