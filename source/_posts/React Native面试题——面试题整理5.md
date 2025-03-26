@@ -261,6 +261,94 @@ Brother2 通过 useSelector 获取 Redux 中的最新 message。
 兄弟组件可以通过Redux来共享状态和实现通信。
 ```
 
+### 2.3 React 的 refs 有什么了解
+
+```
+在 React Native 中，refs（引用）主要用于直接访问组件实例或 DOM 元素（在 React Native 中是原生视图），
+让你可以操作它们，比如获取输入框值、控制焦点、触发动画等。
+以下是对 refs 的一些关键理解
+
+1. 创建 Refs：
+可以使用 useRef（函数组件）或 createRef（类组件）来创建引用
+
+1.1 函数组件（推荐用 useRef）：
+
+import React, { useRef } from 'react';
+import { TextInput, Button, View } from 'react-native';
+const MyComponent = () => {
+  const inputRef = useRef(null);
+
+  const focusInput = () => inputRef.current.focus();
+
+  return (
+    <View>
+      <TextInput ref={inputRef} placeholder="输入点什么..." />
+      <Button title="点击聚焦" onPress={focusInput} />
+    </View>
+  );
+};
+
+1.2 类组件（用 createRef）：
+
+import React, { Component, createRef } from 'react';
+import { TextInput, Button, View } from 'react-native';
+class MyComponent extends Component {
+  inputRef = createRef();
+
+  focusInput = () => this.inputRef.current.focus();
+
+  render() {
+    return (
+      <View>
+        <TextInput ref={this.inputRef} placeholder="输入点什么..." />
+        <Button title="点击聚焦" onPress={this.focusInput} />
+      </View>
+    );
+  }
+}
+
+2. Refs 的使用场景
+
+-获取原生组件实例（如 TextInput、ScrollView、Modal 等）。
+-控制焦点（focus()、blur()）。
+-获取组件值（如 inputRef.current.value）。
+-触发动画（Animated、LottieView 等库）。
+-强制更新（不推荐，通常用 state）。
+
+3. Forwarding Refs（转发 refs）：
+如果你封装了一个组件，想让外部能访问内部的原生视图或方法，可以用 forwardRef
+
+import React, { forwardRef, useImperativeHandle, useRef } from 'react';
+import { TextInput, Button, View } from 'react-native';
+
+const CustomInput = forwardRef((props, ref) => {
+  const inputRef = useRef(null);
+
+  // 暴露 focus 方法给外部调用
+  useImperativeHandle(ref, () => ({
+    focus: () => inputRef.current.focus(),
+  }));
+
+  return <TextInput ref={inputRef} {...props} />;
+});
+
+const App = () => {
+  const customInputRef = useRef(null);
+
+  return (
+    <View>
+      <CustomInput ref={customInputRef} placeholder="点我聚焦" />
+      <Button title="聚焦输入框" onPress={() => customInputRef.current.focus()} />
+    </View>
+  );
+};
+
+4. 注意事项：
+-避免滥用 refs：多数场景用 state 和 props 是更合适的。
+-不能在函数组件直接用 createRef：要用 useRef。
+-不能操作函数组件的实例：refs 只能用于类组件或原生组件，函数组件需要用 forwardRef。
+```
+
 ##  三 参考
 
 * [掘金—React Native面试题总结](https://juejin.cn/post/7311602994571853851)
