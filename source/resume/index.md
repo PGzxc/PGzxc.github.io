@@ -42,7 +42,7 @@ comments: false
 		<a href="folder/周向成_Java开发工程师.pdf" target="_blank">Java</a>
 		</td>
 		<td width="8%">
-		<a href="folder/周向成_前端开发工程师.pdf" target="_blank">前端</a>
+		<a href="folder/周向成_前端开发工程师.pdf" target="_blank">Web</a>
 		</td>
         <td width="8%">
 		<a href="folder/周向成_AI开发工程师.pdf" target="_blank">AI</a>
