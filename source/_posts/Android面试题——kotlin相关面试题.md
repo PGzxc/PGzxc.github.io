@@ -158,6 +158,70 @@ delay 是挂起函数，它不会阻塞线程，只会暂停协程的执行；
 
 ### 2.4 kotlin中with,run,apply,let函数
 
+1-示例讲解
+
+```
+在Kotlin中，with、run、apply 和let是常见的作用域函数（Scope Functions），用于简化对象操作，提高代码可读性。
+它们的主要区别如下：
+
+1. with
+-作用：对同一对象执行多个操作，不返回对象本身，而是返回 lambda 表达式的结果。
+-返回值：lambda 表达式的执行结果。
+-适用场景：不需要返回对象本身，只是对对象进行一系列操作时。
+-示例
+val person = Person("Tom", 25)
+val result = with(person) {
+    println(name)
+    println(age)
+    "完成"
+}
+println(result)  // 输出："完成"
+
+2. run
+-作用：类似 with，但它是对象的扩展函数，返回 lambda 表达式的结果。
+-返回值：lambda 表达式的执行结果。
+-适用场景：当需要在对象作用域内执行代码并返回计算结果时。
+-示例
+val person = Person("Tom", 25)
+val result = person.run {
+    println(name)
+    println(age)
+    "完成"
+}
+println(result)  // 输出："完成"
+
+3. apply
+-作用：用于初始化或修改对象，返回对象本身，通常用于对象配置。
+-返回值：对象本身。
+-适用场景：当需要在对象上调用多个 setter 方法并返回对象本身时。
+-示例
+val person = Person().apply {
+    name = "Tom"
+    age = 25
+}
+println(person)  // person 对象已被修改
+
+4. let
+-作用：适用于非空对象操作，可以避免 NullPointerException，并返回 lambda 结果。
+-返回值：lambda 表达式的执行结果。
+-适用场景：常用于可空对象的安全调用或者链式调用。
+-示例
+val name: String? = "Tom"
+name?.let {
+    println("名字长度: ${it.length}")
+}
+// 避免了空指针异常
+```
+
+表格
+
+| 函数  | 是否是扩展函数 |   返回值    |       适用场景       |
+| :---: | :------------: | :---------: | :------------------: |
+| with  |       否       | Lambda 结果 | 操作对象但不返回自身 |
+|  run  |       是       | Lambda 结果 |  计算结果或链式调用  |
+| apply |       是       |  对象本身   |   初始化或修改对象   |
+|  let  |       是       | Lambda 结果 |     可空对象操作     |
+
 1- 基本介绍：
 
 ```
