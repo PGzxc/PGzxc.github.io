@@ -181,13 +181,65 @@ AMS是Android中最核心的服务，主要负责系统中四大组件的启动�
 其职责与操作系统中的进程管理和调度模块相类似，因此它在Android中非常重要。
 ```
 
-2-ActivityManagerService启动
+2-流程介绍
 
 ```
-* 创建AMS对象
-* 调用ams.setSystemProcess
-* 调用ams.installSystemProviders
-* 调用ams.systemReady
+在Android系统中，AMS（ActivityManagerService） 负责管理应用的生命周期，包括Application的加载过程。
+当应用进程启动时，AMS 需要通过 zygote 进程创建新的应用进程，并在合适的时机初始化 Application。
+整个流程大致如下
+
+AMS 加载 Application 的完整流程
+
+1 启动应用进程
+当用户点击某个应用，系统会调用 startActivity()，如果该应用尚未启动，AMS 会执行以下步骤：
+
+1.1 检查是否已有应用进程
+-AMS 通过 ProcessRecord 记录应用进程信息，检查应用进程是否已存在。
+-如果进程不存在，则需要创建新的应用进程
+
+1.2 创建应用进程
+-AMS 调用 startProcessLocked() 通过 Process.start() 启动进程。
+-Zygote 进程（孵化器进程）通过 fork() 复制自身，生成新的应用进程
+
+1.3 应用进程启动后，进入 ActivityThread
+-zygote 进程 fork 出新的应用进程后，会执行 app_main.cpp，
+并调用 RuntimeInit.main()，最终进入 ActivityThread.main()。
+-ActivityThread.main() 会启动应用的主线程 Looper，并等待 AMS 发送 attachApplication() 指令。
+
+
+2 进程启动后，AMS 通知应用 Attach
+
+2.1 AMS 通过 attachApplication() 连接进程
+进程启动后，AMS 会通过 ApplicationThread（应用进程端的 Binder）回调 attachApplication()，
+告诉 ActivityThread 进程已经准备好。
+
+2.2 ActivityThread 处理 attachApplication()
+-ActivityThread.handleBindApplication() 负责初始化 Application，并加载 Application 类。
+
+-handleBindApplication() 解析 AndroidManifest.xml，
+找到 Application 的 name 属性，并通过 类加载器反射创建 Application。
+
+3. Application 初始化
+3.1 创建 Application 实例
+-ActivityThread 通过 Instrumentation.newApplication() 反射创建 Application 实例。
+
+3.2 调用 Application.attach()
+Application.attach() 连接系统，提供 Context，设置 LoadedApk，并绑定 AMS。
+
+3.3 调用 Application.onCreate()
+-Instrumentation.callApplicationOnCreate() 调用 Application.onCreate()，
+用户可以在 onCreate() 中做全局初始化，如 SDK 初始化、数据库初始化 等
+
+总结流程
+-用户点击应用，AMS 发现应用未启动，调用 startProcessLocked() 启动进程。
+-zygote 进程 fork 出新的应用进程，执行 ActivityThread.main()，进入 Looper 循环。
+-AMS 通过 attachApplication() 通知 ActivityThread 进程已就绪。
+-ActivityThread.handleBindApplication() 反射创建 Application 并调用 onCreate()。
+
+
+总结
+AMS 主要负责进程管理，当应用进程启动后，
+它会通知 ActivityThread 进行 Application 的创建和初始化，并最终调用 onCreate()，完成应用的加载
 ```
 
 ### 2.6 启动过程中有那几个问题需要处理？
