@@ -507,7 +507,7 @@ __2-Android项目—E朝朝企业端__
 **API版本**：API Version 12
 **开发语言**：仓颉(.cj)+ArkUI
 **开发工具**：DevEco Studio NEXT Beta1+Node(18.18.2)
-**项目描述**：鸿蒙开发中将以ArkTS语言转化为仓颉(.cj)开发语言的个人项目，熟练搭建项目框架，并封装网络访问模块，自定义组件等的基础上快速完成功能开发。     
+**项目描述**：本项目是由鸿蒙开发语言由ArkTS(.ets)转化为仓颉(.cj)的开源项目，UI 布局不变，用仓颉编写逻辑，并封装网络访问模块，自定义组件等的基础上快速完成功能开发     
 **功能模块**：首页、课程、工具、我的   
 **技术要点**：
 
@@ -702,7 +702,7 @@ __2-Android项目—E朝朝企业端__
 **项目地址**：https://github.com/PGzxc/flutter_wanandroid
 **软件支持**：Android+IOS
 **开发工具**：IDEA 社区版 2022.1+Flutter(3.0.2) 
-**项目描述**：Flutter-WanAndroid 是基于 WanAndroid 网站开源的接口 API制作的一款开源App。本项目基于 GetX +一系列开源 UI 库开发的一款支持 Android/IOS 跨平台项目。     
+**项目描述**：Flutter-WanAndroid是基于WanAndroid网站开源的接口API制作的一款开源App。通过它，用户能在手机端便捷访问该网站内容。     
 **功能模块**：首页、导航、项目、消息、我、语言、主题   
 **技术要点**：
 
@@ -901,8 +901,8 @@ IOS截图
 **项目地址**：https://github.com/PGzxc/FlutterGeminiAI
 **软件支持**：Android+IOS
 **开发工具**：IDEA 2024.1.3+Flutter(3.22.2) 
-**项目描述**：FlutterGeminiAI 是基于gemini-1.5-flash模型制作的一款AI软件。本应用支持纯文本输入生成文本、根据文本和图片输入生成文本(多模态)，界面类似于聊天窗口，用户输入的内容位于右侧，Gemini API返回的结果位于左侧，打造属于自己的AI应用。
-**功能模块**：聊天  
+**项目描述**：Flutter Gemini AI 是一款依托 gemini - 1.5 - flash 模型构建的前沿 AI 应用。该应用具备强大的功能，支持纯文本输入以生成文本，同时创新性地实现了基于文本与图片的多模态输入生成文本功能。在交互设计上，应用界面模拟聊天窗口，用户输入内容清晰呈现于右侧，Gemini API 快速响应的结果则展示在左侧，为用户打造简洁直观的对话式体验。
+**功能模块**：对话模块  
 **技术要点**：
 
 - 基于GenerativeModel(model: 'gemini-1.5-flash', apiKey: apiKey)初始化模型
@@ -953,27 +953,28 @@ IOS截图
 
 ## Harmony
 
-* 熟悉ArkTS/仓颉开发语言，熟悉ArkTS/仓颉语法规范
-* 熟悉Harmony中常用布局、组件并进行UI开发
-* 熟悉通过Builder装饰器、Extend装饰器等自定义组件
-* 熟悉UIAbility组件生命周期、页面生命周期、组件生命周期等
-* 熟悉@State、@Prop、@Link等状态管理，并进行数据传递和接收
-* 熟悉preferences、PersistentStorage等数据持久化存储方案
-* 熟悉router、Navigator页面路由和组件导航及pageTransition转场动画
-* 熟悉@ohos.net.http或@ohos/axios等网络请求框架
-* 熟悉常见开源三方库：@ohos/pulltorefres、@ohos/axios、@ohos/mmkv等
+1. 熟悉ArkTS/仓颉开发语言，熟悉ArkTS/仓颉语法规范
+2. 熟悉Harmony中常用布局、组件并进行UI开发
+3. 熟悉Builder装饰器、Extend装饰器等自定义组件
+4. 熟悉UIAbility组件生命周期、页面生命周期、组件生命周期等
+5. 熟悉@State、@Prop、@Link等状态管理，并进行数据传递和接收
+6. 熟悉preferences、PersistentStorage等数据持久化存储方案
+7. 熟悉router、Navigator页面路由和组件导航及pageTransition转场动画
+8. 熟悉@ohos.net.http或@ohos/axios等网络请求框架
+9. 熟悉常见开源三方库：@ohos/pulltorefres、@ohos/axios、@ohos/mmkv等
 
 ## Flutter
 
-* 熟悉Flutter中常用的布局、组件并进行UI开发
-* 熟悉GetX项目搭建框架，进行网络请求/状态管理/依赖管理/路由管理/国际化/主题设置等
-* 熟悉Flutter自带动画即第三方动画(Lottie、Flare、Nima、Rive)
-* 熟悉Flutter网络请求及返回数据解析
-* 熟悉文件文件及操作及数据数据持久化存储
-* 熟悉getwidget Google开源UIKit工具库中常用组件的使用
-* 熟悉pull-to-refresh下拉刷新、上拉加载工具的使用
-* 熟悉webview-flutter进行网页加载及显示
-* 了解Flutter与Android及IOS混合开发
+1. 熟悉Dart开发语言及在Flutter中的应用
+2. 熟悉Flutter中常用的布局、状态、组件及生命周期
+3. 熟悉Flutter中常用的状态管理库：GetX、RiverPod、BLoC、MobX
+4. 熟悉Flutter网络请求及返回数据解析
+5. 熟悉文件操作及数据数据持久化存储
+6. 熟悉getwidget、pull-to-refresh等常见开源工具库
+7. 熟悉Flutter性能优化、项目调试及疑难问题解决
+8. 了解Flutter与Android及IOS混合开发
+9. 熟悉GetX项目搭建框架，进行网络请求/状态管理/依赖管理/路由管理/国际化/主题设置等
+10. 熟悉Flutter自带动画即第三方动画(Lottie、Flare、Nima、Rive)
 
 ## React Native
 
@@ -1034,7 +1035,7 @@ IOS截图
 5. 熟悉使用Git控制工具进行项目开发
 6. 熟悉微信小程序开发，熟悉uni-app开发
 7. 熟悉css常用预处理器sass
-8. 了解前端打包工具webPack，包管理器npm、cnpm、yarn
+8. 了解前端打包工具webPack、Babel、ESlint，包管理器npm、cnpm、yarn
 
 ## C#
 
