@@ -978,43 +978,43 @@ IOS截图
 
 ## React Native
 
-* 熟悉JavaScript、React、JSX及TSX开发语言
-* 熟悉React 的核心概念，如组件、状态(state)、属性(props)、虚拟 DOM、Diff 算法等
-* 熟悉 React 生命周期，如组件的初始化、更新和销毁操作
-* 熟悉无状态函数组件和有状态类组件及自定义组件，掌握组件的组合和复用技巧
-* 熟悉 React Native 提供的各种原生组件，了解它们的属性和用法
-* 熟悉React Native 的 API 进行设备功能的调用，如摄像头、地理位置、本地存储等
-* 熟悉Flexbox 布局模型，能够使用 Flexbox 属性进行灵活的页面布局
-* 熟悉常用的状态管理方式，包括React Hooks(如useState)及三方库Redux、MobX
-* 熟悉路由及导航及导航过程中参数传递
-* 熟悉性能优化避免不必须要组件渲染及对列表数据优化
-* 熟悉网络请求及异步处理：fetch网络请求及Promise机制
-* 熟悉常用三方UI库：Ant Design Mobile RN、React Native Element等 
-* 熟悉expo构建跨平台应用并使用预览及测试服务
-* 熟悉React Native开发中的问题解决及项目调试
-* 了解RN与原生(Android或IOS)混合开发，及两者间交互和通信
+1. 熟悉JavaScript、React、JSX及TSX开发语言
+2. 熟悉React 的核心概念，如组件、状态(state)、属性(props)、虚拟 DOM、Diff 算法等
+3. 熟悉 React 生命周期，如组件的初始化、更新和销毁操作
+4. 熟悉无状态函数组件和有状态类组件及自定义组件，掌握组件的组合和复用技巧
+5. 熟悉 React Native 提供的各种原生组件，了解它们的属性和用法
+6. 熟悉React Native 的 API 进行设备功能的调用，如摄像头、地理位置、本地存储等
+7. 熟悉Flexbox 布局模型，能够使用 Flexbox 属性进行灵活的页面布局
+8. 熟悉常用的状态管理方式，包括React Hooks(如useState)及三方库Redux、MobX
+9. 熟悉路由及导航及导航过程中参数传递
+10. 熟悉性能优化避免不必须要组件渲染及对列表数据优化
+11. 熟悉网络请求及异步处理：fetch网络请求及Promise机制
+12. 熟悉常用三方UI库：Ant Design Mobile RN、React Native Element等 
+13. 熟悉expo构建跨平台应用并使用预览及测试服务
+14. 熟悉React Native开发中的问题解决及项目调试
+15. 了解RN与原生(Android或IOS)混合开发，及两者间交互和通信
 
 ## Kotlin Multiplatform Mobile
 
-* 熟练使用compose进行界面布局和组件开发
-* 熟练使用expect/actual进行共享模块及跨平台模块代码开发
-* 熟练使用moko-multiplatform-resources进行资源的引用及开发
-* 熟练使用ktor、ktor-serialization-kotlinx-json进行网络访问及结果解析
-* 熟练使用voyager进行viewmodel开发和Navigator进行界面间导航
-* 熟悉定义网络请求的各种状态并根据状态进行界面显示的MVI模式
-* 熟悉SQLDelight跨平台数据库的配置及使用
-* 熟悉Kstore-file跨平台文件设置及Kstore跨平台数据保存
+1. 熟练使用compose进行界面布局和组件开发
+2. 熟练使用expect/actual进行共享模块及跨平台模块代码开发
+3. 熟练使用moko-multiplatform-resources进行资源的引用及开发
+4. 熟练使用ktor、ktor-serialization-kotlinx-json进行网络访问及结果解析
+5. 熟练使用voyager进行viewmodel开发和Navigator进行界面间导航
+6. 熟悉定义网络请求的各种状态并根据状态进行界面显示的MVI模式
+7. 熟悉SQLDelight跨平台数据库的配置及使用
+8. 熟悉Kstore-file跨平台文件设置及Kstore跨平台数据保存
 
 ## Java
 
-* 具有扎实Java基础，熟悉常用集合、多线程、反射等
-* 掌握SpringBoot、MyBatis、MyBatis-Plus等快速开发框架
-* 熟练掌握MySQL增删改查操作及SQL调优
-* 熟练掌握ElasticSearch的索引相关操作
-* 熟悉Docker容器相关技术
-* 对分布式架构有一定的理解，熟悉分布式事务、分布式锁等技术
-* 掌握Redis 5种常见数据类型、持久化机制(RDB、AOF)、主从模式、哨兵机制等技术
-* 掌握RabbitMQ、消息可靠传输、死信队列、延迟队列、顺序消费、重复消费等解决方案
+1. 具有扎实Java基础，熟悉常用集合、多线程、反射等
+2. 掌握SpringBoot、MyBatis、MyBatis-Plus等快速开发框架
+3. 熟练掌握MySQL增删改查操作及SQL调优
+4. 熟练掌握ElasticSearch的索引相关操作
+5. 熟悉Docker容器相关技术
+6. 对分布式架构有一定的理解，熟悉分布式事务、分布式锁等技术
+7. 掌握Redis 5种常见数据类型、持久化机制(RDB、AOF)、主从模式、哨兵机制等技术
+8. 掌握RabbitMQ、消息可靠传输、死信队列、延迟队列、顺序消费、重复消费等解决方案
 
 
 ## 微信小程序
