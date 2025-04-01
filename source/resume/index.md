@@ -935,21 +935,20 @@ IOS截图
 9. 熟悉 JNI(NDK)、热修复、插件开发、传感器、NFC、蓝牙等
 
 ## IOS
-1. 熟练掌握Object-C、Swift及其混用
-2. 熟练使用Core Animation、UIView开发动画
-3. 熟练并掌握H5与iOS原生交互
-4. 熟悉并掌握多线程技术，如 NSThread、GCD、NSOpeartion
-5. 熟练使用支付宝支付、微信支付、银联支付等多种支付方式
-6. 熟悉APP上架的流程及访问真机设备的能力
-7. 熟练使用AFNetworking、SDWebImage、Masonry第三方框架
-8. 熟练掌握百度地图、高德地图的定位、导航、自定义标注、地理编码等功能
-9. 熟悉常用的设计模式，如MVVM模式、代理模式、单例模式、观察者模式等设计模式
-10. 可直接阅读 apple developer 官方文档
-11. 熟练使用推送通知，自定义消息的处理
-12. 掌握Instruments leaks内存检测以及单元测试提升程序的稳定性
-13. 熟悉 SourceTree、Github 代码管理工具，jenkins可持续开发
-14. 熟悉MRC、ARC内存管理机制
-15. 熟练运用runtime，理解runloop原理
+1.  熟练掌握Object-C、Swift开发语言
+2. 熟悉常用的第三方框架及其应用
+3. 熟悉SwiftUI组件、视图、状态管理及数据绑定
+4. 熟悉MRC、ARC内存管理机制
+5. 理解Object-C开发中Runtime、Runloop原理
+6.  熟悉网络请求解析及并发编程
+7. 熟练常见的数据存储方式及持久化存储与管理
+8. 熟悉常用的设计模式，如MVC模式、代理模式、单例模式、观察者模等
+9. 熟悉APP上架的流程及访问真机设备的能力
+10. 熟练掌握百度地图、高德地图的定位、导航、自定义标注、地理编码等功能
+11. 可直接阅读 apple developer 官方文档
+12. 熟练使用推送通知，自定义消息的处理
+13. 掌握Instruments leaks内存检测以及单元测试提升程序的稳定性
+14. 熟悉 SourceTree、Github 代码管理工具，jenkins可持续开发
 
 ## Harmony
 
