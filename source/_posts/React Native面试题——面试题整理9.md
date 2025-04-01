@@ -24,6 +24,7 @@ date: 2024-03-20 15:41:51
 12. 面试中的一道题
 13. XSS与CSRF介绍
 14. 在使用redux过程中，如何防止定义的action-type的常量重复？
+15. React Native 中 JSX 与 TSX 的区别与应用
 
 ## 二 面试题解答(仅供参考)
 
@@ -475,6 +476,79 @@ CSRF 攻击通过伪造用户的请求，执行用户未授权的操作，通常
 4.TypeScript 枚举：使用枚举来组织常量，避免重复。
 
 这些方式能有效地防止 action-type 常量的重复定义。
+```
+
+### 2.15 React Native 中 JSX 与 TSX 的区别与应用
+
+```
+在 React Native 开发中，JSX 和 TSX 是两种用于编写 UI 组件的语法，
+它们的主要区别在于 是否使用 TypeScript。
+
+1.JSX（JavaScript XML）
+1.1 特征
+-JSX 是 JavaScript 的语法扩展，用于描述 React 组件的 UI 结构。
+-React Native 直接支持 JSX，开发者可以像写 HTML 一样编写组件结构。
+-没有类型检查，变量和函数的类型不受约束。
+
+1.2 JSX 示例（使用 JavaScript 编写组件）
+import React from 'react';
+import { Text, View } from 'react-native';
+
+const MyComponent = () => {
+  return (
+    <View>
+      <Text>Hello, JSX!</Text>
+    </View>
+  );
+};
+export default MyComponent;
+
+2. TSX（TypeScript XML）
+2.1 特征
+-TSX 是 TypeScript 版的 JSX，支持类型检查和更好的代码提示。
+-适用于 大中型项目，可以减少运行时错误，提高代码可维护性。
+-强类型检查：使用 TypeScript 定义变量、函数和组件的类型，增强安全性。
+
+2.2 TSX 示例（使用 TypeScript 编写组件）
+
+import React from 'react';
+import { Text, View } from 'react-native';
+type Props = {
+  message: string;
+};
+
+const MyComponent: React.FC<Props> = ({ message }) => {
+  return (
+    <View>
+      <Text>{message}</Text>
+    </View>
+  );
+};
+export default MyComponent;
+```
+
+3-JSX 与 TSX 的核心区别
+
+|   特性   |     JSX (JavaScript)     |       TSX (TypeScript)       |
+| :------: | :----------------------: | :--------------------------: |
+| 语法扩展 |        ✅ 支持 JSX        |          ✅ 支持 TSX          |
+| 类型检查 |       ❌ 无类型检查       |         ✅ 强类型检查         |
+| 开发体验 | 🚀 适合小型项目，语法简洁 | 🔧 适合大型项目，减少类型错误 |
+| 代码提示 |     ⚠️ 受限的代码补全     |       ✅ 更好的代码补全       |
+| 运行安全 | 🛑 运行时可能出现类型错误 |    ✅ 编译阶段即可发现错误    |
+
+4-何时选择 JSX 还是 TSX？
+
+|        场景        | 推荐语法 |
+| :----------------: | :------: |
+| 快速开发、个人项目 |   JSX    |
+| 复杂应用、大型项目 |   TSX    |
+| 需要严格的类型检查 |   TSX    |
+|  组件可复用性较高  |   TSX    |
+
+```
+如果你的项目是 小型或实验性质，可以使用 JSX 来快速开发；
+如果是 企业级、多人协作的项目，推荐使用 TSX，提升代码的健壮性和可维护性。
 ```
 
 ## 三 参考
