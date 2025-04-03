@@ -1,12 +1,12 @@
 ---
-title: Android面试题——掘金-Framework之Binder(2)
+title: Android面试题——掘金-Framework之Binder(3)
 categories:
   - 面试相关
   - Android面试题
 tags:
   - Binder
-abbrlink: 7d56f4f4
-date: 2025-04-03 10:18:45
+abbrlink: 644dc5b5
+date: 2025-04-03 10:41:23
 ---
 ## 一 概述
 
