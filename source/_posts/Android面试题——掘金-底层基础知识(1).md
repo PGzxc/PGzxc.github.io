@@ -1,12 +1,12 @@
 ---
-title: Android面试题——底层基础知识
+title: Android面试题——掘金-底层基础知识(1)
 categories:
   - 面试相关
   - Android面试题
 tags:
   - Android面试题
-  - 底层基础知识
-abbrlink: e837b5e
+  - 掘金
+abbrlink: 670fea1a
 date: 2025-04-02 13:55:43
 ---
 ## 一 概述
