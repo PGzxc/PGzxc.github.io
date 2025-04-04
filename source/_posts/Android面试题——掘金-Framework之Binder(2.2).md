@@ -4,7 +4,7 @@ categories:
   - 面试相关
   - Android面试题
 tags:
-  - Binder
+  - 掘金
 abbrlink: 644dc5b5
 date: 2025-04-03 10:41:23
 ---
