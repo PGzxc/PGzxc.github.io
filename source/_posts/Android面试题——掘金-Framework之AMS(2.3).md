@@ -1,11 +1,12 @@
 ---
 title: Android面试题——掘金-Framework之AMS(2.3)
-date: 2025-04-04 11:44:33
 categories:
   - 面试相关
   - Android面试题
 tags:
   - 掘金
+abbrlink: deb56c6e
+date: 2025-04-04 11:44:33
 ---
 ## 一 概述
 

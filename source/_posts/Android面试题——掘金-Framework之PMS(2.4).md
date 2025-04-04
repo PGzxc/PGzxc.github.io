@@ -1,11 +1,12 @@
 ---
 title: Android面试题——掘金-Framework之PMS(2.4)
-date: 2025-04-04 11:45:56
 categories:
   - 面试相关
   - Android面试题
 tags:
   - 掘金
+abbrlink: 21e5cb1c
+date: 2025-04-04 11:45:56
 ---
 ## 一 概述
 
