@@ -7,15 +7,16 @@ comments: false
 
 ## 一 软件下载网站
 
-| 编号 |               名称(地址)                |                  备注                  |
-| :--: | :-------------------------------------: | :------------------------------------: |
-|  1   |  [softonic](https://en.softonic.com/)   |         欧洲领先的软件下载网站         |
-|  2   |   [fosshub](https://www.fosshub.com/)   |     国外的一家致力于软件托管的平台     |
-|  3   | [sourceforge](https://sourceforge.net/) | 全球最大的开放源代码软件开发平台和仓库 |
-|  4   |       [Aspose](https://jprj.com/)       |              精挑精品软件              |
-|  5   | [瓜皮猪博客](https://www.guapizhu.com/) |          电脑+盒子+手机+资源           |
-|  6   |   [盒子派](https://www.hezipie.com/)    |          电脑+盒子+手机+资源           |
-|  7   |     [无痕哥](https://www.whg6.com/)     |             软件+系统+咨询             |
+| 编号 |                  名称(地址)                   |                  备注                  |
+| :--: | :-------------------------------------------: | :------------------------------------: |
+|  1   |     [softonic](https://en.softonic.com/)      |         欧洲领先的软件下载网站         |
+|  2   |      [fosshub](https://www.fosshub.com/)      |     国外的一家致力于软件托管的平台     |
+|  3   |    [sourceforge](https://sourceforge.net/)    | 全球最大的开放源代码软件开发平台和仓库 |
+|  4   |          [Aspose](https://jprj.com/)          |              精挑精品软件              |
+|  5   |    [瓜皮猪博客](https://www.guapizhu.com/)    |          电脑+盒子+手机+资源           |
+|  6   |      [盒子派](https://www.hezipie.com/)       |          电脑+盒子+手机+资源           |
+|  7   |        [无痕哥](https://www.whg6.com/)        |             软件+系统+咨询             |
+|  8   | [软件个锤子](https://www.rjgcz.com/6398.html) |           安卓+mac+win+脚本            |
 
 ##  二  软件破解
 
