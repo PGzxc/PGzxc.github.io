@@ -65,6 +65,8 @@ Application配置项(指定要执行的程序，可以有参数)
 
 ```
 metatube-server-windows-amd64-v3.exe -dsn metatube.db
+或
+-dsn metatube.db -port=8888 //指定端口
 ```
 
 图示
