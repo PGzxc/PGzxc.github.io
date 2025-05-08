@@ -51,8 +51,8 @@ comments: false
 
 | 编号 |                          名称(地址)                          |   备注   |
 | :--: | :----------------------------------------------------------: | :------: |
-|  1   |   https://agit.ai/ddx/TVBox/raw/branch/master/catbox.json    | 网络提供 |
-|  2   | https://github.moeyy.xyz/raw.githubusercontent.com/qist/tvbox/master/jsm.json | 电视使用 |
+|  1   | [2024年7月TVBOX配置地址已更新](https://www.ikuandai.cn/13718.html) | 网络提供 |
+|  2   | [TVBOX下载配置及本地包使用教程](https://www.cnblogs.com/johnjackson/p/17855441.html) | 电视使用 |
 |  3   |     https://cdn.jsdelivr.net/gh/liu673cn/box@main/m.json     | 网络提供 |
 
 ### 3.3 接口网站
