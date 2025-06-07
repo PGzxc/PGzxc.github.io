@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>PGzxc</title>
+  
+  <subtitle>纸上得来终觉浅 绝知此事要躬行</subtitle>
+  <link href="https://pgzxc.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://pgzxc.github.io/"/>
+  <updated>2025-06-07T00:04:38.271Z</updated>
+  <id>https://pgzxc.github.io/</id>
+  
+  <author>
+    <name>PGzxc</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaWeb开发思维导图之——Redis高级之主从复制简介(154)</title>
+    <link href="https://pgzxc.github.io/posts/ab98412.html"/>
+    <id>https://pgzxc.github.io/posts/ab98412.html</id>
+    <published>2025-06-06T23:58:52.000Z</published>
+    <updated>2025-06-07T00:04:38.271Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>高可用</li><li>主从复制的概念</li><li>主从复制的作用</li></ul><span id="more"></span><h2 id="二-高可用"><a href="#二-高可用" class="headerlink" title="二 高可用"></a>二 高可用</h2><h3 id="2-1-互联网-三高-架构"><a href="#2-1-互联网-三高-架构" class="headerlink" title="2.1 互联网&quot;三高&quot;架构"></a>2.1 互联网&quot;三高&quot;架构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1-高并发</span><br><span class="line">2-高性能</span><br><span class="line">3-高可用</span><br></pre></td></tr></table></figure><h3 id="2-2-redis是否高可用"><a href="#2-2-redis是否高可用" class="headerlink" title="2.2 redis是否高可用"></a>2.2 redis是否高可用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1-单击redis的风险与问题</span><br><span class="line"> 问题1: 机器故障</span><br><span class="line"> 问题2: 容量瓶颈</span><br><span class="line">2-结论 </span><br><span class="line"> 1-为避免单点redis服务器故障，准备多台服务器互相连通</span><br><span class="line"> 2-将数据复制多个副本保存在不同服务器上连接在一起，并保证数据同步</span><br><span class="line"> 3-即使一台服务器宕机，其他服务器可继续工作提供服务，实现redis高可用，实现数据冗余备份</span><br></pre></td></tr></table></figure><h3 id="2-3-多台服务器连接方案"><a href="#2-3-多台服务器连接方案" class="headerlink" title="2.3 多台服务器连接方案"></a>2.3 多台服务器连接方案</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1-模型</span><br><span class="line"> 1-一台master服务器连接多台slave服务器</span><br><span class="line"> 2-slave服务器用于提供数据(读功能)</span><br><span class="line"> 3-master服务器用于同步slave服务器数据，并实现数据同步</span><br><span class="line">2-概念</span><br><span class="line"> 1-提供数据方(master)</span><br><span class="line"> 2-接收数据方(slave)</span><br><span class="line"> 3-需要解决的问题: 数据同步(master的数据复制到slave中)</span><br></pre></td></tr></table></figure><h2 id="三-主从复制的概念"><a href="#三-主从复制的概念" class="headerlink" title="三 主从复制的概念"></a>三 主从复制的概念</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1-概念: 主从复制即将master中的数据即时、有效的复制到slave中</span><br><span class="line">2-特征: 一个master可以拥有多个slave，一个slave只对应一个master</span><br><span class="line">3-职责</span><br><span class="line">  1-master</span><br><span class="line">   1-写数据</span><br><span class="line">   2-执行写操作, 将出现变化的数据自动同步到slave</span><br><span class="line">   3-读数据(可忽略)</span><br><span class="line">  2-slave</span><br><span class="line">   1-读数据</span><br><span class="line">   2-写数据(禁止)</span><br></pre></td></tr></table></figure><h2 id="四-主从复制的作用"><a href="#四-主从复制的作用" class="headerlink" title="四 主从复制的作用"></a>四 主从复制的作用</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1-读写分离: master写、slave读, 提高服务器的读写负载能力</span><br><span class="line">2-负载均衡: </span><br><span class="line">3-故障恢复: 当master出现问题时, 由slave提供服务，实现快速的故障恢复</span><br><span class="line">4-数据冗余: 实现数据热备份, 是持久化之外的一种数据冗余方式</span><br><span class="line">5-高可用基石: 基于主从复制, 构建哨兵模式与集群, 实现redis的高可用方案</span><br></pre></td></tr></table></figure><h2 id="五-思维导图"><a href="#五-思维导图" class="headerlink" title="五 思维导图"></a>五 思维导图</h2><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-xmind-redis-hig-data-copy-4.png" alt="javaweb-xmind-redis-hig-data-copy-4" loading="lazy"></p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;高可用&lt;/li&gt;
+&lt;li&gt;主从复制的概念&lt;/li&gt;
+&lt;li&gt;主从复制的作用&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="G-后端开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/G-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="JavaWeb" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/G-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JavaWeb/"/>
+    
+    
+    <category term="JavaWeb" scheme="https://pgzxc.github.io/tags/JavaWeb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>标日高级下册——第6单元国際交流-第24课フィランソロピー-会话5</title>
+    <link href="https://pgzxc.github.io/posts/cafc570c.html"/>
+    <id>https://pgzxc.github.io/posts/cafc570c.html</id>
+    <published>2025-06-06T23:42:04.000Z</published>
+    <updated>2025-06-07T00:04:38.399Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-主题—フィランソロピー"><a href="#一-主题—フィランソロピー" class="headerlink" title="一 主题—フィランソロピー"></a>一 主题—フィランソロピー</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">フィランソロピー：慈善事业、公益活动</span><br><span class="line">スピーチコンテスト本選:演讲比赛决赛</span><br></pre></td></tr></table></figure><span id="more"></span><p>生词：</p><ul><li>スピーチコンテスト：演讲比赛</li><li>本選(ほんせん)： 决赛、正式选拔</li></ul><h2 id="二-演讲比赛内容"><a href="#二-演讲比赛内容" class="headerlink" title="二 演讲比赛内容"></a>二 演讲比赛内容</h2><h3 id="2-1-第3段"><a href="#2-1-第3段" class="headerlink" title="2.1 第3段"></a>2.1 第3段</h3><p>日语</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">その後、日本の漫画もわたしの先生になりました。</span><br><span class="line">やはり、最初は中国語の翻訳だったのですが、やがて日本語版を入手して読むようになりました。</span><br><span class="line">平仮名はあまり読めませんでしたが、絵や漢字を頼りに、どうにかストーリーを理解することはできました。</span><br><span class="line">こうして頻繁に漫画を読むうちに、日本語の文字にも自然になれていきました。</span><br><span class="line">今考えると、漫画には擬声語がたくさん使われていて、ストーリーの理解にとても役立っていたように思います。</span><br><span class="line">例えば、ドアをノックする「トントン」や「ドンドン」、食器が割れる「ガチャーン」、</span><br><span class="line">大きな岩が転がる「ゴロゴロ」、人が走っている「ダッダッダッ」などです。</span><br></pre></td></tr></table></figure><p>翻译</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">那以后，日本的漫画也成了我的老师。</span><br><span class="line">跟动漫一样，最开始也是看翻译成汉语的，后来就找来日文版读起来了。</span><br><span class="line">平假名不怎么认识，主要靠插图和汉字，好歹能理解故事情节了。</span><br><span class="line">就这样，在频繁阅读中自然而然地看惯了日语的文字。</span><br><span class="line">现在想来，漫画中使用了很多拟声、拟态词，对理解故事内容很有帮助。</span><br><span class="line">比如，敲门时的“トントン”“ドンドン”，餐具摔碎时的“ガチャ一ン”，</span><br><span class="line">大块岩石滚落时的“ゴ口ゴ口”，人在跑步时用的“ダッダッダッ”等。</span><br></pre></td></tr></table></figure><p>生词：</p><ul><li>その後(あと)：之后、后来</li><li>日本の漫画(まんが)：日本的漫画</li><li>最初(さいしょ)：</li><li>中国語(ちゅうごくご)の翻訳(ほんやく)：中文的翻译</li><li>日本語版(ごばん)を入手(にゅうしゅ)：获得日语版、拿到日语版本</li><li>読(よ)むよう：要读、去读</li><li>平仮名(ひらがな)：平假名</li><li>読(よ)めません：读不了 、不会读 、不能读</li><li>絵(え)や漢字(かんじ)を頼(たよ)り：依靠图画和汉字</li><li>ストーリーを理解(りかい)：理解故事</li><li>頻繁(ひんぱん)：频繁</li><li>漫画(まんが)を読(よ)む：读漫画</li><li>日本語の文字(もじ)：日语的文字</li><li>自然(しぜん)：自然</li><li>今(いま)考(かんが)える：现在思考 、现在想</li><li>擬声語(ぎせいご)：拟声词</li><li>使(つか)われて：被使用</li><li>役立(やくだ)って：有帮助、起作用</li><li>例(たと)えば：例如</li><li>ドアをノック：敲门</li><li>トントン：咚咚</li><li>ドンドン：咚咚(连续的重击声)</li><li>食器(しょっき)：餐具</li><li>割(わ)れる：破裂、裂开、破碎</li><li>ガチャーン：咔嗒</li><li>大(おお)きな岩(いわ)：巨大的岩石</li><li>転(ころ)がる：滚动、翻滚</li><li>ゴロゴロ：隆隆(重物移动的声音)</li><li>人(ひと)が走(はし)って：有人在跑、人们在跑</li><li>グッグッグッ：咕咕咕(连续的低沉闷响，类似喉咙发出的声音或重物挤压声)</li></ul><h3 id="2-2-第4段"><a href="#2-2-第4段" class="headerlink" title="2.2 第4段"></a>2.2 第4段</h3><p>日语</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">このように、わたしは、日本語の音声はアニメで、日本語の文字は漫画を通して親しむようになっていました。</span><br><span class="line">でも、話すほうはほとんどできませんでした。</span><br><span class="line">そこで、日本語を話せるようになりたいと思い、中学と高校の外国語は日本語を選択しました。</span><br><span class="line">さらに、高校卒業後は、大連にある語学学院に進み、日本語を専攻しました。</span><br><span class="line">これは、アニメやマンガを通して日本語に出会っていたわたしにとっては、ごく自然の選択でした。</span><br></pre></td></tr></table></figure><p>翻译</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">就这样，我用动漫倾听日语的语音，通过阅读漫画了解日语的文字，用这样的方式亲近了日语。</span><br><span class="line">但是，口语表达还几乎谈不上。</span><br><span class="line">于是，为了会说日语，我在初、高中的外语课都选择了日语。</span><br><span class="line">而且在高中毕业后进入大连一所外语培训学院专门学习日语。</span><br><span class="line">这对通过动漫和漫画接触了日语的我来说，是极为自然的选择。</span><br></pre></td></tr></table></figure><p>生词：</p><ul><li>日本語の音声(おんせい)：日语的发音</li><li>アニメ：动画</li><li>日本語の文字(もじ)：日语的文字</li><li>漫画(まんが)を通(とお)して：通过漫画</li><li>親(した)し：亲近、接近、熟悉</li><li>話(はな)す：说、讲、谈话</li><li>日本語を話(はな)せる：会说日语</li><li>中学(ちゅうがく)：中学</li><li>高校(こうこう)の外国語(がいこくご)：高中的外语</li><li>日本語を選択(せんたく)：选择日语</li><li>高校卒業(こうこうそつぎょう)：高中毕业</li><li>大連(だいれん)：大连</li><li>語学学院(ごがくがくいん)：语言学院</li><li>進み(すすみ)：前进、行进</li><li>日本語を専攻(せんこう)：专攻日语</li><li>漫画(まんが)を通(とお)して：通过漫画</li><li>日本語に出会(であ)って：遇到了日语、接触到日语</li><li>自然(しぜん)の選択(せんたく)：自然的选择</li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-主题—フィランソロピー&quot;&gt;&lt;a href=&quot;#一-主题—フィランソロピー&quot; class=&quot;headerlink&quot; title=&quot;一 主题—フィランソロピー&quot;&gt;&lt;/a&gt;一 主题—フィランソロピー&lt;/h2&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;フィランソロピー：慈善事业、公益活动&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;スピーチコンテスト本選:演讲比赛决赛&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="外语学习" scheme="https://pgzxc.github.io/categories/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="日语" scheme="https://pgzxc.github.io/categories/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/%E6%97%A5%E8%AF%AD/"/>
+    
+    
+    <category term="高级下" scheme="https://pgzxc.github.io/tags/%E9%AB%98%E7%BA%A7%E4%B8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaWeb开发思维导图之——Redis高级之数据逐出算法(153)</title>
+    <link href="https://pgzxc.github.io/posts/fff2ae0e.html"/>
+    <id>https://pgzxc.github.io/posts/fff2ae0e.html</id>
+    <published>2025-06-06T01:42:50.000Z</published>
+    <updated>2025-06-07T00:04:38.272Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>新数据进入redis内存不足怎么办</li><li>影响数据淘汰相关配置</li><li>数据淘汰策略配置依据</li></ul><span id="more"></span><h2 id="二-新数据进入redis内存不足怎么办"><a href="#二-新数据进入redis内存不足怎么办" class="headerlink" title="二 新数据进入redis内存不足怎么办"></a>二 新数据进入redis内存不足怎么办</h2><h3 id="2-1-说明"><a href="#2-1-说明" class="headerlink" title="2.1 说明"></a>2.1 说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1-Redis使用内存存储数据，在执行每一个命令前, 会调用freeMemoryifNeed()检测内存是否充足</span><br><span class="line">2-内存不满足新加入数据的最低存储要求，redis临时删除一些数据为当前指令清理存储空间</span><br><span class="line">3-清理数据的策略称为逐出算法</span><br></pre></td></tr></table></figure><h3 id="2-2-注意事项"><a href="#2-2-注意事项" class="headerlink" title="2.2 注意事项"></a>2.2 注意事项</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1-逐出数据过程不是100%能够清理出足够可使用的内存空间</span><br><span class="line">2-如果不成功则反复执行</span><br><span class="line">3-所有数据执行完毕仍不能满足，出现OOM错误</span><br></pre></td></tr></table></figure><h2 id="三-影响数据淘汰相关配置"><a href="#三-影响数据淘汰相关配置" class="headerlink" title="三 影响数据淘汰相关配置"></a>三 影响数据淘汰相关配置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1-最大可用内存</span><br><span class="line">2-每次选取待删除数据个数</span><br><span class="line">3-对数据进行删除的选择策略: maxmemory-policy policy</span><br><span class="line">4-数据淘汰策略</span><br><span class="line">5-示例: maxmemory-policy volatile-lru</span><br></pre></td></tr></table></figure><h2 id="四-数据淘汰策略配置依据"><a href="#四-数据淘汰策略配置依据" class="headerlink" title="四 数据淘汰策略配置依据"></a>四 数据淘汰策略配置依据</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用info命令输出监控信息，查询缓存hit和miss的次数，根据业务需求调优redis配置</span><br></pre></td></tr></table></figure><h2 id="五-思维导图"><a href="#五-思维导图" class="headerlink" title="五 思维导图"></a>五 思维导图</h2><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-xmind-redis-hig-expi-dataout-3.png" alt="javaweb-xmind-redis-hig-expi-dataout-3" loading="lazy"></p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;新数据进入redis内存不足怎么办&lt;/li&gt;
+&lt;li&gt;影响数据淘汰相关配置&lt;/li&gt;
+&lt;li&gt;数据淘汰策略配置依据&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="G-后端开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/G-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="JavaWeb" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/G-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JavaWeb/"/>
+    
+    
+    <category term="JavaWeb" scheme="https://pgzxc.github.io/tags/JavaWeb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>标日高级下册——第6单元国際交流-第24课フィランソロピー-会话4</title>
+    <link href="https://pgzxc.github.io/posts/bdfb679a.html"/>
+    <id>https://pgzxc.github.io/posts/bdfb679a.html</id>
+    <published>2025-06-06T00:37:24.000Z</published>
+    <updated>2025-06-07T00:04:38.399Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-主题—フィランソロピー"><a href="#一-主题—フィランソロピー" class="headerlink" title="一 主题—フィランソロピー"></a>一 主题—フィランソロピー</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">フィランソロピー：慈善事业、公益活动</span><br><span class="line">スピーチコンテスト本選:演讲比赛决赛</span><br></pre></td></tr></table></figure><span id="more"></span><p>生词：</p><ul><li>スピーチコンテスト：演讲比赛</li><li>本選(ほんせん)： 决赛、正式选拔</li></ul><h2 id="二-内容"><a href="#二-内容" class="headerlink" title="二 内容"></a>二 内容</h2><h3 id="2-1-说明"><a href="#2-1-说明" class="headerlink" title="2.1 说明"></a>2.1 说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">東京白銀ホテルで、心身堂主催の日本語スピーチコンテストの本選が開かれている。</span><br><span class="line">东京白银饭店，心身堂主办的日语演讲比赛在这里举行。</span><br></pre></td></tr></table></figure><p>生词：</p><ul><li>東京白銀(とうきょうはくぎん)ホテル：东京白银酒店</li><li>心身堂(しんしんどう)主催(しゅさい)： 由心身堂主办</li><li>日本語(にほんご)スピーチコンテスト：日语演讲比赛</li><li>本選(ほんせん)：决赛、正式选拔</li><li>開(ひら)かれて：被打开、被举办；处于开放状态</li></ul><h2 id="三-演讲比赛内容"><a href="#三-演讲比赛内容" class="headerlink" title="三 演讲比赛内容"></a>三 演讲比赛内容</h2><p>中国人の郭蓮蓮がスピーチする：中国人郭莲莲进行演讲</p><p>生词：</p><ul><li>中国人(ちゅうごくじん)：中国人</li><li>郭蓮蓮(かくれんれん)：郭莲莲</li><li>スピーチ：演讲</li></ul><h3 id="3-1-第1段"><a href="#3-1-第1段" class="headerlink" title="3.1 第1段"></a>3.1 第1段</h3><p>日语</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">皆さん、こんにちは。</span><br><span class="line">わたしは、郭蓮蓮と言います。中国の大連出身です。</span><br><span class="line">3か月ほど前に日本に来ました。現在、アルバイトをしながら日本語学校に通っています。</span><br></pre></td></tr></table></figure><p>翻译</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">大家好！</span><br><span class="line">我叫郭莲莲，是中国大连人。</span><br><span class="line">3个月前到日本，现在边打工边在日语学校学习</span><br></pre></td></tr></table></figure><p>生词：</p><ul><li>皆(みな)さん：大家、诸位</li><li>郭蓮蓮(かくれんれん)：郭莲莲</li><li>言(い)います：说、讲；叫做</li><li>中国(ちゅうごく)の大連(だいれん)出身(しゅっしん)：出身于中国大连</li></ul><h3 id="3-2-第2段"><a href="#3-2-第2段" class="headerlink" title="3.2 第2段"></a>3.2 第2段</h3><p>日语</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">まず、わたしと日本語の出会いからお話したいと思います。</span><br><span class="line">わたしは日本のアニメがすきで、小学生のころから、インターネットやVCDなどでよく見ていました。</span><br><span class="line">最初は中国語の吹き替えで見ていたのですが、そのうちに日本語の音声で見るようになりました。</span><br><span class="line">当然、初めのうちは、全く日本語を聞き取ることができませんでした。</span><br><span class="line"></span><br><span class="line">それでも、毎日のように繰り返していると、次第に日本語に耳が慣れてきて、</span><br><span class="line">自分でも台詞に合わせて発音してみるようになりました。</span><br><span class="line"></span><br><span class="line">そして、なんとなくですが、意味も分かるようになりました。</span><br><span class="line">わたしにとって最初の日本語の先生は日本のアニメだったといってもいいかもしれません。</span><br></pre></td></tr></table></figure><p>翻译</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">我想先说一下我是怎样和日语结缘的。</span><br><span class="line">我喜欢日本的动漫，从小学就开始在网上或用光盘看。</span><br><span class="line">最早是看汉语配音的，后来开始看日语原版的。</span><br><span class="line">当然，刚开始日语是一点儿也听不懂。</span><br><span class="line"></span><br><span class="line">尽管如此，每天反复听，慢慢地就习惯了听日语，并且自己也跟着台词尝试发音。</span><br><span class="line"></span><br><span class="line">到后来，连蒙带猜的，意思也好像能听明白了。</span><br><span class="line">对我来说，最开始的日语教师也许可以说就是日本的动漫。</span><br></pre></td></tr></table></figure><p>生词：</p><ul><li>日本語(にほんご)の出会(であ)い：与日语的相遇</li><li>お話(はな)し：谈话、讲话；故事、事情</li><li>日本のアニメ：日本的动画、日本动漫</li><li>小学生(しょうがくせい)：小学生</li><li>インターネット：互联网、因特网</li><li>見(み)ていました：看过了</li><li>最初(さいしょ)：最初、起初、一开始</li><li>中国語(ちゅうごくご)の吹(ふ)き替(か)えで：用中文配音</li><li>日本語(にほんご)の音声(おんせい)：日语的声音 &#x2F; 语音、日语原声</li><li>当然(とうぜん)：当然、自然、理应如此</li><li>始(はじ)め：开始、起始；最初、起初</li><li>全(まった)く日本語(にほんご)を聞(き)き取(と)る：完全听懂日语、完全理解日语</li><li>毎日(まいにち)：每天</li><li>繰(く)り返(かえ)して：反复地、重复地、多次地</li><li>次第(しだい)：情况、情形</li><li>耳(みみ)が慣(な)れてきて：逐渐听习惯了；耳朵渐渐适应了</li><li>自分(じぶん)：自己</li><li>台詞(せりふ)：台词</li><li>合(あわ)わせて：合计、总共</li><li>発音(はつおん)：发音</li><li>意味(いみ)：意思、含义、意义</li><li>最初(さいしょ)の日本語の先生(せんし)：第一位日语老师</li><li>日本のアニメ：日本的动画、日本动漫</li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-主题—フィランソロピー&quot;&gt;&lt;a href=&quot;#一-主题—フィランソロピー&quot; class=&quot;headerlink&quot; title=&quot;一 主题—フィランソロピー&quot;&gt;&lt;/a&gt;一 主题—フィランソロピー&lt;/h2&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;フィランソロピー：慈善事业、公益活动&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;スピーチコンテスト本選:演讲比赛决赛&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="外语学习" scheme="https://pgzxc.github.io/categories/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="日语" scheme="https://pgzxc.github.io/categories/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/%E6%97%A5%E8%AF%AD/"/>
+    
+    
+    <category term="高级下" scheme="https://pgzxc.github.io/tags/%E9%AB%98%E7%BA%A7%E4%B8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaWeb开发思维导图之——Redis高级之数据删除策略(152)</title>
+    <link href="https://pgzxc.github.io/posts/d58968f0.html"/>
+    <id>https://pgzxc.github.io/posts/d58968f0.html</id>
+    <published>2025-06-05T00:26:50.000Z</published>
+    <updated>2025-06-07T00:04:38.271Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>定时删除</li><li>惰性删除</li><li>定期删除</li><li>删除策略对比</li></ul><span id="more"></span><h2 id="二-定时删除"><a href="#二-定时删除" class="headerlink" title="二 定时删除"></a>二 定时删除</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1-创建一个定时器，当key设置有过期时间，且过期时间到达时，由定时器任务立即执行对键的删除操作</span><br><span class="line">2-优点: 节约内存，到时就删除，快速释放掉不必要的内存占用</span><br><span class="line">3-缺点: CPU压力很大，无论cpu此时负载量多高，均占用cpu, 会影响redis服务器响应时间和指令吞吐量</span><br><span class="line">4-总结: 用处理器性能换取存储空间(拿时间换空间)</span><br></pre></td></tr></table></figure><h2 id="三-惰性删除"><a href="#三-惰性删除" class="headerlink" title="三 惰性删除"></a>三 惰性删除</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1-数据达到过期时间，不做处理。等下次访问该数据时</span><br><span class="line">2-优点: 节约cpu性能，发现必须删除的时候才删除</span><br><span class="line">3-缺点: 内存压力很大，出现长期占用内存的数据</span><br><span class="line">4-用存储空间换取处理器性能(拿时间换空间)</span><br></pre></td></tr></table></figure><h2 id="四-定期删除"><a href="#四-定期删除" class="headerlink" title="四 定期删除"></a>四 定期删除</h2><h3 id="4-1-模型"><a href="#4-1-模型" class="headerlink" title="4.1 模型"></a>4.1 模型</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1-根据配置分为10个过期块</span><br><span class="line">2-每个过期块存储一定量数据</span><br><span class="line">3-到达过期时间时，current_db为1(第一个块)，执行检测删除</span><br><span class="line">4-activeExpireCycle执行时间到，current_db+1继续</span><br></pre></td></tr></table></figure><h3 id="4-2-方案说明"><a href="#4-2-方案说明" class="headerlink" title="4.2 方案说明"></a>4.2 方案说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1-Redis启动服务器初始化时，读取配置server.hz的值，默认为10</span><br><span class="line">2-每秒钟执行server.hz次serverCron()-&gt;databasesCron()-&gt;activeExpireCycle()</span><br><span class="line">3-activeExpireCycle()对每个expires[*]逐一进行检测，每次执行250ms/server.hz</span><br><span class="line">4-如何检测</span><br><span class="line">5-参数current_db用于记录activeExpireCycle()进入哪个expire[*]执行</span><br><span class="line">6-如果activeExpireCycle()执行时间到期，下次从current_db继续向下执行</span><br></pre></td></tr></table></figure><h3 id="4-3-定期删除"><a href="#4-3-定期删除" class="headerlink" title="4.3 定期删除"></a>4.3 定期删除</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1-周期性轮询redis库中的时效性数据，采用随机抽取的策略, 利用过期数据占比的方式控制删除频度</span><br><span class="line">2-特点</span><br><span class="line"> 1-cpu性能占用设置有峰值，检测频度可自定义设置</span><br><span class="line"> 2-内存压力不是很大，长期占用内存的冷数据会被持续清理</span><br><span class="line">3-总结: 周期性抽查存储空间(随机抽查，重点抽查) </span><br></pre></td></tr></table></figure><h2 id="五-删除策略对比"><a href="#五-删除策略对比" class="headerlink" title="五 删除策略对比"></a>五 删除策略对比</h2><h3 id="5-1-定时删除"><a href="#5-1-定时删除" class="headerlink" title="5.1 定时删除"></a>5.1 定时删除</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1-节约内存，无占用</span><br><span class="line">2-不分时段占用cpu资源，频度高</span><br><span class="line">3-拿时间换空间</span><br></pre></td></tr></table></figure><h3 id="5-2-惰性删除"><a href="#5-2-惰性删除" class="headerlink" title="5.2 惰性删除"></a>5.2 惰性删除</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1-内存占用严重</span><br><span class="line">2-延时执行，cpu利用率高</span><br><span class="line">3-拿空间换时间</span><br></pre></td></tr></table></figure><h3 id="5-3-定期删除"><a href="#5-3-定期删除" class="headerlink" title="5.3 定期删除"></a>5.3 定期删除</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1-内存定期随机清理</span><br><span class="line">2-每秒花费固定的cpu资源维护内存</span><br><span class="line">3-随机抽查，重点抽查</span><br></pre></td></tr></table></figure><h2 id="六-思维导图"><a href="#六-思维导图" class="headerlink" title="六 思维导图"></a>六 思维导图</h2><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-xmind-redis-hig-expi-datadel-2.png" alt="javaweb-xmind-redis-hig-expi-datadel-2" loading="lazy"></p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;定时删除&lt;/li&gt;
+&lt;li&gt;惰性删除&lt;/li&gt;
+&lt;li&gt;定期删除&lt;/li&gt;
+&lt;li&gt;删除策略对比&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="G-后端开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/G-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="JavaWeb" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/G-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JavaWeb/"/>
+    
+    
+    <category term="JavaWeb" scheme="https://pgzxc.github.io/tags/JavaWeb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>标日高级下册——第6单元国際交流-第24课フィランソロピー-会话3</title>
+    <link href="https://pgzxc.github.io/posts/239ff239.html"/>
+    <id>https://pgzxc.github.io/posts/239ff239.html</id>
+    <published>2025-06-05T00:17:22.000Z</published>
+    <updated>2025-06-07T00:04:38.399Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-主题—フィランソロピー"><a href="#一-主题—フィランソロピー" class="headerlink" title="一 主题—フィランソロピー"></a>一 主题—フィランソロピー</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">フィランソロピー：慈善事业、公益活动</span><br><span class="line">スピーチコンテスト準備会:演讲比赛筹备会</span><br></pre></td></tr></table></figure><span id="more"></span><p>生词：</p><ul><li>スピーチコンテスト：演讲比赛</li><li>準備会(じゅんびかい)：筹备会</li></ul><h2 id="二-内容"><a href="#二-内容" class="headerlink" title="二 内容"></a>二 内容</h2><h3 id="2-1-对话1"><a href="#2-1-对话1" class="headerlink" title="2.1 对话1"></a>2.1 对话1</h3><ul><li>入江：分かりました。えー、本選の人数は15名を予定しています。例年とおりですね。好的。嗯，参加决赛的人数定为15名，与往年相同。</li><li>竹内：本選までの選考ですが、ホームページに、今年のテーマと応募要項をアップロードし、所定の書式にしたがって応募してもらいます。その際、テーマに沿ったスピーチ原稿を添付してもらうことになっています。その原稿をもとに第1次選考を行い、本選に参加する15名に絞り込みます。关于决赛之前的选拔方式，在网页上公布今年的题目和参赛规定，有意者按规定格式填写申请表。提交时，要求附上按照题目写成的演讲稿。以这些讲稿为基础进行初选，遴选出15名参加决赛。</li><li>大沢：確認ですが、本選の審査方法は昨年と同じなのでしょうか。我想确认一下，决赛的审查办法与去年相同吗？</li><li>入江：えーと、どういうことですか。嗯，您是想说...?</li></ul><p>生词：</p><ul><li>本選(ほんせん)の人数(にんずう)：最终选拔的人数</li><li>15名(めい)を予定(よてい)：计划(预定)15 人</li><li>例年(れいねん)：往年、历年、每年</li><li>選考(せんこう)：选拔考试、筛选、考评</li><li>ホームぺージ：主页、首页</li><li>今年(ことし)のテーマ：今年的主题</li><li>応募要項(おうぼようこう)をアップロード：上传报名须知、申请须知</li><li>所定(しょてい)の書式(しょしき)：规定的格式、指定的格式</li><li>応募(おうぼ)：报名、申请</li><li>その際(さい)：那时、在那种情况下、届时</li><li>テーマに沿(そ)った：符合主题的、围绕主题的、按照主题的</li><li>スピーチ原稿(げんこう)を添付(てんぷ)：附上演讲原稿、演讲稿</li><li>第一次(だいいちじ)選考(せんこう)を行(おこな)い：进行第一次选拔考试、第一轮筛选</li><li>本選(ほんせん)に参加(さんか)：参加最终选拔、正式选拔</li><li>15名(めい)に絞(しぼ)り込(こ)みます：筛选至15人、精简为15人</li><li>確認(かくにん)：确认、核查</li><li>本選(ほんせん)の審査(しんさ)方法(ほうほう)：最终选拔的审查方法、正式选拔的评审方式</li><li>昨年(さくねん)：去年</li><li>同じ(おなじ)：相同、一样</li></ul><h3 id="2-2-对话2"><a href="#2-2-对话2" class="headerlink" title="2.2 对话2"></a>2.2 对话2</h3><ul><li>大沢：昨年の本選では、優勝者と準優勝者は同点だったと聞きましたが、優勝者はどのように決まったんでしょうか。我听说去年的决赛上，冠军和亚军得分相同，那当时冠军是怎么确定的呢？</li><li>入江：たしか…、昨年は年齢が上の人を選んだと思いますが…。好像...我记得去年是选了年龄大的人。</li><li>大沢：それって、どうなんでしょうか。年齢で優勝者を決めてしまうのは。这个不太好吧？按年龄决定冠军。</li><li>東：わたしも同感です。年がちょっと若いというだけで、奨学金がもらえないというのは気の毒ですし、その決め方は安易に過ぎるように思います。我也有同感。只因为年龄小一点就拿不到奖学金了，这一点让人同情。再说，这种决定方法也让人觉得有点太过随便了。</li></ul><p>生词：</p><ul><li>昨年(さくねん)の本選(ほんせん)：去年的最终选拔、或去年的正式选拔</li><li>優勝者(ゆうしょうしゃ)：冠军、优胜者</li><li>準優勝者(じゅんゆうしょうしゃ)：亚军、准优胜者</li><li>同点(どうてん)：同分、得分相同</li><li>聞(き)きました：听说了、听到了</li><li>決(き)まったん：决定了、定下来了</li><li>年齢(ねんれい)：年龄</li><li>上(うえ)の人(ひと)を選(えら)んだ： 选择了年纪大的人、挑选了上位者</li><li>優勝者(ゆうしょうしゃ)を決(き)めて：决定冠军、确定优胜者</li><li>同感(どうかん)：同感、赞同</li><li>年(とし)がちょっと若(わか)い：年龄稍微有点小、年纪稍微轻一点</li><li>奨学金(しょうがくきん)：奖学金</li><li>気(き)の毒(どく)：可怜、可悲、可惜</li><li>そこ決(き)め方(かた)：那种决定方式、那种判定方法</li><li>安易(あんい)：草率、轻易、简单</li><li>過(す)ぎる：过度、过于；超过、过</li></ul><h3 id="2-3-对话3"><a href="#2-3-对话3" class="headerlink" title="2.3 对话3"></a>2.3 对话3</h3><ul><li>入江：東さんのご意見はごもっともですが、若い人にはまたのチャンスがあるということで、昨年はやむをえず…。小东的意见是不错，但因为年轻人还有机会，所以去年不得已才...</li><li>東：でも、逆に若いからこそ、支援してあげるという考え方もあると思いますが…。可是，也可以反过来想：正因为年轻才应该支持啊...</li><li>大沢：そうですよ。例えば、同点なら、2人とも奨学金を出すというのは無理なんでしょうか。就是嘛！比如，两个人得分如果相同，都给奖学金行不行呢？</li><li>入江：なるほど、そういう方法もありますね。うーん、この件、検討課題とさせてください。是啊，这倒也是一个办法。嗯，这个问题，我们再找机会讨论吧。</li></ul><p>生词：</p><ul><li>東(とう)さん：东先生 &#x2F; 东女士</li><li>意見(いけん)：意见、看法</li><li>若(わか)い人(ひと)：年轻人</li><li>チャンス：机会、机遇</li><li>昨年(さくねん)：去年</li><li>逆(ぎゃく)に若(わか)い：反而年轻、相反却年轻</li><li>支援(しえん)：支援、支持、援助</li><li>考(かんが)え方(かた)：思考方式、想法、观念</li><li>例(たと)えば：例如、比如</li><li>同点(どうてん)：同分、相同的分数</li><li>2人(ふたり)：两个人</li><li>奨学金(しょうがくきん)を出(だ)す：发放奖学金、提供奖学金</li><li>無理(むり)：不可能、难以做到；勉强、硬来</li><li>方法(ほうほう)：方法、办法</li><li>この件(けん)：这件事、此事</li><li>検討課題(けんとうかだい)：研讨课题、研究课题</li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-主题—フィランソロピー&quot;&gt;&lt;a href=&quot;#一-主题—フィランソロピー&quot; class=&quot;headerlink&quot; title=&quot;一 主题—フィランソロピー&quot;&gt;&lt;/a&gt;一 主题—フィランソロピー&lt;/h2&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;フィランソロピー：慈善事业、公益活动&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;スピーチコンテスト準備会:演讲比赛筹备会&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="外语学习" scheme="https://pgzxc.github.io/categories/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="日语" scheme="https://pgzxc.github.io/categories/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/%E6%97%A5%E8%AF%AD/"/>
+    
+    
+    <category term="高级下" scheme="https://pgzxc.github.io/tags/%E9%AB%98%E7%BA%A7%E4%B8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaWeb开发思维导图之——Redis高级之过期数据(151)</title>
+    <link href="https://pgzxc.github.io/posts/e4ad0794.html"/>
+    <id>https://pgzxc.github.io/posts/e4ad0794.html</id>
+    <published>2025-06-04T02:31:29.000Z</published>
+    <updated>2025-06-07T00:04:38.272Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>Redis中的数据特征</li><li>时效性数据的存储结构</li><li>数据删除策略</li><li>数据删除策略的目标</li></ul><span id="more"></span><h2 id="二-Redis中的数据特征"><a href="#二-Redis中的数据特征" class="headerlink" title="二 Redis中的数据特征"></a>二 Redis中的数据特征</h2><h3 id="2-1-概念"><a href="#2-1-概念" class="headerlink" title="2.1 概念"></a>2.1 概念</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1-Redis是一种内存级数据库，所有数据均存放内存中</span><br><span class="line">2-内存中的数据可以通过TTL指令获取其状态</span><br></pre></td></tr></table></figure><h3 id="2-2-数据状态"><a href="#2-2-数据状态" class="headerlink" title="2.2 数据状态"></a>2.2 数据状态</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1-(XX): 具有时效性的数据</span><br><span class="line">2-(-1): 永久有效的数据</span><br><span class="line">3-(-2): 已经过期的数据或被删除的数据或未定义的数据</span><br></pre></td></tr></table></figure><h2 id="三-时效性数据的存储结构"><a href="#三-时效性数据的存储结构" class="headerlink" title="三 时效性数据的存储结构"></a>三 时效性数据的存储结构</h2><h3 id="3-1-Redis存储空间模型"><a href="#3-1-Redis存储空间模型" class="headerlink" title="3.1 Redis存储空间模型"></a>3.1 Redis存储空间模型</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1-数据区：name—&gt;zs(ox0110-内存地址)</span><br><span class="line">2-expires(过期失效)：ox0110-135954124(过期时间)</span><br></pre></td></tr></table></figure><h3 id="3-2-可选值"><a href="#3-2-可选值" class="headerlink" title="3.2 可选值"></a>3.2 可选值</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1-expire</span><br><span class="line">2-expireat</span><br><span class="line">3-pexpire</span><br><span class="line">4-pexpireat</span><br></pre></td></tr></table></figure><h3 id="3-3-示例"><a href="#3-3-示例" class="headerlink" title="3.3 示例"></a>3.3 示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setex expire key</span><br></pre></td></tr></table></figure><h2 id="四-数据删除策略"><a href="#四-数据删除策略" class="headerlink" title="四 数据删除策略"></a>四 数据删除策略</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1-定时删除</span><br><span class="line">2-惰性删除</span><br><span class="line">3-定期删除</span><br></pre></td></tr></table></figure><h2 id="五-数据删除策略的目标"><a href="#五-数据删除策略的目标" class="headerlink" title="五 数据删除策略的目标"></a>五 数据删除策略的目标</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1-在内存占用与CPU占用之间寻找一种平衡</span><br><span class="line">2-否则会造成redis性能下降甚至服务器宕机或内存泄露</span><br></pre></td></tr></table></figure><h2 id="六-思维导图"><a href="#六-思维导图" class="headerlink" title="六 思维导图"></a>六 思维导图</h2><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-xmind-redis-hig-expi-data-1.png" alt="javaweb-xmind-redis-hig-expi-data-1" loading="lazy"></p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Redis中的数据特征&lt;/li&gt;
+&lt;li&gt;时效性数据的存储结构&lt;/li&gt;
+&lt;li&gt;数据删除策略&lt;/li&gt;
+&lt;li&gt;数据删除策略的目标&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="G-后端开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/G-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="JavaWeb" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/G-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JavaWeb/"/>
+    
+    
+    <category term="JavaWeb" scheme="https://pgzxc.github.io/tags/JavaWeb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>标日高级下册——第6单元国際交流-第24课フィランソロピー-会话2</title>
+    <link href="https://pgzxc.github.io/posts/5498c2af.html"/>
+    <id>https://pgzxc.github.io/posts/5498c2af.html</id>
+    <published>2025-06-04T01:45:16.000Z</published>
+    <updated>2025-06-07T00:04:38.399Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-主题—フィランソロピー"><a href="#一-主题—フィランソロピー" class="headerlink" title="一 主题—フィランソロピー"></a>一 主题—フィランソロピー</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">フィランソロピー：慈善事业、公益活动</span><br><span class="line">スピーチコンテスト準備会:演讲比赛筹备会</span><br></pre></td></tr></table></figure><span id="more"></span><p>生词：</p><ul><li>スピーチコンテスト：演讲比赛</li><li>準備会(じゅんびかい)：筹备会</li></ul><h2 id="二-内容"><a href="#二-内容" class="headerlink" title="二 内容"></a>二 内容</h2><h3 id="2-1-主题"><a href="#2-1-主题" class="headerlink" title="2.1 主题"></a>2.1 主题</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">スピーチコンテストの担当者が集まり、入江の司会で打ち合わせが行われている</span><br><span class="line">演讲比赛的负责人聚集在一起，在入江的主持下正在进行协调会</span><br></pre></td></tr></table></figure><p>生词：</p><ul><li>スピーチコンテストの担当者(たんとうしゃ)：演讲比赛的负责人</li><li>集(あつ)まり： 聚集、集合</li><li>入江(いりえ)の司会(しかい)：入江主持、由入江担任主持人</li><li>打ち合わせ(うちあわせ)：协调会、事先商量</li><li>行(おこな)われて：被进行、被举办</li></ul><h3 id="2-2-对话"><a href="#2-2-对话" class="headerlink" title="2.2 对话"></a>2.2 对话</h3><ul><li>入江：まず、今年のスピーチコンテストの概要から確認します。竹内さん、お願いします。首先，我们从把握今年演讲比赛的基本情况开始。竹内，请你说一下</li><li>竹内：はい。えーと…、参加資格は、18歳以上30歳未満の外国人であることです。今年のテーマは「国際化社会で自分らしく生きる」。制限時間は5分以上8分以内です。本選は、7月の第3土曜日に、東京白銀ホテルで行います。好。嗯...参赛资源是18岁以上\未满30岁的外国人。今年的题目是&quot;在国际化社会的生活中体现自我&quot;.演讲时间为5分钟以上8分钟以内。决赛于7月第3个星期六在东京白银饭店举行。</li><li>東：あのう、本選に参加できるのは何人ですか。それと、本選までの選考過程について確認させてもらっていいですか。请问, 有多少人可以参加正式比赛? 还有,可以请你说明一下决赛之前的选拔过程吗?</li></ul><p>生词：</p><ul><li>今年(ことし)のスピーチコンテストの概要(がいよう)：今年演讲比赛的概要</li><li>確認(かくにん)：确认</li><li>竹内(たけうち)：竹内</li><li>参加資格(さんかしかく)：参赛资格</li><li>18歳(さい)以上(いじょう)30歳(さい)未満(みまん)の外国人：18 岁以上 30 岁以下的外国人</li><li>国際化社会(こくさいかしゃかい)：国际化社会</li><li>自分(じぶん)：自己、自身</li><li>生(い)きる： 生活、生存</li><li>制限時間(せいげんじかん)：限制时间</li><li>5分(ふん)以上(いじょう)8分(ふん)以内(いない)：5 分钟以上 8 分钟以内</li><li>本選(ほんせん)： 决赛、正式选拔</li><li>七月(しちがつ)の第三(だいさん)土曜日(どようび)：七月的第三个星期六</li><li>東京(とうきょう)ホテル：东京酒店</li><li>行(おこな)います： 举行、进行</li><li>参加(さんか)：参加</li><li>何人(なんにん)：多少人、几个人</li><li>選考過程(せんこうかてい)：选拔过程、考核流程</li><li>確認(かくにん)：确认</li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-主题—フィランソロピー&quot;&gt;&lt;a href=&quot;#一-主题—フィランソロピー&quot; class=&quot;headerlink&quot; title=&quot;一 主题—フィランソロピー&quot;&gt;&lt;/a&gt;一 主题—フィランソロピー&lt;/h2&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;フィランソロピー：慈善事业、公益活动&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;スピーチコンテスト準備会:演讲比赛筹备会&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="外语学习" scheme="https://pgzxc.github.io/categories/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="日语" scheme="https://pgzxc.github.io/categories/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/%E6%97%A5%E8%AF%AD/"/>
+    
+    
+    <category term="高级下" scheme="https://pgzxc.github.io/tags/%E9%AB%98%E7%BA%A7%E4%B8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaWeb开发思维导图之——Zookeeper之核心理论(150)</title>
+    <link href="https://pgzxc.github.io/posts/89c22af5.html"/>
+    <id>https://pgzxc.github.io/posts/89c22af5.html</id>
+    <published>2025-06-03T01:21:07.000Z</published>
+    <updated>2025-06-07T00:04:38.274Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>Leader领导者</li><li>Follower跟随者</li><li>Observer观察者</li></ul><span id="more"></span><h2 id="二-Leader领导者"><a href="#二-Leader领导者" class="headerlink" title="二 Leader领导者"></a>二 Leader领导者</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1-处理事务请求(增删改)</span><br><span class="line">2-集群内部各服务器的调度者</span><br></pre></td></tr></table></figure><h2 id="三-Follower跟随者"><a href="#三-Follower跟随者" class="headerlink" title="三 Follower跟随者"></a>三 Follower跟随者</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1-处理客户端非事务请求，转发事务给Leader服务器</span><br><span class="line">2-参与Leader选举投票</span><br></pre></td></tr></table></figure><h2 id="四-Observer观察者"><a href="#四-Observer观察者" class="headerlink" title="四 Observer观察者"></a>四 Observer观察者</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">处理客户端非事务请求，转发事务请求给Leader服务器</span><br></pre></td></tr></table></figure><h2 id="五-思维导图"><a href="#五-思维导图" class="headerlink" title="五 思维导图"></a>五 思维导图</h2><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-xmind-zookeeer-talk-9.png" alt="javaweb-xmind-zookeeer-talk-9" loading="lazy"></p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Leader领导者&lt;/li&gt;
+&lt;li&gt;Follower跟随者&lt;/li&gt;
+&lt;li&gt;Observer观察者&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="G-后端开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/G-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="JavaWeb" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/G-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JavaWeb/"/>
+    
+    
+    <category term="JavaWeb" scheme="https://pgzxc.github.io/tags/JavaWeb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>标日高级下册——第6单元国際交流-第24课フィランソロピー-会话1</title>
+    <link href="https://pgzxc.github.io/posts/cd919315.html"/>
+    <id>https://pgzxc.github.io/posts/cd919315.html</id>
+    <published>2025-06-03T01:11:07.000Z</published>
+    <updated>2025-06-07T00:04:38.399Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-主题—フィランソロピー"><a href="#一-主题—フィランソロピー" class="headerlink" title="一 主题—フィランソロピー"></a>一 主题—フィランソロピー</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">フィランソロピー：慈善事业、公益活动</span><br><span class="line">スピーチコンテスト準備会:演讲比赛筹备会</span><br></pre></td></tr></table></figure><span id="more"></span><p>生词：</p><ul><li>スピーチコンテスト：演讲比赛</li><li>準備会(じゅんびかい)：筹备会</li></ul><h2 id="二-内容"><a href="#二-内容" class="headerlink" title="二 内容"></a>二 内容</h2><h3 id="2-1-人物介绍"><a href="#2-1-人物介绍" class="headerlink" title="2.1 人物介绍"></a>2.1 人物介绍</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">心身堂事業部入江次郎（40歳)：心身堂事业部入江次郎（40岁)</span><br><span class="line">心身堂事業部竹内京香（30歳）：心身堂事业部竹内京香（30岁）</span><br><span class="line">心身堂総務部大沢直人（38歳）：心身堂总务部大泽直人（38岁）</span><br><span class="line">心身堂広報部東工リカ（27歳)：心身堂宣传部东艾丽佳（27岁）</span><br><span class="line">スピ一チコンテス卜参加者郭蓮蓮(23歳)：演讲比赛参赛者郭莲莲（23岁）</span><br></pre></td></tr></table></figure><p>生词：</p><ul><li>心身堂(しんしんどう)：心身堂</li><li>事業部(じぎょうぶ)：事业部</li><li>入江次郎(いりえじろう)：入江次郎</li><li>竹内京香(たけうちきょうか)：竹内京香</li><li>総務部(そうむぶ)：总务部</li><li>大沢直人(おおさわなおと)：大沢直人</li><li>広報部(こうほうぶ)：宣传部、公关部</li><li>東工(とうこう)リカ：东艾丽佳</li><li>スピーチコンテスト：演讲比赛</li><li>参加者(さんかしゃ)：参加者</li><li>郭蓮蓮(かくれんれん)：郭莲莲</li></ul><h3 id="2-2-说明"><a href="#2-2-说明" class="headerlink" title="2.2 说明"></a>2.2 说明</h3><p>日语</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">心身堂では、毎年、外国人を対象とした日本語スピーチコンテストを開催している。</span><br><span class="line">優勝者には奨学金が支給される。</span><br></pre></td></tr></table></figure><p>翻译</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">心身堂每年以外国人为对象举办日语演讲比赛，</span><br><span class="line">对夺冠者给与奖学金。</span><br></pre></td></tr></table></figure><p>生词：</p><ul><li>心身堂(しんしんどう)：心身堂</li><li>毎年(まいねん)：毎年</li><li>外国人(がいこくじん)を対象(たいしょう)：以外国人为对象、面向外国人</li><li>日本語(にほんご)スピーチコンテストを開催(かいさい)：举办日语演讲比赛</li><li>優勝者(ゆうしょうしゃ)：优胜者</li><li>奨学金(しょうがくきん)： 奖学金</li><li>支給(しきゅう)：供给、发放</li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-主题—フィランソロピー&quot;&gt;&lt;a href=&quot;#一-主题—フィランソロピー&quot; class=&quot;headerlink&quot; title=&quot;一 主题—フィランソロピー&quot;&gt;&lt;/a&gt;一 主题—フィランソロピー&lt;/h2&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;フィランソロピー：慈善事业、公益活动&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;スピーチコンテスト準備会:演讲比赛筹备会&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="外语学习" scheme="https://pgzxc.github.io/categories/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="日语" scheme="https://pgzxc.github.io/categories/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/%E6%97%A5%E8%AF%AD/"/>
+    
+    
+    <category term="高级下" scheme="https://pgzxc.github.io/tags/%E9%AB%98%E7%BA%A7%E4%B8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaWeb开发思维导图之——Zookeeper之集群搭建(149)</title>
+    <link href="https://pgzxc.github.io/posts/2acf55fd.html"/>
+    <id>https://pgzxc.github.io/posts/2acf55fd.html</id>
+    <published>2025-06-02T00:50:42.000Z</published>
+    <updated>2025-06-07T00:04:38.274Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>集群介绍</li><li>集群搭建</li><li>集群故障测试</li></ul><span id="more"></span><h2 id="二-集群介绍"><a href="#二-集群介绍" class="headerlink" title="二 集群介绍"></a>二 集群介绍</h2><h3 id="2-1-模型说明"><a href="#2-1-模型说明" class="headerlink" title="2.1 模型说明"></a>2.1 模型说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1-Zookeeper集群有zk1..zk5共5台提供服务</span><br><span class="line">2-根据策略，选择一台作为Leader，其他作为follwer</span><br></pre></td></tr></table></figure><h3 id="2-2-Leader选举"><a href="#2-2-Leader选举" class="headerlink" title="2.2 Leader选举"></a>2.2 Leader选举</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1-Serviceid(服务器id):服务器编号1,2,3，编号越大权重越大</span><br><span class="line">2-Zxid(数据id): 值越大数据越新权重越大</span><br><span class="line">3-选举过程中,某台选举超过半数，则此台就是Leader</span><br></pre></td></tr></table></figure><h2 id="三-集群搭建"><a href="#三-集群搭建" class="headerlink" title="三 集群搭建"></a>三 集群搭建</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在同一台电脑上部署3个zookeeper集群模拟3台服务器</span><br></pre></td></tr></table></figure><h2 id="四-集群故障测试"><a href="#四-集群故障测试" class="headerlink" title="四 集群故障测试"></a>四 集群故障测试</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">分别停用/启动3台zookeeper集群测试</span><br></pre></td></tr></table></figure><h2 id="五-思维导图"><a href="#五-思维导图" class="headerlink" title="五 思维导图"></a>五 思维导图</h2><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-xmind-zookeeer-dajian-8.png" alt="javaweb-xmind-zookeeer-dajian-8" loading="lazy"></p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;集群介绍&lt;/li&gt;
+&lt;li&gt;集群搭建&lt;/li&gt;
+&lt;li&gt;集群故障测试&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="G-后端开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/G-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="JavaWeb" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/G-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JavaWeb/"/>
+    
+    
+    <category term="JavaWeb" scheme="https://pgzxc.github.io/tags/JavaWeb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>标日高级下册——第6单元国際交流-第24课フィランソロピー-单词3</title>
+    <link href="https://pgzxc.github.io/posts/825ca805.html"/>
+    <id>https://pgzxc.github.io/posts/825ca805.html</id>
+    <published>2025-06-02T00:29:50.000Z</published>
+    <updated>2025-06-07T00:04:38.399Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-单元内容"><a href="#一-单元内容" class="headerlink" title="一 单元内容"></a>一 单元内容</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">フィランソロピー：公益活动</span><br></pre></td></tr></table></figure><span id="more"></span><h2 id="二-新出語彙-しんしゅつごい-生词"><a href="#二-新出語彙-しんしゅつごい-生词" class="headerlink" title="二 新出語彙(しんしゅつごい)-生词"></a>二 新出語彙(しんしゅつごい)-生词</h2><p>生词表1</p><table><thead><tr><th align="center">No</th><th align="center">日语</th><th align="center">中文意思</th></tr></thead><tbody><tr><td align="center">1</td><td align="center">実業家(じつぎょうか)</td><td align="center">[名]实业家</td></tr><tr><td align="center">2</td><td align="center">見計(みはか)らう</td><td align="center">[动1他]估计；斟酌，瞧着</td></tr><tr><td align="center">3</td><td align="center">恩人(おんじん)</td><td align="center">[名]恩人</td></tr><tr><td align="center">4</td><td align="center">うろうろ</td><td align="center">[副]徘徊，彷徨</td></tr><tr><td align="center">5</td><td align="center">片言(かたこと)</td><td align="center">[名]不完整的话语，片言只语</td></tr><tr><td align="center">6</td><td align="center">目配(めくば)り</td><td align="center">[名.サ变自]四下张望</td></tr><tr><td align="center">7</td><td align="center">久保(くぼ)</td><td align="center">[专]久保</td></tr><tr><td align="center">8</td><td align="center">高田(たかだ)</td><td align="center">[专]高田</td></tr><tr><td align="center">9</td><td align="center">空き地(あきち)</td><td align="center">[名]空地</td></tr><tr><td align="center">10</td><td align="center">憩う(いこう)</td><td align="center">[动1自]歇息，休息</td></tr></tbody></table><p>生词表2</p><table><thead><tr><th align="center">No</th><th align="center">日语</th><th align="center">中文意思</th></tr></thead><tbody><tr><td align="center">1</td><td align="center">福祉(ふくし)</td><td align="center">[名]福利，福祉</td></tr><tr><td align="center">2</td><td align="center">思(おも)いっきり</td><td align="center">[副]痛快地，尽情地</td></tr><tr><td align="center">3</td><td align="center">走(はし)り回(まわ)る</td><td align="center">[动1自]到处跑</td></tr><tr><td align="center">4</td><td align="center">趙麗麗(ちょうれいれい)</td><td align="center">[专]赵丽丽</td></tr><tr><td align="center">5</td><td align="center">冬季(とうき)</td><td align="center">[名]冬季</td></tr><tr><td align="center">6</td><td align="center">南方株式会社(なんぽうかぶしきがいしゃ)</td><td align="center">[专]南方株式会社</td></tr><tr><td align="center">7</td><td align="center">ポーズ</td><td align="center">[名]暂停，停顿</td></tr><tr><td align="center">8</td><td align="center">業界(ぎょうかい)</td><td align="center">[名]同业界，工商界</td></tr><tr><td align="center">9</td><td align="center">手取(てと)り足取(あしと)り</td><td align="center">连手带脚；亲自</td></tr><tr><td align="center">10</td><td align="center">見(み)よう見(み)まね</td><td align="center">看看模仿</td></tr></tbody></table>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-单元内容&quot;&gt;&lt;a href=&quot;#一-单元内容&quot; class=&quot;headerlink&quot; title=&quot;一 单元内容&quot;&gt;&lt;/a&gt;一 单元内容&lt;/h2&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;フィランソロピー：公益活动&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="外语学习" scheme="https://pgzxc.github.io/categories/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="日语" scheme="https://pgzxc.github.io/categories/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/%E6%97%A5%E8%AF%AD/"/>
+    
+    
+    <category term="高级下" scheme="https://pgzxc.github.io/tags/%E9%AB%98%E7%BA%A7%E4%B8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaWeb开发思维导图之——Zookeeper之模拟12306售票案例(148)</title>
+    <link href="https://pgzxc.github.io/posts/1f6419ad.html"/>
+    <id>https://pgzxc.github.io/posts/1f6419ad.html</id>
+    <published>2025-06-01T01:33:14.000Z</published>
+    <updated>2025-06-07T00:04:38.274Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>Curator五种锁方案</li><li>案例模型</li><li>代码实现</li></ul><span id="more"></span><h2 id="二-Curator五种锁方案"><a href="#二-Curator五种锁方案" class="headerlink" title="二 Curator五种锁方案"></a>二 Curator五种锁方案</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1-InterProcessSemaphoreMutex: 分布式排它锁(非可重入锁)</span><br><span class="line">2-InterProcessMutex: 分布式可重入排它锁</span><br><span class="line">3-InterProcessReadWriteLock: 分布式读写锁</span><br><span class="line">4-InterProcessMultiLock: 将多个锁作为单个实体管理容器</span><br><span class="line">5-InterProcessSemaphoreV2: 共享信号量</span><br></pre></td></tr></table></figure><h2 id="三-案例模型"><a href="#三-案例模型" class="headerlink" title="三 案例模型"></a>三 案例模型</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1-线程应用: 携程、飞猪、去哪儿</span><br><span class="line">2-3个线程应用通过12306访问DB</span><br><span class="line">3-12306使用Zookeeper分布式锁</span><br></pre></td></tr></table></figure><h2 id="四-代码实现"><a href="#四-代码实现" class="headerlink" title="四 代码实现"></a>四 代码实现</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1-构造创建锁: lock = new InterProcessMutex(client,path)</span><br><span class="line">2-线程运行获取锁: lock.acquire(3,TimeUnit.Second)</span><br><span class="line">3-finally释放锁:lock.release()</span><br></pre></td></tr></table></figure><h2 id="五-思维导图"><a href="#五-思维导图" class="headerlink" title="五 思维导图"></a>五 思维导图</h2><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-xmind-zookeeer-curator-7.png" alt="javaweb-xmind-zookeeer-curator-7" loading="lazy"></p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Curator五种锁方案&lt;/li&gt;
+&lt;li&gt;案例模型&lt;/li&gt;
+&lt;li&gt;代码实现&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="G-后端开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/G-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="JavaWeb" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/G-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JavaWeb/"/>
+    
+    
+    <category term="JavaWeb" scheme="https://pgzxc.github.io/tags/JavaWeb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>标日高级下册——第6单元国際交流-第24课フィランソロピー-单词2</title>
+    <link href="https://pgzxc.github.io/posts/f55b9893.html"/>
+    <id>https://pgzxc.github.io/posts/f55b9893.html</id>
+    <published>2025-06-01T01:05:48.000Z</published>
+    <updated>2025-06-07T00:04:38.399Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-单元内容"><a href="#一-单元内容" class="headerlink" title="一 单元内容"></a>一 单元内容</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">フィランソロピー：公益活动</span><br></pre></td></tr></table></figure><span id="more"></span><h2 id="二-新出語彙-しんしゅつごい-生词"><a href="#二-新出語彙-しんしゅつごい-生词" class="headerlink" title="二 新出語彙(しんしゅつごい)-生词"></a>二 新出語彙(しんしゅつごい)-生词</h2><p>生词表1</p><table><thead><tr><th align="center">No</th><th align="center">日语</th><th align="center">中文意思</th></tr></thead><tbody><tr><td align="center">1</td><td align="center">性急(せいきゅう)</td><td align="center">[名.形2]性急</td></tr><tr><td align="center">2</td><td align="center">拙速(せっそく)</td><td align="center">[名.形2]粗而快，拙而速</td></tr><tr><td align="center">3</td><td align="center">早計(そうけい)</td><td align="center">[名.形2]轻率，过急</td></tr><tr><td align="center">4</td><td align="center">なだめる</td><td align="center">[动2他]安抚，抚慰</td></tr><tr><td align="center">5</td><td align="center">刺激(しげき)する</td><td align="center">[名.サ变他]刺激</td></tr><tr><td align="center">6</td><td align="center">特質(とくしつ)</td><td align="center">[名]特点，特性，特征</td></tr><tr><td align="center">7</td><td align="center">暖冬(だんとう)</td><td align="center">[名]暖冬</td></tr><tr><td align="center">8</td><td align="center">実社会(じっしゃかい)</td><td align="center">[名]现实社会</td></tr><tr><td align="center">9</td><td align="center">便宜(べんぎ)</td><td align="center">[名]方便</td></tr><tr><td align="center">10</td><td align="center">自殺(じさつ)</td><td align="center">[名.サ变自]自杀</td></tr></tbody></table><p>生词表2</p><table><thead><tr><th align="center">No</th><th align="center">日语</th><th align="center">中文意思</th></tr></thead><tbody><tr><td align="center">1</td><td align="center">ストライプ</td><td align="center">[名]条纹</td></tr><tr><td align="center">2</td><td align="center">犬猿(けんえん)</td><td align="center">[名]水火不相容，关系不好；狗和猴</td></tr><tr><td align="center">3</td><td align="center">阪神淡路大震災<br>(はんしんあわじだいしんさい)</td><td align="center">[专]阪神淡路大地震</td></tr><tr><td align="center">4</td><td align="center">一因(いちいん)</td><td align="center">[名]一个原因</td></tr><tr><td align="center">5</td><td align="center">南国(なんごく)</td><td align="center">[名]南国</td></tr><tr><td align="center">6</td><td align="center">聞(き)こえ</td><td align="center">[名]听起来，听上去</td></tr><tr><td align="center">7</td><td align="center">底(そこ)</td><td align="center">[名]底</td></tr><tr><td align="center">8</td><td align="center">ルーズ</td><td align="center">[形2]散漫，马马虎虎；松懈</td></tr><tr><td align="center">9</td><td align="center">犬猿(けんえん)の仲(なか)</td><td align="center">彼此关系如水火</td></tr><tr><td align="center">10</td><td align="center">聞(き)こえのいい</td><td align="center">好听的，顺耳的</td></tr></tbody></table>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-单元内容&quot;&gt;&lt;a href=&quot;#一-单元内容&quot; class=&quot;headerlink&quot; title=&quot;一 单元内容&quot;&gt;&lt;/a&gt;一 单元内容&lt;/h2&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;フィランソロピー：公益活动&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="外语学习" scheme="https://pgzxc.github.io/categories/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="日语" scheme="https://pgzxc.github.io/categories/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/%E6%97%A5%E8%AF%AD/"/>
+    
+    
+    <category term="高级下" scheme="https://pgzxc.github.io/tags/%E9%AB%98%E7%BA%A7%E4%B8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaWeb开发思维导图之——Zookeeper之分布式锁(147)</title>
+    <link href="https://pgzxc.github.io/posts/a3fa3767.html"/>
+    <id>https://pgzxc.github.io/posts/a3fa3767.html</id>
+    <published>2025-05-31T01:24:31.000Z</published>
+    <updated>2025-06-07T00:04:38.274Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>概念</li><li>分布式锁原理</li></ul><span id="more"></span><h2 id="二-概念"><a href="#二-概念" class="headerlink" title="二 概念"></a>二 概念</h2><h3 id="2-1-相关概念"><a href="#2-1-相关概念" class="headerlink" title="2.1 相关概念"></a>2.1 相关概念</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1-单机应用涉及并发时采用synchronized或lock解决</span><br><span class="line">2-分布式集群，属于多jvm工作环境，跨jvm之间锁无法解决</span><br><span class="line">3-跨机器的进程之间数据同步-分布式锁</span><br></pre></td></tr></table></figure><h3 id="2-2-分布式锁实现"><a href="#2-2-分布式锁实现" class="headerlink" title="2.2 分布式锁实现"></a>2.2 分布式锁实现</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1-基于缓存实现分布式锁(Redis、Memcache)</span><br><span class="line">2-Zookeeper实现分布式锁(Curator)</span><br><span class="line">3-数据库层面实现分布式锁(悲观锁、乐观锁)</span><br></pre></td></tr></table></figure><h2 id="三-分布式锁原理"><a href="#三-分布式锁原理" class="headerlink" title="三 分布式锁原理"></a>三 分布式锁原理</h2><h3 id="3-1-模型说明"><a href="#3-1-模型说明" class="headerlink" title="3.1 模型说明"></a>3.1 模型说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1-Zookeeper Server根节点下有/lock、/zk节点</span><br><span class="line">2-/lock下有/lock/1、/lock/2、/lock/3叶子(顺序的)</span><br><span class="line">3-客户端client1、client2、client3访问时临时创建上述/lock对应节点</span><br><span class="line">4-访问结束后，删除临时节点,先创建的先删除</span><br></pre></td></tr></table></figure><h3 id="3-2-核心思想"><a href="#3-2-核心思想" class="headerlink" title="3.2 核心思想"></a>3.2 核心思想</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">当客户端要获取锁，则创建节点, 使用完锁，则删除该节点</span><br></pre></td></tr></table></figure><h3 id="3-3-原理"><a href="#3-3-原理" class="headerlink" title="3.3 原理"></a>3.3 原理</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1-客户端获取锁时，在lock节点下创建临时顺序节点</span><br><span class="line">2-客户端发现自己节点最小则获取到锁。使用完后删除该节点</span><br><span class="line">3-客户端发现不是最小节点 ，注册监听器，监听删除事件</span><br><span class="line">4-比自己小节点删除，收到通知获取锁，不是继续监听</span><br></pre></td></tr></table></figure><h2 id="四-思维导图"><a href="#四-思维导图" class="headerlink" title="四 思维导图"></a>四 思维导图</h2><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-xmind-zookeeer-curator-6.png" alt="javaweb-xmind-zookeeer-curator-6" loading="lazy"></p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;概念&lt;/li&gt;
+&lt;li&gt;分布式锁原理&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="G-后端开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/G-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="JavaWeb" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/G-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JavaWeb/"/>
+    
+    
+    <category term="JavaWeb" scheme="https://pgzxc.github.io/tags/JavaWeb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>标日高级下册——第6单元国際交流-第24课フィランソロピー-单词1</title>
+    <link href="https://pgzxc.github.io/posts/6c52c929.html"/>
+    <id>https://pgzxc.github.io/posts/6c52c929.html</id>
+    <published>2025-05-31T01:02:14.000Z</published>
+    <updated>2025-06-07T00:04:38.399Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-单元内容"><a href="#一-单元内容" class="headerlink" title="一 单元内容"></a>一 单元内容</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">フィランソロピー：公益活动</span><br></pre></td></tr></table></figure><span id="more"></span><h2 id="二-新出語彙-しんしゅつごい-生词"><a href="#二-新出語彙-しんしゅつごい-生词" class="headerlink" title="二 新出語彙(しんしゅつごい)-生词"></a>二 新出語彙(しんしゅつごい)-生词</h2><p>生词表1</p><table><thead><tr><th align="center">No</th><th align="center">日语</th><th align="center">中文意思</th></tr></thead><tbody><tr><td align="center">1</td><td align="center">フィランソロピー(ふぃらんそろぴー)</td><td align="center">[名]公益活动</td></tr><tr><td align="center">2</td><td align="center">入江(いりえ)</td><td align="center">[专]入江</td></tr><tr><td align="center">3</td><td align="center">竹内京香(たけうちきょうか)</td><td align="center">[专]竹内京香</td></tr><tr><td align="center">4</td><td align="center">大沢直人(おおさわなおと)</td><td align="center">[专]大沢直人</td></tr><tr><td align="center">5</td><td align="center">東(あず)エリカ</td><td align="center">[专]东艾丽佳</td></tr><tr><td align="center">6</td><td align="center">郭蓮蓮(かくれんれん)</td><td align="center">[专]郭莲莲</td></tr><tr><td align="center">7</td><td align="center">支給(しきゅう)する</td><td align="center">[名.サ变他]支付</td></tr><tr><td align="center">8</td><td align="center">本選(ほんせん)</td><td align="center">[名]决赛，正是选拔赛</td></tr><tr><td align="center">9</td><td align="center">東京白銀(とうきょうはくぎん)ホテル</td><td align="center">[专]东京白银饭店</td></tr><tr><td align="center">10</td><td align="center">過程(かてい)</td><td align="center">[名]过程</td></tr></tbody></table><p>生词表2</p><table><thead><tr><th align="center">No</th><th align="center">日语</th><th align="center">中文意思</th></tr></thead><tbody><tr><td align="center">1</td><td align="center">例年(れいねん)</td><td align="center">[名]往年，历年</td></tr><tr><td align="center">2</td><td align="center">要項(ようこう)</td><td align="center">[名]要点，重要事项</td></tr><tr><td align="center">3</td><td align="center">アップロードする</td><td align="center">[名.サ变他]上传，上载</td></tr><tr><td align="center">4</td><td align="center">所定(しょてい)</td><td align="center">[名]规定，指定</td></tr><tr><td align="center">5</td><td align="center">書式(しょしき)</td><td align="center">[名]格式</td></tr><tr><td align="center">6</td><td align="center">添付(てんぷ)する</td><td align="center">[名.サ变他]添上，附上</td></tr><tr><td align="center">7</td><td align="center">同感(どうかん)</td><td align="center">[名.サ变自]同感；赞同</td></tr><tr><td align="center">8</td><td align="center">日本語学校(にほんごがっこう)</td><td align="center">[名]日语学校</td></tr><tr><td align="center">9</td><td align="center">ブィシーディー(VCD)</td><td align="center">[名]视频光盘</td></tr><tr><td align="center">10</td><td align="center">吹(ふ)き替(か)え</td><td align="center">[名]配音</td></tr></tbody></table><p>生词表3</p><table><thead><tr><th align="center">No</th><th align="center">日语</th><th align="center">中文意思</th></tr></thead><tbody><tr><td align="center">1</td><td align="center">台詞(せりふ)</td><td align="center">[名]台词，道白</td></tr><tr><td align="center">2</td><td align="center">どうにか</td><td align="center">[副]好歹，总算；设法</td></tr><tr><td align="center">3</td><td align="center">ストーリー</td><td align="center">[名]故事情节；故事</td></tr><tr><td align="center">4</td><td align="center">トントン</td><td align="center">[副]嗵嗵(tōng)</td></tr><tr><td align="center">5</td><td align="center">ドンドン</td><td align="center">[副]咚咚</td></tr><tr><td align="center">6</td><td align="center">転(ころ)がる</td><td align="center">[动1自]滚转，倒下；扔着</td></tr><tr><td align="center">7</td><td align="center">ゴロゴロ</td><td align="center">[副]咕隆咕隆；轰隆轰隆</td></tr><tr><td align="center">8</td><td align="center">語学学院(ごがくがくいん)</td><td align="center">[名]外语培训学院</td></tr><tr><td align="center">9</td><td align="center">中級(ちゅうきゅう)</td><td align="center">[名]中级</td></tr><tr><td align="center">10</td><td align="center">文法的(ぶんぽうてき)</td><td align="center">[形2]语法上</td></tr></tbody></table><p>生词表4</p><table><thead><tr><th align="center">No</th><th align="center">日语</th><th align="center">中文意思</th></tr></thead><tbody><tr><td align="center">1</td><td align="center">不愉快(ふゆかい)</td><td align="center">[形2]不愉快，不高兴</td></tr><tr><td align="center">2</td><td align="center">目下(めした)</td><td align="center">[名]晚辈；部下</td></tr><tr><td align="center">3</td><td align="center">陽気(ようき)</td><td align="center">[名.形2]开朗，爽朗；欢乐</td></tr><tr><td align="center">4</td><td align="center">語(かた)り合(あ)う</td><td align="center">[动1他]谈论，交谈</td></tr><tr><td align="center">5</td><td align="center">身振(みぶ)り</td><td align="center">[名]姿势，动作</td></tr><tr><td align="center">6</td><td align="center">手振(てぶ)り</td><td align="center">[名]手势</td></tr><tr><td align="center">7</td><td align="center">交(まじ)える</td><td align="center">[动2他]夹杂；交，交换</td></tr><tr><td align="center">8</td><td align="center">こうやって</td><td align="center">[副]这样</td></tr><tr><td align="center">9</td><td align="center">受信(じゅしん)する</td><td align="center">[サ变他]接收信息</td></tr><tr><td align="center">10</td><td align="center">介(かい)する</td><td align="center">[サ变他]通过...；介于...之间</td></tr></tbody></table><p>生词表5</p><table><thead><tr><th align="center">No</th><th align="center">日语</th><th align="center">中文意思</th></tr></thead><tbody><tr><td align="center">1</td><td align="center">双方(そうほう)</td><td align="center">[名]双方</td></tr><tr><td align="center">2</td><td align="center">プラッシュアップする</td><td align="center">[名.サ变他]刷新，复习</td></tr><tr><td align="center">3</td><td align="center">何(なに)かしら</td><td align="center">[副]某种；不知为什么，总觉得</td></tr><tr><td align="center">4</td><td align="center">単(たん)なる</td><td align="center">[连体]只，单，只不过</td></tr><tr><td align="center">5</td><td align="center">清聴(せいちょう)</td><td align="center">[名]倾听，安静地听</td></tr><tr><td align="center">6</td><td align="center">ガチャーん</td><td align="center">哐啷；嘎噔</td></tr><tr><td align="center">7</td><td align="center">ダッダッダッ</td><td align="center">哒哒哒</td></tr><tr><td align="center">8</td><td align="center">耳(みみ)が慣(な)れる</td><td align="center">听惯，听熟</td></tr><tr><td align="center">9</td><td align="center">欲(よく)が出(で)る</td><td align="center">有...欲望</td></tr><tr><td align="center">10</td><td align="center">気(き)が合(あ)う</td><td align="center">投缘，合得来</td></tr></tbody></table><p>生词表6</p><table><thead><tr><th align="center">No</th><th align="center">日语</th><th align="center">中文意思</th></tr></thead><tbody><tr><td align="center">1</td><td align="center">身振(みぶ)り手振(てぶ)り</td><td align="center">指手画脚</td></tr><tr><td align="center">2</td><td align="center">身(み)をもって</td><td align="center">亲身，亲自</td></tr><tr><td align="center">3</td><td align="center">～版(ばん)</td><td align="center">～版</td></tr></tbody></table>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-单元内容&quot;&gt;&lt;a href=&quot;#一-单元内容&quot; class=&quot;headerlink&quot; title=&quot;一 单元内容&quot;&gt;&lt;/a&gt;一 单元内容&lt;/h2&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;フィランソロピー：公益活动&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="外语学习" scheme="https://pgzxc.github.io/categories/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="日语" scheme="https://pgzxc.github.io/categories/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/%E6%97%A5%E8%AF%AD/"/>
+    
+    
+    <category term="高级下" scheme="https://pgzxc.github.io/tags/%E9%AB%98%E7%BA%A7%E4%B8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaWeb开发思维导图之——Zookeeper之Curator API常用操作(146)</title>
+    <link href="https://pgzxc.github.io/posts/644fe44d.html"/>
+    <id>https://pgzxc.github.io/posts/644fe44d.html</id>
+    <published>2025-05-30T01:11:24.000Z</published>
+    <updated>2025-06-07T00:04:38.274Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>建立连接</li><li>添加节点</li><li>删除节点</li><li>修改节点</li><li>查询节点</li><li>Watch事件监听</li></ul><span id="more"></span><h2 id="二-建立连接"><a href="#二-建立连接" class="headerlink" title="二 建立连接"></a>二 建立连接</h2><h3 id="2-1-创建方式"><a href="#2-1-创建方式" class="headerlink" title="2.1 创建方式"></a>2.1 创建方式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1-client=CuratorFrameworkFactory.newClient()</span><br><span class="line">2-client=CuratorFrameworkFactory.builder() //级联方式, 可以设置namespace(&quot;app1&quot;)</span><br></pre></td></tr></table></figure><h3 id="2-2-创建时的参数"><a href="#2-2-创建时的参数" class="headerlink" title="2.2 创建时的参数"></a>2.2 创建时的参数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1-connectString: 连接字符串。zk server地址和端口号(如: 192.168.149.135:2181)</span><br><span class="line">2-sessionTimeoutMs: 会话超时时间 单位ms</span><br><span class="line">3-connectionTimeoutMs: 连接超时时间 单位ms</span><br><span class="line">4-retryPolicy: 重试策略</span><br></pre></td></tr></table></figure><h3 id="2-2-开启连接"><a href="#2-2-开启连接" class="headerlink" title="2.2 开启连接"></a>2.2 开启连接</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">client.start()</span><br></pre></td></tr></table></figure><h2 id="三-添加节点"><a href="#三-添加节点" class="headerlink" title="三 添加节点"></a>三 添加节点</h2><h3 id="3-1-基本创建"><a href="#3-1-基本创建" class="headerlink" title="3.1 基本创建"></a>3.1 基本创建</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1-示例: client.create().forPath(&quot;/app1&quot;) </span><br><span class="line">2-返回结果为当前节点</span><br></pre></td></tr></table></figure><h3 id="3-2-创建节点带有数据"><a href="#3-2-创建节点带有数据" class="headerlink" title="3.2 创建节点带有数据"></a>3.2 创建节点带有数据</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1-示例:  client.create().forPath(&quot;/app2&quot;,&quot;aa&quot;.getBytes())//放回当前节点</span><br><span class="line">2-不同点: 第二个参数为赋值</span><br></pre></td></tr></table></figure><h3 id="3-3-设置节点的类型"><a href="#3-3-设置节点的类型" class="headerlink" title="3.3 设置节点的类型"></a>3.3 设置节点的类型</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1-示例: client.create().withMode(CreateMode.EPHEMERAL).forPath(&quot;/app3&quot;)</span><br><span class="line">2-不同点:creatingParentsIfNeeded</span><br></pre></td></tr></table></figure><h3 id="3-4-创建多级节点-app1-p1"><a href="#3-4-创建多级节点-app1-p1" class="headerlink" title="3.4 创建多级节点(&#x2F;app1&#x2F;p1)"></a>3.4 创建多级节点(&#x2F;app1&#x2F;p1)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1-示例: client.create.creatingParentsIfNeeded.forPath(&quot;/app4/p1&quot;)</span><br><span class="line">2-不同点: creatingParentsIfNeded</span><br></pre></td></tr></table></figure><h2 id="四-删除节点"><a href="#四-删除节点" class="headerlink" title="四 删除节点"></a>四 删除节点</h2><h3 id="4-1-删除单个节点"><a href="#4-1-删除单个节点" class="headerlink" title="4.1 删除单个节点"></a>4.1 删除单个节点</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1-示例: client.delete().forPath(&quot;/app1&quot;)</span><br></pre></td></tr></table></figure><h3 id="4-2-删除带有子节点的节点"><a href="#4-2-删除带有子节点的节点" class="headerlink" title="4.2 删除带有子节点的节点"></a>4.2 删除带有子节点的节点</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1-示例: client.delete().deletingChildrenIfNeeded().forPath(&quot;/app2&quot;)</span><br><span class="line">2-关键字：deletingChildrenIfNeeded()</span><br></pre></td></tr></table></figure><h3 id="4-3-必须成功的删除"><a href="#4-3-必须成功的删除" class="headerlink" title="4.3 必须成功的删除"></a>4.3 必须成功的删除</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1-示例: client.delete().guaranteed().forPath(&quot;/app3&quot;)</span><br><span class="line">2-关键字: guaranteed()</span><br></pre></td></tr></table></figure><h3 id="4-4-回调"><a href="#4-4-回调" class="headerlink" title="4.4 回调"></a>4.4 回调</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1-示例: clent.delete().inBackground(new BackgoundCallback()).forPath(&quot;/app4&quot;)</span><br><span class="line">2-关键字: inBackgound</span><br><span class="line">3-回调信息: processResult方法的event</span><br></pre></td></tr></table></figure><h2 id="五-修改节点"><a href="#五-修改节点" class="headerlink" title="五 修改节点"></a>五 修改节点</h2><h3 id="5-1-修改数据"><a href="#5-1-修改数据" class="headerlink" title="5.1 修改数据"></a>5.1 修改数据</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1-示例: client.setData().forPath(&quot;/app1&quot;,&quot;aa&quot;.getBytes())</span><br></pre></td></tr></table></figure><h3 id="5-2-根据版本修改"><a href="#5-2-根据版本修改" class="headerlink" title="5.2 根据版本修改"></a>5.2 根据版本修改</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1-创建节点: Stat stat = new Stat()</span><br><span class="line">2-查询节点状态: client.getetData().storingStatIn(stat).forPath(&quot;/app1&quot;)</span><br><span class="line">3-查出版本: int version=stat.getVersion()</span><br><span class="line">4-根据版本修改: client.setData().withVersion(version).forPath(&quot;/app1&quot;,&quot;bb&quot;.getBytes())</span><br></pre></td></tr></table></figure><h2 id="六-查询节点"><a href="#六-查询节点" class="headerlink" title="六 查询节点"></a>六 查询节点</h2><h3 id="6-1-查询数据"><a href="#6-1-查询数据" class="headerlink" title="6.1 查询数据"></a>6.1 查询数据</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1-客户端: get</span><br><span class="line">2-示例: client.getData().forPath(&quot;/app1&quot;)</span><br></pre></td></tr></table></figure><h3 id="6-2-查询子节点"><a href="#6-2-查询子节点" class="headerlink" title="6.2 查询子节点"></a>6.2 查询子节点</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1-客户端: ls</span><br><span class="line">2-示例: client.getChildren().forPath(&quot;/&quot;)</span><br></pre></td></tr></table></figure><h3 id="6-3-查询节点状态信息"><a href="#6-3-查询节点状态信息" class="headerlink" title="6.3 查询节点状态信息"></a>6.3 查询节点状态信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1-客户端: ls -s</span><br><span class="line">2-示例：client.getData().storingStatIn(stats).forPath(&quot;/app1&quot;)</span><br><span class="line">3-说明</span><br><span class="line"> 1-没有client.getStatus()</span><br><span class="line"> 2-使用new Stat()传入，获取到后设置status</span><br><span class="line"> 3-stat种包含状态信息</span><br></pre></td></tr></table></figure><h2 id="七-Watch事件监听"><a href="#七-Watch事件监听" class="headerlink" title="七 Watch事件监听"></a>七 Watch事件监听</h2><h3 id="7-1-监听概述"><a href="#7-1-监听概述" class="headerlink" title="7.1 监听概述"></a>7.1 监听概述</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1-Watch机制是Zookeeper实现分布式协调服务的重要特性</span><br><span class="line">2-Zookeeper引入Watcher机制实现发布/订阅功能，能够让多个订阅者同时监听某一个对象</span><br><span class="line">3-Zookeeper原生的Watcher监听不是特别方便</span><br><span class="line">4-Curator引入Cache来实现对Zookeeper服务端事件的监听</span><br><span class="line">5-Zookeeper的三种Watcher</span><br></pre></td></tr></table></figure><h3 id="7-2-监听操作"><a href="#7-2-监听操作" class="headerlink" title="7.2 监听操作"></a>7.2 监听操作</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1-监听NodeCache</span><br><span class="line">2-监听PathChildrenCache</span><br><span class="line">3-监听TreeCache</span><br></pre></td></tr></table></figure><h2 id="八-思维导图"><a href="#八-思维导图" class="headerlink" title="八 思维导图"></a>八 思维导图</h2><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-xmind-zookeeer-curator-5.png" alt="javaweb-xmind-zookeeer-curator-5" loading="lazy"></p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;建立连接&lt;/li&gt;
+&lt;li&gt;添加节点&lt;/li&gt;
+&lt;li&gt;删除节点&lt;/li&gt;
+&lt;li&gt;修改节点&lt;/li&gt;
+&lt;li&gt;查询节点&lt;/li&gt;
+&lt;li&gt;Watch事件监听&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="G-后端开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/G-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="JavaWeb" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/G-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JavaWeb/"/>
+    
+    
+    <category term="JavaWeb" scheme="https://pgzxc.github.io/tags/JavaWeb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>标日高级下册——第6单元国際交流-第23课国際性-解说5</title>
+    <link href="https://pgzxc.github.io/posts/d3c1e5db.html"/>
+    <id>https://pgzxc.github.io/posts/d3c1e5db.html</id>
+    <published>2025-05-30T01:02:59.000Z</published>
+    <updated>2025-06-07T00:04:38.398Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>気取(きど)る[书面语]</li><li>～のゆえに [书面语]</li><li>いや，そればかりではない</li></ul><span id="more"></span><h2 id="二-気取-きど-る-书面语"><a href="#二-気取-きど-る-书面语" class="headerlink" title="二  気取(きど)る[书面语]"></a>二  気取(きど)る[书面语]</h2><h3 id="2-1-读作“けどる“"><a href="#2-1-读作“けどる“" class="headerlink" title="2.1 读作“けどる“"></a>2.1 读作“けどる“</h3><p>1-说明</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">“気取る”读作“けどる”，表示从周围的气氛察觉情况。</span><br><span class="line">一般多用被动形式“気取られる”，主要用作书面语。</span><br><span class="line">课文中的“気取られぬ”是“気取られる”加上表示否定的“ぬ”构成的，可以用“気取られない”替换。</span><br><span class="line">“気取られぬよう”表示不被察觉的意思。</span><br></pre></td></tr></table></figure><p>2-示例</p><ul><li>サンタクロースからのプレゼントのつもりで、夜中こっそりと子供の枕元にプレゼントを置いておいたのに、両親からのプレゼントだといつのまにか気取られていた。（我们在夜里悄悄在孩子的枕边放上了礼物，装作是圣诞老人送来的，但不知什么时候，却被孩子察觉了那是爸爸妈妈送的。）</li><li>敵に気取られないように、やぶの中でじっとしていた。（为了不被敌人发现，一动不动地躲在草丛中。）</li></ul><p>生词：</p><ul><li>サンタクロースからのプレゼント：来自圣诞老人的礼物</li><li>夜中(よるなか)：深夜，半夜</li><li>子供(こども)の枕元(まくらもと)：孩子的枕边，孩子的枕头旁边</li><li>プレゼントを置(お)いて：把礼物放好，放置礼物</li><li>両親(りょうしん)：双亲，父母</li><li>気取(きど)られて：被察觉，被识破，被注意到</li><li>敵(てき)に気取(きど)られない：不被敌人察觉，不被敌人识破</li></ul><h3 id="2-2-读“きどる”时"><a href="#2-2-读“きどる”时" class="headerlink" title="2.2 读“きどる”时"></a>2.2 读“きどる”时</h3><p>1-说明</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“気取る”在读“きどる”时有两种意思：①装腔作势，做作；②假装成某种样子，以……自居。</span><br></pre></td></tr></table></figure><p>2-示例1</p><ul><li>わたし、気取った男は大嫌い！（我非常讨厌装腔作势的男人！）</li><li>最近は、作家を気取って当校する人が多い。（最近，很多投稿人自诩为作家。）</li></ul><p>生词：</p><ul><li>気取(きど)った：装腔作势的，摆架子的，冒充的</li><li>男(おとこ)は大嫌(だいきら)い：最讨厌男人了，非常讨厌男人</li><li>最近(さいきん)：最近</li><li>作家(さっか)を気取(きど)って：装作作家的样子，冒充作家</li><li>当校(とうこう)する：来校，到校，前往本校</li><li>人(ひと)が多(おお)い：人很多</li></ul><h3 id="2-3-名词用法"><a href="#2-3-名词用法" class="headerlink" title="2.3 名词用法"></a>2.3 名词用法</h3><p>1-说明</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">②还有名词形用法“～気取り”，多用于“作家気取り（摆出作家的架式）”、</span><br><span class="line">“スター気取り（摆出明星的架式）”、“学者気取り（摆出学者的架式）”。</span><br></pre></td></tr></table></figure><p>2-示例</p><ul><li>うちの娘はのど自慢大会で入賞して、すっかり歌手気取りだ。（我女儿在赛歌会上得了奖以后，整天摆出一副歌星的架势。）</li></ul><p>生词：</p><ul><li>うちの娘(むすめ)：我家女儿</li><li>自慢(じまん)大会(たいかい)：炫耀大会，吹嘘大会</li><li>入賞(にゅうしょう)して：获奖，得奖</li><li>歌手(かしゅ)気取(きど)り：装作歌手的样子，摆歌手架子的人</li></ul><h2 id="三-～のゆえに-书面语"><a href="#三-～のゆえに-书面语" class="headerlink" title="三 ～のゆえに [书面语]"></a>三 ～のゆえに [书面语]</h2><h3 id="3-1-原文"><a href="#3-1-原文" class="headerlink" title="3.1 原文"></a>3.1 原文</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">この人たちのさりげない親切のゆえに，私がフランスを嫌いになることはないだろう。</span><br><span class="line">いや，そればかりではない，人類に絶望することはないと思う。</span><br><span class="line"></span><br><span class="line">由于这些人看似不经意的善意，我大概不会讨厌法国吧。</span><br><span class="line">不，不仅如此，我甚至觉得自己不会对人类感到绝望</span><br></pre></td></tr></table></figure><p>生词：</p><ul><li>この人(ひと)たちのさりげない親切(しんせつ)のゆえに：因为这些人不经意的亲切</li><li>私がフランスを嫌(きら)いになることはないだろう：我不会讨厌法国吧</li><li>人類(じんるい)に絶望(ぜつぼう)することはない：不要对人类感到绝望、无需对人类绝望</li></ul><h3 id="3-2-说明"><a href="#3-2-说明" class="headerlink" title="3.2 说明"></a>3.2 说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">“ゆえ”表示理由，缘由，用“名词/二类形容词+のゆえに”的形式，表示“由于……”“因为……”。</span><br><span class="line">也可以不加“の”直接接名词。</span><br><span class="line">也用“动词/一类形容词（简体形式）+ゆえに”或“动词/一类形容词（简体形式）+がゆえに”的形式。</span><br><span class="line">“～ために”也表示同样的意思，但“～ゆえに”是比较古典的表达方式，多用于书面语（中级第15课）。</span><br></pre></td></tr></table></figure><h3 id="3-3-示例"><a href="#3-3-示例" class="headerlink" title="3.3 示例"></a>3.3 示例</h3><ul><li>その選手は非凡な身体能力のゆえに、世界中から注目を浴びている。（那位选手以其非凡的运动才能令世界瞩目。）</li><li>彼は貧しさゆえに盗みを働いた。（他因贫困而行窃。）</li><li>彼は若いゆえに誤りを犯したのだ。（他是由于年轻才犯错误的。）</li><li>国民の信頼を裏切ったがゆえに、政府は総辞職に追い込まれた。（由于辜负了国民的信任，政府被迫集体辞职。）</li><li>彼は日本人であるがゆえに部屋を借りることができなかった。（他因是日本人，没能租到房子。）</li></ul><p>生词：</p><ul><li>その選手(せんしゅ)：那位选手，那个选手</li><li>非凡(ひぼん)な身体(からだ)能力(のうりょく)：非凡的身体能力</li><li>世界中(せかいじゅう)：全世界，全球</li><li>注目(ちゅうもく)を浴(あ)びている：正受到关注，正备受瞩目</li><li>貧(まず)しさゆえに：因为贫穷，由于贫困</li><li>盗(ぬす)みを働(はたら)いた：进行了偷窃行为，犯了偷窃罪</li><li>若(わか)いゆえに：因为年轻</li><li>誤(あやま)りを犯(おか)したのだ：确实犯了错误，的确是犯了错</li><li>国民(こくみん)の信頼(しんらい)を裏切(うらぎ)った：背叛了国民的信任</li><li>政府(せいふ)：政府</li><li>総辞職(そうじしょく)：集体辞职</li><li>追(お)い込(こ)まれた：被迫；被逼到(某种境地)；陷入(困境)</li></ul><h2 id="四-いや，そればかりではない"><a href="#四-いや，そればかりではない" class="headerlink" title="四 いや，そればかりではない"></a>四 いや，そればかりではない</h2><h3 id="4-1-说明"><a href="#4-1-说明" class="headerlink" title="4.1 说明"></a>4.1 说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">“いや”用于否定自己之前说的话（中级第28课）。</span><br><span class="line">课文中用“いや”先否定前面刚说的话，紧接着再用“そればかりではない”补充前面所讲的内容。</span><br></pre></td></tr></table></figure><h3 id="4-2-示例"><a href="#4-2-示例" class="headerlink" title="4.2 示例"></a>4.2 示例</h3><ul><li>責任は先方にある。いや、こちらが不注意だったのかもしれない。（责任在对方。不，也可能是我们的疏忽造成的。）</li><li>ゲストの中に政治家がいた。いや、そればかりではない、芸能人もたくさんいた。（来宾中有政治家。不，不仅如此，还有许多艺人。）</li></ul><p>生词：</p><ul><li>責任(せきにん)：责任</li><li>先方(せんぽう)：对方，另一方</li><li>不注意(ふちゅうい)：不注意，粗心大意</li><li>ゲストの中(なか)に：在客人当中，在宾客之中</li><li>政治家(せいじか)：政治家</li><li>芸能人(げいのうじん)：艺人，演艺人员</li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;気取(きど)る[书面语]&lt;/li&gt;
+&lt;li&gt;～のゆえに [书面语]&lt;/li&gt;
+&lt;li&gt;いや，そればかりではない&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="外语学习" scheme="https://pgzxc.github.io/categories/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="日语" scheme="https://pgzxc.github.io/categories/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/%E6%97%A5%E8%AF%AD/"/>
+    
+    
+    <category term="高级下" scheme="https://pgzxc.github.io/tags/%E9%AB%98%E7%BA%A7%E4%B8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaWeb开发思维导图之——Zookeeper之Curator介绍(145)</title>
+    <link href="https://pgzxc.github.io/posts/2deaa3cb.html"/>
+    <id>https://pgzxc.github.io/posts/2deaa3cb.html</id>
+    <published>2025-05-29T00:22:47.000Z</published>
+    <updated>2025-06-07T00:04:38.274Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>Curator介绍</li></ul><span id="more"></span><h2 id="二-Curator介绍"><a href="#二-Curator介绍" class="headerlink" title="二 Curator介绍"></a>二 Curator介绍</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1-Curator是Apache Zookeeper的Java客户端库</span><br><span class="line">2-常见的Zookeeper Java API</span><br><span class="line">3-Curator项目的目标是简化Zookeeper客户端的使用</span><br><span class="line">4-Curator最初是Netfix研发的，后来捐献了Apache基金会, 目前是Apache的顶级项目</span><br><span class="line">5-官网: http://curator.apache.org/</span><br></pre></td></tr></table></figure><h2 id="三-思维导图"><a href="#三-思维导图" class="headerlink" title="三 思维导图"></a>三 思维导图</h2><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-xmind-zookeeer-curator-4.png" alt="javaweb-xmind-zookeeer-curator-4" loading="lazy"></p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Curator介绍&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="G-后端开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/G-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="JavaWeb" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/G-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JavaWeb/"/>
+    
+    
+    <category term="JavaWeb" scheme="https://pgzxc.github.io/tags/JavaWeb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>标日高级下册——第6单元国際交流-第23课国際性-解说4</title>
+    <link href="https://pgzxc.github.io/posts/a4c6d54d.html"/>
+    <id>https://pgzxc.github.io/posts/a4c6d54d.html</id>
+    <published>2025-05-29T00:12:26.000Z</published>
+    <updated>2025-06-07T00:04:38.398Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>客(きゃく)がある</li><li>こうして</li><li>～ことか</li></ul><span id="more"></span><h2 id="二-客-きゃく-がある"><a href="#二-客-きゃく-がある" class="headerlink" title="二  客(きゃく)がある"></a>二  客(きゃく)がある</h2><h3 id="2-1-原文"><a href="#2-1-原文" class="headerlink" title="2.1 原文"></a>2.1 原文</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">店には二組の客があったが，それぞれ大きな温かそうな肉料理を食べていた。</span><br><span class="line">店里原本有两拨客人，他们各自都在吃着看起来分量很大且热腾腾的肉类料理。</span><br></pre></td></tr></table></figure><p>生词：</p><ul><li>店には(みせには)：在店里</li><li>二組(ふたくみ)の客(きゃく)があったが：有两组客人</li><li>それぞれ：各自、分别</li><li>大きな(おおきな)：大的</li><li>温(あたた)かそうな：看起来很温暖的</li><li>肉料理(にくりょうり)：肉类料理</li><li>食(た)べていた：正在吃</li></ul><h3 id="2-2-说明"><a href="#2-2-说明" class="headerlink" title="2.2 说明"></a>2.2 说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">“ある”一般表示物体的存在，如“部屋に机がある（房间里有桌子）”。</span><br><span class="line">表示人或动物的存在用“いる”（初级第4课），如“公園に子供がいる（公园里有小朋友）”。</span><br><span class="line">但有时在文章中初次叙述人物的存在时也用“ある”，如“客がある”。</span><br></pre></td></tr></table></figure><h3 id="2-3-示例"><a href="#2-3-示例" class="headerlink" title="2.3 示例"></a>2.3 示例</h3><ul><li>昔々、ある所におじいさんとおばあさんがありました。（很久很久以前，在一个地方，有一位老爷爷和一位老奶奶。）</li></ul><p>生词：</p><ul><li>昔々(むかしむかし)：很久很久以前</li><li>所(ところ)：地方、场所、位置</li></ul><h2 id="三-こうして"><a href="#三-こうして" class="headerlink" title="三 こうして"></a>三 こうして</h2><h3 id="3-1-原文"><a href="#3-1-原文" class="headerlink" title="3.1 原文"></a>3.1 原文</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">こうして，目の前に，どっしりしたオニオングラタンスープが置かれた。</span><br><span class="line">寒くてひもじかった私に，それはどんなにありがたかったことか。</span><br><span class="line">涙がスープの中に落ちるのを気取られぬよう，一さじ一さじかむようにして味わった。</span><br><span class="line"></span><br><span class="line">就这样，一碗沉甸甸的洋葱焗烤浓汤被端到了我面前。</span><br><span class="line">对于又冷又饿的我来说，这碗汤是多么令人感激啊。</span><br><span class="line">为了不让人察觉眼泪掉进汤里，我一勺一勺地慢慢品尝着</span><br></pre></td></tr></table></figure><p>生词：</p><ul><li>こうして：就这样</li><li>目(め)の前(まえ)に：在眼前</li><li>どっしりした：厚重的、份量感十足的</li><li>オニオングラタンスープが：洋葱奶酪烤汤（Onion Gratin Soup）</li><li>置(お)かれた：被放下了 &#x2F; 被摆上了</li><li>寒(さむ)くて：又冷又……</li><li>涙(なみだ)がスープの中(なか)に落(お)ちるの：眼泪掉进汤里了</li><li>気取(きど)られぬよう(ひつよう)：为了不被察觉</li><li>一さじ一さじ（ひとさじ ひとさじ）：一勺一勺地</li><li>かむようにして：像咀嚼一样地</li><li>味(あじ)わった：品尝了、细细体味了</li></ul><h3 id="3-2-说明"><a href="#3-2-说明" class="headerlink" title="3.2 说明"></a>3.2 说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">“こうして”用于承接前项，叙述后项。</span><br><span class="line">躲在讲故事或回忆时用作归纳。</span><br></pre></td></tr></table></figure><h3 id="3-3-示例"><a href="#3-3-示例" class="headerlink" title="3.3 示例"></a>3.3 示例</h3><ul><li>[讲述太郎的故事]こうして、太郎は大金持ちになったのでした。（就这样，太郎成了大富翁。）</li><li>[婚宴上的致辞]一目ぼれした山田さんが鈴木さんに手紙を送ったところ、実は鈴木さんも山田さんに好意を寄せていて、すぐに返事を出したということです。こうして、2人の交際が始まりました。（听说，对铃木一见钟情的山田给她写了信，而铃木其实对山田也有好感，马上就回了信。就这样，两人开始交往起来。）</li></ul><p>生词：</p><ul><li>太郎(たろう)：太郎</li><li>大金(だいきん)持(も)ち：大富翁，大富豪，有钱人</li><li>一目(いちもく)：第一眼、第一次见面</li><li>山田(やまだ)：山田</li><li>鈴木(すずき)：鈴木</li><li>手紙(てがみ)を送(おく)った：寄了信，送了信，寄出了信件</li><li>実(じつ)は：其实，实际上，说实在的</li><li>好意(こうい)を寄(よ)せて：对…… 怀有好感，对…… 抱有好意</li><li>返事(へんじ)を出(だ)した：回了信，作出了回应，给出了答复</li><li>2人(ふたり)の交際(こうさい)：两人的交往</li></ul><h2 id="四-～ことか"><a href="#四-～ことか" class="headerlink" title="四 ～ことか"></a>四 ～ことか</h2><h3 id="4-1-表示感动或感叹"><a href="#4-1-表示感动或感叹" class="headerlink" title="4.1 表示感动或感叹"></a>4.1 表示感动或感叹</h3><p>1-说明</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">“～ことか”表示感动或感叹。</span><br><span class="line">以“小句（简体形式）+ことか”的形式，多与“どんなに”搭配使用。</span><br></pre></td></tr></table></figure><p>2-示例</p><ul><li>登山の途中で風が強くなってきて、どんなに寒かったことか。(登山途中风刮得越来越猛，别提有多冷了！)</li><li>待望の孫が生まれた。わたしも妻も孫の成長をどんなに楽しみにしていることか。(盼望已久的孙子出生了。我和妻子多么期待孙子的成长啊！)</li></ul><p>生词：</p><ul><li>登山(とざん)の途中(とちゅう)：登山的途中，爬山的途中</li><li>風(かぜ)が強(つよ)く：风很大</li><li>寒(さむ)かった：冷过，曾感到冷，(当时)很冷</li><li>待望(たいぼう)の孫(まご)：期待已久的孙子&#x2F;孙女，盼望已久的孙辈</li><li>生(うま)れた：出生了，诞生了</li><li>妻(つま)も孫(まご)の成長(せいちょう)：妻子也(关注着)孙子&#x2F;孙女的成长</li><li>楽(たの)しみ：期待，乐趣，令人期待的事物</li></ul><h3 id="4-2-同义表达方式"><a href="#4-2-同义表达方式" class="headerlink" title="4.2 同义表达方式"></a>4.2 同义表达方式</h3><p>1-说明</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">有时，还用同义表达方式“～ことでしょう”、“～ことだろう”。</span><br></pre></td></tr></table></figure><p>2-示例</p><ul><li>事故で一度に両親を亡くして、その子はどんなに悲しかったことでしょう。（因事故父母双亡，那孩子多伤心啊！）</li><li>1億円の宝くじが当たったら、どんなにうれしいことだろう。（要是中了1亿日元的彩票，我得多高兴啊！）</li></ul><p>生词：</p><ul><li>事故(じこ)：事故，意外事件</li><li>一度(いちど)：表示次数：一次</li><li>両親(りょうしん)を亡(な)くして：失去了双亲，双亲离世了</li><li>悲(かな)しかった：悲伤过，曾感到悲伤，(当时)很悲伤</li><li>一億円(いちおくえん)の宝(たから)くじ：一亿日元的彩票</li><li>当(あ)たった：命中了，中奖了，猜中了，适合</li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;客(きゃく)がある&lt;/li&gt;
+&lt;li&gt;こうして&lt;/li&gt;
+&lt;li&gt;～ことか&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="外语学习" scheme="https://pgzxc.github.io/categories/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="日语" scheme="https://pgzxc.github.io/categories/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/%E6%97%A5%E8%AF%AD/"/>
+    
+    
+    <category term="高级下" scheme="https://pgzxc.github.io/tags/%E9%AB%98%E7%BA%A7%E4%B8%8B/"/>
+    
+  </entry>
+  
+</feed>
