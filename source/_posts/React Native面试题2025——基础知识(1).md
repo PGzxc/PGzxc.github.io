@@ -25,7 +25,8 @@ date: 2025-04-10 10:05:56
 ```
 一、React Native 与 React 的区别：
 -React 是用于构建 Web 应用的 JavaScript 库，主要通过虚拟 DOM 渲染 HTML 元素。
--React Native 是一个用于构建原生移动应用的框架，使用 React 的理念，但它将 React 组件映射到原生 UI 组件（如 View、Text、Image）上，而不是 HTML 元素。
+-React Native 是一个用于构建原生移动应用的框架，使用 React 的理念，
+但它将 React 组件映射到原生 UI 组件（如 View、Text、Image）上，而不是 HTML 元素。
 
 二、如何将 React 应用转化为原生应用： 
 React Native 通过 JavaScript 和原生代码之间的“桥接”机制（Bridge），
