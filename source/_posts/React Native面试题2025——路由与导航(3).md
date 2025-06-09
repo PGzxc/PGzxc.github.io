@@ -84,8 +84,8 @@ React Navigation 通过控制组件的生命周期来管理页面的导航和状
 
 1. 导航生命周期处理：
 1.1 页面的加载与卸载：
-ReactNavigation会在页面进入时自动触发组件的componentDidMount和componentWillUnmount等生命周期方法。 通过这些方法，开发者可以在页面加载时执行必要的初始化操作（如数据获取）
-，并在页面卸载时清理资源（如取消网络请求）。
+ReactNavigation会在页面进入时自动触发组件的componentDidMount和componentWillUnmount等生命周期方法。
+通过这些方法，开发者可以在页面加载时执行必要的初始化操作（如数据获取），并在页面卸载时清理资源（如取消网络请求）。
 
 1.2 导航回调：
 React Navigation 提供了 navigation.addListener 方法，可以监听页面的焦点变化（如页面的进入和离开）。
