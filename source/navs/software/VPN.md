@@ -62,6 +62,7 @@ comments: false
 |  6   |       [clashX](https://github.com/yichengchen/clashX)        |           代理客户端           |
 |  7   |   [hiddify-next](https://github.com/hiddify/hiddify-next)    |             多平台             |
 |  8   |          [oblivion](https://github.com/bepass-org)           |             多平台             |
+|  9   | [Clash Verge Rev](https://github.com/clash-verge-rev/clash-verge-rev/releases) |          多平台+好用           |
 
 ## 二 相关文档
 
@@ -139,4 +140,10 @@ comments: false
 |  3   | [ClashX 详细教程 macOS端](https://www.v2rayfree.eu.org/post/clash-for-mac-tutorial/) |   ClashX  macOS端   |
 |  4   | [v2rayNG版 Android端](https://www.v2rayfree.eu.org/post/v2rayNg-tutorial/) | v2rayNG版 Android端 |
 |  5   | [v2rayN版 windows端](https://www.v2rayfree.eu.org/post/v2rayN-tutorial/) | v2rayN版 windows端  |
+
+## 十 规则
+
+| 编号 |                         名称(地址)                         |     备注      |
+| :--: | :--------------------------------------------------------: | :-----------: |
+|  1   | [clash-rules](https://github.com/Loyalsoldier/clash-rules) | 软件+规则文件 |
 
