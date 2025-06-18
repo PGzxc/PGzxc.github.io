@@ -24,6 +24,7 @@ date: 2025-04-08 12:12:09
 12. View, Activity, Window的区别联系
 13. 怎么计算一个View在屏幕可见部分的百分比？
 14. activity里面有多个fragment，按下home之后一会儿切回来,fragment没有无参构造崩了，该怎么处理
+15. 接口请求是否需要设置证书，如需该如何设置
 
 ## 二 面试题解答(仅供参考)
 
@@ -202,7 +203,7 @@ Looper.myQueue().addIdleHandler(new MessageQueue.IdleHandler() {
 常用于：预加载、缓存初始化、页面空闲时做任务。
 ```
 
-### 2.4 同步屏障
+### 2.5 同步屏障
 
 一、 一句话概括
 
@@ -258,7 +259,7 @@ Android 的消息队列（MessageQueue）中，
 同步屏障用于优先处理异步消息，保障动画和 UI 流畅性，是 Android 消息机制中的性能优化手段之一。
 ```
 
-### 2.5 postDelay()的具体实现
+### 2.6 postDelay()的具体实现
 
 一、一句话概括
 
@@ -306,7 +307,7 @@ postDelayed() 是通过Handler把一个带有延迟时间的Runnable包装成 Me
 由 Looper 在合适时间调度执行。
 ```
 
-### 2.6 post()与sendMessage()的区别
+### 2.7 post()与sendMessage()的区别
 
 一、 一句话概括
 
@@ -369,7 +370,7 @@ sendMessage() 适合处理有类型、数据标识的复杂消息调度；
 两者底层都依赖 MessageQueue 实现异步通信
 ```
 
-### 2.7 使用 Handler 需要注意什么问题？怎么解决？
+### 2.8 使用 Handler 需要注意什么问题？怎么解决？
 
 ```
 一、常见问题一：内存泄漏
@@ -428,7 +429,7 @@ new Thread(() -> {
 可通过弱引用、及时清理消息、合理使用线程和架构组件来规避
 ```
 
-### 2.8 事件分发
+### 2.9 事件分发
 
 一、一句话概括
 
@@ -489,7 +490,7 @@ dispatchTouchEvent → onInterceptTouchEvent → onTouchEvent 实现的，
 控制事件是否传递、拦截或消费，是实现手势、滑动冲突等交互的核心基础。
 ```
 
-### 2.9 View绘制流程
+### 2.10 View绘制流程
 
 一、一句话概括
 
@@ -553,7 +554,7 @@ View 绘制流程分为测量、布局、绘制三步，
 由ViewRootImpl驱动并调用View的 measure() → layout() → draw() 方法完成整个界面展示。
 ```
 
-### 2.10 测量模式
+### 2.11 测量模式
 
 一、 一句话概括
 
@@ -605,7 +606,7 @@ protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 测量模式控制 View 如何根据父容器给出的约束测量自己的大小，是 measure() 流程的关键输入参数
 ```
 
-### 2.11 View, Activity, Window的区别联系
+### 2.12 View, Activity, Window的区别联系
 
 一、概念
 
@@ -659,7 +660,7 @@ Activity  —— 管理 ——>  Window —— 承载 ——> View（界面上�
 -View 像“演员和布景”，具体展示内容和响应交互。
 ```
 
-### 2.12 怎么计算一个View在屏幕可见部分的百分比？
+### 2.13 怎么计算一个View在屏幕可见部分的百分比？
 
 一、方案步骤
 
@@ -714,7 +715,7 @@ return visiblePercent;  // 0.0 到 1.0 之间
 结合 View 总面积计算可见百分比，是判断 View 可见度的常用方法。
 ```
 
-### 2.13 activity里面有多个fragment，按下home之后一会儿切回来,fragment没有无参构造崩了，该怎么处理
+### 2.14 activity里面有多个fragment，按下home之后一会儿切回来,fragment没有无参构造崩了，该怎么处理
 
 一、问题原因
 
@@ -773,5 +774,76 @@ class MyFragment(val title: String) : Fragment()
 ```
 Fragment 必须保留无参构造函数，并使用 setArguments() 来传参，避免使用带参构造函数，
 否则在系统重建 Fragment 时会因无法反射创建而崩溃。
+```
+
+### 2.15 接口请求是否需要设置证书，如需该如何设置
+
+一、说明
+
+```
+在 Android 开发中，接口请求是否需要设置证书，
+取决于接口是否采用了 HTTPS 并使用了自签名证书或企业内部证书等非权威 CA 证书。
+```
+
+二、是否需要设置证书？
+
+```
+1、不需要设置证书：
+如果服务器使用的是由可信 CA 签发的 HTTPS 证书（例如 Let's Encrypt、DigiCert 等），
+Android 系统默认信任这些证书，无需手动配置。
+
+2、需要设置证书：
+如果服务器使用的是自签名证书或不被 Android 系统默认信任的证书，
+就必须手动配置，否则会出现 SSLHandshakeException。
+```
+
+三、如需设置证书，该如何设置？
+
+```
+主要有两种方式：
+
+一、方法一：通过自定义 TrustManager 信任特定证书
+步骤如下：
+
+1.将服务器的证书（一般为 .cer 或 .crt）放入 res/raw 目录中。
+2.加载证书并配置 SSLContext：
+
+InputStream inputStream = context.getResources().openRawResource(R.raw.server); // 你的证书名
+
+CertificateFactory cf = CertificateFactory.getInstance("X.509");
+Certificate ca = cf.generateCertificate(inputStream);
+
+KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+keyStore.load(null, null);
+keyStore.setCertificateEntry("ca", ca);
+
+TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+tmf.init(keyStore);
+
+SSLContext sslContext = SSLContext.getInstance("TLS");
+sslContext.init(null, tmf.getTrustManagers(), null);
+
+HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
+
+二、方法二：使用 Network Security Config 配置信任证书（Android 7.0+ 推荐）
+1.在 res/xml/network_security_config.xml 中添加：
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">yourdomain.com</domain>
+        <trust-anchors>
+            <certificates src="@raw/server"/>
+        </trust-anchors>
+    </domain-config>
+</network-security-config>
+2.在 AndroidManifest.xml 的 <application> 标签中指定配置文件：
+android:networkSecurityConfig="@xml/network_security_config"
+```
+
+四、注意事项
+
+```
+-不要在生产环境中使用 TrustAllManager（即信任所有证书），存在重大安全风险。
+-如果使用 Retrofit/OkHttp 等库，需要将 sslSocketFactory 传入到 OkHttpClient 中。
 ```
 
