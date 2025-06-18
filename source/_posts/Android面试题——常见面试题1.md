@@ -10,20 +10,20 @@ date: 2025-04-08 12:12:09
 ---
 ## 一 概述
 
-* 子线程是否能更新UI
-* Activity.startActivity()和ApplicationContext.startActivity()有没有什么问题？
-* Handler机制整体流程
-* Looper.loop()为什么不会阻塞主线程?(IdHandler闲时机制)
-* 同步屏障<!--more-->
-* postDelay()的具体实现
-* post()与sendMessage()的区别
-* 使用Handler需要注意什么问题，怎么解决的？
-* 事件分发
-* View绘制流程
-* 测量模式
-* View, Activity, Window的区别联系
-* 怎么计算一个View在屏幕可见部分的百分比？
-* activity里面有多个fragment，按下home之后一会儿切回来,fragment没有无参构造崩了，该怎么处理
+1. 子线程是否能更新UI
+2. Activity.startActivity()和ApplicationContext.startActivity()有没有什么问题？
+3. Handler机制整体流程
+4. Looper.loop()为什么不会阻塞主线程?(IdHandler闲时机制)
+5. 同步屏障<!--more-->
+6. postDelay()的具体实现
+7. post()与sendMessage()的区别
+8. 使用Handler需要注意什么问题，怎么解决的？
+9. 事件分发
+10. View绘制流程
+11. 测量模式
+12. View, Activity, Window的区别联系
+13. 怎么计算一个View在屏幕可见部分的百分比？
+14. activity里面有多个fragment，按下home之后一会儿切回来,fragment没有无参构造崩了，该怎么处理
 
 ## 二 面试题解答(仅供参考)
 
