@@ -10,7 +10,8 @@ date: 2025-04-09 16:03:56
 ---
 ## 一 概述
 
-* 请描述一次你遇到的最棘手的Bug，比如一个难以复现的ANR、内存泄漏或者多线程问题。你是如何定位、分析和解决它的？在这个过程中你学到了什么新知识或新工具？<!--more-->
+* 请描述一次你遇到的最棘手的Bug，比如一个难以复现的ANR、内存泄漏或者多线程问题。你是如何定位、分析和解决它的？在这个过程中你学到了什么新知识或新工具？
+* gson、fastjson开发中会有什么问题，有什么替代方案<!--more-->
 
 ## 二 面试题解答(仅供参考)
 
@@ -83,5 +84,94 @@ date: 2025-04-09 16:03:56
 -学会用 Thread dump、日志分析和可复现测试代码 还原并发场景。
 
 这个问题让我深刻认识到：多线程问题难以复现，但影响极大，设计之初就要考虑线程安全。
+```
+
+### 2.2 gson、fastjson开发中会有什么问题，有什么替代方案
+
+```
+在开发中使用 Gson 和 Fastjson 时，可能会遇到以下问题及相应替代方案：
+
+一、Gson 的常见问题
+1.1 性能问题
+-Gson 的序列化 / 反序列化速度较慢，尤其在处理大量数据时性能不如其他库。
+1.2 复杂泛型支持不足
+-处理嵌套泛型类型时需要额外编写TypeToken，代码冗长且易出错。
+1.3 字段命名策略限制
+-自定义字段命名策略（如蛇形转驼峰）的配置不够灵活。
+
+二、Fastjson 的常见问题
+2.1 安全漏洞频发
+-Fastjson 历史上存在多个严重的反序列化漏洞（如 RCE），需频繁升级版本且依赖严格的配置。
+2.2 兼容性问题
+-不同版本的 Fastjson 对某些特殊类型（如java.time包）的处理存在差异，导致兼容性问题。
+2.3 序列化行为不可控
+-默认序列化策略可能不符合预期（如忽略空字段），需手动配置。
+
+三、替代方案
+3.1 Jackson
+优势：性能优异，社区活跃，支持多种数据格式（JSON、XML、YAML 等），提供丰富的注解和自定义配置。
+适用场景：企业级应用、需要高性能和安全性的场景。
+示例代码：
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class JacksonExample {
+    public static void main(String[] args) throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        // 序列化
+        String json = mapper.writeValueAsString(new User("John", 30));
+        // 反序列化
+        User user = mapper.readValue(json, User.class);
+    }
+}
+
+3.2 Moshi
+优势：轻量级，Kotlin 友好，支持代码生成（通过@JsonClass注解），减少运行时反射开销。
+适用场景：Android 开发、Kotlin 项目。
+示例代码：
+
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+
+val moshi = Moshi.Builder()
+    .add(KotlinJsonAdapterFactory())
+    .build()
+val jsonAdapter = moshi.adapter(User::class.java)
+val user = jsonAdapter.fromJson(json)
+
+3.3 Kotlinx.serialization
+优势：Kotlin 官方库，编译时生成序列化代码，无需反射，性能高且安全。
+适用场景：纯 Kotlin 项目，尤其是需要跨平台（如 Kotlin Multiplatform）的场景。
+示例代码：
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
+
+@Serializable
+data class User(val name: String, val age: Int)
+
+val user = Json.decodeFromString<User>(json)
+
+3.4 Jsonb (JSR 367)
+优势：Java EE 标准库，提供简单 API，与 JPA 等 Java 生态无缝集成。
+适用场景：Java EE 项目、需要标准规范的场景。
+示例代码：
+
+import javax.json.bind.Jsonb;
+import javax.json.bind.JsonbBuilder;
+
+public class JsonbExample {
+    public static void main(String[] args) {
+        Jsonb jsonb = JsonbBuilder.create();
+        User user = jsonb.fromJson(json, User.class);
+    }
+}
+
+四、总结
+-性能优先：Jackson、Moshi。
+-安全优先：Jackson、Kotlinx.serialization。
+-Kotlin 项目：Moshi、Kotlinx.serialization。
+-Java EE 项目：Jsonb。
+
+根据具体场景选择合适的库，并注意版本更新以避免已知漏洞。
 ```
 
