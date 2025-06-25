@@ -21,6 +21,7 @@ date: 2025-01-07 08:44:38
 
 * 系统：Windows
 * Rust: 1.83.0 
+* build tools：Visual Studio 2022
 
 ## 三 Plugins插件安装
 
