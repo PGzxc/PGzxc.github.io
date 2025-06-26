@@ -13,13 +13,13 @@ date: 2024-05-29 11:02:32
 
 * VPN网络
 * Google Play账号(Google邮箱)
-* 1次性20美元(Vista)
+* 1次性25美元(Vista)
 * apk安装包
 * 图片资源：app logo(512\*512)+4-5张预览图(1024\*500)
 
 <!--more-->
 
-## 二 开通Google Play账号(一次性20美元)
+## 二 开通Google Play账号(一次性25美元)
 
 ### 2.1 打开VPN，访问Google Play Console
 
