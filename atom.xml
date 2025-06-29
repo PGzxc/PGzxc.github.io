@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>PGzxc</title>
+  
+  <subtitle>纸上得来终觉浅 绝知此事要躬行</subtitle>
+  <link href="https://pgzxc.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://pgzxc.github.io/"/>
+  <updated>2025-06-29T21:03:00.903Z</updated>
+  <id>https://pgzxc.github.io/</id>
+  
+  <author>
+    <name>PGzxc</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Rust开发之——流程控制(9)</title>
+    <link href="https://pgzxc.github.io/posts/f34f617d.html"/>
+    <id>https://pgzxc.github.io/posts/f34f617d.html</id>
+    <published>2025-06-29T20:56:33.000Z</published>
+    <updated>2025-06-29T21:03:00.903Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>if 表达式</li><li>循环</li></ul><span id="more"></span><h2 id="二-if-表达式"><a href="#二-if-表达式" class="headerlink" title="二 if 表达式"></a>二 if 表达式</h2><h3 id="2-1-基本用法"><a href="#2-1-基本用法" class="headerlink" title="2.1 基本用法"></a>2.1 基本用法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1、判断条件</span><br><span class="line">条件必须为bool类型，若条件为真执行if代码块，否则执行else代码块（可选）。</span><br><span class="line"></span><br><span class="line">2、示例：</span><br><span class="line"></span><br><span class="line">fn main() &#123;</span><br><span class="line">    let number = 3;</span><br><span class="line">    if number &lt; 5 &#123;</span><br><span class="line">        println!(&quot;condition was true&quot;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        println!(&quot;condition was false&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="2-2-多重条件判断"><a href="#2-2-多重条件判断" class="headerlink" title="2.2 多重条件判断"></a>2.2 多重条件判断</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1、多重判断条件</span><br><span class="line">用else if组合多个条件，按顺序检查，执行首个为真的分支。</span><br><span class="line"></span><br><span class="line">2、示例：</span><br><span class="line"></span><br><span class="line">if number % 4 == 0 &#123; ... &#125; </span><br><span class="line">else if number % 3 == 0 &#123; ... &#125; </span><br><span class="line">else &#123; ... &#125;</span><br></pre></td></tr></table></figure><h3 id="2-3-在let中使用if"><a href="#2-3-在let中使用if" class="headerlink" title="2.3 在let中使用if"></a>2.3 在let中使用if</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1、说明</span><br><span class="line">if是表达式，可将结果赋值给变量，要求各分支返回值类型一致。</span><br><span class="line"></span><br><span class="line">2、示例：</span><br><span class="line">let number = if condition &#123; 5 &#125; else &#123; 6 &#125;;  // number为i32类型</span><br></pre></td></tr></table></figure><h2 id="三-循环"><a href="#三-循环" class="headerlink" title="三 循环"></a>三 循环</h2><h3 id="3-1-loop循环-无限循环"><a href="#3-1-loop循环-无限循环" class="headerlink" title="3.1 loop循环(无限循环)"></a>3.1 loop循环(无限循环)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1、使用方式</span><br><span class="line">终止方式：用break关键字退出循环，可带返回值。</span><br><span class="line"></span><br><span class="line">2、示例：</span><br><span class="line"></span><br><span class="line">let result = loop &#123;</span><br><span class="line">    counter += 1;</span><br><span class="line">    if counter == 10 &#123;</span><br><span class="line">        break counter * 2;  // 返回20</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h3 id="3-2-while循环-条件循环"><a href="#3-2-while循环-条件循环" class="headerlink" title="3.2 while循环(条件循环)"></a>3.2 while循环(条件循环)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1、使用方式</span><br><span class="line">当条件为真时执行循环体，避免loop+if的嵌套，更简洁。</span><br><span class="line"></span><br><span class="line">2、示例：</span><br><span class="line"></span><br><span class="line">let mut number = 3;</span><br><span class="line">while number != 0 &#123;</span><br><span class="line">    println!(&quot;&#123;&#125;!&quot;, number);</span><br><span class="line">    number -= 1;</span><br><span class="line">&#125;</span><br><span class="line">// 输出：</span><br></pre></td></tr></table></figure><h3 id="3-3-for循环-遍历循环"><a href="#3-3-for循环-遍历循环" class="headerlink" title="3.3 for循环(遍历循环)"></a>3.3 for循环(遍历循环)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、使用方式</span><br><span class="line">遍历集合：通过for element in collection遍历数组、向量等。</span><br><span class="line"></span><br><span class="line">2、示例</span><br><span class="line"></span><br><span class="line">let a = [10, 20, 30];</span><br><span class="line">for num in a.iter() &#123;</span><br><span class="line">    println!(&quot;&#123;&#125;&quot;, num);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="3-4-范围遍历"><a href="#3-4-范围遍历" class="headerlink" title="3.4 范围遍历"></a>3.4 范围遍历</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1、说明</span><br><span class="line">结合Range类型（如1..4表示 1,2,3），可配合rev()反转顺序。</span><br><span class="line"></span><br><span class="line">2、示例</span><br><span class="line">for number in (1..4).rev() &#123;</span><br><span class="line">    println!(&quot;&#123;&#125;!&quot;, number);  // 输出3! 2! 1!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="四-参考"><a href="#四-参考" class="headerlink" title="四 参考"></a>四 参考</h2><ul><li><span class="exturl" data-url="aHR0cHM6Ly9ydXN0LmJvb3Rjc3MuY29tL2NoMDMtMDUtY29udHJvbC1mbG93Lmh0bWwjaWYtJUU4JUExJUE4JUU4JUJFJUJFJUU1JUJDJThG">Rust中文官网——控制流<i class="fa fa-external-link-alt"></i></span></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;if 表达式&lt;/li&gt;
+&lt;li&gt;循环&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="B-高级语言" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/B-%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80/"/>
+    
+    <category term="Rust" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/B-%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80/Rust/"/>
+    
+    
+    <category term="Rust" scheme="https://pgzxc.github.io/tags/Rust/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Taro开发之——编译运行到QQ小程序(9)</title>
+    <link href="https://pgzxc.github.io/posts/2d73db8b.html"/>
+    <id>https://pgzxc.github.io/posts/2d73db8b.html</id>
+    <published>2025-06-29T20:52:05.000Z</published>
+    <updated>2025-06-29T21:03:00.903Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>开发环境</li><li>默认程序效果</li><li>修改程序并运行</li></ul><span id="more"></span><h2 id="二-开发环境"><a href="#二-开发环境" class="headerlink" title="二 开发环境"></a>二 开发环境</h2><ul><li>操作系统：Win 11 专业版 24H2</li><li>开发工具：VSCode、QQ小程序工具</li><li>Node: 22.16.0</li><li>Yarn: 1.22.22</li></ul><h2 id="二-默认程序效果"><a href="#二-默认程序效果" class="headerlink" title="二 默认程序效果"></a>二 默认程序效果</h2><h3 id="2-1-终端执行如下指令"><a href="#2-1-终端执行如下指令" class="headerlink" title="2.1 终端执行如下指令"></a>2.1 终端执行如下指令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn dev:qq</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-9-qq-build-1.png" loading="lazy"></p><h3 id="2-2-编译完成后，dist目录下文件生成"><a href="#2-2-编译完成后，dist目录下文件生成" class="headerlink" title="2.2 编译完成后，dist目录下文件生成"></a>2.2 编译完成后，dist目录下文件生成</h3><h3 id="2-3-打开QQ小程序工具导入dist目录查看效果"><a href="#2-3-打开QQ小程序工具导入dist目录查看效果" class="headerlink" title="2.3 打开QQ小程序工具导入dist目录查看效果"></a>2.3 打开QQ小程序工具导入dist目录查看效果</h3><p>1、选择dist目录</p><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-9-qq-import-2.png" loading="lazy"></p><p>2、导入后， 默认界面如下图</p><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-9-qq-default-3.png" loading="lazy"></p><h2 id="三-修改程序并运行"><a href="#三-修改程序并运行" class="headerlink" title="三 修改程序并运行"></a>三 修改程序并运行</h2><h3 id="3-1-pages-index-index-tsx文件修改内容"><a href="#3-1-pages-index-index-tsx文件修改内容" class="headerlink" title="3.1 pages&#x2F;index&#x2F;index.tsx文件修改内容"></a>3.1 pages&#x2F;index&#x2F;index.tsx文件修改内容</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const items = [&#x27;Item 1&#x27;, &#x27;Item 2&#x27;, &#x27;Item 3&#x27;,&#x27;Item 4&#x27;,&#x27;Item 5&#x27;]; //添加数据项</span><br><span class="line">//添加显示列表</span><br><span class="line">&#123; </span><br><span class="line">    items.map((item, index) =&gt; &#123;</span><br><span class="line">        return &lt;View key=&#123;index&#125;&gt;&#123;item&#125;&lt;/View&gt;</span><br><span class="line">     &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-9-qq-index-modify-4.png" loading="lazy"></p><h3 id="3-2-修改后效果-重新编译执行"><a href="#3-2-修改后效果-重新编译执行" class="headerlink" title="3.2 修改后效果(重新编译执行)"></a>3.2 修改后效果(重新编译执行)</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-9-qq-modify-view-5.png" loading="lazy"></p><h2 id="四-参考"><a href="#四-参考" class="headerlink" title="四 参考"></a>四 参考</h2><ul><li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLnRhcm8uem9uZS9kb2NzL0dFVFRJTkctU1RBUlRFRCNxcS0lRTUlQjAlOEYlRTclQTglOEIlRTUlQkElOEY=">Taro官网文档——QQ小程序<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9xLnFxLmNvbS93aWtpL3Rvb2xzL2RldnRvb2wv">QQ小程序工具—下载地址<i class="fa fa-external-link-alt"></i></span></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;开发环境&lt;/li&gt;
+&lt;li&gt;默认程序效果&lt;/li&gt;
+&lt;li&gt;修改程序并运行&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="F-跨平台" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/F-%E8%B7%A8%E5%B9%B3%E5%8F%B0/"/>
+    
+    <category term="Taro" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/F-%E8%B7%A8%E5%B9%B3%E5%8F%B0/Taro/"/>
+    
+    
+    <category term="Taro" scheme="https://pgzxc.github.io/tags/Taro/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Rust开发之——注释(8)</title>
+    <link href="https://pgzxc.github.io/posts/56ec7aef.html"/>
+    <id>https://pgzxc.github.io/posts/56ec7aef.html</id>
+    <published>2025-06-29T01:05:22.000Z</published>
+    <updated>2025-06-29T21:03:00.903Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>注释的作用</li><li>注释的类型及写法</li><li>文档注释</li></ul><span id="more"></span><h2 id="二-注释的作用"><a href="#二-注释的作用" class="headerlink" title="二 注释的作用"></a>二 注释的作用</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注释是程序员在源码中留下的记录，编译器会忽略注释，但有助于阅读代码的人理解代码含义。</span><br></pre></td></tr></table></figure><h2 id="三-注释的类型及写法"><a href="#三-注释的类型及写法" class="headerlink" title="三 注释的类型及写法"></a>三 注释的类型及写法</h2><h3 id="3-1-单行注释"><a href="#3-1-单行注释" class="headerlink" title="3.1 单行注释"></a>3.1 单行注释</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1、格式：</span><br><span class="line">以双斜杠//开头，到本行末尾结束。</span><br><span class="line"></span><br><span class="line">2、示例</span><br><span class="line">// hello, world</span><br><span class="line">let lucky_number = 7; // I’m feeling lucky today</span><br></pre></td></tr></table></figure><h3 id="3-2-多行注释写法"><a href="#3-2-多行注释写法" class="headerlink" title="3.2 多行注释写法"></a>3.2 多行注释写法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1、写法</span><br><span class="line">若注释超过一行，需在每一行开头都添加//，</span><br><span class="line"></span><br><span class="line">2、示例：</span><br><span class="line">// So we’re doing something complicated here, long enough that we need</span><br><span class="line">// multiple lines of comments to do it! Whew! Hopefully, this comment will</span><br><span class="line">// explain what’s going on.</span><br></pre></td></tr></table></figure><h3 id="3-3-注释的位置"><a href="#3-3-注释的位置" class="headerlink" title="3.3 注释的位置"></a>3.3 注释的位置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可放在代码行末尾或所解释代码的上一行，推荐使用后者（如放在代码行上方），使代码更清晰。</span><br></pre></td></tr></table></figure><h2 id="四-文档注释"><a href="#四-文档注释" class="headerlink" title="四 文档注释"></a>四 文档注释</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">文档注释是 Rust 的另一种注释类型，</span><br><span class="line">将在第 14 章 “将 crate 发布到 Crates.io” 部分详细讨论，网页中未展开说明</span><br></pre></td></tr></table></figure><h2 id="五-参考"><a href="#五-参考" class="headerlink" title="五 参考"></a>五 参考</h2><ul><li><span class="exturl" data-url="aHR0cHM6Ly9ydXN0LmJvb3Rjc3MuY29tL2NoMDMtMDQtY29tbWVudHMuaHRtbA==">Rust中文官网——注释<i class="fa fa-external-link-alt"></i></span></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;注释的作用&lt;/li&gt;
+&lt;li&gt;注释的类型及写法&lt;/li&gt;
+&lt;li&gt;文档注释&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="B-高级语言" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/B-%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80/"/>
+    
+    <category term="Rust" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/B-%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80/Rust/"/>
+    
+    
+    <category term="Rust" scheme="https://pgzxc.github.io/tags/Rust/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Taro开发之——编译运行到抖音小程序(8)</title>
+    <link href="https://pgzxc.github.io/posts/43c40268.html"/>
+    <id>https://pgzxc.github.io/posts/43c40268.html</id>
+    <published>2025-06-29T01:01:22.000Z</published>
+    <updated>2025-06-29T21:03:00.904Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>开发环境</li><li>默认程序效果</li><li>修改程序并运行</li></ul><span id="more"></span><h2 id="二-开发环境"><a href="#二-开发环境" class="headerlink" title="二 开发环境"></a>二 开发环境</h2><ul><li>操作系统：Win 11 专业版 24H2</li><li>开发工具：VSCode、抖音小程序工具</li><li>Node: 22.16.0</li><li>Yarn: 1.22.22</li></ul><h2 id="二-默认程序效果"><a href="#二-默认程序效果" class="headerlink" title="二 默认程序效果"></a>二 默认程序效果</h2><h3 id="2-1-终端执行如下指令"><a href="#2-1-终端执行如下指令" class="headerlink" title="2.1 终端执行如下指令"></a>2.1 终端执行如下指令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn dev:tt</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-8-douyin-build-1.png" loading="lazy"></p><h3 id="2-2-编译完成后，dist目录下文件生成"><a href="#2-2-编译完成后，dist目录下文件生成" class="headerlink" title="2.2 编译完成后，dist目录下文件生成"></a>2.2 编译完成后，dist目录下文件生成</h3><h3 id="2-3-打开抖音小程序工具导入dist目录查看效果"><a href="#2-3-打开抖音小程序工具导入dist目录查看效果" class="headerlink" title="2.3 打开抖音小程序工具导入dist目录查看效果"></a>2.3 打开抖音小程序工具导入dist目录查看效果</h3><p>1、百度小程序打开后界面如下图</p><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-8-douyin-open-first-2.png" loading="lazy"></p><p>2、选择右上角的导入，选择dist文件夹</p><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-8-douyin-import-3.png" loading="lazy"></p><p>3、导入后， 默认界面如下图</p><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-8-douyin-default-4.png" loading="lazy"></p><h2 id="三-修改程序并运行"><a href="#三-修改程序并运行" class="headerlink" title="三 修改程序并运行"></a>三 修改程序并运行</h2><h3 id="3-1-pages-index-index-tsx文件修改内容"><a href="#3-1-pages-index-index-tsx文件修改内容" class="headerlink" title="3.1 pages&#x2F;index&#x2F;index.tsx文件修改内容"></a>3.1 pages&#x2F;index&#x2F;index.tsx文件修改内容</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const items = [&#x27;Item 1&#x27;, &#x27;Item 2&#x27;, &#x27;Item 3&#x27;,&#x27;Item 4&#x27;,&#x27;Item 5&#x27;]; //添加数据项</span><br><span class="line">//添加显示列表</span><br><span class="line">&#123; </span><br><span class="line">    items.map((item, index) =&gt; &#123;</span><br><span class="line">        return &lt;View key=&#123;index&#125;&gt;&#123;item&#125;&lt;/View&gt;</span><br><span class="line">     &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-8-swan-index-modify-5.png" loading="lazy"></p><h3 id="3-2-修改后效果-重新编译执行"><a href="#3-2-修改后效果-重新编译执行" class="headerlink" title="3.2 修改后效果(重新编译执行)"></a>3.2 修改后效果(重新编译执行)</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-8-douyin-modify-view-6.png" loading="lazy"></p><h2 id="四-参考"><a href="#四-参考" class="headerlink" title="四 参考"></a>四 参考</h2><ul><li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLnRhcm8uem9uZS9kb2NzL0dFVFRJTkctU1RBUlRFRCMlRTYlOEElOTYlRTklOUYlQjMlRTUlQjAlOEYlRTclQTglOEIlRTUlQkElOEY=">Taro官网文档——抖音小程序<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIub3Blbi1kb3V5aW4uY29tL2RvY3MvcmVzb3VyY2UvemgtQ04vbWluaS1hcHAvZGV2ZWxvcC9kZXYtdG9vbHMvZGV2ZWxvcGVyLWluc3RydW1lbnQvZG93bmxvYWQvZGV2ZWxvcGVyLWluc3RydW1lbnQtdXBkYXRlLWFuZC1kb3dubG9hZA==">抖音小程序工具—下载地址<i class="fa fa-external-link-alt"></i></span></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;开发环境&lt;/li&gt;
+&lt;li&gt;默认程序效果&lt;/li&gt;
+&lt;li&gt;修改程序并运行&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="F-跨平台" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/F-%E8%B7%A8%E5%B9%B3%E5%8F%B0/"/>
+    
+    <category term="Taro" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/F-%E8%B7%A8%E5%B9%B3%E5%8F%B0/Taro/"/>
+    
+    
+    <category term="Taro" scheme="https://pgzxc.github.io/tags/Taro/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Rust开发之——函数(7)</title>
+    <link href="https://pgzxc.github.io/posts/a878daf9.html"/>
+    <id>https://pgzxc.github.io/posts/a878daf9.html</id>
+    <published>2025-06-28T01:24:37.000Z</published>
+    <updated>2025-06-29T21:03:00.903Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>函数的定义与调用</li><li>函数参数</li><li>语句与表达式的区别</li><li>函数返回值</li></ul><span id="more"></span><h2 id="二-函数的定义与调用"><a href="#二-函数的定义与调用" class="headerlink" title="二 函数的定义与调用"></a>二 函数的定义与调用</h2><h3 id="2-1-函数的定义"><a href="#2-1-函数的定义" class="headerlink" title="2.1 函数的定义"></a>2.1 函数的定义</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1、定义规范</span><br><span class="line">-以fn关键字开头，后面跟函数名</span><br><span class="line">-遵循蛇形命名法（小写字母 + 下划线，如another_function）</span><br><span class="line"></span><br><span class="line">2、示例</span><br><span class="line">fn main() &#123;</span><br><span class="line">    println!(&quot;Hello, world!&quot;);</span><br><span class="line">    another_function(); // 调用函数</span><br><span class="line">&#125;</span><br><span class="line">fn another_function() &#123;</span><br><span class="line">    println!(&quot;Another function.&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="2-2-函数的调用"><a href="#2-2-函数的调用" class="headerlink" title="2.2 函数的调用"></a>2.2 函数的调用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">直接使用函数名加括号调用，函数定义顺序不影响调用（可定义在main前后）</span><br></pre></td></tr></table></figure><h2 id="三-函数参数"><a href="#三-函数参数" class="headerlink" title="三 函数参数"></a>三 函数参数</h2><h3 id="3-1-参数声明"><a href="#3-1-参数声明" class="headerlink" title="3.1 参数声明"></a>3.1 参数声明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1、注意事项</span><br><span class="line">-需在函数签名中明确参数类型</span><br><span class="line">-多个参数用逗号分隔</span><br><span class="line"></span><br><span class="line">2、示例</span><br><span class="line">fn another_function(x: i32, y: i32) &#123;</span><br><span class="line">    println!(&quot;x: &#123;&#125;, y: &#123;&#125;&quot;, x, y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="3-2-参数传递"><a href="#3-2-参数传递" class="headerlink" title="3.2 参数传递"></a>3.2 参数传递</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">调用时按顺序传递对应类型的实参，如another_function(5, 6)</span><br></pre></td></tr></table></figure><h2 id="四-语句与表达式的区别"><a href="#四-语句与表达式的区别" class="headerlink" title="四 语句与表达式的区别"></a>四 语句与表达式的区别</h2><h3 id="4-1-语句-Statements"><a href="#4-1-语句-Statements" class="headerlink" title="4.1 语句(Statements)"></a>4.1 语句(Statements)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">执行操作但不返回值，如变量声明let y = 6;、函数定义等。</span><br><span class="line">特点：以分号结尾，不能作为值赋值给其他变量（如let x = (let y = 6);会报错）</span><br></pre></td></tr></table></figure><h3 id="4-2-表达式-Expressions"><a href="#4-2-表达式-Expressions" class="headerlink" title="4.2 表达式(Expressions)"></a>4.2 表达式(Expressions)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">计算后产生值，如数学运算5 + 6、函数调用、代码块&#123;&#125;等。</span><br><span class="line">特点：结尾无分号，代码块的值为最后一行表达式的结果（如&#123; let x=3; x+1 &#125;的值为 4）</span><br></pre></td></tr></table></figure><h2 id="五-函数返回值"><a href="#五-函数返回值" class="headerlink" title="五 函数返回值"></a>五 函数返回值</h2><h3 id="5-1-返回值类型声明"><a href="#5-1-返回值类型声明" class="headerlink" title="5.1 返回值类型声明"></a>5.1 返回值类型声明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">用箭头-&gt;指定返回值类型，如fn five() -&gt; i32 &#123; 5 &#125;。</span><br><span class="line">函数返回值为最后一个表达式的值（隐式返回），无需return关键字</span><br></pre></td></tr></table></figure><h3 id="5-2-显式返回-return"><a href="#5-2-显式返回-return" class="headerlink" title="5.2 显式返回(return)"></a>5.2 显式返回(<code>return</code>)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可提前返回值，如return x + 1;，但多数场景推荐隐式返回。</span><br></pre></td></tr></table></figure><h3 id="5-3-错误场景"><a href="#5-3-错误场景" class="headerlink" title="5.3 错误场景"></a>5.3 错误场景</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">若表达式以分号结尾（变为语句），函数会返回空元组()，</span><br><span class="line">与声明的返回类型冲突时报错（如fn plus_one() -&gt; i32 &#123; x+1; &#125;会提示类型不匹配）。</span><br></pre></td></tr></table></figure><h2 id="六-参考"><a href="#六-参考" class="headerlink" title="六 参考"></a>六 参考</h2><ul><li><span class="exturl" data-url="aHR0cHM6Ly9ydXN0LmJvb3Rjc3MuY29tL2NoMDMtMDMtaG93LWZ1bmN0aW9ucy13b3JrLmh0bWw=">Rust中文官网——函数<i class="fa fa-external-link-alt"></i></span></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;函数的定义与调用&lt;/li&gt;
+&lt;li&gt;函数参数&lt;/li&gt;
+&lt;li&gt;语句与表达式的区别&lt;/li&gt;
+&lt;li&gt;函数返回值&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="B-高级语言" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/B-%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80/"/>
+    
+    <category term="Rust" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/B-%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80/Rust/"/>
+    
+    
+    <category term="Rust" scheme="https://pgzxc.github.io/tags/Rust/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Taro开发之——编译运行到支付宝小程序(7)</title>
+    <link href="https://pgzxc.github.io/posts/60ee41e9.html"/>
+    <id>https://pgzxc.github.io/posts/60ee41e9.html</id>
+    <published>2025-06-28T01:20:39.000Z</published>
+    <updated>2025-06-29T21:03:00.904Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>开发环境</li><li>默认程序效果</li><li>修改程序并运行</li></ul><span id="more"></span><h2 id="二-开发环境"><a href="#二-开发环境" class="headerlink" title="二 开发环境"></a>二 开发环境</h2><ul><li>操作系统：Win 11 专业版 24H2</li><li>开发工具：VSCode、支付宝小程序工具</li><li>Node: 22.16.0</li><li>Yarn: 1.22.22</li></ul><h2 id="二-默认程序效果"><a href="#二-默认程序效果" class="headerlink" title="二 默认程序效果"></a>二 默认程序效果</h2><h3 id="2-1-终端执行如下指令"><a href="#2-1-终端执行如下指令" class="headerlink" title="2.1 终端执行如下指令"></a>2.1 终端执行如下指令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn dev:alipay</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-7-alipay-build-1.png" loading="lazy"></p><h3 id="2-2-编译完成后，dist目录下文件生成"><a href="#2-2-编译完成后，dist目录下文件生成" class="headerlink" title="2.2 编译完成后，dist目录下文件生成"></a>2.2 编译完成后，dist目录下文件生成</h3><h3 id="2-3-打开支付宝小程序工具导入dist目录查看效果"><a href="#2-3-打开支付宝小程序工具导入dist目录查看效果" class="headerlink" title="2.3 打开支付宝小程序工具导入dist目录查看效果"></a>2.3 打开支付宝小程序工具导入dist目录查看效果</h3><p>1、百度小程序打开后界面如下图</p><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-7-alipay-open-view-2.png" loading="lazy"></p><p>2、选择右上角的打开项目，选择dist文件夹</p><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-7-alipay-import-3.png" loading="lazy"></p><p>3、导入后， 默认界面如下图</p><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-7-alipay-open-preview-4.png" loading="lazy"></p><h2 id="三-修改程序并运行"><a href="#三-修改程序并运行" class="headerlink" title="三 修改程序并运行"></a>三 修改程序并运行</h2><h3 id="3-1-pages-index-index-tsx文件修改内容"><a href="#3-1-pages-index-index-tsx文件修改内容" class="headerlink" title="3.1 pages&#x2F;index&#x2F;index.tsx文件修改内容"></a>3.1 pages&#x2F;index&#x2F;index.tsx文件修改内容</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const items = [&#x27;Item 1&#x27;, &#x27;Item 2&#x27;, &#x27;Item 3&#x27;,&#x27;Item 4&#x27;,&#x27;Item 5&#x27;]; //添加数据项</span><br><span class="line">//添加显示列表</span><br><span class="line">&#123; </span><br><span class="line">    items.map((item, index) =&gt; &#123;</span><br><span class="line">        return &lt;View key=&#123;index&#125;&gt;&#123;item&#125;&lt;/View&gt;</span><br><span class="line">     &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-7-swan-index-modify-5.png" loading="lazy"></p><h3 id="3-2-修改后效果-重新编译执行"><a href="#3-2-修改后效果-重新编译执行" class="headerlink" title="3.2 修改后效果(重新编译执行)"></a>3.2 修改后效果(重新编译执行)</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-7-alipay-modify-after-6.png" loading="lazy"></p><h2 id="四-参考"><a href="#四-参考" class="headerlink" title="四 参考"></a>四 参考</h2><ul><li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLnRhcm8uem9uZS9kb2NzL0dFVFRJTkctU1RBUlRFRCMlRTYlOTQlQUYlRTQlQkIlOTglRTUlQUUlOUQlRTUlQjAlOEYlRTclQTglOEIlRTUlQkElOEY=">Taro官网文档——支付宝小程序<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9vcGVuZG9jcy5hbGlwYXkuY29tL21pbmkvaWRlL2Rvd25sb2Fk">支付宝小程序工具—下载地址<i class="fa fa-external-link-alt"></i></span></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;开发环境&lt;/li&gt;
+&lt;li&gt;默认程序效果&lt;/li&gt;
+&lt;li&gt;修改程序并运行&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="F-跨平台" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/F-%E8%B7%A8%E5%B9%B3%E5%8F%B0/"/>
+    
+    <category term="Taro" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/F-%E8%B7%A8%E5%B9%B3%E5%8F%B0/Taro/"/>
+    
+    
+    <category term="Taro" scheme="https://pgzxc.github.io/tags/Taro/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Rust开发之——数据类型(6)</title>
+    <link href="https://pgzxc.github.io/posts/a04f77d8.html"/>
+    <id>https://pgzxc.github.io/posts/a04f77d8.html</id>
+    <published>2025-06-27T00:54:08.000Z</published>
+    <updated>2025-06-29T21:03:00.903Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>数据类型分类</li><li>标量类型</li><li>复合类型</li></ul><span id="more"></span><h2 id="二-数据类型分类"><a href="#二-数据类型分类" class="headerlink" title="二 数据类型分类"></a>二 数据类型分类</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Rust类型的分类：标量（scalar）和复合（compound）</span><br></pre></td></tr></table></figure><h2 id="三-标量类型"><a href="#三-标量类型" class="headerlink" title="三 标量类型"></a>三 标量类型</h2><p>标量类型代表一个单独的值。</p><p>Rust 有四种基本的标量类型：整型、浮点型、布尔类型和字符类型</p><h3 id="3-1-整形"><a href="#3-1-整形" class="headerlink" title="3.1 整形"></a>3.1 整形</h3><p>1、类型分类</p><table><thead><tr><th align="center">长度</th><th align="center">有符号</th><th align="center">无符号</th></tr></thead><tbody><tr><td align="center">8-bit</td><td align="center">i8</td><td align="center">u8</td></tr><tr><td align="center">16-bit</td><td align="center">i16</td><td align="center">u16</td></tr><tr><td align="center">32-bit</td><td align="center">i32</td><td align="center">u32</td></tr><tr><td align="center">64-bit</td><td align="center">i64</td><td align="center">u64</td></tr><tr><td align="center">128-bit</td><td align="center">i128</td><td align="center">u128</td></tr><tr><td align="center">arch</td><td align="center">isize</td><td align="center">usize</td></tr></tbody></table><p>2、概念</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-取值范围：有符号 和 无符号</span><br><span class="line">-默认类型：整数默认类型为i32</span><br><span class="line">-整型溢出：超过范围</span><br></pre></td></tr></table></figure><h3 id="3-2-浮点型"><a href="#3-2-浮点型" class="headerlink" title="3.2 浮点型"></a>3.2 浮点型</h3><p>1、类型</p><table><thead><tr><th align="center">单精度</th><th align="center">表示</th></tr></thead><tbody><tr><td align="center">32 位</td><td align="center">f32</td></tr><tr><td align="center">64 位</td><td align="center">f64(默认)</td></tr></tbody></table><p>2、示例</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fn main() &#123;</span><br><span class="line">    let x = 2.0; // f64</span><br><span class="line"></span><br><span class="line">    let y: f32 = 3.0; // f32</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="3-3-布尔型"><a href="#3-3-布尔型" class="headerlink" title="3.3 布尔型"></a>3.3 布尔型</h3><p>1、取值</p><table><thead><tr><th align="center">类型</th><th align="center">取值</th></tr></thead><tbody><tr><td align="center">bool</td><td align="center">true</td></tr><tr><td align="center">bool</td><td align="center">false</td></tr></tbody></table><p>2、示例</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fn main() &#123;</span><br><span class="line">    let t = true;</span><br><span class="line"></span><br><span class="line">    let f: bool = false; // 显式指定类型注解</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="3-4-字符类型"><a href="#3-4-字符类型" class="headerlink" title="3.4 字符类型"></a>3.4 字符类型</h3><table><thead><tr><th align="center">声明变量</th><th align="center">使用符号</th></tr></thead><tbody><tr><td align="center">let</td><td align="center">单引号(如‘z’)</td></tr></tbody></table><h2 id="四-复合类型"><a href="#四-复合类型" class="headerlink" title="四 复合类型"></a>四 复合类型</h2><p>可以将多个值组合成一个类型。</p><p>Rust 有两个原生的复合类型：元组（tuple）和数组（array）。</p><h3 id="4-1-元组"><a href="#4-1-元组" class="headerlink" title="4.1 元组"></a>4.1 元组</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、定义与特点：</span><br><span class="line">由逗号分隔、圆括号包裹的多个值（类型可不同），长度固定。</span><br><span class="line"></span><br><span class="line">2、创建示例：</span><br><span class="line">let tup: (i32, f64, u8) = (500, 6.4, 1);。</span><br><span class="line"></span><br><span class="line">3、值的获取：</span><br><span class="line">-解构赋值：let (x, y, z) = tup;。</span><br><span class="line">-索引访问：x.0、x.1、x.2（索引从 0 开始）。</span><br></pre></td></tr></table></figure><h3 id="4-2-数组"><a href="#4-2-数组" class="headerlink" title="4.2 数组"></a>4.2 数组</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1、定义与特点：</span><br><span class="line">中括号内包含相同类型元素，长度固定（声明后不可变）。</span><br><span class="line"></span><br><span class="line">2、创建方式：</span><br><span class="line">-直接初始化：let a = [1, 2, 3, 4, 5];。</span><br><span class="line">-类型标注：let a: [i32; 5] = [1, 2, 3, 4, 5];。</span><br><span class="line">-重复元素初始化：let a = [3; 5];（5 个 3）。</span><br><span class="line"></span><br><span class="line">3、元素访问：</span><br><span class="line">通过索引（如a[0]），越界访问（如a[10]）会在运行时 panic 并报错index out of bounds。</span><br><span class="line"></span><br><span class="line">4、应用场景：</span><br><span class="line">适用于栈上分配、元素数量固定的场景（如月份数组），比 vector 灵活度低，vector 可动态调整长度。</span><br></pre></td></tr></table></figure><h2 id="五-参考"><a href="#五-参考" class="headerlink" title="五 参考"></a>五 参考</h2><ul><li><span class="exturl" data-url="aHR0cHM6Ly9ydXN0LmJvb3Rjc3MuY29tL2NoMDMtMDItZGF0YS10eXBlcy5odG1s">Rust中文官网——数据类型<i class="fa fa-external-link-alt"></i></span></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;数据类型分类&lt;/li&gt;
+&lt;li&gt;标量类型&lt;/li&gt;
+&lt;li&gt;复合类型&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="B-高级语言" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/B-%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80/"/>
+    
+    <category term="Rust" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/B-%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80/Rust/"/>
+    
+    
+    <category term="Rust" scheme="https://pgzxc.github.io/tags/Rust/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Taro开发之——编译运行到百度小程序(6)</title>
+    <link href="https://pgzxc.github.io/posts/b7e81554.html"/>
+    <id>https://pgzxc.github.io/posts/b7e81554.html</id>
+    <published>2025-06-27T00:49:34.000Z</published>
+    <updated>2025-06-29T21:03:00.904Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>开发环境</li><li>默认程序效果</li><li>修改程序并运行</li></ul><span id="more"></span><h2 id="二-开发环境"><a href="#二-开发环境" class="headerlink" title="二 开发环境"></a>二 开发环境</h2><ul><li>操作系统：Win 11 专业版 24H2</li><li>开发工具：VSCode、百度小程序工具</li><li>Node: 22.16.0</li><li>Yarn: 1.22.22</li></ul><h2 id="二-默认程序效果"><a href="#二-默认程序效果" class="headerlink" title="二 默认程序效果"></a>二 默认程序效果</h2><h3 id="2-1-终端执行如下指令"><a href="#2-1-终端执行如下指令" class="headerlink" title="2.1 终端执行如下指令"></a>2.1 终端执行如下指令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn dev:swan</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-6-swan-build-1.png" loading="lazy"></p><h3 id="2-2-编译完成后，dist目录下文件生成"><a href="#2-2-编译完成后，dist目录下文件生成" class="headerlink" title="2.2 编译完成后，dist目录下文件生成"></a>2.2 编译完成后，dist目录下文件生成</h3><h3 id="2-3-打开百度小程序工具导入dist目录查看效果"><a href="#2-3-打开百度小程序工具导入dist目录查看效果" class="headerlink" title="2.3 打开百度小程序工具导入dist目录查看效果"></a>2.3 打开百度小程序工具导入dist目录查看效果</h3><p>1、百度小程序打开后界面如下图</p><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-6-swan-tools-view-2.png" loading="lazy"></p><p>2、导入后， 默认界面如下图</p><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-6-swan-default-view-3.png" loading="lazy"></p><h2 id="三-修改程序并运行"><a href="#三-修改程序并运行" class="headerlink" title="三 修改程序并运行"></a>三 修改程序并运行</h2><h3 id="3-1-pages-index-index-tsx文件修改内容"><a href="#3-1-pages-index-index-tsx文件修改内容" class="headerlink" title="3.1 pages&#x2F;index&#x2F;index.tsx文件修改内容"></a>3.1 pages&#x2F;index&#x2F;index.tsx文件修改内容</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const items = [&#x27;Item 1&#x27;, &#x27;Item 2&#x27;, &#x27;Item 3&#x27;,&#x27;Item 4&#x27;,&#x27;Item 5&#x27;]; //添加数据项</span><br><span class="line">//添加显示列表</span><br><span class="line">&#123; </span><br><span class="line">    items.map((item, index) =&gt; &#123;</span><br><span class="line">        return &lt;View key=&#123;index&#125;&gt;&#123;item&#125;&lt;/View&gt;</span><br><span class="line">     &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-6-swan-index-modify-4.png" loading="lazy"></p><h3 id="3-2-修改后效果-重新编译执行"><a href="#3-2-修改后效果-重新编译执行" class="headerlink" title="3.2 修改后效果(重新编译执行)"></a>3.2 修改后效果(重新编译执行)</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-6-swan-modify-after-5.png" loading="lazy"></p><h2 id="四-参考"><a href="#四-参考" class="headerlink" title="四 参考"></a>四 参考</h2><ul><li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLnRhcm8uem9uZS9kb2NzL0dFVFRJTkctU1RBUlRFRCMlRTclOTklQkUlRTUlQkElQTYlRTUlQjAlOEYlRTclQTglOEIlRTUlQkElOEY=">Taro官网文档——百度小程序<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9zbWFydHByb2dyYW0uYmFpZHUuY29tL2RvY3MvZGV2ZWxvcC9kZXZ0b29scy9oaXN0b3J5">百度小程序工具—下载地址<i class="fa fa-external-link-alt"></i></span></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;开发环境&lt;/li&gt;
+&lt;li&gt;默认程序效果&lt;/li&gt;
+&lt;li&gt;修改程序并运行&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="F-跨平台" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/F-%E8%B7%A8%E5%B9%B3%E5%8F%B0/"/>
+    
+    <category term="Taro" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/F-%E8%B7%A8%E5%B9%B3%E5%8F%B0/Taro/"/>
+    
+    
+    <category term="Taro" scheme="https://pgzxc.github.io/tags/Taro/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据结构与算法之——常见面试题及解答3</title>
+    <link href="https://pgzxc.github.io/posts/f86df696.html"/>
+    <id>https://pgzxc.github.io/posts/f86df696.html</id>
+    <published>2025-06-27T00:30:57.000Z</published>
+    <updated>2025-06-29T21:03:00.933Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>ArrayList 扩容机制？</li><li>栈实现队列 &amp; 队列实现栈</li><li>Trie 树(字典树)</li><li>并查集(Union-Find)</li><li>图结构相关知识<span id="more"></span></li><li>滑动窗口思想(双指针)</li><li>堆(优先队列)</li><li>动态规划经典问题</li><li>回溯经典题目(组合型)</li><li>常见面试题解法对比</li></ul><h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-ArrayList-扩容机制？"><a href="#2-1-ArrayList-扩容机制？" class="headerlink" title="2.1 ArrayList 扩容机制？"></a>2.1 ArrayList 扩容机制？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">面试常问： 插入大量数据时性能为何下降？</span><br><span class="line"></span><br><span class="line">-默认初始容量是 10。</span><br><span class="line">-每次扩容为原来的 1.5 倍（JDK8 起：newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1)）。</span><br><span class="line"></span><br><span class="line">2、容过程会：</span><br><span class="line">-创建新数组；</span><br><span class="line">-将老数据复制过去；</span><br><span class="line">-所以频繁扩容性能很差（建议设置初始容量）。</span><br></pre></td></tr></table></figure><h3 id="2-2-栈实现队列-队列实现栈"><a href="#2-2-栈实现队列-队列实现栈" class="headerlink" title="2.2 栈实现队列 &amp; 队列实现栈"></a>2.2 栈实现队列 &amp; 队列实现栈</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">面试常问：手写实现</span><br><span class="line"></span><br><span class="line">1、两个栈实现一个队列（两个 Stack）</span><br><span class="line">-入队：正常 push</span><br><span class="line">-出队：popStack 为空则把 pushStack 中的全部元素倒过去</span><br><span class="line"></span><br><span class="line">2、两个队列实现一个栈（两个 Queue）</span><br><span class="line">-push 时将元素加到空队列，并将另一个队列中的全部元素倒进来</span><br></pre></td></tr></table></figure><h3 id="2-3-Trie-树-字典树"><a href="#2-3-Trie-树-字典树" class="headerlink" title="2.3 Trie 树(字典树)"></a>2.3 Trie 树(字典树)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1、典型题目：</span><br><span class="line">-单词前缀统计</span><br><span class="line">-自动补全</span><br><span class="line">-实现 insert(word) / search(word) / startsWith(prefix)</span><br><span class="line"></span><br><span class="line">2、结构：</span><br><span class="line">-多叉树（26叉/字母节点）</span><br><span class="line">-每个节点记录是否为单词结尾</span><br></pre></td></tr></table></figure><h3 id="2-4-并查集-Union-Find"><a href="#2-4-并查集-Union-Find" class="headerlink" title="2.4 并查集(Union-Find)"></a>2.4 并查集(Union-Find)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1、应用场景：</span><br><span class="line">-判断两个元素是否在同一集合（如：朋友圈问题）</span><br><span class="line">-连通块统计（如岛屿数量）</span><br><span class="line"></span><br><span class="line">2、优化策略：</span><br><span class="line">-路径压缩（find 时将父节点直接指向根）</span><br><span class="line">-按秩合并（按子树深度合并）</span><br></pre></td></tr></table></figure><h3 id="2-5-图结构相关知识"><a href="#2-5-图结构相关知识" class="headerlink" title="2.5 图结构相关知识"></a>2.5 图结构相关知识</h3><table><thead><tr><th align="center">知识点</th><th align="center">描述</th></tr></thead><tbody><tr><td align="center">邻接矩阵</td><td align="center">空间 O(n²)，稠密图</td></tr><tr><td align="center">邻接表</td><td align="center">空间 O(n+e)，稀疏图</td></tr><tr><td align="center">BFS</td><td align="center">用队列，适合求最短路径</td></tr><tr><td align="center">DFS</td><td align="center">用栈或递归</td></tr><tr><td align="center">拓扑排序</td><td align="center">DAG 有向无环图中常用，Kahn算法</td></tr><tr><td align="center">Dijkstra</td><td align="center">单源最短路径算法，基于优先队列</td></tr><tr><td align="center">Floyd &#x2F; Bellman-Ford</td><td align="center">全源最短路径算法</td></tr></tbody></table><h3 id="2-6-滑动窗口思想-双指针"><a href="#2-6-滑动窗口思想-双指针" class="headerlink" title="2.6 滑动窗口思想(双指针)"></a>2.6 滑动窗口思想(双指针)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1、常见题型：</span><br><span class="line">-最长不重复子串</span><br><span class="line">-最小覆盖子串（hard）</span><br><span class="line">-滑动窗口最大值（单调队列）</span><br><span class="line"></span><br><span class="line">2、常用模板：</span><br><span class="line"></span><br><span class="line">int left = 0, right = 0;</span><br><span class="line">while (right &lt; s.length()) &#123;</span><br><span class="line">    window.add(s[right]);</span><br><span class="line">    right++;</span><br><span class="line">    while (window 满足某个条件) &#123;</span><br><span class="line">        window.remove(s[left]);</span><br><span class="line">        left++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="2-7-堆-优先队列"><a href="#2-7-堆-优先队列" class="headerlink" title="2.7 堆(优先队列)"></a>2.7 堆(优先队列)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1、常见考点：</span><br><span class="line">-Top K 高频元素</span><br><span class="line">-合并 K 个有序链表</span><br><span class="line">-堆排序实现</span><br><span class="line"></span><br><span class="line">2、Java 使用：</span><br><span class="line">PriorityQueue&lt;Integer&gt; minHeap = new PriorityQueue&lt;&gt;();</span><br><span class="line">PriorityQueue&lt;Integer&gt; maxHeap = new PriorityQueue&lt;&gt;(Collections.reverseOrder());</span><br></pre></td></tr></table></figure><h3 id="2-8-动态规划经典问题"><a href="#2-8-动态规划经典问题" class="headerlink" title="2.8 动态规划经典问题"></a>2.8 动态规划经典问题</h3><table><thead><tr><th align="center">题型</th><th align="center">描述</th></tr></thead><tbody><tr><td align="center">爬楼梯</td><td align="center">一维DP：<code>dp[i] = dp[i-1] + dp[i-2]</code></td></tr><tr><td align="center">最大子数组和</td><td align="center">Kadane算法</td></tr><tr><td align="center">股票买卖</td><td align="center"><code>dp[i][j]</code> 表示第 i 天状态 j（持有&#x2F;未持有）</td></tr><tr><td align="center">背包问题</td><td align="center">二维或一维压缩 DP</td></tr><tr><td align="center">最长上升子序列 LIS</td><td align="center">O(n²) &#x2F; O(nlogn)（用二分）</td></tr></tbody></table><h3 id="2-9-回溯经典题目-组合型"><a href="#2-9-回溯经典题目-组合型" class="headerlink" title="2.9 回溯经典题目(组合型)"></a>2.9 回溯经典题目(组合型)</h3><table><thead><tr><th align="center">题型</th><th align="center">描述</th></tr></thead><tbody><tr><td align="center">全排列</td><td align="center">无重复或有重复排列</td></tr><tr><td align="center">子集 &#x2F; 组合</td><td align="center">按条件组合元素</td></tr><tr><td align="center">N 皇后</td><td align="center">符合条件的棋盘状态</td></tr><tr><td align="center">单词搜索</td><td align="center">网格DFS + visited标记</td></tr><tr><td align="center">数独求解</td><td align="center">行列宫合法性检查 + 回溯</td></tr></tbody></table><h3 id="2-10-常见面试题解法对比"><a href="#2-10-常见面试题解法对比" class="headerlink" title="2.10 常见面试题解法对比"></a>2.10 常见面试题解法对比</h3><table><thead><tr><th align="center">题目</th><th align="center">解法1</th><th align="center">解法2</th></tr></thead><tbody><tr><td align="center">两数之和</td><td align="center">暴力 O(n²)</td><td align="center">哈希表 O(n)</td></tr><tr><td align="center">滑动窗口最大值</td><td align="center">暴力</td><td align="center">单调队列 O(n)</td></tr><tr><td align="center">LRU 缓存</td><td align="center">HashMap + List</td><td align="center">LinkedHashMap</td></tr><tr><td align="center">最长公共子序列</td><td align="center">递归</td><td align="center">动态规划</td></tr><tr><td align="center">Top K</td><td align="center">排序</td><td align="center">小根堆 O(nlogk)</td></tr></tbody></table>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;ArrayList 扩容机制？&lt;/li&gt;
+&lt;li&gt;栈实现队列 &amp;amp; 队列实现栈&lt;/li&gt;
+&lt;li&gt;Trie 树(字典树)&lt;/li&gt;
+&lt;li&gt;并查集(Union-Find)&lt;/li&gt;
+&lt;li&gt;图结构相关知识</summary>
+    
+    
+    
+    <category term="面试相关" scheme="https://pgzxc.github.io/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/"/>
+    
+    <category term="数据结构与算法" scheme="https://pgzxc.github.io/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="数据结构" scheme="https://pgzxc.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="刷题" scheme="https://pgzxc.github.io/tags/%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Rust开发之——变量与常量(5)</title>
+    <link href="https://pgzxc.github.io/posts/d4136cf1.html"/>
+    <id>https://pgzxc.github.io/posts/d4136cf1.html</id>
+    <published>2025-06-26T04:03:05.000Z</published>
+    <updated>2025-06-29T21:03:00.903Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>变量 let mut</li><li>常量const</li><li>使用let关键词多次隐藏</li></ul><span id="more"></span><h2 id="二-变量-let-mut"><a href="#二-变量-let-mut" class="headerlink" title="二 变量 let mut"></a>二 变量 let mut</h2><h3 id="2-1-说明"><a href="#2-1-说明" class="headerlink" title="2.1 说明"></a>2.1 说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Rust中通过let mut来声明一个变量</span><br><span class="line">变量的值，可再次修改</span><br></pre></td></tr></table></figure><h3 id="2-2-示例"><a href="#2-2-示例" class="headerlink" title="2.2 示例"></a>2.2 示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fn main() &#123;</span><br><span class="line">    let mut x = 5;</span><br><span class="line">    println!(&quot;The value of x is: &#123;&#125;&quot;, x);</span><br><span class="line">    x = 6;</span><br><span class="line">    println!(&quot;The value of x is: &#123;&#125;&quot;, x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="三-常量const"><a href="#三-常量const" class="headerlink" title="三 常量const"></a>三 常量const</h2><h3 id="3-1-说明"><a href="#3-1-说明" class="headerlink" title="3.1 说明"></a>3.1 说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Rust中通过const类声明常量</span><br><span class="line">常量的值不能再次赋值</span><br></pre></td></tr></table></figure><h3 id="3-2-示例"><a href="#3-2-示例" class="headerlink" title="3.2 示例"></a>3.2 示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const MAX_POINTS: u32 = 100_000;</span><br></pre></td></tr></table></figure><h3 id="四-使用let关键词多次隐藏"><a href="#四-使用let关键词多次隐藏" class="headerlink" title="四 使用let关键词多次隐藏"></a>四 使用let关键词多次隐藏</h3><h3 id="4-1-说明"><a href="#4-1-说明" class="headerlink" title="4.1 说明"></a>4.1 说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Rust中将let声明的变量多次赋值的过程称为隐藏</span><br></pre></td></tr></table></figure><h3 id="4-2-示例"><a href="#4-2-示例" class="headerlink" title="4.2 示例"></a>4.2 示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fn main() &#123;</span><br><span class="line">    let x = 5;</span><br><span class="line"></span><br><span class="line">    let x = x + 1;</span><br><span class="line"></span><br><span class="line">    let x = x * 2;</span><br><span class="line"></span><br><span class="line">    println!(&quot;The value of x is: &#123;&#125;&quot;, x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="五-参考"><a href="#五-参考" class="headerlink" title="五 参考"></a>五 参考</h2><ul><li><span class="exturl" data-url="aHR0cHM6Ly9ydXN0LmJvb3Rjc3MuY29tL2NoMDMtMDEtdmFyaWFibGVzLWFuZC1tdXRhYmlsaXR5Lmh0bWw=">Rust中文官网——变量与可变性<i class="fa fa-external-link-alt"></i></span></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;变量 let mut&lt;/li&gt;
+&lt;li&gt;常量const&lt;/li&gt;
+&lt;li&gt;使用let关键词多次隐藏&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="B-高级语言" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/B-%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80/"/>
+    
+    <category term="Rust" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/B-%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80/Rust/"/>
+    
+    
+    <category term="Rust" scheme="https://pgzxc.github.io/tags/Rust/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Taro开发之——编译运行到微信小程序(5)</title>
+    <link href="https://pgzxc.github.io/posts/312ceee6.html"/>
+    <id>https://pgzxc.github.io/posts/312ceee6.html</id>
+    <published>2025-06-26T03:58:57.000Z</published>
+    <updated>2025-06-29T21:03:00.903Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>开发环境</li><li>默认程序效果</li><li>修改程序并运行</li></ul><span id="more"></span><h2 id="二-开发环境"><a href="#二-开发环境" class="headerlink" title="二 开发环境"></a>二 开发环境</h2><ul><li>操作系统：Win 11 专业版 24H2</li><li>开发工具：VSCode、微信小程序工具</li><li>Node: 22.16.0</li><li>Yarn: 1.22.22</li></ul><h2 id="二-默认程序效果"><a href="#二-默认程序效果" class="headerlink" title="二 默认程序效果"></a>二 默认程序效果</h2><h3 id="2-1-终端执行如下指令"><a href="#2-1-终端执行如下指令" class="headerlink" title="2.1 终端执行如下指令"></a>2.1 终端执行如下指令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn dev:weapp</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-5-weapp-dev-build-1.png" loading="lazy"></p><h3 id="2-2-编译完成后，dist目录下文件生成"><a href="#2-2-编译完成后，dist目录下文件生成" class="headerlink" title="2.2 编译完成后，dist目录下文件生成"></a>2.2 编译完成后，dist目录下文件生成</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-5-weapp-dist-struct-2.png" loading="lazy"></p><h3 id="2-3-打开微信小程序工具导入dist目录查看效果"><a href="#2-3-打开微信小程序工具导入dist目录查看效果" class="headerlink" title="2.3 打开微信小程序工具导入dist目录查看效果"></a>2.3 打开微信小程序工具导入dist目录查看效果</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-5-weapp-tool-view-3.png" loading="lazy"></p><h2 id="三-修改程序并运行"><a href="#三-修改程序并运行" class="headerlink" title="三 修改程序并运行"></a>三 修改程序并运行</h2><h3 id="3-1-pages-index-index-tsx文件修改内容"><a href="#3-1-pages-index-index-tsx文件修改内容" class="headerlink" title="3.1 pages&#x2F;index&#x2F;index.tsx文件修改内容"></a>3.1 pages&#x2F;index&#x2F;index.tsx文件修改内容</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const items = [&#x27;Item 1&#x27;, &#x27;Item 2&#x27;, &#x27;Item 3&#x27;,&#x27;Item 4&#x27;,&#x27;Item 5&#x27;]; //添加数据项</span><br><span class="line">//添加显示列表</span><br><span class="line">&#123; </span><br><span class="line">    items.map((item, index) =&gt; &#123;</span><br><span class="line">        return &lt;View key=&#123;index&#125;&gt;&#123;item&#125;&lt;/View&gt;</span><br><span class="line">     &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-5-weapp-index-modify-4.png" loading="lazy"></p><h3 id="3-2-修改后效果-重新编译执行"><a href="#3-2-修改后效果-重新编译执行" class="headerlink" title="3.2 修改后效果(重新编译执行)"></a>3.2 修改后效果(重新编译执行)</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-5-weapp-modify-after-5.png" loading="lazy"></p><h2 id="四-参考"><a href="#四-参考" class="headerlink" title="四 参考"></a>四 参考</h2><ul><li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLnRhcm8uem9uZS9kb2NzL0dFVFRJTkctU1RBUlRFRCMlRTUlQkUlQUUlRTQlQkYlQTElRTUlQjAlOEYlRTclQTglOEIlRTUlQkElOEY=">Taro官网文档——微信小程序<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXJzLndlaXhpbi5xcS5jb20vbWluaXByb2dyYW0vZGV2L2RldnRvb2xzL2Rvd25sb2FkLmh0bWw=">微信小程序工具—下载地址<i class="fa fa-external-link-alt"></i></span></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;开发环境&lt;/li&gt;
+&lt;li&gt;默认程序效果&lt;/li&gt;
+&lt;li&gt;修改程序并运行&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="F-跨平台" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/F-%E8%B7%A8%E5%B9%B3%E5%8F%B0/"/>
+    
+    <category term="Taro" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/F-%E8%B7%A8%E5%B9%B3%E5%8F%B0/Taro/"/>
+    
+    
+    <category term="Taro" scheme="https://pgzxc.github.io/tags/Taro/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据结构与算法之——常见面试题及解答2</title>
+    <link href="https://pgzxc.github.io/posts/8f6ac600.html"/>
+    <id>https://pgzxc.github.io/posts/8f6ac600.html</id>
+    <published>2025-06-26T01:58:42.000Z</published>
+    <updated>2025-06-29T21:03:00.933Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>为什么 HashMap 线程不安全？如何解决？</li><li>ConcurrentHashMap 具体实现（JDK1.8）</li><li>LRU 缓存原理（必问经典设计题）</li><li>HashMap 的扩容机制？</li><li>二叉树遍历方式（递归 + 非递归）<span id="more"></span></li><li>红黑树 vs AVL树？</li><li>数组与链表的区别？</li><li>Java 的 Stack 和 Deque 区别？</li></ul><h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-为什么-HashMap-线程不安全？如何解决？"><a href="#2-1-为什么-HashMap-线程不安全？如何解决？" class="headerlink" title="2.1 为什么 HashMap 线程不安全？如何解决？"></a>2.1 为什么 HashMap 线程不安全？如何解决？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1、问题背景：</span><br><span class="line">HashMap 在多线程下可能出现：</span><br><span class="line">-死循环（JDK1.7 resize 过程中链表形成环）</span><br><span class="line">-数据覆盖、丢失（多个线程 put 到同一个桶位）</span><br><span class="line"></span><br><span class="line">2、解决方式：</span><br><span class="line">-使用 ConcurrentHashMap（推荐）</span><br><span class="line">-或使用 Collections.synchronizedMap(new HashMap&lt;&gt;())（效率低）</span><br></pre></td></tr></table></figure><h3 id="2-2-ConcurrentHashMap-具体实现（JDK1-8）"><a href="#2-2-ConcurrentHashMap-具体实现（JDK1-8）" class="headerlink" title="2.2 ConcurrentHashMap 具体实现（JDK1.8）"></a>2.2 ConcurrentHashMap 具体实现（JDK1.8）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、简要原理：</span><br><span class="line">-使用 CAS + synchronized 代替分段锁</span><br><span class="line">-数组 + 链表 / 红黑树 的结构</span><br><span class="line">-支持高并发读写操作，读无锁，写只锁当前桶位</span><br><span class="line">-resize 时使用 线程协作机制（transfer）</span><br><span class="line"></span><br><span class="line">2、常问点：</span><br><span class="line">-为什么不直接用 HashTable？（全表锁性能差）</span><br><span class="line">-为什么要红黑树？（链表太长时查找慢，O(n) → O(log n)）</span><br></pre></td></tr></table></figure><h3 id="2-3-LRU-缓存原理（必问经典设计题）"><a href="#2-3-LRU-缓存原理（必问经典设计题）" class="headerlink" title="2.3 LRU 缓存原理（必问经典设计题）"></a>2.3 LRU 缓存原理（必问经典设计题）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">面试官：请你实现一个 O(1) 时间复杂度的 LRU 缓存？</span><br><span class="line"></span><br><span class="line">1、答案结构：</span><br><span class="line">-使用 HashMap + 双向链表</span><br><span class="line">-HashMap 用于快速访问节点</span><br><span class="line">-双向链表维护访问顺序（最近使用的放头部）</span><br><span class="line"></span><br><span class="line">2、操作：</span><br><span class="line">-get(key)：找到后提到头部</span><br><span class="line">-put(key, value)：已存在更新并提到头部，不存在时新增到头部，满了则删除尾部节点</span><br></pre></td></tr></table></figure><h3 id="2-4-HashMap-的扩容机制？"><a href="#2-4-HashMap-的扩容机制？" class="headerlink" title="2.4 HashMap 的扩容机制？"></a>2.4 HashMap 的扩容机制？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、触发时机： </span><br><span class="line">size &gt;= capacity * loadFactor，即超过 75% 时</span><br><span class="line"></span><br><span class="line">2、过程简述：</span><br><span class="line">-扩容为原来 2 倍大小</span><br><span class="line">-重新计算哈希位置</span><br><span class="line">-迁移链表/树节点，注意再哈希后元素不一定在原位置</span><br><span class="line"></span><br><span class="line">注意： 扩容是非常耗性能的操作，尽量设置合适初始容量</span><br></pre></td></tr></table></figure><h3 id="2-5-二叉树遍历方式（递归-非递归）"><a href="#2-5-二叉树遍历方式（递归-非递归）" class="headerlink" title="2.5 二叉树遍历方式（递归 + 非递归）"></a>2.5 二叉树遍历方式（递归 + 非递归）</h3><table><thead><tr><th align="center">遍历</th><th align="center">顺序</th><th align="center">用途</th></tr></thead><tbody><tr><td align="center">前序遍历</td><td align="center">根→左→右</td><td align="center">构建树</td></tr><tr><td align="center">中序遍历</td><td align="center">左→根→右</td><td align="center">排序输出（BST）</td></tr><tr><td align="center">后序遍历</td><td align="center">左→右→根</td><td align="center">删除节点、释放内存</td></tr><tr><td align="center">层序遍历</td><td align="center">一层一层（BFS）</td><td align="center">最短路径等题目</td></tr></tbody></table><h3 id="2-6-红黑树-vs-AVL树？"><a href="#2-6-红黑树-vs-AVL树？" class="headerlink" title="2.6 红黑树 vs AVL树？"></a>2.6 红黑树 vs AVL树？</h3><table><thead><tr><th align="center">特性</th><th align="center">红黑树</th><th align="center">AVL 树</th></tr></thead><tbody><tr><td align="center">平衡性</td><td align="center">相对平衡</td><td align="center">严格平衡</td></tr><tr><td align="center">插入&#x2F;删除复杂度</td><td align="center">O(log n)，少量旋转</td><td align="center">O(log n)，旋转次数多</td></tr><tr><td align="center">使用场景</td><td align="center">Java TreeMap &#x2F; TreeSet</td><td align="center">数据库索引（读多写少）</td></tr></tbody></table><h3 id="2-7-数组与链表的区别？"><a href="#2-7-数组与链表的区别？" class="headerlink" title="2.7 数组与链表的区别？"></a>2.7 数组与链表的区别？</h3><table><thead><tr><th align="center">特性</th><th align="center">数组</th><th align="center">链表</th></tr></thead><tbody><tr><td align="center">内存连续性</td><td align="center">是</td><td align="center">否</td></tr><tr><td align="center">插入&#x2F;删除</td><td align="center">慢（O(n)）</td><td align="center">快（O(1)）</td></tr><tr><td align="center">查找</td><td align="center">快（O(1)）</td><td align="center">慢（O(n)）</td></tr><tr><td align="center">随机访问</td><td align="center">支持</td><td align="center">不支持</td></tr><tr><td align="center">应用场景</td><td align="center">顺序读写</td><td align="center">频繁增删元素</td></tr></tbody></table><h3 id="2-8-Java-的-Stack-和-Deque-区别？"><a href="#2-8-Java-的-Stack-和-Deque-区别？" class="headerlink" title="2.8 Java 的 Stack 和 Deque 区别？"></a>2.8 Java 的 Stack 和 Deque 区别？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-Stack 是同步的，底层是 Vector，已不推荐使用</span><br><span class="line">-推荐使用 Deque 实现栈：ArrayDeque 更快、更灵活</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;为什么 HashMap 线程不安全？如何解决？&lt;/li&gt;
+&lt;li&gt;ConcurrentHashMap 具体实现（JDK1.8）&lt;/li&gt;
+&lt;li&gt;LRU 缓存原理（必问经典设计题）&lt;/li&gt;
+&lt;li&gt;HashMap 的扩容机制？&lt;/li&gt;
+&lt;li&gt;二叉树遍历方式（递归 + 非递归）</summary>
+    
+    
+    
+    <category term="面试相关" scheme="https://pgzxc.github.io/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/"/>
+    
+    <category term="数据结构与算法" scheme="https://pgzxc.github.io/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="数据结构" scheme="https://pgzxc.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="刷题" scheme="https://pgzxc.github.io/tags/%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Rust开发之——开发工具VSCode安装与配置(4)</title>
+    <link href="https://pgzxc.github.io/posts/26e611a9.html"/>
+    <id>https://pgzxc.github.io/posts/26e611a9.html</id>
+    <published>2025-06-25T06:57:47.000Z</published>
+    <updated>2025-06-29T21:03:00.903Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>VSCode开发环境</li><li>VSCode插件安装</li><li>VSCode的第一个示例</li></ul><span id="more"></span><h2 id="二-VSCode开发环境"><a href="#二-VSCode开发环境" class="headerlink" title="二 VSCode开发环境"></a>二 VSCode开发环境</h2><ul><li>系统：Windows 11 专业版 24H2</li><li>Rust: 1.87.0 </li><li>build tools：Visual Studio 2022</li></ul><h2 id="三-VSCode插件安装"><a href="#三-VSCode插件安装" class="headerlink" title="三 VSCode插件安装"></a>三 VSCode插件安装</h2><p>1-打开VSCode，点击左侧的扩展，搜索<code>Rust</code>安装</p><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-rust/rust-4-vscode-search-rust-1.png" loading="lazy"></p><p>2、可能需要的扩展</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Rust</span><br><span class="line">rust-analyzer</span><br><span class="line">rust-project</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-rust/rust-4-vscode-kuo-list-2.png" loading="lazy"></p><h2 id="四-Rust的第一个示例"><a href="#四-Rust的第一个示例" class="headerlink" title="四 Rust的第一个示例"></a>四 Rust的第一个示例</h2><h3 id="4-1-创建项目"><a href="#4-1-创建项目" class="headerlink" title="4.1 创建项目"></a>4.1 创建项目</h3><p>1、使用如下指令创建项目(扩展暂时不可用)</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cargo new hello_cargo</span><br></pre></td></tr></table></figure><p>说明：cargo随rust已安装</p><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-rust/rust-4-vscode-cargo-new-3.png" loading="lazy"></p><h3 id="4-2-项目目录结构"><a href="#4-2-项目目录结构" class="headerlink" title="4.2 项目目录结构"></a>4.2 项目目录结构</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-rust/rust-4-vscode-cargo-struct-4.png" loading="lazy"></p><h3 id="4-3-运行项目"><a href="#4-3-运行项目" class="headerlink" title="4.3 运行项目"></a>4.3 运行项目</h3><p>1、在src&#x2F;main.rs文件中，上方有个Run|Debug，点击运行</p><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-rust/rust-4-vscode-cargo-run-5.png" loading="lazy"></p><p>2、控制台显示打印内容</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello, world!</span><br></pre></td></tr></table></figure><h2 id="五-参考"><a href="#五-参考" class="headerlink" title="五 参考"></a>五 参考</h2><ul><li><span class="exturl" data-url="aHR0cHM6Ly9ydXN0LmJvb3Rjc3MuY29tL2NoMDEtMDMtaGVsbG8tY2FyZ28uaHRtbA==">Rust程序设计语言_Hello,Cargo<i class="fa fa-external-link-alt"></i></span></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;VSCode开发环境&lt;/li&gt;
+&lt;li&gt;VSCode插件安装&lt;/li&gt;
+&lt;li&gt;VSCode的第一个示例&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="B-高级语言" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/B-%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80/"/>
+    
+    <category term="Rust" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/B-%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80/Rust/"/>
+    
+    
+    <category term="Rust" scheme="https://pgzxc.github.io/tags/Rust/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Taro开发之——编译运行到H5(4)</title>
+    <link href="https://pgzxc.github.io/posts/4d8cbcb.html"/>
+    <id>https://pgzxc.github.io/posts/4d8cbcb.html</id>
+    <published>2025-06-25T00:46:46.000Z</published>
+    <updated>2025-06-29T21:03:00.903Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>默认程序效果</li><li>修改程序并运行</li></ul><span id="more"></span><h2 id="二-默认程序效果"><a href="#二-默认程序效果" class="headerlink" title="二 默认程序效果"></a>二 默认程序效果</h2><h3 id="2-1-终端执行如下指令"><a href="#2-1-终端执行如下指令" class="headerlink" title="2.1 终端执行如下指令"></a>2.1 终端执行如下指令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn dev:h5</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-4-h5-dev-build-1.png" loading="lazy"></p><h3 id="2-2-编译完成后，自动跳转网页预览效果"><a href="#2-2-编译完成后，自动跳转网页预览效果" class="headerlink" title="2.2 编译完成后，自动跳转网页预览效果"></a>2.2 编译完成后，自动跳转网页预览效果</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.8.28:10086/#/pages/index/index</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-4-h5-view-2.png" loading="lazy"></p><h2 id="三-修改程序并运行"><a href="#三-修改程序并运行" class="headerlink" title="三 修改程序并运行"></a>三 修改程序并运行</h2><h3 id="3-1-修改内容"><a href="#3-1-修改内容" class="headerlink" title="3.1 修改内容"></a>3.1 修改内容</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const items = [&#x27;Item 1&#x27;, &#x27;Item 2&#x27;, &#x27;Item 3&#x27;,&#x27;Item 4&#x27;,&#x27;Item 5&#x27;]; //添加数据项</span><br><span class="line">//添加显示列表</span><br><span class="line">&#123; </span><br><span class="line">    items.map((item, index) =&gt; &#123;</span><br><span class="line">        return &lt;View key=&#123;index&#125;&gt;&#123;item&#125;&lt;/View&gt;</span><br><span class="line">     &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-4-h5-modify-8.png" loading="lazy"></p><h3 id="3-2-修改后效果"><a href="#3-2-修改后效果" class="headerlink" title="3.2 修改后效果"></a>3.2 修改后效果</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-4-h5-modify-after-9.png" loading="lazy"></p><h2 id="六-参考"><a href="#六-参考" class="headerlink" title="六 参考"></a>六 参考</h2><ul><li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLnRhcm8uem9uZS9kb2NzL0dFVFRJTkctU1RBUlRFRCNoNQ==">Taro官网文档——H5<i class="fa fa-external-link-alt"></i></span></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;默认程序效果&lt;/li&gt;
+&lt;li&gt;修改程序并运行&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="F-跨平台" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/F-%E8%B7%A8%E5%B9%B3%E5%8F%B0/"/>
+    
+    <category term="Taro" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/F-%E8%B7%A8%E5%B9%B3%E5%8F%B0/Taro/"/>
+    
+    
+    <category term="Taro" scheme="https://pgzxc.github.io/tags/Taro/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据结构与算法之——常见面试题及解答1</title>
+    <link href="https://pgzxc.github.io/posts/166397ba.html"/>
+    <id>https://pgzxc.github.io/posts/166397ba.html</id>
+    <published>2025-06-25T00:40:07.000Z</published>
+    <updated>2025-06-29T21:03:00.933Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>HashMap 原理（Java 举例）</li><li>ArrayList 与 LinkedList 区别</li><li>HashSet 原理</li><li>栈和队列原理</li><li>ConcurrentHashMap 原理（高并发场景）<span id="more"></span></li><li>TreeMap &#x2F; TreeSet 原理</li><li>PriorityQueue（最小堆 &#x2F; 最大堆）</li></ul><h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-HashMap-原理（Java-举例）"><a href="#2-1-HashMap-原理（Java-举例）" class="headerlink" title="2.1 HashMap 原理（Java 举例）"></a>2.1 HashMap 原理（Java 举例）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1、面试高频！问得最多的是：</span><br><span class="line">-底层数据结构？</span><br><span class="line">-如何解决哈希冲突？</span><br><span class="line">-为什么负载因子是 0.75？</span><br><span class="line">-JDK1.7 和 1.8 有什么不同？</span><br><span class="line"></span><br><span class="line">2、简要回答：</span><br><span class="line">-HashMap 底层由数组 + 链表 / 红黑树组成。</span><br><span class="line">-当插入key时，先用hashCode()计算哈希值，再通过 (n - 1) &amp; hash 定位数组下标。</span><br><span class="line">-如果发生哈希冲突（多个 key 落在同一个 index），</span><br><span class="line">JDK1.7用链表解决冲突，JDK1.8当链表长度超过8且数组长度超过 64 时转为红黑树以提高查找性能。</span><br><span class="line"></span><br><span class="line">-默认初始容量是 16，负载因子是 0.75，平衡了空间和扩容频率。</span><br><span class="line">-扩容会复制原数组中的元素到新的两倍大小的数组中，再重新计算 hash 分配位置。</span><br></pre></td></tr></table></figure><h3 id="2-2-ArrayList-与-LinkedList-区别"><a href="#2-2-ArrayList-与-LinkedList-区别" class="headerlink" title="2.2 ArrayList 与 LinkedList 区别"></a>2.2 ArrayList 与 LinkedList 区别</h3><table><thead><tr><th align="center">对比点</th><th align="center">ArrayList</th><th align="center">LinkedList</th></tr></thead><tbody><tr><td align="center">底层结构</td><td align="center">动态数组</td><td align="center">双向链表</td></tr><tr><td align="center">随机访问</td><td align="center">快（O(1)）</td><td align="center">慢（O(n)）</td></tr><tr><td align="center">插入&#x2F;删除</td><td align="center">中间插入慢</td><td align="center">任意位置快（已知指针）</td></tr><tr><td align="center">内存占用</td><td align="center">少</td><td align="center">多（每个节点有两个指针）</td></tr><tr><td align="center">应用场景</td><td align="center">频繁访问</td><td align="center">频繁插入&#x2F;删除</td></tr></tbody></table><h3 id="2-3-HashSet-原理"><a href="#2-3-HashSet-原理" class="headerlink" title="2.3 HashSet 原理"></a>2.3 HashSet 原理</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-HashSet 实际上是基于 HashMap 实现的。</span><br><span class="line">-每个加入的元素会作为 HashMap 的 key，而 value 是一个固定的 dummy 值。</span><br><span class="line">-所以 HashSet 也依赖于 hashCode() 和 equals()。</span><br></pre></td></tr></table></figure><h3 id="2-4-栈和队列原理"><a href="#2-4-栈和队列原理" class="headerlink" title="2.4 栈和队列原理"></a>2.4 栈和队列原理</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-栈（Stack）：后进先出（LIFO），常见题：有效括号、最小栈、逆波兰表达式</span><br><span class="line">-队列（Queue）：先进先出（FIFO），常见题：滑动窗口最大值、最近请求次数</span><br></pre></td></tr></table></figure><h3 id="2-5-ConcurrentHashMap-原理（高并发场景）"><a href="#2-5-ConcurrentHashMap-原理（高并发场景）" class="headerlink" title="2.5 ConcurrentHashMap 原理（高并发场景）"></a>2.5 ConcurrentHashMap 原理（高并发场景）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-JDK1.7 使用 分段锁 Segment[] + HashEntry[]</span><br><span class="line">-JDK1.8 使用 CAS + synchronized + 链表/红黑树 + 数组</span><br><span class="line">-支持高并发读写，避免整个 Map 加锁</span><br></pre></td></tr></table></figure><h3 id="2-6-TreeMap-TreeSet-原理"><a href="#2-6-TreeMap-TreeSet-原理" class="headerlink" title="2.6 TreeMap &#x2F; TreeSet 原理"></a>2.6 TreeMap &#x2F; TreeSet 原理</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-基于 红黑树 实现，自动排序（按 key 或 comparator）</span><br><span class="line">-插入、删除、查找时间复杂度为 O(log n)</span><br></pre></td></tr></table></figure><h3 id="2-7-PriorityQueue（最小堆-最大堆）"><a href="#2-7-PriorityQueue（最小堆-最大堆）" class="headerlink" title="2.7 PriorityQueue（最小堆 &#x2F; 最大堆）"></a>2.7 PriorityQueue（最小堆 &#x2F; 最大堆）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-Java 中的 PriorityQueue 是 最小堆结构，每次出队都是最小值</span><br><span class="line">-常用于实现 Top K 问题、小根堆排序</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;HashMap 原理（Java 举例）&lt;/li&gt;
+&lt;li&gt;ArrayList 与 LinkedList 区别&lt;/li&gt;
+&lt;li&gt;HashSet 原理&lt;/li&gt;
+&lt;li&gt;栈和队列原理&lt;/li&gt;
+&lt;li&gt;ConcurrentHashMap 原理（高并发场景）</summary>
+    
+    
+    
+    <category term="面试相关" scheme="https://pgzxc.github.io/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/"/>
+    
+    <category term="数据结构与算法" scheme="https://pgzxc.github.io/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="数据结构" scheme="https://pgzxc.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="刷题" scheme="https://pgzxc.github.io/tags/%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android开发之——Android15兼容之16KB页面</title>
+    <link href="https://pgzxc.github.io/posts/6a724f52.html"/>
+    <id>https://pgzxc.github.io/posts/6a724f52.html</id>
+    <published>2025-06-24T07:48:38.000Z</published>
+    <updated>2025-06-29T21:03:00.816Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>什么是“16 KB 页面”？</li><li>为什么要支持 16 KB 页面？</li><li>如何检查你的 APK 是否受影响？</li><li>如何支持并解决 16 KB 页面问题？</li></ul><span id="more"></span><h2 id="二-什么是“16-KB-页面”？"><a href="#二-什么是“16-KB-页面”？" class="headerlink" title="二 什么是“16 KB 页面”？"></a>二 什么是“16 KB 页面”？</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-传统 Android 设备使用 4 KB 的内存页面大小；</span><br><span class="line">从Android 15(2025年11月起) 开始，支持16 KB内存页面设备 </span><br><span class="line"></span><br><span class="line">-这是指 系统和应用的内存分配粒度 提升到 16KB，有助于提升性能，但应用需重建以支持这种页面对齐。</span><br></pre></td></tr></table></figure><h2 id="三-为什么要支持-16-KB-页面？"><a href="#三-为什么要支持-16-KB-页面？" class="headerlink" title="三 为什么要支持 16 KB 页面？"></a>三 为什么要支持 16 KB 页面？</h2><h3 id="3-1-提升性能"><a href="#3-1-提升性能" class="headerlink" title="3.1 提升性能"></a>3.1 提升性能</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-应用启动速度平均提升 3.16%，部分应用甚至提升至 30%；</span><br><span class="line">-冷/热启动时电量消耗减少约 4.5%；</span><br><span class="line">-启动相机等功能更快，系统启动总体加速 约8%（~950ms）</span><br></pre></td></tr></table></figure><h3 id="3-2-强制兼容性"><a href="#3-2-强制兼容性" class="headerlink" title="3.2 强制兼容性"></a>3.2 强制兼容性</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">自2025年11月1日起，Google Play要求面向Android 15+的新应用和更新必须支持16KB页面</span><br></pre></td></tr></table></figure><h2 id="四-如何检查你的-APK-是否受影响？"><a href="#四-如何检查你的-APK-是否受影响？" class="headerlink" title="四 如何检查你的 APK 是否受影响？"></a>四 如何检查你的 APK 是否受影响？</h2><h3 id="4-1-是否含有原生代码（C-C-或-so-库）？"><a href="#4-1-是否含有原生代码（C-C-或-so-库）？" class="headerlink" title="4.1 是否含有原生代码（C&#x2F;C++ 或 .so 库）？"></a>4.1 是否含有原生代码（C&#x2F;C++ 或 .so 库）？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-如果应用仅使用 Kotlin/Java（即无 lib/xxx.so），那么基本可以支持；</span><br><span class="line">-若包含原生库，需额外对齐处理</span><br></pre></td></tr></table></figure><h3 id="4-2-使用-Android-Studio-→-Analyze-APK"><a href="#4-2-使用-Android-Studio-→-Analyze-APK" class="headerlink" title="4.2 使用 Android Studio → Analyze APK"></a>4.2 使用 Android Studio → Analyze APK</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-打开 APK，查看 lib/ 目录，若含 .so 文件，说明使用了原生代码；</span><br><span class="line">-进一步检查上述 .so 文件是否对齐（ELF 段）</span><br></pre></td></tr></table></figure><h3 id="4-3-执行对齐检测脚本-Linux-或-macOS"><a href="#4-3-执行对齐检测脚本-Linux-或-macOS" class="headerlink" title="4.3 执行对齐检测脚本(Linux 或 macOS)"></a>4.3 执行对齐检测脚本(Linux 或 macOS)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">check_elf_alignment.sh YourApp.apk</span><br><span class="line"></span><br><span class="line">-检查 arm64-v8a、x86_64 的 ELF 段是否为 ALIGNED/UNALIGNED；</span><br><span class="line">-若有 “UNALIGNED”，需重新编译原生库以支持 16KB 页面 </span><br></pre></td></tr></table></figure><h2 id="五-如何支持并解决-16-KB-页面问题？"><a href="#五-如何支持并解决-16-KB-页面问题？" class="headerlink" title="五 如何支持并解决 16 KB 页面问题？"></a>五 如何支持并解决 16 KB 页面问题？</h2><table><thead><tr><th align="center">场景</th><th align="center">处理方式</th></tr></thead><tbody><tr><td align="center">仅 Java&#x2F;Kotlin 应用</td><td align="center">可直接支持，建议在 Android 15+ 环境测试</td></tr><tr><td align="center">含原生库 (.so)</td><td align="center">重新编译库以确保 ELF 段对齐到 16KB</td></tr><tr><td align="center">跨平台 SDK 内含 native</td><td align="center">联系 SDK 提供商或自行 rebuild 原生部分</td></tr><tr><td align="center">使用 NDK 直编 native</td><td align="center">构建时指定 <code>-Wl,–pgo-page-size=16384</code> 或合适链接参数，以强制 16KB 对齐</td></tr></tbody></table><h2 id="六-参考"><a href="#六-参考" class="headerlink" title="六 参考"></a>六 参考</h2><ul><li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vYWJvdXQvdmVyc2lvbnMvMTUvYmVoYXZpb3ItY2hhbmdlcy1hbGw/aGw9emgtY24jY29yZQ==">Android官方文档—行为变更<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9kZXZlbG9wZXIuYW5kcm9pZC5nb29nbGUuY24vZ3VpZGUvcHJhY3RpY2VzL3BhZ2Utc2l6ZXM/aGw9emgtY24=">Android官方文档—支持16KB页面大小<i class="fa fa-external-link-alt"></i></span></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;什么是“16 KB 页面”？&lt;/li&gt;
+&lt;li&gt;为什么要支持 16 KB 页面？&lt;/li&gt;
+&lt;li&gt;如何检查你的 APK 是否受影响？&lt;/li&gt;
+&lt;li&gt;如何支持并解决 16 KB 页面问题？&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="D-移动开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/D-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="Android" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/D-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/"/>
+    
+    
+    <category term="Android" scheme="https://pgzxc.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Taro开发之——项目结构及编译运行命令(3)</title>
+    <link href="https://pgzxc.github.io/posts/287577a5.html"/>
+    <id>https://pgzxc.github.io/posts/287577a5.html</id>
+    <published>2025-06-24T02:47:36.000Z</published>
+    <updated>2025-06-29T21:03:00.904Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>项目目录结构说明</li><li>编译指令说明</li></ul><span id="more"></span><h2 id="二-项目目录结构说明"><a href="#二-项目目录结构说明" class="headerlink" title="二 项目目录结构说明"></a>二 项目目录结构说明</h2><h3 id="2-1-index-html预览文件"><a href="#2-1-index-html预览文件" class="headerlink" title="2.1 index.html预览文件"></a>2.1 index.html预览文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">将要显示的内容替换为id=app的div区域</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-3-h5-index-exp-1.png" loading="lazy"></p><h3 id="2-2-app-ts渲染页面"><a href="#2-2-app-ts渲染页面" class="headerlink" title="2.2 app.ts渲染页面"></a>2.2 app.ts渲染页面</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">替换id=app的div区域</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-3-h5-app-2.png" loading="lazy"></p><h3 id="2-3-app-config-ts-配置app信息"><a href="#2-3-app-config-ts-配置app信息" class="headerlink" title="2.3 app.config.ts 配置app信息"></a>2.3 app.config.ts 配置app信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pages标明引用pages/index内容</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-3-h5-appconfig-3.png" loading="lazy"></p><h3 id="2-4-index-config-ts-配置index页面信息"><a href="#2-4-index-config-ts-配置index页面信息" class="headerlink" title="2.4 index.config.ts 配置index页面信息"></a>2.4 index.config.ts 配置index页面信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">navigationBarTitleText：&#x27;首页&#x27;；导航栏显示标题“首页”</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-3-h5-index-config-4.png" loading="lazy"></p><h3 id="2-5-index-tsx-index页面文件"><a href="#2-5-index-tsx-index页面文件" class="headerlink" title="2.5 index.tsx index页面文件"></a>2.5 index.tsx index页面文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">页面只有一行Text显示Hello World!</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-3-h5-index-view-5.png" loading="lazy"></p><h2 id="三-编译指令说明"><a href="#三-编译指令说明" class="headerlink" title="三 编译指令说明"></a>三 编译指令说明</h2><h3 id="3-1-dev和build模式"><a href="#3-1-dev和build模式" class="headerlink" title="3.1 dev和build模式"></a>3.1 dev和build模式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">使用 Taro 的 build 命令可以把 Taro 代码编译成不同端的代码，然后在对应的开发工具中查看效果。</span><br><span class="line"></span><br><span class="line">Taro 编译分为 dev 和 build 模式：</span><br><span class="line">-dev 模式（增加 --watch 参数） 将会监听文件修改。</span><br><span class="line">-build 模式（去掉 --watch 参数） 将不会监听文件修改，并会对代码进行压缩打包。</span><br><span class="line"></span><br><span class="line">dev 模式生成的文件较大，</span><br><span class="line">设置环境变量 NODE_ENV 为 production 可以开启压缩，方便预览，但编译速度会下降。</span><br></pre></td></tr></table></figure><h3 id="3-2-编译命令"><a href="#3-2-编译命令" class="headerlink" title="3.2 编译命令"></a>3.2 编译命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ pnpm dev:weapp</span><br><span class="line">$ pnpm build:weapp</span><br><span class="line"></span><br><span class="line"># yarn</span><br><span class="line">$ yarn dev:weapp</span><br><span class="line">$ yarn build:weapp</span><br><span class="line"></span><br><span class="line"># npm script</span><br><span class="line">$ npm run dev:weapp</span><br><span class="line">$ npm run build:weapp</span><br></pre></td></tr></table></figure><h3 id="3-3-编译文件位置"><a href="#3-3-编译文件位置" class="headerlink" title="3.3 编译文件位置"></a>3.3 编译文件位置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./dist</span><br></pre></td></tr></table></figure><h2 id="四-参考"><a href="#四-参考" class="headerlink" title="四 参考"></a>四 参考</h2><ul><li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLnRhcm8uem9uZS9kb2NzL0dFVFRJTkctU1RBUlRFRCNoNQ==">Taro官网文档——H5<i class="fa fa-external-link-alt"></i></span></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;项目目录结构说明&lt;/li&gt;
+&lt;li&gt;编译指令说明&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="F-跨平台" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/F-%E8%B7%A8%E5%B9%B3%E5%8F%B0/"/>
+    
+    <category term="Taro" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/F-%E8%B7%A8%E5%B9%B3%E5%8F%B0/Taro/"/>
+    
+    
+    <category term="Taro" scheme="https://pgzxc.github.io/tags/Taro/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Taro开发之——第一个Taro项目(2)</title>
+    <link href="https://pgzxc.github.io/posts/73289dfa.html"/>
+    <id>https://pgzxc.github.io/posts/73289dfa.html</id>
+    <published>2025-06-23T00:34:50.000Z</published>
+    <updated>2025-06-29T21:03:00.903Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>开发环境</li><li>cli工具安装</li><li>创建项目</li></ul><span id="more"></span><h2 id="二-开发环境"><a href="#二-开发环境" class="headerlink" title="二 开发环境"></a>二 开发环境</h2><ul><li>操作系统：Windows 11 专业版 22H2</li><li>Node: 22.16.0</li><li>Yarn: 1.22.22</li><li>开发工具：VSCode</li></ul><h2 id="三-cli工具安装"><a href="#三-cli工具安装" class="headerlink" title="三 cli工具安装"></a>三 cli工具安装</h2><h3 id="3-1-安装-tarojs-cli"><a href="#3-1-安装-tarojs-cli" class="headerlink" title="3.1 安装@tarojs&#x2F;cli"></a>3.1 安装@tarojs&#x2F;cli</h3><p>打开终端，执行如下指令(npm方式)</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @tarojs/cli</span><br></pre></td></tr></table></figure><h3 id="3-2-查看Taro版本信息"><a href="#3-2-查看Taro版本信息" class="headerlink" title="3.2 查看Taro版本信息"></a>3.2 查看Taro版本信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm info @tarojs/cli</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-2-demo-info-2.png" loading="lazy"></p><h2 id="四-创建项目"><a href="#四-创建项目" class="headerlink" title="四 创建项目"></a>四 创建项目</h2><h3 id="4-1-VSCode打开Taro目录"><a href="#4-1-VSCode打开Taro目录" class="headerlink" title="4.1 VSCode打开Taro目录"></a>4.1 VSCode打开Taro目录</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-2-vscode-open-3.png" loading="lazy"></p><h3 id="4-2-通过taro指令创建项目"><a href="#4-2-通过taro指令创建项目" class="headerlink" title="4.2 通过taro指令创建项目"></a>4.2 通过taro指令创建项目</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taro init TaroDemo</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-2-demo-init-4.png" loading="lazy"></p><h3 id="4-3-项目创建过程中相关操作"><a href="#4-3-项目创建过程中相关操作" class="headerlink" title="4.3 项目创建过程中相关操作"></a>4.3 项目创建过程中相关操作</h3><p>1、请输入项目介绍(可以为中文)</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">第一个Taro项目</span><br></pre></td></tr></table></figure><p>2、请选择框架(通过上下箭头选择后回车)—本文选择React</p><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-2-demo-lan-5.png" loading="lazy"></p><p>说明</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1、React</span><br><span class="line">完整生态支持：可无缝使用 React Hooks、Context API 等特性，兼容 Redux、MobX 等状态管理库。</span><br><span class="line">组件复用性强：React 组件可直接迁移至 Taro 项目，适合已有 React 团队快速切入跨端开发。</span><br><span class="line">JSX 语法友好：使用熟悉的 JSX 编写 UI，支持 TypeScript 静态类型检查</span><br><span class="line"></span><br><span class="line">2、PReact</span><br><span class="line">轻量级：体积仅 3KB（React 约 42KB），编译后包体积更小，适合对性能敏感的小程序。</span><br><span class="line">API 兼容 React：语法与 React 几乎完全一致，可直接替换 React 使用。</span><br><span class="line">快速渲染：基于虚拟 DOM diff 算法优化，渲染性能接近原生</span><br><span class="line"></span><br><span class="line">3、Vue3</span><br><span class="line">Composition API：使用组合式 API 组织逻辑，代码更易维护，适合大型项目。</span><br><span class="line">响应式系统：基于 Proxy 的响应式原理，性能优于 Vue2。</span><br><span class="line">Vue 生态兼容：支持 Vue Router、Pinia 等库，适合 Vue 开发者平滑过渡。</span><br><span class="line"></span><br><span class="line">4、Solid</span><br><span class="line">高性能响应式：基于细粒度响应式系统，无需虚拟 DOM diff，性能接近原生。</span><br><span class="line">类似 JSX 的语法：使用 JSX 编写 UI，但编译时转换为原生 DOM 操作。</span><br><span class="line">最小运行时：运行时仅 3KB，适合极致性能场景</span><br></pre></td></tr></table></figure><p>3、是否需要使用TypeScript?</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">推荐选择，保证类型安全</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-2-demo-ts-6.png" loading="lazy"></p><p>4、是否需要编译为ES5?(本文选N)</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">若有H5项目要求，需兼容 IE11，编译为 ES5，否则保留 ES6+</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-2-demo-es5-7.png" loading="lazy"></p><p>5、请选择CSS预处理器(Sass&#x2F;Less&#x2F;Stylus)—本文选择Sass</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">首选 Sass (SCSS)：生态成熟、功能全面，适合大多数项目。</span><br><span class="line">次选 Less：与 Ant Design 深度集成，适合 React 项目。</span><br><span class="line">Stylus：适合追求语法灵活性和极致性能的团队。</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-2-demo-sass-8.png" loading="lazy"></p><p>6、请选择包管理工具(yarn&#x2F;pnpm&#x2F;npm&#x2F;cnpm)—本文选择yarn</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">首选 pnpm：兼顾速度、磁盘空间和依赖安全性，尤其适合大型 Taro 项目或磁盘空间有限的环境。</span><br><span class="line">次选 yarn：若团队熟悉 yarn 且需离线支持，或项目依赖复杂，yarn 是可靠选择。</span><br><span class="line">国内环境可选 cnpm：网络不稳定时，cnpm 的淘宝镜像可大幅提升安装体验。</span><br><span class="line">npm：适合小型项目或需严格遵循 npm 生</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-2-demo-yarn-9.png" loading="lazy"></p><p>7、请选择编译工具(webpack5&#x2F;Vite)—本文选择Webpack5</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">首选Vite：对于大多数Taro项目，尤其是中小型项目或开发体验敏感的场景，Vite 的开发效率提升显著。</span><br><span class="line">Webpack5：对于大型项目、需精细控制构建流程或依赖特定Webpack插件的场景，Webpack5仍是更可靠的选择。</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-2-demo-build-10.png" loading="lazy"></p><p>8、请选择模板源(Gitee&#x2F;Github&#x2F;Cli内置默认模板&#x2F;自定义&#x2F;社区优质模板源)——本文选择Github</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">首选 Github（网络允许）：获取最新官方支持和完整文档。</span><br><span class="line">国内用户选 Gitee：避免网络问题，保证初始化速度。</span><br><span class="line">企业级选自定义模板：统一技术栈和代码规范。</span><br><span class="line">特定场景选社区模板：如电商项目可直接使用 NutUI-Taro 模板。</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-2-demo-temp-11.png" loading="lazy"></p><p>9、请选择模板(默认模板&#x2F;mobx&#x2F;pwa&#x2F;react-native&#x2F;react-native-harmony&#x2F;react-nutui&#x2F;redux)</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1、初学者：</span><br><span class="line">从Default模板开始，逐步添加所需功能</span><br><span class="line"></span><br><span class="line">2、状态管理：</span><br><span class="line">-中小型项目：优先选MobX（简单灵活）</span><br><span class="line">-大型项目：选Redux（生态成熟，便于调试）</span><br><span class="line"></span><br><span class="line">3、多端需求：</span><br><span class="line">-纯小程序 / H5：默认模板</span><br><span class="line">-需要原生 App：React-Native模板</span><br><span class="line">-鸿蒙系统：React-Native-Harmony模板</span><br><span class="line"></span><br><span class="line">4、UI 组件：</span><br><span class="line">电商类优先选React-NutUI，其他场景手动集成(如 Ant Design)</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-2-demo-temp-12.png" loading="lazy"></p><h3 id="4-4-初始化完成后，项目结构如下图-提示为了安装依赖"><a href="#4-4-初始化完成后，项目结构如下图-提示为了安装依赖" class="headerlink" title="4.4 初始化完成后，项目结构如下图(提示为了安装依赖)"></a>4.4 初始化完成后，项目结构如下图(提示为了安装依赖)</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-2-demo-struct-13.png" loading="lazy"></p><h3 id="4-5-进入项目，安装依赖"><a href="#4-5-进入项目，安装依赖" class="headerlink" title="4.5 进入项目，安装依赖"></a>4.5 进入项目，安装依赖</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd TaroDemo</span><br><span class="line">yarn install</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-taro/taro-2-demo-yarn-14.png" loading="lazy"></p><h2 id="五-参考"><a href="#五-参考" class="headerlink" title="五 参考"></a>五 参考</h2><ul><li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLnRhcm8uem9uZS9kb2NzL0dFVFRJTkctU1RBUlRFRA==">Taro官网—安装及使用<i class="fa fa-external-link-alt"></i></span></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;开发环境&lt;/li&gt;
+&lt;li&gt;cli工具安装&lt;/li&gt;
+&lt;li&gt;创建项目&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="F-跨平台" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/F-%E8%B7%A8%E5%B9%B3%E5%8F%B0/"/>
+    
+    <category term="Taro" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/F-%E8%B7%A8%E5%B9%B3%E5%8F%B0/Taro/"/>
+    
+    
+    <category term="Taro" scheme="https://pgzxc.github.io/tags/Taro/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Taro开发之——Taro介绍(1)</title>
+    <link href="https://pgzxc.github.io/posts/65ead69f.html"/>
+    <id>https://pgzxc.github.io/posts/65ead69f.html</id>
+    <published>2025-06-22T08:54:25.000Z</published>
+    <updated>2025-06-29T21:03:00.903Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>Taro介绍</li><li>Taro版本</li><li>Taro官方支持平台</li><li>Taro开发语言框架</li><li>Taro多端UI组件库</li></ul><span id="more"></span><h2 id="二-Taro介绍"><a href="#二-Taro介绍" class="headerlink" title="二 Taro介绍"></a>二 Taro介绍</h2><ul><li>Taro 是一个开放式跨端跨框架解决方案</li><li>开发语言包括： React、Vue、Nerv 等框架</li><li>可以开发：微信、京东、百度 、支付宝、字节跳动、QQ 、飞书 、快手、小程序、H5、RN 等应用。</li></ul><h2 id="三-Taro版本"><a href="#三-Taro版本" class="headerlink" title="三 Taro版本"></a>三 Taro版本</h2><ul><li>1.x版本</li><li>2.x版本</li><li>3.x版本</li><li>4.x版本(目前版本)</li></ul><h2 id="四-Taro官方支持平台"><a href="#四-Taro官方支持平台" class="headerlink" title="四 Taro官方支持平台"></a>四 Taro官方支持平台</h2><ul><li>H5</li><li>React Native</li><li>微信小程序</li><li>京东小程序</li><li>百度智能小程序</li><li>支付宝小程序</li><li>抖音小程序</li><li>QQ 小程序</li><li>钉钉小程序</li><li>企业微信小程序</li><li>支付宝 IOT 小程序</li><li>飞书小程序</li><li>快手小程序</li></ul><h2 id="五-Taro开发语言框架"><a href="#五-Taro开发语言框架" class="headerlink" title="五 Taro开发语言框架"></a>五 Taro开发语言框架</h2><ul><li>React</li><li>Vue2&#x2F;Vue3</li><li>Preact(体积超小的类React框架)</li></ul><h2 id="六-Taro多端UI组件库"><a href="#六-Taro多端UI组件库" class="headerlink" title="六 Taro多端UI组件库"></a>六 Taro多端UI组件库</h2><table><thead><tr><th align="center">名称</th><th align="center">介绍</th><th align="center">支持的框架</th><th align="center">支持的 Taro 版本</th></tr></thead><tbody><tr><td align="center">TaroUI</td><td align="center">一套基于 Taro 框架开发的多端 UI 组件库</td><td align="center">React</td><td align="center">Taro 1&#x2F;2&#x2F;3</td></tr><tr><td align="center">nutui</td><td align="center">京东风格的轻量级移动端 Vue 组件库</td><td align="center">Vue3</td><td align="center">Taro 3</td></tr><tr><td align="center">taroify</td><td align="center">轻量、可靠的小程序端 Taro 组件库（Vant 的 Taro 版本）</td><td align="center">React</td><td align="center">Taro 3</td></tr><tr><td align="center">@antmjs&#x2F;vantui</td><td align="center">基于有赞 VantWeapp 开发的同时支持 Taro 和 React 的 UI 库</td><td align="center">React</td><td align="center">Taro 3</td></tr><tr><td align="center">Tard</td><td align="center">一套基于 Taro 框架开发的多端 React UI 组件库</td><td align="center">React</td><td align="center">Taro 3</td></tr><tr><td align="center">duxui</td><td align="center">一套能同时兼容小程序、React Native、鸿蒙、H5的移动端ui组件库</td><td align="center">React</td><td align="center">Taro 4</td></tr></tbody></table><h2 id="七-参考"><a href="#七-参考" class="headerlink" title="七 参考"></a>七 参考</h2><ul><li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLnRhcm8uem9uZS9kb2NzLw==">Taro官网<i class="fa fa-external-link-alt"></i></span></li><li><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL25lcnZqcy90YXJv">Taro-Github<i class="fa fa-external-link-alt"></i></span></li></ul>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Taro介绍&lt;/li&gt;
+&lt;li&gt;Taro版本&lt;/li&gt;
+&lt;li&gt;Taro官方支持平台&lt;/li&gt;
+&lt;li&gt;Taro开发语言框架&lt;/li&gt;
+&lt;li&gt;Taro多端UI组件库&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="F-跨平台" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/F-%E8%B7%A8%E5%B9%B3%E5%8F%B0/"/>
+    
+    <category term="Taro" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/F-%E8%B7%A8%E5%B9%B3%E5%8F%B0/Taro/"/>
+    
+    
+    <category term="Taro" scheme="https://pgzxc.github.io/tags/Taro/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaWeb开发思维导图之——Redis高级之性能指标监控(169)</title>
+    <link href="https://pgzxc.github.io/posts/75697075.html"/>
+    <id>https://pgzxc.github.io/posts/75697075.html</id>
+    <published>2025-06-22T08:41:46.000Z</published>
+    <updated>2025-06-29T21:03:00.883Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul><li>五大性能指标</li><li>监控方式</li></ul><span id="more"></span><h2 id="二-五大性能指标"><a href="#二-五大性能指标" class="headerlink" title="二 五大性能指标"></a>二 五大性能指标</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1-性能指标:Performance</span><br><span class="line">2-内存指标: Memory</span><br><span class="line">3-基本活动指标: Basic_activity</span><br><span class="line">4-持久性指标: Persistence</span><br><span class="line">5-错误指标: Error</span><br></pre></td></tr></table></figure><h2 id="三-监控方式"><a href="#三-监控方式" class="headerlink" title="三 监控方式"></a>三 监控方式</h2><h3 id="3-1-工具"><a href="#3-1-工具" class="headerlink" title="3.1 工具"></a>3.1 工具</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1-cloud Insight redis</span><br><span class="line">2-prometheus</span><br><span class="line">3-redis-stat</span><br><span class="line">4-redis-faina</span><br><span class="line">5-redisLive</span><br><span class="line">6-zabbix</span><br></pre></td></tr></table></figure><h3 id="3-2-命令"><a href="#3-2-命令" class="headerlink" title="3.2 命令"></a>3.2 命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1-benchmark</span><br><span class="line">2-redis-cli</span><br></pre></td></tr></table></figure><h2 id="四-思维导图"><a href="#四-思维导图" class="headerlink" title="四 思维导图"></a>四 思维导图</h2><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-java/javaweb-xmind-redis-hig-perform-way-19.png" alt="javaweb-xmind-redis-hig-perform-way-19" loading="lazy"></p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;一-概述&quot;&gt;&lt;a href=&quot;#一-概述&quot; class=&quot;headerlink&quot; title=&quot;一 概述&quot;&gt;&lt;/a&gt;一 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;五大性能指标&lt;/li&gt;
+&lt;li&gt;监控方式&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="G-后端开发" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/G-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="JavaWeb" scheme="https://pgzxc.github.io/categories/%E5%BC%80%E5%8F%91/G-%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/JavaWeb/"/>
+    
+    
+    <category term="JavaWeb" scheme="https://pgzxc.github.io/tags/JavaWeb/"/>
+    
+  </entry>
+  
+</feed>
