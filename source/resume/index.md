@@ -73,7 +73,7 @@ comments: false
 # 求职意向
 
 - 工作性质：全职
-- 期望职位：移动端(鸿蒙、安卓、IOS)开发、跨平台(Flutter、ReactNative、KMP)开发、后端(Java)开发、前端开发、小程序(微信小程序+uni-app)开发、桌面端(Winform)开发等
+- 期望职位：移动端(鸿蒙、安卓、IOS)开发、跨平台(Flutter、ReactNative、KMP)开发、后端(Java)开发、Web前端开发、小程序(微信小程序+uni-app)开发、桌面端(Winform)开发等
 - 期望薪资：面议
 - 工作地点：北京
 
@@ -110,9 +110,9 @@ comments: false
 
 ### 项目介绍
 __1-西甲+(足球直播联赛)__   
-**项目描述**：西甲+是贝斯畅想科技有限公司与流线传媒科技公司合作开发的一款足球直播联赛项目。包含赛程直播回访、赛程预约、直播间聊天、直播投屏，搜索、通知、横竖屏播放、球队数据、VIP会员/球队卡/赛季卡等。    
-**功能模块**：首页、赛程、数据、我的等 
-**负责模块**：首页、赛程、数据、我的等
+**项目描述**：西甲+ 是由贝斯畅想科技与流线传媒联合打造的一款专业足球联赛直播平台，面向国内球迷用户提供高质量的赛事直播与互动体验。项目涵盖赛程预约、直播观看、回放回顾、聊天室互动、投屏播放、球队数据、VIP 会员系统等功能，支持横竖屏切换与消息推送，满足用户“看球 + 交流 + 数据”一站式体验需求。    
+**功能模块**：首页、赛程、数据、直播、聊天室、我的等 
+**负责模块**：首页、赛程、数据、直播、聊天室、我的等
 **技术要点**：  
 
 -  基于组件化功能拆分，将项目分为基础库、组件层和业务层
@@ -151,7 +151,7 @@ __1-西甲+(足球直播联赛)__
 ### 项目介绍
 
 __1-Android项目—脑训练(平板)__   
-**项目描述**：脑训练是日立养老组将日本养老项目迁移到国内的本地化产品，通过游戏提高人脑技能。本项目包含有反应力、专注力、记忆力等分类的游戏，通过针对性游戏训练，改善老年人的步态和活动能力。游戏前佩戴脑设备XB-01，游戏时通过蓝牙传输将脑血流的结果借助颜色变化实时反映到游戏界面上，并展示相关音效(鼓励、加油等)，游戏结束后，显示脑活动分数、排名、脑活动指标及游戏分数、排名、完成时间及正确错误数；并根据训练结果进行针对性推荐训练。    
+**项目描述**：脑训练是日立中国养老项目的本地化应用，通过蓝牙连接脑电设备 XB-01 实时采集脑血流数据，结合互动游戏训练提升老年人的认知与反应能力。系统基于脑部活跃度动态渲染界面色彩，并配合语音反馈增强沉浸体验，训练结束后生成脑活动指标及图表，便于用户持续跟踪评估认知状态。    
 **功能模块**：本地化、设备搜索配对、登录、设备连接、游戏选择、游戏说明、游戏、游戏结果、结果展示、排行等 
 **负责模块**：本地化、设备搜索配对、登录、设备连接、游戏选择、游戏说明、游戏、游戏结果、结果展示、排行等 
 **技术要点**：  
@@ -303,7 +303,7 @@ __7-C#项目—磁感应型手指开闭运动检测__
 
 __8-Web前端-日立健康养老系统Ver1.0__
 
-**项目简介**：本系统是步态分析POC，利用摄像设备采集老人步行、完成指定动作等图像信息，通过运动能力可视化体验及评价，辅助老人改善运动能力。
+**项目简介**：本系统为步态分析 POC 项目，通过摄像设备采集老年人步行及指定动作的图像数据，结合运动能力评估模型，实现动作可视化展示与能力评分，辅助用户了解并改善自身运动功能，广泛适用于智慧养老及康复辅助场景。
 **项目模块**：步态分析、动作分析、问卷调查
 **负责模块**：步态分析、动作分析、问卷调查
 **技术要点**：
@@ -537,13 +537,13 @@ __2-Android项目—E朝朝企业端__
 **功能模块**：首页、导航、项目、消息、我等   
 **技术要点**：
 
-- 基于Tabs+TabContent构建底部导航框架
-- 基于@ohos.net.http进行网络请求，返回一个Promise，简化异步操作
-- 基于@State、@Prop等装饰器获取网络数据并更新状态
-- 基于@Builder、@Extend等装饰器自定义组件，减少复用代码
-- 基于preferences、PersistentStorage等数据持久化存储方案保存用户数据
+- 使用 Tabs + TabBar 构建底部导航框架，实现多模块切换与页面管理
+- 基于@ohos.net.http 发送网络请求，采用 Promise 简化异步操作流程
+- 通过@State、@Prop 等装饰器管理网络数据绑定与状态更新
+- 利用@Builder、@Extend 等装饰器封装自定义组件，减少复用代码
+- 使用 preferences 与 PersistentStorage 实现用户数据持久化存储
 - 基于router、Navigator页面路由和组件导航及pageTransition转场动画
-- 基于@ohos/pulltorefres实现下拉刷新和上拉加载
+- 集成@ohos/pulltorefres 实现页面的下拉刷新与上拉加载功能
 
 **项目预览**
 
@@ -616,7 +616,7 @@ __2-Android项目—E朝朝企业端__
 **软件支持**：Android 6.0 以上
 **项目地址**：https://github.com/PGzxc/Live
 **开发工具**：Android Studio + Github
-**项目描述**：直播Live是一款仿映客直播软件，为个人业余开源项目。整体界面仿映客布局，包含首页、附近、直播、关注和我，因时间有限，仅实现部分主要功能，待后期完善。     
+**项目描述**：直播 Live 是一个个人开源项目，仿照“映客”直播平台的交互和功能设计，涵盖首页、附近、直播、关注、我的等核心模块。项目实现直播间聊天、弹幕、礼物特效等核心功能，支持上下拉刷新与多种内容展示布局。     
 **功能模块**：首页，附近、直播、关注、我等   
 **技术要点**：
 
@@ -647,17 +647,17 @@ __2-Android项目—E朝朝企业端__
 **项目地址**：https://github.com/PGzxc/WanAndroid_SwiftUI
 **软件支持**：IOS
 **开发工具**：MacOS(13.4)+Xcode(14.3.1)+Swift(5.8.1)
-**项目描述**：WanAndroid-SwiftUI 是基于 WanAndroid 网站开源的接口 API制作的一款IOS开源App。借助于SwiftUI提供的布局(HStack、VStack、ZStack)和组件(Text、Button、Section等) 快速实现界面布局并及时查看界面预览，利用Alamofire+ AlamofireObjectMapper执行网络请求和数据封装，快速实现个人App开发。  
+**项目描述**：该项目是一款基于 WanAndroid 网站开放 API 开发的 iOS 应用。采用 SwiftUI 构建界面，通过 HStack、VStack、ZStack 等布局与常用组件快速实现 UI 搭建及实时预览；网络层使用 Alamofire 搭配 AlamofireObjectMapper 实现数据请求与模型映射。  
 **功能模块**：首页，导航、项目、消息、我的等   
 **技术要点**：
 
-- 基于TabView+NavigationStack构建项目主体框架
-- 网络部分：API接口+Router封装BaseURL、method、path、params+APIService具体实现
-- Alamofire执行网络请求并将请求结果通过AlamofireObjectMapper解析为Swift对象
-- 基于MVVM(Modal数据类+View视图+ViewModel-继承ObservableObject)设计模式简化开发
-- 基于SDWebImageSwiftUI显示网络图片
-- 基于AppStorage实现数据的持久化存储
-- 基于environmentObject共享应用数据并在需要时获取
+- 使用 TabView+NavigationStack 构建项目主体框架
+- 封装 API 接口与路由管理，包括 BaseURL、方法、路径和参数，实现网络请求统一管理
+- Alamofire 发送网络请求，结合 AlamofireObjectMapper 解析响应数据为 Swift 模型
+- 基于 MVVM 架构设计，利用 ObservableObject 简化数据与视图绑定
+- 集成 SDWebImageSwiftUI 进行网络图片高效加载与缓存
+- 通过 AppStorage 实现用户数据的持久化存储
+- 利用 environmentObject 共享和管理全局应用状态
 - 基于ImageCarousel实现SwiftUI首页轮播图
 
 **项目预览**
@@ -670,7 +670,7 @@ __2-Android项目—E朝朝企业端__
 ### 2—[ZhiHuSwiftUI](https://github.com/PGzxc/ZhiHuSwiftUI)
 
 **项目归属**：个人项目
-**项目名称**：ZhiHuSwiftUI
+**项目名称**：ZhiHuSwiftUI(开源+AI)
 **项目地址**：https://github.com/PGzxc/ZhiHuSwiftUI
 **软件支持**：IOS
 **开发工具**：MacOS(15.3.2)+Xcode(16.2)+Swift(6.0.3)
@@ -678,11 +678,11 @@ __2-Android项目—E朝朝企业端__
 **功能模块**：首页，市场、发布、消息、我的等   
 **技术要点**：
 
-- 基于TabView+TabItem构建项目主体框架
-- 基于MVVM(Modal数据类+View视图+ViewModel-继承ObservableObject)设计模式简化开发
-- 基于URLSession+async/await处理网络请求和异步编程
-- 基于UserDefaults进行数据持久化存储
-- 基于@StateObject、@Published、@EnvironmentObject进行状态管理
+- 使用 TabView+NavigationStack 构建项目主体框架
+- 采用 MVVM 架构(Model + View + ViewModel)简化数据与视图的解耦
+- 利用 URLSession 与 async/await 实现高效的网络请求与异步编程
+- 通过 UserDefaults 实现数据的持久化存储
+- 使用 @StateObject、@Published、@EnvironmentObject 进行状态管理与数据共享
 - 自定义组件View，提高代码复用性
 - Mock模拟临时数据
 
@@ -698,11 +698,11 @@ __2-Android项目—E朝朝企业端__
 ### 1—[Flutter-WanAndroid ](https://github.com/PGzxc/flutter_wanandroid)
 
 **项目归属** ：个人项目
-**项目名称**：Flutter-wanandroid
+**项目名称**：Flutter-wanandroid(开源)
 **项目地址**：https://github.com/PGzxc/flutter_wanandroid
 **软件支持**：Android+IOS
 **开发工具**：IDEA 社区版 2022.1+Flutter(3.0.2) 
-**项目描述**：Flutter-WanAndroid是基于WanAndroid网站开源的接口API制作的一款开源App。通过它，用户能在手机端便捷访问该网站内容。     
+**项目描述**：Flutter-WanAndroid 是基于 WanAndroid 网站开放 API 开发的开源移动端应用，旨在为用户提供便捷的文章浏览、项目分类、知识体系等功能体验。     
 **功能模块**：首页、导航、项目、消息、我、语言、主题   
 **技术要点**：
 
@@ -729,11 +729,11 @@ __2-Android项目—E朝朝企业端__
 ###  2—[Flutter-zhihu-getx](https://github.com/PGzxc/flutter_zhihu_getx)
 
 **项目归属**：个人项目
-**项目名称**：Flutter_zhihu_getx
+**项目名称**：Flutter_zhihu_getx(开源)
 **项目地址**：https://github.com/PGzxc/flutter_zhihu_getx
 **软件支持**：Android+IOS
 **开发工具**：IDEA 社区版 2022.2.4+Flutter(3.7.3)
-**项目描述**：Flutter-zhihu-getx是仿制知乎app开发的个人项目。利用 GetX 搭建网络和网络框架+Google 开源 UI 库开发的一款支持 Android/IOS 跨平台项目。     
+**项目描述**：该项目是一个仿知乎 App 的跨平台开源项目，采用 Flutter 构建，支持 Android和 iOS 双端运行。项目基于 GetX 状态管理框架，结合多种开源 UI 组件库实现首页、推荐、关注、问答等核心模块。     
 **功能模块**：首页、关注、发布、会员、我的   
 **技术要点**：
 
@@ -758,18 +758,18 @@ __2-Android项目—E朝朝企业端__
 ### 1—[WanAndroidRN](https://github.com/PGzxc/WanAndroidRN)
 
 **项目归属**：个人项目
-**项目名称**：WanAndroidRN
+**项目名称**：WanAndroidRN(开源)
 **项目地址**：https://github.com/PGzxc/WanAndroidRN
 **软件支持**：Android+IOS
 **开发工具**：IntelliJ IDEA+Java(11.0.19)+Node(18.18.2)+Yarn(1.22.19)+react-native(0.72.6)+Expo(49)
-**项目描述**：该项目是一款基于 WanAndroid 网站开源接口 API 构建的 React Native 开源 App。借助 Expo Go 开发工具，搭配 @ant - design/react-native 蚂蚁金服 UI 库，实现了对 Android 和 iOS 系统的跨平台支持，方便用户访问网站。     
+**项目描述**：该项目是一款基于 WanAndroid 网站开源接口 API 构建的 React Native 开源App。借助 Expo Go 开发工具，搭配 @ant - design/react-native 蚂蚁金服 UI 库，实现了对 Android 和 iOS 系统的跨平台支持，方便用户访问网站。     
 **功能模块**：首页、导航、项目、消息、我等   
 **技术要点**：
 
-- 基于React Navigation导航库构建底部导航框架
-- 基于Fetch进行网络请求，返回一个Promise，简化异步操作
-- 基于React Hooks(useEffect+useState)获取网络数据并更新状态
-- 自定义组件，减少复用代码
+- 使用 React Navigation 构建底部导航框架，实现流畅页面切换
+- 采用 Fetch API 进行网络请求，利用 Promise 简化异步流程
+- 利用 React Hooks(useEffect + useState)实现数据获取与状态更新
+- 设计复用性强的自定义组件，提升代码维护性和开发效率
 - 基于ant-design/react-native-Carousel实现轮播图效果
 - 基于ant-design/react-native-Tabs实现标签页切换
 
@@ -783,7 +783,7 @@ __2-Android项目—E朝朝企业端__
 ### 2—[ZhiHuRN](https://github.com/PGzxc/ZhiHuRN)
 
 **项目归属**：个人项目
-**项目名称**：ZhiHuRN
+**项目名称**：ZhiHuRN(开源+AI)
 **项目地址**：https://github.com/PGzxc/ZhiHuRN
 **软件支持**：Android+IOS
 **开发工具**：IntelliJ IDEA+Java(11.0.19)+Node(22.14.0)+Yarn(1.22.22)+react-native(0.76.7)+Expo(52)
@@ -791,10 +791,10 @@ __2-Android项目—E朝朝企业端__
 **功能模块**：登录注册、首页、发现、通知、我的   
 **技术要点**：
 
-- 基于React Navigation导航库构建底部导航框架
-- 基于Redux进行状态管理
-- 自定义组件，减少复用代码
-- 基于async-storage和expo-secure-store进行本地存储
+- 使用 React Navigation 构建底部导航框架，实现流畅页面切换
+- 基于 Redux 进行全局状态管理，确保数据一致性与响应性
+- 设计并复用自定义组件，提高代码复用率与维护性
+- 采用 async-storage 和 expo-secure-store 实现本地数据安全存储
 - 基于expo-image-picker(图片选择)、expo-image-manipulator(图片处理)、expo-file-system (文件操作)
 - 基于react-native-safe-area-context (安全区域处理)、react-native-screens (原生屏幕容器)处理显示和性能问题
 
@@ -838,7 +838,7 @@ __2-Android项目—E朝朝企业端__
 **项目地址**：https://github.com/PGzxc/WanAndroid-Compose-Multiplatform
 **软件支持**：Android+IOS+Desk(Mac/Windows/Linux)
 **开发工具**：Android Studio(2022.3.1)+Java(17.0.6)+Gradle(8.0.2-bin)+Kotlin(1.9.0)
-**项目描述**：该项目是基于wanandroid API开发的Kotlin Multiplatform Mobile开源项目。借助该项目，用户可登录、注册用户，并及时查看文章、项目、导航、消息等网站信息。     
+**项目描述**：本项目基于 WanAndroid API 开发，采用 Compose Multiplatform 实现跨平台界面构建，支持用户登录、注册、浏览文章、项目、导航与消息等核心功能。适配多端平台。     
 **功能模块**：首页、导航、项目、消息、我、设置等   
 **技术要点**：
 
@@ -871,19 +871,18 @@ IOS截图
 ### 1—[wanandroid_uni_app](https://github.com/PGzxc/wanandroid_uni_app)
 
 **项目归属**：个人项目
-**项目名称**：wanandroid_uni_app
+**项目名称**：wanandroid_uni_app(开源)
 **项目地址**：https://github.com/PGzxc/wanandroid_uni_app
 **软件支持**：H5+微信小程序+其他小程序
-**开发工具**：HBuilder X 3.8.4.20230531+Vue(2.x)
-**项目描述**：该项目是基于wanandroid API开发的uni-app开源项目。借助该项目，用户可登录、注册用户，并及时查看文章、项目、导航、消息等网站信息。  
-**功能模块**：首页，导航、项目、消息、我的等   
+**开发工具**：HBuilder X 3.8.4.20230531+微信开发者工具+Vue(2.x)
+**项目描述**：本项目基于 WanAndroid 开源 API，使用 uni-app 构建，实现用户登录注册、文章浏览、项目展示、导航查看、消息通知等功能，支持多端部署   
 **技术要点**：
 
-- 基于uni-ui组件构建布局页面
-- 基于uni-api发起网络请求
+- 使用 uni-ui 组件库构建页面布局与交互界面
+- 基于 uni.request 封装网络请求
 - 基于uni-api-EventChannel监听页面间事件通信
-- 基于uni-api-页面和路由实现页面切换和导航
-- 基于uni-api-数据缓存保存应用数据
+- 通过 uni.navigateTo、redirectTo 等路由 API 实现页面跳转与导航控制
+- 使用 uni.setStorage/uni.getStorage 进行本地数据缓存
 - 创建Vue组件供页面重复使用
 
 **项目预览**
@@ -901,7 +900,7 @@ IOS截图
 **项目地址**：https://github.com/PGzxc/FlutterGeminiAI
 **软件支持**：Android+IOS
 **开发工具**：IDEA 2024.1.3+Flutter(3.22.2) 
-**项目描述**：Flutter Gemini AI 是一款依托 gemini - 1.5 - flash 模型构建的前沿 AI 应用。该应用具备强大的功能，支持纯文本输入以生成文本，同时创新性地实现了基于文本与图片的多模态输入生成文本功能。在交互设计上，应用界面模拟聊天窗口，用户输入内容清晰呈现于右侧，Gemini API 快速响应的结果则展示在左侧，为用户打造简洁直观的对话式体验。
+**项目描述**：Flutter Gemini AI 是基于 Google Gemini-1.5-Flash 模型打造的多模态 AI 对话应用，支持纯文本及图文混合输入。用户可通过文本或图片与 AI 自然交互，聊天窗口式界面设计，消息分左右两侧展示，界面简洁直观，提升交互体验。
 **功能模块**：对话模块  
 **技术要点**：
 
@@ -935,12 +934,12 @@ IOS截图
 9. 熟悉 JNI(NDK)、热修复、插件开发、传感器、NFC、蓝牙等
 
 ## IOS
-1.  熟练掌握Object-C、Swift开发语言
-2. 熟悉常用的第三方框架及其应用
-3. 熟悉SwiftUI组件、视图、状态管理及数据绑定
+1.  熟悉 Objective-C、Swift 语言，熟练使用 UIKit 与 SwiftUI 进行 iOS 原生开发
+2. 熟悉常用第三方框架(如 AFNetworking、Alamofire 等)及其集成与应用
+3. 熟悉 SwiftUI 组件、视图、状态管理及数据绑定
 4. 熟悉MRC、ARC内存管理机制
 5. 理解Object-C开发中Runtime、Runloop原理
-6.  熟悉网络请求解析及并发编程
+6.  掌握网络请求、JSON 解析、并发编程(如 GCD、NSOperation)等常用技术
 7. 熟练常见的数据存储方式及持久化存储与管理
 8. 熟悉常用的设计模式，如MVC模式、代理模式、单例模式、观察者模等
 9. 熟悉APP上架的流程及访问真机设备的能力
@@ -952,24 +951,24 @@ IOS截图
 
 ## Harmony
 
-1. 熟悉ArkTS/仓颉开发语言，熟悉ArkTS/仓颉语法规范
-2. 熟悉Harmony中常用布局、组件并进行UI开发
-3. 熟悉Builder装饰器、Extend装饰器等自定义组件
-4. 熟悉UIAbility组件生命周期、页面生命周期、组件生命周期等
-5. 熟悉@State、@Prop、@Link等状态管理，并进行数据传递和接收
+1. 熟悉 ArkTS/仓颉语言及其语法规范，具备实际项目开发经验
+2. 熟悉 Harmony 中常用布局、组件并进行 UI 开发
+3. 熟悉 Builder、Extend 等装饰器用法，支持自定义组件开发与复用
+4. 掌握 UIAbility 组件、页面与自定义组件的生命周期管理
+5. 熟悉@State、@Prop、@Link 等状态管理，并进行数据传递和接收
 6. 熟悉preferences、PersistentStorage等数据持久化存储方案
 7. 熟悉router、Navigator页面路由和组件导航及pageTransition转场动画
-8. 熟悉@ohos.net.http或@ohos/axios等网络请求框架
+8. 熟悉@ohos.net.http 或@ohos/axios 等网络请求框架
 9. 熟悉常见开源三方库：@ohos/pulltorefres、@ohos/axios、@ohos/mmkv等
 
 ## Flutter
 
 1. 熟悉Dart开发语言及在Flutter中的应用
-2. 熟悉Flutter中常用的布局、状态、组件及生命周期
-3. 熟悉Flutter中常用的状态管理库：GetX、RiverPod、BLoC、MobX
+2. 熟练掌握 Flutter 常用布局、组件、生命周期及状态管理机制
+3. 熟悉主流状态管理方案：GetX、Redux、BLoC、MobX
 4. 熟悉Flutter网络请求及返回数据解析
-5. 熟悉文件操作及数据数据持久化存储
-6. 熟悉getwidget、pull-to-refresh等常见开源工具库
+5. 熟悉文件读写、本地存储及持久化方案（如 SharedPreferences、数据库等）
+6. 熟练使用常见开源组件库，如 GetWidget、pull_to_refresh 等
 7. 熟悉Flutter性能优化、项目调试及疑难问题解决
 8. 了解Flutter与Android及IOS混合开发
 9. 熟悉GetX项目搭建框架，进行网络请求/状态管理/依赖管理/路由管理/国际化/主题设置等
@@ -977,7 +976,7 @@ IOS截图
 
 ## React Native
 
-1. 熟悉JavaScript、React、JSX及TSX开发语言
+1. 熟悉 JavaScript、TypeScript、JSX/TSX 语法，掌握 React 核心开发语言
 2. 熟悉React 的核心概念，如组件、状态(state)、属性(props)、虚拟 DOM、Diff 算法等
 3. 熟悉 React 生命周期，如组件的初始化、更新和销毁操作
 4. 熟悉无状态函数组件和有状态类组件及自定义组件，掌握组件的组合和复用技巧
@@ -995,7 +994,7 @@ IOS截图
 
 ## Kotlin Multiplatform Mobile
 
-1. 熟练使用compose进行界面布局和组件开发
+1. 熟练使用 Jetpack Compose 与 Compose Multiplatform 进行界面布局与组件开发
 2. 熟练使用expect/actual进行共享模块及跨平台模块代码开发
 3. 熟练使用moko-multiplatform-resources进行资源的引用及开发
 4. 熟练使用ktor、ktor-serialization-kotlinx-json进行网络访问及结果解析
@@ -1006,14 +1005,14 @@ IOS截图
 
 ## Java
 
-1. 具有扎实Java基础，熟悉常用集合、多线程、反射等
-2. 掌握SpringBoot、MyBatis、MyBatis-Plus等快速开发框架
-3. 熟练掌握MySQL增删改查操作及SQL调优
-4. 熟练掌握ElasticSearch的索引相关操作
-5. 熟悉Docker容器相关技术
-6. 对分布式架构有一定的理解，熟悉分布式事务、分布式锁等技术
-7. 掌握Redis 5种常见数据类型、持久化机制(RDB、AOF)、主从模式、哨兵机制等技术
-8. 掌握RabbitMQ、消息可靠传输、死信队列、延迟队列、顺序消费、重复消费等解决方案
+1. 熟练掌握 Java 基础语法、集合、多线程、反射等核心技术
+2. 熟悉 JVM 内存管理、垃圾回收机制及类加载原理
+3. 掌握 Spring、Spring Boot、MyBatis 等主流开发框架
+4. 熟练使用 MySQL、Redis 等数据库与缓存技术，具备 SQL 编写与调优能力
+5. 了解分布式架构，掌握常见中间件如 RabbitMQ、Kafka、Nacos、Dubbo 等
+6. 熟悉网络编程、HTTP 协议及并发处理，掌握线程池、锁机制等并发模型
+7. 熟练使用 Git、Maven、IDEA 等开发工具，了解 Jenkins、Docker 等自动化部署流程
+8. 熟悉 Junit、Mockito 等单元测试框架，了解常见 Web 安全(XSS、CSRF、SQL 注入)风险
 
 
 ## 微信小程序
@@ -1027,26 +1026,25 @@ IOS截图
 
 ## 前端
 
-1. 熟悉HTML、CSS、盒子布局模式等前端web开发技术
-2. 熟悉使用jQuery、ajax，完成服务器交互，页面动画效果
-3. 熟悉使用Bootstrap、Element-ui、Vant、Swiper等插件
-4. 熟悉使用vue框架、vue-router、axios、vue-cli脚手架
-5. 熟悉使用Git控制工具进行项目开发
-6. 熟悉微信小程序开发，熟悉uni-app开发
-7. 熟悉css常用预处理器sass
-8. 了解前端打包工具webPack、Babel、ESlint，包管理器npm、cnpm、yarn
+1. 熟悉 HTML、CSS、盒子布局模型等前端 Web 开发技术
+2. 熟练掌握 JavaScript(ES6+)，理解闭包、原型链、异步编程等核心概念
+3. 熟悉使用主流前端框架与库，如 React、Vue、Angular、Bootstrap 等
+4. 熟悉状态管理方案，如 Redux、MobX、Vuex
+5. 熟悉打包工具(Webpack、Vite、Rollup)与构建优化
+6. 熟悉 CSS 预处理器(Sass、Less)等解决方案
+7. 理解前端安全常识，如 XSS、CSRF 及防护措施
+8. 熟悉微信小程序开发，熟悉 uni-app 开发
 
 ## C#
 
-1. 熟练掌握基于C#语言.NET框架下的ASP.NET和WinForm应用的开发
-2. 熟练掌握用于WEB开发的Flex+CSS、JS、XML、WebServic等技术
-3. 熟练掌握用于WinForm应用程序开发的GDI+、IO、网络编程、多线程等技术
-4. 熟悉三层架构设计思想，熟练掌握B/S及C/S应用模式开发
+1. 熟悉 C# 语言及.NET Framework，熟练开发 ASP.NET 和 WinForm 应用
+2. 熟悉 Web 开发技术，掌握 Flex、CSS、JavaScript、XML 及 WebService
+3. 熟练使用 GDI+、IO、多线程和网络编程技术进行 WinForm 程序开发
+4. 理解并应用三层架构设计，熟悉 B/S 和 C/S 应用模式开发
 5. 熟悉掌握使用常用的设计模式，如单例模式、工厂模式等
 6. 熟悉常用源码管理工具的配置与使用，如SVN、Git
-7. 沟通能力良好，有团队合作精神
-8. 学习能力良好，有技术文件编写经验
-9. 熟练使用SQL Server、MySQL、ACCESS等数据库进行项目开发，并可熟练使用ADO.NET进行数据库的访问操作
+7. 熟悉 SQL Server、MySQL 和 Access 数据库，熟练使用 ADO.NET 进行数据访问与操作
+8. 熟悉 DevExpress、ComponentOne 等常用 WinForm 第三方控件库
 
 ## AI
 
