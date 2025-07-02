@@ -37,11 +37,12 @@ comments: false
 
 ## 五 示例代码
 
-| 编号 |                             地址                             |   说明    |
-| :--: | :----------------------------------------------------------: | :-------: |
-|  1   | [官方文档-示例](https://developer.harmonyos.com/cn/documentation/Samples/) | 标签筛选  |
-|  2   |     [gitee/Samples](https://gitee.com/harmonyos/samples)     | gitee示例 |
-|  3   |    [gitee/Codelabs](https://gitee.com/harmonyos/codelabs)    | gitee示例 |
+| 编号 |                             地址                             |    说明    |
+| :--: | :----------------------------------------------------------: | :--------: |
+|  1   | [官方文档-示例](https://developer.harmonyos.com/cn/documentation/Samples/) |  标签筛选  |
+|  2   |     [gitee/Samples](https://gitee.com/harmonyos/samples)     | gitee示例  |
+|  3   |    [gitee/Codelabs](https://gitee.com/harmonyos/codelabs)    | gitee示例  |
+|  4   | [行业实践](https://developer.huawei.com/consumer/cn/doc/architecture-guides/practice-auto-app-architecture-v1-0000001903742656) | 各行业案例 |
 
 
 
