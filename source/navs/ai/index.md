@@ -23,4 +23,5 @@ comments: false
 | :--: | :----------------------------------------------------------: | :-------------------------------: |
 |  1   | [NextChat](https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web) | 支持 GPT3, GPT4 & Gemini Pro 模型 |
 |  2   |         [ChatGPT](https://github.com/lencx/ChatGPT)          |      Mac, Windows, and Linux      |
+|  3   |                  [Grok](https://grok.com/)                   |        马斯克公司开放模型         |
 
