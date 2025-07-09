@@ -104,8 +104,8 @@ https://rahuldkjain.github.io/gh-profile-readme-generator/
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-version-control/github-profile-info-1.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-version-control/github-profile-social-2.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-version-control/github-profile-addone-3.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-version-control/github-profile-generate-4.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-version-control/github-profile-preview-5.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-git/github-profile-info-1.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-git/github-profile-social-2.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-git/github-profile-addone-3.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-git/github-profile-generate-4.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-git/github-profile-preview-5.png

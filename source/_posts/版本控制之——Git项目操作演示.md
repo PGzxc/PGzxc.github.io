@@ -161,11 +161,11 @@ git push origin master(本地分支)
 
 
 
-[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-version-control/git-cmd-user-info.png
-[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-version-control/git-cmd-login-confirm-alert.png
-[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-version-control/git-cmd-ssh-pub.png
-[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-version-control/git-cmd-ssh-key-make.png
-[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-version-control/git-cmd-ssh-key-add.png
-[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-version-control/git-cmd-ssh-key-add-finish.png
-[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-version-control/git-cmd-token-atom.png
-[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-version-control/git-cmd-token-github.png
+[1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-git/git-cmd-user-info.png
+[2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-git/git-cmd-login-confirm-alert.png
+[3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-git/git-cmd-ssh-pub.png
+[4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-git/git-cmd-ssh-key-make.png
+[5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-git/git-cmd-ssh-key-add.png
+[6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-git/git-cmd-ssh-key-add-finish.png
+[7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-git/git-cmd-token-atom.png
+[8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-git/git-cmd-token-github.png
