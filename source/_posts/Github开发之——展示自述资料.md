@@ -101,6 +101,7 @@ https://rahuldkjain.github.io/gh-profile-readme-generator/
 ## 五 参考
 
 * [gh-profile-readme-generator](https://rahuldkjain.github.io/gh-profile-readme-generator/)
+* [Github文档——设置个人资料](https://docs.github.com/zh/get-started/start-your-journey/setting-up-your-profile#next-steps)
 
 
 
