@@ -55,7 +55,6 @@ log("Debug", "msg1", "msg2")
 3-传入数组时使用 * 展开运算符
 val arr = arrayOf("A", "B", "C")
 printAll(*arr)  // 注意加 *
-
 ```
 
 ### 2.2 Object关键字
