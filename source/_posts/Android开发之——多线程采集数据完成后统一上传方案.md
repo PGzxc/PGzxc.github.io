@@ -55,24 +55,35 @@ public static void main(String[] args) throws ExecutionException, InterruptedExc
 
     ExecutorService executor = Executors.newFixedThreadPool(4);
     CountDownLatch latch = new CountDownLatch(5);
-    List<String> resultList = Collections.synchronizedList(new ArrayList<>());
+    List<String> resultList = Collections.synchronizedList(new ArrayList<>()); 
+    //Collections.synchronizedList(new ArrayList<>()) 这样的写法是为了让 ArrayList 变为线程安全的集合
 
     for (int i = 0; i < 5; i++) {
-        executor.execute(() -> {
+        executor.execute(() -> { //向线程池提交一个任务（Runnable 对象）并执行
             // 模拟获取数据
             resultList.add("data");
-            latch.countDown();
+            latch.countDown();//将 CountDownLatch 的计数器减1
         });
     }
 
     latch.await(); // 等待所有任务完成
-    upload(resultList);
-    executor.shutdown();
+    upload(resultList);// 模拟上传
+    executor.shutdown(); //用于优雅地关闭线程池
 }
 private static void upload(List<String> resultList) {
     // 模拟上传
     System.out.println("统一上传");
 }
+```
+
+示例中使用到的方法说明
+
+```
+1、Collections.synchronizedList(new ArrayList<>()) 这样的写法是为了让 ArrayList 变为线程安全的集合
+2、executor.execute(() -> { }）//向线程池提交一个任务（Runnable 对象）并执行
+3、latch.countDown();//将 CountDownLatch 的计数器减1
+4、latch.await(); // 计数器归零、等待所有任务完成
+5、executor.shutdown(); //用于优雅地关闭线程池
 ```
 
 ## 三 Java语言—Future + ExecutorService实现方案
@@ -137,6 +148,15 @@ private static void upload(List<String> resultList) {
 }
 ```
 
+示例中使用到的方法说明
+
+```
+1、List<Callable<String>> tasks中Callable,配合线程池获取结果,
+线程池的submit(Callable<T>) 方法会返回 Future<T>，用于异步获取结果
+
+2、executor.invokeAll(tasks)：接收一个 Callable 任务集合，返回一个 Future 列表
+```
+
 ## 四 Java语言—ConcurrentLinkedQueue + Future + ExecutorService实现方案
 
 ### 4.1 概念介绍
@@ -197,6 +217,13 @@ private static void upload(ConcurrentLinkedQueue<String> results) {
 }
 ```
 
+示例中使用到的方法说明
+
+```
+1、results = new ConcurrentLinkedQueue<>(); //创建了一个线程安全的无界队列
+2、f.get() //Future 接口的核心方法，用于获取异步任务的执行结果
+```
+
 ## 五 Kotlin语言(安卓环境)—async + awaitAll
 
 ### 5.1 概念介绍
@@ -234,7 +261,7 @@ async/awaitAll 适合并发获取结果，
 runBlocking 用于阻塞式启动协程（如测试）。
 ```
 
-### 5.2 示例
+### 5.2示例
 
 ```
 import kotlinx.coroutines.CoroutineScope
