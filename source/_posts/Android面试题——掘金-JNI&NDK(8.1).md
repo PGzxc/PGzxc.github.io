@@ -155,7 +155,11 @@ CMake 允许使用标准的 CMake 命令来控制项目构建。
 1.使用 Android Studio 调试：
 可以通过 ndk-build 或 CMake 构建项目并启用本地调试，使用 Android Studio 的调试工具。
 
-2.使用 GDB 调试：通过 GDB 调试器在命令行中调试 C/C++ 代码。
+2.使用 GDB 调试：
+通过 GDB 调试器在命令行中调试 C/C++ 代码。
+
+GDB 指的是 GNU 调试器(GNU Debugger)，是一个功能强大的命令行调试工具，
+广泛用于 C/C++ 原生代码的调试，包括 Android 上用 NDK 写的 native 层代码（如 .so 动态库）
 ```
 
 ### 2.10 NDK 中的性能优化技巧有哪些？
