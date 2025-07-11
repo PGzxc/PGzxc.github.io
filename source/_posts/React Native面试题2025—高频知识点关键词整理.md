@@ -1,11 +1,10 @@
 ---
 title: React Native面试题2025—高频知识点关键词整理
 categories:
-  - 开发
-  - F-跨平台
-  - React Native
+  - 面试相关
+  - React Native面试题
 tags:
-  - React Native
+  - React Native面试题
 abbrlink: c6a73170
 date: 2025-04-11 16:33:07
 ---
