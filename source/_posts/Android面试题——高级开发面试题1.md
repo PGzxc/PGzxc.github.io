@@ -25,23 +25,23 @@ date: 2022-11-30 21:53:01
 1-过程简化分析：
 
 ```
-* BootLoader：接通电源后，Boot ROM加载BootLoader到RAM
+1、BootLoader：接通电源后，Boot ROM加载BootLoader到RAM
 
-* Linux kernel：Linux内核负责初始化各种软硬件环境，加载驱动程序，挂载根文件系统等
+2、Linux kernel：Linux内核负责初始化各种软硬件环境，加载驱动程序，挂载根文件系统等
 
-* init进程：在init进程中，挂载虚拟文件系统、启动property服务、当然更重要的是包括了启动的各种系统服务：
+3、init进程：在init进程中，挂载虚拟文件系统、启动property服务、当然更重要的是包括了启动的各种系统服务：
 serviceManager、adbd、mediasever、zygote、bootanmation等。
 
-* zygote进程：zygote进程是Android系统最重要的进程之一。
+4、zygote进程：zygote进程是Android系统最重要的进程之一。
 后续Android中的应用进程都是由zygote进程fork出来的。
 因此，zygote是Android系统所有应用进程的父进程
 
-* systemServer进程：SystemServer进程，被称为系统服务进程，属于Android framework层的源码实现，
+5、systemServer进程：SystemServer进程，被称为系统服务进程，属于Android framework层的源码实现，
 通过android studio打开SystemServer.java，能够看到其中声明了大量的android的系统服务
 
-* launcher的启动：就是laucher程序的启动的入口函数
+6、launcher的启动：就是laucher程序的启动的入口函数
 
-* BootAnimation退出：Launcher启动完成之后，开机动画会进行出，
+7、BootAnimation退出：Launcher启动完成之后，开机动画会进行出，
 这样给用户的体验就是开机后，就直接进入到桌面了
 ```
 
@@ -53,24 +53,25 @@ serviceManager、adbd、mediasever、zygote、bootanmation等。
 #### 2.2.1 APP启动状态
 
 ```
-* 冷启动：App进程创建
-* 热启动：Activity已创建，从后台到前台
-* 温启动：App进程存在，但Activity结束
+1、冷启动：App进程创建
+2、热启动：Activity已创建，从后台到前台
+3、温启动：App进程存在，但Activity结束
 ```
 
 #### 2.2.2 各自启动流程
 
 **1-冷启动**
 
+```
 系统不存在App进程（APP首次启动或APP被完全杀死）时启动APP，此时，APP的启动将经历两个阶段：
 
-第一阶段：
+一、第一阶段：
 
 * 加载并启动app;
 * app启动后，第一时间为app显示一个空白的window；
 * 创建app进程
 
-第二阶段：
+二、第二阶段：
 
 * 系统一旦创建了app进程，app进程就要负责做以下的任务：
 
@@ -82,21 +83,26 @@ serviceManager、adbd、mediasever、zygote、bootanmation等。
 * 执行onLayout；
 * 执行onDraw
 * 完成第一次绘制后，把mainActivity替换已经展示的BackgroundWindow，即空白window。
+```
 
 **2-热启动**
 
+```
 * 当我们按了Home键或其它情况app被切换到后台，再次启动app的过程。
 * 热启动时，系统将activity带回前台。如果应用程序的所有activity存在内存中，则应用程序可以避免重复对象初始化、渲染、绘制操作
 * 如果由于内存不足导致对象被回收，则需要在热启动时重建对象，此时与冷启动时将界面显示到手机屏幕上一样。
+```
 
 **3-温启动**
 
+```
 温启动包含了冷启动的一些操作，由于app进程依然在，温启动只执行冷启动的第二阶段，这代表着它比热启动有更多的开销。
 
 温启动有很多场景，例如：
 
 * 用户按连续按返回退出了app，然后重新启动app；
 * 由于系统收回了app的内存，然后重新启动app。
+```
 
 ### 2.3 当项目中遇到黑白屏问题，你有什么好的解决方案？
 
