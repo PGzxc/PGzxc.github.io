@@ -1,11 +1,11 @@
 ---
-title: AI开发之——大模型相关概念LLM
+title: AI开发之——Ollama大模型相关概念LLM
 categories:
   - 开发
   - Q-AI
-  - 大模型
+  - Ollama
 tags:
-  - 大模型
+  - Ollama
 abbrlink: e6059738
 date: 2025-07-11 08:47:22
 ---

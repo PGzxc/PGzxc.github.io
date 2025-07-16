@@ -1,11 +1,11 @@
 ---
-title: AI开发之——大模型相关概念NLP
+title: AI开发之——Ollama大模型相关概念NLP
 categories:
   - 开发
   - Q-AI
-  - 大模型
+  - Ollama
 tags:
-  - 大模型
+  - Ollama
 abbrlink: 86872f8f
 date: 2025-07-11 08:42:33
 ---
