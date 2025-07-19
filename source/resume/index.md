@@ -48,7 +48,7 @@ comments: false
 		<a href="folder/周向成_AI开发工程师.pdf" target="_blank">AI</a>
 		</td>
 		<td width="8%">
-		<a href="folder/周向成_WinForm开发工程师.pdf" target="_blank">C#</a>
+		<a href="folder/周向成_WinForm开发工程师.pdf" target="_blank">WinForm</a>
 		</td>
 		<td width="8%">
 		<a href="folder/index.pdf" target="_blank">完整版</a>
