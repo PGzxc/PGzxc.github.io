@@ -51,11 +51,13 @@ comments: false
 		<a href="folder/周向成_WinForm开发工程师.pdf" target="_blank">WinForm</a>
 		</td>
 		<td width="8%">
-		<a href="folder/index.pdf" target="_blank">完整版</a>
+		<a href="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/index.pdf"
+		target="_blank">完整版</a>
 		</td>
 	</tr>
 </tbody>
 </table>
+
 
 # 联系方式
 
@@ -1077,7 +1079,7 @@ IOS截图
 [resume-java]:folder/周向成_Java开发工程师.pdf
 [resume-xcx]:folder/周向成_小程序开发.pdf
 [resume-csharp]:folder/周向成_WinForm开发工程师.pdf
-[resume-inex]:folder/index.pdf
+[resume-inex]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/index.pdf
 <!--C#-->
 [c-sharp-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/justTap-id-1.png
 [c-sharp-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/justTap-login-2.png
