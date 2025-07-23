@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Hexo Auto-Deploy with Yarn
+    name: Hexo Auto-Deploy with npm
     runs-on: ubuntu-latest
 
     steps:
@@ -16,37 +16,36 @@ jobs:
     - name: 2. Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '22.x'
-        cache: 'yarn'  # 自动缓存 Yarn 依赖
+        node-version: '20.x'  # 使用更稳定的 LTS 版本（20.x 兼容性更好）
+        cache: 'npm'  # 自动缓存 npm 依赖（替换 yarn 缓存）
 
-    - name: 3. Install Yarn (if needed)
-      run: |
-        if ! command -v yarn &> /dev/null; then
-          npm install -g yarn@stable
-        fi
+    - name: 3. Cache node modules
+      uses: actions/cache@v4
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
 
-    - name: 4. Verify yarn.lock exists
-      run: |
-        if [ ! -f "yarn.lock" ]; then
-          echo "Error: yarn.lock not found! Please generate it locally first."
-          exit 1
-        fi
+    - name: 4. Clean npm cache (if cache miss)
+      run: npm cache clean --force
+      if: steps.cache.outputs.cache-hit != 'true'
 
-    - name: 5. Install dependencies with Yarn
+    - name: 5. Install dependencies with npm
       run: |
-        yarn install --frozen-lockfile --non-interactive --verbose
-        # 如果需要强制锁定版本
-        # yarn add stylus@0.54.8 --exact --force
+        npm install hexo-cli -g  # 全局安装 hexo-cli
+        npm install --legacy-peer-deps --verbose  # 解决潜在的依赖冲突
+        # 强制锁定 stylus 版本（解决之前的版本冲突问题）
+        npm install stylus@0.54.8 --save-exact
 
     - name: 6. Hexo generate public files
       run: |
-        yarn global add hexo-cli
-        hexo clean
-        hexo generate  
+        hexo clean  # 清理旧文件
+        hexo generate  # 生成静态文件
 
     - name: 7. Hexo deploy
       env: 
         GITHUB_REPO: github.com/PGzxc/PGzxc.github.io.git
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       run: |
-        hexo deploy --generate
+        hexo deploy --generate  # 部署并自动生成（防止遗漏）
