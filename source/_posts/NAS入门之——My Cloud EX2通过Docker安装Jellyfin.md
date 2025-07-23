@@ -1,5 +1,5 @@
 ---
-title: NAS入门之——My Cloud EX2安装Jellyfin
+title: NAS入门之——My Cloud EX2通过Docker安装Jellyfin
 categories:
   - 开发
   - J-NAS
