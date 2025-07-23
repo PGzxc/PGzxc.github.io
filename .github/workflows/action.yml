@@ -1,48 +1,70 @@
 name: Hexo Auto-Deploy
 on:
   push:
-    branches: 
+    branches:
       - master
 
 jobs:
   build:
-    name: Hexo Auto-Deploy with npm
+    name: Hexo Auto-Deploy by GitHub Actions
     runs-on: ubuntu-latest
 
     steps:
-    - name: 1. Git checkout
+    # 1. Checkout the code
+    - name: Checkout code
       uses: actions/checkout@v4
-      
-    - name: 2. Setup Node.js
+
+    # 2. Set up Node.js environment
+    - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '20.x'  # 使用更稳定的 LTS 版本（20.x 兼容性更好）
-        cache: 'npm'  # 自动缓存 npm 依赖（替换 yarn 缓存）
+        node-version: '20.x'
 
-    - name: 3. Cache node modules
+    # 3. Cache node_modules (only if package-lock.json exists)
+    - name: Cache node modules
       uses: actions/cache@v4
       with:
         path: ~/.npm
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
 
-    - name: 4. Clean npm cache (if cache miss)
-      run: npm cache clean --force
-      if: steps.cache.outputs.cache-hit != 'true'
-
-    - name: 5. Install dependencies with npm
+    # 4. Install Hexo CLI and dependencies
+    - name: Install Hexo dependencies
       run: |
-        npm install hexo-cli -g  # 全局安装 hexo-cli
+        npm install hexo-cli -g
         npm install
-       
 
-    - name: 6. Hexo generate public files
+    # 5. Generate public files (build Hexo)
+    - name: Generate public files
       run: |
-        hexo clean  # 清理旧文件
-        hexo generate  # 生成静态文件
+        hexo clean
+        hexo generate
 
-    - name: 7. Hexo deploy
-      env: 
+    # 6. Set global git config (only once)
+    - name: Set up Git config
+      run: |
+        git config --global user.name "PGzxc"
+        git config --global user.email "827489398@qq.com"
+
+    # 7. Deploy to GitHub
+    - name: Deploy to GitHub Pages
+      env:
         GITHUB_REPO: github.com/PGzxc/PGzxc.github.io.git
-        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       run: |
-        hexo deploy --generate  # 部署并自动生成（防止遗漏）
+        cd ./public
+        git init
+        git add .
+        git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')"
+        git push --force --quiet "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO" master:hexo
+
+    # 8. Optionally deploy to another service (e.g., Coding)
+    # - name: Deploy to Coding Pages
+    #   env:
+    #     CODING_REPO: e.coding.net/pgzxc/pgzxc/pgzxc.git
+    #   run: |
+    #     cd ./public
+    #     git init
+    #     git add .
+    #     git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')"
+    #     git push --force --quiet "https://JcwUpKlfjB:${{ secrets.CODING_TOKEN }}@$CODING_REPO" master:hexo
