@@ -6,46 +6,35 @@ on:
 
 jobs:
   build:
-    name: Hexo Auto-Deploy by GitHub Actions
+    name: Hexo Auto-Deploy with Yarn
     runs-on: ubuntu-latest
 
     steps:
-    - name: 1. git checkout...
+    - name: 1. Git checkout
       uses: actions/checkout@v4
       
-    - name: 2. setup nodejs...
+    - name: 2. Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18.x'  # 使用 LTS 版本
+        node-version: '18.x'
+        cache: 'yarn'  # 自动缓存 Yarn 依赖
 
-    - name: 3. Cache node modules
-      uses: actions/cache@v4
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
+    - name: 3. Install Yarn
+      run: npm install -g yarn@stable
 
-    - name: 4. Clean npm cache if needed
-      run: npm cache clean --force
-      if: steps.cache.outputs.cache-hit != 'true'
-
-    - name: 5. Install dependencies with retry
+    - name: 4. Install dependencies with Yarn
       run: |
-        npm install hexo-cli -g
-        n=0
-        until [ $n -ge 3 ]; do
-          n=$[$n+1]
-          sleep 1
-        done
-        if [ $n -eq 3 ]; then echo "Install failed after 3 attempts"; exit 1; fi
+        yarn install --frozen-lockfile --non-interactive --verbose
+        # 如果需要强制锁定版本
+        # yarn add stylus@0.54.8 --exact --force
 
-    - name: 6. hexo generate public files...
+    - name: 5. Hexo generate public files
       run: |
+        yarn global add hexo-cli
         hexo clean
         hexo generate  
 
-    - name: 7. hexo deploy ...
+    - name: 6. Hexo deploy
       env: 
         GITHUB_REPO: github.com/PGzxc/PGzxc.github.io.git
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
