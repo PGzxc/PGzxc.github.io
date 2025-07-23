@@ -22,10 +22,8 @@ jobs:
     - name: 3. Cache node modules
       uses: actions/cache@v4
       with:
-        path: node_modules
+        path: ~/.npm
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
 
     - name: 4. Clean npm cache (if cache miss)
       run: npm cache clean --force
@@ -34,9 +32,8 @@ jobs:
     - name: 5. Install dependencies with npm
       run: |
         npm install hexo-cli -g  # 全局安装 hexo-cli
-        npm install --legacy-peer-deps --verbose  # 解决潜在的依赖冲突
-        # 强制锁定 stylus 版本（解决之前的版本冲突问题）
-        npm install stylus@0.54.8 --save-exact
+        npm install
+       
 
     - name: 6. Hexo generate public files
       run: |
