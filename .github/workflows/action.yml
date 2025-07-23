@@ -19,22 +19,32 @@ jobs:
         node-version: '22.x'
         cache: 'yarn'  # 自动缓存 Yarn 依赖
 
-    - name: 3. Install Yarn
-      run: npm install -g yarn@stable
+    - name: 3. Install Yarn (if needed)
+      run: |
+        if ! command -v yarn &> /dev/null; then
+          npm install -g yarn@stable
+        fi
 
-    - name: 4. Install dependencies with Yarn
+    - name: 4. Verify yarn.lock exists
+      run: |
+        if [ ! -f "yarn.lock" ]; then
+          echo "Error: yarn.lock not found! Please generate it locally first."
+          exit 1
+        fi
+
+    - name: 5. Install dependencies with Yarn
       run: |
         yarn install --frozen-lockfile --non-interactive --verbose
         # 如果需要强制锁定版本
         # yarn add stylus@0.54.8 --exact --force
 
-    - name: 5. Hexo generate public files
+    - name: 6. Hexo generate public files
       run: |
         yarn global add hexo-cli
         hexo clean
         hexo generate  
 
-    - name: 6. Hexo deploy
+    - name: 7. Hexo deploy
       env: 
         GITHUB_REPO: github.com/PGzxc/PGzxc.github.io.git
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
