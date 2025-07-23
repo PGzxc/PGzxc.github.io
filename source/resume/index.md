@@ -51,7 +51,7 @@ comments: false
 		<a href="folder/周向成_WinForm开发工程师.pdf" target="_blank">WinForm</a>
 		</td>
 		<td width="8%">
-		<a href="folder/index.pdf" target="_blank">完整版</a>
+		<a href="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/index.pdf" target="_blank">完整版</a>
 		</td>
 	</tr>
 </tbody>
