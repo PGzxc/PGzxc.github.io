@@ -10,16 +10,16 @@ date: 2024-03-19 11:35:21
 ---
 ## 一 面试题汇总
 
-4. 你如何安装和创建React Native应用程序？ <!--more-->
-7. 你如何调试React应用程序，你可以使用哪些工具？
-8. 构建一个除了说 "Hello World!"什么都不做的React应用
-9. 你能在同一个代码库中为Android和iOS编写代码吗？
-10. 描述一下如何重新呈现FlatList。
-12. 你如何在React Native中为一个组件设计样式？
-14. 如何在React Native中调用一个Web API？
-15. 描述一下虚拟DOM是如何工作的。
-16. 描述Flexbox以及它最常用的属性
-18. 如何从React Native的本地JSON文件中获取数据？
+1. 你如何安装和创建React Native应用程序？ 
+2. 你如何调试React应用程序，你可以使用哪些工具？
+3. 构建一个除了说 "Hello World!"什么都不做的React应用
+4. 你能在同一个代码库中为Android和iOS编写代码吗？
+5. 描述一下如何重新呈现FlatList。<!--more-->
+6. 你如何在React Native中为一个组件设计样式？
+7. 如何在React Native中调用一个Web API？
+8. 描述一下虚拟DOM是如何工作的。
+9. 描述Flexbox以及它最常用的属性
+10. 如何从React Native的本地JSON文件中获取数据？
 
 ## 二 面试题解答(仅供参考)
 
@@ -349,7 +349,8 @@ export default MyComponent;
 
 1.更新 data 属性
 FlatList 会根据 data 属性来渲染列表内容。
-当你更新 data 时，FlatList会重新渲染。你可以通过调用setState或更新父组件的状态来触发重新渲染。
+当你更新 data 时，FlatList会重新渲染。
+你可以通过调用setState或更新父组件的状态来触发重新渲染。
 
 import React, { useState } from 'react';
 import { FlatList, Text, View, Button } from 'react-native';
@@ -475,7 +476,8 @@ React Native 使用 JavaScript 对象来定义样式，而不是直接使用 CSS
 以下是如何为一个组件设计样式的步骤：
 
 1.使用 StyleSheet 来定义样式
-React Native 提供了 StyleSheet API，它允许你创建一个样式对象，并且在应用时会优化性能。StyleSheet.create 用来声明样式，确保样式对象的不可变性。
+React Native 提供了 StyleSheet API，它允许你创建一个样式对象，并且在应用时会优化性能。
+StyleSheet.create 用来声明样式，确保样式对象的不可变性。
 
 示例
 import React from 'react';
@@ -762,7 +764,7 @@ export default App;
 
 2.虚拟 DOM 的工作原理：虚拟 DOM 的工作流程如下：
 
-2.1初始渲染：
+2.1 初始渲染：
 -当 React 应用首次渲染时，React 会创建一个虚拟 DOM 树，它反映了组件的 UI 结构。
 -这个虚拟 DOM 树只是一个普通的 JavaScript 对象，它描述了 UI 的各个组件、元素及其属性。
 
@@ -809,17 +811,17 @@ React 和 React Native 都使用虚拟 DOM，使得同样的开发模式能够�
 ```
 简单描述：React Native面试题 描述Flexbox以及它最常用的属性 
 
-1.Flexbox的定义
+1、Flexbox的定义
 -Flexbox（弹性盒子布局）是一种CSS3布局模型，用于在容器中排列和分布项目。
 -React Native采用了Flexbox布局，使得开发者可以使用一套统一的布局方式来构建跨平台的移动应用界面。
 
-2.Flexbox的核心概念
+2、Flexbox的核心概念
 -容器（Container）：包含项目的父元素。
 -项目（Items）：容器中的子元素。
 -主轴（Main Axis）：项目排列的方向。
 -交叉轴（Cross Axis）：与主轴垂直的方向。
 
-3.Flexbox的常用属性
+3、Flexbox的常用属性
 3.1 flexDirection：
 -定义主轴的方向。
 -可选值：
@@ -829,7 +831,7 @@ React 和 React Native 都使用虚拟 DOM，使得同样的开发模式能够�
 --column-reverse（垂直方向，从下到上）。
 -默认值：column。
 
-3.2justifyContent：
+3.2 justifyContent：
 -定义项目在主轴上的对齐方式。
 -可选值：
 --flex-start（起始位置对齐）、
@@ -848,30 +850,30 @@ React 和 React Native 都使用虚拟 DOM，使得同样的开发模式能够�
 --stretch（拉伸以填充容器）、
 --baseline（基线对齐）。
 
-3.4flex：
+3.4 flex：
 -定义项目的弹性系数，用于控制项目在容器中的伸缩比例。
 -可以是数字，表示项目的伸缩比例。
 -例如，flex: 1表示项目占据剩余空间，flex: 2表示项目占据剩余空间的两倍。
 
-3.5alignSelf：
+3.5 alignSelf：
 -定义单个项目在交叉轴上的对齐方式，覆盖alignItems的设置。
 -可选值与alignItems相同。
 
-3.6flexWrap：
+3.6 flexWrap：
 -定义项目是否换行。
 -可选值：nowrap（不换行）、wrap（换行）、wrap-reverse（反向换行）。
 
-3.7alignContent：
+3.7 alignContent：
 -定义多行项目在交叉轴上的对齐方式，仅在flexWrap为wrap或wrap-reverse时生效。
 -可选值与justifyContent相同。
 
-4.Flexbox的应用场景
+4、Flexbox的应用场景
 -创建响应式布局，适应不同屏幕尺寸。
 -实现灵活的网格布局。
 -控制项目在容器中的对齐和分布。
 -构建复杂的UI界面。
 
-5.关键要点
+5、关键要点
 -Flexbox是一种强大的布局系统，用于创建灵活的布局。
 -flexDirection定义主轴方向，justifyContent定义主轴对齐方式，alignItems定义交叉轴对齐方式。
 -flex属性控制项目的伸缩比例，alignSelf属性覆盖单个项目的对齐方式。
