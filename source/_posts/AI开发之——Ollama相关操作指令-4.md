@@ -1,5 +1,5 @@
 ---
-title: AI开发之——Ollama相关操作指令
+title: AI开发之——Ollama相关操作指令(4)
 categories:
   - 开发
   - Q-AI

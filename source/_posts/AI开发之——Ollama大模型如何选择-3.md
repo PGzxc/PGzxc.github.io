@@ -1,5 +1,5 @@
 ---
-title: AI开发之——Ollama大模型如何选择
+title: AI开发之——Ollama大模型如何选择(3)
 categories:
   - 开发
   - Q-AI
