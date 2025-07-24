@@ -17,34 +17,34 @@ date: 2024-03-20 11:15:37
 5. 什么是props？
 6. 什么是state？ <!--more-->
 7. 什么是生命周期方法？(React中有哪些生命周期方法？/React Native组件的生命周期)
-9. 什么是constructor()方法？
-10. 什么是render()方法？
-11. 什么是componentDidMount()方法？
-12. 什么是shouldComponentUpdate()方法？
-13. 什么是componentDidUpdate()方法？
-14. 什么是componentWillUnmount()方法？
-16. 什么是React Router？
-17. React Router中有哪些组件？
-18. 什么是Redux？
-19. Redux中有哪些核心概念？
-21. 如何在React中使用Redux？
-22. 什么是React Hooks？
-23. React Hooks有哪些？
-24. 什么是useState()？
-25. 什么是useEffect()？
-26. 什么是useContext()？
-27. 什么是useReducer()？
-28. 什么是useCallback()？
-29. 什么是useMemo()？
-30. 什么是useRef()？
-31. 什么是useImperativeHandle()？
-32. 什么是useLayoutEffect()？
-33. 什么是useDebugValue()？
-34. 什么是React Native？
-35. React Native中有哪些核心组件？
-36. 什么是React Native CLI？
-37. 什么是Expo？
-38. 什么是React Native Navigation？
+8. 什么是constructor()方法？
+9. 什么是render()方法？
+10. 什么是componentDidMount()方法？
+11. 什么是shouldComponentUpdate()方法？
+12. 什么是componentDidUpdate()方法？
+13. 什么是componentWillUnmount()方法？
+14. 什么是React Router？
+15. React Router中有哪些组件？
+16. 什么是Redux？
+17. Redux中有哪些核心概念？
+18. 如何在React中使用Redux？
+19. 什么是React Hooks？
+20. React Hooks有哪些？
+21. 什么是useState()？
+22. 什么是useEffect()？
+23. 什么是useContext()？
+24. 什么是useReducer()？
+25. 什么是useCallback()？
+26. 什么是useMemo()？
+27. 什么是useRef()？
+28. 什么是useImperativeHandle()？
+29. 什么是useLayoutEffect()？
+30. 什么是useDebugValue()？
+31. 什么是React Native？
+32. React Native中有哪些核心组件？
+33. 什么是React Native CLI？
+34. 什么是Expo？
+35. 什么是React Native Navigation？
 
 ## 二 面试题解答(仅供参考)
 
