@@ -1,5 +1,5 @@
 ---
-title: React Native开发之——相关指令
+title: React Native开发之——相关指令(1)
 categories:
   - 开发
   - F-跨平台
@@ -13,6 +13,7 @@ date: 2018-03-01 00:31:36
 
 本文介绍与React Native开发相关指令，包含
 
+```
 * Node
 * Yarn
 * React Native版本相关
@@ -20,6 +21,7 @@ date: 2018-03-01 00:31:36
 * Android配置
 * 项目创建
 * 运行
+```
 
 <!--more-->
 
@@ -87,6 +89,7 @@ yarn remove 替换npm uninstall
 
 ### 4.1 npm查看
 
+```
 * npm info react-native：查看react-native所有版本信息
 * npm view react-native version：通过 npm 包管理器来查看 React Native 的最新版本
 * npx react-native -version：用于查看本地安装的 React Native 版本
@@ -94,9 +97,11 @@ yarn remove 替换npm uninstall
 * npm install --save react-native@0.55.4：安装指定版本react-native
 * npm install：安装最新版react-native
 * npm update -g react-native-cli：更新版本命令
+```
 
 ### 4.2 react-native查看
 
+```
 * npx react-native -h：查看react-native所有命令
 * npx react-native -v：查看react-native版本号
 * npx react-native --version：查看react-natie-cli版本号
@@ -113,6 +118,7 @@ yarn remove 替换npm uninstall
 * npx react-native upgrade [options]：升级项目模版文件
 * npx react-native log-android / log-ios [options]：启动Android / iOS日志输出
 * npx react-native依赖项：安装环境信息列表
+```
 
 ## 五 JDK
 
