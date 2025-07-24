@@ -10,22 +10,22 @@ date: 2024-03-19 16:54:41
 ---
 ## 一 面试题汇总
 
-4. props和state相同点和不同点
-5. shouldComponentUpdate 应该做什么
-7. redux状态管理的流程
-8. 加载bundle的机制
-9. Flex布局 <!--more-->
-10. 请简述 code push 的原理
-11. Redux中同步 action 与异步 action 最大的区别是什么
-12. React PureComponent的原理
-13. JS调用原生方法
-14. 原生发送事件给JS
-15. immutable.js 的原理
-16. react native redux中间件
-17. InteractionManager
-18. Rect Native 增量更新方案
-19. codePush 接入教程
-20. React Native 打包参数
+1. props和state相同点和不同点
+2. shouldComponentUpdate 应该做什么
+3. redux状态管理的流程
+4. 加载bundle的机制
+5. Flex布局 <!--more-->
+6. 请简述 code push 的原理
+7. Redux中同步 action 与异步 action 最大的区别是什么
+8. React PureComponent的原理
+9. JS调用原生方法
+10. 原生发送事件给JS
+11. immutable.js 的原理
+12. react native redux中间件
+13. InteractionManager
+14. Rect Native 增量更新方案
+15. codePush 接入教程
+16. React Native 打包参数
 
 ## 二 面试题解答(仅供参考)
 
@@ -249,7 +249,7 @@ Metro Bundler 负责开发时的打包和加载。
 通过 OTA 更新 可以在无需重新发布应用的情况下，直接更新 JS bundle。
 ```
 
-### 2.9 Flex布局
+### 2.5 Flex布局
 
 ![][3]
 
@@ -265,7 +265,7 @@ Flex布局总结：
 5.自动填充空间：用 flex 来分配剩余空间。
 ```
 
-### 2.10 请简述 code push 的原理
+### 2.6 请简述 code push 的原理
 
 ```
 1.概念
@@ -305,7 +305,7 @@ Code Push 通过检测、下载、存储和加载新 Bundle 文件，
 实现 React Native 应用的热更新，极大提升了迭代速度！
 ```
 
-### 2.11 Redux中同步 action 与异步 action 最大的区别是什么
+### 2.7 Redux中同步 action 与异步 action 最大的区别是什么
 
 ```
 1.区别
@@ -332,7 +332,7 @@ const fetchData = () => {
 -异步 action：先执行异步逻辑，完成后再派发同步 action 来更新状态。
 ```
 
-### 2.12 React PureComponent的原理
+### 2.8 React PureComponent的原理
 
 ```
 1.原理
@@ -362,7 +362,7 @@ PureComponent 只做浅比较，如果 props 是对象或数组，内容变化�
 4.总结：PureComponent 通过浅比较优化渲染逻辑，减少不必要的渲染次数，提升性能。
 ```
 
-### 2.13 JS调用原生方法
+### 2.9 JS调用原生方法
 
 ```
 1.概念
@@ -420,7 +420,7 @@ MyNativeModule.addNumbers(5, 3)
 一句话总结：React Native 利用原生模块机制，让 JS 代码能调用 Android/iOS 的原生功能！
 ```
 
-### 2.14 原生发送事件给JS
+### 2.10 原生发送事件给JS
 
 ```
 1.概念
@@ -482,7 +482,7 @@ MyNativeModule.triggerEvent();
 一句话总结：原生通过事件机制向 JS 通信，实现双向交互！
 ```
 
-### 2.15 immutable.js 的原理
+### 2.11 immutable.js 的原理
 
 ```
 在React Native中，immutable.js 是Facebook推出的一个库，用来创建不可变数据结构，提升性能和代码稳定性。
@@ -519,7 +519,7 @@ if (oldData !== newData) {
 ```
 
 
-### 2.16 react native redux中间件
+### 2.12 react native redux中间件
 
 ```
 1.概念
@@ -553,7 +553,7 @@ function* fetchDataSaga() {
 一句话总结：Redux 中间件通过拦截 action，提供额外的处理能力，解决异步逻辑和代码解耦问题！
 ```
 
-### 2.17 InteractionManager
+### 2.13 InteractionManager
 
 ```
 1.概念
@@ -590,7 +590,7 @@ InteractionManager 是 React Native 提供的一种机制，
 5.一句话总结：InteractionManager 延迟执行非紧急任务，避免阻塞 UI 渲染，提升用户体验！
 ```
 
-### 2.18 Rect Native 增量更新方案
+### 2.14 Rect Native 增量更新方案
 
 ```
 1.概念
@@ -634,7 +634,7 @@ HMR（开发模式）以及 平台原生增量更新功能（如 Google Play 和
 一句话总结：React Native 增量更新通过热更新和平台增量更新机制，帮助开发者快速发布小更新，提高用户体验
 ```
 
-### 2.19 codePush 接入教程
+### 2.15 codePush 接入教程
 
 ```
 1.概念
@@ -731,7 +731,7 @@ codePush.sync({
 一句话总结：通过 CodePush，你可以为 React Native 应用提供增量更新，实现无缝、快速的更新发布体验
 ```
 
-### 2.20 React Native 打包参数
+### 2.16 React Native 打包参数
 
 ```
 1.概念
