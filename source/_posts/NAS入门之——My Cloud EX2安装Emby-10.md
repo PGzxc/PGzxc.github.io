@@ -1,5 +1,5 @@
 ---
-title: NAS入门之——My Cloud EX2安装Emby
+title: NAS入门之——My Cloud EX2安装Emby(10)
 categories:
   - 开发
   - J-NAS

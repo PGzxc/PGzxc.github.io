@@ -1,5 +1,5 @@
 ---
-title: NAS入门之——My Cloud EX2+未入网的路由器局域网组网
+title: NAS入门之——My Cloud EX2未入网的路由器局域网组网(6)
 categories:
   - 开发
   - J-NAS

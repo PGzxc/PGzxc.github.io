@@ -1,5 +1,5 @@
 ---
-title: NAS入门之——Mac系统下添加My Cloud EX2 Ultra访问
+title: NAS入门之——My Cloud EX2 Ultra在Mac下访问(2)
 categories:
   - 开发
   - J-NAS

@@ -1,5 +1,5 @@
 ---
-title: NAS入门之——My Cloud EX2重置设备
+title: NAS入门之——My Cloud EX2重置设备(16)
 categories:
   - 开发
   - J-NAS

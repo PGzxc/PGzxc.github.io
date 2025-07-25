@@ -1,5 +1,5 @@
 ---
-title: NAS入门之——My Cloud EX2 Ultra通过USB连接外置硬盘
+title: NAS入门之——My Cloud EX2 Ultra通过USB连接外置硬盘(3)
 categories:
   - 开发
   - J-NAS

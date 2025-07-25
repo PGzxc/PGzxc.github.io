@@ -1,5 +1,5 @@
 ---
-title: NAS入门之——Mac系统My Cloud EX2 Ultra设置时间机器
+title: NAS入门之——My Cloud EX2 Ultra在Mac下设置时间机器(4)
 categories:
   - 开发
   - J-NAS

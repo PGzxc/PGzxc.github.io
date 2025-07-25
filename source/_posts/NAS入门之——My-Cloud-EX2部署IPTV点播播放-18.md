@@ -1,5 +1,5 @@
 ---
-title: NAS入门之——My Cloud EX2部署IPTV点播播放
+title: NAS入门之——My Cloud EX2部署IPTV点播播放(18)
 categories:
   - 开发
   - J-NAS

@@ -1,5 +1,5 @@
 ---
-title: NAS入门之——My Cloud EX2通过终端SSH访问
+title: NAS入门之——My Cloud EX2通过终端SSH访问(9)
 categories:
   - 开发
   - J-NAS

@@ -1,5 +1,5 @@
 ---
-title: NAS入门之——My Cloud EX2 Ultra初始化设置
+title: NAS入门之——My Cloud EX2 Ultra初始化设置(5)
 categories:
   - 开发
   - J-NAS

@@ -1,5 +1,5 @@
 ---
-title: NAS入门之——My Cloud EX2系统升级
+title: NAS入门之——My Cloud EX2系统升级(12)
 categories:
   - 开发
   - J-NAS

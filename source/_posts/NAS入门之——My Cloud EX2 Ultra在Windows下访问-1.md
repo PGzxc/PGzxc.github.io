@@ -1,5 +1,5 @@
 ---
-title: NAS入门之——Windows下添加My Cloud EX2 Ultra访问
+title: NAS入门之——My Cloud EX2 Ultra在Windows下访问(1)
 categories:
   - 开发
   - J-NAS

@@ -1,5 +1,5 @@
 ---
-title: NAS入门之——My Cloud EX2网页登录及注销
+title: NAS入门之——My Cloud EX2网页登录及注销(8)
 categories:
   - 开发
   - J-NAS
