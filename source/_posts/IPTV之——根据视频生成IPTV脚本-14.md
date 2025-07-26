@@ -18,6 +18,7 @@ date: 2025-07-25 22:53:18
 2、Videos文件夹下也有文件夹(视频在2级文件夹中)
 3、脚本和IPTV目录的文件夹在同一位置(且文件夹里可以遍历)
 4、按最后一级的文件夹作为分组
+5、按照文件夹标签作为分组
 ```
 
 <!--more-->
@@ -262,6 +263,78 @@ def generate_m3u():
                 logo_url = ""
                 if os.path.exists(logo_path):
                     logo_url = f"{HFS_HOST}/logo/{urllib.parse.quote(logo_filename)}"
+
+                extinf = f'#EXTINF:-1 tvg-name="{name}" group-title="{group_title}"'
+                if logo_url:
+                    extinf += f' tvg-logo="{logo_url}"'
+                extinf += f',{name}'
+
+                lines.append(extinf)
+                lines.append(video_url)
+                lines.append("")
+
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines))
+
+    print(f"✅ IPTV m3u 文件生成完毕：{OUTPUT_FILE}")
+
+if __name__ == "__main__":
+    generate_m3u()
+```
+
+## 六 按照文件夹标签作为分组
+
+### 6.1 示例结构(标签[内容])
+
+```
+iptv-root/
+├── [舞蹈] 快手/
+│   ├── 西瑶/
+│   │   └── xiyao01.mp4
+│   └── 小雅/
+│       └── xiaoya01.mp4
+├── [游戏] 抖音/
+│   └── 超哥/
+│       └── chao01.mp4
+```
+
+### 6.2 Python脚本(支持多层嵌套、标签文件夹)
+
+```
+import os
+import urllib.parse
+import re
+
+HFS_HOST = "http://192.168.8.181:85"
+VIDEO_ROOT = "."  # 当前脚本目录
+LOGO_DIR = "logo"
+OUTPUT_FILE = "iptv.m3u"
+
+def find_tag_from_path(path, root_path):
+    parts = os.path.relpath(path, root_path).split(os.sep)
+    for part in reversed(parts):
+        match = re.search(r"\[(.*?)\]", part)
+        if match:
+            return match.group(1)
+    return "默认分组"
+
+def generate_m3u():
+    lines = ["#EXTM3U\n"]
+
+    for root, dirs, files in os.walk(VIDEO_ROOT):
+        for file in sorted(files):
+            if file.lower().endswith((".mp4", ".mkv", ".avi", ".mov")):
+                rel_path = os.path.relpath(os.path.join(root, file), VIDEO_ROOT).replace("\\", "/")
+                video_url = f"{HFS_HOST}/{urllib.parse.quote(rel_path)}"
+                name = os.path.splitext(file)[0]
+
+                # 查找标签分组
+                group_title = find_tag_from_path(root, VIDEO_ROOT)
+
+                # Logo（可选）
+                logo_filename = f"{name}.png"
+                logo_path = os.path.join(LOGO_DIR, logo_filename)
+                logo_url = f"{HFS_HOST}/logo/{urllib.parse.quote(logo_filename)}" if os.path.exists(logo_path) else ""
 
                 extinf = f'#EXTINF:-1 tvg-name="{name}" group-title="{group_title}"'
                 if logo_url:
