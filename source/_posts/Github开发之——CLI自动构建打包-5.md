@@ -31,7 +31,7 @@ GitHub Release 页面下的 Assets 中有
 | Electron | .exe/.dmg | Ubuntu/macOS/Win |    `electron-builder` 工具     |
 | Web前端  |   .zip    |      Ubuntu      |   使用 Vite/webpack 打包产物   |
 
-## 三 每个平台单独构建
+## 三 移动端平台单独构建
 
 ### 3.1 android平台(.github/workflows/android-release.yml)
 
@@ -97,7 +97,61 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-### 3.3 reactnative平台(.github/workflows/reactnative-release.yml)
+### 3.3 鸿蒙平台(.github/workflows/harmony-release.yml)
+
+```
+name: HarmonyOS Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-harmony:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # ✅ 安装 DevEco CLI（假设你已有 CLI 下载地址）
+      - name: Setup DevEco CLI
+        run: |
+          wget https://download-link-for-devecocli.zip -O devecocli.zip
+          unzip devecocli.zip -d $HOME/devecocli
+          echo "$HOME/devecocli/tools/bin" >> $GITHUB_PATH
+
+      # ✅ 安装 SDK（你可以上传自定义 SDK 或官方离线包）
+      - name: Setup SDK (假设 CLI 自动装)
+        run: |
+          devecocli config --sdkpath $HOME/deveco-sdk
+          devecocli sdk install --version 4.0.10.6 # 示例版本，可修改
+
+      # ✅ 编译鸿蒙项目（ArkTS / Java 均支持）
+      - name: Build HarmonyOS Project
+        run: |
+          devecocli build --mode release --platform hap
+
+      # ✅ 打包 HAP 到 Zip（可选）
+      - name: Package HAP
+        run: |
+          mkdir release
+          find ./ -name "*.hap" -exec cp {} release/ \;
+          cd release && zip harmony-app.zip *.hap
+
+      # ✅ 上传 HAP 或 zip 到 GitHub Release
+      - name: Upload to Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: release/*.hap
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+## 四 跨平台构建单独构建
+
+### 4.1 reactnative平台(.github/workflows/reactnative-release.yml)
 
 ```
 name: React Native Release
@@ -142,7 +196,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-### 3.4 Flutter平台(.github/workflows/flutter-release.yml)
+### 4.2 Flutter平台(.github/workflows/flutter-release.yml)
 
 ```
 name: Flutter Release
@@ -188,7 +242,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-### 3.5 C#平台(.github/workflows/csharp-release.yml)
+## 五 桌面端单独构建
+
+### 5.1 C#平台(.github/workflows/csharp-release.yml)
 
 ```
 name: C# Release
@@ -230,7 +286,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-### 3.6 Electron平台(.github/workflows/electron-release.yml)
+### 5.2 Electron平台(.github/workflows/electron-release.yml)
 
 ```
 name: Electron Release
@@ -261,7 +317,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-### 3.7 Web平台(.github/workflows/web-release.yml)
+## 六 Web平台单独构建
+
+### 6.1 Web平台(.github/workflows/web-release.yml)
 
 ```
 name: Web Frontend Release
@@ -292,7 +350,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-## 四 多平台统一 Release Workflow(release.yml)
+## 七 多平台统一构建
+
+## 7.1 多平台统一 Release Workflow(release.yml)
 
 ```
 name: Build & Release All Platforms
