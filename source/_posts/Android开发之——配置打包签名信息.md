@@ -188,14 +188,45 @@ signingConfigs {
 
 ## 五 打包及输出路径
 
-### 5.1 常用打包命令如下(需在项目根目录执行)
+### 5.1 build.gradle打包配置
+
+```
+ applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def appName = "WanAndroidComposeUI"  // 自定义应用名
+            def buildType = variant.buildType.name   // release 或 debug
+            def versionName = variant.versionName
+            def versionCode = variant.versionCode
+            def date = new Date().format("yyyyMMdd_HHmm")
+
+            // 输出文件名，例如：MyApp_v1.2.3_20250730_release.apk
+            def newApkName = "${appName}_v${versionName}_${date}_${buildType}.apk"
+            outputFileName = newApkName
+        }
+ }
+```
+
+### 5.2 CLI打包配置修改
+
+```
+signingConfigs {
+        release {
+            storeFile file(KEYSTORE_FILE)
+            storePassword KEYSTORE_PASSWORD
+            keyAlias KEY_ALIAS
+            keyPassword KEY_PASSWORD
+        }
+ }
+```
+
+### 5.3 常用打包命令如下(需在项目根目录执行)
 
 ```
 ./gradlew assembleRelease         # 生成 APK
 ./gradlew bundleRelease           # 生成 AAB（推荐发布到 Google Play）
 ```
 
-### 5.2 输出目录通常在
+### 5.4 输出目录通常在
 
 ```
 app/build/outputs/apk/release/app-release.apk
