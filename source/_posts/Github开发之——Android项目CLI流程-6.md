@@ -38,6 +38,26 @@ date: 2025-08-01 07:39:24
 在 GitHub 上设置 Secrets（用于签名的 keystore 和密码）
 ```
 
+### 3.2 签名文件(Keystore)生成
+
+1、可以使用 `keytool` 命令生成签名文件（JDK 自带）
+
+```
+keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias my-key-alias
+```
+
+2、参数解释
+
+|   参数    |       含义       |
+| :-------: | :--------------: |
+| -keystore | 生成的签名文件名 |
+|  -alias   |     密钥别名     |
+|  -keyalg  | 算法(一般为 RSA) |
+| -keysize  |     密钥长度     |
+| -validity | 有效期(单位：天) |
+
+3、说明：执行后会提示你输入 keystore 密码、名字、组织信息等
+
 ### 3.2 配置 keystore 与签名(推荐使用 Secret)
 
 1、方法 1：使用 PowerShell 编码为 base64
