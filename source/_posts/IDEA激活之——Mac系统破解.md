@@ -1,23 +1,23 @@
 ---
-title: Mac系统开发之——IDEA激活
+title: IDEA破解之——Mac系统激活
 categories:
-  - 系统
-  - Mac
+  - 工具
+  - IntelliJ
 tags:
   - IDEA
   - 破解
-abbrlink: 5dcb0c8f
+abbrlink: '742e737'
 date: 2025-06-21 09:11:39
 ---
 ## 一 概述
 
-* 准备条件
+* 破解准备
 * 破解步骤
 * 参考
 
 <!--more-->
 
-## 二 准备条件
+## 二 破解准备
 
 * Mac系统
 * jetbra.zip和激活码配合
