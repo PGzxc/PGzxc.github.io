@@ -13,7 +13,7 @@ date: 2025-07-28 15:09:25
 
 ```
 群晖提供HTTP本地服务的是Web Station
-- 将视频文件放到Web目录/web/Video目录选
+- 将视频文件放到Web目录/web/Video目录下
 - 根据/web/Video视频生成iptv文件
 - 局域网访问iptv并播放
 ```
