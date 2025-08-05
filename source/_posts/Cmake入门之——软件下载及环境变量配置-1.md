@@ -1,5 +1,5 @@
 ---
-title: Cmake入门之——软件下载及环境变量配置(一)
+title: Cmake入门之——软件下载及环境变量配置(1)
 categories:
   - 开发
   - F-跨平台
@@ -11,7 +11,10 @@ date: 2019-12-31 21:44:29
 ---
 ## 一 概述
 
-CMake是一个跨平台的安装（[编译](https://baike.baidu.com/item/编译/1258343)）工具，可以用简单的语句来描述所有平台的安装(编译过程)。本节是Cmake的第一篇文章，主要介绍软件的下载及环境变量的配置   
+```
+CMake是一个跨平台的安装工具，可以用简单的语句来描述所有平台的安装(编译过程)。
+本节是Cmake的第一篇文章，主要介绍软件的下载及环境变量的配置   
+```
 
 <!--more-->
 
@@ -23,7 +26,8 @@ CMake是一个跨平台的安装（[编译](https://baike.baidu.com/item/编译/
 
 ### 2.2 软件下载(本文只提供下载链接，不提供破解)
 * [Gnu Tools(Tool chains)](https://sourceforge.net/projects/cbadvanced/)
-* [Dev-C++](https://bloodshed-dev-c.en.softonic.com/)(包含Gnu Tools)
+* [Softonic—Dev-C++](https://bloodshed-dev-c.en.softonic.com/)(包含Gnu Tools)
+* [Github—Dev-C++](https://github.com/Embarcadero/Dev-Cpp)(包含Gnu Tools)
 * [Cmake](https://cmake.org/)
 * [Clion](http://www.jetbrains.com/clion/)
 
@@ -66,6 +70,14 @@ Path:%Cmake_HOME%\bin;
 ```
 
 ![][5]
+
+## 五 参考
+
+* [Dev-C++官网](https://www.bloodshed.net/)
+* [Github—Dev-CPP](https://github.com/Embarcadero/Dev-Cpp)
+* [Softonic—Dev-C++](https://bloodshed-dev-c.en.softonic.com/)
+
+
 
 
 [1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/cmake-install-download-select.png

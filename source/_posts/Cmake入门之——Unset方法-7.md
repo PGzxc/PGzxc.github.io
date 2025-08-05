@@ -1,5 +1,5 @@
 ---
-title: Cmake入门之——Unset方法(七)
+title: Cmake入门之——Unset方法(7)
 categories:
   - 开发
   - F-跨平台

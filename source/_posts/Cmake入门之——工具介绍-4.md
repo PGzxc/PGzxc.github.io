@@ -1,5 +1,5 @@
 ---
-title: Cmake入门之——工具介绍(四)
+title: Cmake入门之——工具介绍(4)
 categories:
   - 开发
   - F-跨平台
@@ -33,7 +33,7 @@ date: 2020-01-12 21:12:27
 * cpack.exe：执行cpack打包输出相关指令发出者
 * ctest.exe：执行ctest测试相关指令发出者
 * cmake-gui.exe：cmake图形化工具集
-* cmcldeps.exe：未知(麻烦知道的大神告知一声)
+* cmcldeps.exe：CMake 为Win平台编译器提供的依赖解析工具，构建系统正确跟踪源文件与头文件的依赖关系
 
 ## 四 工具命令简单介绍
 

@@ -1,5 +1,5 @@
 ---
-title: Cmake入门之——Set方法(六)
+title: Cmake入门之——Set方法(6)
 categories:
   - 开发
   - F-跨平台

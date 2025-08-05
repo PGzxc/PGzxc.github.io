@@ -1,5 +1,5 @@
 ---
-title: Cmake入门之——变量(八)
+title: Cmake入门之——变量(8)
 categories:
   - 开发
   - F-跨平台
