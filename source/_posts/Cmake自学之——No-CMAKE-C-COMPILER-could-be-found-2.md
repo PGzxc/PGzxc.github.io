@@ -1,9 +1,10 @@
 ---
-title: Cmake入门之——No CMAKE_C_COMPILER could be found(2)
+title: Cmake自学之——No CMAKE_C_COMPILER could be found(2)
 categories:
   - 开发
   - F-跨平台
   - Cmake
+  - 自学 
 tags:
   - Cmake
 abbrlink: 9d3b828b

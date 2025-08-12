@@ -1,9 +1,10 @@
 ---
-title: Cmake入门之——打印消息(5)
+title: Cmake自学之——打印消息(5)
 categories:
   - 开发
   - F-跨平台
   - Cmake
+  - 自学
 tags:
   - Cmake
 abbrlink: 6899af34

@@ -1,9 +1,10 @@
 ---
-title: Cmake入门之——Set方法(6)
+title: Cmake自学之——Set方法(6)
 categories:
   - 开发
   - F-跨平台
   - Cmake
+  - 自学 
 tags:
   - Cmake
 abbrlink: ddd38c81

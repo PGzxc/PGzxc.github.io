@@ -1,9 +1,10 @@
 ---
-title: Cmake入门之——变量(8)
+title: Cmake自学之——变量(8)
 categories:
   - 开发
   - F-跨平台
   - Cmake
+  - 自学
 tags:
   - Cmake
 abbrlink: 29c90498

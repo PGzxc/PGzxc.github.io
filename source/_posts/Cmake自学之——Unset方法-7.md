@@ -1,9 +1,10 @@
 ---
-title: Cmake入门之——Unset方法(7)
+title: Cmake自学之——Unset方法(7)
 categories:
   - 开发
   - F-跨平台
   - Cmake
+  - 自学  
 tags:
   - Cmake
 abbrlink: 5a9c4a7a

@@ -1,9 +1,10 @@
 ---
-title: Cmake入门之——软件下载及环境变量配置(1)
+title: Cmake自学之——软件下载及环境变量配置(1)
 categories:
   - 开发
   - F-跨平台
   - Cmake
+  - 自学  
 tags:
   - Cmake
 abbrlink: a4ab86aa

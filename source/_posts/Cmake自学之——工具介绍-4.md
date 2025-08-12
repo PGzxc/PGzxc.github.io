@@ -1,9 +1,10 @@
 ---
-title: Cmake入门之——工具介绍(4)
+title: Cmake自学之——工具介绍(4)
 categories:
   - 开发
   - F-跨平台
   - Cmake
+  - 自学
 tags:
   - Cmake
 abbrlink: 32360f4f
