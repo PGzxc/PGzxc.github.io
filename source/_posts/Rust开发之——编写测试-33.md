@@ -1,12 +1,13 @@
 ---
 title: Rust开发之——编写测试(33)
-date: 2025-08-15 08:07:58
 categories:
   - 开发
   - B-高级语言
   - Rust
 tags:
   - Rust
+abbrlink: 404cb275
+date: 2025-08-15 08:07:58
 ---
 ## 一 概述
 
