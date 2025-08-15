@@ -98,3 +98,6 @@ Win + 安卓平板：用 SpaceDesk（免费，无线）或 Duet Display（有线
 主显示器模式：采集卡 + 平板（USB Camera Pro）
 ```
 
+## 六 参考
+
+* [Space desk](https://www.spacedesk.net/)
