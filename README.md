@@ -70,5 +70,55 @@ https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-hmos/harmonyos-lesson1-xmind.png
 https://jsd.onmicrosoft.cn/gh/PGzxc/CDN/blog-hmos/harmonyos-lesson1-xmind.png
 ```
 
+## 三 离线访问
 
+### 3.1 安装插件
+
+```
+npm install hexo-offline --save
+```
+
+### 3.2 在项目根目录添加hexo-offline.config.cjs
+
+```
+// hexo-offline v2 配置示例
+module.exports = {
+  // 是否启用插件
+  enable: true,
+
+  // 缓存的文件匹配规则（支持 glob）
+  caches: [
+    '**/*.css',
+    '**/*.js',
+    '**/*.woff2',
+    '**/*.woff',
+    '**/*.ttf',
+    '**/*.svg',
+    '**/*.png',
+    '**/*.jpg',
+    '**/*.gif',
+    '**/*.webp',
+    '**/*.ico'
+  ],
+
+  // 忽略缓存的文件
+  ignores: [
+    '**/drafts/**'
+  ],
+
+  // Workbox 配置（生成的 Service Worker 逻辑）
+  workbox: {
+    globPatterns: ['**/*.{js,css,html,png,jpg,jpeg,svg,woff2}'],
+    maximumFileSizeToCacheInBytes: 5 * 1024 * 1024 // 5MB
+  },
+
+  // 额外要缓存的外部资源（可选）
+  external: [
+    '/lib/fontawesome/css/all.min.css',
+    '/lib/animate/animate.min.css',
+    '/lib/gitalk/gitalk.css',
+    '/lib/gitalk/gitalk.min.js'
+  ]
+}
+```
 
