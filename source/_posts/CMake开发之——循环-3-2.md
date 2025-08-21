@@ -2,7 +2,7 @@
 title: CMake开发之——循环(3.2)
 categories:
   - 开发
-  - F-跨平台
+  - T-构建
   - Cmake
   - 学习路线
 tags:

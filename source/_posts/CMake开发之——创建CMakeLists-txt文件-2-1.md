@@ -2,7 +2,7 @@
 title: CMake开发之——创建CMakeLists.txt文件(2.1)
 categories:
   - 开发
-  - F-跨平台
+  - T-构建
   - Cmake
   - 学习路线
 tags:

@@ -2,7 +2,7 @@
 title: Cmake入门之——学习路线思维导图(1)
 categories:
   - 开发
-  - F-跨平台
+  - T-构建
   - Cmake
   - 学习路线
 tags:

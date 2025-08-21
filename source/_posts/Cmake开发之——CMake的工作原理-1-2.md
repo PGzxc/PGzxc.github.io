@@ -2,7 +2,7 @@
 title: Cmake开发之——CMake的工作原理(1.2)
 categories:
   - 开发
-  - F-跨平台
+  - T-构建
   - Cmake
   - 学习路线
 tags:

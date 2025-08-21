@@ -2,7 +2,7 @@
 title: Cmake自学之——打印消息(5)
 categories:
   - 开发
-  - F-跨平台
+  - T-构建
   - Cmake
   - 自学
 tags:

@@ -2,7 +2,7 @@
 title: CMake开发之——函数与宏(3.3)
 categories:
   - 开发
-  - F-跨平台
+  - T-构建
   - Cmake
   - 学习路线
 tags:

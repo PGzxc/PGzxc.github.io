@@ -2,7 +2,7 @@
 title: CMake开发之——基本指令介绍(2.5)
 categories:
   - 开发
-  - F-跨平台
+  - T-构建
   - Cmake
   - 学习路线
 tags:

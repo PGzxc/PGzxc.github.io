@@ -2,7 +2,7 @@
 title: CMake开发之——目录结构与源码组织(2.4)
 categories:
   - 开发
-  - F-跨平台
+  - T-构建
   - Cmake
   - 学习路线
 tags:

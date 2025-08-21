@@ -2,7 +2,7 @@
 title: Cmake自学之——Set方法(6)
 categories:
   - 开发
-  - F-跨平台
+  - T-构建
   - Cmake
   - 自学 
 tags:

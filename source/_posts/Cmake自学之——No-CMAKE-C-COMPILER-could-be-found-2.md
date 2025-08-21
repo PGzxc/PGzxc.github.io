@@ -2,7 +2,7 @@
 title: Cmake自学之——No CMAKE_C_COMPILER could be found(2)
 categories:
   - 开发
-  - F-跨平台
+  - T-构建
   - Cmake
   - 自学 
 tags:

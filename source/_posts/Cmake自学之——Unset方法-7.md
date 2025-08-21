@@ -2,7 +2,7 @@
 title: Cmake自学之——Unset方法(7)
 categories:
   - 开发
-  - F-跨平台
+  - T-构建
   - Cmake
   - 自学  
 tags:

@@ -2,7 +2,7 @@
 title: Cmake开发之——Cmake是什么(1.1)
 categories:
   - 开发
-  - F-跨平台
+  - T-构建
   - Cmake
   - 学习路线
 tags:

@@ -2,7 +2,7 @@
 title: CMake开发之——最简单的示例(2.2)
 categories:
   - 开发
-  - F-跨平台
+  - T-构建
   - Cmake
   - 学习路线
 tags:
