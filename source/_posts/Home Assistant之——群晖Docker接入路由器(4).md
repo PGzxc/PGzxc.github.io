@@ -1,8 +1,8 @@
 ---
 title: Home Assistant之——群晖Docker接入路由器(4)
 categories:
-  - 开发
-  - T-智能家居
+  - 硬件
+  - 智能家居
   - Home Assistant
   - 群晖Docker
 tags:
