@@ -2,8 +2,7 @@
 title: 前端构建工具Vite——开发技巧4
 categories:
   - 开发
-  - C-前端开发
-  - 构建工具
+  - T-构建
   - Vite
 tags:
   - Vite
