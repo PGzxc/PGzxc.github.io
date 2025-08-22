@@ -1,7 +1,8 @@
 ---
 title: Gradle开发之——大纲
 categories:
-  - 工具
+  - 开发
+  - T-构建
   - Gradle
 tags:
   - Gradle
