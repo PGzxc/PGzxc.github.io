@@ -1,7 +1,8 @@
 ---
 title: Git开发之——标签管理
 categories:
-  - 工具
+  - 开发
+  - I-版本控制
   - Git
 tags:
   - 标签管理

@@ -1,7 +1,8 @@
 ---
 title: Git开发之——创建与合并分支
 categories:
-  - 工具
+  - 开发
+  - I-版本控制
   - Git
 tags:
   - 创建与合并分支

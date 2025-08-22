@@ -1,7 +1,8 @@
 ---
 title: Git开发之——解决冲突
 categories:
-  - 工具
+  - 开发
+  - I-版本控制
   - Git
 tags:
   - 解决冲突

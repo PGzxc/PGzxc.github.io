@@ -1,7 +1,8 @@
 ---
 title: Git开发之——删除文件
 categories:
-  - 工具
+  - 开发
+  - I-版本控制
   - Git
 tags:
   - 删除文件

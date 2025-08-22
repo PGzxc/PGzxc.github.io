@@ -1,7 +1,8 @@
 ---
 title: Git开发之——常用的几个指令
 categories:
-  - 工具
+  - 开发
+  - I-版本控制
   - Git
 tags:
   - 常用指令

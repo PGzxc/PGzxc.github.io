@@ -1,7 +1,8 @@
 ---
 title: Git开发之——远程仓库的添加及克隆
 categories:
-  - 工具
+  - 开发
+  - I-版本控制
   - Git
 tags:
   - 远程仓库

@@ -1,7 +1,8 @@
 ---
 title: Git开发之——安装与配置
 categories:
-  - 工具
+  - 开发
+  - I-版本控制
   - Git
 tags:
   - 安装与配置

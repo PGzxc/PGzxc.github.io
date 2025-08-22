@@ -1,7 +1,8 @@
 ---
 title: Git开发之——撤销修改
 categories:
-  - 工具
+  - 开发
+  - I-版本控制
   - Git
 tags:
   - 撤销修改
