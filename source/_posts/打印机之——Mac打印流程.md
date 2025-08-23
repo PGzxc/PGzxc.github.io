@@ -1,7 +1,7 @@
 ---
 title: 打印机之——Mac打印流程
 categories:
-  - 工具
+  - 硬件
   - 打印机
 tags:
   - 打印机

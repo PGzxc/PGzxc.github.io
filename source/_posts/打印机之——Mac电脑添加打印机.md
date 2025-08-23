@@ -1,7 +1,7 @@
 ---
 title: 打印机之——Mac电脑添加打印机
 categories:
-  - 工具
+  - 硬件
   - 打印机
 tags:
   - 打印机
