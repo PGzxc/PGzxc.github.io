@@ -1,7 +1,8 @@
 ---
 title: Jmeter工具之——连接数据库(6)
 categories:
-  - 工具
+  - 开发
+  - L-自动化
   - Jmeter
 tags:
   - Jmeter
