@@ -3,6 +3,7 @@ title: IPTV之——IPTV广播平台自动化脚本(10)
 categories:
   - 开发
   - J-NAS
+  - 自建服务   
   - IPTV
 tags:
   - IPTV

@@ -3,6 +3,7 @@ title: IPTV之——生成音视频带标签分组的脚本(20)
 categories:
   - 开发
   - J-NAS
+  - 自建服务   
   - IPTV
 tags:
   - IPTV

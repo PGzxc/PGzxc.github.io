@@ -3,6 +3,7 @@ title: IPTV之——群晖提供IPTV服务(18)
 categories:
   - 开发
   - J-NAS
+  - 自建服务   
   - IPTV
 tags:
   - IPTV

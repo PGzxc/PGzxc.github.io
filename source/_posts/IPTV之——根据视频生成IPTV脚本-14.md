@@ -3,6 +3,7 @@ title: IPTV之——根据视频生成IPTV脚本(14)
 categories:
   - 开发
   - J-NAS
+  - 自建服务   
   - IPTV
 tags:
   - IPTV

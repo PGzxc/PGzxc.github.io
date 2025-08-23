@@ -3,6 +3,7 @@ title: IPTV之——做一个m3u直播源(1)
 categories:
   - 开发
   - J-NAS
+  - 自建服务   
   - IPTV
 tags:
   - IPTV

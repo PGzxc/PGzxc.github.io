@@ -3,6 +3,7 @@ title: IPTV之——将本地视频生成iptv播放列表文件(9)
 categories:
   - 开发
   - J-NAS
+  - 自建服务   
   - IPTV
 tags:
   - IPTV
