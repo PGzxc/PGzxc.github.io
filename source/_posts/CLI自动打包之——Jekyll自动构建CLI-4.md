@@ -1,8 +1,9 @@
 ---
-title: Github开发之——Jekyll自动构建CLI(8)
+title: CLI自动打包之——Jekyll自动构建CLI(4)
 categories:
   - 开发
-  - I-版本控制
+  - L-自动化
+  - CLI
   - Github
 tags:
   - Github

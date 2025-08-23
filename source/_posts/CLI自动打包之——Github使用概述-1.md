@@ -1,8 +1,9 @@
 ---
-title: Github开发之——CLI自动构建打包(5)
+title: CLI自动打包之——Github使用概述(1)
 categories:
   - 开发
-  - I-版本控制
+  - L-自动化
+  - CLI
   - Github
 tags:
   - Github

@@ -1,8 +1,9 @@
 ---
-title: Github开发之——IOS项目CLI流程(7)
+title: CLI自动打包之——IOS项目CLI流程(3)
 categories:
   - 开发
-  - I-版本控制
+  - L-自动化
+  - CLI
   - Github
 tags:
   - Github

@@ -1,8 +1,9 @@
 ---
-title: Github开发之——Android项目CLI流程(6)
+title: CLI自动打包之——Android项目CLI流程(2)
 categories:
   - 开发
-  - I-版本控制
+  - L-自动化
+  - CLI
   - Github
 tags:
   - Github
