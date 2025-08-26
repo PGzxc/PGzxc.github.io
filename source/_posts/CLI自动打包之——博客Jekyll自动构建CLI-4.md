@@ -1,5 +1,5 @@
 ---
-title: CLI自动打包之——Jekyll自动构建CLI(4)
+title: CLI自动打包之——博客Jekyll自动构建CLI(4)
 categories:
   - 开发
   - L-自动化
