@@ -1,11 +1,11 @@
 ---
-title: Android开发之——旧项目Gradle升级
+title: 项目最新实践和应用——旧项目Gradle升级
 categories:
   - 开发
-  - D-移动开发
-  - Android
+  - U-项目实践
+  - Android项目
 tags:
-  - Android
+  - Android项目
 abbrlink: b871562a
 date: 2025-08-26 10:19:31
 ---
