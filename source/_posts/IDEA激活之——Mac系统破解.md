@@ -29,15 +29,25 @@ date: 2025-06-21 09:11:39
 
 ![][1]
 
-### 3.2 应用程序找到新安装的Intellij Idea Mac，右键显示包内容
+### 3.2 执行scripts/install.sh脚本(不用加sudo)
+
+```
+1.在jetbra中打开终端
+2.执行如下指令：scripts/install.sh
+3.执行后
+ .bash_profile和.zshrc文件中会添加脚本
+ vmoptions文件夹会添加：-javaagent:/absolute/path/to/ja-netfilter.jar
+```
+
+### 3.3 应用程序找到新安装的Intellij Idea Mac，右键显示包内容
 
 ![][2]
 
-### 3.3 将jetbra中的idea.vmoptions文件复制到bin目录下
+### 3.4 将jetbra中的idea.vmoptions文件复制到bin目录下
 
 ![][3]
 
-### 3.4 填入激活码激活
+### 3.5 填入激活码激活
 
 1、激活码
 
