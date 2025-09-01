@@ -11,73 +11,89 @@ date: 2025-06-24 15:48:38
 ---
 ## 一 概述
 
-* 什么是“16 KB 页面”？
-* 为什么要支持 16 KB 页面？
-* 如何检查你的 APK 是否受影响？
-* 如何支持并解决 16 KB 页面问题？
+* 什么是 “16 KB 页面大小”
+* 怎么适配 16 KB 页面大小设备
+* 适配清单一览
 
 <!--more-->
 
 ## 二 什么是“16 KB 页面”？
 
-```
--传统 Android 设备使用 4 KB 的内存页面大小；
-从Android 15(2025年11月起) 开始，支持16 KB内存页面设备 
-
--这是指 系统和应用的内存分配粒度 提升到 16KB，有助于提升性能，但应用需重建以支持这种页面对齐。
-```
-
-## 三 为什么要支持 16 KB 页面？
-
-### 3.1 提升性能
+### 2.1 16K页面
 
 ```
--应用启动速度平均提升 3.16%，部分应用甚至提升至 30%；
--冷/热启动时电量消耗减少约 4.5%；
--启动相机等功能更快，系统启动总体加速 约8%（~950ms）
+这指的是系统内存分页机制中的页(page)大小，
+从 Android 15(API 35)开始，Android 系统允许设备配置使用 16 KB 内存页，
+相比传统的 4 KB 页面规模有明显性能优化，尤其在大内存设备上
 ```
 
-### 3.2 强制兼容性
+### 2.2 16K优势
 
 ```
-自2025年11月1日起，Google Play要求面向Android 15+的新应用和更新必须支持16KB页面
+-启动加速（启动时间平均缩短 3.16%，最高可达 30%）
+-降低功耗（应用启动功耗平均降低 ~4.56%；相机启动也加速）
+-系统启动时间缩短（平均节省约 950 毫秒）
 ```
 
-## 四 如何检查你的 APK 是否受影响？
-
-### 4.1 是否含有原生代码（C/C++ 或 .so 库）？
+### 2.3 要求
 
 ```
--如果应用仅使用 Kotlin/Java（即无 lib/xxx.so），那么基本可以支持；
--若包含原生库，需额外对齐处理
+从 2025 年 11 月 1 日起，
+Google Play 要求所有提交到 Play、目标平台为 Android 15 及以上的新应用或更新，
+都必须支持 16 KB 页面大小
 ```
 
-### 4.2 使用 Android Studio → Analyze APK
+## 三 怎么适配 16 KB 页面大小设备
+
+### 3.1 代码
 
 ```
--打开 APK，查看 lib/ 目录，若含 .so 文件，说明使用了原生代码；
--进一步检查上述 .so 文件是否对齐（ELF 段）
+如果你的 app 涉及 原生代码（C/C++）
 ```
 
-### 4.3 执行对齐检测脚本(Linux 或 macOS)
+### 3.2 注意事项
 
 ```
-check_elf_alignment.sh YourApp.apk
+1、检查原生库（.so 文件）是否存在
+ 可通过 Android Studio 的 APK 分析器查看 lib 目录
 
--检查 arm64-v8a、x86_64 的 ELF 段是否为 ALIGNED/UNALIGNED；
--若有 “UNALIGNED”，需重新编译原生库以支持 16KB 页面 
+2、确保 ELF 段按 16 KB 对齐
+ 使用 check_elf_alignment.sh 脚本或通过 llvm-objdump 查看 LOAD … align 是否为 2**14（即 16 KB）
+ 
+3、使用zipalign工具验证APK文件是否按16 KB边界对齐(参数 -P 16)
+ https://developer.android.google.cn/guide/practices/page-sizes?hl=zh-cn
+ 
+4、使用 Android Gradle Plugin (AGP) 8.5.1 或以上版本更方便
+ -它默认支持 16 KB 对齐；
+ -若低于该版本，可通过 useLegacyPackaging true（在 Gradle 中）启用旧打包方式
+ 
+5、NDK 设置
+ -NDK r28 及以上版本默认支持 16 KB；
+ -若使用 r27 或以下版本，需要在构建配置中添加 -DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON 
+ 或链接器参数 -Wl,-z,max-page-size=16384（视构建系统如 CMake、ndk-build 而异）
+ 
+6、审查代码中不能硬编码依赖页面大小，如使用 PAGE_SIZE 常量
+ 应改用 getpagesize() 或 sysconf(_SC_PAGESIZE) 等动态接口获取
+
+7、测试
+ 必须在 16 KB 页面大小环境中
+ （如Android15模拟器带16 KB page size镜像、Cuttlefish VM、真实设备通过开发者选项切换等）验证你的应用
 ```
 
-## 五 如何支持并解决 16 KB 页面问题？
+## 四 适配清单一览
 
-|          场景          |                           处理方式                           |
-| :--------------------: | :----------------------------------------------------------: |
-|  仅 Java/Kotlin 应用   |           可直接支持，建议在 Android 15+ 环境测试            |
-|     含原生库 (.so)     |              重新编译库以确保 ELF 段对齐到 16KB              |
-| 跨平台 SDK 内含 native |            联系 SDK 提供商或自行 rebuild 原生部分            |
-|  使用 NDK 直编 native  | 构建时指定 `-Wl,–pgo-page-size=16384` 或合适链接参数，以强制 16KB 对齐 |
+| 步骤 |                  操作说明                  |
+| :--: | :----------------------------------------: |
+|  1   |      检查是否使用原生代码（.so 文件）      |
+|  2   |        检查 ELF 段是否按 16 KB 对齐        |
+|  3   |      使用 zipalign 确认 APK 对齐正确       |
+|  4   | 升级 AGP 到 8.5.1+ 或开启 legacy packaging |
+|  5   |        NDK 配置支持 16 KB page size        |
+|  6   |          移除硬编码页面大小的逻辑          |
+|  7   |      在 16 KB 模拟器或设备上全面测试       |
 
-## 六 参考
+
+## 五 参考
 
 * [Android官方文档—行为变更](https://developer.android.google.cn/about/versions/15/behavior-changes-all?hl=zh-cn#core)
 * [Android官方文档—支持16KB页面大小](https://developer.android.google.cn/guide/practices/page-sizes?hl=zh-cn)
