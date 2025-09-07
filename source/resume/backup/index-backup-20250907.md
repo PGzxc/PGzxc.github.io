@@ -805,6 +805,30 @@ __2-Android项目—E朝朝企业端__
 | ![][zh-rn-5] | ![][zh-rn-6]  | ![][zh-rn-7]  | ![][zh-rn-8] |
 | ![][zh-rn-9] | ![][zh-rn-10] | ![][zh-rn-11] |              |
 
+### 3—[expo-todo](https://github.com/PGzxc/expo-todo)
+
+**项目归属**：个人项目
+**项目名称**：expo-todo
+**项目地址**：https://github.com/PGzxc/expo-todo
+**软件支持**：Android+IOS
+**开发工具**：IntelliJ IDEA+Java(11.0.19)+Node(18.18.2)+Yarn(1.22.19)+react-native(0.72.6)+Android SDK Build_tools(33.0.0)
+**项目描述**：这是一款待办清单类应用。登录或注册后，便可创建任务、标记任务和删除任务。并带有日历功能。     
+**功能模块**：登录、注册、todo、日历   
+**技术要点**：
+
+- 基于React Navigation导航库构建底部导航框架
+- 基于React Hooks(useEffect+useState)更新状态
+- 自定义组件，减少复用代码
+- 基于react-native-svg加载svg资源图片
+- 基于react-native-calendars实现日历功能
+- 基于react-native-toast-notifications实现土司消息
+
+**项目预览**
+
+| ![][rn-todo-1] | ![][rn-todo-2] | ![][rn-todo-3] |
+| :------------: | :------------: | :------------: |
+| ![][rn-todo-4] | ![][rn-todo-5] | ![][rn-todo-6] |
+
 ## <font color=red>六 Kotlin Multiplatform Mobile项目</font>
 
 ### 1—[WanAndroid-Compose-Multiplatform](https://github.com/PGzxc/WanAndroid-Compose-Multiplatform)
