@@ -1,5 +1,5 @@
 ---
-title: Figma产品开发之——入门路线
+title: Figma产品设计之——入门路线
 categories:
   - 产品
   - Figma
