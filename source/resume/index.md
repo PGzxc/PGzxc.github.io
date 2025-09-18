@@ -59,28 +59,34 @@ comments: false
 
 # 联系方式
 
-- 手机：15201120927
-- Email：developer_zxc@126.com
-- QQ：834228918
+- __手机__：15201120927
+- __Email__：developer_zxc@126.com
+- __QQ__：834228918
 
 # 基本信息
 
-- PGzxc/男
-- 黄淮学院|全日制本科|电子信息工程(2009.09—2013.06)
-- 工作年限：2013年06月——至今
-- 现居地：昌平线—昌平站(昌平县城)
+- __个人信息__：PGzxc/男
+- __毕业院校__：黄淮学院|全日制本科|电子信息工程(2009.09—2013.06)
+- __工作年限__：2013年06月——至今
+- __现居地__：昌平线—昌平站(昌平县城)
 
 # 求职意向
 
-- 工作性质：全职
-- 期望职位：移动端(鸿蒙、安卓、IOS)开发、跨平台(Flutter、ReactNative、KMP)开发、后端(Java)开发、Web前端开发、小程序(微信小程序+uni-app)开发、桌面端(Winform)开发等
-- 期望薪资：面议
-- 工作地点：北京
+- __工作性质__：全职
+- __期望职位__：
+  &emsp;&emsp;- 移动端(鸿蒙、安卓、IOS)开发、
+  &emsp;&emsp;- 跨平台(Flutter、ReactNative、KMP)开发、
+  &emsp;&emsp;- 后端(Java)开发、
+  &emsp;&emsp;- Web前端开发、
+  &emsp;&emsp;- 小程序(微信小程序+uni-app)开发、
+  &emsp;&emsp;- 桌面端(Winform)开发等
+- __期望薪资__：面议
+- __工作地点__：北京
 
 # 相关信息
-- 网站地址：https://pgzxc.github.io/
-- GitHub：https://github.com/PGzxc/
-- CSDN博客：http://blog.csdn.net/calvin_zhou
+- **网站地址**：https://pgzxc.github.io/
+- **GitHub**：https://github.com/PGzxc/
+- **CSDN博客**：http://blog.csdn.net/calvin_zhou
 
 # 教育经历
 
