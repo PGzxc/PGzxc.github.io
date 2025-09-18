@@ -2,7 +2,8 @@
 title: 仓颉应用开发之——@Builder和@BuilderParam(9)
 categories:
   - 开发
-  - B-高级语言
+  - D-移动开发
+  - HarmonyOS
   - 仓颉
 tags:
   - 仓颉

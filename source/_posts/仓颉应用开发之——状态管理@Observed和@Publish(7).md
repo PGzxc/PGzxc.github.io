@@ -4,6 +4,7 @@ categories:
   - 开发
   - D-移动开发
   - HarmonyOS
+  - 仓颉  
 tags:
   - HarmonyOS
   - 仓颉应用
