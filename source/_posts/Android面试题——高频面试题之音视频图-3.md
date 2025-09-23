@@ -18,7 +18,7 @@ date: 2025-09-22 16:24:58
 
 <!--more-->
 
-## 二 面试要求和面试题(后续类似不再详述)
+## 二 面试要求和面试题
 
 ### 2.1 面试要求(技术点提取)
 
@@ -36,13 +36,13 @@ date: 2025-09-22 16:24:58
 
 ## 三 面试题解答(仅供参考)
 
-### 3.1 MLKit(ai应用-图像识别，nlp,大模型语音对话)
+### 3.1 ML Kit(AI应用-图像识别,nlp,大模型语音对话)
 
 1、概念
 
 ```
-ML Kit 是 Google 提供的 移动端机器学习 SDK，
-集成了常见的 预训练模型，无需自己训练或部署，适合快速落地
+ML Kit 是 Google 提供的移动端机器学习 SDK，
+集成预训练模型，开箱即用，适合快速实现 AI 功能
 ```
 
 2、常见功能
@@ -52,65 +52,62 @@ ML Kit 是 Google 提供的 移动端机器学习 SDK，
 -文本识别（OCR）：识别图片里的文字。
 -人脸检测：检测人脸位置、表情。
 -条码扫描：识别二维码/条形码。
--图像分类 / 物体检测：识别物体类别。
+-图像分类/物体检测：识别物体类别。
 
 2、NLP
--翻译（50+ 种语言离线支持）。
--实体抽取（姓名、地址、邮箱）。
--语音转文本（部分功能需联网）。
+-翻译：支持 50+ 种语言，部分离线。
+-实体抽取：识别姓名、地址、邮箱。
+-语音转文本：部分需联网。
 
 3、语音/大模型对话
 
 -ML Kit 本身不提供 LLM，
-但可以配合Google Cloud Speech-to-Text或外部大模型 API(如 ChatGPT、Gemini)使用。
-
--架构：端侧预处理(录音 → VAD → 压缩) → 云端大模型 → 返回文本/TTS。
+ML Kit不直接支持 LLM，需配合 Google Cloud Speech-to-Text 或外部大模型 API（如 Gemini）。
+架构：端侧预处理（录音、VAD、压缩）→ 云端大模型 → 返回文本/TTS。
 ```
 
-3、面试问法 & 答案要点
+3、面试要点
 
 ```
-1、ML Kit 适合什么场景？
--快速集成常用 AI 功能，无需训练模型，适合 OCR、人脸检测、翻译等。
--缺点是模型不可高度自定义，灵活性差。
+1、适用场景：
+快速集成 OCR、人脸检测、翻译等，适合简单 AI 需求；缺点是模型定制化有限。
 
-2、ML Kit 在 Android 怎么用？
-通过 Firebase ML Kit 或独立 ML Kit SDK，
-调用 API（如 TextRecognizer.processImage()）即可，内部已集成 TFLite 推理。
+2、Android 使用：
+通过Firebase ML Kit或独立 SDK，调用API(如 TextRecognizer.processImage())，内置 TFLite 推理。
 ```
 
-### 3.2 TensorFlow Lite(ai应用-图像识别，nlp,大模型语音对话)
+### 3.2 TensorFlow Lite(AI应用-图像识别,nlp,大模型语音对话)
 
 1、概念
 
 ```
-TFLite 是 TensorFlow 的移动端推理框架，支持 自定义模型，适合做更复杂/定制化的 AI。
+TFLite 是 TensorFlow 的移动端推理框架，支持自定义模型，适合复杂/定制化 AI 需求
 ```
 
 2、常见功能
 
 ```
 1、图像识别
--分类（Image Classification）：如猫狗识别。
--目标检测（Object Detection）：检测目标位置 + 标签。
--人脸关键点检测、人像分割。
+-分类：如猫狗识别。
+-目标检测：识别物体位置 + 标签。
+-人脸关键点检测、人像分割
 
 2、NLP
--文本分类（情感分析、垃圾邮件检测）。
--关键词检测（Wake Word）。
--自然语言模型（BERT 蒸馏版、MobileBERT）。
+-文本分类：情感分析、垃圾邮件检测。
+-关键词检测：如 Wake Word。
+-轻量模型：MobileBERT、ALBERT
 
 3、大模型语音对话
--大模型(LLM)一般无法完整部署到手机，但可用 量化/蒸馏模型，例如 MobileBERT、ALBERT，在手机端做轻量推理。
--常见架构：端侧模型 (TFLite) + 云端大模型 API 结合，做边缘计算（快速响应）+ 云端增强。
+-轻量模型（量化/蒸馏）在端侧推理，大模型需云端 API。
+-架构：端侧 TFLite 快速响应 + 云端增强。
 ```
 
 3、模型优化手段
 
 ```
--量化（Float32 → Int8），减少模型大小、加快推理速度。
--委托 GPU / NNAPI / CoreML 加速。
--模型剪枝、蒸馏（Distillation）。
+量化：Float32 → Int8，减小模型体积，加速推理。
+硬件加速：委托 GPU/NNAPI/CoreML。
+剪枝/蒸馏：减少参数，提升效率
 ```
 
 4、面试问法 & 答案要点
@@ -147,9 +144,9 @@ TFLite 是 TensorFlow 的移动端推理框架，支持 自定义模型，适合
 2、总结
 
 ```
-ML Kit：适合 快速集成常见 AI 功能(OCR、人脸检测、翻译)，内部其实就是封装了 TFLite 模型。
-TFLite：适合 部署自定义模型(图像识别、NLP、轻量大模型)，支持量化、GPU/NNAPI 加速。
-大模型语音对话：通常采用 端上轻量模型 + 云端大模型 API 的混合架构，端侧主要做预处理和低延迟响应。
+ML Kit 适合快速集成通用功能，
+TFLite 适合定制化 AI 需求。
+大模型对话多采用端云结合架构
 ```
 
 ### 3.4 im聊天
@@ -161,26 +158,24 @@ CP 长连接：可靠、有序，适合聊天消息；需心跳维持，移动�
 UDP：低延迟，适合实时语音/视频；但不可靠。
 WebSocket：基于 TCP，跨平台、跨浏览器，适合移动端 + Web 聊天。
 HTTP/2 / gRPC：支持多路复用，常用于推送和 API 调用。
-
-实际：移动端 IM 一般用 TCP 长连接 + 自定义协议（Protobuf/JSON）+ 心跳机制。
+实际：移动端 IM 常用 TCP 长连接 + Protobuf/JSON + 心跳。
 ```
 
 2、消息服务器的核心功能是什么？
 
 ```
 接入层：维持长连接（如 Netty）。
-路由层：负责消息转发（点对点、群聊）。
-存储层：保存消息（历史/离线/未读）。
-推送层：与 APNs、FCM 等对接，保障离线消息送达。
-
-大型 IM（如微信、钉钉）采用 分布式消息服务器 + 水平扩展。
+路由层：消息转发（点对点、群聊）。
+存储层：保存历史/离线/未读消息。
+推送层：对接 APNs/FCM，确保离线消息送达。
+大型 IM：分布式服务器 + 水平扩展（如微信）
 ```
 
 3、IM 消息如何存储？
 
 ```
 本地存储：SQLite / Room / MMKV，保存会话列表和最近聊天记录，提升加载速度。
-服务端存储：MySQL/MongoDB/HBase + Redis，用于完整历史消息。
+服务端存储：MySQL/MongoDB/HBase + Redis，用于完整历史消息和离线消息。
 离线消息机制：用户不在线时，服务端存储未读消息；上线后拉取。
 
 要点：保证 顺序、幂等性、快速查询。
@@ -189,12 +184,10 @@ HTTP/2 / gRPC：支持多路复用，常用于推送和 API 调用。
 4、如何保证消息不丢失？
 
 ```
-ACK 机制：Client/Server 双向确认。
-重传机制：超时未收到 ACK → 自动重发。
-消息顺序：会话内消息有序 ID。
-幂等性：消息 ID 去重，防止重复投递。
-
-实际：微信采用 双向 ACK + 本地消息队列
+ACK 机制：客户端/服务端双向确认。
+重传机制：超时未收到 ACK 自动重发。
+消息顺序：会话内有序 ID。
+幂等性：消息 ID 去重
 ```
 
 5、IM 消息如何保证安全？
@@ -218,7 +211,7 @@ ACK 机制：Client/Server 双向确认。
 
 2、使用场景：
 -自研 IM → 灵活可控，适合大厂。
--三方 SDK → 快速上线，适合中小团队/快速验证 MVP。
+-三方 SDK → 快速上线，适合中小团队/快速验证。
 ```
 
 ### 3.5 图形图像
@@ -228,15 +221,14 @@ ACK 机制：Client/Server 双向确认。
 ```
 问法:如果需要在 Android 中加载超大图片（如 4K、长图），怎么避免 OOM？
 
-回答：
-1、按需采样(inSampleSize)：使用 BitmapFactory.Options 设置采样率，避免一次性加载完整尺寸。
-2.按需区域解码(RegionDecoder):使用 BitmapRegionDecoder，只解码可视区域（适合长图、地图类应用）。
-3.使用硬件加速 & 硬件位图:API 26+ 支持 inPreferredConfig = HARDWARE，减少内存占用。
-4.避免内存泄漏
--用完及时 recycle()，或交给 GC。
--配合 LruCache/内存池复用 Bitmap。
+1、方法：
+采样缩放：BitmapFactory.Options 设置 inSampleSize，降低分辨率。
+区域解码：BitmapRegionDecoder 解码可视区域（适合长图、地图）。
+硬件位图：API 26+ 使用 HARDWARE 配置，减少内存。
+内存管理：LruCache 复用 Bitmap，及时 recycle()。
 
-总结：缩放采样 + 局部解码 + 内存复用 是关键
+2、总结：
+缩放 + 局部解码 + 内存复用避免 OOM
 ```
 
 2、Glide 和 Picasso 有什么区别？你更推荐哪个？
@@ -265,22 +257,9 @@ Picasso.get()
     .into(imageView)   
     
 3、对比总结：
-
-Glide：适合复杂场景（大图、GIF、视频帧缩略图），主流项目首选。
-Picasso：适合轻量、简单的图片加载需求。
-Fresco（Facebook 出品）：更适合需要处理大量大图的应用（如新闻/社交类 APP），底层内存优化更强。    
-```
-
-3、总结
-
-```
-1、大图加载：
-采样缩放（inSampleSize）、局部解码（RegionDecoder）、Bitmap 复用、内存缓存。
-
-2、三方库：
-Glide → 功能全，主流首选
-Picasso → 简单轻量
-Fresco → 大图专精
+Glide：主流首选，功能全面。
+Picasso：轻量，简单场景。
+Fresco：大图专精，防 OOM   
 ```
 
 ### 3.6 音视频处理技术，短视频经验
@@ -296,16 +275,16 @@ Fresco → 大图专精
 
 ```
 1、MediaExtractor：
-从音视频文件中读取轨道(Track)，解析编码格式(MIME、时长、比特率等)，逐帧获取压缩数据。
+解析音视频轨道，获取压缩数据（MIME、时长等）
 
 2、MediaCodec：
-硬件加速编解码器，支持 H.264/H.265/AAC 等，负责解码数据 → 输出原始帧。
+硬件编解码，解码 H.264/H.265/AAC 输出原始帧
 
 3、典型流程：
--使用 MediaExtractor 选中视频/音频轨道。
--MediaCodec.configure() 配置解码器（传入 MIME 类型、宽高、surface 等）。
--循环读取压缩帧 → queueInputBuffer() → dequeueOutputBuffer() 取解码帧。
--视频 → 渲染到 Surface；音频 → 交给 AudioTrack 播放。
+-MediaExtractor 选择轨道。
+-MediaCodec.configure() 设置解码器（MIME、Surface）。
+-循环 queueInputBuffer() → dequeueOutputBuffer()。
+-视频渲染到 Surface，音频交给 AudioTrack。
 ```
 
 2、为什么推荐用 ExoPlayer 而不是原生 MediaPlayer？
@@ -320,9 +299,9 @@ Fresco → 大图专精
 -内置缓存机制（减少网络请求）。
 -支持 DRM、字幕、ABR（自适应码率）。
 
-3、总结
--短视频/流媒体场景 → ExoPlayer；
--基础本地播放 → MediaPlayer 也够用
+3、选择：
+短视频/流媒体用 ExoPlayer，
+本地播放可用 MediaPlayer
 ```
 
 3、短视频如何实现剪辑、拼接？
@@ -337,7 +316,7 @@ Fresco → 大图专精
 FFmpeg 解析封装格式（demuxer），处理编码流（codec），再封装输出。
 
 3、实际开发：
-Android 上可调用 FFmpeg so 库（如 MobileFFmpeg）。
+Android：通过 JNI 调用 MobileFFmpeg
 ```
 
 4、如何在 Android 上给视频加滤镜或特效？
@@ -365,20 +344,10 @@ Android 上可调用 FFmpeg so 库（如 MobileFFmpeg）。
 WebRTC 是 Google 开源的 实时音视频通信框架，
 
 2、核心流程：
-
-2.1、媒体采集：获取本地音频（麦克风）和视频（摄像头）。
-
-2.2、信令交换 (Signaling)
--不包含在 WebRTC 内，需要开发者自定义（常用 WebSocket、MQTT）。
--用于交换 SDP（会话描述协议）和 ICE Candidate（网络信息）。
-
-2.3、建立点对点连接 (PeerConnection)
--借助 STUN（公网探测）和 TURN（中继）实现 NAT 穿透。
--找到最佳传输路径。
-
-2.4、媒体传输
--SRTP (Secure RTP) 加密音视频流，保证安全性。
--RTP/RTCP 协议：数据流 + 控制流。
+-媒体采集：摄像头（VideoCapturer）+ 麦克风（AudioSource）。
+-信令交换：通过 WebSocket/MQTT 交换 SDP 和 ICE Candidate。
+-连接建立：STUN/TURN 实现 NAT 穿透，PeerConnection 建立 P2P。
+-媒体传输：SRTP 加密，RTP/RTCP 传输音视频。
 
 3、关键：采集 → 信令 → NAT 穿透 → 传输 → 解码渲染。
 ```
@@ -387,32 +356,23 @@ WebRTC 是 Google 开源的 实时音视频通信框架，
 
 ```
 1、步骤
-1.1、引入依赖
-使用 Google 提供的 aar，或者 implementation 'org.webrtc:google-webrtc:x.x.x'。
+引入依赖：org.webrtc:google-webrtc:x.x.x.
+初始化 PeerConnectionFactory.
+获取媒体流：VideoCapturer + AudioSource.
+建立连接：createOffer()/createAnswer() 生成 SDP，交换 ICE Candidate.
+渲染：SurfaceViewRenderer 显示视频.
 
-1.2、初始化环境
-PeerConnectionFactory.initialize(
-    PeerConnectionFactory.InitializationOptions.builder(context)
-        .createInitializationOptions()
-)
-
-1.3、创建 PeerConnectionFactory：用于构建本地音视频 Track、PeerConnection。
-1.4、获取媒体流：使用 VideoCapturer (摄像头) + AudioSource (麦克风)。
-1.5、建立连接
--调用 createOffer() / createAnswer() → 生成 SDP。
--通过 信令服务器 发送给对方。
-
-1.6、ICE 候选信息交换：通过 onIceCandidate() 回调收集网络信息。
-1.7、渲染视频
-使用 SurfaceViewRenderer 或 TextureViewRenderer 显示远端/本地视频。
-
-2、注意点：
--移动端需处理 权限（Camera、Record Audio）。
--网络差时要支持 带宽自适应 / 降码率。
--长时间通话要考虑 内存/电池消耗。
+2、注意：
+权限（Camera、Audio）、带宽自适应、内存/电池优化。
 ```
 
-3、总结
+3、Zoom SDK 注意事项
+
+```
+鉴权（Key/Secret）、权限、UI 定制、版本兼容、License 限制
+```
+
+4、总结
 
 ```
 WebRTC 原理：采集 → 信令 → NAT 穿透 (STUN/TURN) → SRTP 传输 → 解码渲染。
@@ -425,15 +385,9 @@ Zoom SDK 注意事项：鉴权（Key/Secret）、权限、UI 定制、版本兼�
 1、H.264 vs H.265
 
 ```
-1、概念
-H.264 (AVC)：当前最流行的视频编码标准。
-H.265 (HEVC)：新一代视频编码标准。
-
-2、主要区别：
-在同等画质下，H.265 的压缩效率比 H.264 高 30-50%，
-这意味着可以用更小的文件体积或更低的带宽传输更高质量的视频。
-
-H.265 支持更高分辨率的视频（如 4K、8K），但计算复杂度更高。
+H.264 (AVC)：主流视频编码，广泛兼容。
+H.265 (HEVC)：压缩效率高 30-50%，支持 4K/8K，计算复杂。
+选择：H.264 兼容性好，H.265 适合高画质/低带宽。
 ```
 
 2、FFmpeg
@@ -454,16 +408,16 @@ H.265 支持更高分辨率的视频（如 4K、8K），但计算复杂度更高
 3、 I/P/B 帧作用？
 
 ```
-I 帧独立存储，P/B 帧依赖前后帧。
-I 帧多 → seek 方便但码率高；
-I 帧少 → 压缩好但容错差。
+I 帧：独立存储，seek 方便，码率高。
+P/B 帧：依赖前后帧，压缩率高，容错差
 ```
 
 4、AAC 常用配置？
 
 ```
-44.1kHz/48kHz，单声道 16-64kbps（语音），双声道 96-128kbps（音乐）。
-注意 LC-AAC/HE-AAC 差异。
+采样率：44.1kHz/48kHz.
+码率：单声道 16-64kbps（语音），双声道 96-128kbps（音乐）。
+类型：LC-AAC（通用），HE-AAC（低码率优化）。
 ```
 
 ### 3.9 音视频传输协议(rtmp/hls)及cdn分发
@@ -516,30 +470,21 @@ RTMP低延迟推流，HLS自适应拉流。CDN加速全球分发
 3、CDN 加速与全球分发
 
 ```
-1、为什么要用 CDN？
--直播用户分布全球，直接从源站访问会出现延迟和卡顿。
--CDN（内容分发网络）在全球布点，用户就近访问。
+1、作用：全球分发，降低延迟，减少卡顿。
+2、机制：
+-边缘节点缓存热点内容。
+-负载均衡选择最优节点。
+-回源拉取未缓存资源。
 
-2、关键能力：
--边缘节点缓存：热点视频分片缓存到最近的节点。
--负载均衡：根据网络情况选择最优节点。
--回源机制：CDN 节点无资源时回源站拉取。
-
-3、常见厂商：
-阿里云 CDN、腾讯云 CDN、AWS CloudFront、Akamai。
-
-4、面试常考点：
--RTMP 适合 推流（主播 -> 服务器）。
--HLS/DASH 适合 拉流（观众 -> CDN）。
--低延迟直播优化：HTTP-FLV、WebRTC（延迟 200ms-1s），取代传统 HLS。
+3、厂商：阿里云、腾讯云、AWS CloudFront、Akamai.
 ```
 
 4、总结回答
 
 ```
-在直播场景中，通常采用 RTMP 作为推流协议，保证低延迟；
-播放端常用 HLS，支持分片和自适应码率。
-为了服务全球用户，会结合 CDN 加速，用户就近访问边缘节点，减少卡顿。
-若对延迟要求更高，还可结合 WebRTC 或低延迟 HLS（LL-HLS） 方案
+RTMP：低延迟推流。
+HLS/DASH：自适应拉流。
+低延迟优化：HTTP-FLV、WebRTC（200ms-1s）、LL-HLS.
+CDN：边缘节点 + 负载均衡，确保全球访问效率。
 ```
 
