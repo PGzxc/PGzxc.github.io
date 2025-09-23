@@ -82,65 +82,68 @@ Kotlin与Java的差异，
 1、Java 和 Kotlin 的区别是什么？为什么 Kotlin 越来越受欢迎？
 
 ```
-Kotlin 是一种现代化、静态类型的编程语言，可以完全与 Java 互操作。
-它设计之初就考虑到了 Java 的痛点，
-提供了更简洁的语法（如数据类、空安全、扩展函数）、更好的空安全机制、协程等特性，
-减少了样板代码，提高了开发效率和代码质量。
+1、区别：
+Kotlin 是现代化、静态类型语言，与 Java 完全互操作。
+Kotlin 提供简洁语法（数据类、空安全、扩展函数）、协程支持，减少样板代码。
+
+2、受欢迎原因：
+空安全机制避免 NullPointerException，
+协程简化异步编程
+语法简洁提高开发效率，Android 官方推荐。
 ```
 
 2、Java中String Pool是什么？
 
 ```
-String Pool是Java中存储字符串字面量的内存区域，用于提高效率，因为字符串是不可变的。
-当创建字符串字面量时，会检查池中是否存在相同值，若存在则复用
+String Pool 是 JVM 中的内存区域，用于存储字符串字面量以复用不可变字符串，提高内存效率。
+创建字符串时会检查池中是否已有相同值，若有则直接复用
 ```
 
 3、什么是 Kotlin 协程？它解决了什么问题？
 
 ```
-协程是一种轻量级的并发编程解决方案。
-它可以在不阻塞主线程的情况下执行耗时操作。
-相比于线程，协程的启动和切换成本更低，占用的内存更少。
-它通过挂起（suspend） 和 恢复（resume） 机制，
-让开发者能以同步的方式编写异步代码，解决了回调地狱(callback hell)的问题，使得代码更易于阅读和维护。
+1、定义：
+协程是轻量级并发框架，支持挂起/恢复机制，运行于线程但不阻塞。
+
+2、解决问题：
+简化异步编程，消除回调地狱，提供同步风格的代码，提高可读性和维护性。
+
+3、与线程区别：
+协程更高效，内存占用低，依赖程序调度而非 OS，支持结构化并发
 ```
 
-4、什么是Kotlin协程？它与传统线程有何区别？
+4、解释Kotlin中的suspend函数
 
 ```
-协程是Kotlin用于异步编程的轻量级线程，支持挂起和恢复执行，而不阻塞线程。
-区别在于协程更高效、内存占用低，支持结构化并发，且依赖程序调度而非OS。
+1、定义：
+用于协程的函数，可暂停并恢复执行，处理耗时操作（如网络请求）而不阻塞线程。
+
+2、特点：
+只能在协程或另一个 suspend 函数中调用。
 ```
 
-5、解释Kotlin中的suspend函数
-
-```
-suspend函数可以暂停执行并在后续恢复，用于协程中处理耗时操作，如网络请求，而不阻塞线程。
-只能从协程或其他suspend函数中调用
-```
-
-6、Kotlin协程构建器有哪些？
+5、Kotlin协程构建器有哪些？
 
 ```
 常见构建器包括：
-launch（启动后并忘却协程，返回Job）、
-async（启动返回Deferred结果的协程）、
-runBlocking（阻塞当前线程直到完成，常用于测试）
+launch：启动“启动后并忘却”协程，返回 Job。
+async：启动返回 Deferred 结果的协程。
+runBlocking：阻塞当前线程，常用于测试
 ```
 
-7、Kotlin如何处理空安全？
+6、Kotlin如何处理空安全？
 
 ```
-Kotlin默认变量为非空类型，使用?表示可空类型（如String?），
-通过安全调用操作符?.、Elvis操作符?:和非空断言!!来避免NullPointerException
+默认非空类型，? 表示可空（如 String?）。
+使用安全调用（?.）、Elvis 操作符（?:）、非空断言（!!）避免空指针异常
 ```
 
-8、协程异常传播机制？
+7、协程异常传播机制？
 
 ```
-父协程取消会取消所有子协程。
-使用 SupervisorJob 可避免兄弟协程互相影响。
-捕获：try-catch + CoroutineExceptionHandler
+父协程取消会级联取消子协程。
+SupervisorJob：隔离兄弟协程，防止互相影响。
+异常捕获：通过 try-catch 或 CoroutineExceptionHandler 处理。
 ```
 
 ### 3.2 Android四大组件：Activity、Service、BroadcastReceiver、ContentProvider
@@ -154,60 +157,57 @@ Kotlin默认变量为非空类型，使用?表示可空类型（如String?），
 1、什么是Activity及其生命周期？
 
 ```
-Activity是用户交互的入口点
+1、定义：
+用户交互入口，展示 UI。
 
-生命周期包括onCreate（初始化）、onStart（可见）、onResume（可交互）、
-onPause（部分可见）、onStop（不可见）、onDestroy（销毁）。
+2、生命周期：
+onCreate（初始化）、onStart（可见）、onResume（可交互）、
+onPause（部分可见）、onStop（不可见）、onDestroy（销毁）
 ```
 
 2、Service的类型有哪些？
 
 ```
-Foreground（前台服务，需要通知）、
-Background（后台服务，受API限制）、
-Bound（绑定服务，与组件通信）。
-用于长运行任务如音乐播放
+Foreground：前台服务，需显示通知。
+Background：后台服务，受 API 限制。
+Bound：绑定服务，与组件通信。
+用途：处理长时间任务（如音乐播放）。
 ```
 
 3、Service 和 IntentService 区别？
 
 ```
-Service：运行在主线程，需要手动开线程。
-IntentService：内部有工作线程，任务完成后自动 stopSelf。
-Android 8.0+ 后台执行限制，需要前台服务（ForegroundService）
+1、Service：
+运行于主线程，需手动创建线程。
+
+2、IntentService：
+自带工作线程，任务完成后自动停止（Android 8.0+ 限制后台执行，推荐 ForegroundService）。
 ```
 
-4、BroadcastReceiver的作用是什么？
+4、BroadcastReceiver 作用与场景
 
 ```
-用于响应系统或应用广播事件，如开机或网络变化。
-类型包括静态（清单注册）和动态（代码注册）。
+作用：响应系统或应用广播事件（如网络变化、开机）。
+类型：静态（清单注册，8.0+ 限制隐式广播）、动态（代码注册，适合局部通信）。
 ```
 
-5、广播接收器（BroadcastReceiver）使用场景？
+5、ContentProvider如何实现数据共享？
 
 ```
-静态注册：应用未启动时也能接收（但 8.0 限制隐式广播）。
-动态注册：适合局部通信（如页面内广播）
+定义：管理应用间数据共享，通过 URI（如 content://authority/path/id）访问。
+组件：URI、ContentResolver、Cursor、Contract 类。
+用途：跨进程/跨应用共享数据（如联系人）。
 ```
 
-6、ContentProvider如何实现数据共享？
+6、四大组件如何通过Intent通信？
 
 ```
-ContentProvider管理应用间数据共享，使用URI访问数据，如联系人。
-用于跨进程/跨应用数据共享。
-URI 机制：content://authority/path/id。
-组件包括URI、ContentResolver、Cursor和Contract类
+显式 Intent：指定目标组件。
+隐式 Intent：指定动作，系统选择组件。
+用途：启动 Activity/Service，发送广播
 ```
 
-7、四大组件如何通过Intent通信？
-
-```
-Intent用于启动Activity/Service或发送广播。
-显式Intent指定组件，隐式Intent指定动作让系统选择。
-```
-
-### 3.3 常用布局：linearlayout,recycleview,constraintlayout
+### 3.3 常用布局与优化：linearlayout,recycleview,constraintlayout
 
 面试题题型考核：
 
@@ -218,31 +218,33 @@ Intent用于启动Activity/Service或发送广播。
 1、LinearLayout与ConstraintLayout的区别？
 
 ```
-LinearLayout线性排列子视图，支持水平/垂直；
-ConstraintLayout使用约束定义相对位置，更灵活，减少嵌套，提高性能
+1、LinearLayout：
+线性排列子视图（水平/垂直），简单但易导致嵌套。
+
+2、ConstraintLayout：
+基于约束的灵活布局，减少嵌套，提高性能，支持链式约束
 ```
 
 2、RecyclerView如何工作？
 
 ```
-RecyclerView显示大数据集，
-使用ViewHolder复用视图，
-LayoutManager管理布局（如Linear/Grid），
-Adapter绑定数据。
+1、组成：
+ViewHolder（复用视图）、LayoutManager（管理布局，如 Linear/Grid）、Adapter（绑定数据）。
 
-比ListView更高效
+2、优势：
+比 ListView 更高效，支持大数据集
 ```
 
 3、ConstraintLayout的优化优势是什么？
 
 ```
-使用Cassowary算法扁平化布局，减少层级嵌套，支持链式约束，提高渲染速度
+使用 Cassowary 算法，扁平化布局，减少层级嵌套，提升渲染速度
 ```
 
 4、RecyclerView中DiffUtil的作用？
 
 ```
-DiffUtil计算数据集差异，仅更新变化项，提高性能，避免全刷新
+计算数据集差异，仅更新变化项，避免全量刷新，提高性能
 ```
 
 ### 3.4 View与布局: 布局优化(ConstraintLayout、include、merge、ViewStub)
@@ -264,7 +266,8 @@ ViewStub：按需加载，节省内存
 2、View.GONE与View.INVISIBLE的区别？
 
 ```
-GONE隐藏并移除空间；INVISIBLE隐藏但保留空间
+GONE：隐藏且不占空间。
+INVISIBLE：隐藏但保留空间。
 ```
 
 3、如何优化视图树？
@@ -297,8 +300,8 @@ Android Debug Bridge，用于设备通信，如安装APK、日志查看
 3、SDK中dp和sp的区别？
 
 ```
-dp是密度独立像素，用于布局；
-sp是缩放独立像素，用于字体，支持用户偏好。
+dp：密度独立像素，用于布局尺寸。
+sp：缩放独立像素，用于字体，适配用户偏好
 ```
 
 ### 3.6 并发编程、响应式编程
@@ -325,22 +328,18 @@ sp是缩放独立像素，用于字体，支持用户偏好。
 2、什么是响应式编程
 
 ```
-一种面向数据流和变化的编程范式。
-当数据源发出变化时，订阅者会自动接收到通知并执行相应的操作。
-在 Android 中，RxJava 是典型的响应式编程框架
+1、定义：
+面向数据流和变化的编程范式，数据源变化时自动通知订阅者。
+
+2、Android 应用：
+使用 RxJava 或 Kotlin Flow 处理异步数据流（如事件响应）
 ```
 
-3、什么是响应式编程在Android中的应用？
+3、Kotlin Flow与协程的区别？
 
 ```
-使用RxJava或Kotlin Flow处理异步数据流，如观察者模式响应事件。
-```
-
-4、Kotlin Flow与协程的区别？
-
-```
-Flow是冷流，用于响应式数据序列；
-协程更通用异步
+Flow：冷流，处理响应式数据序列。
+协程：通用异步编程工具。
 ```
 
 ### 3.7 架构设计模式: MVC/MVP/MVVM
@@ -354,21 +353,22 @@ Flow是冷流，用于响应式数据序列；
 1、MVC、MVP、MVVM的区别？
 
 ```
-MVC(Model-View-Controller)View直接与Model交互；
-MVP(Presenter中介)解耦View；
-MVVM(ViewModel绑定)使用数据绑定自动更新UI
+MVC(Model-View-Controller)：View直接与Model交互，耦合度高
+MVP(Presenter中介)：Presenter 解耦 View 和 Model
+MVVM：ViewModel 通过数据绑定自动更新 UI，推荐用于 Android。
 ```
 
-2、Android中为什么推荐MVVM？
+2、Android中为什么推荐MVVM？(MVVM 优势)
 
 ```
-MVVM支持生命周期感知、数据绑定，适合Jetpack组件，提高测试性
+支持生命周期感知、数据绑定，适配 Jetpack 组件（如 LiveData、Room），提高测试性和可维护性
 ```
 
 3、ViewModel的作用？
 
 ```
-存储UI数据，生存于配置变化，区别于AndroidViewModel(包含Application上下文)
+存储 UI 数据，存活于配置变化（如屏幕旋转）。
+AndroidViewModel：包含 Application 上下文。
 ```
 
 ### 3.8 组件化与模块化
@@ -417,21 +417,21 @@ UDP：无连接，效率高（常用于直播、游戏）。
 2、HTTP 和 HTTPS 区别？
 
 ```
-HTTP：明文传输，安全性差。
-HTTPS：基于 TLS/SSL，支持加密、认证、防篡改。
+HTTP：明文传输，安全性低。
+HTTPS：基于 TLS/SSL，加密传输，支持认证、防篡改
 ```
 
 3、WebSocket 特点？
 
 ```
 全双工长连接。
-用于 IM、实时推送。
+适合实时通信（如 IM、推送）。
 ```
 
 4、Android中如何实现WebSocket？
 
 ```
-使用OkHttp或第三方库如Socket.IO，建立连接并监听事件
+使用 OkHttp 或 Socket.IO 建立连接，监听事件
 ```
 
 ### 3.10 网络请求缓存(本地+内存)
@@ -482,14 +482,14 @@ HTTPS：基于 TLS/SSL，支持加密、认证、防篡改。
 Shared Preferences： 存储少量简单键值对数据。
 文件存储： 存储文件数据，如图片、文本。
 SQLite 数据库： 存储结构化数据，常用于存储大量复杂数据。
-Room： Google 推荐的 SQLite 数据库封装库，提供了更友好的 API，支持 LiveData 和协程，提高了开发效率。
+Room： Jetpack ORM，支持注解、LiveData、Flow
 ```
 
 2、SQLite 与 Room 区别？
 
 ```
-SQLite：原生 API，需写 SQL。
-Room：Jetpack ORM，支持注解、LiveData、Flow。
+SQLite：原生 API，需手动写 SQL。
+Room：封装 SQLite，提供简洁 API，支持 Jetpack 组件
 ```
 
 3、如何处理SQLite事务？
@@ -509,26 +509,18 @@ Room：Jetpack ORM，支持注解、LiveData、Flow。
 1、一个 APK 的打包流程是怎样的？
 
 ```
-1、详细版
 资源编译： aapt 工具将资源文件（XML、图片等）编译为二进制资源文件。
 代码编译： Java/Kotlin 代码被编译为字节码（.class 文件）。
 DEX 转换： dx/d8 工具将字节码转换为 Dalvik/ART 虚拟机可执行的 DEX 文件。
 APK 打包： 将编译好的 DEX 文件、资源、清单文件（AndroidManifest.xml）等打包成一个未签名的 APK。
 签名： 使用 apksigner 对 APK 进行签名，确保应用的完整性和来源可信。
 对齐优化： 使用 zipalign 工具对 APK 文件进行对齐优化，以提高运行时效率
-
-
-2、简洁版
-编译 → Dex → APK/AAB。
-签名（V1/V2/V3）。
-对齐（zipalign）。
-发布到应用市场（Google Play / 应用商店）。
 ```
 
-2、打包流程是什么？
+2、简洁版打包流程
 
 ```
-编译资源、生成APK/AAB，使用gradle build，签名Keystore
+编译 → Dex → APK/AAB → 签名（V1/V2/V3） → 对齐（zipalign） → 发布
 ```
 
 3、ProGuard/R8的作用？
