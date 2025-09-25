@@ -1,11 +1,12 @@
 ---
 title: IOS面试题——高频面试题之音视频(6)
-date: 2025-09-25 16:02:25
 categories:
   - 面试相关
   - IOS面试题
 tags:
   - IOS面试题
+abbrlink: 7c833c2d
+date: 2025-09-25 16:02:25
 ---
 ## 一 概述
 
