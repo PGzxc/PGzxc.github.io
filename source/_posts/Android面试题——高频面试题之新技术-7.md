@@ -25,8 +25,7 @@ date: 2025-09-22 17:17:44
 ```
 1.Jetpack、compose技术栈、Navigation、Room/Paging3
 2.64位设备16KB页面大小优化
-3.依赖注入框架
-4.项目经验：项目难点与解决方案、技术选型、架构演进
+3.项目经验：项目难点与解决方案、技术选型、架构演进
 ```
 
 ## 三 面试题解答(仅供参考)
@@ -171,63 +170,7 @@ Google Play 从 2025 年 11 月起强制支持，否则无法更新。
 答题套路：问题 → 原因 → 方案 → 效果。
 ```
 
-### 3.3 依赖注入框架
-
-面试考点
-
-```
-DI 是 Android 架构面试的核心，常考 Hilt/Dagger 与 Koin 的区别，
-强调解耦、测试性和减少样板代码。
-```
-
-1、 介绍一下依赖注入（DI）的概念
-
-```
-定义：将对象创建和依赖关系管理从对象内部转移到外部，实现 解耦。
-作用：便于单元测试、模块化和维护。
-示例：在 ViewModel 注入 Repository，而非手动 new。
-```
-
-2、DI 框架对比：Dagger/Hilt vs Koin
-
-|  框架  |                             特点                             |        适用场景        |
-| :----: | :----------------------------------------------------------: | :--------------------: |
-| Dagger |              编译期注入，灵活，配置复杂，性能优              | 大型项目，复杂依赖关系 |
-|  Hilt  | 基于 Dagger，简化组件生成，自动支持 ViewModel/WorkManager 注入 |   大型项目，官方推荐   |
-|  Koin  |              运行时注入，DSL 简洁，灵活，上手快              |   中小项目，快速开发   |
-
-3、常用注解解释
-
-```
-@Inject：标记构造函数/字段注入。
-@Provides：在 Module 中提供复杂依赖实例。
-@Binds：接口绑定实现，高效替代 @Provides（逻辑简单时用）。
-
-Hilt 特性：@InstallIn 指定组件作用域，@SingletonComponent、@HiltViewModel 支持 ViewModel 注入。
-```
-
-4、Android 项目中使用 Hilt
-
-```
-1、添加依赖
-implementation 'com.google.dagger:hilt-android'
-kapt 'com.google.dagger:hilt-compiler'
-
-2、Application 类添加注解：@HiltAndroidApp
-3、Activity/Fragment 添加注解：@AndroidEntryPoint
-4、ViewModel 注入：使用 @HiltViewModel 和 @Inject 构造函数
-```
-
-5、总结优化版
-
-```
-核心：DI 解耦、提高测试性、减少样板。
-框架选择：Hilt/Dagger（大型项目）、Koin（中小项目）。
-关键注解：@Inject / @Provides / @Binds。
-落地经验：Hilt 注解 Application/Activity/ViewModel，实现自动注入
-```
-
-### 3.4 项目经验：项目难点与解决方案、技术选型、架构演进
+### 3.3 项目经验：项目难点与解决方案、技术选型、架构演进
 
 面试考点
 
