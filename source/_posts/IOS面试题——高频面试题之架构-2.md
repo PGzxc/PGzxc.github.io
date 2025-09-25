@@ -26,6 +26,7 @@ date: 2025-09-23 08:54:43
 1.组件化开发
 2.常见架构模式：mvc及mvvm，clean architecture，Rxswift+mvvm等
 3.框架与库：Cocoa官方框架 + 第三方如Alamofire, SwiftyJSON, Kingfisher
+4.三方框架 AFNetworking
 ```
 
 ## 三 面试题解答(仅供参考)
@@ -286,7 +287,7 @@ MVVM（Model-View-ViewModel）：
 -ViewModel：处理业务逻辑，转换数据为View可用的格式，通过绑定更新UI。
 
 2、实现方式：
--ViewModel暴露可观察属性(如@Published或Observable)。
+-ViewModel暴露可观察属性（如@Published或Observable)。
 -View通过Combine（SwiftUI）或RxSwift订阅更新。
 -示例：登录页面，ViewModel校验输入，更新按钮状态，View绑定显示。
 
@@ -635,3 +636,75 @@ SwiftUI为主流，需熟悉其与UIKit的混合开发。
 性能优化（如缓存管理、异步加载）是面试重点。
 ```
 
+### 3.4 三方框架AFN
+
+面试考点
+
+```
+特点：简洁易用、功能全面、模块化、安全性。  
+作用：简化 iOS 网络请求开发，提高开发效率。  
+对比：与 Alamofire（Swift 现代化）、URLSession（原生轻量）差异。  
+选择依据：项目语言、功能需求、维护性。  
+```
+
+1、简述 AFNetworking 的特点及其在 iOS 项目中的作用？
+
+```
+1、特点
+-简洁易用：封装 NSURLSession，提供直观 API，如 AFHTTPSessionManager。
+-功能全面：支持 GET/POST/PUT/DELETE 请求、文件上传/下载、JSON 序列化、网络状态监控。
+-模块化设计：核心类职责清晰（如 AFHTTPRequestSerializer、AFHTTPSessionManager），易扩展和维护。
+-安全性：支持 SSL Pinning，防止中间人攻击。
+
+2、作用
+-简化网络请求和响应处理，开发者专注业务逻辑。
+-常用于 API 调用、文件传输、网络状态检测，提高开发效率。
+```
+
+2、AFNetworking 和 Alamofire 有何区别？如何选择？
+
+2-1、对比
+
+|    特性    |           AFNetworking            |              Alamofire               |
+| :--------: | :-------------------------------: | :----------------------------------: |
+|    语言    |            Objective-C            |                Swift                 |
+|  API 设计  |      简洁，基于 NSURLSession      | 链式调用，支持 async/await (iOS 15+) |
+|    特性    | 文件上传/下载、JSON、网络状态监控 |   更现代化，类型安全、错误处理丰富   |
+|  适用场景  |   兼容旧项目，Objective-C 项目    |     Swift 项目，需现代化并发特性     |
+| 社区与维护 |          较稳定，更新少           |          社区活跃，更新频繁          |
+
+2-2、选择依据
+
+```
+项目语言：Objective-C → AFNetworking；Swift → Alamofire。
+新特性需求：iOS 15+ async/await → Alamofire。
+维护性：长期维护或社区活跃 → Alamofire。
+```
+
+3、使用 AFNetworking 处理网络请求及与 URLSession 对比
+
+```
+1、使用方法
+创建 AFHTTPSessionManager 实例并配置序列化器。
+支持 GET/POST/PUT/DELETE 等 HTTP 方法。
+错误处理：success/failure 回调，可结合网络状态管理器或重试机制。
+安全性：启用 SSL Pinning。
+
+2、优点
+简洁：封装复杂细节，减少样板代码。
+功能丰富：JSON 解析、文件上传/下载、网络状态监控。
+
+3、缺点
+第三方依赖：增加项目体积和维护成本。
+灵活性略低：不如原生 URLSession 自由定制。
+
+4、注意事项
+错误处理：超时、重试、认证（token 刷新）。
+性能优化：避免频繁创建 AFHTTPSessionManager，复用实例。
+安全性：SSL Pinning，验证服务器证书。
+版本迁移：Swift 项目可逐步迁移到 Alamofire 或原生 URLSession。
+
+5、建议
+小项目或快速开发 → AFNetworking/Alamofire。
+对性能和无依赖要求高 → 原生 URLSession。
+```
