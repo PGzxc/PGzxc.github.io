@@ -1,5 +1,5 @@
 ---
-title: Android开发之——nowinandroid核心配置(3)
+title: Android开发之——nowinandroid旧项目核心配置(3)
 categories:
   - 开发
   - D-移动开发
