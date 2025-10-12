@@ -32,21 +32,21 @@ https://github.com/android/nowinandroid
 ```
 -Now in Android是 Google 出品的一个开源 Android 示例 app
 -完全用 Kotlin + Jetpack Compose 开发。
--它作为一个参考／范例，用来展示 Android 最佳实践：UI 架构、模块化、测试、性能等。
+-它作为一个参考/范例，用来展示 Android 最佳实践：UI 架构、模块化、测试、性能等。
 ```
 
 ## 三 项目结构(Module 与目录划分)
 
-| 模块 / 顶层目录 |                         职责 / 内容                          |              典型子模块 / 文件               |
-| :-------------: | :----------------------------------------------------------: | :------------------------------------------: |
-|       app       | 主应用入口，包含导航（NavHost）、应用级别的主题配置、Scaffold 容器。负责将各个 feature 模块组装成完整应用。支持不同 build variant（debug/release/benchmark）和 flavor（demo/prod）。 |     MainActivity.kt、AndroidManifest.xml     |
-| app-nia-catalog | 独立的小型示例应用，用来展示项目中设计系统（Design System）的组件库（component catalog），方便开发者快速预览和调试 UI 元素 |              CatalogActivity.kt              |
-|     feature     | 每个子模块对应一个具体功能，比如 `feature:foryou`、`feature:author`、`feature:topic`。每个 feature 模块高内聚、低耦合，包含 UI（Compose）、ViewModel、状态管理逻辑。 |       feature:foryou`、`feature:author       |
-|      core       | 核心库模块，存放通用逻辑和基础设施：<br/>- `core:data`：数据仓库、Repository 接口实现<br/>- `core:database`：Room 数据库<br/>- `core:network`：网络请求、Retrofit API<br/>- `core:model`：业务模型（domain entities）<br/>- `core:designsystem`：Material3 风格的 UI 组件库<br/>- `core:ui`：通用 UI 控件、扩展函数 | core:model`、`core:designsystem`、`core:data |
-|   benchmarks    | 基准测试模块，用于测量应用启动时间、UI 渲染等性能关键指标。负责生成 Baseline Profile，提升 release 构建运行性能。 |               BenchmarkTest.kt               |
-|   build-logic   | Gradle 的 convention 插件集合，统一定义模块的构建逻辑。包括 Compose 配置、lint 配置、依赖版本声明、代码格式化规则。避免每个模块重复写配置 |        convention-plugins.gradle.kts         |
-| lint / spotless | 代码质量与规范模块。Spotless 用于统一代码格式，lint 模块可定义自定义规则，确保代码风格与质量一致 |             .spotless.gradle.kts             |
-|  tools / docs   | 辅助工具与文档，比如 “Architecture learning journey”、“Modularization learning journey”。帮助开发者理解整个项目设计。 |             docs/ARCHITECTURE.md             |
+| 模块 / 顶层目录 |                         职责 / 内容                          |                 典型子模块 / 文件                  |
+| :-------------: | :----------------------------------------------------------: | :------------------------------------------------: |
+|       app       | 主应用入口，包含导航（NavHost）、应用级别的主题配置、Scaffold 容器。<br/>负责将各个 feature 模块组装成完整应用。<br/>支持不同 build variant（debug/release/benchmark）和 flavor（demo/prod）。 |        MainActivity.kt、AndroidManifest.xml        |
+| app-nia-catalog | 独立的小型示例应用，用来展示项目中设计系统(Design System)的组件库(component catalog)，<br/>方便开发者快速预览和调试 UI 元素 |                 CatalogActivity.kt                 |
+|     feature     | 每个子模块对应一个具体功能，比如 `feature:foryou`、`feature:author`、`feature:topic`。<br/>每个 feature 模块高内聚、低耦合，包含 UI(Compose)、ViewModel、状态管理逻辑。 |         feature:foryou、<br>feature:author         |
+|      core       | 核心库模块，存放通用逻辑和基础设施：<br/>- `core:data`：数据仓库、Repository 接口实现<br/>- `core:database`：Room 数据库<br/>- `core:network`：网络请求、Retrofit API<br/>- `core:model`：业务模型（domain entities）<br/>- `core:designsystem`：Material3 风格的 UI 组件库<br/>- `core:ui`：通用 UI 控件、扩展函数 | core:model、<br/>core:designsystem、<br/>core:data |
+|   benchmarks    | 基准测试模块，用于测量应用启动时间、UI 渲染等性能关键指标。<br/>负责生成 Baseline Profile，提升 release 构建运行性能。 |                  BenchmarkTest.kt                  |
+|   build-logic   | Gradle 的 convention 插件集合，统一定义模块的构建逻辑。<br/>包括 Compose 配置、lint 配置、依赖版本声明、代码格式化规则。<br/>避免每个模块重复写配置 |           convention-plugins.gradle.kts            |
+| lint / spotless | 代码质量与规范模块。<br/>Spotless 用于统一代码格式，lint 模块可定义自定义规则，确保代码风格与质量一致 |                .spotless.gradle.kts                |
+|  tools / docs   | 辅助工具与文档，比如 “Architecture learning journey”、“Modularization learning journey”。<br/>帮助开发者理解整个项目设计。 |                docs/ARCHITECTURE.md                |
 
 ## 四 功能
 
@@ -59,7 +59,7 @@ Now in Android 的核心功能围绕内容浏览与个性化展开，涵盖了�
 -UI体验：基于Jetpack Compose + Material3，支持动态主题、暗黑模式、自适应布局(手机、平板、可折叠设备)
 -数据同步：通过 WorkManager 后台任务定期拉取最新内容。
 -性能优化：提供 benchmark 模块与 baseline profile，改善冷启动与 UI 流畅度。
--测试支持：提供单元测试、UI 测试、截图测试（Roborazzi），覆盖常见的 UI 状态与交互场景。
+-测试支持：提供单元测试、UI 测试、截图测试(Roborazzi)，覆盖常见的 UI 状态与交互场景。
 ```
 
 ## 五 依赖管理
@@ -69,7 +69,7 @@ Now in Android 的核心功能围绕内容浏览与个性化展开，涵盖了�
 ### 5.1 版本与依赖统一管理
 
 ```
--使用 Gradle Kotlin DSL (.gradle.kts) 编写构建脚本。
+-使用 Gradle Kotlin DSL(.gradle.kts)编写构建脚本。
 -通过 Version Catalog(libs.versions.toml)管理第三方依赖和版本号。所有模块共享同一版本声明，避免冲突。
 ```
 
@@ -95,7 +95,7 @@ Now in Android 的核心功能围绕内容浏览与个性化展开，涵盖了�
 -依赖注入：Hilt
 -后台任务：WorkManager
 -图片加载：Coil
--测试：JUnit、Robolectric、Roborazzi（截图测试）、Macrobenchmark
+-测试：JUnit、Robolectric、Roborazzi(截图测试)、Macrobenchmark
 ```
 
 ### 5.4 构建变体(Build Variants & Flavors)
