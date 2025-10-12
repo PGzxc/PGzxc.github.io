@@ -26,16 +26,16 @@ date: 2025-09-15 08:24:22
 ### 2.1 什么是 Koin
 
 ```
-1、
+1、概念
 -Koin 是一个轻量、实用的依赖注入框架，
 -用于 Kotlin 和 Kotlin Multiplatform(KMP)项目。 
 
-2、
+2、依赖注入
 -它提供一个声明式的 DSL（Domain-Specific Language）来定义模块（modules），
 在这些模块里你注册依赖项。
 -通过类注入或接口注入来获得对象，不依赖反射的重型机制，比较适合移动端／轻量服务端等场景。 
 
-3、
+3、平台支持
 -支持多平台（包括 Android、iOS、桌面、JavaScript 等）
 -使得你可以在共享代码中使用相同的 DI 机制
 ```
