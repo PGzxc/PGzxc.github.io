@@ -13,8 +13,8 @@ date: 2025-09-26 16:45:17
 
 ```
 本文介绍:
- -NowinAndroid(NIA)项目下benchmarks模块
- -模块剖析:benchmarks
+ -NowinAndroid(NIA)项目下build-logic模块
+ -模块剖析:build-logic
  -是 Gradle 构建脚本逻辑的抽取和复用模块
 ```
 
@@ -27,7 +27,6 @@ date: 2025-09-26 16:45:17
 ```
 1、原因
 在一个大型多模块项目里(NIA 有几十个模块)，很多 Gradle 配置会重复，比如：
-
 -各模块通用的插件应用（如 Kotlin、Android 插件）
 -Lint、代码规范、编译参数配置
 -Compose、Hilt、KSP、Room 等库的统一配置
