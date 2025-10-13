@@ -59,10 +59,9 @@ baseUrl、Converter(如 GsonConverterFactory)、CallAdapter(如 RxJava2CallAdapt
 2.3、方法调用转为 ServiceMethod，生成 OkHttp 的 Request。
 2.4、OkHttp 执行请求，响应通过 Converter 转为实体类。
 
-
 3、示例：
 
-javainterface ApiService {
+interface ApiService {
     @GET("users/{id}")
     Call<User> getUser(@Path("id") String id);
 }
@@ -97,7 +96,7 @@ Interceptor：拦截器链，处理日志、缓存、重试等
 
 3、示例：
 
-javaOkHttpClient client = new OkHttpClient.Builder()
+OkHttpClient client = new OkHttpClient.Builder()
     .addInterceptor(chain -> chain.proceed(chain.request().newBuilder().addHeader("Token", "xyz").build()))
     .build();
 Request request = new Request.Builder().url("https://api.example.com/").build();
@@ -126,7 +125,7 @@ client.newCall(request).enqueue(new Callback() { ... });
 
 3、示例：
 
-javapublic class ApiManager {
+public class ApiManager {
     private static final Retrofit retrofit = new Retrofit.Builder()
         .baseUrl("https://api.example.com/")
         .client(new OkHttpClient.Builder()
@@ -173,7 +172,7 @@ observeOn：指定下游（数据处理）线程。
 
 2、示例：
 
-javaObservable.just("Hello")
+Observable.just("Hello")
     .map(String::toUpperCase)
     .subscribeOn(Schedulers.io())
     .observeOn(AndroidSchedulers.mainThread())
@@ -197,6 +196,7 @@ javaObservable.just("Hello")
 3、Room 的使用
 
 ```
+1、概念
 @Entity: 定义表结构。
 @Dao: 定义查询接口（@Query、@Insert）。
 @Database: 配置数据库。
