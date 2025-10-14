@@ -32,7 +32,7 @@ date: 2025-09-24 15:58:21
 2、Runtime动态机制:消息转发(forwardingTargetForSelector、forwardInvocation)、Method Swizzling、Category、关联对象
 3、RunLoop 底层原理:事件循环、线程保活、Timer/NSTimer
 4、内存管理:ARC原理、引用计数、循环引用(weak/unowned)优化
-5、通信机制:Delegate模式、KVO(事件通知应用)、Reactive Cocoa(RAC)信号流及Notification Center
+5、通信机制:Delegate模式、KVO(事件通知应用)、ReactiveCocoa(RAC)信号流及Notification Center
 ```
 
 ### 2.2 说明
