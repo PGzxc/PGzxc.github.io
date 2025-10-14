@@ -139,7 +139,7 @@ SwiftUI的声明式UI（2025年趋势）与SPM结合，使组件化更轻量和�
 
 5、组件化与模块化区别？
 
-1、对比
+5-1、对比
 
 |   特性   |                模块化                |                      组件化                      |
 | :------: | :----------------------------------: | :----------------------------------------------: |
@@ -149,7 +149,7 @@ SwiftUI的声明式UI（2025年趋势）与SPM结合，使组件化更轻量和�
 | 应用场景 |      适合中小型项目，快速开发。      |       适合大型项目、分布式团队或动态更新。       |
 |   示例   | 将网络请求封装为NetworkManager模块。 |   “支付模块”独立为Framework，通过Router调用。    |
 
-2、面试常问
+5-2、面试常问
 
 ```
 2.1、常被问及如何从模块化迁移到组件化。
@@ -292,7 +292,7 @@ MVVM（Model-View-ViewModel）：
 -示例：登录页面，ViewModel校验输入，更新按钮状态，View绑定显示。
 
 代码示例（SwiftUI+Combine）：
-swiftclass LoginViewModel: ObservableObject {
+class LoginViewModel: ObservableObject {
     @Published var username: String = ""
     @Published var isButtonEnabled: Bool = false
     
@@ -359,7 +359,7 @@ Router：管理页面导航（如UINavigationController推送）。
 -使用DisposeBag管理订阅，避免内存泄漏。
 
 2、代码示例：
-swiftclass SearchViewModel {
+class SearchViewModel {
     let searchResults = PublishSubject<[String]>()
     private let disposeBag = DisposeBag()
     
@@ -539,7 +539,7 @@ SwiftyJSON是一个JSON解析库，简化复杂JSON的访问，避免繁琐的�
 将JSON数据封装为JSON对象，支持链式访问（如json["key"].string），内置空值处理。
 
 3、代码示例：
-swiftlet json = JSON(data)
+let json = JSON(data)
 let name = json["user"]["name"].stringValue // 安全访问
 
 4、优缺点：
@@ -561,7 +561,7 @@ let name = json["user"]["name"].stringValue // 安全访问
 Kingfisher是异步图像下载与缓存库，支持占位图、GIF、渐进加载，类似SDWebImage。
 
 2、代码示例：
-swiftimageView.kf.setImage(with: URL(string: "https://image.jpg"), placeholder: UIImage(named: "default"))
+imageView.kf.setImage(with: URL(string: "https://image.jpg"), placeholder: UIImage(named: "default"))
 
 3、缓存机制：
 
