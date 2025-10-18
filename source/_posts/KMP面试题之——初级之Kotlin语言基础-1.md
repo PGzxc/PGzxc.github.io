@@ -53,7 +53,7 @@ Kotlin 相比 Java 更简洁、安全（Null 安全）、现代化（函数式+�
 | 自动方法 |  自动生成 equals、hashCode、toString、copy   |                         不会自动生成                         |
 | 继承限制 |                  默认final                   |                     限制继承范围(同文件)                     |
 | 常见场景 |             网络响应、数据库实体             |                    UI 状态管理、错误封装                     |
-|   示例   | data class User(val id:Int, val name:String) | kotlin sealed class UiState { object Loading : UiState() data class Success(val data: List\<Item>) : UiState() data class Error(val msg:String) : UiState() } |
+|   示例   | data class User(val id:Int, val name:String) | sealed class UiState { object Loading : UiState() <br>data class Success(val data: List\<Item>) : UiState()<br> data class Error(val msg:String) : UiState() } |
 
 2、总结
 
