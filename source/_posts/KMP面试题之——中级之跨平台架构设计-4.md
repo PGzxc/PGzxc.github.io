@@ -92,9 +92,7 @@ shared/commonMain/
 3、示例
 
 ```
-class ArticleViewModel(
-    private val repository: ArticleRepository
-) {
+class ArticleViewModel(private val repository: ArticleRepository) {
     private val _state = MutableStateFlow(ArticleState())
     val state: StateFlow<ArticleState> = _state
 
