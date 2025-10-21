@@ -16,44 +16,20 @@ comments: false
 		<td colspan="1">桌面端</td>
 		<td colspan="1">完整版</td>
 	</tr>
-	<tr  style="">
-		<td width="8%">
-		<a href="folder/周向成_Android开发工程师.pdf" target="_blank">安卓</a>
-		</td>
-		<td width="8%">
-		<a href="folder/周向成_IOS开发工程师.pdf" target="_blank">IOS</a>
-		</td>
-		<td width="8%">
-		<a href="folder/周向成_Harmony开发工程师.pdf" target="_blank">鸿蒙</a>
-		</td>
-		<td width="8%">
-		<a href="folder/周向成_Flutter开发工程师.pdf" target="_blank">Flutter</a>
-		</td>
-		<td width="8%">
-		<a href="folder/周向成_ReactNative开发工程师.pdf" target="_blank">RN</a>
-		</td>
-		<td width="8%">
-		<a href="folder/周向成_KMP开发工程师.pdf" target="_blank">KMP</a>
-		</td>
-		<td width="8%">
-		<a href="folder/周向成_小程序开发.pdf" target="_blank">小程序</a>
-		</td>
-		<td width="8%">
-		<a href="folder/周向成_Java开发工程师.pdf" target="_blank">Java</a>
-		</td>
-		<td width="8%">
-		<a href="folder/周向成_前端开发工程师.pdf" target="_blank">Web</a>
-		</td>
-        <td width="8%">
-		<a href="folder/周向成_AI开发工程师.pdf" target="_blank">AI</a>
-		</td>
-		<td width="8%">
-		<a href="folder/周向成_WinForm开发工程师.pdf" target="_blank">WinForm</a>
-		</td>
-		<td width="8%">
-		<a href="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/index.pdf" target="_blank">完整版</a>
-		</td>
-	</tr>
+    <tr>
+      <td><a href="folder/周向成_Android开发工程师.pdf" target="_blank">安卓</a></td>
+      <td><a href="folder/周向成_IOS开发工程师.pdf" target="_blank">IOS</a></td>
+      <td><a href="folder/周向成_Harmony开发工程师.pdf" target="_blank">鸿蒙</a></td>
+      <td><a href="folder/周向成_Flutter开发工程师.pdf" target="_blank">Flutter</a></td>
+      <td><a href="folder/周向成_ReactNative开发工程师.pdf" target="_blank">RN</a></td>
+      <td><a href="folder/周向成_KMP开发工程师.pdf" target="_blank">KMP</a></td>
+      <td><a href="folder/周向成_小程序开发.pdf" target="_blank">小程序</a></td>
+      <td><a href="folder/周向成_Java开发工程师.pdf" target="_blank">Java</a></td>
+      <td><a href="folder/周向成_前端开发工程师.pdf" target="_blank">Web</a></td>
+      <td><a href="folder/周向成_AI开发工程师.pdf" target="_blank">AI</a></td>
+      <td><a href="folder/周向成_WinForm开发工程师.pdf" target="_blank">WinForm</a></td>
+      <td><a href="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/index.pdf" target="_blank">完整版</a></td>
+    </tr>
 </tbody>
 </table>
 
