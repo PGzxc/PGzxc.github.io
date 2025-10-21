@@ -1054,7 +1054,7 @@ IOS截图
 [resume-hm]:folder/周向成_Harmony开发工程师.pdf
 [resume-flutter]:folder/周向成_Flutter开发工程师.pdf
 [resume-rn]:folder/周向成_ReactNative开发工程师.pdf
-[resume-kmm]:folder/周向成_KMM开发工程师.pdf
+[resume-kmp]:folder/周向成_KMP开发工程师.pdf
 [resume-front]:folder/周向成_前端开发工程师.pdf
 [resume-java]:folder/周向成_Java开发工程师.pdf
 [resume-xcx]:folder/周向成_小程序开发.pdf
