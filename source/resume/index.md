@@ -49,15 +49,9 @@ comments: false
 # 求职意向
 
 - __工作性质__：全职
-- __期望职位__：
-  &emsp;&emsp;- 移动端(鸿蒙、安卓、IOS)开发、
-  &emsp;&emsp;- 跨平台(Flutter、ReactNative、KMP)开发、
-  &emsp;&emsp;- 后端(Java)开发、
-  &emsp;&emsp;- Web前端开发、
-  &emsp;&emsp;- 小程序(微信小程序+uni-app)开发、
-  &emsp;&emsp;- 桌面端(Winform)开发等
 - __期望薪资__：面议
 - __工作地点__：北京
+- __期望职位__：移动端开发 (鸿蒙 / Android / iOS)  、跨平台开发 (Flutter / React Native / KMP)  、后端开发 (Java)  、Web 前端开发  、小程序开发 (微信小程序 / uni-app)  、桌面端开发 (WinForm) 等
 
 # 相关信息
 - **网站地址**：https://pgzxc.github.io/
