@@ -875,85 +875,80 @@ IOS截图
 # 技能清单
 
 ## Android
-1. 有良好的Java、Kotlin语言基础，熟悉Jetpack Compose、Flutter、RN等编程语言
-2. 熟悉常用的数据结构、算法和设计模式
-3. 熟悉 Android 构建框架 MVC、MVP 、MVVM、MVI 的使用
-4. 熟练掌握 Android 设备不同屏幕、分辨率及 Android 版本并进行设备兼容适配
-5. 熟悉JNI开发，Java层调用C/CPP层实现具体的业务逻辑
-6. 熟练使用三方框架：短信验证、三方登录、推送、地图、即时通讯、支付、直播视频等
-7. 熟悉 Android 性能优化及内存调优，解决启动、异常、崩溃、内存溢出等
-8. 熟悉 Android 原生与 WebView(js)交互的实现
-9. 熟悉 JNI(NDK)、热修复、插件开发、传感器、NFC、蓝牙等
+1. 熟悉项目开发模式:传统(XML+Java/Kotlin)与声明式UI(ComposeUI)
+2. 熟悉多线程与异步通信机制：Handler、AsyncTask、Coroutine、线程池等
+3. 熟悉主流架构模式与实践：MVC/MVP/MVVM/MVI
+4. 熟悉核心框架与原理：Retrofit/OkHttp、RxJava、Room、EventBus、MMKV、Glide/Fresco等
+5. 熟悉主流商用SDK集成与调试：登录、短信验证、IM、视频/直播、推送、支付、地图等
+6. 理解Android核心机制：消息机制、事件分发机制、View绘制流程
+7. 熟悉性能调优与分析：启动优化、卡顿检测、内存优化、网络优化、过度绘制优化等
+8. 熟练使用性能调试工具：Profiler、TraceView、Systrace、MAT、LeakCanary等
+9. 熟悉兼容与适配:设备适配(手机/平板/折叠屏)及版本适配(Android 6.0+)
+10. 了解系统底层原理：ART/Dalvik虚拟机、Binder通信机制、内存/进程管理、应用启动流程
 
 ## IOS
-1.  熟悉 Objective-C、Swift 语言，熟练使用 UIKit 与 SwiftUI 进行 iOS 原生开发
-2. 熟悉常用第三方框架(如 AFNetworking、Alamofire 等)及其集成与应用
-3. 熟悉 SwiftUI 组件、视图、状态管理及数据绑定
-4. 熟悉MRC、ARC内存管理机制
-5. 理解Object-C开发中Runtime、Runloop原理
-6.  掌握网络请求、JSON 解析、并发编程(如 GCD、NSOperation)等常用技术
-7. 熟练常见的数据存储方式及持久化存储与管理
-8. 熟悉常用的设计模式，如MVC模式、代理模式、单例模式、观察者模等
-9. 熟悉APP上架的流程及访问真机设备的能力
-10. 熟练掌握百度地图、高德地图的定位、导航、自定义标注、地理编码等功能
-11. 可直接阅读 apple developer 官方文档
-12. 熟练使用推送通知，自定义消息的处理
-13. 掌握Instruments leaks内存检测以及单元测试提升程序的稳定性
-14. 熟悉 SourceTree、Github 代码管理工具，jenkins可持续开发
+1.  熟悉项目开发模式:传统UIKIt(xib/Storyboard+OC/Swift)与声明式UI(SwiftUI)
+2.  熟悉开发与协作工具：依赖管理(CocoaPods/SPM/Carthage)、版本控制(Git/GitHub/Sourcetree)、CI/CD
+3.  熟悉主流框架：Alamofire/AFNetworking、SwiftyJSON/ObjectMapper、SDWebImage/Kingfisher等
+4.  熟悉常见数据存储：UserDefaults/MMKV、Core Data、Realm/SQLite
+5.  理解系统机制：事件传递机制、响应链、自定义控件、KVC/KVO、CALayer/UIView等
+6.  理解底层原理：Runtime动态机制、RunLoop工作原理、内存管理(MCR/ARC)、多线程(GCD/NSOperation)
+7.  熟悉常见商业SDK：推送、IM、支付、社交分享、视频/直播、地图等
+8.  熟悉性能优化：内存泄漏检测、崩溃分析、卡顿与性能监控、工具(Instruments/Leaks/Time Profiler)
+9.  熟悉兼容和适配：尺寸(iphone/ipad)、屏幕分辨率、系统兼容性
+10.  具备App Store上架经验，熟悉签名、证书管理及常见审核问题处理流程
 
 ## Harmony
 
-1. 熟悉 ArkTS/仓颉语言及其语法规范，具备实际项目开发经验
-2. 熟悉 Harmony 中常用布局、组件并进行 UI 开发
-3. 熟悉 Builder、Extend 等装饰器用法，支持自定义组件开发与复用
-4. 掌握 UIAbility 组件、页面与自定义组件的生命周期管理
-5. 熟悉@State、@Prop、@Link 等状态管理，并进行数据传递和接收
-6. 熟悉preferences、PersistentStorage等数据持久化存储方案
-7. 熟悉router、Navigator页面路由和组件导航及pageTransition转场动画
-8. 熟悉@ohos.net.http 或@ohos/axios 等网络请求框架
-9. 熟悉常见开源三方库：@ohos/pulltorefres、@ohos/axios、@ohos/mmkv等
+1. 熟悉鸿蒙多语言开发体系：Java、arkts/ts/js、仓颉
+2. 熟悉鸿蒙应用模型：Stage模型、FA模型
+3. 熟悉UIAbility生命周期及回调
+4. 熟悉鸿蒙装饰器和状态管理器(v1和v2版本、$和$$、全局状态管理等)
+5. 熟悉arkts多线程：TaskPool和Worker
+6. 熟悉异步与事件：异步(回调、Promise/async/await等)、事件机制(EventHub、组件事件)
+7. 熟悉组件双向通信：@Prop/@Observed、@Link、@Provide/@Consume、Emitter/EventHub
+8. 熟悉鸿蒙系统能力：文件访问、相机、位置、网络、通知、媒体播放等
+9. 熟悉分布式开发：分布式数据(共享)，分布式软总线、分布式api
+10. 熟悉轻量化服务:原子化服务、卡片服务
 
 ## Flutter
 
-1. 熟悉Dart开发语言及在Flutter中的应用
-2. 熟练掌握 Flutter 常用布局、组件、生命周期及状态管理机制
-3. 熟悉主流状态管理方案：GetX、Redux、BLoC、MobX
-4. 熟悉Flutter网络请求及返回数据解析
-5. 熟悉文件读写、本地存储及持久化方案（如 SharedPreferences、数据库等）
-6. 熟练使用常见开源组件库，如 GetWidget、pull_to_refresh 等
-7. 熟悉Flutter性能优化、项目调试及疑难问题解决
-8. 了解Flutter与Android及IOS混合开发
-9. 熟悉GetX项目搭建框架，进行网络请求/状态管理/依赖管理/路由管理/国际化/主题设置等
-10. 熟悉Flutter自带动画即第三方动画(Lottie、Flare、Nima、Rive)
+1. 熟悉Flutter中组件体系及生命周期：StatelessWidget、StatefulWidget 
+2. 理解Flutter中三棵树：Widget Tree、Element Tree、RenderObject Tree
+3. 熟悉Flutter中启动流程与性能优化：应用启动到首页渲染的完整链路与启动加速方案
+4. 熟悉Flutter中异步及网络：Future/Stream、async/await及Future、Dio/Retrofit等
+5. 熟悉Flutter中本地存储：SharedPreferences、SQLite/Drift、Hive/Isar
+6. 熟悉Flutter中路由管理：Navigator 1.0/2.0、GoRouter、AutoRoute
+7. 熟悉Flutter中状态管理：Provider、Bloc、Riverpod、GetX、MobX、Cubit
+8. 熟悉Flutter底层机制：三棵树渲染机制、UI 绘制流程等
+9. 了解原生混合开发与通信机制：Flutter与原生混合、XXChannel通信
+10. 熟悉性能与多端适配：启动优化与防白屏、性能优化及调优工具、多端适配、溢出问题
 
 ## React Native
 
-1. 熟悉 JavaScript、TypeScript、JSX/TSX 语法，掌握 React 核心开发语言
-2. 熟悉React 的核心概念，如组件、状态(state)、属性(props)、虚拟 DOM、Diff 算法等
-3. 熟悉 React 生命周期，如组件的初始化、更新和销毁操作
-4. 熟悉无状态函数组件和有状态类组件及自定义组件，掌握组件的组合和复用技巧
-5. 熟悉 React Native 提供的各种原生组件，了解它们的属性和用法
-6. 熟悉React Native 的 API 进行设备功能的调用，如摄像头、地理位置、本地存储等
-7. 熟悉Flexbox 布局模型，能够使用 Flexbox 属性进行灵活的页面布局
-8. 熟悉常用的状态管理方式，包括React Hooks(如useState)及三方库Redux、MobX
-9. 熟悉路由及导航及导航过程中参数传递
-10. 熟悉性能优化避免不必须要组件渲染及对列表数据优化
-11. 熟悉网络请求及异步处理：fetch网络请求及Promise机制
-12. 熟悉常用三方UI库：Ant Design Mobile RN、React Native Element等 
-13. 熟悉expo构建跨平台应用并使用预览及测试服务
-14. 熟悉React Native开发中的问题解决及项目调试
-15. 了解RN与原生(Android或IOS)混合开发，及两者间交互和通信
+1. 熟悉前端基础：html/css/js、es6、ts/jsx、react、vue等
+2. 熟悉RN基础：函数/类组件、Props/State、组件封装、Hooks、生命周期
+3. 熟悉RN状态管理：Redux、MobX、Zustand、Recoil等
+4. 熟悉RN工具与工程化：Webpack/Vite/Rollup、Expo(CLI/Dev Client)、CI/CD
+5. 熟悉RN路由与导航：React Navigation、React Router Native、Wix Navigation
+6. 熟悉RN数据存储：AsyncStorage、MMKV、Realm、SQLite、WatermelonDB
+7. 理解RN渲染原理：虚拟 DOM diff 算法、Yoga 布局引擎、Bridge通信机制及新架构(JSI/Fabric)
+8. 熟悉RN组件通信：父传子(Props)、子传父(回调函数)、跨层级(状态管理)
+9. 熟悉RN常见库：UI库(NativeBase/RN Elements)、跨平台 UI(Ant Design)
+10. 了解原生扩展与通信能力：原生接入(蓝牙/位置/推送)、原生通信(TurboModules/JSI)等
 
 ## Kotlin Multiplatform Mobile
 
-1. 熟练使用 Jetpack Compose 与 Compose Multiplatform 进行界面布局与组件开发
-2. 熟练使用expect/actual进行共享模块及跨平台模块代码开发
-3. 熟练使用moko-multiplatform-resources进行资源的引用及开发
-4. 熟练使用ktor、ktor-serialization-kotlinx-json进行网络访问及结果解析
-5. 熟练使用voyager进行viewmodel开发和Navigator进行界面间导航
-6. 熟悉定义网络请求的各种状态并根据状态进行界面显示的MVI模式
-7. 熟悉SQLDelight跨平台数据库的配置及使用
-8. 熟悉Kstore-file跨平台文件设置及Kstore跨平台数据保存
+1. 熟悉Kotlin语言：类型推断、空安全、扩展函数、协程、数据类/密封类等
+2. 熟悉KMP平台特化：expect/actual机制、commonMain/androidMain/iosMain模块划分
+3. 熟悉KMP构建与配置：kotlin{targets {}}、多平台依赖、Gradle DSL
+4. 熟悉KMP架构：shared模块MVVM架构、封装ViewModel/Repository
+5. 熟悉KMP数据层：网络层(Ktor)、数据库(SQLDelight)、存储层(KStore/Preferences)等
+6. 熟悉KMP协程调度：协程(CoroutineScope)、调度(Dispatcher)
+7. 熟悉KMP依赖注入体系：Hilt(Android侧)、Koin(多平台实现)
+8. 了解KMP编译与构建流程：构建流程、编译产物(Framework/klib)、XCFramework打包及静态链接
+9. 了解KMP性能与内存优化：新GC模型、数据冻结问题、跨线程优化
+10. 了解KMP与原生互操作：Android/Ios调用shared模块、桥接Swift与Kotlin数据类型
 
 ## Java
 
@@ -978,14 +973,16 @@ IOS截图
 
 ## 前端
 
-1. 熟悉 HTML、CSS、盒子布局模型等前端 Web 开发技术
-2. 熟练掌握 JavaScript(ES6+)，理解闭包、原型链、异步编程等核心概念
-3. 熟悉使用主流前端框架与库，如 React、Vue、Angular、Bootstrap 等
-4. 熟悉状态管理方案，如 Redux、MobX、Vuex
-5. 熟悉打包工具(Webpack、Vite、Rollup)与构建优化
-6. 熟悉 CSS 预处理器(Sass、Less)等解决方案
-7. 理解前端安全常识，如 XSS、CSRF 及防护措施
-8. 熟悉微信小程序开发，熟悉 uni-app 开发
+1. 熟悉HTML5与语义化：语义化标签、音视频、Canvas、WebSocket、LocalStorage 等
+2. 熟悉CSS3布局与样式体系：Flex/Grid布局、BFC、定位机制及CSS优先级，动画、变量与Sass/Less等
+3. 熟悉JS核心机制：闭包、原型链、this绑定、事件模型、异步编程(Promise、async/await、事件循环)
+4. 理解浏览器工作原理与性能优化：渲染流程、缓存策略、重排重绘优化及安全防护(XSS、CSRF)
+5. 熟悉ES6+新特性与模块化体系：解构赋值、可选链、Proxy/Reflect、Symbol、ESM模块化、Babel转译机制
+6. 熟悉主流前端框架：Vue2/Vue3响应式，Hooks 原理与 Diff 算法
+7. 熟悉前端工程化与构建工具链：构建工具(Vite、Webpack、Rollup等)及优化策略(分包、懒加载、代码分割)
+8. 了解Node.js与全栈框架：后端框架(Express、Koa、NestJS等)，理解BFF模式与 CI/CD 部署流程
+9. 理解网络通信与协议原理：HTTP/HTTPS、DNS、CDN、负载均衡、WebSocket通信及RESTful/GraphQL
+10. 具备性能与前沿技术应用能力：首屏优化、虚拟列表、懒加载、了解微前端、WebAssembly、WebGPU、AI
 
 ## C#
 
