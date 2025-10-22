@@ -875,7 +875,7 @@ IOS截图
 # 技能清单
 
 ## Android
-1. 熟悉项目开发模式:传统(XML+Java/Kotlin)与声明式UI(ComposeUI)
+1. 熟悉项目开发模式：传统(XML+Java/Kotlin)与声明式UI(ComposeUI)
 2. 熟悉多线程与异步通信机制：Handler、AsyncTask、Coroutine、线程池等
 3. 熟悉主流架构模式与实践：MVC/MVP/MVVM/MVI
 4. 熟悉核心框架与原理：Retrofit/OkHttp、RxJava、Room、EventBus、MMKV、Glide/Fresco等
@@ -887,7 +887,7 @@ IOS截图
 10. 了解系统底层原理：ART/Dalvik虚拟机、Binder通信机制、内存/进程管理、应用启动流程
 
 ## IOS
-1.  熟悉项目开发模式:传统UIKIt(xib/Storyboard+OC/Swift)与声明式UI(SwiftUI)
+1.  熟悉项目开发模式：传统UIKit(xib/Storyboard+OC/Swift)与声明式UI(SwiftUI)
 2.  熟悉开发与协作工具：依赖管理(CocoaPods/SPM/Carthage)、版本控制(Git/GitHub/Sourcetree)、CI/CD
 3.  熟悉主流框架：Alamofire/AFNetworking、SwiftyJSON/ObjectMapper、SDWebImage/Kingfisher等
 4.  熟悉常见数据存储：UserDefaults/MMKV、Core Data、Realm/SQLite
