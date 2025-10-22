@@ -903,7 +903,7 @@ IOS截图
 1. 熟悉鸿蒙多语言开发体系：Java、arkts/ts/js、仓颉
 2. 熟悉鸿蒙应用模型：Stage模型、FA模型
 3. 熟悉UIAbility生命周期及回调
-4. 熟悉鸿蒙装饰器和状态管理器(v1和v2版本、$和$$、全局状态管理等)
+4. 熟悉鸿蒙装饰器和状态管理器：v1和v2版本、$和$$、全局状态管理等
 5. 熟悉arkts多线程：TaskPool和Worker
 6. 熟悉异步与事件：异步(回调、Promise/async/await等)、事件机制(EventHub、组件事件)
 7. 熟悉组件双向通信：@Prop/@Observed、@Link、@Provide/@Consume、Emitter/EventHub
