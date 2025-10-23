@@ -74,9 +74,7 @@ date: 2025-09-22 16:23:45
 面试题题型考核
 
 ```
-常见面试题包括Java基础概念、
-Kotlin与Java的差异，
-以及协程的使用
+常见面试题包括Java基础概念、Kotlin与Java的差异，以及协程的使用
 ```
 
 1、Java 和 Kotlin 的区别是什么？为什么 Kotlin 越来越受欢迎？
@@ -95,8 +93,34 @@ Kotlin 提供简洁语法（数据类、空安全、扩展函数）、协程支�
 2、Java中String Pool是什么？
 
 ```
-String Pool 是 JVM 中的内存区域，用于存储字符串字面量以复用不可变字符串，提高内存效率。
-创建字符串时会检查池中是否已有相同值，若有则直接复用
+1、概念
+Java 中的 String Pool(字符串常量池)是方法区(JDK8 后为元空间)中专门存字符串常量的区域，
+核心作用是复用相同字符串，节省内存。
+
+2、核心要点(面试常考)：
+2-1、创建方式与 Pool 的关系
+直接赋值（String s = "abc"）：
+先查 Pool，有则复用，无则在 Pool 中创建，引用指向 Pool。
+例：s1 = "abc"; s2 = "abc"; s1 == s2 → true（同个对象）。
+
+new 创建（String s = new String("abc")）：
+堆中新建对象，引用指向堆；
+同时若 Pool 中无 "abc"，会在 Pool 存一份，但引用不指向 Pool。
+例：s3 = new String("abc"); s3 == s1 → false（堆 vs Pool）。
+
+2-2、intern()方法
+手动让字符串关联 Pool：若 Pool 中有，返回 Pool 引用；
+若无，将当前字符串（或副本）存入 Pool 并返回引用。
+例：s3.intern() == s1 → true（s3.intern () 指向 Pool）。
+
+2-3、字符串拼接
+常量拼接（"a"+"b"）：编译期优化为 "ab"，存入 Pool。
+变量拼接（a + b，a、b 是变量）：通过 StringBuilder 生成堆中对象，不进 Pool（除非手动 intern ()）。
+
+2-4、基础：String 不可变字符串内容不可改，因此 Pool 中同一实例被多引用时不会冲突，是复用的前提。
+
+3、总结：
+String Pool 通过复用相同字符串优化内存，重点区分直接赋值、new 创建的差异，以及 intern()的作用。
 ```
 
 3、什么是 Kotlin 协程？它解决了什么问题？
