@@ -36,7 +36,7 @@ date: 2025-09-22 16:24:58
 
 ## 三 面试题解答(仅供参考)
 
-### 3.1 ML Kit(AI应用-图像识别,nlp,大模型语音对话)
+### 3.1 ML Kit(AI应用-图像识别,nlp(自然语言处理),大模型语音对话)
 
 1、概念
 
@@ -54,16 +54,16 @@ ML Kit 是 Google 提供的移动端机器学习 SDK，
 -条码扫描：识别二维码/条形码。
 -图像分类/物体检测：识别物体类别。
 
-2、NLP
+2、NLP(自然语言处理)
 -翻译：支持 50+ 种语言，部分离线。
 -实体抽取：识别姓名、地址、邮箱。
 -语音转文本：部分需联网。
 
 3、语音/大模型对话
 
--ML Kit 本身不提供 LLM，
+-ML Kit 本身不提供 LLM(Large Language Model(大型语言模型) )，
 ML Kit不直接支持 LLM，需配合 Google Cloud Speech-to-Text 或外部大模型 API（如 Gemini）。
-架构：端侧预处理（录音、VAD、压缩）→ 云端大模型 → 返回文本/TTS。
+架构：端侧预处理（录音、VAD(Voice Activity Detection（语音活动检测）)、压缩）→ 云端大模型 → 返回文本/TTS。
 ```
 
 3、面试要点
@@ -73,7 +73,7 @@ ML Kit不直接支持 LLM，需配合 Google Cloud Speech-to-Text 或外部大�
 快速集成 OCR、人脸检测、翻译等，适合简单 AI 需求；缺点是模型定制化有限。
 
 2、Android 使用：
-通过Firebase ML Kit或独立 SDK，调用API(如 TextRecognizer.processImage())，内置 TFLite 推理。
+通过Firebase ML Kit或独立 SDK，调用API(如 TextRecognizer.processImage())，内置 TFLite(TensorFlow Lite) 推理。
 ```
 
 ### 3.2 TensorFlow Lite(AI应用-图像识别,nlp,大模型语音对话)
@@ -92,7 +92,7 @@ TFLite 是 TensorFlow 的移动端推理框架，支持自定义模型，适合�
 -目标检测：识别物体位置 + 标签。
 -人脸关键点检测、人像分割
 
-2、NLP
+2、NLP(自然语言处理)
 -文本分类：情感分析、垃圾邮件检测。
 -关键词检测：如 Wake Word。
 -轻量模型：MobileBERT、ALBERT
@@ -157,7 +157,7 @@ TFLite 适合定制化 AI 需求。
 TCP 长连接：可靠、有序，适合聊天消息；需心跳维持，移动网络下易掉线。
 UDP：低延迟，适合实时语音/视频；但不可靠。
 WebSocket：基于 TCP，跨平台、跨浏览器，适合移动端 + Web 聊天。
-HTTP/2 / gRPC：支持多路复用，常用于推送和 API 调用。
+HTTP/2 / gRPC(远程过程调用（RPC）框架)：支持多路复用，常用于推送和 API 调用。
 实际：移动端 IM 常用 TCP 长连接 + Protobuf/JSON + 心跳。
 ```
 
