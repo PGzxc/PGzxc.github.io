@@ -2,9 +2,9 @@
 title: 前端面试题之——JavaScript
 categories:
   - 面试相关
-  - 前端面试题
+  - Web前端面试题
 tags:
-  - 前端面试题
+  - Web前端面试题
 abbrlink: ff6ef0dd
 date: 2024-03-23 11:08:08
 ---

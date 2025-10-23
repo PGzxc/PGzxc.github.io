@@ -2,9 +2,9 @@
 title: 前端面试题之——CSS
 categories:
   - 面试相关
-  - 前端面试题
+  - Web前端面试题
 tags:
-  - 前端面试题
+  - Web前端面试题
 abbrlink: c7199781
 date: 2024-03-22 21:22:48
 ---

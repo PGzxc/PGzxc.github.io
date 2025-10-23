@@ -2,9 +2,9 @@
 title: 前端面试题之——AngularJS
 categories:
   - 面试相关
-  - 前端面试题
+  - Web前端面试题
 tags:
-  - 前端面试题
+  - Web前端面试题
 abbrlink: f9dd67c2
 date: 2024-03-23 11:54:24
 ---

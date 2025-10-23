@@ -2,9 +2,9 @@
 title: 前端面试题之——React
 categories:
   - 面试相关
-  - 前端面试题
+  - Web前端面试题
 tags:
-  - 前端面试题
+  - Web前端面试题
 abbrlink: bbbddffb
 date: 2024-03-23 12:19:34
 ---

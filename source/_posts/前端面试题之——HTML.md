@@ -2,9 +2,9 @@
 title: 前端面试题之——HTML
 categories:
   - 面试相关
-  - 前端面试题
+  - Web前端面试题
 tags:
-  - 前端面试题
+  - Web前端面试题
 abbrlink: 311fe64c
 date: 2024-03-22 20:09:30
 ---

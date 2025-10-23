@@ -2,9 +2,9 @@
 title: 前端面试题之——移动Web
 categories:
   - 面试相关
-  - 前端面试题
+  - Web前端面试题
 tags:
-  - 前端面试题
+  - Web前端面试题
 abbrlink: ab1a9065
 date: 2024-03-23 19:12:51
 ---
