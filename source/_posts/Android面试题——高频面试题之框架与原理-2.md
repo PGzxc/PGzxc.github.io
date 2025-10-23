@@ -361,7 +361,20 @@ Fresco 专属：ImagePipelineConfig 启用渐进式 JPEG，ImagePrefetcher 预�
 
 ### 3.7 广告行业：聚合广告sdk开发经验(不限于gromore,sigmob,topon)
 
-1、什么是聚合广告 SDK，它解决了什么问题？
+1、常见广告说明
+
+```
+1、Gromore：
+字节旗下，深度整合穿山甲广告资源，也支持其他平台，适合依赖字节生态（比如主要靠穿山甲变现）的场景。
+
+2、Sigmob：
+轻量化聚合工具，接入简单、SDK 体积小，更适合中小团队快速对接多广告源，降低技术成本。
+
+3、Topon：
+汇量科技旗下，广告源覆盖广，智能优化能力强（比如按收益动态选广告），适合需要精细化运营、追求高变现效率的场景（比如游戏类应用）
+```
+
+2、什么是聚合广告 SDK，它解决了什么问题？
 
 ```
 1、定义：
@@ -371,7 +384,7 @@ Fresco 专属：ImagePipelineConfig 启用渐进式 JPEG，ImagePrefetcher 预�
 一次接入多平台，提升填充率和收益。
 ```
 
-2、聚合广告 SDK 的接入流程？(以TopOn为例)
+3、聚合广告 SDK 的接入流程？(以TopOn为例)
 
 ```
 1、流程
@@ -386,7 +399,7 @@ Fresco 专属：ImagePipelineConfig 启用渐进式 JPEG，ImagePrefetcher 预�
 4、面试点：权限（INTERNET）、混淆规则、测试设备配置
 ```
 
-3、广告 SDK 开发中的常见问题？
+4、广告 SDK 开发中的常见问题？
 
 ```
 初始化冲突：仅初始化聚合 SDK。
@@ -397,7 +410,7 @@ Fresco 专属：ImagePipelineConfig 启用渐进式 JPEG，ImagePrefetcher 预�
 面试点：防作弊（设备指纹、行为验证）
 ```
 
-4、接入聚合广告 SDK 时，有哪些关键的开发经验？
+5、接入聚合广告 SDK 时，有哪些关键的开发经验？
 
 ```
 配置管理：确保 AppId/SlotId 准确，动态管理。
@@ -421,7 +434,7 @@ DI 是 Android 架构面试的核心，常考 Hilt/Dagger 与 Koin 的区别，
 ```
 定义：将对象创建和依赖关系管理从对象内部转移到外部，实现 解耦。
 作用：便于单元测试、模块化和维护。
-示例：在 ViewModel 注入 Repository，而非手动 new。
+示例：在 ViewModel 注入 Repository(仓库-负责数据的统一管理和协调)，而非手动 new。
 ```
 
 2、DI 框架对比：Dagger/Hilt vs Koin
