@@ -54,7 +54,7 @@ date: 2025-09-23 08:54:43
 -复用性：核心功能可跨项目复用
 
 3、面试常问
-3-1、常被问及如何解决“Massive View Controller”？
+3-1、常被问及如何解决“Massive View Controller(臃肿的视图控制器)”？
 通过组件化将Controller逻辑拆分到独立模块（如ViewModel或Service），结合SwiftUI可进一步简化UI逻辑
 ```
 
@@ -134,7 +134,7 @@ SwiftUI的声明式UI（2025年趋势）与SPM结合，使组件化更轻量和�
 2.1、如何避免通信导致的耦合？
 答：优先使用Router或协议，结合依赖注入，避免直接import其他模块。
 2.2、如何处理异步通信？
-答：用RxSwift或Combine的Observable绑定数据，或通过PromiseKit处理异步回调。
+答：用RxSwift或Combine的Observable绑定数据，或通过PromiseKit(一个专注于简化异步操作处理的库)处理异步回调。
 ```
 
 5、组件化与模块化区别？
@@ -209,7 +209,7 @@ URL Router灵活但易出错，Protocol Router类型安全但需更多前期设�
 ```
 1、招聘要求：
 熟练掌握MVC（Apple默认），
-但中大型项目更倾向MVVM、Clean Architecture或VIPER；
+但中大型项目更倾向MVVM、Clean Architecture或VIPER("单一职责原则"的架构模式)；
 RxSwift+MVVM用于响应式编程。
 
 2、2025年趋势：
@@ -394,7 +394,7 @@ class SearchViewController: UIViewController {
 
 4、优缺点：
 -优点：统一异步处理，简化回调地狱，响应式UI更新。
--缺点：内存管理复杂，需DisposeBag；学习成本高。
+-缺点：内存管理复杂，需DisposeBag(管理订阅生命周期的核心工具)；学习成本高。
 
 5、2025年趋势：Combine逐渐取代RxSwift，招聘JD要求两者之一的实战经验。
 
@@ -435,7 +435,7 @@ MVVM：
 
 3、面试高频问题：
 3.1、如何选择架构？
-答：根据项目规模和团队经验，小型选MVC/MVVM，中大型选MVVM/Clean，复杂项目选Clean/VIPER。2、
+答：根据项目规模和团队经验，小型选MVC/MVVM，中大型选MVVM/Clean，复杂项目选Clean/VIPER。
 ```
 
 7、总结与面试要点
@@ -448,7 +448,7 @@ Clean Architecture：分层清晰，依赖倒置，适合企业级复杂项目�
 RxSwift+MVVM：响应式编程，简化异步逻辑，需注意内存管理。
 VIPER：模块化最强，但样板代码多，适合超大型项目。
 
-2面试建议：
+2、面试建议：
 准备项目案例，说明架构选型理由（如为何用MVVM）。
 强调优化经验（如解决Controller膨胀、内存泄漏）。
 熟悉SwiftUI+MVVM（2025年趋势）及Combine/RxSwift的绑定机制
@@ -611,7 +611,10 @@ SDWebImage生态更成熟，Objective-C兼容性强。
 答：Core Data适合Apple生态集成、复杂关系模型；Realm上手快，适合快速开发或跨平台项目。
 
 2.2、如何优化存储性能？
-答：1) Core Data使用批量操作（NSBatchUpdateRequest）；2) Realm启用懒加载；3) SQLite优化索引和查询。
+
+1) Core Data使用批量操作（NSBatchUpdateRequest）；
+2) Realm启用懒加载；
+3) SQLite优化索引和查询。
 ```
 
 6、总结
