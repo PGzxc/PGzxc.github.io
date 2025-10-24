@@ -472,7 +472,21 @@ SwiftUI逐渐取代UIKit，第三方库聚焦网络、JSON解析、图片加载�
 -SwiftUI与UIKit的结合与迁移策略。
 ```
 
-1、什么是Cocoa框架？列出主要组件
+1、Cocoa 与 Cocoa Touch 的区别
+
+```
+1、区别
+很多开发者会混淆"Cocoa"和"Cocoa Touch"，两者的核心区别在于目标平台和 UI 框架：
+-Cocoa：针对 macOS 平台，核心是 Foundation + AppKit。
+-Cocoa Touch：针对iOS、iPadOS、tvOS、watchOS 等移动/嵌入式平台，核心是 Foundation + UIKit(UIKit 替代了 AppKit，适配触摸交互)
+
+2、总结：简单说：
+Cocoa 是 macOS 的 “UI + 基础” 框架集，
+Cocoa Touch 是移动平台的对应版本，
+两者共享 Foundation（基础功能），但 UI 框架不同（AppKit vs UIKit）。
+```
+
+2、什么是Cocoa框架？列出主要组件
 
 ```
 1、定义：
@@ -495,7 +509,7 @@ Cocoa是Apple提供的应用开发框架集合，用于iOS、macOS等平台的UI
 答：逐步迁移，UIHostingController嵌入SwiftUI视图，兼容现有UIKit项目。
 ```
 
-2、Alamofire是什么？与URLSession的区别？
+3、Alamofire是什么？与URLSession的区别？
 
 ```
 1、定义：
@@ -529,7 +543,7 @@ URLSession.shared.dataTask(with: URL(string: "https://api.example.com")!) { data
 答：配置Alamofire的SessionManager调整超时时间，结合缓存策略（如ETag）减少重复请求。
 ```
 
-3、SwiftyJSON如何工作？为什么用它解析JSON？
+4、SwiftyJSON如何工作？为什么用它解析JSON？
 
 ```
 1、定义：
@@ -554,7 +568,7 @@ let name = json["user"]["name"].stringValue // 安全访问
 答：优先Codable，复杂或遗留项目可用SwiftyJSON，需权衡性能与开发效率。
 ```
 
-4、Kingfisher是什么？如何实现图像缓存？
+5、Kingfisher是什么？如何实现图像缓存？
 
 ```
 1、定义：
@@ -583,7 +597,7 @@ imageView.kf.setImage(with: URL(string: "https://image.jpg"), placeholder: UIIma
 SDWebImage生态更成熟，Objective-C兼容性强。
 ```
 
-5、数据存储？
+6、数据存储？
 
 ```
 1、常见存储方式（结合2025年趋势）：
@@ -617,7 +631,7 @@ SDWebImage生态更成熟，Objective-C兼容性强。
 3) SQLite优化索引和查询。
 ```
 
-6、总结
+7、总结
 
 ```
 1、Cocoa框架：
