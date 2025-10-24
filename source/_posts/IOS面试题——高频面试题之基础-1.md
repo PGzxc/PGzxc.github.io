@@ -73,7 +73,7 @@ date: 2025-09-23 08:53:36
 ```
 1.Swift vs Objective-C 的差异
 2.SwiftUI vs UIKit 的优缺点与场景选择
-3.Optionals、Nil Coalescing 等语言特性
+3.Optionals(可选类型)、Nil Coalescing(空合运算符)等语言特性
 4.项目中对 UI 框架的实际应用
 ```
 
@@ -92,7 +92,6 @@ Objective-C：基于 C 的动态语言，依赖运行时反射，灵活但易出
 优点：声明式 UI，代码简洁，支持跨平台，实时预览。
 缺点：仅支持 iOS 13+，复杂动画需结合 UIKit。
 
-
 2、UIKit：
 优点：成熟稳定，支持复杂交互和自定义控件。
 缺点：命令式开发，开发周期较长。
@@ -106,7 +105,7 @@ UIKit：适配旧系统或复杂 UI 场景。
 混合开发：通过 UIHostingController 将 SwiftUI 嵌入 UIKit 项目。
 ```
 
-4、Swift 中的 Optionals 和 Nil Coalescing？
+4、Swift 中的 Optionals(可选类型) 和 Nil Coalescing(空合运算符)？
 
 ```
 Optionals：通过 ? 声明，允许值为 nil，避免野指针崩溃。
@@ -412,7 +411,8 @@ NSManagedObjectContext：对象增删改查。
 Persistent Store Coordinator：连接存储（如 SQLite）。
 NSManagedObjectModel：数据模型。
 
-2、特性：对象关系映射、批量查询、版本迁移
+2、特性：
+对象关系映射、批量查询、版本迁移
 ```
 
 3、Core Data 优点？
