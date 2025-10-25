@@ -278,7 +278,7 @@ iOS 中常用 LFLiveKit (RTMP) 和 WebRTC SDK
 面试考点
 
 ```
-推送：APNs、Firebase、极光推送  
+推送：APNs(Apple Push Notification service/远程推送通知服务)、Firebase、极光推送  
 即时通讯（IM）：环信、融云、声网（消息+音视频）  
 云平台：AWS、阿里云（存储、CDN、鉴权）  
 支付：Apple Pay、支付宝、微信支付  
