@@ -226,7 +226,7 @@ pointInside 是局部判断，hitTest 是全局搜索，决定第一响应者。
 -gestureRecognizer:shouldReceiveTouch: 控制触摸接收
 
 4、事件阻止：
-识别成功可通过 cancelTouches 阻止原触摸传递1、
+识别成功可通过 cancelTouches 阻止原触摸传递
 ```
 
 5、如何修改事件响应链？
