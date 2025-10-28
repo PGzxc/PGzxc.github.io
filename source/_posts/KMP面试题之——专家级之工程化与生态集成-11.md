@@ -15,7 +15,7 @@ date: 2025-10-19 08:45:29
 2.如何用 KMP 实现多端插件系统？
 3.如何封装跨平台音视频模块(基于 FFmpeg/C++)？
 4.如何在 shared 层调用 C/C++ 库（CInterop + CMake）？
-5.解释 cinterop 与 gradle-native 的关系。
+5.解释 cinterop(C interoperation/C 语言互操作) 与 gradle-native 的关系。
 6.如何在 KMP 中集成 TensorFlow Lite、OpenCV 等原生库？
 ```
 
@@ -38,11 +38,12 @@ date: 2025-10-19 08:45:29
 UseCases、Repositories、Domain Models、跨平台 ViewModel（StateFlow/SharedFlow/Observable）。
 
 2、Platform 层负责 UI 与原生交互：
-Android → Jetpack Compose；Desktop/Multi → Compose Multiplatform；
+Android → Jetpack Compose；
+Desktop/Multi → Compose Multiplatform；
 iOS → SwiftUI/UIViewController。
 
 3、桥接层(adapter)：
-每个平台写 thin adapter 把 Shared 的状态转换为本平台的 UI 形态
+每个平台写 thin adapter(薄包装器)把 Shared 的状态转换为本平台的 UI 形态
 （例如 StateFlow -> LiveData/Compose State/ObservableObject）。
 
 4、通信契约：
@@ -163,7 +164,7 @@ iOS：通过一个 PluginRegistry 在 app 启动时把需要的 plugin 实例注
 编译成 .so（Android）、.framework/.a 或 XCFramework（iOS）。
 
 2、Native bridge 层：
-为每个平台写 thin wrapper：
+为每个平台写 thin wrapper(薄包装器)：
 -Android：JNI 层（C++) -> Kotlin。
 -iOS：直接用 Kotlin/Native cinterop 调用 C++（通过 extern "C" 的 C API 封装，或使用 Objective-C++ 辅助）。
 
