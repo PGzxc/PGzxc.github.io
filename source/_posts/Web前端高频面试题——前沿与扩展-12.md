@@ -21,7 +21,7 @@ date: 2025-10-29 09:46:43
 ## 二  面试要求和面试题
 
 ```
-1.微前端：qiankun、Module Federation
+1.微前端：qiankun(基于路由的微前端框架)、Module Federation(Webpack的模块联邦机制)
 2.React Server Components(RSC)
 3.WebAssembly 应用
 4.WebGPU 与 Three.js 可视化
