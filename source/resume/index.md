@@ -474,9 +474,38 @@ __2-Android项目—E朝朝企业端__
 
 ## <font color=red>一 Harmony项目</font>
 
-### 1—[WanCJ](https://github.com/PGzxc/WanCJ)
+### 1—[SwiperHM](https://github.com/PGzxc/SwiperHM)
 
-**项目归属**：个人项目
+**项目归属**：个人项目(私有)
+**项目名称**：SwiperHM
+**项目地址**：https://github.com/PGzxc/SwiperHM
+**软件支持**：鸿蒙全系列
+**API版本**：API Version 17
+**开发语言**：ArkTS+ArkUI
+**开发工具**：DevEco Studio 5.0.5 Release
+**项目描述**：仿抖音和小红书鸿蒙项目， 基于api.apiopen.top开放接口，实现仿抖音视频滑动切换 
+**功能模块**：首页、图集、发布、消息、我   
+**技术要点**：
+
+- 基于Flex+Builder+scale+animation构建仿小红书底部导航
+- 基于V1、V2状态管理监控数据变化及UI同步
+- 基于官方工具WindowUtils适配屏幕和窗口
+- 自定义组件：@Builder装饰器、@Component装饰器
+
+* 三方库：axios(网络请求)、pulltorefres(刷新/加载更多)
+* 常用组件：WaterFlow(瀑布流)、Swiper(视频滑动)、Tabs(导航栏)等
+* 音视频：Video组件及状态管理(播放、循环、准备、开始、出错等)
+
+**项目预览**
+
+| ![][swiperhm-1] | ![][swiperhm-2] | ![][swiperhm-3] |
+| :-------------: | :-------------: | :-------------: |
+| ![][swiperhm-4] | ![][swiperhm-5] | ![][swiperhm-6] |
+| ![][swiperhm-7] | ![][swiperhm-8] | ![][swiperhm-9] |
+
+### 2—[WanCJ](https://github.com/PGzxc/WanCJ)
+
+**项目归属**：个人项目(开源)
 **项目名称**：WanCJ
 **项目地址**：https://github.com/PGzxc/WanCJ
 **软件支持**：鸿蒙全系列
@@ -500,9 +529,9 @@ __2-Android项目—E朝朝企业端__
 | :----------: | :----------: | :----------: | :----------: |
 | ![][wancj-5] | ![][wancj-6] | ![][wancj-7] | ![][wancj-8] |
 
-### 2—[WanAndroidHM](https://github.com/PGzxc/WanAndroidHM)
+### 3—[WanAndroidHM](https://github.com/PGzxc/WanAndroidHM)
 
-**项目归属**：个人项目
+**项目归属**：个人项目(开源)
 **项目名称**：WanAndroidHM
 **项目地址**：https://github.com/PGzxc/WanAndroidHM
 **软件支持**：鸿蒙全系列
@@ -529,9 +558,9 @@ __2-Android项目—E朝朝企业端__
 | ![][waz-hm-9] | ![][waz-hm-10] | ![][waz-hm-11] | ![][waz-hm-12] |
 | ![][waz-hm-13]| ![][waz-hm-14] | ![][waz-hm-15] | ![][waz-hm-16] |
 
-### 3—[BookHM](https://github.com/PGzxc/BookHM)
+### 4—[BookHM](https://github.com/PGzxc/BookHM)
 
-**项目归属**：个人项目
+**项目归属**：个人项目(开源)
 **项目名称**：BookHM
 **项目地址**：https://github.com/PGzxc/BookHM
 **软件支持**：鸿蒙全系列
@@ -1335,6 +1364,17 @@ IOS截图
 [rn-todo-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/rn-todo-4-todo-addnil.png
 [rn-todo-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/rn-todo-5-todo-choice.png
 [rn-todo-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/rn-todo-6-todo-calendar.png
+
+<!--hm-swiperhm-->
+[swiperhm-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperhm-rec-1.png
+[swiperhm-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperhm-rec-2.png
+[swiperhm-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperhm-focus-3.png
+[swiperhm-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperhm-focus-4.png
+[swiperhm-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperhm-album-5.png
+[swiperhm-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperhm-album-6.png
+[swiperhm-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperhm-album-7.png
+[swiperhm-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperhm-album-8.png
+[swiperhm-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperhm-pub-9.png
 
 <!--hm-wancj-->
 [wancj-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/wancj-1-home-normal.png
