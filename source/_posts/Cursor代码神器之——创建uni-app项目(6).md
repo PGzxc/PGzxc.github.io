@@ -3,6 +3,7 @@ title: Cursor代码神器之——创建uni-app项目(6)
 categories:
   - 开发
   - Q-AI
+  - 开发助力    
   - Cursor
 tags:
   - Cursor
