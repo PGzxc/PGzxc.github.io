@@ -1,8 +1,7 @@
 ---
-title: 数据存储之——硬盘柜与NAS
+title: 硬盘柜之——与NAS区别
 categories:
   - 硬件
-  - 硬盘
   - 硬盘柜
 tags:
   - 硬盘柜
