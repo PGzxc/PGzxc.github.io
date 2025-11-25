@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.23.2","exturl":true,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述 Redux 项目团队协作规范建议(高效管理多人开发) Redux DevTools 调试配置(Flutter + 浏览器) Redux 多端适配建议(Flutter Web &#x2F; 桌面 &#x2F; 移动) Redux 模板代码生成(自动化 + 提升效率) Redux 项目架构扩展方向(供面试或未来重构参考)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter面试题——Redux之最终实战(9)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/3677ad2c.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 概述 Redux 项目团队协作规范建议(高效管理多人开发) Redux DevTools 调试配置(Flutter + 浏览器) Redux 多端适配建议(Flutter Web &#x2F; 桌面 &#x2F; 移动) Redux 模板代码生成(自动化 + 提升效率) Redux 项目架构扩展方向(供面试或未来重构参考)">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-13T10:50:41.000Z">
+<meta property="article:modified_time" content="2025-11-25T08:18:54.354Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Flutter面试题">
+<meta property="article:tag" content="Redux">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/3677ad2c.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/3677ad2c.html","path":"posts/3677ad2c.html","title":"Flutter面试题——Redux之最终实战(9)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Flutter面试题——Redux之最终实战(9) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.7.0/mermaid.min.js","integrity":"sha256-4+IKDqhZ/sXjc8Wtl2/MsxI4e0s1KpEVdbEP7V/Lz8U="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">252</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4389</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Redux-%E9%A1%B9%E7%9B%AE%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C%E8%A7%84%E8%8C%83%E5%BB%BA%E8%AE%AE-%E9%AB%98%E6%95%88%E7%AE%A1%E7%90%86%E5%A4%9A%E4%BA%BA%E5%BC%80%E5%8F%91"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Redux 项目团队协作规范建议(高效管理多人开发)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Redux-DevTools-%E8%B0%83%E8%AF%95%E9%85%8D%E7%BD%AE-Flutter-%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Redux DevTools 调试配置(Flutter + 浏览器)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Redux-%E5%A4%9A%E7%AB%AF%E9%80%82%E9%85%8D%E5%BB%BA%E8%AE%AE-Flutter-Web-%E6%A1%8C%E9%9D%A2-%E7%A7%BB%E5%8A%A8"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Redux 多端适配建议(Flutter Web &#x2F; 桌面 &#x2F; 移动)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-Redux-%E6%A8%A1%E6%9D%BF%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90-%E8%87%AA%E5%8A%A8%E5%8C%96-%E6%8F%90%E5%8D%87%E6%95%88%E7%8E%87"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 Redux 模板代码生成(自动化 + 提升效率)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-Redux-%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84%E6%89%A9%E5%B1%95%E6%96%B9%E5%90%91-%E4%BE%9B%E9%9D%A2%E8%AF%95%E6%88%96%E6%9C%AA%E6%9D%A5%E9%87%8D%E6%9E%84%E5%8F%82%E8%80%83"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 Redux 项目架构扩展方向(供面试或未来重构参考)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-Redux-%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%8E%A8%E8%8D%90%E6%B5%8B%E8%AF%95%E7%AD%96%E7%95%A5"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 Redux 项目的推荐测试策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-Redux-%E6%8A%80%E6%9C%AF%E9%9D%A2%E8%AF%95%E4%BA%AE%E7%82%B9%E5%8F%A5%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">三 Redux 技术面试亮点句型</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4389</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">252</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">592</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY2FsdmluX3pob3U=" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou"><i class="fa fa-book fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3dlaWJvLmNvbS81NTgyMDM5OTIw" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920"><i class="fab fa-weibo fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cDovL3d3dy5qaWFuc2h1LmNvbS91L2M1Y2RjYjRkYzUyYg==" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b"><i class="fa fa-heartbeat fa-fw"></i></span>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/3677ad2c.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Flutter面试题——Redux之最终实战(9) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Flutter面试题——Redux之最终实战(9)<span class="exturl post-edit-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL1BHenhjL1BHenhjLmdpdGh1Yi5pby9lZGl0L21hc3Rlci9zb3VyY2UvX3Bvc3RzL0ZsdXR0ZXLpnaLor5XpopjigJTigJRSZWR1eOS5i+acgOe7iOWunuaImC05Lm1k" title="编辑"><i class="fa fa-pen-nib"></i></span>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-13 18:50:41" itemprop="dateCreated datePublished" datetime="2025-04-13T18:50:41+08:00">2025-04-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/Flutter%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">Flutter面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ol>
+<li>Redux 项目团队协作规范建议(高效管理多人开发)</li>
+<li>Redux DevTools 调试配置(Flutter + 浏览器)</li>
+<li>Redux 多端适配建议(Flutter Web &#x2F; 桌面 &#x2F; 移动)</li>
+<li>Redux 模板代码生成(自动化 + 提升效率)</li>
+<li>Redux 项目架构扩展方向(供面试或未来重构参考)<span id="more"></span></li>
+<li>Redux 项目的推荐测试策略</li>
+</ol>
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-Redux-项目团队协作规范建议-高效管理多人开发"><a href="#2-1-Redux-项目团队协作规范建议-高效管理多人开发" class="headerlink" title="2.1 Redux 项目团队协作规范建议(高效管理多人开发)"></a>2.1 Redux 项目团队协作规范建议(高效管理多人开发)</h3><p>1、状态&#x2F;模块规范</p>
+<table>
+<thead>
+<tr>
+<th align="center">内容</th>
+<th align="center">建议规范</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">状态定义</td>
+<td align="center">每个业务模块独立定义 <code>XXXState</code>，禁止将全局塞入一个大 <code>AppState</code></td>
+</tr>
+<tr>
+<td align="center">Action 命名</td>
+<td align="center">格式统一：<code>[模块]_[行为]_[阶段]</code>，如 <code>AUTH_LOGIN_SUCCESS</code></td>
+</tr>
+<tr>
+<td align="center">Reducer 文件结构</td>
+<td align="center">每个模块独立 Reducer，集中在 <code>reducers/</code> 下并通过 <code>combineReducers</code> 统一组合</td>
+</tr>
+<tr>
+<td align="center">中间件拆分</td>
+<td align="center">一律放在 <code>middleware/模块名_middleware.dart</code>，单一职责</td>
+</tr>
+</tbody></table>
+<p>2、 团队约定</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-使用 freezed 自动生成状态类，避免手写 copyWith 和比较逻辑</span><br><span class="line">-状态和 UI 解耦，UI 层组件禁止直接操作逻辑，必须通过 dispatch</span><br><span class="line">-每个模块必须写：</span><br><span class="line"> -状态模型（State）</span><br><span class="line"> -Action</span><br><span class="line"> -Reducer</span><br><span class="line"> -ViewModel 转换器</span><br><span class="line"> -测试（单元测试 reducer + UI 的 golden test）</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-Redux-DevTools-调试配置-Flutter-浏览器"><a href="#2-2-Redux-DevTools-调试配置-Flutter-浏览器" class="headerlink" title="2.2 Redux DevTools 调试配置(Flutter + 浏览器)"></a>2.2 Redux DevTools 调试配置(Flutter + 浏览器)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">1、使用工具：</span><br><span class="line">-remote_dev</span><br><span class="line">-remotedev-server</span><br><span class="line"></span><br><span class="line">2、安装并启动调试服务：</span><br><span class="line"></span><br><span class="line">npm install -g remotedev-server</span><br><span class="line">remotedev --hostname=localhost --port=8000</span><br><span class="line"></span><br><span class="line">3、Flutter 端配置：</span><br><span class="line"></span><br><span class="line">final store = DevToolsStore&lt;AppState&gt;(</span><br><span class="line">  appReducer,</span><br><span class="line">  initialState: AppState.initial(),</span><br><span class="line">  middleware: [</span><br><span class="line">    remoteDevToolsMiddleware(&quot;localhost:8000&quot;),</span><br><span class="line">  ],</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">这样你就能在浏览器的 Redux DevTools 中：</span><br><span class="line">-实时查看状态变化</span><br><span class="line">-Replay Action / 回滚状态</span><br><span class="line">-导出 Action / 状态快照</span><br><span class="line"></span><br><span class="line">适合团队协作、回归测试、线上问题复现。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-Redux-多端适配建议-Flutter-Web-桌面-移动"><a href="#2-3-Redux-多端适配建议-Flutter-Web-桌面-移动" class="headerlink" title="2.3 Redux 多端适配建议(Flutter Web &#x2F; 桌面 &#x2F; 移动)"></a>2.3 Redux 多端适配建议(Flutter Web &#x2F; 桌面 &#x2F; 移动)</h3><table>
+<thead>
+<tr>
+<th align="center">差异点</th>
+<th align="center">建议做法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">状态持久化</td>
+<td align="center">Web 用 <code>window.localStorage</code>，移动用 <code>SharedPreferences</code>，桌面用 <code>FileStorage</code></td>
+</tr>
+<tr>
+<td align="center">多窗口支持（Desktop）</td>
+<td align="center">使用 <code>Isolate</code> + <code>StoreBridge</code> 同步状态</td>
+</tr>
+<tr>
+<td align="center">热键支持</td>
+<td align="center">将快捷键映射为 Redux Action，比如 <code>SaveDocumentAction</code></td>
+</tr>
+<tr>
+<td align="center">页面刷新</td>
+<td align="center">Web 端页面刷新会重置状态，建议在启动时恢复 store 状态并设立 <code>state.version</code> 做兼容处理</td>
+</tr>
+</tbody></table>
+<h3 id="2-4-Redux-模板代码生成-自动化-提升效率"><a href="#2-4-Redux-模板代码生成-自动化-提升效率" class="headerlink" title="2.4 Redux 模板代码生成(自动化 + 提升效率)"></a>2.4 Redux 模板代码生成(自动化 + 提升效率)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1、建议使用自定义代码模板 + mason（Flutter 生态的代码模板工具）批量生成：</span><br><span class="line"></span><br><span class="line">mason make redux_module -o lib/features/user --name user</span><br><span class="line">2、模板包含：</span><br><span class="line"></span><br><span class="line">文件	                    内容</span><br><span class="line">user_state.dart	        状态模型，使用 freezed 生成</span><br><span class="line">user_actions.dart	    所有 Action 类定义</span><br><span class="line">user_reducer.dart	    处理所有 User 相关 Reducer</span><br><span class="line">user_middleware.dart	所有中间件</span><br><span class="line">user_selectors.dart	    包含常用 Selector</span><br><span class="line">user_connector.dart	    页面中用于构建 ViewModel 的 StoreConnector</span><br><span class="line"></span><br><span class="line">可集成进 CI 中检测 Action 命名规范、Reducer 命中率等，提高整体工程质量。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-Redux-项目架构扩展方向-供面试或未来重构参考"><a href="#2-5-Redux-项目架构扩展方向-供面试或未来重构参考" class="headerlink" title="2.5 Redux 项目架构扩展方向(供面试或未来重构参考)"></a>2.5 Redux 项目架构扩展方向(供面试或未来重构参考)</h3><table>
+<thead>
+<tr>
+<th align="center">方向</th>
+<th align="center">做法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">微服务式模块管理</td>
+<td align="center">将每个模块打包为 Package（<code>packages/user/</code>），使大型项目可维护性大增</td>
+</tr>
+<tr>
+<td align="center">插件式动态模块注入</td>
+<td align="center">支持 <code>Store.injectReducer()</code> 动态注册模块（如 admin 权限后才注册后台模块）</td>
+</tr>
+<tr>
+<td align="center">DevOps + Redux Snapshots</td>
+<td align="center">在上线时记录状态快照，定位线上异常更简单</td>
+</tr>
+<tr>
+<td align="center">Redux + AOP（切面）监控</td>
+<td align="center">用中间件注入性能统计、错误捕获、埋点日志等统一逻辑</td>
+</tr>
+</tbody></table>
+<h3 id="2-6-Redux-项目的推荐测试策略"><a href="#2-6-Redux-项目的推荐测试策略" class="headerlink" title="2.6 Redux 项目的推荐测试策略"></a>2.6 Redux 项目的推荐测试策略</h3><p>1、表格</p>
+<table>
+<thead>
+<tr>
+<th align="center">层级</th>
+<th align="center">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">单元测试</td>
+<td align="center">测试 Reducer 是否按 Action 变更状态正确</td>
+</tr>
+<tr>
+<td align="center">集成测试</td>
+<td align="center">测试中间件处理网络请求&#x2F;导航逻辑是否触发对应 Action</td>
+</tr>
+<tr>
+<td align="center">UI 测试</td>
+<td align="center">测试 StoreConnector 绑定 ViewModel 后组件行为</td>
+</tr>
+<tr>
+<td align="center">状态快照对比</td>
+<td align="center">每次 UI 操作后输出当前状态，对比快照 JSON 保证逻辑一致性</td>
+</tr>
+</tbody></table>
+<p>2、示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test(&#x27;User Reducer - LOGIN_SUCCESS&#x27;, () &#123;</span><br><span class="line">  final state = UserState.initial();</span><br><span class="line">  final nextState = userReducer(state, LoginSuccessAction(user: mockUser));</span><br><span class="line">  expect(nextState.isLoggedIn, true);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-Redux-技术面试亮点句型"><a href="#三-Redux-技术面试亮点句型" class="headerlink" title="三 Redux 技术面试亮点句型"></a>三 Redux 技术面试亮点句型</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">「我曾在多个实际项目中负责 Redux 架构落地，状态模型设计清晰，</span><br><span class="line">结合中间件封装了异步请求、权限校验、导航控制等业务逻辑，使前后端交互和 UI 状态保持一致性。」</span><br><span class="line"></span><br><span class="line">「我封装了通用的 Redux 模块生成器，结合 freezed + json_serializable </span><br><span class="line">实现状态不可变、数据自动化序列化，同时支持状态持久化和版本迁移。」</span><br><span class="line"></span><br><span class="line">「为项目接入 Redux DevTools 调试工具，支持时间旅行、状态回滚，大大提升了多人协作调试效率。」</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Flutter%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># Flutter面试题</a>
+              <a href="/tags/Redux/" rel="tag"># Redux</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/23fb7098.html" rel="prev" title="Flutter面试题——Redux之项目实战(8)">
+                  <i class="fa fa-angle-left"></i> Flutter面试题——Redux之项目实战(8)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/1610a92a.html" rel="next" title="Flutter面试题——Redux之收官(10)">
+                  Flutter面试题——Redux之收官(10) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"137c97e8593296f58a180298dbe440c9"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>
