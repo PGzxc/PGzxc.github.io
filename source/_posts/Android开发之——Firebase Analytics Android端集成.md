@@ -1,9 +1,9 @@
 ---
-title: Firebase开发之——Firebase Analytics Android端集成
+title: Android开发之——Firebase Analytics Android端集成
 categories:
   - 开发
-  - R-SDK
-  - Firebase
+  - D-移动开发
+  - Android
 tags:
   - Firebase
 abbrlink: ef126855

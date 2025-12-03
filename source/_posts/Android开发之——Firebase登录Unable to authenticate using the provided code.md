@@ -1,9 +1,9 @@
 ---
-title: Firebase开发之——Firebase登录Unable to authenticate using the provided code
+title: Android开发之——Firebase登录Unable to authenticate using the provided code
 categories:
   - 开发
-  - R-SDK
-  - Firebase
+  - D-移动开发
+  - Android
 tags:
   - Flutter
   - Firebase

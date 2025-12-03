@@ -2,8 +2,7 @@
 title: Cursor代码神器之——创建跨平台RN项目(11)
 categories:
   - 开发
-  - Q-AI
-  - 开发助力    
+  - R-AI开发助手
   - Cursor
 tags:
   - Cursor
