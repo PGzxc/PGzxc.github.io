@@ -476,7 +476,7 @@ __2-Android项目—E朝朝企业端__
 
 ### 1—[SwiperHM](https://github.com/PGzxc/SwiperHM)
 
-**项目归属**：个人项目(私有)
+**项目归属**：个人项目(私密)
 **项目名称**：SwiperHM
 **项目地址**：https://github.com/PGzxc/SwiperHM
 **软件支持**：鸿蒙全系列
@@ -760,7 +760,50 @@ __2-Android项目—E朝朝企业端__
 
 ## <font color=red>五 React Native项目</font>
 
-### 1—[WanAndroidRN](https://github.com/PGzxc/WanAndroidRN)
+### 1—[SwiperRN](https://github.com/PGzxc/SwiperRN)
+
+**项目归属**：个人项目
+**项目名称**：SwiperRN(私密)
+**项目地址**：https://github.com/PGzxc/SwiperRN
+**软件支持**：Android+IOS+Web
+**开发工具**：VS Code+Trae(AI编程助手)+Java(17.0.15)+Node(25.2.1)+Yarn(1.22.22)+react-native(0.81.5)+Expo(54)
+**项目描述**：SwiperRN 是一款高仿抖音 + 小红书的跨平台短视频&图文社区应用，基于 React Native + Expo 生态开发，结合 api.apiopen.top 免费开放接口，实现全屏视频垂直滑动、图片笔记瀑布流、动态发布、消息通知等完整社交体验。支持 iOS、Android、Web 三端真正一次编写到处运行，视觉效果与交互体验接近原生应用。    
+**功能模块**：
+
+* 首页：抖音式全屏视频垂直滑动(Swiper)，自动播放 + 手势暂停，支持下拉刷新、上拉加载更多
+* 图集：小红书式双列/三列自适应图片瀑布流，动态高度，点击放大查看详情
+* 发布：支持拍摄/相册选择视频、图片，多图上传，富文本标题+话题标签，调用接口一键发布
+* 消息：点赞、评论、关注、系统通知列表，实时红点提醒，可跳转对应内容
+* 我：个人主页网格/列表展示作品、收藏夹、草稿箱、设置与夜间模式切换
+
+**技术要点**：
+
+- 路由与导航：基于Expo Router实现文件系统路由系统
+- 自定义组件：BottomTabBar中间凸起按钮和动态缩放效果
+- 类型系统：基于TypeScript进行类型定义，确保代码质量和可维护性
+- 网络请求：封装ApiService(fetch/axios)统一管理网络请求
+- UI布局：实现图片瀑布流布局，动态计算列高和图片位置
+- 手势交互：React Native Gesture Handler实现滑动切换
+- 动画效果：React Native Animated和Reanimated高性能动画
+- 适配方案：SafeAreaContext和Dimensions API响应式布局
+- 视频播放：expo-av + FlatList实现“进入视口自动播放 + 离开暂停”，预加载下一条视频
+- 构建发布：EAS Build多环境应用打包和发布
+
+**项目预览-Android**
+
+| ![][swiperrn-az-1] | ![][swiperrn-az-2] | ![][swiperrn-az-3] |
+| :----------------: | :----------------: | :----------------: |
+| ![][swiperrn-az-4] | ![][swiperrn-az-5] | ![][swiperrn-az-6] |
+| ![][swiperrn-az-7] | ![][swiperrn-az-8] | ![][swiperrn-az-9] |
+
+**项目预览-IOS**
+
+| ![][swiperrn-ios-1] | ![][swiperrn-ios-2] | ![][swiperrn-ios-3] |
+| :-----------------: | :-----------------: | :-----------------: |
+| ![][swiperrn-ios-4] | ![][swiperrn-ios-5] | ![][swiperrn-ios-6] |
+| ![][swiperrn-ios-7] | ![][swiperrn-ios-8] |                     |
+
+### 2—[WanAndroidRN](https://github.com/PGzxc/WanAndroidRN)
 
 **项目归属**：个人项目
 **项目名称**：WanAndroidRN(开源)
@@ -785,7 +828,7 @@ __2-Android项目—E朝朝企业端__
 | ![][rn-waz-4] | ![][rn-waz-5] | ![][rn-waz-6] |
 | ![][rn-waz-7] | ![][rn-waz-8] | ![][rn-waz-9] |
 
-### 2—[ZhiHuRN](https://github.com/PGzxc/ZhiHuRN)
+### 3—[ZhiHuRN](https://github.com/PGzxc/ZhiHuRN)
 
 **项目归属**：个人项目
 **项目名称**：ZhiHuRN(开源+AI)
@@ -1332,6 +1375,29 @@ IOS截图
 [kmm-ios-waz-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-me-7.png
 [kmm-ios-waz-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-login-8.png
 [kmm-ios-waz-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-register-9.png
+
+<!--swiperrn-az-->
+
+[swiperrn-az-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperrn-az-1-home-1.png
+[swiperrn-az-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperrn-az-2-home-2.png
+[swiperrn-az-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperrn-az-3-home-3.png
+[swiperrn-az-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperrn-az-4-home-4.png
+[swiperrn-az-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperrn-az-5-home-5.png
+[swiperrn-az-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperrn-az-6-home-6.png
+[swiperrn-az-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperrn-az-7-pub.png
+[swiperrn-az-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperrn-az-8-mg.png
+[swiperrn-az-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperrn-az-9-me.png
+
+<!--swiperrn-ios-->
+
+[swiperrn-ios-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperrn-ios-1-home-1.png
+[swiperrn-ios-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperrn-ios-2-home-2.png
+[swiperrn-ios-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperrn-ios-3-home-3.png
+[swiperrn-ios-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperrn-ios-4-home-4.png
+[swiperrn-ios-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperrn-ios-5-album.png
+[swiperrn-ios-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperrn-ios-6-pub.png
+[swiperrn-ios-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperrn-ios-7-mgs.png
+[swiperrn-ios-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperrn-ios-8-me.png
 
 <!--rn-waz-->
 [rn-waz-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/rn-waz-1-home.png
