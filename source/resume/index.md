@@ -667,7 +667,7 @@ __2-Android项目—E朝朝企业端__
 - 纵向分页：封装 UIPageViewController 垂直分页，索引同步与切换通知
 - 自定义组件： BottomTabBar 中间凸起发布按钮，选中项弹性缩放动画
 - 架构与状态：MVVM + ObservableObject/@Published ，解耦视图与数据流
-- 网络层： APIService 统一入口， APIClient 基于 Alamofire + ObjectMapper，支持分页/分类
+- 网络层： 封装 APIService 统一管理请求，底层APIClient基于 Alamofire + ObjectMapper
 - 数据映射：通用响应模型 + 业务模型 JSON 映射，兼容旧/新字段
 - 界面布局：图集瀑布流动态列宽与间距，双列交错优化视觉密度
 - 适配与沉浸： GeometryReader + safeAreaInsets 响应式布局，内容穿透状态栏
