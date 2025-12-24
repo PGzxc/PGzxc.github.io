@@ -645,7 +645,43 @@ __2-Android项目—E朝朝企业端__
 
 ## <font color=red>三 IOS项目</font>
 
-### 1—[WanAndroid_SwiftUI](https://github.com/PGzxc/WanAndroid_SwiftUI)
+### 1—[SwiperIOS](https://github.com/PGzxc/SwiperIOS)
+
+**项目归属**：个人项目
+**项目名称**：SwiperIOS(私密)
+**项目地址**：https://github.com/PGzxc/SwiperIOS
+**软件支持**：IOS
+**开发工具**：MacOS(15.7.3)+Xcode(26.2)+Swift(6.2.3)+Trae(AI编程助手)
+**项目描述**：SwiperIOS 是一款高仿抖音 + 小红书的原生 IOS 短视频与图文社区应用，基于 Swift + SwiftUI 开发，结合 api.apiopen.top 免费开放接口，实现全屏视频垂直滑动、图片瀑布流浏览、发布弹窗、消息提醒等社交体验；采用 MVVM 架构与统一网络层封装，深色沉浸式视觉与手势交互接近原生应用
+**功能模块**：
+
+* 首页：垂直滑动(Swiper)全屏视频，进入视口自动播放、离开自动暂停，末尾自动分页加载
+* 图集：双列自适应瀑布流，动态列宽与间距，点击图片全屏放大并支持捏合缩放
+* 发布：底部中间凸起发布按钮触发弹窗，提供相册/相机/文字入口
+* 消息：列表页面与底部导航红点提醒
+* 我：个人页面基础结构，后续可扩展作品、收藏、草稿与设置
+
+**技术要点**：
+
+- 路由与导航：SwiftUI TabView + 组件化文件结构，实现顶部标签与底部导航
+- 纵向分页：封装 UIPageViewController 垂直分页，索引同步与切换通知
+- 自定义组件： BottomTabBar 中间凸起发布按钮，选中项弹性缩放动画
+- 架构与状态：MVVM + ObservableObject/@Published ，解耦视图与数据流
+- 网络层： APIService 统一入口， APIClient 基于 Alamofire + ObjectMapper，支持分页/分类
+- 数据映射：通用响应模型 + 业务模型 JSON 映射，兼容旧/新字段
+- 界面布局：图集瀑布流动态列宽与间距，双列交错优化视觉密度
+- 适配与沉浸： GeometryReader + safeAreaInsets 响应式布局，内容穿透状态栏
+- 视频播放： AVPlayer 视口进入自动播放/离开暂停，缓冲指示与循环播放
+- 构建与依赖：CocoaPods 管理依赖，Fastlane 脚本化多环境打包发布
+
+项目预览
+
+| ![][swiperios-1] | ![][swiperios-2] | ![][swiperios-3] |
+| :--------------: | :--------------: | :--------------: |
+| ![][swiperios-4] | ![][swiperios-5] | ![][swiperios-6] |
+| ![][swiperios-7] | ![][swiperios-8] | ![][swiperios-9] |
+
+### 2—[WanAndroid_SwiftUI](https://github.com/PGzxc/WanAndroid_SwiftUI)
 
 **项目归属**：个人项目
 **项目名称**：WanAndroid_SwiftUI
@@ -672,7 +708,7 @@ __2-Android项目—E朝朝企业端__
 |![][swift-waz-5]|![][swift-waz-6] |![][swift-waz-7] |![][swift-waz-8] |
 |![][swift-waz-9]|![][swift-waz-10]|![][swift-waz-11]|![][swift-waz-12]|
 
-### 2—[ZhiHuSwiftUI](https://github.com/PGzxc/ZhiHuSwiftUI)
+### 3—[ZhiHuSwiftUI](https://github.com/PGzxc/ZhiHuSwiftUI)
 
 **项目归属**：个人项目
 **项目名称**：ZhiHuSwiftUI(开源+AI)
@@ -1311,6 +1347,18 @@ IOS截图
 [tinber-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tinber-fm-radio.jpg
 [tinber-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tinber-fm-red.jpg
 [tinber-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tinber-fm-story.jpg
+
+<!--IOS-Swiperios-->
+[swiperios-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperios-1-home-play.png
+[swiperios-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperios-2-home-state.png
+[swiperios-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperios-3-focus-state.png
+[swiperios-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperios-4-home-city.png
+[swiperios-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperios-5-album.png
+[swiperios-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperios-6-album-big.png
+[swiperios-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperios-7-pub.png
+[swiperios-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperios-8-msg.png
+[swiperios-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperios-9-me.png
+
 
 <!--IOS-Wanandroid-SwiftUI-->
 [swift-waz-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiftui-waz-1-home.png
