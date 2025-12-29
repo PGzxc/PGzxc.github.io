@@ -736,7 +736,42 @@ __2-Android项目—E朝朝企业端__
 
 ## <font color=red>四 Flutter项目</font>
 
-### 1—[Flutter-WanAndroid ](https://github.com/PGzxc/flutter_wanandroid)
+### 1—[SwiperFlutter](https://github.com/PGzxc/SwiperFlutter)
+
+**项目归属** ：个人项目
+**项目名称**：SwiperFlutter(私密)
+**项目地址**：https://github.com/PGzxc/SwiperFlutter
+**软件支持**：Android+IOS+Web+Windows+Mac+Linux
+**开发工具**：IDEA(2025.3.1)+Flutter(3.38.5)+Trae(AI编程助手)
+**项目描述**：基于 Flutter 框架独立开发的跨平台短视频 + 图文社区应用，支持 Android / iOS / Web / Windows / macOS / Linux 六端运行，一套代码多平台部署；产品形态与交互体验对标抖音 / 小红书，实现视频流播放、图片瀑布流浏览及完整用户交互体系，具备现代化 UI 与全平台响应式适配能力。     
+**功能模块**：
+
+* 首页：抖音式竖向视频流，支持上下滑动切换、自动播放及手势交互
+* 图集：图片瀑布流展示，支持分类浏览与分页加载
+* 发布：底部统一发布入口，支持多类型内容发布
+* 消息：系统通知与用户互动消息
+* 我：个人信息管理与个人内容展示
+
+**技术要点**：
+
+- 跨平台开发：基于 Flutter + Dart，一套代码多端适配
+- 架构设计：采用 MVVM 架构，UI 与业务逻辑解耦，提升代码可维护性
+- 状态管理：使用 Riverpod 管理全局与页面状态，保证状态可预测、可测试
+- 网络与数据：Dio + 拦截器 + 数据缓存，结合 json_serializable 自动序列化
+- 视频播放：基于 video_player，支持自动播放、手势控制及生命周期管理
+- 图片优化：使用 cached_network_image 实现图片缓存，提升列表滚动性能
+- 瀑布流布局：通过 flutter_staggered_grid_view 实现图片瀑布流展示
+- UI 组件：使用 flutter_svg 支持矢量图标，构建现代化 UI 风格
+- 屏幕适配：采用响应式布局方案，适配不同屏幕尺寸与分辨率
+
+**项目预览**
+
+| ![][swiperft-1] | ![][swiperft-2] | ![][swiperft-3] |
+| :-------------: | :-------------: | :-------------: |
+| ![][swiperft-4] | ![][swiperft-5] | ![][swiperft-6] |
+| ![][swiperft-7] | ![][swiperft-8] | ![][swiperft-9] |
+
+### 2—[Flutter-WanAndroid ](https://github.com/PGzxc/flutter_wanandroid)
 
 **项目归属** ：个人项目
 **项目名称**：Flutter-wanandroid(开源)
@@ -767,7 +802,7 @@ __2-Android项目—E朝朝企业端__
 | ![][w-9] | ![][w-10] | ![][w-11]| ![][w-12]|
 | ![][w-13]| ![][w-14] | ![][w-15]| ![][w-16]|
 
-###  2—[Flutter-zhihu-getx](https://github.com/PGzxc/flutter_zhihu_getx)
+###  3—[Flutter-zhihu-getx](https://github.com/PGzxc/flutter_zhihu_getx)
 
 **项目归属**：个人项目
 **项目名称**：Flutter_zhihu_getx(开源)
@@ -1276,8 +1311,18 @@ IOS截图
 [live-hx-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/live-hx-room-manager-2.png
 [live-hx-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/live-hx-chat-room-3.png
 
-<!--自己的项目-flutter-wanandroid-->
+<!--自己的项目-swiper-flutter-->
+[swiperft-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperft-1-rec.png
+[swiperft-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperft-2-rec-state.png
+[swiperft-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperft-3-focus.png
+[swiperft-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperft-4-city.png
+[swiperft-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperft-5-cate.png
+[swiperft-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperft-6-big.png
+[swiperft-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperft-7-pub.png
+[swiperft-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperft-8-msg.png
+[swiperft-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperft-9-me.png
 
+<!--自己的项目-flutter-wanandroid-->
 [w-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/w_login.png
 [w-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/w_register.png
 [w-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/w_home.png
