@@ -585,7 +585,43 @@ __2-Android项目—E朝朝企业端__
 
 ## <font color=red>二 Android项目</font>
 
-### 1—[WanAndroid_ComposeUI](https://github.com/PGzxc/WanAndroid_ComposeUI)
+### 1—[SwiperAndroid](https://github.com/PGzxc/SwiperAndroid)
+
+**项目归属**：个人项目
+**项目名称**：SwiperAndroid(私密)
+**项目地址**：https://github.com/PGzxc/SwiperAndroid
+**软件支持**：Android
+**开发工具**：Android Studio(2025.2.2)+Java(17.0.15)+Gradle(8.14.3)+Kotlin(2.0.21)+Trae
+**项目描述**：独立开发的 Android 短视频 + 图集浏览应用，采用 Jetpack Compose 实现现代化声明式 UI；产品形态对标抖音/小红书短视频与图文社区，提供流畅的视频/图片滑动浏览、分类查看及全屏沉浸式交互体验。     
+**功能模块**：
+
+* 首页：同城 / 关注 / 推荐多标签内容流，支持左右滑动切换
+* 图集：图片瀑布流展示，支持分类与分页加载
+* 发布：内容发布入口，包含交互动画反馈
+* 消息：系统通知与用户互动消息
+* 我：用户信息、作品列表与设置管理
+
+**技术要点**：
+
+- 架构设计：采用 MVVM 架构，基于 ViewModel 实现 UI 与业务逻辑解耦
+- UI框架：使用 Jetpack Compose 构建声明式 UI，实现响应式布局与流畅动画
+- 状态管理：通过 Compose State + LaunchedEffect + ViewModel 管理页面状态与副作用
+- 网络与数据： 集成 Retrofit + OkHttp + Gson + Coroutines，实现高效异步网络请求与数据解析
+- 视频播放：ExoPlayer 实现列表自动播放、全屏切换及播放控制(StyledPlayerView)
+- 图片处理：Glide 实现高效缓存与加载，优化长列表滚动性能
+- 手势交互：基于 Compose 手势 API 实现图片缩放、下滑关闭等沉浸式交互体验
+- 屏幕适配：响应式布局 + WindowInsets，适配异形屏、系统栏及各种屏幕尺寸
+- 构建与依赖：Gradle Kotlin DSL + Version Catalog + Compose BOM 统一管理依赖与版本
+- 多 ABI 支持：合理拆分 ABI，提升安装包体积与兼容性
+
+**项目预览**
+
+| ![][swiperaz-1] | ![][swiperaz-2] | ![][swiperaz-3] |
+| :-------------: | :-------------: | :-------------: |
+| ![][swiperaz-4] | ![][swiperaz-5] | ![][swiperaz-6] |
+| ![][swiperaz-7] | ![][swiperaz-8] | ![][swiperaz-9] |
+
+### 2—[WanAndroid_ComposeUI](https://github.com/PGzxc/WanAndroid_ComposeUI)
 
 **项目归属**：个人项目
 **项目名称**：WanAndroid_ComposeUI
@@ -614,7 +650,7 @@ __2-Android项目—E朝朝企业端__
 | ![][com-az-5] | ![][com-az-6]  | ![][com-az-7]  | ![][com-az-8]  |
 | ![][com-az-9] | ![][com-az-10] | ![][com-az-11] | ![][com-az-12] |
 
-### 2—[直播Live ](https://github.com/PGzxc/Live)
+### 3—[直播Live ](https://github.com/PGzxc/Live)
 
 **项目归属** ：个人项目
 **项目名称**：Android 项目—直播 Live
@@ -1300,6 +1336,16 @@ IOS截图
 [live-hx-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/live-hx-room-manager-2.png
 [live-hx-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/live-hx-chat-room-3.png
 
+<!--swiper-android-->
+[swiperaz-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperaz-1-rec-play.png
+[swiperaz-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperaz-2-rec-pause.png
+[swiperaz-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperaz-3-focus.png
+[swiperaz-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperaz-4-city.png
+[swiperaz-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperaz-5-first.png
+[swiperaz-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperaz-6-big.png
+[swiperaz-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperaz-7-pub.png
+[swiperaz-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperaz-8-msg.png
+[swiperaz-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperaz-9-me.png
 
 <!--web前端-游戏-->
 [webgame-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/webgame-nfb007-1.png
