@@ -50,3 +50,17 @@ hexo.extend.tag.register('include_md', (args) => {
     return `<p>Error: ${e.message}</p>`;
   }
 }, { ends: false });
+
+// 使用Hexo的filter机制，在渲染前转义所有Nunjucks标签
+// 这样可以确保在Nunjucks解析之前转义所有标签，避免解析错误
+hexo.extend.filter.register('before_post_render', (data) => {
+  // 确保只处理Markdown文件
+  if (data.source.endsWith('.md')) {
+    // 转义所有的{% ... %}标签为{% raw %}{% ... %}{% endraw %}
+    // 包括{% include %}和其他可能的Nunjucks标签
+    data.content = data.content.replace(/\{\%[^%}]*\%\}/g, (match) => {
+      return `{% raw %}${match}{% endraw %}`;
+    });
+  }
+  return data;
+});
