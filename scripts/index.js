@@ -57,10 +57,15 @@ hexo.extend.filter.register('before_post_render', (data) => {
   // 确保只处理Markdown文件
   if (data.source.endsWith('.md')) {
     // 转义所有的{% ... %}标签为{% raw %}{% ... %}{% endraw %}
-    // 包括{% include %}和其他可能的Nunjucks标签
-    data.content = data.content.replace(/\{\%[^%}]*\%\}/g, (match) => {
-      return `{% raw %}${match}{% endraw %}`;
-    });
+  // 包括{% include %}和其他可能的Nunjucks标签，但排除自定义的{% include_md %}标签
+  data.content = data.content.replace(/\{\%[^%}]*\%\}/g, (match) => {
+    // 检查是否是自定义的{% include_md %}标签，如果是则不转义
+    if (match.trim().startsWith('{% include_md')) {
+      return match;
+    }
+    // 其他标签则转义
+    return `{% raw %}${match}{% endraw %}`;
+  });
   }
   return data;
 });
