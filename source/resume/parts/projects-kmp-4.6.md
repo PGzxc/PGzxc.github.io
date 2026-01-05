@@ -48,11 +48,11 @@
 
 
 
-#### 2—[WanAndroid-Compose-Multiplatform](https://github.com/PGzxc/WanAndroid-Compose-Multiplatform)
+#### 2—[WanAndroidKMP](https://github.com/PGzxc/WanAndroidKMP)
 
 **项目归属**：个人项目
-**项目名称**：WanAndroid-Compose-Multiplatform
-**项目地址**：https://github.com/PGzxc/WanAndroid-Compose-Multiplatform
+**项目名称**：WanAndroidKMP
+**项目地址**：https://github.com/PGzxc/WanAndroidKMP
 **软件支持**：Android+IOS+Desk(Mac/Windows/Linux)
 **开发工具**：Android Studio(2022.3.1)+Java(17.0.6)+Gradle(8.0.2-bin)+Kotlin(1.9.0)
 **项目描述**：本项目基于 WanAndroid API 开发，采用 Compose Multiplatform 实现跨平台界面构建，支持用户登录、注册、浏览文章、项目、导航与消息等核心功能。适配多端平台。     
