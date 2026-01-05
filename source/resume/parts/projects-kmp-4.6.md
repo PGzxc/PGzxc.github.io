@@ -71,39 +71,39 @@
 
 Android截图
 
-| ![][kmm-az-waz-1] | ![][kmm-az-waz-2] | ![][kmm-az-waz-3] | ![][kmm-az-waz-4] |
-| ----------------- | ----------------- | ----------------- | ------------------- |
-| ![][kmm-az-waz-5] | ![][kmm-az-waz-6] | ![][kmm-az-waz-7] | ![][kmm-az-waz-8] |
-| ![][kmm-az-waz-9] |                      |                      |                      |
+| ![][kmpwaz-az-1] | ![][kmpwaz-az-2] | ![][kmpwaz-az-3] |
+| :--------------: | :--------------: | :--------------: |
+| ![][kmpwaz-az-4] | ![][kmpwaz-az-5] | ![][kmpwaz-az-6] |
+| ![][kmpwaz-az-7] | ![][kmpwaz-az-8] | ![][kmpwaz-az-9] |
 
 IOS截图
 
-| ![][kmm-ios-waz-1] | ![][kmm-ios-waz-2] | ![][kmm-ios-waz-3] | ![][kmm-ios-waz-4] |
-| ------------------ | ------------------ | ------------------- | ------------------- |
-| ![][kmm-ios-waz-5] | ![][kmm-ios-waz-6] | ![][kmm-ios-waz-7] | ![][kmm-ios-waz-8] |
-| ![][kmm-ios-waz-9] |                      |                      |                      |
+| ![][kmpwaz-ios-1] | ![][kmpwaz-ios-2] | ![][kmpwaz-ios-3] |
+| :---------------: | :---------------: | :---------------: |
+| ![][kmpwaz-ios-4] | ![][kmpwaz-ios-5] | ![][kmpwaz-ios-6] |
+| ![][kmpwaz-ios-7] | ![][kmpwaz-ios-8] | ![][kmpwaz-ios-9] |
 
 
 <!--WanAndroid-az-->
-[kmm-az-waz-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-home-1.png
-[kmm-az-waz-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-navigator-2.png
-[kmm-az-waz-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-project-3.png
-[kmm-az-waz-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-msg-4.png
-[kmm-az-waz-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-msg-5.png
-[kmm-az-waz-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-me-6.png
-[kmm-az-waz-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-me-7.png
-[kmm-az-waz-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-login-8.png
-[kmm-az-waz-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/multiplatform-az-waz-register-9.png
+[kmpwaz-az-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/kmpwaz-az-home-1.png
+[kmpwaz-az-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/kmpwaz-az-navigator-2.png
+[kmpwaz-az-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/kmpwaz-az-project-3.png
+[kmpwaz-az-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/kmpwaz-az-msg-4.png
+[kmpwaz-az-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/kmpwaz-az-msg-5.png
+[kmpwaz-az-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/kmpwaz-az-me-6.png
+[kmpwaz-az-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/kmpwaz-az-me-7.png
+[kmpwaz-az-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/kmpwaz-az-login-8.png
+[kmpwaz-az-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/kmpwaz-az-register-9.png
 <!--WanAndroid-ios-->
-[kmm-ios-waz-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-home-1.png
-[kmm-ios-waz-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-navigator-2.png
-[kmm-ios-waz-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-project-3.png
-[kmm-ios-waz-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-msg-4.png
-[kmm-ios-waz-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-msg-5.png
-[kmm-ios-waz-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-me-6.png
-[kmm-ios-waz-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-me-7.png
-[kmm-ios-waz-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-login-8.png
-[kmm-ios-waz-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/multiplatform-ios-waz-register-9.png
+[kmpwaz-ios-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/kmpwaz-ios-home-1.png
+[kmpwaz-ios-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/kmpwaz-ios-navigator-2.png
+[kmpwaz-ios-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/kmpwaz-ios-project-3.png
+[kmpwaz-ios-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/kmpwaz-ios-msg-4.png
+[kmpwaz-ios-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/kmpwaz-ios-msg-5.png
+[kmpwaz-ios-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/kmpwaz-ios-me-6.png
+[kmpwaz-ios-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/kmpwaz-ios-me-7.png
+[kmpwaz-ios-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/kmpwaz-ios-login-8.png
+[kmpwaz-ios-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/kmpwaz-ios-register-9.png
 
 <!--swiperkmp-az-->
 [swkmp-az-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperkmp-az-1-home.png
