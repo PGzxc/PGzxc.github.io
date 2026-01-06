@@ -59,8 +59,13 @@ hexo.extend.filter.register('before_post_render', (data) => {
     // 转义所有的{% ... %}标签为{% raw %}{% ... %}{% endraw %}
   // 包括{% include %}和其他可能的Nunjucks标签，但排除自定义的{% include_md %}标签
   data.content = data.content.replace(/\{\%[^%}]*\%\}/g, (match) => {
-    // 检查是否是自定义的{% include_md %}标签，如果是则不转义
-    if (match.trim().startsWith('{% include_md')) {
+    // 检查是否是自定义标签，如果是则不转义
+    const trimmed = match.trim();
+    if (trimmed.startsWith('{% include_md') || 
+        trimmed.startsWith('{% note') || 
+        trimmed.startsWith('{% linkgrid') ||
+        trimmed.startsWith('{% endnote') ||
+        trimmed.startsWith('{% endlinkgrid')) {
       return match;
     }
     // 其他标签则转义
