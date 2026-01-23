@@ -1,3 +1,86 @@
-<div class="footer-custom">
-Website source code <span class="exturl theme-link" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hleG8tbmV4dC9oZXhvLW5leHQuZ2l0aHViLmlv">here</span>
+<div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
 </div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>

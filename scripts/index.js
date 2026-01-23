@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+
 hexo.extend.tag.register('darkmode_preview', () => `<style>
 .image-comparison-container {
     position: relative;
@@ -27,50 +30,32 @@ hexo.extend.tag.register('darkmode_preview', () => `<style>
     <img class="image-comparison" src="/images/next-schemes-dark.png" alt="NexT Schemes">
 </div>`);
 
-// 自定义标签：include_md - 引入Markdown文件并渲染为HTML
-hexo.extend.tag.register('include_md', (args) => {
-  const fs = require('fs');
-  const path = require('path');
-  const file_path = args[0];
-  // 构建完整路径：hexo source目录 + resume/parts + 文件名
-  const base_dir = path.join(hexo.source_dir, 'resume', 'parts');
-  const full_path = path.join(base_dir, file_path);
-  
+// --- 核心修复：include_markdown 标签 ---
+hexo.extend.tag.register('include_markdown', function(args) {
+  if (!args[0]) return '<p style="color:red">[include_markdown] missing file path</p>';
+
+  // 调试信息
+  console.log('include_markdown args:', args);
+
+  const filePath = args[0];
+
+  // 构建正确的文件路径 - 直接使用 filePath
+  const fullPath = path.join(hexo.source_dir, 'resume', filePath);
+
+  // 调试信息
+  console.log('include_markdown fullPath:', fullPath);
+  console.log('include_markdown file exists:', fs.existsSync(fullPath));
+
+  if (!fs.existsSync(fullPath)) {
+    return `<p style="color:red">Missing file: ${fullPath}</p>`;
+  }
+
   try {
-    if (fs.existsSync(full_path)) {
-      let content = fs.readFileSync(full_path, 'utf8');
-      // 移除YAML Front Matter（如果有）
-      content = content.replace(/^---[\s\S]*?---\n/, '');
-      // 渲染Markdown为HTML
-      return hexo.render.renderSync({text: content, engine: 'markdown'});
-    } else {
-      return `<p>Error: Could not find file ${file_path}</p>`;
-    }
-  } catch (e) {
-    return `<p>Error: ${e.message}</p>`;
+    let content = fs.readFileSync(fullPath, 'utf8');
+    content = content.replace(/^---[\s\S]*?---\n?/, '');
+
+    return hexo.render.renderSync({ text: content, engine: 'markdown' });
+  } catch (err) {
+    return `<p style="color:red">Render error in ${fullPath}: ${err.message}</p>`;
   }
 }, { ends: false });
-
-// 使用Hexo的filter机制，在渲染前转义所有Nunjucks标签
-// 这样可以确保在Nunjucks解析之前转义所有标签，避免解析错误
-hexo.extend.filter.register('before_post_render', (data) => {
-  // 确保只处理Markdown文件
-  if (data.source.endsWith('.md')) {
-    // 转义所有的{% ... %}标签为{% raw %}{% ... %}{% endraw %}
-  // 包括{% include %}和其他可能的Nunjucks标签，但排除自定义的{% include_md %}标签
-  data.content = data.content.replace(/\{\%[^%}]*\%\}/g, (match) => {
-    // 检查是否是自定义标签，如果是则不转义
-    const trimmed = match.trim();
-    if (trimmed.startsWith('{% include_md') || 
-        trimmed.startsWith('{% note') || 
-        trimmed.startsWith('{% linkgrid') ||
-        trimmed.startsWith('{% endnote') ||
-        trimmed.startsWith('{% endlinkgrid')) {
-      return match;
-    }
-    // 其他标签则转义
-    return `{% raw %}${match}{% endraw %}`;
-  });
-  }
-  return data;
-});
