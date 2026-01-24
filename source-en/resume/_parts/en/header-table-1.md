@@ -32,18 +32,18 @@
 <script>
 // 简历下载链接映射
 const resumeLinks = {
-  '#resume-android': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/周向成_Android开发工程师.pdf',
-  '#resume-ios': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/周向成_IOS开发工程师.pdf',
-  '#resume-hm': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/周向成_Harmony开发工程师.pdf',
-  '#resume-flutter': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/周向成_Flutter开发工程师.pdf',
-  '#resume-rn': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/周向成_ReactNative开发工程师.pdf',
-  '#resume-kmp': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/周向成_KMP开发工程师.pdf',
-  '#resume-xcx': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/周向成_小程序开发.pdf',
-  '#resume-java': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/周向成_Java开发工程师.pdf',
-  '#resume-front': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/周向成_前端开发工程师.pdf',
-  '#resume-ai': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/周向成_AI开发工程师.pdf',
-  '#resume-csharp': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/周向成_WinForm开发工程师.pdf',
-  '#resume-inex': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/index.pdf'
+  '#resume-android': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes-en/Zhou Xiangcheng_Android Development Engineer.pdf',
+  '#resume-ios': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes-en/Zhou Xiangcheng_iOS Development Engineer.pdf',
+  '#resume-hm': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes-en/Zhou Xiangcheng_Harmony Development Engineer.pdf',
+  '#resume-flutter': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes-en/Zhou Xiangcheng_Flutter Development Engineer.pdf',
+  '#resume-rn': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes-en/Zhou Xiangcheng_React Native Development Engineer.pdf',
+  '#resume-kmp': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes-en/Zhou Xiangcheng_KMP Development Engineer.pdf',
+  '#resume-xcx': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes-en/Zhou Xiangcheng_Mini Program Development.pdf',
+  '#resume-java': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes-en/Zhou Xiangcheng_Java Development Engineer.pdf',
+  '#resume-front': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes-en/Zhou Xiangcheng_Frontend Development Engineer.pdf',
+  '#resume-ai': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes-en/Zhou Xiangcheng_AI Development Engineer.pdf',
+  '#resume-csharp': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes-en/Zhou Xiangcheng_WinForm Development Engineer.pdf',
+  '#resume-inex': 'https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes-en/index.pdf'
 };
 
 // 页面加载时替换链接
@@ -59,16 +59,3 @@ window.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!--简历下载地址-->
-
-[resume-android]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/周向成_Android开发工程师.pdf
-[resume-ios]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/周向成_IOS开发工程师.pdf
-[resume-hm]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/周向成_Harmony开发工程师.pdf
-[resume-flutter]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/周向成_Flutter开发工程师.pdf
-[resume-rn]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/周向成_ReactNative开发工程师.pdf
-[resume-kmp]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/周向成_KMP开发工程师.pdf
-[resume-front]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/周向成_前端开发工程师.pdf
-[resume-java]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/周向成_Java开发工程师.pdf
-[resume-xcx]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/周向成_小程序开发.pdf
-[resume-csharp]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/周向成_WinForm开发工程师.pdf
-[resume-ai]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/周向成_AI开发工程师.pdf
-[resume-inex]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/resumes/index.pdf
