@@ -11,11 +11,11 @@
 **APIバージョン**：API Version 17
 **開発言語**：ArkTS+ArkUI
 **開発ツール**：DevEco Studio 5.0.5 Release
-**プロジェクト説明**：抖音・小紅書を模倣したHarmonyプロジェクトで、api.apiopen.topのオープンインターフェースに基づき、抖音風の動画スワイプ切り替えを実装しています 
+**プロジェクト説明**：TikTok・レディースガジェットを模倣したHarmonyプロジェクトで、api.apiopen.topのオープンインターフェースに基づき、TikTokスタイルの動画スワイプ切り替えを実装しています 
 **機能モジュール**：ホーム、ギャラリー、公開、メッセージ、マイページ   
 **技術ポイント**：
 
-- Flex+Builder+scale+animationに基づいて小紅書風のボトムナビゲーションを構築
+- Flex+Builder+scale+animationに基づいてレディースガジェットスタイルのボトムナビゲーションを構築
 - V1、V2状態管理に基づいてデータ変更とUI同期を監視
 - 公式ツールWindowUtilsに基づいて画面とウィンドウを適応
 - カスタムコンポーネント：@Builderデコレータ、@Componentデコレータ

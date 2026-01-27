@@ -45,7 +45,7 @@ toc: false
 <!--5-スキルリスト-->
 {% include_markdown _parts/ja/skills-5.md %}
 
-## 微信公式アカウント
+## WeChat公式アカウント
 ![weixin][1]
 
 ---
