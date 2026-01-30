@@ -2,7 +2,7 @@
 title: Trae AI工具之——入门指南(1)
 categories:
   - 开发
-  - Q-AI
+  - R-AI开发助手
   - Trae
 tags:
   - Trae
