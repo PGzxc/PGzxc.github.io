@@ -3,7 +3,7 @@ title: ComfyUI开发之——模型与资源管理(3)
 categories:
   - 开发
   - Q-AI
-  - CodeFormer
+  - ComfyUI
 tags:
   - ComfyUI
   - 模型
