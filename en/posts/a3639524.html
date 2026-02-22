@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述123456781.什么是树2.树的结点3.子树和空树4.结点的度和层次5.有序树和无序树6.森林7.树的表示方法8.总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法——第6章-树-数据结构的树存储结构(6.1)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/a3639524.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="一 概述123456781.什么是树2.树的结点3.子树和空树4.结点的度和层次5.有序树和无序树6.森林7.树的表示方法8.总结">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap6-1-1.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap6-1-2.png">
+<meta property="article:published_time" content="2023-03-13T10:21:26.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:04.900Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="数据结构与算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap6-1-1.png">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/a3639524.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/a3639524.html","path":"posts/a3639524.html","title":"数据结构与算法——第6章-树-数据结构的树存储结构(6.1)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>数据结构与算法——第6章-树-数据结构的树存储结构(6.1) | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E4%BB%80%E4%B9%88%E6%98%AF%E6%A0%91"><span class="nav-number">2.</span> <span class="nav-text">二 什么是树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%9B%BE%E7%A4%BA"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 图示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E8%AF%B4%E6%98%8E"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E6%A0%91%E7%9A%84%E7%BB%93%E7%82%B9"><span class="nav-number">3.</span> <span class="nav-text">三 树的结点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E5%AD%90%E6%A0%91%E5%92%8C%E7%A9%BA%E6%A0%91"><span class="nav-number">4.</span> <span class="nav-text">四 子树和空树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%AD%90%E6%A0%91"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 子树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E7%A9%BA%E6%A0%91"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 空树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E7%BB%93%E7%82%B9%E7%9A%84%E5%BA%A6%E5%92%8C%E5%B1%82%E6%AC%A1"><span class="nav-number">5.</span> <span class="nav-text">五 结点的度和层次</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E7%BB%93%E7%82%B9%E7%9A%84%E5%BA%A6"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 结点的度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E7%BB%93%E7%82%B9%E7%9A%84%E5%B1%82%E6%AC%A1"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 结点的层次</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD-%E6%9C%89%E5%BA%8F%E6%A0%91%E5%92%8C%E6%97%A0%E5%BA%8F%E6%A0%91"><span class="nav-number">6.</span> <span class="nav-text">六 有序树和无序树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83-%E6%A3%AE%E6%9E%97"><span class="nav-number">7.</span> <span class="nav-text">七 森林</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB-%E6%A0%91%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95"><span class="nav-number">8.</span> <span class="nav-text">八 树的表示方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-%E5%9B%BE%E7%A4%BA"><span class="nav-number">8.1.</span> <span class="nav-text">8.1 图示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-%E8%AF%B4%E6%98%8E"><span class="nav-number">8.2.</span> <span class="nav-text">8.2 说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D-%E6%80%BB%E7%BB%93"><span class="nav-number">9.</span> <span class="nav-text">九 总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81-%E5%8F%82%E8%80%83"><span class="nav-number">10.</span> <span class="nav-text">十 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/a3639524.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="数据结构与算法——第6章-树-数据结构的树存储结构(6.1) | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据结构与算法——第6章-树-数据结构的树存储结构(6.1)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E7%AC%AC6%E7%AB%A0-%E6%A0%91-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84%E6%A0%91%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84(6.1).md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2023-03-13 18:21:26" itemprop="dateCreated datePublished" datetime="2023-03-13T18:21:26+08:00">2023-03-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E5%BC%80%E5%8F%91/N-%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">N-数据与算法</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E5%BC%80%E5%8F%91/N-%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>2 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1.什么是树</span><br><span class="line">2.树的结点</span><br><span class="line">3.子树和空树</span><br><span class="line">4.结点的度和层次</span><br><span class="line">5.有序树和无序树</span><br><span class="line">6.森林</span><br><span class="line">7.树的表示方法</span><br><span class="line">8.总结</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-什么是树"><a href="#二-什么是树" class="headerlink" title="二 什么是树"></a>二 什么是树</h2><h3 id="2-1-图示"><a href="#2-1-图示" class="headerlink" title="2.1 图示"></a>2.1 图示</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap6-1-1.png" loading="lazy"></p>
+<h3 id="2-2-说明"><a href="#2-2-说明" class="headerlink" title="2.2 说明"></a>2.2 说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">之前介绍的所有的数据结构都是线性存储结构。本章所介绍的树结构是一种非线性存储结构，存储的是具有“一对多”关系的数据元素的集合。</span><br><span class="line"></span><br><span class="line">图 1(A) 是使用树结构存储的集合 &#123;A,B,C,D,E,F,G,H,I,J,K,L,M&#125; 的示意图。</span><br><span class="line">对于数据 A 来说，和数据 B、C、D 有关系；对于数据 B 来说，和 E、F 有关系。这就是“一对多”的关系。</span><br><span class="line"></span><br><span class="line">将具有“一对多”关系的集合中的数据元素按照图 1（A）的形式进行存储，整个存储形状在逻辑结构上看，</span><br><span class="line">类似于实际生活中倒着的树（图 1（B）倒过来），所以称这种存储结构为“树型”存储结构。</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-树的结点"><a href="#三-树的结点" class="headerlink" title="三 树的结点"></a>三 树的结点</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">结点：使用树结构存储的每一个数据元素都被称为“结点”。例如，图 1（A）中，数据元素 A 就是一个结点；</span><br><span class="line"></span><br><span class="line">父结点（双亲结点）、子结点和兄弟结点：</span><br><span class="line">对于图 1（A）中的结点 A、B、C、D 来说，A 是 B、C、D 结点的父结点（也称为“双亲结点”），</span><br><span class="line">而 B、C、D 都是 A 结点的子结点（也称“孩子结点”）。</span><br><span class="line">对于 B、C、D 来说，它们都有相同的父结点，所以它们互为兄弟结点。</span><br><span class="line"></span><br><span class="line">树根结点（简称“根结点”）：每一个非空树都有且只有一个被称为根的结点。图 1（A）中，结点 A 就是整棵树的根结点。</span><br><span class="line">树根的判断依据为：如果一个结点没有父结点，那么这个结点就是整棵树的根结点。</span><br><span class="line"></span><br><span class="line">叶子结点：如果结点没有任何子结点，那么此结点称为叶子结点（叶结点）。</span><br><span class="line">例如图 1（A）中，结点 K、L、F、G、M、I、J 都是这棵树的叶子结点。</span><br></pre></td></tr></table></figure>
+
+<h2 id="四-子树和空树"><a href="#四-子树和空树" class="headerlink" title="四 子树和空树"></a>四 子树和空树</h2><h3 id="4-1-子树"><a href="#4-1-子树" class="headerlink" title="4.1 子树"></a>4.1 子树</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">子树：如图 1（A）中，整棵树的根结点为结点 A，而如果单看结点 B、E、F、K、L 组成的部分来说，</span><br><span class="line">也是棵树，而且节点 B 为这棵树的根结点。</span><br><span class="line">所以称 B、E、F、K、L 这几个结点组成的树为整棵树的子树；同样，结点 E、K、L 构成的也是一棵子树，根结点为 E。</span><br><span class="line"></span><br><span class="line">注意：单个结点也是一棵树，只不过根结点就是它本身。图 1（A）中，结点 K、L、F 等都是树，且都是整棵树的子树。</span><br><span class="line"></span><br><span class="line">知道了子树的概念后，树也可以这样定义：树是由根结点和若干棵子树构成的。</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-空树"><a href="#4-2-空树" class="headerlink" title="4.2 空树"></a>4.2 空树</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">空树：如果集合本身为空，那么构成的树就被称为空树。空树中没有结点。</span><br><span class="line"></span><br><span class="line">补充：在树结构中，对于具有同一个根结点的各个子树，相互之间不能有交集。</span><br><span class="line">例如，图 1（A）中，除了根结点 A，其余元素又各自构成了三个子树，根结点分别为 B、C、D，这三个子树相互之间没有相同的结点。</span><br><span class="line">如果有，就破坏了树的结构，不能算做是一棵树。</span><br></pre></td></tr></table></figure>
+
+<h2 id="五-结点的度和层次"><a href="#五-结点的度和层次" class="headerlink" title="五 结点的度和层次"></a>五 结点的度和层次</h2><h3 id="5-1-结点的度"><a href="#5-1-结点的度" class="headerlink" title="5.1 结点的度"></a>5.1 结点的度</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">对于一个结点，拥有的子树数（结点有多少分支）称为结点的度（Degree）。</span><br><span class="line">例如，图 1（A）中，根结点 A 下分出了 3 个子树，所以，结点 A 的度为 3。</span><br><span class="line"></span><br><span class="line">一棵树的度是树内各结点的度的最大值。图 1（A）表示的树中，各个结点的度的最大值为 3，所以，整棵树的度的值是 3。</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-结点的层次"><a href="#5-2-结点的层次" class="headerlink" title="5.2 结点的层次"></a>5.2 结点的层次</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">结点的层次：从一棵树的树根开始，树根所在层为第一层，根的孩子结点所在的层为第二层，依次类推。</span><br><span class="line">对于图 1（A）来说，A 结点在第一层，B、C、D 为第二层，E、F、G、H、I、J 在第三层，K、L、M 在第四层。</span><br><span class="line"></span><br><span class="line">一棵树的深度（高度）是树中结点所在的最大的层次。图 1（A）树的深度为 4。</span><br><span class="line"></span><br><span class="line">如果两个结点的父结点虽不相同，但是它们的父结点处在同一层次上，那么这两个结点互为堂兄弟。</span><br><span class="line">例如，图 1（A）中，结点 G 和 E、F、H、I、J 的父结点都在第二层，所以之间为堂兄弟的关系。</span><br></pre></td></tr></table></figure>
+
+<h2 id="六-有序树和无序树"><a href="#六-有序树和无序树" class="headerlink" title="六 有序树和无序树"></a>六 有序树和无序树</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">如果树中结点的子树从左到右看，谁在左边，谁在右边，是有规定的，这棵树称为有序树；反之称为无序树。</span><br><span class="line">在有序树中，一个结点最左边的子树称为&quot;第一个孩子&quot;，最右边的称为&quot;最后一个孩子&quot;。</span><br><span class="line"></span><br><span class="line">拿图 1（A）来说，如果是其本身是一棵有序树，则以结点 B 为根结点的子树为整棵树的第一个孩子，</span><br><span class="line">以结点 D 为根结点的子树为整棵树的最后一个孩子。</span><br></pre></td></tr></table></figure>
+
+<h2 id="七-森林"><a href="#七-森林" class="headerlink" title="七 森林"></a>七 森林</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">由 m（m &gt;= 0）个互不相交的树组成的集合被称为森林。图 1（A）中，分别以 B、C、D 为根结点的三棵子树就可以称为森林。</span><br><span class="line"></span><br><span class="line">前面讲到，树可以理解为是由根结点和若干子树构成的，而这若干子树本身是一个森林，所以，树还可以理解为是由根结点和森林组成的。</span><br><span class="line">用一个式子表示为：</span><br><span class="line">Tree =（root,F）</span><br><span class="line"></span><br><span class="line">其中，root 表示树的根结点，F 表示由 m（m &gt;= 0）棵树组成的森林。</span><br></pre></td></tr></table></figure>
+
+<h2 id="八-树的表示方法"><a href="#八-树的表示方法" class="headerlink" title="八 树的表示方法"></a>八 树的表示方法</h2><h3 id="8-1-图示"><a href="#8-1-图示" class="headerlink" title="8.1 图示"></a>8.1 图示</h3><p>除了图 1（A）表示树的方法外，还有其他表示方法：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap6-1-2.png" loading="lazy"></p>
+<h3 id="8-2-说明"><a href="#8-2-说明" class="headerlink" title="8.2 说明"></a>8.2 说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">图 2（A）是以嵌套的集合的形式表示的（集合之间绝不能相交，即图中任意两个圈不能相交）。</span><br><span class="line"></span><br><span class="line">图 2（B）使用的是凹入表示法（了解即可），表示方式是：最长条为根结点，相同长度的表示在同一层次。</span><br><span class="line">例如 B、C、D 长度相同，都为 A 的子结点，E 和 F 长度相同，为 B 的子结点，K 和 L 长度相同，为 E 的子结点，依此类推。</span><br><span class="line"></span><br><span class="line">最常用的表示方法是使用广义表的方式。图 1（A）用广义表表示为：</span><br><span class="line">(A , ( B ( E ( K , L ) , F ) , C ( G ) , D ( H ( M ) , I , J ) ) )</span><br></pre></td></tr></table></figure>
+
+<h2 id="九-总结"><a href="#九-总结" class="headerlink" title="九 总结"></a>九 总结</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">树型存储结构类似于家族的族谱，各个结点之间也同样可能具有父子、兄弟、表兄弟的关系。</span><br><span class="line">本节中，要重点理解树的根结点和子树的定义，同时要会计算树中各个结点的度和层次，以及树的深度。</span><br></pre></td></tr></table></figure>
+
+<h2 id="十-参考"><a href="#十-参考" class="headerlink" title="十 参考"></a>十 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://c.biancheng.net/view/3383.html">C语言中文网—数据结构的树存储结构</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag"># 数据结构与算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/3e9f6f6d.html" rel="prev" title="标日中级上册——第16课-結婚披露宴-单元末-お土産">
+                  <i class="fa fa-angle-left"></i> 标日中级上册——第16课-結婚披露宴-单元末-お土産
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/e8ae11f5.html" rel="next" title="标日中级下册——第17课-日本取材の成果-生词-1">
+                  标日中级下册——第17课-日本取材の成果-生词-1 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"56923e5ce692405356f5f6920eeb6d31"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

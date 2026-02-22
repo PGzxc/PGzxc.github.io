@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ja/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ja/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ja/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/ja/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/ja/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/ja/","images":"/ja/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索...","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/ja/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/ja/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述123456789101.推流的流程？2.拉流播放的流程？3.常见直播协议及其对比？4.Android 直播推流的整体架构是什么？5.如何使用 Camera 和 AudioRecord 进行音视频采集？6.推流使用了哪些协议？RTMP、SRT、WebRTC 区别？7.Android 如何实现 HLS、RTMP 播放？8.如何实现美颜、滤镜等视频前处理？9.如何处理直播中的卡顿、延迟、音画不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android面试题——掘金-音视频之直播相关(9.4)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/d1f66bf.html">
+<meta property="og:site_name" content="PGzxc (Japanese)">
+<meta property="og:description" content="一 概述123456789101.推流的流程？2.拉流播放的流程？3.常见直播协议及其对比？4.Android 直播推流的整体架构是什么？5.如何使用 Camera 和 AudioRecord 进行音视频采集？6.推流使用了哪些协议？RTMP、SRT、WebRTC 区别？7.Android 如何实现 HLS、RTMP 播放？8.如何实现美颜、滤镜等视频前处理？9.如何处理直播中的卡顿、延迟、音画不">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2025-04-07T11:54:40.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.014Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="掘金">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/d1f66bf.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"ja","comments":true,"permalink":"https://pgzxc.github.io/posts/d1f66bf.html","path":"posts/d1f66bf.html","title":"Android面试题——掘金-音视频之直播相关(9.4)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android面试题——掘金-音视频之直播相关(9.4) | PGzxc (Japanese)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/utils.js" defer></script><script src="/ja/js/motion.js" defer></script><script src="/ja/js/sidebar.js" defer></script><script src="/ja/js/next-boot.js" defer></script><script src="/ja/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/ja/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/ja/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/ja/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/ja/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/ja/atom.xml" title="PGzxc (Japanese)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションを切り替える" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/ja/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (Japanese)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">本から学んだことは表面的なもの；自分で体験しなければならない</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="検索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/ja/" rel="section"><i class="fa fa-bell fa-fw"></i>ホーム</a></li><li class="menu-item menu-item-nav"><a href="/ja/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>ナビゲーション</a></li><li class="menu-item menu-item-categories"><a href="/ja/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリー<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/ja/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/ja/links/" rel="section"><i class="fa fa-link fa-fw"></i>リンク</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>検索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="検索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          目次
+        </li>
+        <li class="sidebar-nav-overview">
+          サイト概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E7%9B%B4%E6%92%AD%E7%9B%B8%E5%85%B3"><span class="nav-number">2.</span> <span class="nav-text">二 直播相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%8E%A8%E6%B5%81%E7%9A%84%E6%B5%81%E7%A8%8B%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1  推流的流程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%8B%89%E6%B5%81%E6%92%AD%E6%94%BE%E7%9A%84%E6%B5%81%E7%A8%8B%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 拉流播放的流程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%B8%B8%E8%A7%81%E7%9B%B4%E6%92%AD%E5%8D%8F%E8%AE%AE%E5%8F%8A%E5%85%B6%E5%AF%B9%E6%AF%94%EF%BC%9F"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 常见直播协议及其对比？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-Android-%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81%E7%9A%84%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 Android 直播推流的整体架构是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-Camera-%E5%92%8C-AudioRecord-%E8%BF%9B%E8%A1%8C%E9%9F%B3%E8%A7%86%E9%A2%91%E9%87%87%E9%9B%86%EF%BC%9F"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 如何使用 Camera 和 AudioRecord 进行音视频采集？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E6%8E%A8%E6%B5%81%E4%BD%BF%E7%94%A8%E4%BA%86%E5%93%AA%E4%BA%9B%E5%8D%8F%E8%AE%AE%EF%BC%9FRTMP%E3%80%81SRT%E3%80%81WebRTC-%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 推流使用了哪些协议？RTMP、SRT、WebRTC 区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-Android-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0-HLS%E3%80%81RTMP-%E6%92%AD%E6%94%BE%EF%BC%9F"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 Android 如何实现 HLS、RTMP 播放？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BE%8E%E9%A2%9C%E3%80%81%E6%BB%A4%E9%95%9C%E7%AD%89%E8%A7%86%E9%A2%91%E5%89%8D%E5%A4%84%E7%90%86%EF%BC%9F"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 如何实现美颜、滤镜等视频前处理？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E7%9B%B4%E6%92%AD%E4%B8%AD%E7%9A%84%E5%8D%A1%E9%A1%BF%E3%80%81%E5%BB%B6%E8%BF%9F%E3%80%81%E9%9F%B3%E7%94%BB%E4%B8%8D%E5%90%8C%E6%AD%A5%EF%BC%9F"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 如何处理直播中的卡顿、延迟、音画不同步？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-10-%E6%8E%A8%E6%B5%81%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%A6%82%E4%BD%95%E5%8A%A8%E6%80%81%E5%88%87%E6%8D%A2%E7%A0%81%E7%8E%87%EF%BC%88ABR%EF%BC%89%EF%BC%9F"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 推流过程中如何动态切换码率（ABR）？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/ja/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/ja/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">投稿</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/ja/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">カテゴリー</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/ja/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/d1f66bf.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/ja/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android面试题——掘金-音视频之直播相关(9.4) | PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android面试题——掘金-音视频之直播相关(9.4)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Android%E9%9D%A2%E8%AF%95%E9%A2%98%E2%80%94%E2%80%94%E6%8E%98%E9%87%91-%E9%9F%B3%E8%A7%86%E9%A2%91%E4%B9%8B%E7%9B%B4%E6%92%AD%E7%9B%B8%E5%85%B3(9.4).md" class="post-edit-link" title="編集" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2025-04-07 19:54:40" itemprop="dateCreated datePublished" datetime="2025-04-07T19:54:40+08:00">2025-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/Android%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">Android面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="読書時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">読書時間 &asymp;</span>
+      <span>5 分</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.推流的流程？</span><br><span class="line">2.拉流播放的流程？</span><br><span class="line">3.常见直播协议及其对比？</span><br><span class="line">4.Android 直播推流的整体架构是什么？</span><br><span class="line">5.如何使用 Camera 和 AudioRecord 进行音视频采集？</span><br><span class="line">6.推流使用了哪些协议？RTMP、SRT、WebRTC 区别？</span><br><span class="line">7.Android 如何实现 HLS、RTMP 播放？</span><br><span class="line">8.如何实现美颜、滤镜等视频前处理？</span><br><span class="line">9.如何处理直播中的卡顿、延迟、音画不同步？</span><br><span class="line">10.推流过程中如何动态切换码率（ABR）？</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-直播相关"><a href="#二-直播相关" class="headerlink" title="二 直播相关"></a>二 直播相关</h2><h3 id="2-1-推流的流程？"><a href="#2-1-推流的流程？" class="headerlink" title="2.1  推流的流程？"></a>2.1  推流的流程？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-采集音视频数据（Camera、AudioRecord）</span><br><span class="line">-编码（MediaCodec）</span><br><span class="line">-封装成 FLV 或 RTMP 包</span><br><span class="line">-使用 Socket/RTMP 推流至服务器</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-拉流播放的流程？"><a href="#2-2-拉流播放的流程？" class="headerlink" title="2.2 拉流播放的流程？"></a>2.2 拉流播放的流程？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-播放器连接服务器拉取流媒体数据（如 RTMP、HLS）</span><br><span class="line">-解析媒体格式（MediaExtractor、FFmpeg）</span><br><span class="line">-解码（MediaCodec/FFmpeg）</span><br><span class="line">-渲染音视频（AudioTrack + Surface）</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-常见直播协议及其对比？"><a href="#2-3-常见直播协议及其对比？" class="headerlink" title="2.3 常见直播协议及其对比？"></a>2.3 常见直播协议及其对比？</h3><table>
+<thead>
+<tr>
+<th align="center">协议</th>
+<th align="center">特点</th>
+<th align="center">延迟</th>
+<th align="center">支持情况</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">RTMP</td>
+<td align="center">实时直播</td>
+<td align="center">低延迟（&lt;2s）</td>
+<td align="center">广泛使用</td>
+</tr>
+<tr>
+<td align="center">HLS</td>
+<td align="center">分段传输</td>
+<td align="center">高延迟（10s+）</td>
+<td align="center">iOS友好</td>
+</tr>
+<tr>
+<td align="center">WebRTC</td>
+<td align="center">P2P通信</td>
+<td align="center">超低延迟（&lt;500ms）</td>
+<td align="center">视频通话&#x2F;会议</td>
+</tr>
+<tr>
+<td align="center">SRT</td>
+<td align="center">安全可靠传输</td>
+<td align="center">中低延迟（&lt;2s）</td>
+<td align="center">替代 RTMP 的趋势</td>
+</tr>
+</tbody></table>
+<h3 id="2-4-Android-直播推流的整体架构是什么？"><a href="#2-4-Android-直播推流的整体架构是什么？" class="headerlink" title="2.4 Android 直播推流的整体架构是什么？"></a>2.4 Android 直播推流的整体架构是什么？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">Android 直播推流的整体架构一般包括以下几个关键模块：</span><br><span class="line"></span><br><span class="line">1.视频采集： </span><br><span class="line">使用Camera或Camera2 API采集视频数据，或者使用 MediaRecorder 或其他硬件加速库获取视频流。</span><br><span class="line"></span><br><span class="line">2.音频采集： 使用 AudioRecord API 获取音频数据，或者使用 MediaRecorder 同时采集音视频。</span><br><span class="line"></span><br><span class="line">3.编码： </span><br><span class="line">使用 MediaCodec 或第三方库（如 FFmpeg、X264）对采集到的视频和音频进行编码，</span><br><span class="line">转换成流媒体格式（如 H.264 视频、AAC 音频）。</span><br><span class="line"></span><br><span class="line">4.推流协议： </span><br><span class="line">编码后的数据通过 RTMP、RTSP 或 HLS 协议推送到直播服务器。</span><br><span class="line">常用的推流库有 RTMP 推流库（如 LFLiveKit）或 FFmpeg 推流。</span><br><span class="line"></span><br><span class="line">5.网络传输： 通过网络协议（如 TCP、UDP）将编码后的视频音频流传输到直播服务器。</span><br><span class="line"></span><br><span class="line">6.直播服务器： </span><br><span class="line">服务器负责接收并转发视频流，进行分发、存储等处理。</span><br><span class="line">常见的直播服务器有 Nginx + RTMP 模块、Wowza 等。</span><br><span class="line"></span><br><span class="line">7.播放器： 客户端播放器使用 ExoPlayer、MediaPlayer 等来接收直播流，并进行解码和播放。</span><br><span class="line"></span><br><span class="line">整体架构旨在确保高效、低延迟地进行音视频数据的采集、编码、推流及分发。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-如何使用-Camera-和-AudioRecord-进行音视频采集？"><a href="#2-5-如何使用-Camera-和-AudioRecord-进行音视频采集？" class="headerlink" title="2.5 如何使用 Camera 和 AudioRecord 进行音视频采集？"></a>2.5 如何使用 Camera 和 AudioRecord 进行音视频采集？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">在 Android 中，使用 Camera 和 AudioRecord 进行音视频采集的流程如下：</span><br><span class="line"></span><br><span class="line">1. 视频采集（Camera）</span><br><span class="line">-初始化 Camera： </span><br><span class="line">使用 Camera 或 Camera2 API 获取视频帧。Camera2 提供更细粒度的控制，如曝光、对焦等。</span><br><span class="line"></span><br><span class="line">-设置预览： 配置相机预览输出至 SurfaceView 或 TextureView，在界面上显示视频内容。</span><br><span class="line"></span><br><span class="line">-捕获帧：</span><br><span class="line">使用Camera.setPreviewCallback()获取每一帧图像数据，可以通过Camera API捕获视频帧并进行编码。</span><br><span class="line"></span><br><span class="line">2. 音频采集（AudioRecord）</span><br><span class="line">-初始化AudioRecord：使用AudioRecord API创建音频采集实例，配置采样率、通道、缓冲区大小等参数。</span><br><span class="line">-开始录音： 调用 audioRecord.startRecording() 开始音频数据采集。</span><br><span class="line">-读取音频数据：使用 audioRecord.read()读取采集到的音频数据，通常会以PCM格式获取原始音频数据。</span><br><span class="line"></span><br><span class="line">3. 同步音视频：</span><br><span class="line">将视频帧和音频数据分别进行编码，并确保它们的时间戳一致，</span><br><span class="line">最后通过推流协议（如 RTMP）将音视频流推送到服务器。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-推流使用了哪些协议？RTMP、SRT、WebRTC-区别？"><a href="#2-6-推流使用了哪些协议？RTMP、SRT、WebRTC-区别？" class="headerlink" title="2.6 推流使用了哪些协议？RTMP、SRT、WebRTC 区别？"></a>2.6 推流使用了哪些协议？RTMP、SRT、WebRTC 区别？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">推流常用的协议包括 RTMP、SRT 和 WebRTC，它们的区别如下：</span><br><span class="line"></span><br><span class="line">1. RTMP (Real-Time Messaging Protocol)</span><br><span class="line">用途： 主要用于视频和音频的实时流媒体传输，广泛应用于直播推流。</span><br><span class="line">特点： 基于 TCP，支持低延迟、高稳定性传输，适用于视频直播平台。</span><br><span class="line">优点： 简单易用，成熟稳定，广泛支持。</span><br><span class="line">缺点： 主要用于点对服务器的推流，不适用于大规模的点对点通讯；且在某些环境下有较高的延迟。</span><br><span class="line"></span><br><span class="line">2. SRT (Secure Reliable Transport)</span><br><span class="line">用途： 专为低延迟、高稳定性的视频传输设计，特别适用于不稳定网络环境中的视频传输。</span><br><span class="line">特点： 基于 UDP，提供更强的错误恢复和数据包丢失修复能力。</span><br><span class="line">优点： 支持低延迟和高质量的传输，尤其适合不稳定的网络环境。</span><br><span class="line">缺点： 相较于 RTMP，兼容性较低，部署较为复杂。</span><br><span class="line"></span><br><span class="line">3. WebRTC (Web Real-Time Communication)</span><br><span class="line">用途： 用于浏览器和移动端之间的实时音视频通讯，支持点对点（P2P）视频通话。</span><br><span class="line">特点： 基于 UDP，支持实时音视频、数据交换。</span><br><span class="line">优点： 极低延迟，适用于实时通讯和视频通话。</span><br><span class="line">缺点： 对于大规模直播推流的支持较弱，通常需要通过中继服务器。</span><br><span class="line"></span><br><span class="line">总结：</span><br><span class="line">RTMP 适合直播推流，稳定但略有延迟。</span><br><span class="line">SRT 适用于不稳定网络的高质量低延迟视频传输。</span><br><span class="line">WebRTC 适合点对点实时通讯，延迟极低。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-Android-如何实现-HLS、RTMP-播放？"><a href="#2-7-Android-如何实现-HLS、RTMP-播放？" class="headerlink" title="2.7 Android 如何实现 HLS、RTMP 播放？"></a>2.7 Android 如何实现 HLS、RTMP 播放？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">在Android中，实现HLS(HTTP Live Streaming) 和RTMP(Real-Time Messaging Protocol) </span><br><span class="line">播放通常通过使用第三方库，如 ExoPlayer 或 IjkPlayer。</span><br><span class="line">以下是如何在 Android 中实现这两种播放协议的简要描述：</span><br><span class="line"></span><br><span class="line">1. HLS 播放</span><br><span class="line">HLS 是基于 HTTP 的流媒体协议，通常用于直播和点播。</span><br><span class="line">它将视频内容分成多个小的 .ts（MPEG-2 TS）文件并通过 .m3u8 文件进行播放。</span><br><span class="line"></span><br><span class="line">1.1 ExoPlayer 支持 HLS 播放。</span><br><span class="line">1.2 实现步骤：</span><br><span class="line">1.2.1 添加 ExoPlayer 依赖：</span><br><span class="line">implementation &#x27;com.google.android.exoplayer:exoplayer-hls:2.x.x&#x27;</span><br><span class="line">1.2.2 创建 ExoPlayer 实例：</span><br><span class="line">val player = ExoPlayerFactory.newSimpleInstance(context, DefaultTrackSelector())</span><br><span class="line">val hlsMediaSource = HlsMediaSource.Factory(DefaultHttpDataSourceFactory(&quot;user-agent&quot;))</span><br><span class="line">    .createMediaSource(Uri.parse(&quot;https://path/to/your/playlist.m3u8&quot;))</span><br><span class="line">player.prepare(hlsMediaSource)</span><br><span class="line">player.playWhenReady = true</span><br><span class="line"></span><br><span class="line">1.2.3 设置播放器视图：</span><br><span class="line">val playerView: PlayerView = findViewById(R.id.player_view)</span><br><span class="line">playerView.player = player</span><br><span class="line"></span><br><span class="line">1.2.4 开始播放：</span><br><span class="line">player.play()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2. RTMP 播放</span><br><span class="line">RTMP 是一个基于 TCP 的流媒体协议，常用于低延迟的直播推流和播放。</span><br><span class="line">2.1 IjkPlayer 是一个支持 RTMP 协议的开源播放器，使用 FFmpeg 进行解码。</span><br><span class="line">2.2实现步骤：</span><br><span class="line"></span><br><span class="line">2.2.1 添加 IjkPlayer 依赖：</span><br><span class="line">implementation &#x27;tv.danmaku.ijk.media:ijkplayer-java:0.x.x&#x27;</span><br><span class="line"></span><br><span class="line">2.2.2 创建 IjkPlayer 实例：</span><br><span class="line">val ijkMediaPlayer = IjkMediaPlayer.create(context)</span><br><span class="line">ijkMediaPlayer.setDataSource(&quot;rtmp://path/to/your/stream&quot;)</span><br><span class="line">ijkMediaPlayer.prepareAsync()</span><br><span class="line">ijkMediaPlayer.setOnPreparedListener &#123;</span><br><span class="line">    ijkMediaPlayer.start()</span><br><span class="line">&#125;</span><br><span class="line">2.2.3 设置播放器视图：</span><br><span class="line">val surfaceView: SurfaceView = findViewById(R.id.surface_view)</span><br><span class="line">val surface = surfaceView.holder.surface</span><br><span class="line">ijkMediaPlayer.setSurface(surface)</span><br><span class="line"></span><br><span class="line">2.2.4 开始播放：</span><br><span class="line">ijkMediaPlayer.start()</span><br><span class="line"></span><br><span class="line">3.总结：</span><br><span class="line">-HLS 播放： 使用 ExoPlayer 的 HlsMediaSource 播放 .m3u8 文件。</span><br><span class="line">-RTMP 播放： 使用 IjkPlayer 或 ExoPlayer 支持 RTMP 协议播放实时视频流</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-8-如何实现美颜、滤镜等视频前处理？"><a href="#2-8-如何实现美颜、滤镜等视频前处理？" class="headerlink" title="2.8 如何实现美颜、滤镜等视频前处理？"></a>2.8 如何实现美颜、滤镜等视频前处理？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">在 Android 中实现 美颜、滤镜 等视频前处理通常涉及对视频帧进行图像处理，常见的实现方式有以下几种：</span><br><span class="line"></span><br><span class="line">1. 使用 OpenGL ES</span><br><span class="line">1.1 原理： </span><br><span class="line">通过 OpenGL ES 进行图像处理，可以实现美颜、滤镜等效果。</span><br><span class="line">利用 OpenGL ES 对视频帧进行纹理操作，应用各种图像处理算法（如模糊、亮度、对比度调整等）。</span><br><span class="line"></span><br><span class="line">1.2实现方式：</span><br><span class="line">-捕获视频帧（通过 Camera 或 MediaCodec）。</span><br><span class="line">-将每一帧作为纹理上传至 OpenGL。</span><br><span class="line">-在 OpenGL 上执行图像处理（如滤镜、磨皮等）。</span><br><span class="line">-渲染到屏幕上。</span><br><span class="line"></span><br><span class="line">1.3 库支持：</span><br><span class="line">-GPUImage：一个封装了 OpenGL ES 的图像处理库，支持多种滤镜、特效。</span><br><span class="line">-OpenGL ES：可以自定义实现滤镜和美颜效果。</span><br><span class="line"></span><br><span class="line">2. 使用第三方库</span><br><span class="line">-FaceUnity：一个提供多种美颜和滤镜效果的 SDK，专为实时视频处理设计，支持人脸识别和各种特效。</span><br><span class="line">-CameraFilter：一个开源库，封装了 OpenGL 和 GPU 加速，可以方便地为视频流添加滤镜、特效等。</span><br><span class="line"></span><br><span class="line">3. FFmpeg + OpenGL</span><br><span class="line"></span><br><span class="line">3.1 原理： </span><br><span class="line">利用 FFmpeg 解码视频流并将视频帧传递给 OpenGL 进行美颜或滤镜处理。</span><br><span class="line">FFmpeg 用于视频解码，OpenGL 用于处理图像。</span><br><span class="line"></span><br><span class="line">3.2实现方式：</span><br><span class="line">-使用 FFmpeg 解码视频帧。</span><br><span class="line">-使用 OpenGL 进行滤镜处理。</span><br><span class="line">-处理后的帧渲染到屏幕。</span><br><span class="line"></span><br><span class="line">总结：</span><br><span class="line">-OpenGL ES 是实现美颜和滤镜的核心技术，通过纹理操作和图像处理算法进行实时视频处理。</span><br><span class="line">-使用 GPUImage 和 FaceUnity 等第三方库可以方便地实现各种美颜、滤镜效果。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-9-如何处理直播中的卡顿、延迟、音画不同步？"><a href="#2-9-如何处理直播中的卡顿、延迟、音画不同步？" class="headerlink" title="2.9 如何处理直播中的卡顿、延迟、音画不同步？"></a>2.9 如何处理直播中的卡顿、延迟、音画不同步？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">在直播中，卡顿、延迟和音画不同步是常见的问题，通常可以通过以下方式进行优化和处理：</span><br><span class="line">1. 卡顿优化</span><br><span class="line">-网络优化： </span><br><span class="line">使用合适的协议（如SRT或HLS）和自适应码率技术，动态调整视频流的码率，以适应网络带宽波动，减少卡顿。</span><br><span class="line">-缓存机制： 增加视频播放器的缓冲区大小，确保数据流畅传输，避免因为网络波动导致的卡顿。</span><br><span class="line">-硬件加速： 使用硬件解码（如 MediaCodec 或 ExoPlayer），减少 CPU 占用，提高解码效率。</span><br><span class="line"></span><br><span class="line">2. 延迟优化</span><br><span class="line">-选择低延迟协议：RTMP协议虽然普遍，但延迟较高。使用 WebRTC 或 SRT 可减少延迟，提供更快的流传输。</span><br><span class="line">-减少缓冲时间： 在播放器中优化缓冲区设置，减少播放器的初始加载时间和缓冲延迟。</span><br><span class="line">-优化编码参数： 调整视频编码器（如 H.264）和音频编码器的参数，减少编码延迟。</span><br><span class="line"></span><br><span class="line">3. 音画同步</span><br><span class="line">-时间戳同步：在编码时确保音频和视频的时间戳一致，播放器在解码时根据时间戳来同步播放音频和视频。</span><br><span class="line">-调整播放速率： 如果发现音频和视频不同步，可以通过调整视频或音频播放的速率来进行校正。</span><br><span class="line">-同步算法： 在播放器中加入音画同步算法，实时调整视频帧的播放时机，确保音频和视频的准确同步。</span><br><span class="line"></span><br><span class="line">总结：</span><br><span class="line">-卡顿：通过网络优化、缓存机制和硬件加速减少。</span><br><span class="line">-延迟：选择低延迟协议和减少缓冲来优化。</span><br><span class="line">-音画同步：确保时间戳同步，并在播放器中实现调整算法。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-10-推流过程中如何动态切换码率（ABR）？"><a href="#2-10-推流过程中如何动态切换码率（ABR）？" class="headerlink" title="2.10 推流过程中如何动态切换码率（ABR）？"></a>2.10 推流过程中如何动态切换码率（ABR）？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">在推流过程中动态切换码率（ABR，Adaptive Bitrate Streaming）主要通过以下步骤实现：</span><br><span class="line"></span><br><span class="line">1.多码率推流：</span><br><span class="line">推流端（如使用 FFmpeg 或 MediaCodec）生成多个不同码率的视频流</span><br><span class="line">（例如 1080p、720p、480p 等），并将其推送到服务器。</span><br><span class="line"></span><br><span class="line">2.分段视频流：</span><br><span class="line">视频流被分成多个小段（如.ts文件），并通过播放列表（如.m3u8 或.mpd）进行管理，方便播放器按需选择。</span><br><span class="line"></span><br><span class="line">3.播放器端自适应选择：</span><br><span class="line">-播放器根据当前网络带宽和缓存状况动态选择最适合的码率。</span><br><span class="line">-使用 ExoPlayer 等播放器，内置 ABR 功能会根据实时带宽调整码率，确保流畅播放。</span><br><span class="line"></span><br><span class="line">4.带宽检测与调整：</span><br><span class="line">通过实时监测网络带宽、延迟和缓存状态，播放器自动切换至更低或更高的码率，优化播放体验。</span><br><span class="line"></span><br><span class="line">通过这种方式，播放器可以在网络状况变化时，无缝切换不同的码率，确保视频播放流畅且稳定。</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="三-参考"><a href="#三-参考" class="headerlink" title="三 参考"></a>三 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7480464724096057381">掘金—知识库的大纲</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/ja/tags/%E6%8E%98%E9%87%91/" rel="tag"># 掘金</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ja/posts/bf289417.html" rel="prev" title="Android面试题——掘金-音视频之播放器框架(9.3)">
+                  <i class="fa fa-angle-left"></i> Android面试题——掘金-音视频之播放器框架(9.3)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ja/posts/976196e3.html" rel="next" title="Android面试题——掘金-音视频之编解码(9.5)">
+                  Android面试题——掘金-音视频之编解码(9.5) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"5d508e1ff2f7044f8720d0f875277f69"}</script>
+<script src="/ja/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

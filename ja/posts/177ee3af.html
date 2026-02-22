@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ja/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ja/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ja/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/ja/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/ja/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/ja/","images":"/ja/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索...","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/ja/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/ja/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述1231.过程描述2.攻克问题难点3.具体实现代码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法——第5章-数组和广义表-行逻辑链接的顺序表实现矩阵乘法(5.9.2)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/177ee3af.html">
+<meta property="og:site_name" content="PGzxc (Japanese)">
+<meta property="og:description" content="一 概述1231.过程描述2.攻克问题难点3.具体实现代码">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2023-03-03T15:19:44.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.138Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="数据结构与算法">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/177ee3af.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"ja","comments":true,"permalink":"https://pgzxc.github.io/posts/177ee3af.html","path":"posts/177ee3af.html","title":"数据结构与算法——第5章-数组和广义表-行逻辑链接的顺序表实现矩阵乘法(5.9.2)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>数据结构与算法——第5章-数组和广义表-行逻辑链接的顺序表实现矩阵乘法(5.9.2) | PGzxc (Japanese)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/utils.js" defer></script><script src="/ja/js/motion.js" defer></script><script src="/ja/js/sidebar.js" defer></script><script src="/ja/js/next-boot.js" defer></script><script src="/ja/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/ja/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/ja/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/ja/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/ja/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/ja/atom.xml" title="PGzxc (Japanese)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションを切り替える" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/ja/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (Japanese)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">本から学んだことは表面的なもの；自分で体験しなければならない</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="検索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/ja/" rel="section"><i class="fa fa-bell fa-fw"></i>ホーム</a></li><li class="menu-item menu-item-nav"><a href="/ja/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>ナビゲーション</a></li><li class="menu-item menu-item-categories"><a href="/ja/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリー<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/ja/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/ja/links/" rel="section"><i class="fa fa-link fa-fw"></i>リンク</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>検索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="検索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          目次
+        </li>
+        <li class="sidebar-nav-overview">
+          サイト概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E8%BF%87%E7%A8%8B%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">二 过程描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E6%94%BB%E5%85%8B%E9%97%AE%E9%A2%98%E9%9A%BE%E7%82%B9"><span class="nav-number">3.</span> <span class="nav-text">三 攻克问题难点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81"><span class="nav-number">4.</span> <span class="nav-text">四 具体实现代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">五 总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD-%E5%8F%82%E8%80%83"><span class="nav-number">6.</span> <span class="nav-text">六 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/ja/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/ja/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">投稿</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/ja/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">カテゴリー</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/ja/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/177ee3af.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/ja/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="数据结构与算法——第5章-数组和广义表-行逻辑链接的顺序表实现矩阵乘法(5.9.2) | PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据结构与算法——第5章-数组和广义表-行逻辑链接的顺序表实现矩阵乘法(5.9.2)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E7%AC%AC5%E7%AB%A0-%E6%95%B0%E7%BB%84%E5%92%8C%E5%B9%BF%E4%B9%89%E8%A1%A8-%E8%A1%8C%E9%80%BB%E8%BE%91%E9%93%BE%E6%8E%A5%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%A1%A8%E5%AE%9E%E7%8E%B0%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95(5.9.2).md" class="post-edit-link" title="編集" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2023-03-03 23:19:44" itemprop="dateCreated datePublished" datetime="2023-03-03T23:19:44+08:00">2023-03-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E5%BC%80%E5%8F%91/N-%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">N-数据与算法</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E5%BC%80%E5%8F%91/N-%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="読書時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">読書時間 &asymp;</span>
+      <span>3 分</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.过程描述</span><br><span class="line">2.攻克问题难点</span><br><span class="line">3.具体实现代码</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-过程描述"><a href="#二-过程描述" class="headerlink" title="二 过程描述"></a>二 过程描述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">对矩阵的乘积进行深度剖析，矩阵 A 和矩阵 B 相乘的运算过程是这样的：</span><br><span class="line">1. 首先，找到矩阵 A 中第一行的非 0 元素，分别是 A 11 = 3 和 A 14 = 5；</span><br><span class="line">（由于行逻辑链接的顺序表中存储的都是非 0 元素，查找的过程就需要使用记录每行第一个非 0 元素的首地址的数组来完成）</span><br><span class="line"></span><br><span class="line">2. 用 3 去和 B 中对应的第一行中的非 0 元素相乘，矩阵 B 中第一行非 0 元素是 B 12 = 2，所以 3*2 = 6 ，</span><br><span class="line">因为 6 是 A 11 和 B 12 相乘的结果，所以暂时存放在 C 12 中；</span><br><span class="line">用 5 去和 B 中对应的第 4 行的非 0 元素相乘，由于矩阵 B 中第 4 行没有非 0 元素，所以，第一行的计算结束；</span><br><span class="line"></span><br><span class="line">3. 以此类推。</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-攻克问题难点"><a href="#三-攻克问题难点" class="headerlink" title="三 攻克问题难点"></a>三 攻克问题难点</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">现在，解决问题的关键在于，如何知道顺序表中存放的非 0 元素是哪一行的呢？</span><br><span class="line"></span><br><span class="line">解决方案：由于使用的是行逻辑链接的顺序表，</span><br><span class="line">所以，已经知道了每一个矩阵中的每一行有多少个非 0 元素，而且第一行的第一个非 0 元素的位置一定是 1。</span><br><span class="line"></span><br><span class="line">所以，第 n 行的非 0 元素的位置范围是：</span><br><span class="line">大于或等于第 n 行第一个元素的位置， 小于第 n+1 行第一个元素的位置（如果是矩阵的最后一行， 小于矩阵中非 0 元素的个数 + 1）。</span><br></pre></td></tr></table></figure>
+
+<h2 id="四-具体实现代码"><a href="#四-具体实现代码" class="headerlink" title="四 具体实现代码"></a>四 具体实现代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#define MAXSIZE 12500</span><br><span class="line">#define MAXRC 100</span><br><span class="line">#define ElemType int</span><br><span class="line">typedef struct &#123;</span><br><span class="line">	int i,j;//行，列</span><br><span class="line">	ElemType e;//元素值</span><br><span class="line">&#125; Triple;</span><br><span class="line">typedef struct &#123;</span><br><span class="line">	Triple data[MAXSIZE+1];</span><br><span class="line">	int rpos[MAXRC+1];//每行第一个非零元素在 data 数组中的位置</span><br><span class="line">	int mu,nu,tu;//行数，列数，元素个数</span><br><span class="line">&#125; RLSMatrix;</span><br><span class="line">RLSMatrix MultSMatrix(RLSMatrix A, RLSMatrix B, RLSMatrix C) &#123;</span><br><span class="line">	//如果矩阵 A 的列数与矩阵 B 的行数不等，则不能做矩阵乘运算</span><br><span class="line">	if(A.nu != B.mu)</span><br><span class="line">		return C;</span><br><span class="line">	C.mu = A.mu;</span><br><span class="line">	C.nu = B.nu;</span><br><span class="line">	C.tu = 0;</span><br><span class="line">	//如果其中任意矩阵的元素个数为零，做乘法元素没有意义，全是 0</span><br><span class="line">	if(A.tu * B.tu == 0)</span><br><span class="line">		return C;</span><br><span class="line">	else &#123;</span><br><span class="line">		int arow;</span><br><span class="line">		int ccol;</span><br><span class="line">		//遍历矩阵 A 的每一行</span><br><span class="line">		for(arow=1; arow&lt;=A.mu; arow++) &#123;</span><br><span class="line">			//创建一个临时存储乘积结果的数组，且初始化为 0，遍历每次都需要清空</span><br><span class="line">			int ctemp[MAXRC+1] = &#123;&#125;;</span><br><span class="line">			C.rpos[arow] = C.tu + 1;</span><br><span class="line">			//根据行数，在三元组表中找到该行所有的非 0 元素的位置</span><br><span class="line">			int tp;</span><br><span class="line">			if(arow &lt; A.mu)</span><br><span class="line">				tp = A.rpos[arow+1];//获取矩阵 A 的下一行第一个非零元素在 data 数组中位置</span><br><span class="line">			else</span><br><span class="line">				tp = A.tu+1;//若当前行是最后一行，则取最后一个元素+1</span><br><span class="line">			int p;</span><br><span class="line">			int brow;</span><br><span class="line">			//遍历当前行的所有的非 0 元素</span><br><span class="line">			for(p=A.rpos[arow]; p&lt;tp; p++) &#123;</span><br><span class="line">				brow = A.data[p].j;//取该非 0 元素的列数，便于去 B 中找对应的做乘积的非 0 元素</span><br><span class="line">				int t;</span><br><span class="line">				// 判断如果对于 A 中非 0 元素，找到矩阵 B 中做乘法的那一行中的所有的非 0 元素</span><br><span class="line">				if(brow &lt; B.mu)</span><br><span class="line">					t = B.rpos[brow+1];</span><br><span class="line">				else</span><br><span class="line">					t = B.tu+1;</span><br><span class="line">				int q;</span><br><span class="line">				//遍历找到的对应的非 0 元素，开始做乘积运算</span><br><span class="line">				for(q=B.rpos[brow]; q&lt;t; q++) &#123;</span><br><span class="line">					//得到的乘积结果，每次和 ctemp 数组中相应位置的数值做加和运算</span><br><span class="line">					ccol = B.data[q].j;</span><br><span class="line">					ctemp[ccol] += A.data[p].e * B.data[q].e;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			//矩阵 C 的行数等于矩阵 A 的行数，列数等于矩阵 B 的列数，所以，得到的 ctemp 存储的结果，也会在 C 的列数的范围内</span><br><span class="line">			for(ccol=1; ccol&lt;=C.nu; ccol++) &#123;</span><br><span class="line">				//由于结果可以是 0，而 0 不需要存储，所以在这里需要判断</span><br><span class="line">				if(ctemp[ccol]) &#123;</span><br><span class="line">					//不为 0，则记录矩阵中非 0 元素的个数的变量 tu 要+1；且该值不能超过存放三元素数组的空间大小</span><br><span class="line">					if(++C.tu &gt; MAXSIZE)</span><br><span class="line">						return C;</span><br><span class="line">					else &#123;</span><br><span class="line">						C.data[C.tu].e = ctemp[ccol];</span><br><span class="line">						C.data[C.tu].i = arow;</span><br><span class="line">						C.data[C.tu].j = ccol;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return C;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int main(int argc, char* argv[]) &#123;</span><br><span class="line">	RLSMatrix M,N,T;</span><br><span class="line">	M.tu = 4;</span><br><span class="line">	M.mu = 3;</span><br><span class="line">	M.nu = 4;</span><br><span class="line">	M.rpos[1] = 1;</span><br><span class="line">	M.rpos[2] = 3;</span><br><span class="line">	M.rpos[3] = 4;</span><br><span class="line">	M.data[1].e = 3;</span><br><span class="line">	M.data[1].i = 1;</span><br><span class="line">	M.data[1].j = 1;</span><br><span class="line">	M.data[2].e = 5;</span><br><span class="line">	M.data[2].i = 1;</span><br><span class="line">	M.data[2].j = 4;</span><br><span class="line">	M.data[3].e = -1;</span><br><span class="line">	M.data[3].i = 2;</span><br><span class="line">	M.data[3].j = 2;</span><br><span class="line">	M.data[4].e = 2;</span><br><span class="line">	M.data[4].i = 3;</span><br><span class="line">	M.data[4].j = 1;</span><br><span class="line">	N.tu = 4;</span><br><span class="line">	N.mu = 4;</span><br><span class="line">	N.nu = 2;</span><br><span class="line">	N.rpos[1] = 1;</span><br><span class="line">	N.rpos[2] = 2;</span><br><span class="line">	N.rpos[3] = 3;</span><br><span class="line">	N.rpos[4] = 5;</span><br><span class="line">	N.data[1].e = 2;</span><br><span class="line">	N.data[1].i = 1;</span><br><span class="line">	N.data[1].j = 2;</span><br><span class="line">	N.data[2].e = 1;</span><br><span class="line">	N.data[2].i = 2;</span><br><span class="line">	N.data[2].j = 1;</span><br><span class="line">	N.data[3].e = -2;</span><br><span class="line">	N.data[3].i = 3;</span><br><span class="line">	N.data[3].j = 1;</span><br><span class="line">	N.data[4].e = 4;</span><br><span class="line">	N.data[4].i = 3;</span><br><span class="line">	N.data[4].j = 2;</span><br><span class="line">	T= MultSMatrix(M,N,T);</span><br><span class="line">	for (int i=1; i&lt;=T.tu; i++) &#123;</span><br><span class="line">		printf(&quot;(%d,%d,%d)\n&quot;,T.data[i].i,T.data[i].j,T.data[i].e);</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(1,2,6)</span><br><span class="line">(2,1,-1)</span><br><span class="line">(3,2,4)</span><br></pre></td></tr></table></figure>
+
+<h2 id="五-总结"><a href="#五-总结" class="headerlink" title="五 总结"></a>五 总结</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">当稀疏矩阵 A mn 和稀疏矩阵 B np 采用行逻辑链接的顺序表做乘法运算时，在矩阵 A 的列数（矩阵 B 的行数） n 不是很大的情况下，</span><br><span class="line">算法的时间复杂度相当于 O(m*p)，比普通算法要快很多。</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="六-参考"><a href="#六-参考" class="headerlink" title="六 参考"></a>六 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://c.biancheng.net/view/vip_3376.html">C语言中文网—行逻辑链接的顺序表实现矩阵乘法</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/ja/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag"># 数据结构与算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ja/posts/fc70cee7.html" rel="prev" title="Vue2.0开发之——购物车案例-案例说明及导入Header(44)">
+                  <i class="fa fa-angle-left"></i> Vue2.0开发之——购物车案例-案例说明及导入Header(44)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ja/posts/c5721302.html" rel="next" title="标日中级上册——第16课-結婚披露宴-关联词语2">
+                  标日中级上册——第16课-結婚披露宴-关联词语2 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"2da25ff0ee0a3b2bd8df661413cc18b8"}</script>
+<script src="/ja/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

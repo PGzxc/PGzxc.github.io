@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述1234561.系统如何管理内存2.占用块和空闲块3.系统的内存管理4.可利用空间表5.分配存储空间的方式6.空间分配与回收过程产生的问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法——第8章-动态内存管理-动态内存管理机制(8.1)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/3277f7d8.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 概述1234561.系统如何管理内存2.占用块和空闲块3.系统的内存管理4.可利用空间表5.分配存储空间的方式6.空间分配与回收过程产生的问题">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-1-1.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-1-2.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-1-3.png">
+<meta property="article:published_time" content="2023-05-01T15:11:39.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.372Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="数据结构与算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-1-1.png">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/3277f7d8.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/3277f7d8.html","path":"posts/3277f7d8.html","title":"数据结构与算法——第8章-动态内存管理-动态内存管理机制(8.1)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>数据结构与算法——第8章-动态内存管理-动态内存管理机制(8.1) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E7%B3%BB%E7%BB%9F%E5%A6%82%E4%BD%95%E7%AE%A1%E7%90%86%E5%86%85%E5%AD%98"><span class="nav-number">2.</span> <span class="nav-text">二 系统如何管理内存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E7%A8%8B%E5%BA%8F%E5%88%86%E9%85%8D%E7%A9%BA%E9%97%B4"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 程序分配空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%9C%AC%E7%AB%A0%E9%87%8D%E7%82%B9%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 本章重点解决的问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%8D%A0%E7%94%A8%E5%9D%97%E5%92%8C%E7%A9%BA%E9%97%B2%E5%9D%97"><span class="nav-number">3.</span> <span class="nav-text">三 占用块和空闲块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">四 系统的内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%86%85%E5%AD%98%E5%88%86%E5%89%B2"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 内存分割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E8%AF%B4%E6%98%8E"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E5%8F%AF%E5%88%A9%E7%94%A8%E7%A9%BA%E9%97%B4%E8%A1%A8"><span class="nav-number">5.</span> <span class="nav-text">五 可利用空间表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E7%9B%AE%E5%BD%95%E8%A1%A8%E5%92%8C%E9%93%BE%E8%A1%A8"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 目录表和链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E7%BB%84%E6%88%90"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E7%BB%93%E6%9E%84"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD-%E5%88%86%E9%85%8D%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">6.</span> <span class="nav-text">六 分配存储空间的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-%E4%B8%89%E7%A7%8D%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 三种查找方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-%E8%AF%B4%E6%98%8E"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83-%E7%A9%BA%E9%97%B4%E5%88%86%E9%85%8D%E4%B8%8E%E5%9B%9E%E6%94%B6%E8%BF%87%E7%A8%8B%E4%BA%A7%E7%94%9F%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">7.</span> <span class="nav-text">七 空间分配与回收过程产生的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB-%E5%8F%82%E8%80%83"><span class="nav-number">8.</span> <span class="nav-text">八 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/3277f7d8.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="数据结构与算法——第8章-动态内存管理-动态内存管理机制(8.1) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据结构与算法——第8章-动态内存管理-动态内存管理机制(8.1)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E7%AC%AC8%E7%AB%A0-%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%9C%BA%E5%88%B6(8.1).md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-01 23:11:39" itemprop="dateCreated datePublished" datetime="2023-05-01T23:11:39+08:00">2023-05-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/N-%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">N-数据与算法</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/N-%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.系统如何管理内存</span><br><span class="line">2.占用块和空闲块</span><br><span class="line">3.系统的内存管理</span><br><span class="line">4.可利用空间表</span><br><span class="line">5.分配存储空间的方式</span><br><span class="line">6.空间分配与回收过程产生的问题</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-系统如何管理内存"><a href="#二-系统如何管理内存" class="headerlink" title="二 系统如何管理内存"></a>二 系统如何管理内存</h2><h3 id="2-1-程序分配空间"><a href="#2-1-程序分配空间" class="headerlink" title="2.1 程序分配空间"></a>2.1 程序分配空间</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">通过前面的学习，介绍很多具体的数据结构的存储以及遍历的方式，过程中只是很表面地介绍了数据的存储，</span><br><span class="line">而没有涉及到更底层的有关的存储空间的分配与回收，从本节开始将做更深入地介绍。</span><br><span class="line"></span><br><span class="line">在使用早期的计算机上编写程序时，有关数据存储在什么位置等这样的问题都是需要程序员自己来给数据分配内存。</span><br><span class="line">而现在的高级语言，大大的减少了程序员的工作，</span><br><span class="line">不需要直接和存储空间打交道，程序在编译时由编译程序去合理地分配空间。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-本章重点解决的问题"><a href="#2-2-本章重点解决的问题" class="headerlink" title="2.2 本章重点解决的问题"></a>2.2 本章重点解决的问题</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">本章重点解决的问题是：</span><br><span class="line">1.对于用户向系统提出的申请空间的请求，系统如何分配内存？</span><br><span class="line">2.当用户不在使用之前申请的内存空间后，系统又如何回收？</span><br><span class="line"></span><br><span class="line">这里的用户，不是普通意义上的用户，可能是一个普通的变量，一个应用程序，一个命令等等。</span><br><span class="line">只要是向系统发出内存申请的，都可以称之为用户。</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-占用块和空闲块"><a href="#三-占用块和空闲块" class="headerlink" title="三 占用块和空闲块"></a>三 占用块和空闲块</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">对于计算机中的内存来说，称已经分配给用户的的内存区统称为“占用块”；</span><br><span class="line">还未分配出去的内存区统称为“空闲块”或者“可利用空间块”。</span><br></pre></td></tr></table></figure>
+
+<h2 id="四-系统的内存管理"><a href="#四-系统的内存管理" class="headerlink" title="四 系统的内存管理"></a>四 系统的内存管理</h2><h3 id="4-1-内存分割"><a href="#4-1-内存分割" class="headerlink" title="4.1 内存分割"></a>4.1 内存分割</h3><p>一、初次分配</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">对于初始状态下的内存来说，整个空间都是一个空闲块（在编译程序中称为“堆”）。</span><br><span class="line">但是随着不同的用户不断地提出存储请求，系统依次分配。</span><br><span class="line"></span><br><span class="line">整个内存区就会分割成两个大部分：低地址区域会产生很多占用块；高地址区域还是空闲块。如图 1 所示：</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-1-1.png" loading="lazy"></p>
+<p>二、再次分配</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">但是当某些用户运行结束，所占用的内存区域就变成了空闲块，如图 2 所示：</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-1-2.png" loading="lazy"></p>
+<h3 id="4-2-说明"><a href="#4-2-说明" class="headerlink" title="4.2 说明"></a>4.2 说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">此时，就形成了占用块和空闲块犬牙交错的状态。当后续用户请求分配内存时，系统有两种分配方式：</span><br><span class="line"></span><br><span class="line">1.系统继续利用高地址区域的连续空闲块分配给用户，不去理会之前分配给用户的内存区域的状态。</span><br><span class="line">直到分配无法进行，也就是高地址的空闲块不能满足用户的需求时，系统才会去回收之前的空闲块，重新组织继续分配；</span><br><span class="line"></span><br><span class="line">2.当用户运行一结束，系统马上将其所占空间进行回收。当有新的用户请求分配内存时，</span><br><span class="line">系统遍历所有的空闲块，从中找出一个合适的空闲块分配给用户。</span><br><span class="line"></span><br><span class="line">合适的空闲块指的是能够满足用户要求的空闲块，具体的查找方式有多种，后续会介绍。</span><br></pre></td></tr></table></figure>
+
+<h2 id="五-可利用空间表"><a href="#五-可利用空间表" class="headerlink" title="五 可利用空间表"></a>五 可利用空间表</h2><h3 id="5-1-目录表和链表"><a href="#5-1-目录表和链表" class="headerlink" title="5.1 目录表和链表"></a>5.1 目录表和链表</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">当采用第 2 种方式时，系统需要建立一张记录所有空闲块信息的表。</span><br><span class="line">表的形式有两种：目录表和链表。各自的结构如图 3 所示：</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-1-3.png" loading="lazy"></p>
+<h3 id="5-2-组成"><a href="#5-2-组成" class="headerlink" title="5.2 组成"></a>5.2 组成</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">目录表：表中每一行代表一个空闲块，由三部分组成：</span><br><span class="line"></span><br><span class="line">1.初始地址：记录每个空闲块的起始地址。</span><br><span class="line">2.空闲块大小：记录每个空闲块的内存大小。</span><br><span class="line">3.使用情况：记录每个空闲块是否存储被占用的状态。</span><br><span class="line"></span><br><span class="line">链表：表中每个结点代表一个空闲块，每个结点中需要记录空闲块的使用情况、大小和连接下一个空闲块的指针域。</span><br><span class="line"></span><br><span class="line">由于链表中有指针的存在，所以结点中不需要记录各内存块的起始地址。</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3-结构"><a href="#5-3-结构" class="headerlink" title="5.3 结构"></a>5.3 结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">系统在不同的环境中运行，根据用户申请空间的不同，存储空闲块的可利用空间表有以下不同的结构：</span><br><span class="line"></span><br><span class="line">1.如果每次用户请求的存储空间大小相同，对于此类系统中的内存来说，</span><br><span class="line">在用户运行初期就将整个内存存储块按照所需大小进行分割，然后通过链表链接。</span><br><span class="line">当用户申请空间时，从链表中摘除一个结点归其使用；用完后再链接到可利用空间表上。</span><br><span class="line"></span><br><span class="line">2.每次如果用户申请的都是若干种大小规格的存储空间，</span><br><span class="line">针对这种情况可以建立若干个可利用空间表，每一个链表中的结点大小相同。</span><br><span class="line">当用户申请某一规格大小的存储空间时，就从对应的链表中摘除一个结点供其使用；</span><br><span class="line">用完后链接到相同规格大小的链表中。</span><br><span class="line"></span><br><span class="line">3.用户申请的内存的大小不固定，所以造成系统分配的内存块的大小也不确定，</span><br><span class="line">回收时，链接到可利用空间表中每个结点的大小也各不一样。</span><br><span class="line"></span><br><span class="line">第 2 种情况下容易面临的问题是：</span><br><span class="line">如果同用户申请空间大小相同的链表中没有结点时，就需要找结点更大的链表，从中取出一个结点，一部分给用户使用，剩余部分插入到相应大小的链表中；</span><br><span class="line">回收时，将释放的空闲块插入到大小相同的链表中去。</span><br><span class="line">如果没有比用户申请的内存空间相等甚至更大的结点时，就需要系统重新组织一些小的连续空间，然后给用户使用。</span><br></pre></td></tr></table></figure>
+
+<h2 id="六-分配存储空间的方式"><a href="#六-分配存储空间的方式" class="headerlink" title="六 分配存储空间的方式"></a>六 分配存储空间的方式</h2><h3 id="6-1-三种查找方法"><a href="#6-1-三种查找方法" class="headerlink" title="6.1 三种查找方法"></a>6.1 三种查找方法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">通常情况下系统中的可利用空间表是第 3 种情况。如图 3(C) 所示。</span><br><span class="line">由于链表中各结点的大小不一，在用户申请内存空间时，就需要从可利用空间表中找出一个合适的结点，</span><br><span class="line">有三种查找的方法：</span><br><span class="line"></span><br><span class="line">1.首次拟合法：</span><br><span class="line">在可利用空间表中从头开始依次遍历，将找到的第一个内存不小于用户申请空间的结点分配给用户，</span><br><span class="line">剩余空间仍留在链表中；回收时只要将释放的空闲块插入在链表的表头即可。</span><br><span class="line"></span><br><span class="line">2.最佳拟合法：</span><br><span class="line">和首次拟合法不同，最佳拟合法是选择一块内存空间不小于用户申请空间，但是却最接近的一个结点分配给用户。</span><br><span class="line">为了实现这个方法，首先要将链表中的各个结点按照存储空间的大小进行从小到大排序，</span><br><span class="line">由此，在遍历的过程中只需要找到第一块大于用户申请空间的结点即可进行分配；</span><br><span class="line">用户运行完成后，需要将空闲块根据其自身的大小插入到链表的相应位置。</span><br><span class="line"></span><br><span class="line">3.最差拟合法：</span><br><span class="line">和最佳拟合法正好相反，该方法是在不小于用户申请空间的所有结点中，</span><br><span class="line">筛选出存储空间最大的结点，从该结点的内存空间中提取出相应的空间给用户使用。</span><br><span class="line">为了实现这一方法，可以在开始前先将可利用空间表中的结点按照存储空间大小从大到小进行排序，</span><br><span class="line">第一个结点自然就是最大的结点。</span><br><span class="line">回收空间时，同样将释放的空闲块插入到相应的位置上。</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2-说明"><a href="#6-2-说明" class="headerlink" title="6.2 说明"></a>6.2 说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">以上三种方法各有所长：</span><br><span class="line"></span><br><span class="line">1.最佳拟合法由于每次分配相差不大的结点给用户使用，所以会生成很多存储空间特别小的结点，</span><br><span class="line">以至于根本无法使用，使用过程中，链表中的结点存储大小发生两极分化，大的很大，小的很小。</span><br><span class="line">该方法适用于申请内存大小范围较广的系统</span><br><span class="line"></span><br><span class="line">2.最差拟合法，由于每次都是从存储空间最大的结点中分配给用户空间，所以链表中的结点大小不会起伏太大。</span><br><span class="line">依次适用于申请分配内存空间较窄的系统。</span><br><span class="line"></span><br><span class="line">3.首次拟合法每次都是随机分配。在不清楚用户申请空间大小的情况下，使用该方法分配空间。</span><br><span class="line"></span><br><span class="line">同时，三种方法中，最佳拟合法相比于其它两种方式，无论是分配过程还是回收过程，都需要遍历链表，所有最费时间。</span><br></pre></td></tr></table></figure>
+
+<h2 id="七-空间分配与回收过程产生的问题"><a href="#七-空间分配与回收过程产生的问题" class="headerlink" title="七 空间分配与回收过程产生的问题"></a>七 空间分配与回收过程产生的问题</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">无论使用以上三种分配方式中的哪一种，最终内存空间都会成为一个一个特别小的内存空间，</span><br><span class="line">对于用户申请的空间的需求，单独拿出任何一个结点都不能够满足。</span><br><span class="line"></span><br><span class="line">但是并不是说整个内存空间就不够用户使用。在这种情况下，就需要系统在回收的过程考虑将地址相邻的空闲块合并。</span><br></pre></td></tr></table></figure>
+
+<h2 id="八-参考"><a href="#八-参考" class="headerlink" title="八 参考"></a>八 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://c.biancheng.net/view/3421.html">C语言中文网—数据结构之动态内存管理机制</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag"># 数据结构与算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/6275e32c.html" rel="prev" title="标日中级下册——第20课-希望の灯-文法-5">
+                  <i class="fa fa-angle-left"></i> 标日中级下册——第20课-希望の灯-文法-5
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/fb7cb296.html" rel="next" title="标日中级下册——第20课-希望の灯-文法-6">
+                  标日中级下册——第20课-希望の灯-文法-6 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"6284af20c71bddbf46bde77b8e2cfee7"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

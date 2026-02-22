@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述 如何优化 Redux 应用的性能？ Redux 的 dispatch 是同步还是异步？ redux-thunk 和 redux-saga 有什么区别？分别适用于什么场景？ Redux 中的状态是如何流转的？内部机制是怎样的？ Redux Toolkit 是什么？为什么推荐使用？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Native面试题——Redux之高级面试题(2)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/f7b9afef.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="一 概述 如何优化 Redux 应用的性能？ Redux 的 dispatch 是同步还是异步？ redux-thunk 和 redux-saga 有什么区别？分别适用于什么场景？ Redux 中的状态是如何流转的？内部机制是怎样的？ Redux Toolkit 是什么？为什么推荐使用？">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-04-12T07:01:45.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:04.860Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="React Native面试题">
+<meta property="article:tag" content="Redux">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/f7b9afef.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/f7b9afef.html","path":"posts/f7b9afef.html","title":"React Native面试题——Redux之高级面试题(2)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>React Native面试题——Redux之高级面试题(2) | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96-Redux-%E5%BA%94%E7%94%A8%E7%9A%84%E6%80%A7%E8%83%BD%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 如何优化 Redux 应用的性能？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Redux-%E7%9A%84-dispatch-%E6%98%AF%E5%90%8C%E6%AD%A5%E8%BF%98%E6%98%AF%E5%BC%82%E6%AD%A5%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Redux 的 dispatch 是同步还是异步？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-redux-thunk-%E5%92%8C-redux-saga-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F%E5%88%86%E5%88%AB%E9%80%82%E7%94%A8%E4%BA%8E%E4%BB%80%E4%B9%88%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 redux-thunk 和 redux-saga 有什么区别？分别适用于什么场景？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-Redux-%E4%B8%AD%E7%9A%84%E7%8A%B6%E6%80%81%E6%98%AF%E5%A6%82%E4%BD%95%E6%B5%81%E8%BD%AC%E7%9A%84%EF%BC%9F%E5%86%85%E9%83%A8%E6%9C%BA%E5%88%B6%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%EF%BC%9F"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 Redux 中的状态是如何流转的？内部机制是怎样的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-Redux-Toolkit-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%EF%BC%9F"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 Redux Toolkit 是什么？为什么推荐使用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E5%A6%82%E4%BD%95%E8%87%AA%E5%AE%9A%E4%B9%89-Redux-%E4%B8%AD%E9%97%B4%E4%BB%B6%EF%BC%9F"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 如何自定义 Redux 中间件？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%9A%E4%B8%AA-Reducer-%E5%85%B1%E4%BA%AB%E7%8A%B6%E6%80%81%E7%9A%84%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 如何处理多个 Reducer 共享状态的场景？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-Redux-%E4%B8%AD%E7%9A%84%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%80%A7%EF%BC%88immutability%EF%BC%89%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%8D%E8%A6%81%EF%BC%9F%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 Redux 中的不可变性（immutability）为什么重要？如何实现？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-Redux-%E4%B8%8E-MobX-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 Redux 与 MobX 有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-10-%E5%A6%82%E6%9E%9C-Redux-%E7%8A%B6%E6%80%81%E5%BE%88%E5%A4%9A%E3%80%81Store-%E8%BF%87%E5%A4%A7%EF%BC%8C%E5%A6%82%E4%BD%95%E6%A8%A1%E5%9D%97%E5%8C%96%E5%92%8C%E5%8F%AF%E7%BB%B4%E6%8A%A4%EF%BC%9F"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 如果 Redux 状态很多、Store 过大，如何模块化和可维护？</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/f7b9afef.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="React Native面试题——Redux之高级面试题(2) | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          React Native面试题——Redux之高级面试题(2)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/React-Native%E9%9D%A2%E8%AF%95%E9%A2%98%E2%80%94%E2%80%94Redux%E4%B9%8B%E9%AB%98%E7%BA%A7%E9%9D%A2%E8%AF%95%E9%A2%98-2.md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2025-04-12 15:01:45" itemprop="dateCreated datePublished" datetime="2025-04-12T15:01:45+08:00">2025-04-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/React-Native%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">React Native面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ol>
+<li>如何优化 Redux 应用的性能？</li>
+<li>Redux 的 dispatch 是同步还是异步？</li>
+<li>redux-thunk 和 redux-saga 有什么区别？分别适用于什么场景？</li>
+<li>Redux 中的状态是如何流转的？内部机制是怎样的？</li>
+<li>Redux Toolkit 是什么？为什么推荐使用？<span id="more"></span></li>
+<li>如何自定义 Redux 中间件？</li>
+<li>如何处理多个 Reducer 共享状态的场景？</li>
+<li>Redux 中的不可变性（immutability）为什么重要？如何实现？</li>
+<li>Redux 与 MobX 有什么区别？</li>
+<li>如果 Redux 状态很多、Store 过大，如何模块化和可维护？</li>
+</ol>
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-如何优化-Redux-应用的性能？"><a href="#2-1-如何优化-Redux-应用的性能？" class="headerlink" title="2.1 如何优化 Redux 应用的性能？"></a>2.1 如何优化 Redux 应用的性能？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Redux 性能优化常用方式包括：</span><br><span class="line"></span><br><span class="line">1、使用 React.memo 和 useSelector 组合：</span><br><span class="line">-useSelector 只会在依赖的 state 变化时触发组件更新；</span><br><span class="line">-结合 React.memo 可避免组件不必要更新。</span><br><span class="line"></span><br><span class="line">2、使用 Reselect 创建 Selector：</span><br><span class="line">-Reselect 提供 createSelector，基于输入进行缓存（memoization），避免重复计算。</span><br><span class="line"></span><br><span class="line">//示例</span><br><span class="line">import &#123; createSelector &#125; from &#x27;reselect&#x27;;</span><br><span class="line">const getItems = (state) =&gt; state.items;</span><br><span class="line">const getCompletedItems = createSelector(</span><br><span class="line">  [getItems],</span><br><span class="line">  (items) =&gt; items.filter(item =&gt; item.completed)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">3、Reducer 拆分合理、保持纯函数；</span><br><span class="line">4、避免过多嵌套 dispatch 或深层嵌套 state 导致性能瓶颈；</span><br><span class="line">5、使用批量 dispatch（如 batch）减少重渲染次数（需配合第三方包）。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-Redux-的-dispatch-是同步还是异步？"><a href="#2-2-Redux-的-dispatch-是同步还是异步？" class="headerlink" title="2.2 Redux 的 dispatch 是同步还是异步？"></a>2.2 Redux 的 dispatch 是同步还是异步？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Redux 的 dispatch 本质上是同步的，也就是说，action 传递给 reducer 的过程是同步执行的。</span><br><span class="line"></span><br><span class="line">但是，配合中间件（如 redux-thunk 或 redux-saga），</span><br><span class="line">可以让我们在 dispatch 前后插入异步逻辑，模拟异步“调度”行为。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-redux-thunk-和-redux-saga-有什么区别？分别适用于什么场景？"><a href="#2-3-redux-thunk-和-redux-saga-有什么区别？分别适用于什么场景？" class="headerlink" title="2.3 redux-thunk 和 redux-saga 有什么区别？分别适用于什么场景？"></a>2.3 redux-thunk 和 redux-saga 有什么区别？分别适用于什么场景？</h3><table>
+<thead>
+<tr>
+<th align="center">项目</th>
+<th align="center">redux-thunk</th>
+<th align="center">redux-saga</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">实现原理</td>
+<td align="center">函数嵌套函数，使用 Promise 实现异步</td>
+<td align="center">使用 generator 函数处理异步</td>
+</tr>
+<tr>
+<td align="center">上手难度</td>
+<td align="center">简单，几乎无学习成本</td>
+<td align="center">学习成本高，语法更复杂</td>
+</tr>
+<tr>
+<td align="center">控制流能力</td>
+<td align="center">弱，不适合复杂流程控制</td>
+<td align="center">强，适合复杂任务流程（如取消、轮询等）</td>
+</tr>
+<tr>
+<td align="center">调试能力</td>
+<td align="center">一般，嵌套多了难追踪</td>
+<td align="center">好，逻辑清晰、可测试</td>
+</tr>
+<tr>
+<td align="center">应用场景</td>
+<td align="center">简单的异步请求、表单提交</td>
+<td align="center">多任务处理、后台同步、动画控制、事件队列等</td>
+</tr>
+</tbody></table>
+<h3 id="2-4-Redux-中的状态是如何流转的？内部机制是怎样的？"><a href="#2-4-Redux-中的状态是如何流转的？内部机制是怎样的？" class="headerlink" title="2.4 Redux 中的状态是如何流转的？内部机制是怎样的？"></a>2.4 Redux 中的状态是如何流转的？内部机制是怎样的？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Redux 内部机制流程如下：</span><br><span class="line"></span><br><span class="line">1.用户调用 dispatch(action)；</span><br><span class="line">2.Middleware（如 thunk）会先处理 action，如果是函数则执行；</span><br><span class="line">3.最终传到 reducer；</span><br><span class="line">4.Reducer 接收当前 state 和 action，返回新的 state；</span><br><span class="line">5.Redux 比较新旧 state（一般是引用对比），如有变化，触发 subscribe 通知 UI 层更新；</span><br><span class="line">6.react-redux 的 connect 或 useSelector 接收新的 state 更新组件</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-Redux-Toolkit-是什么？为什么推荐使用？"><a href="#2-5-Redux-Toolkit-是什么？为什么推荐使用？" class="headerlink" title="2.5 Redux Toolkit 是什么？为什么推荐使用？"></a>2.5 Redux Toolkit 是什么？为什么推荐使用？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Redux Toolkit（RTK）是 Redux 官方推荐的现代化开发工具集，</span><br><span class="line">简化了 Redux 的配置、编码方式和开发效率。</span><br><span class="line"></span><br><span class="line">优点包括：</span><br><span class="line"></span><br><span class="line">-简化 Store 配置（不再手动配置中间件）；</span><br><span class="line">-使用 createSlice 自动生成 reducer 和 action；</span><br><span class="line">-内置支持 Immer（允许我们在 reducer 中写“可变”代码）；</span><br><span class="line">-自带 redux-thunk 支持异步 action；</span><br><span class="line">-更小的样板代码。</span><br><span class="line"></span><br><span class="line">//示例：</span><br><span class="line"></span><br><span class="line">import &#123; createSlice &#125; from &#x27;@reduxjs/toolkit&#x27;;</span><br><span class="line"></span><br><span class="line">const counterSlice = createSlice(&#123;</span><br><span class="line">  name: &#x27;counter&#x27;,</span><br><span class="line">  initialState: &#123; value: 0 &#125;,</span><br><span class="line">  reducers: &#123;</span><br><span class="line">    increment: (state) =&gt; &#123; state.value += 1; &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">export const &#123; increment &#125; = counterSlice.actions;</span><br><span class="line">export default counterSlice.reducer;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-如何自定义-Redux-中间件？"><a href="#2-6-如何自定义-Redux-中间件？" class="headerlink" title="2.6 如何自定义 Redux 中间件？"></a>2.6 如何自定义 Redux 中间件？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Redux 中间件是一个函数，格式如下：</span><br><span class="line"></span><br><span class="line">const loggerMiddleware = store =&gt; next =&gt; action =&gt; &#123;</span><br><span class="line">  console.log(&#x27;dispatching&#x27;, action);</span><br><span class="line">  let result = next(action);  // 传递给下一个 middleware 或 reducer</span><br><span class="line">  console.log(&#x27;next state&#x27;, store.getState());</span><br><span class="line">  return result;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">-中间件作用链：dispatch -&gt; middleware1 -&gt; middleware2 -&gt; reducer</span><br><span class="line">-可以通过 applyMiddleware(loggerMiddleware) 添加到 store 中</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-如何处理多个-Reducer-共享状态的场景？"><a href="#2-7-如何处理多个-Reducer-共享状态的场景？" class="headerlink" title="2.7 如何处理多个 Reducer 共享状态的场景？"></a>2.7 如何处理多个 Reducer 共享状态的场景？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">可通过以下方式解决：</span><br><span class="line"></span><br><span class="line">1.拆分状态结构：将共享状态上提至公共父 reducer；</span><br><span class="line">2.共享 action type：多个 reducer 响应相同 action，根据自己关心的字段处理；</span><br><span class="line">3.组合 reducer 时传递参数：在 reducer 内部处理共享逻辑；</span><br><span class="line">4.使用中间件处理复杂逻辑，如 saga 中处理任务调度和依赖。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-8-Redux-中的不可变性（immutability）为什么重要？如何实现？"><a href="#2-8-Redux-中的不可变性（immutability）为什么重要？如何实现？" class="headerlink" title="2.8 Redux 中的不可变性（immutability）为什么重要？如何实现？"></a>2.8 Redux 中的不可变性（immutability）为什么重要？如何实现？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1、Redux 要求状态是不可变的，原因：</span><br><span class="line">-便于比较新旧 state，快速判断是否更新；</span><br><span class="line">-避免副作用，保持 reducer 纯净；</span><br><span class="line">-支持 time travel 和 Undo/Redo 功能。</span><br><span class="line"></span><br><span class="line">2、实现方式：</span><br><span class="line">-使用展开运算符（...）拷贝对象或数组；</span><br><span class="line">-使用 immer 自动处理不可变逻辑（Redux Toolkit 默认支持）；</span><br><span class="line"></span><br><span class="line">3、示例：</span><br><span class="line">return &#123;</span><br><span class="line">  ...state,</span><br><span class="line">  todos: [...state.todos, newTodo]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-9-Redux-与-MobX-有什么区别？"><a href="#2-9-Redux-与-MobX-有什么区别？" class="headerlink" title="2.9 Redux 与 MobX 有什么区别？"></a>2.9 Redux 与 MobX 有什么区别？</h3><table>
+<thead>
+<tr>
+<th align="center">比较项</th>
+<th align="center">Redux</th>
+<th align="center">MobX</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">架构设计</td>
+<td align="center">函数式、显式状态管理</td>
+<td align="center">响应式、观察者模式</td>
+</tr>
+<tr>
+<td align="center">学习曲线</td>
+<td align="center">相对陡峭，有一定模板代码</td>
+<td align="center">容易上手</td>
+</tr>
+<tr>
+<td align="center">状态定义</td>
+<td align="center">单一 store + reducer</td>
+<td align="center">类&#x2F;对象 + observable + action</td>
+</tr>
+<tr>
+<td align="center">可维护性</td>
+<td align="center">高（可预测、调试方便）</td>
+<td align="center">中等（依赖自动追踪，有时不易发现 bug）</td>
+</tr>
+<tr>
+<td align="center">性能</td>
+<td align="center">默认比 MobX 更保守</td>
+<td align="center">MobX 响应式设计，更新粒度更小</td>
+</tr>
+<tr>
+<td align="center">适用场景</td>
+<td align="center">大型项目、团队协作</td>
+<td align="center">中小型项目、快速开发</td>
+</tr>
+</tbody></table>
+<h3 id="2-10-如果-Redux-状态很多、Store-过大，如何模块化和可维护？"><a href="#2-10-如果-Redux-状态很多、Store-过大，如何模块化和可维护？" class="headerlink" title="2.10 如果 Redux 状态很多、Store 过大，如何模块化和可维护？"></a>2.10 如果 Redux 状态很多、Store 过大，如何模块化和可维护？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.使用 combineReducers 分模块管理状态；</span><br><span class="line">2.将每个功能模块抽离为独立的 slice（推荐使用 Redux Toolkit）；</span><br><span class="line">3.创建统一的 store/index.ts 管理入口；</span><br><span class="line">4.通过封装 useAppSelector/useAppDispatch 来统一管理类型；</span><br><span class="line">5.对于异步 action，使用 RTK 的 createAsyncThunk 提高复用和可维护性。</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/Redux/" rel="tag"># Redux</a>
+              <a href="/en/tags/React-Native%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># React Native面试题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/5c22720.html" rel="prev" title="React Native面试题——Redux之常见面试题(1)">
+                  <i class="fa fa-angle-left"></i> React Native面试题——Redux之常见面试题(1)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/2c8c4d6e.html" rel="next" title="React Native面试题——Redux之实战项目(3)">
+                  React Native面试题——Redux之实战项目(3) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"4e12260b434d71a60165203fe7b496c4"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

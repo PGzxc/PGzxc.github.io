@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ja/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ja/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ja/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/ja/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/ja/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/ja/","images":"/ja/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索...","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/ja/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/ja/js/config.js" defer></script>
+
+    <meta name="description" content="文件管理查看文件信息：lsls是英文单词list的简写，其功能为列出目录的内容，是用户最常用的命令之一，它类似于DOS下的dir命令。    Linux文件或者目录名称最长可以有265个字符，“.”代表当前目录，“..”代表上一级目录，以“.”开头的文件为隐藏文件，需要用 -a 参数才能显示。ls常用参数：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu开发之——命令-文件、磁盘管理">
+<meta property="og:url" content="https://pgzxc.github.io/posts/490c29b7.html">
+<meta property="og:site_name" content="PGzxc (Japanese)">
+<meta property="og:description" content="文件管理查看文件信息：lsls是英文单词list的简写，其功能为列出目录的内容，是用户最常用的命令之一，它类似于DOS下的dir命令。    Linux文件或者目录名称最长可以有265个字符，“.”代表当前目录，“..”代表上一级目录，以“.”开头的文件为隐藏文件，需要用 -a 参数才能显示。ls常用参数：">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-ls.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-ls_a.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-ls_l.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux_file_type.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-ls-redirect.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-more_file.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-more_open.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-pip.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-mkdir.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-rmdir.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-li-ln.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-cat.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-gzip-r.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-gzip-d.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-which.png">
+<meta property="article:published_time" content="2017-12-12T06:58:25.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.105Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Ubuntu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-ls.png">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/490c29b7.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"ja","comments":true,"permalink":"https://pgzxc.github.io/posts/490c29b7.html","path":"posts/490c29b7.html","title":"Ubuntu开发之——命令-文件、磁盘管理"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Ubuntu开发之——命令-文件、磁盘管理 | PGzxc (Japanese)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/utils.js" defer></script><script src="/ja/js/motion.js" defer></script><script src="/ja/js/sidebar.js" defer></script><script src="/ja/js/next-boot.js" defer></script><script src="/ja/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/ja/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/ja/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/ja/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/ja/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/ja/atom.xml" title="PGzxc (Japanese)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションを切り替える" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/ja/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (Japanese)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">本から学んだことは表面的なもの；自分で体験しなければならない</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="検索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/ja/" rel="section"><i class="fa fa-bell fa-fw"></i>ホーム</a></li><li class="menu-item menu-item-nav"><a href="/ja/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>ナビゲーション</a></li><li class="menu-item menu-item-categories"><a href="/ja/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリー<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/ja/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/ja/links/" rel="section"><i class="fa fa-link fa-fw"></i>リンク</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>検索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="検索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          目次
+        </li>
+        <li class="sidebar-nav-overview">
+          サイト概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">文件管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF%EF%BC%9Als"><span class="nav-number">1.1.</span> <span class="nav-text">查看文件信息：ls</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">输出重定向命令：&gt;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%B1%8F%E6%98%BE%E7%A4%BA%EF%BC%9Amore"><span class="nav-number">1.3.</span> <span class="nav-text">分屏显示：more</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%A1%E9%81%93%EF%BC%9A"><span class="nav-number">1.4.</span> <span class="nav-text">管道：|</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%85%E5%B1%8F%EF%BC%9Aclear"><span class="nav-number">1.5.</span> <span class="nav-text">清屏：clear</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%87%E6%8D%A2%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95%EF%BC%9A-cd"><span class="nav-number">1.6.</span> <span class="nav-text">切换工作目录： cd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E8%B7%AF%E5%BE%84%EF%BC%9Apwd"><span class="nav-number">1.7.</span> <span class="nav-text">显示当前路径：pwd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%9B%AE%E5%BD%95%EF%BC%9Amkdir"><span class="nav-number">1.8.</span> <span class="nav-text">创建目录：mkdir</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E7%9B%AE%E5%BD%95%EF%BC%9Armdir"><span class="nav-number">1.9.</span> <span class="nav-text">删除目录：rmdir</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%EF%BC%9Arm"><span class="nav-number">1.10.</span> <span class="nav-text">删除文件：rm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%88%96%E8%80%85%E5%90%88%E5%B9%B6%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%EF%BC%9Acat"><span class="nav-number">1.11.</span> <span class="nav-text">查看或者合并文件内容：cat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E6%90%9C%E7%B4%A2%EF%BC%9Agrep"><span class="nav-number">1.12.</span> <span class="nav-text">文本搜索：grep</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E6%96%87%E4%BB%B6%EF%BC%9Afind"><span class="nav-number">1.13.</span> <span class="nav-text">查找文件：find</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%B7%E8%B4%9D%E6%96%87%E4%BB%B6%EF%BC%9Acp"><span class="nav-number">1.14.</span> <span class="nav-text">拷贝文件：cp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8E%8B%EF%BC%9Abzip2"><span class="nav-number">1.15.</span> <span class="nav-text">文件压缩解压：bzip2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8E%8B%EF%BC%9Azip%E3%80%81unzip"><span class="nav-number">1.16.</span> <span class="nav-text">文件压缩解压：zip、unzip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%91%BD%E4%BB%A4%E4%BD%8D%E7%BD%AE%EF%BC%9Awhich"><span class="nav-number">1.17.</span> <span class="nav-text">查看命令位置：which</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/ja/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/ja/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">投稿</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/ja/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">カテゴリー</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/ja/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/490c29b7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/ja/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Ubuntu开发之——命令-文件、磁盘管理 | PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Ubuntu开发之——命令-文件、磁盘管理<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Ubuntu%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94%E5%91%BD%E4%BB%A4-%E6%96%87%E4%BB%B6%E3%80%81%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86.md" class="post-edit-link" title="編集" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2017-12-12 14:58:25" itemprop="dateCreated datePublished" datetime="2017-12-12T14:58:25+08:00">2017-12-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">系统</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E7%B3%BB%E7%BB%9F/Ubuntu/" itemprop="url" rel="index"><span itemprop="name">Ubuntu</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="読書時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">読書時間 &asymp;</span>
+      <span>4 分</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h1><h2 id="查看文件信息：ls"><a href="#查看文件信息：ls" class="headerlink" title="查看文件信息：ls"></a>查看文件信息：ls</h2><p>ls是英文单词list的简写，其功能为列出目录的内容，是用户最常用的命令之一，它类似于DOS下的dir命令。   </p>
+<p>Linux文件或者目录名称最长可以有265个字符，“.”代表当前目录，“..”代表上一级目录，以“.”开头的文件为隐藏文件，需要用 -a 参数才能显示。<br>ls常用参数：</p>
+<span id="more"></span>  
+<table>
+  <tr>
+   <th>参数</th>
+   <th>含义</th>
+ </tr>
+ <tr>
+   <th>-a</th>
+   <th>显示指定目录下所有子目录与文件，包括隐藏文件</th>
+ </tr>
+ <tr>
+ <th>-l</th>
+  <th>以列表方式显示文件的详细信息</th>
+ </tr>
+ <tr>
+  <th>-h</th>
+  <th>配合 -l 以人性化的方式显示文件大小</th>
+  </tr>
+</table>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-ls.png" loading="lazy"><br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-ls_a.png" loading="lazy"><br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-ls_l.png" loading="lazy"><br>图中列出的信息含义如下图所示：<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux_file_type.png" loading="lazy"><br>与DOS下的文件操作类似，在Unix&#x2F;Linux系统中，也同样允许使用特殊字符来同时引用多个文件名，这些特殊字符被称为通配符。   </p>
+<table>
+        <tr>
+            <th>通配符</th>
+            <th>含义</th>
+        </tr>
+        <tr>
+            <th>*</th>
+            <th>文件代表文件名中所有字符</th>
+        </tr>
+        <tr>
+            <th>ls te*</th>
+            <th>查找以te开头的文件</th>
+        </tr>
+        <tr>
+            <th>ls *html</th>
+            <th>查找结尾为html的文件</th>
+        </tr>
+        <tr>
+            <th>？</th>
+            <th>代表文件名中任意一个字符</th>
+        </tr>
+ 		<tr>
+            <th>ls ?.c</th>
+            <th>只找第一个字符任意，后缀为.c的文件</th>
+        </tr>
+		<tr>
+            <th>ls a.?</th>
+            <th>只找只有3个字符，前2字符为a.，最后一个字符任意的文件</th>
+        </tr>
+		<tr>
+            <th>[]</th>
+            <th>[”和“]”将字符组括起来，表示可以匹配字符组中的任意一个。“-”用于表示字符范围。</th>
+        </tr>
+		<tr>
+            <th>[abc]</th>
+            <th>匹配a、b、c中的任意一个</th>
+        </tr>
+		<tr>
+            <th>[a-f]</th>
+            <th>匹配从a到f范围内的的任意一个字符</th>
+        </tr>
+		<tr>
+            <th>ls [a-f]*</th>
+            <th>找到从a到f范围内的的任意一个字符开头的文件</th>
+        </tr>
+		<tr>
+            <th>ls a-f</th>
+            <th>查找文件名为a-f的文件,当“-”处于方括号之外失去通配符的作用</th>
+        </tr>
+		<tr>
+            <th>\</th>
+            <th>如果要使通配符作为普通字符使用，可以在其前面加上转义字符。“?”和“*”处于方括号内时不用使用转义字符就失去通配符的作用。</th>
+        </tr>
+		<tr>
+            <th>ls \*a</th>
+            <th>查找文件名为*a的文件</th>
+        </tr>
+</table>
+
+<h2 id="输出重定向命令："><a href="#输出重定向命令：" class="headerlink" title="输出重定向命令：&gt;"></a>输出重定向命令：&gt;</h2><p>Linux允许将命令执行结果重定向到一个文件，本应显示在终端上的内容保存到指定文件中。<br>如：ls &gt; test.txt ( test.txt 如果不存在，则创建，存在则覆盖其内容 )<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-ls-redirect.png" loading="lazy"><br>注意： &gt;输出重定向会覆盖原来的内容，&gt;&gt;输出重定向则会追加到文件的尾部。</p>
+<h2 id="分屏显示：more"><a href="#分屏显示：more" class="headerlink" title="分屏显示：more"></a>分屏显示：more</h2><p>查看内容时，在信息过长无法在一屏上显示时，会出现快速滚屏，使得用户无法看清文件的内容，此时可以使用more命令，每次只显示一页，按下空格键可以显示下一页，按下q键退出显示，按下h键可以获取帮助。<br>如图，用more打开桌面上的html<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-more_file.png" loading="lazy"><br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-more_open.png" loading="lazy"></p>
+<h2 id="管道："><a href="#管道：" class="headerlink" title="管道：|"></a>管道：|</h2><p>管道：一个命令的输出可以通过管道做为另一个命令的输入。<br>管道我们可以理解现实生活中的管子，管子的一头塞东西进去，另一头取出来，这里“ | ”的左右分为两端，左端塞东西(写)，右端取东西(读)。<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-pip.png" loading="lazy">  </p>
+<h2 id="清屏：clear"><a href="#清屏：clear" class="headerlink" title="清屏：clear"></a>清屏：clear</h2><p>lear作用为清除终端上的显示(类似于DOS的cls清屏功能)，也可使用快捷键：Ctrl + l ( “l” 为字母 )。  </p>
+<h2 id="切换工作目录：-cd"><a href="#切换工作目录：-cd" class="headerlink" title="切换工作目录： cd"></a>切换工作目录： cd</h2><p>在使用Unix&#x2F;Linux的时候，经常需要更换工作目录。cd命令可以帮助用户切换工作目录。Linux所有的目录和文件名大小写敏感<br>cd后面可跟绝对路径，也可以跟相对路径。如果省略目录，则默认切换到当前用户的主目录。   </p>
+<table>
+        <tr>
+            <th>命令</th>
+            <th>含义</th>
+        </tr>
+		<tr>
+            <th>cd</th>
+            <th>切换到当前用户的主目录(/home/用户目录)，用户登陆的时候，默认的目录就是用户的主目录。</th>
+        </tr>
+		<tr>
+            <th>cd ~</th>
+            <th>切换到当前用户的主目录(/home/用户目录)</th>
+        </tr>
+		<tr>
+            <th>cd .</th>
+            <th>切换到当前目录</th>
+        </tr>
+		<tr>
+            <th>cd ..</th>
+            <th>切换到上级目录</th>
+        </tr>
+		<tr>
+            <th>cd -</th>
+            <th>可进入上次所在的目录</th>
+        </tr>
+</table>
+如果路径是从根路径开始的，则路径的前面需要加上 “ / ”，如 “ /mnt ”，通常进入某个目录里的文件夹，前面不用加 “ / ”。  
+
+<h2 id="显示当前路径：pwd"><a href="#显示当前路径：pwd" class="headerlink" title="显示当前路径：pwd"></a>显示当前路径：pwd</h2><p>使用pwd命令可以显示当前的工作目录，该命令很简单，直接输入pwd即可，后面不带参数。  </p>
+<h2 id="创建目录：mkdir"><a href="#创建目录：mkdir" class="headerlink" title="创建目录：mkdir"></a>创建目录：mkdir</h2><p>通过mkdir命令可以创建一个新的目录。参数-p可递归创建目录。</p>
+<p>需要注意的是新建目录的名称不能与当前目录中已有的目录或文件同名，并且目录创建者必须对当前目录具有写权限。<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-mkdir.png" alt="mkdir" loading="lazy"></p>
+<h2 id="删除目录：rmdir"><a href="#删除目录：rmdir" class="headerlink" title="删除目录：rmdir"></a>删除目录：rmdir</h2><p>可使用rmdir命令删除一个目录。必须离开目录，并且目录必须为空目录，不然提示删除失败。<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-rmdir.png" loading="lazy"></p>
+<h2 id="删除文件：rm"><a href="#删除文件：rm" class="headerlink" title="删除文件：rm"></a>删除文件：rm</h2><p>可通过rm删除文件或目录。使用rm命令要小心，因为文件删除后不能恢复。为了防止文件误删，可以在rm后使用-i参数以逐个确认要删除的文件。<br>常用参数及含义如下表所示：  </p>
+<table>
+        <tr>
+            <th>参数</th>
+            <th>含义</th>
+        </tr>
+		<tr>
+            <th>-i</th>
+            <th>以进行交互式方式执行</th>
+        </tr>
+		<tr>
+            <th>-f</th>
+            <th>强制删除，忽略不存在的文件，无需提示</th>
+        </tr>
+		<tr>
+            <th>-r</th>
+            <th>递归地删除目录下的内容，删除文件夹时必须加此参数</th>
+        </tr>
+</table>
+## 建立链接文件：ln
+Linux链接文件类似于Windows下的快捷方式。
+
+<p>链接文件分为软链接和硬链接。</p>
+<p>软链接：软链接不占用磁盘空间，源文件删除则软链接失效。</p>
+<p>硬链接：硬链接只能链接普通文件，不能链接目录。</p>
+<p>使用格式：   </p>
+<p>ln 源文件 链接文件<br>ln -s 源文件 链接文件<br>如果没有-s选项代表建立一个硬链接文件，两个文件占用相同大小的硬盘空间，即使删除了源文件，链接文件还是存在，所以-s选项是更常见的形式。<br>注意：如果软链接文件和源文件不在同一个目录，源文件要使用绝对路径，不能使用相对路径。<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-li-ln.png" loading="lazy">  </p>
+<h2 id="查看或者合并文件内容：cat"><a href="#查看或者合并文件内容：cat" class="headerlink" title="查看或者合并文件内容：cat"></a>查看或者合并文件内容：cat</h2><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-cat.png" loading="lazy"></p>
+<h2 id="文本搜索：grep"><a href="#文本搜索：grep" class="headerlink" title="文本搜索：grep"></a>文本搜索：grep</h2><p>Linux系统中grep命令是一种强大的文本搜索工具，grep允许对文本文件进行模式查找。如果找到匹配模式， grep打印包含模式的所有行。</p>
+<p>grep一般格式为：  </p>
+<pre><code>	grep [-选项] ‘搜索内容串’文件名
+</code></pre>
+<p>在grep命令中输入字符串参数时，最好引号或双引号括起来。例如：grep‘a ’1.txt。</p>
+<p>常用选项说明：  </p>
+<table>
+        <tr>
+            <th>选项</th>
+            <th>含义</th>
+        </tr>
+		<tr>
+            <th>-v</th>
+            <th>显示不包含匹配文本的所有行（相当于求反）</th>
+        </tr>
+		<tr>
+            <th>-n</th>
+            <th>显示匹配行及行号</th>
+        </tr>
+		<tr>
+            <th>-i</th>
+            <th>忽略大小写</th>
+        </tr>
+</table>
+grep搜索内容串可以是正则表达式。
+
+<p>正则表达式是对字符串操作的一种逻辑公式，就是用事先定义好的一些特定字符、及这些特定字符的组合，组成一个“规则字符串”，这个“规则字符串”用来表达对字符串的一种过滤逻辑。</p>
+<p>grep常用正则表达式：   </p>
+<table>
+        <tr>
+            <th>参数</th>
+            <th>含义</th>
+        </tr>
+		<tr>
+            <th>^a</th>
+            <th>行首,搜寻以 m 开头的行；grep -n '^a' 1.txt</th>
+        </tr>
+		<tr>
+            <th>ke$</th>
+            <th>行尾,搜寻以 ke 结束的行；grep -n 'ke$' 1.txt</th>
+        </tr>
+		<tr>
+            <th>[Ss]igna[Ll]</th>
+            <th>匹配 [] 里中一系列字符中的一个；搜寻匹配单词signal、signaL、Signal、SignaL的行；grep -n '[Ss]igna[Ll]' 1.txt</th>
+        </tr>
+		<tr>
+            <th>.</th>
+            <th>点)匹配一个非换行符的字符；匹配 e 和 e 之间有任意一个字符，可以匹配 eee，eae，eve，但是不匹配 ee，eaae；grep -n 'e.e' 1.txt</th>
+        </tr>
+</table>
+
+<h2 id="查找文件：find"><a href="#查找文件：find" class="headerlink" title="查找文件：find"></a>查找文件：find</h2><p>find命令功能非常强大，通常用来在特定的目录下搜索符合条件的文件，也可以用来搜索特定用户属主的文件。</p>
+<p>常用用法：  </p>
+<table>
+        <tr>
+            <th>命令</th>
+            <th>含义</th>
+        </tr>
+ 		<tr>
+            <th>find ./ -name test.sh</th>
+            <th>查找当前目录下所有名为test.sh的文件</th>
+        </tr>
+		<tr>
+            <th>find ./ -name '*.sh'</th>
+            <th>查找当前目录下所有后缀为.sh的文件</th>
+        </tr>
+		<tr>
+            <th>find ./ -name "[A-Z]*"</th>
+            <th>查找当前目录下所有以大写字母开头的文件</th>
+        </tr>
+		<tr>
+            <th>find /tmp -size 2M</th>
+            <th>查找在/tmp 目录下等于2M的文件</th>
+        </tr>
+		<tr>
+            <th>find /tmp -size +2M</th>
+            <th>查找在/tmp 目录下大于2M的文件</th>
+        </tr>
+		<tr>
+            <th>find /tmp -size -2M</th>
+            <th>查找在/tmp 目录下小于2M的文件</th>
+        </tr>
+		<tr>
+            <th>find ./ -size +4k -size -5M</th>
+            <th>查找当前目录下大于4k，小于5M的文件</th>
+        </tr>
+		<tr>
+            <th>find ./ -perm 0777</th>
+            <th>查找当前目录下权限为 777 的文件或目录</th>
+        </tr>
+</table>
+
+<h2 id="拷贝文件：cp"><a href="#拷贝文件：cp" class="headerlink" title="拷贝文件：cp"></a>拷贝文件：cp</h2><p>cp命令的功能是将给出的文件或目录复制到另一个文件或目录中，相当于DOS下的copy命令。</p>
+<p>常用选项说明：  </p>
+<table>
+        <tr>
+            <th>选项</th>
+            <th>含义</th>
+        </tr>
+ 		<tr>
+            <th>-a</th>
+            <th>该选项通常在复制目录时使用，它保留链接、文件属性，并递归地复制目录，简单而言，保持文件原有属性。</th>
+        </tr>
+		<tr>
+            <th>-f</th>
+            <th>已经存在的目标文件而不提示</th>
+        </tr>
+		<tr>
+            <th>-i</th>
+            <th>互式复制，在覆盖目标文件之前将给出提示要求用户确认</th>
+        </tr>
+ 		<tr>
+            <th>-r</th>
+            <th>若给出的源文件是目录文件，则cp将递归复制该目录下的所有子目录和文件，目标文件必须为一个目录名。</th>
+        </tr>
+		<tr>
+            <th>-v</th>
+            <th>显示拷贝进度</th>
+        </tr>
+</table>
+![][13]
+## 移动文件：mv
+用户可以使用mv命令来移动文件或目录，也可以给文件或目录重命名。
+
+<p>常用选项说明：  </p>
+<table>
+        <tr>
+            <th>选项</th>
+            <th>含义</th>
+        </tr>
+ 		<tr>
+            <th>-f</th>
+            <th>禁止交互式操作，如有覆盖也不会给出提示</th>
+        </tr>
+		<tr>
+            <th>-i</th>
+            <th>确认交互方式操作，如果mv操作将导致对已存在的目标文件的覆盖，系统会询问是否重写，要求用户回答以避免误覆盖文件</th>
+        </tr>
+		<tr>
+            <th>-v</th>
+            <th>显示移动进度</th>
+        </tr>
+</table>
+![mv][14]
+## 归档管理：tar
+
+<p>计算机中的数据经常需要备份，tar是Unix&#x2F;Linux中最常用的备份工具，此命令可以把一系列文件归档到一个大文件中，也可以把档案文件解开以恢复数据。</p>
+<p>tar使用格式 tar [参数] 打包文件名 文件</p>
+<p>tar命令很特殊，其参数前面可以使用“-”，也可以不使用。<br>常用参数：   </p>
+<table>
+        <tr>
+            <th>选项</th>
+            <th>含义</th>
+        </tr>
+		 <tr>
+            <th>-c</th>
+            <th>生成档案文件，创建打包文件</th>
+        </tr>
+		<tr>
+            <th>-v</th>
+            <th>列出归档解档的详细过程，显示进度</th>
+        </tr>
+		<tr>
+            <th>-f</th>
+            <th>指定档案文件名称，f后面一定是.tar文件，所以必须放选项最后</th>
+        </tr>
+		<tr>
+            <th>-t</th>
+            <th>列出档案中包含的文件</th>
+        </tr>
+		<tr>
+            <th>-x</th>
+            <th>解开档案文件</th>
+        </tr>
+</table>
+注意：除了f需要放在参数的最后，其它参数的顺序任意  
+![][15]
+![][16]
+## 文件压缩解压：gzip
+tar与gzip命令结合使用实现文件打包、压缩。 tar只负责打包文件，但不压缩，用gzip压缩tar打包后的文件，其扩展名一般用xxxx.tar.gz。
+
+<p>gzip使用格式如下：</p>
+<pre><code>gzip  [选项]  被压缩文件  
+</code></pre>
+<table>
+        <tr>
+            <th>选项</th>
+            <th>含义</th>
+        </tr>
+ 		<tr>
+            <th>-d</th>
+            <th>解压</th>
+        </tr>
+		<tr>
+            <th>-r</th>
+            <th>压缩所有子目录</th>
+        </tr>
+</table>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-gzip-r.png" loading="lazy"><br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-gzip-d.png" loading="lazy"></p>
+<h2 id="文件压缩解压：bzip2"><a href="#文件压缩解压：bzip2" class="headerlink" title="文件压缩解压：bzip2"></a>文件压缩解压：bzip2</h2><p>tar与bzip2命令结合使用实现文件打包、压缩(用法和gzip一样)。</p>
+<p>tar只负责打包文件，但不压缩，用bzip2压缩tar打包后的文件，其扩展名一般用xxxx.tar.gz2。</p>
+<p>在tar命令中增加一个选项(-j)可以调用bzip2实现了一个压缩的功能，实行一个先打包后压缩的过程。</p>
+<p>压缩用法：tar jcvf 压缩包包名 文件...(tar jcvf bk.tar.bz2 *.c)</p>
+<p>解压用法：tar jxvf 压缩包包名 (tar jxvf bk.tar.bz2)  </p>
+<h2 id="文件压缩解压：zip、unzip"><a href="#文件压缩解压：zip、unzip" class="headerlink" title="文件压缩解压：zip、unzip"></a>文件压缩解压：zip、unzip</h2><p>通过zip压缩文件的目标文件不需要指定扩展名，默认扩展名为zip。</p>
+<p>压缩文件：zip [-r] 目标文件(没有扩展名) 源文件</p>
+<p>解压文件：unzip -d 解压后目录文件 压缩文件 </p>
+<h2 id="查看命令位置：which"><a href="#查看命令位置：which" class="headerlink" title="查看命令位置：which"></a>查看命令位置：which</h2><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/linux-order-which.png" loading="lazy"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/ja/tags/Ubuntu/" rel="tag"># Ubuntu</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ja/posts/a9998d19.html" rel="prev" title="Ubuntu开发之——命令概述">
+                  <i class="fa fa-angle-left"></i> Ubuntu开发之——命令概述
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ja/posts/66cc8d59.html" rel="next" title="Android开发之——通用流行框架大全">
+                  Android开发之——通用流行框架大全 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"a2a16a041ef9a1bbf062f51e53bd4b0c"}</script>
+<script src="/ja/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

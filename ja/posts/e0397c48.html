@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ja/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ja/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ja/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/ja/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/ja/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/ja/","images":"/ja/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索...","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/ja/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/ja/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述12345671.Android 中用过哪些设计模式？讲讲它的使用场景？2.Retrofit 是用了什么设计模式实现的？3.View 的事件分发中用了哪些设计模式？4.你如何封装网络请求？用了哪些模式？5.Glide 中用了哪些设计模式？6.如何优雅实现组件解耦？用了什么模式？7.多状态页面如何管理，用什么模式更合适？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android面试题——掘金-架构之23种设计模式高频问法(6.3)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/e0397c48.html">
+<meta property="og:site_name" content="PGzxc (Japanese)">
+<meta property="og:description" content="一 概述12345671.Android 中用过哪些设计模式？讲讲它的使用场景？2.Retrofit 是用了什么设计模式实现的？3.View 的事件分发中用了哪些设计模式？4.你如何封装网络请求？用了哪些模式？5.Glide 中用了哪些设计模式？6.如何优雅实现组件解耦？用了什么模式？7.多状态页面如何管理，用什么模式更合适？">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2025-04-07T02:42:02.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.013Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="掘金">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/e0397c48.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"ja","comments":true,"permalink":"https://pgzxc.github.io/posts/e0397c48.html","path":"posts/e0397c48.html","title":"Android面试题——掘金-架构之23种设计模式高频问法(6.3)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android面试题——掘金-架构之23种设计模式高频问法(6.3) | PGzxc (Japanese)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/utils.js" defer></script><script src="/ja/js/motion.js" defer></script><script src="/ja/js/sidebar.js" defer></script><script src="/ja/js/next-boot.js" defer></script><script src="/ja/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/ja/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/ja/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/ja/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/ja/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/ja/atom.xml" title="PGzxc (Japanese)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションを切り替える" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/ja/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (Japanese)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">本から学んだことは表面的なもの；自分で体験しなければならない</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="検索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/ja/" rel="section"><i class="fa fa-bell fa-fw"></i>ホーム</a></li><li class="menu-item menu-item-nav"><a href="/ja/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>ナビゲーション</a></li><li class="menu-item menu-item-categories"><a href="/ja/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリー<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/ja/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/ja/links/" rel="section"><i class="fa fa-link fa-fw"></i>リンク</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>検索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="検索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          目次
+        </li>
+        <li class="sidebar-nav-overview">
+          サイト概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Android-%E4%B8%AD%E7%94%A8%E8%BF%87%E5%93%AA%E4%BA%9B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9F%E8%AE%B2%E8%AE%B2%E5%AE%83%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Android 中用过哪些设计模式？讲讲它的使用场景？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Retrofit-%E6%98%AF%E7%94%A8%E4%BA%86%E4%BB%80%E4%B9%88%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Retrofit 是用了什么设计模式实现的？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-Retrofit-%E7%94%A8%E5%88%B0%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%80%E8%A7%88"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 Retrofit 用到的设计模式一览</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-Retrofit-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 Retrofit 设计模式详解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-View-%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E4%B8%AD%E7%94%A8%E4%BA%86%E5%93%AA%E4%BA%9B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 View 的事件分发中用了哪些设计模式？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-1-View-%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E4%B8%AD%E4%BD%BF%E7%94%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1 View 的事件分发中使用的设计模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-2-View-%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E4%B8%AD%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%AF%A6%E7%BB%86%E5%88%86%E6%9E%90"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2 View 事件分发中的设计模式详细分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E4%BD%A0%E5%A6%82%E4%BD%95%E5%B0%81%E8%A3%85%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%EF%BC%9F%E7%94%A8%E4%BA%86%E5%93%AA%E4%BA%9B%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 你如何封装网络请求？用了哪些模式？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-1-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E5%B0%81%E8%A3%85%E5%B8%B8%E8%A7%81%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.4.1.</span> <span class="nav-text">2.4.1 网络请求封装常见设计模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-2-%E5%A6%82%E4%BD%95%E5%B0%81%E8%A3%85%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%EF%BC%9A%E5%B8%B8%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">2.4.2.</span> <span class="nav-text">2.4.2 如何封装网络请求：常用设计模式的应用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-Glide-%E4%B8%AD%E7%94%A8%E4%BA%86%E5%93%AA%E4%BA%9B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 Glide 中用了哪些设计模式？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-1-Glide-%E4%B8%AD%E4%BD%BF%E7%94%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.5.1.</span> <span class="nav-text">2.5.1 Glide 中使用的设计模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-2-Glide-%E4%B8%AD%E4%BD%BF%E7%94%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E8%AF%A6%E7%BB%86%E5%88%86%E6%9E%90"><span class="nav-number">2.5.2.</span> <span class="nav-text">2.5.2 Glide 中使用的设计模式详细分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%AE%9E%E7%8E%B0%E7%BB%84%E4%BB%B6%E8%A7%A3%E8%80%A6%EF%BC%9F%E7%94%A8%E4%BA%86%E4%BB%80%E4%B9%88%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 如何优雅实现组件解耦？用了什么模式？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-%E5%A4%9A%E7%8A%B6%E6%80%81%E9%A1%B5%E9%9D%A2%E5%A6%82%E4%BD%95%E7%AE%A1%E7%90%86%EF%BC%8C%E7%94%A8%E4%BB%80%E4%B9%88%E6%A8%A1%E5%BC%8F%E6%9B%B4%E5%90%88%E9%80%82%EF%BC%9F"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 多状态页面如何管理，用什么模式更合适？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7-1-%E5%B8%B8%E8%A7%81%E9%A1%B5%E9%9D%A2%E7%8A%B6%E6%80%81"><span class="nav-number">2.7.1.</span> <span class="nav-text">2.7.1 常见页面状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7-2-%E5%A6%82%E4%BD%95%E7%AE%A1%E7%90%86%E5%A4%9A%E7%8A%B6%E6%80%81%E9%A1%B5%E9%9D%A2%EF%BC%9F"><span class="nav-number">2.7.2.</span> <span class="nav-text">2.7.2 如何管理多状态页面？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7-3-%E9%A1%B9%E7%9B%AE%E4%B8%AD%E6%8E%A8%E8%8D%90%E5%B0%81%E8%A3%85%E6%96%B9%E5%BC%8F"><span class="nav-number">2.7.3.</span> <span class="nav-text">2.7.3 项目中推荐封装方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/ja/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/ja/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">投稿</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/ja/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">カテゴリー</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/ja/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/e0397c48.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/ja/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android面试题——掘金-架构之23种设计模式高频问法(6.3) | PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android面试题——掘金-架构之23种设计模式高频问法(6.3)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Android%E9%9D%A2%E8%AF%95%E9%A2%98%E2%80%94%E2%80%94%E6%8E%98%E9%87%91-%E6%9E%B6%E6%9E%84%E4%B9%8B23%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E9%AB%98%E9%A2%91%E9%97%AE%E6%B3%95(6.3).md" class="post-edit-link" title="編集" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2025-04-07 10:42:02" itemprop="dateCreated datePublished" datetime="2025-04-07T10:42:02+08:00">2025-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/Android%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">Android面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="読書時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">読書時間 &asymp;</span>
+      <span>11 分</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.Android 中用过哪些设计模式？讲讲它的使用场景？</span><br><span class="line">2.Retrofit 是用了什么设计模式实现的？</span><br><span class="line">3.View 的事件分发中用了哪些设计模式？</span><br><span class="line">4.你如何封装网络请求？用了哪些模式？</span><br><span class="line">5.Glide 中用了哪些设计模式？</span><br><span class="line">6.如何优雅实现组件解耦？用了什么模式？</span><br><span class="line">7.多状态页面如何管理，用什么模式更合适？</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-Android-中用过哪些设计模式？讲讲它的使用场景？"><a href="#2-1-Android-中用过哪些设计模式？讲讲它的使用场景？" class="headerlink" title="2.1 Android 中用过哪些设计模式？讲讲它的使用场景？"></a>2.1 Android 中用过哪些设计模式？讲讲它的使用场景？</h3><p>1-单例模式（Singleton）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">1.目的：保证全局只有一个实例。</span><br><span class="line">2.场景举例：</span><br><span class="line">-自定义 AppManager 管理 Activity 栈。</span><br><span class="line">-Retrofit 网络单例封装：</span><br><span class="line">public class RetrofitClient &#123;</span><br><span class="line">    private static volatile RetrofitClient instance;</span><br><span class="line">    public static RetrofitClient getInstance() &#123;</span><br><span class="line">        if (instance == null) &#123;</span><br><span class="line">            synchronized (RetrofitClient.class) &#123;</span><br><span class="line">                if (instance == null) &#123;</span><br><span class="line">                    instance = new RetrofitClient();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2-工厂模式（Factory）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1.目的：隐藏对象创建逻辑，统一创建方式。</span><br><span class="line">2.场景举例：</span><br><span class="line">-LayoutInflater.from(context)</span><br><span class="line">-通过封装不同网络请求创建方式：</span><br><span class="line">object ApiFactory &#123;</span><br><span class="line">    fun create(type: Int): ApiService &#123;</span><br><span class="line">        return when (type) &#123;</span><br><span class="line">            0 -&gt; retrofit1.create(ApiService::class.java)</span><br><span class="line">            1 -&gt; retrofit2.create(ApiService::class.java)</span><br><span class="line">            else -&gt; throw IllegalArgumentException(&quot;Invalid type&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3-建造者模式（Builder）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.目的：链式构建复杂对象。</span><br><span class="line">2.场景举例：</span><br><span class="line">-AlertDialog.Builder</span><br><span class="line">-NotificationCompat.Builder</span><br><span class="line">-Glide 图片加载：</span><br><span class="line">Glide.with(context)</span><br><span class="line">     .load(url)</span><br><span class="line">     .placeholder(R.drawable.loading)</span><br><span class="line">     .into(imageView)</span><br></pre></td></tr></table></figure>
+
+<p>4-观察者模式（Observer）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.目的：一对多监听响应变化。</span><br><span class="line">2.场景举例：</span><br><span class="line">-LiveData + LifecycleObserver</span><br><span class="line">-广播机制 BroadcastReceiver</span><br><span class="line">-RxJava 的订阅发布</span><br></pre></td></tr></table></figure>
+
+<p>5-策略模式（Strategy）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.目的：动态切换不同算法或行为。</span><br><span class="line">2.场景举例：</span><br><span class="line">-图片缓存策略（如磁盘优先、内存优先）</span><br><span class="line">-RecyclerView 不同 LayoutManager</span><br><span class="line">-网络请求缓存策略封装</span><br></pre></td></tr></table></figure>
+
+<p>6-责任链模式（Chain of Responsibility）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.目的：多个处理者串联处理同一个请求。</span><br><span class="line">2.场景举例：</span><br><span class="line">-OkHttp 的 Interceptor 链</span><br><span class="line">-TouchEvent 的分发机制（Activity → ViewGroup → View）</span><br></pre></td></tr></table></figure>
+
+<p>7-装饰器模式（Decorator）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.目的：动态扩展对象功能。</span><br><span class="line">2.场景举例：</span><br><span class="line">-InputStream 系列</span><br><span class="line">-RecyclerView.ItemDecoration 装饰列表</span><br><span class="line">-OkHttp 的日志拦截器</span><br></pre></td></tr></table></figure>
+
+<p>8-代理模式（Proxy）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.目的：通过代理类控制原对象的访问。</span><br><span class="line">2.场景举例：</span><br><span class="line">-Retrofit 动态代理接口（通过 Proxy 实现 API 请求）</span><br><span class="line">-Binder 通信中的 IInterface、Stub 代理</span><br></pre></td></tr></table></figure>
+
+
+<p>9-模板方法模式（Template Method）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.目的：定义流程骨架，子类实现细节。</span><br><span class="line">2.场景举例：</span><br><span class="line">自定义 BaseActivity 控制生命周期：</span><br><span class="line">abstract class BaseActivity : AppCompatActivity() &#123;</span><br><span class="line">    override fun onCreate(savedInstanceState: Bundle?) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState)</span><br><span class="line">        initView()</span><br><span class="line">        initData()</span><br><span class="line">    &#125;</span><br><span class="line">    abstract fun initView()</span><br><span class="line">    abstract fun initData()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>10- 外观模式（Facade）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.目的：封装复杂子系统，提供统一调用入口。</span><br><span class="line">2.场景举例：</span><br><span class="line">-网络框架封装统一入口（请求、解析、异常处理）</span><br><span class="line">-自定义播放器 SDK 提供 PlayerManager 简化使用</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-Retrofit-是用了什么设计模式实现的？"><a href="#2-2-Retrofit-是用了什么设计模式实现的？" class="headerlink" title="2.2 Retrofit 是用了什么设计模式实现的？"></a>2.2 Retrofit 是用了什么设计模式实现的？</h3><h4 id="2-2-1-Retrofit-用到的设计模式一览"><a href="#2-2-1-Retrofit-用到的设计模式一览" class="headerlink" title="2.2.1 Retrofit 用到的设计模式一览"></a>2.2.1 Retrofit 用到的设计模式一览</h4><table>
+<thead>
+<tr>
+<th align="center">设计模式</th>
+<th align="center">Retrofit 中的应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">单例模式</td>
+<td align="center">Retrofit 实例创建</td>
+</tr>
+<tr>
+<td align="center">建造者模式</td>
+<td align="center"><code>Retrofit.Builder</code> 构建 Retrofit 对象</td>
+</tr>
+<tr>
+<td align="center">工厂模式</td>
+<td align="center">Converter.Factory, CallAdapter.Factory</td>
+</tr>
+<tr>
+<td align="center">代理模式</td>
+<td align="center">动态代理接口请求</td>
+</tr>
+<tr>
+<td align="center">责任链模式</td>
+<td align="center">OkHttp 拦截器链</td>
+</tr>
+<tr>
+<td align="center">适配器模式</td>
+<td align="center">CallAdapter 接口适配 RxJava、Coroutine</td>
+</tr>
+<tr>
+<td align="center">装饰器模式</td>
+<td align="center">OkHttp Interceptor 中封装请求响应</td>
+</tr>
+</tbody></table>
+<h4 id="2-2-2-Retrofit-设计模式详解"><a href="#2-2-2-Retrofit-设计模式详解" class="headerlink" title="2.2.2 Retrofit 设计模式详解"></a>2.2.2 Retrofit 设计模式详解</h4><p>2-1  单例模式（Singleton）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.场景：Retrofit 实例只创建一次，避免资源浪费。</span><br><span class="line">2.示例：</span><br><span class="line">object RetrofitClient &#123;</span><br><span class="line">    val retrofit: Retrofit by lazy &#123;</span><br><span class="line">        Retrofit.Builder()</span><br><span class="line">            .baseUrl(&quot;https://api.example.com&quot;)</span><br><span class="line">            .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">            .build()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2-2 建造者模式（Builder）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1.场景：通过 Retrofit.Builder() 逐步设置参数。</span><br><span class="line">2.源码：</span><br><span class="line">Retrofit retrofit = new Retrofit.Builder()</span><br><span class="line">        .baseUrl(&quot;https://...&quot;)</span><br><span class="line">        .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())</span><br><span class="line">        .client(new OkHttpClient())</span><br><span class="line">        .build();</span><br></pre></td></tr></table></figure>
+
+<p>2-3 工厂模式（Factory）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1.场景：用于创建不同的 Converter、CallAdapter。</span><br><span class="line">2.源码接口：</span><br><span class="line">public interface Converter&lt;F, T&gt; &#123;</span><br><span class="line">    T convert(F value);</span><br><span class="line">    abstract class Factory &#123;</span><br><span class="line">        // GsonFactory, MoshiFactory 等</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public interface CallAdapter&lt;R, T&gt; &#123;</span><br><span class="line">    T adapt(Call&lt;R&gt; call);</span><br><span class="line">    abstract class Factory &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2-4 动态代理模式（Proxy）⭐重点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.场景：接口请求是通过 Java 动态代理生成的。</span><br><span class="line">2.核心源码：</span><br><span class="line">Object proxy = Proxy.newProxyInstance(</span><br><span class="line">    service.getClassLoader(),</span><br><span class="line">    new Class&lt;?&gt;[]&#123;service&#125;,</span><br><span class="line">    new InvocationHandler() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public Object invoke(Object proxy, Method method, Object[] args) &#123;</span><br><span class="line">            return loadServiceMethod(method).invoke(args);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">好处：调用接口方法时不用手动写请求逻辑，Retrofit 自动帮你处理（如拦截器、参数、Call返回）    </span><br></pre></td></tr></table></figure>
+
+<p>2-5 责任链模式（Chain of Responsibility）【结合 OkHttp】</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.场景：OkHttp 网络请求是通过 Interceptor 链执行。</span><br><span class="line">2.例如：</span><br><span class="line">-RetryInterceptor</span><br><span class="line">-LoggingInterceptor</span><br><span class="line">-CacheInterceptor</span><br><span class="line">-CallServerInterceptor</span><br></pre></td></tr></table></figure>
+
+<p>2-6 适配器模式（Adapter）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">场景：CallAdapter.Factory 把 Call 适配成你需要的形式（比如 RxJava、LiveData、协程 suspend 等）</span><br><span class="line">例子：</span><br><span class="line">retrofit.addCallAdapterFactory(RxJava2CallAdapterFactory.create());</span><br></pre></td></tr></table></figure>
+
+<p>2-7 装饰器模式（Decorator）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.场景：在 OkHttp 的请求/响应过程中添加额外功能（比如加密、日志、header）</span><br><span class="line">2.使用：client.addInterceptor(loggingInterceptor) // 添加装饰行为</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-View-的事件分发中用了哪些设计模式？"><a href="#2-3-View-的事件分发中用了哪些设计模式？" class="headerlink" title="2.3 View 的事件分发中用了哪些设计模式？"></a>2.3 View 的事件分发中用了哪些设计模式？</h3><h4 id="2-3-1-View-的事件分发中使用的设计模式"><a href="#2-3-1-View-的事件分发中使用的设计模式" class="headerlink" title="2.3.1 View 的事件分发中使用的设计模式"></a>2.3.1 View 的事件分发中使用的设计模式</h4><table>
+<thead>
+<tr>
+<th align="center">设计模式</th>
+<th align="center">具体应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">责任链模式</td>
+<td align="center">事件的传递、拦截与处理</td>
+</tr>
+<tr>
+<td align="center">模板方法模式</td>
+<td align="center"><code>dispatchTouchEvent</code> 与 <code>onTouchEvent</code> 的执行顺序</td>
+</tr>
+<tr>
+<td align="center">策略模式</td>
+<td align="center">不同的事件分发策略（如 <code>onInterceptTouchEvent</code>）</td>
+</tr>
+<tr>
+<td align="center">适配器模式</td>
+<td align="center"><code>onTouchEvent</code> 与具体事件的适配</td>
+</tr>
+<tr>
+<td align="center">状态模式</td>
+<td align="center">View 的不同状态下的事件处理逻辑</td>
+</tr>
+</tbody></table>
+<h4 id="2-3-2-View-事件分发中的设计模式详细分析"><a href="#2-3-2-View-事件分发中的设计模式详细分析" class="headerlink" title="2.3.2 View 事件分发中的设计模式详细分析"></a>2.3.2 View 事件分发中的设计模式详细分析</h4><p>1-责任链模式（Chain of Responsibility）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1.场景：</span><br><span class="line">事件从父视图分发到子视图时，通过责任链模式逐层传递触摸事件。</span><br><span class="line">如果某个 View 不处理该事件，它会将事件传递给下一个 View。</span><br><span class="line"></span><br><span class="line">2.实现：dispatchTouchEvent 在 ViewGroup 和 View 之间传递事件。</span><br><span class="line"></span><br><span class="line">3.源码：</span><br><span class="line">public boolean dispatchTouchEvent(MotionEvent ev) &#123;</span><br><span class="line">    if (onInterceptTouchEvent(ev)) &#123;</span><br><span class="line">        // 事件被拦截</span><br><span class="line">        return onTouchEvent(ev);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return super.dispatchTouchEvent(ev);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2-模板方法模式（Template Method）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1.场景：</span><br><span class="line">事件的处理流程被模板化，父类定义事件分发的流程骨架，具体的事件处理方法由子类（如 View 或 ViewGroup）实现。</span><br><span class="line"></span><br><span class="line">2.实现：</span><br><span class="line">dispatchTouchEvent 定义了事件的传递和处理顺序，</span><br><span class="line">具体的事件处理逻辑由 onInterceptTouchEvent 和 onTouchEvent 实现</span><br><span class="line"></span><br><span class="line">3.源码：</span><br><span class="line">public boolean dispatchTouchEvent(MotionEvent ev) &#123;</span><br><span class="line">    if (onInterceptTouchEvent(ev)) &#123; // 处理事件拦截</span><br><span class="line">        return onTouchEvent(ev); // 事件最终处理</span><br><span class="line">    &#125;</span><br><span class="line">    return super.dispatchTouchEvent(ev); // 继续传递事件</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3-策略模式（Strategy）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1.场景：</span><br><span class="line">onInterceptTouchEvent 是用来决定是否拦截事件处理的，它可以有不同的策略来决定是否处理该事件。</span><br><span class="line">例如，点击时 ViewGroup 可能会拦截事件，而滑动时则不拦截。</span><br><span class="line"></span><br><span class="line">2.实现：通过 onInterceptTouchEvent 来改变事件的分发策略，决定是否拦截触摸事件。</span><br><span class="line"></span><br><span class="line">3.源码：</span><br><span class="line">public boolean onInterceptTouchEvent(MotionEvent ev) &#123;</span><br><span class="line">    if (shouldIntercept(ev)) &#123;</span><br><span class="line">        return true; // 拦截事件</span><br><span class="line">    &#125;</span><br><span class="line">    return false; // 不拦截</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4- 适配器模式（Adapter）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">1.场景：</span><br><span class="line">onTouchEvent 是适配器，用来将 MotionEvent（原始事件数据）适配到具体的事件处理逻辑。</span><br><span class="line">事件本身是抽象的，View 根据具体实现将事件适配为响应。</span><br><span class="line"></span><br><span class="line">2.实现：onTouchEvent 方法处理不同类型的事件（如点击、滑动、长按等）。</span><br><span class="line"></span><br><span class="line">3.源码：</span><br><span class="line">public boolean onTouchEvent(MotionEvent event) &#123;</span><br><span class="line">    switch (event.getAction()) &#123;</span><br><span class="line">        case MotionEvent.ACTION_DOWN:</span><br><span class="line">            // 处理按下事件</span><br><span class="line">            break;</span><br><span class="line">        case MotionEvent.ACTION_MOVE:</span><br><span class="line">            // 处理滑动事件</span><br><span class="line">            break;</span><br><span class="line">        case MotionEvent.ACTION_UP:</span><br><span class="line">            // 处理抬起事件</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5-状态模式（State）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">1.场景：</span><br><span class="line">View 在不同状态下的事件处理逻辑不同。</span><br><span class="line">例如，按钮在点击时和未点击时的处理逻辑不同。不同状态的切换可以通过状态模式来处理。</span><br><span class="line"></span><br><span class="line">2.实现：onTouchEvent 中根据不同的事件类型（如点击、拖动等）切换 View 的状态，进而触发不同的事件处理逻辑。</span><br><span class="line"></span><br><span class="line">3.源码：</span><br><span class="line">public boolean onTouchEvent(MotionEvent event) &#123;</span><br><span class="line">    switch (event.getAction()) &#123;</span><br><span class="line">        case MotionEvent.ACTION_DOWN:</span><br><span class="line">            // 设置按钮为按下状态</span><br><span class="line">            setPressed(true);</span><br><span class="line">            break;</span><br><span class="line">        case MotionEvent.ACTION_UP:</span><br><span class="line">            // 设置按钮为未按下状态</span><br><span class="line">            setPressed(false);</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-你如何封装网络请求？用了哪些模式？"><a href="#2-4-你如何封装网络请求？用了哪些模式？" class="headerlink" title="2.4 你如何封装网络请求？用了哪些模式？"></a>2.4 你如何封装网络请求？用了哪些模式？</h3><h4 id="2-4-1-网络请求封装常见设计模式"><a href="#2-4-1-网络请求封装常见设计模式" class="headerlink" title="2.4.1 网络请求封装常见设计模式"></a>2.4.1 网络请求封装常见设计模式</h4><table>
+<thead>
+<tr>
+<th align="center">设计模式</th>
+<th align="center">具体应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">单例模式</td>
+<td align="center">网络客户端（如 Retrofit 或 OkHttpClient）</td>
+</tr>
+<tr>
+<td align="center">工厂模式</td>
+<td align="center">用于创建不同的请求接口、请求参数的构造</td>
+</tr>
+<tr>
+<td align="center">策略模式</td>
+<td align="center">用于选择不同的请求方式（GET、POST、PUT 等）</td>
+</tr>
+<tr>
+<td align="center">适配器模式</td>
+<td align="center">将网络请求的响应数据适配到项目所需的数据格式</td>
+</tr>
+<tr>
+<td align="center">代理模式</td>
+<td align="center">请求的拦截与处理（如网络请求的拦截、日志、缓存等）</td>
+</tr>
+<tr>
+<td align="center">装饰器模式</td>
+<td align="center">增强网络请求的功能（如添加缓存、重试机制等）</td>
+</tr>
+<tr>
+<td align="center">模板方法模式</td>
+<td align="center">网络请求的流程模板化，子类实现具体的请求方法</td>
+</tr>
+</tbody></table>
+<h4 id="2-4-2-如何封装网络请求：常用设计模式的应用"><a href="#2-4-2-如何封装网络请求：常用设计模式的应用" class="headerlink" title="2.4.2 如何封装网络请求：常用设计模式的应用"></a>2.4.2 如何封装网络请求：常用设计模式的应用</h4><p>1-单例模式（Singleton）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.场景：网络请求的客户端通常是单例，避免多次创建客户端对象，减少资源消耗。</span><br><span class="line">2.实现：例如，使用 Retrofit 或 OkHttp 客户端作为单例。</span><br><span class="line">object RetrofitClient &#123;</span><br><span class="line">    val retrofit: Retrofit by lazy &#123;</span><br><span class="line">        Retrofit.Builder()</span><br><span class="line">            .baseUrl(&quot;https://api.example.com&quot;)</span><br><span class="line">            .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">            .build()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2-工厂模式（Factory）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.场景：根据不同的接口类型创建不同的请求对象。可以统一管理不同 API 请求接口的创建。</span><br><span class="line">2.实现：创建一个工厂类，根据请求类型（GET、POST）或不同的网络库封装不同的请求。</span><br><span class="line">object ApiServiceFactory &#123;</span><br><span class="line">    fun createApiService(): ApiService &#123;</span><br><span class="line">        return RetrofitClient.retrofit.create(ApiService::class.java)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3-策略模式（Strategy）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">1.场景：根据不同的需求选择不同的网络请求策略（如不同的 HTTP 方法、请求头、请求参数等）。</span><br><span class="line">2.实现：可以通过封装不同的请求方式（如 GET, POST, PUT 等）来实现动态选择。</span><br><span class="line">interface RequestStrategy &#123;</span><br><span class="line">    fun executeRequest(): Call&lt;ResponseBody&gt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class GetRequestStrategy(private val url: String) : RequestStrategy &#123;</span><br><span class="line">    override fun executeRequest(): Call&lt;ResponseBody&gt; &#123;</span><br><span class="line">        return retrofitService.get(url)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class PostRequestStrategy(private val url: String, private val body: RequestBody) : RequestStrategy &#123;</span><br><span class="line">    override fun executeRequest(): Call&lt;ResponseBody&gt; &#123;</span><br><span class="line">        return retrofitService.post(url, body)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4-适配器模式（Adapter）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1.场景：网络请求的响应数据通常与应用所需的数据结构不完全匹配，可以使用适配器模式进行数据转换。</span><br><span class="line">2.实现：例如，使用 ResponseBody 或 String 作为响应，适配成应用需要的 Model 类。</span><br><span class="line">class ResponseAdapter &#123;</span><br><span class="line">    fun adapt(response: Response&lt;ResponseBody&gt;): Result &#123;</span><br><span class="line">        val json = response.body()?.string() ?: &quot;&#123;&#125;&quot;</span><br><span class="line">        return Gson().fromJson(json, Result::class.java)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5-代理模式（Proxy）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.场景：代理模式常用于请求拦截，做一些通用操作，如请求日志、请求头注入、缓存等。</span><br><span class="line">2.实现：通过 OkHttp 的 Interceptor 或自定义的代理类，可以拦截请求并做统一处理。</span><br><span class="line">class LoggingInterceptor : Interceptor &#123;</span><br><span class="line">    override fun intercept(chain: Interceptor.Chain): Response &#123;</span><br><span class="line">        val request = chain.request()</span><br><span class="line">        Log.d(&quot;Request&quot;, &quot;URL: $&#123;request.url&#125;&quot;)</span><br><span class="line">        return chain.proceed(request)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>6-装饰器模式（Decorator）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1.场景：装饰器模式用于增强网络请求的功能，比如增加重试机制、缓存、超时控制等。</span><br><span class="line">2.实现：通过扩展 OkHttpClient 或其他网络请求库来添加装饰功能。</span><br><span class="line">class RetryInterceptor(private val maxRetries: Int) : Interceptor &#123;</span><br><span class="line">    override fun intercept(chain: Interceptor.Chain): Response &#123;</span><br><span class="line">        var attempt = 0</span><br><span class="line">        var response: Response</span><br><span class="line">        do &#123;</span><br><span class="line">            response = chain.proceed(chain.request())</span><br><span class="line">            attempt++</span><br><span class="line">        &#125; while (!response.isSuccessful &amp;&amp; attempt &lt; maxRetries)</span><br><span class="line">        return response</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>7-模板方法模式（Template Method）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">1.场景：</span><br><span class="line">在网络请求中，某些流程是固定的（如添加公共请求头、请求体），而具体的实现由子类提供（如具体请求接口的实现）。</span><br><span class="line">2.实现：可以在父类中定义网络请求的模板流程，子类实现具体的请求方式。</span><br><span class="line">abstract class NetworkRequest &#123;</span><br><span class="line">    fun execute() &#123;</span><br><span class="line">        prepareRequest()</span><br><span class="line">        val response = makeRequest()</span><br><span class="line">        handleResponse(response)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    abstract fun prepareRequest()</span><br><span class="line">    abstract fun makeRequest(): Response</span><br><span class="line">    abstract fun handleResponse(response: Response)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class GetRequest : NetworkRequest() &#123;</span><br><span class="line">    override fun prepareRequest() &#123;</span><br><span class="line">        // 准备 GET 请求</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun makeRequest(): Response &#123;</span><br><span class="line">        // 执行 GET 请求</span><br><span class="line">        return Response.success(&quot;OK&quot;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun handleResponse(response: Response) &#123;</span><br><span class="line">        // 处理响应</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-Glide-中用了哪些设计模式？"><a href="#2-5-Glide-中用了哪些设计模式？" class="headerlink" title="2.5 Glide 中用了哪些设计模式？"></a>2.5 Glide 中用了哪些设计模式？</h3><h4 id="2-5-1-Glide-中使用的设计模式"><a href="#2-5-1-Glide-中使用的设计模式" class="headerlink" title="2.5.1 Glide 中使用的设计模式"></a>2.5.1 Glide 中使用的设计模式</h4><table>
+<thead>
+<tr>
+<th align="center">设计模式</th>
+<th align="center">具体应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">单例模式</td>
+<td align="center">Glide 的初始化和图片加载管理器</td>
+</tr>
+<tr>
+<td align="center">工厂模式</td>
+<td align="center">图片请求的构建和不同图片加载策略</td>
+</tr>
+<tr>
+<td align="center">责任链模式</td>
+<td align="center">图片加载的各种操作，如解码、转换、显示等</td>
+</tr>
+<tr>
+<td align="center">策略模式</td>
+<td align="center">图片的缓存策略、加载策略的切换</td>
+</tr>
+<tr>
+<td align="center">适配器模式</td>
+<td align="center">图片加载过程中不同解码器、转换器的适配</td>
+</tr>
+<tr>
+<td align="center">装饰器模式</td>
+<td align="center">加载过程中的各种增强功能，如图片转换、动画等</td>
+</tr>
+</tbody></table>
+<h4 id="2-5-2-Glide-中使用的设计模式详细分析"><a href="#2-5-2-Glide-中使用的设计模式详细分析" class="headerlink" title="2.5.2 Glide 中使用的设计模式详细分析"></a>2.5.2 Glide 中使用的设计模式详细分析</h4><p>1- 单例模式（Singleton）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.场景：</span><br><span class="line">为了避免重复创建 Glide 实例，Glide 使用单例模式来管理图片加载器的生命周期，</span><br><span class="line">确保应用中只有一个 Glide 实例来管理图片加载。</span><br><span class="line"></span><br><span class="line">2.实现：Glide 类本身就是一个单例，通过 Glide.with() 方法可以获取唯一的 Glide 实例，进行图片加载。</span><br><span class="line"></span><br><span class="line">3.代码示例：</span><br><span class="line">Glide.with(context)</span><br><span class="line">     .load(url)</span><br><span class="line">     .into(imageView);</span><br></pre></td></tr></table></figure>
+
+<p>2-工厂模式（Factory）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.场景：</span><br><span class="line">Glide 通过工厂模式来构建不同类型的图片加载请求，支持多种图片加载策略（如默认加载、圆形图片、模糊效果等）。</span><br><span class="line"></span><br><span class="line">2.实现：</span><br><span class="line">通过 RequestBuilder 和 RequestOptions，Glide 提供了不同类型的图片加载方式，</span><br><span class="line">便于开发者根据需求选择不同的加载方式。</span><br><span class="line"></span><br><span class="line">3.代码示例：</span><br><span class="line">Glide.with(context)</span><br><span class="line">     .load(url)</span><br><span class="line">     .apply(RequestOptions.circleCropTransform()) // 使用圆形裁剪</span><br><span class="line">     .into(imageView);</span><br></pre></td></tr></table></figure>
+
+<p>3-责任链模式（Chain of Responsibility）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1.场景：</span><br><span class="line">Glide 加载图片的过程非常复杂，涉及到多个操作（如解码、图片转换、缓存加载等）。</span><br><span class="line">通过责任链模式，Glide 将这些操作串联起来，逐步执行。</span><br><span class="line"></span><br><span class="line">2.实现：</span><br><span class="line">在 Glide 内部，通过责任链模式组织一系列处理操作。</span><br><span class="line">例如，加载图片的请求会经过一系列的转换、解码、缓存等操作，直到图片被加载到 ImageView 中。</span><br><span class="line"></span><br><span class="line">3.代码示例：</span><br><span class="line">Glide.with(context)</span><br><span class="line">     .load(url)</span><br><span class="line">     .apply(RequestOptions.centerCropTransform()) // 中央裁剪</span><br><span class="line">     .into(imageView);</span><br></pre></td></tr></table></figure>
+
+<p>4-策略模式（Strategy）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.场景：</span><br><span class="line">图片加载时，Glide 允许开发者根据需求灵活选择不同的加载策略，比如内存缓存、磁盘缓存、图片大小调整策略等。</span><br><span class="line"></span><br><span class="line">2.实现：</span><br><span class="line">Glide 提供了多种缓存策略（如 DiskCacheStrategy.ALL、DiskCacheStrategy.NONE 等），</span><br><span class="line">可以根据不同的使用场景选择不同的策略。</span><br><span class="line"></span><br><span class="line">3.代码示例：</span><br><span class="line">Glide.with(context)</span><br><span class="line">     .load(url)</span><br><span class="line">     .diskCacheStrategy(DiskCacheStrategy.ALL)  // 使用所有缓存策略</span><br><span class="line">     .into(imageView);</span><br></pre></td></tr></table></figure>
+
+<p>5-适配器模式（Adapter）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.场景：Glide 内部需要处理各种不同格式的图片、数据源等，适配器模式允许 Glide 支持多种不同的解码器和数据源。</span><br><span class="line"></span><br><span class="line">2.实现：</span><br><span class="line">Glide 支持多种数据源类型（如 URL、URI、本地文件等）以及不同格式的图片解码器（如 JPEG、PNG、GIF）。</span><br><span class="line">通过适配器模式，Glide 可以灵活地为不同的数据源或图片格式选择合适的解码方式。</span><br><span class="line"></span><br><span class="line">3.代码示例：</span><br><span class="line">Glide.with(context)</span><br><span class="line">     .load(new File(&quot;/path/to/file&quot;))</span><br><span class="line">     .into(imageView);</span><br></pre></td></tr></table></figure>
+
+<p>6-装饰器模式（Decorator）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1.场景：</span><br><span class="line">Glide 在加载图片时，允许开发者对图片进行各种增强操作，如添加圆形裁剪、模糊效果等。</span><br><span class="line">这些操作可以通过装饰器模式来实现，逐步装饰图片加载请求。</span><br><span class="line"></span><br><span class="line">2.实现：</span><br><span class="line">Glide 的 RequestOptions 和转换器（如 CircleCrop、BlurTransformation）就是典型的装饰器，</span><br><span class="line">通过对请求的“装饰”来增强图片加载的效果。</span><br><span class="line"></span><br><span class="line">3.代码示例：</span><br><span class="line">Glide.with(context)</span><br><span class="line">     .load(url)</span><br><span class="line">     .apply(RequestOptions.bitmapTransform(new CircleCrop()))  // 装饰器：圆形裁剪</span><br><span class="line">     .into(imageView);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-如何优雅实现组件解耦？用了什么模式？"><a href="#2-6-如何优雅实现组件解耦？用了什么模式？" class="headerlink" title="2.6 如何优雅实现组件解耦？用了什么模式？"></a>2.6 如何优雅实现组件解耦？用了什么模式？</h3><p>1-组件解耦的核心目标</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-模块间依赖最小化（避免互相引用）</span><br><span class="line">-独立开发、测试、部署</span><br><span class="line">-代码职责清晰，方便维护</span><br><span class="line">-支持插件化或动态扩展</span><br></pre></td></tr></table></figure>
+
+<p>2-常见解耦方式与对应设计模式</p>
+<table>
+<thead>
+<tr>
+<th align="center">解耦方式</th>
+<th align="center">使用场景</th>
+<th align="center">涉及设计模式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">接口 + 工厂</td>
+<td align="center">服务调用、模块功能统一入口</td>
+<td align="center">接口隔离 + 工厂模式 + 单例模式</td>
+</tr>
+<tr>
+<td align="center">路由框架（如 ARouter）</td>
+<td align="center">页面跳转、服务调用</td>
+<td align="center">策略模式 + 注册模式</td>
+</tr>
+<tr>
+<td align="center">EventBus &#x2F; LiveData</td>
+<td align="center">跨模块事件传递</td>
+<td align="center">观察者模式</td>
+</tr>
+<tr>
+<td align="center">Hilt &#x2F; Dagger2 注入</td>
+<td align="center">跨模块依赖注入</td>
+<td align="center">依赖注入 + 单例 + 构造器模式</td>
+</tr>
+<tr>
+<td align="center">ContentProvider &#x2F; SPI</td>
+<td align="center">应用启动时模块自动注册</td>
+<td align="center">插件机制 + 注册模式</td>
+</tr>
+<tr>
+<td align="center">反射 + 注解处理器</td>
+<td align="center">运行时&#x2F;编译时自动发现并加载模块实现类</td>
+<td align="center">反射 + 模板方法 + 代理模式</td>
+</tr>
+</tbody></table>
+<h3 id="2-7-多状态页面如何管理，用什么模式更合适？"><a href="#2-7-多状态页面如何管理，用什么模式更合适？" class="headerlink" title="2.7 多状态页面如何管理，用什么模式更合适？"></a>2.7 多状态页面如何管理，用什么模式更合适？</h3><h4 id="2-7-1-常见页面状态"><a href="#2-7-1-常见页面状态" class="headerlink" title="2.7.1 常见页面状态"></a>2.7.1 常见页面状态</h4><table>
+<thead>
+<tr>
+<th align="center">状态</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Loading</td>
+<td align="center">正在加载</td>
+</tr>
+<tr>
+<td align="center">Content</td>
+<td align="center">正常内容</td>
+</tr>
+<tr>
+<td align="center">Empty</td>
+<td align="center">数据为空</td>
+</tr>
+<tr>
+<td align="center">Error</td>
+<td align="center">服务器错误</td>
+</tr>
+<tr>
+<td align="center">NoNetwork</td>
+<td align="center">网络异常，加载失败</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h4 id="2-7-2-如何管理多状态页面？"><a href="#2-7-2-如何管理多状态页面？" class="headerlink" title="2.7.2 如何管理多状态页面？"></a>2.7.2 如何管理多状态页面？</h4><p>1-方法一：封装状态容器 + 状态切换方法（推荐）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1.说明</span><br><span class="line">统一一个 ViewGroup（如 FrameLayout）管理不同状态的 View。</span><br><span class="line">提供 showLoading(), showContent() 等方法。</span><br><span class="line"></span><br><span class="line">2.设计模式：状态模式 + 策略模式</span><br><span class="line">-状态模式：每种状态对应一种 UI 表现，状态切换通过统一接口完成。</span><br><span class="line">-策略模式：不同状态通过不同 View 策略实现。</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line">multiStateLayout.setContentView(contentView)</span><br><span class="line">multiStateLayout.showLoading()</span><br></pre></td></tr></table></figure>
+
+<p>2-方法二：结合 Jetpack ViewModel + LiveData 实现状态绑定（MVVM）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">设计模式：观察者模式 + 状态模式 + MVVM</span><br><span class="line"></span><br><span class="line">enum class PageState &#123; LOADING, CONTENT, ERROR, EMPTY &#125;</span><br><span class="line">class MyViewModel : ViewModel() &#123;</span><br><span class="line">    val state = MutableLiveData&lt;PageState&gt;()</span><br><span class="line">&#125;</span><br><span class="line">在 UI 层观察状态</span><br><span class="line">viewModel.state.observe(this) &#123;</span><br><span class="line">    when (it) &#123;</span><br><span class="line">        LOADING -&gt; multiStateLayout.showLoading()</span><br><span class="line">        CONTENT -&gt; multiStateLayout.showContent()</span><br><span class="line">        ERROR -&gt; multiStateLayout.showError()</span><br><span class="line">        EMPTY -&gt; multiStateLayout.showEmpty()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-7-3-项目中推荐封装方式"><a href="#2-7-3-项目中推荐封装方式" class="headerlink" title="2.7.3 项目中推荐封装方式"></a>2.7.3 项目中推荐封装方式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-封装一个 MultiStateLayout / UIStatusView</span><br><span class="line">-支持自定义状态布局（传入 layoutId）</span><br><span class="line">-支持重试点击、错误消息显示等能力</span><br><span class="line">-和 ViewModel 状态绑定，解耦 UI 与逻辑</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="三-参考"><a href="#三-参考" class="headerlink" title="三 参考"></a>三 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7480464724096057381">掘金—知识库的大纲</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/ja/tags/%E6%8E%98%E9%87%91/" rel="tag"># 掘金</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ja/posts/ce854388.html" rel="prev" title="Android面试题——掘金-架构之23种设计模式(6.2)">
+                  <i class="fa fa-angle-left"></i> Android面试题——掘金-架构之23种设计模式(6.2)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ja/posts/8fe73f33.html" rel="next" title="Android面试题——掘金-架构之组件化、插件化(6.4)">
+                  Android面试题——掘金-架构之组件化、插件化(6.4) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"19f63aa2bccf16344905a40358acc053"}</script>
+<script src="/ja/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一 前言Activity作为四大组件之一，在软件开发中占据着非常重要的地位，也是面试中必问的知识点和考点，作为开发者，Activity相关知识点你都掌握了吗？ 这篇文章简单介绍面试当中Activity会被问到的知识点，当然这只是为了应付面试，重要的是掌握这一组件，这将对你的开发大有裨益。 作为四大组件之一，首先介绍下什么是Activity?">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android面试之——关于Activity的那些事1">
+<meta property="og:url" content="https://pgzxc.github.io/posts/2d4a6e06.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 前言Activity作为四大组件之一，在软件开发中占据着非常重要的地位，也是面试中必问的知识点和考点，作为开发者，Activity相关知识点你都掌握了吗？ 这篇文章简单介绍面试当中Activity会被问到的知识点，当然这只是为了应付面试，重要的是掌握这一组件，这将对你的开发大有裨益。 作为四大组件之一，首先介绍下什么是Activity?">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/activity-fout-state.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/activity-life.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/activity-start.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/activity-to-home.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/activity-return.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/activity-stop.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-progre.png">
+<meta property="article:published_time" content="2017-11-14T08:41:25.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.246Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Activity">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/activity-fout-state.png">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/2d4a6e06.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/2d4a6e06.html","path":"posts/2d4a6e06.html","title":"Android面试之——关于Activity的那些事1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android面试之——关于Activity的那些事1 | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">一 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-Activity%E4%B8%89%E6%96%B9%E9%9D%A2"><span class="nav-number">2.</span> <span class="nav-text">二 Activity三方面</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Activity%E5%9B%9B%E7%A7%8D%E7%8A%B6%E6%80%81"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Activity四种状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%88%86%E6%9E%90"><span class="nav-number">2.2.</span> <span class="nav-text">2.2  Activity生命周期分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity%E5%90%AF%E5%8A%A8%EF%BC%9AActiviy%E5%90%AF%E5%8A%A8%E6%97%B6%E4%BE%9D%E6%AC%A1%E8%B5%B0%E4%BA%86onCreate-onStart-onResume-%E4%B8%89%E4%B8%AA%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.1.</span> <span class="nav-text">Activity启动：Activiy启动时依次走了onCreate(),onStart(),onResume()三个方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%82%B9%E5%87%BBHome%E5%9B%9E%E5%88%B0%E4%B8%BB%E7%95%8C%E9%9D%A2%E6%88%96%E8%80%85%E8%A2%AB%E5%8F%A6%E5%A4%96%E7%9A%84Activity%E8%A6%86%E7%9B%96%EF%BC%9A%E6%AD%A4%E6%97%B6%E4%BE%9D%E6%AC%A1%E6%89%A7%E8%A1%8C%E4%BA%86onPause%EF%BC%8ConStop%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.2.</span> <span class="nav-text">点击Home回到主界面或者被另外的Activity覆盖：此时依次执行了onPause，onStop方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E5%9B%9E%E5%88%B0%E5%8E%9FActivity%EF%BC%9A%E6%AD%A4%E6%97%B6%E4%BE%9D%E6%AC%A1%E6%89%A7%E8%A1%8ConRestart%EF%BC%8ConStart%EF%BC%8ConResume"><span class="nav-number">2.2.3.</span> <span class="nav-text">重新回到原Activity：此时依次执行onRestart，onStart，onResume</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%80%E5%87%BA%E5%BD%93%E5%89%8DActivity%EF%BC%9A%E6%AD%A4%E6%97%B6%E4%BE%9D%E6%AC%A1%E6%89%A7%E8%A1%8ConPause%EF%BC%8ConStop%EF%BC%8ConDestory"><span class="nav-number">2.2.4.</span> <span class="nav-text">退出当前Activity：此时依次执行onPause，onStop，onDestory</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Android%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Android进程优先级</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/2d4a6e06.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android面试之——关于Activity的那些事1 | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android面试之——关于Activity的那些事1<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Android%E9%9D%A2%E8%AF%95%E4%B9%8B%E2%80%94%E2%80%94%E5%85%B3%E4%BA%8EActivity%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B1.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-11-14 16:41:25" itemprop="dateCreated datePublished" datetime="2017-11-14T16:41:25+08:00">2017-11-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/Android%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">Android面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-前言"><a href="#一-前言" class="headerlink" title="一 前言"></a>一 前言</h2><p>Activity作为四大组件之一，在软件开发中占据着非常重要的地位，也是面试中必问的知识点和考点，作为开发者，Activity相关知识点你都掌握了吗？</p>
+<p>这篇文章简单介绍面试当中Activity会被问到的知识点，当然这只是为了应付面试，重要的是掌握这一组件，这将对你的开发大有裨益。</p>
+<p>作为四大组件之一，首先介绍下什么是Activity?</p>
+<span id="more"></span>
+<p>它是Android与用户交互的接口，它提供了一个界面，接受用户进行各种点击，输入，滑动操作，这就是Activity的意思。</p>
+<p>本文将通过以下三方面张开</p>
+<ul>
+<li>Activity的四种状态</li>
+<li>Activity的生命周期分析</li>
+<li>Android进程优先级</li>
+</ul>
+<h2 id="二-Activity三方面"><a href="#二-Activity三方面" class="headerlink" title="二 Activity三方面"></a>二 Activity三方面</h2><h3 id="2-1-Activity四种状态"><a href="#2-1-Activity四种状态" class="headerlink" title="2.1 Activity四种状态"></a>2.1 Activity四种状态</h3><p>Activity分为四种状态：running运行状态，paused暂停状态，stoped停止状态，killed销毁状态<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/activity-fout-state.png" alt="Activity四种状态" loading="lazy"></p>
+<ul>
+<li>running： 运行状态下，Activity可见且活跃；可接受用户操作，作出相应相应；当前Activity处于栈顶  </li>
+<li>paused：暂停状态下，当Activity被一个全屏的Activity覆盖或者一个透明的Activity覆盖时，Activity将由running变为paused状态；此时Activity由可见逐渐变为不可见；Activity即将失去焦点；可见当不能与用户交互；Activity中的内存信息，成员变量依然存在；当内用紧张时此时的Activiy会被回收；</li>
+<li>stoped： paused的下一个状态就是stoped停止状态，此时Activity被另外一个Activity完全覆盖；此时Activity处于不可见状态；内存信息，变量信息依然存在；内存紧张时随时会被回收；</li>
+<li>killed：与ondestory相对应，是Activity生命周期的最后一个方法；执行后Activity被系统回收；内存信息，变量信息都不复存在；</li>
+</ul>
+<h3 id="2-2-Activity生命周期分析"><a href="#2-2-Activity生命周期分析" class="headerlink" title="2.2  Activity生命周期分析"></a>2.2  Activity生命周期分析</h3><p> 先看一张官方给出的Activity完整生命周期图<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/activity-life.jpg" alt="Activity生命周期图" loading="lazy"></p>
+<p>此处对Activity生命周期归结了一下，总结出4状态：Activity启动，点击Home回到主界面或被另外的Activity覆盖，重新回到原Activity，退出当前Activity</p>
+<h4 id="Activity启动：Activiy启动时依次走了onCreate-onStart-onResume-三个方法"><a href="#Activity启动：Activiy启动时依次走了onCreate-onStart-onResume-三个方法" class="headerlink" title="Activity启动：Activiy启动时依次走了onCreate(),onStart(),onResume()三个方法"></a>Activity启动：Activiy启动时依次走了onCreate(),onStart(),onResume()三个方法</h4><p> <img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/activity-start.png" alt="Activity启动" loading="lazy">  </p>
+<ul>
+<li>onCreate :当Activity被创建时回调，activity启动时执行的第一个方法；onCreate中调用setContentView，设置布局资源；还可以在该方法中进行数据的初始化工作；</li>
+<li>onStart：当Activity正在启动时调用；此时activity可以看到但未置于栈顶，不能与用户进行交互操作；</li>
+<li>onResume：此时Activity处于最前端，可与用户进行交互操作</li>
+</ul>
+<h4 id="点击Home回到主界面或者被另外的Activity覆盖：此时依次执行了onPause，onStop方法"><a href="#点击Home回到主界面或者被另外的Activity覆盖：此时依次执行了onPause，onStop方法" class="headerlink" title="点击Home回到主界面或者被另外的Activity覆盖：此时依次执行了onPause，onStop方法"></a>点击Home回到主界面或者被另外的Activity覆盖：此时依次执行了onPause，onStop方法</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/activity-to-home.png" alt="点击home回到主界面" loading="lazy"> 
+	</p>
+<ul>
+<li><p>onPause：当前Activity被另外的Activity覆盖或者按了Home按键回到桌面，首先执行此方法；此时Activity仍然可见，但是不可被触摸；Activity由前台退居到后台时被调用；Activity由活跃状态变为停止状态；与onResume声明周期对应；此时Activity中的内存与变量信息依然存在，当内存不足时会被系统回收；  </p>
+</li>
+<li><p>onStop：当onPause执行完后会执行此方法；当activity被完全覆盖后执行此方法；activity由可见变为完全不可见，处在后台运行；当内存不足时会被系统回收；</p>
+</li>
+</ul>
+<h4 id="重新回到原Activity：此时依次执行onRestart，onStart，onResume"><a href="#重新回到原Activity：此时依次执行onRestart，onStart，onResume" class="headerlink" title="重新回到原Activity：此时依次执行onRestart，onStart，onResume"></a>重新回到原Activity：此时依次执行onRestart，onStart，onResume</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/activity-return.png" alt="回到原Activity" loading="lazy"></p>
+<ul>
+<li>onRestart：当Activity从桌面回到原Activity或者被遮盖的Activity上层界面退出时执行此方法；Activity由不可见状态逐渐变为可见状态；此时的Activity正处于启动状态</li>
+<li>onStart：Activity变为可见；此时并为位于栈顶，不能与用户交互；</li>
+<li>onResume：Activity位于栈顶；可以与用户进行交互；</li>
+</ul>
+<h4 id="退出当前Activity：此时依次执行onPause，onStop，onDestory"><a href="#退出当前Activity：此时依次执行onPause，onStop，onDestory" class="headerlink" title="退出当前Activity：此时依次执行onPause，onStop，onDestory"></a>退出当前Activity：此时依次执行onPause，onStop，onDestory</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/activity-stop.png" alt="activity退出" loading="lazy"></p>
+<ul>
+<li>onPause： 如上面</li>
+<li>onStop: 如上面</li>
+<li>onDestory:  整个生命周期的最后一个方法，执行完毕后，生命周期结束；Activity正在被销毁；此生命周期做一些资源回收工作</li>
+</ul>
+<h3 id="2-3-Android进程优先级"><a href="#2-3-Android进程优先级" class="headerlink" title="2.3 Android进程优先级"></a>2.3 Android进程优先级</h3><p>进程属于什么类别是组件层面发生的事情决定的</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-progre.png" alt="Android进程" loading="lazy"></p>
+<p>Android进程分为前台进程，可见进程，服务进程，后台进程，空进程</p>
+<ul>
+<li>前台进程：与用户交互的Activity;绑定前台activity的服务；与前台服务交互的content provider</li>
+<li>可见进程：可见但不可点击的进程</li>
+<li>服务进程：在后台开启Service的进程</li>
+<li>后台进程：前台进程被另外的Activity或Dialog覆盖变的不可见；按Home按键	<br>回到桌面；后台进程不会被立即杀死，根据最近最少使用顺序回收；</li>
+<li>空进程：不属于以上任何组件的进程；没有活跃的组件；为了缓存的目的而被保留；系统会随时对其回收</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Activity/" rel="tag"># Activity</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/9674c900.html" rel="prev" title="面试相关之——自我定位">
+                  <i class="fa fa-angle-left"></i> 面试相关之——自我定位
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/f27906f.html" rel="next" title="Android面试之——关于Activity的那些事2">
+                  Android面试之——关于Activity的那些事2 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"b562661923e542fc070f94ceedab1797"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="介绍Android O引入了通知渠道(Notification Channels)，以提供统一的系统来帮助用户管理通知，如果是针对Android O为目标平台时，必须实现一个或者多个通知渠道，以向用户显示通知。若并不以Android O为目标平台，当应用运行在Android O设备上时，其行为将与运行在Android 7.0上时相同。   开发者可以为需要发送的每个不同的通知类型创建一个通知渠道。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发之——通知Notification">
+<meta property="og:url" content="https://pgzxc.github.io/posts/de09b701.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="介绍Android O引入了通知渠道(Notification Channels)，以提供统一的系统来帮助用户管理通知，如果是针对Android O为目标平台时，必须实现一个或者多个通知渠道，以向用户显示通知。若并不以Android O为目标平台，当应用运行在Android O设备上时，其行为将与运行在Android 7.0上时相同。   开发者可以为需要发送的每个不同的通知类型创建一个通知渠道。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-01-07T10:16:15.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:04.773Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Notification">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/de09b701.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/de09b701.html","path":"posts/de09b701.html","title":"Android开发之——通知Notification"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android开发之——通知Notification | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Notification"><span class="nav-number">2.</span> <span class="nav-text">使用Notification</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E8%BF%87NotificationManager%E7%9A%84creaeNotificationChannel%E6%96%B9%E6%B3%95%E6%9D%A5%E5%88%9B%E5%BB%BANotificationChannel%E3%80%82"><span class="nav-number">2.1.</span> <span class="nav-text">通过NotificationManager的creaeNotificationChannel方法来创建NotificationChannel。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setImportance%E9%87%8D%E8%A6%81%E7%A8%8B%E5%BA%A6"><span class="nav-number">2.2.</span> <span class="nav-text">setImportance重要程度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4NotificationChannel"><span class="nav-number">2.3.</span> <span class="nav-text">删除NotificationChannel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%91%E5%87%BA%E9%80%9A%E7%9F%A5"><span class="nav-number">2.4.</span> <span class="nav-text">发出通知</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E8%A7%92%E6%A0%87"><span class="nav-number">2.5.</span> <span class="nav-text">显示角标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NotificationChannel%E5%BC%80%E5%90%AF%E8%A7%92%E6%A0%87"><span class="nav-number">2.5.1.</span> <span class="nav-text">NotificationChannel开启角标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NotificationChannel%E8%AE%BE%E7%BD%AE%E8%A7%92%E6%A0%87%E6%A0%B7%E5%BC%8F"><span class="nav-number">2.5.2.</span> <span class="nav-text">NotificationChannel设置角标样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Notification%E8%AE%BE%E7%BD%AE%E8%A7%92%E6%A0%87%E8%AE%A1%E6%95%B0"><span class="nav-number">2.5.3.</span> <span class="nav-text">Notification设置角标计数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%B3%E8%BD%AC%E5%88%B0%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.6.</span> <span class="nav-text">跳转到设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8NotificationChannleGroup"><span class="nav-number">2.7.</span> <span class="nav-text">使用NotificationChannleGroup</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BANotificationChannleGroup"><span class="nav-number">2.7.1.</span> <span class="nav-text">创建NotificationChannleGroup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NotificationChannle-%E7%BB%91%E5%AE%9A-groupId"><span class="nav-number">2.7.2.</span> <span class="nav-text">NotificationChannle 绑定 groupId</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4-NotificationChannleGroup"><span class="nav-number">2.7.3.</span> <span class="nav-text">删除 NotificationChannleGroup</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/de09b701.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android开发之——通知Notification | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android开发之——通知Notification<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Android%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94%E9%80%9A%E7%9F%A5Notification.md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2018-01-07 18:16:15" itemprop="dateCreated datePublished" datetime="2018-01-07T18:16:15+08:00">2018-01-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E5%BC%80%E5%8F%91/D-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">D-移动开发</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E5%BC%80%E5%8F%91/D-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>Android O引入了通知渠道(Notification Channels)，以提供统一的系统来帮助用户管理通知，如果是针对Android O为目标平台时，必须实现一个或者多个通知渠道，以向用户显示通知。若并不以Android O为目标平台，当应用运行在Android O设备上时，其行为将与运行在Android 7.0上时相同。  </p>
+<p>开发者可以为需要发送的每个不同的通知类型创建一个通知渠道。还可以创建通知渠道来反映应用的用户做出的选择。例如，可以为聊天应用的用户创建的每个聊天组建立单独的通知渠道。  </p>
+<p>Android O的用户可以使用一致的系统UI管理大多数与通知有关的设置。所有发布至通知渠道的通知都具有相同的行为。当用户修改任何下列特性的行为时，修改将作用于通知渠道；  </p>
+<span id="more"></span> 
+
+<h1 id="使用Notification"><a href="#使用Notification" class="headerlink" title="使用Notification"></a>使用Notification</h1><h2 id="通过NotificationManager的creaeNotificationChannel方法来创建NotificationChannel。"><a href="#通过NotificationManager的creaeNotificationChannel方法来创建NotificationChannel。" class="headerlink" title="通过NotificationManager的creaeNotificationChannel方法来创建NotificationChannel。"></a>通过NotificationManager的creaeNotificationChannel方法来创建NotificationChannel。</h2><pre><code>public void createNotificationChannel(String id, String name, int importance, String desc) {
+    if (mNotificationManager.getNotificationChannel(id) != null) return;
+    NotificationChannel notificationChannel = new NotificationChannel(id, name, importance);
+    notificationChannel.enableLights(true);
+    notificationChannel.enableVibration(true);
+    notificationChannel.setLightColor(Color.RED);
+    notificationChannel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+    notificationChannel.setShowBadge(true);
+    notificationChannel.setBypassDnd(true);
+    notificationChannel.setVibrationPattern(new long[]{100, 200, 300, 400});
+    notificationChannel.setDescription(desc);
+    mNotificationManager.createNotificationChannel(notificationChannel);
+}
+</code></pre>
+<p>NotificationChannel的方法列表：  </p>
+<ul>
+<li>getId()-获取ChannelId</li>
+<li>enableLights()-开启指示灯，如果设备有的话 </li>
+<li>setLightColor()-设置指示灯颜色</li>
+<li>enableVibration()-开启震动</li>
+<li>setImportance()-设置频道重要性</li>
+<li>getImportance()-获取频道重要性</li>
+<li>setSound()-设置声音</li>
+<li>getSound()-获取声音</li>
+<li>setGroup()-设置ChannleGroup</li>
+<li>getGroup()-得到ChannleGroup</li>
+<li>setBypassDnd()-设置绕过免打扰模式</li>
+<li>canBypassDnd()-检测是否绕过免打扰模式</li>
+<li>getName()-获取名称</li>
+<li>setLockScreenVisibility()-设置是否应在锁定屏幕上显示此频道的通知</li>
+<li>getLockScreenVisibility()-检测是否在锁定屏幕上显示此频道的通知</li>
+<li>setShowBage()-设置是否显示角标</li>
+<li>canShowBage()-检测是否显示角标</li>
+</ul>
+<h2 id="setImportance重要程度"><a href="#setImportance重要程度" class="headerlink" title="setImportance重要程度"></a>setImportance重要程度</h2><p>importance越高，提示权限就越高，最高的支持发出声音和悬浮通知 </p>
+<pre><code>public static final int IMPORTANCE_DEFAULT = 3;
+public static final int IMPORTANCE_HIGH = 4;
+public static final int IMPORTANCE_LOW = 2;
+public static final int IMPORTANCE_MAX = 5;
+public static final int IMPORTANCE_MIN = 1;
+public static final int IMPORTANCE_NONE = 0;
+public static final int IMPORTANCE_UNSPECIFIED = -1000;
+</code></pre>
+<h2 id="删除NotificationChannel"><a href="#删除NotificationChannel" class="headerlink" title="删除NotificationChannel"></a>删除NotificationChannel</h2><p>通过NotificationManager的deleteNotificationChannel方法来删除NotificationChannel。  </p>
+<pre><code>mNotificationManager.deleteNotificationChannel(chatChannelId);
+</code></pre>
+<h2 id="发出通知"><a href="#发出通知" class="headerlink" title="发出通知"></a>发出通知</h2><p>只需要设置一个Channelld既可发布到对应的Channel上，需要注意的是NotificationChannel一定要先创建才行。  </p>
+<pre><code>Notification.Builder builder = new Notification.Builder(this, chatChannelId);
+builder.setSmallIcon(R.mipmap.ic_launcher)
+    .setContentTitle(&quot;Gavin&quot;)
+    .setContentText(&quot;Today released Android 8.0 version of its name is Oreo&quot;)
+    .setAutoCancel(true);
+Intent resultIntent = new Intent(this, MainActivity.class);
+TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+stackBuilder.addParentStack(MainActivity.class);
+stackBuilder.addNextIntent(resultIntent);
+PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+builder.setContentIntent(resultPendingIntent);
+mNotificationManager.notify((int) System.currentTimeMillis(), builder.build());
+</code></pre>
+<h2 id="显示角标"><a href="#显示角标" class="headerlink" title="显示角标"></a>显示角标</h2><p>首先要开启允许使用通知圆点，这个是用户可以取消的，如果你要显示一定要代码中保证是开启状态。  </p>
+<h3 id="NotificationChannel开启角标"><a href="#NotificationChannel开启角标" class="headerlink" title="NotificationChannel开启角标"></a>NotificationChannel开启角标</h3><pre><code>notificationChannel.setShowBadge(true);
+</code></pre>
+<h3 id="NotificationChannel设置角标样式"><a href="#NotificationChannel设置角标样式" class="headerlink" title="NotificationChannel设置角标样式"></a>NotificationChannel设置角标样式</h3><pre><code>new Notification.Builder(this, chatChannelId).setBadgeIconType(BADGE_ICON_SMALL)
+</code></pre>
+<h3 id="Notification设置角标计数"><a href="#Notification设置角标计数" class="headerlink" title="Notification设置角标计数"></a>Notification设置角标计数</h3><pre><code>new Notification.Builder(this, chatChannelId).setNumber(1)
+</code></pre>
+<h2 id="跳转到设置"><a href="#跳转到设置" class="headerlink" title="跳转到设置"></a>跳转到设置</h2><pre><code>Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+intent.putExtra(Settings.EXTRA_CHANNEL_ID, chatChannelId);
+intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+startActivity(intent);
+</code></pre>
+<h2 id="使用NotificationChannleGroup"><a href="#使用NotificationChannleGroup" class="headerlink" title="使用NotificationChannleGroup"></a>使用NotificationChannleGroup</h2><p>如果你的通知渠道比较多，那么就可以考虑使用NotificationChannelGroup来管理一下  </p>
+<h3 id="创建NotificationChannleGroup"><a href="#创建NotificationChannleGroup" class="headerlink" title="创建NotificationChannleGroup"></a>创建NotificationChannleGroup</h3><p>和创建NotificaitonChannle类似<br>	mNotificationManager.createNotificationChannelGroup(new NotificationChannelGroup(groupId, groupName)); </p>
+<h3 id="NotificationChannle-绑定-groupId"><a href="#NotificationChannle-绑定-groupId" class="headerlink" title="NotificationChannle 绑定 groupId"></a>NotificationChannle 绑定 groupId</h3><pre><code>notificationChannel.setGroup(groupId);  
+</code></pre>
+<h3 id="删除-NotificationChannleGroup"><a href="#删除-NotificationChannleGroup" class="headerlink" title="删除 NotificationChannleGroup"></a>删除 NotificationChannleGroup</h3><p>可以批量删除该 Group 下的所有 Channel<br>	mNotificationManager.deleteNotificationChannelGroup(groupId2);  </p>
+<p>源码：<br><a target="_blank" rel="noopener" href="https://github.com/PGzxc/NotificationSample">NotificationSample</a></p>
+<p>参考：<br><a target="_blank" rel="noopener" href="https://juejin.im/entry/599cf2896fb9a0248228b2bf">Android - 吃奥利奥系列(1) Notification</a><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/92afa56aee05">Android O Preview 之 通知渠道（Notification Channels）</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/Notification/" rel="tag"># Notification</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/f6618f6d.html" rel="prev" title="Android开发之——7.0适配之应用之间共享文件(FileProvider)">
+                  <i class="fa fa-angle-left"></i> Android开发之——7.0适配之应用之间共享文件(FileProvider)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/ec2f3945.html" rel="next" title="Android开发之——Service总结">
+                  Android开发之——Service总结 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"ce7147b6ef3d4b83c67624f301525fda"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

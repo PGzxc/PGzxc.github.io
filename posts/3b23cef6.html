@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述123451.项目简介2.设计思路3.项目中设计到的数据结构4.程序清单5.实现代码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法——第3章-项目实战-变态的停车场管理系统(3.11)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/3b23cef6.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 概述123451.项目简介2.设计思路3.项目中设计到的数据结构4.程序清单5.实现代码">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-02-09T09:15:05.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.368Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="数据结构与算法">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/3b23cef6.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/3b23cef6.html","path":"posts/3b23cef6.html","title":"数据结构与算法——第3章-项目实战-变态的停车场管理系统(3.11)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>数据结构与算法——第3章-项目实战-变态的停车场管理系统(3.11) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B"><span class="nav-number">2.</span> <span class="nav-text">二 项目简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF"><span class="nav-number">3.</span> <span class="nav-text">三 设计思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E9%A1%B9%E7%9B%AE%E4%B8%AD%E8%AE%BE%E8%AE%A1%E5%88%B0%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">4.</span> <span class="nav-text">四 项目中设计到的数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E7%A8%8B%E5%BA%8F%E6%B8%85%E5%8D%95"><span class="nav-number">5.</span> <span class="nav-text">五 程序清单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD-%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81"><span class="nav-number">6.</span> <span class="nav-text">六 实现代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83-%E5%8F%82%E8%80%83"><span class="nav-number">7.</span> <span class="nav-text">七 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/3b23cef6.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="数据结构与算法——第3章-项目实战-变态的停车场管理系统(3.11) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据结构与算法——第3章-项目实战-变态的停车场管理系统(3.11)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E7%AC%AC3%E7%AB%A0-%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98-%E5%8F%98%E6%80%81%E7%9A%84%E5%81%9C%E8%BD%A6%E5%9C%BA%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F(3.11).md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-02-09 17:15:05" itemprop="dateCreated datePublished" datetime="2023-02-09T17:15:05+08:00">2023-02-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/N-%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">N-数据与算法</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/N-%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.项目简介</span><br><span class="line">2.设计思路</span><br><span class="line">3.项目中设计到的数据结构</span><br><span class="line">4.程序清单</span><br><span class="line">5.实现代码</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-项目简介"><a href="#二-项目简介" class="headerlink" title="二 项目简介"></a>二 项目简介</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">设停车场是一个可以停放 n 辆汽车的南北方向的狭长通道，且只有一个大门可供汽车进出。</span><br><span class="line">汽车在停车场内按车辆到达时间的先后顺序，依次由北向南排列（大门在最南端，最先到达的第一辆车停放在车场的最北端）。</span><br><span class="line"></span><br><span class="line">若车场内已停满 n 辆车，那么后来的车只能在门外的便道上等候，一旦有车开走，则排在便道上的第一辆车即可开入；</span><br><span class="line">当停车场内某辆车要离开时，在它之后进入的车辆必须先退出车场为它让路，待该辆车开出大门外，</span><br><span class="line">其它车辆再按原次序进入车场，每辆停放在车场的车在它离开停车场时必须按它停留的时间长短交纳费用。</span><br><span class="line"></span><br><span class="line">项目要求：</span><br><span class="line">试为停车场编制按上述要求进行管理的模拟程序。</span><br><span class="line">要求程序输出每辆车到达后的停车位置（停车场或便道上），以及某辆车离开停车场时应缴纳的费用和它在停车场内停留的时间。</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-设计思路"><a href="#三-设计思路" class="headerlink" title="三 设计思路"></a>三 设计思路</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">停车场的管理流程如下：</span><br><span class="line">1. 当车辆要进入停车场时，检查停车场是否已满，如果未满则车辆进入停车场；如果停车场已满，则车辆进入便道等候。</span><br><span class="line">2. 当车辆要求出栈时，先让在它之后进入停车场的车辆退出停车场为它让路，再让该车退出停车场，</span><br><span class="line">让路的所有车辆再按其原来进入停车场的次序进入停车场。之后，再检查在便道上是否有车等候，有车则让最先等待的那辆车进入停车场。</span><br></pre></td></tr></table></figure>
+
+<h2 id="四-项目中设计到的数据结构"><a href="#四-项目中设计到的数据结构" class="headerlink" title="四 项目中设计到的数据结构"></a>四 项目中设计到的数据结构</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1. 由于停车场只有一个大门，当停车场内某辆车要离开时，在它之后进入的车辆必须先退出车场为它让路，先进停车场的后退出，</span><br><span class="line">后进车场的先退出，符合栈的“后进先出，先进后出”的操作特点，因此，可以用一个栈来模拟停车场。</span><br><span class="line"></span><br><span class="line">2. 而当停车场满后，继续来到的其它车辆只能停在便道上，根据便道停车的特点，先排队的车辆先离开便道进入停车场，</span><br><span class="line">符合队列的“先进先出，后进后出”的操作特点，因此，可以用一个队列来模拟便道。</span><br><span class="line"></span><br><span class="line">3. 排在停车场中间的车辆可以提出离开停车场，并且停车场内在要离开的车辆之后到达的车辆都必须先离开停车场为它让路，</span><br><span class="line">然后这些车辆依原来到达停车场的次序进入停车场，因此在前面已设的一个栈和一个队列的基础上，</span><br><span class="line">还需要有一个地方保存为了让路离开停车场的车辆，由于先退出停车场的后进入停车场，所以很显然保存让路车辆的场地也应该用一个栈来模拟。</span><br><span class="line"></span><br><span class="line">因此，本题求解过程中需用到两个栈和一个队列。栈和队列都既可以用顺序结构实现，也可以用链式结构实现。</span><br></pre></td></tr></table></figure>
+
+<h2 id="五-程序清单"><a href="#五-程序清单" class="headerlink" title="五 程序清单"></a>五 程序清单</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">以栈模拟停车场，以队列模拟车场外的便道，按照从终端读入的输入数据序列进行模拟管理。</span><br><span class="line"></span><br><span class="line">每一组输入数据包括三个数据项：汽车“到达”或“离去”信息、汽车牌照号码以及到达或离去的时刻。对每一组输入数据进行操作后的输出信息为：</span><br><span class="line">1.若是车辆到达，则输出汽车在停车场内或便道上的停车位置；</span><br><span class="line">2.若是车辆离去，则输出汽车在停车场内停留的时间和应交纳的费用（在便道上停留的时间不收费，停车场费用按照 1 小时 1.5 元）。</span><br></pre></td></tr></table></figure>
+
+<h2 id="六-实现代码"><a href="#六-实现代码" class="headerlink" title="六 实现代码"></a>六 实现代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#define MAX 3//模拟停车场最多可停的车辆数</span><br><span class="line">//车的必要信息的结构体</span><br><span class="line">typedef struct &#123;</span><br><span class="line">	int number;</span><br><span class="line">	int arrive_time;</span><br><span class="line">&#125; zanInode;</span><br><span class="line">//进入停车场的处理函数</span><br><span class="line">int push(zanInode * park,int *parktop,zanInode car) &#123;</span><br><span class="line">//如果停车场已满，该车需进入便道等待（先返回 -1 ，在主程序中处理）</span><br><span class="line">	if ((*parktop)&gt;=MAX) &#123;</span><br><span class="line">		printf(&quot;停车场已停满！需停到便道上.\n&quot;);</span><br><span class="line">		return -1;</span><br><span class="line">	&#125; else &#123; //否则将该车入栈，同时进行输出</span><br><span class="line">		park[(*parktop)]=car;</span><br><span class="line">		printf(&quot;该车在停车场的第 %d 的位置上\n&quot;,(*parktop)+1);</span><br><span class="line">		(*parktop)++;</span><br><span class="line">		return 1;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">	//车从停车场中退出的处理函数</span><br><span class="line">zanInode pop(zanInode *park,int *parktop,int carnumber,zanInode * location,int *locationtop) &#123;</span><br><span class="line">	int i;</span><br><span class="line">	//由于函数本身的返回值需要返回一辆车，所以需要先初始化一个</span><br><span class="line">	zanInode thecar;</span><br><span class="line">	thecar.number=-1;</span><br><span class="line">	thecar.arrive_time=-1;</span><br><span class="line">	//在停车场中找到要出去的车</span><br><span class="line">	for (i=-1; i&lt;(*parktop); i++) &#123;</span><br><span class="line">		if (park[i].number==carnumber) &#123;</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	//如果遍历至最后一辆车，还没有找到，证明停车场中没有这辆车</span><br><span class="line">	if (i==(*parktop)) &#123;</span><br><span class="line">		printf(&quot;停车场中没有该车\n&quot;);</span><br><span class="line">	&#125; else &#123; //就将该车移出停车场</span><br><span class="line">		//首先将在该车后进入停车场的车全部挪至另一个栈中</span><br><span class="line">		while ((*parktop)&gt;i+1) &#123;</span><br><span class="line">			(*parktop)--;</span><br><span class="line">			location[*locationtop]=park[*parktop];</span><br><span class="line">			(*locationtop)++;</span><br><span class="line">		&#125;</span><br><span class="line">		//通过以上的循环，可以上该车后的左右车辆全部移开，但是由于该车也要出栈，所以栈顶指针需要下移一个位置，当车进栈时，就直接覆盖</span><br><span class="line">		掉了</span><br><span class="line">		(*parktop)--;</span><br><span class="line">		thecar=park[*parktop];</span><br><span class="line">		//该车出栈后，还要将之前出栈的所有车，在全部进栈</span><br><span class="line">		while ((*locationtop)&gt;0) &#123;</span><br><span class="line">			(*locationtop)--;</span><br><span class="line">			park[*parktop]=location[*locationtop];</span><br><span class="line">			(*parktop)++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return thecar;</span><br><span class="line">&#125;</span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">	//停车场的栈</span><br><span class="line">	zanInode park[MAX];</span><br><span class="line">	int parktop=0;//栈顶指针</span><br><span class="line">	//辅助停车场进行挪车的栈</span><br><span class="line">	zanInode location[MAX];</span><br><span class="line">	int locationtop=0;//栈顶指针</span><br><span class="line">	//模拟便道的队列</span><br><span class="line">	zanInode accessroad[100];</span><br><span class="line">	int front,rear;//队头和队尾指针</span><br><span class="line">	front=rear=0;</span><br><span class="line">	char order;//进出停车场的输入命令</span><br><span class="line">	int carNumber;//车牌号</span><br><span class="line">	int arriveTime;//到停车场的时间</span><br><span class="line">	int leaveTime;//离开停车场的时间</span><br><span class="line">	int time;//车在停车场中逗留的时间</span><br><span class="line">	zanInode car;</span><br><span class="line">	printf(&quot;有车辆进入停车场（A）;有车辆出停车场(D);程序停止（#）:\n&quot;);</span><br><span class="line">	while (scanf(&quot;%c&quot;,&amp;order)) &#123;</span><br><span class="line">		if (order==&#x27;#&#x27;) &#123;</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line">		switch (order) &#123;</span><br><span class="line">			case &#x27;A&#x27;:</span><br><span class="line">				printf(&quot;登记车牌号(车牌号不能为 -1)及车辆到达时间（按小时为准）：\n&quot;);</span><br><span class="line">				scanf(&quot;%d %d&quot;,&amp;carNumber,&amp;arriveTime);</span><br><span class="line">				car.number=carNumber;</span><br><span class="line">				car.arrive_time=arriveTime;</span><br><span class="line">				//当有车想要进入停车场时，首先试图将该车进入停车场</span><br><span class="line">				int result=push(park, &amp;parktop, car);</span><br><span class="line">				//如果返回值为 -1 ，证明停车场已满，需要停在便道中</span><br><span class="line">				if (result==-1) &#123;//停在便道上</span><br><span class="line">					accessroad[rear]=car;</span><br><span class="line">					printf(&quot;该车在便道的第 %d 的位置上\n&quot;,rear+1-front);</span><br><span class="line">					rear++;</span><br><span class="line">				&#125;</span><br><span class="line">				break;</span><br><span class="line">			case &#x27;D&#x27;:</span><br><span class="line">				printf(&quot;出停车场的车的车牌号以及离开的时间：\n&quot;);</span><br><span class="line">				scanf(&quot;%d %d&quot;,&amp;carNumber,&amp;leaveTime);</span><br><span class="line">				//当有车需要出停车场时，调用出栈函数</span><br><span class="line">				car=pop(park, &amp;parktop, carNumber, location, &amp;locationtop);</span><br><span class="line">				//如果返回的车的车牌号为-1 ，表明在停车场中没有查找到要查找的车</span><br><span class="line">				if (car.number!=-1) &#123;</span><br><span class="line">					//停留时间，等于进停车场的时间-</span><br><span class="line">					time=leaveTime-car.arrive_time;</span><br><span class="line">					printf(&quot;该车停留的时间为：%d 小时,应缴费用为：%f 元\n&quot;,time,time*1.5);</span><br><span class="line">					//一旦有车离开停车场，则在便道中先等待的车就可以进入，进入时需设定车进入的时间</span><br><span class="line">					if (front!=rear) &#123;</span><br><span class="line">						car=accessroad[front];</span><br><span class="line">						printf(&quot;在便道上第 1 的位置上，车牌号为：%d 的车进停车场的时间为：\n&quot;,car.number);</span><br><span class="line">						scanf(&quot;%d&quot;,&amp;car.arrive_time);</span><br><span class="line">						park[parktop]=car;</span><br><span class="line">						front++;</span><br><span class="line">						parktop++;</span><br><span class="line">					&#125; else &#123;</span><br><span class="line">						printf(&quot;便道上没有等待车辆，停车场不满！\n&quot;);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				break;</span><br><span class="line">			default:</span><br><span class="line">				break;</span><br><span class="line">		&#125;</span><br><span class="line">		printf(&quot;\n 有车辆进入停车场（A）;有车辆出停车场(D);程序停止（#）:\n&quot;);</span><br><span class="line">		scanf(&quot;%*[^\n]&quot;);</span><br><span class="line">		scanf(&quot;%*c&quot;);//清空缓冲区</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">有车辆进入停车场（A）;有车辆出停车场(D);程序停止（#）:</span><br><span class="line">A</span><br><span class="line">登记车牌号(车牌号不能为 -1)及车辆到达时间（按小时为准）：</span><br><span class="line">633 6</span><br><span class="line">该车在停车场的第 1 的位置上</span><br><span class="line">有车辆进入停车场（A）;有车辆出停车场(D);程序停止（#）:</span><br><span class="line">A</span><br><span class="line">登记车牌号(车牌号不能为 -1)及车辆到达时间（按小时为准）：</span><br><span class="line">634 7</span><br><span class="line">该车在停车场的第 2 的位置上</span><br><span class="line">有车辆进入停车场（A）;有车辆出停车场(D);程序停止（#）:</span><br><span class="line">A</span><br><span class="line">登记车牌号(车牌号不能为 -1)及车辆到达时间（按小时为准）：</span><br><span class="line">635 8</span><br><span class="line">该车在停车场的第 3 的位置上</span><br><span class="line">有车辆进入停车场（A）;有车辆出停车场(D);程序停止（#）:</span><br><span class="line">A</span><br><span class="line">登记车牌号(车牌号不能为 -1)及车辆到达时间（按小时为准）：</span><br><span class="line">636 9</span><br><span class="line">停车场已停满！需停到便道上.</span><br><span class="line">该车在便道的第 1 的位置上</span><br><span class="line">有车辆进入停车场（A）;有车辆出停车场(D);程序停止（#）:</span><br><span class="line">D</span><br><span class="line">出停车场的车的车牌号以及离开的时间：</span><br><span class="line">633 10</span><br><span class="line">该车停留的时间为：4 小时,应缴费用为：6.000000 元</span><br><span class="line">在便道上第 1 的位置上，车牌号为：636 的车进停车场的时间为：</span><br><span class="line">10</span><br><span class="line">有车辆进入停车场（A）;有车辆出停车场(D);程序停止（#）:</span><br><span class="line">D</span><br><span class="line">出停车场的车的车牌号以及离开的时间：</span><br><span class="line">634 10</span><br><span class="line">该车停留的时间为：3 小时,应缴费用为：4.500000 元</span><br><span class="line">便道上没有等待车辆，停车场不满！</span><br><span class="line">有车辆进入停车场（A）;有车辆出停车场(D);程序停止（#）:</span><br><span class="line">A</span><br><span class="line">登记车牌号(车牌号不能为 -1)及车辆到达时间（按小时为准）：</span><br><span class="line">637 11</span><br><span class="line">该车在停车场的第 3 的位置上</span><br><span class="line">有车辆进入停车场（A）;有车辆出停车场(D);程序停止（#）:</span><br><span class="line">#</span><br></pre></td></tr></table></figure>
+
+<h2 id="七-参考"><a href="#七-参考" class="headerlink" title="七 参考"></a>七 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://c.biancheng.net/view/vip_3357.html">C语言中文网—变态的停车场管理系统</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag"># 数据结构与算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/22ccd46a.html" rel="prev" title="标日中级上册——第14课-恩師-语法与表达-1">
+                  <i class="fa fa-angle-left"></i> 标日中级上册——第14课-恩師-语法与表达-1
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/bbc585d0.html" rel="next" title="标日中级上册——第14课-恩師-语法与表达-2">
+                  标日中级上册——第14课-恩師-语法与表达-2 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"734c85502f432e8e9e58b9894a5590c8"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

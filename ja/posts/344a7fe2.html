@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ja/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ja/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ja/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/ja/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/ja/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/ja/","images":"/ja/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索...","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/ja/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/ja/js/config.js" defer></script>
+
+    <meta name="description" content="一 面试题汇总 什么是Runtime，有什么作用？常用在什么地方 OC方法查找机制是怎么样的？有什么缺点？ objc_msgSend分为哪几个阶段？每个阶段具体做了些什么？ 方法cache是怎么做的？有什么好处 OC与Swift在方法调用上有什么区别？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IOS面试题——OC中Runtime原理与使用(8)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/344a7fe2.html">
+<meta property="og:site_name" content="PGzxc (Japanese)">
+<meta property="og:description" content="一 面试题汇总 什么是Runtime，有什么作用？常用在什么地方 OC方法查找机制是怎么样的？有什么缺点？ objc_msgSend分为哪几个阶段？每个阶段具体做了些什么？ 方法cache是怎么做的？有什么好处 OC与Swift在方法调用上有什么区别？">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2024-03-26T14:21:53.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.068Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="OC面试题">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/344a7fe2.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"ja","comments":true,"permalink":"https://pgzxc.github.io/posts/344a7fe2.html","path":"posts/344a7fe2.html","title":"IOS面试题——OC中Runtime原理与使用(8)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>IOS面试题——OC中Runtime原理与使用(8) | PGzxc (Japanese)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/utils.js" defer></script><script src="/ja/js/motion.js" defer></script><script src="/ja/js/sidebar.js" defer></script><script src="/ja/js/next-boot.js" defer></script><script src="/ja/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/ja/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/ja/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/ja/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/ja/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/ja/atom.xml" title="PGzxc (Japanese)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションを切り替える" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/ja/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (Japanese)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">本から学んだことは表面的なもの；自分で体験しなければならない</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="検索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/ja/" rel="section"><i class="fa fa-bell fa-fw"></i>ホーム</a></li><li class="menu-item menu-item-nav"><a href="/ja/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>ナビゲーション</a></li><li class="menu-item menu-item-categories"><a href="/ja/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリー<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/ja/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/ja/links/" rel="section"><i class="fa fa-link fa-fw"></i>リンク</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>検索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="検索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          目次
+        </li>
+        <li class="sidebar-nav-overview">
+          サイト概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB"><span class="nav-number">1.</span> <span class="nav-text">一 面试题汇总</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%BB%80%E4%B9%88%E6%98%AFRuntime%EF%BC%8C%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F%E5%B8%B8%E7%94%A8%E5%9C%A8%E4%BB%80%E4%B9%88%E5%9C%B0%E6%96%B9"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 什么是Runtime，有什么作用？常用在什么地方</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-OC%E6%96%B9%E6%B3%95%E6%9F%A5%E6%89%BE%E6%9C%BA%E5%88%B6%E6%98%AF%E6%80%8E%E4%B9%88%E6%A0%B7%E7%9A%84%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 OC方法查找机制是怎么样的？有什么缺点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-objc-msgSend%E5%88%86%E4%B8%BA%E5%93%AA%E5%87%A0%E4%B8%AA%E9%98%B6%E6%AE%B5%EF%BC%9F%E6%AF%8F%E4%B8%AA%E9%98%B6%E6%AE%B5%E5%85%B7%E4%BD%93%E5%81%9A%E4%BA%86%E4%BA%9B%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 objc_msgSend分为哪几个阶段？每个阶段具体做了些什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E6%96%B9%E6%B3%95cache%E6%98%AF%E6%80%8E%E4%B9%88%E5%81%9A%E7%9A%84%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E5%A5%BD%E5%A4%84"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 方法cache是怎么做的？有什么好处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-OC%E4%B8%8ESwift%E5%9C%A8%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E4%B8%8A%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 OC与Swift在方法调用上有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E5%8A%A8%E6%80%81%E6%96%B9%E6%B3%95%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%85%B3%E9%94%AE%E6%96%B9%E6%B3%95%E6%98%AF%E5%93%AA%E4%B8%AA%EF%BC%9FresolveInstanceMethod"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 动态方法解析过程中关键方法是哪个？resolveInstanceMethod:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-%E6%B6%88%E6%81%AF%E8%BD%AC%E5%8F%91%E8%BF%87%E7%A8%8B%E5%85%B3%E9%94%AE%E6%96%B9%E6%B3%95%E6%9C%89%E5%93%AA%E5%87%A0%E4%B8%AA%EF%BC%9FforwardInvocation-%EF%BC%8CmethodSignatureForSelector-%EF%BC%8CdoesNotRecognizeSelector"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 消息转发过程关键方法有哪几个？forwardInvocation:，methodSignatureForSelector:，doesNotRecognizeSelector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-dynamic%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 @dynamic的作用是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-super-xxxx-%E4%B8%ADsuper%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 [super xxxx]中super有什么作用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-10-Runtime%E7%9A%84API%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 Runtime的API有哪些</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/ja/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/ja/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">投稿</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/ja/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">カテゴリー</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/ja/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/344a7fe2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/ja/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="IOS面试题——OC中Runtime原理与使用(8) | PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          IOS面试题——OC中Runtime原理与使用(8)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/IOS%E9%9D%A2%E8%AF%95%E9%A2%98%E2%80%94%E2%80%94OC%E4%B8%ADRuntime%E5%8E%9F%E7%90%86%E4%B8%8E%E4%BD%BF%E7%94%A8(8).md" class="post-edit-link" title="編集" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2024-03-26 22:21:53" itemprop="dateCreated datePublished" datetime="2024-03-26T22:21:53+08:00">2024-03-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/IOS%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">IOS面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="読書時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">読書時間 &asymp;</span>
+      <span>7 分</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-面试题汇总"><a href="#一-面试题汇总" class="headerlink" title="一 面试题汇总"></a>一 面试题汇总</h2><ol>
+<li>什么是Runtime，有什么作用？常用在什么地方</li>
+<li>OC方法查找机制是怎么样的？有什么缺点？</li>
+<li>objc_msgSend分为哪几个阶段？每个阶段具体做了些什么？</li>
+<li>方法cache是怎么做的？有什么好处</li>
+<li>OC与Swift在方法调用上有什么区别？<span id="more"></span></li>
+<li>动态方法解析过程中关键方法是哪个？<code>resolveInstanceMethod:</code></li>
+<li>消息转发过程关键方法有哪几个？<code>forwardInvocation:</code>，<code>methodSignatureForSelector:</code>，<code>forwardInvocation</code></li>
+<li>@dynamic的作用是什么？</li>
+<li>[super xxxx]中super有什么作用？</li>
+<li>Runtime的API有哪些？</li>
+</ol>
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-什么是Runtime，有什么作用？常用在什么地方"><a href="#2-1-什么是Runtime，有什么作用？常用在什么地方" class="headerlink" title="2.1 什么是Runtime，有什么作用？常用在什么地方"></a>2.1 什么是Runtime，有什么作用？常用在什么地方</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">Runtime 是指编程语言在运行时（runtime）的环境和支持库，用于管理程序的运行时行为，</span><br><span class="line">例如对象的创建与销毁、方法的调用、消息传递、类与对象的信息等。</span><br><span class="line">在Objective-C和其他一些编程语言中，Runtime 是一个重要的概念，</span><br><span class="line">它提供了一系列的 API 和功能，用于动态地操作和管理类和对象。</span><br><span class="line"></span><br><span class="line">Runtime 的作用包括但不限于：</span><br><span class="line"></span><br><span class="line">1-动态对象创建与销毁：</span><br><span class="line">Runtime 提供了一些函数和方法来动态地创建和销毁对象，例如 alloc、init、dealloc 等。</span><br><span class="line"></span><br><span class="line">3-动态方法调用：</span><br><span class="line">Runtime 允许在运行时动态地调用对象的方法，包括实例方法和类方法。</span><br><span class="line"></span><br><span class="line">3-消息传递：</span><br><span class="line">Objective-C 的消息传递机制就是由 Runtime 提供支持的，</span><br><span class="line">它允许在运行时向对象发送消息并执行相应的方法。</span><br><span class="line"></span><br><span class="line">4-类与对象的操作：</span><br><span class="line">Runtime 允许动态地创建、修改和销毁类与对象，包括添加新的方法、属性和协议。</span><br><span class="line"></span><br><span class="line">5-方法交换：</span><br><span class="line">Runtime 允许在运行时动态地交换两个方法的实现，通常用于在不修改源代码的情况下改变方法的行为。</span><br><span class="line"></span><br><span class="line">6-实现类似KVO和KVC的功能：</span><br><span class="line">Runtime 提供了实现类似键值观察（Key-Value Observing，KVO）</span><br><span class="line">和键值编码（Key-Value Coding，KVC）等功能所需的支持。</span><br><span class="line"></span><br><span class="line">7-获取类和对象的信息：</span><br><span class="line">Runtime 允许获取类和对象的各种信息，例如类的名称、父类、成员变量、属性、方法列表等。</span><br><span class="line"></span><br><span class="line">Runtime 常用在一些需要动态地操作类和对象的场景中，如：</span><br><span class="line"></span><br><span class="line">1-面向对象的设计模式，如工厂模式、代理模式等。</span><br><span class="line">2-框架和库的开发，如对反射（reflection）和元编程（metaprogramming）的需求。</span><br><span class="line">3-运行时的代码生成和执行，如插件系统和脚本语言的解释执行。</span><br><span class="line">4-实现一些高级功能，如方法转发、AOP（面向切面编程）等。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-OC方法查找机制是怎么样的？有什么缺点？"><a href="#2-2-OC方法查找机制是怎么样的？有什么缺点？" class="headerlink" title="2.2 OC方法查找机制是怎么样的？有什么缺点？"></a>2.2 OC方法查找机制是怎么样的？有什么缺点？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">具体来说，当调用一个对象的方法时，Runtime 会按照以下步骤进行方法查找：</span><br><span class="line"></span><br><span class="line">1-查找方法实现：</span><br><span class="line">首先，Runtime 会在对象所属的类的方法列表中查找方法的实现。</span><br><span class="line">如果在当前类的方法列表中找到了对应的方法，则执行该方法。</span><br><span class="line"></span><br><span class="line">2-父类查找：</span><br><span class="line">如果在当前类的方法列表中没有找到对应的方法，则 Runtime 会在父类的方法列表中继续查找。</span><br><span class="line">它会沿着类的继承链向上逐级查找，直到找到对应的方法实现或者到达了根类（NSObject）。</span><br><span class="line"></span><br><span class="line">3-动态方法解析：</span><br><span class="line">如果在类的方法列表和父类的方法列表中都没有找到对应的方法实现，</span><br><span class="line">则 Runtime 会尝试调用 resolveInstanceMethod: 或 resolveClassMethod: 方法，</span><br><span class="line">以给开发者一个机会来动态地添加方法实现。</span><br><span class="line">如果开发者实现了这些方法，并成功添加了方法实现，则重新执行方法查找。</span><br><span class="line"></span><br><span class="line">3-消息转发：</span><br><span class="line">如果以上步骤都失败了，Runtime 会调用 forwardingTargetForSelector: 方法，</span><br><span class="line">尝试将消息转发给另一个对象处理。如果开发者实现了这个方法并返回了一个有效的对象，则重新执行方法查找。</span><br><span class="line"></span><br><span class="line">4-完整消息转发：</span><br><span class="line">如果消息转发也失败了，最后 Runtime 会调用 forwardInvocation: 方法，</span><br><span class="line">将完整的消息转发给另一个对象处理。开发者可以在该方法中自定义消息的转发逻辑。</span><br><span class="line"></span><br><span class="line">Objective-C 方法查找机制的缺点包括：</span><br><span class="line"></span><br><span class="line">1-运行时开销：</span><br><span class="line">由于方法查找是在运行时进行的，因此会带来一定的性能开销，尤其是在多次调用同一个方法时。</span><br><span class="line"></span><br><span class="line">2-动态性带来的不确定性：</span><br><span class="line">由于方法查找是动态的，因此在编译时无法确定方法调用的准确位置和实现，可能会导致一些错误只能在运行时才能发现。</span><br><span class="line"></span><br><span class="line">3-调试困难：由于方法查找是在运行时进行的，因此调试时可能会导致调试信息不够准确，增加调试的难度</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-objc-msgSend分为哪几个阶段？每个阶段具体做了些什么？"><a href="#2-3-objc-msgSend分为哪几个阶段？每个阶段具体做了些什么？" class="headerlink" title="2.3 objc_msgSend分为哪几个阶段？每个阶段具体做了些什么？"></a>2.3 objc_msgSend分为哪几个阶段？每个阶段具体做了些什么？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">objc_msgSend 是 Objective-C 中用于向对象发送消息的底层函数。</span><br><span class="line">它在消息传递过程中会经历几个阶段，主要包括：</span><br><span class="line"></span><br><span class="line">1-消息查找阶段（Message Lookup Phase）：</span><br><span class="line">2-消息转发阶段（Message Forwarding Phase）：</span><br><span class="line">3-消息转发失败阶段（Message Forwarding Fails）：</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-方法cache是怎么做的？有什么好处"><a href="#2-4-方法cache是怎么做的？有什么好处" class="headerlink" title="2.4 方法cache是怎么做的？有什么好处"></a>2.4 方法cache是怎么做的？有什么好处</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">方法缓存（Method Cache）是 Objective-C 运行时中的一个重要机制，用于提高方法的查找速度。</span><br><span class="line">它通过缓存最近调用的方法的信息，以便下次查找相同方法时可以更快地找到对应的方法实现。</span><br><span class="line">方法缓存的实现方式如下：</span><br><span class="line"></span><br><span class="line">1-缓存结构：</span><br><span class="line">方法缓存是一个哈希表（Hash Table），用于存储方法选择器（Selector）与方法实现的映射关系。</span><br><span class="line">在哈希表中，选择器作为键，方法实现的地址作为值。</span><br><span class="line"></span><br><span class="line">2-查找方法：</span><br><span class="line">当执行一个对象的方法时，Objective-C 运行时会首先在对象所属的类的方法缓存中查找方法实现。</span><br><span class="line">如果在缓存中找到了对应的方法实现，则直接调用该方法实现；如果没有找到，则进入常规的方法查找流程。</span><br><span class="line"></span><br><span class="line">3-更新方法缓存：</span><br><span class="line">当一个方法被调用时，Objective-C 运行时会将该方法的选择器与方法实现的映射关系存储到方法缓存中。</span><br><span class="line">如果方法缓存已满，则会根据一定的策略来淘汰最近最少使用的方法实现，以给新的方法实现腾出空间。</span><br><span class="line"></span><br><span class="line">方法缓存的好处包括：</span><br><span class="line"></span><br><span class="line">1-提高方法查找速度：</span><br><span class="line">方法缓存可以避免每次方法调用都需要进行完整的方法查找流程，从而大大提高了方法的查找速度。</span><br><span class="line"></span><br><span class="line">2-降低系统开销：</span><br><span class="line">由于方法缓存减少了方法查找的开销，因此可以降低系统的运行时开销，提高系统的性能。</span><br><span class="line"></span><br><span class="line">3-优化常用方法的调用：</span><br><span class="line">对于频繁调用的方法，其方法实现会被缓存到方法缓存中，从而使得这些方法的调用速度更快。</span><br><span class="line"></span><br><span class="line">总的来说，方法缓存是 Objective-C 运行时的一个重要优化机制，通过缓存最近调用的方法，</span><br><span class="line">可以显著提高方法的查找速度，从而提高程序的性能和响应速度</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-OC与Swift在方法调用上有什么区别？"><a href="#2-5-OC与Swift在方法调用上有什么区别？" class="headerlink" title="2.5 OC与Swift在方法调用上有什么区别？"></a>2.5 OC与Swift在方法调用上有什么区别？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">Objective-C（OC）和 Swift 在方法调用上有一些区别，主要体现在语法和机制上：</span><br><span class="line"></span><br><span class="line">1-语法差异：</span><br><span class="line">1.1-Objective-C 中方法调用使用方括号语法，例如 [object methodName]，</span><br><span class="line">而 Swift 使用点语法，例如 object.methodName()。</span><br><span class="line">1.2-在 Objective-C 中，方法调用时使用的是动态消息传递机制，即在运行时确定方法的具体实现；</span><br><span class="line">而 Swift 中的方法调用是静态的，编译时就确定了方法的具体实现。</span><br><span class="line"></span><br><span class="line">2-空合运算符：</span><br><span class="line">2.1在 Swift 中，可以使用空合运算符 ?? 来调用可选链中的方法，以便安全地处理可选值为 nil 的情况。</span><br><span class="line">例如，object?.method() ?? defaultValue。</span><br><span class="line">2.2在 Objective-C 中，要使用条件判断来手动检查对象是否为 nil，然后调用方法。</span><br><span class="line">例如，if (object) &#123; [object method]; &#125;。</span><br><span class="line"></span><br><span class="line">3-可选链：</span><br><span class="line">3.1-Swift 支持可选链式调用（Optional Chaining），可以通过在可选值后面使用问号 ? 来调用方法，</span><br><span class="line">如果可选值为 nil，则调用会返回 nil，而不会引发运行时错误。</span><br><span class="line">3.2-Objective-C 中没有直接的可选链式调用语法，但可以通过条件判断来手动处理可选值为 nil 的情况。</span><br><span class="line"></span><br><span class="line">4-方法重载：</span><br><span class="line">4.1-Swift 支持方法重载，即可以定义多个同名的方法，但参数类型或数量不同。</span><br><span class="line">在调用时根据参数类型或数量的不同来确定调用哪个方法。</span><br><span class="line">4.2-Objective-C 中也支持方法重载，但是方法的签名由方法名和参数名一起决定，</span><br><span class="line">参数名在方法签名中占有重要位置，因此在 Objective-C 中更侧重于使用不同的方法名来区分不同的方法。</span><br><span class="line"></span><br><span class="line">5-动态性：</span><br><span class="line">5.1-Objective-C 中的方法调用是动态的，消息的接收者和方法的实现是在运行时确定的，</span><br><span class="line">这意味着可以在运行时动态地改变方法的调用行为。</span><br><span class="line">5.2-Swift 中的方法调用是静态的，编译时就确定了方法的具体实现，</span><br><span class="line">因此不支持 Objective-C 中的动态方法调用机制。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-动态方法解析过程中关键方法是哪个？resolveInstanceMethod"><a href="#2-6-动态方法解析过程中关键方法是哪个？resolveInstanceMethod" class="headerlink" title="2.6 动态方法解析过程中关键方法是哪个？resolveInstanceMethod:"></a>2.6 动态方法解析过程中关键方法是哪个？<code>resolveInstanceMethod:</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">在 Objective-C 的动态方法解析过程中，</span><br><span class="line">关键的方法是 resolveInstanceMethod: 和 resolveClassMethod:。</span><br><span class="line">这两个方法分别用于实例方法和类方法的解析。</span><br><span class="line"></span><br><span class="line">1-resolveInstanceMethod:：</span><br><span class="line">1.1-当一个对象收到无法识别的实例方法调用时，Objective-C 运行时会调用该方法。</span><br><span class="line">开发者可以在子类中重写这个方法，并在其中动态地添加方法实现，从而解决方法未找到的问题。</span><br><span class="line">1.2-在 resolveInstanceMethod: 方法中，开发者需要调用 class_addMethod 函数来向当前类中添加方法实现。</span><br><span class="line"></span><br><span class="line">2-resolveClassMethod:：</span><br><span class="line">2.1-类似于 resolveInstanceMethod:，但用于解析类方法。</span><br><span class="line">当一个类收到无法识别的类方法调用时，Objective-C 运行时会调用该方法。</span><br><span class="line">开发者可以在类的元类（Meta Class）中重写这个方法，并在其中动态地添加类方法的实现。</span><br><span class="line">2.2-在 resolveClassMethod: 方法中，开发者同样需要调用 class_addMethod 函数来向元类中添加类方法的实现。</span><br><span class="line"></span><br><span class="line">这两个方法的实现是 Objective-C 运行时动态方法解析的入口，</span><br><span class="line">开发者可以在这两个方法中根据需要动态地添加方法实现，从而使得未知方法调用得到解决。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-消息转发过程关键方法有哪几个？forwardInvocation-，methodSignatureForSelector-，doesNotRecognizeSelector"><a href="#2-7-消息转发过程关键方法有哪几个？forwardInvocation-，methodSignatureForSelector-，doesNotRecognizeSelector" class="headerlink" title="2.7 消息转发过程关键方法有哪几个？forwardInvocation:，methodSignatureForSelector:，doesNotRecognizeSelector"></a>2.7 消息转发过程关键方法有哪几个？<code>forwardInvocation:</code>，<code>methodSignatureForSelector:</code>，<code>doesNotRecognizeSelector</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">在Objective-C的消息转发过程中，关键的方法包括 forwardInvocation:、methodSignatureForSelector:</span><br><span class="line">，以及 doesNotRecognizeSelector:。</span><br><span class="line">这些方法共同组成了完整的消息转发机制，用于在对象无法识别或处理某个消息时，将消息转发给其他对象处理。</span><br><span class="line"></span><br><span class="line">1-forwardInvocation:：</span><br><span class="line">1.1-当一个对象无法识别或处理某个消息时，Objective-C 运行时会调用该方法。</span><br><span class="line">开发者可以在子类中重写这个方法，并在其中将消息转发给其他对象处理。</span><br><span class="line">1.2-在 forwardInvocation: 方法中，开发者可以使用 NSInvocation 对象来构造新的消息，并将其发送给其他对象处理。</span><br><span class="line"></span><br><span class="line">2-methodSignatureForSelector:：</span><br><span class="line">2.1-在消息转发过程中，Objective-C 运行时会调用该方法来获取消息的方法签名（Method Signature）。</span><br><span class="line">方法签名包含了方法的返回值类型和参数类型信息。</span><br><span class="line">2.2-开发者可以在子类中重写这个方法，并在其中返回指定消息的方法签名。</span><br><span class="line">这个方法通常和 forwardInvocation: 方法一起使用，用于创建 NSInvocation 对象。</span><br><span class="line"></span><br><span class="line">3-doesNotRecognizeSelector:：</span><br><span class="line">3.1-当一个对象无法识别某个消息时，Objective-C 运行时会调用该方法。</span><br><span class="line">默认情况下，这个方法会抛出一个异常，提示方法未实现。</span><br><span class="line">3.2-开发者可以选择重写这个方法，并在其中进行一些自定义的处理，例如记录日志、发送通知等。</span><br><span class="line">重写这个方法可以避免默认的异常抛出行为，使得程序可以更加优雅地处理未知消息。</span><br><span class="line"></span><br><span class="line">这些方法共同构成了 Objective-C 的消息转发机制，</span><br><span class="line">使得开发者可以动态地处理未知消息，从而实现更加灵活和健壮的代码</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-8-dynamic的作用是什么？"><a href="#2-8-dynamic的作用是什么？" class="headerlink" title="2.8 @dynamic的作用是什么？"></a>2.8 @dynamic的作用是什么？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@dynamic 是 Objective-C 中的一个关键字，用于告诉编译器不要自动生成属性的存取方法的实现，</span><br><span class="line">而是在运行时动态地处理属性的存取。</span><br><span class="line">主要用于在编译时声明属性，但是不提供属性的实现，而是在运行时由开发者自己提供实现。</span><br><span class="line"></span><br><span class="line">@dynamic 的作用主要有两个方面：</span><br><span class="line"></span><br><span class="line">1-告知编译器属性的存取方法是动态生成的：</span><br><span class="line">当我们声明一个属性时，通常会自动生成属性的存取方法。</span><br><span class="line">但是如果属性的存取方法是动态生成的，例如通过 Core Data 或者手动实现存取方法，</span><br><span class="line">这时可以使用 @dynamic 关键字告知编译器，属性的存取方法由开发者自己提供，不需要自动生成。</span><br><span class="line"></span><br><span class="line">2-与 Core Data 等框架配合使用：</span><br><span class="line">在使用 Core Data 或者其他类似框架时，我们通常会声明一些属性来映射数据库中的字段。</span><br><span class="line">这些属性的存取方法通常是由框架动态生成的，</span><br><span class="line">因此需要使用 @dynamic 关键字告知编译器属性的存取方法是动态生成的，不需要自己提供实现。</span><br><span class="line"></span><br><span class="line">总的来说，@dynamic 关键字用于告知编译器属性的存取方法是动态生成的，而不是自动生成的，</span><br><span class="line">从而在编译时避免了对属性的存取方法的生成，提供了更大的灵活性和定制性。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-9-super-xxxx-中super有什么作用？"><a href="#2-9-super-xxxx-中super有什么作用？" class="headerlink" title="2.9 [super xxxx]中super有什么作用？"></a>2.9 [super xxxx]中super有什么作用？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">在 Objective-C 中，super 关键字用于在子类中调用父类的方法或属性。</span><br><span class="line">具体来说，[super methodName] 语法用于调用父类中名为 methodName 的方法，</span><br><span class="line">而 super.propertyName 语法用于访问父类中名为 propertyName 的属性。</span><br><span class="line"></span><br><span class="line">使用 super 的作用主要有以下几点：</span><br><span class="line"></span><br><span class="line">1-调用父类方法：</span><br><span class="line">子类可以使用 super 关键字来调用父类中的方法，从而在子类的方法中执行父类的特定行为。</span><br><span class="line">这对于需要在子类方法中扩展父类方法的功能时非常有用。</span><br><span class="line"></span><br><span class="line">2-访问父类属性：</span><br><span class="line">子类可以使用 super 关键字来访问父类中的属性，从而获取父类中的属性值或者修改父类中的属性值。</span><br><span class="line">这对于在子类中对父类属性进行特定处理或者继承父类属性的值时非常有用。</span><br><span class="line"></span><br><span class="line">3-区分方法和属性：</span><br><span class="line">在调用父类方法时，使用 super 关键字可以明确表示调用的是父类的方法而不是当前类的方法，</span><br><span class="line">从而避免了可能的命名冲突。</span><br><span class="line"></span><br><span class="line">总的来说，super 关键字是 Objective-C 中用于在子类中调用父类方法或访问父类属性的一种方式，</span><br><span class="line">能够帮助子类重用父类的实现并扩展其功能。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-10-Runtime的API有哪些"><a href="#2-10-Runtime的API有哪些" class="headerlink" title="2.10 Runtime的API有哪些"></a>2.10 Runtime的API有哪些</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">Objective-C Runtime 是 Objective-C 的运行时系统，它提供了一系列的 API 和函数，</span><br><span class="line">用于在运行时动态地操作类和对象、调用方法、处理消息等。</span><br><span class="line">以下是一些常用的 Objective-C Runtime API：</span><br><span class="line"></span><br><span class="line">类与对象操作：</span><br><span class="line">objc_allocateClassPair</span><br><span class="line">objc_registerClassPair</span><br><span class="line">objc_disposeClassPair</span><br><span class="line">objc_getClass</span><br><span class="line">objc_getMetaClass</span><br><span class="line">objc_getClassList</span><br><span class="line">class_getName</span><br><span class="line">class_getSuperclass</span><br><span class="line">class_getMethodImplementation</span><br><span class="line">object_getClass</span><br><span class="line">object_setClass</span><br><span class="line">object_getClassName</span><br><span class="line">objc_enumerationMutation</span><br><span class="line"></span><br><span class="line">方法操作</span><br><span class="line">class_copyMethodList</span><br><span class="line">class_addMethod</span><br><span class="line">class_replaceMethod</span><br><span class="line">method_getName</span><br><span class="line">method_getImplementation</span><br><span class="line">method_getTypeEncoding</span><br><span class="line">method_setImplementation</span><br><span class="line">method_exchangeImplementations</span><br><span class="line"></span><br><span class="line">成员变量操作</span><br><span class="line">class_copyIvarList</span><br><span class="line">ivar_getName</span><br><span class="line">ivar_getTypeEncoding</span><br><span class="line">ivar_getOffset</span><br><span class="line"></span><br><span class="line">属性操作：</span><br><span class="line">class_copyPropertyList</span><br><span class="line">property_getName</span><br><span class="line">property_getAttributes</span><br><span class="line">property_getMethod</span><br><span class="line">property_copyAttributeValue</span><br><span class="line">property_copyAttributeList</span><br><span class="line"></span><br><span class="line">协议操作：</span><br><span class="line">objc_getProtocol</span><br><span class="line">objc_copyProtocolList</span><br><span class="line">protocol_getName</span><br><span class="line">protocol_copyMethodDescriptionList</span><br><span class="line">protocol_copyPropertyList</span><br><span class="line">protocol_copyProtocolLis</span><br><span class="line"></span><br><span class="line">消息传递：</span><br><span class="line">objc_msgSend</span><br><span class="line">objc_msgSendSuper</span><br><span class="line">objc_msgSend_stret</span><br><span class="line">objc_msgSendSuper_stret</span><br><span class="line"></span><br><span class="line">消息转发：</span><br><span class="line">resolveInstanceMethod:</span><br><span class="line">resolveClassMethod:</span><br><span class="line">forwardInvocation:</span><br><span class="line">methodSignatureForSelector:</span><br><span class="line">doesNotRecognizeSelector:</span><br><span class="line"></span><br><span class="line">其他功能：</span><br><span class="line">sel_registerName</span><br><span class="line">sel_getName</span><br><span class="line">sel_isEqual</span><br><span class="line">IMP</span><br><span class="line"></span><br><span class="line">以上是一些常用的 Objective-C Runtime API，它们提供了丰富的功能，</span><br><span class="line">使得开发者可以在运行时动态地操作类和对象、调用方法、处理消息等，</span><br><span class="line">为 Objective-C 的动态特性提供了支持。</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-参考"><a href="#三-参考" class="headerlink" title="三 参考"></a>三 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/410f01d9e638">简书—OC中Runtime原理与使用</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/ja/tags/OC%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># OC面试题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ja/posts/7ef5e7fd.html" rel="prev" title="IOS面试题——OC内存管理(7)">
+                  <i class="fa fa-angle-left"></i> IOS面试题——OC内存管理(7)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ja/posts/2cdee718.html" rel="next" title="IOS面试题——OC中Runloop原理与使用(9)">
+                  IOS面试题——OC中Runloop原理与使用(9) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"c2f51fd3904b5a134cdd4da944b51ef8"}</script>
+<script src="/ja/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

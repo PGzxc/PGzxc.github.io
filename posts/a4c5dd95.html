@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述123以下是关于 RxJava 在 Android 面试中的常见问题及答案整理，涵盖核心概念、线程切换、操作符、背压处理等重点内容，适用于项目总结、面试答题复习。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android面试题——掘金-三方框架之RXJava(5.7)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/a4c5dd95.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 概述123以下是关于 RxJava 在 Android 面试中的常见问题及答案整理，涵盖核心概念、线程切换、操作符、背压处理等重点内容，适用于项目总结、面试答题复习。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-07T02:35:27.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.249Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="掘金">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/a4c5dd95.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/a4c5dd95.html","path":"posts/a4c5dd95.html","title":"Android面试题——掘金-三方框架之RXJava(5.7)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android面试题——掘金-三方框架之RXJava(5.7) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-RxJava-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E9%80%82%E7%94%A8%E4%BA%8E%E5%93%AA%E4%BA%9B%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 RxJava 是什么？适用于哪些场景？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-RxJava-%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 RxJava 的基本组成有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Observable-%E5%92%8C-Flowable-%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Observable 和 Flowable 区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E5%88%87%E6%8D%A2%EF%BC%9F"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 怎么实现线程切换？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C%E7%AC%A6%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E%EF%BC%9F"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 常用的操作符有哪些？举例说明？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-RxJava-%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%EF%BC%9F"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 RxJava 如何避免内存泄漏？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%A4%E4%B8%AA%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82%E5%B9%B6%E5%8F%91%E6%89%A7%E8%A1%8C%EF%BC%8C%E4%B8%A4%E4%B8%AA%E9%83%BD%E5%AE%8C%E6%88%90%E5%90%8E%E5%A4%84%E7%90%86%E7%BB%93%E6%9E%9C%EF%BC%9F"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 如何实现两个接口请求并发执行，两个都完成后处理结果？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-RxJava-%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%BC%82%E5%B8%B8%EF%BC%9F"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 RxJava 如何处理异常？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-%E8%83%8C%E5%8E%8B%EF%BC%88Backpressure%EF%BC%89%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9FRxJava-%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86%EF%BC%9F"><span class="nav-number">2.9.</span> <span class="nav-text">2.9  背压（Backpressure）是什么？RxJava 怎么处理？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-10-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6%E7%9A%84%E9%98%B2%E6%8A%96%EF%BC%88debounce%EF%BC%89%EF%BC%9F"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 如何实现点击事件的防抖（debounce）？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-11-RxJava-%E5%A6%82%E4%BD%95%E5%92%8C-Retrofit-%E7%BB%93%E5%90%88%EF%BC%9F"><span class="nav-number">2.11.</span> <span class="nav-text">2.11 RxJava 如何和 Retrofit 结合？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-12-CompositeDisposable-%E5%92%8C-Disposable-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">2.12.</span> <span class="nav-text">2.12 CompositeDisposable 和 Disposable 有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-13-RxJava-%E5%B8%B8%E8%A7%81%E7%9A%84%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="nav-number">2.13.</span> <span class="nav-text">2.13 RxJava 常见的内存泄漏场景？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-14-RxJava-%E4%B8%8E-Coroutine-%E5%AF%B9%E6%AF%94%EF%BC%9F"><span class="nav-number">2.14.</span> <span class="nav-text">2.14 RxJava 与 Coroutine 对比？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-15-RxJava-%E4%B8%AD-cold-%E5%92%8C-hot-observable-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">2.15.</span> <span class="nav-text">2.15 RxJava 中 cold 和 hot observable 有什么区别？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/a4c5dd95.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android面试题——掘金-三方框架之RXJava(5.7) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android面试题——掘金-三方框架之RXJava(5.7)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Android%E9%9D%A2%E8%AF%95%E9%A2%98%E2%80%94%E2%80%94%E6%8E%98%E9%87%91-%E4%B8%89%E6%96%B9%E6%A1%86%E6%9E%B6%E4%B9%8BRXJava(5.7).md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-07 10:35:27" itemprop="dateCreated datePublished" datetime="2025-04-07T10:35:27+08:00">2025-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/Android%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">Android面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">以下是关于 RxJava 在 Android 面试中的常见问题及答案整理，</span><br><span class="line">涵盖核心概念、线程切换、操作符、背压处理等重点内容，</span><br><span class="line">适用于项目总结、面试答题复习。</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-RxJava-是什么？适用于哪些场景？"><a href="#2-1-RxJava-是什么？适用于哪些场景？" class="headerlink" title="2.1 RxJava 是什么？适用于哪些场景？"></a>2.1 RxJava 是什么？适用于哪些场景？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.概念</span><br><span class="line">RxJava 是一个基于响应式编程的异步事件处理库，核心思想是 通过链式操作处理异步数据流。</span><br><span class="line"></span><br><span class="line">2.适用场景：</span><br><span class="line">-多线程切换（子线程网络请求、主线程 UI 更新）</span><br><span class="line">-数据流操作（如 list 转换、过滤）</span><br><span class="line">-异步事件组合（多个请求合并/顺序执行）</span><br><span class="line">-防抖节流、轮询任务</span><br><span class="line">-替代回调地狱（Callback Hell）</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-RxJava-的基本组成有哪些？"><a href="#2-2-RxJava-的基本组成有哪些？" class="headerlink" title="2.2 RxJava 的基本组成有哪些？"></a>2.2 RxJava 的基本组成有哪些？</h3><table>
+<thead>
+<tr>
+<th align="center">组件</th>
+<th align="center">作用说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Observable</td>
+<td align="center">被观察者，事件源</td>
+</tr>
+<tr>
+<td align="center">Observer</td>
+<td align="center">观察者，接收事件响应</td>
+</tr>
+<tr>
+<td align="center">Subscriber</td>
+<td align="center">Observer 的子类，具备取消订阅能力</td>
+</tr>
+<tr>
+<td align="center">Disposable</td>
+<td align="center">用于管理订阅生命周期</td>
+</tr>
+<tr>
+<td align="center">Scheduler</td>
+<td align="center">线程调度器，决定在哪个线程执行任务</td>
+</tr>
+<tr>
+<td align="center">Operator</td>
+<td align="center">操作符，用于对事件流进行变换、过滤等操作</td>
+</tr>
+</tbody></table>
+<h3 id="2-3-Observable-和-Flowable-区别？"><a href="#2-3-Observable-和-Flowable-区别？" class="headerlink" title="2.3 Observable 和 Flowable 区别？"></a>2.3 Observable 和 Flowable 区别？</h3><table>
+<thead>
+<tr>
+<th align="center">特性</th>
+<th align="center">Observable</th>
+<th align="center">Flowable</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">背压处理</td>
+<td align="center">❌ 不支持</td>
+<td align="center">✅ 支持（Backpressure）</td>
+</tr>
+<tr>
+<td align="center">用于数据量</td>
+<td align="center">数据量可控</td>
+<td align="center">数据量大、不可控（如无限流）</td>
+</tr>
+<tr>
+<td align="center">使用场景</td>
+<td align="center">常规 UI、异步场景</td>
+<td align="center">高频输入、文件读取、长连接等</td>
+</tr>
+</tbody></table>
+<h3 id="2-4-怎么实现线程切换？"><a href="#2-4-怎么实现线程切换？" class="headerlink" title="2.4 怎么实现线程切换？"></a>2.4 怎么实现线程切换？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Observable.just(&quot;网络请求&quot;)</span><br><span class="line">    .subscribeOn(Schedulers.io())           // 设置事件发射线程</span><br><span class="line">    .observeOn(AndroidSchedulers.mainThread()) // 设置事件消费线程</span><br><span class="line">    .subscribe &#123; result -&gt; </span><br><span class="line">        // UI 更新</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-常用的操作符有哪些？举例说明？"><a href="#2-5-常用的操作符有哪些？举例说明？" class="headerlink" title="2.5 常用的操作符有哪些？举例说明？"></a>2.5 常用的操作符有哪些？举例说明？</h3><p>1-表格</p>
+<table>
+<thead>
+<tr>
+<th align="center">操作符</th>
+<th align="center">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">map</td>
+<td align="center">转换数据类型</td>
+</tr>
+<tr>
+<td align="center">flatMap</td>
+<td align="center">展平异步事件流</td>
+</tr>
+<tr>
+<td align="center">zip</td>
+<td align="center">多个 Observable 合并</td>
+</tr>
+<tr>
+<td align="center">filter</td>
+<td align="center">过滤不符合条件的数据</td>
+</tr>
+<tr>
+<td align="center">debounce</td>
+<td align="center">防抖操作（延迟一段时间触发）</td>
+</tr>
+<tr>
+<td align="center">concat</td>
+<td align="center">串联执行多个 Observable</td>
+</tr>
+<tr>
+<td align="center">retry</td>
+<td align="center">出错后重试</td>
+</tr>
+<tr>
+<td align="center">interval</td>
+<td align="center">定时任务</td>
+</tr>
+<tr>
+<td align="center">distinct</td>
+<td align="center">去重</td>
+</tr>
+</tbody></table>
+<p>2-例：flatMap 合并多个网络请求</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">getUser()</span><br><span class="line">    .flatMap &#123; user -&gt; getPosts(user.id) &#125;</span><br><span class="line">    .subscribe &#123; posts -&gt; show(posts) &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-RxJava-如何避免内存泄漏？"><a href="#2-6-RxJava-如何避免内存泄漏？" class="headerlink" title="2.6 RxJava 如何避免内存泄漏？"></a>2.6 RxJava 如何避免内存泄漏？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.概念</span><br><span class="line">-使用 Disposable 控制订阅生命周期；</span><br><span class="line">-在 onDestroy() 中调用 dispose()；</span><br><span class="line">-配合 CompositeDisposable 统一管理多个订阅；</span><br><span class="line">-或结合 Lifecycle 使用 RxLifecycle、AutoDispose 等库自动释放。</span><br><span class="line"></span><br><span class="line">2.示例</span><br><span class="line">val disposable = Observable.just(&quot;a&quot;)</span><br><span class="line">    .subscribe &#123; ... &#125;</span><br><span class="line"></span><br><span class="line">// 页面销毁时</span><br><span class="line">disposable.dispose()</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-如何实现两个接口请求并发执行，两个都完成后处理结果？"><a href="#2-7-如何实现两个接口请求并发执行，两个都完成后处理结果？" class="headerlink" title="2.7 如何实现两个接口请求并发执行，两个都完成后处理结果？"></a>2.7 如何实现两个接口请求并发执行，两个都完成后处理结果？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> 1.使用 zip</span><br><span class="line"> 2.示例</span><br><span class="line"> Observable.zip(</span><br><span class="line">    api.getUser(),</span><br><span class="line">    api.getPosts(),</span><br><span class="line">    BiFunction&lt;User, Posts, Pair&lt;User, Posts&gt;&gt; &#123; user, posts -&gt;</span><br><span class="line">        user to posts</span><br><span class="line">    &#125;</span><br><span class="line">).subscribe &#123; (user, posts) -&gt; </span><br><span class="line">    // 同时处理 user 和 posts</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-8-RxJava-如何处理异常？"><a href="#2-8-RxJava-如何处理异常？" class="headerlink" title="2.8 RxJava 如何处理异常？"></a>2.8 RxJava 如何处理异常？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1.概念</span><br><span class="line">-使用 onErrorResumeNext()、onErrorReturn() 捕获异常；</span><br><span class="line">-或 retry() 设置重试次数；</span><br><span class="line"></span><br><span class="line">2.示例</span><br><span class="line">observable</span><br><span class="line">    .onErrorReturn &#123; e -&gt; defaultValue &#125;</span><br><span class="line">    .subscribe(...)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-9-背压（Backpressure）是什么？RxJava-怎么处理？"><a href="#2-9-背压（Backpressure）是什么？RxJava-怎么处理？" class="headerlink" title="2.9  背压（Backpressure）是什么？RxJava 怎么处理？"></a>2.9  背压（Backpressure）是什么？RxJava 怎么处理？</h3><p>1-概念</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">背压是指 事件发射速度大于消费速度 时造成的内存压力甚至崩溃。</span><br><span class="line">RxJava2 提供 Flowable 来解决背压问题，支持策略：</span><br><span class="line">Flowable.create(..., BackpressureStrategy.BUFFER)</span><br></pre></td></tr></table></figure>
+
+<p>2-表格</p>
+<table>
+<thead>
+<tr>
+<th align="center">策略名</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">BUFFER</td>
+<td align="center">缓存所有发射项（可能 OOM）</td>
+</tr>
+<tr>
+<td align="center">DROP</td>
+<td align="center">舍弃多余的发射项</td>
+</tr>
+<tr>
+<td align="center">LATEST</td>
+<td align="center">仅保留最新项</td>
+</tr>
+<tr>
+<td align="center">ERROR</td>
+<td align="center">抛出 MissingBackpressureException</td>
+</tr>
+<tr>
+<td align="center">MISSING</td>
+<td align="center">不处理，交由下游自己处理</td>
+</tr>
+</tbody></table>
+<h3 id="2-10-如何实现点击事件的防抖（debounce）？"><a href="#2-10-如何实现点击事件的防抖（debounce）？" class="headerlink" title="2.10 如何实现点击事件的防抖（debounce）？"></a>2.10 如何实现点击事件的防抖（debounce）？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">RxView.clicks(button)</span><br><span class="line">    .debounce(300, TimeUnit.MILLISECONDS)</span><br><span class="line">    .subscribe &#123;</span><br><span class="line">        // 防抖后的点击响应</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-11-RxJava-如何和-Retrofit-结合？"><a href="#2-11-RxJava-如何和-Retrofit-结合？" class="headerlink" title="2.11 RxJava 如何和 Retrofit 结合？"></a>2.11 RxJava 如何和 Retrofit 结合？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">interface Api &#123;</span><br><span class="line">    @GET(&quot;user&quot;)</span><br><span class="line">    fun getUser(): Observable&lt;User&gt;</span><br><span class="line">&#125;</span><br><span class="line">api.getUser()</span><br><span class="line">    .subscribeOn(Schedulers.io())</span><br><span class="line">    .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">    .subscribe &#123; user -&gt; ... &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-12-CompositeDisposable-和-Disposable-有什么区别？"><a href="#2-12-CompositeDisposable-和-Disposable-有什么区别？" class="headerlink" title="2.12 CompositeDisposable 和 Disposable 有什么区别？"></a>2.12 CompositeDisposable 和 Disposable 有什么区别？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1.概念</span><br><span class="line">-Disposable：单个订阅管理；</span><br><span class="line">-CompositeDisposable：多个 Disposable 集合管理。</span><br><span class="line"></span><br><span class="line">2.示例</span><br><span class="line">val composite = CompositeDisposable()</span><br><span class="line">val d1 = api.getUser().subscribe()</span><br><span class="line">val d2 = api.getPosts().subscribe()</span><br><span class="line"></span><br><span class="line">composite.addAll(d1, d2)</span><br><span class="line"></span><br><span class="line">// 页面销毁时</span><br><span class="line">composite.clear()</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-13-RxJava-常见的内存泄漏场景？"><a href="#2-13-RxJava-常见的内存泄漏场景？" class="headerlink" title="2.13 RxJava 常见的内存泄漏场景？"></a>2.13 RxJava 常见的内存泄漏场景？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-持有上下文对象（Activity/Fragment）但未取消订阅；</span><br><span class="line">-未正确释放订阅；</span><br><span class="line">-不当使用 Schedulers.io() 导致线程堆积；</span><br><span class="line">-多个事件链未控制线程切换/释放资源。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-14-RxJava-与-Coroutine-对比？"><a href="#2-14-RxJava-与-Coroutine-对比？" class="headerlink" title="2.14 RxJava 与 Coroutine 对比？"></a>2.14 RxJava 与 Coroutine 对比？</h3><table>
+<thead>
+<tr>
+<th align="center">特性</th>
+<th align="center">RxJava</th>
+<th align="center">Kotlin Coroutine</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">学习曲线</td>
+<td align="center">较陡峭</td>
+<td align="center">简洁自然</td>
+</tr>
+<tr>
+<td align="center">线程切换</td>
+<td align="center">Schedulers</td>
+<td align="center">withContext</td>
+</tr>
+<tr>
+<td align="center">背压处理</td>
+<td align="center">Flowable</td>
+<td align="center">Flow（配合 buffer）</td>
+</tr>
+<tr>
+<td align="center">可读性</td>
+<td align="center">链式回调</td>
+<td align="center">顺序结构（更接近同步）</td>
+</tr>
+<tr>
+<td align="center">官方支持</td>
+<td align="center">三方库</td>
+<td align="center">Kotlin 官方</td>
+</tr>
+</tbody></table>
+<h3 id="2-15-RxJava-中-cold-和-hot-observable-有什么区别？"><a href="#2-15-RxJava-中-cold-和-hot-observable-有什么区别？" class="headerlink" title="2.15 RxJava 中 cold 和 hot observable 有什么区别？"></a>2.15 RxJava 中 cold 和 hot observable 有什么区别？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-Cold Observable：每个订阅都会从头开始发射（如 Observable.just()）；</span><br><span class="line">-Hot Observable：多个订阅共享同一个数据源（如 LiveData、Subject）</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-参考"><a href="#三-参考" class="headerlink" title="三 参考"></a>三 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7480464724096057381">掘金—知识库的大纲</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%8E%98%E9%87%91/" rel="tag"># 掘金</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/74710dbf.html" rel="prev" title="Android面试题——掘金-三方框架之Exoplayer(5.6)">
+                  <i class="fa fa-angle-left"></i> Android面试题——掘金-三方框架之Exoplayer(5.6)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/93879ccc.html" rel="next" title="Android面试题——掘金-架构之常见架构模式(6.1)">
+                  Android面试题——掘金-架构之常见架构模式(6.1) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"6de1a9d63622faf0ace3d9a7bee7ce9c"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

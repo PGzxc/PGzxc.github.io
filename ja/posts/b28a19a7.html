@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ja/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ja/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ja/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/ja/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/ja/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/ja/","images":"/ja/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索...","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/ja/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/ja/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述 创建初始项目工程 项目webpack配置 webpack的mode选项 配置项目的入口路径和输出文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue2.0开发之——webpack基础-手动配置项目示例(02)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/b28a19a7.html">
+<meta property="og:site_name" content="PGzxc (Japanese)">
+<meta property="og:description" content="一 概述 创建初始项目工程 项目webpack配置 webpack的mode选项 配置项目的入口路径和输出文件">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-vscode-open.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-vscode-init.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-vscode-install.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-vscode-src.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-vscode-indexs-create.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-vscode-index-default.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-vscode-html-table.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-vscode-install-jq.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-vscode-html-preview-first.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-config-webpack-mode.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-config-scripts-dev.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-config-run-dev.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-config-run-dev-suc.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-mode-development.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-mode-production.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-config-output-error.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-config-output-suc.png">
+<meta property="article:published_time" content="2022-10-24T02:28:38.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.109Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Vue2">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty.png">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/b28a19a7.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"ja","comments":true,"permalink":"https://pgzxc.github.io/posts/b28a19a7.html","path":"posts/b28a19a7.html","title":"Vue2.0开发之——webpack基础-手动配置项目示例(02)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Vue2.0开发之——webpack基础-手动配置项目示例(02) | PGzxc (Japanese)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/utils.js" defer></script><script src="/ja/js/motion.js" defer></script><script src="/ja/js/sidebar.js" defer></script><script src="/ja/js/next-boot.js" defer></script><script src="/ja/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/ja/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/ja/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/ja/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/ja/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/ja/atom.xml" title="PGzxc (Japanese)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションを切り替える" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/ja/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (Japanese)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">本から学んだことは表面的なもの；自分で体験しなければならない</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="検索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/ja/" rel="section"><i class="fa fa-bell fa-fw"></i>ホーム</a></li><li class="menu-item menu-item-nav"><a href="/ja/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>ナビゲーション</a></li><li class="menu-item menu-item-categories"><a href="/ja/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリー<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/ja/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/ja/links/" rel="section"><i class="fa fa-link fa-fw"></i>リンク</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>検索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="検索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          目次
+        </li>
+        <li class="sidebar-nav-overview">
+          サイト概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E5%88%9B%E5%BB%BA%E5%88%9D%E5%A7%8B%E9%A1%B9%E7%9B%AE%E5%B7%A5%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">二 创建初始项目工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E9%A1%B9%E7%9B%AEwebpack%E9%85%8D%E7%BD%AE-webpack-config-js"><span class="nav-number">3.</span> <span class="nav-text">三 项目webpack配置-webpack.config.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%9C%A8%E9%A1%B9%E7%9B%AE%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%AD%E5%88%9B%E5%BB%BA%E5%90%8D%E4%B8%BAwebpack-config-js%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 在项目根目录中创建名为webpack.config.js配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%9C%A8package-json%E7%9A%84scripts%E8%8A%82%E7%82%B9%E4%B8%8B%EF%BC%8C%E6%96%B0%E5%A2%9Edev%E8%84%9A%E6%9C%AC"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 在package.json的scripts节点下，新增dev脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%9C%A8%E7%BB%88%E7%AB%AF%E4%B8%AD%E8%BF%90%E8%A1%8Cnpm-run-dev%E5%91%BD%E4%BB%A4%EF%BC%8C%E5%90%AF%E5%8A%A8webpack%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%89%93%E5%8C%85%E6%9E%84%E5%BB%BA"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 在终端中运行npm run dev命令，启动webpack进行项目的打包构建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-webpack%E7%9A%84mode%E9%80%89%E9%A1%B9"><span class="nav-number">4.</span> <span class="nav-text">四 webpack的mode选项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-mode%E7%9A%84%E5%8F%AF%E9%80%89%E5%80%BC"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 mode的可选值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#development"><span class="nav-number">4.1.1.</span> <span class="nav-text">development</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#production"><span class="nav-number">4.1.2.</span> <span class="nav-text">production</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E6%95%88%E6%9E%9C%E5%AF%B9%E6%AF%94"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 效果对比</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%85%A5%E5%8F%A3%E8%B7%AF%E5%BE%84%E5%92%8C%E8%BE%93%E5%87%BA%E6%96%87%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">五 配置项目的入口路径和输出文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-webpack%E4%B8%AD%E7%9A%84%E9%BB%98%E8%AE%A4%E7%BA%A6%E5%AE%9A"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 webpack中的默认约定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E9%94%99%E8%AF%AF%E6%BC%94%E7%A4%BA"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 错误演示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%89%93%E5%8C%85%E7%9A%84%E5%85%A5%E5%8F%A3%E4%B8%8E%E5%87%BA%E5%8F%A3"><span class="nav-number">5.3.</span> <span class="nav-text">5.2 自定义打包的入口与出口</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/ja/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/ja/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">投稿</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/ja/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">カテゴリー</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/ja/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/b28a19a7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/ja/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Vue2.0开发之——webpack基础-手动配置项目示例(02) | PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Vue2.0开发之——webpack基础-手动配置项目示例(02)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Vue2.0%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94webpack%E5%9F%BA%E7%A1%80-%E6%89%8B%E5%8A%A8%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9B%AE%E7%A4%BA%E4%BE%8B(02).md" class="post-edit-link" title="編集" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2022-10-24 10:28:38" itemprop="dateCreated datePublished" datetime="2022-10-24T10:28:38+08:00">2022-10-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E5%BC%80%E5%8F%91/C-%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">C-前端开发</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E5%BC%80%E5%8F%91/C-%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/Vue2/" itemprop="url" rel="index"><span itemprop="name">Vue2</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="読書時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">読書時間 &asymp;</span>
+      <span>2 分</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul>
+<li>创建初始项目工程</li>
+<li>项目webpack配置</li>
+<li>webpack的mode选项</li>
+<li>配置项目的入口路径和输出文件</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="二-创建初始项目工程"><a href="#二-创建初始项目工程" class="headerlink" title="二 创建初始项目工程"></a>二 创建初始项目工程</h2><p>1- 新建vue-demo空文件夹</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty.png" loading="lazy"></p>
+<p>2- 使用VsCode打开此空白项目<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-vscode-open.png" loading="lazy"></p>
+<p>3-切换到终端控制台，执行如下指令，生成package.json</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-vscode-init.png" loading="lazy"></p>
+<p>4-执行如下的指令，安装webpack和cli</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install webpack  --save-dev</span><br><span class="line">npm install webpack-cli --save-dev</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-vscode-install.png" loading="lazy"></p>
+<p>说明：</p>
+<ul>
+<li>dependencies：开发和上线阶段都要用到；通过 -S 指定安装</li>
+<li>deveDependencies：只在开发阶段用到，上线用不到。通过 -D 指定安装</li>
+</ul>
+<p>5-新建src文件夹，用于存放项目文件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-vscode-src.png" loading="lazy"></p>
+<p>6-新建index.html和index.js项目文件<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-vscode-indexs-create.png" loading="lazy"></p>
+<p>7-通过插件新建html默认文件<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-vscode-index-default.png" loading="lazy"><br>8-通过插件创建9个列表<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-vscode-html-table.png" loading="lazy"></p>
+<p>9-通过如下指令，安装<code>jQuery</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jquery -S</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-vscode-install-jq.png" loading="lazy"></p>
+<p>10-在index.js中，使用ES6导入语法导入jQuery，实现奇数行红色，偶数行粉红色</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//1-使用ES6导入语法，导入jQuery</span><br><span class="line">import $ from &#x27;jquery&#x27;;</span><br><span class="line"></span><br><span class="line">//2.定义jQuery的入口函数</span><br><span class="line">$(function name() &#123;</span><br><span class="line">    //3.实现奇偶行变色效果</span><br><span class="line">    $(&#x27;li:odd&#x27;).css(&#x27;background-color&#x27;,&#x27;red&#x27;) //奇数行</span><br><span class="line">    $(&#x27;li:even&#x27;).css(&#x27;background-color&#x27;,&#x27;pink&#x27;) //偶数行</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>11-在index.html中导入index.js，预览项目效果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;./index.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-vscode-html-preview-first.png" loading="lazy"></p>
+<p>说明：语法报错；使用ES6中的高级语法，不支持</p>
+<h2 id="三-项目webpack配置-webpack-config-js"><a href="#三-项目webpack配置-webpack-config-js" class="headerlink" title="三 项目webpack配置-webpack.config.js"></a>三 项目webpack配置-webpack.config.js</h2><h3 id="3-1-在项目根目录中创建名为webpack-config-js配置文件"><a href="#3-1-在项目根目录中创建名为webpack-config-js配置文件" class="headerlink" title="3.1 在项目根目录中创建名为webpack.config.js配置文件"></a>3.1 在项目根目录中创建名为<code>webpack.config.js</code>配置文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    mode: &#x27;development&#x27; //mode 用来指定构建模式。可选值有 development 和 production</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-config-webpack-mode.png" loading="lazy"></p>
+<h3 id="3-2-在package-json的scripts节点下，新增dev脚本"><a href="#3-2-在package-json的scripts节点下，新增dev脚本" class="headerlink" title="3.2 在package.json的scripts节点下，新增dev脚本"></a>3.2 在package.json的scripts节点下，新增dev脚本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;dev&quot;: &quot;webpack&quot;,</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-config-scripts-dev.png" loading="lazy"></p>
+<p>说明：scripts节点下的脚本，可以通过npm run执行，例如npm run dev</p>
+<h3 id="3-3-在终端中运行npm-run-dev命令，启动webpack进行项目的打包构建"><a href="#3-3-在终端中运行npm-run-dev命令，启动webpack进行项目的打包构建" class="headerlink" title="3.3 在终端中运行npm run dev命令，启动webpack进行项目的打包构建"></a>3.3 在终端中运行npm run dev命令，启动webpack进行项目的打包构建</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-config-run-dev.png" loading="lazy"></p>
+<p>说明：执行成功后，dist目录下生成main.js文件。将index.html中的index.js替换为main.js后，预览成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- &lt;script src=&quot;./index.js&quot;&gt;&lt;/script&gt; --&gt;</span><br><span class="line">&lt;script src=&quot;../dist/main.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-config-run-dev-suc.png" loading="lazy"></p>
+<h2 id="四-webpack的mode选项"><a href="#四-webpack的mode选项" class="headerlink" title="四 webpack的mode选项"></a>四 webpack的mode选项</h2><h3 id="4-1-mode的可选值"><a href="#4-1-mode的可选值" class="headerlink" title="4.1 mode的可选值"></a>4.1 mode的可选值</h3><p>mode节点的可选值有两个，分别是：</p>
+<h4 id="development"><a href="#development" class="headerlink" title="development"></a>development</h4><ul>
+<li>开发环境</li>
+<li>不会对打包生成的文件进行代码压缩和性能优化</li>
+<li>打包速度快，适合在开发阶段使用</li>
+</ul>
+<h4 id="production"><a href="#production" class="headerlink" title="production"></a>production</h4><ul>
+<li>生产环境</li>
+<li>会对打包生成的文件进行代码压缩和性能优化</li>
+<li>打包速度很慢，仅适合在项目发布阶段使用</li>
+</ul>
+<h3 id="4-2-效果对比"><a href="#4-2-效果对比" class="headerlink" title="4.2 效果对比"></a>4.2 效果对比</h3><table>
+<thead>
+<tr>
+<th align="center">development</th>
+<th align="center">production</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-mode-development.png" loading="lazy"></td>
+<td align="center"><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-mode-production.png" loading="lazy"></td>
+</tr>
+</tbody></table>
+<p>说明：</p>
+<ul>
+<li>development：大小为325kb，编译速度快</li>
+<li>production：大小为88.5kb，编译速度慢</li>
+</ul>
+<h2 id="五-配置项目的入口路径和输出文件"><a href="#五-配置项目的入口路径和输出文件" class="headerlink" title="五 配置项目的入口路径和输出文件"></a>五 配置项目的入口路径和输出文件</h2><h3 id="5-1-webpack中的默认约定"><a href="#5-1-webpack中的默认约定" class="headerlink" title="5.1 webpack中的默认约定"></a>5.1 webpack中的默认约定</h3><p>在webpack 4.x和5.x的版本中，有如下的默认约定</p>
+<ul>
+<li>默认的打包入口文件为src—&gt;index.js</li>
+<li>默认的输出文件路径为dist—&gt;main.js</li>
+</ul>
+<p>注意：可以在webpack.config.js中修改打包的默认约定</p>
+<h3 id="5-2-错误演示"><a href="#5-2-错误演示" class="headerlink" title="5.2 错误演示"></a>5.2 错误演示</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-config-output-error.png" loading="lazy"></p>
+<p>说明：将index.js修改为index1.js后，出现上述错误</p>
+<h3 id="5-2-自定义打包的入口与出口"><a href="#5-2-自定义打包的入口与出口" class="headerlink" title="5.2 自定义打包的入口与出口"></a>5.2 自定义打包的入口与出口</h3><p>在webpack.config.js配置文件中，通过entry节点指定打包的入口。通过output节点指定打包的出口。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&#x27;path&#x27;) //导入node.js中专门操作路径的模块</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    entry: path.join(__dirname, &#x27;./src/index1.js&#x27;), //打包入口文件的路径</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.join(__dirname, &#x27;./dist&#x27;), //输出文件的存放路径</span><br><span class="line">        filename: &#x27;bundle.js&#x27;//输出文件的名称</span><br><span class="line">    &#125;,</span><br><span class="line">    mode: &#x27;development&#x27; //mode 用来指定构建模式。可选值有 development 和 production</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-vue/vue2-02-vue-demo-empty-config-output-suc.png" loading="lazy"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/ja/tags/Vue2/" rel="tag"># Vue2</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ja/posts/873db7ef.html" rel="prev" title="Vue2.0开发之——webpack基础-了解webpack(01)">
+                  <i class="fa fa-angle-left"></i> Vue2.0开发之——webpack基础-了解webpack(01)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ja/posts/3c40e5fa.html" rel="next" title="标日中级上册——第5课-商品紹介-会话">
+                  标日中级上册——第5课-商品紹介-会话 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"2e55170f37f2d90865bc2bfb6cf2b29e"}</script>
+<script src="/ja/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

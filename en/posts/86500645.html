@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="介绍热修复之前，我们先看下InstantRun  一 InstantRun不得不说InstantRun真是个好东西。目前主流的热修复框架都有或多或少的参考InstantRun的某些技术点。我们知道，InstantRun对应三种更新机制：  冷插拔：我们称之为重启更新机制 温插拔：我们称之为重启Activity更新机制，在重启的时候替换Application的classLoader来加载dex 热插">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发之——美团Robus热修复">
+<meta property="og:url" content="https://pgzxc.github.io/posts/86500645.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="介绍热修复之前，我们先看下InstantRun  一 InstantRun不得不说InstantRun真是个好东西。目前主流的热修复框架都有或多或少的参考InstantRun的某些技术点。我们知道，InstantRun对应三种更新机制：  冷插拔：我们称之为重启更新机制 温插拔：我们称之为重启Activity更新机制，在重启的时候替换Application的classLoader来加载dex 热插">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-fix.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-app.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-build-classpath.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-app-compile.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-sign-config.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-minify.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-xml.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-package.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-gradlew-clean.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/new-robust.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-before.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-coppy.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-modity-before.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-modity-after.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/app-plug-patch.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-patch-succes.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-patch-jar.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-sdcard-robust.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/adb-push.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/patch-already.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-hot-after.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/click-patch.png">
+<meta property="article:published_time" content="2017-12-26T13:10:23.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:04.773Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="热修复">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-fix.png">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/86500645.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/86500645.html","path":"posts/86500645.html","title":"Android开发之——美团Robus热修复"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android开发之——美团Robus热修复 | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-InstantRun"><span class="nav-number">1.</span> <span class="nav-text">一 InstantRun</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E4%BC%98%E5%8A%BF"><span class="nav-number">2.</span> <span class="nav-text">二 优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E6%B5%81%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">三 流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E9%9B%86%E6%88%90%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 集成流程图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E9%9B%86%E6%88%90%E8%BF%87%E7%A8%8B"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 集成过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%8A%E9%A1%B9%E7%9B%AE%E4%B8%8B%E8%BD%BD%E5%88%B0%E6%9C%AC%E5%9C%B0%E5%B9%B6%E8%A7%A3%E5%8E%8B"><span class="nav-number">3.2.1.</span> <span class="nav-text">把项目下载到本地并解压</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E6%95%B4%E4%B8%AA%E9%A1%B9%E7%9B%AE%E7%9A%84build-gradle%E5%8A%A0%E5%85%A5classpath"><span class="nav-number">3.2.2.</span> <span class="nav-text">在整个项目的build.gradle加入classpath</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8App%E7%9A%84build-gradle%EF%BC%8C%E5%8A%A0%E5%85%A5%E5%A6%82%E4%B8%8B%E4%BE%9D%E8%B5%96"><span class="nav-number">3.2.3.</span> <span class="nav-text">在App的build.gradle，加入如下依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%8F%91release%E7%89%88%E6%9C%AC-%E6%8A%8A%E7%AD%BE%E5%90%8D%E6%96%87%E4%BB%B6%E5%9C%A8gradle%E4%B8%AD%E5%86%99%E5%A5%BD"><span class="nav-number">3.2.4.</span> <span class="nav-text">项目发release版本,把签名文件在gradle中写好</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%90%AFproguard%E6%B7%B7%E6%B7%86%E5%BC%80%E5%85%B3%EF%BC%8Crobust%E5%81%9A%E4%BA%86%E6%B7%B7%E6%B7%86%E6%96%87%E4%BB%B6%E5%92%8C%E4%BB%A3%E7%A0%81%E7%9A%84%E6%98%A0%E5%B0%84"><span class="nav-number">3.3.</span> <span class="nav-text">开启proguard混淆开关，robust做了混淆文件和代码的映射</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%86robust%E9%A1%B9%E7%9B%AE%E6%BA%90%E7%A0%81%E4%B8%AD%E7%9A%84app-src-robust-xml%E6%8B%B7%E8%B4%9D%E5%88%B0%E8%87%AA%E5%B7%B1%E9%A1%B9%E7%9B%AE%E4%B8%8B%E7%9A%84app-src%E8%B7%AF%E5%BE%84%E4%B8%8B"><span class="nav-number">3.3.1.</span> <span class="nav-text">将robust项目源码中的app&#x2F;src&#x2F;robust.xml拷贝到自己项目下的app&#x2F;src路径下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%93%E5%BC%80robust-xml%EF%BC%8C%E5%B0%86%E8%A6%81%E4%BF%AE%E6%94%B9%E7%9A%84%E5%8C%85%E5%90%8D%E6%8D%A2%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8C%85%E5%90%8D"><span class="nav-number">3.3.2.</span> <span class="nav-text">打开robust.xml，将要修改的包名换成自己的包名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%A7%E8%A1%8Cgradle%E5%91%BD%E4%BB%A4"><span class="nav-number">3.3.3.</span> <span class="nav-text">执行gradle命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8app%E4%B8%8B%E6%96%B0%E5%BB%BArobust%E7%9B%AE%E5%BD%95%EF%BC%8C%E5%B9%B6%E5%B0%86app-build-outputs%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E4%BC%9A%E7%94%9F%E6%88%90mapping-txt-methodsMap-robust%E6%96%87%E4%BB%B6%EF%BC%8C%E5%B0%86%E4%BB%96%E4%BB%AC%E6%8B%B7%E8%B4%9D%E5%88%B0app-robust%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%AD%E4%BF%9D%E5%AD%98"><span class="nav-number">3.3.4.</span> <span class="nav-text">在app下新建robust目录，并将app&#x2F;build&#x2F;outputs文件夹下会生成mapping.txt,methodsMap.robust文件，将他们拷贝到app&#x2F;robust文件夹中保存</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E4%BF%AE%E6%94%B9"><span class="nav-number">3.4.</span> <span class="nav-text">3.2 修改</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%88%E7%9C%8B%E4%B8%8B%E7%83%AD%E4%BF%AE%E5%A4%8D%E4%B9%8B%E5%89%8D%E7%9A%84%E6%83%85%E5%86%B5"><span class="nav-number">3.4.1.</span> <span class="nav-text">先看下热修复之前的情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%AC%AC%E4%BA%8C%E4%B8%AAActivity%E4%B8%AD%E4%BB%A3%E7%A0%81"><span class="nav-number">3.4.2.</span> <span class="nav-text">修改第二个Activity中代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E7%94%9F%E6%88%90Patch%E6%96%87%E4%BB%B6"><span class="nav-number">3.5.</span> <span class="nav-text">3.3 生成Patch文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8app%E7%9A%84build-gradle%E4%B8%AD%EF%BC%8C%E6%B3%A8%E9%87%8A%E6%8E%89robust%E6%8F%92%E4%BB%B6%EF%BC%8C%E6%89%93%E5%BC%80auto-patch-plugin%E6%8F%92%E4%BB%B6"><span class="nav-number">3.5.1.</span> <span class="nav-text">在app的build.gradle中，注释掉robust插件，打开auto-patch-plugin插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%8D%E4%B8%80%E6%AC%A1%E6%89%A7%E8%A1%8C%E6%89%93%E5%8C%85%E5%91%BD%E4%BB%A4"><span class="nav-number">3.5.2.</span> <span class="nav-text">再一次执行打包命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8sd%E5%8D%A1%E4%B8%8B%E6%96%B0%E5%BB%BArobust%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E7%94%A8%E4%BA%8E%E5%AD%98%E6%94%BEpatch%E8%A1%A5%E4%B8%81%E6%96%87%E4%BB%B6"><span class="nav-number">3.5.3.</span> <span class="nav-text">在sd卡下新建robust文件夹，用于存放patch补丁文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%A7%E8%A1%8Cpush%E5%91%BD%E4%BB%A4%EF%BC%8C%E5%B0%86%E6%9C%AC%E5%9C%B0patch%E6%94%BE%E5%85%A5%E6%89%8B%E6%9C%BA%E6%96%B0%E5%BB%BA%E7%9A%84robust%E6%96%87%E4%BB%B6%E5%A4%B9%E5%86%85"><span class="nav-number">3.5.4.</span> <span class="nav-text">执行push命令，将本地patch放入手机新建的robust文件夹内</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E7%BB%93%E6%9E%9C"><span class="nav-number">3.6.</span> <span class="nav-text">3.4 结果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E5%90%8E%E4%B8%80%E6%AD%A5%EF%BC%8C%E7%82%B9%E5%87%BB%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%8C%89%E9%92%AE%EF%BC%8C%E5%86%8D%E7%82%B9%E5%87%BB%E8%B7%B3%E8%BD%AC%E5%88%B0%E7%AC%AC%E4%BA%8C%E4%B8%AA%E6%8C%89%E9%92%AE%E3%80%82%E5%85%88%E7%9C%8B%E6%95%88%E6%9E%9C%EF%BC%8C%E6%98%BE%E7%A4%BA%E7%9A%84%E5%86%85%E5%AE%B9%E4%BC%9A%E5%8F%91%E7%94%9F%E5%8F%98%E5%8C%96"><span class="nav-number">3.6.1.</span> <span class="nav-text">最后一步，点击第一个按钮，再点击跳转到第二个按钮。先看效果，显示的内容会发生变化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E5%8F%82%E8%80%83%EF%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">四 参考：</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/86500645.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android开发之——美团Robus热修复 | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android开发之——美团Robus热修复<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Android%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94%E7%BE%8E%E5%9B%A2Robus%E7%83%AD%E4%BF%AE%E5%A4%8D.md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2017-12-26 21:10:23" itemprop="dateCreated datePublished" datetime="2017-12-26T21:10:23+08:00">2017-12-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E5%BC%80%E5%8F%91/D-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">D-移动开发</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E5%BC%80%E5%8F%91/D-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>2 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>介绍热修复之前，我们先看下InstantRun </p>
+<h2 id="一-InstantRun"><a href="#一-InstantRun" class="headerlink" title="一 InstantRun"></a>一 InstantRun</h2><p>不得不说InstantRun真是个好东西。目前主流的热修复框架都有或多或少的参考InstantRun的某些技术点。<br>我们知道，InstantRun对应三种更新机制：</p>
+<ul>
+<li>冷插拔：我们称之为重启更新机制</li>
+<li>温插拔：我们称之为重启Activity更新机制，在重启的时候替换Application的classLoader来加载dex</li>
+<li>热插拔：我们称之为热更新机制是新建classLoader来加载dex</li>
+</ul>
+<p>Robus，其热修复的关键技术点就是采用了InstantRun中的热更新机制，对应于多ClassLoader的动态加载方案，即一个dex文件对应一个新建ClassLoader</p>
+<span id="more"></span>
+<h2 id="二-优势"><a href="#二-优势" class="headerlink" title="二 优势"></a>二 优势</h2><ul>
+<li>支持Android2.3-7.x版本</li>
+<li>高兼容性，高稳定性，修复成功率高达三个九</li>
+<li>补丁下发立即生效，不需要重新启动</li>
+<li>支持方法级别的修复，包括静态方法</li>
+<li>支持增加方法和类</li>
+<li>支持ProGuard的混淆、内联、优化等操作</li>
+</ul>
+<h2 id="三-流程"><a href="#三-流程" class="headerlink" title="三 流程"></a>三 流程</h2><h3 id="3-1-集成流程图"><a href="#3-1-集成流程图" class="headerlink" title="3.1 集成流程图"></a>3.1 集成流程图</h3><p>我们先看集成流程图<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-fix.png" alt="robust-fix" loading="lazy"><br>美团热修复官方地址：<a target="_blank" rel="noopener" href="https://github.com/Meituan-Dianping/Robust">Robust</a></p>
+<h3 id="3-2-集成过程"><a href="#3-2-集成过程" class="headerlink" title="3.2 集成过程"></a>3.2 集成过程</h3><h4 id="把项目下载到本地并解压"><a href="#把项目下载到本地并解压" class="headerlink" title="把项目下载到本地并解压"></a>把项目下载到本地并解压</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-app.png" loading="lazy"></p>
+<h4 id="在整个项目的build-gradle加入classpath"><a href="#在整个项目的build-gradle加入classpath" class="headerlink" title="在整个项目的build.gradle加入classpath"></a>在整个项目的build.gradle加入classpath</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">classpath &#x27;com.meituan.robust:gradle-plugin:0.4.72&#x27;</span><br><span class="line">classpath &#x27;com.meituan.robust:auto-patch-plugin:0.4.72&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-build-classpath.png" loading="lazy"></p>
+<h4 id="在App的build-gradle，加入如下依赖"><a href="#在App的build-gradle，加入如下依赖" class="headerlink" title="在App的build.gradle，加入如下依赖"></a>在App的build.gradle，加入如下依赖</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile &#x27;com.meituan.robust:robust:0.4.72&#x27;</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-app-compile.png" loading="lazy"></p>
+<p>同时添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//apply plugin: &#x27;auto-patch-plugin&#x27;</span><br><span class="line">apply plugin: &#x27;robust&#x27;</span><br></pre></td></tr></table></figure>
+
+<h4 id="项目发release版本-把签名文件在gradle中写好"><a href="#项目发release版本-把签名文件在gradle中写好" class="headerlink" title="项目发release版本,把签名文件在gradle中写好"></a>项目发release版本,把签名文件在gradle中写好</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-sign-config.png" loading="lazy"></p>
+<h3 id="开启proguard混淆开关，robust做了混淆文件和代码的映射"><a href="#开启proguard混淆开关，robust做了混淆文件和代码的映射" class="headerlink" title="开启proguard混淆开关，robust做了混淆文件和代码的映射"></a>开启proguard混淆开关，robust做了混淆文件和代码的映射</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-minify.png" loading="lazy"></p>
+<h4 id="将robust项目源码中的app-src-robust-xml拷贝到自己项目下的app-src路径下"><a href="#将robust项目源码中的app-src-robust-xml拷贝到自己项目下的app-src路径下" class="headerlink" title="将robust项目源码中的app&#x2F;src&#x2F;robust.xml拷贝到自己项目下的app&#x2F;src路径下"></a>将robust项目源码中的app&#x2F;src&#x2F;robust.xml拷贝到自己项目下的app&#x2F;src路径下</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-xml.png" loading="lazy"></p>
+<h4 id="打开robust-xml，将要修改的包名换成自己的包名"><a href="#打开robust-xml，将要修改的包名换成自己的包名" class="headerlink" title="打开robust.xml，将要修改的包名换成自己的包名"></a>打开robust.xml，将要修改的包名换成自己的包名</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-package.png" loading="lazy"></p>
+<h4 id="执行gradle命令"><a href="#执行gradle命令" class="headerlink" title="执行gradle命令"></a>执行gradle命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew clean  assembleRelease --stacktrace --no-daemon</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-gradlew-clean.png" loading="lazy"></p>
+<h4 id="在app下新建robust目录，并将app-build-outputs文件夹下会生成mapping-txt-methodsMap-robust文件，将他们拷贝到app-robust文件夹中保存"><a href="#在app下新建robust目录，并将app-build-outputs文件夹下会生成mapping-txt-methodsMap-robust文件，将他们拷贝到app-robust文件夹中保存" class="headerlink" title="在app下新建robust目录，并将app&#x2F;build&#x2F;outputs文件夹下会生成mapping.txt,methodsMap.robust文件，将他们拷贝到app&#x2F;robust文件夹中保存"></a>在app下新建robust目录，并将app&#x2F;build&#x2F;outputs文件夹下会生成mapping.txt,methodsMap.robust文件，将他们拷贝到app&#x2F;robust文件夹中保存</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/new-robust.png" loading="lazy"><br>methodMap.robust，该文件在打补丁的时候用来区别到底哪些方法需要被修复，所以有它才能打补丁。而上文所说的还有mapping.txt文件，该文件列出了原始的类，方法和字段名与混淆后代码间的映射。   </p>
+<h3 id="3-2-修改"><a href="#3-2-修改" class="headerlink" title="3.2 修改"></a>3.2 修改</h3><h4 id="先看下热修复之前的情况"><a href="#先看下热修复之前的情况" class="headerlink" title="先看下热修复之前的情况"></a>先看下热修复之前的情况</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-before.gif" loading="lazy"><br>功能很简单，第二个按钮跳转到第二个Activity。第一个按钮加载一会儿生成的patch文件。跳转代码如下 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">findViewById(R.id.btn_load_patch).setOnClickListener(view-&gt;</span><br><span class="line">                new PatchExecutor(this,new PatchManipulateImp(),new RobustCallBackSample()).start());</span><br><span class="line">findViewById(R.id.btn_start_second).setOnClickListener(view-&gt;startActivity(new Intent(this, SecondActivity.class)));</span><br></pre></td></tr></table></figure>
+
+<p>其中，PatchManipulateImp和RobustCallBackSample都是从解压文件拷贝过来的。<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-coppy.png" loading="lazy"><br>这里一定要注意:<br>PatchesInfoImpl类中的setPatchesInfoImplClassFullName包名要和robust.xml中<package>节点下的包名对应</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">patch.setPatchesInfoImplClassFullName(&quot;com.example.robustsample.PatchesInfoImpl&quot;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改第二个Activity中代码"><a href="#修改第二个Activity中代码" class="headerlink" title="修改第二个Activity中代码"></a>修改第二个Activity中代码</h4><p>修改前<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-modity-before.png" loading="lazy"><br>修改后<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-modity-after.png" loading="lazy"></p>
+<h3 id="3-3-生成Patch文件"><a href="#3-3-生成Patch文件" class="headerlink" title="3.3 生成Patch文件"></a>3.3 生成Patch文件</h3><h4 id="在app的build-gradle中，注释掉robust插件，打开auto-patch-plugin插件"><a href="#在app的build-gradle中，注释掉robust插件，打开auto-patch-plugin插件" class="headerlink" title="在app的build.gradle中，注释掉robust插件，打开auto-patch-plugin插件"></a>在app的build.gradle中，注释掉robust插件，打开auto-patch-plugin插件</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/app-plug-patch.png" loading="lazy"></p>
+<h4 id="再一次执行打包命令"><a href="#再一次执行打包命令" class="headerlink" title="再一次执行打包命令"></a>再一次执行打包命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradlew clean  assembleRelease --stacktrace --no-daemon</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-patch-succes.png" loading="lazy"><br>看到build false，但是patch已经成功，patch文件的路径为：<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-patch-jar.png" loading="lazy"></p>
+<h4 id="在sd卡下新建robust文件夹，用于存放patch补丁文件"><a href="#在sd卡下新建robust文件夹，用于存放patch补丁文件" class="headerlink" title="在sd卡下新建robust文件夹，用于存放patch补丁文件"></a>在sd卡下新建robust文件夹，用于存放patch补丁文件</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-sdcard-robust.png" loading="lazy"></p>
+<h4 id="执行push命令，将本地patch放入手机新建的robust文件夹内"><a href="#执行push命令，将本地patch放入手机新建的robust文件夹内" class="headerlink" title="执行push命令，将本地patch放入手机新建的robust文件夹内"></a>执行push命令，将本地patch放入手机新建的robust文件夹内</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb push app/build/outputs/robust/patch.jar /sdcard/robust</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/adb-push.png" loading="lazy"><br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/patch-already.png" loading="lazy"><br>当然也可以拖动到Download，再移动到指定目录下  </p>
+<h3 id="3-4-结果"><a href="#3-4-结果" class="headerlink" title="3.4 结果"></a>3.4 结果</h3><h4 id="最后一步，点击第一个按钮，再点击跳转到第二个按钮。先看效果，显示的内容会发生变化"><a href="#最后一步，点击第一个按钮，再点击跳转到第二个按钮。先看效果，显示的内容会发生变化" class="headerlink" title="最后一步，点击第一个按钮，再点击跳转到第二个按钮。先看效果，显示的内容会发生变化"></a>最后一步，点击第一个按钮，再点击跳转到第二个按钮。先看效果，显示的内容会发生变化</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/robust-hot-after.gif" loading="lazy"><br>其中点击加载patch文件时，返回true，表示已修复成功<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/click-patch.png" loading="lazy"></p>
+<h2 id="四-参考："><a href="#四-参考：" class="headerlink" title="四 参考："></a>四 参考：</h2><p><a target="_blank" rel="noopener" href="https://github.com/xingege662/robustDemo">robustDemo</a><br><a target="_blank" rel="noopener" href="https://github.com/PGzxc/RobustSample">RobustSample</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/%E7%83%AD%E4%BF%AE%E5%A4%8D/" rel="tag"># 热修复</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/d9faa022.html" rel="prev" title="Android开发之——Lottie动画">
+                  <i class="fa fa-angle-left"></i> Android开发之——Lottie动画
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/15e207bb.html" rel="next" title="Android开发之——腾讯热修复Tinker初探">
+                  Android开发之——腾讯热修复Tinker初探 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"a6169c087536a12bcb8f1f3cde6a8ebd"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

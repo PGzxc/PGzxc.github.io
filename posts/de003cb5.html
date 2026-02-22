@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述 SQL语句 SQL表格操作 SQL数据操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IOS开发之——数据库-常见操作(02)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/de003cb5.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 概述 SQL语句 SQL表格操作 SQL数据操作">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-table-new-query.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-create-table.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-create-table-result.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-drop-table-result.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-insert-table.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-update-table.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-delete-table.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-select-table-result.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-where-table.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-othername-table-result.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-count-table-result.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-orderby-table.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-property-table.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-primary-key-table-result.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-forgain-table-class.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-forgain-table-student-property.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-forgain-table-student.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-forgain-table-class-values.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-forgain-table-student-values.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-join-table-class.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-join-table-student.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-join-table-result.png">
+<meta property="article:published_time" content="2022-04-22T07:47:31.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.296Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="IOS">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-table-new-query.png">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/de003cb5.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/de003cb5.html","path":"posts/de003cb5.html","title":"IOS开发之——数据库-常见操作(02)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>IOS开发之——数据库-常见操作(02) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-SQL%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.</span> <span class="nav-text">二 SQL语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-SQL%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 SQL语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSQL"><span class="nav-number">2.1.1.</span> <span class="nav-text">什么是SQL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSQL%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.1.2.</span> <span class="nav-text">什么是SQL语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL%E8%AF%AD%E5%8F%A5%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">2.1.3.</span> <span class="nav-text">SQL语句的特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">2.1.4.</span> <span class="nav-text">SQL中的常用关键字</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-SQL%E8%AF%AD%E5%8F%A5%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 SQL语句的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%AE%9A%E4%B9%89%E8%AF%AD%E5%8F%A5%EF%BC%88DDL%EF%BC%9AData-Definition-Language%EF%BC%89"><span class="nav-number">2.2.1.</span> <span class="nav-text">数据定义语句（DDL：Data Definition Language）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E8%AF%AD%E5%8F%A5%EF%BC%88DML%EF%BC%9AData-Manipulation-Language"><span class="nav-number">2.2.2.</span> <span class="nav-text">数据操作语句（DML：Data Manipulation Language</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%EF%BC%88DQL%EF%BC%9AData-Query-Language%EF%BC%89"><span class="nav-number">2.2.3.</span> <span class="nav-text">数据查询语句（DQL：Data Query Language）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-SQL%E8%A1%A8%E6%A0%BC%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">三 SQL表格操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%88%9B%E5%BB%BA%E8%A1%A8%E6%A0%BC"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 创建表格</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F"><span class="nav-number">3.1.1.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">3.1.2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E8%BF%87%E7%A8%8B"><span class="nav-number">3.1.3.</span> <span class="nav-text">操作过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%88%A0%E9%99%A4%E8%A1%A8%E6%A0%BC"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 删除表格</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E8%BF%87%E7%A8%8B-1"><span class="nav-number">3.2.3.</span> <span class="nav-text">操作过程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-SQL%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">四 SQL数据操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE-insert"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 插入数据(insert)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F-2"><span class="nav-number">4.1.1.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%94%A8%E5%8D%95%E5%BC%95%E5%8F%B7"><span class="nav-number">4.1.2.</span> <span class="nav-text">示例(字符串用单引号)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E8%BF%87%E7%A8%8B-2"><span class="nav-number">4.1.3.</span> <span class="nav-text">操作过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE-update"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 更新数据(update)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F-3"><span class="nav-number">4.2.1.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-%E8%AE%BE%E7%BD%AE%E5%A4%9A%E4%B8%AA%E5%AD%97%E6%AE%B5%EF%BC%8C%E7%94%A8%E9%80%97%E5%8F%B7%E8%BF%9E%E6%8E%A5"><span class="nav-number">4.2.2.</span> <span class="nav-text">示例(设置多个字段，用逗号连接)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E8%BF%87%E7%A8%8B-3"><span class="nav-number">4.2.3.</span> <span class="nav-text">操作过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E5%88%A0%E9%99%A4%E8%A1%A8%E6%A0%BC-delete"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 删除表格(delete)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F-4"><span class="nav-number">4.3.1.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-%E5%88%A0%E9%99%A4%E8%A1%A8%E6%A0%BC%E8%AE%B0%E5%BD%95%EF%BC%8C%E4%B8%8D%E6%98%AF%E8%A1%A8%E6%A0%BC%E6%9C%AC%E8%BA%AB"><span class="nav-number">4.3.2.</span> <span class="nav-text">示例(删除表格记录，不是表格本身)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E8%BF%87%E7%A8%8B-4"><span class="nav-number">4.3.3.</span> <span class="nav-text">操作过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5-select"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 查询语句(select)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F-5"><span class="nav-number">4.4.1.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="nav-number">4.4.2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E8%BF%87%E7%A8%8B-5"><span class="nav-number">4.4.3.</span> <span class="nav-text">操作过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5-where"><span class="nav-number">4.5.</span> <span class="nav-text">4.5 条件语句(where)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5%E7%9A%84%E5%B8%B8%E8%A7%81%E6%A0%BC%E5%BC%8F"><span class="nav-number">4.5.1.</span> <span class="nav-text">条件语句的常见格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-3"><span class="nav-number">4.5.2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E8%BF%87%E7%A8%8B-6"><span class="nav-number">4.5.3.</span> <span class="nav-text">操作过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-%E8%B5%B7%E5%88%AB%E5%90%8D"><span class="nav-number">4.6.</span> <span class="nav-text">4.6 起别名</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F-6"><span class="nav-number">4.6.1.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-4"><span class="nav-number">4.6.2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E8%BF%87%E7%A8%8B-7"><span class="nav-number">4.6.3.</span> <span class="nav-text">操作过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-7-%E8%AE%A1%E7%AE%97%E8%AE%B0%E5%BD%95%E6%95%B0%E9%87%8F-count"><span class="nav-number">4.7.</span> <span class="nav-text">4.7 计算记录数量(count)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F-7"><span class="nav-number">4.7.1.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-5"><span class="nav-number">4.7.2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E8%BF%87%E7%A8%8B-8"><span class="nav-number">4.7.3.</span> <span class="nav-text">操作过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-8-%E6%8E%92%E5%BA%8F-order-by"><span class="nav-number">4.8.</span> <span class="nav-text">4.8 排序(order by)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F-8"><span class="nav-number">4.8.1.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-6"><span class="nav-number">4.8.2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E8%BF%87%E7%A8%8B-9"><span class="nav-number">4.8.3.</span> <span class="nav-text">操作过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-9-%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2-limit"><span class="nav-number">4.9.</span> <span class="nav-text">4.9 分页查询(limit)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F-9"><span class="nav-number">4.9.1.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-%E8%B7%B3%E8%BF%87%E6%9C%80%E5%89%8D%E9%9D%A24%E6%9D%A1%E8%AF%AD%E5%8F%A5%EF%BC%8C%E7%84%B6%E5%90%8E%E5%8F%968%E6%9D%A1%E8%AE%B0%E5%BD%95"><span class="nav-number">4.9.2.</span> <span class="nav-text">示例(跳过最前面4条语句，然后取8条记录)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#limit%E5%90%8E%E9%9D%A2%E5%8F%AA%E6%9C%89%E4%B8%80%E4%B8%AA%E6%95%B0%E5%80%BC"><span class="nav-number">4.9.3.</span> <span class="nav-text">limit后面只有一个数值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-10-%E5%AD%97%E6%AE%B5%E5%B1%9E%E6%80%A7%E7%BA%A6%E6%9D%9F-not-null%E3%80%81unique%E3%80%81default"><span class="nav-number">4.10.</span> <span class="nav-text">4.10 字段属性约束(not null、unique、default)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%A6%E6%9D%9F%E8%AF%B4%E6%98%8E"><span class="nav-number">4.10.1.</span> <span class="nav-text">约束说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-name%E5%AD%97%E6%AE%B5%E4%B8%8D%E8%83%BD%E4%B8%BAnull%EF%BC%8C%E5%B9%B6%E4%B8%94%E5%94%AF%E4%B8%80%EF%BC%8Cage%E5%AD%97%E6%AE%B5%E4%B8%8D%E8%83%BD%E4%B8%BAnull%EF%BC%8C%E5%B9%B6%E4%B8%94%E9%BB%98%E8%AE%A4%E4%B8%BA18"><span class="nav-number">4.10.2.</span> <span class="nav-text">示例(name字段不能为null，并且唯一，age字段不能为null，并且默认为18)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E8%BF%87%E7%A8%8B-10"><span class="nav-number">4.10.3.</span> <span class="nav-text">操作过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-11-%E4%B8%BB%E9%94%AE%E7%BA%A6%E6%9D%9F-primary-key"><span class="nav-number">4.11.</span> <span class="nav-text">4.11 主键约束(primary key)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%BB%E9%94%AE"><span class="nav-number">4.11.1.</span> <span class="nav-text">什么是主键</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E9%94%AE%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="nav-number">4.11.2.</span> <span class="nav-text">主键的设计原则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-7"><span class="nav-number">4.11.3.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E8%BF%87%E7%A8%8B-11"><span class="nav-number">4.11.4.</span> <span class="nav-text">操作过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-12-%E5%A4%96%E9%94%AE%E7%BA%A6%E6%9D%9F-foreign-key"><span class="nav-number">4.12.</span> <span class="nav-text">4.12 外键约束(foreign key)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%96%E9%94%AE%E8%AF%B4%E6%98%8E"><span class="nav-number">4.12.1.</span> <span class="nav-text">外键说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%96%E9%94%AE%E6%93%8D%E4%BD%9C"><span class="nav-number">4.12.2.</span> <span class="nav-text">外键操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#t-student%E7%9A%84DDL"><span class="nav-number">4.12.3.</span> <span class="nav-text">t_student的DDL</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-13-%E8%A1%A8%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2-%E5%86%85%E8%BF%9E%E6%8E%A5%E3%80%81%E5%A4%96%E8%BF%9E%E6%8E%A5"><span class="nav-number">4.13.</span> <span class="nav-text">4.13 表连接查询(内连接、外连接)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%A1%A8%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="nav-number">4.13.1.</span> <span class="nav-text">什么是表连接查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A8%E8%BF%9E%E6%8E%A5%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.13.2.</span> <span class="nav-text">表连接的类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B-8"><span class="nav-number">4.13.3.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C"><span class="nav-number">4.13.4.</span> <span class="nav-text">操作</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/de003cb5.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="IOS开发之——数据库-常见操作(02) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          IOS开发之——数据库-常见操作(02)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/IOS%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E5%BA%93-%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C-02.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-04-22 15:47:31" itemprop="dateCreated datePublished" datetime="2022-04-22T15:47:31+08:00">2022-04-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/D-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">D-移动开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/D-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/IOS/" itemprop="url" rel="index"><span itemprop="name">IOS</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul>
+<li>SQL语句</li>
+<li>SQL表格操作</li>
+<li>SQL数据操作</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="二-SQL语句"><a href="#二-SQL语句" class="headerlink" title="二 SQL语句"></a>二 SQL语句</h2><h3 id="2-1-SQL语句"><a href="#2-1-SQL语句" class="headerlink" title="2.1 SQL语句"></a>2.1 SQL语句</h3><h4 id="什么是SQL"><a href="#什么是SQL" class="headerlink" title="什么是SQL"></a>什么是SQL</h4><ul>
+<li>SQL（structured query language）：结构化查询语言</li>
+<li>SQL是一种对关系型数据库中的数据进行定义和操作的语言</li>
+<li>SQL语言简洁，语法简单，好学好用</li>
+</ul>
+<h4 id="什么是SQL语句"><a href="#什么是SQL语句" class="headerlink" title="什么是SQL语句"></a>什么是SQL语句</h4><ul>
+<li>使用SQL语言编写出来的句子\代码，就是SQL语句</li>
+<li>在程序运行过程中，要想操作（增删改查，CRUD）数据库中的数据，必须使用SQL语句</li>
+</ul>
+<h4 id="SQL语句的特点"><a href="#SQL语句的特点" class="headerlink" title="SQL语句的特点"></a>SQL语句的特点</h4><ul>
+<li>不区分大小写（比如数据库认为user和UsEr是一样的）</li>
+<li>每条语句都必须以分号 ; 结尾</li>
+<li>数据库中不可以使用关键字来命名表、字段</li>
+</ul>
+<h4 id="SQL中的常用关键字"><a href="#SQL中的常用关键字" class="headerlink" title="SQL中的常用关键字"></a>SQL中的常用关键字</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select、insert、update、delete、from、create、where、desc、order、by、group、table、alter、view、index等等</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-SQL语句的种类"><a href="#2-2-SQL语句的种类" class="headerlink" title="2.2 SQL语句的种类"></a>2.2 SQL语句的种类</h3><h4 id="数据定义语句（DDL：Data-Definition-Language）"><a href="#数据定义语句（DDL：Data-Definition-Language）" class="headerlink" title="数据定义语句（DDL：Data Definition Language）"></a>数据定义语句（DDL：Data Definition Language）</h4><ul>
+<li>包括create和drop等操作</li>
+<li>在数据库中创建新表或删除表（create table或 drop table）</li>
+</ul>
+<h4 id="数据操作语句（DML：Data-Manipulation-Language"><a href="#数据操作语句（DML：Data-Manipulation-Language" class="headerlink" title="数据操作语句（DML：Data Manipulation Language"></a>数据操作语句（DML：Data Manipulation Language</h4><ul>
+<li>包括insert、update、delete等操作</li>
+<li>上面的3种操作分别用于添加、修改、删除表中的数据</li>
+</ul>
+<h4 id="数据查询语句（DQL：Data-Query-Language）"><a href="#数据查询语句（DQL：Data-Query-Language）" class="headerlink" title="数据查询语句（DQL：Data Query Language）"></a>数据查询语句（DQL：Data Query Language）</h4><ul>
+<li>可以用于查询获得表中的数据</li>
+<li>关键字select是DQL（也是所有SQL）用得最多的操作</li>
+<li>其他DQL常用的关键字有where，order by，group by和having</li>
+</ul>
+<h2 id="三-SQL表格操作"><a href="#三-SQL表格操作" class="headerlink" title="三 SQL表格操作"></a>三 SQL表格操作</h2><p>本文介绍利用SQL语句创建表格和删除表格</p>
+<h3 id="3-1-创建表格"><a href="#3-1-创建表格" class="headerlink" title="3.1 创建表格"></a>3.1 创建表格</h3><h4 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">create table 表名 (字段名1 字段类型1, 字段名2 字段类型2, …) ;</span><br><span class="line">create table if not exists 表名 (字段名1 字段类型1, 字段名2 字段类型2, …) ;</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li><p>通过此方式创建表格，如果表格不存在则创建，存在则不再创建</p>
+</li>
+<li><p>SQLite将数据划分为以下几种存储类型：integer : 整型值、real : 浮点值、text : 文本字符串、blob : 二进制数据（比如文件）</p>
+</li>
+<li><p>实际上SQLite是无类型的，建表时声明啥类型或者不声明类型都可以，也就意味着创表语句可以这么写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table t_student(name, age);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table t_student (id integer, name text, age inetger, score real) ;</span><br></pre></td></tr></table></figure>
+
+<h4 id="操作过程"><a href="#操作过程" class="headerlink" title="操作过程"></a>操作过程</h4><p>在表格或Queries上右键，选择<code>New Query</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-table-new-query.png" loading="lazy"></p>
+<p>在文本框中输入示例语句</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-create-table.png" loading="lazy"></p>
+<p>点击run，执行表格创建语句，效果图如下(底部显示创建结果，Tables刷新后显示表格)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-create-table-result.png" loading="lazy"></p>
+<h3 id="3-2-删除表格"><a href="#3-2-删除表格" class="headerlink" title="3.2 删除表格"></a>3.2 删除表格</h3><h4 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">drop table 表名 ;</span><br><span class="line">drop table if exists 表名 ;</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop table if EXISTS t_student;</span><br></pre></td></tr></table></figure>
+
+<h4 id="操作过程-1"><a href="#操作过程-1" class="headerlink" title="操作过程"></a>操作过程</h4><p>同理，在<code>New Query</code>打开的窗口中，执行示例，删除表格</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-drop-table-result.png" loading="lazy"></p>
+<h2 id="四-SQL数据操作"><a href="#四-SQL数据操作" class="headerlink" title="四 SQL数据操作"></a>四 SQL数据操作</h2><p>本文介绍的数据操作有：插入数据(insert)、更新数据(update)、删除数据(delete)、查询语句(select)、条件语句(where)、起别名、计算记录数量(count)、排序(order by)、分页查询(limit)、字段属性约束(not null、unique、default)、主键约束(primary key)、外键约束(foreign key)、表连接查询(内连接、外连接)</p>
+<h3 id="4-1-插入数据-insert"><a href="#4-1-插入数据-insert" class="headerlink" title="4.1 插入数据(insert)"></a>4.1 插入数据(insert)</h3><h4 id="格式-2"><a href="#格式-2" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名 (字段1, 字段2, …) values (字段1的值, 字段2的值, …) ;</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例-字符串用单引号"><a href="#示例-字符串用单引号" class="headerlink" title="示例(字符串用单引号)"></a>示例(字符串用单引号)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO t_student(id,name,age,score) VALUES(1,&#x27;李四&#x27;,18,60.0);</span><br><span class="line">多行</span><br><span class="line">insert into t_student(id,name,age,score) VALUES</span><br><span class="line">(1,&#x27;张三&#x27;,18,60.0),</span><br><span class="line">(2,&#x27;李四&#x27;,19,61.0),</span><br><span class="line">(3,&#x27;王五&#x27;,20,62.0);</span><br></pre></td></tr></table></figure>
+
+<h4 id="操作过程-2"><a href="#操作过程-2" class="headerlink" title="操作过程"></a>操作过程</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-insert-table.png" loading="lazy"></p>
+<h3 id="4-2-更新数据-update"><a href="#4-2-更新数据-update" class="headerlink" title="4.2 更新数据(update)"></a>4.2 更新数据(update)</h3><h4 id="格式-3"><a href="#格式-3" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update 表名 set 字段1 = 字段1的值, 字段2 = 字段2的值, … ; </span><br></pre></td></tr></table></figure>
+
+<h4 id="示例-设置多个字段，用逗号连接"><a href="#示例-设置多个字段，用逗号连接" class="headerlink" title="示例(设置多个字段，用逗号连接)"></a>示例(设置多个字段，用逗号连接)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update t_student set name=&#x27;张三&#x27;,age=20;</span><br></pre></td></tr></table></figure>
+
+<h4 id="操作过程-3"><a href="#操作过程-3" class="headerlink" title="操作过程"></a>操作过程</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-update-table.png" loading="lazy"></p>
+<h3 id="4-3-删除表格-delete"><a href="#4-3-删除表格-delete" class="headerlink" title="4.3 删除表格(delete)"></a>4.3 删除表格(delete)</h3><h4 id="格式-4"><a href="#格式-4" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from 表名 ;</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例-删除表格记录，不是表格本身"><a href="#示例-删除表格记录，不是表格本身" class="headerlink" title="示例(删除表格记录，不是表格本身)"></a>示例(删除表格记录，不是表格本身)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from t_student;</span><br></pre></td></tr></table></figure>
+
+<h4 id="操作过程-4"><a href="#操作过程-4" class="headerlink" title="操作过程"></a>操作过程</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-delete-table.png" loading="lazy"></p>
+<h3 id="4-4-查询语句-select"><a href="#4-4-查询语句-select" class="headerlink" title="4.4 查询语句(select)"></a>4.4 查询语句(select)</h3><h4 id="格式-5"><a href="#格式-5" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select 字段1, 字段2, … from 表名 ;</span><br><span class="line">select * from 表名;   //  查询所有的字段</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select name,age from t_student;</span><br><span class="line">select * from t_student;</span><br></pre></td></tr></table></figure>
+
+<h4 id="操作过程-5"><a href="#操作过程-5" class="headerlink" title="操作过程"></a>操作过程</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-select-table-result.png" loading="lazy"></p>
+<h3 id="4-5-条件语句-where"><a href="#4-5-条件语句-where" class="headerlink" title="4.5 条件语句(where)"></a>4.5 条件语句(where)</h3><p>如果只想更新或者删除某些固定的记录，那就必须在DML语句后加上一些条件</p>
+<h4 id="条件语句的常见格式"><a href="#条件语句的常见格式" class="headerlink" title="条件语句的常见格式"></a>条件语句的常见格式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">where 字段 = 某个值 ;   // 不能用两个 =</span><br><span class="line">where 字段 is 某个值 ;   // is 相当于 = </span><br><span class="line">where 字段 != 某个值 ; </span><br><span class="line">where 字段 is not 某个值 ;   // is not 相当于 != </span><br><span class="line">where 字段 &gt; 某个值 ; </span><br><span class="line">where 字段1 = 某个值 and 字段2 &gt; 某个值 ;  // and相当于C语言中的 &amp;&amp;</span><br><span class="line">where 字段1 = 某个值 or 字段2 = 某个值 ;  //  or 相当于C语言中的 </span><br></pre></td></tr></table></figure>
+
+<h4 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">将t_student表中年龄大于10 并且 姓名不等于jack的记录，年龄都改为 5</span><br><span class="line">update t_student set age = 5 where age &gt; 10 and name != ‘jack’ ;</span><br><span class="line"></span><br><span class="line">删除t_student表中年龄小于等于10 或者 年龄大于30的记录</span><br><span class="line">delete from t_student where age &lt;= 10 or age &gt; 30 ;</span><br><span class="line"></span><br><span class="line">update t_student set score = age where name = ‘jack’ ;</span><br><span class="line">将t_student表中名字等于jack的记录，score字段的值 都改为 age字段的值</span><br></pre></td></tr></table></figure>
+
+<h4 id="操作过程-6"><a href="#操作过程-6" class="headerlink" title="操作过程"></a>操作过程</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-where-table.png" loading="lazy"></p>
+<h3 id="4-6-起别名"><a href="#4-6-起别名" class="headerlink" title="4.6 起别名"></a>4.6 起别名</h3><h4 id="格式-6"><a href="#格式-6" class="headerlink" title="格式"></a>格式</h4><p>格式(字段和表都可以起别名)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select 字段1 别名 , 字段2 别名 , … from 表名 别名 ; </span><br><span class="line">select 字段1 别名, 字段2 as 别名, … from 表名 as 别名 ;</span><br><span class="line">select 别名.字段1, 别名.字段2, … from 表名 别名 ;</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select name myname, age myage from t_student ;</span><br><span class="line">给name起个叫做myname的别名，给age起个叫做myage的别名</span><br><span class="line"></span><br><span class="line">select s.name, s.age from t_student s ;</span><br><span class="line">给t_student表起个别名叫做s，利用s来引用表中的字段</span><br></pre></td></tr></table></figure>
+
+<h4 id="操作过程-7"><a href="#操作过程-7" class="headerlink" title="操作过程"></a>操作过程</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-othername-table-result.png" loading="lazy"></p>
+<h3 id="4-7-计算记录数量-count"><a href="#4-7-计算记录数量-count" class="headerlink" title="4.7 计算记录数量(count)"></a>4.7 计算记录数量(count)</h3><h4 id="格式-7"><a href="#格式-7" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select count (字段) from 表名 ;</span><br><span class="line">select count ( * ) from 表名 ;</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例-5"><a href="#示例-5" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select count (age) from t_student ;</span><br><span class="line">select count ( * ) from t_student where score &gt;= 60;</span><br></pre></td></tr></table></figure>
+
+<h4 id="操作过程-8"><a href="#操作过程-8" class="headerlink" title="操作过程"></a>操作过程</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-count-table-result.png" loading="lazy"></p>
+<h3 id="4-8-排序-order-by"><a href="#4-8-排序-order-by" class="headerlink" title="4.8 排序(order by)"></a>4.8 排序(order by)</h3><h4 id="格式-8"><a href="#格式-8" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">查询出来的结果可以用order by进行排序</span><br><span class="line">select * from t_student order by 字段 ;</span><br><span class="line">select * from t_student order by age ;</span><br><span class="line"></span><br><span class="line">默认是按照升序排序（由小到大），也可以变为降序（由大到小）</span><br><span class="line">select * from t_student order by age desc ;  //降序</span><br><span class="line">select * from t_student order by age asc ;   // 升序（默认）</span><br><span class="line"></span><br><span class="line">也可以用多个字段进行排序</span><br><span class="line">select * from t_student order by age asc, height desc ;</span><br><span class="line">先按照年龄排序（升序），年龄相等就按照身高排序（降序）</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例-6"><a href="#示例-6" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from t_student order by score desc,age asc;</span><br></pre></td></tr></table></figure>
+
+<h4 id="操作过程-9"><a href="#操作过程-9" class="headerlink" title="操作过程"></a>操作过程</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-orderby-table.png" loading="lazy"></p>
+<h3 id="4-9-分页查询-limit"><a href="#4-9-分页查询-limit" class="headerlink" title="4.9 分页查询(limit)"></a>4.9 分页查询(limit)</h3><p>使用limit可以精确地控制查询结果的数量，比如每次只查询10条数据</p>
+<h4 id="格式-9"><a href="#格式-9" class="headerlink" title="格式"></a>格式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from 表名 limit 数值1, 数值2 ;</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例-跳过最前面4条语句，然后取8条记录"><a href="#示例-跳过最前面4条语句，然后取8条记录" class="headerlink" title="示例(跳过最前面4条语句，然后取8条记录)"></a>示例(跳过最前面4条语句，然后取8条记录)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from t_student limit 4, 8 ;</span><br></pre></td></tr></table></figure>
+
+<h4 id="limit后面只有一个数值"><a href="#limit后面只有一个数值" class="headerlink" title="limit后面只有一个数值"></a>limit后面只有一个数值</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select * from t_student limit 7 ;</span><br><span class="line">相当于select * from t_student limit 0, 7 ;</span><br><span class="line">表示取最前面的7条记录</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-10-字段属性约束-not-null、unique、default"><a href="#4-10-字段属性约束-not-null、unique、default" class="headerlink" title="4.10 字段属性约束(not null、unique、default)"></a>4.10 字段属性约束(not null、unique、default)</h3><h4 id="约束说明"><a href="#约束说明" class="headerlink" title="约束说明"></a>约束说明</h4><p>建表时可以给特定的字段设置一些约束条件，常见的约束有</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">not null ：规定字段的值不能为null</span><br><span class="line">unique ：规定字段的值必须唯一</span><br><span class="line">default ：指定字段的默认值</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例-name字段不能为null，并且唯一，age字段不能为null，并且默认为18"><a href="#示例-name字段不能为null，并且唯一，age字段不能为null，并且默认为18" class="headerlink" title="示例(name字段不能为null，并且唯一，age字段不能为null，并且默认为18)"></a>示例(name字段不能为null，并且唯一，age字段不能为null，并且默认为18)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table if not exists t_student(id integer,name text not null unique,age integer not null default 18,score real);</span><br></pre></td></tr></table></figure>
+
+<h4 id="操作过程-10"><a href="#操作过程-10" class="headerlink" title="操作过程"></a>操作过程</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-property-table.png" loading="lazy"></p>
+<h3 id="4-11-主键约束-primary-key"><a href="#4-11-主键约束-primary-key" class="headerlink" title="4.11 主键约束(primary key)"></a>4.11 主键约束(primary key)</h3><h4 id="什么是主键"><a href="#什么是主键" class="headerlink" title="什么是主键"></a>什么是主键</h4><ul>
+<li>主键（Primary Key，简称PK）用来唯一地标识某一条记录</li>
+<li>例如t_student可以增加一个id字段作为主键，相当于人的身份证</li>
+<li>主键可以是一个字段或多个字段</li>
+</ul>
+<h4 id="主键的设计原则"><a href="#主键的设计原则" class="headerlink" title="主键的设计原则"></a>主键的设计原则</h4><ul>
+<li>主键应当是对用户没有意义的</li>
+<li>永远也不要更新主键</li>
+<li>主键不应包含动态变化的数据</li>
+<li>主键应当由计算机自动生成</li>
+</ul>
+<h4 id="示例-7"><a href="#示例-7" class="headerlink" title="示例"></a>示例</h4><p>在创表的时候用primary key声明一个主键</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table if not exists t_student (id integer primary key autoincrement, name text, age integer,score real) ;</span><br></pre></td></tr></table></figure>
+<h4 id="操作过程-11"><a href="#操作过程-11" class="headerlink" title="操作过程"></a>操作过程</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-primary-key-table-result.png" loading="lazy"></p>
+<h3 id="4-12-外键约束-foreign-key"><a href="#4-12-外键约束-foreign-key" class="headerlink" title="4.12 外键约束(foreign key)"></a>4.12 外键约束(foreign key)</h3><h4 id="外键说明"><a href="#外键说明" class="headerlink" title="外键说明"></a>外键说明</h4><ul>
+<li>利用外键约束可以用来建立表与表之间的联系</li>
+<li>外键的一般情况是：一张表的某个字段，引用着另一张表的主键字段</li>
+</ul>
+<h4 id="外键操作"><a href="#外键操作" class="headerlink" title="外键操作"></a>外键操作</h4><p>创建表t_class</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-forgain-table-class.png" loading="lazy"></p>
+<p>创建t_student的属性</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-forgain-table-student-property.png" loading="lazy"></p>
+<p>指定t_student的class外键(选中class后，点击Foreign Keys，设置Name(外键名),Referenced Table(关联表)，Referenced Fields(关联字段)、Local Fields(本表字段))</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-query-forgain-table-student.png" loading="lazy"></p>
+<p>给t_class设置记录</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-forgain-table-class-values.png" loading="lazy"></p>
+<p>t_student的class选项只有1,2,3</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-forgain-table-student-values.png" loading="lazy"></p>
+<h4 id="t-student的DDL"><a href="#t-student的DDL" class="headerlink" title="t_student的DDL"></a>t_student的DDL</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &quot;t_student&quot; (</span><br><span class="line">  &quot;id&quot; INTEGER NOT NULL,</span><br><span class="line">  &quot;name&quot; TEXT,</span><br><span class="line">  &quot;class&quot; integer,</span><br><span class="line">  PRIMARY KEY (&quot;id&quot;),</span><br><span class="line">  CONSTRAINT &quot;fk_student_ref_class&quot; FOREIGN KEY (&quot;class&quot;) REFERENCES &quot;t_class&quot; (&quot;id&quot;) DEFERRABLE INITIALLY DEFERRED</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-13-表连接查询-内连接、外连接"><a href="#4-13-表连接查询-内连接、外连接" class="headerlink" title="4.13 表连接查询(内连接、外连接)"></a>4.13 表连接查询(内连接、外连接)</h3><h4 id="什么是表连接查询"><a href="#什么是表连接查询" class="headerlink" title="什么是表连接查询"></a>什么是表连接查询</h4><p>需要联合多张表才能查到想要的数据</p>
+<h4 id="表连接的类型"><a href="#表连接的类型" class="headerlink" title="表连接的类型"></a>表连接的类型</h4><ul>
+<li>内连接：inner join 或者 join （显示的是左右表都有完整字段值的记录）</li>
+<li>左外连接：left outer join （保证左表数据的完整性）</li>
+</ul>
+<h4 id="示例-8"><a href="#示例-8" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select s.name from t_student s, t_class c where s.id = c.id and c.name = &#x27;语文&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><table>
+<thead>
+<tr>
+<th align="center">t_student</th>
+<th align="center">t_class</th>
+<th align="center">关联查询结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-join-table-class.png" loading="lazy"></td>
+<td align="center"><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-join-table-student.png" loading="lazy"></td>
+<td align="center"><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ios/ios-sqlite-02-join-table-result.png" loading="lazy"></td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+              <a href="/tags/IOS/" rel="tag"># IOS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/eaa6617d.html" rel="prev" title="IOS开发之——数据库-基础知识介绍(01)">
+                  <i class="fa fa-angle-left"></i> IOS开发之——数据库-基础知识介绍(01)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/2a270fdf.html" rel="next" title="IOS开发之——数据库-SQLite3(03)">
+                  IOS开发之——数据库-SQLite3(03) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"320f85d8ae943a37376f192c78dd34ec"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

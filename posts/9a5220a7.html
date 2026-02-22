@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="概述集合类存放地点都是对象的引用，而非对象本身，处于表达式上的便利，我们称集合中的对象就是指集合中对象的引用。    集合的分类：     Set(集) List(列表) Map(映射)  在kotlin中，明确的区分了可变和只读的集合(list，set，map等)，明确的确定了集合的可读性，有助于良好的编程，以及便于Bug的规避。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin开发之——集合(一)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/9a5220a7.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="概述集合类存放地点都是对象的引用，而非对象本身，处于表达式上的便利，我们称集合中的对象就是指集合中对象的引用。    集合的分类：     Set(集) List(列表) Map(映射)  在kotlin中，明确的区分了可变和只读的集合(list，set，map等)，明确的确定了集合的可读性，有助于良好的编程，以及便于Bug的规避。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-12-20T08:27:47.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.317Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="集合">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/9a5220a7.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/9a5220a7.html","path":"posts/9a5220a7.html","title":"Kotlin开发之——集合(一)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Kotlin开发之——集合(一) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5"><span class="nav-number">2.</span> <span class="nav-text">几个概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Iterable"><span class="nav-number">2.1.</span> <span class="nav-text">Iterable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MutableIterable"><span class="nav-number">2.2.</span> <span class="nav-text">MutableIterable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Collection"><span class="nav-number">2.3.</span> <span class="nav-text">Collection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%90%E5%91%98%E5%B1%9E%E6%80%A7"><span class="nav-number">2.3.1.</span> <span class="nav-text">成员属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">2.3.2.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MutableCollection"><span class="nav-number">2.3.3.</span> <span class="nav-text">MutableCollection</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">2.4.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0-1"><span class="nav-number">2.4.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set-API"><span class="nav-number">2.4.2.</span> <span class="nav-text">Set API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%B9%E9%87%8F%E6%93%8D%E4%BD%9C"><span class="nav-number">2.4.3.</span> <span class="nav-text">批量操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AA%E8%AF%BBSet"><span class="nav-number">2.4.4.</span> <span class="nav-text">只读Set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E5%8F%98Set"><span class="nav-number">2.4.5.</span> <span class="nav-text">可变Set</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0-2"><span class="nav-number">2.4.5.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8API"><span class="nav-number">2.4.5.2.</span> <span class="nav-text">常用API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8EJava%E6%AF%94%E8%BE%83"><span class="nav-number">2.4.5.3.</span> <span class="nav-text">与Java比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#List"><span class="nav-number">2.5.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0-3"><span class="nav-number">2.5.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8API-1"><span class="nav-number">2.5.2.</span> <span class="nav-text">常用API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#List-1"><span class="nav-number">2.5.2.1.</span> <span class="nav-text">List</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MutableList"><span class="nav-number">2.5.2.2.</span> <span class="nav-text">MutableList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="nav-number">2.5.2.3.</span> <span class="nav-text">相关操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#listOf"><span class="nav-number">2.5.2.3.1.</span> <span class="nav-text">listOf</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#toList"><span class="nav-number">2.5.2.3.2.</span> <span class="nav-text">toList</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">2.6.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Entry"><span class="nav-number">2.6.1.</span> <span class="nav-text">Entry</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pair"><span class="nav-number">2.6.2.</span> <span class="nav-text">Pair</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C-1"><span class="nav-number">2.6.3.</span> <span class="nav-text">相关操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAMap"><span class="nav-number">2.6.3.1.</span> <span class="nav-text">创建Map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%93%8D%E4%BD%9C"><span class="nav-number">2.6.3.2.</span> <span class="nav-text">查询操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E6%93%8D%E4%BD%9C"><span class="nav-number">2.6.3.3.</span> <span class="nav-text">元素操作</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/9a5220a7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Kotlin开发之——集合(一) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Kotlin开发之——集合(一)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Kotlin%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94%E9%9B%86%E5%90%88-%E4%B8%80.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-12-20 16:27:47" itemprop="dateCreated datePublished" datetime="2017-12-20T16:27:47+08:00">2017-12-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/B-%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">B-高级语言</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/B-%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80/Kotlin/" itemprop="url" rel="index"><span itemprop="name">Kotlin</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>9 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>集合类存放地点都是对象的引用，而非对象本身，处于表达式上的便利，我们称集合中的对象就是指集合中对象的引用。   </p>
+<p>集合的分类：   </p>
+<ul>
+<li>Set(集)</li>
+<li>List(列表)</li>
+<li>Map(映射)</li>
+</ul>
+<p>在kotlin中，明确的区分了可变和只读的集合(list，set，map等)，明确的确定了集合的可读性，有助于良好的编程，以及便于Bug的规避。</p>
+<span id="more"></span>
+
+<h1 id="几个概念"><a href="#几个概念" class="headerlink" title="几个概念"></a>几个概念</h1><h2 id="Iterable"><a href="#Iterable" class="headerlink" title="Iterable"></a>Iterable</h2><p>Iterable接口是最基本的接口，声明了Kotlin中集合的通用方法。</p>
+<pre><code>fun iterator():Iterator&lt;T&gt; //返回该集合的元素的迭代器
+</code></pre>
+<h2 id="MutableIterable"><a href="#MutableIterable" class="headerlink" title="MutableIterable"></a>MutableIterable</h2><p>MutableIterable接口集成于Iterable接口，并重写了iterable方法，从该接口继承的类可以表示为可以被迭代并且支持在迭代期间移除元素的元素序列。  </p>
+<pre><code>fun iterator():MutableIterator&lt;T&gt; //返回该集合的元素的迭代器  
+</code></pre>
+<h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><p>Collection<E>接口继承与Iterable接口，是集合的通用接口，但仅封装了对集合的只读方法，如果想添加或者删除集合，需调用MutableCollection接口的方法。  </p>
+<h3 id="成员属性"><a href="#成员属性" class="headerlink" title="成员属性"></a>成员属性</h3><p>val size:Int 集合中元素的数量</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ul>
+<li>isEmpty() &#x2F;&#x2F;判断集合是否为空</li>
+<li>fun contains(E):Boolean &#x2F;&#x2F;判断集合中是否包含某一元素</li>
+<li>fun containsAll(Collection<E>):Boolean &#x2F;&#x2F;判断集合中是否包含某一集合</li>
+<li>fun iterator():Iterator<E> &#x2F;&#x2F;返回该只读集合的元素的迭代器</li>
+</ul>
+<h3 id="MutableCollection"><a href="#MutableCollection" class="headerlink" title="MutableCollection"></a>MutableCollection<E></h3><p>mutableCollection<E> 继承于Iterable<E>,Collection<E>接口，封装了添加或移除集合中元素的方法。  </p>
+<ul>
+<li>fun add(E):Boolean &#x2F;&#x2F;向集合中添加元素。添加成功返回true，否则返回false.</li>
+<li>fun addAll(Collection):Boolean &#x2F;&#x2F;向集合中添加一个集合；添加成功返回true，否则返回false.</li>
+<li>fun remove(E):Boolean &#x2F;&#x2F;移除集合中的元素。移除成功返回true，否则返回false</li>
+<li>fun removeAll(Collection):Boolean &#x2F;&#x2F;移除集合中的一个集合。移除成功返回true，否则返回false</li>
+<li>fun retainAll(Collection):Boolean &#x2F;&#x2F;判断集合中是否包含一个集合。如果包含返回true，否则返回false.</li>
+<li>fun clean():Unit &#x2F;&#x2F;将集合中的元素清空</li>
+</ul>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><h3 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h3><p>Set是最简单的一种集合。集合中的对象不按特定的方式排序，并且没有重复的对象<br>Kotlin没有专门的语法用来创建set，可以使用标准库中的方法，比如setOf(),mutableSetOf()</p>
+<ul>
+<li>emptySet():Set -创建一个空的只读Set</li>
+<li>setOf(vararg T):Set -创建一个只读Set</li>
+<li>mutableSetOf(varag elements):MutableSet-创建一个可变Set</li>
+</ul>
+<h3 id="Set-API"><a href="#Set-API" class="headerlink" title="Set API"></a>Set API</h3><p>查询操作</p>
+<ul>
+<li>val size:Int -集合中元素的数量</li>
+<li>fun isEmpty():Boolean -判断集合是否为空</li>
+<li>fun contains(E):Boolean -判断集合中是否包含某一元素</li>
+<li>fun iterator()：Iterator -返回该只读集的元素的迭代器</li>
+</ul>
+<h3 id="批量操作"><a href="#批量操作" class="headerlink" title="批量操作"></a>批量操作</h3><pre><code>	fun containsAll(Collection&lt;E&gt;):Boolean -判断集合中是否包含某一集合
+</code></pre>
+<h3 id="只读Set"><a href="#只读Set" class="headerlink" title="只读Set"></a>只读Set</h3><p>例：  </p>
+<pre><code>val setTea: Set&lt;String&gt; = setOf(&quot;E&quot;, &quot;F&quot;, &quot;B&quot;, &quot;C&quot;, &quot;A&quot;, &quot;D&quot;, &quot;F&quot;, &quot;B&quot;)
+
+for (item in setTea) 
+{
+    print(item)
+}
+</code></pre>
+<p>打印结果： EFBCAD<br>从示例代码中，我们可以清晰的看出：<br>1.Set中没有重复的对象<br>2.Set中对象不按特定的方式排序</p>
+<p>上面提到了，Set中不能存放重复的对象，对于Kotlin中标准的数据类型，比如基本数据类型，String都有了相应的判定方式，如果我们自定义了类，该如何判断对象是不是重复的呢？ </p>
+<pre><code>data class Book(var name: String, var page: Int, var author: String) 
+{
+	override fun hashCode(): Int 
+	{
+    	return this.name.hashCode()
+	}
+
+	override fun equals(other: Any?): Boolean 
+	{
+    	if (other is Book) 
+		{
+        	return this.page == other.page
+    	}
+    	return super.equals(other)
+	}
+}
+</code></pre>
+<p>现自定义了一个Book类，同时重写了hashCode()和equals()两个函数，其中，Book实例的hashCoe()返回值为name属性的hashCode()值，而equals()函数判断两个Book实例是否相等的标准为page属性。  </p>
+<pre><code>val bookA = Book(&quot;A&quot;, 20, &quot;Jone&quot;)
+val bookB = Book(&quot;A&quot;, 21, &quot;Green&quot;)
+val bookC = Book(&quot;C&quot;, 20, &quot;Mark&quot;)
+val bookD = Book(&quot;D&quot;, 22, &quot;Node&quot;)
+val bookE = Book(&quot;A&quot;, 20, &quot;Blue&quot;)
+
+var setBook = setOf(bookA, bookB, bookC, bookD, bookE)
+println(setBook.size)
+for (item in setBook) 
+{
+	println(&quot;item:$item , hashCode: ${item.hashCode()}&quot;)
+}
+</code></pre>
+<p>输出结果：  </p>
+<pre><code>4
+item:Book(name=A, page=20, author=Jone) , hashCode: 65
+item:Book(name=A, page=21, author=Green) , hashCode: 65
+item:Book(name=C, page=20, author=Mark) , hashCode: 67
+item:Book(name=D, page=22, author=Node) , hashCode: 68
+</code></pre>
+<p>先不看Log打印，我们先往SetBook中添加的元素，根据我们刚才自定义Book的类，我们可以分析得到。   </p>
+<p>1.bookA,bookB,bookE的name都是“A”，也就是说它们的hashCode()值都是一样的。<br>2.bookA,bookC,bookE的page都是20，也就是说它们三个是相等的。  </p>
+<p>现在看Log打印，在setBook中有4个元素bookA,bookB,bookC,bookD,再从上面分析的可以认为，bookA和bookE是重复的。  </p>
+<p>对于Set而言，存入Set的每个元素都必须是唯一的，因为Set不保存重复元素。刚才的问题也就呼之欲出了，在Kotlin中，判断两个对象的是否重复标准是hashCode()和equals()两个参考值，也就是说只有两个对象的hashCode值一样与equals()为真时，才认为是相同的对象。所以自定义的类必须要重写hashCode()和equals()两个函数。   </p>
+<h3 id="可变Set"><a href="#可变Set" class="headerlink" title="可变Set"></a>可变Set</h3><h4 id="概述-2"><a href="#概述-2" class="headerlink" title="概述"></a>概述</h4><p>MutableSet接口继承于Set,MutableCollection，对于Set的扩展，添加了对元素添加和删除的操作。   </p>
+<h4 id="常用API"><a href="#常用API" class="headerlink" title="常用API"></a>常用API</h4><ol>
+<li><p>查询操作     </p>
+<p> fun iterator():MutableIterator -返回集合元素的迭代器</p>
+</li>
+<li><p>元素操作  </p>
+<p> fun add(E):Boolean -向集合中添加元素。添加成功，返回true;否则返回false<br> fun remove(E):Boolean -移除集合中的元素。移除成功返回true,否则返回false </p>
+</li>
+<li><p>批量操作</p>
+<p> fun addAll(Collection):Boolean -向集合中添加一个集合。添加成功返回true，否则返回false</p>
+<p> fun removeAll(Collection):Boolean -移除集合中的一个集合。移除成功，返回true，否则返回false  </p>
+<p> retainAll(Collection):Boolean -判断集合中是否包含一个集合。如果包含返回true。否则返回false  </p>
+<p> fun clean():Unit -将集合中的元素清空</p>
+</li>
+</ol>
+<p>示例：   </p>
+<pre><code>var setMulable = mutableSetOf(bookA, bookB, bookC, bookD, bookE)
+setMulable.add(Book(&quot;Add&quot;, 20, &quot;Floor&quot;))
+println(setMulable.remove(bookA)) 
+println(setMulable.remove(bookE))
+for (item in setBook) 
+{
+	println(&quot;item:$item , hashCode: ${item.hashCode()}&quot;)
+}
+</code></pre>
+<p>输出结果： </p>
+<pre><code>true
+false
+item:Book(name=A, page=21, author=Green) , hashCode: 65
+item:Book(name=C, page=20, author=Mark) , hashCode: 67
+item:Book(name=D, page=22, author=Node) , hashCode: 68
+item:Book(name=Add, page=20, author=Floor) , hashCode: 65665  
+</code></pre>
+<h4 id="与Java比较"><a href="#与Java比较" class="headerlink" title="与Java比较"></a>与Java比较</h4><p>在java中，Set接口有两个主要的实现类HashSet和TreeSet:   </p>
+<ul>
+<li>HashSet:该类按照哈希算法来存取集合中的对象，存取速度比较快 </li>
+<li>TreeSet:该类实现了SortedSet接口，能够对集合中的对象进行排序</li>
+<li>LinkedHashSet:具有hashSet的查询速度，且内部使用链表维护元素的	顺序(插入的次序)</li>
+</ul>
+<p>Kotlin并没有HashSet，TreeSet和LinkHashSet。假如，实际开发过程中，如果用到了这三个中某一个Set，比如想通过hashCode来存取对象，此时该如何是好呢？鉴于与java的兼容性，JB大神们已经为我们封装了生成的HashSet，TreeSet或者LinkedHashSet的函数，我们可以用Java中的这三个类。   </p>
+<pre><code>fun hashSetOf(vararg elements:T):java.util.HashSet
+fun linkedSetOf(vararg elements:T):java.util.LinkedHashSet
+sortedSetOf(comparator:java.util.Comparator,vararg elements:T):java.util.TreeSet
+fun sortedSetOf(vararg elements:T):java.util.TreeSet      
+</code></pre>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><h3 id="概述-3"><a href="#概述-3" class="headerlink" title="概述"></a>概述</h3><p>List的特征是其元素以线性方式存储，集合中可以存放重复对象   </p>
+<h3 id="常用API-1"><a href="#常用API-1" class="headerlink" title="常用API"></a>常用API</h3><h4 id="List-1"><a href="#List-1" class="headerlink" title="List"></a>List</h4><p>List<E> 接口继承于Collection<E> 接口，元素以线性方式存储，集合中可以存放重复元素。  </p>
+<ol>
+<li><p>查询操作</p>
+<p> val size:Int -集合中元素的数量<br>  fun isEmpty():Boolean -判断集合是否为空<br> fun contains(E):Boolean -判断集合中是否包含某一元素<br> fun iterator():Iterator -判断该只读集合的元素的迭代器 </p>
+</li>
+<li><p>批量操作</p>
+<p> fun containsAll(Collection<E>):Boolean -判断集合中是否包含某一集合  </p>
+</li>
+<li><p>查询操作操作</p>
+<p> fun get(int):E -查询集合中某一位置的元素</p>
+</li>
+<li><p>搜索操作</p>
+<p> fun indexOf(E):Int -返回列表中指定元素首次出现的索引，如果元素不包含在列表中，则返回-1<br> fun lastIndexOf(E):Int -返回列表中指定元素最后一次出现的索引，如果元素不包含在列表中，则返回-1  </p>
+</li>
+<li><p>迭代器</p>
+<p> fun listIterator():ListIterator -返回一个集合的迭代器<br> fun listIterator(Int):ListIterator -从指定位置开始，返回集合的迭代器<br> fun subList(fromindex:Int,toIndex:Int):Int -返回次列表中指定的<a href="%E5%8C%85%E5%90%AB">fromindex</a>和<a href="%E4%B8%8D%E5%8C%85%E6%8B%AC">toindex</a>之间的集合</p>
+</li>
+</ol>
+<h4 id="MutableList"><a href="#MutableList" class="headerlink" title="MutableList"></a>MutableList</h4><p>MutalbeList<E> 接口继承于List<E>,MutableCollection<E>，是对只读集合的扩展，增加了对集合的添加及删除元素的操作 。  </p>
+<ol>
+<li><p>修改操作</p>
+<p> fun add(E):Boolean -向集合中添加元素。添加成功返回true,否则返回false<br> fun remove(E):Boolean -移除集合中的元素。移除成功返回true,否则返回false</p>
+</li>
+<li><p>批量操作  </p>
+<p> fun addAll(Collection):Boolean -向集合中添加一个集合。添加成功返回true,否则返回false<br> fun removeAll(Collection):Boolean -移除集合中的一个集合。移除成功返回true，否则返回false<br> retainAll(Collection):Boolean -判断集合中是否包含一个集合。如果包含返回true，否则返回false<br> fun clear():Unit -将集合中的元素清空   </p>
+</li>
+<li><p>索引操作   </p>
+<p> fun set(int,E):E -用指定的元素替换此列表中指定位置的元素，返回该位置的元素。<br> fun add(int,E):Unit -在指定位置添加一个元素<br> fun removeAt(Int):E -移除指定索引处的元素</p>
+</li>
+</ol>
+<h4 id="相关操作"><a href="#相关操作" class="headerlink" title="相关操作"></a>相关操作</h4><p>与Set一样，Kotlin并没有提供创建List的函数，如果想创建一个List，可以调用标准库中的方法，listOf(),mutableListOf()   </p>
+<h5 id="listOf"><a href="#listOf" class="headerlink" title="listOf"></a>listOf</h5><p>listOf()是使用ArrayList实现的，返回的list是只读的，其内存效率更高。在开发过程中，可以尽可能的多用只读List，可以在一定程度上提高内存效率。    </p>
+<pre><code>val bookA = Book(&quot;A&quot;, 20, &quot;Jone&quot;)
+val bookB = Book(&quot;B&quot;, 21, &quot;Green&quot;)
+val bookC = Book(&quot;C&quot;, 22, &quot;Mark&quot;)
+val bookD = Book(&quot;D&quot;, 23, &quot;Node&quot;)
+val bookE = Book(&quot;E&quot;, 24, &quot;Blue&quot;)
+
+val listBook = listOf&lt;Book&gt;(bookA, bookB, bookC, bookD, bookE)  
+</code></pre>
+<p>创建了一个只读List，我们可以做一下操作    </p>
+<ol>
+<li><p>索引检索    </p>
+<p> listBook.get(0)&#x2F;&#x2F; 获取位置0处的元素<br>  listBook.indexOf(bookA)&#x2F;&#x2F; 获取bookA第一次出现的位置<br> listBook.lastIndexOf(bookB)&#x2F;&#x2F; 获取bookA最后一次出现的位置  </p>
+</li>
+<li><p>遍历List   </p>
+<p> 2.1 扩展函数foreach    </p>
+<pre><code>  listBook.forEach (::println )
+</code></pre>
+<p> 2.2 for循环</p>
+<pre><code>  for (book in listBook) 
+ {
+         println(book)
+ }
+</code></pre>
+<p>  2.3 迭代器</p>
+<pre><code> while (iterator.hasNext()) 
+ {
+         println(iterator.next())
+ }
+</code></pre>
+</li>
+</ol>
+<h5 id="toList"><a href="#toList" class="headerlink" title="toList"></a>toList</h5><pre><code>class Controller 
+{
+	private val _items = mutableListOf&lt;String&gt;()
+	val items: List&lt;String&gt; get() = _items.toList()
+}
+</code></pre>
+<p>toList是一个扩展函数，其只是单纯的赋值list内的内容，从而返回的是一个只读的List.   </p>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p>Map是一种把键对象和值对象映射的集合，它的诶一个元素都包含一对键对象和值对象。Map没有继承于Collection接口。从Map集合中检索元素时，只要给出键对象，就会返回对应的值对象。   </p>
+<p>Kotlin中，与list，set一样的是，Map也分为只读map和可变两种Map。  </p>
+<p>Kotlin中，创建Map时，需调用标准库中的系列函数，如mapOf(),multableMapOf()   </p>
+<h3 id="Entry"><a href="#Entry" class="headerlink" title="Entry"></a>Entry</h3><p>entry  </p>
+<h3 id="Pair"><a href="#Pair" class="headerlink" title="Pair"></a>Pair</h3><p>pair类用来存储两个值，这两个值可以是任何类型的，可以用于任何场景，比如Map,list.<br>Pair类有扩展函数to，可以快速创建Pair类的实例  </p>
+<pre><code>infix fun  
+</code></pre>
+<h3 id="相关操作-1"><a href="#相关操作-1" class="headerlink" title="相关操作"></a>相关操作</h3><h4 id="创建Map"><a href="#创建Map" class="headerlink" title="创建Map"></a>创建Map</h4><ol>
+<li><p>基于Pair扩展函数to   </p>
+<p> val bookA &#x3D; Book(&quot;A&quot;, 20, &quot;Jone&quot;)<br> val bookB &#x3D; Book(&quot;A&quot;, 21, &quot;Green&quot;)<br> val bookC &#x3D; Book(&quot;C&quot;, 20, &quot;Mark&quot;)<br> val bookD &#x3D; Book(&quot;D&quot;, 22, &quot;Node&quot;)<br> val bookE &#x3D; Book(&quot;A&quot;, 20, &quot;Blue&quot;)</p>
+<p> val map&#x3D; mapOf&lt;Int, Book&gt;(1 to bookA, 2 to bookB, 3 to bookC, 4 to bookD, 5 to bookE)</p>
+<p> var mapMutable &#x3D; mutableMapOf(1 to bookA, 2 to bookB, 3 to bookC, 4 to bookD, 5 to bookE)  </p>
+</li>
+<li><p>基于Pair   </p>
+<p> val mapPair &#x3D; mapOf(Pair(1, bookA), Pair(1, bookB))  </p>
+</li>
+<li><p>创建一个空的Map  </p>
+<p> val mapEmpty &#x3D; emptyMap&lt;Int, Book&gt;()  </p>
+</li>
+<li><p>HashMap  </p>
+<p> val hashMap &#x3D; hashMapOf(1 to bookA, 2 to bookB)</p>
+</li>
+<li><p>LinkedHashMap  </p>
+<p> val linkedHashMap &#x3D; linkedMapOf(1 to bookA, 2 to bookB)</p>
+</li>
+</ol>
+<p>注：   </p>
+<ul>
+<li>HashMap:Map基于散列表的实现。插入和查询“键值对”的开销是固定的。可以通过构造器容量capacity和负载因子 load factor，以调整容器的性能。 </li>
+<li>LinkedHashMap:类似于HashMap，但是迭代遍历它时，取得“键值对”的顺序是其插入序列，或者是最近最少使用(LRU)的次序。只比HashMap慢一点。而在迭代访问时反而更快，因为它使用链表维护内部次序。  </li>
+<li>mapOf和mutableMapOf()创建的Map是基于java的LinkedHashMap.  </li>
+<li>Kotlin现在并不支持TreeMap，WeakHashMao，identifyHashMap</li>
+</ul>
+<h4 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h4><ol>
+<li><p>判断映射中元素的数量  </p>
+<p> var mapMutable &#x3D; mutableMapOf(1 to bookA, 2 to bookB, 3 to bookC, 4 to bookD, 5 to bookE)<br> val size &#x3D; mapMutable.siz &#x2F;&#x2F; size &#x3D; 5</p>
+</li>
+<li><p>Map元素中Key的集合 </p>
+<p> val setKey &#x3D; map.keys<br> setKey.forEach(::print) &#x2F;&#x2F; Log: 1,2,3,4,5</p>
+<p> var setMutableKey &#x3D; mapMutable.keys<br> setMutableKey.forEach(::print) &#x2F;&#x2F; Log: 1,2,3,4,5 </p>
+</li>
+<li><p>Map中元素的集合</p>
+<p> val setValues &#x3D; map.values<br> setValues.forEach(::println)<br> &#x2F;&#x2F; Log<br> &#x2F;&#x2F; Book(name&#x3D;&#39;A&#39;, page&#x3D;20, author&#x3D;&#39;Jone&#39;)<br> &#x2F;&#x2F; Book(name&#x3D;&#39;A&#39;, page&#x3D;21, author&#x3D;&#39;Green&#39;)<br> &#x2F;&#x2F; Book(name&#x3D;&#39;C&#39;, page&#x3D;20, author&#x3D;&#39;Mark&#39;)<br> &#x2F;&#x2F; Book(name&#x3D;&#39;D&#39;, page&#x3D;22, author&#x3D;&#39;Node&#39;)</p>
+<p> var setMutableValues &#x3D; mapMutable.values<br> setMutableValues.forEach(::println)<br> &#x2F;&#x2F; Log<br> &#x2F;&#x2F; Book(name&#x3D;&#39;A&#39;, page&#x3D;20, author&#x3D;&#39;Jone&#39;)<br> &#x2F;&#x2F; Book(name&#x3D;&#39;A&#39;, page&#x3D;21, author&#x3D;&#39;Green&#39;)<br> &#x2F;&#x2F; Book(name&#x3D;&#39;C&#39;, page&#x3D;20, author&#x3D;&#39;Mark&#39;)<br> &#x2F;&#x2F; Book(name&#x3D;&#39;D&#39;, page&#x3D;22, author&#x3D;&#39;Node&#39;)</p>
+</li>
+<li><p>Map中元素的键&#x2F;值对的集合</p>
+<p> val setEntry &#x3D; map.entries<br> setEntry.forEach{<br> println(&quot;key: ${it.key} , value: ${it.value}&quot;)<br> }    </p>
+<p> var setMutableEntry &#x3D; mapMutable.entries<br> setMutableEntry.forEach{<br> println(&quot;key: ${it.key} , value: ${it.value}&quot;)<br> }</p>
+<p> &#x2F;&#x2F;Log<br> key: 1 , value: Book(name&#x3D;&#39;A&#39;, page&#x3D;20, author&#x3D;&#39;Jone&#39;)<br> key: 2 , value: Book(name&#x3D;&#39;A&#39;, page&#x3D;21, author&#x3D;&#39;Green&#39;)<br> key: 3 , value: Book(name&#x3D;&#39;C&#39;, page&#x3D;20, author&#x3D;&#39;Mark&#39;)<br> key: 4 , value: Book(name&#x3D;&#39;D&#39;, page&#x3D;22, author&#x3D;&#39;Node&#39;)<br> key: 5 , value: Book(name&#x3D;&#39;A&#39;, page&#x3D;20, author&#x3D;&#39;Blue&#39;)</p>
+</li>
+</ol>
+<p>注:  </p>
+<ol>
+<li><p>不管Map还是MutableMap获取到的键、值或者键值对的set，都是只读的。即便是MutableMap获取到的是MutableSet，其也是只读的，因为在Map或者MultableMap中，将这些set设置为了只读常量。  </p>
+</li>
+<li><p>使用keySet()抽取key序列，将map中的所有values生成一个Set，使用values()抽取value序列，将map中的所有values生成一个Collection。为什么一个生成Set，一个生成Collection?那是因为，key总是独一无二的，value允许重复。</p>
+<ol>
+<li><p>判断Map是否为空  </p>
+<p> map.isEmpty()</p>
+</li>
+<li><p>判断map是否包含某个key</p>
+<p> map.containsKey(2)</p>
+</li>
+<li><p>判断Map是否包含某个元素  </p>
+<p> map.containsValue(bookA)</p>
+</li>
+<li><p>查询Map中指定key的元素，若存在，返回元素之，否则返回null</p>
+<p>  map.get(2)</p>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="元素操作"><a href="#元素操作" class="headerlink" title="元素操作"></a>元素操作</h4><ul>
+<li><p>添加元素 </p>
+<p>  &#x2F;&#x2F; 将指定的[value]与映射中指定的[key]关联<br>  val valuePut: Boo &#x3D; mapMutable.put(6, bookE)</p>
+</li>
+<li><p>移除元素</p>
+<p>  &#x2F;&#x2F; 移除映射中指定Key的元素，<br>  &#x2F;&#x2F; 返回被移除的元素，若指定的Key的元素不存在，返回null<br>  val valueRemove: Book &#x3D; mapMutable.remove(6, bookE)</p>
+</li>
+<li><p>清空整个映射</p>
+<p>  map.clear()- 清空映射</p>
+</li>
+</ul>
+<p>参考：<br><a target="_blank" rel="noopener" href="http://blog.csdn.net/io_field/article/details/53407829">Kotlin-集合详解(一)</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%9B%86%E5%90%88/" rel="tag"># 集合</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/88a0dc83.html" rel="prev" title="Kotlin开发之——异常处理">
+                  <i class="fa fa-angle-left"></i> Kotlin开发之——异常处理
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/3563bbc5.html" rel="next" title="Kotlin开发之——集合(二)">
+                  Kotlin开发之——集合(二) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"db33de22fe567a74dc898e092c0fc0f3"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

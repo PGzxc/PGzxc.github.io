@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="一 面试题汇总 iOS多线程方案有哪些？如何选择？有什么区别？ 串行队列，并行队列的区别？全局队列和主队列呢？ 同步任务和异步任务的区别？ 使用sync函数往当前串行队列中添加任务会发生什么现象？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IOS面试题——OC中多线程实现与线程安全(10)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/502a76b1.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="一 面试题汇总 iOS多线程方案有哪些？如何选择？有什么区别？ 串行队列，并行队列的区别？全局队列和主队列呢？ 同步任务和异步任务的区别？ 使用sync函数往当前串行队列中添加任务会发生什么现象？">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-26T15:05:58.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:04.829Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="OC面试题">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/502a76b1.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/502a76b1.html","path":"posts/502a76b1.html","title":"IOS面试题——OC中多线程实现与线程安全(10)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>IOS面试题——OC中多线程实现与线程安全(10) | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB"><span class="nav-number">1.</span> <span class="nav-text">一 面试题汇总</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-iOS%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%96%B9%E6%A1%88%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 iOS多线程方案有哪些？如何选择？有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E4%B8%B2%E8%A1%8C%E9%98%9F%E5%88%97%EF%BC%8C%E5%B9%B6%E8%A1%8C%E9%98%9F%E5%88%97%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F%E5%85%A8%E5%B1%80%E9%98%9F%E5%88%97%E5%92%8C%E4%B8%BB%E9%98%9F%E5%88%97%E5%91%A2%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 串行队列，并行队列的区别？全局队列和主队列呢？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%90%8C%E6%AD%A5%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 同步任务和异步任务的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E4%BD%BF%E7%94%A8sync%E5%87%BD%E6%95%B0%E5%BE%80%E5%BD%93%E5%89%8D%E4%B8%B2%E8%A1%8C%E9%98%9F%E5%88%97%E4%B8%AD%E6%B7%BB%E5%8A%A0%E4%BB%BB%E5%8A%A1%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%E7%8E%B0%E8%B1%A1%EF%BC%9F"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 使用sync函数往当前串行队列中添加任务会发生什么现象？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E5%BC%82%E6%AD%A5%E5%B9%B6%E5%8F%91%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A11%E3%80%81%E4%BB%BB%E5%8A%A12%EF%BC%8C%E7%AD%89%E4%BB%BB%E5%8A%A11%E3%80%81%E4%BB%BB%E5%8A%A12%E9%83%BD%E6%89%A7%E8%A1%8C%E5%AE%8C%E6%AF%95%E5%90%8E%EF%BC%8C%E5%86%8D%E5%9B%9E%E5%88%B0%E4%B8%BB%E7%BA%BF%E7%A8%8B%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A13%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 异步并发执行任务1、任务2，等任务1、任务2都执行完毕后，再回到主线程执行任务3怎么实现？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-Group%EF%BC%8Cdispatch-barrier-async%EF%BC%8Cdispatch-semaphore%E5%88%86%E5%88%AB%E7%94%A8%E6%9D%A5%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 Group，dispatch_barrier_async，dispatch_semaphore分别用来做什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 多线程安全问题有哪些？如何解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-%E8%87%AA%E6%97%8B%E9%94%81%E5%92%8C%E4%BA%92%E6%96%A5%E9%94%81%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F%E9%80%92%E5%BD%92%E9%94%81%EF%BC%8C%E6%9D%A1%E4%BB%B6%E9%94%81%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 自旋锁和互斥锁的区别？递归锁，条件锁是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-atomic%EF%BC%8Cnoatomic%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 atomic，noatomic的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-10-iOS%E8%AF%BB%E5%86%99%E5%AE%89%E5%85%A8%E6%96%B9%E6%A1%88%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E8%AF%BB%E5%86%99%E9%94%81pthread-rwlock%EF%BC%8C%E6%A0%85%E6%A0%8F%E5%87%BD%E6%95%B0"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 iOS读写安全方案有哪些？读写锁pthread_rwlock，栅栏函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-11-dispatch-barrier-async-%E5%A6%82%E6%9E%9C%E4%BC%A0%E5%85%A5%E7%9A%84%E6%98%AF%E4%B8%80%E4%B8%AA%E4%B8%B2%E8%A1%8C%E6%88%96%E6%98%AF%E4%B8%80%E4%B8%AA%E5%85%A8%E5%B1%80%E7%9A%84%E5%B9%B6%E5%8F%91%E9%98%9F%E5%88%97%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88%E7%8E%B0%E8%B1%A1%EF%BC%9F"><span class="nav-number">2.11.</span> <span class="nav-text">2.11 dispatch_barrier_async 如果传入的是一个串行或是一个全局的并发队列会发生什么现象？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/502a76b1.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="IOS面试题——OC中多线程实现与线程安全(10) | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          IOS面试题——OC中多线程实现与线程安全(10)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/IOS%E9%9D%A2%E8%AF%95%E9%A2%98%E2%80%94%E2%80%94OC%E4%B8%AD%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E4%B8%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8(10).md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2024-03-26 23:05:58" itemprop="dateCreated datePublished" datetime="2024-03-26T23:05:58+08:00">2024-03-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/IOS%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">IOS面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>6 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-面试题汇总"><a href="#一-面试题汇总" class="headerlink" title="一 面试题汇总"></a>一 面试题汇总</h2><ol>
+<li>iOS多线程方案有哪些？如何选择？有什么区别？</li>
+<li>串行队列，并行队列的区别？全局队列和主队列呢？</li>
+<li>同步任务和异步任务的区别？</li>
+<li>使用sync函数往当前串行队列中添加任务会发生什么现象？<span id="more"></span></li>
+<li>异步并发执行任务1、任务2，等任务1、任务2都执行完毕后，再回到主线程执行任务3怎么实现？</li>
+<li>Group，<code>dispatch_barrier_async</code>，<code>dispatch_semaphore</code>分别用来做什么？</li>
+<li>多线程安全问题有哪些？如何解决</li>
+<li>自旋锁和互斥锁的区别？递归锁，条件锁是什么？</li>
+<li>atomic，noatomic的区别？</li>
+<li>iOS读写安全方案有哪些？读写锁pthread_rwlock，栅栏函数</li>
+<li>dispatch_barrier_async 如果传入的是一个串行或是一个全局的并发队列会发生什么现象？</li>
+</ol>
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-iOS多线程方案有哪些？如何选择？有什么区别？"><a href="#2-1-iOS多线程方案有哪些？如何选择？有什么区别？" class="headerlink" title="2.1 iOS多线程方案有哪些？如何选择？有什么区别？"></a>2.1 iOS多线程方案有哪些？如何选择？有什么区别？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">在iOS开发中，有多种多线程方案可供选择。以下是其中一些主要的方案：</span><br><span class="line"></span><br><span class="line">1-Grand Central Dispatch (GCD)：</span><br><span class="line"></span><br><span class="line">GCD 是苹果提供的一套用于管理应用程序中的并发任务执行的技术。</span><br><span class="line">它使用队列（dispatch queue）来管理任务的执行，包括串行队列和并发队列。</span><br><span class="line">GCD 提供了一种简单易用的方式来利用多核处理器，并提高应用程序的性能。</span><br><span class="line">优点：易于使用，自动管理线程池和任务调度，适合绝大多数情况。</span><br><span class="line">缺点：不够灵活，无法取消已经提交的任务。</span><br><span class="line"></span><br><span class="line">2-Operation Queue：</span><br><span class="line"></span><br><span class="line">Operation Queue 是建立在 GCD 之上的抽象，</span><br><span class="line">它提供了对操作（Operation）和操作队列（Operation Queue）的高级控制。</span><br><span class="line">操作可以是任何继承自 NSOperation 的对象，它们可以按照依赖关系来执行。</span><br><span class="line">优点：提供了更高级别的任务控制，包括依赖关系、优先级和取消操作等。</span><br><span class="line">缺点：相对于 GCD 略显复杂，对于简单的并发任务可能过于繁琐。</span><br><span class="line"></span><br><span class="line">3-pthread：</span><br><span class="line"></span><br><span class="line">POSIX 线程（pthread）是一种用于多线程编程的标准。在iOS中，你可以直接使用 pthread 库来创建和管理线程。</span><br><span class="line">优点：更接近底层，提供了更细粒度的控制。</span><br><span class="line">缺点：相比 GCD 和 Operation Queue 更为复杂，需要手动管理线程的创建、销毁和同步。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-串行队列，并行队列的区别？全局队列和主队列呢？"><a href="#2-2-串行队列，并行队列的区别？全局队列和主队列呢？" class="headerlink" title="2.2 串行队列，并行队列的区别？全局队列和主队列呢？"></a>2.2 串行队列，并行队列的区别？全局队列和主队列呢？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">在 Grand Central Dispatch (GCD) 中，有四种主要的队列类型：串行队列、并行队列、全局队列和主队列。</span><br><span class="line"></span><br><span class="line">1-串行队列 (Serial Queue)：</span><br><span class="line"></span><br><span class="line">串行队列中的任务按照先进先出的顺序依次执行，每次只有一个任务在执行，后一个任务等待前一个任务执行完毕后才开始执行。</span><br><span class="line">串行队列通常用于确保任务按照特定的顺序执行，或者避免并发访问共享资源。</span><br><span class="line"></span><br><span class="line">2-并行队列 (Concurrent Queue)：</span><br><span class="line"></span><br><span class="line">并行队列中的任务可以同时执行，系统会根据可用的处理器核心数量来决定同时执行的任务数量，但任务的执行顺序是不确定的。</span><br><span class="line">并行队列通常用于同时执行独立的、不需要特定顺序的任务，以提高性能。</span><br><span class="line"></span><br><span class="line">3-全局队列 (Global Queue)：</span><br><span class="line"></span><br><span class="line">全局队列是由系统提供的并行队列，有四个优先级：高、默认、低、后台。</span><br><span class="line">你可以使用系统提供的函数将任务添加到全局队列中，并指定优先级。</span><br><span class="line">全局队列适用于那些不需要自定义队列的情况，只需要简单地将任务添加到队列中执行。</span><br><span class="line"></span><br><span class="line">4-主队列 (Main Queue)：</span><br><span class="line"></span><br><span class="line">主队列是一个特殊的串行队列，用于在主线程上执行任务。主队列通常用于更新 UI、处理用户交互等与界面相关的任务。</span><br><span class="line">将任务提交到主队列中确保这些任务在主线程上按顺序执行，避免了并发访问 UI 的问题。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-同步任务和异步任务的区别？"><a href="#2-3-同步任务和异步任务的区别？" class="headerlink" title="2.3 同步任务和异步任务的区别？"></a>2.3 同步任务和异步任务的区别？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">同步任务和异步任务是指在多线程编程中，任务执行的方式不同的两种情况。</span><br><span class="line"></span><br><span class="line">1-同步任务 (Synchronous Task)：</span><br><span class="line"></span><br><span class="line">在同步任务中，任务会阻塞当前线程的执行，直到任务完成才会继续执行后续的代码。</span><br><span class="line">调用同步任务的方法会等待任务执行完成后返回结果，这意味着在执行同步任务的线程中，任务的执行是顺序的，不会并发执行。</span><br><span class="line"></span><br><span class="line">2-异步任务 (Asynchronous Task)：</span><br><span class="line"></span><br><span class="line">在异步任务中，任务会在后台执行，而不会阻塞当前线程的执行。</span><br><span class="line">调用异步任务的方法会立即返回，不等待任务执行完成。</span><br><span class="line">异步任务的执行通常会创建新的线程或利用线程池来执行，从而实现并发执行多个任务。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-使用sync函数往当前串行队列中添加任务会发生什么现象？"><a href="#2-4-使用sync函数往当前串行队列中添加任务会发生什么现象？" class="headerlink" title="2.4 使用sync函数往当前串行队列中添加任务会发生什么现象？"></a>2.4 使用sync函数往当前串行队列中添加任务会发生什么现象？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">当你使用 sync 函数往当前串行队列中添加任务时，会发生下面的情况：</span><br><span class="line"></span><br><span class="line">1-任务添加行为：任务会被添加到当前串行队列的队列中，并且会立即执行。</span><br><span class="line">由于是同步添加，调用 sync 函数的线程会等待任务执行完成后再继续执行后续的代码。</span><br><span class="line"></span><br><span class="line">2-死锁风险：由于 sync 是同步添加任务的操作，如果当前串行队列是当前线程所在的串行队列，</span><br><span class="line">那么当你尝试往该队列中添加任务时，会发生死锁。</span><br><span class="line">因为调用 sync 的线程会等待任务执行完成，而任务需要等待调用 sync 的线程释放当前队列才能执行，两者相互等待导致死锁。</span><br><span class="line"></span><br><span class="line">总之，使用 sync 函数往当前串行队列中添加任务会导致任务立即执行</span><br><span class="line">，但需要注意死锁的风险，尤其是在当前线程已经在该串行队列中执行任务时。</span><br><span class="line">因此，一般不建议在当前串行队列中使用 sync 添加任务，以避免死锁问题</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-异步并发执行任务1、任务2，等任务1、任务2都执行完毕后，再回到主线程执行任务3怎么实现？"><a href="#2-5-异步并发执行任务1、任务2，等任务1、任务2都执行完毕后，再回到主线程执行任务3怎么实现？" class="headerlink" title="2.5 异步并发执行任务1、任务2，等任务1、任务2都执行完毕后，再回到主线程执行任务3怎么实现？"></a>2.5 异步并发执行任务1、任务2，等任务1、任务2都执行完毕后，再回到主线程执行任务3怎么实现？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// 创建一个并行队列</span><br><span class="line">let concurrentQueue = DispatchQueue(label: &quot;com.example.concurrentQueue&quot;, attributes: .concurrent)</span><br><span class="line"></span><br><span class="line">// 异步并发执行任务1和任务2</span><br><span class="line">concurrentQueue.async &#123;</span><br><span class="line">    // 任务1</span><br><span class="line">    print(&quot;Task 1 started&quot;)</span><br><span class="line">    // 模拟耗时操作</span><br><span class="line">    Thread.sleep(forTimeInterval: 2)</span><br><span class="line">    print(&quot;Task 1 finished&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">concurrentQueue.async &#123;</span><br><span class="line">    // 任务2</span><br><span class="line">    print(&quot;Task 2 started&quot;)</span><br><span class="line">    // 模拟耗时操作</span><br><span class="line">    Thread.sleep(forTimeInterval: 3)</span><br><span class="line">    print(&quot;Task 2 finished&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 回到主线程执行任务3</span><br><span class="line">DispatchQueue.main.async &#123;</span><br><span class="line">    // 任务3</span><br><span class="line">    print(&quot;Task 3 started&quot;)</span><br><span class="line">    // 模拟耗时操作</span><br><span class="line">    Thread.sleep(forTimeInterval: 1)</span><br><span class="line">    print(&quot;Task 3 finished&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-Group，dispatch-barrier-async，dispatch-semaphore分别用来做什么？"><a href="#2-6-Group，dispatch-barrier-async，dispatch-semaphore分别用来做什么？" class="headerlink" title="2.6 Group，dispatch_barrier_async，dispatch_semaphore分别用来做什么？"></a>2.6 Group，<code>dispatch_barrier_async</code>，<code>dispatch_semaphore</code>分别用来做什么？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">在 GCD 中，Group、dispatch_barrier_async 和 dispatch_semaphore 分别用于不同的目的。</span><br><span class="line"></span><br><span class="line">1-Dispatch Group：</span><br><span class="line"></span><br><span class="line">Dispatch Group 用于管理一组任务的执行，并在所有任务完成后执行额外的代码。</span><br><span class="line">你可以使用 Dispatch Group 来异步执行多个任务，并在它们全部完成后执行一些操作，比如通知用户或者更新 UI。</span><br><span class="line">你可以使用 dispatch_group_async 将任务添加到 Dispatch Group 中，</span><br><span class="line">然后使用 dispatch_group_notify 来指定当所有任务完成时执行的代码块。</span><br><span class="line"></span><br><span class="line">2-dispatch_barrier_async：</span><br><span class="line"></span><br><span class="line">dispatch_barrier_async 用于在并行队列中插入一个栅栏，保证在它之前添加的任务都执行完成后，再执行它之后添加的任务。</span><br><span class="line">这个函数主要用于同步访问共享资源，比如读写文件或者数据库。</span><br><span class="line">当你需要在并行队列中执行一系列任务，但是其中某些任务必须按顺序执行或者需要互斥访问共享资源时，</span><br><span class="line">可以使用 dispatch_barrier_async。</span><br><span class="line"></span><br><span class="line">3-dispatch_semaphore：</span><br><span class="line"></span><br><span class="line">dispatch_semaphore 是一个计数信号量，用于控制同时访问资源的最大线程数。</span><br><span class="line">它可以实现简单的线程同步和互斥，也可以用于等待异步操作完成。</span><br><span class="line">你可以使用 dispatch_semaphore_wait 来等待信号量减少到指定值，使用 dispatch_semaphore_signal 来增加信号量。</span><br><span class="line">简单总结一下它们的用途：</span><br><span class="line"></span><br><span class="line">Dispatch Group 用于管理一组任务的执行并在所有任务完成后执行额外的代码。</span><br><span class="line">1-dispatch_barrier_async 用于在并行队列中创建一个栅栏，控制任务的执行顺序或者同步访问共享资源。</span><br><span class="line">2-dispatch_semaphore 用于实现简单的线程同步和互斥，以及控制同时访问资源的最大线程数。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-多线程安全问题有哪些？如何解决"><a href="#2-7-多线程安全问题有哪些？如何解决" class="headerlink" title="2.7 多线程安全问题有哪些？如何解决"></a>2.7 多线程安全问题有哪些？如何解决</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">多线程安全问题是指在多线程环境下，由于多个线程同时访问共享资源而可能引发的问题。常见的多线程安全问题包括：</span><br><span class="line"></span><br><span class="line">1-竞态条件（Race Condition）：多个线程同时竞争对共享资源进行读写操作，导致结果依赖于线程执行的顺序或者时间。</span><br><span class="line">2-数据竞争（Data Race）：多个线程同时访问共享的可变数据，其中至少一个线程修改了数据，</span><br><span class="line">而其他线程可能读取到了不一致或者未定义的值。</span><br><span class="line">3-死锁（Deadlock）：多个线程因为互相等待对方释放资源而导致无法继续执行的情况。</span><br><span class="line">4-活锁（Livelock）：多个线程因为相互响应而无法继续执行的情况，类似于死锁但是线程会一直重试。</span><br><span class="line"></span><br><span class="line">为了解决多线程安全问题，可以采取以下方法：</span><br><span class="line"></span><br><span class="line">1-互斥锁（Mutex）：</span><br><span class="line">使用互斥锁来保护共享资源，确保在任何时刻只有一个线程可以访问资源。</span><br><span class="line">常见的互斥锁有 NSLock、pthread_mutex 等。</span><br><span class="line"></span><br><span class="line">2-信号量（Semaphore）：</span><br><span class="line">使用信号量来控制同时访问资源的最大线程数，以及实现线程间的同步。</span><br><span class="line">可以使用 dispatch_semaphore 来实现信号量。</span><br><span class="line"></span><br><span class="line">3-读写锁（Read-Write Lock）：</span><br><span class="line">允许多个线程同时读取共享资源，但是只有一个线程可以写入资源。</span><br><span class="line">这可以提高并发性能。在 iOS 开发中可以使用 pthread_rwlock 或者 GCD 中的读写队列来实现。</span><br><span class="line"></span><br><span class="line">4-串行队列（Serial Queue）：</span><br><span class="line">将需要同步访问的代码放在串行队列中执行，确保这些任务按顺序执行，避免竞态条件。</span><br><span class="line"></span><br><span class="line">5-原子操作（Atomic Operation）：</span><br><span class="line">使用原子操作来保证对共享资源的读写是原子性的，不会被中断。</span><br><span class="line">在 Objective-C 中，可以使用 @synchronized 块来实现原子操作。</span><br><span class="line"></span><br><span class="line">6-避免死锁：</span><br><span class="line">设计良好的锁定顺序，避免出现循环等待的情况，以预防死锁的发生。</span><br><span class="line"></span><br><span class="line">7-线程安全的数据结构：</span><br><span class="line">使用线程安全的数据结构，比如 NSArray 的 threadSafe、NSDictionary 的 threadSafe、NSCache 的 threadSafe 等，</span><br><span class="line">它们内部已经处理了线程安全的问题。</span><br><span class="line"></span><br><span class="line">通过合理地选择适当的同步机制和数据结构，以及遵循良好的编程实践，</span><br><span class="line">可以有效地解决多线程安全问题，确保应用程序在多线程环境下的稳定性和可靠性。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-8-自旋锁和互斥锁的区别？递归锁，条件锁是什么？"><a href="#2-8-自旋锁和互斥锁的区别？递归锁，条件锁是什么？" class="headerlink" title="2.8 自旋锁和互斥锁的区别？递归锁，条件锁是什么？"></a>2.8 自旋锁和互斥锁的区别？递归锁，条件锁是什么？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">自旋锁（Spin Lock）和互斥锁（Mutex Lock）是多线程编程中常用的同步机制，它们都用于保护临界区，防止多个线程同时访问共享资源。</span><br><span class="line"></span><br><span class="line">1-自旋锁（Spin Lock）：</span><br><span class="line">当一个线程尝试获取自旋锁时，如果锁已被其他线程占用，该线程不会被阻塞，而是一直循环等待，不停地尝试获取锁，直到锁被释放。</span><br><span class="line">自旋锁适用于保护临界区很小且短时间内能够释放的情况，因为自旋期间线程会一直占用 CPU 资源，</span><br><span class="line">如果临界区很大或者锁被持有时间较长，则不适合使用自旋锁，因为会浪费大量的 CPU 时间。</span><br><span class="line"></span><br><span class="line">2-互斥锁（Mutex Lock）：</span><br><span class="line">当一个线程尝试获取互斥锁时，如果锁已被其他线程占用，则该线程会被阻塞，直到锁被释放。</span><br><span class="line">互斥锁适用于保护临界区较大或者锁被持有时间较长的情况，因为线程在等待锁期间不会占用 CPU 资源。</span><br><span class="line"></span><br><span class="line">3-递归锁（Recursive Lock）：</span><br><span class="line">递归锁是一种特殊的互斥锁，允许同一线程多次获取同一把锁。每次成功获取锁后，</span><br><span class="line">该锁的计数器会递增，当计数器为零时才释放锁。</span><br><span class="line">递归锁在某些情况下可以简化代码实现，但需要注意避免死锁。</span><br><span class="line"></span><br><span class="line">4-条件锁（Condition Lock）：</span><br><span class="line">条件锁是一种同步机制，用于线程间的等待和通知。它与互斥锁结合使用，</span><br><span class="line">当某个条件不满足时，线程可以等待条件满足时再继续执行。</span><br><span class="line">条件锁通常和条件变量一起使用，条件变量用于在等待和通知之间传递消息。</span><br><span class="line"></span><br><span class="line">总结：</span><br><span class="line">自旋锁和互斥锁都用于保护临界区，但自旋锁在获取失败时会循环等待，而互斥锁会阻塞等待。</span><br><span class="line">递归锁允许同一线程多次获取同一把锁，条件锁用于线程间的等待和通知</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-9-atomic，noatomic的区别？"><a href="#2-9-atomic，noatomic的区别？" class="headerlink" title="2.9 atomic，noatomic的区别？"></a>2.9 atomic，noatomic的区别？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">在并发编程中，原子操作（Atomic Operation）和非原子操作（Non-Atomic Operation）之间有很大的区别。</span><br><span class="line"></span><br><span class="line">1-原子操作（Atomic Operation）：</span><br><span class="line"></span><br><span class="line">原子操作是不可中断的单个操作，要么完全执行，要么完全不执行，没有中间状态。</span><br><span class="line">原子操作通常由硬件或者特定的CPU指令来支持，</span><br><span class="line">保证了在多线程环境下对共享数据的操作是线程安全的，不会发生数据竞争或者数据不一致的情况。</span><br><span class="line">常见的原子操作包括原子增减、原子赋值、原子比较交换等。</span><br><span class="line"></span><br><span class="line">2-非原子操作（Non-Atomic Operation）：</span><br><span class="line"></span><br><span class="line">非原子操作是指可能被中断或者被其他线程干扰的操作，没有原子性保证。</span><br><span class="line">在多线程环境下，如果多个线程同时对共享数据进行非原子操作，</span><br><span class="line">可能会导致数据竞争、数据不一致等问题，需要额外的同步机制来保证线程安全。</span><br><span class="line">例如，在多线程环境下对一个整数进行简单的加法操作，如果没有使用原子操作或者其他同步机制，可能会出现竞争条件，导致结果不确定。</span><br><span class="line"></span><br><span class="line">总的来说，原子操作保证了对共享数据的操作是线程安全的，不需要额外的同步机制；</span><br><span class="line">而非原子操作则需要通过锁、互斥量等同步机制来保证线程安全。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-10-iOS读写安全方案有哪些？读写锁pthread-rwlock，栅栏函数"><a href="#2-10-iOS读写安全方案有哪些？读写锁pthread-rwlock，栅栏函数" class="headerlink" title="2.10 iOS读写安全方案有哪些？读写锁pthread_rwlock，栅栏函数"></a>2.10 iOS读写安全方案有哪些？读写锁pthread_rwlock，栅栏函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">在iOS开发中，确保数据的读写安全是非常重要的。以下是一些常用的读写安全方案：</span><br><span class="line"></span><br><span class="line">1-使用读写锁（pthread_rwlock）：</span><br><span class="line"></span><br><span class="line">pthread_rwlock 是 POSIX 线程库中的读写锁实现，在多线程环境下可以提供更细粒度的读写访问控制。</span><br><span class="line">读写锁允许多个线程同时读取共享数据，但只允许一个线程写入共享数据。</span><br><span class="line">在iOS开发中，可以使用 pthread_rwlock 来保护共享数据的读写操作，以提高性能和并发度。</span><br><span class="line"></span><br><span class="line">2-使用栅栏函数（dispatch_barrier_async）：</span><br><span class="line"></span><br><span class="line">GCD（Grand Central Dispatch）提供了栅栏函数 dispatch_barrier_async，</span><br><span class="line">可以用于创建同步点，确保在栅栏之前的任务全部完成后才执行栅栏之后的任务。</span><br><span class="line">栅栏函数适用于异步执行的任务，可以用于保护并发队列中的共享数据。</span><br><span class="line">通过在读取和写入共享数据的任务之间插入栅栏，可以确保读写操作的顺序和一致性，避免竞态条件和数据不一致的问题。</span><br><span class="line"></span><br><span class="line">除了上述方法，还有其他一些读写安全的方案，例如使用串行队列、信号量等同步机制，或者使用原子操作来操作共享数据。</span><br><span class="line">在选择合适的方案时，需要根据具体的场景和需求来决定。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-11-dispatch-barrier-async-如果传入的是一个串行或是一个全局的并发队列会发生什么现象？"><a href="#2-11-dispatch-barrier-async-如果传入的是一个串行或是一个全局的并发队列会发生什么现象？" class="headerlink" title="2.11 dispatch_barrier_async 如果传入的是一个串行或是一个全局的并发队列会发生什么现象？"></a>2.11 dispatch_barrier_async 如果传入的是一个串行或是一个全局的并发队列会发生什么现象？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">如果 dispatch_barrier_async 函数传入的是一个串行队列或者是一个全局的并发队列，其行为会有所不同：</span><br><span class="line"></span><br><span class="line">1-传入串行队列：</span><br><span class="line"></span><br><span class="line">如果传入的是一个串行队列，那么 dispatch_barrier_async 函数将会在该串行队列上创建一个同步点。</span><br><span class="line">在这种情况下，栅栏函数会等待在该串行队列上排队的所有任务都执行完毕，</span><br><span class="line">并且不允许新的任务插入到栅栏之后，直到栅栏之前的任务全部执行完毕。</span><br><span class="line"></span><br><span class="line">2-传入全局的并发队列：</span><br><span class="line"></span><br><span class="line">如果传入的是一个全局的并发队列（如 dispatch_get_global_queue 获取的队列），</span><br><span class="line">栅栏函数的行为会有所不同。</span><br><span class="line">全局并发队列是一个并发队列，即使使用栅栏函数也无法阻止其他任务在栅栏之后插入执行。</span><br><span class="line">在这种情况下，栅栏函数仍然会等待在栅栏之前的任务执行完毕，但在栅栏之后可能会有其他任务同时执行。</span><br><span class="line"></span><br><span class="line">总的来说，传入串行队列时，dispatch_barrier_async 函数会创建一个同步点，</span><br><span class="line">保证栅栏之前的任务全部执行完毕后再执行栅栏之后的任务；</span><br><span class="line">而传入全局的并发队列时，栅栏函数也会等待栅栏之前的任务执行完毕，但无法阻止其他任务插入执行。</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-参考"><a href="#三-参考" class="headerlink" title="三 参考"></a>三 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/410f01d9e638">简书—OC中多线程实现与线程安全</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/OC%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># OC面试题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/2cdee718.html" rel="prev" title="IOS面试题——OC中Runloop原理与使用(9)">
+                  <i class="fa fa-angle-left"></i> IOS面试题——OC中Runloop原理与使用(9)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/156c3cdb.html" rel="next" title="标准韩国语第三册——第10课-压力与疾病-基本语法1">
+                  标准韩国语第三册——第10课-压力与疾病-基本语法1 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"4caa33af7efdb3bf9b23fd9bd9920ce2"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

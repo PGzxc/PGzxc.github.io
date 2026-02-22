@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述 子线程是否能更新UI Activity.startActivity()和ApplicationContext.startActivity()有没有什么问题？ Handler机制整体流程 Looper.loop()为什么不会阻塞主线程?(IdHandler闲时机制) 同步屏障">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android面试题——常见面试题1">
+<meta property="og:url" content="https://pgzxc.github.io/posts/b76dc24f.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 概述 子线程是否能更新UI Activity.startActivity()和ApplicationContext.startActivity()有没有什么问题？ Handler机制整体流程 Looper.loop()为什么不会阻塞主线程?(IdHandler闲时机制) 同步屏障">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-08T04:12:09.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.247Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Android面试题">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/b76dc24f.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/b76dc24f.html","path":"posts/b76dc24f.html","title":"Android面试题——常见面试题1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android面试题——常见面试题1 | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%AD%90%E7%BA%BF%E7%A8%8B%E6%98%AF%E5%90%A6%E8%83%BD%E6%9B%B4%E6%96%B0UI"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 子线程是否能更新UI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Activity-startActivity-%E5%92%8CApplicationContext-startActivity-%E6%9C%89%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Activity.startActivity()和ApplicationContext.startActivity()有没有什么问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Handler%E6%9C%BA%E5%88%B6%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Handler机制整体流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-Looper-loop-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E4%BC%9A%E9%98%BB%E5%A1%9E%E4%B8%BB%E7%BA%BF%E7%A8%8B-IdHandler%E9%97%B2%E6%97%B6%E6%9C%BA%E5%88%B6"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 Looper.loop()为什么不会阻塞主线程?(IdHandler闲时机制)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E5%90%8C%E6%AD%A5%E5%B1%8F%E9%9A%9C"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 同步屏障</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-postDelay-%E7%9A%84%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 postDelay()的具体实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-post-%E4%B8%8EsendMessage-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 post()与sendMessage()的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-%E4%BD%BF%E7%94%A8-Handler-%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%EF%BC%9F"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 使用 Handler 需要注意什么问题？怎么解决？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 事件分发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-10-View%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 View绘制流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-11-%E6%B5%8B%E9%87%8F%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.11.</span> <span class="nav-text">2.11 测量模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-12-View-Activity-Window%E7%9A%84%E5%8C%BA%E5%88%AB%E8%81%94%E7%B3%BB"><span class="nav-number">2.12.</span> <span class="nav-text">2.12 View, Activity, Window的区别联系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-13-%E6%80%8E%E4%B9%88%E8%AE%A1%E7%AE%97%E4%B8%80%E4%B8%AAView%E5%9C%A8%E5%B1%8F%E5%B9%95%E5%8F%AF%E8%A7%81%E9%83%A8%E5%88%86%E7%9A%84%E7%99%BE%E5%88%86%E6%AF%94%EF%BC%9F"><span class="nav-number">2.13.</span> <span class="nav-text">2.13 怎么计算一个View在屏幕可见部分的百分比？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-14-activity%E9%87%8C%E9%9D%A2%E6%9C%89%E5%A4%9A%E4%B8%AAfragment%EF%BC%8C%E6%8C%89%E4%B8%8Bhome%E4%B9%8B%E5%90%8E%E4%B8%80%E4%BC%9A%E5%84%BF%E5%88%87%E5%9B%9E%E6%9D%A5-fragment%E6%B2%A1%E6%9C%89%E6%97%A0%E5%8F%82%E6%9E%84%E9%80%A0%E5%B4%A9%E4%BA%86%EF%BC%8C%E8%AF%A5%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86"><span class="nav-number">2.14.</span> <span class="nav-text">2.14 activity里面有多个fragment，按下home之后一会儿切回来,fragment没有无参构造崩了，该怎么处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-15-%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E8%AE%BE%E7%BD%AE%E8%AF%81%E4%B9%A6%EF%BC%8C%E5%A6%82%E9%9C%80%E8%AF%A5%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.15.</span> <span class="nav-text">2.15 接口请求是否需要设置证书，如需该如何设置</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/b76dc24f.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android面试题——常见面试题1 | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android面试题——常见面试题1<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Android%E9%9D%A2%E8%AF%95%E9%A2%98%E2%80%94%E2%80%94%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%981.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-08 12:12:09" itemprop="dateCreated datePublished" datetime="2025-04-08T12:12:09+08:00">2025-04-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/Android%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">Android面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>13 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ol>
+<li>子线程是否能更新UI</li>
+<li>Activity.startActivity()和ApplicationContext.startActivity()有没有什么问题？</li>
+<li>Handler机制整体流程</li>
+<li>Looper.loop()为什么不会阻塞主线程?(IdHandler闲时机制)</li>
+<li>同步屏障<span id="more"></span></li>
+<li>postDelay()的具体实现</li>
+<li>post()与sendMessage()的区别</li>
+<li>使用Handler需要注意什么问题，怎么解决的？</li>
+<li>事件分发</li>
+<li>View绘制流程</li>
+<li>测量模式</li>
+<li>View, Activity, Window的区别联系</li>
+<li>怎么计算一个View在屏幕可见部分的百分比？</li>
+<li>activity里面有多个fragment，按下home之后一会儿切回来,fragment没有无参构造崩了，该怎么处理</li>
+<li>接口请求是否需要设置证书，如需该如何设置</li>
+</ol>
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-子线程是否能更新UI"><a href="#2-1-子线程是否能更新UI" class="headerlink" title="2.1 子线程是否能更新UI"></a>2.1 子线程是否能更新UI</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">一、不能，Android中子线程不能直接更新UI。</span><br><span class="line"></span><br><span class="line">在Android中，只有主线程（UI线程）才有权限操作界面元素（如TextView、Button等）。</span><br><span class="line">如果子线程尝试直接更新UI，会抛出异常，如：</span><br><span class="line">android.view.ViewRootImpl$CalledFromWrongThreadException</span><br><span class="line"></span><br><span class="line">二、为什么？</span><br><span class="line">Android的UI组件不是线程安全的，</span><br><span class="line">如果多个线程同时访问，会导致不可预期的结果，因此系统限制只有主线程能操作UI。</span><br><span class="line"></span><br><span class="line">三、如何从子线程更新UI？</span><br><span class="line">可以使用以下方式将更新操作“切换”回主线程：</span><br><span class="line"></span><br><span class="line">3.1 Handler + Looper（传统方式）：</span><br><span class="line"></span><br><span class="line">Handler handler = new Handler(Looper.getMainLooper());</span><br><span class="line">handler.post(() -&gt; &#123;</span><br><span class="line">    textView.setText(&quot;更新UI&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">3.2 runOnUiThread()（在Activity中）：</span><br><span class="line">runOnUiThread(() -&gt; &#123;</span><br><span class="line">    textView.setText(&quot;更新UI&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">3.3 View.post()（控件自身）：</span><br><span class="line">textView.post(() -&gt; &#123;</span><br><span class="line">    textView.setText(&quot;更新UI&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">3.4 使用现代方案（如LiveData、ViewModel、Coroutine等）：</span><br><span class="line">这些架构组件也会自动在主线程更新UI，适合复杂项目结构。</span><br><span class="line"></span><br><span class="line">总结一句话：</span><br><span class="line">子线程不能直接更新UI，必须通过主线程间接更新</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-Activity-startActivity-和ApplicationContext-startActivity-有没有什么问题？"><a href="#2-2-Activity-startActivity-和ApplicationContext-startActivity-有没有什么问题？" class="headerlink" title="2.2 Activity.startActivity()和ApplicationContext.startActivity()有没有什么问题？"></a>2.2 Activity.startActivity()和ApplicationContext.startActivity()有没有什么问题？</h3><p>一、区别</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">1.1 Activity.startActivity() —— 推荐用法</span><br><span class="line">这是最常用、最安全的启动新页面方式。</span><br><span class="line">它依赖于当前 Activity 的上下文，启动新 Activity 时能正确继承当前任务栈、动画、窗口环境等。</span><br><span class="line"></span><br><span class="line">1.2 ApplicationContext.startActivity() —— 存在问题</span><br><span class="line">虽然ApplicationContext</span><br><span class="line">（例如 getApplicationContext()）也能调用 startActivity()，但有以下限制：</span><br><span class="line"></span><br><span class="line">1.2.1 必须加 FLAG_ACTIVITY_NEW_TASK 标志：</span><br><span class="line"></span><br><span class="line">否则会抛出异常：</span><br><span class="line">android.util.AndroidRuntimeException: </span><br><span class="line">Calling startActivity() from outside of an Activity context requires the FLAG_ACTIVITY_NEW_TASK flag.</span><br><span class="line"></span><br><span class="line">示例修复：</span><br><span class="line"></span><br><span class="line">Intent intent = new Intent(context, TargetActivity.class);</span><br><span class="line">intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</span><br><span class="line">context.startActivity(intent);</span><br><span class="line"></span><br><span class="line">1.2.2 不推荐用于跳转界面：</span><br><span class="line"></span><br><span class="line">-Application 的 Context 生命周期长，不依附界面；</span><br><span class="line">-会创建新任务栈，无法共享当前界面状态；</span><br><span class="line">-可能造成任务栈混乱，跳转体验不一致。</span><br></pre></td></tr></table></figure>
+
+<p>二、总结</p>
+<table>
+<thead>
+<tr>
+<th align="center">用法</th>
+<th align="center">是否安全</th>
+<th align="center">是否推荐</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Activity.startActivity()</td>
+<td align="center">✅ 安全</td>
+<td align="center">✅ 推荐</td>
+<td align="center">标准跳转方式</td>
+</tr>
+<tr>
+<td align="center">ApplicationContext.startActivity()</td>
+<td align="center">⚠️ 有限制</td>
+<td align="center">❌ 不推荐</td>
+<td align="center">需加 <code>FLAG_ACTIVITY_NEW_TASK</code>，容易出错</td>
+</tr>
+</tbody></table>
+<p>三、面试建议回答</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext 启动 Activity 必须设置 FLAG_ACTIVITY_NEW_TASK，</span><br><span class="line">通常不推荐这么做，建议用 Activity 的 Context。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-Handler机制整体流程"><a href="#2-3-Handler机制整体流程" class="headerlink" title="2.3 Handler机制整体流程"></a>2.3 Handler机制整体流程</h3><p>一、介绍</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Android 的 Handler机制 是一种消息传递机制，</span><br><span class="line">主要用于主线程与子线程之间的通信，也用于线程内的异步任务调度。</span><br></pre></td></tr></table></figure>
+
+<p>二、整体组成</p>
+<p>Handler 机制主要由四个核心类组成：</p>
+<table>
+<thead>
+<tr>
+<th align="center">组件</th>
+<th align="center">作用说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Looper</td>
+<td align="center">管理消息循环（消息队列的执行者）</td>
+</tr>
+<tr>
+<td align="center">MessageQueue</td>
+<td align="center">存储消息的队列（先进先出）</td>
+</tr>
+<tr>
+<td align="center">Handler</td>
+<td align="center">发送消息 &amp; 处理消息</td>
+</tr>
+<tr>
+<td align="center">Message</td>
+<td align="center">要传递的消息对象</td>
+</tr>
+</tbody></table>
+<p>三、工作流程图（简要描述）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1、主线程启动时调用 Looper.prepare() 和 Looper.loop()：</span><br><span class="line">-系统在主线程中创建 Looper 和 MessageQueue。</span><br><span class="line">-开启消息循环。</span><br><span class="line"></span><br><span class="line">2、子线程或主线程中使用 Handler.sendMessage() 发送消息：</span><br><span class="line">-消息被加入到目标线程的 MessageQueue 中。</span><br><span class="line"></span><br><span class="line">3、Looper 不断轮询 MessageQueue，取出消息：</span><br><span class="line">-调用 Handler.dispatchMessage()。</span><br><span class="line"></span><br><span class="line">4、Handler.handleMessage() 被执行，处理业务逻辑：</span><br><span class="line">-开发者通常重写这个方法进行 UI 更新或任务处理</span><br></pre></td></tr></table></figure>
+
+<p>四、面试答题总结一句话</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Handler 机制通过 Looper 和 MessageQueue 管理消息循环，</span><br><span class="line">Handler 用于发送与处理消息，实现线程间或线程内的异步通信。</span><br><span class="line">主线程中系统默认已初始化 Looper，因此直接可用 Handler。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-Looper-loop-为什么不会阻塞主线程-IdHandler闲时机制"><a href="#2-4-Looper-loop-为什么不会阻塞主线程-IdHandler闲时机制" class="headerlink" title="2.4 Looper.loop()为什么不会阻塞主线程?(IdHandler闲时机制)"></a>2.4 Looper.loop()为什么不会阻塞主线程?(IdHandler闲时机制)</h3><p>一、简答</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Looper.loop() 本质是一个无限循环，</span><br><span class="line">但不会“卡死”主线程，因为它是在轮询 MessageQueue 消息队列时，</span><br><span class="line">只有在有消息时才处理，没有消息时就“空转等待”，不会消耗 CPU，</span><br><span class="line">因此主线程仍然可以正常响应 UI 事件、绘制、动画等。</span><br></pre></td></tr></table></figure>
+
+<p>二、原理解析（涉及 <code>IdleHandler</code> 闲时机制）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1、Looper.loop() 是主线程的事件循环：</span><br><span class="line">for (;;) &#123;</span><br><span class="line">    Message msg = queue.next(); // 可能阻塞等待消息</span><br><span class="line">    ...</span><br><span class="line">    msg.target.dispatchMessage(msg);</span><br><span class="line">&#125;</span><br><span class="line">2. queue.next() 没有消息时会阻塞线程，但这不是“死阻塞”：</span><br><span class="line">-MessageQueue 内部通过 Linux 层的 epoll 或 nativePollOnce() 机制，</span><br><span class="line">在没有消息时会挂起线程（不占CPU），等有消息再唤醒。</span><br><span class="line"></span><br><span class="line">3. 为什么“阻塞”了主线程，UI还能响应？</span><br><span class="line">-实际上，主线程的UI绘制、事件响应(如点击)等都是通过Handler发送消息进入这个MessageQueue中的；</span><br><span class="line"></span><br><span class="line">-所以Looper.loop()处理的正是这些“UI事件消息”，</span><br><span class="line">它是主线程正常运作的关键，不是“阻塞”而是“调度中心”。</span><br></pre></td></tr></table></figure>
+
+<p>三、闲时机制（<code>IdleHandler</code>）是什么？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">当消息队列中暂时没有任务时，系统会回调已注册的 IdleHandler，执行一些“空闲时才做”的工作。</span><br><span class="line">Looper.myQueue().addIdleHandler(new MessageQueue.IdleHandler() &#123;</span><br><span class="line">    public boolean queueIdle() &#123;</span><br><span class="line">        Log.d(&quot;Test&quot;, &quot;空闲了，可以执行一些后台任务&quot;);</span><br><span class="line">        return false; // 返回true表示继续保留，false表示用完就移除</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">常用于：预加载、缓存初始化、页面空闲时做任务。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-同步屏障"><a href="#2-5-同步屏障" class="headerlink" title="2.5 同步屏障"></a>2.5 同步屏障</h3><p>一、 一句话概括</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">同步屏障是一种在 MessageQueue 中优先处理异步消息、延迟同步消息的机制，</span><br><span class="line">常用于动画、渲染等对时效性要求高的异步任务。</span><br></pre></td></tr></table></figure>
+
+<p>二、背景知识</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Android 的消息队列（MessageQueue）中，</span><br><span class="line">所有消息（包括 UI 操作、后台逻辑、动画渲染等）默认是同步消息，按时间顺序依次执行。</span><br><span class="line"></span><br><span class="line">但如果有大量同步消息阻塞队列，就会导致动画卡顿、界面掉帧。</span><br></pre></td></tr></table></figure>
+
+<p>三、同步屏障机制的作用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-插入一个“屏障”标记到 MessageQueue 中</span><br><span class="line">-暂时跳过所有同步消息，只执行后面的异步消息</span><br><span class="line">-让像 Choreographer（动画/刷新）发送的异步消息优先执行</span><br></pre></td></tr></table></figure>
+
+<p>四、使用场景（系统内部）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.Choreographer（控制 16ms 一帧刷新）使用同步屏障机制：</span><br><span class="line">-插入屏障 → 发送异步刷新消息（如 doFrame） → 移除屏障</span><br><span class="line">-保证动画、渲染的及时性，避免卡顿</span><br></pre></td></tr></table></figure>
+
+<p>五、简化示意图（屏障行为）</p>
+<table>
+<thead>
+<tr>
+<th align="center">消息队列</th>
+<th align="center">正常处理</th>
+<th align="center">插入同步屏障后</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">同步消息 A</td>
+<td align="center">✅ 执行</td>
+<td align="center">❌ 跳过</td>
+</tr>
+<tr>
+<td align="center">同步消息 B</td>
+<td align="center">✅ 执行</td>
+<td align="center">❌ 跳过</td>
+</tr>
+<tr>
+<td align="center">异步消息 C</td>
+<td align="center">✅ 等待前面执行</td>
+<td align="center">✅ 直接执行（被提升）</td>
+</tr>
+<tr>
+<td align="center">同步消息 D</td>
+<td align="center">✅ 执行</td>
+<td align="center">❌ 跳过</td>
+</tr>
+</tbody></table>
+<p>六、注意事项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-同步屏障只能由 系统 API 使用（如 Looper / Choreographer），开发者无法直接调用；</span><br><span class="line">-从 Android 6.0 开始，部分私有 API（如 postSyncBarrier()）对应用层已隐藏。</span><br></pre></td></tr></table></figure>
+
+<p>七、总结一句话</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">同步屏障用于优先处理异步消息，保障动画和 UI 流畅性，是 Android 消息机制中的性能优化手段之一。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-postDelay-的具体实现"><a href="#2-6-postDelay-的具体实现" class="headerlink" title="2.6 postDelay()的具体实现"></a>2.6 postDelay()的具体实现</h3><p>一、一句话概括</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">postDelayed() 本质是往 MessageQueue 中插入一个“定时执行”的消息，</span><br><span class="line">系统会在指定时间后取出并执行对应的任务。</span><br></pre></td></tr></table></figure>
+
+<p>二、 源码层调用链（以主线程 Handler 为例）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">handler.postDelayed(runnable, delayMillis)</span><br><span class="line">    ↓</span><br><span class="line">handler.sendMessageDelayed(Message, delayMillis)</span><br><span class="line">    ↓</span><br><span class="line">handler.sendMessageAtTime(Message, SystemClock.uptimeMillis() + delayMillis)</span><br><span class="line">    ↓</span><br><span class="line">MessageQueue.enqueueMessage(msg, when) // 把消息加入消息队列，设置触发时间</span><br></pre></td></tr></table></figure>
+
+<p>三、核心机制解释</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.Runnable 被包装成一个 Message 对象；</span><br><span class="line">2.设置消息的执行时间：when = 当前时间 + delayMillis；</span><br><span class="line">3.插入 MessageQueue 的时候，按时间排序；</span><br><span class="line">4.Looper.loop() 会不断检查消息队列；</span><br><span class="line">5.只有当当前时间 &gt;= 消息的 when，才会处理这条消息；</span><br><span class="line">6.到时间后，调用 Handler.dispatchMessage() → 执行 Runnable.run()。</span><br></pre></td></tr></table></figure>
+
+<p>四、定时是如何实现的？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">底层依赖 SystemClock.uptimeMillis() 来计算时间点，</span><br><span class="line">MessageQueue 使用内部的 优先队列 或 链表 保证“先到时间的消息先执行”。</span><br><span class="line"></span><br><span class="line">如果下一条消息的when时间未到，Looper会进入等待态（使用epoll或nativePollOnce()低功耗阻塞）</span><br></pre></td></tr></table></figure>
+
+<p>五、总结一句话</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">postDelayed() 是通过Handler把一个带有延迟时间的Runnable包装成 Message放入MessageQueue，</span><br><span class="line">由 Looper 在合适时间调度执行。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-post-与sendMessage-的区别"><a href="#2-7-post-与sendMessage-的区别" class="headerlink" title="2.7 post()与sendMessage()的区别"></a>2.7 post()与sendMessage()的区别</h3><p>一、 一句话概括</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">post() 是发送 Runnable，sendMessage() 是发送 Message，</span><br><span class="line">本质都通过 MessageQueue 机制，但使用场景和灵活性不同</span><br></pre></td></tr></table></figure>
+
+<p>二、主要区别对比</p>
+<table>
+<thead>
+<tr>
+<th align="center">对比点</th>
+<th align="center">post()</th>
+<th align="center">sendMessage()</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">发送内容</td>
+<td align="center">Runnable（可执行任务）</td>
+<td align="center">Message（消息对象）</td>
+</tr>
+<tr>
+<td align="center">参数类型</td>
+<td align="center">post(Runnable)</td>
+<td align="center">sendMessage(Message)</td>
+</tr>
+<tr>
+<td align="center">处理方式</td>
+<td align="center">调用 Runnable.run()</td>
+<td align="center">重写 handleMessage()</td>
+</tr>
+<tr>
+<td align="center">是否携带自定义数据</td>
+<td align="center">❌ 不方便</td>
+<td align="center">✅ 可设置 <code>what/arg1/arg2/obj</code></td>
+</tr>
+<tr>
+<td align="center">使用场景</td>
+<td align="center">简单任务（如更新UI）</td>
+<td align="center">需要区分消息类型、多任务调度</td>
+</tr>
+<tr>
+<td align="center">实现路径</td>
+<td align="center">Runnable → Message → queue.enqueueMessage()</td>
+<td align="center">Message → queue.enqueueMessage()</td>
+</tr>
+</tbody></table>
+<p>三、内部流程分析（都用到了 <code>MessageQueue</code>）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1-post()</span><br><span class="line">handler.post(runnable)</span><br><span class="line">  → handler.sendMessageDelayed(getPostMessage(r), 0)</span><br><span class="line">  → 把 runnable 封装进 message.callback 中</span><br><span class="line"></span><br><span class="line">2-sendMessage()</span><br><span class="line">Message msg = Message.obtain();</span><br><span class="line">msg.what = 1;</span><br><span class="line">handler.sendMessage(msg);</span><br><span class="line">  → 消息加入队列，等待 dispatchMessage()</span><br></pre></td></tr></table></figure>
+
+<p>四、实例对比</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1-post() 示例：</span><br><span class="line">handler.post(() -&gt; &#123;</span><br><span class="line">    textView.setText(&quot;更新UI&quot;);</span><br><span class="line">&#125;);</span><br><span class="line">2-sendMessage() 示例：</span><br><span class="line">Message msg = Message.obtain();</span><br><span class="line">msg.what = 1;</span><br><span class="line">handler.sendMessage(msg);</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public void handleMessage(Message msg) &#123;</span><br><span class="line">    if (msg.what == 1) &#123;</span><br><span class="line">        textView.setText(&quot;更新UI&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>五、总结一句话</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">post() 更适合执行简单的 Runnable 任务，</span><br><span class="line">sendMessage() 适合处理有类型、数据标识的复杂消息调度；</span><br><span class="line">两者底层都依赖 MessageQueue 实现异步通信</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-8-使用-Handler-需要注意什么问题？怎么解决？"><a href="#2-8-使用-Handler-需要注意什么问题？怎么解决？" class="headerlink" title="2.8 使用 Handler 需要注意什么问题？怎么解决？"></a>2.8 使用 Handler 需要注意什么问题？怎么解决？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">一、常见问题一：内存泄漏</span><br><span class="line">1.1 问题描述：</span><br><span class="line">Handler 可能持有外部类（如 Activity）的引用，导致Activity 即使退出也无法被回收。</span><br><span class="line"></span><br><span class="line">1.2 示例场景：</span><br><span class="line">Handler handler = new Handler();</span><br><span class="line">handler.postDelayed(() -&gt; &#123;</span><br><span class="line">    // 延迟执行代码可能仍引用了Activity中的View等资源</span><br><span class="line">&#125;, 10000);</span><br><span class="line"></span><br><span class="line">1.3 解决方案：</span><br><span class="line">-使用静态内部类 + 弱引用（WeakReference）</span><br><span class="line">-或者使用 Lifecycle 感知的组件自动取消任务</span><br><span class="line"></span><br><span class="line">static class MyHandler extends Handler &#123;</span><br><span class="line">    WeakReference&lt;MainActivity&gt; activityRef;</span><br><span class="line">    MyHandler(MainActivity activity) &#123;</span><br><span class="line">        activityRef = new WeakReference&lt;&gt;(activity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void handleMessage(Message msg) &#123;</span><br><span class="line">        MainActivity activity = activityRef.get();</span><br><span class="line">        if (activity != null) &#123;</span><br><span class="line">            // 安全处理UI</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">二、常见问题二：消息未移除导致逻辑异常</span><br><span class="line">2.1 问题描述：</span><br><span class="line">如果 post() 或 sendMessage() 后没有取消，消息还会在 Activity 销毁后执行。</span><br><span class="line"></span><br><span class="line">2.2 解决方案：</span><br><span class="line">在 onDestroy() 中移除消息：</span><br><span class="line">handler.removeCallbacksAndMessages(null); // 移除所有消息</span><br><span class="line"></span><br><span class="line">三、常见问题三：子线程创建 Handler 报错</span><br><span class="line">3.1 问题描述：</span><br><span class="line">子线程中直接 new Handler() 报错：</span><br><span class="line">Can&#x27;t create handler inside thread that has not called Looper.prepare()</span><br><span class="line"></span><br><span class="line">3.2 解决方案：</span><br><span class="line">手动初始化 Looper：</span><br><span class="line"></span><br><span class="line">new Thread(() -&gt; &#123;</span><br><span class="line">    Looper.prepare(); // 创建消息循环</span><br><span class="line">    Handler handler = new Handler();</span><br><span class="line">    Looper.loop();    // 开启消息循环</span><br><span class="line">&#125;).start();</span><br><span class="line"></span><br><span class="line">四、总结一句话</span><br><span class="line">使用 Handler 要注意内存泄漏、消息未清理、线程未初始化 Looper等问题；</span><br><span class="line">可通过弱引用、及时清理消息、合理使用线程和架构组件来规避</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-9-事件分发"><a href="#2-9-事件分发" class="headerlink" title="2.9 事件分发"></a>2.9 事件分发</h3><p>一、一句话概括</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">事件分发机制是 Android 中 View（控件）响应用户触摸事件（如点击、滑动）的流程，</span><br><span class="line">核心由 Activity → ViewGroup → View 层层传递和处理。</span><br></pre></td></tr></table></figure>
+
+<p>二、三大核心方法</p>
+<table>
+<thead>
+<tr>
+<th align="center">方法名</th>
+<th align="center">作用</th>
+<th align="center">返回值作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">dispatchTouchEvent()</td>
+<td align="center"><strong>事件分发</strong>，决定是否向下传递</td>
+<td align="center"><code>true</code>：拦截处理，不再往下传递</td>
+</tr>
+<tr>
+<td align="center">onInterceptTouchEvent()<br>（ViewGroup专有）</td>
+<td align="center"><strong>拦截事件</strong>，是否拦截子控件的事件</td>
+<td align="center"><code>true</code>：自己处理，不传给子控件</td>
+</tr>
+<tr>
+<td align="center">onTouchEvent()</td>
+<td align="center"><strong>事件消费</strong>，处理触摸事件</td>
+<td align="center"><code>true</code>：事件被消费，不再传递</td>
+</tr>
+</tbody></table>
+<p>三、分发流程图（简化）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Activity.dispatchTouchEvent()</span><br><span class="line">    ↓</span><br><span class="line">ViewGroup.dispatchTouchEvent()</span><br><span class="line">    → 是否 onInterceptTouchEvent() == true？</span><br><span class="line">        → 是：自己处理（onTouchEvent）</span><br><span class="line">        → 否：传给子 View（dispatchTouchEvent）</span><br><span class="line">            → View.onTouchEvent()</span><br></pre></td></tr></table></figure>
+
+<p>四、举个例子说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">用户点击了按钮 Button：</span><br><span class="line"></span><br><span class="line">1.Activity.dispatchTouchEvent() 接收到事件；</span><br><span class="line">2.事件传给布局 ViewGroup.dispatchTouchEvent()；</span><br><span class="line">3.判断是否拦截：onInterceptTouchEvent()；</span><br><span class="line">4.没拦截，传给 Button.dispatchTouchEvent()；</span><br><span class="line">5.最终由 Button.onTouchEvent() 响应点击。</span><br></pre></td></tr></table></figure>
+
+<p>五、常见问题：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.为什么点击无效？</span><br><span class="line">-被上层 ViewGroup 拦截了；</span><br><span class="line">-返回值设置错误；</span><br><span class="line">-View 不可点击或被覆盖。</span><br><span class="line"></span><br><span class="line">2.如何实现滑动拦截？</span><br><span class="line">-重写 onInterceptTouchEvent() 判断滑动条件（如滑动距离超过阈值）时返回 true。</span><br></pre></td></tr></table></figure>
+
+<p>六、总结一句话</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Android 的事件分发机制是通过 </span><br><span class="line">dispatchTouchEvent → onInterceptTouchEvent → onTouchEvent 实现的，</span><br><span class="line">控制事件是否传递、拦截或消费，是实现手势、滑动冲突等交互的核心基础。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-10-View绘制流程"><a href="#2-10-View绘制流程" class="headerlink" title="2.10 View绘制流程"></a>2.10 View绘制流程</h3><p>一、一句话概括</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">View 的绘制流程包括：</span><br><span class="line">measure() 测量 → layout() 布局 → draw() 绘制，</span><br><span class="line">是从 Activity 到 View 的完整界面展示过程。</span><br></pre></td></tr></table></figure>
+
+<p>二、三大核心阶段</p>
+<table>
+<thead>
+<tr>
+<th align="center">阶段</th>
+<th align="center">方法</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">测量</td>
+<td align="center">measure()</td>
+<td align="center">计算 View 的宽高<br>（即 <code>getMeasuredWidth()</code>、<code>getMeasuredHeight()</code></td>
+</tr>
+<tr>
+<td align="center">布局</td>
+<td align="center">layout()</td>
+<td align="center">确定 View 的位置<br>（即 <code>getLeft()/Top()/Right()/Bottom()</code>）</td>
+</tr>
+<tr>
+<td align="center">绘制</td>
+<td align="center">draw()</td>
+<td align="center">画出内容（背景、内容、子View）</td>
+</tr>
+</tbody></table>
+<p>三、View 绘制流程图（简化）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ActivityThread.handleResumeActivity()</span><br><span class="line">    ↓</span><br><span class="line">WindowManager.addView()</span><br><span class="line">    ↓</span><br><span class="line">ViewRootImpl.performTraversals()</span><br><span class="line">    ↓</span><br><span class="line">measure() → layout() → draw()</span><br></pre></td></tr></table></figure>
+
+<p>四、每个方法内部的核心调用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1.measure()</span><br><span class="line">-传入 MeasureSpec（包含测量模式和大小）</span><br><span class="line">-调用 onMeasure() → View 自己测量大小</span><br><span class="line"></span><br><span class="line">2.layout()</span><br><span class="line">-调用 onLayout()，确定自身和子 View 的位置</span><br><span class="line"></span><br><span class="line">3.draw()</span><br><span class="line">调用顺序：</span><br><span class="line">-drawBackground()</span><br><span class="line">-onDraw()（自定义内容）</span><br><span class="line">-dispatchDraw()（绘制子 View）</span><br><span class="line">-onDrawForeground()</span><br></pre></td></tr></table></figure>
+
+<p>五、补充说明：谁触发绘制流程？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-是系统中的 ViewRootImpl 发起 performTraversals()，</span><br><span class="line">它会依次调用 measure → layout → draw；</span><br><span class="line"></span><br><span class="line">-这些过程会在界面加载、调用 requestLayout()、invalidate() 等时触发。</span><br></pre></td></tr></table></figure>
+
+<p>六、总结一句话</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">View 绘制流程分为测量、布局、绘制三步，</span><br><span class="line">由ViewRootImpl驱动并调用View的 measure() → layout() → draw() 方法完成整个界面展示。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-11-测量模式"><a href="#2-11-测量模式" class="headerlink" title="2.11 测量模式"></a>2.11 测量模式</h3><p>一、 一句话概括</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">测量模式是系统传递给View的一种测量约束，告诉 View 在测量宽高时应该遵循的规则，分为三种类型。</span><br></pre></td></tr></table></figure>
+
+<p>二、三种测量模式</p>
+<table>
+<thead>
+<tr>
+<th align="center">模式名</th>
+<th align="center">含义</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">EXACTLY</td>
+<td align="center">精确尺寸</td>
+<td align="center">父控件指定了明确大小，View 必须严格按照这个大小来</td>
+</tr>
+<tr>
+<td align="center">AT_MOST</td>
+<td align="center">最大尺寸</td>
+<td align="center">父控件允许的最大范围，View 不能超过这个尺寸，常用在 <code>wrap_content</code></td>
+</tr>
+<tr>
+<td align="center">UNSPECIFIED</td>
+<td align="center">未指定尺寸</td>
+<td align="center">父控件不限制大小，View 可以任意大，一般用在 <code>ScrollView</code></td>
+</tr>
+</tbody></table>
+<p>三、MeasureSpec 组成</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MeasureSpec 是一个 int，由 模式（Mode） 和 尺寸（Size） 组成：</span><br><span class="line">-高 2 位存储模式；</span><br><span class="line">-低 30 位存储尺寸。</span><br><span class="line"></span><br><span class="line">使用 MeasureSpec.getMode() 和 MeasureSpec.getSize() 获取对应值。</span><br></pre></td></tr></table></figure>
+
+<p>四、实际使用举例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) &#123;</span><br><span class="line">    int widthMode = MeasureSpec.getMode(widthMeasureSpec);</span><br><span class="line">    int widthSize = MeasureSpec.getSize(widthMeasureSpec);</span><br><span class="line">    </span><br><span class="line">    if (widthMode == MeasureSpec.EXACTLY) &#123;</span><br><span class="line">        // 宽度确定，直接使用 widthSize</span><br><span class="line">    &#125; else if (widthMode == MeasureSpec.AT_MOST) &#123;</span><br><span class="line">        // 最大宽度限制，不能超过 widthSize</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        // UNSPECIFIED，无限制</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 最终调用 setMeasuredDimension(width, height);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>五、总结一句话</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">测量模式控制 View 如何根据父容器给出的约束测量自己的大小，是 measure() 流程的关键输入参数</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-12-View-Activity-Window的区别联系"><a href="#2-12-View-Activity-Window的区别联系" class="headerlink" title="2.12 View, Activity, Window的区别联系"></a>2.12 View, Activity, Window的区别联系</h3><p>一、概念</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">1、 View（视图）</span><br><span class="line">定义：界面上的基本组件，是所有控件的基类（如 Button、TextView）。</span><br><span class="line">作用：负责绘制自己和响应用户交互事件（点击、滑动等）。</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line">-是界面上最小的可见元素；</span><br><span class="line">-可以包含子 View（ViewGroup 是 View 的子类，用于布局管理）。</span><br><span class="line"></span><br><span class="line">2、Activity（活动）</span><br><span class="line">定义：一个界面页面的控制器，代表一个用户界面屏幕。</span><br><span class="line">作用：管理一个窗口（Window），负责界面生命周期、用户交互、启动/关闭等。</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line">-负责创建和管理 UI 组件；</span><br><span class="line">-不是界面本身，但持有并操作界面；</span><br><span class="line">-典型的生命周期：onCreate() → onStart() → onResume() → ...</span><br><span class="line"></span><br><span class="line">3、Window（窗口）</span><br><span class="line">定义：Activity 与系统窗口管理器（WindowManager）之间的桥梁。</span><br><span class="line">作用：承载并管理界面视图（View）的容器，负责把 View 放到屏幕上显示。</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line">-一个 Activity 通常对应一个 Window；</span><br><span class="line">-通过 Window 把 View 层级添加到系统的窗口管理器；</span><br><span class="line">-Window 负责处理输入事件和视图绘制。</span><br></pre></td></tr></table></figure>
+
+<p>二、三者关系示意</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Activity  —— 管理 ——&gt;  Window —— 承载 ——&gt; View（界面上的控件树）</span><br></pre></td></tr></table></figure>
+
+<p>三、总结</p>
+<table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">作用</th>
+<th align="center">关系</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Activity</td>
+<td align="center">页面控制器，管理生命周期</td>
+<td align="center">持有并操作 Window</td>
+</tr>
+<tr>
+<td align="center">Window</td>
+<td align="center">窗口容器，承载 View</td>
+<td align="center">管理 View 层级</td>
+</tr>
+<tr>
+<td align="center">View</td>
+<td align="center">具体界面控件，负责绘制</td>
+<td align="center">显示内容，接收事件</td>
+</tr>
+</tbody></table>
+<p>四、简单比喻</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-Activity 像“导演”，负责整个场景的调度；</span><br><span class="line">-Window 像“舞台”，负责承载和展示画面；</span><br><span class="line">-View 像“演员和布景”，具体展示内容和响应交互。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-13-怎么计算一个View在屏幕可见部分的百分比？"><a href="#2-13-怎么计算一个View在屏幕可见部分的百分比？" class="headerlink" title="2.13 怎么计算一个View在屏幕可见部分的百分比？"></a>2.13 怎么计算一个View在屏幕可见部分的百分比？</h3><p>一、方案步骤</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1.获取 View 在屏幕上的可见区域</span><br><span class="line">使用 getGlobalVisibleRect(Rect outRect) 获取 View 当前在屏幕上可见的矩形区域。</span><br><span class="line"></span><br><span class="line">2.获取 View 总区域大小</span><br><span class="line">通过 getWidth() 和 getHeight() 获取 View 的宽高，计算总面积。</span><br><span class="line"></span><br><span class="line">3.计算可见面积</span><br><span class="line">用 outRect 的宽高计算可见面积。</span><br><span class="line"></span><br><span class="line">4.计算可见百分比</span><br><span class="line">用可见面积除以总面积，得到百分比。</span><br></pre></td></tr></table></figure>
+
+<p>二、代码示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Rect visibleRect = new Rect();</span><br><span class="line">boolean isVisible = view.getGlobalVisibleRect(visibleRect);</span><br><span class="line"></span><br><span class="line">if (!isVisible) &#123;</span><br><span class="line">    // View完全不可见</span><br><span class="line">    return 0f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int visibleArea = visibleRect.width() * visibleRect.height();</span><br><span class="line">int totalArea = view.getWidth() * view.getHeight();</span><br><span class="line"></span><br><span class="line">if (totalArea &lt;= 0) &#123;</span><br><span class="line">    return 0f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">float visiblePercent = (float) visibleArea / totalArea;</span><br><span class="line">return visiblePercent;  // 0.0 到 1.0 之间</span><br></pre></td></tr></table></figure>
+
+<p>三、说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-getGlobalVisibleRect() 会考虑父控件裁剪、滚动、屏幕边界等因素，只返回真正可见的矩形。</span><br><span class="line">-如果 View 完全不可见，返回值为 false。</span><br><span class="line">-结果可以乘以 100，转换为百分比。</span><br></pre></td></tr></table></figure>
+
+<p>四、总结</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">利用 getGlobalVisibleRect() 获取可见区域，</span><br><span class="line">结合 View 总面积计算可见百分比，是判断 View 可见度的常用方法。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-14-activity里面有多个fragment，按下home之后一会儿切回来-fragment没有无参构造崩了，该怎么处理"><a href="#2-14-activity里面有多个fragment，按下home之后一会儿切回来-fragment没有无参构造崩了，该怎么处理" class="headerlink" title="2.14 activity里面有多个fragment，按下home之后一会儿切回来,fragment没有无参构造崩了，该怎么处理"></a>2.14 activity里面有多个fragment，按下home之后一会儿切回来,fragment没有无参构造崩了，该怎么处理</h3><p>一、问题原因</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">当按下 Home 键后，系统可能会因为资源紧张回收 Activity 和 Fragment 实例，</span><br><span class="line">但它会保存 Fragment 的状态信息（如类名、arguments）。</span><br><span class="line"></span><br><span class="line">等用户切回来时，系统会尝试通过反射 + 无参构造函数自动重建 Fragment 实例。</span><br><span class="line">如果你在 Fragment 中使用了带参构造函数，但没有无参构造函数，就会导致如下崩溃：</span><br><span class="line"></span><br><span class="line">java.lang.InstantiationException: </span><br><span class="line">  class xxx.MyFragment has no empty constructor</span><br></pre></td></tr></table></figure>
+
+<p>二、正确解决方式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">1、 所有 Fragment 必须保留一个公开的无参构造函数</span><br><span class="line">这是系统反射恢复 Fragment 时的必要条件。</span><br><span class="line"></span><br><span class="line">class MyFragment : Fragment() &#123;</span><br><span class="line">    // 必须有无参构造函数，不能写构造函数带参数的形式</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">2、使用 newInstance + setArguments 传递参数（官方推荐）</span><br><span class="line"></span><br><span class="line">class MyFragment : Fragment() &#123;</span><br><span class="line"></span><br><span class="line">    companion object &#123;</span><br><span class="line">        fun newInstance(title: String): MyFragment &#123;</span><br><span class="line">            val fragment = MyFragment()</span><br><span class="line">            val args = Bundle()</span><br><span class="line">            args.putString(&quot;title&quot;, title)</span><br><span class="line">            fragment.arguments = args</span><br><span class="line">            return fragment</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun onCreate(savedInstanceState: Bundle?) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState)</span><br><span class="line">        val title = arguments?.getString(&quot;title&quot;)</span><br><span class="line">        // 使用参数</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">系统会自动保存 arguments，在重新创建 Fragment 时恢复使用。</span><br><span class="line"></span><br><span class="line">3、不要在 Fragment 中使用带参数的构造函数传值</span><br><span class="line">否则系统无法自动重建。</span><br><span class="line"></span><br><span class="line">// ❌ 错误示例</span><br><span class="line">class MyFragment(val title: String) : Fragment()</span><br></pre></td></tr></table></figure>
+
+<p>三、总结一句话</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Fragment 必须保留无参构造函数，并使用 setArguments() 来传参，避免使用带参构造函数，</span><br><span class="line">否则在系统重建 Fragment 时会因无法反射创建而崩溃。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-15-接口请求是否需要设置证书，如需该如何设置"><a href="#2-15-接口请求是否需要设置证书，如需该如何设置" class="headerlink" title="2.15 接口请求是否需要设置证书，如需该如何设置"></a>2.15 接口请求是否需要设置证书，如需该如何设置</h3><p>一、说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在 Android 开发中，接口请求是否需要设置证书，</span><br><span class="line">取决于接口是否采用了 HTTPS 并使用了自签名证书或企业内部证书等非权威 CA 证书。</span><br></pre></td></tr></table></figure>
+
+<p>二、是否需要设置证书？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1、不需要设置证书：</span><br><span class="line">如果服务器使用的是由可信 CA 签发的 HTTPS 证书（例如 Let&#x27;s Encrypt、DigiCert 等），</span><br><span class="line">Android 系统默认信任这些证书，无需手动配置。</span><br><span class="line"></span><br><span class="line">2、需要设置证书：</span><br><span class="line">如果服务器使用的是自签名证书或不被 Android 系统默认信任的证书，</span><br><span class="line">就必须手动配置，否则会出现 SSLHandshakeException。</span><br></pre></td></tr></table></figure>
+
+<p>三、如需设置证书，该如何设置？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">主要有两种方式：</span><br><span class="line"></span><br><span class="line">一、方法一：通过自定义 TrustManager 信任特定证书</span><br><span class="line">步骤如下：</span><br><span class="line"></span><br><span class="line">1.将服务器的证书（一般为 .cer 或 .crt）放入 res/raw 目录中。</span><br><span class="line">2.加载证书并配置 SSLContext：</span><br><span class="line"></span><br><span class="line">InputStream inputStream = context.getResources().openRawResource(R.raw.server); // 你的证书名</span><br><span class="line"></span><br><span class="line">CertificateFactory cf = CertificateFactory.getInstance(&quot;X.509&quot;);</span><br><span class="line">Certificate ca = cf.generateCertificate(inputStream);</span><br><span class="line"></span><br><span class="line">KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());</span><br><span class="line">keyStore.load(null, null);</span><br><span class="line">keyStore.setCertificateEntry(&quot;ca&quot;, ca);</span><br><span class="line"></span><br><span class="line">TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());</span><br><span class="line">tmf.init(keyStore);</span><br><span class="line"></span><br><span class="line">SSLContext sslContext = SSLContext.getInstance(&quot;TLS&quot;);</span><br><span class="line">sslContext.init(null, tmf.getTrustManagers(), null);</span><br><span class="line"></span><br><span class="line">HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());</span><br><span class="line"></span><br><span class="line">二、方法二：使用 Network Security Config 配置信任证书（Android 7.0+ 推荐）</span><br><span class="line">1.在 res/xml/network_security_config.xml 中添加：</span><br><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;network-security-config&gt;</span><br><span class="line">    &lt;domain-config cleartextTrafficPermitted=&quot;false&quot;&gt;</span><br><span class="line">        &lt;domain includeSubdomains=&quot;true&quot;&gt;yourdomain.com&lt;/domain&gt;</span><br><span class="line">        &lt;trust-anchors&gt;</span><br><span class="line">            &lt;certificates src=&quot;@raw/server&quot;/&gt;</span><br><span class="line">        &lt;/trust-anchors&gt;</span><br><span class="line">    &lt;/domain-config&gt;</span><br><span class="line">&lt;/network-security-config&gt;</span><br><span class="line">2.在 AndroidManifest.xml 的 &lt;application&gt; 标签中指定配置文件：</span><br><span class="line">android:networkSecurityConfig=&quot;@xml/network_security_config&quot;</span><br></pre></td></tr></table></figure>
+
+<p>四、注意事项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-不要在生产环境中使用 TrustAllManager（即信任所有证书），存在重大安全风险。</span><br><span class="line">-如果使用 Retrofit/OkHttp 等库，需要将 sslSocketFactory 传入到 OkHttpClient 中。</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># Android面试题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/2397a885.html" rel="prev" title="JavaWeb开发思维导图之——Spring之事务核心对象(99)">
+                  <i class="fa fa-angle-left"></i> JavaWeb开发思维导图之——Spring之事务核心对象(99)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/3cae6ad3.html" rel="next" title="标日高级下册——第6单元国際交流-第21课歴史的交流-课文1">
+                  标日高级下册——第6单元国際交流-第21课歴史的交流-课文1 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"2b91907802b6b7bac73b8dc8303dc042"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

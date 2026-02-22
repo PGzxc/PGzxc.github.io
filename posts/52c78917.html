@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述121.示例代码2.总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法——第9章-查找表-红黑树完整示例代码(9.8.5)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/52c78917.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 概述121.示例代码2.总结">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-05-17T14:53:32.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.373Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="数据结构与算法">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/52c78917.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/52c78917.html","path":"posts/52c78917.html","title":"数据结构与算法——第9章-查找表-红黑树完整示例代码(9.8.5)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>数据结构与算法——第9章-查找表-红黑树完整示例代码(9.8.5) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">二 示例代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">三 总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">四 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/52c78917.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="数据结构与算法——第9章-查找表-红黑树完整示例代码(9.8.5) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据结构与算法——第9章-查找表-红黑树完整示例代码(9.8.5)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E7%AC%AC9%E7%AB%A0-%E6%9F%A5%E6%89%BE%E8%A1%A8-%E7%BA%A2%E9%BB%91%E6%A0%91%E5%AE%8C%E6%95%B4%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81(9.8.5).md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-05-17 22:53:32" itemprop="dateCreated datePublished" datetime="2023-05-17T22:53:32+08:00">2023-05-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/N-%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">N-数据与算法</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/N-%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.示例代码</span><br><span class="line">2.总结</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-示例代码"><a href="#二-示例代码" class="headerlink" title="二 示例代码"></a>二 示例代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">typedef enum &#123;RED, BLACK&#125; ColorType;</span><br><span class="line">typedef struct RB_TREE&#123;</span><br><span class="line">    int key;</span><br><span class="line">    struct  RB_TREE * left;</span><br><span class="line">    struct  RB_TREE * right;</span><br><span class="line">    struct  RB_TREE * p;</span><br><span class="line">    ColorType color;</span><br><span class="line">&#125;RB_TREE;</span><br><span class="line"></span><br><span class="line">typedef struct RBT_Root&#123;</span><br><span class="line">    RB_TREE* root;</span><br><span class="line">    RB_TREE* nil;</span><br><span class="line">&#125;RBT_Root;</span><br><span class="line"></span><br><span class="line">RBT_Root* rbTree_init(void);</span><br><span class="line">void rbTree_insert(RBT_Root* *T, int k);</span><br><span class="line">void rbTree_delete(RBT_Root* *T, int k);</span><br><span class="line"></span><br><span class="line">void rbTree_transplant(RBT_Root* T, RB_TREE* u, RB_TREE* v);</span><br><span class="line"></span><br><span class="line">void rbTree_left_rotate( RBT_Root* T, RB_TREE* x);</span><br><span class="line">void rbTree_right_rotate( RBT_Root* T, RB_TREE* x);</span><br><span class="line"></span><br><span class="line">void rbTree_inPrint(RBT_Root* T, RB_TREE* t);</span><br><span class="line">void rbTree_prePrint(RBT_Root * T, RB_TREE* t);</span><br><span class="line">void rbTree_print(RBT_Root* T);</span><br><span class="line"></span><br><span class="line">RB_TREE* rbt_findMin(RBT_Root * T, RB_TREE* t);</span><br><span class="line">RB_TREE* rbt_findMin(RBT_Root * T, RB_TREE* t)&#123;</span><br><span class="line">    if(t == T-&gt;nil)&#123;</span><br><span class="line">        return T-&gt;nil;</span><br><span class="line">    &#125;</span><br><span class="line">    while(t-&gt;left != T-&gt;nil)&#123;</span><br><span class="line">        t = t-&gt;left;</span><br><span class="line">    &#125;</span><br><span class="line">    return t;</span><br><span class="line">&#125;</span><br><span class="line">RBT_Root* rbTree_init(void)&#123;</span><br><span class="line">    RBT_Root* T;</span><br><span class="line">    T = (RBT_Root*)malloc(sizeof(RBT_Root));</span><br><span class="line">    T-&gt;nil = (RB_TREE*)malloc(sizeof(RB_TREE));</span><br><span class="line">    T-&gt;nil-&gt;color = BLACK;</span><br><span class="line">    T-&gt;nil-&gt;left = T-&gt;nil-&gt;right = NULL;</span><br><span class="line">    T-&gt;nil-&gt;p = NULL;</span><br><span class="line">    T-&gt;root = T-&gt;nil;</span><br><span class="line">    return T;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void RB_Insert_Fixup(RBT_Root* T, RB_TREE* x)&#123;</span><br><span class="line">    //首先判断其父结点颜色为红色时才需要调整；为黑色时直接插入即可，不需要调整</span><br><span class="line">    while (x-&gt;p-&gt;color == RED) &#123;</span><br><span class="line">        //由于还涉及到其叔叔结点，所以此处需分开讨论，确定父结点是祖父结点的左孩子还是右孩子</span><br><span class="line">        if (x-&gt;p == x-&gt;p-&gt;p-&gt;left) &#123;</span><br><span class="line">            RB_TREE * y = x-&gt;p-&gt;p-&gt;right;//找到其叔叔结点</span><br><span class="line">            //如果叔叔结点颜色为红色，此为第 1 种情况，处理方法为：父结点颜色改为黑色；叔叔结点颜色改为黑色；祖父结点颜色改为红色，将祖父结点赋值为当前结点，继续判断；</span><br><span class="line">            if (y-&gt;color == RED) &#123;</span><br><span class="line">                x-&gt;p-&gt;color = BLACK;</span><br><span class="line">                y-&gt;color = BLACK;</span><br><span class="line">                x-&gt;p-&gt;p-&gt;color = RED;</span><br><span class="line">                x = x-&gt;p-&gt;p;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                //反之，如果叔叔结点颜色为黑色，此处需分为两种情况：1、当前结点时父结点的右孩子；2、当前结点是父结点的左孩子</span><br><span class="line">                if (x == x-&gt;p-&gt;right) &#123;</span><br><span class="line">                    //第 2 种情况：当前结点时父结点的右孩子。解决方案：将父结点作为当前结点做左旋操作。</span><br><span class="line">                    x = x-&gt;p;</span><br><span class="line">                    rbTree_left_rotate(T, x);</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    //第 3 种情况：当前结点是父结点的左孩子。解决方案：将父结点颜色改为黑色，祖父结点颜色改为红色，从祖父结点处进行右旋处理。</span><br><span class="line">                    x-&gt;p-&gt;color = BLACK;</span><br><span class="line">                    x-&gt;p-&gt;p-&gt;color = RED;</span><br><span class="line">                    rbTree_right_rotate(T, x-&gt;p-&gt;p);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else&#123;//如果父结点时祖父结点的右孩子，换汤不换药，只需将以上代码部分中的left改为right即可，道理是一样的。</span><br><span class="line">            RB_TREE * y = x-&gt;p-&gt;p-&gt;left;</span><br><span class="line">            if (y-&gt;color == RED) &#123;</span><br><span class="line">                x-&gt;p-&gt;color = BLACK;</span><br><span class="line">                y-&gt;color = BLACK;</span><br><span class="line">                x-&gt;p-&gt;p-&gt;color = RED;</span><br><span class="line">                x = x-&gt;p-&gt;p;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                if (x == x-&gt;p-&gt;left) &#123;</span><br><span class="line">                    x = x-&gt;p;</span><br><span class="line">                    rbTree_right_rotate(T, x);</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    x-&gt;p-&gt;color = BLACK;</span><br><span class="line">                    x-&gt;p-&gt;p-&gt;color = RED;</span><br><span class="line">                    rbTree_left_rotate(T, x-&gt;p-&gt;p);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    T-&gt;root-&gt;color = BLACK;</span><br><span class="line">&#125;</span><br><span class="line">//插入操作分为 3 步：1、将红黑树当二叉查找树，找到其插入位置；2、初始化插入结点，将新结点的颜色设为红色；3、通过调用调整函数，将二叉查找树重新改为红黑树</span><br><span class="line">void rbTree_insert(RBT_Root**T, int k)&#123;</span><br><span class="line">    //1、找到其要插入的位置。解决思路为：从树的根结点开始，通过不断的同新结点的值进行比较，最终找到插入位置</span><br><span class="line">    RB_TREE * x, *p;</span><br><span class="line">    x = (*T)-&gt;root;</span><br><span class="line">    p = x;</span><br><span class="line"></span><br><span class="line">    while(x != (*T)-&gt;nil)&#123;</span><br><span class="line">        p = x;</span><br><span class="line">        if(k&lt;x-&gt;key)&#123;</span><br><span class="line">            x = x-&gt;left;</span><br><span class="line">        &#125;else if(k&gt;x-&gt;key)&#123;</span><br><span class="line">            x = x-&gt;right;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            printf(&quot;\n%d已存在\n&quot;,k);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //初始化结点，将新结点的颜色设为红色</span><br><span class="line">    x = (RB_TREE *)malloc(sizeof(RB_TREE));</span><br><span class="line">    x-&gt;key = k;</span><br><span class="line">    x-&gt;color = RED;</span><br><span class="line">    x-&gt;left = x-&gt;right =(*T)-&gt;nil;</span><br><span class="line">    x-&gt;p = p;</span><br><span class="line">    //对新插入的结点，建立与其父结点之间的联系</span><br><span class="line">    if((*T)-&gt;root == (*T)-&gt;nil)&#123;</span><br><span class="line">        (*T)-&gt;root = x;</span><br><span class="line">    &#125;else if(k &lt; p-&gt;key)&#123;</span><br><span class="line">        p-&gt;left = x;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        p-&gt;right = x;</span><br><span class="line">    &#125;</span><br><span class="line">    //3、对二叉查找树进行调整</span><br><span class="line">    RB_Insert_Fixup((*T),x);</span><br><span class="line">&#125;</span><br><span class="line">void rbTree_transplant(RBT_Root* T, RB_TREE* u, RB_TREE* v)&#123;</span><br><span class="line">    if(u-&gt;p == T-&gt;nil)&#123;</span><br><span class="line">        T-&gt;root = v;</span><br><span class="line">    &#125;else if(u == u-&gt;p-&gt;left)&#123;</span><br><span class="line">        u-&gt;p-&gt;left=v;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        u-&gt;p-&gt;right=v;</span><br><span class="line">    &#125;</span><br><span class="line">    v-&gt;p = u-&gt;p;</span><br><span class="line">&#125;</span><br><span class="line">void RB_Delete_Fixup(RBT_Root**T,RB_TREE*x)&#123;</span><br><span class="line">    while(x != (*T)-&gt;root &amp;&amp; x-&gt;color == BLACK)&#123;</span><br><span class="line">        if(x == x-&gt;p-&gt;left)&#123;</span><br><span class="line">            RB_TREE* w = x-&gt;p-&gt;right;</span><br><span class="line">            //第 1 种情况：兄弟结点是红色的</span><br><span class="line">            if(RED == w-&gt;color)&#123;</span><br><span class="line">                w-&gt;color = BLACK;</span><br><span class="line">                w-&gt;p-&gt;color = RED;</span><br><span class="line">                rbTree_left_rotate((*T),x-&gt;p);</span><br><span class="line">                w = x-&gt;p-&gt;right;</span><br><span class="line">            &#125;</span><br><span class="line">            //第2种情况：兄弟是黑色的，并且兄弟的两个儿子都是黑色的。</span><br><span class="line">            if(w-&gt;left-&gt;color == BLACK &amp;&amp; w-&gt;right-&gt;color == BLACK)&#123;</span><br><span class="line">                w-&gt;color = RED;</span><br><span class="line">                x = x-&gt;p;</span><br><span class="line">            &#125;</span><br><span class="line">            //第3种情况</span><br><span class="line">            if(w-&gt;left-&gt;color == RED &amp;&amp; w-&gt;right-&gt;color == BLACK)&#123;</span><br><span class="line">                w-&gt;left-&gt;color = BLACK;</span><br><span class="line">                w-&gt;color = RED;</span><br><span class="line">                rbTree_right_rotate((*T),w);</span><br><span class="line">                w = x-&gt;p-&gt;right;</span><br><span class="line">            &#125;</span><br><span class="line">            //第4种情况</span><br><span class="line">            if (w-&gt;right-&gt;color == RED) &#123;</span><br><span class="line">                w-&gt;color = x-&gt;p-&gt;color;</span><br><span class="line">                x-&gt;p-&gt;color = BLACK;</span><br><span class="line">                w-&gt;right-&gt;color = BLACK;</span><br><span class="line">                rbTree_left_rotate((*T),x-&gt;p);</span><br><span class="line">                x = (*T)-&gt;root;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            RB_TREE* w = x-&gt;p-&gt;left;</span><br><span class="line">            //第 1 种情况</span><br><span class="line">            if(w-&gt;color == RED)&#123;</span><br><span class="line">                w-&gt;color = BLACK;</span><br><span class="line">                x-&gt;p-&gt;color = RED;</span><br><span class="line">                rbTree_right_rotate((*T),x-&gt;p);</span><br><span class="line">                w = x-&gt;p-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line">            //第 2 种情况</span><br><span class="line">            if(w-&gt;left-&gt;color == BLACK &amp;&amp; w-&gt;right-&gt;color == BLACK)&#123;</span><br><span class="line">                w-&gt;color = RED;</span><br><span class="line">                x = x-&gt;p;</span><br><span class="line">            &#125;</span><br><span class="line">            //第 3 种情况</span><br><span class="line">            if(w-&gt;left-&gt;color == BLACK &amp;&amp; w-&gt;right-&gt;color == RED)&#123;</span><br><span class="line">                w-&gt;color = RED;</span><br><span class="line">                w-&gt;right-&gt;color = BLACK;</span><br><span class="line">                w = x-&gt;p-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line">            //第 4 种情况</span><br><span class="line">            if (w-&gt;right-&gt;color == BLACK)&#123;</span><br><span class="line">                w-&gt;color=w-&gt;p-&gt;color;</span><br><span class="line">                x-&gt;p-&gt;color = BLACK;</span><br><span class="line">                w-&gt;left-&gt;color = BLACK;</span><br><span class="line">                rbTree_right_rotate((*T),x-&gt;p);</span><br><span class="line">                x = (*T)-&gt;root;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    x-&gt;color = BLACK;//最终将根结点的颜色设为黑色</span><br><span class="line">&#125;</span><br><span class="line">void rbTree_delete(RBT_Root* *T, int k)&#123;</span><br><span class="line">    if(NULL == (*T)-&gt;root)&#123;</span><br><span class="line">        return ;</span><br><span class="line">    &#125;</span><br><span class="line">    //找到要被删除的结点</span><br><span class="line">    RB_TREE * toDelete = (*T)-&gt;root;</span><br><span class="line">    RB_TREE * x = NULL;</span><br><span class="line">    //找到值为k的结点</span><br><span class="line">    while(toDelete != (*T)-&gt;nil &amp;&amp; toDelete-&gt;key != k)&#123;</span><br><span class="line">        if(k&lt;toDelete-&gt;key)&#123;</span><br><span class="line">            toDelete = toDelete-&gt;left;</span><br><span class="line">        &#125;else if(k&gt;toDelete-&gt;key)&#123;</span><br><span class="line">            toDelete = toDelete-&gt;right;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(toDelete == (*T)-&gt;nil)&#123;</span><br><span class="line">        printf(&quot;\n%d 不存在\n&quot;,k);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    //如果两个孩子，就找到右子树中最小的结点，将之代替，然后直接删除该结点即可</span><br><span class="line">    if(toDelete-&gt;left != (*T)-&gt;nil &amp;&amp; toDelete-&gt;right != (*T)-&gt;nil)&#123;</span><br><span class="line">        RB_TREE* alternative = rbt_findMin((*T), toDelete-&gt;right);</span><br><span class="line">        k = toDelete-&gt;key = alternative-&gt;key;//这里只对值进行复制，并不复制颜色，以免破坏红黑树的性质</span><br><span class="line">        toDelete = alternative;</span><br><span class="line">    &#125;</span><br><span class="line">    //如果只有一个孩子结点（只有左孩子或只有右孩子），直接用孩子结点顶替该结点位置即可（没有孩子结点的也走此判断语句）。</span><br><span class="line">    if(toDelete-&gt;left == (*T)-&gt;nil)&#123;</span><br><span class="line">        x = toDelete-&gt;right;</span><br><span class="line">        rbTree_transplant((*T),toDelete,toDelete-&gt;right);</span><br><span class="line">    &#125;else if(toDelete-&gt;right == (*T)-&gt;nil)&#123;</span><br><span class="line">        x = toDelete-&gt;left;</span><br><span class="line">        rbTree_transplant((*T),toDelete,toDelete-&gt;left);</span><br><span class="line">    &#125;</span><br><span class="line">    //在删除该结点之前，需判断此结点的颜色：如果是红色，直接删除，不会破坏红黑树；若是黑色，删除后会破坏红黑树的第 5 条性质，需要对树做调整。</span><br><span class="line">    if(toDelete-&gt;color == BLACK)&#123;</span><br><span class="line">        RB_Delete_Fixup(T,x);</span><br><span class="line">    &#125;</span><br><span class="line">    //最终可以彻底删除要删除的结点，释放其占用的空间</span><br><span class="line">    free(toDelete);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//T表示为树根，x 表示需要进行左旋的子树的根结点</span><br><span class="line">void rbTree_left_rotate( RBT_Root* T, RB_TREE* x)&#123;</span><br><span class="line">    RB_TREE* y = x-&gt;right;//找到根结点的右子树</span><br><span class="line"></span><br><span class="line">    x-&gt;right = y-&gt;left;//将右子树的左孩子移动至结点 x 的右孩子处</span><br><span class="line">    if(x-&gt;right != T-&gt;nil)&#123;//如果 x 的右子树不是nil，需重新连接 右子树的双亲结点为 x</span><br><span class="line">        x-&gt;right-&gt;p = x;</span><br><span class="line">    &#125;</span><br><span class="line">    y-&gt;p = x-&gt;p;//设置 y 的双亲结点为 x 的双亲结点</span><br><span class="line">    //重新设置 y 的双亲结点同 y 的连接，分为 2 种情况：1、原 x 结点本身就是整棵树的数根结点，此时只需要将 T 指针指向 y；2、根据 y 中关键字同其父结点关键字的值的大小，判断 y 是父结点的左孩子还是右孩子</span><br><span class="line">    if(y-&gt;p == T-&gt;nil)&#123;</span><br><span class="line">        T-&gt;root = y;</span><br><span class="line">    &#125;else if(y-&gt;key &lt; y-&gt;p-&gt;key)&#123;</span><br><span class="line">        y-&gt;p-&gt;left = y;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        y-&gt;p-&gt;right = y;</span><br><span class="line">    &#125;</span><br><span class="line">    y-&gt;left = x;//将 x 连接给 y 结点的左孩子处</span><br><span class="line">    x-&gt;p = y;//设置 x 的双亲结点为 y。</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void rbTree_right_rotate( RBT_Root* T, RB_TREE* x)&#123;</span><br><span class="line">    RB_TREE * y = x-&gt;left;</span><br><span class="line">    x-&gt;left = y-&gt;right;</span><br><span class="line">    if(T-&gt;nil != x-&gt;left)&#123;</span><br><span class="line">        x-&gt;left-&gt;p = x;</span><br><span class="line">    &#125;</span><br><span class="line">    y-&gt;p = x-&gt;p;</span><br><span class="line">    if(y-&gt;p == T-&gt;nil)&#123;</span><br><span class="line">        T-&gt;root = y;</span><br><span class="line">    &#125;else if(y-&gt;key &lt; y-&gt;p-&gt;key)&#123;</span><br><span class="line">        y-&gt;p-&gt;left= y;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        y-&gt;p-&gt;right = y;</span><br><span class="line">    &#125;</span><br><span class="line">    y-&gt;right = x;</span><br><span class="line">    x-&gt;p = y;</span><br><span class="line">&#125;</span><br><span class="line">void rbTree_prePrint(RBT_Root* T, RB_TREE* t)&#123;</span><br><span class="line">    if(T-&gt;nil == t)&#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    if(t-&gt;color == RED)&#123;</span><br><span class="line">        printf(&quot;%dR &quot;,t-&gt;key);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        printf(&quot;%dB &quot;,t-&gt;key);</span><br><span class="line">    &#125;</span><br><span class="line">    rbTree_prePrint(T,t-&gt;left);</span><br><span class="line">    rbTree_prePrint(T,t-&gt;right);</span><br><span class="line">&#125;</span><br><span class="line">void rbTree_inPrint(RBT_Root* T, RB_TREE* t)&#123;</span><br><span class="line">    if(T-&gt;nil == t)&#123;</span><br><span class="line">        return ;</span><br><span class="line">    &#125;</span><br><span class="line">    rbTree_inPrint(T,t-&gt;left);</span><br><span class="line">    if(t-&gt;color == RED)&#123;</span><br><span class="line">        printf(&quot;%dR &quot;,t-&gt;key);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        printf(&quot;%dB &quot;,t-&gt;key);</span><br><span class="line">    &#125;</span><br><span class="line">    rbTree_inPrint(T,t-&gt;right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//输出红黑树的前序遍历和中序遍历的结果</span><br><span class="line">void rbTree_print(RBT_Root* T)&#123;</span><br><span class="line">    printf(&quot;前序遍历 ：&quot;);</span><br><span class="line">    rbTree_prePrint(T,T-&gt;root);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">    printf(&quot;中序遍历 ：&quot;);</span><br><span class="line">    rbTree_inPrint(T,T-&gt;root);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    RBT_Root* T = rbTree_init();</span><br><span class="line"></span><br><span class="line">    rbTree_insert(&amp;T,3);</span><br><span class="line">    rbTree_insert(&amp;T,5);</span><br><span class="line">    rbTree_insert(&amp;T,1);</span><br><span class="line">    rbTree_insert(&amp;T,2);</span><br><span class="line">    rbTree_insert(&amp;T,4);</span><br><span class="line">    rbTree_print(T);</span><br><span class="line">    printf(&quot;\n&quot;);</span><br><span class="line">    rbTree_delete(&amp;T,3);</span><br><span class="line">    rbTree_print(T);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">前序遍历 ：3B 1B 2R 5B 4R</span><br><span class="line">中序遍历 ：1B 2R 3B 4R 5B</span><br><span class="line">前序遍历 ：4B 1B 2R 5B</span><br><span class="line">中序遍历 ：1B 2R 4B 5B</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-总结"><a href="#三-总结" class="headerlink" title="三 总结"></a>三 总结</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">本节介绍的红黑树，虽隶属于二叉查找树，但是二叉查找树的时间复杂度会受到其树深度的影响，</span><br><span class="line">而红黑树可以保证在最坏情况下的时间复杂度仍为O(lgn)。</span><br><span class="line">当数据量多到一定程度时，使用红黑树比二叉查找树的效率要高。</span><br><span class="line"></span><br><span class="line">同平衡二叉树相比较，红黑树没有像平衡二叉树对平衡性要求的那么苛刻，虽然两者的时间复杂度相同，</span><br><span class="line">但是红黑树在实际测算中的速度要更胜一筹！</span><br><span class="line"></span><br><span class="line">提示：平衡二叉树的时间复杂度是 O(logn)，红黑树的时间复杂度为 O(lgn)，</span><br><span class="line">两者都表示的都是时间复杂度为对数关系（lg 函数为底是 10的对数，用于表示时间复杂度时可以忽略）。</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="四-参考"><a href="#四-参考" class="headerlink" title="四 参考"></a>四 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://c.biancheng.net/view/vip_3433.html">C语言中文网—红黑树（更高级的二叉查找树）算法详解</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag"># 数据结构与算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/1b4f79b2.html" rel="prev" title="标日中级下册——第21课-広州で-文法-1">
+                  <i class="fa fa-angle-left"></i> 标日中级下册——第21课-広州で-文法-1
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/82462808.html" rel="next" title="标日中级下册——第21课-広州で-文法-2">
+                  标日中级下册——第21课-広州で-文法-2 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"00a21c4f42096cbc4d1fd772fc583247"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

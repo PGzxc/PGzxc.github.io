@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一 面试题概述 回答自己理解的java虚拟机、gc机制 Java多线程、线程池 集合原理(hashmap,list) java虚引用 封装、继承、多态的理解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android面试题——高级开发面试题2">
+<meta property="og:url" content="https://pgzxc.github.io/posts/72c409bb.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 面试题概述 回答自己理解的java虚拟机、gc机制 Java多线程、线程池 集合原理(hashmap,list) java虚引用 封装、继承、多态的理解">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-interview-jvm-struct.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-interview-jvm-class-loader.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-interview-jvm-runtimedata-areas.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-interview-collect-struct.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-interview-map-submit.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-interview-activity-life.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-interview-handler-table.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-interview-event-process.png">
+<meta property="article:published_time" content="2022-12-03T03:12:19.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.251Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Android面试题">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-interview-jvm-struct.png">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/72c409bb.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/72c409bb.html","path":"posts/72c409bb.html","title":"Android面试题——高级开发面试题2"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android面试题——高级开发面试题2 | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E9%9D%A2%E8%AF%95%E9%A2%98%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 面试题概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%9B%9E%E7%AD%94%E8%87%AA%E5%B7%B1%E7%90%86%E8%A7%A3%E7%9A%84java%E8%99%9A%E6%8B%9F%E6%9C%BA%E3%80%81gc%E6%9C%BA%E5%88%B6"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 回答自己理解的java虚拟机、gc机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-java%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1 java虚拟机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-gc%E6%9C%BA%E5%88%B6"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.1.2 gc机制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E6%B1%A0-%E8%A7%81%E5%8F%82%E8%80%83"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Java多线程、线程池-见参考</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-Java%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 Java多线程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 线程池</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E9%9B%86%E5%90%88%E5%8E%9F%E7%90%86-hashmap-list-%E8%A7%81%E5%8F%82%E8%80%83"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 集合原理(hashmap,list)-见参考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-java%E8%99%9A%E5%BC%95%E7%94%A8-%E8%A7%81%E5%8F%82%E8%80%83"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 java虚引用-见参考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E5%B0%81%E8%A3%85%E3%80%81%E7%BB%A7%E6%89%BF%E3%80%81%E5%A4%9A%E6%80%81%E7%9A%84%E7%90%86%E8%A7%A3-%E8%A7%81%E5%8F%82%E8%80%83"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 封装、继承、多态的理解-见参考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 activity生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-%E5%AE%89%E5%8D%93activity%E5%92%8Cfragment%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92-%E8%A7%81%E5%8F%82%E8%80%83"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 安卓activity和fragment数据传递-见参考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-Handler-%E8%A7%81%E5%8F%82%E8%80%83"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 Handler-见参考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E3%80%81%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E3%80%81%E5%86%85%E5%AD%98%E6%8A%96%E5%8A%A8-%E5%8E%9F%E5%9B%A0%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95-%E8%A7%81%E5%8F%82%E8%80%83"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 内存泄漏、内存溢出、内存抖动 原因及解决办法-见参考</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-9-1-%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA"><span class="nav-number">2.9.1.</span> <span class="nav-text">2.9.1 内存溢出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-9-2-%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F"><span class="nav-number">2.9.2.</span> <span class="nav-text">2.9.2 内存泄漏</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-10-ANR%E5%8E%9F%E5%9B%A0%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 ANR原因以及解决办法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-11-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E3%80%81%E5%8D%A1%E9%A1%BF%E4%BC%98%E5%8C%96-%E8%A7%81%E5%8F%82%E8%80%83"><span class="nav-number">2.11.</span> <span class="nav-text">2.11 性能优化、卡顿优化-见参考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-12-%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6"><span class="nav-number">2.12.</span> <span class="nav-text">2.12 事件分发机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/72c409bb.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android面试题——高级开发面试题2 | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android面试题——高级开发面试题2<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Android%E9%9D%A2%E8%AF%95%E9%A2%98%E2%80%94%E2%80%94%E9%AB%98%E7%BA%A7%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E9%A2%982.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-12-03 11:12:19" itemprop="dateCreated datePublished" datetime="2022-12-03T11:12:19+08:00">2022-12-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/Android%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">Android面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-面试题概述"><a href="#一-面试题概述" class="headerlink" title="一 面试题概述"></a>一 面试题概述</h2><ol>
+<li>回答自己理解的java虚拟机、gc机制</li>
+<li>Java多线程、线程池</li>
+<li>集合原理(hashmap,list)</li>
+<li>java虚引用</li>
+<li>封装、继承、多态的理解<span id="more"></span></li>
+<li>activity生命周期</li>
+<li>安卓activity和fragment数据传递</li>
+<li>Handler</li>
+<li>内存泄漏、内存溢出、内存抖动 原因及解决办法</li>
+<li>ANR原因以及解决办法</li>
+<li>性能优化、卡顿优化</li>
+<li>事件分发机制</li>
+</ol>
+<h2 id="二-面试题解答"><a href="#二-面试题解答" class="headerlink" title="二 面试题解答"></a>二 面试题解答</h2><h3 id="2-1-回答自己理解的java虚拟机、gc机制"><a href="#2-1-回答自己理解的java虚拟机、gc机制" class="headerlink" title="2.1 回答自己理解的java虚拟机、gc机制"></a>2.1 回答自己理解的java虚拟机、gc机制</h3><h4 id="2-1-1-java虚拟机"><a href="#2-1-1-java虚拟机" class="headerlink" title="2.1.1 java虚拟机"></a>2.1.1 java虚拟机</h4><p>1-概念</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Java 虚拟机（JVM，Java Virtual Machine）是Java程序的运行环境，负责执行编译后的字节码文件（.class 文件）。</span><br><span class="line">它的主要功能是跨平台执行Java程序，让Java程序能够在不同平台上运行而不需要修改代码。</span><br><span class="line">JVM 将Java程序从高层的源代码转换为机器能够理解的指令，从而执行</span><br></pre></td></tr></table></figure>
+
+<p>2-JVM基本构成</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-interview-jvm-struct.png" loading="lazy"></p>
+<p>JVM主要包括四个部分：</p>
+<p>1-类加载器（ClassLoader）:</p>
+<p>在 JVM 启动时或者在类运行将需要的 class 加载到 JVM 中(下图表示了从 java 源文件到 JVM 的整个过程，可配合理解)<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-interview-jvm-class-loader.png" loading="lazy"></p>
+<p>2-执行引擎：负责执行 class 文件中包含的字节码指令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">解释器：逐行解释执行字节码。</span><br><span class="line">即时编译器（JIT）：将热点代码编译成本地机器代码，提高执行效率</span><br></pre></td></tr></table></figure>
+
+<p>3-内存区（也叫运行时数据区）：</p>
+<p>是在 JVM 运行的时候操作所分配的内存区。 运行时内存区主要可以划分为 5个区域，如下图：</p>
+<p>方法区(MethodArea)、java 堆(Heap)、java 栈(Stack)、程序计数器(PCRegister)、本地方法栈(Native MethodStack)、</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">堆：存储 Java 中的对象，是垃圾回收的主要区域。</span><br><span class="line">栈：存储局部变量、方法调用、返回地址等信息，每个线程都有自己的栈。</span><br><span class="line">方法区：存储类信息、常量、静态变量等数据。</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-interview-jvm-runtimedata-areas.png" loading="lazy"></p>
+<p>4-垃圾回收器（Garbage Collector）：负责自动回收不再使用的对象，避免内存泄漏。</p>
+<h4 id="2-1-2-gc机制"><a href="#2-1-2-gc机制" class="headerlink" title="2.1.2 gc机制"></a>2.1.2 gc机制</h4><p>1-概念</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">垃圾回收（GC）是JVM中自动管理内存的一种机制，旨在清理不再使用的对象并释放内存空间，避免内存泄漏。</span><br><span class="line">垃圾回收器通过检测哪些对象没有任何引用（即无法到达）来回收内存。</span><br></pre></td></tr></table></figure>
+
+<p>2-Java 中有四种引用类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">强引用、软引用、弱引用、虚引用</span><br></pre></td></tr></table></figure>
+
+<p>3-如何判断强引用是 否存在呢？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">引用计数法，有对这个对象的引用就+1，不再引用就-1， 但是这种方式看起来简单美好，但它却不能解决循环引用计数的问题</span><br></pre></td></tr></table></figure>
+
+<p>4-GC Roots 对象通常包括</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* 虚拟机栈中引用的对象（栈帧中的本地变量表）</span><br><span class="line">* 方法中类的静态属性引用的对象</span><br><span class="line">* 方法区中常量引用的对象</span><br><span class="line">* Native 方法引用的对象</span><br></pre></td></tr></table></figure>
+
+<p>5-可达性分析算法整个流程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* 第一次标记：对象在经过可达性分析后发现没有与GC Roots有引用链，则进行第一次标记并进行一次筛选，</span><br><span class="line">筛选条件是：该对象是否有必要执行finalize()方法。</span><br><span class="line">* 第二次标记：GC 对 F-Queue 队列里的对象进行第二次标记，</span><br><span class="line">如果在第二次标记时该对象又成功被引用，则会被移除即将回收的集合，否则会被回收</span><br></pre></td></tr></table></figure>
+
+<p>6-GC 的工作流程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.标记阶段：标记所有仍然被引用的对象。</span><br><span class="line">2.清除阶段：回收所有未被标记的对象，释放内存。</span><br><span class="line">3.压缩阶段（可选）：将存活的对象压缩到堆的一侧，避免内存碎片。</span><br></pre></td></tr></table></figure>
+
+<p>7-GC 的不同算法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* 标记-清除（Mark-sweep）：首先标记活跃对象，然后清除未被标记的对象。缺点是会产生内存碎片。</span><br><span class="line">* 复制（Copying）：将内存分成两部分，每次回收时将存活的对象复制到另一部分，避免碎片问题。缺点是需要额外的内存空间。</span><br><span class="line">* 标记-整理（Mark-Compact）：标记并清除对象后，整理内存，消除内存碎片。</span><br><span class="line">* 分代收集算法：新生代、老年代、永久代、内存分配和回收策略</span><br></pre></td></tr></table></figure>
+
+<p>8-垃圾回收的关键概念</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">年轻代（Young Generation）：新创建的对象一般会分配到年轻代，垃圾回收会频繁地在此进行。</span><br><span class="line">新生代：包括 Eden 区 和 Survivor 区。大多数对象在这里很快变为垃圾并被回收。</span><br><span class="line">老年代（Old Generation）：经过多次 GC 仍然存活的对象会被移到老年代，GC 在这里较为少见，但回收成本较高。</span><br><span class="line">永久代（PermGen）：用于存储类元数据（如类信息），但在 JDK 8 后被 元空间（Metaspace） 取代。</span><br></pre></td></tr></table></figure>
+
+<p>9-GC 优化：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">对象池：通过对象池复用对象，减少 GC 的次数。</span><br><span class="line">内存分配与回收策略：合理调整堆大小和年轻代与老年代的比例，避免频繁的 GC。</span><br><span class="line">及时回收大对象：尽量避免直接分配大对象，减少堆内存压力。</span><br><span class="line">软引用与弱引用：可以通过软引用、弱引用、虚引用等控制对象的回收时机，减少内存泄漏的风险。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-Java多线程、线程池-见参考"><a href="#2-2-Java多线程、线程池-见参考" class="headerlink" title="2.2 Java多线程、线程池-见参考"></a>2.2 Java多线程、线程池-见参考</h3><h4 id="2-2-1-Java多线程"><a href="#2-2-1-Java多线程" class="headerlink" title="2.2.1 Java多线程"></a>2.2.1 Java多线程</h4><p>1-java线程创建的方式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* 继承Thread类 </span><br><span class="line">* 实现runnable接口 </span><br><span class="line">* 继承callable接口 </span><br><span class="line">* 基于线程池创建线程</span><br></pre></td></tr></table></figure>
+
+<p>2-请详细描述一下线程从创建到死亡的几种状态都有哪些？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* 新建(new)：新创建了一个线程对象。</span><br><span class="line">* 可运行(runnable)：线程对象创建后，其他线程(比如 main 线程）调用了该对象的start()方法。</span><br><span class="line">该状态的线程位于可运行线程池中，等待被线程调度选中，获 取 cpu 的使用权 。</span><br><span class="line">* 运行(running)：可运行状态( runnable )的线程获得了 cpu 时间片（ timeslice ） ，执行程序代码。</span><br><span class="line">* 阻塞(block)：阻塞状态是指线程因为某种原因放弃了 cpu 使用权，也即让出了 cpu timeslice ，暂时停止运行。</span><br><span class="line">直到线程进入可运行( runnable )状态，才有 机会再次获得 cpu timeslice 转到运行( running )状态。</span><br><span class="line"></span><br><span class="line">* 死亡(dead)：线程run()、main()方法执行结束，或者因异常退出了run()方法，则该线程结束生命周期。死亡的线程不可再次复生。</span><br></pre></td></tr></table></figure>
+
+<p>3-sleep()和wait()区别</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* sleep()来自thread,wait()来自object();</span><br><span class="line">* sleep()不释放锁，wait释放锁</span><br><span class="line">* sleep()时间到了会自动恢复，wait（）可以使用notify（）直接唤醒</span><br></pre></td></tr></table></figure>
+
+<p>4-在 Java 程序中怎么保证多线程的运行安全？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* 方法一：使用安全类，比如 Java. util. concurrent 下的类。</span><br><span class="line">* 方法二：使用自动锁 synchronized。</span><br><span class="line">* 方法三：使用手动锁 Lock。 </span><br></pre></td></tr></table></figure>
+
+<p>5-JAVA如何在两个线程之间共享数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Java 里面进行多线程通信的主要方式就是共享内存的方式，共享内存主要的关注点有两个：可见性和有序性原子性。</span><br><span class="line">Java 内存模型（JMM）解决了可见性和有序性的问题，而锁解决了原子性的问题，理想情况下我们希望做到“同步”和“互斥”。</span><br><span class="line">有以下常规实现方法：</span><br><span class="line">-1.将数据抽象成一个类，并将对这个数据的操作作为这个类的方法，这么设计可以很容易做到同步，只要在方法上加“synchronized“。</span><br><span class="line">-2.将 Runnable 对象作为一个类的内部类，共享数据作为这个类的成员变量，每个线程对共享数据的操作方法也封装在外部类，</span><br><span class="line">以便实现对数据的各个操作的同步和互斥，作为内部类的各个 Runnable 对象调用外部类的这些方法。</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-2-线程池"><a href="#2-2-2-线程池" class="headerlink" title="2.2.2 线程池"></a>2.2.2 线程池</h4><p>1-为什么用线程池</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">线程池本质上是一种池化技术，而池化技术是一种资源复用的思想，为了减少线程频繁创建和销毁带来的性能开销，</span><br><span class="line">因为线程创建会涉及到CPU上下文切换、内存分配等工作。</span><br><span class="line">线程池本身会有参数来控制线程创建的数量，这样就可以避免无休止的创建线程带来的资源利用率过高的问题，起到了资源保护的作用。</span><br></pre></td></tr></table></figure>
+
+<p>2-解释下线程池参数(线程池参数七大参数)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">* corePoolsize  核心线程数：正常情况下创建的工作的线程数，这些线程创建后并不会立马消除，一种常驻住线程</span><br><span class="line">* maxinumPoolSize 最大线程数：表示允许创建的最大线程数</span><br><span class="line">* keepAliveTime 表示超出线程数之外的线程数空闲存活时间</span><br><span class="line">* unit     keepAliveTime 的计量单位</span><br><span class="line">* workQueue:用来存放待执行任务的队列</span><br><span class="line">* threadFactory:创建一个线程工厂用来生产线程，可以用来设定线程名</span><br><span class="line">* handler:任务拒绝策略</span><br></pre></td></tr></table></figure>
+
+<p>3-Java线程池的工作流程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">* 线程池判断核心线程池里的核心线程是否都在执行任务。 如果不是，让空闲的核心线程来执行任务。</span><br><span class="line">如果核心线程池里的线程都在执行任务，则进入下个流程。</span><br><span class="line"></span><br><span class="line">* 线程池判断阻塞队列是否已满。 如果阻塞队列没有满，则将新提交的任务存储在阻塞队列中。如果阻塞队列已满，则进入下个流程。</span><br><span class="line"></span><br><span class="line">* 判断线程池里的线程数量是否小于最大线程数量(看线程池是否满了)。 </span><br><span class="line">如果小于，则创建一个新的工作线程（非核心线程，并给它设置超时时间，</span><br><span class="line">当我们处理完这些任务，无需手动销毁这个非核心线程，超时自动销毁）来执行任务。</span><br><span class="line">如果已满，则交给拒绝策略来处理这个任务。</span><br></pre></td></tr></table></figure>
+
+<p>4-线程池都有哪些状态？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* RUNNING：这是最正常的状态，接受新的任务，处理等待队列中的任务。</span><br><span class="line">* SHUTDOWN：不接受新的任务提交，但是会继续处理等待队列中的任务。</span><br><span class="line">* STOP：不接受新的任务提交，不再处理等待队列中的任务，中断正在执行任务的线程。</span><br><span class="line">* TIDYING：所有的任务都销毁了，workCount 为 0，线程池的状态在转换为 TIDYING 状态时，会执行钩子方法 terminated()。</span><br><span class="line">* TERMINATED：terminated()方法结束后，线程池的状态就会变成这个</span><br></pre></td></tr></table></figure>
+
+<p>5-Java线程池如何合理配置核心线程数？如何去设置呢？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* CPU 密集型任务：</span><br><span class="line">比如像加解密，压缩、计算等一系列需要大量耗费 CPU 资源的任务，大部分场景下都是纯 CPU 计算。</span><br><span class="line">因此，对于 CPU 密集型的计算场景，理论上线程的数量 = CPU 核数就是最合适的，</span><br><span class="line">不过通常把线程的数量设置为CPU 核数 +1，会实现最优的利用率。</span><br><span class="line"></span><br><span class="line">* IO 密集型任务：</span><br><span class="line">比如像 MySQL 数据库、文件读写、网络通信等任务，这类任务不会特别消耗 CPU 资源，但是 IO 操作比较耗时，会占用比较多时间。</span><br><span class="line">线程数 = CPU 核心数 * (1 + IO 耗时/ CPU 耗时) 或是 IO密集型：核心线程数 = CPU核数 * 2</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-集合原理-hashmap-list-见参考"><a href="#2-3-集合原理-hashmap-list-见参考" class="headerlink" title="2.3 集合原理(hashmap,list)-见参考"></a>2.3 集合原理(hashmap,list)-见参考</h3><p>集合框架</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-interview-collect-struct.png" loading="lazy"></p>
+<p><strong>1-Java List总结</strong></p>
+<p>1）ArrayList<br>优点: 底层数据结构是数组，查询快，增删慢。<br>缺点: 线程不安全，效率高</p>
+<p>2）Vector<br>优点: 底层数据结构是数组，查询快，增删慢。<br>缺点: 线程安全，效率低</p>
+<p>3）LinkedList<br>优点: 底层数据结构是链表，查询慢，增删快。<br>缺点: 线程不安全，效率高</p>
+<p><strong>2-Java Set总结</strong></p>
+<p>1）HashSet</p>
+<p>底层其实是包装了一个HashMap实现的<br>底层数据结构是数组+链表 + 红黑树<br>具有比较好的读取和查找性能， 可以有null 值<br>通过equals和HashCode来判断两个元素是否相等<br>非线程安全<br>2）LinkedHashSet</p>
+<p>继承HashSet，本质是LinkedHashMap实现<br>底层数据结构由哈希表(是一个元素为链表的数组)和双向链表组成。<br>有序的，根据HashCode的值来决定元素的存储位置，同时使用一个链表来维护元素的插入顺序<br>非线程安全，可以有null 值<br>3）TreeSet</p>
+<p>是一种排序的Set集合，实现了SortedSet接口，底层是用TreeMap实现的，本质上是一个红黑树原理<br>排序分两种：自然排序（存储元素实现Comparable接口）和定制排序（创建TreeSet时，传递一个自己实现的Comparator对象）<br>正常情况下不能有null值，可以重写Comparable接口 局可以有null值了。<br><strong>3-Map总结</strong><br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-interview-map-submit.png" loading="lazy"></p>
+<h3 id="2-4-java虚引用-见参考"><a href="#2-4-java虚引用-见参考" class="headerlink" title="2.4 java虚引用-见参考"></a>2.4 java虚引用-见参考</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">虚引用需要java.lang.ref.PhantomReference类来实现，虚引用顾名思义，就是形同虚设，</span><br><span class="line">与其他几种引用都不同，虚引用并不会觉定对象的生命周期。</span><br><span class="line">如果一个对象仅持有虚引用，那么它就和没有任何引用一样，在任何时候都可能被垃圾回收器回收，</span><br><span class="line">它不能单独使用也不能通过它访问对象，虚引用必须和引用队列（ReferenceQueue）联合使用。</span><br><span class="line"></span><br><span class="line">虚引用的主要作用是跟踪对象被垃圾回收的状态，仅仅是提供了一种确保对象被finalize以后，做某些事情的机制</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-封装、继承、多态的理解-见参考"><a href="#2-5-封装、继承、多态的理解-见参考" class="headerlink" title="2.5 封装、继承、多态的理解-见参考"></a>2.5 封装、继承、多态的理解-见参考</h3><p>1-封装</p>
+<ul>
+<li>实例讲解什么是封装</li>
+<li>封装的意义</li>
+<li>封装原则</li>
+<li>封装的访问级别</li>
+</ul>
+<p>2-继承</p>
+<ul>
+<li>继承作用：提高了软件复用的效率，缩短了软件开发的周期</li>
+<li>继承方式：公有继承、私有继承、保护继承</li>
+</ul>
+<p>3-多态</p>
+<ul>
+<li>多态的三个条件</li>
+<li>编译时多态</li>
+<li>多态的实现方式：接口多态性、继承多态性、通过抽象类实现的多态性</li>
+<li>多态的好处：可替换性、可扩充性、灵活性简化性</li>
+</ul>
+<h3 id="2-6-activity生命周期"><a href="#2-6-activity生命周期" class="headerlink" title="2.6 activity生命周期"></a>2.6 activity生命周期</h3><p>1-activity的生命周期</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-interview-activity-life.png" loading="lazy"></p>
+<p>2-ActivityA 跳转 ActivityB 然后 B 按 back 返回 A，各自的生命周期顺序，A 与 B 均不透明</p>
+<p>ActivityA 跳转到 ActivityB</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Activity A：onPause</span><br><span class="line">Activity B：onCreate</span><br><span class="line">Activity B：onStart</span><br><span class="line">Activity B：onResume</span><br><span class="line">Activity A：onSto</span><br></pre></td></tr></table></figure>
+
+<p>ActivityB 返回 ActivityA</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Activity B：onPause</span><br><span class="line">Activity A：onRestart</span><br><span class="line">Activity A：onStart</span><br><span class="line">Activity A：onResume</span><br><span class="line">Activity B：onStop</span><br><span class="line">Activity B：onDestro</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-安卓activity和fragment数据传递-见参考"><a href="#2-7-安卓activity和fragment数据传递-见参考" class="headerlink" title="2.7 安卓activity和fragment数据传递-见参考"></a>2.7 安卓activity和fragment数据传递-见参考</h3><p>1-Activity向Fragment传递数据—使用Bundle</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* Bundle用来存放数据集</span><br><span class="line">* setArguments()方法将数据集绑定到Fragment中。</span><br></pre></td></tr></table></figure>
+
+<p>2-Fragment向Activity传送数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 方法一：使用java接口（观察者模式）</span><br><span class="line">* 方法二：使用第三方组件：eventbus，liveData等</span><br></pre></td></tr></table></figure>
+
+<p>3-实现Fragment之间互传数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Fragment之间无法互传数据，所以需要一个Activity作为中间桥梁辅助两个Fragment之间的数据传输</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-8-Handler-见参考"><a href="#2-8-Handler-见参考" class="headerlink" title="2.8 Handler-见参考"></a>2.8 Handler-见参考</h3><p>相关概念<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-interview-handler-table.png" loading="lazy"></p>
+<h3 id="2-9-内存泄漏、内存溢出、内存抖动-原因及解决办法-见参考"><a href="#2-9-内存泄漏、内存溢出、内存抖动-原因及解决办法-见参考" class="headerlink" title="2.9 内存泄漏、内存溢出、内存抖动 原因及解决办法-见参考"></a>2.9 内存泄漏、内存溢出、内存抖动 原因及解决办法-见参考</h3><h4 id="2-9-1-内存溢出"><a href="#2-9-1-内存溢出" class="headerlink" title="2.9.1 内存溢出"></a>2.9.1 内存溢出</h4><p>1-原因：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.内存中加载的数据量过于庞大，如一次从数据库取出过多数据；</span><br><span class="line">2.集合类中有对对象的引用，使用完后未清空，使得JVM不能回收；</span><br><span class="line">3.代码中存在死循环或循环产生过多重复的对象实体；</span><br><span class="line">4.使用的第三方软件中的BUG；</span><br><span class="line">5.启动参数内存值设定的过小</span><br></pre></td></tr></table></figure>
+
+<p>2-解决方案：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第一步，修改JVM启动参数，直接增加内存。(-Xms，-Xmx参数一定不要忘记加。)</span><br><span class="line">第二步，检查错误日志，查看“OutOfMemory”错误前是否有其它异常或错误。</span><br><span class="line">第三步，对代码进行走查和分析，找出可能发生内存溢出的位置。</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-9-2-内存泄漏"><a href="#2-9-2-内存泄漏" class="headerlink" title="2.9.2 内存泄漏"></a>2.9.2 内存泄漏</h4><p>1-引起内存泄漏的场景：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 资源对象没关闭造成的内存泄漏，如查询数据库后没有关闭游标cursor</span><br><span class="line">- 构造Adapter时，没有使用 convertView 重用</span><br><span class="line">- 对象被生命周期长的对象引用，如activity被静态集合引用导致activity不能释放</span><br><span class="line">- Bitmap对象不再使用时，没有调用recycle()释放内存（？存在疑问）</span><br></pre></td></tr></table></figure>
+
+<p>2-如何区分：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 内存泄露, 观察 memory monitor 出现,内存不断增加 然后降低.</span><br><span class="line">* 工具使用:通过 heap viewer 查看</span><br></pre></td></tr></table></figure>
+
+<p>3-内存抖动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">原因：内存抖动出现原因主要是频繁（很重要）在循环里创建对象，导致大量对象在短时间内被创建</span><br><span class="line"></span><br><span class="line">如何区分：通过memory monitor 发现 出现内存忽上忽下 形成针尖状的情况</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-10-ANR原因以及解决办法"><a href="#2-10-ANR原因以及解决办法" class="headerlink" title="2.10 ANR原因以及解决办法"></a>2.10 ANR原因以及解决办法</h3><p>1-什么是ANR</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ANR(Application Not Responding)即应用程序无响应</span><br></pre></td></tr></table></figure>
+
+<p>2-ANR一共有四种类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* 输入事件类型ANR</span><br><span class="line">* 广播类型ANR</span><br><span class="line">* ContentProvider类型ANR</span><br><span class="line">* Service类型ANR</span><br></pre></td></tr></table></figure>
+
+<p>3-如何避免ANR</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* 耗时的工作(比如数据库操作，I/O，网络操作)，采用单独的工作线程处理</span><br><span class="line">* 用Handler来处理UIthread和工作thread的交互</span><br><span class="line">* 合理使用 Handler 来处理其他线程请求；</span><br><span class="line">* 合理使用并遵循 Android 生命周期, 避免在 onCreate() 和 onResume() 做过多的事情；</span><br><span class="line">* 使用一些架构形成规范来避免内存等问题,例如：MVP、RxJava；</span><br><span class="line">* 经常使用工具来检查内存问题,例如:MAT、TraceView、AS 自带等工具；</span><br><span class="line">* 避免加载大图片引起内存不足导致ANR；</span><br><span class="line">* 避免内存泄露引起的ANR。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-11-性能优化、卡顿优化-见参考"><a href="#2-11-性能优化、卡顿优化-见参考" class="headerlink" title="2.11 性能优化、卡顿优化-见参考"></a>2.11 性能优化、卡顿优化-见参考</h3><p>1-为什么会卡顿</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- 读写文件</span><br><span class="line">- 解析大量图片</span><br><span class="line">- 频繁请求网络</span><br><span class="line">- 复杂的布局</span><br><span class="line">- 频繁创建对象</span><br></pre></td></tr></table></figure>
+
+<p>2-如何检测卡顿</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">* Systrace：</span><br><span class="line">Systrace它是轻量级的框架，而且开销小，可以直观反映CPU的利用率而且右侧alter可以针对一些问题给出相关的建议。</span><br><span class="line">比如绘制慢或者GC频繁等</span><br><span class="line"></span><br><span class="line">* StrictMode：</span><br><span class="line">Android2.3引入的一个工具类：严苛模式。是一种运行时检测机制。</span><br><span class="line">可以帮助开发人员检测代码当中不规范的问题。StrictMode主要检测线程策略和虚拟机策略。</span><br></pre></td></tr></table></figure>
+
+<p>3-如何优化卡顿</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* 文件读写</span><br><span class="line">* 大量图片解析</span><br><span class="line">* 频繁请求网络</span><br><span class="line">* 复杂布局</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-12-事件分发机制"><a href="#2-12-事件分发机制" class="headerlink" title="2.12 事件分发机制"></a>2.12 事件分发机制</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-interview-event-process.png" loading="lazy"></p>
+<h2 id="三-参考"><a href="#三-参考" class="headerlink" title="三 参考"></a>三 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/libaowen609/article/details/125159135">java中多线程常见面试题_李大寶的博客-CSDN博客_多线程面试题</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/xixiyuguang/article/details/115161911">继承Thread类、实现Runnable接口、实现Callable接口</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_67322837/article/details/124322953">Java集合框架最全详解(看这篇就够了)</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/baidu_37313657/article/details/104145199">JAVA虚引用介绍</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_49190652/article/details/124596001">封装、继承、多态 详解</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_53881899/article/details/127426866">Activity与Fragment的通信</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/ly0724ok/article/details/117324053/">Android——Handler详解</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/liujinwei2005/article/details/113683652">内存溢出，内存泄漏，内存抖动</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/mr_hmgo/article/details/118978933">Android 内存泄漏、内存抖动和内存溢出</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/pshiping2014/article/details/81740768">Android ANR分析实践（一）：ANR是什么、产生的原因及如何避免ANR</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/rzleilei/article/details/128039319">ANR系列之ContentProvider类型原理讲解</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012216131/article/details/116528022">Android性能优化--卡顿优化与布局优化</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># Android面试题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/960695ce.html" rel="prev" title="标准韩国语第一册——第30课-在邮局-基本语法-2">
+                  <i class="fa fa-angle-left"></i> 标准韩国语第一册——第30课-在邮局-基本语法-2
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/72dbef9a.html" rel="next" title="标日中级上册——第8课-企画書-中国印象">
+                  标日中级上册——第8课-企画書-中国印象 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"0428a7a0854329744bea6485fd6e706c"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述 在 React Native 中，如何优化应用性能，特别是在大数据量的列表和复杂的 UI 组件中？ 解释什么是“虚拟化列表”以及如何在 React Native 中使用 FlatList 或 SectionList 优化列表性能？ 如何避免 React Native 应用中的不必要的重新渲染？如何使用 shouldComponentUpdate、React.memo 和 useMemo？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Native面试题2025——性能优化(4)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/f7f7573a.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="一 概述 在 React Native 中，如何优化应用性能，特别是在大数据量的列表和复杂的 UI 组件中？ 解释什么是“虚拟化列表”以及如何在 React Native 中使用 FlatList 或 SectionList 优化列表性能？ 如何避免 React Native 应用中的不必要的重新渲染？如何使用 shouldComponentUpdate、React.memo 和 useMemo？">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-04-10T02:09:09.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:04.856Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="React Native面试题">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/f7f7573a.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/f7f7573a.html","path":"posts/f7f7573a.html","title":"React Native面试题2025——性能优化(4)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>React Native面试题2025——性能优化(4) | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%9C%A8-React-Native-%E4%B8%AD%EF%BC%8C%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%E5%BA%94%E7%94%A8%E6%80%A7%E8%83%BD%EF%BC%8C%E7%89%B9%E5%88%AB%E6%98%AF%E5%9C%A8%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%87%8F%E7%9A%84%E5%88%97%E8%A1%A8%E5%92%8C%E5%A4%8D%E6%9D%82%E7%9A%84-UI-%E7%BB%84%E4%BB%B6%E4%B8%AD%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 在 React Native 中，如何优化应用性能，特别是在大数据量的列表和复杂的 UI 组件中？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E8%A7%A3%E9%87%8A%E4%BB%80%E4%B9%88%E6%98%AF%E2%80%9C%E8%99%9A%E6%8B%9F%E5%8C%96%E5%88%97%E8%A1%A8%E2%80%9D%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E5%9C%A8-React-Native-%E4%B8%AD%E4%BD%BF%E7%94%A8-FlatList-%E6%88%96-SectionList-%E4%BC%98%E5%8C%96%E5%88%97%E8%A1%A8%E6%80%A7%E8%83%BD%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 解释什么是“虚拟化列表”以及如何在 React Native 中使用 FlatList 或 SectionList 优化列表性能？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D-React-Native-%E5%BA%94%E7%94%A8%E4%B8%AD%E7%9A%84%E4%B8%8D%E5%BF%85%E8%A6%81%E7%9A%84%E9%87%8D%E6%96%B0%E6%B8%B2%E6%9F%93%EF%BC%9F%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-shouldComponentUpdate%E3%80%81React-memo-%E5%92%8C-useMemo%EF%BC%9F"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 如何避免 React Native 应用中的不必要的重新渲染？如何使用 shouldComponentUpdate、React.memo 和 useMemo？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E8%A7%A3%E9%87%8A-React-Native-%E4%B8%AD%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B%EF%BC%8C%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E4%B8%BB%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%93%8D%E5%BA%94%E6%80%A7%EF%BC%9F"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 解释 React Native 中的线程模型，如何提高主线程的响应性？</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/f7f7573a.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="React Native面试题2025——性能优化(4) | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          React Native面试题2025——性能优化(4)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/React%20Native%E9%9D%A2%E8%AF%95%E9%A2%982025%E2%80%94%E2%80%94%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96(4).md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2025-04-10 10:09:09" itemprop="dateCreated datePublished" datetime="2025-04-10T10:09:09+08:00">2025-04-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/React-Native%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">React Native面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>4 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ol>
+<li>在 React Native 中，如何优化应用性能，特别是在大数据量的列表和复杂的 UI 组件中？</li>
+<li>解释什么是“虚拟化列表”以及如何在 React Native 中使用 <code>FlatList</code> 或 <code>SectionList</code> 优化列表性能？</li>
+<li>如何避免 React Native 应用中的不必要的重新渲染？如何使用 <code>shouldComponentUpdate</code>、<code>React.memo</code> 和 <code>useMemo</code>？</li>
+<li>解释 React Native 中的线程模型，如何提高主线程的响应性？</li>
+</ol>
+<span id="more"></span>
+
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-在-React-Native-中，如何优化应用性能，特别是在大数据量的列表和复杂的-UI-组件中？"><a href="#2-1-在-React-Native-中，如何优化应用性能，特别是在大数据量的列表和复杂的-UI-组件中？" class="headerlink" title="2.1 在 React Native 中，如何优化应用性能，特别是在大数据量的列表和复杂的 UI 组件中？"></a>2.1 在 React Native 中，如何优化应用性能，特别是在大数据量的列表和复杂的 UI 组件中？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">在 React Native 中优化应用性能，特别是在大数据量的列表和复杂的 UI 组件中，可以通过以下几个策略：</span><br><span class="line"></span><br><span class="line">1. 优化大数据量的列表：</span><br><span class="line">1.1 使用 FlatList 或 SectionList：</span><br><span class="line">这两个组件提供了 虚拟化（只渲染可视区域的元素），避免一次性加载所有列表项，提高渲染效率。</span><br><span class="line"> -使用 initialNumToRender 控制初始渲染项的数量，maxToRenderPerBatch 控制每次渲染批次的项数。</span><br><span class="line"> -使用 keyExtractor 为每一项提供唯一的 key，提高性能。</span><br><span class="line"></span><br><span class="line">1.2 启用 getItemLayout：</span><br><span class="line">如果列表项高度固定，使用 getItemLayout 来告知 FlatList 每一项的布局信息，</span><br><span class="line">从而避免动态计算每个项的高度，提高滚动性能。</span><br><span class="line"></span><br><span class="line">1.3 避免不必要的状态更新：</span><br><span class="line">确保只更新需要重新渲染的项，可以通过 React.memo 或 shouldComponentUpdate 来控制组件的重新渲染。</span><br><span class="line"></span><br><span class="line">2. 优化复杂的 UI 组件：</span><br><span class="line">2.1 拆分组件：将复杂的 UI 拆分为小的子组件，确保每个组件只在必要时更新，而不是整个页面重新渲染。</span><br><span class="line">2.2 使用 React.memo：</span><br><span class="line">对于函数组件，使用 React.memo 来避免不必要的重新渲染。</span><br><span class="line">React.memo 会对 props 进行浅比较，只有当 props 变化时才重新渲染组件。</span><br><span class="line"></span><br><span class="line">2.3 避免在渲染过程中创建新的对象和数组：</span><br><span class="line">每次渲染时创建新的对象或数组会导致子组件重新渲染。</span><br><span class="line">可以使用 useMemo 或 useCallback 来缓存这些对象或函数，避免重复创建。</span><br><span class="line"></span><br><span class="line">3. 图像和动画优化：</span><br><span class="line">-使用合适的图片格式和尺寸：确保加载的图片大小适合当前屏幕，并使用压缩后的图片。避免在设备上加载过大的图片。</span><br><span class="line">-使用 Image 组件的 resizeMode 属性来调整图片的显示模式，确保图片加载性能。</span><br><span class="line">-优化动画：使用 react-native-reanimated 或 react-native-gesture-handler 等更高效的动画库，</span><br><span class="line">避免直接在 JavaScript 中处理复杂的动画计算。</span><br><span class="line"></span><br><span class="line">4. 异步加载和懒加载：</span><br><span class="line">-懒加载：将不需要立即加载的组件和数据延迟加载，避免阻塞主线程。可以使用 React.lazy 来懒加载组件。</span><br><span class="line">-按需加载数据：通过分页加载或无限滚动加载数据，避免一次性加载大量数据，减少内存占用。</span><br><span class="line"></span><br><span class="line">5. 内存管理和资源清理：</span><br><span class="line">-使用 useEffect 清理副作用：在组件卸载时及时清理定时器、事件监听器和订阅等副作用，避免内存泄漏。</span><br><span class="line">-避免过度渲染：在数据变化时，仅更新必要的部分，而不是整个页面。</span><br><span class="line"></span><br><span class="line">通过这些优化方法，可以显著提高 React Native 应用的性能，</span><br><span class="line">尤其是在大数据量列表和复杂 UI 组件的场景下，确保应用更加流畅。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-解释什么是“虚拟化列表”以及如何在-React-Native-中使用-FlatList-或-SectionList-优化列表性能？"><a href="#2-2-解释什么是“虚拟化列表”以及如何在-React-Native-中使用-FlatList-或-SectionList-优化列表性能？" class="headerlink" title="2.2 解释什么是“虚拟化列表”以及如何在 React Native 中使用 FlatList 或 SectionList 优化列表性能？"></a>2.2 解释什么是“虚拟化列表”以及如何在 React Native 中使用 <code>FlatList</code> 或 <code>SectionList</code> 优化列表性能？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">一、虚拟化列表</span><br><span class="line">虚拟化列表 是一种优化渲染性能的技术，它只渲染可视区域内的列表项，而不是一次性渲染所有数据项。</span><br><span class="line">这种方法能够显著提高性能，尤其是在处理大量数据时，避免内存占用过高和渲染卡顿。</span><br><span class="line"></span><br><span class="line">在 React Native 中，FlatList 和 SectionList 都支持虚拟化功能，</span><br><span class="line">它们会根据屏幕滚动自动加载和卸载列表项，减少内存消耗，提升滚动性能。</span><br><span class="line"></span><br><span class="line">二、如何使用 FlatList 或 SectionList 优化列表性能：</span><br><span class="line"></span><br><span class="line">2.1 使用 FlatList 或 SectionList：</span><br><span class="line">-FlatList 用于渲染单一数据源的列表。</span><br><span class="line">-SectionList 用于渲染带有分组数据的列表（例如带有标题的章节列表）。</span><br><span class="line"></span><br><span class="line">2.2 关键属性：</span><br><span class="line">-initialNumToRender：指定初始渲染的列表项数量，避免一次性渲染过多项。</span><br><span class="line">-maxToRenderPerBatch：每次渲染的最大列表项数量，控制渲染批次大小，优化性能。</span><br><span class="line">-getItemLayout：如果列表项的高度是固定的，使用 getItemLayout 提供项的固定高度信息，</span><br><span class="line">避免在滚动时动态计算每个项的布局，从而提高性能。</span><br><span class="line">-keyExtractor：为每个列表项提供唯一的 key，帮助 React 高效地识别哪些项发生变化，从而优化渲染。</span><br><span class="line"></span><br><span class="line">2.3 分页加载：</span><br><span class="line">使用 onEndReached 和 onEndReachedThreshold 实现分页加载，按需加载更多数据，避免一次性加载大量数据。</span><br><span class="line"></span><br><span class="line">2.4 避免不必要的渲染：</span><br><span class="line">使用 React.memo 或 shouldComponentUpdate 优化子组件，</span><br><span class="line">确保只有在数据发生变化时才重新渲染，避免不必要的性能浪费。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-如何避免-React-Native-应用中的不必要的重新渲染？如何使用-shouldComponentUpdate、React-memo-和-useMemo？"><a href="#2-3-如何避免-React-Native-应用中的不必要的重新渲染？如何使用-shouldComponentUpdate、React-memo-和-useMemo？" class="headerlink" title="2.3 如何避免 React Native 应用中的不必要的重新渲染？如何使用 shouldComponentUpdate、React.memo 和 useMemo？"></a>2.3 如何避免 React Native 应用中的不必要的重新渲染？如何使用 <code>shouldComponentUpdate</code>、<code>React.memo</code> 和 <code>useMemo</code>？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">在 React Native 中，避免不必要的重新渲染是优化性能的关键。</span><br><span class="line"></span><br><span class="line">可以通过以下几种方法来控制组件的渲染：</span><br><span class="line"></span><br><span class="line">一、 使用 shouldComponentUpdate（类组件）：</span><br><span class="line">-shouldComponentUpdate 是 React 类组件的生命周期方法，用于控制组件是否需要重新渲染。</span><br><span class="line">-它接收 nextProps 和 nextState，通过比较当前和即将变化的 props 和 state，决定是否重新渲染组件。</span><br><span class="line">示例</span><br><span class="line">class MyComponent extends React.Component &#123;</span><br><span class="line">  shouldComponentUpdate(nextProps, nextState) &#123;</span><br><span class="line">    // 如果 props 或 state 没有变化，就不重新渲染</span><br><span class="line">    return nextProps.someValue !== this.props.someValue;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return &lt;Text&gt;&#123;this.props.someValue&#125;&lt;/Text&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">二、使用 React.memo（函数组件）：</span><br><span class="line">-React.memo 是一个高阶组件（HOC），用于优化函数组件的性能。它会通过浅比较 props 来决定是否重新渲染组件。</span><br><span class="line">-如果组件的 props 没有变化，React.memo 会阻止组件重新渲染。</span><br><span class="line">示例</span><br><span class="line">const MyComponent = React.memo((&#123; value &#125;) =&gt; &#123;</span><br><span class="line">  console.log(&quot;Rendering MyComponent&quot;);</span><br><span class="line">  return &lt;Text&gt;&#123;value&#125;&lt;/Text&gt;;</span><br><span class="line">&#125;);</span><br><span class="line">-React.memo 默认对所有 props 进行浅比较。如果需要自定义比较逻辑，可以传递第二个参数：</span><br><span class="line">const MyComponent = React.memo(</span><br><span class="line">  (&#123; value &#125;) =&gt; &#123;</span><br><span class="line">    console.log(&quot;Rendering MyComponent&quot;);</span><br><span class="line">    return &lt;Text&gt;&#123;value&#125;&lt;/Text&gt;;</span><br><span class="line">  &#125;,</span><br><span class="line">  (prevProps, nextProps) =&gt; prevProps.value === nextProps.value</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">三、使用 useMemo（函数组件）：</span><br><span class="line">-useMemo 是一个 React Hook，用于缓存计算结果，避免在每次渲染时进行重复的计算。</span><br><span class="line">-它接收一个计算函数和依赖项数组，只有当依赖项发生变化时，才重新计算结果。</span><br><span class="line">示例</span><br><span class="line">const MyComponent = (&#123; data &#125;) =&gt; &#123;</span><br><span class="line">  const processedData = useMemo(() =&gt; &#123;</span><br><span class="line">    return data.map(item =&gt; item * 2);</span><br><span class="line">  &#125;, [data]); // 只有 data 改变时才重新计算 processedData</span><br><span class="line"></span><br><span class="line">  return &lt;Text&gt;&#123;processedData.join(&quot;, &quot;)&#125;&lt;/Text&gt;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">总结：</span><br><span class="line">-shouldComponentUpdate：用于类组件，通过比较 nextProps 和 nextState 来控制是否重新渲染。</span><br><span class="line">-React.memo：用于函数组件，通过浅比较 props 来控制是否重新渲染。</span><br><span class="line">-useMemo：用于函数组件，缓存计算结果，只有依赖项变化时才重新计算。</span><br><span class="line"></span><br><span class="line">通过合理使用这些优化手段，可以显著减少不必要的渲染，提升 React Native 应用的性能。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-解释-React-Native-中的线程模型，如何提高主线程的响应性？"><a href="#2-4-解释-React-Native-中的线程模型，如何提高主线程的响应性？" class="headerlink" title="2.4 解释 React Native 中的线程模型，如何提高主线程的响应性？"></a>2.4 解释 React Native 中的线程模型，如何提高主线程的响应性？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">一、线程模型</span><br><span class="line">在 React Native 中，线程模型由多个线程组成，主要包括以下几种：</span><br><span class="line"></span><br><span class="line">1.1 主线程（UI 线程）：</span><br><span class="line">-负责渲染和更新 UI。</span><br><span class="line">-所有 UI 操作（如布局计算、绘制视图）都在主线程上执行。</span><br><span class="line">-如果主线程被阻塞，UI 会变得卡顿或者无响应。</span><br><span class="line"></span><br><span class="line">1.2 JavaScript 线程：</span><br><span class="line">-运行 JavaScript 代码，处理逻辑和事件。</span><br><span class="line">-React Native 的核心业务逻辑（例如组件的状态更新、网络请求等）都在 JavaScript 线程中执行。</span><br><span class="line"></span><br><span class="line">JavaScript 线程和主线程是分离的，通过桥接（Bridge）机制与主线程通信，更新 UI。</span><br><span class="line"></span><br><span class="line">1.3 原生线程（Native Threads）：</span><br><span class="line">-用于处理与原生平台（如 Android 和 iOS）相关的任务，通常由原生模块或原生代码负责。</span><br><span class="line">-在 React Native 中，很多原生功能（如相机、地图、传感器等）由原生线程处理。</span><br><span class="line"></span><br><span class="line">二、如何提高主线程的响应性：</span><br><span class="line">2.1 避免阻塞主线程：</span><br><span class="line">-确保主线程的工作只集中在 UI 渲染上，避免在主线程执行复杂的计算或阻塞操作。</span><br><span class="line">-对于复杂的计算任务，应该将它们移到 JavaScript 线程 或 原生线程，避免直接在主线程上执行。</span><br><span class="line"></span><br><span class="line">2.2 使用异步操作：</span><br><span class="line">使用 async/await 或 Promise 等异步机制，</span><br><span class="line">将耗时的操作（如网络请求、文件读取等）放到后台线程处理，避免阻塞主线程。</span><br><span class="line"></span><br><span class="line">2.3 优化渲染和布局：</span><br><span class="line">-使用 FlatList 或 SectionList 来优化大数据量列表的渲染，避免一次性渲染所有项。</span><br><span class="line">-使用 React.memo 或 shouldComponentUpdate 来避免不必要的重新渲染。</span><br><span class="line">-使用 useMemo 或 useCallback 来缓存计算结果和函数，避免每次渲染时重新创建。</span><br><span class="line"></span><br><span class="line">2.4 合理使用原生模块：</span><br><span class="line">-对于一些性能要求较高的操作（如图像处理、大规模数据计算等），</span><br><span class="line">可以通过创建原生模块来将任务转移到原生线程上执行，减少主线程的负担。</span><br><span class="line"></span><br><span class="line">总结：</span><br><span class="line">-React Native 的线程模型将主线程、JavaScript 线程和原生线程分开管理，确保 UI 渲染和业务逻辑分离。</span><br><span class="line">-为了提高主线程的响应性，应避免在主线程执行复杂任务，使用异步操作和优化渲染来减少主线程的负担。</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/React-Native%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># React Native面试题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/83642a75.html" rel="prev" title="React Native面试题2025——路由与导航(3)">
+                  <i class="fa fa-angle-left"></i> React Native面试题2025——路由与导航(3)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/c9b515d1.html" rel="next" title="React Native面试题2025——原生模块与桥接(5)">
+                  React Native面试题2025——原生模块与桥接(5) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"0e9aac84187a083e5246e0012ecb94f0"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

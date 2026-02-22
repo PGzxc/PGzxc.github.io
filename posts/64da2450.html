@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述12345本文介绍：依赖注入框架Dagger2相关内容 -Dagger2介绍 -项目配置(composeui版本) -核心注解与使用 -示例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发之——依赖注入框架Dagger2(3)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/64da2450.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 概述12345本文介绍：依赖注入框架Dagger2相关内容 -Dagger2介绍 -项目配置(composeui版本) -核心注解与使用 -示例">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-di-dagger2-demo-3.gif">
+<meta property="article:published_time" content="2025-09-14T00:10:04.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.242Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-di-dagger2-demo-3.gif">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/64da2450.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/64da2450.html","path":"posts/64da2450.html","title":"Android开发之——依赖注入框架Dagger2(3)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android开发之——依赖注入框架Dagger2(3) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-Dagger2%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">二 Dagger2介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E4%BC%98%E7%82%B9"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%9C%AF%E8%AF%AD"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 术语</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE-composeui%E7%89%88%E6%9C%AC"><span class="nav-number">3.</span> <span class="nav-text">三 项目配置(composeui版本)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E9%85%8D%E7%BD%AE%E4%BD%8D%E7%BD%AE"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 配置位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E9%85%8D%E7%BD%AE%E5%86%85%E5%AE%B9%E2%80%94%E6%B3%A8%E6%84%8F%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 配置内容—注意兼容性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E6%A0%B8%E5%BF%83%E6%B3%A8%E8%A7%A3%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">四 核心注解与使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Inject-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E6%B3%A8%E5%85%A5"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 @Inject 构造函数注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-Module-Provides-%E6%8F%90%E4%BE%9B%E4%BE%9D%E8%B5%96"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 @Module + @Provides 提供依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-Component-%E6%B3%A8%E5%85%A5"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 @Component 注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E4%BD%BF%E7%94%A8%E4%BE%9D%E8%B5%96"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 使用依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-Singleton"><span class="nav-number">4.5.</span> <span class="nav-text">4.5 单例模式(Singleton)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E7%A4%BA%E4%BE%8B"><span class="nav-number">5.</span> <span class="nav-text">五 示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E4%BE%9D%E8%B5%96"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E4%BB%A3%E7%A0%81"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-AndroidManifest-xml"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 AndroidManifest.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-%E6%95%88%E6%9E%9C%E5%9B%BE"><span class="nav-number">5.4.</span> <span class="nav-text">5.4 效果图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD-%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">六 总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-%E6%80%BB%E7%BB%93"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83-%E5%8F%82%E8%80%83%E7%A4%BA%E4%BE%8B"><span class="nav-number">7.</span> <span class="nav-text">七 参考示例</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/64da2450.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android开发之——依赖注入框架Dagger2(3) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android开发之——依赖注入框架Dagger2(3)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Android%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%A1%86%E6%9E%B6Dagger2-3.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-09-14 08:10:04" itemprop="dateCreated datePublished" datetime="2025-09-14T08:10:04+08:00">2025-09-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/D-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">D-移动开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/D-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>11 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">本文介绍：依赖注入框架Dagger2相关内容</span><br><span class="line"> -Dagger2介绍</span><br><span class="line"> -项目配置(composeui版本)</span><br><span class="line"> -核心注解与使用</span><br><span class="line"> -示例</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-Dagger2介绍"><a href="#二-Dagger2介绍" class="headerlink" title="二 Dagger2介绍"></a>二 Dagger2介绍</h2><h3 id="2-1-概念"><a href="#2-1-概念" class="headerlink" title="2.1 概念"></a>2.1 概念</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dagger2 是 Google 官方推荐的依赖注入（DI，Dependency Injection）框架，</span><br><span class="line">核心作用是 自动管理对象的创建和依赖关系，</span><br><span class="line">减少手动 new 和耦合，提高代码可维护性</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-优点"><a href="#2-2-优点" class="headerlink" title="2.2 优点"></a>2.2 优点</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-编译期生成代码，运行期性能高。</span><br><span class="line">-无需反射，安全可靠。</span><br><span class="line">-可管理复杂依赖关系的 Android 应用。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-术语"><a href="#2-3-术语" class="headerlink" title="2.3 术语"></a>2.3 术语</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-Component（组件）：桥梁，负责注入依赖对象。</span><br><span class="line">-Module（模块）：提供依赖对象的创建方法。</span><br><span class="line">-@Inject：标记构造函数、字段或方法，用于注入依赖。</span><br><span class="line">-@Provides：Module 中提供对象实例的方法。</span><br><span class="line">-@Singleton：单例注解，保证对象在 Component 生命周期内唯一。</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-项目配置-composeui版本"><a href="#三-项目配置-composeui版本" class="headerlink" title="三 项目配置(composeui版本)"></a>三 项目配置(composeui版本)</h2><h3 id="3-1-配置位置"><a href="#3-1-配置位置" class="headerlink" title="3.1 配置位置"></a>3.1 配置位置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1、app/build.gradke.kts</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-配置内容—注意兼容性"><a href="#3-2-配置内容—注意兼容性" class="headerlink" title="3.2 配置内容—注意兼容性"></a>3.2 配置内容—注意兼容性</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、plugin</span><br><span class="line">plugins &#123;</span><br><span class="line">    alias(libs.plugins.ksp) //编译compile时</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2、dependencies依赖</span><br><span class="line">implementation(libs.dagger)</span><br><span class="line"> ksp(libs.dagger.compiler)</span><br></pre></td></tr></table></figure>
+
+<h2 id="四-核心注解与使用"><a href="#四-核心注解与使用" class="headerlink" title="四 核心注解与使用"></a>四 核心注解与使用</h2><h3 id="4-1-Inject-构造函数注入"><a href="#4-1-Inject-构造函数注入" class="headerlink" title="4.1 @Inject 构造函数注入"></a>4.1 @Inject 构造函数注入</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Engine @Inject constructor() &#123;</span><br><span class="line">    fun start() = &quot;Engine started&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-Module-Provides-提供依赖"><a href="#4-2-Module-Provides-提供依赖" class="headerlink" title="4.2 @Module + @Provides 提供依赖"></a>4.2 @Module + @Provides 提供依赖</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Module</span><br><span class="line">class CarModule &#123;</span><br><span class="line">    @Provides</span><br><span class="line">    fun provideCar(engine: Engine): Car &#123;</span><br><span class="line">        return Car(engine)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-Component-注入"><a href="#4-3-Component-注入" class="headerlink" title="4.3 @Component 注入"></a>4.3 @Component 注入</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Component(modules = [CarModule::class])</span><br><span class="line">interface CarComponent &#123;</span><br><span class="line">    fun inject(activity: MainActivity)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-使用依赖"><a href="#4-4-使用依赖" class="headerlink" title="4.4 使用依赖"></a>4.4 使用依赖</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Car @Inject constructor(private val engine: Engine) &#123;</span><br><span class="line">    fun drive() = engine.start()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class MainActivity : AppCompatActivity() &#123;</span><br><span class="line"></span><br><span class="line">    @Inject</span><br><span class="line">    lateinit var car: Car</span><br><span class="line"></span><br><span class="line">    override fun onCreate(savedInstanceState: Bundle?) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState)</span><br><span class="line">        setContentView(R.layout.activity_main)</span><br><span class="line"></span><br><span class="line">        DaggerCarComponent.create().inject(this)</span><br><span class="line"></span><br><span class="line">        println(car.drive()) // 输出 Engine started</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5-单例模式-Singleton"><a href="#4-5-单例模式-Singleton" class="headerlink" title="4.5 单例模式(Singleton)"></a>4.5 单例模式(Singleton)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Module</span><br><span class="line">class EngineModule &#123;</span><br><span class="line">    @Provides</span><br><span class="line">    @Singleton</span><br><span class="line">    fun provideEngine() = Engine()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Singleton</span><br><span class="line">@Component(modules = [EngineModule::class])</span><br><span class="line">interface SingletonComponent &#123;</span><br><span class="line">    fun engine(): Engine</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="五-示例"><a href="#五-示例" class="headerlink" title="五 示例"></a>五 示例</h2><h3 id="5-1-依赖"><a href="#5-1-依赖" class="headerlink" title="5.1 依赖"></a>5.1 依赖</h3><p>1、libs.versions.toml</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">[versions]</span><br><span class="line">agp = &quot;8.12.0&quot;</span><br><span class="line">kotlin = &quot;2.2.10&quot;</span><br><span class="line">coreKtx = &quot;1.16.0&quot;</span><br><span class="line">junit = &quot;4.13.2&quot;</span><br><span class="line">junitVersion = &quot;1.2.1&quot;</span><br><span class="line">espressoCore = &quot;3.6.1&quot;</span><br><span class="line">appcompat = &quot;1.7.0&quot;</span><br><span class="line">material = &quot;1.12.0&quot;</span><br><span class="line"></span><br><span class="line">#添加</span><br><span class="line">ktxFragment = &quot;1.8.9&quot;</span><br><span class="line">activityCompose = &quot;1.10.1&quot;</span><br><span class="line">ksp = &quot;2.2.10-2.0.2&quot;</span><br><span class="line">dagger = &quot;2.57.1&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Jetpack Compose 相关版本</span><br><span class="line">composeBom = &quot;2025.08.01&quot;</span><br><span class="line"></span><br><span class="line">[libraries]</span><br><span class="line"># AndroidX 基础库</span><br><span class="line">androidx-core-ktx = &#123; group = &quot;androidx.core&quot;, name = &quot;core-ktx&quot;, version.ref = &quot;coreKtx&quot; &#125;</span><br><span class="line">androidx-appcompat = &#123; group = &quot;androidx.appcompat&quot;, name = &quot;appcompat&quot;, version.ref = &quot;appcompat&quot; &#125;</span><br><span class="line">material = &#123; group = &quot;com.google.android.material&quot;, name = &quot;material&quot;, version.ref = &quot;material&quot; &#125;</span><br><span class="line">androidx-activity-compose = &#123; group = &quot;androidx.activity&quot;, name = &quot;activity-compose&quot;, version.ref = &quot;activityCompose&quot; &#125;</span><br><span class="line">androidx-fragment-ktx = &#123; group = &quot;androidx.fragment&quot;, name = &quot;fragment-ktx&quot;, version.ref = &quot;ktxFragment&quot; &#125; #fragement中使用viewModels()委托</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">junit = &#123; group = &quot;junit&quot;, name = &quot;junit&quot;, version.ref = &quot;junit&quot; &#125;</span><br><span class="line">androidx-junit = &#123; group = &quot;androidx.test.ext&quot;, name = &quot;junit&quot;, version.ref = &quot;junitVersion&quot; &#125;</span><br><span class="line">androidx-espresso-core = &#123; group = &quot;androidx.test.espresso&quot;, name = &quot;espresso-core&quot;, version.ref = &quot;espressoCore&quot; &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#compose-bom相关</span><br><span class="line">androidx-compose-bom = &#123; group = &quot;androidx.compose&quot;, name = &quot;compose-bom&quot;, version.ref = &quot;composeBom&quot; &#125;</span><br><span class="line">androidx-ui = &#123; group = &quot;androidx.compose.ui&quot;, name = &quot;ui&quot; &#125;</span><br><span class="line">androidx-ui-graphics = &#123; group = &quot;androidx.compose.ui&quot;, name = &quot;ui-graphics&quot; &#125;</span><br><span class="line">androidx-ui-tooling = &#123; group = &quot;androidx.compose.ui&quot;, name = &quot;ui-tooling&quot; &#125;</span><br><span class="line">androidx-ui-tooling-preview = &#123; group = &quot;androidx.compose.ui&quot;, name = &quot;ui-tooling-preview&quot; &#125;</span><br><span class="line">androidx-ui-test-manifest = &#123; group = &quot;androidx.compose.ui&quot;, name = &quot;ui-test-manifest&quot;&#125;</span><br><span class="line">androidx-ui-test-junit4 = &#123; group = &quot;androidx.compose.ui&quot;, name = &quot;ui-test-junit4&quot; &#125;</span><br><span class="line">androidx-material3 = &#123; group = &quot;androidx.compose.material3&quot;, name = &quot;material3&quot; &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">dagger = &#123; group = &quot;com.google.dagger&quot;, name = &quot;dagger&quot;, version.ref = &quot;dagger&quot;&#125;</span><br><span class="line">dagger-compiler = &#123; group = &quot;com.google.dagger&quot;, name = &quot;dagger-compiler&quot;, version.ref = &quot;dagger&quot;&#125;</span><br><span class="line"></span><br><span class="line">[plugins]</span><br><span class="line">android-application = &#123; id = &quot;com.android.application&quot;, version.ref = &quot;agp&quot; &#125;</span><br><span class="line">kotlin-android = &#123; id = &quot;org.jetbrains.kotlin.android&quot;, version.ref = &quot;kotlin&quot; &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">kotlin-compose = &#123; id = &quot;org.jetbrains.kotlin.plugin.compose&quot;, version.ref = &quot;kotlin&quot; &#125;</span><br><span class="line">ksp = &#123; id = &quot;com.google.devtools.ksp&quot;, version.ref = &quot;ksp&quot; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、项目根目录&#x2F;build.gradle.kts</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    alias(libs.plugins.android.application) apply false</span><br><span class="line">    alias(libs.plugins.kotlin.android) apply false</span><br><span class="line"></span><br><span class="line">    //add</span><br><span class="line">    alias(libs.plugins.kotlin.compose) apply false</span><br><span class="line">    alias(libs.plugins.ksp) apply false</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3、app&#x2F;build.gradle.kts</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    alias(libs.plugins.android.application)</span><br><span class="line">    alias(libs.plugins.kotlin.android)</span><br><span class="line"></span><br><span class="line">    alias(libs.plugins.ksp)</span><br><span class="line">    alias(libs.plugins.kotlin.compose)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">android &#123;</span><br><span class="line">    namespace = &quot;com.pgzxc.dagger2demo&quot;</span><br><span class="line">    compileSdk = 36</span><br><span class="line"></span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        applicationId = &quot;com.pgzxc.dagger2demo&quot;</span><br><span class="line">        minSdk = 25</span><br><span class="line">        targetSdk = 36</span><br><span class="line">        versionCode = 1</span><br><span class="line">        versionName = &quot;1.0&quot;</span><br><span class="line"></span><br><span class="line">        testInstrumentationRunner = &quot;androidx.test.runner.AndroidJUnitRunner&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    buildFeatures &#123;</span><br><span class="line">        compose = true</span><br><span class="line">    &#125;</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            isMinifyEnabled = false</span><br><span class="line">            proguardFiles(</span><br><span class="line">                getDefaultProguardFile(&quot;proguard-android-optimize.txt&quot;),</span><br><span class="line">                &quot;proguard-rules.pro&quot;</span><br><span class="line">            )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    compileOptions &#123;</span><br><span class="line">        sourceCompatibility = JavaVersion.VERSION_11</span><br><span class="line">        targetCompatibility = JavaVersion.VERSION_11</span><br><span class="line">    &#125;</span><br><span class="line">    kotlinOptions &#123;</span><br><span class="line">        jvmTarget = &quot;11&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line"></span><br><span class="line">    implementation(libs.androidx.core.ktx)</span><br><span class="line">    implementation(libs.androidx.appcompat)</span><br><span class="line">    implementation(libs.material)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    testImplementation(libs.junit)</span><br><span class="line">    androidTestImplementation(libs.androidx.junit)</span><br><span class="line">    androidTestImplementation(libs.androidx.espresso.core)</span><br><span class="line"></span><br><span class="line">    implementation(libs.dagger)</span><br><span class="line">    ksp(libs.dagger.compiler)</span><br><span class="line"></span><br><span class="line">    //compose</span><br><span class="line">    implementation(platform(libs.androidx.compose.bom))</span><br><span class="line">    implementation(libs.androidx.material3)</span><br><span class="line">    implementation(libs.androidx.ui.tooling.preview)</span><br><span class="line">    implementation(libs.androidx.ui)</span><br><span class="line">    implementation(libs.androidx.activity.compose)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-代码"><a href="#5-2-代码" class="headerlink" title="5.2 代码"></a>5.2 代码</h3><p>1、component&#x2F;AppComponent.kt</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package com.pgzxc.dagger2demo.component</span><br><span class="line"></span><br><span class="line">import com.pgzxc.dagger2demo.MainActivity</span><br><span class="line">import com.pgzxc.dagger2demo.di.AnalyticsModule</span><br><span class="line">import com.pgzxc.dagger2demo.di.NetworkModule</span><br><span class="line">import dagger.Component</span><br><span class="line">import jakarta.inject.Singleton</span><br><span class="line"></span><br><span class="line">@Singleton</span><br><span class="line">@Component(modules = [AnalyticsModule::class, NetworkModule::class])</span><br><span class="line">interface AppComponent &#123;</span><br><span class="line">    fun inject(activity: MainActivity)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、di&#x2F;AnalyticsModule.kt</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package com.pgzxc.dagger2demo.di</span><br><span class="line"></span><br><span class="line">import com.pgzxc.dagger2demo.service.AnalyticsService</span><br><span class="line">import com.pgzxc.dagger2demo.service.ApiService</span><br><span class="line">import com.pgzxc.dagger2demo.service.FirebaseAnalyticsService</span><br><span class="line">import dagger.Binds</span><br><span class="line">import dagger.Module</span><br><span class="line">import dagger.Provides</span><br><span class="line"></span><br><span class="line">@Module</span><br><span class="line">interface AnalyticsModule &#123;</span><br><span class="line">    @Binds</span><br><span class="line">    fun bindAnalytics(impl: FirebaseAnalyticsService): AnalyticsService</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3、di&#x2F;NetworkModule.kt</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package com.pgzxc.dagger2demo.di</span><br><span class="line"></span><br><span class="line">import com.pgzxc.dagger2demo.service.ApiService</span><br><span class="line">import dagger.Module</span><br><span class="line">import dagger.Provides</span><br><span class="line"></span><br><span class="line">@Module</span><br><span class="line">object NetworkModule &#123;</span><br><span class="line">    @Provides</span><br><span class="line">    fun provideApiService(): ApiService &#123;</span><br><span class="line">        return ApiService(&quot;https://api.example.com&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4、service&#x2F;AnalyticsService.kt</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">package com.pgzxc.dagger2demo.service</span><br><span class="line"></span><br><span class="line">// 定义接口</span><br><span class="line">interface AnalyticsService &#123;</span><br><span class="line">    fun trackEvent(event: String): String</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5、service&#x2F;ApiService.kt</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">package com.pgzxc.dagger2demo.service</span><br><span class="line"></span><br><span class="line">// 模拟一个网络服务</span><br><span class="line">class ApiService(private val baseUrl: String) &#123;</span><br><span class="line">    fun fetchData(): String = &quot;Data from $baseUrl&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>6、FirebaseAnalyticsService.kt</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package com.pgzxc.dagger2demo.service</span><br><span class="line"></span><br><span class="line">import jakarta.inject.Inject</span><br><span class="line"></span><br><span class="line">// 实现类</span><br><span class="line">class FirebaseAnalyticsService @Inject constructor() : AnalyticsService &#123;</span><br><span class="line">    override fun trackEvent(event: String): String &#123;</span><br><span class="line">        return &quot;Firebase tracking: $event&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>7、ui&#x2F;AppScreen.kt</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">package com.pgzxc.dagger2demo.ui</span><br><span class="line"></span><br><span class="line">import androidx.compose.foundation.layout.Arrangement</span><br><span class="line">import androidx.compose.foundation.layout.Column</span><br><span class="line">import androidx.compose.foundation.layout.fillMaxSize</span><br><span class="line">import androidx.compose.foundation.layout.padding</span><br><span class="line">import androidx.compose.material3.Button</span><br><span class="line">import androidx.compose.material3.ExperimentalMaterial3Api</span><br><span class="line">import androidx.compose.material3.Scaffold</span><br><span class="line">import androidx.compose.material3.Text</span><br><span class="line">import androidx.compose.material3.TopAppBar</span><br><span class="line">import androidx.compose.runtime.Composable</span><br><span class="line">import androidx.compose.runtime.getValue</span><br><span class="line">import androidx.compose.runtime.mutableStateOf</span><br><span class="line">import androidx.compose.runtime.remember</span><br><span class="line">import androidx.compose.runtime.setValue</span><br><span class="line">import androidx.compose.ui.Modifier</span><br><span class="line">import androidx.compose.ui.unit.dp</span><br><span class="line">import com.pgzxc.dagger2demo.service.AnalyticsService</span><br><span class="line">import com.pgzxc.dagger2demo.service.ApiService</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@OptIn(ExperimentalMaterial3Api::class)</span><br><span class="line">@Composable</span><br><span class="line">fun AppScreen(analytics: AnalyticsService, apiService: ApiService) &#123;</span><br><span class="line">    var message by remember &#123; mutableStateOf(&quot;点击按钮触发事件&quot;) &#125;</span><br><span class="line"></span><br><span class="line">    Scaffold(topBar = &#123; TopAppBar(title = &#123; Text(&quot;Dagger2 + Compose Demo&quot;) &#125;) &#125;) &#123; padding -&gt;</span><br><span class="line">        Column(modifier = Modifier.fillMaxSize().padding(padding).padding(16.dp),</span><br><span class="line">            verticalArrangement = Arrangement.spacedBy(16.dp)) &#123;</span><br><span class="line">            Text(text = message)</span><br><span class="line">            Button(onClick = &#123; message = analytics.trackEvent(&quot;Button Clicked&quot;) &#125;) &#123;</span><br><span class="line">                Text(&quot;触发 Analytics&quot;)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            Button(onClick = &#123; message = apiService.fetchData() &#125;) &#123;</span><br><span class="line">                Text(&quot;请求 API 数据&quot;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>8、MainActivity.kt</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package com.pgzxc.dagger2demo</span><br><span class="line"></span><br><span class="line">import android.os.Bundle</span><br><span class="line">import androidx.activity.ComponentActivity</span><br><span class="line">import androidx.activity.compose.setContent</span><br><span class="line">import com.pgzxc.dagger2demo.service.AnalyticsService</span><br><span class="line">import com.pgzxc.dagger2demo.service.ApiService</span><br><span class="line">import com.pgzxc.dagger2demo.ui.AppScreen</span><br><span class="line">import jakarta.inject.Inject</span><br><span class="line"></span><br><span class="line">class MainActivity : ComponentActivity() &#123;</span><br><span class="line"></span><br><span class="line">    @Inject</span><br><span class="line">    lateinit var analytics: AnalyticsService</span><br><span class="line">    @Inject lateinit var apiService: ApiService</span><br><span class="line"></span><br><span class="line">    override fun onCreate(savedInstanceState: Bundle?) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState)</span><br><span class="line"></span><br><span class="line">        (application as MyApp).appComponent.inject(this)     // 注入</span><br><span class="line"></span><br><span class="line">        setContent &#123;</span><br><span class="line">            AppScreen(analytics, apiService)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>10、MyApp.kt</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package com.pgzxc.dagger2demo</span><br><span class="line"></span><br><span class="line">import android.app.Application</span><br><span class="line">import com.pgzxc.dagger2demo.component.AppComponent</span><br><span class="line">import com.pgzxc.dagger2demo.component.DaggerAppComponent</span><br><span class="line"></span><br><span class="line">class MyApp : Application() &#123;</span><br><span class="line">    lateinit var appComponent: AppComponent</span><br><span class="line">        private set</span><br><span class="line"></span><br><span class="line">    override fun onCreate() &#123;</span><br><span class="line">        super.onCreate()</span><br><span class="line">        appComponent = DaggerAppComponent.create()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3-AndroidManifest-xml"><a href="#5-3-AndroidManifest-xml" class="headerlink" title="5.3 AndroidManifest.xml"></a>5.3 AndroidManifest.xml</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;application</span><br><span class="line">        android:allowBackup=&quot;true&quot;</span><br><span class="line">        android:name=&quot;.MyApp&quot;</span><br><span class="line">        android:dataExtractionRules=&quot;@xml/data_extraction_rules&quot;</span><br><span class="line">        android:fullBackupContent=&quot;@xml/backup_rules&quot;</span><br><span class="line">        android:icon=&quot;@mipmap/ic_launcher&quot;</span><br><span class="line">        android:label=&quot;@string/app_name&quot;</span><br><span class="line">        android:roundIcon=&quot;@mipmap/ic_launcher_round&quot;</span><br><span class="line">        android:supportsRtl=&quot;true&quot;</span><br><span class="line">        android:theme=&quot;@style/Theme.Dagger2Demo&quot; &gt;</span><br><span class="line"></span><br><span class="line">        &lt;activity android:name=&quot;.MainActivity&quot; android:exported=&quot;true&quot;&gt;</span><br><span class="line">            &lt;intent-filter&gt;</span><br><span class="line">                &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;</span><br><span class="line">                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;</span><br><span class="line">            &lt;/intent-filter&gt;</span><br><span class="line">        &lt;/activity&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/application&gt;</span><br><span class="line">&lt;/manifest&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-4-效果图"><a href="#5-4-效果图" class="headerlink" title="5.4 效果图"></a>5.4 效果图</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-di-dagger2-demo-3.gif" loading="lazy"></p>
+<h2 id="六-总结"><a href="#六-总结" class="headerlink" title="六 总结"></a>六 总结</h2><h3 id="6-1-注意事项"><a href="#6-1-注意事项" class="headerlink" title="6.1 注意事项"></a>6.1 注意事项</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1、字段注入 vs 构造函数注入</span><br><span class="line">-构造函数注入优先使用，简洁且类型安全。</span><br><span class="line">-字段注入用于 Android 组件（Activity、Fragment）生命周期受控对象。</span><br><span class="line"></span><br><span class="line">2、Component 层级</span><br><span class="line">-可以使用 Subcomponent 管理复杂依赖关系</span><br><span class="line"></span><br><span class="line">3、避免循环依赖</span><br><span class="line">-Dagger2 不允许循环依赖，需重构或使用 Provider 延迟注入。</span><br><span class="line"></span><br><span class="line">4、Kotlin + Dagger2</span><br><span class="line">-注意 lateinit var 用于字段注入。</span><br><span class="line">-构造函数注入最简洁且安全。</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2-总结"><a href="#6-2-总结" class="headerlink" title="6.2 总结"></a>6.2 总结</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1、Dagger2 核心：</span><br><span class="line">-@Inject</span><br><span class="line">-@Module</span><br><span class="line">-@Provides</span><br><span class="line">-@Component</span><br><span class="line"></span><br><span class="line">2、使用流程：</span><br><span class="line">-定义依赖类并用 @Inject 标注。</span><br><span class="line">-定义 Module 提供复杂对象。</span><br><span class="line">-创建 Component 并注入对象。</span><br><span class="line">-使用注入对象。</span><br></pre></td></tr></table></figure>
+<h2 id="七-参考示例"><a href="#七-参考示例" class="headerlink" title="七 参考示例"></a>七 参考示例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/PGzxc/DISamples</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/baca227c.html" rel="prev" title="Android面试题——依赖注入框架Hilt相关(2)">
+                  <i class="fa fa-angle-left"></i> Android面试题——依赖注入框架Hilt相关(2)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/5b49317c.html" rel="next" title="Android面试题——依赖注入框架Dagger2相关(1)">
+                  Android面试题——依赖注入框架Dagger2相关(1) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"415261d87524627a5458af78a98ca66d"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ja/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ja/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ja/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/ja/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/ja/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/ja/","images":"/ja/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索...","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/ja/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/ja/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述 请描述一次你遇到的最棘手的Bug，比如一个难以复现的ANR、内存泄漏或者多线程问题。你是如何定位、分析和解决它的？在这个过程中你学到了什么新知识或新工具？ gson、fastjson开发中会有什么问题，有什么替代方案">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android面试题——常见面试题2">
+<meta property="og:url" content="https://pgzxc.github.io/posts/2e6493f5.html">
+<meta property="og:site_name" content="PGzxc (Japanese)">
+<meta property="og:description" content="一 概述 请描述一次你遇到的最棘手的Bug，比如一个难以复现的ANR、内存泄漏或者多线程问题。你是如何定位、分析和解决它的？在这个过程中你学到了什么新知识或新工具？ gson、fastjson开发中会有什么问题，有什么替代方案">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2025-04-09T08:03:56.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.010Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Android面试题">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/2e6493f5.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"ja","comments":true,"permalink":"https://pgzxc.github.io/posts/2e6493f5.html","path":"posts/2e6493f5.html","title":"Android面试题——常见面试题2"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android面试题——常见面试题2 | PGzxc (Japanese)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/utils.js" defer></script><script src="/ja/js/motion.js" defer></script><script src="/ja/js/sidebar.js" defer></script><script src="/ja/js/next-boot.js" defer></script><script src="/ja/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/ja/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/ja/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/ja/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/ja/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/ja/atom.xml" title="PGzxc (Japanese)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションを切り替える" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/ja/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (Japanese)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">本から学んだことは表面的なもの；自分で体験しなければならない</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="検索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/ja/" rel="section"><i class="fa fa-bell fa-fw"></i>ホーム</a></li><li class="menu-item menu-item-nav"><a href="/ja/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>ナビゲーション</a></li><li class="menu-item menu-item-categories"><a href="/ja/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリー<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/ja/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/ja/links/" rel="section"><i class="fa fa-link fa-fw"></i>リンク</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>検索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="検索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          目次
+        </li>
+        <li class="sidebar-nav-overview">
+          サイト概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E8%AF%B7%E6%8F%8F%E8%BF%B0%E4%B8%80%E6%AC%A1%E4%BD%A0%E9%81%87%E5%88%B0%E7%9A%84%E6%9C%80%E6%A3%98%E6%89%8B%E7%9A%84Bug"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 请描述一次你遇到的最棘手的Bug</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-gson%E3%80%81fastjson%E5%BC%80%E5%8F%91%E4%B8%AD%E4%BC%9A%E6%9C%89%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%8C%E6%9C%89%E4%BB%80%E4%B9%88%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 gson、fastjson开发中会有什么问题，有什么替代方案</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/ja/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/ja/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">投稿</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/ja/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">カテゴリー</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/ja/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/2e6493f5.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/ja/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android面试题——常见面试题2 | PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android面试题——常见面试题2<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Android%E9%9D%A2%E8%AF%95%E9%A2%98%E2%80%94%E2%80%94%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%982.md" class="post-edit-link" title="編集" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2025-04-09 16:03:56" itemprop="dateCreated datePublished" datetime="2025-04-09T16:03:56+08:00">2025-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/Android%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">Android面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="読書時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">読書時間 &asymp;</span>
+      <span>3 分</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul>
+<li>请描述一次你遇到的最棘手的Bug，比如一个难以复现的ANR、内存泄漏或者多线程问题。你是如何定位、分析和解决它的？在这个过程中你学到了什么新知识或新工具？</li>
+<li>gson、fastjson开发中会有什么问题，有什么替代方案<span id="more"></span></li>
+</ul>
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-请描述一次你遇到的最棘手的Bug"><a href="#2-1-请描述一次你遇到的最棘手的Bug" class="headerlink" title="2.1 请描述一次你遇到的最棘手的Bug"></a>2.1 请描述一次你遇到的最棘手的Bug</h3><p>1、ANR</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">我遇到过一个难以复现的 ANR（应用无响应） 问题，用户反馈偶尔启动应用时卡顿，界面无响应。</span><br><span class="line"></span><br><span class="line">1、定位与分析过程：</span><br><span class="line">-收集用户设备的 ANR traces.txt 日志，发现主线程被一个耗时的同步操作阻塞；</span><br><span class="line">-结合代码审查，发现启动时进行大量文件读写和数据库初始化，且操作在主线程执行；</span><br><span class="line">-使用 StrictMode 监测主线程耗时操作，确认问题点。</span><br><span class="line"></span><br><span class="line">2、解决方法：</span><br><span class="line">-将启动耗时操作全部迁移到子线程异步执行，避免阻塞 UI 线程；</span><br><span class="line">-使用异步初始化和懒加载优化启动流程；</span><br><span class="line">-增加超时机制和线程间通信，保证主线程流畅。</span><br><span class="line"></span><br><span class="line">3、学到的新知识/工具：</span><br><span class="line">-熟练使用 ANR traces 分析工具；</span><br><span class="line">-掌握了 StrictMode、Systrace 等调试工具；</span><br><span class="line">-理解了 Android 主线程调度和异步编程的重要性。</span><br><span class="line"></span><br><span class="line">这个经历让我深刻认识到：即使偶发的 ANR 也会极大影响用户体验，必须用系统工具结合代码逻辑彻底排查。</span><br></pre></td></tr></table></figure>
+
+<p>2、内存泄漏</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">我曾遇到一个严重的 内存泄漏问题，应用长时间使用后出现卡顿甚至崩溃，内存占用不断上升且无法释放。</span><br><span class="line"></span><br><span class="line">1、定位与分析过程：</span><br><span class="line">-使用 Android Profiler 分析内存，发现 Activity 实例未被回收；</span><br><span class="line">-通过 LeakCanary 报告发现：匿名内部类中持有 Activity 的引用，导致 GC 无法回收；</span><br><span class="line">-查看代码，发现某个单例工具类注册了 Context，但未解绑监听器或释放引用。</span><br><span class="line"></span><br><span class="line">2、解决方法：</span><br><span class="line">-将匿名内部类改为静态类 + WeakReference&lt;Context&gt;；</span><br><span class="line">-使用 ApplicationContext 替代 ActivityContext；</span><br><span class="line">-所有注册的监听器在合适生命周期中注销，防止泄漏。</span><br><span class="line"></span><br><span class="line">3、学到的新知识/工具：</span><br><span class="line">-掌握了 LeakCanary 内存检测流程；</span><br><span class="line">-学会使用 MAT/Android Studio Profiler 分析对象引用链；</span><br><span class="line">-深刻理解了 Context 分类与生命周期管理。</span><br><span class="line"></span><br><span class="line">这个问题让我意识到：内存泄漏更多源于细节疏忽，应重视生命周期管理和工具辅助分析。</span><br></pre></td></tr></table></figure>
+
+<p>3、多线程问题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">我曾遇到一个棘手的 多线程并发问题：偶尔出现数据错乱和崩溃，发生在多个线程同时操作同一个集合对象时。</span><br><span class="line"></span><br><span class="line">1、定位与分析过程：</span><br><span class="line">-通过崩溃日志发现异常为 ConcurrentModificationException；</span><br><span class="line">-结合代码分析，发现多个线程同时操作一个 ArrayList，而未做任何同步控制；</span><br><span class="line">-使用日志打印和断点调试，确认了线程并发操作时集合被修改。</span><br><span class="line"></span><br><span class="line">2、解决方法：</span><br><span class="line">-将 ArrayList 替换为线程安全的 CopyOnWriteArrayList；</span><br><span class="line">-部分场景使用 synchronized 块保护关键代码；</span><br><span class="line">-对写操作集中调度到单线程中执行，避免读写冲突。</span><br><span class="line"></span><br><span class="line">3、学到的新知识/工具：</span><br><span class="line">-理解了 Java 集合类的线程安全性；</span><br><span class="line">-熟悉了 ConcurrentHashMap、CopyOnWriteArrayList 等并发工具；</span><br><span class="line">-学会用 Thread dump、日志分析和可复现测试代码 还原并发场景。</span><br><span class="line"></span><br><span class="line">这个问题让我深刻认识到：多线程问题难以复现，但影响极大，设计之初就要考虑线程安全。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-gson、fastjson开发中会有什么问题，有什么替代方案"><a href="#2-2-gson、fastjson开发中会有什么问题，有什么替代方案" class="headerlink" title="2.2 gson、fastjson开发中会有什么问题，有什么替代方案"></a>2.2 gson、fastjson开发中会有什么问题，有什么替代方案</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line">在开发中使用 Gson 和 Fastjson 时，可能会遇到以下问题及相应替代方案：</span><br><span class="line"></span><br><span class="line">一、Gson 的常见问题</span><br><span class="line">1.1 性能问题</span><br><span class="line">-Gson 的序列化 / 反序列化速度较慢，尤其在处理大量数据时性能不如其他库。</span><br><span class="line">1.2 复杂泛型支持不足</span><br><span class="line">-处理嵌套泛型类型时需要额外编写TypeToken，代码冗长且易出错。</span><br><span class="line">1.3 字段命名策略限制</span><br><span class="line">-自定义字段命名策略（如蛇形转驼峰）的配置不够灵活。</span><br><span class="line"></span><br><span class="line">二、Fastjson 的常见问题</span><br><span class="line">2.1 安全漏洞频发</span><br><span class="line">-Fastjson 历史上存在多个严重的反序列化漏洞（如 RCE），需频繁升级版本且依赖严格的配置。</span><br><span class="line">2.2 兼容性问题</span><br><span class="line">-不同版本的 Fastjson 对某些特殊类型（如java.time包）的处理存在差异，导致兼容性问题。</span><br><span class="line">2.3 序列化行为不可控</span><br><span class="line">-默认序列化策略可能不符合预期（如忽略空字段），需手动配置。</span><br><span class="line"></span><br><span class="line">三、替代方案</span><br><span class="line">3.1 Jackson</span><br><span class="line">优势：性能优异，社区活跃，支持多种数据格式（JSON、XML、YAML 等），提供丰富的注解和自定义配置。</span><br><span class="line">适用场景：企业级应用、需要高性能和安全性的场景。</span><br><span class="line">示例代码：</span><br><span class="line"></span><br><span class="line">import com.fasterxml.jackson.databind.ObjectMapper;</span><br><span class="line"></span><br><span class="line">public class JacksonExample &#123;</span><br><span class="line">    public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        ObjectMapper mapper = new ObjectMapper();</span><br><span class="line">        // 序列化</span><br><span class="line">        String json = mapper.writeValueAsString(new User(&quot;John&quot;, 30));</span><br><span class="line">        // 反序列化</span><br><span class="line">        User user = mapper.readValue(json, User.class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">3.2 Moshi</span><br><span class="line">优势：轻量级，Kotlin 友好，支持代码生成（通过@JsonClass注解），减少运行时反射开销。</span><br><span class="line">适用场景：Android 开发、Kotlin 项目。</span><br><span class="line">示例代码：</span><br><span class="line"></span><br><span class="line">import com.squareup.moshi.Moshi</span><br><span class="line">import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory</span><br><span class="line"></span><br><span class="line">val moshi = Moshi.Builder()</span><br><span class="line">    .add(KotlinJsonAdapterFactory())</span><br><span class="line">    .build()</span><br><span class="line">val jsonAdapter = moshi.adapter(User::class.java)</span><br><span class="line">val user = jsonAdapter.fromJson(json)</span><br><span class="line"></span><br><span class="line">3.3 Kotlinx.serialization</span><br><span class="line">优势：Kotlin 官方库，编译时生成序列化代码，无需反射，性能高且安全。</span><br><span class="line">适用场景：纯 Kotlin 项目，尤其是需要跨平台（如 Kotlin Multiplatform）的场景。</span><br><span class="line">示例代码：</span><br><span class="line">import kotlinx.serialization.Serializable</span><br><span class="line">import kotlinx.serialization.json.Json</span><br><span class="line"></span><br><span class="line">@Serializable</span><br><span class="line">data class User(val name: String, val age: Int)</span><br><span class="line"></span><br><span class="line">val user = Json.decodeFromString&lt;User&gt;(json)</span><br><span class="line"></span><br><span class="line">3.4 Jsonb (JSR 367)</span><br><span class="line">优势：Java EE 标准库，提供简单 API，与 JPA 等 Java 生态无缝集成。</span><br><span class="line">适用场景：Java EE 项目、需要标准规范的场景。</span><br><span class="line">示例代码：</span><br><span class="line"></span><br><span class="line">import javax.json.bind.Jsonb;</span><br><span class="line">import javax.json.bind.JsonbBuilder;</span><br><span class="line"></span><br><span class="line">public class JsonbExample &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Jsonb jsonb = JsonbBuilder.create();</span><br><span class="line">        User user = jsonb.fromJson(json, User.class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">四、总结</span><br><span class="line">-性能优先：Jackson、Moshi。</span><br><span class="line">-安全优先：Jackson、Kotlinx.serialization。</span><br><span class="line">-Kotlin 项目：Moshi、Kotlinx.serialization。</span><br><span class="line">-Java EE 项目：Jsonb。</span><br><span class="line"></span><br><span class="line">根据具体场景选择合适的库，并注意版本更新以避免已知漏洞。</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/ja/tags/Android%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># Android面试题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ja/posts/98a02c32.html" rel="prev" title="Flutter面试题2025——架构与设计模式(10)">
+                  <i class="fa fa-angle-left"></i> Flutter面试题2025——架构与设计模式(10)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ja/posts/8fb011ed.html" rel="next" title="Flutter面试题2025——新兴趋势(11)">
+                  Flutter面试题2025——新兴趋势(11) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"299fe2e29e6304422cea4c128c7c3875"}</script>
+<script src="/ja/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

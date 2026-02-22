@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ja/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ja/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ja/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/ja/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/ja/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/ja/","images":"/ja/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索...","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/ja/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/ja/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述在项目中，pages&#x2F;index&#x2F;index.js文件用于编写页面逻辑，打开该文件，会看到里面已经保存了一些代码，这些代码是微信开发者工具自动生成的，具体代码如下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序开发之——比较数字大小-页面逻辑(2.1.5)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/6a61941.html">
+<meta property="og:site_name" content="PGzxc (Japanese)">
+<meta property="og:description" content="一 概述在项目中，pages&#x2F;index&#x2F;index.js文件用于编写页面逻辑，打开该文件，会看到里面已经保存了一些代码，这些代码是微信开发者工具自动生成的，具体代码如下">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-project-compare-function-log.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-project-compare-button-log.png">
+<meta property="article:published_time" content="2020-10-23T14:46:59.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.131Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="微信小程序">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-project-compare-function-log.png">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/6a61941.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"ja","comments":true,"permalink":"https://pgzxc.github.io/posts/6a61941.html","path":"posts/6a61941.html","title":"微信小程序开发之——比较数字大小-页面逻辑(2.1.5)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>微信小程序开发之——比较数字大小-页面逻辑(2.1.5) | PGzxc (Japanese)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/utils.js" defer></script><script src="/ja/js/motion.js" defer></script><script src="/ja/js/sidebar.js" defer></script><script src="/ja/js/next-boot.js" defer></script><script src="/ja/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/ja/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/ja/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/ja/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/ja/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/ja/atom.xml" title="PGzxc (Japanese)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションを切り替える" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/ja/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (Japanese)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">本から学んだことは表面的なもの；自分で体験しなければならない</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="検索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/ja/" rel="section"><i class="fa fa-bell fa-fw"></i>ホーム</a></li><li class="menu-item menu-item-nav"><a href="/ja/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>ナビゲーション</a></li><li class="menu-item menu-item-categories"><a href="/ja/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリー<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/ja/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/ja/links/" rel="section"><i class="fa fa-link fa-fw"></i>リンク</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>検索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="検索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          目次
+        </li>
+        <li class="sidebar-nav-overview">
+          サイト概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-Function%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">二 Function函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%A3%B0%E6%98%8E%E5%91%A8%E6%9C%9F%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 声明周期回调函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.1.</span> <span class="nav-text">回调函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="nav-number">2.1.2.</span> <span class="nav-text">回调函数说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E6%8F%90%E7%A4%BA"><span class="nav-number">2.1.3.</span> <span class="nav-text">小提示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E8%AF%B4%E6%98%8E"><span class="nav-number">2.1.4.</span> <span class="nav-text">页面说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E9%A1%B5%E9%9D%A2%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 页面事件处理函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E9%A1%B5%E9%9D%A2%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 页面事件处理函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">2.3.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94e-target%E5%92%8Ce-currentTarget"><span class="nav-number">2.3.2.</span> <span class="nav-text">对比e.target和e.currentTarget</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E4%BA%8B%E4%BB%B6"><span class="nav-number">2.3.3.</span> <span class="nav-text">常用事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A%E5%92%8C%E5%86%92%E6%B3%A1"><span class="nav-number">2.3.4.</span> <span class="nav-text">事件绑定和冒泡</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/ja/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/ja/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">投稿</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/ja/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">カテゴリー</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/ja/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/6a61941.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/ja/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="微信小程序开发之——比较数字大小-页面逻辑(2.1.5) | PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          微信小程序开发之——比较数字大小-页面逻辑(2.1.5)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94%E6%AF%94%E8%BE%83%E6%95%B0%E5%AD%97%E5%A4%A7%E5%B0%8F-%E9%A1%B5%E9%9D%A2%E9%80%BB%E8%BE%91(2.1.5).md" class="post-edit-link" title="編集" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2020-10-23 22:46:59" itemprop="dateCreated datePublished" datetime="2020-10-23T22:46:59+08:00">2020-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E5%BC%80%E5%8F%91/F-%E8%B7%A8%E5%B9%B3%E5%8F%B0/" itemprop="url" rel="index"><span itemprop="name">F-跨平台</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E5%BC%80%E5%8F%91/F-%E8%B7%A8%E5%B9%B3%E5%8F%B0/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" itemprop="url" rel="index"><span itemprop="name">微信小程序</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="読書時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">読書時間 &asymp;</span>
+      <span>5 分</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><p>在项目中，pages&#x2F;index&#x2F;index.js文件用于编写页面逻辑，打开该文件，会看到里面已经保存了一些代码，这些代码是微信开发者工具自动生成的，具体代码如下</p>
+<span id="more"></span>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">// pages/index/index.js</span><br><span class="line">Page(&#123;</span><br><span class="line">  /**</span><br><span class="line">   * 页面的初始数据</span><br><span class="line">   */</span><br><span class="line">  data: &#123;&#125;,</span><br><span class="line">  /**</span><br><span class="line">   * 生命周期函数--监听页面加载</span><br><span class="line">   */</span><br><span class="line">  onLoad: function (options) &#123;&#125;,</span><br><span class="line">  /**</span><br><span class="line">   * 生命周期函数--监听页面初次渲染完成</span><br><span class="line">   */</span><br><span class="line">  onReady: function () &#123;&#125;,</span><br><span class="line">  /**</span><br><span class="line">   * 生命周期函数--监听页面显示</span><br><span class="line">   */</span><br><span class="line">  onShow: function () &#123;&#125;,</span><br><span class="line">  /**</span><br><span class="line">   * 生命周期函数--监听页面隐藏</span><br><span class="line">   */</span><br><span class="line">  onHide: function () &#123;&#125;,</span><br><span class="line">  /**</span><br><span class="line">   * 生命周期函数--监听页面卸载</span><br><span class="line">   */</span><br><span class="line">  onUnload: function () &#123;&#125;,</span><br><span class="line">  /**</span><br><span class="line">   * 页面相关事件处理函数--监听用户下拉动作</span><br><span class="line">   */</span><br><span class="line">  onPullDownRefresh: function () &#123;&#125;,</span><br><span class="line">  /**</span><br><span class="line">   * 页面上拉触底事件的处理函数</span><br><span class="line">   */</span><br><span class="line">  onReachBottom: function () &#123;&#125;,</span><br><span class="line">  /**</span><br><span class="line">   * 用户点击右上角分享</span><br><span class="line">   */</span><br><span class="line">  onShareAppMessage: function () &#123;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>在上述代码中，Page()函数用来注册一个页面，该函数的参数是一个对象，通过该对象可以指定页面的初始数据、生命周期函数、事件处理函数等，具体说明如下表：</p>
+<table>
+<thead>
+<tr>
+<th align="center">属性</th>
+<th align="center">类型</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">data</td>
+<td align="center">Object</td>
+<td align="center">页面的初始数据</td>
+</tr>
+<tr>
+<td align="center">onLoad</td>
+<td align="center">Function</td>
+<td align="center">生命周期回调函数，监听页面加载</td>
+</tr>
+<tr>
+<td align="center">onReady</td>
+<td align="center">Function</td>
+<td align="center">生命周期回调函数，监听页面初次渲染完成</td>
+</tr>
+<tr>
+<td align="center">onShow</td>
+<td align="center">Function</td>
+<td align="center">生命周期回调函数，监听页面显示</td>
+</tr>
+<tr>
+<td align="center">onHide</td>
+<td align="center">Function</td>
+<td align="center">声明周期回调函数，监听页面隐藏</td>
+</tr>
+<tr>
+<td align="center">onUpload</td>
+<td align="center">Function</td>
+<td align="center">生命周期回调函数，监听页面卸载</td>
+</tr>
+<tr>
+<td align="center">onPullDownRefresh</td>
+<td align="center">Function</td>
+<td align="center">页面事件处理函数，页面下拉动作</td>
+</tr>
+<tr>
+<td align="center">onReachBottom</td>
+<td align="center">Function</td>
+<td align="center">页面事件处理函数，页面上拉触底</td>
+</tr>
+<tr>
+<td align="center">onShareAppMessage</td>
+<td align="center">Function</td>
+<td align="center">页面事件处理函数，用户点击右上角的分享按钮</td>
+</tr>
+<tr>
+<td align="center">onPageScroll</td>
+<td align="center">Function</td>
+<td align="center">页面事件处理函数，页面滚动会连续触发</td>
+</tr>
+<tr>
+<td align="center">其他</td>
+<td align="center">Any</td>
+<td align="center">开发者可以添加任意的函数或者数据，在页面的函数中通过this.*来访问</td>
+</tr>
+</tbody></table>
+<p>data的作用将会在后面进行讲解，接下来将针对声明周期函数，页面事件处理函数、组件事件处理函数的使用分别进行演示。</p>
+<h2 id="二-Function函数"><a href="#二-Function函数" class="headerlink" title="二 Function函数"></a>二 Function函数</h2><h3 id="2-1-声明周期回调函数"><a href="#2-1-声明周期回调函数" class="headerlink" title="2.1 声明周期回调函数"></a>2.1 声明周期回调函数</h3><h4 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h4><p>下面以onLoad、onReady、onShow函数为例进行演示，在pages&#x2F;index&#x2F;index.js中找到这三个函数，通过console.log()输出调试信息，具体代码如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">onLoad: function (options) &#123;</span><br><span class="line">  console.log(&#x27;页面加载&#x27;)</span><br><span class="line">&#125;,</span><br><span class="line">/**</span><br><span class="line"> * 生命周期函数--监听页面初次渲染完成</span><br><span class="line"> */</span><br><span class="line">onReady: function () &#123;</span><br><span class="line">  console.log(&#x27;页面初次渲染完成&#x27;)</span><br><span class="line">&#125;,</span><br><span class="line">/**</span><br><span class="line"> * 生命周期函数--监听页面显示</span><br><span class="line"> */</span><br><span class="line">onShow: function () &#123;</span><br><span class="line">  console.log(&#x27;页面显示&#x27;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>保存上述代码后，在控制台中可以看到输出结果，如下图所示<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-project-compare-function-log.png" loading="lazy"></p>
+<p>从上图可以看出，这3个函数的执行顺序为onLoad——&gt;onShow——&gt;onReady</p>
+<h4 id="回调函数说明"><a href="#回调函数说明" class="headerlink" title="回调函数说明"></a>回调函数说明</h4><p>接下来针对生命周期回调函数的区别进行分析，具体如下：</p>
+<ul>
+<li>onLoad：页面加载时触发，一个页面只会调用一次。通过参数options可以获取打开当前页面路径中的参数</li>
+<li>onReady：页面初次渲染完成的时候调用。一个页面只会调用一次，代表页面已经准备妥当，此时可以与视图层进行交互</li>
+<li>onShow：当页面显示时触发。例如，从后台切入前台时触发</li>
+<li>onHide：当页面隐藏时触发。例如，从前台切入后台时触发</li>
+<li>onUnLoad：当页面卸载时触发。例如，使用路由API中的wx.redirectTo()或wx.navigateBack()跳转其他页面时触发</li>
+</ul>
+<h4 id="小提示"><a href="#小提示" class="headerlink" title="小提示"></a>小提示</h4><p>在小程序的导航栏中，页面标题的右边有两个按钮，即“...”和“◎”。单击“...”会在底部弹出一个菜单，在菜单中有一项&quot;转发&quot;，单击转发就会触发onShareAppMessage事件。单击&quot;◎&quot;可以在前台、后台之间切换，通过此按钮可以测试onShow和OnHide事件，单击后会弹出一个“查找场景值”的菜单，通过场景值可以感知用户的使用场景，如1001表示&quot;发现栏小程序主入口&quot;</p>
+<h4 id="页面说明"><a href="#页面说明" class="headerlink" title="页面说明"></a>页面说明</h4><p>在onLoad函数中，有一个参数options，表示打开当前页面路径中的参数，它可以在当前页面被其它页面打开的情况下接收一些参数。例如，在ap.json中添加一个测试页面pages&#x2F;test&#x2F;test，然后在pages&#x2F;index&#x2F;index.js的onReady函数中编写代码，具体如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">onReady: function () &#123;</span><br><span class="line">  console.log(&#x27;页面初次渲染完成&#x27;)</span><br><span class="line">  wx.navigateTo(&#123;</span><br><span class="line">    url: &#x27;/pages/test/test?name1=value1&amp;name2=value2&#x27;,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>上述代码用于当onReady函数执行时，通过wx.navigateTo()方法打开一个新页面，在该方法的参数中，url表示要打开的页面路径。在&#x2F;pages&#x2F;test&#x2F;test的右边，可以添加类似于URL中的查询字符串?name1&#x3D;value1&amp;name2&#x3D;value2，表示传递名称为name1和name2的参数，对应的值分别为value1和value2</p>
+<p>在pages&#x2F;test&#x2F;test.js的onLoad函数中输出options参数的值，具体代码如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">onLoad: function (options) &#123;</span><br><span class="line">   console.log(options)</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>查看控制台中的输出结果，可以看到{name1:&quot;value1&quot;,name2:&quot;value2&quot;}，说明当前页面成功接收到了参数</p>
+<h3 id="2-2-页面事件处理函数"><a href="#2-2-页面事件处理函数" class="headerlink" title="2.2 页面事件处理函数"></a>2.2 页面事件处理函数</h3><p>下面以onPullDownRefresh、onReachBottom、onPageScroll函数为例进行演示，其中,onPullDownRefresh需要在配置文件中将enablePullDownRefresh设为true才会有效，onReachBottom需要在配置文件中将onReachBottomDistance设为true才会有效。由于开发者工具没有自动生成onPageScroll函数，因此需要手动添加该函数，并且为了使该函数触发还需要确保页面的内容高度超过了显示区域，使页面中出现滚动条。</p>
+<p>下面在pages&#x2F;index&#x2F;index.js中使用这3个页面处理函数，具体代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">onPullDownRefresh: function () &#123;</span><br><span class="line"> console.log(&#x27;此时用户下拉触发&#x27;)</span><br><span class="line">&#125;,</span><br><span class="line">/**</span><br><span class="line"> * 页面上拉触底事件的处理函数</span><br><span class="line"> */</span><br><span class="line">onReachBottom: function () &#123;</span><br><span class="line">  console.log(&#x27;此时用户上拉触底&#x27;)</span><br><span class="line">&#125;,</span><br><span class="line">onPageScroll:function(options)</span><br><span class="line">&#123;</span><br><span class="line">  console.log(&#x27;此时用户正在滚动页面&#x27;)</span><br><span class="line">  console.log(&#x27;滚动距离：&#x27;+options.scrollTop)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>添加上述代码后，读者可以在pages&#x2F;index&#x2F;index.wxml中多添加一些内容出现滚动条，然后通过拉动页面触发函数，观察运行结果</p>
+<h3 id="2-3-页面事件处理函数"><a href="#2-3-页面事件处理函数" class="headerlink" title="2.3 页面事件处理函数"></a>2.3 页面事件处理函数</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>组件事件处理函数用于为组件绑定事件，例如，在pages&#x2F;index&#x2F;index.wxml文件中给button组件绑定tap事件，事件处理函数为compare，具体代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button bindtap=&quot;compare&quot;&gt;比较&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在pages&#x2F;index&#x2F;index.js中增加compare函数，具体代码如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  compare:function(e)</span><br><span class="line">  &#123;</span><br><span class="line">    console.log(&#x27;compare&#x27;)</span><br><span class="line">    console.log(e)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>在上述代码中，函数的参数e表示事件对象，通过它可以获取事件发生时的一些相关信息。运行程序，单击&quot;比较&quot;按钮，查看控制台中的输出结果</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-project-compare-button-log.png" loading="lazy"></p>
+<p>从上图可以看出，通过事件对象e，可以获取type(事件类型)、timestamp(事件生成时的时间戳)、target(触发事件的组件的一些属性值集合)、currentTarget(当前事件的一些属性值集合)、detail(额外的信息)等信息</p>
+<h4 id="对比e-target和e-currentTarget"><a href="#对比e-target和e-currentTarget" class="headerlink" title="对比e.target和e.currentTarget"></a>对比e.target和e.currentTarget</h4><p>对于初学者来说，可能无法理解事件对象中的e.target和e.currentTarget的区别，下面通过代码来演示。在pages&#x2F;index&#x2F;index.wxml文件中添加如下代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;view bindtap=&quot;viewtap&quot; id=&quot;outer&quot;&gt;</span><br><span class="line">outer</span><br><span class="line">&lt;view id=&quot;inner&quot;&gt;inner&lt;/view&gt;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<p>添加代码后，页面中就会出现outer和inner，父元素outer绑定了viewtap事件，而子元素没有绑定，但由于子元素是父元素的一部分，因此单击子元素也会触发viewtap事件。</p>
+<p>接下来在pages&#x2F;index&#x2F;index.js文件中添加viewtap函数，具体代码如下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">viewtap:function(e)</span><br><span class="line">&#123;</span><br><span class="line">   console.log(e.target.id+&quot;-&quot;+e.currentTarget.id)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上述代码中，使用e.target.id或e.currentTarget.id可以获取发生事件的组件的id，由于outer和inner的id不同，就可以区分这两个组件。</p>
+<p>运行程序测试，当单击outer时，控制台中的输出结果为outer-outer，而单击inner时，控制台中的输出结果为inner-outer。由此可见，e.target获取到的是子元素的属性值集合，而e.currentTarget获取到的是父元素的属性值集合。</p>
+<h4 id="常用事件"><a href="#常用事件" class="headerlink" title="常用事件"></a>常用事件</h4><p>通过前面的学习可知，小程序中有明确的视图层和逻辑层的划分，视图层使用WXML和WXSS编写，由组件来进行展示；逻辑层使用JavaScript编写，但由于小程序并非运行在浏览器环境中，不能使用BOM和DOM。前面使用的tap事件是视图层中的事件之一，通过这类事件可以实现以视图层到逻辑层的通信。</p>
+<p>在视图层中，组件可以绑定多种事件，常用事件如下表：</p>
+<table>
+<thead>
+<tr>
+<th align="center">事件类型</th>
+<th align="center">触发条件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">touchstart</td>
+<td align="center">手指触摸动作开始</td>
+</tr>
+<tr>
+<td align="center">touchmove</td>
+<td align="center">手指触摸后移动</td>
+</tr>
+<tr>
+<td align="center">touchcancel</td>
+<td align="center">手指触发动作被打断，如来电提醒、弹窗</td>
+</tr>
+<tr>
+<td align="center">touchend</td>
+<td align="center">手指触摸动作结束</td>
+</tr>
+<tr>
+<td align="center">tap</td>
+<td align="center">手指触摸后马上离开</td>
+</tr>
+<tr>
+<td align="center">longpress</td>
+<td align="center">手指触摸后，超过35Cms再离开。如果指定了事件回调函数并触发了这个事件，tap事件将不被触发</td>
+</tr>
+</tbody></table>
+<p>值得一提的是，上表中列举的事件属于冒泡事件。冒泡事件是指当一个组件上的事件被触发后，事件会向父节点传递，而非冒泡事件不会向父节点传递。另外，除了表中列举的事件之外，一些组件还拥有一些专门的事件，如form组件的submit事件、input组件的input事件等</p>
+<h4 id="事件绑定和冒泡"><a href="#事件绑定和冒泡" class="headerlink" title="事件绑定和冒泡"></a>事件绑定和冒泡</h4><p>在为组件绑定事件时，有两种方式，分别是&quot;bind事件类型&quot;和&quot;catch事件类型&quot;(以下简称为bind和catch)。bind方式在前面已经用过，如bindtap，它的特点是不会阻止冒泡事件向上冒泡，而catch可以阻止冒泡事件向上冒泡。下面通过代码对比它们的区别。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;view bindtap=&quot;outerTap&quot;&gt;</span><br><span class="line">outer</span><br><span class="line">&lt;view catchtap=&quot;middleTap&quot;&gt;</span><br><span class="line">  middle</span><br><span class="line">&lt;view bindtap=&quot;innerTap&quot;&gt;</span><br><span class="line">  inner</span><br><span class="line">&lt;/view&gt;</span><br><span class="line">&lt;/view&gt;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在上述代码中，如果单击inner，会先后触发innerTap和middleTap，由于middletap使用catch阻止了事件冒泡，因此不会执行outerTap。同理，如果单击middle，则只会触发middleTap。如果单击outer，则只会触发outerTap</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/ja/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag"># 微信小程序</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ja/posts/cc011891.html" rel="prev" title="微信小程序开发之——比较数字大小-配置文件(2.1.4)">
+                  <i class="fa fa-angle-left"></i> 微信小程序开发之——比较数字大小-配置文件(2.1.4)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ja/posts/cc82f582.html" rel="next" title="微信小程序开发之——比较数字大小-注册程序(2.1.6)">
+                  微信小程序开发之——比较数字大小-注册程序(2.1.6) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"208cbbd618c0d6eee503d49e6245b4a6"}</script>
+<script src="/ja/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

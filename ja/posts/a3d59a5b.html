@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ja/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ja/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ja/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/ja/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/ja/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/ja/","images":"/ja/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索...","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/ja/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/ja/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述121.矩阵相加问题2.实现代码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法——第5章-数组和广义表-十字链表解决矩阵相加问题(5.10.4)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/a3d59a5b.html">
+<meta property="og:site_name" content="PGzxc (Japanese)">
+<meta property="og:description" content="一 概述121.矩阵相加问题2.实现代码">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2023-03-07T15:23:43.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.137Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="数据结构与算法">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/a3d59a5b.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"ja","comments":true,"permalink":"https://pgzxc.github.io/posts/a3d59a5b.html","path":"posts/a3d59a5b.html","title":"数据结构与算法——第5章-数组和广义表-十字链表解决矩阵相加问题(5.10.4)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>数据结构与算法——第5章-数组和广义表-十字链表解决矩阵相加问题(5.10.4) | PGzxc (Japanese)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/utils.js" defer></script><script src="/ja/js/motion.js" defer></script><script src="/ja/js/sidebar.js" defer></script><script src="/ja/js/next-boot.js" defer></script><script src="/ja/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/ja/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/ja/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/ja/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/ja/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/ja/atom.xml" title="PGzxc (Japanese)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションを切り替える" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/ja/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (Japanese)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">本から学んだことは表面的なもの；自分で体験しなければならない</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="検索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/ja/" rel="section"><i class="fa fa-bell fa-fw"></i>ホーム</a></li><li class="menu-item menu-item-nav"><a href="/ja/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>ナビゲーション</a></li><li class="menu-item menu-item-categories"><a href="/ja/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリー<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/ja/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/ja/links/" rel="section"><i class="fa fa-link fa-fw"></i>リンク</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>検索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="検索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          目次
+        </li>
+        <li class="sidebar-nav-overview">
+          サイト概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E7%9F%A9%E9%98%B5%E7%9B%B8%E5%8A%A0%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">二 矩阵相加问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%B8%89%E7%A7%8D%E6%83%85%E5%86%B5"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 三种情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-4-%E7%A7%8D%E5%A4%84%E7%90%86"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 4 种处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">三 实现代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-AddSMatrix"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 AddSMatrix</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 完整代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">四 总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E5%8F%82%E8%80%83"><span class="nav-number">5.</span> <span class="nav-text">五 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/ja/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/ja/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">投稿</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/ja/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">カテゴリー</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/ja/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/a3d59a5b.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/ja/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="数据结构与算法——第5章-数组和广义表-十字链表解决矩阵相加问题(5.10.4) | PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据结构与算法——第5章-数组和广义表-十字链表解决矩阵相加问题(5.10.4)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E7%AC%AC5%E7%AB%A0-%E6%95%B0%E7%BB%84%E5%92%8C%E5%B9%BF%E4%B9%89%E8%A1%A8-%E5%8D%81%E5%AD%97%E9%93%BE%E8%A1%A8%E8%A7%A3%E5%86%B3%E7%9F%A9%E9%98%B5%E7%9B%B8%E5%8A%A0%E9%97%AE%E9%A2%98(5.10.4).md" class="post-edit-link" title="編集" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2023-03-07 23:23:43" itemprop="dateCreated datePublished" datetime="2023-03-07T23:23:43+08:00">2023-03-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E5%BC%80%E5%8F%91/N-%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">N-数据与算法</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E5%BC%80%E5%8F%91/N-%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="読書時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">読書時間 &asymp;</span>
+      <span>6 分</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.矩阵相加问题</span><br><span class="line">2.实现代码</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-矩阵相加问题"><a href="#二-矩阵相加问题" class="headerlink" title="二 矩阵相加问题"></a>二 矩阵相加问题</h2><h3 id="2-1-三种情况"><a href="#2-1-三种情况" class="headerlink" title="2.1 三种情况"></a>2.1 三种情况</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在解决 “将矩阵 B 加到矩阵 A ” 的问题时，由于采用的是十字链表法存储矩阵的三元组，所以在相加的过程中，针对矩阵 B 中每一个非 0 元素，</span><br><span class="line">需要判断在矩阵 A 中相对应的位置，有三种情况：</span><br><span class="line">1. 提取到的 B 中的三元组在 A 相应位置上没有非 0 元素，此时直接加到矩阵 A 该行链表的对应位置上；</span><br><span class="line">2. 提取到的 B 中三元组在 A 相应位置上有非 0 元素，且相加不为 0 ，此时只需要更改 A 中对应位置上的三元组的值即可；</span><br><span class="line">3. 提取到的 B 中三元组在 A 响应位置上有非 0 元素，但相加为 0 ，此时需要删除矩阵 A 中对应结点。</span><br><span class="line">提示：算法中，只需要逐个提取矩阵 B 中的非 0 元素，然后判断矩阵 A 中对应位置上是否有非 0 元素，根据不同的情况，相应作出处理。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-4-种处理"><a href="#2-2-4-种处理" class="headerlink" title="2.2 4 种处理"></a>2.2 4 种处理</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">设指针 pa 和 pb 分别表示矩阵 A 和矩阵 B 中同一行中的结点（ pb 和 pa 都是从两矩阵的第一行的第一个非 0 元素开始遍历），</span><br><span class="line">针对上面的三种情况，细分为 4 种处理过程（第一种情况下有两种不同情况）：</span><br><span class="line"></span><br><span class="line">1. 当 pa 结点的列值 j &gt; pb 结点的列值 j 或者 pa == NULL （说明矩阵 A 该行没有非 0 元素），</span><br><span class="line">两种情况下是一个结果，就是将 pb 结点插入到矩阵 A 中。</span><br><span class="line"></span><br><span class="line">2. 当pa结点的列值j &lt; pb 结点的列值j ，</span><br><span class="line">说明此时 pb 指向的结点位置比较靠后，此时需要移动 pa 的位置，找到离 pb 位置最近的非 0 元素，然后在新的 pa 结点的位置后边插入；</span><br><span class="line">3. 当 pa 的列值 j == pb 的列值 j， 且两结点的值相加结果不为 0 ，只需要更改 pa 指向的结点的值即可；</span><br><span class="line">4. 当 pa 的列值 j == pb 的列值 j ，但是两结点的值相加结果为 0 ，就需要从矩阵 A 的十字链表中删除 pa 指向的结点。</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-实现代码"><a href="#三-实现代码" class="headerlink" title="三 实现代码"></a>三 实现代码</h2><h3 id="3-1-AddSMatrix"><a href="#3-1-AddSMatrix" class="headerlink" title="3.1 AddSMatrix"></a>3.1 AddSMatrix</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">CrossList AddSMatrix(CrossList M,CrossList N) &#123;</span><br><span class="line">	OLNode * pa,*pb;//新增的两个用于遍历两个矩阵的结点</span><br><span class="line">	OLink * hl=(OLink*)malloc(M.nu*sizeof(OLink));//用于存储当前遍历的行为止以上的区域每一个列的最后一个非 0 元素的位置。</span><br><span class="line">	OLNode * pre=NULL;//用于指向 pa 指针所在位置的此行的前一个结点</span><br><span class="line">	//遍历初期，首先要对 hl 数组进行初始化，指向每一列的第一个非 0 元素</span><br><span class="line">	for (int j=1; j&lt;=M.nu; j++) &#123;</span><br><span class="line">		hl[j]=M.chead[j];</span><br><span class="line">	&#125;</span><br><span class="line">	//按照行进行遍历</span><br><span class="line">	for (int i=1; i&lt;=M.mu; i++) &#123;</span><br><span class="line">	//遍历每一行以前，都要 pa 指向矩阵 M 当前行的第一个非 0 元素；指针 pb 也是如此，只不过遍历对象为矩阵 N</span><br><span class="line">		pa=M.rhead[i];</span><br><span class="line">		pb=N.rhead[i];</span><br><span class="line">		//当 pb 为 NULL 时，说明矩阵 N 的当前行的非 0 元素已经遍历完。</span><br><span class="line">		while (pb!=NULL) &#123;</span><br><span class="line">		//创建一个新的结点，每次都要复制一个 pb 结点，但是两个指针域除外。（复制的目的就是排除指针域的干扰）</span><br><span class="line">			OLNode * p=(OLNode*)malloc(sizeof(OLNode));</span><br><span class="line">			p-&gt;i=pb-&gt;i;</span><br><span class="line">			p-&gt;j=pb-&gt;j;</span><br><span class="line">			p-&gt;e=pb-&gt;e;</span><br><span class="line">			p-&gt;down=NULL;</span><br><span class="line">			p-&gt;right=NULL;</span><br><span class="line">			//第一种情况</span><br><span class="line">			if (pa==NULL||pa-&gt;j&gt;pb-&gt;j) &#123;</span><br><span class="line">				//如果 pre 为 NULL，说明矩阵 M 此行没有非 0 元素</span><br><span class="line">				if (pre==NULL) &#123;</span><br><span class="line">					M.rhead[p-&gt;i]=p;</span><br><span class="line">				&#125; else &#123; //由于程序开始时 pre 肯定为 NULL，所以，pre 指向的是第一个 p 的位置，在后面的遍历过程中，p 指向的位置是逐渐向后移</span><br><span class="line">					动的，所有，pre 肯定会在 p 的前边</span><br><span class="line">					pre-&gt;right=p;</span><br><span class="line">				&#125;</span><br><span class="line">				p-&gt;right=pa;</span><br><span class="line">				pre=p;</span><br><span class="line">				//在链接好行链表之后，链接到对应列的列链表中的相应位置</span><br><span class="line">				if (!M.chead[p-&gt;j]||M.chead[p-&gt;j]-&gt;i&gt;p-&gt;i) &#123;</span><br><span class="line">					p-&gt;down=M.chead[p-&gt;j];</span><br><span class="line">					M.chead[p-&gt;j]=p;</span><br><span class="line">				&#125; else &#123;</span><br><span class="line">					p-&gt;down=hl[p-&gt;j]-&gt;down;</span><br><span class="line">					hl[p-&gt;j]-&gt;down=p;</span><br><span class="line">				&#125;</span><br><span class="line">				//更新 hl 中的数据</span><br><span class="line">				hl[p-&gt;j]=p;</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				//第二种情况，只需要移动 pa 的位置，继续判断 pa 和 pb 的位置，一定要有 continue</span><br><span class="line">				if (pa-&gt;j&lt;pb-&gt;j) &#123;</span><br><span class="line">					pre=pa;</span><br><span class="line">					pa=pa-&gt;right;</span><br><span class="line">					continue;</span><br><span class="line">				&#125;</span><br><span class="line">				//第三、四种情况，当行标和列标都想等的情况下，需要讨论两者相加的值的问题</span><br><span class="line">				if (pa-&gt;j==pb-&gt;j) &#123;</span><br><span class="line">					pa-&gt;e+=pb-&gt;e;</span><br><span class="line">					//如果为 0，摘除当前结点，并释放所占的空间</span><br><span class="line">					if (pa-&gt;e==0) &#123;</span><br><span class="line">						if (pre==NULL) &#123;</span><br><span class="line">							M.rhead[pa-&gt;i]=pa-&gt;right;</span><br><span class="line">						&#125; else &#123;</span><br><span class="line">							pre-&gt;right=pa-&gt;right;</span><br><span class="line">						&#125;</span><br><span class="line">						p=pa;</span><br><span class="line">						pa=pa-&gt;right;</span><br><span class="line">						if (M.chead[p-&gt;j]==p) &#123;</span><br><span class="line">							M.chead[p-&gt;j]=hl[p-&gt;j]=p-&gt;down;</span><br><span class="line">						&#125; else &#123;</span><br><span class="line">							hl[p-&gt;j]-&gt;down=p-&gt;down;</span><br><span class="line">						&#125;</span><br><span class="line">						free(p);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			pb=pb-&gt;right;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	//用于输出矩阵三元组的功能函数</span><br><span class="line">	display(M);</span><br><span class="line">	return M;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-完整代码"><a href="#3-2-完整代码" class="headerlink" title="3.2 完整代码"></a>3.2 完整代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">typedef struct OLNode &#123;</span><br><span class="line">	int i,j,e; //矩阵三元组 i 代表行 j 代表列 e 代表当前位置的数据</span><br><span class="line">	struct OLNode *right,*down; //指针域 右指针 下指针</span><br><span class="line">&#125; OLNode,*OLink;</span><br><span class="line">typedef struct &#123;</span><br><span class="line">	OLink *rhead,*chead; //行和列链表头指针</span><br><span class="line">	int mu,nu,tu; //矩阵的行数,列数和非零元的个数</span><br><span class="line">&#125; CrossList;</span><br><span class="line">CrossList CreateMatrix_OL(CrossList M);</span><br><span class="line">CrossList AddSMatrix(CrossList M,CrossList N);</span><br><span class="line">void display(CrossList M);</span><br><span class="line">void main() &#123;</span><br><span class="line">	CrossList M,N;</span><br><span class="line">	printf(&quot;输入测试矩阵 M:\n&quot;);</span><br><span class="line">	M=CreateMatrix_OL(M);</span><br><span class="line">	printf(&quot;输入测试矩阵 N:\n&quot;);</span><br><span class="line">	N=CreateMatrix_OL(N);</span><br><span class="line">	M=AddSMatrix(M,N);</span><br><span class="line">	printf(&quot;矩阵相加的结果为:\n&quot;);</span><br><span class="line">	display(M);</span><br><span class="line">&#125;</span><br><span class="line">CrossList CreateMatrix_OL(CrossList M) &#123;</span><br><span class="line">	int m,n,t;</span><br><span class="line">	int i,j,e;</span><br><span class="line">	OLNode *p,*q;</span><br><span class="line">	scanf(&quot;%d%d%d&quot;,&amp;m,&amp;n,&amp;t);</span><br><span class="line">	M.mu=m;</span><br><span class="line">	M.nu=n;</span><br><span class="line">	M.tu=t;</span><br><span class="line">	if(!(M.rhead=(OLink*)malloc((m+1)*sizeof(OLink)))||!(M.chead=(OLink*)malloc((n+1)*sizeof(OLink)))) &#123;</span><br><span class="line">		printf(&quot;初始化矩阵失败&quot;);</span><br><span class="line">		exit(0);</span><br><span class="line">	&#125;</span><br><span class="line">	for(i=1; i&lt;=m; i++) &#123;</span><br><span class="line">		M.rhead[i]=NULL;</span><br><span class="line">	&#125;</span><br><span class="line">	for(j=1; j&lt;=n; j++) &#123;</span><br><span class="line">		M.chead[j]=NULL;</span><br><span class="line">	&#125;</span><br><span class="line">	for(scanf(&quot;%d%d%d&quot;,&amp;i,&amp;j,&amp;e); 0!=i; scanf(&quot;%d%d%d&quot;,&amp;i,&amp;j,&amp;e)) &#123;</span><br><span class="line">		if(!(p=(OLNode*)malloc(sizeof(OLNode)))) &#123;</span><br><span class="line">			printf(&quot;初始化三元组失败&quot;);</span><br><span class="line">			exit(0);</span><br><span class="line">		&#125;</span><br><span class="line">		p-&gt;i=i;</span><br><span class="line">		p-&gt;j=j;</span><br><span class="line">		p-&gt;e=e;</span><br><span class="line">		if(NULL==M.rhead[i]||M.rhead[i]-&gt;j&gt;j) &#123;</span><br><span class="line">			p-&gt;right=M.rhead[i];</span><br><span class="line">			M.rhead[i]=p;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			for(q=M.rhead[i]; (q-&gt;right)&amp;&amp;q-&gt;right-&gt;j&lt;j; q=q-&gt;right);</span><br><span class="line">			p-&gt;right=q-&gt;right;</span><br><span class="line">			q-&gt;right=p;</span><br><span class="line">		&#125;</span><br><span class="line">		if(NULL==M.chead[j]||M.chead[j]-&gt;i&gt;i) &#123;</span><br><span class="line">			p-&gt;down=M.chead[j];</span><br><span class="line">			M.chead[j]=p;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			for (q=M.chead[j]; (q-&gt;down)&amp;&amp; q-&gt;down-&gt;i&lt;i; q=q-&gt;down);</span><br><span class="line">			p-&gt;down=q-&gt;down;</span><br><span class="line">			q-&gt;down=p;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return M;</span><br><span class="line">&#125;</span><br><span class="line">CrossList AddSMatrix(CrossList M,CrossList N) &#123;</span><br><span class="line">	OLNode * pa,*pb;</span><br><span class="line">	OLink * hl=(OLink*)malloc(M.nu*sizeof(OLink));</span><br><span class="line">	OLNode * pre=NULL;</span><br><span class="line">	for (int j=1; j&lt;=M.nu; j++) &#123;</span><br><span class="line">		hl[j]=M.chead[j];</span><br><span class="line">	&#125;</span><br><span class="line">	for (int i=1; i&lt;=M.mu; i++) &#123;</span><br><span class="line">		pa=M.rhead[i];</span><br><span class="line">		pb=N.rhead[i];</span><br><span class="line">		while (pb!=NULL) &#123;</span><br><span class="line">			OLNode * p=(OLNode*)malloc(sizeof(OLNode));</span><br><span class="line">			p-&gt;i=pb-&gt;i;</span><br><span class="line">			p-&gt;j=pb-&gt;j;</span><br><span class="line">			p-&gt;e=pb-&gt;e;</span><br><span class="line">			p-&gt;down=NULL;</span><br><span class="line">			p-&gt;right=NULL;</span><br><span class="line">			if (pa==NULL||pa-&gt;j&gt;pb-&gt;j) &#123;</span><br><span class="line">				if (pre==NULL) &#123;</span><br><span class="line">					M.rhead[p-&gt;i]=p;</span><br><span class="line">				&#125; else &#123;</span><br><span class="line">					pre-&gt;right=p;</span><br><span class="line">				&#125;</span><br><span class="line">				p-&gt;right=pa;</span><br><span class="line">				pre=p;</span><br><span class="line">				if (!M.chead[p-&gt;j]||M.chead[p-&gt;j]-&gt;i&gt;p-&gt;i) &#123;</span><br><span class="line">					p-&gt;down=M.chead[p-&gt;j];</span><br><span class="line">					M.chead[p-&gt;j]=p;</span><br><span class="line">				&#125; else &#123;</span><br><span class="line">					p-&gt;down=hl[p-&gt;j]-&gt;down;</span><br><span class="line">					hl[p-&gt;j]-&gt;down=p;</span><br><span class="line">				&#125;</span><br><span class="line">				hl[p-&gt;j]=p;</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				if (pa-&gt;j&lt;pb-&gt;j) &#123;</span><br><span class="line">					pre=pa;</span><br><span class="line">					pa=pa-&gt;right;</span><br><span class="line">					continue;</span><br><span class="line">				&#125;</span><br><span class="line">				if (pa-&gt;j==pb-&gt;j) &#123;</span><br><span class="line">					pa-&gt;e+=pb-&gt;e;</span><br><span class="line">					if (pa-&gt;e==0) &#123;</span><br><span class="line">						if (pre==NULL) &#123;</span><br><span class="line">							M.rhead[pa-&gt;i]=pa-&gt;right;</span><br><span class="line">						&#125; else &#123;</span><br><span class="line">							pre-&gt;right=pa-&gt;right;</span><br><span class="line">						&#125;</span><br><span class="line">						p=pa;</span><br><span class="line">						pa=pa-&gt;right;</span><br><span class="line">						if (M.chead[p-&gt;j]==p) &#123;</span><br><span class="line">							M.chead[p-&gt;j]=hl[p-&gt;j]=p-&gt;down;</span><br><span class="line">						&#125; else &#123;</span><br><span class="line">							hl[p-&gt;j]-&gt;down=p-&gt;down;</span><br><span class="line">						&#125;</span><br><span class="line">						free(p);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			pb=pb-&gt;right;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	display(M);</span><br><span class="line">	return M;</span><br><span class="line">&#125;</span><br><span class="line">void display(CrossList M) &#123;</span><br><span class="line">	printf(&quot;输出测试矩阵:\n&quot;);</span><br><span class="line">	printf(&quot;M:\n---------------------\ni\tj\te\n---------------------\n&quot;);</span><br><span class="line">	for (int i=1; i&lt;=M.nu; i++) &#123;</span><br><span class="line">		if (NULL!=M.chead[i]) &#123;</span><br><span class="line">			OLink p=M.chead[i];</span><br><span class="line">			while (NULL!=p) &#123;</span><br><span class="line">				printf(&quot;%d\t%d\t%d\n&quot;,p-&gt;i,p-&gt;j,p-&gt;e);</span><br><span class="line">				p=p-&gt;down;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">输入测试矩阵 M:</span><br><span class="line">3 3 3</span><br><span class="line">1 2 1</span><br><span class="line">2 1 1</span><br><span class="line">3 3 1</span><br><span class="line">0 0 0</span><br><span class="line">输入测试矩阵 N:</span><br><span class="line">3 3 4</span><br><span class="line">1 2 -1</span><br><span class="line">1 3 1</span><br><span class="line">2 3 1</span><br><span class="line">3 1 1</span><br><span class="line">0 0 0</span><br><span class="line">矩阵相加的结果为:</span><br><span class="line">输出测试矩阵:</span><br><span class="line">M:</span><br><span class="line">---------------------</span><br><span class="line">i j e</span><br><span class="line">---------------------</span><br><span class="line">2 1 1</span><br><span class="line">3 1 1</span><br><span class="line">1 3 1</span><br><span class="line">2 3 1</span><br><span class="line">3 3 1</span><br></pre></td></tr></table></figure>
+
+<h2 id="四-总结"><a href="#四-总结" class="headerlink" title="四 总结"></a>四 总结</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">使用十字链表法解决稀疏矩阵的压缩存储的同时，在解决矩阵相加的问题中，对于某个单独的结点来说，</span><br><span class="line">算法的时间复杂度为一个常数（全部为选择结构），算法的整体的时间复杂度取决于两矩阵中非 0 元素的个数。</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="五-参考"><a href="#五-参考" class="headerlink" title="五 参考"></a>五 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://c.biancheng.net/view/vip_3377.html">C语言中文网—十字链表实现矩阵加法</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/ja/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag"># 数据结构与算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ja/posts/e3d0db5e.html" rel="prev" title="标日中级上册——第16课-結婚披露宴-语法与表达-2">
+                  <i class="fa fa-angle-left"></i> 标日中级上册——第16课-結婚披露宴-语法与表达-2
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ja/posts/94d7ebc8.html" rel="next" title="标日中级上册——第16课-結婚披露宴-语法与表达-3">
+                  标日中级上册——第16课-結婚披露宴-语法与表达-3 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"8da172000eb0e948f7bded501f34e0ac"}</script>
+<script src="/ja/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

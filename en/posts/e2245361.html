@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述 如何在Flutter中发起HTTP请求？（使用像http这样的包） 如何处理JSON数据？（序列化和反序列化） 在网络请求的上下文中，Futures和Streams是什么？ 如何处理API错误？ 有哪些不同的数据处理架构模（例如，MVVM、MVP）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter面试题2025——网络与数据处理(5)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/e2245361.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="一 概述 如何在Flutter中发起HTTP请求？（使用像http这样的包） 如何处理JSON数据？（序列化和反序列化） 在网络请求的上下文中，Futures和Streams是什么？ 如何处理API错误？ 有哪些不同的数据处理架构模（例如，MVVM、MVP）">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-04-09T06:29:41.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:04.809Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Flutter面试题">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/e2245361.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/e2245361.html","path":"posts/e2245361.html","title":"Flutter面试题2025——网络与数据处理(5)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Flutter面试题2025——网络与数据处理(5) | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%A6%82%E4%BD%95%E5%9C%A8Flutter%E4%B8%AD%E5%8F%91%E8%B5%B7HTTP%E8%AF%B7%E6%B1%82%EF%BC%9F%EF%BC%88%E4%BD%BF%E7%94%A8%E5%83%8Fhttp%E8%BF%99%E6%A0%B7%E7%9A%84%E5%8C%85%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 如何在Flutter中发起HTTP请求？（使用像http这样的包）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86JSON%E6%95%B0%E6%8D%AE%EF%BC%9F%EF%BC%88%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 如何处理JSON数据？（序列化和反序列化）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%9C%A8%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E4%B8%AD%EF%BC%8CFutures%E5%92%8CStreams%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 在网络请求的上下文中，Futures和Streams是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86API%E9%94%99%E8%AF%AF%EF%BC%9F"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 如何处理API错误？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E6%9C%89%E5%93%AA%E4%BA%9B%E4%B8%8D%E5%90%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%9E%B6%E6%9E%84%E6%A8%A1%EF%BC%88%E4%BE%8B%E5%A6%82%EF%BC%8CMVVM%E3%80%81MVP%EF%BC%89"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 有哪些不同的数据处理架构模（例如，MVVM、MVP）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E5%A6%82%E4%BD%95%E5%9C%A8Flutter%E4%B8%AD%E4%BD%BF%E7%94%A8WebSockets%EF%BC%9F"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 如何在Flutter中使用WebSockets？</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/e2245361.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Flutter面试题2025——网络与数据处理(5) | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Flutter面试题2025——网络与数据处理(5)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Flutter%E9%9D%A2%E8%AF%95%E9%A2%982025%E2%80%94%E2%80%94%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86(5).md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2025-04-09 14:29:41" itemprop="dateCreated datePublished" datetime="2025-04-09T14:29:41+08:00">2025-04-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/Flutter%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">Flutter面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>2 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ol>
+<li>如何在Flutter中发起HTTP请求？（使用像<code>http</code>这样的包）</li>
+<li>如何处理JSON数据？（序列化和反序列化）</li>
+<li>在网络请求的上下文中，Futures和Streams是什么？</li>
+<li>如何处理API错误？</li>
+<li>有哪些不同的数据处理架构模（例如，MVVM、MVP）<span id="more"></span></li>
+<li>如何在Flutter中使用WebSockets？</li>
+</ol>
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-如何在Flutter中发起HTTP请求？（使用像http这样的包）"><a href="#2-1-如何在Flutter中发起HTTP请求？（使用像http这样的包）" class="headerlink" title="2.1 如何在Flutter中发起HTTP请求？（使用像http这样的包）"></a>2.1 如何在Flutter中发起HTTP请求？（使用像<code>http</code>这样的包）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">一、概念</span><br><span class="line">在 Flutter 中，发起 HTTP 请求通常使用 http 包，</span><br><span class="line">它提供了简单的 API 来发送 HTTP 请求和处理响应。</span><br><span class="line"></span><br><span class="line">二、使用 http 包发起 HTTP 请求：</span><br><span class="line">2.1 安装 http 包： 在 pubspec.yaml 中添加 http 包的依赖</span><br><span class="line">2.2 导入 http 包：</span><br><span class="line">2.3 发送 GET 请求： 使用 http.get 方法发送一个 GET 请求，获取数据</span><br><span class="line">2.4 发送 POST 请求： 使用 http.post 方法发送一个 POST 请求，通常用于提交数据。</span><br><span class="line">2.5 处理 JSON 数据： 你可以使用 dart:convert 包来解析和生成 JSON 数据。</span><br><span class="line"></span><br><span class="line">三、总结：</span><br><span class="line">使用 http 包可以方便地发起 HTTP 请求。</span><br><span class="line">通过 http.get、http.post 等方法发送 GET 和 POST 请求，并通过 response.body 获取响应内容。</span><br><span class="line">若需要处理 JSON 数据，可以配合 dart:convert 包来解析或生成 JSON 数据。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-如何处理JSON数据？（序列化和反序列化）"><a href="#2-2-如何处理JSON数据？（序列化和反序列化）" class="headerlink" title="2.2 如何处理JSON数据？（序列化和反序列化）"></a>2.2 如何处理JSON数据？（序列化和反序列化）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">一、概念</span><br><span class="line">在 Flutter 中，处理 JSON 数据通常涉及 序列化（serialization） 和 反序列化（deserialization）。</span><br><span class="line">序列化是将 Dart 对象转换为 JSON 格式，</span><br><span class="line">反序列化则是将 JSON 格式的数据转换为 Dart 对象。</span><br><span class="line"></span><br><span class="line">二、总结：</span><br><span class="line">-反序列化：使用json.decode()将JSON数据转换为Dart对象。可以通过工厂构造函数（如 fromJson()）来实现。</span><br><span class="line">-序列化：使用 json.encode() 将 Dart 对象转换为 JSON 格式，通常结合 toJson() 方法来实现。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-在网络请求的上下文中，Futures和Streams是什么？"><a href="#2-3-在网络请求的上下文中，Futures和Streams是什么？" class="headerlink" title="2.3 在网络请求的上下文中，Futures和Streams是什么？"></a>2.3 在网络请求的上下文中，Futures和Streams是什么？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">在网络请求的上下文中，Futures 和 Streams 都是用于处理异步操作的概念，</span><br><span class="line">但它们的使用场景和工作方式有所不同。</span><br><span class="line"></span><br><span class="line">一、 Future：</span><br><span class="line">-概念：</span><br><span class="line">Future 表示一个异步操作的结果，通常用于单次的异步操作（比如一个网络请求）。</span><br><span class="line">Future 在操作完成时会返回一个结果，或者在失败时抛出一个错误。</span><br><span class="line"></span><br><span class="line">-常见场景：当你需要等待一个操作完成后继续执行下一步时，使用 Future 很合适。例如，发起 HTTP 请求后等待响应。</span><br><span class="line">-操作方式：你可以使用 then()、catchError() 或 await 来处理 Future 返回的结果或错误。</span><br><span class="line"></span><br><span class="line">二、Stream：</span><br><span class="line">-概念：</span><br><span class="line">Stream 用于处理多个异步事件的序列。</span><br><span class="line">它可以持续地提供数据，适用于需要持续监听数据变化或接收一系列事件的场景，</span><br><span class="line">如从 WebSocket 接收实时数据，或定时获取数据。</span><br><span class="line"></span><br><span class="line">-常见场景：</span><br><span class="line">当你需要处理连续的异步操作或多次事件时使用 Stream。</span><br><span class="line">例如，处理 WebSocket 数据流、文件下载进度、实时数据推送等。</span><br><span class="line"></span><br><span class="line">-操作方式：你可以使用 listen() 来订阅 Stream，并通过回调处理每个事件的结果</span><br><span class="line"></span><br><span class="line">三、总结：</span><br><span class="line">-Future：适用于单次的异步操作，通常用于发起 HTTP 请求并等待响应。</span><br><span class="line">-Stream：适用于多个异步事件的处理，可以持续接收数据流，适合实时数据、WebSocket 等场景。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-如何处理API错误？"><a href="#2-4-如何处理API错误？" class="headerlink" title="2.4 如何处理API错误？"></a>2.4 如何处理API错误？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-捕获异常：使用 try-catch 来捕获网络请求中的异常，如连接问题、超时等。</span><br><span class="line">-检查状态码：根据 HTTP 状态码来判断请求是否成功，并根据不同的状态码进行处理。</span><br><span class="line">-自定义错误：通过自定义异常类或错误消息来提高错误处理的灵活性。</span><br><span class="line">-超时处理：通过 timeout 方法来设置请求超时，防止长时间等待。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-有哪些不同的数据处理架构模（例如，MVVM、MVP）"><a href="#2-5-有哪些不同的数据处理架构模（例如，MVVM、MVP）" class="headerlink" title="2.5 有哪些不同的数据处理架构模（例如，MVVM、MVP）"></a>2.5 有哪些不同的数据处理架构模（例如，MVVM、MVP）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-MVC：简单，适合小型应用，但当应用复杂时，Controller 可能变得难以管理。</span><br><span class="line">-MVP：适合复杂的交互，Presenter 可单独测试，但视图和 Presenter 的交互可能复杂。</span><br><span class="line">-MVVM：适合数据绑定，减少视图和模型的耦合，但对于简单应用可能过于复杂。</span><br><span class="line">-Clean Architecture：适合大型应用，结构清晰，但实现复杂，适合长期维护。</span><br><span class="line">-Flux/Redux：适合管理复杂的应用状态和数据流，尤其是需要高可维护性和可扩展性时。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-如何在Flutter中使用WebSockets？"><a href="#2-6-如何在Flutter中使用WebSockets？" class="headerlink" title="2.6 如何在Flutter中使用WebSockets？"></a>2.6 如何在Flutter中使用WebSockets？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">一、概念</span><br><span class="line">在 Flutter 中，使用 WebSockets 进行实时通信是通过 websocket 或 web_socket_channel 等库来实现的。</span><br><span class="line">WebSocket 允许客户端和服务器之间建立持久的双向连接，从而实现实时数据的交换，常用于聊天应用、实时更新等场景。</span><br><span class="line"></span><br><span class="line">二、如何使用</span><br><span class="line">2.1 安装 web_socket_channel 包：</span><br><span class="line">2.2 导入 web_socket_channel：</span><br><span class="line">2.3 创建 WebSocket 连接：</span><br><span class="line">2.4 监听 WebSocket 数据：</span><br><span class="line">2.5 发送消息到 WebSocket 服务器：</span><br><span class="line">2.6 关闭 WebSocket 连接：</span><br><span class="line"></span><br><span class="line">三、总结：</span><br><span class="line">-使用 web_socket_channel 可以方便地在 Flutter 中实现 WebSocket 通信。</span><br><span class="line">-WebSocketChannel.connect() 用于创建连接，</span><br><span class="line">channel.stream.listen() 用于接收数据，channel.sink.add() 用于发送数据，</span><br><span class="line">channel.sink.close() 用于关闭连接。</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/Flutter%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># Flutter面试题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/a43a2237.html" rel="prev" title="Flutter面试题2025——导航与路由(4)">
+                  <i class="fa fa-angle-left"></i> Flutter面试题2025——导航与路由(4)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/4452b6f8.html" rel="next" title="Flutter面试题2025——数据持久化(6)">
+                  Flutter面试题2025——数据持久化(6) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"edfc864b2587b1a6f35f706179489c1a"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

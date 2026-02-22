@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述12345678910111213141516171819202122231.如何减少 Application#onCreate() 的启动时间？2.Jetpack App Startup 的作用是什么？3.如何避免多进程重复初始化？4.为什么多进程会导致 Application#onCreate() 运行多次？5.如何判断当前进程是否是主进程？&#x2F;如何避免非主进程重复初始化SDK？&#x2F;如何在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android面试题——掘金-性能优化之启动优化相关面试题(4.2)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/fd7d6d5.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 概述12345678910111213141516171819202122231.如何减少 Application#onCreate() 的启动时间？2.Jetpack App Startup 的作用是什么？3.如何避免多进程重复初始化？4.为什么多进程会导致 Application#onCreate() 运行多次？5.如何判断当前进程是否是主进程？&#x2F;如何避免非主进程重复初始化SDK？&#x2F;如何在">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-07T02:05:04.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.250Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="掘金">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/fd7d6d5.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/fd7d6d5.html","path":"posts/fd7d6d5.html","title":"Android面试题——掘金-性能优化之启动优化相关面试题(4.2)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android面试题——掘金-性能优化之启动优化相关面试题(4.2) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91-Application-onCreate-%E7%9A%84%E5%90%AF%E5%8A%A8%E6%97%B6%E9%97%B4%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 如何减少 Application#onCreate() 的启动时间？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Jetpack-App-Startup-%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Jetpack App Startup 的作用是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E5%A4%9A%E8%BF%9B%E7%A8%8B%E9%87%8D%E5%A4%8D%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%9F"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 如何避免多进程重复初始化？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%BC%9A%E5%AF%BC%E8%87%B4-Application-onCreate-%E8%BF%90%E8%A1%8C%E5%A4%9A%E6%AC%A1%EF%BC%9F"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 为什么多进程会导致 Application#onCreate() 运行多次？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E5%BD%93%E5%89%8D%E8%BF%9B%E7%A8%8B%E6%98%AF%E5%90%A6%E6%98%AF%E4%B8%BB%E8%BF%9B%E7%A8%8B%EF%BC%9F-%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E9%9D%9E%E4%B8%BB%E8%BF%9B%E7%A8%8B%E9%87%8D%E5%A4%8D%E5%88%9D%E5%A7%8B%E5%8C%96SDK%EF%BC%9F-%E5%A6%82%E4%BD%95%E5%9C%A8%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9E%B6%E6%9E%84%E4%B8%8B%E9%AB%98%E6%95%88%E7%AE%A1%E7%90%86%E7%BB%84%E4%BB%B6%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%9F"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 如何判断当前进程是否是主进程？&#x2F;如何避免非主进程重复初始化SDK？&#x2F;如何在多进程架构下高效管理组件初始化？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E4%B8%BA%E4%BB%80%E4%B9%88-Application-getProcessName-%E6%AF%94-ActivityManager-%E6%9B%B4%E6%8E%A8%E8%8D%90%EF%BC%9F"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 为什么 Application.getProcessName() 比 ActivityManager 更推荐？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-ContentProvider-%E9%81%BF%E5%85%8D%E5%A4%9A%E8%BF%9B%E7%A8%8B%E9%87%8D%E5%A4%8D%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%9F"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 如何使用 ContentProvider 避免多进程重复初始化？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-Application-getProcessName-%E5%92%8C-ContentProvider-%E6%96%B9%E6%A1%88%EF%BC%8C%E5%93%AA%E4%B8%AA%E6%9B%B4%E5%A5%BD%EF%BC%9F"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 Application#getProcessName() 和 ContentProvider 方案，哪个更好？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-%E4%B8%BA%E4%BB%80%E4%B9%88-ContentProvider-%E5%8F%AA%E4%BC%9A%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%80%E6%AC%A1%EF%BC%9F"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 为什么 ContentProvider 只会初始化一次？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-10-ContentProvider-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%AF%BC%E8%87%B4-Application-%E8%BF%87%E6%97%A9%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%9F"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 ContentProvider 为什么会导致 Application 过早初始化？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-11-%E5%A6%82%E6%9E%9C%E4%B8%80%E4%B8%AA-SDK-%E9%9C%80%E8%A6%81%E5%9C%A8-push-%E8%BF%9B%E7%A8%8B%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%8C%E8%AF%A5%E6%80%8E%E4%B9%88%E5%81%9A%EF%BC%9F"><span class="nav-number">2.11.</span> <span class="nav-text">2.11 如果一个 SDK 需要在 :push 进程初始化，该怎么做？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-12-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-WorkManager-%E5%BB%B6%E8%BF%9F%E4%BB%BB%E5%8A%A1%EF%BC%9F"><span class="nav-number">2.12.</span> <span class="nav-text">2.12 如何使用 WorkManager 延迟任务？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-13-%E5%A6%82%E4%BD%95%E7%9B%91%E6%8E%A7-Application-onCreate-%E7%9A%84%E8%80%97%E6%97%B6%EF%BC%9F-%E6%80%8E%E4%B9%88%E6%B5%8B%E9%87%8F%E5%BA%94%E7%94%A8%E5%90%AF%E5%8A%A8%E6%97%B6%E9%97%B4%EF%BC%9F"><span class="nav-number">2.13.</span> <span class="nav-text">2.13 如何监控 Application#onCreate() 的耗时？&#x2F;怎么测量应用启动时间？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-14-%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91%E6%95%B0%E6%8D%AE%E5%BA%93-%E6%96%87%E4%BB%B6-IO-%E6%93%8D%E4%BD%9C%E5%AF%B9%E5%90%AF%E5%8A%A8%E7%9A%84%E5%BD%B1%E5%93%8D%EF%BC%9F"><span class="nav-number">2.14.</span> <span class="nav-text">2.14 如何减少数据库 &#x2F; 文件 IO 操作对启动的影响？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-15-%E5%A6%82%E4%BD%95%E8%AE%A9%E5%86%B7%E5%90%AF%E5%8A%A8%E6%97%B6%E9%97%B4%E5%B0%8F%E4%BA%8E-1s%EF%BC%9F"><span class="nav-number">2.15.</span> <span class="nav-text">2.15 如何让冷启动时间小于 1s？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-16-View-%E6%B8%B2%E6%9F%93%E6%85%A2%E7%9A%84%E5%8E%9F%E5%9B%A0%EF%BC%9F%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%EF%BC%9F"><span class="nav-number">2.16.</span> <span class="nav-text">2.16 View 渲染慢的原因？如何优化？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-17-RecyclerView-%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%E5%88%9D%E5%A7%8B%E5%8C%96%E9%80%9F%E5%BA%A6%EF%BC%9F"><span class="nav-number">2.17.</span> <span class="nav-text">2.17 RecyclerView 如何优化初始化速度？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-18-SharedPreferences-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%85%A2%EF%BC%9F%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%EF%BC%9F"><span class="nav-number">2.18.</span> <span class="nav-text">2.18 SharedPreferences 为什么慢？如何优化？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-19-%E5%86%B7%E5%90%AF%E5%8A%A8%E3%80%81%E7%83%AD%E5%90%AF%E5%8A%A8%E3%80%81%E6%B8%A9%E5%90%AF%E5%8A%A8%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">2.19.</span> <span class="nav-text">2.19 冷启动、热启动、温启动的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-20-%E4%BC%98%E5%8C%96%E5%B8%83%E5%B1%80%E5%B1%82%E7%BA%A7%E7%9A%84%E6%96%B9%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">2.20.</span> <span class="nav-text">2.20 优化布局层级的方法有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-21-%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96-Dex-%E5%8A%A0%E8%BD%BD%EF%BC%9F"><span class="nav-number">2.21.</span> <span class="nav-text">2.21 如何优化 Dex 加载？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-22-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%E5%90%AF%E5%8A%A8%E6%97%B6%E9%97%B4%EF%BC%9F"><span class="nav-number">2.22.</span> <span class="nav-text">2.22 数据库操作如何优化启动时间？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-23-%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%91%E9%A6%96%E6%AC%A1%E5%90%AF%E5%8A%A8%E7%9A%84%E7%99%BD%E5%B1%8F%E6%97%B6%E9%97%B4"><span class="nav-number">2.23.</span> <span class="nav-text">2.23 如何减少首次启动的白屏时间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/fd7d6d5.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android面试题——掘金-性能优化之启动优化相关面试题(4.2) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android面试题——掘金-性能优化之启动优化相关面试题(4.2)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Android%E9%9D%A2%E8%AF%95%E9%A2%98%E2%80%94%E2%80%94%E6%8E%98%E9%87%91-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E5%90%AF%E5%8A%A8%E4%BC%98%E5%8C%96%E7%9B%B8%E5%85%B3%E9%9D%A2%E8%AF%95%E9%A2%98(4.2).md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-07 10:05:04" itemprop="dateCreated datePublished" datetime="2025-04-07T10:05:04+08:00">2025-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/Android%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">Android面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>22 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">1.如何减少 Application#onCreate() 的启动时间？</span><br><span class="line">2.Jetpack App Startup 的作用是什么？</span><br><span class="line">3.如何避免多进程重复初始化？</span><br><span class="line">4.为什么多进程会导致 Application#onCreate() 运行多次？</span><br><span class="line">5.如何判断当前进程是否是主进程？/如何避免非主进程重复初始化SDK？/如何在多进程架构下高效管理组件初始化？</span><br><span class="line">6.为什么 Application.getProcessName() 比 ActivityManager 更推荐？</span><br><span class="line">7.如何使用 ContentProvider 避免多进程重复初始化？</span><br><span class="line">8.Application#getProcessName() 和 ContentProvider 方案，哪个更好？</span><br><span class="line">9.为什么 ContentProvider 只会初始化一次？</span><br><span class="line">10.ContentProvider 为什么会导致 Application 过早初始化？</span><br><span class="line">11.如果一个 SDK 需要在 :push 进程初始化，该怎么做？</span><br><span class="line">12.如何使用 WorkManager 延迟任务？</span><br><span class="line">13.如何监控 Application#onCreate() 的耗时？/怎么测量应用启动时间？</span><br><span class="line">14.如何减少数据库 / 文件 IO 操作对启动的影响？</span><br><span class="line">15.如何让冷启动时间小于 1s？</span><br><span class="line">16.View 渲染慢的原因？如何优化？</span><br><span class="line">17.RecyclerView 如何优化初始化速度？</span><br><span class="line">18.SharedPreferences 为什么慢？如何优化？</span><br><span class="line">19.冷启动、热启动、温启动的区别？</span><br><span class="line">20.优化布局层级的方法有哪些？</span><br><span class="line">21.如何优化 Dex 加载？</span><br><span class="line">22.数据库操作如何优化启动时间？</span><br><span class="line">23.如何减少首次启动的白屏时间</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-如何减少-Application-onCreate-的启动时间？"><a href="#2-1-如何减少-Application-onCreate-的启动时间？" class="headerlink" title="2.1 如何减少 Application#onCreate() 的启动时间？"></a>2.1 如何减少 Application#onCreate() 的启动时间？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line">减少 Application#onCreate() 的启动时间是 优化应用冷启动 的关键。</span><br><span class="line">以下是 最佳优化方案：</span><br><span class="line"></span><br><span class="line">1. 延迟初始化（Lazy Initialization）</span><br><span class="line">问题：</span><br><span class="line">Application#onCreate() 初始化 SDK、数据库、日志等过多，阻塞主线程，导致冷启动变慢。</span><br><span class="line">优化方案</span><br><span class="line">-只初始化必须的组件，将 非必要初始化推迟 到 后台任务 或 首屏加载后</span><br><span class="line">示例：使用 Coroutine 异步初始化</span><br><span class="line">class MyApplication : Application() &#123;</span><br><span class="line">    override fun onCreate() &#123;</span><br><span class="line">        super.onCreate()</span><br><span class="line">        // 必须的初始化（同步）</span><br><span class="line">        initCrashHandler()</span><br><span class="line">        </span><br><span class="line">        // 延迟初始化（异步）</span><br><span class="line">        GlobalScope.launch(Dispatchers.IO) &#123;</span><br><span class="line">            initSDKs()</span><br><span class="line">            initDatabase()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">-非必须 SDK、数据库等放到 Coroutine 的 IO 线程，减少主线程阻塞</span><br><span class="line"></span><br><span class="line">2. 使用 Jetpack App Startup</span><br><span class="line">问题：</span><br><span class="line">手动管理初始化逻辑复杂，可能影响主线程。</span><br><span class="line">优化方案：</span><br><span class="line">-使用 Jetpack Startup 让 非必须初始化 延迟加载：</span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation &quot;androidx.startup:startup-runtime:1.1.1&quot;</span><br><span class="line">&#125;</span><br><span class="line">class MyInitializer : Initializer&lt;Unit&gt; &#123;</span><br><span class="line">    override fun create(context: Context) &#123;</span><br><span class="line">        SDKManager.init(context) // 延迟初始化 SDK</span><br><span class="line">    &#125;</span><br><span class="line">    override fun dependencies(): List&lt;Class&lt;out Initializer&lt;*&gt;&gt;&gt; = emptyList()</span><br><span class="line">&#125;</span><br><span class="line">-系统自动优化初始化顺序，减少 Application#onCreate() 的压力。</span><br><span class="line"></span><br><span class="line">3. 只在主进程初始化</span><br><span class="line">问题：</span><br><span class="line">Application#onCreate() 在 每个进程 都会调用，导致 无用的初始化。</span><br><span class="line">优化方案：</span><br><span class="line">-只在主进程初始化，避免 无关进程 的 Application#onCreate() 被调用：</span><br><span class="line">class MyApplication : Application() &#123;</span><br><span class="line">    override fun onCreate() &#123;</span><br><span class="line">        super.onCreate()</span><br><span class="line">        if (!isMainProcess()) return  // 只在主进程初始化</span><br><span class="line"></span><br><span class="line">        initMainProcess()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private fun isMainProcess(): Boolean &#123;</span><br><span class="line">        val pid = Process.myPid()</span><br><span class="line">        val processName = getProcessNameByPid(pid)</span><br><span class="line">        return processName == packageName</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private fun getProcessNameByPid(pid: Int): String? &#123;</span><br><span class="line">        return ActivityManager.RunningAppProcessInfo().apply &#123;</span><br><span class="line">            Process.getProcessNameByPid(pid)</span><br><span class="line">        &#125;?.processName</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">-避免无用的 SDK / 数据库 初始化，提高主线程性能。</span><br><span class="line"></span><br><span class="line">4. 使用 WorkManager 延迟后台任务</span><br><span class="line">问题：</span><br><span class="line">部分初始化任务 必须执行，但不影响 UI，可以 后台执行。</span><br><span class="line"></span><br><span class="line">优化方案：</span><br><span class="line">-使用 WorkManager 进行后台初始化：</span><br><span class="line">class InitWorker(appContext: Context, workerParams: WorkerParameters) : Worker(appContext, workerParams) &#123;</span><br><span class="line">    override fun doWork(): Result &#123;</span><br><span class="line">        initHeavyTasks()  // 初始化数据库 / SDK</span><br><span class="line">        return Result.success()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">val request = OneTimeWorkRequestBuilder&lt;InitWorker&gt;().build()</span><br><span class="line">WorkManager.getInstance(context).enqueue(request)</span><br><span class="line">-不影响主线程启动，提高流畅度！</span><br><span class="line"></span><br><span class="line">5. 避免主线程 I/O 操作</span><br><span class="line">问题：</span><br><span class="line">在 Application#onCreate() 进行磁盘 I/O（数据库、文件） 会 严重拖慢启动速度。</span><br><span class="line"></span><br><span class="line">优化方案：</span><br><span class="line">-异步加载数据库 / 文件，避免阻塞主线程：</span><br><span class="line">GlobalScope.launch(Dispatchers.IO) &#123;</span><br><span class="line">    database = Room.databaseBuilder(</span><br><span class="line">        context,</span><br><span class="line">        MyDatabase::class.java, &quot;database-name&quot;</span><br><span class="line">    ).build()</span><br><span class="line">&#125;</span><br><span class="line">-使用 MMKV 替代 SharedPreferences，提升读取性能：</span><br><span class="line">val mmkv = MMKV.defaultMMKV()</span><br><span class="line">mmkv.putString(&quot;key&quot;, &quot;value&quot;)</span><br><span class="line"></span><br><span class="line">6. 预加载 View，减少 Activity#onCreate() 负担</span><br><span class="line">问题：</span><br><span class="line">Activity 创建时需要解析 XML，导致 UI 渲染变慢。</span><br><span class="line"></span><br><span class="line">优化方案：</span><br><span class="line">-使用 AsyncLayoutInflater 提前渲染：</span><br><span class="line">AsyncLayoutInflater(this).inflate(R.layout.activity_main, null) &#123; view, _, _ -&gt;</span><br><span class="line">    setContentView(view)</span><br><span class="line">&#125;</span><br><span class="line">-避免过深的 View 层级，优化 ConstraintLayout。</span><br><span class="line"></span><br><span class="line">7. 监控 Application 启动时间</span><br><span class="line">-使用 Choreographer 监控主线程耗时</span><br><span class="line">Choreographer.getInstance().postFrameCallback &#123; frameTimeNanos -&gt;</span><br><span class="line">    val elapsedTime = System.nanoTime() - frameTimeNanos</span><br><span class="line">    Log.d(&quot;Startup Time&quot;, &quot;Main thread blocked: $&#123;elapsedTime / 1_000_000&#125; ms&quot;)</span><br><span class="line">&#125;</span><br><span class="line">-分析 Trace 结果，找出耗时函数</span><br><span class="line">adb shell am start -S -W com.example.app</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-Jetpack-App-Startup-的作用是什么？"><a href="#2-2-Jetpack-App-Startup-的作用是什么？" class="headerlink" title="2.2 Jetpack App Startup 的作用是什么？"></a>2.2 Jetpack App Startup 的作用是什么？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Jetpack App Startup 是 Android Jetpack 提供的 轻量级初始化管理框架，</span><br><span class="line">用于 优化应用启动性能，解决 Application#onCreate() 过载的问题。</span><br></pre></td></tr></table></figure>
+
+<p>1-为什么需要 Jetpack App Startup？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">问题：Application#onCreate() 初始化太多，导致启动慢</span><br><span class="line">通常在 Application#onCreate() 里，我们会初始化多个 SDK：</span><br><span class="line">class MyApplication : Application() &#123;</span><br><span class="line">    override fun onCreate() &#123;</span><br><span class="line">        super.onCreate()</span><br><span class="line">        SDK1.init(this)</span><br><span class="line">        SDK2.init(this)</span><br><span class="line">        SDK3.init(this)</span><br><span class="line">        SDK4.init(this)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">问题：</span><br><span class="line">-主线程阻塞：所有 SDK 同时初始化，影响应用启动速度。</span><br><span class="line">-初始化顺序难以管理：某些 SDK 依赖另一个 SDK 先初始化，手动管理难度大。</span><br><span class="line">-所有 SDK 在 Application#onCreate() 初始化，导致 冷启动变慢。</span><br><span class="line"></span><br><span class="line">解决方案：使用 Jetpack App Startup 统一管理初始化</span><br><span class="line">-替代 Application#onCreate() 初始化</span><br><span class="line">-延迟加载（Lazy Initialization）</span><br><span class="line">-自动管理依赖关系</span><br><span class="line">-支持并行初始化，提高启动速度</span><br></pre></td></tr></table></figure>
+
+<p>2-Jetpack App Startup 工作原理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">App Startup 通过 ContentProvider 机制 让 Android 自动管理初始化，无需手动在 Application#onCreate() 里初始化。</span><br><span class="line"></span><br><span class="line">主要概念</span><br><span class="line">-Initializer：自定义初始化器，定义 SDK 的初始化逻辑。</span><br><span class="line">-dependencies()：声明当前 SDK 的 依赖，让 App Startup 按顺序初始化。</span><br><span class="line">-AndroidManifest.xml：系统会自动查找 App Startup 的 ContentProvider 并执行初始化。</span><br></pre></td></tr></table></figure>
+
+<p>3-如何使用 Jetpack App Startup？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">(1) 添加依赖</span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation &quot;androidx.startup:startup-runtime:1.1.1&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(2) 创建 SDK 初始化器：创建 MySDKInitializer 继承 Initializer&lt;T&gt;</span><br><span class="line">class MySDKInitializer : Initializer&lt;MySDK&gt; &#123;</span><br><span class="line">    </span><br><span class="line">    override fun create(context: Context): MySDK &#123;</span><br><span class="line">        Log.d(&quot;AppStartup&quot;, &quot;MySDK 初始化&quot;)</span><br><span class="line">        return MySDK().apply &#123; init(context) &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun dependencies(): List&lt;Class&lt;out Initializer&lt;*&gt;&gt;&gt; &#123;</span><br><span class="line">        return emptyList()  // 没有依赖项</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">说明</span><br><span class="line">-create()：定义初始化逻辑。</span><br><span class="line">-dependencies()：返回 依赖的初始化器（若当前 SDK 依赖另一个 SDK，App Startup 会自动管理顺序）。</span><br><span class="line"></span><br><span class="line">(3) 多个 SDK 依赖管理：如果 SDK2 依赖 SDK1 先初始化</span><br><span class="line">class SDK2Initializer : Initializer&lt;SDK2&gt; &#123;</span><br><span class="line">    override fun create(context: Context): SDK2 &#123;</span><br><span class="line">        Log.d(&quot;AppStartup&quot;, &quot;SDK2 初始化&quot;)</span><br><span class="line">        return SDK2().apply &#123; init(context) &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun dependencies(): List&lt;Class&lt;out Initializer&lt;*&gt;&gt;&gt; &#123;</span><br><span class="line">        return listOf(SDK1Initializer::class.java)  // 依赖 SDK1</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">这样，App Startup 会确保 SDK1 先初始化，然后才初始化 SDK2</span><br><span class="line"></span><br><span class="line">(4) 关闭某些自动初始化</span><br><span class="line">如果某些 SDK 不需要 App Startup 自动初始化，可以在 AndroidManifest.xml 禁用</span><br><span class="line">&lt;meta-data </span><br><span class="line">    android:name=&quot;com.example.MySDKInitializer&quot;</span><br><span class="line">    android:value=&quot;false&quot; /&gt;</span><br><span class="line">这样，MySDKInitializer 就不会自动初始化，我们可以手动调用 MySDK.init()。</span><br></pre></td></tr></table></figure>
+
+<p>4-Jetpack App Startup 的优势</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">✅ 自动管理 SDK 初始化，减少 Application#onCreate() 负担</span><br><span class="line">✅ 按依赖顺序初始化 SDK，避免手动管理初始化逻辑</span><br><span class="line">✅ 支持并行初始化，提高启动速度</span><br><span class="line">✅ 可以禁用不必要的初始化，提升性能</span><br></pre></td></tr></table></figure>
+
+<p>5-Jetpack App Startup 相关面试题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Jetpack App Startup 的作用是什么？</span><br><span class="line">如何使用 App Startup 初始化 SDK？</span><br><span class="line">如何管理 SDK 依赖关系？</span><br><span class="line">如何关闭某些 SDK 的自动初始化？</span><br><span class="line">App Startup 如何提高应用启动速度？</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-如何避免多进程重复初始化？"><a href="#2-3-如何避免多进程重复初始化？" class="headerlink" title="2.3 如何避免多进程重复初始化？"></a>2.3 如何避免多进程重复初始化？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1. 问题背景</span><br><span class="line">在 Android 中，每个进程都会调用Application#onCreate()，如果应用使用了多进程（MultiProcess），</span><br><span class="line">例如：</span><br><span class="line">-后台进程（:remote）：用于 后台任务、AIDL 服务。</span><br><span class="line">-WebView 进程（:web）：用于 独立 WebView 进程。</span><br><span class="line">-Push 进程（:push）：用于 推送服务。</span><br><span class="line">-IM 进程（:im）：用于 即时通讯（IM）服务。</span><br><span class="line"></span><br><span class="line">问题：</span><br><span class="line">-多个进程重复初始化 SDK、数据库、日志、缓存，导致 内存浪费、CPU 过载、启动变慢！</span><br><span class="line">-可能导致 SDK 初始化冲突（如 第三方推送 SDK 只需在主进程初始化）。</span><br><span class="line"></span><br><span class="line">2. 解决方案</span><br><span class="line">-方法一：判断是否为主进程，避免非主进程初始化</span><br><span class="line">-方法二：使用 ContentProvider 延迟进程初始化</span><br><span class="line">-方法三：Jetpack App Startup 自动管理进程初始化</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-为什么多进程会导致-Application-onCreate-运行多次？"><a href="#2-4-为什么多进程会导致-Application-onCreate-运行多次？" class="headerlink" title="2.4 为什么多进程会导致 Application#onCreate() 运行多次？"></a>2.4 为什么多进程会导致 Application#onCreate() 运行多次？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-每个进程都是独立的：</span><br><span class="line">即使是同一个应用的不同进程，</span><br><span class="line">它们各自都有独立的内存空间和虚拟机实例，并且彼此之间并不共享Application类的实例。</span><br><span class="line"></span><br><span class="line">-每个进程都会初始化自己的 Application 类：</span><br><span class="line">每个进程启动时，系统会创建一个新的 Application 实例并调用其 onCreate() 方法，初始化应用需要的资源。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-如何判断当前进程是否是主进程？-如何避免非主进程重复初始化SDK？-如何在多进程架构下高效管理组件初始化？"><a href="#2-5-如何判断当前进程是否是主进程？-如何避免非主进程重复初始化SDK？-如何在多进程架构下高效管理组件初始化？" class="headerlink" title="2.5 如何判断当前进程是否是主进程？&#x2F;如何避免非主进程重复初始化SDK？&#x2F;如何在多进程架构下高效管理组件初始化？"></a>2.5 如何判断当前进程是否是主进程？&#x2F;如何避免非主进程重复初始化SDK？&#x2F;如何在多进程架构下高效管理组件初始化？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">方法 1：使用 Application.getProcessName()（API 28+ 推荐）</span><br><span class="line">优点： </span><br><span class="line">-统方法，性能较优</span><br><span class="line">-适用于 API 28+</span><br><span class="line">缺点： 仅支持 Android 9 及以上（Android 8 及以下不可用）</span><br><span class="line"></span><br><span class="line">方法 2：使用 ActivityManager 获取当前进程名</span><br><span class="line">这种方法兼容 所有 Android 版本，通过 ActivityManager 遍历所有进程，找到与当前 PID 匹配的进程名。</span><br><span class="line">优点： </span><br><span class="line">-兼容所有 Android 版本</span><br><span class="line">无需额外权限</span><br><span class="line">缺点： </span><br><span class="line">ActivityManager.getRunningAppProcesses() 可能在 Android 10+ 被限制（某些设备会返回 null）</span><br><span class="line"></span><br><span class="line">方法 3：读取 /proc/self/cmdline（高效）</span><br><span class="line">Android 系统的 /proc/self/cmdline 文件记录了当前进程的名称，可以直接读取。</span><br><span class="line">优点： </span><br><span class="line">-兼容所有 Android 版本</span><br><span class="line">-系统级 API，无需 ActivityManager</span><br><span class="line">缺点：需要文件 IO 操作，但开销很小</span><br><span class="line"></span><br><span class="line">方法 4：使用 ApplicationInfo.processName（Android 10+）</span><br><span class="line">在 Android 10（API 29）及以上，可以直接通过 ApplicationInfo.processName 获取进程名称。</span><br><span class="line">优点： </span><br><span class="line">-官方推荐，高效</span><br><span class="line">-适用于 Android 10 及以上</span><br><span class="line">缺点： 低版本 Android 不支持</span><br></pre></td></tr></table></figure>
+
+<p>2-综合比较</p>
+<table>
+<thead>
+<tr>
+<th align="center">方法</th>
+<th align="center">适用范围</th>
+<th align="center">兼容性</th>
+<th align="center">性能</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Application.getProcessName()</td>
+<td align="center">API 28+</td>
+<td align="center">Android 9+</td>
+<td align="center">⭐⭐⭐⭐</td>
+<td align="center">官方 API，推荐</td>
+</tr>
+<tr>
+<td align="center">ActivityManager</td>
+<td align="center">全版本</td>
+<td align="center">Android 10+ 可能失效</td>
+<td align="center">⭐⭐⭐</td>
+<td align="center">可能受系统限制</td>
+</tr>
+<tr>
+<td align="center">&#x2F;proc&#x2F;self&#x2F;cmdline</td>
+<td align="center">全版本</td>
+<td align="center">适用于所有 Android 版本</td>
+<td align="center">⭐⭐⭐⭐</td>
+<td align="center">轻量级文件读取</td>
+</tr>
+<tr>
+<td align="center">ApplicationInfo.processName</td>
+<td align="center">API 29+</td>
+<td align="center">Android 10+</td>
+<td align="center">⭐⭐⭐⭐⭐</td>
+<td align="center">高效，官方 API</td>
+</tr>
+</tbody></table>
+<h3 id="2-6-为什么-Application-getProcessName-比-ActivityManager-更推荐？"><a href="#2-6-为什么-Application-getProcessName-比-ActivityManager-更推荐？" class="headerlink" title="2.6 为什么 Application.getProcessName() 比 ActivityManager 更推荐？"></a>2.6 为什么 Application.getProcessName() 比 ActivityManager 更推荐？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-Application.getProcessName() 是 系统 API，性能更优，不会涉及 遍历所有进程 和 IPC 调用，更加高效。</span><br><span class="line"></span><br><span class="line">-ActivityManager#getRunningAppProcesses() 可能受权限限制，</span><br><span class="line">在 Android 10 之后可能返回 null，且 查询所有进程有性能损耗。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-如何使用-ContentProvider-避免多进程重复初始化？"><a href="#2-7-如何使用-ContentProvider-避免多进程重复初始化？" class="headerlink" title="2.7 如何使用 ContentProvider 避免多进程重复初始化？"></a>2.7 如何使用 ContentProvider 避免多进程重复初始化？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ContentProvider 在 Application#onCreate() 之前执行，</span><br><span class="line">可以在这里判断进程，仅在主进程初始化组件，避免多进程重复执行 Application#onCreate()。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-8-Application-getProcessName-和-ContentProvider-方案，哪个更好？"><a href="#2-8-Application-getProcessName-和-ContentProvider-方案，哪个更好？" class="headerlink" title="2.8 Application#getProcessName() 和 ContentProvider 方案，哪个更好？"></a>2.8 Application#getProcessName() 和 ContentProvider 方案，哪个更好？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ContentProvider 方案更好，因为它 自动触发，避免 Application#onCreate() 代码膨胀。Application#getProcessName() 仍然需要手动判断进程。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-9-为什么-ContentProvider-只会初始化一次？"><a href="#2-9-为什么-ContentProvider-只会初始化一次？" class="headerlink" title="2.9 为什么 ContentProvider 只会初始化一次？"></a>2.9 为什么 ContentProvider 只会初始化一次？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">因为 ContentProvider 只有在 声明的进程 中初始化，</span><br><span class="line">而 Application#onCreate() 在所有进程都会调用，所以 ContentProvider 更适合避免多进程重复初始化</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-10-ContentProvider-为什么会导致-Application-过早初始化？"><a href="#2-10-ContentProvider-为什么会导致-Application-过早初始化？" class="headerlink" title="2.10 ContentProvider 为什么会导致 Application 过早初始化？"></a>2.10 ContentProvider 为什么会导致 Application 过早初始化？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-ContentProvider 会在 Application#onCreate() 之前执行，导致 Application 过早初始化。</span><br><span class="line">-如果 ContentProvider 在 非主进程 被访问，也会导致 整个 Application 过早初始化。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-11-如果一个-SDK-需要在-push-进程初始化，该怎么做？"><a href="#2-11-如果一个-SDK-需要在-push-进程初始化，该怎么做？" class="headerlink" title="2.11 如果一个 SDK 需要在 :push 进程初始化，该怎么做？"></a>2.11 如果一个 SDK 需要在 :push 进程初始化，该怎么做？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">1.说明</span><br><span class="line">在 Android 多进程架构中，可能会有多个进程，且不同的进程可能会有不同的初始化需求。</span><br><span class="line">假如某个 SDK 需要在特定的进程（例如 :push 进程）中进行初始化，</span><br><span class="line">那么我们可以通过以下步骤确保该 SDK 仅在 :push 进程中初始化，避免在其他进程（如主进程）重复初始化。</span><br><span class="line"></span><br><span class="line">2.步骤</span><br><span class="line">2.1  使用 android:process 指定进程</span><br><span class="line">&lt;service</span><br><span class="line">    android:name=&quot;.PushService&quot;</span><br><span class="line">    android:process=&quot;:push&quot; /&gt; &lt;!-- 指定推送服务运行在 :push 进程 --&gt;</span><br><span class="line">2.2 在 :push 进程中初始化 SDK</span><br><span class="line">class PushService : Service() &#123;</span><br><span class="line">    override fun onCreate() &#123;</span><br><span class="line">        super.onCreate()</span><br><span class="line">        // 判断是否在指定的 :push 进程中</span><br><span class="line">        if (Application.getProcessName() == &quot;:push&quot;) &#123;</span><br><span class="line">            initializePushSDK()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    private fun initializePushSDK() &#123;</span><br><span class="line">        // 在 :push 进程中初始化推送 SDK</span><br><span class="line">        PushSDK.initialize(applicationContext)</span><br><span class="line">    &#125;</span><br><span class="line">    override fun onBind(intent: Intent?): IBinder? &#123;</span><br><span class="line">        return null</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">2.3  在 :push 进程中初始化 ContentProvider</span><br><span class="line">&lt;provider</span><br><span class="line">    android:name=&quot;.PushContentProvider&quot;</span><br><span class="line">    android:authorities=&quot;com.example.push.provider&quot;</span><br><span class="line">    android:process=&quot;:push&quot; /&gt; &lt;!-- 使 ContentProvider 只在 :push 进程中运行 --&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-12-如何使用-WorkManager-延迟任务？"><a href="#2-12-如何使用-WorkManager-延迟任务？" class="headerlink" title="2.12 如何使用 WorkManager 延迟任务？"></a>2.12 如何使用 WorkManager 延迟任务？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">1.说明</span><br><span class="line">要使用 WorkManager 实现延迟任务，</span><br><span class="line">可以借助 OneTimeWorkRequest 搭配 setInitialDelay() 方法，来指定任务延迟执行的时间。</span><br><span class="line"></span><br><span class="line">2.步骤</span><br><span class="line">2.1 添加依赖（如果尚未添加）</span><br><span class="line">implementation &quot;androidx.work:work-runtime-ktx:2.9.0&quot; // 版本视情况而定</span><br><span class="line"></span><br><span class="line">2.2 创建你的任务（Worker）</span><br><span class="line">class MyDelayedWorker(context: Context, params: WorkerParameters) : Worker(context, params) &#123;</span><br><span class="line">    override fun doWork(): Result &#123;</span><br><span class="line">        // 你的延迟任务逻辑</span><br><span class="line">        Log.d(&quot;MyDelayedWorker&quot;, &quot;延迟任务执行了&quot;)</span><br><span class="line">        return Result.success()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">2.3 构建延迟任务请求</span><br><span class="line">val request = OneTimeWorkRequestBuilder&lt;MyDelayedWorker&gt;()</span><br><span class="line">    .setInitialDelay(15, TimeUnit.MINUTES) // 延迟15分钟执行</span><br><span class="line">    .build()</span><br><span class="line">    </span><br><span class="line">2.4 将任务提交给 WorkManager</span><br><span class="line">WorkManager.getInstance(context).enqueue(request)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-13-如何监控-Application-onCreate-的耗时？-怎么测量应用启动时间？"><a href="#2-13-如何监控-Application-onCreate-的耗时？-怎么测量应用启动时间？" class="headerlink" title="2.13 如何监控 Application#onCreate() 的耗时？&#x2F;怎么测量应用启动时间？"></a>2.13 如何监控 Application#onCreate() 的耗时？&#x2F;怎么测量应用启动时间？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">1.方法一：直接在 Application 中打时间戳</span><br><span class="line">class MyApp : Application() &#123;</span><br><span class="line">    override fun onCreate() &#123;</span><br><span class="line">        val start = System.currentTimeMillis()</span><br><span class="line">        super.onCreate()</span><br><span class="line">        // 你自己的初始化逻辑</span><br><span class="line">        initSdkA()</span><br><span class="line">        initLogger()</span><br><span class="line">        initDatabase()</span><br><span class="line"></span><br><span class="line">        val end = System.currentTimeMillis()</span><br><span class="line">        Log.d(&quot;AppStartTime&quot;, &quot;Application#onCreate() cost: $&#123;end - start&#125; ms&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">2.方法二：拆解每一段初始化逻辑：有时候总耗时不重要，更重要的是“哪个步骤最慢”，可以分段记录</span><br><span class="line">override fun onCreate() &#123;</span><br><span class="line">    val t0 = System.currentTimeMillis()</span><br><span class="line"></span><br><span class="line">    initLogger()</span><br><span class="line">    val t1 = System.currentTimeMillis()</span><br><span class="line">    Log.d(&quot;AppStart&quot;, &quot;initLogger 耗时: $&#123;t1 - t0&#125;ms&quot;)</span><br><span class="line"></span><br><span class="line">    initSdk()</span><br><span class="line">    val t2 = System.currentTimeMillis()</span><br><span class="line">    Log.d(&quot;AppStart&quot;, &quot;initSdk 耗时: $&#123;t2 - t1&#125;ms&quot;)</span><br><span class="line"></span><br><span class="line">    initDatabase()</span><br><span class="line">    val t3 = System.currentTimeMillis()</span><br><span class="line">    Log.d(&quot;AppStart&quot;, &quot;initDatabase 耗时: $&#123;t3 - t2&#125;ms&quot;)</span><br><span class="line"></span><br><span class="line">    Log.d(&quot;AppStart&quot;, &quot;总耗时: $&#123;t3 - t0&#125;ms&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">3.方法三：使用 AppStartTrace 工具（推荐在调试版使用）</span><br><span class="line">Google 提供了 Jetpack 的 Startup 库，可以结合 StartupTimingLogger 查看初始化耗时。</span><br><span class="line">override fun onCreate() &#123;</span><br><span class="line">    StartUpProfiler.start(&quot;onCreate&quot;)</span><br><span class="line">    StartUpProfiler.start(&quot;initLog&quot;)</span><br><span class="line">    initLog()</span><br><span class="line">    StartUpProfiler.start(&quot;initSDK&quot;)</span><br><span class="line">    initSDK()</span><br><span class="line">    StartUpProfiler.start(&quot;initDb&quot;)</span><br><span class="line">    initDb()</span><br><span class="line">    StartUpProfiler.dump()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">4.方法四：结合 Systrace、TraceView 等官方工具</span><br><span class="line">工具	                    用途</span><br><span class="line">Systrace	            记录 App 启动全流程（包括系统调用、Activity 启动）</span><br><span class="line">TraceView / Perfetto	更精细地分析 Java 方法的调用耗时</span><br><span class="line">Android Studio Profiler	实时查看启动耗时、CPU、内存、线程情况</span><br></pre></td></tr></table></figure>
+
+<p>2-表格</p>
+<table>
+<thead>
+<tr>
+<th align="center">方法</th>
+<th align="center">适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">System.currentTimeMillis()</td>
+<td align="center">本地开发调试，快速定位</td>
+</tr>
+<tr>
+<td align="center">分段打点</td>
+<td align="center">精准找出“哪段最耗时”</td>
+</tr>
+<tr>
+<td align="center">AppStartTrace &#x2F; 自定义记录器</td>
+<td align="center">结构化、可复用的统计方式</td>
+</tr>
+<tr>
+<td align="center">Systrace &#x2F; Studio Profiler</td>
+<td align="center">专业分析、可视化调试</td>
+</tr>
+<tr>
+<td align="center">Matrix &#x2F; BlockCanary</td>
+<td align="center">线上监控、无侵入埋点</td>
+</tr>
+</tbody></table>
+<h3 id="2-14-如何减少数据库-文件-IO-操作对启动的影响？"><a href="#2-14-如何减少数据库-文件-IO-操作对启动的影响？" class="headerlink" title="2.14 如何减少数据库 &#x2F; 文件 IO 操作对启动的影响？"></a>2.14 如何减少数据库 &#x2F; 文件 IO 操作对启动的影响？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-减少数据库依赖：用 MMKV / DataStore 缓存用户数据。</span><br><span class="line">-数据库 IO 放后台：使用 CoroutineScope(Dispatchers.IO) 处理数据库操作。</span><br><span class="line">-文件 IO 最小化：用 okio + Coroutine 异步加载文件。</span><br><span class="line">-延迟初始化：Lazy + WorkManager 让非必要数据稍后加载</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-15-如何让冷启动时间小于-1s？"><a href="#2-15-如何让冷启动时间小于-1s？" class="headerlink" title="2.15 如何让冷启动时间小于 1s？"></a>2.15 如何让冷启动时间小于 1s？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line">1.分析</span><br><span class="line">让 Android 冷启动时间小于 1s，需要从 布局优化、IO 操作、线程管理、初始化策略 等多个方面入手。</span><br><span class="line">冷启动时间通常包括 Application 初始化、Activity 启动、首帧渲染 这几个阶段，因此需要全链路优化。</span><br><span class="line"></span><br><span class="line">2.冷启动优化核心思路</span><br><span class="line">-避免主线程阻塞（如 IO、数据库、网络请求）。</span><br><span class="line">-减少 Application 和 Activity 初始化的开销。</span><br><span class="line">-优化布局，减少 View 层级，提高渲染速度。</span><br><span class="line">-使用异步任务、懒加载、按需初始化。</span><br><span class="line">-利用预渲染（Warm Start）、Splash 预加载等技巧。</span><br><span class="line"></span><br><span class="line">3.实现</span><br><span class="line">3.1 Application 优化：减少 onCreate() 耗时</span><br><span class="line">问题：Application#onCreate() 里初始化太多内容，会直接拖慢冷启动</span><br><span class="line">解决方案：</span><br><span class="line">-避免在 onCreate() 里执行数据库查询、文件 IO、SDK 初始化。</span><br><span class="line">-使用 WorkManager / 启动框架 (App Startup) 延迟初始化。</span><br><span class="line">-使用懒加载 (lazy) 只在需要时才初始化。</span><br><span class="line">示例：懒加载全局对象</span><br><span class="line">val database by lazy &#123; </span><br><span class="line">    Room.databaseBuilder(context, MyDatabase::class.java, &quot;app.db&quot;).build() </span><br><span class="line">&#125;</span><br><span class="line">示例：使用 WorkManager 在后台初始化</span><br><span class="line">val workRequest = OneTimeWorkRequestBuilder&lt;InitSdkWorker&gt;().build()</span><br><span class="line">WorkManager.getInstance(context).enqueue(workRequest)</span><br><span class="line"></span><br><span class="line">3.2 Activity 启动优化</span><br><span class="line">问题：Activity onCreate() 里执行了太多逻辑，导致 setContentView() 之前的时间过长。</span><br><span class="line">解决方案：</span><br><span class="line">-延迟非必要初始化（如 ViewModel、网络请求）。</span><br><span class="line">-使用 SplashScreen API 预加载数据（Android 12+）。</span><br><span class="line">-避免主线程做 IO 操作（如 SharedPreferences 读取）</span><br><span class="line">示例：使用 SplashScreen 预加载数据</span><br><span class="line">override fun onCreate(savedInstanceState: Bundle?) &#123;</span><br><span class="line">    val splashScreen = installSplashScreen() // 适用于 Android 12+</span><br><span class="line">    super.onCreate(savedInstanceState)</span><br><span class="line"></span><br><span class="line">    CoroutineScope(Dispatchers.IO).launch &#123;</span><br><span class="line">        preLoadData()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">3.3 布局优化</span><br><span class="line">问题：XML 层级过深，导致 setContentView() 耗时过长，影响首帧渲染速度。</span><br><span class="line">解决方案：</span><br><span class="line">-避免过深的 View 层级（使用 ConstraintLayout 代替嵌套 LinearLayout）。</span><br><span class="line">-减少 RelativeLayout 嵌套，减少 wrap_content 导致的多次测量。</span><br><span class="line">-使用 ViewStub / include 进行延迟加载。</span><br><span class="line">示例：用 ViewStub 代替复杂布局</span><br><span class="line">&lt;ViewStub</span><br><span class="line">    android:id=&quot;@+id/largeView&quot;</span><br><span class="line">    android:layout=&quot;@layout/large_layout&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;wrap_content&quot;/&gt;</span><br><span class="line">findViewById&lt;ViewStub&gt;(R.id.largeView).inflate()</span><br><span class="line">好处：这样 large_layout.xml 只有在需要时才会加载，避免启动时的额外开销。</span><br><span class="line"></span><br><span class="line">3.4 资源加载优化</span><br><span class="line">问题：启动时加载大图、解析 JSON、读取数据库，会导致界面卡顿。</span><br><span class="line">解决方案：</span><br><span class="line">-避免 Bitmap 解码阻塞主线程（用 Glide/Picasso）。</span><br><span class="line">-预加载关键数据，减少 onCreate() 的数据查询时间。</span><br><span class="line">-使用 MMKV/DataStore 代替 SharedPreferences，提高读写效率。</span><br><span class="line">示例：使用 Glide 预加载图片</span><br><span class="line">Glide.with(this)</span><br><span class="line">    .load(url)</span><br><span class="line">    .diskCacheStrategy(DiskCacheStrategy.ALL)</span><br><span class="line">    .preload()</span><br><span class="line"></span><br><span class="line">3.5 线程优化</span><br><span class="line">问题：太多任务在主线程执行，导致 UI 线程阻塞。</span><br><span class="line">解决方案：</span><br><span class="line">-把 IO 密集型任务放到 Dispatchers.IO 执行。</span><br><span class="line">-使用 HandlerThread 处理后台任务。</span><br><span class="line">-尽量避免 runBlocking &#123;&#125; 在主线程运行。</span><br><span class="line">示例：用 Coroutine 处理数据库 IO</span><br><span class="line">CoroutineScope(Dispatchers.IO).launch &#123;</span><br><span class="line">    val user = database.userDao().getUserById(1)</span><br><span class="line">    withContext(Dispatchers.Main) &#123;</span><br><span class="line">        textView.text = user.name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">3.6 使用 Jetpack App Startup 进行组件按需初始化</span><br><span class="line">问题：太多 SDK 在 Application#onCreate() 里同步初始化，影响启动时间。</span><br><span class="line">解决方案：</span><br><span class="line">使用 App Startup 让 SDK 只在需要时初始化。</span><br><span class="line">示例：用 App Startup 进行初始化</span><br><span class="line"> class MyInitializer : Initializer&lt;ExampleSDK&gt; &#123;</span><br><span class="line">    override fun create(context: Context): ExampleSDK &#123;</span><br><span class="line">        return ExampleSDK.init(context)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun dependencies(): List&lt;Class&lt;out Initializer&lt;*&gt;&gt;&gt; = emptyList()</span><br><span class="line">&#125;</span><br><span class="line">在 AndroidManifest.xml 里：</span><br><span class="line">&lt;meta-data</span><br><span class="line">    android:name=&quot;com.example.MyInitializer&quot;</span><br><span class="line">    android:value=&quot;androidx.startup&quot; /&gt;</span><br><span class="line">好处：只有在真正需要 ExampleSDK 时才初始化，而不是一启动就加载。</span><br><span class="line"></span><br><span class="line">3.7 预加载策略</span><br><span class="line">问题：冷启动时数据未准备好，导致 UI 需要等待加载。</span><br><span class="line">解决方案：</span><br><span class="line">-利用 SplashScreen 预加载，减少 onCreate() 的初始化压力。</span><br><span class="line">-使用 Warm Start 方案，让应用在后台存活更久。</span><br><span class="line">-使用 ShortcutManager 让 App 直接启动目标页面</span><br><span class="line">示例：使用 Warm Start 让 App 在后台存活</span><br><span class="line">override fun onTaskRemoved(rootIntent: Intent?) &#123;</span><br><span class="line">    val restartService = Intent(applicationContext, MyService::class.java)</span><br><span class="line">    startService(restartService)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2-最终优化策略总结</p>
+<table>
+<thead>
+<tr>
+<th align="center">优化点</th>
+<th align="center">方案</th>
+<th align="center">收益</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Application</td>
+<td align="center">避免在 <code>onCreate()</code> 里执行重 IO 任务</td>
+<td align="center">50-200ms</td>
+</tr>
+<tr>
+<td align="center">Activity</td>
+<td align="center">延迟初始化 &amp; 使用 <code>SplashScreen</code></td>
+<td align="center">50-150ms</td>
+</tr>
+<tr>
+<td align="center">布局优化</td>
+<td align="center">使用 <code>ConstraintLayout</code>、<code>ViewStub</code></td>
+<td align="center">30-100ms</td>
+</tr>
+<tr>
+<td align="center">资源优化</td>
+<td align="center">避免大图加载 &amp; 使用 MMKV 缓存</td>
+<td align="center">30-80ms</td>
+</tr>
+<tr>
+<td align="center">线程优化</td>
+<td align="center">把 IO 操作放到 <code>Dispatchers.IO</code></td>
+<td align="center">50-150ms</td>
+</tr>
+<tr>
+<td align="center">Jetpack Startup</td>
+<td align="center">组件按需初始化</td>
+<td align="center">50-200ms</td>
+</tr>
+<tr>
+<td align="center">预加载策略</td>
+<td align="center">SplashScreen<code>+</code>Warm Start</td>
+<td align="center">50-100ms</td>
+</tr>
+</tbody></table>
+<p>3-目标：冷启动小于 1s</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-首帧渲染时间 &lt; 500ms（减少 View 层级，优化 setContentView()）。</span><br><span class="line">-Application onCreate() 耗时 &lt; 200ms（避免主线程 IO，使用 WorkManager）。</span><br><span class="line">-Activity onCreate() 耗时 &lt; 300ms（懒加载、延迟初始化）</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-16-View-渲染慢的原因？如何优化？"><a href="#2-16-View-渲染慢的原因？如何优化？" class="headerlink" title="2.16 View 渲染慢的原因？如何优化？"></a>2.16 View 渲染慢的原因？如何优化？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">View 渲染慢，通常是 Android 页面加载、首帧慢、卡顿、掉帧的根本原因之一。</span><br><span class="line">想搞清楚它为什么慢，就得从 View 的渲染流程 和 影响渲染的关键因素 下手。</span><br><span class="line"></span><br><span class="line">一、View 渲染慢的常见原因</span><br><span class="line">Android UI 渲染主要分为 三大阶段：</span><br><span class="line">measure（测量） → layout（布局） → draw（绘制）</span><br><span class="line">渲染慢，通常就是因为以下几点</span><br><span class="line"></span><br><span class="line">1.1 布局层级过深 / 嵌套太多</span><br><span class="line">-使用了多个嵌套的 LinearLayout / RelativeLayout。</span><br><span class="line">-wrap_content 滥用，导致多次 measure。</span><br><span class="line">-使用复杂的嵌套 RecyclerView、NestedScrollView。</span><br><span class="line">现象：大量 measure/layout/draw 调用，甚至超过 16ms 导致掉帧。</span><br><span class="line"></span><br><span class="line">1.2 布局过度绘制（Overdraw）</span><br><span class="line">-同一像素点被多个 View 多次绘制。</span><br><span class="line">-背景、阴影、圆角、半透明等叠加造成浪费。</span><br><span class="line">现象：手机卡顿、界面变得“粘重”。</span><br><span class="line"></span><br><span class="line">1.3 大图加载阻塞主线程</span><br><span class="line">-BitmapFactory.decode...() 在主线程执行。</span><br><span class="line">-不合理使用 ImageView.setImageBitmap()。</span><br><span class="line">-加载无压缩大图、分辨率不合适。</span><br><span class="line"></span><br><span class="line">1.4 主线程执行耗时操作（IO/网络/复杂计算）</span><br><span class="line">-布局中执行了 SharedPreferences、数据库查询等操作。</span><br><span class="line">-onCreate() 或 onResume() 做了过重的初始化。</span><br><span class="line"></span><br><span class="line">1.5 自定义 View 绘制逻辑复杂</span><br><span class="line">-onDraw() 中频繁调用耗时操作（如文字测量、矩阵运算）。</span><br><span class="line">-不合理地频繁调用 invalidate()，导致不停重绘。</span><br><span class="line"></span><br><span class="line">1.6 动画或属性变化频繁触发重新布局</span><br><span class="line">-不合理使用 requestLayout()、invalidate()。</span><br><span class="line">-动画过程中触发复杂布局更新。</span><br><span class="line"></span><br><span class="line">二、优化 View 渲染性能的方法</span><br><span class="line">2.1 减少 View 层级</span><br><span class="line">-使用 ConstraintLayout 代替嵌套的 LinearLayout。</span><br><span class="line">-使用 merge 标签合并无必要的 View。</span><br><span class="line">-使用 ViewStub 延迟加载不常用的内容。</span><br><span class="line">示例：</span><br><span class="line">&lt;merge xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</span><br><span class="line">    &lt;TextView ... /&gt;</span><br><span class="line">    &lt;ImageView ... /&gt;</span><br><span class="line">&lt;/merge&gt;</span><br><span class="line"></span><br><span class="line">2.2 避免主线程进行图片解码</span><br><span class="line">-使用 Glide / Picasso 等库进行异步加载、缓存。</span><br><span class="line">-大图显示前先压缩，避免 OOM 和 UI 卡顿。</span><br><span class="line"></span><br><span class="line">2.3 避免主线程 IO、计算</span><br><span class="line">数据加载（数据库、SP、文件）使用 Coroutine 或 HandlerThread 异步处理</span><br><span class="line">示例：</span><br><span class="line">CoroutineScope(Dispatchers.IO).launch &#123;</span><br><span class="line">    val result = readFromDisk()</span><br><span class="line">    withContext(Dispatchers.Main) &#123;</span><br><span class="line">        textView.text = result</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">2.4 避免不必要的 invalidate() 和 requestLayout()</span><br><span class="line">-控制刷新频率。</span><br><span class="line">-动画过程尽量只刷新必要区域</span><br><span class="line"></span><br><span class="line">2.5 使用过度绘制分析工具</span><br><span class="line">-打开开发者选项 → 启用“显示布局边界”、“显示过度绘制”。</span><br><span class="line">-控制背景、透明度、阴影叠加。</span><br><span class="line"></span><br><span class="line">2.6 使用 Profile GPU Rendering 工具</span><br><span class="line">-查看每一帧是否超过 16ms，绿色为健康，红色表示掉帧。</span><br><span class="line">-路径：设置 → 开发者选项 → 启用 GPU 渲染分析。</span><br><span class="line"></span><br><span class="line">2.7 使用布局检测工具</span><br><span class="line"></span><br><span class="line">工具	               说明</span><br><span class="line">Layout Inspector	查看布局层级、性能问题</span><br><span class="line">Systrace / Perfetto	分析 UI 线程调度</span><br><span class="line">UI Automator Viewer	静态查看界面布局层级</span><br></pre></td></tr></table></figure>
+
+<p>2-表格</p>
+<table>
+<thead>
+<tr>
+<th align="center">问题</th>
+<th align="center">优化方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">布局层级过深</td>
+<td align="center">ConstraintLayout、merge、优化嵌套</td>
+</tr>
+<tr>
+<td align="center">大图卡顿</td>
+<td align="center">Glide 异步加载、压缩、缓存</td>
+</tr>
+<tr>
+<td align="center">主线程耗时操作</td>
+<td align="center">IO、DB 放后台线程</td>
+</tr>
+<tr>
+<td align="center">自定义 View 重绘频繁</td>
+<td align="center">减少 invalidate() 调用</td>
+</tr>
+<tr>
+<td align="center">页面加载慢</td>
+<td align="center">ViewStub、懒加载、骨架屏</td>
+</tr>
+<tr>
+<td align="center">动画导致掉帧</td>
+<td align="center">降低动画复杂度，减少布局变更</td>
+</tr>
+<tr>
+<td align="center">渲染分析</td>
+<td align="center">使用 Profile GPU Rendering 工具</td>
+</tr>
+</tbody></table>
+<h3 id="2-17-RecyclerView-如何优化初始化速度？"><a href="#2-17-RecyclerView-如何优化初始化速度？" class="headerlink" title="2.17 RecyclerView 如何优化初始化速度？"></a>2.17 RecyclerView 如何优化初始化速度？</h3><p>1-概念</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RecyclerView 初始化慢，常出现在复杂列表页面，尤其是冷启动或首页列表加载时。</span><br><span class="line">下面从 布局、适配器、ViewHolder、预加载、绘制优化 多个维度帮你总结实战优化方案。</span><br></pre></td></tr></table></figure>
+
+<p>2-RecyclerView 初始化慢的常见原因</p>
+<table>
+<thead>
+<tr>
+<th align="center">问题类型</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">布局复杂</td>
+<td align="center">每个 item 中嵌套 View 层级多，measure&#x2F;layout 慢</td>
+</tr>
+<tr>
+<td align="center">Adapter 数据量大</td>
+<td align="center">一次性塞入大量数据，且未分批刷新</td>
+</tr>
+<tr>
+<td align="center">ItemView 创建慢</td>
+<td align="center">ViewHolder inflate 过程耗时，或 onBindViewHolder 复杂</td>
+</tr>
+<tr>
+<td align="center">未启用 View 缓存</td>
+<td align="center">未使用 ViewType 缓存、ViewPool 导致频繁 inflate</td>
+</tr>
+<tr>
+<td align="center">动画卡顿</td>
+<td align="center">默认动画未关闭，或 diff 运算慢导致频繁刷新动画</td>
+</tr>
+<tr>
+<td align="center">主线程做了耗时操作</td>
+<td align="center">数据加载、图片加载、item 逻辑在主线程执行</td>
+</tr>
+</tbody></table>
+<p>3-优化 RecyclerView 初始化速度的方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">1-减少 item 布局复杂度</span><br><span class="line">-使用 ConstraintLayout 替代嵌套 LinearLayout。</span><br><span class="line">-避免 item 使用 wrap_content 导致多次 measure。</span><br><span class="line">-使用 ViewStub、include 优化可选布局区域。</span><br><span class="line"></span><br><span class="line">2.使用 ViewType + ViewHolder 缓存复用</span><br><span class="line">-正确实现 getItemViewType()。</span><br><span class="line">-使用 RecyclerView.setRecycledViewPool() 来共享缓存池（多个 RecyclerView 共享缓存 ViewHolder）。</span><br><span class="line">示例：</span><br><span class="line">val viewPool = RecyclerView.RecycledViewPool()</span><br><span class="line">recyclerView.setRecycledViewPool(viewPool)</span><br><span class="line"></span><br><span class="line">3.使用 ListAdapter + DiffUtil 优化刷新</span><br><span class="line">-替代传统 notifyDataSetChanged()，减少不必要的 onBindViewHolder 调用。</span><br><span class="line">-增量刷新避免整列表更新。</span><br><span class="line"></span><br><span class="line">4.关闭或优化默认动画</span><br><span class="line">-默认动画会导致首次加载动画播放，影响首帧。</span><br><span class="line">--可以关闭或替换动画，减少 init 时的开销。</span><br><span class="line">示例</span><br><span class="line">recyclerView.itemAnimator = null</span><br><span class="line"></span><br><span class="line">5.异步加载数据 + 骨架屏过渡</span><br><span class="line">-冷启动时先显示骨架屏，数据准备完再设置 Adapter。</span><br><span class="line">-大数据分页加载，避免一次性 set 大量数据。</span><br><span class="line"></span><br><span class="line">6.图片异步加载 + 占位图优化</span><br><span class="line">使用 Glide/Picasso 加载图片时，设置合适的 placeholder 和尺寸（避免 wrap_content）。</span><br><span class="line"></span><br><span class="line">7.设置 setHasFixedSize(true)</span><br><span class="line">如果 item 高度固定，设置该值可跳过部分 layout 计算。</span><br><span class="line">recyclerView.setHasFixedSize(true)</span><br><span class="line"></span><br><span class="line">8.预加载优化（Preload）</span><br><span class="line">-RecyclerView.prefetchItemCount 设置提前加载数量。</span><br><span class="line">-搭配 LinearLayoutManager.setInitialPrefetchItemCount() 控制预取数量</span><br><span class="line">（用于嵌套 RecyclerView 场景）。</span><br><span class="line"></span><br><span class="line">9.使用 AsyncLayoutInflater 异步加载 item 布局（低频使用）</span><br><span class="line">对超大 item，可以用 AsyncLayoutInflater 异步 inflate 加快首帧速度。</span><br></pre></td></tr></table></figure>
+
+<p>4-调试分析推荐工具</p>
+<table>
+<thead>
+<tr>
+<th align="center">工具</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Layout Inspector</td>
+<td align="center">查看 item 渲染层级结构</td>
+</tr>
+<tr>
+<td align="center">Profile GPU Rendering</td>
+<td align="center">检测 RecyclerView 是否掉帧</td>
+</tr>
+<tr>
+<td align="center">ecyclerView.AdapterTrace</td>
+<td align="center">打印每个生命周期执行耗时（自定义封装）</td>
+</tr>
+<tr>
+<td align="center">Perfetto&#x2F;Systrace</td>
+<td align="center">帧级别分析 measure&#x2F;layout&#x2F;draw</td>
+</tr>
+</tbody></table>
+<p>5-最佳实践（冷启动优化场景）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">首页列表加载：骨架屏占位 + 异步加载数据 + 分页加载 + setHasFixedSize。</span><br><span class="line">多类型 item：复用 ViewHolder + ViewType 缓存 + ListAdapter。</span><br><span class="line">嵌套 RecyclerView：共享 ViewPool + setInitialPrefetchItemCount。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-18-SharedPreferences-为什么慢？如何优化？"><a href="#2-18-SharedPreferences-为什么慢？如何优化？" class="headerlink" title="2.18 SharedPreferences 为什么慢？如何优化？"></a>2.18 SharedPreferences 为什么慢？如何优化？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">SharedPreferences 在 Android 中经常用于存储简单的 key-value 数据（如登录状态、设置项等），</span><br><span class="line">但它 并不适合频繁读写或大量数据 的场景，原因如下</span><br><span class="line"></span><br><span class="line">一、为什么 SharedPreferences 会慢？</span><br><span class="line">1.1 数据存储在 XML 文件中</span><br><span class="line">-本质是一个 XML 文件，每次写入都要把整个文件序列化写回磁盘（apply() 是异步，commit() 是同步）。</span><br><span class="line">-当数据量增大时，写入性能严重下降，容易造成卡顿。</span><br><span class="line"></span><br><span class="line">1.2 主线程读写可能造成阻塞</span><br><span class="line">-虽然 apply() 是异步写，但序列化过程可能在主线程执行。</span><br><span class="line">-getXXX() 是同步读取，会立即读取磁盘缓存，可能造成 ANR（尤其是首次 cold start）。</span><br><span class="line"></span><br><span class="line">1.3 多进程访问不安全</span><br><span class="line">SharedPreferences 默认不能跨进程可靠使用，多进程访问会导致数据丢失或写入失败。</span><br><span class="line"></span><br><span class="line">1.4 数据一致性弱</span><br><span class="line">-apply() 是异步写入，无法保证写入成功。</span><br><span class="line">-如果系统崩溃或杀进程，可能数据还没写入成功。</span><br><span class="line"></span><br><span class="line">二、优化 SharedPreferences 的方法</span><br><span class="line">2.1 避免主线程频繁读写</span><br><span class="line">-尽量把 SP 读写放在子线程（尤其是 apply() / commit()）。</span><br><span class="line">-冷启动时可以使用 Coroutine、HandlerThread 延迟初始化 SP</span><br><span class="line">示例</span><br><span class="line">CoroutineScope(Dispatchers.IO).launch &#123;</span><br><span class="line">    val sp = context.getSharedPreferences(&quot;app_config&quot;, MODE_PRIVATE)</span><br><span class="line">    val token = sp.getString(&quot;token&quot;, &quot;&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">2.2 减少写入频率、批量写入</span><br><span class="line">减少 editor.putXXX().apply() 的频率，最好一次性写入多个值再提交。</span><br><span class="line">示例</span><br><span class="line">editor.putString(&quot;key1&quot;, &quot;value1&quot;)</span><br><span class="line">editor.putString(&quot;key2&quot;, &quot;value2&quot;)</span><br><span class="line">editor.apply()</span><br><span class="line"></span><br><span class="line">2.3 使用 apply() 替代 commit()</span><br><span class="line">-commit() 是阻塞同步写磁盘操作，主线程调用容易造成卡顿。</span><br><span class="line">-apply() 是异步，虽然没有返回值，但性能远优于 commit()。</span><br><span class="line"></span><br><span class="line">2.4 使用内存缓存机制</span><br><span class="line">-如果某个 key 使用频繁，可以先缓存到内存中，再定时或延迟写入 SP。</span><br><span class="line">-可用双写策略：内存 Map + SharedPreferences。</span><br><span class="line"></span><br><span class="line">2.5 使用 MMKV 替代 SharedPreferences（推荐🔥）</span><br><span class="line">MMKV 是微信开源的高性能 key-value 存储组件，基于 mmap + protobuf，</span><br><span class="line">性能比 SharedPreferences 高几十倍。</span><br></pre></td></tr></table></figure>
+
+<p>2-表格</p>
+<table>
+<thead>
+<tr>
+<th align="center">建议</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">避免主线程频繁读写</td>
+<td align="center">使用子线程或延迟初始化</td>
+</tr>
+<tr>
+<td align="center">批量写入 + apply()</td>
+<td align="center">避免多次频繁写磁盘</td>
+</tr>
+<tr>
+<td align="center">使用内存缓存 + 异步刷盘</td>
+<td align="center">提升响应速度</td>
+</tr>
+<tr>
+<td align="center">避免大数据量或频繁更新场景使用</td>
+<td align="center">使用 MMKV 或 DataStore 替代</td>
+</tr>
+<tr>
+<td align="center">多进程建议使用 MMKV &#x2F; ContentProvider</td>
+<td align="center">SP 不适合多进程</td>
+</tr>
+</tbody></table>
+<h3 id="2-19-冷启动、热启动、温启动的区别？"><a href="#2-19-冷启动、热启动、温启动的区别？" class="headerlink" title="2.19 冷启动、热启动、温启动的区别？"></a>2.19 冷启动、热启动、温启动的区别？</h3><p>1-概念</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">1-冷启动（Cold Start）</span><br><span class="line">1.1 定义：</span><br><span class="line">-应用 完全没有进程存在，从零开始创建进程、初始化 Application、加载页面。</span><br><span class="line"></span><br><span class="line">1.2 特点：</span><br><span class="line">-系统需重新启动进程（Zygote fork → 创建进程）。</span><br><span class="line">-执行 Application#onCreate()、Activity#onCreate()。</span><br><span class="line">-启动时间最长，冷启动耗时指标最关键！</span><br><span class="line"></span><br><span class="line">1.3 触发场景：</span><br><span class="line">-第一次打开 App。</span><br><span class="line">-App 被系统杀死后再次打开。</span><br><span class="line">-清理后台后重新打开。</span><br><span class="line"></span><br><span class="line">2-热启动（Hot Start）</span><br><span class="line">2.1定义：</span><br><span class="line">App 进程仍在内存中、Activity 也未被销毁，直接 bring to front。</span><br><span class="line"></span><br><span class="line">2.2 特点：</span><br><span class="line">-不走 Application#onCreate()。</span><br><span class="line">-Activity#onCreate() 通常也不走（除非页面被销毁）。</span><br><span class="line">-启动最快！只是 UI 重新显示一下。</span><br><span class="line"></span><br><span class="line">2.3 触发场景：</span><br><span class="line">-按 Home 键退到桌面后，立刻点击桌面图标返回。</span><br><span class="line">-多任务切换快速返回原 App。</span><br><span class="line"></span><br><span class="line">3-温启动（Warm Start）</span><br><span class="line">3.1 定义：</span><br><span class="line">App 进程仍然存在，但原先的 Activity 被系统销毁，需要重建 Activity。</span><br><span class="line"></span><br><span class="line">3.2 特点：</span><br><span class="line">-Application#onCreate() 不会走（进程还在）。</span><br><span class="line">-走 Activity#onCreate()，需要重新初始化 UI。</span><br><span class="line">-启动时间居中，介于热启动和冷启动之间。</span><br><span class="line"></span><br><span class="line">3.3 触发场景：</span><br><span class="line">-低内存设备，系统回收了部分 Activity，但保留了进程。</span><br><span class="line">-App 在后台停留过久，系统回收了页面，但没杀掉进程。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-20-优化布局层级的方法有哪些？"><a href="#2-20-优化布局层级的方法有哪些？" class="headerlink" title="2.20 优化布局层级的方法有哪些？"></a>2.20 优化布局层级的方法有哪些？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">1-优化布局层级</span><br><span class="line">优化布局层级（Layout Hierarchy）系 Android 性能优化入门大招之一，布局层级太深会导致：</span><br><span class="line">-Measure / Layout / Draw 阶段耗时增加（即三大流程慢）</span><br><span class="line">-启动慢 / 滑动卡顿 / 内存占用高 / 丢帧</span><br><span class="line"></span><br><span class="line">2-为什么布局层级深会影响性能？</span><br><span class="line">-每多一层 View，就会多一次 measure/layout/draw。</span><br><span class="line">-嵌套 ViewGroup（如嵌套 LinearLayout）代价更高。</span><br><span class="line">-高层级可能导致重绘区域增大，影响绘制效率。</span><br><span class="line"></span><br><span class="line">3-优化布局层级的常见方法</span><br><span class="line">3.1 使用 ConstraintLayout 替代多层 LinearLayout、RelativeLayout</span><br><span class="line">3.2 避免深层嵌套嵌套嵌套</span><br><span class="line">-布局最多建议 不超过 10 层。</span><br><span class="line">-合理拆分模块 View（重用组合控件，但不能盲目嵌套）</span><br><span class="line">3.3 使用 merge 标签合并布局层级</span><br><span class="line">3.4 避免不必要的 ViewGroup</span><br><span class="line">3.5 使用 include + merge 模块化复用布局（并优化层级）</span><br><span class="line">-include 方便复用，同时用 merge 防止增加层级。</span><br><span class="line">-避免重复 inflate 同样结构。</span><br><span class="line">3.6 使用 ViewStub 延迟加载可选 View</span><br><span class="line">3.7 不要滥用 wrap_content 尤其是用于父布局</span><br><span class="line">-在复杂布局中使用 wrap_content 会引发 多次 measure 流程。</span><br><span class="line">-尤其在 RecyclerView item 中应尽量避免。</span><br></pre></td></tr></table></figure>
+
+<p>2-对比图：优化前后层级结构差异</p>
+<table>
+<thead>
+<tr>
+<th align="center">优化前</th>
+<th align="center">优化后</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">LinearLayout 嵌套多层</td>
+<td align="center">ConstraintLayout 一层替代</td>
+</tr>
+<tr>
+<td align="center">多 include + ViewGroup</td>
+<td align="center">include + merge 精简层级</td>
+</tr>
+<tr>
+<td align="center">可选控件始终显示</td>
+<td align="center">使用 ViewStub 延迟加载</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>3-快速提升布局性能的 3 步法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 打开 Layout Inspector 看层级结构</span><br><span class="line">2. 替换掉嵌套的 LinearLayout → ConstraintLayout</span><br><span class="line">3. 把 include 的子布局改成 merge，删掉冗余父布局</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-21-如何优化-Dex-加载？"><a href="#2-21-如何优化-Dex-加载？" class="headerlink" title="2.21 如何优化 Dex 加载？"></a>2.21 如何优化 Dex 加载？</h3><p>1-概念</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">Dex（Dalvik Executable）加载是 Android 冷启动中的大头之一，优</span><br><span class="line">化 Dex 加载可以显著加快冷启动时间，尤其在多 Dex / 大型 App 中尤为关键。</span><br><span class="line"></span><br><span class="line">一、Dex 加载的原理简要</span><br><span class="line">1.1 加载流程（冷启动）</span><br><span class="line">APK 解压 → 解压 DEX → ART 虚拟机加载 DEX → OAT 编译 → 执行 Java 代码</span><br><span class="line">Dex 文件通常放在 classes.dex、classes2.dex 等中，随着方法数增长，</span><br><span class="line">采用 MultiDex（多个 dex 文件）策略。</span><br><span class="line"></span><br><span class="line">二、Dex 加载慢的原因</span><br><span class="line">-多个 dex 文件，主 dex 和 其他 dex 分离，系统加载耗时。</span><br><span class="line">-冷启动时加载多个 dex，阻塞主线程。</span><br><span class="line">-Dex 合并顺序不合理，导致关键类不在主 dex。</span><br><span class="line">-主 dex 体积过大。</span><br><span class="line">-设备首次运行需执行 oat 优化（dex2oat）。</span><br><span class="line"></span><br><span class="line">三、Dex 加载优化方案汇总</span><br><span class="line">3.1 使用 App Startup 延迟初始化</span><br><span class="line">-避免在 Application#onCreate() 中加载 Dex 所属的大 SDK。</span><br><span class="line">-非核心功能可以延迟加载，甚至移到后台线程处理。</span><br><span class="line"></span><br><span class="line">3.2 采用 MultiDex + 分 Dex 优化策略</span><br><span class="line">如果方法数 &gt; 64K，必须采用 MultiDex：</span><br><span class="line"></span><br><span class="line">然后：</span><br><span class="line">-使用工具（如 multidex-keep.txt）手动维护主 dex 类。</span><br><span class="line">-重要类（Application、SplashActivity、登录逻辑等）放主 dex。</span><br><span class="line">-将不常用类分到其他 dex，提高主 dex加载速度</span><br><span class="line"></span><br><span class="line">3.3 优化主 dex 大小（减少方法数）</span><br><span class="line">-拆分业务模块，按需加载。</span><br><span class="line">-减少三方库依赖，去掉 unused 引用。</span><br><span class="line">-使用 R8/ProGuard 混淆压缩（关闭 minifyEnabled 会导致体积暴增）。</span><br><span class="line"></span><br><span class="line">3.4 开启 ProGuard/R8 精简无用代码</span><br><span class="line">效果：</span><br><span class="line">-减少 dex 方法数。</span><br><span class="line">-减少 Dex 文件大小。</span><br><span class="line">-加快 dex merge 和加载速度。</span><br><span class="line"></span><br><span class="line">3.5 使用 dexopt / dex2oat 预编译优化</span><br><span class="line">-安装时系统会将 dex 转成 oat。</span><br><span class="line">-某些 ROM 会推迟到第一次启动执行 → 冷启动变慢！</span><br><span class="line"></span><br><span class="line">3.6 使用 InstantRun / Split APK / Dynamic Feature Module</span><br><span class="line">-将不常用模块拆成 Dynamic Feature Module → 按需加载。</span><br><span class="line">-Google 推荐 Modularization，减小主 APK dex 的体积。</span><br><span class="line"></span><br><span class="line">3.7 使用 AndResGuard / 资源混淆（配合 R8）</span><br><span class="line">减少 resources 占用体积间接影响 APK 解压 + dex 加载速度。</span><br><span class="line"></span><br><span class="line"> 四、检测 Dex 加载时间的方法</span><br><span class="line"> val start = SystemClock.uptimeMillis()</span><br><span class="line">// 放在 Application#onCreate 前</span><br><span class="line">val end = SystemClock.uptimeMillis()</span><br><span class="line">Log.d(&quot;DexLoadCost&quot;, &quot;Dex load cost = $&#123;end - start&#125;ms&quot;)</span><br><span class="line"></span><br><span class="line">也可用：</span><br><span class="line">-Traceview 分析 App 启动阶段耗时。</span><br><span class="line">-Profile 工具中查看 Dex Loading 时间段。</span><br><span class="line">-APM 工具如 Firebase Performance、Bugly 等</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-22-数据库操作如何优化启动时间？"><a href="#2-22-数据库操作如何优化启动时间？" class="headerlink" title="2.22 数据库操作如何优化启动时间？"></a>2.22 数据库操作如何优化启动时间？</h3><table>
+<thead>
+<tr>
+<th align="center">优化项</th>
+<th align="center">说明</th>
+<th align="center">推荐度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">异步线程操作数据库</td>
+<td align="center">Room + Coroutine</td>
+<td align="center">✅✅✅✅✅</td>
+</tr>
+<tr>
+<td align="center">避免启动期大量数据加载</td>
+<td align="center">首页不需要的表&#x2F;字段延迟加载</td>
+<td align="center">✅✅✅✅</td>
+</tr>
+<tr>
+<td align="center">数据初始化交给 WorkManager</td>
+<td align="center">启动流程不被阻塞</td>
+<td align="center">✅✅✅✅</td>
+</tr>
+<tr>
+<td align="center">替代方案：使用 MMKV 或 DataStore</td>
+<td align="center">快速、线程安全、无初始化开销</td>
+<td align="center">✅✅✅✅</td>
+</tr>
+<tr>
+<td align="center">使用事务处理 &#x2F; 批量插入</td>
+<td align="center">提高写入效率</td>
+<td align="center">✅✅✅</td>
+</tr>
+<tr>
+<td align="center">懒加载数据库连接</td>
+<td align="center">降低首次 I&#x2F;O 成本</td>
+<td align="center">✅✅✅</td>
+</tr>
+</tbody></table>
+<h3 id="2-23-如何减少首次启动的白屏时间"><a href="#2-23-如何减少首次启动的白屏时间" class="headerlink" title="2.23 如何减少首次启动的白屏时间"></a>2.23 如何减少首次启动的白屏时间</h3><p>1-概念</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">App 冷启动时的“白屏”是指从用户点击应用图标，到第一个界面真正显示前，这段空白无内容的时间。</span><br><span class="line">如果这段时间过长，会给用户“卡住了”或“没有反应”的感觉。</span><br><span class="line"></span><br><span class="line">一：常见优化方法</span><br><span class="line">1.1 使用启动页主题（Splash Theme）替代白屏背景</span><br><span class="line">在启动页的 Activity 中使用一个专属主题，在 windowBackground 中设置一张启动图或者背景颜色，</span><br><span class="line">让系统在加载布局之前就能展示 UI，避免白屏。</span><br><span class="line"></span><br><span class="line">1.2 减少 Application 中的初始化逻辑</span><br><span class="line">启动期间最容易卡住界面的是 Application 里的初始化。</span><br><span class="line">如果你加载了第三方 SDK、大量 I/O 或网络操作，会延迟进入首屏。</span><br><span class="line"></span><br><span class="line">解决方法：</span><br><span class="line">-延迟加载非必要模块（例如推送、广告、统计等）。</span><br><span class="line">-使用 Jetpack App Startup 或 WorkManager 延迟初始化。</span><br><span class="line"></span><br><span class="line">1.3 SplashActivity 快速跳转首页</span><br><span class="line">在 SplashActivity 中不要进行耗时操作，尽快跳转到主页面：</span><br><span class="line"></span><br><span class="line">1.4 避免在 setContentView() 之前执行复杂逻辑</span><br><span class="line">布局加载应该尽早完成，不要在它之前执行网络请求、数据库操作或其他耗时逻辑。</span><br><span class="line"></span><br><span class="line">1.5 使用静态图或轻量布局作为启动背景</span><br><span class="line">windowBackground 中设置的背景建议使用：</span><br><span class="line">-纯色背景；</span><br><span class="line">-居中 Logo；</span><br><span class="line">-渐变色。</span><br><span class="line"></span><br><span class="line">不要使用复杂布局、动画或者 WebView。</span><br><span class="line"></span><br><span class="line">1.6 Android 12+ 使用官方 SplashScreen API（推荐）</span><br><span class="line"></span><br><span class="line">1.7 避免重复初始化（多进程问题）</span><br><span class="line">确保只在主进程初始化 Application，不然可能出现白屏+卡顿并存的问题。</span><br></pre></td></tr></table></figure>
+
+<p>2-表格</p>
+<table>
+<thead>
+<tr>
+<th align="center">优化策略</th>
+<th align="center">效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">设置启动页主题（windowBackground）</td>
+<td align="center">用图片或背景颜色代替白屏</td>
+</tr>
+<tr>
+<td align="center">SplashActivity 中快速跳转主界面</td>
+<td align="center">不阻塞进入首页</td>
+</tr>
+<tr>
+<td align="center">延迟 Application 中的初始化操作</td>
+<td align="center">避免主线程卡顿</td>
+</tr>
+<tr>
+<td align="center">使用 App Startup 延迟组件加载</td>
+<td align="center">减少冷启动压力</td>
+</tr>
+<tr>
+<td align="center">使用 Jetpack SplashScreen API</td>
+<td align="center">提供系统级的平滑过渡动画</td>
+</tr>
+</tbody></table>
+<h2 id="三-参考"><a href="#三-参考" class="headerlink" title="三 参考"></a>三 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7480464724096057381">掘金—知识库的大纲</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%8E%98%E9%87%91/" rel="tag"># 掘金</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/8043dea5.html" rel="prev" title="Android面试题——掘金-性能优化之启动优化(4.1)">
+                  <i class="fa fa-angle-left"></i> Android面试题——掘金-性能优化之启动优化(4.1)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/e5e430e5.html" rel="next" title="Android面试题——掘金-性能优化之布局优化(4.3)">
+                  Android面试题——掘金-性能优化之布局优化(4.3) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"522b080ba90890f3a2feea0e421855b1"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

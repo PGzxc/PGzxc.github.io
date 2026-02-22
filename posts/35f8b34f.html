@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="前言BroadcastReceiver(广播接收器)，属于Android四大组件之一，在Android开发中，BroadcastReceiver的应用场景非常多，今天，我们将详细讲解关于BroadcastReceiver的一切相关知识。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发之——Android广播机制">
+<meta property="og:url" content="https://pgzxc.github.io/posts/35f8b34f.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="前言BroadcastReceiver(广播接收器)，属于Android四大组件之一，在Android开发中，BroadcastReceiver的应用场景非常多，今天，我们将详细讲解关于BroadcastReceiver的一切相关知识。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/broadcast.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/boradcast-ams.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/boradcast-detail.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/boradcast-life.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/broadcast-style.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/system-broadcast1.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/system-broadcast2.png">
+<meta property="article:published_time" content="2018-01-04T16:08:25.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.243Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="广播">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/broadcast.png">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/35f8b34f.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/35f8b34f.html","path":"posts/35f8b34f.html","title":"Android开发之——Android广播机制"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android开发之——Android广播机制 | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%90%86%E8%AE%BA"><span class="nav-number">2.</span> <span class="nav-text">理论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">2.3.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">2.4.</span> <span class="nav-text">实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E4%B8%AD%E6%9C%893%E4%B8%AA%E8%A7%92%E8%89%B2"><span class="nav-number">2.5.</span> <span class="nav-text">模型中有3个角色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="nav-number">2.6.</span> <span class="nav-text">原理描述：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="nav-number">2.7.</span> <span class="nav-text">具体流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">具体使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B9%BF%E6%92%AD%E6%8E%A5%E6%94%B6%E8%80%85BroadcastReceiver"><span class="nav-number">3.1.</span> <span class="nav-text">自定义广播接收者BroadcastReceiver</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%BF%E6%92%AD%E6%8E%A5%E6%94%B6%E5%99%A8%E6%B3%A8%E5%86%8C"><span class="nav-number">3.2.</span> <span class="nav-text">广播接收器注册</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%B3%A8%E5%86%8C"><span class="nav-number">3.2.1.</span> <span class="nav-text">静态注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C"><span class="nav-number">3.2.2.</span> <span class="nav-text">动态注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E5%88%AB%E6%B3%A8%E6%84%8F"><span class="nav-number">3.2.3.</span> <span class="nav-text">特别注意</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8E%9F%E5%9B%A0%EF%BC%9A"><span class="nav-number">3.2.3.1.</span> <span class="nav-text">原因：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E6%B3%A8%E5%86%8C%E6%96%B9%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.2.4.</span> <span class="nav-text">两种注册方式的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%BF%E6%92%AD%E5%8F%91%E9%80%81%E8%80%85%E5%90%91AMS%E5%8F%91%E9%80%81%E5%B9%BF%E6%92%AD"><span class="nav-number">3.2.5.</span> <span class="nav-text">广播发送者向AMS发送广播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%BF%E6%92%AD%E7%9A%84%E5%8F%91%E9%80%81"><span class="nav-number">3.2.6.</span> <span class="nav-text">广播的发送</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%BF%E6%92%AD%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.2.7.</span> <span class="nav-text">广播的类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E5%B9%BF%E6%92%AD-Normal-Broadcast"><span class="nav-number">3.2.7.1.</span> <span class="nav-text">普通广播(Normal Broadcast)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%B9%BF%E6%92%AD-System-Broadcast"><span class="nav-number">3.2.7.2.</span> <span class="nav-text">系统广播(System Broadcast)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E5%BA%8F%E5%B9%BF%E6%92%AD-Ordered-Broadcast"><span class="nav-number">3.2.7.3.</span> <span class="nav-text">有序广播(Ordered Broadcast)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="nav-number">3.2.7.3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B9%BF%E6%92%AD%E6%8E%A5%E6%94%B6%E8%80%85%E6%8E%A5%E6%94%B6%E5%B9%BF%E6%92%AD%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%A7%84%E5%88%99-%E5%90%8C%E6%97%B6%E9%9D%A2%E5%90%91%E9%9D%99%E6%80%81%E5%92%8C%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C%E7%9A%84%E5%B9%BF%E6%92%AD%E6%8E%A5%E6%94%B6%E8%80%85"><span class="nav-number">3.2.7.3.2.</span> <span class="nav-text">广播接收者接收广播的顺序规则(同时面向静态和动态注册的广播接收者)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%B9%E7%82%B9"><span class="nav-number">3.2.7.3.3.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E4%BD%BF%E7%94%A8-1"><span class="nav-number">3.2.7.3.4.</span> <span class="nav-text">具体使用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#App%E5%BA%94%E7%94%A8%E5%86%85%E5%B9%BF%E6%92%AD-Local-Broadcast"><span class="nav-number">3.2.7.4.</span> <span class="nav-text">App应用内广播(Local Broadcast)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">3.2.7.4.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%B2%E7%AA%81"><span class="nav-number">3.2.7.4.2.</span> <span class="nav-text">冲突</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">3.2.7.4.3.</span> <span class="nav-text">解决方案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E4%BD%BF%E7%94%A81-%E5%B0%86%E5%85%A8%E5%B1%80%E5%B9%BF%E6%92%AD%E8%AE%BE%E7%BD%AE%E6%88%90%E5%B1%80%E9%83%A8%E5%B9%BF%E6%92%AD"><span class="nav-number">3.2.7.4.4.</span> <span class="nav-text">具体使用1-将全局广播设置成局部广播</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E4%BD%BF%E7%94%A82-%E4%BD%BF%E7%94%A8%E5%B0%81%E8%A3%85%E5%A5%BD%E7%9A%84LocalBroadcastManager%E7%B1%BB"><span class="nav-number">3.2.7.4.5.</span> <span class="nav-text">具体使用2-使用封装好的LocalBroadcastManager类</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B2%98%E6%80%A7%E5%B9%BF%E6%92%AD-Sticky-Broadcast"><span class="nav-number">3.2.7.5.</span> <span class="nav-text">粘性广播(Sticky Broadcast)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E7%B2%98%E6%80%A7%E5%B9%BF%E6%92%AD"><span class="nav-number">3.2.7.5.1.</span> <span class="nav-text">对于粘性广播</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C%E5%B9%BF%E6%92%AD%E6%8E%A5%E6%94%B6%E5%99%A8"><span class="nav-number">3.2.7.5.2.</span> <span class="nav-text">注册广播接收器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%B9%E5%88%AB%E6%B3%A8%E6%84%8F-1"><span class="nav-number">3.2.7.5.3.</span> <span class="nav-text">特别注意</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/35f8b34f.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android开发之——Android广播机制 | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android开发之——Android广播机制<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Android%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-01-05 00:08:25" itemprop="dateCreated datePublished" datetime="2018-01-05T00:08:25+08:00">2018-01-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/D-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">D-移动开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/D-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>BroadcastReceiver(广播接收器)，属于Android四大组件之一，在Android开发中，BroadcastReceiver的应用场景非常多，今天，我们将详细讲解关于BroadcastReceiver的一切相关知识。<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/broadcast.png" loading="lazy">   </p>
+<span id="more"></span>  
+<h1 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>广播，是一个全局的监听器，属于Android四大组件之一。Android广播分为两个角色：广播发送者、广播接收者。   </p>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>用于监听&#x2F;接收应用发出的广播消息，并作出响应  </p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ul>
+<li>不同组件之间通信(包括应用内&#x2F;不同应用之间)  </li>
+<li>与Android系统在特定情况下的通信<br>  如当电话呼入时，网络可用时  </li>
+<li>多线程通信</li>
+</ul>
+<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>Android中的广播使用了设计模式中的观察者模式：基于消息的发布&#x2F;订阅事件模型。因此，Android将广播的发送者和接收者解耦，使得系统方便集成，更易扩展。  </p>
+<h2 id="模型中有3个角色"><a href="#模型中有3个角色" class="headerlink" title="模型中有3个角色"></a>模型中有3个角色</h2><ul>
+<li>消息订阅者(广播接收者) </li>
+<li>消息发布者(广播发布者)</li>
+<li>消息中心(AMS，即Activity Manager Service)<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/boradcast-ams.png" loading="lazy"></li>
+</ul>
+<h2 id="原理描述："><a href="#原理描述：" class="headerlink" title="原理描述："></a>原理描述：</h2><ul>
+<li>广播接收者通过Binder机制在AMS注册</li>
+<li>广播发送者通过Binder机制向AMS发送广播</li>
+<li>AMS根据广播发送者要求，在已注册列表中，寻找合适的广播接收者<br>  寻找依据：IntentFilter&#x2F;Permission  </li>
+<li>AMS将广播发送到合适的广播接收者响应的消息循环队列中；</li>
+<li>广播接收者通过消息循环拿到此广播，并回调onReceiver()<br>特别注意：广播发送者和广播接收者的执行时异步的，发出去的广播不会关心有无接收者，也不确定接收者到底是何时才能接收到；</li>
+</ul>
+<h2 id="具体流程"><a href="#具体流程" class="headerlink" title="具体流程"></a>具体流程</h2><p>具体使用流程如下：<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/boradcast-detail.png" loading="lazy">  </p>
+<h1 id="具体使用"><a href="#具体使用" class="headerlink" title="具体使用"></a>具体使用</h1><h2 id="自定义广播接收者BroadcastReceiver"><a href="#自定义广播接收者BroadcastReceiver" class="headerlink" title="自定义广播接收者BroadcastReceiver"></a>自定义广播接收者BroadcastReceiver</h2><p>自定义广播接收者，继承自BroadcstReceiver基类，必须复写抽象方法onReceiver()方法 </p>
+<ul>
+<li>广播接收器接收到响应广播后，会自动回调onReceiver()方法 </li>
+<li>一般情况下，onReceiver方法会涉及其他组件之间的交互，如发送Notification、启动Service等 </li>
+<li>默认情况下，广播接收器运行在UI线程，因此，onReceiver方法不能执行耗时操作，否则将导致ANR</li>
+</ul>
+<p>代码范例<br>mBroadcastReceiver.java  </p>
+<pre><code>public class mBroadcastReceiver extends BroadcastReceiver 
+{
+	//接收到广播后自动调用该方法
+	@Override
+	public void onReceive(Context context, Intent intent) {//写入接收广播后的操作}
+}
+</code></pre>
+<h2 id="广播接收器注册"><a href="#广播接收器注册" class="headerlink" title="广播接收器注册"></a>广播接收器注册</h2><p>注册的方式分为两种：静态注册、动态注册  </p>
+<h3 id="静态注册"><a href="#静态注册" class="headerlink" title="静态注册"></a>静态注册</h3><ul>
+<li><p>在AndroidManifest.xml里通过<receiver>标签声明  </p>
+</li>
+<li><p>属性说明：   </p>
+<pre><code>  &lt;receiver 
+  android:enabled=[&quot;true&quot; | &quot;false&quot;]
+  //此broadcastReceiver能否接收其他App的发出的广播
+  //默认值是由receiver中有无intent-filter决定的：如果有intent-filter，默认值为true，否则为false
+  android:exported=[&quot;true&quot; | &quot;false&quot;]
+  android:icon=&quot;drawable resource&quot;
+  android:label=&quot;string resource&quot;
+  //继承BroadcastReceiver子类的类名
+  android:name=&quot;.mBroadcastReceiver&quot;
+  //具有相应权限的广播发送者发送的广播才能被此BroadcastReceiver所接收；
+  android:permission=&quot;string&quot;
+  //BroadcastReceiver运行所处的进程
+  //默认为app的进程，可以指定独立的进程
+  //注：Android四大基本组件都可以通过此属性指定自己的独立进程
+  android:process=&quot;string&quot; &gt;
+  //用于指定此广播接收器将接收的广播类型
+  //本示例中给出的是用于接收网络状态改变时发出的广播
+  &lt;intent-filter&gt;
+  &lt;action android:name=&quot;android.net.conn.CONNECTIVITY_CHANGE&quot; /&gt;
+  &lt;/intent-filter&gt;
+  &lt;/receiver&gt;
+</code></pre>
+</li>
+<li><p>注册示例  </p>
+<pre><code>  &lt;receiver 
+  //此广播接收者类是mBroadcastReceiver
+  android:name=&quot;.mBroadcastReceiver&quot; &gt;
+  //用于接收网络状态改变时发出的广播
+  &lt;intent-filter&gt;
+      &lt;action android:name=&quot;android.net.conn.CONNECTIVITY_CHANGE&quot; /&gt;
+  &lt;/intent-filter&gt;
+  &lt;/receiver&gt;
+</code></pre>
+</li>
+</ul>
+<p>当此APP首次启动时，系统会自动实例化mBroadcastReceiver类，并注册到系统中。  </p>
+<h3 id="动态注册"><a href="#动态注册" class="headerlink" title="动态注册"></a>动态注册</h3><p>在代码中通过调用Context的registerReceiver()方法进行动态注册BroadcastReceiver，具体代码如下：  </p>
+<pre><code>@Override
+	protected void onResume()
+{
+  super.onResume();
+//实例化BroadcastReceiver子类 &amp;  IntentFilter
+ mBroadcastReceiver mBroadcastReceiver = new mBroadcastReceiver();
+ IntentFilter intentFilter = new IntentFilter();
+//设置接收广播的类型
+ intentFilter.addAction(android.net.conn.CONNECTIVITY_CHANGE);
+//调用Context的registerReceiver（）方法进行动态注册
+ registerReceiver(mBroadcastReceiver, intentFilter);
+}
+//注册广播后，要在相应位置记得销毁广播
+//即在onPause() 中unregisterReceiver(mBroadcastReceiver)
+//当此Activity实例化时，会动态将MyBroadcastReceiver注册到系统中
+//当此Activity销毁时，动态注册的MyBroadcastReceiver将不再接收到相应的广播。
+@Override
+protected void onPause() 
+{
+  super.onPause();
+  //销毁在onResume()方法中的广播
+  unregisterReceiver(mBroadcastReceiver);
+ }
+</code></pre>
+<h3 id="特别注意"><a href="#特别注意" class="headerlink" title="特别注意"></a>特别注意</h3><p>动态广播最好在Activity的onResume()注册、onPause销毁 </p>
+<h5 id="原因："><a href="#原因：" class="headerlink" title="原因："></a>原因：</h5><ul>
+<li><p>对于动态广播，有注册就必然得有注销，否则会导致内存泄漏<br>重复注册、重复注销也不允许  </p>
+</li>
+<li><p>Activity声明周期如下：<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/boradcast-life.png" loading="lazy"><br>Activity声明周期你的方法是成对出现的：</p>
+<ul>
+<li>onCreate()&amp;onDestroy()  </li>
+<li>onstart()&amp;onStop()  </li>
+<li>onResume()&amp;onPause()</li>
+</ul>
+<p>  在onResume()注册、onPause注销是因为onPause()在App死亡之前一定会被执行，从而保证广播在App死亡之前一定会被注销，从而防止内存泄漏。   </p>
+</li>
+<li><p>不在onCreate()&amp;onDestroy()或onStart()&amp;onStop()注册、注销是因为： 当系统内存不足(优先级更高的应用需要内存，请看上图红框)要回收Activity暂用的资源时，Activity在执行完onPause()方法后就会被销毁，有些声明周期方法onStop()，onDestroy()就不会执行。当再回到此Activity时，是从onCreate方法开始执行。  </p>
+</li>
+<li><p>假设我们将广播的注销放在onStop(),onDestroy()方法里的话，有可能在Activity被销毁后还未执行onStop，onDestroy()方法，即广播仍未注销，从而导致内存泄漏。   </p>
+</li>
+<li><p>但是，onPause()一定会被执行，从而保证了广播在App死亡前一定会被注销，从而防止了内存泄漏。</p>
+</li>
+</ul>
+<h3 id="两种注册方式的区别"><a href="#两种注册方式的区别" class="headerlink" title="两种注册方式的区别"></a>两种注册方式的区别</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/broadcast-style.png" loading="lazy">  </p>
+<h3 id="广播发送者向AMS发送广播"><a href="#广播发送者向AMS发送广播" class="headerlink" title="广播发送者向AMS发送广播"></a>广播发送者向AMS发送广播</h3><h3 id="广播的发送"><a href="#广播的发送" class="headerlink" title="广播的发送"></a>广播的发送</h3><p>广播的类型主要分为5类：  </p>
+<ul>
+<li>广播是用&quot;意图(intent)&quot;标识 </li>
+<li>定义广播的本质：定义广播所具备的&quot;意图(intent)&quot; </li>
+<li>广播发送：广播发送者将次广播的&quot;意图&quot;通过sendBroadcast()方法发送出去</li>
+</ul>
+<h3 id="广播的类型"><a href="#广播的类型" class="headerlink" title="广播的类型"></a>广播的类型</h3><p>广播的类型主要分为5类</p>
+<ul>
+<li>普通广播(Normal Broadcast)  </li>
+<li>系统广播(System Broadcast)  </li>
+<li>有序广播(Orderd Broadcast)  </li>
+<li>粘性广播(Sticky Broadcast)  </li>
+<li>App应用内广播(Local Broadcast)</li>
+</ul>
+<p>具体说明如下：  </p>
+<h4 id="普通广播-Normal-Broadcast"><a href="#普通广播-Normal-Broadcast" class="headerlink" title="普通广播(Normal Broadcast)"></a>普通广播(Normal Broadcast)</h4><p>即开发者自身定义intent的广播(最常用)，发送广播使用如下：   </p>
+<pre><code>Intent intent=new Intent();  
+//对应BroadcastReceiver中intentFilter的action  
+intent.setAction(BROADCAST_ACTION);  
+//发送广播 
+sendBroadcast(intent);
+</code></pre>
+<ul>
+<li><p>若被注册了的广播接收者中注册时intentFilter的action与上述匹配，则会接受此广播(即进行回调onReceiver())。如下mBroadcastReceiver则会接收上述广播   </p>
+<pre><code>  &lt;receiver 
+      //此广播接收者类是mBroadcastReceiver
+      android:name=&quot;.mBroadcastReceiver&quot; &gt;
+      //用于接收网络状态改变时发出的广播
+      &lt;intent-filter&gt;
+      &lt;action android:name=&quot;BROADCAST_ACTION&quot; /&gt;
+      &lt;/intent-filter&gt;
+  &lt;/receiver&gt;
+</code></pre>
+</li>
+<li><p>若发送广播有相应权限，那么广播接收者也需要相应权限</p>
+</li>
+</ul>
+<h4 id="系统广播-System-Broadcast"><a href="#系统广播-System-Broadcast" class="headerlink" title="系统广播(System Broadcast)"></a>系统广播(System Broadcast)</h4><ul>
+<li>Android中内置了多个系统广播：只要涉及到手机的基本操作(如开机、网络状态改变、拍照等等)，都会发出相应的广播  </li>
+<li>每个广播都有特定的intent-Filter(包括具体的action),Android系统广播action如下：<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/system-broadcast1.png" loading="lazy"><br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/system-broadcast2.png" loading="lazy"><br>注：当使用系统广播时，只需要在注册广播接收者时定义相关的action既可，并不需要手动发送广播，当系统有相关操作时会自动进行系统广播</li>
+</ul>
+<h4 id="有序广播-Ordered-Broadcast"><a href="#有序广播-Ordered-Broadcast" class="headerlink" title="有序广播(Ordered Broadcast)"></a>有序广播(Ordered Broadcast)</h4><h5 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h5><p>发送出去的广播被广播接收者按照先后顺序接收<br>有序是针对广播接收而言的   </p>
+<h5 id="广播接收者接收广播的顺序规则-同时面向静态和动态注册的广播接收者"><a href="#广播接收者接收广播的顺序规则-同时面向静态和动态注册的广播接收者" class="headerlink" title="广播接收者接收广播的顺序规则(同时面向静态和动态注册的广播接收者)"></a>广播接收者接收广播的顺序规则(同时面向静态和动态注册的广播接收者)</h5><ul>
+<li>按照Priority属性值从大到小排序；  </li>
+<li>Priority属性相同者，动态注册的广播优先；</li>
+</ul>
+<h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5><ul>
+<li>接收广播按顺序接收  </li>
+<li>先接收的广播接收者可以对广播进行截断，即后接收的广播接收者不在接收到此广播；  </li>
+<li>先接收的广播接收者可以对广播进行修改，那么后接收的广播接收者收到被修改后的广播</li>
+</ul>
+<h5 id="具体使用-1"><a href="#具体使用-1" class="headerlink" title="具体使用"></a>具体使用</h5><p>有序广播的使用过程与普通广播非常类似，差异仅在于广播的发送方式：  </p>
+<pre><code>sendOrderBroadcast(intent)  
+</code></pre>
+<h4 id="App应用内广播-Local-Broadcast"><a href="#App应用内广播-Local-Broadcast" class="headerlink" title="App应用内广播(Local Broadcast)"></a>App应用内广播(Local Broadcast)</h4><h5 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h5><p>Android中的广播可以跨App直接通信(exported对于有intent-filter情况下默认值为true)  </p>
+<h5 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h5><p>可能出现的问题  </p>
+<ul>
+<li>其他App针对性发出与当前App intent-filter相匹配的广播，由此导致当前App不断接收广播并处理；   </li>
+<li>其他App注册与当前App一致的intent-filter用于接收广播，获取当前广播具体信息；即会出现安全性&amp;效率性的问题。</li>
+</ul>
+<h5 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h5><p>使用App应用内广播(Local Broadcast)  </p>
+<ul>
+<li>App应用内广播可理解为一种局部广播，广播的发送者和接收者都同属于一个App。  </li>
+<li>相比于全局广播(普通广播)，App应用内广播优势体现在：安全性高&amp;效率高</li>
+</ul>
+<h5 id="具体使用1-将全局广播设置成局部广播"><a href="#具体使用1-将全局广播设置成局部广播" class="headerlink" title="具体使用1-将全局广播设置成局部广播"></a>具体使用1-将全局广播设置成局部广播</h5><ul>
+<li>注册广播时将exported属性设置为false，使得非本App内部发出的此广播不被接收；  </li>
+<li>在广播发送和接收时，增设相应权限permission，用于权限验证；  </li>
+<li>发送广播时指定该广播接收器所在的报名，此广播将只会发送到此包中的App内与之相匹配的有效广播接收器中。<br>通过intent.setPackage(packageName)指定包名</li>
+</ul>
+<h5 id="具体使用2-使用封装好的LocalBroadcastManager类"><a href="#具体使用2-使用封装好的LocalBroadcastManager类" class="headerlink" title="具体使用2-使用封装好的LocalBroadcastManager类"></a>具体使用2-使用封装好的LocalBroadcastManager类</h5><p>使用方式上与全局广播几乎相同，只是注册&#x2F;取消注册广播接收器和发送广播时将参数的context变成了LocalBroadcastManager的单一实例  </p>
+<p>注：对于LocalBroadcastManager方式发送的应用内广播，只能通过LocalBroadcastManager动态注册，不能静态注册  </p>
+<pre><code>//注册应用内广播接收器
+//步骤1：实例化BroadcastReceiver子类 &amp; IntentFilter mBroadcastReceiver 
+mBroadcastReceiver = new mBroadcastReceiver(); 
+IntentFilter intentFilter = new IntentFilter(); 
+
+//步骤2：实例化LocalBroadcastManager的实例
+localBroadcastManager = LocalBroadcastManager.getInstance(this);
+
+//步骤3：设置接收广播的类型 
+intentFilter.addAction(android.net.conn.CONNECTIVITY_CHANGE);
+
+//步骤4：调用LocalBroadcastManager单一实例的registerReceiver（）方法进行动态注册 
+localBroadcastManager.registerReceiver(mBroadcastReceiver, intentFilter);
+
+//取消注册应用内广播接收器
+localBroadcastManager.unregisterReceiver(mBroadcastReceiver);
+
+//发送应用内广播
+Intent intent = new Intent();
+intent.setAction(BROADCAST_ACTION);
+localBroadcastManager.sendBroadcast(intent);
+</code></pre>
+<h4 id="粘性广播-Sticky-Broadcast"><a href="#粘性广播-Sticky-Broadcast" class="headerlink" title="粘性广播(Sticky Broadcast)"></a>粘性广播(Sticky Broadcast)</h4><p>android的粘性广播，是指广播接收器一注册马上就能接收到广播的一种机制，当然首先系统要存在广播。而普通广播就是要先注册广播接收器，然后广播被发送到系统，广播接收器才能接收到广播。<br>所以他们的区别是：<br>粘性广播调用registerReceiver能马上接受广播，而普通广播不行。  </p>
+<h5 id="对于粘性广播"><a href="#对于粘性广播" class="headerlink" title="对于粘性广播"></a>对于粘性广播</h5><pre><code>sendStickyBroadcast(Intent intent) 
+</code></pre>
+<h5 id="注册广播接收器"><a href="#注册广播接收器" class="headerlink" title="注册广播接收器"></a>注册广播接收器</h5><pre><code>registerReceiver(BroadcastReceiver receiver, IntentFilter filter)  
+</code></pre>
+<h5 id="特别注意-1"><a href="#特别注意-1" class="headerlink" title="特别注意"></a>特别注意</h5><p>对于不同注册方式的广播接收器回调onReceiver(Context context,Intent intent)中的context返回值是不一样的：  </p>
+<ul>
+<li>对于静态注册(全局+应用内广播)，回调onReceiver(context,intent)中的context返回值：ReceiverRestrictedContext;   </li>
+<li>对于全局广播的动态注册，回调onReceive(context,intent)中的context返回值是Activity Context;  </li>
+<li>对于应用内广播的动态注册(LocalBroadcastManager方式)，回调onReceiver(context,intent)中的context返回值是Application Context;  </li>
+<li>对于应用内广播的动态注册(非LocalBroadcastManager方式)，回调onReceiver（context,intent)中的context返回值是：Activity Context;</li>
+</ul>
+<p>参考：<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ca3d87a4cdf3">Android四大组件：BroadcastReceiver史上最全面解析</a><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c85ee69553b5">android 广播机制(2) 粘性广播</a><br><a target="_blank" rel="noopener" href="https://github.com/PGzxc/BroadCastSample">BroadCastSample</a>  </p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%B9%BF%E6%92%AD/" rel="tag"># 广播</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/9dde4748.html" rel="prev" title="Android开发之——JobScheduler机制及Android电量优化">
+                  <i class="fa fa-angle-left"></i> Android开发之——JobScheduler机制及Android电量优化
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/92d18b21.html" rel="next" title="Android开发之——Notification中使用TaskStackBuilder">
+                  Android开发之——Notification中使用TaskStackBuilder <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"ab4fbfd93e2c5b3d31e9b4db8b7bef38"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

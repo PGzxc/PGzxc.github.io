@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述 类型声明文件概述 TS中的两种文件类型 使用已有的类型声明文件 创建自己的类型声明文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript开发之——高级类型-类型声明文件(10)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/e44ddb90.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 概述 类型声明文件概述 TS中的两种文件类型 使用已有的类型声明文件 创建自己的类型声明文件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ts/ts-day3-img10-type-axios.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ts/ts-day3-img10-type-axios-typings.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ts/ts-day3-img10-type-axios.png">
+<meta property="article:published_time" content="2023-04-28T02:53:11.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.337Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="TypeScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ts/ts-day3-img10-type-axios.png">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/e44ddb90.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/e44ddb90.html","path":"posts/e44ddb90.html","title":"TypeScript开发之——高级类型-类型声明文件(10)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>TypeScript开发之——高级类型-类型声明文件(10) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6%E6%A6%82%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">二 类型声明文件概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 类型声明文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 类型声明文件示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-TS%E4%B8%AD%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">三 TS中的两种文件类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%A6%82%E5%BF%B5"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ts%E6%96%87%E4%BB%B6"><span class="nav-number">3.1.1.</span> <span class="nav-text">.ts文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#d-ts%E6%96%87%E4%BB%B6"><span class="nav-number">3.1.2.</span> <span class="nav-text">.d.ts文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-ts%E6%96%87%E4%BB%B6%E7%A4%BA%E4%BE%8B-index-ts"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 .ts文件示例(index.ts)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-d-ts%E7%A4%BA%E4%BE%8B-index-d-ts"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 .d.ts示例(index.d.ts)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E4%BD%BF%E7%94%A8%E5%B7%B2%E6%9C%89%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">四 使用已有的类型声明文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 内置类型声明文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 第三方库的类型声明文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%93%E8%87%AA%E5%B8%A6%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6%EF%BC%8C%E6%AF%94%E5%A6%82axios"><span class="nav-number">4.2.1.</span> <span class="nav-text">库自带类型声明文件，比如axios</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%B1-DefinitelyTyped-%E6%8F%90%E4%BE%9B"><span class="nav-number">4.2.2.</span> <span class="nav-text">由 DefinitelyTyped 提供</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E5%88%9B%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">五 创建自己的类型声明文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E9%A1%B9%E7%9B%AE%E5%86%85%E5%85%B1%E4%BA%AB%E7%B1%BB%E5%9E%8B"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 项目内共享类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="nav-number">5.1.1.</span> <span class="nav-text">操作步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="nav-number">5.1.2.</span> <span class="nav-text">示例代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E4%B8%BA%E5%B7%B2%E6%9C%89-JS-%E6%96%87%E4%BB%B6%E6%8F%90%E4%BE%9B%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 为已有 JS 文件提供类型声明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%95%E6%97%B6%E4%BD%BF%E7%94%A8"><span class="nav-number">5.2.1.</span> <span class="nav-text">何时使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E6%9C%89js%E6%96%87%E4%BB%B6%E6%8F%90%E4%BE%9B%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E"><span class="nav-number">5.2.2.</span> <span class="nav-text">原有js文件提供类型声明</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD-%E5%8F%82%E8%80%83"><span class="nav-number">6.</span> <span class="nav-text">六 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/e44ddb90.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="TypeScript开发之——高级类型-类型声明文件(10) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          TypeScript开发之——高级类型-类型声明文件(10)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/TypeScript%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94%E9%AB%98%E7%BA%A7%E7%B1%BB%E5%9E%8B-%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6(10).md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-04-28 10:53:11" itemprop="dateCreated datePublished" datetime="2023-04-28T10:53:11+08:00">2023-04-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/C-%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">C-前端开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/C-%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul>
+<li>类型声明文件概述</li>
+<li>TS中的两种文件类型</li>
+<li>使用已有的类型声明文件</li>
+<li>创建自己的类型声明文件</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="二-类型声明文件概述"><a href="#二-类型声明文件概述" class="headerlink" title="二 类型声明文件概述"></a>二 类型声明文件概述</h2><h3 id="2-1-类型声明文件"><a href="#2-1-类型声明文件" class="headerlink" title="2.1 类型声明文件"></a>2.1 类型声明文件</h3><ul>
+<li>类型声明文件：用来为已存在的 JS 库提供类型信息</li>
+<li>这样在 TS 项目中使用这些库时，就像用 TS 一样，都会有代码提示、类型保护等机制了</li>
+</ul>
+<h3 id="2-2-类型声明文件示例"><a href="#2-2-类型声明文件示例" class="headerlink" title="2.2 类型声明文件示例"></a>2.2 类型声明文件示例</h3><p>TS文件代码(使用js依赖库axios)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import axios from &#x27;axios&#x27;</span><br><span class="line"></span><br><span class="line">axios(&#123;</span><br><span class="line">    url:&#x27;&#x27;,</span><br><span class="line">    method:&#x27;GET&#x27;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>查看js中TS声明</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ts/ts-day3-img10-type-axios.png" loading="lazy"></p>
+<p>通过<code>package.json</code>中的<code>typings</code>指定对应哪个<code>.d.ts</code>文件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ts/ts-day3-img10-type-axios-typings.png" loading="lazy"></p>
+<p>说明：</p>
+<ul>
+<li>所有的 JavaScript 应用都会引入许多第三方库来完成任务需求</li>
+<li>这些第三方库不管是否是用 TS 编写的，最终都要编译成 JS 代码，才能发布给开发者使用</li>
+<li>我们知道是 TS 提供了类型，才有了代码提示和类型保护等机制</li>
+</ul>
+<h2 id="三-TS中的两种文件类型"><a href="#三-TS中的两种文件类型" class="headerlink" title="三 TS中的两种文件类型"></a>三 TS中的两种文件类型</h2><h3 id="3-1-概念"><a href="#3-1-概念" class="headerlink" title="3.1 概念"></a>3.1 概念</h3><p>TS 中有两种文件类型：1 .ts 文件 2 .d.ts 文件</p>
+<h4 id="ts文件"><a href="#ts文件" class="headerlink" title=".ts文件"></a>.ts文件</h4><ul>
+<li>既包含类型信息又可执行代码</li>
+<li>可以被编译为 .js 文件，然后，执行代码</li>
+<li>用途：编写程序代码的地方</li>
+</ul>
+<h4 id="d-ts文件"><a href="#d-ts文件" class="headerlink" title=".d.ts文件"></a>.d.ts文件</h4><ul>
+<li>只包含类型信息的类型声明文件</li>
+<li>不会生成 .js 文件，仅用于提供类型信息</li>
+<li>用途：为 JS 提供类型信息</li>
+</ul>
+<p>总结：.ts 是 implementation（代码实现文件）；.d.ts 是 declaration（类型声明文件）</p>
+<p>如果要为 JS 库提供类型信息，要使用 .d.ts 文件</p>
+<h3 id="3-2-ts文件示例-index-ts"><a href="#3-2-ts文件示例-index-ts" class="headerlink" title="3.2 .ts文件示例(index.ts)"></a>3.2 .ts文件示例(index.ts)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//类型</span><br><span class="line">type Props=&#123;a:number;b:string;c:boolean&#125;</span><br><span class="line"></span><br><span class="line">//可执行代码</span><br><span class="line">function add(num1:number,num2:number)&#123;</span><br><span class="line">    return num1+num2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(add(1,2))</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-d-ts示例-index-d-ts"><a href="#3-3-d-ts示例-index-d-ts" class="headerlink" title="3.3 .d.ts示例(index.d.ts)"></a>3.3 .d.ts示例(index.d.ts)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//类型</span><br><span class="line">type Props1=&#123;a:number;b:string;c:boolean&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四-使用已有的类型声明文件"><a href="#四-使用已有的类型声明文件" class="headerlink" title="四 使用已有的类型声明文件"></a>四 使用已有的类型声明文件</h2><p>使用已有的类型声明文件：1 内置类型声明文件 2 第三方库的类型声明文件</p>
+<h3 id="4-1-内置类型声明文件"><a href="#4-1-内置类型声明文件" class="headerlink" title="4.1 内置类型声明文件"></a>4.1 内置类型声明文件</h3><p>TS 为 JS 运行时可用的所有标准化内置 API 都提供了声明文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 3, 5]</span><br><span class="line">arr.forEach</span><br><span class="line"></span><br><span class="line">document.querySelector</span><br><span class="line"></span><br><span class="line">window</span><br></pre></td></tr></table></figure>
+
+<p>点击代码中的方法，可以跳转到声明文件位置(以forEach为例跳转到lib.es5.d.ts类型声明文件中)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">forEach(callbackfn: (value: T, index: number, array: T[]) =&gt; void, thisArg?: any): void;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-第三方库的类型声明文件"><a href="#4-2-第三方库的类型声明文件" class="headerlink" title="4.2 第三方库的类型声明文件"></a>4.2 第三方库的类型声明文件</h3><p>目前，几乎所有常用的第三方库都有相应的类型声明文件。第三方库的类型声明文件有两种存在形式：1 库自带类型声明文件 2 由 DefinitelyTyped 提供</p>
+<h4 id="库自带类型声明文件，比如axios"><a href="#库自带类型声明文件，比如axios" class="headerlink" title="库自带类型声明文件，比如axios"></a>库自带类型声明文件，比如axios</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-ts/ts-day3-img10-type-axios.png" loading="lazy"></p>
+<p>说明：这种情况下，正常导入该库，TS 就会自动加载库自己的类型声明文件，以提供该库的类型声明</p>
+<h4 id="由-DefinitelyTyped-提供"><a href="#由-DefinitelyTyped-提供" class="headerlink" title="由 DefinitelyTyped 提供"></a>由 DefinitelyTyped 提供</h4><p>1-DefinitelyTyped 介绍</p>
+<ul>
+<li>DefinitelyTyped 是一个 github 仓库，用来提供高质量 TypeScript 类型声明</li>
+<li>可以通过 npm&#x2F;yarn 来下载该仓库提供的 TS 类型声明包，这些包的名称格式为：@types&#x2F;*。比如，@types&#x2F;react、@types&#x2F;lodash 等</li>
+</ul>
+<p>2-使用第三方库时，如lodash</p>
+<p>2.1-安装依赖库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i lodash</span><br></pre></td></tr></table></figure>
+
+<p>2.2-安装类型声明包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i --save-dev @types/lodash</span><br></pre></td></tr></table></figure>
+
+<p>若不安装类型声明包，会出现以下提示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">无法找到模块“lodash”的声明文件。“node_modules/lodash/lodash.js”隐式拥有 &quot;any&quot; 类型。</span><br><span class="line">尝试使用 `npm i --save-dev @types/lodash` (如果存在)，或者添加一个包含 `declare module &#x27;lodash&#x27;;` 的新声明(.d.ts)文件ts(7016)</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>当安装 @types&#x2F;* 类型声明包后，TS 也会自动加载该类声明包，以提供该库的类型声明</li>
+<li>TS 官方文档提供了一个页面，可以来查询 @types&#x2F;* 库</li>
+</ul>
+<h2 id="五-创建自己的类型声明文件"><a href="#五-创建自己的类型声明文件" class="headerlink" title="五 创建自己的类型声明文件"></a>五 创建自己的类型声明文件</h2><p>创建自己的类型声明文件：1 项目内共享类型 2 为已有 JS 文件提供类型声明</p>
+<h3 id="5-1-项目内共享类型"><a href="#5-1-项目内共享类型" class="headerlink" title="5.1 项目内共享类型"></a>5.1 项目内共享类型</h3><h4 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h4><ul>
+<li>创建 index.d.ts 类型声明文件</li>
+<li>创建需要共享的类型，并使用 export 导出（TS 中的类型也可以使用 import&#x2F;export 实现模块化功能）</li>
+<li>在需要使用共享类型的 .ts 文件中，通过 import 导入即可（.d.ts 后缀导入时，直接省略）</li>
+</ul>
+<h4 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h4><p>1-index.d.ts文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type Props = &#123; x: number; y: number &#125;</span><br><span class="line"></span><br><span class="line">export &#123;Props&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2-a.ts</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import &#123;Props&#125; from &#x27;./index&#x27;</span><br><span class="line"></span><br><span class="line">let p1: Props = &#123;</span><br><span class="line">    x: 10,</span><br><span class="line">    y: 20</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3-b.ts</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import &#123;Props&#125; from &#x27;./index&#x27;</span><br><span class="line">let p2: Props = &#123;</span><br><span class="line">    x: 12,</span><br><span class="line">    y: 22</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>说明：项目内共享类型：如果多个 .ts 文件中都用到同一个类型，此时可以创建 .d.ts 文件提供该类型，实现类型共享</p>
+<h3 id="5-2-为已有-JS-文件提供类型声明"><a href="#5-2-为已有-JS-文件提供类型声明" class="headerlink" title="5.2 为已有 JS 文件提供类型声明"></a>5.2 为已有 JS 文件提供类型声明</h3><h4 id="何时使用"><a href="#何时使用" class="headerlink" title="何时使用"></a>何时使用</h4><ul>
+<li>在将 JS 项目迁移到 TS 项目时，为了让已有的 .js 文件有类型声明</li>
+<li>成为库作者，创建库给其他人使用</li>
+</ul>
+<h4 id="原有js文件提供类型声明"><a href="#原有js文件提供类型声明" class="headerlink" title="原有js文件提供类型声明"></a>原有js文件提供类型声明</h4><p>utils.js</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">let count = 10</span><br><span class="line">let songName = &#x27;痴心绝对&#x27;</span><br><span class="line">let position = &#123;</span><br><span class="line">  x: 0,</span><br><span class="line">  y: 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function add(x, y) &#123;</span><br><span class="line">  return x + y</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function changeDirection(direction) &#123;</span><br><span class="line">  console.log(direction)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const fomartPoint = point =&gt; &#123;</span><br><span class="line">  console.log(&#x27;当前坐标：&#x27;, point)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export &#123; count, songName, position, add, changeDirection, fomartPoint &#125;</span><br></pre></td></tr></table></figure>
+
+<p>utils.d.ts</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// 为 utils.js 文件来提供类型声明</span><br><span class="line"></span><br><span class="line">declare let count: number</span><br><span class="line">declare let songName: string</span><br><span class="line">interface Point &#123;</span><br><span class="line">  x: number</span><br><span class="line">  y: number</span><br><span class="line">&#125;</span><br><span class="line">declare let position: Point</span><br><span class="line"></span><br><span class="line">declare function add(x: number, y: number): number</span><br><span class="line">declare function changeDirection(</span><br><span class="line">  direction: &#x27;up&#x27; | &#x27;down&#x27; | &#x27;left&#x27; | &#x27;right&#x27;</span><br><span class="line">): void</span><br><span class="line"></span><br><span class="line">type FomartPoint = (point: Point) =&gt; void</span><br><span class="line">declare const fomartPoint: FomartPoint</span><br><span class="line"></span><br><span class="line">// 注意：类型提供好以后，需要使用 模块化方案 中提供的</span><br><span class="line">//      模块化语法，来导出声明好的类型。然后，才能在</span><br><span class="line">//      其他的 .ts 文件中使用</span><br><span class="line">export &#123; count, songName, position, add, changeDirection, fomartPoint, Point &#125;</span><br></pre></td></tr></table></figure>
+
+<p>index.ts(使用utils.d.ts)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import &#123; count, songName, add, Point &#125; from &#x27;./utils&#x27;</span><br><span class="line"></span><br><span class="line">type Person = &#123;</span><br><span class="line">  name: string</span><br><span class="line">  age: number</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let p: Partial&lt;Person&gt; = &#123;</span><br><span class="line">  name: &#x27;jack&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let p1: Point = &#123;</span><br><span class="line">  x: 10,</span><br><span class="line">  y: 20</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// console.log(&#x27;项目启动了&#x27;)</span><br><span class="line">console.log(&#x27;count&#x27;, count)</span><br><span class="line">console.log(&#x27;songName&#x27;, songName)</span><br><span class="line">console.log(&#x27;add()&#x27;, add(1, 4))</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>对于 type、interface 等这些明确就是 TS 类型的（只能在 TS 中使用的），可以省略 declare 关键字</li>
+<li>对于 let、function 等具有双重含义（在 JS、TS 中都能用），应该使用 declare 关键字，明确指定此处用于类型声明</li>
+</ul>
+<h2 id="六-参考"><a href="#六-参考" class="headerlink" title="六 参考"></a>六 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/DefinitelyTyped/DefinitelyTyped/">GitHub - DefinitelyTyped</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/TypeScript/" rel="tag"># TypeScript</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/fc11768f.html" rel="prev" title="标日中级下册——第20课-希望の灯-文法-2">
+                  <i class="fa fa-angle-left"></i> 标日中级下册——第20课-希望の灯-文法-2
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/8b164619.html" rel="next" title="标日中级下册——第20课-希望の灯-文法-3">
+                  标日中级下册——第20课-希望の灯-文法-3 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"fdc0e33c25c024c453c34b8dab4fb2cf"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

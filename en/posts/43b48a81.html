@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述-Hilt（依赖注入）12Hilt 是 Android 官方推荐的依赖注入（DI）框架，基于 Dagger，提供 更简洁、更易用的依赖注入方式，帮助开发者管理对象的生命周期、简化依赖关系，并 提高应用的模块化和可测试性。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android面试题——掘金-JetPack之Hilt(3.7)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/43b48a81.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="一 概述-Hilt（依赖注入）12Hilt 是 Android 官方推荐的依赖注入（DI）框架，基于 Dagger，提供 更简洁、更易用的依赖注入方式，帮助开发者管理对象的生命周期、简化依赖关系，并 提高应用的模块化和可测试性。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-04-07T01:48:24.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:04.776Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="掘金">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/43b48a81.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/43b48a81.html","path":"posts/43b48a81.html","title":"Android面试题——掘金-JetPack之Hilt(3.7)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android面试题——掘金-JetPack之Hilt(3.7) | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0-Hilt%EF%BC%88%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">一 概述-Hilt（依赖注入）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%BB%80%E4%B9%88%E6%98%AF-Hilt%EF%BC%9F%E5%AE%83%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 什么是 Hilt？它的作用是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Hilt-%E7%9A%84%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Hilt 的核心组件有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Hilt-%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Hilt 的基本使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-Hilt-%E4%BD%9C%E7%94%A8%E5%9F%9F%EF%BC%88Scope%EF%BC%89"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 Hilt 作用域（Scope）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-Hilt-%E5%9C%A8-ViewModel-%E4%B8%AD%E4%BD%BF%E7%94%A8"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 Hilt 在 ViewModel 中使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-Hilt-%E5%A6%82%E4%BD%95%E6%8F%90%E4%BE%9B%E4%B8%8D%E5%90%8C%E5%AE%9E%E7%8E%B0%EF%BC%9F%EF%BC%88Qualifier%EF%BC%89"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 Hilt 如何提供不同实现？（Qualifier）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-Hilt-%E5%A6%82%E4%BD%95%E4%B8%8E-WorkManager-%E7%BB%93%E5%90%88%EF%BC%9F"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 Hilt 如何与 WorkManager 结合？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-Hilt-%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%EF%BC%9F"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 Hilt 如何进行单元测试？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-Hilt-%E5%92%8C-Dagger-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 Hilt 和 Dagger 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-10-Hilt-%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 Hilt 的优缺点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-11-Hilt-%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">2.11.</span> <span class="nav-text">2.11 Hilt 核心知识点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/43b48a81.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android面试题——掘金-JetPack之Hilt(3.7) | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android面试题——掘金-JetPack之Hilt(3.7)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Android%E9%9D%A2%E8%AF%95%E9%A2%98%E2%80%94%E2%80%94%E6%8E%98%E9%87%91-JetPack%E4%B9%8BHilt(3.7).md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2025-04-07 09:48:24" itemprop="dateCreated datePublished" datetime="2025-04-07T09:48:24+08:00">2025-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/Android%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">Android面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>4 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述-Hilt（依赖注入）"><a href="#一-概述-Hilt（依赖注入）" class="headerlink" title="一 概述-Hilt（依赖注入）"></a>一 概述-Hilt（依赖注入）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hilt 是 Android 官方推荐的依赖注入（DI）框架，基于 Dagger，提供 更简洁、更易用的依赖注入方式，</span><br><span class="line">帮助开发者管理对象的生命周期、简化依赖关系，并 提高应用的模块化和可测试性。</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-什么是-Hilt？它的作用是什么？"><a href="#2-1-什么是-Hilt？它的作用是什么？" class="headerlink" title="2.1 什么是 Hilt？它的作用是什么？"></a>2.1 什么是 Hilt？它的作用是什么？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.概念</span><br><span class="line">Hilt 是 Dagger 在 Android 上的封装，用于 自动管理依赖对象的创建、生命周期和注入。</span><br><span class="line"></span><br><span class="line">2.Hilt 的作用</span><br><span class="line">✅ 简化 Dagger 依赖注入（无需手写 Factory 和 Component）</span><br><span class="line">✅ 提供标准作用域（Activity、Fragment、ViewModel...）</span><br><span class="line">✅ 减少样板代码，提高可维护性</span><br><span class="line">✅ 兼容 ViewModel、WorkManager、Navigation 等 Jetpack 组件</span><br><span class="line">✅ 方便单元测试</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-Hilt-的核心组件有哪些？"><a href="#2-2-Hilt-的核心组件有哪些？" class="headerlink" title="2.2 Hilt 的核心组件有哪些？"></a>2.2 Hilt 的核心组件有哪些？</h3><table>
+<thead>
+<tr>
+<th align="center">组件</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">@HiltAndroidApp</td>
+<td align="center">Application 入口，生成 Hilt 依赖注入容器</td>
+</tr>
+<tr>
+<td align="center">@Inject</td>
+<td align="center">用于构造函数或字段，标记可注入对象</td>
+</tr>
+<tr>
+<td align="center">@HiltViewModel</td>
+<td align="center">用于 ViewModel，使其支持 Hilt 依赖注入</td>
+</tr>
+<tr>
+<td align="center">@Module</td>
+<td align="center">定义依赖提供者</td>
+</tr>
+<tr>
+<td align="center">@InstallIn</td>
+<td align="center">指定 Module 作用域（Application、Activity...）</td>
+</tr>
+<tr>
+<td align="center">@Provides</td>
+<td align="center">提供非构造函数可注入对象</td>
+</tr>
+<tr>
+<td align="center">@Singleton</td>
+<td align="center">标记全局单例对象</td>
+</tr>
+</tbody></table>
+<h3 id="2-3-Hilt-的基本使用"><a href="#2-3-Hilt-的基本使用" class="headerlink" title="2.3 Hilt 的基本使用"></a>2.3 Hilt 的基本使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">1.在 Application 入口添加 Hilt</span><br><span class="line">@HiltAndroidApp</span><br><span class="line">public class MyApplication extends Application &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">2.注入依赖（构造函数方式）</span><br><span class="line">2.1 如果 对象可以通过构造函数直接创建，直接用 @Inject 标记：</span><br><span class="line">public class UserRepository &#123;</span><br><span class="line">    @Inject</span><br><span class="line">    public UserRepository() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">2.2 在 Activity 里使用</span><br><span class="line">@AndroidEntryPoint</span><br><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">    @Inject</span><br><span class="line">    UserRepository userRepository; // Hilt 自动提供实例</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">3.使用 @Module 提供实例</span><br><span class="line">3.1 如果对象 不能通过构造函数直接创建（如 Retrofit），使用 @Module 和 @Provides 提供</span><br><span class="line">@Module</span><br><span class="line">@InstallIn(SingletonComponent.class) // 作用域：全局</span><br><span class="line">public class AppModule &#123;</span><br><span class="line"></span><br><span class="line">    @Provides</span><br><span class="line">    @Singleton</span><br><span class="line">    public static Retrofit provideRetrofit() &#123;</span><br><span class="line">        return new Retrofit.Builder()</span><br><span class="line">                .baseUrl(&quot;https://api.example.com&quot;)</span><br><span class="line">                .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Provides</span><br><span class="line">    @Singleton</span><br><span class="line">    public static ApiService provideApiService(Retrofit retrofit) &#123;</span><br><span class="line">        return retrofit.create(ApiService.class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">3.2 在 Activity 里使用</span><br><span class="line">@AndroidEntryPoint</span><br><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">    @Inject</span><br><span class="line">    ApiService apiService; // Hilt 自动提供实例</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-Hilt-作用域（Scope）"><a href="#2-4-Hilt-作用域（Scope）" class="headerlink" title="2.4 Hilt 作用域（Scope）"></a>2.4 Hilt 作用域（Scope）</h3><p>1.Hilt 提供多个作用域，控制对象的生命周期：</p>
+<table>
+<thead>
+<tr>
+<th align="center">作用域</th>
+<th align="center">注解</th>
+<th align="center">生命周期</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">全局单例</td>
+<td align="center">@Singleton</td>
+<td align="center">整个应用生命周期</td>
+</tr>
+<tr>
+<td align="center">Activity 作用域</td>
+<td align="center">@ActivityScoped</td>
+<td align="center">仅在 <code>Activity</code> 期间有效</td>
+</tr>
+<tr>
+<td align="center">Fragment 作用域</td>
+<td align="center">@FragmentScoped</td>
+<td align="center">仅在 <code>Fragment</code> 期间有效</td>
+</tr>
+<tr>
+<td align="center">ViewModel 作用域</td>
+<td align="center">@HiltViewModel</td>
+<td align="center">仅在 <code>ViewModel</code> 期间有效</td>
+</tr>
+<tr>
+<td align="center">Service 作用域</td>
+<td align="center">@ServiceScoped</td>
+<td align="center">仅在 <code>Service</code> 期间有效</td>
+</tr>
+</tbody></table>
+<p>2-示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@ActivityScoped</span><br><span class="line">public class UserManager &#123;</span><br><span class="line">    @Inject</span><br><span class="line">    public UserManager() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-Hilt-在-ViewModel-中使用"><a href="#2-5-Hilt-在-ViewModel-中使用" class="headerlink" title="2.5 Hilt 在 ViewModel 中使用"></a>2.5 Hilt 在 ViewModel 中使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">1.viewmodel</span><br><span class="line">@HiltViewModel</span><br><span class="line">public class MyViewModel extends ViewModel &#123;</span><br><span class="line">    private final UserRepository userRepository;</span><br><span class="line"></span><br><span class="line">    @Inject</span><br><span class="line">    public MyViewModel(UserRepository userRepository) &#123;</span><br><span class="line">        this.userRepository = userRepository;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">2.在 Activity / Fragment 里使用</span><br><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">    private MyViewModel viewModel;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        viewModel = new ViewModelProvider(this).get(MyViewModel.class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-Hilt-如何提供不同实现？（Qualifier）"><a href="#2-6-Hilt-如何提供不同实现？（Qualifier）" class="headerlink" title="2.6 Hilt 如何提供不同实现？（Qualifier）"></a>2.6 Hilt 如何提供不同实现？（Qualifier）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">1.当有多个相同类型的依赖时，需要使用 @Qualifier 区分</span><br><span class="line">@Qualifier</span><br><span class="line">@Retention(RUNTIME)</span><br><span class="line">public @interface LocalSource &#123;&#125;</span><br><span class="line"></span><br><span class="line">@Qualifier</span><br><span class="line">@Retention(RUNTIME)</span><br><span class="line">public @interface RemoteSource &#123;&#125;</span><br><span class="line"></span><br><span class="line">2.在 Module 提供多个实现</span><br><span class="line">@Module</span><br><span class="line">@InstallIn(SingletonComponent.class)</span><br><span class="line">public class DataModule &#123;</span><br><span class="line">    @Provides</span><br><span class="line">    @Singleton</span><br><span class="line">    @LocalSource</span><br><span class="line">    public static UserRepository provideLocalRepo() &#123;</span><br><span class="line">        return new LocalUserRepository();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Provides</span><br><span class="line">    @Singleton</span><br><span class="line">    @RemoteSource</span><br><span class="line">    public static UserRepository provideRemoteRepo() &#123;</span><br><span class="line">        return new RemoteUserRepository();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">3.在 ViewModel 里使用</span><br><span class="line">@HiltViewModel</span><br><span class="line">public class MyViewModel extends ViewModel &#123;</span><br><span class="line">    private final UserRepository userRepository;</span><br><span class="line"></span><br><span class="line">    @Inject</span><br><span class="line">    public MyViewModel(@RemoteSource UserRepository userRepository) &#123;</span><br><span class="line">        this.userRepository = userRepository;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-Hilt-如何与-WorkManager-结合？"><a href="#2-7-Hilt-如何与-WorkManager-结合？" class="headerlink" title="2.7 Hilt 如何与 WorkManager 结合？"></a>2.7 Hilt 如何与 WorkManager 结合？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">1.自定义Worker</span><br><span class="line"></span><br><span class="line">@HiltWorker</span><br><span class="line">public class MyWorker extends Worker &#123;</span><br><span class="line">    private final ApiService apiService;</span><br><span class="line"></span><br><span class="line">    @Inject</span><br><span class="line">    public MyWorker(@NonNull Context context, @NonNull WorkerParameters workerParams, ApiService apiService) &#123;</span><br><span class="line">        super(context, workerParams);</span><br><span class="line">        this.apiService = apiService;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @NonNull</span><br><span class="line">    @Override</span><br><span class="line">    public Result doWork() &#123;</span><br><span class="line">        // 使用 apiService</span><br><span class="line">        return Result.success();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">2-创建 WorkManager 实例</span><br><span class="line">WorkManager.getInstance(context)</span><br><span class="line">    .enqueue(new OneTimeWorkRequest.Builder(MyWorker.class).build());</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-8-Hilt-如何进行单元测试？"><a href="#2-8-Hilt-如何进行单元测试？" class="headerlink" title="2.8 Hilt 如何进行单元测试？"></a>2.8 Hilt 如何进行单元测试？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">1.概念</span><br><span class="line">Hilt 提供 @HiltAndroidTest 和 @UninstallModules 进行依赖替换</span><br><span class="line"></span><br><span class="line">2.示例</span><br><span class="line">@HiltAndroidTest</span><br><span class="line">public class ExampleTest &#123;</span><br><span class="line">    @Rule</span><br><span class="line">    public HiltAndroidRule hiltRule = new HiltAndroidRule(this);</span><br><span class="line"></span><br><span class="line">    @Inject</span><br><span class="line">    UserRepository userRepository;</span><br><span class="line"></span><br><span class="line">    @Before</span><br><span class="line">    public void init() &#123;</span><br><span class="line">        hiltRule.inject();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void testUserRepository() &#123;</span><br><span class="line">        assertNotNull(userRepository);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-9-Hilt-和-Dagger-的区别？"><a href="#2-9-Hilt-和-Dagger-的区别？" class="headerlink" title="2.9 Hilt 和 Dagger 的区别？"></a>2.9 Hilt 和 Dagger 的区别？</h3><table>
+<thead>
+<tr>
+<th align="center">对比项</th>
+<th align="center">Hilt</th>
+<th align="center">Dagger</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">简洁性</td>
+<td align="center">更简单，无需手动 Component</td>
+<td align="center">需要手动创建 Component</td>
+</tr>
+<tr>
+<td align="center">注入方式</td>
+<td align="center">自动管理依赖注入</td>
+<td align="center">需要手动管理</td>
+</tr>
+<tr>
+<td align="center">适配 Android</td>
+<td align="center">官方推荐，支持 ViewModel、WorkManager</td>
+<td align="center">需手动适配</td>
+</tr>
+<tr>
+<td align="center">测试支持</td>
+<td align="center">内置单元测试支持</td>
+<td align="center">需要额外配置</td>
+</tr>
+</tbody></table>
+<h3 id="2-10-Hilt-的优缺点？"><a href="#2-10-Hilt-的优缺点？" class="headerlink" title="2.10 Hilt 的优缺点？"></a>2.10 Hilt 的优缺点？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.优点</span><br><span class="line">-比 Dagger 更易用，自动管理依赖</span><br><span class="line">-支持 Android 生命周期，作用域清晰</span><br><span class="line">-兼容 Jetpack 组件（ViewModel、WorkManager）</span><br><span class="line">-支持单元测试</span><br><span class="line"></span><br><span class="line">2.缺点</span><br><span class="line">-灵活性不如 Dagger（Dagger 适合更复杂的依赖管理）</span><br><span class="line">-不适用于特别复杂的多级 Component 依赖注入</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-11-Hilt-核心知识点"><a href="#2-11-Hilt-核心知识点" class="headerlink" title="2.11 Hilt 核心知识点"></a>2.11 Hilt 核心知识点</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-Hilt 是 Dagger 的封装，简化依赖注入</span><br><span class="line">-@HiltAndroidApp 启动 Hilt</span><br><span class="line">-@Inject 标记需要注入的对象</span><br><span class="line">-@Module + @Provides 提供外部依赖</span><br><span class="line">-@HiltViewModel 让 ViewModel 支持 Hilt</span><br><span class="line">-支持 WorkManager、Retrofit、RxJava、Flow</span><br><span class="line">-支持单元测试</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-参考"><a href="#三-参考" class="headerlink" title="三 参考"></a>三 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7480464724096057381">掘金—知识库的大纲</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/%E6%8E%98%E9%87%91/" rel="tag"># 掘金</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/b01f3366.html" rel="prev" title="Android面试题——掘金-JetPack之Room(3.6)">
+                  <i class="fa fa-angle-left"></i> Android面试题——掘金-JetPack之Room(3.6)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/eca11765.html" rel="next" title="Android面试题——掘金-JetPack之Paging(3.8)">
+                  Android面试题——掘金-JetPack之Paging(3.8) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"498195f638b7c102c496b000be27956a"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

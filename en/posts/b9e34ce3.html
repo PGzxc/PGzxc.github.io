@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述12341.什么是静态链表2.静态链表中的节点3.备用链表4.静态链表的创建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法——第2章-静态链表及其创建(2.6.1)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/b9e34ce3.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="一 概述12341.什么是静态链表2.静态链表中的节点3.备用链表4.静态链表的创建">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap2-6-1-static-link-size.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap2-6-1-static-link-zuobiao.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap2-6-1-static-link-backup.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap2-6-1-static-link-backup-1.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap2-6-1-static-link-backup-2.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap2-6-1-static-link-backup-3.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap2-6-1-static-link-backup-4.gif">
+<meta property="article:published_time" content="2023-01-16T10:06:15.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:04.897Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="数据结构与算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap2-6-1-static-link-size.gif">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/b9e34ce3.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/b9e34ce3.html","path":"posts/b9e34ce3.html","title":"数据结构与算法——第2章-静态链表及其创建(2.6.1)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>数据结构与算法——第2章-静态链表及其创建(2.6.1) | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8"><span class="nav-number">2.</span> <span class="nav-text">二 什么是静态链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8%E7%9A%84%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 静态链表的存储过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%AD%98%E5%82%A8%E8%AF%B4%E6%98%8E"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 存储说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9"><span class="nav-number">3.</span> <span class="nav-text">三 静态链表中的节点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE%E5%85%83%E7%B4%A0"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 静态链表存储数据元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8%E4%B8%AD%E8%8A%82%E7%82%B9%E7%9A%84%E6%9E%84%E6%88%90%EF%BC%88C-%E8%AF%AD%E8%A8%80%EF%BC%89"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 静态链表中节点的构成（C 语言）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E5%A4%87%E7%94%A8%E9%93%BE%E8%A1%A8"><span class="nav-number">4.</span> <span class="nav-text">四 备用链表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%A6%82%E5%BF%B5"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E5%9B%BE%E7%A4%BA"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 图示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="nav-number">5.</span> <span class="nav-text">五 静态链表的创建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E5%9B%BE%E7%A4%BA"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 图示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E5%88%9B%E5%BB%BA%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8%E7%9A%84-C-%E8%AF%AD%E8%A8%80%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 创建静态链表的 C 语言实现代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD-%E5%8F%82%E8%80%83"><span class="nav-number">6.</span> <span class="nav-text">六 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/b9e34ce3.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="数据结构与算法——第2章-静态链表及其创建(2.6.1) | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据结构与算法——第2章-静态链表及其创建(2.6.1)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E7%AC%AC2%E7%AB%A0-%E9%9D%99%E6%80%81%E9%93%BE%E8%A1%A8%E5%8F%8A%E5%85%B6%E5%88%9B%E5%BB%BA(2.6.1).md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2023-01-16 18:06:15" itemprop="dateCreated datePublished" datetime="2023-01-16T18:06:15+08:00">2023-01-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E5%BC%80%E5%8F%91/N-%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">N-数据与算法</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E5%BC%80%E5%8F%91/N-%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.什么是静态链表</span><br><span class="line">2.静态链表中的节点</span><br><span class="line">3.备用链表</span><br><span class="line">4.静态链表的创建</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-什么是静态链表"><a href="#二-什么是静态链表" class="headerlink" title="二 什么是静态链表"></a>二 什么是静态链表</h2><h3 id="2-1-概念"><a href="#2-1-概念" class="headerlink" title="2.1 概念"></a>2.1 概念</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">静态链表也是线性存储结构的一种，它兼顾顺序表和链表的优点，是顺序表和链表的升级版。</span><br><span class="line"></span><br><span class="line">使用静态链表存储数据，数据全部存储在数组中（和顺序表一样），</span><br><span class="line">但存储位置是随机的，数据之间“一对一”的逻辑关系通过一个整形变量（“游标”，和指针功能类似）维持（和链表类似）</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-静态链表的存储过程"><a href="#2-2-静态链表的存储过程" class="headerlink" title="2.2 静态链表的存储过程"></a>2.2 静态链表的存储过程</h3><p>使用静态链表存储<code>{1,2,3}</code>的过程如下</p>
+<p>一、创建一个足够大的数组，假设大小为 6</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap2-6-1-static-link-size.gif" loading="lazy"></p>
+<p>二、在将数据存放到数组中时，给各个数据元素配备一个整形变量，用于指明各个元素的直接后继元素所在数组中的位置下标</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap2-6-1-static-link-zuobiao.gif" loading="lazy"></p>
+<h3 id="2-3-存储说明"><a href="#2-3-存储说明" class="headerlink" title="2.3 存储说明"></a>2.3 存储说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">通常，静态链表会将第一个数据元素放到数组下标为 1 的位置（a[1]）中。</span><br><span class="line"></span><br><span class="line">上图中，从a[1]存储的数据元素 1 开始，通过存储的游标变量 3，就可以在 a[3] 中找到元素 1 的直接后继元素 2；</span><br><span class="line">同样，通过元素 a[3] 存储的游标变量 5，可以在 a[5] 中找到元素 2 的直接后继元素 3，</span><br><span class="line">这样的循环过程直到某元素的游标变量为 0 截止（因为a[0]默认不存储数据元素）。</span><br><span class="line"> </span><br><span class="line">通过 &quot;数组+游标&quot; 的方式存储具有线性关系数据的存储结构就是静态链表。</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-静态链表中的节点"><a href="#三-静态链表中的节点" class="headerlink" title="三 静态链表中的节点"></a>三 静态链表中的节点</h2><h3 id="3-1-静态链表存储数据元素"><a href="#3-1-静态链表存储数据元素" class="headerlink" title="3.1 静态链表存储数据元素"></a>3.1 静态链表存储数据元素</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">静态链表存储数据元素也需要自定义数据类型，至少需要包含：</span><br><span class="line">-数据域：用于存储数据元素的值</span><br><span class="line">-游标：其实就是数组下标，表示直接后继元素所在数组中的位置</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-静态链表中节点的构成（C-语言）"><a href="#3-2-静态链表中节点的构成（C-语言）" class="headerlink" title="3.2 静态链表中节点的构成（C 语言）"></a>3.2 静态链表中节点的构成（C 语言）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123;</span><br><span class="line">    int data;  // 数据域</span><br><span class="line">    int cur;   // 游标</span><br><span class="line">&#125;component;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四-备用链表"><a href="#四-备用链表" class="headerlink" title="四 备用链表"></a>四 备用链表</h2><h3 id="4-1-概念"><a href="#4-1-概念" class="headerlink" title="4.1 概念"></a>4.1 概念</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">静态链表中，除了数据本身通过游标组成的链表外，还需要有一条连接各个空闲位置的链表，称为备用链表。</span><br><span class="line"></span><br><span class="line">备用链表的作用是回收数组中未使用或之前使用过（目前未使用）的存储空间，留待后期使用。</span><br><span class="line"></span><br><span class="line">静态链表使用数组申请的物理空间中，存有两个链表：一条连接数据，另一条连接数组中未使用的空间。</span><br><span class="line"></span><br><span class="line">通常，备用链表的表头位于数组下标为 0（a[0]） 的位置，而数据链表的表头位于数组下标为 1（a[1]）的位置。</span><br><span class="line"></span><br><span class="line">静态链表中设置备用链表的好处：</span><br><span class="line">-可清楚知道数组中是否有空闲位置，以便数据链表添加新数据时使用。</span><br><span class="line">-比如，若静态链表中数组下标为 0 的位置上存有数据，则证明数组已满。</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-图示"><a href="#4-2-图示" class="headerlink" title="4.2 图示"></a>4.2 图示</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">例如，使用静态链表存储 `&#123;1,2,3&#125;`，假设使用长度为 6 的数组 a，则存储状态可能如下图：</span><br><span class="line"></span><br><span class="line">上图中，备用链表上连接的依次是 `a[0]`、`a[2]` 和 `a[4]`，</span><br><span class="line">而数据链表上连接的依次是 `a[1]`、`a[3]` 和 `a[5]`</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap2-6-1-static-link-backup.gif" loading="lazy"></p>
+<h2 id="五-静态链表的创建"><a href="#五-静态链表的创建" class="headerlink" title="五 静态链表的创建"></a>五 静态链表的创建</h2><h3 id="5-1-图示"><a href="#5-1-图示" class="headerlink" title="5.1 图示"></a>5.1 图示</h3><p>使用静态链表（数组长度为 6）存储 <code>{1,2,3}</code>需经历以下几个阶段</p>
+<p>一、在数据链表未初始化之前，数组中所有位置都处于空闲状态，因此都应被链接在备用链表上</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">当向静态链表中添加数据时，需提前从备用链表中摘除节点，以供新数据使用。</span><br><span class="line"></span><br><span class="line">备用链表摘除节点最简单的方法是摘除 a[0] 的直接后继节点；</span><br><span class="line">同样，向备用链表中添加空闲节点也是添加作为 a[0] 新的直接后继节点。</span><br><span class="line">因为a[0]是备用链表的第一个节点，</span><br><span class="line">我们知道它的位置，操作它的直接后继节点相对容易，无需遍历备用链表，耗费的时间复杂度为 O(1)。</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap2-6-1-static-link-backup-1.gif" loading="lazy"></p>
+<p>二、在上图的基础上，向静态链表中添加元素 1 的过程如下图所示</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap2-6-1-static-link-backup-2.gif" loading="lazy"></p>
+<p>三、在上图的基础上，添加元素 2 的过程如下图所示</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap2-6-1-static-link-backup-3.gif" loading="lazy"></p>
+<p>四、在上图的基础上，继续添加元素 3 ，过程如下图所示</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap2-6-1-static-link-backup-4.gif" loading="lazy"></p>
+<h3 id="5-2-创建静态链表的-C-语言实现代码"><a href="#5-2-创建静态链表的-C-语言实现代码" class="headerlink" title="5.2 创建静态链表的 C 语言实现代码"></a>5.2 创建静态链表的 C 语言实现代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#define maxSize 6</span><br><span class="line">typedef struct &#123;</span><br><span class="line">    int data;</span><br><span class="line">    int cur;</span><br><span class="line">&#125;component;</span><br><span class="line"> </span><br><span class="line">// 将结构体数组中所有分量链接到备用链表中</span><br><span class="line">void reserveArr(component *array);</span><br><span class="line">// 初始化静态链表</span><br><span class="line">int initArr(component *array);</span><br><span class="line">// 输出函数</span><br><span class="line">void displayArr(component * array,int body);</span><br><span class="line">// 从备用链表上摘下空闲节点的函数</span><br><span class="line">int mallocArr(component * array);</span><br><span class="line"> </span><br><span class="line">int main() &#123;</span><br><span class="line">    component array[maxSize];</span><br><span class="line">    int body=initArr(array);</span><br><span class="line">    printf(&quot;静态链表为：\n&quot;);</span><br><span class="line">    displayArr(array, body);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">// 创建备用链表</span><br><span class="line">void reserveArr(component *array)&#123;</span><br><span class="line">    for (int i=0; i&lt;maxSize; i++) &#123;</span><br><span class="line">        // 将每个数组分量链接到一起</span><br><span class="line">        array[i].cur=i+1;</span><br><span class="line">        array[i].data=-1;</span><br><span class="line">    &#125;</span><br><span class="line">    // 链表最后一个结点的游标值为 0</span><br><span class="line">    array[maxSize-1].cur=0;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">// 提取分配空间</span><br><span class="line">int mallocArr(component * array)&#123;</span><br><span class="line">    // 若备用链表非空, 则返回分配的结点下标, 否则返回 0 (当分配最后一个结点时, 该结点的</span><br><span class="line">    // 游标值为 0)</span><br><span class="line">    int i=array[0].cur;</span><br><span class="line">    if (array[0].cur) &#123;</span><br><span class="line">        array[0].cur=array[i].cur;</span><br><span class="line">    &#125;</span><br><span class="line">    return i;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">// 初始化静态链表</span><br><span class="line">int initArr(component *array)&#123;</span><br><span class="line">    reserveArr(array);</span><br><span class="line">    int body=mallocArr(array);</span><br><span class="line">    // 声明一个变量, 把它当指针使, 指向链表的最后的一个结点, 因为链表为空, 所以和头结点重合</span><br><span class="line">    int tempBody=body;</span><br><span class="line">    for (int i=1; i&lt;4; i++) &#123;</span><br><span class="line">        // 从备用链表中拿出空闲的分量</span><br><span class="line">        int j=mallocArr(array);</span><br><span class="line">        // 将申请的空闲分量链接在链表的最后一个结点后面</span><br><span class="line">        array[tempBody].cur=j;</span><br><span class="line">        // 给新申请的分量的数据域初始化</span><br><span class="line">        array[j].data=i;</span><br><span class="line">        // 将指向链表最后一个结点的指针后移</span><br><span class="line">        tempBody=j;</span><br><span class="line">    &#125;</span><br><span class="line">    // 新的链表最后一个结点的指针设置为 0</span><br><span class="line">    array[tempBody].cur=0;</span><br><span class="line">    return body;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">void displayArr(component * array,int body)&#123;</span><br><span class="line">    // tempBody 准备做遍历使用</span><br><span class="line">    int tempBody=body;</span><br><span class="line">    while (array[tempBody].cur) &#123;</span><br><span class="line">        printf(&quot;%d,%d &quot;,array[tempBody].data,array[tempBody].cur);</span><br><span class="line">        tempBody=array[tempBody].cur;</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;%d,%d\n&quot;,array[tempBody].data,array[tempBody].cur);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">/*</span><br><span class="line">静态链表为：</span><br><span class="line">-1,2 1,3 2,4 3,0</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>此代码创建了一个带有头节点的静态链表，</li>
+<li>因此最先输出的 &quot;-1,2&quot; 表示的是头节点（-1 表示此处未存储数据），</li>
+<li>其首元节点（存储元素 1 的节点）在数组 <code>array[2]</code> 中</li>
+</ul>
+<h2 id="六-参考"><a href="#六-参考" class="headerlink" title="六 参考"></a>六 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://it-coach.blog.csdn.net/article/details/137705145">CSDN—静态链表及其创建</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag"># 数据结构与算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/45b0157b.html" rel="prev" title="标日中级上册——第12课-最終日-文法-5">
+                  <i class="fa fa-angle-left"></i> 标日中级上册——第12课-最終日-文法-5
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/25da50d9.html" rel="next" title="标日中级上册——第12课-最終日-语法与表达-1">
+                  标日中级上册——第12课-最終日-语法与表达-1 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"a05083cd7e55621145603eca71084316"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

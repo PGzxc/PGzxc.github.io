@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ja/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ja/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ja/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/ja/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/ja/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/ja/","images":"/ja/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索...","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/ja/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/ja/js/config.js" defer></script>
+
+    <meta name="description" content="前言从事开发的程序员，不论是前端、后端、移动端，虽然经常跟网络打交道，开发中习惯了使用封装好的网络框架，而不去了解其原理，我相信很多从事开发的程序员对Http的概念了解的不是很清楚，顾本文针对以上问题，稍作总结。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP开发之——大纲">
+<meta property="og:url" content="https://pgzxc.github.io/posts/6c2ab38f.html">
+<meta property="og:site_name" content="PGzxc (Japanese)">
+<meta property="og:description" content="前言从事开发的程序员，不论是前端、后端、移动端，虽然经常跟网络打交道，开发中习惯了使用封装好的网络框架，而不去了解其原理，我相信很多从事开发的程序员对Http的概念了解的不是很清楚，顾本文针对以上问题，稍作总结。">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/http-outline.png">
+<meta property="article:published_time" content="2018-06-21T02:50:11.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.053Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="HTTP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/http-outline.png">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/6c2ab38f.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"ja","comments":true,"permalink":"https://pgzxc.github.io/posts/6c2ab38f.html","path":"posts/6c2ab38f.html","title":"HTTP开发之——大纲"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>HTTP开发之——大纲 | PGzxc (Japanese)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/utils.js" defer></script><script src="/ja/js/motion.js" defer></script><script src="/ja/js/sidebar.js" defer></script><script src="/ja/js/next-boot.js" defer></script><script src="/ja/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/ja/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/ja/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/ja/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/ja/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/ja/atom.xml" title="PGzxc (Japanese)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションを切り替える" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/ja/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (Japanese)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">本から学んだことは表面的なもの；自分で体験しなければならない</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="検索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/ja/" rel="section"><i class="fa fa-bell fa-fw"></i>ホーム</a></li><li class="menu-item menu-item-nav"><a href="/ja/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>ナビゲーション</a></li><li class="menu-item menu-item-categories"><a href="/ja/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリー<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/ja/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/ja/links/" rel="section"><i class="fa fa-link fa-fw"></i>リンク</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>検索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="検索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          目次
+        </li>
+        <li class="sidebar-nav-overview">
+          サイト概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E5%AE%B9"><span class="nav-number">2.</span> <span class="nav-text">内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2"><span class="nav-number">2.1.</span> <span class="nav-text">发展历史</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Http-0-9"><span class="nav-number">2.1.1.</span> <span class="nav-text">Http 0.9</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Http-1-0"><span class="nav-number">2.1.2.</span> <span class="nav-text">Http 1.0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Http-1-1"><span class="nav-number">2.1.3.</span> <span class="nav-text">Http 1.1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Http-2"><span class="nav-number">2.1.4.</span> <span class="nav-text">Http 2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Http%E5%8D%8F%E8%AE%AE%E5%9F%BA%E7%A1%80"><span class="nav-number">2.2.</span> <span class="nav-text">Http协议基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E5%88%86%E7%BB%84"><span class="nav-number">2.2.1.</span> <span class="nav-text">网络协议分组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E6%97%A9%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">最早七层模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E4%BA%94%E5%B1%82%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">经典五层模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E5%B1%82"><span class="nav-number">2.2.1.2.1.</span> <span class="nav-text">物理层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-number">2.2.1.2.2.</span> <span class="nav-text">数据链路层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="nav-number">2.2.1.2.3.</span> <span class="nav-text">网络层</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="nav-number">2.2.1.2.4.</span> <span class="nav-text">传输层</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%8D%8F%E8%AE%AE"><span class="nav-number">2.2.1.2.4.1.</span> <span class="nav-text">协议</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-number">2.2.1.2.5.</span> <span class="nav-text">应用层</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E5%8D%8F%E8%AE%AE"><span class="nav-number">2.2.1.2.5.1.</span> <span class="nav-text">主要协议</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Http%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B"><span class="nav-number">2.2.2.</span> <span class="nav-text">Http请求过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="nav-number">2.2.3.</span> <span class="nav-text">三次握手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#URI%E3%80%81URL%E3%80%81URN"><span class="nav-number">2.2.4.</span> <span class="nav-text">URI、URL、URN</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#URI"><span class="nav-number">2.2.4.1.</span> <span class="nav-text">URI</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">2.2.4.1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="nav-number">2.2.4.1.2.</span> <span class="nav-text">作用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#URL"><span class="nav-number">2.2.4.2.</span> <span class="nav-text">URL</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="nav-number">2.2.4.2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%9F%E4%B8%80%E8%B5%84%E6%BA%90%E5%AE%9A%E4%BD%8D%E7%AC%A6"><span class="nav-number">2.2.4.2.2.</span> <span class="nav-text">统一资源定位符</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#URN"><span class="nav-number">2.2.4.3.</span> <span class="nav-text">URN</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="nav-number">2.2.4.3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8-1"><span class="nav-number">2.2.4.3.2.</span> <span class="nav-text">作用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Http%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.2.5.</span> <span class="nav-text">Http报文格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A6%96%E8%A1%8C-%E8%B5%B7%E5%A7%8B%E8%A1%8C"><span class="nav-number">2.2.5.1.</span> <span class="nav-text">首行(起始行)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87"><span class="nav-number">2.2.5.1.1.</span> <span class="nav-text">请求报文</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95Method"><span class="nav-number">2.2.5.1.1.1.</span> <span class="nav-text">请求方法Method</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E8%B5%84%E6%BA%90%E5%9C%B0%E5%9D%80"><span class="nav-number">2.2.5.1.1.2.</span> <span class="nav-text">资源地址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%8D%8F%E8%AE%AE%E7%89%88%E6%9C%AC"><span class="nav-number">2.2.5.1.1.3.</span> <span class="nav-text">协议版本</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E5%A4%B4%E9%83%A8"><span class="nav-number">2.2.5.2.</span> <span class="nav-text">响应头部</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E4%BD%93"><span class="nav-number">2.2.5.3.</span> <span class="nav-text">响应体</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Http%E6%8F%90%E5%8D%87"><span class="nav-number">2.3.</span> <span class="nav-text">Http提升</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%93%E5%AD%98-Cache-Control"><span class="nav-number">2.3.1.</span> <span class="nav-text">缓存(Cache-Control)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E5%A4%B4"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">缓存头</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%AF%E7%BC%93%E5%AD%98%E6%80%A7"><span class="nav-number">2.3.1.1.1.</span> <span class="nav-text">可缓存性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%B0%E6%9C%9F"><span class="nav-number">2.3.1.1.2.</span> <span class="nav-text">到期</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E9%AA%8C%E8%AF%81"><span class="nav-number">2.3.1.1.3.</span> <span class="nav-text">重新验证</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">2.3.1.1.4.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E9%AA%8C%E8%AF%81"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">缓存验证</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E9%AA%8C%E8%AF%81%E5%8E%9F%E7%90%86"><span class="nav-number">2.3.1.2.1.</span> <span class="nav-text">缓存验证原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E5%A4%B4"><span class="nav-number">2.3.1.2.2.</span> <span class="nav-text">验证头</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Last-Modified"><span class="nav-number">2.3.1.2.2.1.</span> <span class="nav-text">Last-Modified</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Etag"><span class="nav-number">2.3.1.2.2.2.</span> <span class="nav-text">Etag</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie%E5%92%8CSession"><span class="nav-number">2.3.2.</span> <span class="nav-text">Cookie和Session</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cookie"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">Cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">2.3.2.1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%B9%E7%82%B9"><span class="nav-number">2.3.2.1.2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Cookie%E5%B1%9E%E6%80%A7"><span class="nav-number">2.3.2.1.3.</span> <span class="nav-text">Cookie属性</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Session"><span class="nav-number">2.3.2.2.</span> <span class="nav-text">Session</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5-1"><span class="nav-number">2.3.2.2.1.</span> <span class="nav-text">概念</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Http%E8%BF%9E%E6%8E%A5"><span class="nav-number">2.3.3.</span> <span class="nav-text">Http连接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5-2"><span class="nav-number">2.3.3.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E7%B1%BB"><span class="nav-number">2.3.3.2.</span> <span class="nav-text">分类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%95%BF%E8%BF%9E%E6%8E%A5"><span class="nav-number">2.3.3.2.1.</span> <span class="nav-text">长连接</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5-3"><span class="nav-number">2.3.3.2.1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%89%B9%E7%82%B9-1"><span class="nav-number">2.3.3.2.1.2.</span> <span class="nav-text">特点</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%AD%E9%93%BE%E6%8E%A5"><span class="nav-number">2.3.3.2.2.</span> <span class="nav-text">短链接</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5-4"><span class="nav-number">2.3.3.2.2.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%89%B9%E7%82%B9-2"><span class="nav-number">2.3.3.2.2.2.</span> <span class="nav-text">特点</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%8D%8F%E5%95%86"><span class="nav-number">2.3.4.</span> <span class="nav-text">数据协商</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5-5"><span class="nav-number">2.3.4.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E7%B1%BB-1"><span class="nav-number">2.3.4.2.</span> <span class="nav-text">分类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82"><span class="nav-number">2.3.4.2.1.</span> <span class="nav-text">请求</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Accept"><span class="nav-number">2.3.4.2.1.1.</span> <span class="nav-text">Accept</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%94%E5%9B%9E"><span class="nav-number">2.3.4.2.2.</span> <span class="nav-text">返回</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Content"><span class="nav-number">2.3.4.2.2.1.</span> <span class="nav-text">Content</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSP-Content-Security-Policy"><span class="nav-number">2.3.5.</span> <span class="nav-text">CSP (Content-Security-Policy)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5-6"><span class="nav-number">2.3.5.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8-2"><span class="nav-number">2.3.5.2.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%99%90%E5%88%B6%E6%96%B9%E5%BC%8F"><span class="nav-number">2.3.5.3.</span> <span class="nav-text">限制方式</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE"><span class="nav-number">3.</span> <span class="nav-text">思维导图</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/ja/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/ja/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">投稿</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/ja/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">カテゴリー</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/ja/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/6c2ab38f.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/ja/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="HTTP开发之——大纲 | PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTTP开发之——大纲<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/HTTP%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94%E5%A4%A7%E7%BA%B2.md" class="post-edit-link" title="編集" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2018-06-21 10:50:11" itemprop="dateCreated datePublished" datetime="2018-06-21T10:50:11+08:00">2018-06-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E5%B7%A5%E5%85%B7/HTTP/" itemprop="url" rel="index"><span itemprop="name">HTTP</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="読書時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">読書時間 &asymp;</span>
+      <span>3 分</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>从事开发的程序员，不论是前端、后端、移动端，虽然经常跟网络打交道，开发中习惯了使用封装好的网络框架，而不去了解其原理，我相信很多从事开发的程序员对Http的概念了解的不是很清楚，顾本文针对以上问题，稍作总结。</p>
+<span id="more"></span>
+
+<h1 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h1><h2 id="发展历史"><a href="#发展历史" class="headerlink" title="发展历史"></a><span id="anchor1">发展历史</span></h2><h3 id="Http-0-9"><a href="#Http-0-9" class="headerlink" title="Http 0.9"></a>Http 0.9</h3><ol>
+<li>只有一个命令GET请求</li>
+<li>没有HEADER等描述数据的信息</li>
+<li>服务器发送完毕，就关闭TCP连接</li>
+</ol>
+<h3 id="Http-1-0"><a href="#Http-1-0" class="headerlink" title="Http 1.0"></a>Http 1.0</h3><ol>
+<li>增加了很多命令：PUT POST </li>
+<li>增加了status code和header</li>
+<li>多字符集支持、多部分发送、缓存、权限等</li>
+</ol>
+<h3 id="Http-1-1"><a href="#Http-1-1" class="headerlink" title="Http 1.1"></a>Http 1.1</h3><ol>
+<li>持久连接</li>
+<li>pipeline</li>
+<li>增加host和其他一些命令</li>
+</ol>
+<h3 id="Http-2"><a href="#Http-2" class="headerlink" title="Http 2"></a>Http 2</h3><ol>
+<li>所有数据以二进制传输</li>
+<li>同一个连接里发送多个请求不再要求按照顺序来</li>
+<li>头信息压缩以及推送等提高效率的功能</li>
+</ol>
+<h2 id="Http协议基础"><a href="#Http协议基础" class="headerlink" title="Http协议基础"></a><span id="anchor2">Http协议基础</span></h2><h3 id="网络协议分组"><a href="#网络协议分组" class="headerlink" title="网络协议分组"></a>网络协议分组</h3><h4 id="最早七层模型"><a href="#最早七层模型" class="headerlink" title="最早七层模型"></a>最早七层模型</h4><ol>
+<li>物理层</li>
+<li>数据链路层</li>
+<li>网络层</li>
+<li>传输层</li>
+<li>会话层</li>
+<li>表示层</li>
+<li>应用层</li>
+</ol>
+<h4 id="经典五层模型"><a href="#经典五层模型" class="headerlink" title="经典五层模型"></a>经典五层模型</h4><h5 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h5><p>定义物理设备如何传输数据</p>
+<h5 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h5><p>在通信实体之间建立数据链路链接</p>
+<h5 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h5><p>为数据在节点之间传输创建逻辑链路</p>
+<h5 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h5><ol>
+<li>向用户提供了可靠端到端的服务</li>
+<li>向高层屏蔽了下层数据通信的细节</li>
+</ol>
+<h6 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h6><ol>
+<li>TCP&#x2F;IP</li>
+<li>UDP</li>
+</ol>
+<h5 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h5><ol>
+<li>为应用软件提供了很多服务</li>
+<li>构建于TCP协议之上</li>
+<li>屏蔽了网络传输相关细节</li>
+</ol>
+<h6 id="主要协议"><a href="#主要协议" class="headerlink" title="主要协议"></a>主要协议</h6><ol>
+<li>http</li>
+<li>ftp</li>
+<li>telnet</li>
+<li>smtp</li>
+</ol>
+<h3 id="Http请求过程"><a href="#Http请求过程" class="headerlink" title="Http请求过程"></a>Http请求过程</h3><ol>
+<li>Redirect(是否要跳转)</li>
+<li>App cache(应用缓存)</li>
+<li>DNS解析</li>
+<li>Tcp链接</li>
+<li>Request(发送请求)</li>
+<li>Response(接收响应)</li>
+</ol>
+<h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><ol>
+<li>发送SYN(SYN&#x3D;1，Seq&#x3D;x)</li>
+<li>收到SYN，发送SYN,ACK(SYN&#x3D;1,ACK&#x3D;X+1,Seq&#x3D;y)</li>
+<li>发送ACK(ACK&#x3D;Y+1,Seq&#x3D;Z)</li>
+</ol>
+<h3 id="URI、URL、URN"><a href="#URI、URL、URN" class="headerlink" title="URI、URL、URN"></a>URI、URL、URN</h3><h4 id="URI"><a href="#URI" class="headerlink" title="URI"></a>URI</h4><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><ol>
+<li>Uniform Resource Identifier</li>
+<li>统一资源标识符</li>
+</ol>
+<h5 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h5><ol>
+<li>用来标识互联网上的信息</li>
+<li>包括URL和URN</li>
+</ol>
+<h4 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h4><h5 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h5><ol>
+<li>Uniform Resource Locator</li>
+<li>统一资源定位符</li>
+</ol>
+<h5 id="统一资源定位符"><a href="#统一资源定位符" class="headerlink" title="统一资源定位符"></a>统一资源定位符</h5><ol>
+<li>资源类型</li>
+<li>存放资源的主机域名</li>
+<li>资源文件名</li>
+</ol>
+<h4 id="URN"><a href="#URN" class="headerlink" title="URN"></a>URN</h4><h5 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h5><ol>
+<li>Uniform Resource Name</li>
+<li>统一资源名称</li>
+</ol>
+<h5 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h5><ol>
+<li>永久统一定位资源</li>
+<li>在资源移动以后还能找到</li>
+</ol>
+<h3 id="Http报文格式"><a href="#Http报文格式" class="headerlink" title="Http报文格式"></a>Http报文格式</h3><h4 id="首行-起始行"><a href="#首行-起始行" class="headerlink" title="首行(起始行)"></a>首行(起始行)</h4><h5 id="请求报文"><a href="#请求报文" class="headerlink" title="请求报文"></a>请求报文</h5><h6 id="请求方法Method"><a href="#请求方法Method" class="headerlink" title="请求方法Method"></a>请求方法Method</h6><ol>
+<li>GET-&gt;请求指定的页面信息，并返回实体主体</li>
+<li>POST-&gt;向指定资源提交数据进行处理请求（例如提交表单或者上传文件）</li>
+<li>HEAD-&gt;类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头</li>
+<li>PUT-&gt;从客户端向服务器传送的数据取代指定的文档的内容</li>
+<li>DELETE-&gt;请求服务器删除指定的页面</li>
+<li>CONNECT-&gt;HTTP&#x2F;1.1协议中预留给能够将连接改为管道方式的代理服务器</li>
+<li>OPTIONS-&gt;允许客户端查看服务器的性能</li>
+<li>TRACE-&gt;回显服务器收到的请求，主要用于测试或诊断</li>
+</ol>
+<h6 id="资源地址"><a href="#资源地址" class="headerlink" title="资源地址"></a>资源地址</h6><h6 id="协议版本"><a href="#协议版本" class="headerlink" title="协议版本"></a>协议版本</h6><h4 id="响应头部"><a href="#响应头部" class="headerlink" title="响应头部"></a>响应头部</h4><ol>
+<li>响应头部主要是返回一些服务器的基本信息</li>
+<li>一些Cookie值等</li>
+</ol>
+<h4 id="响应体"><a href="#响应体" class="headerlink" title="响应体"></a>响应体</h4><ol>
+<li>该部分为请求需要得到的具体数据</li>
+<li>可以为任何类型数据</li>
+</ol>
+<h2 id="Http提升"><a href="#Http提升" class="headerlink" title="Http提升"></a><span id="anchor3">Http提升</span></h2><h3 id="缓存-Cache-Control"><a href="#缓存-Cache-Control" class="headerlink" title="缓存(Cache-Control)"></a>缓存(Cache-Control)</h3><h4 id="缓存头"><a href="#缓存头" class="headerlink" title="缓存头"></a>缓存头</h4><h5 id="可缓存性"><a href="#可缓存性" class="headerlink" title="可缓存性"></a>可缓存性</h5><ol>
+<li>public-&gt;经过的任何地方都可对数据进行缓存</li>
+<li>private-&gt;请求发起者可以缓存数据</li>
+<li>no-cache-&gt;可以在本地进行缓存,发起请求时必须验证服务器返回请求告知,服务器允许时，可以使用本地缓存</li>
+</ol>
+<h5 id="到期"><a href="#到期" class="headerlink" title="到期"></a>到期</h5><ol>
+<li>max-age-&gt;多久缓存会过期</li>
+<li>s-maxage-&gt;代理服务器时使用</li>
+<li>max-stale-&gt;请求发起方带的头,即便缓存过期，只要在max-stale内，就可使用缓存</li>
+</ol>
+<h5 id="重新验证"><a href="#重新验证" class="headerlink" title="重新验证"></a>重新验证</h5><ol>
+<li>max-revalidate-&gt;max-age缓存已经过期时，必须重新去服务端发起请求，重新获取内容</li>
+<li>proxy-revalidate-&gt;用在缓存服务器中,缓存服务器过期时，必须去原服务器请求数据而不能直接使用本地缓存</li>
+</ol>
+<h5 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h5><ol>
+<li>no-store-&gt;代理和本地不允许使用缓存,都必须去服务端请求数据来使用</li>
+<li>no-transform-&gt;不允许进行格式转换</li>
+</ol>
+<h4 id="缓存验证"><a href="#缓存验证" class="headerlink" title="缓存验证"></a>缓存验证</h4><h5 id="缓存验证原理"><a href="#缓存验证原理" class="headerlink" title="缓存验证原理"></a>缓存验证原理</h5><ol>
+<li>请求方发起请求，如果本地有缓存则返回</li>
+<li>本地没有，向代理缓存请求，如果有则返回</li>
+<li>代理缓存没有，向原服务端发起请求，并返回</li>
+</ol>
+<h5 id="验证头"><a href="#验证头" class="headerlink" title="验证头"></a>验证头</h5><h6 id="Last-Modified"><a href="#Last-Modified" class="headerlink" title="Last-Modified"></a>Last-Modified</h6><ol>
+<li>资源上次修改时间</li>
+<li>配合If-Modified-Since或者If-Unmodified-Since使用</li>
+<li>对比上次修改时间以验证资源是否需要更新</li>
+</ol>
+<h6 id="Etag"><a href="#Etag" class="headerlink" title="Etag"></a>Etag</h6><ol>
+<li>更为严格验证</li>
+<li>数字签名</li>
+<li>配合If-Match或者If-No-Match使用</li>
+<li>对比资源的签名判断是否使用签名</li>
+</ol>
+<h3 id="Cookie和Session"><a href="#Cookie和Session" class="headerlink" title="Cookie和Session"></a>Cookie和Session</h3><h4 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h4><h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><ol>
+<li>Cookie就是由服务器发给客户端的特殊信息</li>
+<li>这些信息以文本文件的方式存放在客户端</li>
+<li>然后客户端每次向服务器发送请求的时候都会带上这些特殊的信息</li>
+</ol>
+<h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5><ol>
+<li>通过setCookie设置</li>
+<li>下次请求会自动带上</li>
+<li>键值对，可以设置多个</li>
+</ol>
+<h5 id="Cookie属性"><a href="#Cookie属性" class="headerlink" title="Cookie属性"></a>Cookie属性</h5><ol>
+<li>max-age和expires设置过期时间</li>
+<li>Secure只在https的时候发送</li>
+<li>HttpOnly无法通过document.cookie访问</li>
+</ol>
+<h4 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h4><h5 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h5><ol>
+<li>Session是另一种记录客户状态的机制</li>
+<li>不同的是Cookie保存在客户端浏览器中，而Session保存在服务器上</li>
+</ol>
+<h3 id="Http连接"><a href="#Http连接" class="headerlink" title="Http连接"></a>Http连接</h3><h4 id="概念-2"><a href="#概念-2" class="headerlink" title="概念"></a>概念</h4><ol>
+<li>网络通信中，读写操作之前，客户端与服务器端之间必须建立一个连接</li>
+<li>当读写操作完成后，双方不再需要这个连接时可以释放这个连接</li>
+<li>连接的建立依靠“三次握手”，而释放则需要“四次握手”</li>
+<li>每个连接的建立都是需要资源消耗和时间消耗的</li>
+</ol>
+<h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><h5 id="长连接"><a href="#长连接" class="headerlink" title="长连接"></a>长连接</h5><h6 id="概念-3"><a href="#概念-3" class="headerlink" title="概念"></a>概念</h6><ol>
+<li>client向server发起连接，server接受client连接</li>
+<li>双方建立连接，client与server完成一次请求</li>
+<li>它们之间的连接并不会主动关闭，后续的读写操作会继续使用这个连接</li>
+</ol>
+<h6 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h6><ol>
+<li>可以省去较多的TCP建立和关闭的操作</li>
+<li>减少浪费，节约时间</li>
+</ol>
+<h5 id="短链接"><a href="#短链接" class="headerlink" title="短链接"></a>短链接</h5><h6 id="概念-4"><a href="#概念-4" class="headerlink" title="概念"></a>概念</h6><ol>
+<li>client向server发起连接，server接受client连接</li>
+<li>client向server发送消息，server回应client，然后一次请求就完成了</li>
+<li>这时候双方任意都可以发起close操作</li>
+</ol>
+<h6 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h6><ol>
+<li>管理起来比较简单</li>
+<li>存在的连接都是有用的连接</li>
+<li>不需要额外的控制手段</li>
+</ol>
+<h3 id="数据协商"><a href="#数据协商" class="headerlink" title="数据协商"></a>数据协商</h3><h4 id="概念-5"><a href="#概念-5" class="headerlink" title="概念"></a>概念</h4><ol>
+<li>服务器对于某个资源有好几个不同的版本</li>
+<li>当浏览器发送请求过来的时候，服务器会提供一个最合适的版本给浏览器</li>
+</ol>
+<h4 id="分类-1"><a href="#分类-1" class="headerlink" title="分类"></a>分类</h4><h5 id="请求"><a href="#请求" class="headerlink" title="请求"></a>请求</h5><h6 id="Accept"><a href="#Accept" class="headerlink" title="Accept"></a>Accept</h6><ol>
+<li>Accept</li>
+<li>Accept-Encoding</li>
+<li>Accept-Language</li>
+<li>User-Agent</li>
+</ol>
+<h5 id="返回"><a href="#返回" class="headerlink" title="返回"></a>返回</h5><h6 id="Content"><a href="#Content" class="headerlink" title="Content"></a>Content</h6><ol>
+<li>Content-Type</li>
+<li>Content-Encoding</li>
+<li>Content-language</li>
+</ol>
+<h3 id="CSP-Content-Security-Policy"><a href="#CSP-Content-Security-Policy" class="headerlink" title="CSP (Content-Security-Policy)"></a>CSP (Content-Security-Policy)</h3><h4 id="概念-6"><a href="#概念-6" class="headerlink" title="概念"></a>概念</h4><ol>
+<li>内容安全策略</li>
+<li>为了缓解很大一部分潜在的跨站脚本问题</li>
+<li>浏览器的扩展程序系统引入了内容安全策略</li>
+</ol>
+<h4 id="作用-2"><a href="#作用-2" class="headerlink" title="作用"></a>作用</h4><ol>
+<li>限制资源获取</li>
+<li>报告资源获取越权</li>
+</ol>
+<h4 id="限制方式"><a href="#限制方式" class="headerlink" title="限制方式"></a>限制方式</h4><ol>
+<li>default-src限制全局</li>
+<li>指定资源类型</li>
+</ol>
+<h1 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h1><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/http-outline.png" alt="HTTP" loading="lazy"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/ja/tags/HTTP/" rel="tag"># HTTP</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ja/posts/ca22ef37.html" rel="prev" title="Gradle开发之——大纲">
+                  <i class="fa fa-angle-left"></i> Gradle开发之——大纲
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ja/posts/d719db3a.html" rel="next" title="加密解密之——总结">
+                  加密解密之——总结 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"5d184ec91ed41252acb018ec88d4f269"}</script>
+<script src="/ja/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

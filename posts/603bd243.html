@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述123456781.音视频的采集流程是怎样的？2.常见的音视频编码格式有哪些？3.什么是 PCM？它和 MP3、AAC 的区别？4.什么是 YUV？YUV420 和 YUV422 有什么区别？5.常见的视频帧格式有哪些？NV21 和 NV12 有什么区别？6.视频帧率、码率、分辨率、GOP 各是什么意思？7.音视频同步的原理是什么？8.视频编码中的 I 帧、P 帧、B 帧的作用？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android面试题——掘金-音视频之基础原理(9.1)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/603bd243.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 概述123456781.音视频的采集流程是怎样的？2.常见的音视频编码格式有哪些？3.什么是 PCM？它和 MP3、AAC 的区别？4.什么是 YUV？YUV420 和 YUV422 有什么区别？5.常见的视频帧格式有哪些？NV21 和 NV12 有什么区别？6.视频帧率、码率、分辨率、GOP 各是什么意思？7.音视频同步的原理是什么？8.视频编码中的 I 帧、P 帧、B 帧的作用？">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-07T11:52:13.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.250Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="掘金">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/603bd243.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/603bd243.html","path":"posts/603bd243.html","title":"Android面试题——掘金-音视频之基础原理(9.1)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android面试题——掘金-音视频之基础原理(9.1) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9F%B3%E8%A7%86%E9%A2%91%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">二 音视频基础原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E9%9F%B3%E8%A7%86%E9%A2%91%E7%9A%84%E9%87%87%E9%9B%86%E6%B5%81%E7%A8%8B%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 音视频的采集流程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%B8%B8%E8%A7%81%E7%9A%84%E9%9F%B3%E8%A7%86%E9%A2%91%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 常见的音视频编码格式有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E4%BB%80%E4%B9%88%E6%98%AF-PCM%EF%BC%9F%E5%AE%83%E5%92%8C-MP3%E3%80%81AAC-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 什么是 PCM？它和 MP3、AAC 的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E4%BB%80%E4%B9%88%E6%98%AF-YUV%EF%BC%9FYUV420-%E5%92%8C-YUV422-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 什么是 YUV？YUV420 和 YUV422 有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E5%B8%B8%E8%A7%81%E7%9A%84%E8%A7%86%E9%A2%91%E5%B8%A7%E6%A0%BC%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9FNV21-%E5%92%8C-NV12-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 常见的视频帧格式有哪些？NV21 和 NV12 有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E8%A7%86%E9%A2%91%E5%B8%A7%E7%8E%87%E3%80%81%E7%A0%81%E7%8E%87%E3%80%81%E5%88%86%E8%BE%A8%E7%8E%87%E3%80%81GOP-%E5%90%84%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D%EF%BC%9F"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 视频帧率、码率、分辨率、GOP 各是什么意思？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-%E9%9F%B3%E8%A7%86%E9%A2%91%E5%90%8C%E6%AD%A5%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 音视频同步的原理是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-%E8%A7%86%E9%A2%91%E7%BC%96%E7%A0%81%E4%B8%AD%E7%9A%84-I-%E5%B8%A7%E3%80%81P-%E5%B8%A7%E3%80%81B-%E5%B8%A7%E7%9A%84%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 视频编码中的 I 帧、P 帧、B 帧的作用？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/603bd243.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android面试题——掘金-音视频之基础原理(9.1) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android面试题——掘金-音视频之基础原理(9.1)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Android%E9%9D%A2%E8%AF%95%E9%A2%98%E2%80%94%E2%80%94%E6%8E%98%E9%87%91-%E9%9F%B3%E8%A7%86%E9%A2%91%E4%B9%8B%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86(9.1).md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-04-07 19:52:13" itemprop="dateCreated datePublished" datetime="2025-04-07T19:52:13+08:00">2025-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/Android%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">Android面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1.音视频的采集流程是怎样的？</span><br><span class="line">2.常见的音视频编码格式有哪些？</span><br><span class="line">3.什么是 PCM？它和 MP3、AAC 的区别？</span><br><span class="line">4.什么是 YUV？YUV420 和 YUV422 有什么区别？</span><br><span class="line">5.常见的视频帧格式有哪些？NV21 和 NV12 有什么区别？</span><br><span class="line">6.视频帧率、码率、分辨率、GOP 各是什么意思？</span><br><span class="line">7.音视频同步的原理是什么？</span><br><span class="line">8.视频编码中的 I 帧、P 帧、B 帧的作用？</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-音视频基础原理"><a href="#二-音视频基础原理" class="headerlink" title="二 音视频基础原理"></a>二 音视频基础原理</h2><h3 id="2-1-音视频的采集流程？"><a href="#2-1-音视频的采集流程？" class="headerlink" title="2.1 音视频的采集流程？"></a>2.1 音视频的采集流程？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.音频采集：</span><br><span class="line">-使用 AudioRecord 进行麦克风录音。</span><br><span class="line">-回调或手动读取 PCM 数据。</span><br><span class="line"></span><br><span class="line">2.视频采集：</span><br><span class="line">-使用 Camera2 或 CameraX 采集图像数据。</span><br><span class="line">-可输出 YUV 或 RGBA 数据帧。</span><br><span class="line"></span><br><span class="line">面试提示：音视频开发中，“采集”是第一步，后续才涉及编码、传输、解码、渲染。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-常见的音视频编码格式有哪些？"><a href="#2-2-常见的音视频编码格式有哪些？" class="headerlink" title="2.2 常见的音视频编码格式有哪些？"></a>2.2 常见的音视频编码格式有哪些？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-音频：AAC、MP3、Opus、PCM</span><br><span class="line">-视频：H.264、H.265、VP8、VP9、AV1</span><br><span class="line">-容器格式：MP4、FLV、MKV、TS</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-什么是-PCM？它和-MP3、AAC-的区别？"><a href="#2-3-什么是-PCM？它和-MP3、AAC-的区别？" class="headerlink" title="2.3 什么是 PCM？它和 MP3、AAC 的区别？"></a>2.3 什么是 PCM？它和 MP3、AAC 的区别？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">一、PCM</span><br><span class="line">PCM (Pulse Code Modulation) 是一种无损音频编码格式，</span><br><span class="line">它将模拟音频信号转换为数字信号，通过对声音波形进行采样和量化来表示声音数据。</span><br><span class="line">PCM 通常是原始的音频数据，没有压缩，因此文件大小较大，但质量保持不变。</span><br><span class="line"></span><br><span class="line">二、PCM 与 MP3、AAC 的区别：</span><br><span class="line">2.1 PCM：</span><br><span class="line">-类型：无损音频编码。</span><br><span class="line">-特点：音质最佳，因为没有任何数据丢失，保留了原始音频的所有细节。</span><br><span class="line">-文件大小：较大，因为没有压缩。</span><br><span class="line">-常见应用：音频录制、专业音频工作站。</span><br><span class="line"></span><br><span class="line">2.2 MP3：</span><br><span class="line">-类型：有损音频压缩格式。</span><br><span class="line">-特点：通过去除人耳不太敏感的音频信息来减小文件大小，导致音质有所损失。</span><br><span class="line">-文件大小：相对较小，适合存储和传输。</span><br><span class="line">-常见应用：音乐播放、音频流媒体。</span><br><span class="line"></span><br><span class="line">2.3 AAC：</span><br><span class="line">-类型：有损音频压缩格式，通常被认为是 MP3 的升级版。</span><br><span class="line">-特点：相比 MP3，AAC 在相同的比特率下提供更好的音质。它采用了更先进的编码算法，优化了压缩效率。</span><br><span class="line">-文件大小：比 PCM 小，但比 MP3 略大。</span><br><span class="line">-常见应用：流媒体服务（如 YouTube、Apple Music 等）。</span><br><span class="line"></span><br><span class="line">3 总结：</span><br><span class="line">-PCM 是无损格式，保留所有音频细节，文件较大。</span><br><span class="line">-MP3 和 AAC 是有损压缩格式，能够减小文件大小，但会牺牲一定的音质。</span><br><span class="line">AAC 在音质和压缩效率上优于 MP3。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-什么是-YUV？YUV420-和-YUV422-有什么区别？"><a href="#2-4-什么是-YUV？YUV420-和-YUV422-有什么区别？" class="headerlink" title="2.4 什么是 YUV？YUV420 和 YUV422 有什么区别？"></a>2.4 什么是 YUV？YUV420 和 YUV422 有什么区别？</h3><p>1-<strong>YUV</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">YUV是一种常用的视频颜色编码格式，用于将图像数据中的亮度（Y）和色度（U、V）信息分离，便于压缩与传输。</span><br><span class="line">-Y：亮度（Luma）信息，决定图像的明暗；</span><br><span class="line">-U/V：色度（Chroma）信息，表示颜色的差异。</span><br><span class="line"></span><br><span class="line">这种分离方式可以在保证图像清晰度的同时，降低色彩数据量，从而提高压缩效率。</span><br></pre></td></tr></table></figure>
+
+<p>2-YUV420 vs YUV422 的区别：</p>
+<table>
+<thead>
+<tr>
+<th align="center">对比项</th>
+<th align="center">YUV420</th>
+<th align="center">YUV422</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">色度采样比</td>
+<td align="center">每 4 个像素共享 1 个 U 和 1 个 V（4:2:0）</td>
+<td align="center">每 2 个像素共享 1 个 U 和 1 个 V（4:2:2）</td>
+</tr>
+<tr>
+<td align="center">数据量</td>
+<td align="center">更少，压缩效率高</td>
+<td align="center">数据量略多，画质更好</td>
+</tr>
+<tr>
+<td align="center">色彩还原</td>
+<td align="center">略低</td>
+<td align="center">更高，色彩更准确</td>
+</tr>
+<tr>
+<td align="center">常见应用</td>
+<td align="center">视频直播、移动设备播放等</td>
+<td align="center">专业视频编辑、摄像设备等</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>3-简单类比</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">YUV420：更省资源，适合高压缩率需求；</span><br><span class="line">YUV422：保留更多色彩细节，适合画质要求高的场</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-常见的视频帧格式有哪些？NV21-和-NV12-有什么区别？"><a href="#2-5-常见的视频帧格式有哪些？NV21-和-NV12-有什么区别？" class="headerlink" title="2.5 常见的视频帧格式有哪些？NV21 和 NV12 有什么区别？"></a>2.5 常见的视频帧格式有哪些？NV21 和 NV12 有什么区别？</h3><p>一、常见视频帧格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.1 YUV420系列（最常见）</span><br><span class="line">-I420（YUV420P）：Y + U + V，按平面存储。</span><br><span class="line">-NV12：Y 平面 + UV 交错（U 在前，V 在后）。</span><br><span class="line">-NV21：Y 平面 + VU 交错（V 在前，U 在后）。</span><br><span class="line"></span><br><span class="line">1.2 YUV422系列</span><br><span class="line">-YUYV、UYVY、YUV422P：更高的色彩保留度。</span><br><span class="line"></span><br><span class="line">1.3 RGB系列</span><br><span class="line">-RGB24、RGBA8888：每像素分别保存红、绿、蓝分量，常用于图像处理。</span><br></pre></td></tr></table></figure>
+
+<p>二、NV21 和 NV12 的区别</p>
+<table>
+<thead>
+<tr>
+<th align="center">比较项</th>
+<th align="center">NV21</th>
+<th align="center">NV12</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">存储顺序</td>
+<td align="center">Y + VU（交错）</td>
+<td align="center">Y + UV（交错）</td>
+</tr>
+<tr>
+<td align="center">色度排列</td>
+<td align="center">V 在前，U 在后</td>
+<td align="center">U 在前，V 在后</td>
+</tr>
+<tr>
+<td align="center">Android支持</td>
+<td align="center">Android 系统默认使用 NV21</td>
+<td align="center">通常用于硬件解码或某些编码器中</td>
+</tr>
+<tr>
+<td align="center">应用场景</td>
+<td align="center">摄像头预览数据采集</td>
+<td align="center">视频编解码、OpenGL 纹理处理等</td>
+</tr>
+</tbody></table>
+<p>三、总结</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-NV21 是 Android 摄像头默认输出格式；</span><br><span class="line">-NV12 更常用于视频编解码（如 MediaCodec）；</span><br><span class="line">-两者主要区别在于 U/V 分量的交错顺序不同。转换时需要注意格式兼容。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-视频帧率、码率、分辨率、GOP-各是什么意思？"><a href="#2-6-视频帧率、码率、分辨率、GOP-各是什么意思？" class="headerlink" title="2.6 视频帧率、码率、分辨率、GOP 各是什么意思？"></a>2.6 视频帧率、码率、分辨率、GOP 各是什么意思？</h3><p>1-概念</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">1. 视频帧率（Frame Rate）</span><br><span class="line">帧率是指每秒显示的图像帧数，单位为 FPS（Frames Per Second）。帧率决定了视频播放的流畅度。</span><br><span class="line"></span><br><span class="line">常见帧率：</span><br><span class="line">-24fps：电影的标准帧率，给人一种&quot;电影感&quot;。</span><br><span class="line">-30fps：常用于普通视频流媒体和网络视频。</span><br><span class="line">-60fps：适用于快速运动的场景或游戏视频。</span><br><span class="line"></span><br><span class="line">帧率越高，视频看起来越流畅，但文件大小也越大。</span><br><span class="line">对于实时视频应用，保持较高的帧率（如 30fps 或 60fps）是很重要的，以保证观看体验。</span><br><span class="line"></span><br><span class="line">2. 码率（Bitrate）</span><br><span class="line">码率是指每秒传输的视频数据量，单位是 Kbps 或 Mbps（千位/百万位每秒）。它影响视频的质量和文件大小。</span><br><span class="line">-高码率：提供更好的画质，但文件大，传输需要更多带宽。</span><br><span class="line">-低码率：画质会下降，但文件小，适合低带宽网络传输。</span><br><span class="line"></span><br><span class="line">码率与画质之间的关系：</span><br><span class="line">-码率越高，视频画质越好，但文件大小也更大。</span><br><span class="line">-码率越低，视频文件越小，但质量会下降，出现马赛克、模糊等现象。</span><br><span class="line"></span><br><span class="line">3.分辨率（Resolution）</span><br><span class="line">分辨率是指视频图像的宽度和高度（以像素为单位）。</span><br><span class="line"></span><br><span class="line">常见的分辨率包括：</span><br><span class="line">-480p（SD）：640x480，适用于低带宽网络。</span><br><span class="line">-720p（HD）：1280x720，高清，适用于网络视频和广播。</span><br><span class="line">-1080p（Full HD）：1920x1080，高质量视频，常见于高清视频播放。</span><br><span class="line">-4K（Ultra HD）：3840x2160，超高清，适用于大屏幕显示和高质量视频流。</span><br><span class="line"></span><br><span class="line">分辨率越高，画面越清晰，但需要更高的带宽和更高的码率来保证流畅播放。</span><br><span class="line"></span><br><span class="line">4. GOP（Group of Pictures）</span><br><span class="line">GOP（Group of Pictures） 是指视频中关键帧（I 帧）和其他预测帧（P 帧和 B 帧）按一定顺序排列的一个组。</span><br><span class="line">GOP 的长度（即帧数）影响视频的编码效率和视频质量。</span><br><span class="line"></span><br><span class="line">-I 帧（Intra-coded frame）：</span><br><span class="line">关键帧，视频中的完整帧，包含完整的图像信息，不依赖其他帧。GOP 中的第一个帧通常是 I 帧。</span><br><span class="line">-P 帧（Predicted frame）：预测帧，依赖于前面的 I 帧或 P 帧，通过预测和差异编码来减少数据量。</span><br><span class="line">-B 帧（Bidirectional predicted frame）：双向预测帧，依赖于前后帧，压缩效率最高，但解码延迟也大。</span><br><span class="line"></span><br><span class="line">GOP 长度（例如 GOP=30）：</span><br><span class="line">-表示每 30 帧（1 秒钟）后有一个 I 帧，其间是 P 帧和 B 帧。GOP 长度越长，压缩效率越高，但视频的延迟增加，且恢复速度较慢。</span><br><span class="line">-短 GOP（如 GOP=15）：适合低延迟应用，比如视频会议或实时直播。</span><br><span class="line">-长 GOP（如 GOP=30 或更长）：适合录制、点播等不需要低延迟的场景。</span><br></pre></td></tr></table></figure>
+
+<p>2-视频帧率、码率、分辨率、GOP 的关系：</p>
+<table>
+<thead>
+<tr>
+<th align="center">项目</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">帧率</td>
+<td align="center">每秒钟显示的帧数，影响视频流畅度，通常为 24fps、30fps、60fps</td>
+</tr>
+<tr>
+<td align="center">码率</td>
+<td align="center">每秒钟的视频数据量，影响视频质量和文件大小，常为 1Mbps 到 10Mbps</td>
+</tr>
+<tr>
+<td align="center">分辨率</td>
+<td align="center">视频图像的宽高，以像素为单位，常见有 480p、720p、1080p、4K</td>
+</tr>
+<tr>
+<td align="center">GOP</td>
+<td align="center">I 帧、P 帧和 B 帧的组合，影响编码效率和解码延迟，通常在 15 到 30 帧之间</td>
+</tr>
+</tbody></table>
+<p>3-例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">假设一个视频的配置为：</span><br><span class="line">-分辨率：1080p</span><br><span class="line">-帧率：30fps</span><br><span class="line">-码率：4Mbps</span><br><span class="line">-GOP：30</span><br><span class="line"></span><br><span class="line">这表示每 30 帧一个 I 帧，视频每秒钟会有 30 帧，分辨率是 1080p，码率是 4Mbps，</span><br><span class="line">保证了较好的视频质量和适中的文件大小。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-音视频同步的原理是什么？"><a href="#2-7-音视频同步的原理是什么？" class="headerlink" title="2.7 音视频同步的原理是什么？"></a>2.7 音视频同步的原理是什么？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">一、概念</span><br><span class="line">音视频同步（A/V Sync）的核心目的是让声音和画面一致，</span><br><span class="line">防止出现“声画不同步”的情况（比如嘴动了声音还没来）。</span><br><span class="line"></span><br><span class="line">二、同步原理：</span><br><span class="line">音视频数据通常都有时间戳（PTS），播放器根据时间戳决定何时播放对应的帧。</span><br><span class="line"></span><br><span class="line">常见同步方式：</span><br><span class="line">2.1 以音频为主（音频时钟）：</span><br><span class="line">-音频流连续稳定，作为主时钟；</span><br><span class="line">-视频播放时比较当前视频帧的 PTS 与音频播放时间：</span><br><span class="line"> -如果视频帧时间早 → 等待；</span><br><span class="line"> -如果视频帧时间晚 → 丢帧或跳过。</span><br><span class="line"></span><br><span class="line">2.2 系统时钟同步（系统时间为参考）：</span><br><span class="line">-比较每帧的 PTS 和系统当前时间，确保播放节奏同步。</span><br><span class="line"></span><br><span class="line">2.3 自定义时钟（比如播放器内部维护的时钟）：</span><br><span class="line">更精细控制，适用于复杂场景（直播、快进快退等）。</span><br><span class="line"></span><br><span class="line">3.总结：</span><br><span class="line">音视频同步就是通过时间戳对齐，通常以音频为时钟基准，让视频播放节奏与音频保持一致，从而实现同步播放。</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="2-8-视频编码中的-I-帧、P-帧、B-帧的作用？"><a href="#2-8-视频编码中的-I-帧、P-帧、B-帧的作用？" class="headerlink" title="2.8 视频编码中的 I 帧、P 帧、B 帧的作用？"></a>2.8 视频编码中的 I 帧、P 帧、B 帧的作用？</h3><p>1-概念</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在视频编码中，I 帧（Intra-coded Frame）、</span><br><span class="line">P 帧（Predicted Frame）和 B 帧（Bidirectional Predicted Frame）是三种不同类型的帧，</span><br><span class="line">它们在压缩视频时扮演着重要的角色。</span><br><span class="line">它们之间的区别在于编码方式和所需的数据量不同，决定了视频的压缩效率、质量以及播放时的解码复杂度。</span><br><span class="line"></span><br><span class="line">下面详细解释它们的作用和特点：</span><br></pre></td></tr></table></figure>
+
+<p>2-知识点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">1. I 帧（Intra-coded Frame）——关键帧</span><br><span class="line">作用：I 帧是视频中的 关键帧，它是独立的完整帧，包含了图像的所有信息，可以单独解码出来，因此 不依赖于其他帧。</span><br><span class="line">I 帧通常用于视频中的关键位置，作为编码序列的起始点。</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line">-不依赖任何其他帧。</span><br><span class="line">-包含完整的图像数据。</span><br><span class="line">-编码过程较复杂，数据量较大。</span><br><span class="line"></span><br><span class="line">压缩效率：I 帧的压缩效率较低，因为它需要存储完整的图像数据，因此相对来说文件较大，编码和解码的计算开销较高。</span><br><span class="line"></span><br><span class="line">使用场景：</span><br><span class="line">I 帧通常在视频的起始位置、场景切换或需要精确定位的地方使用。</span><br><span class="line">它们通常是一个 GOP（Group of Pictures） 中的第一个帧。</span><br><span class="line"></span><br><span class="line">2. P 帧（Predicted Frame）——预测帧</span><br><span class="line">作用：P 帧是通过与前面的 I 帧 或 P 帧 对比，使用 差分编码 进行压缩的帧。</span><br><span class="line">P 帧只记录与前一帧（I 帧或 P 帧）之间的变化信息，而不是整个图像数据。</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line">-依赖于前面的 I 帧或 P 帧。</span><br><span class="line">-只存储与前一帧的差异数据。</span><br><span class="line">-编码和解码相对较快，文件比 I 帧小得多。</span><br><span class="line"></span><br><span class="line">压缩效率：P 帧通过差分编码，使得只存储图像中与前一帧不同的部分，节省了很多存储空间，提供了较高的压缩效率。</span><br><span class="line"></span><br><span class="line">使用场景：P 帧适用于图像变化不大的连续帧，特别是在运动不大的视频中，它可以通过与前一帧的对比，有效减少数据量。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">3. B 帧（Bidirectional Predicted Frame）——双向预测帧</span><br><span class="line">作用：B 帧是通过与 前后的帧（I 帧或 P 帧） 进行双向预测，记录前后帧的差异信息，从而进一步压缩图像数据。</span><br><span class="line">它结合了前后帧的差异来获得更高的压缩效率。</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line">-依赖于前后帧（I 帧或 P 帧）。</span><br><span class="line">-通过前后帧的差异信息进行编码。</span><br><span class="line">-压缩效果最好，但解码延迟相对较高。</span><br><span class="line"></span><br><span class="line">压缩效率：</span><br><span class="line">B 帧提供了最高的压缩效率，因为它通过前后的帧差异进行编码，数据量最小，但也因此需要更多的计算资源来解码。</span><br><span class="line"></span><br><span class="line">使用场景：</span><br><span class="line">B 帧通常用于较复杂的场景和细节变化较小的部分，可以最大化视频的压缩效率。</span><br><span class="line">由于解码时需要两帧的信息（前一帧和后一帧），解码延迟较高，</span><br><span class="line">因此一般不会用于低延迟应用（如实时视频会议、直播等）。</span><br></pre></td></tr></table></figure>
+
+<p>2-I 帧、P 帧、B 帧的对比：</p>
+<table>
+<thead>
+<tr>
+<th align="center">特征</th>
+<th align="center">I 帧 (关键帧)</th>
+<th align="center">P 帧 (预测帧)</th>
+<th align="center">B 帧 (双向预测帧)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">依赖性</td>
+<td align="center">不依赖其他帧</td>
+<td align="center">依赖前面的 I 帧或 P 帧</td>
+<td align="center">依赖前后帧</td>
+</tr>
+<tr>
+<td align="center">压缩效率</td>
+<td align="center">低（较大）</td>
+<td align="center">较高（较小）</td>
+<td align="center">最高（最小）</td>
+</tr>
+<tr>
+<td align="center">编码方式</td>
+<td align="center">完整图像信息</td>
+<td align="center">差分编码（与前帧的差异）</td>
+<td align="center">双向差分编码（与前后帧的差异）</td>
+</tr>
+<tr>
+<td align="center">解码延迟</td>
+<td align="center">低</td>
+<td align="center">中等</td>
+<td align="center">高</td>
+</tr>
+<tr>
+<td align="center">计算开销</td>
+<td align="center">高</td>
+<td align="center">中等</td>
+<td align="center">高</td>
+</tr>
+<tr>
+<td align="center">使用场景</td>
+<td align="center">视频起始、场景切换</td>
+<td align="center">连续变化不大的部分</td>
+<td align="center">场景细节、压缩效率要求高的部分</td>
+</tr>
+</tbody></table>
+<p>3- 总结：I 帧、P 帧、B 帧的作用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">I 帧 是视频中的关键帧，包含完整的图像数据，解码时不依赖其他帧，压缩效率较低，但用于场景切换和编码序列的开始。</span><br><span class="line">P 帧 是通过与前一帧（I 帧或 P 帧）的差异进行编码的帧，压缩效率较高，适用于场景变化不大的部分。</span><br><span class="line">B 帧 是通过与前后帧的差异进行双向预测的帧，提供最高的压缩效率，但解码延迟较高，适用于细节变化较小的部分。</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-参考"><a href="#三-参考" class="headerlink" title="三 参考"></a>三 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7480464724096057381">掘金—知识库的大纲</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%8E%98%E9%87%91/" rel="tag"># 掘金</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/3db1013a.html" rel="prev" title="Android面试题——掘金-JNI&amp;NDK(8.1)">
+                  <i class="fa fa-angle-left"></i> Android面试题——掘金-JNI&NDK(8.1)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/3e36d1ff.html" rel="next" title="Android面试题——掘金-音视频之相关API(9.2)">
+                  Android面试题——掘金-音视频之相关API(9.2) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"e3581981f0f4fcc9bd26ae8050749b52"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述1231.边界标识法2.分配算法3.回收算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法——第8章-动态内存管理-边界标识法(8.2)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/8e2c717c.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="一 概述1231.边界标识法2.分配算法3.回收算法">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pgzxc.github.io/en/images-8.2/ds-chap8-2-1.png">
+<meta property="og:image" content="https://pgzxc.github.io/en/images-8.2/ds-chap8-2-2.png">
+<meta property="og:image" content="https://pgzxc.github.io/en/images-8.2/ds-chap8-2-3.png">
+<meta property="article:published_time" content="2023-05-02T15:13:07.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:04.902Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="数据结构与算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pgzxc.github.io/en/images-8.2/ds-chap8-2-1.png">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/8e2c717c.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/8e2c717c.html","path":"posts/8e2c717c.html","title":"数据结构与算法——第8章-动态内存管理-边界标识法(8.2)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>数据结构与算法——第8章-动态内存管理-边界标识法(8.2) | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E8%BE%B9%E7%95%8C%E6%A0%87%E8%AF%86%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">二 边界标识法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E7%BB%93%E6%9E%84%E6%9E%84%E6%88%90"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 结构构成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E8%AF%B4%E6%98%8E"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E4%BB%A3%E7%A0%81%E8%A1%A8%E7%A4%BA"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 代码表示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">三 分配算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%88%86%E9%85%8D%E6%96%B9%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 分配方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%AF%B9%E5%9B%A0%E6%8E%AA%E6%96%BD"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 对因措施</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E7%AE%97%E6%B3%95%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 算法代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">四 回收算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 回收算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E4%B8%89%E7%A7%8D%E6%83%85%E5%86%B5"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 三种情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E7%A9%BA%E9%97%B2%E5%9D%97"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 空闲块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 实现代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-%E7%A9%BA%E9%97%B2%E5%9D%97%E5%90%88%E5%B9%B6%EF%BC%88%E5%BD%93%E5%89%8D%E5%9D%97%EF%BC%8C%E5%B7%A6%E4%BE%A7%E5%86%85%E5%AD%98%E5%9D%97%EF%BC%89"><span class="nav-number">4.5.</span> <span class="nav-text">4.5  空闲块合并（当前块，左侧内存块）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-%E7%A9%BA%E9%97%B2%E5%9D%97%E5%90%88%E5%B9%B6%EF%BC%88%E5%BD%93%E5%89%8D%E5%9D%97%E3%80%81%E5%8F%B3%E4%BE%A7%E5%86%85%E5%AD%98%E5%9D%97%EF%BC%89"><span class="nav-number">4.6.</span> <span class="nav-text">4.6 空闲块合并（当前块、右侧内存块）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-7-%E7%9B%B8%E9%82%BB%E7%9A%84%E5%B7%A6%E5%8F%B3%E4%B8%A4%E4%BE%A7%E7%9A%84%E5%86%85%E5%AD%98%E5%9D%97%E5%85%A8%E9%83%A8%E4%B8%BA%E7%A9%BA%E9%97%B2%E5%9D%97"><span class="nav-number">4.7.</span> <span class="nav-text">4.7 相邻的左右两侧的内存块全部为空闲块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E5%8F%82%E8%80%83"><span class="nav-number">5.</span> <span class="nav-text">五 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/8e2c717c.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="数据结构与算法——第8章-动态内存管理-边界标识法(8.2) | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据结构与算法——第8章-动态内存管理-边界标识法(8.2)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E7%AC%AC8%E7%AB%A0-%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-%E8%BE%B9%E7%95%8C%E6%A0%87%E8%AF%86%E6%B3%95(8.2).md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2023-05-02 23:13:07" itemprop="dateCreated datePublished" datetime="2023-05-02T23:13:07+08:00">2023-05-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E5%BC%80%E5%8F%91/N-%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">N-数据与算法</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E5%BC%80%E5%8F%91/N-%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>4 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.边界标识法</span><br><span class="line">2.分配算法</span><br><span class="line">3.回收算法</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-边界标识法"><a href="#二-边界标识法" class="headerlink" title="二 边界标识法"></a>二 边界标识法</h2><h3 id="2-1-结构构成"><a href="#2-1-结构构成" class="headerlink" title="2.1 结构构成"></a>2.1 结构构成</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">本节介绍一种解决系统中内存碎片过多而无法使用的方法——边界标识法。</span><br><span class="line"></span><br><span class="line">在使用边界标识法的系统管理内存时，可利用空间表中的结点的构成如图 1：</span><br></pre></td></tr></table></figure>
+
+<p><img src="/en/images-8.2/ds-chap8-2-1.png" loading="lazy"></p>
+<h3 id="2-2-说明"><a href="#2-2-说明" class="headerlink" title="2.2 说明"></a>2.2 说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">每个结点中包含 3 个区域，head 域、foot 域 和 space 域：</span><br><span class="line"></span><br><span class="line">1.space 域表示为该内存块的大小，它的大小通过 head 域中的 size 值表示。</span><br><span class="line"></span><br><span class="line">2.head 域中包含有 4 部分：llink 和 rlink 分别表示指向当前内存块结点的直接前驱和直接后继。</span><br><span class="line">tag 值用于标记当前内存块的状态，是占用块（用 1 表示）还是空闲块（用 0 表示）。</span><br><span class="line">size 用于记录该内存块的存储大小。</span><br><span class="line"></span><br><span class="line">3.foot 域中包含有 2 部分：</span><br><span class="line">uplink 是指针域，用于指向内存块本身，通过 uplink 就可以获取该内存块所在内存的首地址。</span><br><span class="line">tag 同 head 域中的 tag 相同，都是记录内存块状态的。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-注意事项"><a href="#2-3-注意事项" class="headerlink" title="2.3 注意事项"></a>2.3 注意事项</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">注意：head 域和 foot 域在本节中都假设只占用当前存储块的 1 个存储单位的空间，</span><br><span class="line">对于该结点整个存储空间来说，可以忽略不计。</span><br><span class="line">也就是说，在可利用空间表中，知道下一个结点的首地址，该值减 1 就可以找到当前结点的 foot 域。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">使用边界标识法的可利用空间表本身是双向循环链表，每个内存块结点都有指向前驱和后继结点的指针域。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-代码表示"><a href="#2-4-代码表示" class="headerlink" title="2.4 代码表示"></a>2.4 代码表示</h3><p>所以，边界标识法管理的内存块结点的代码表示为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">typedef struct WORD&#123;</span><br><span class="line">    union&#123;</span><br><span class="line">        struct WORD *llink;//指向直接前驱</span><br><span class="line">        struct WORD *uplink;//指向结点本身</span><br><span class="line">    &#125;;</span><br><span class="line">    int tag;//标记域,0表示为空闲块；1表示为占用块</span><br><span class="line">    int size;//记录内存块的存储大小</span><br><span class="line">    struct WORD *rlink;//指向直接后继</span><br><span class="line">    OtherType other;//内存块可能包含的其它的部分</span><br><span class="line">&#125;WORD,head,foot,*Space;</span><br></pre></td></tr></table></figure>
+
+<p>注：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">通过以上介绍的结点结构构建的可利用空间表中，任何一个结点都可以作为该链表的头结点（用 pav 表示头结点），</span><br><span class="line">当头结点为 NULL 时，即可利用空间表为空，无法继续分配空间。</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-分配算法"><a href="#三-分配算法" class="headerlink" title="三 分配算法"></a>三 分配算法</h2><h3 id="3-1-分配方法"><a href="#3-1-分配方法" class="headerlink" title="3.1 分配方法"></a>3.1 分配方法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">当用户申请空间时，系统可以采用 3 种分配方法中的任何一种。</span><br><span class="line">但在不断地分配的过程中，会产生一些容量极小以至无法利用的空闲块，这些不断生成的小内存块就会减慢遍历分配的速度。</span><br><span class="line"></span><br><span class="line">3 种分配方法分别为：首部拟合法、最佳拟合法和最差拟合法。</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-对因措施"><a href="#3-2-对因措施" class="headerlink" title="3.2 对因措施"></a>3.2 对因措施</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">针对这种情况，解决的措施是：</span><br><span class="line">1.选定一个常量 e，每次分配空间时，判断当前内存块向用户分配空间后，</span><br><span class="line">如果剩余部分的容量比 e 小，则将整个内存块全部分配给用户。</span><br><span class="line"></span><br><span class="line">2.采用头部拟合法进行分配时，如果每次都从 pav 指向的结点开始遍历，</span><br><span class="line">在若干次后，会出现存储量小的结点密集地分布在 pav 结点附近的情况，严重影响遍历的时间。</span><br><span class="line">解决办法就是：在每次分配空间后，让 pav 指针指向该分配空间结点的后继结点，</span><br><span class="line">然后从新的 pav 指向的结点开始下一次的分配。</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-算法代码实现"><a href="#3-3-算法代码实现" class="headerlink" title="3.3 算法代码实现"></a>3.3 算法代码实现</h3><p>分配算法的具体实现代码为（采用首部拟合法）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">Space AllocBoundTag(Space *pav,int n)&#123;</span><br><span class="line">    Space p,f;</span><br><span class="line">    int e=10;//设定常亮 e 的值</span><br><span class="line">    //如果在遍历过程，当前空闲块的在存储容量比用户申请空间 n 值小，在该空闲块有右孩子的情况下直接跳过</span><br><span class="line">    for (p=(*pav); p&amp;&amp;p-&gt;size&lt;n&amp;&amp;p-&gt;rlink!=(*pav); p=p-&gt;rlink);</span><br><span class="line">    //跳出循环，首先排除p为空和p指向的空闲块容量小于 n 的情况</span><br><span class="line">    if (!p ||p-&gt;size&lt;n) &#123;</span><br><span class="line">        return NULL;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        //指针f指向p空闲块的foot域</span><br><span class="line">        f=FootLoc(p);</span><br><span class="line">        //调整pav指针的位置，为下次分配做准备</span><br><span class="line">        (*pav)=p-&gt;rlink;</span><br><span class="line">        //如果该空闲块的存储大小比 n 大，比 n+e 小，负责第一种情况，将 p 指向的空闲块全部分配给用户</span><br><span class="line">        if (p-&gt;size-n &lt;= e) &#123;</span><br><span class="line">            if ((*pav)==p) &#123;</span><br><span class="line">                pav=NULL;</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                //全部分配用户，即从可利用空间表中删除 p 空闲块</span><br><span class="line">                (*pav)-&gt;llink=p-&gt;llink;</span><br><span class="line">                p-&gt;llink-&gt;rlink=(*pav);</span><br><span class="line">            &#125;</span><br><span class="line">            //同时调整head域和foot域中的tag值</span><br><span class="line">            p-&gt;tag=f-&gt;tag=1;</span><br><span class="line">        &#125;</span><br><span class="line">        //否则，从p空闲块中拿出 大小为 n 的连续空间分配给用户，同时更新p剩余存储块中的信息。</span><br><span class="line">        else&#123;</span><br><span class="line">            //更改分配块foot域的信息</span><br><span class="line">            f-&gt;tag=1;</span><br><span class="line">            p-&gt;size-=n;</span><br><span class="line">            //f指针指向剩余空闲块 p 的底部</span><br><span class="line">            f=FootLoc(p);</span><br><span class="line">            f-&gt;tag=0;   f-&gt;uplink=p;</span><br><span class="line">            p=f+1;//p指向的是分配给用户的块的head域，也就是该块的首地址</span><br><span class="line">            p-&gt;tag=1;   p-&gt;size=n;</span><br><span class="line">        &#125;</span><br><span class="line">        return p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四-回收算法"><a href="#四-回收算法" class="headerlink" title="四 回收算法"></a>四 回收算法</h2><h3 id="4-1-回收算法"><a href="#4-1-回收算法" class="headerlink" title="4.1 回收算法"></a>4.1 回收算法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">在用户活动完成，系统需要立即回收被用户占用的存储空间，以备新的用户使用。</span><br><span class="line">回收算法中需要解决的问题是：在若干次分配操作后，可利用空间块中会产生很多存储空间很小以致无法使用的空闲块。</span><br><span class="line">但是经过回收用户释放的空间后，可利用空间表中可能含有地址相邻的空闲块，</span><br><span class="line">回收算法需要将这些地址相邻的空闲块合并为大的空闲块供新的用户使用。</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-三种情况"><a href="#4-2-三种情况" class="headerlink" title="4.2 三种情况"></a>4.2 三种情况</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">合并空闲块有 3 种情况：</span><br><span class="line">1.该空闲块的左边有相邻的空闲块可以进行合并；</span><br><span class="line">2.该空闲块的右边用相邻的空闲块可以进行合并；</span><br><span class="line">3.该空闲块的左右两侧都有相邻的空闲块可以进行合并；</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-空闲块"><a href="#4-3-空闲块" class="headerlink" title="4.3 空闲块"></a>4.3 空闲块</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">判断当前空闲块左右两侧是否为空闲块的方法是：</span><br><span class="line">对于当前空闲块 p ，p-1 就是相邻的低地址处的空闲块的 foot 域，</span><br><span class="line">如果 foot 域中的 tag 值为 0 ，表明其为空闲块；</span><br><span class="line">p+p-&gt;size 表示的是高地址处的块的 head 域，如果 head 域中的 tag 值为 0，表明其为空闲块。</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-实现代码"><a href="#4-4-实现代码" class="headerlink" title="4.4 实现代码"></a>4.4 实现代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果当前空闲块的左右两侧都不是空闲块，而是占用块，此种情况下只需要将新的空闲块按照相应的规则</span><br><span class="line">（头部拟合法随意插入，其它两种方法在对应位置插入）插入到可利用空间表中即可</span><br></pre></td></tr></table></figure>
+
+<p>实现代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//设定p指针指向的为用户释放的空闲块</span><br><span class="line">p-&gt;tag=0;</span><br><span class="line">//f指针指向p空闲块的foot域</span><br><span class="line">Space f=FootLoc(p);</span><br><span class="line">f-&gt;uplink=p;</span><br><span class="line">f-&gt;tag=0;</span><br><span class="line">//如果pav指针不存在，证明可利用空间表为空，此时设置p为头指针，并重新建立双向循环链表</span><br><span class="line">if (!pav) &#123;</span><br><span class="line">    pav=p-&gt;llink=p-&gt;rlink=p;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    //否则，在p空闲块插入到pav指向的空闲块的左侧</span><br><span class="line">    Space q=pav-&gt;llink;</span><br><span class="line">    p-&gt;rlink=pav;</span><br><span class="line">    p-&gt;llink=q;</span><br><span class="line">    q-&gt;rlink=pav-&gt;llink=p;</span><br><span class="line">    pav=p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5-空闲块合并（当前块，左侧内存块）"><a href="#4-5-空闲块合并（当前块，左侧内存块）" class="headerlink" title="4.5  空闲块合并（当前块，左侧内存块）"></a>4.5  空闲块合并（当前块，左侧内存块）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果该空闲块的左侧相邻的块为空闲块，右侧为占用块，</span><br><span class="line">处理的方法是：只需要更改左侧空闲块中的 size 的大小，并重新设置左侧空闲块的 foot 域即可（如图 2）</span><br></pre></td></tr></table></figure>
+
+<p><img src="/en/images-8.2/ds-chap8-2-2.png" loading="lazy"></p>
+<p>实现代码为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//常量 n 表示当前空闲块的存储大小</span><br><span class="line">int n=p-&gt;size;</span><br><span class="line">Space s=(p-1)-&gt;uplink;//p-1 为当前块的左侧块的foot域，foot域中的uplink指向的就是左侧块的首地址，s指针代表的是当前块的左侧存储块</span><br><span class="line">s-&gt;size+=n;//设置左侧存储块的存储容量</span><br><span class="line">Space f=p+n-1;//f指针指向的是空闲块 p 的foot域</span><br><span class="line">f-&gt;uplink=s;//这是foot域的uplink指针重新指向合并后的存储空间的首地址</span><br><span class="line">f-&gt;tag=0;//设置foot域的tag标记为空闲块</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-6-空闲块合并（当前块、右侧内存块）"><a href="#4-6-空闲块合并（当前块、右侧内存块）" class="headerlink" title="4.6 空闲块合并（当前块、右侧内存块）"></a>4.6 空闲块合并（当前块、右侧内存块）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果用户释放的内存块的相邻左侧为占用块，右侧为空闲块，处理的方法为：</span><br><span class="line">将用户释放掉的存储块替换掉右侧的空闲块，同时更改存储块的 size 和右侧空闲块的 uplink 指针的指向（如图3所示）</span><br></pre></td></tr></table></figure>
+
+<p><img src="/en/images-8.2/ds-chap8-2-3.png" loading="lazy"></p>
+<p>实现代码为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Space t=p+p-&gt;size;//t指针指向右侧空闲块的首地址</span><br><span class="line">p-&gt;tag=0;//初始化head域的tag值为0</span><br><span class="line">//找到t右侧空闲块的前驱结点和后继结点，用当前释放的空闲块替换右侧空闲块</span><br><span class="line">Space q=t-&gt;llink;</span><br><span class="line">p-&gt;llink=q; q-&gt;rlink=p;</span><br><span class="line">Space q1=t-&gt;rlink;</span><br><span class="line">p-&gt;rlink=q1; q1-&gt;llink=p;</span><br><span class="line">//更新释放块的size的值</span><br><span class="line">p-&gt;size+=t-&gt;size;</span><br><span class="line">//更改合并后的foot域的uplink指针的指向</span><br><span class="line">Space f=FootLoc(t);</span><br><span class="line">f-&gt;uplink=p;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-7-相邻的左右两侧的内存块全部为空闲块"><a href="#4-7-相邻的左右两侧的内存块全部为空闲块" class="headerlink" title="4.7 相邻的左右两侧的内存块全部为空闲块"></a>4.7 相邻的左右两侧的内存块全部为空闲块</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">如果当前用户释放掉的空闲块，物理位置上相邻的左右两侧的内存块全部为空闲块，</span><br><span class="line">需要将 3 个空闲块合并为一个更大的块，</span><br><span class="line"></span><br><span class="line">操作的过程为：</span><br><span class="line">更新左侧空闲块的 size 的值，同时在可利用空间表中摘除右侧空闲块，最后更新合并后的大的空闲块的 foot 域。</span><br><span class="line"></span><br><span class="line">此情况和只有左侧有空闲块的情况雷同，唯一的不同点是多了一步摘除右侧相邻空闲块结点的操作。</span><br></pre></td></tr></table></figure>
+
+<p>实现代码为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int n=p-&gt;size;</span><br><span class="line">Space s=(p-1)-&gt;uplink;//找到释放内存块物理位置相邻的低地址的空闲块</span><br><span class="line">Space t=p+p-&gt;size;//找到物理位置相邻的高地址处的空闲块</span><br><span class="line">s-&gt;size+=n+t-&gt;size;//更新左侧空闲块的size的值</span><br><span class="line">//从可利用空间表中摘除右侧空闲块</span><br><span class="line">Space q=t-&gt;llink;</span><br><span class="line">Space q1=t-&gt;rlink;</span><br><span class="line">q-&gt;rlink=q1;</span><br><span class="line">q1-&gt;llink=q;</span><br><span class="line">//更新合并后的空闲块的uplink指针的指向</span><br><span class="line">Space f=FootLoc(t);</span><br><span class="line">f-&gt;uplink=s;</span><br></pre></td></tr></table></figure>
+
+<h2 id="五-参考"><a href="#五-参考" class="headerlink" title="五 参考"></a>五 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://c.biancheng.net/view/3422.html">C语言中文网—边界标识法管理动态内存</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag"># 数据结构与算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/fb7cb296.html" rel="prev" title="标日中级下册——第20课-希望の灯-文法-6">
+                  <i class="fa fa-angle-left"></i> 标日中级下册——第20课-希望の灯-文法-6
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/fc9df3ec.html" rel="next" title="标日中级下册——第20课-希望の灯-课文">
+                  标日中级下册——第20课-希望の灯-课文 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"f42c1e5ca965ddfb7215d7a2f663e84c"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

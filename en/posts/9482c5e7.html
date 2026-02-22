@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述1、请简述 HarmonyOS Next 相较于之前版本在架构上的主要改进2、说明 ArkTS 语言中 V2 状态装饰器相较于 V1 的主要变化和优势，并举例说明如何使用3、HarmonyOS Next 中如何实现元服务与网页端的通信？4、请阐述 HAR 和 HSP 的区别，以及 HSP 如何为应用提供动态更新功能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="鸿蒙面试题——面试题整理9">
+<meta property="og:url" content="https://pgzxc.github.io/posts/9482c5e7.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="一 概述1、请简述 HarmonyOS Next 相较于之前版本在架构上的主要改进2、说明 ArkTS 语言中 V2 状态装饰器相较于 V1 的主要变化和优势，并举例说明如何使用3、HarmonyOS Next 中如何实现元服务与网页端的通信？4、请阐述 HAR 和 HSP 的区别，以及 HSP 如何为应用提供动态更新功能">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-07-22T10:13:47.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:04.990Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Harmony面试题">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/9482c5e7.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/9482c5e7.html","path":"posts/9482c5e7.html","title":"鸿蒙面试题——面试题整理9"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>鸿蒙面试题——面试题整理9 | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E8%AF%B7%E7%AE%80%E8%BF%B0-HarmonyOS-Next-%E7%9B%B8%E8%BE%83%E4%BA%8E%E4%B9%8B%E5%89%8D%E7%89%88%E6%9C%AC%E5%9C%A8%E6%9E%B6%E6%9E%84%E4%B8%8A%E7%9A%84%E4%B8%BB%E8%A6%81%E6%94%B9%E8%BF%9B"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 请简述 HarmonyOS Next 相较于之前版本在架构上的主要改进</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E8%AF%B4%E6%98%8E-ArkTS-%E8%AF%AD%E8%A8%80%E4%B8%AD-V2-%E7%8A%B6%E6%80%81%E8%A3%85%E9%A5%B0%E5%99%A8%E7%9B%B8%E8%BE%83%E4%BA%8E-V1-%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8F%98%E5%8C%96%E5%92%8C%E4%BC%98%E5%8A%BF%EF%BC%8C%E5%B9%B6%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 说明 ArkTS 语言中 V2 状态装饰器相较于 V1 的主要变化和优势，并举例说明如何使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-HarmonyOS-Next-%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%85%83%E6%9C%8D%E5%8A%A1%E4%B8%8E%E7%BD%91%E9%A1%B5%E7%AB%AF%E7%9A%84%E9%80%9A%E4%BF%A1%EF%BC%9F"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 HarmonyOS Next 中如何实现元服务与网页端的通信？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E8%AF%B7%E9%98%90%E8%BF%B0-HAR-%E5%92%8C-HSP-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%8C%E4%BB%A5%E5%8F%8A-HSP-%E5%A6%82%E4%BD%95%E4%B8%BA%E5%BA%94%E7%94%A8%E6%8F%90%E4%BE%9B%E5%8A%A8%E6%80%81%E6%9B%B4%E6%96%B0%E5%8A%9F%E8%83%BD"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 请阐述 HAR 和 HSP 的区别，以及 HSP 如何为应用提供动态更新功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E5%BD%93%E9%B8%BF%E8%92%99%E5%BA%94%E7%94%A8%E5%88%87%E5%88%B0%E5%90%8E%E5%8F%B0%E5%90%8E%EF%BC%8C%E6%9C%89%E5%93%AA%E4%BA%9B%E6%96%B9%E6%B3%95%E5%8F%AF%E4%BB%A5%E4%BF%9D%E8%AF%81%E4%BB%BB%E5%8A%A1%E7%BB%A7%E7%BB%AD%E8%BF%9B%E8%A1%8C%EF%BC%9F%E8%AF%B7%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E%E6%AF%8F%E7%A7%8D%E6%96%B9%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4%E5%92%8C%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 当鸿蒙应用切到后台后，有哪些方法可以保证任务继续进行？请详细说明每种方法的实现步骤和注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E8%AF%B7%E6%8F%8F%E8%BF%B0-EntryAbility-%E4%B8%8E-UIAbility-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%8C%E5%8C%85%E6%8B%AC%E5%AE%83%E4%BB%AC%E7%9A%84%E6%A6%82%E5%BF%B5%E3%80%81%E7%94%A8%E9%80%94%E5%92%8C%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 请描述 EntryAbility 与 UIAbility 的区别，包括它们的概念、用途和生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-%E5%9C%A8%E9%B8%BF%E8%92%99%E5%BC%80%E5%8F%91%E4%B8%AD%EF%BC%8C%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%88%86%E5%B8%83%E5%BC%8F%E8%BD%AF%E6%80%BB%E7%BA%BF%E5%AE%9E%E7%8E%B0%E5%A4%9A%E8%AE%BE%E5%A4%87%E4%B9%8B%E9%97%B4%E7%9A%84%E5%AE%9E%E6%97%B6%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%EF%BC%9F"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 在鸿蒙开发中，如何使用分布式软总线实现多设备之间的实时数据同步？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-%E8%AF%B7%E7%AE%80%E8%BF%B0%E9%B8%BF%E8%92%99%E5%BA%94%E7%94%A8%E4%B8%AD%E5%AE%9E%E7%8E%B0%E6%82%AC%E6%B5%AE%E7%90%83%E7%9A%84%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4%EF%BC%8C%E5%8C%85%E6%8B%AC%E6%9D%83%E9%99%90%E5%A3%B0%E6%98%8E%E3%80%81%E7%BB%84%E4%BB%B6%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC%E7%AD%89"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 请简述鸿蒙应用中实现悬浮球的具体步骤，包括权限声明、组件创建和事件监听等</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-%E5%A6%82%E4%BD%95%E5%9C%A8%E9%B8%BF%E8%92%99%E5%BA%94%E7%94%A8%E4%B8%AD%E9%9B%86%E6%88%90%E5%8D%8E%E4%B8%BA%E6%94%AF%E4%BB%98%E5%8A%9F%E8%83%BD%EF%BC%9F%E8%AF%B7%E6%8F%8F%E8%BF%B0%E5%85%B7%E4%BD%93%E7%9A%84%E6%B5%81%E7%A8%8B%E5%92%8C%E5%85%B3%E9%94%AE%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 如何在鸿蒙应用中集成华为支付功能？请描述具体的流程和关键步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-10-%E8%B0%88%E8%B0%88%E4%BD%A0%E5%AF%B9%E9%B8%BF%E8%92%99%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%EF%BC%8C%E5%A6%82%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E3%80%81%E6%AD%BB%E9%94%81%E7%AD%89"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 谈谈你对鸿蒙操作系统中多线程编程的理解，以及如何避免多线程开发中的常见问题，如线程安全、死锁等</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/9482c5e7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="鸿蒙面试题——面试题整理9 | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          鸿蒙面试题——面试题整理9<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/%E9%B8%BF%E8%92%99%E9%9D%A2%E8%AF%95%E9%A2%98%E2%80%94%E2%80%94%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%869.md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2025-07-22 18:13:47" itemprop="dateCreated datePublished" datetime="2025-07-22T18:13:47+08:00">2025-07-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/Harmony%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">Harmony面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>7 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><p>1、请简述 HarmonyOS Next 相较于之前版本在架构上的主要改进<br>2、说明 ArkTS 语言中 V2 状态装饰器相较于 V1 的主要变化和优势，并举例说明如何使用<br>3、HarmonyOS Next 中如何实现元服务与网页端的通信？<br>4、请阐述 HAR 和 HSP 的区别，以及 HSP 如何为应用提供动态更新功能<span id="more"></span><br>5、当鸿蒙应用切到后台后，有哪些方法可以保证任务继续进行？请详细说明每种方法的实现步骤和注意事项<br>6、请描述 EntryAbility 与 UIAbility 的区别，包括它们的概念、用途和生命周期<br>7、在鸿蒙开发中，如何使用分布式软总线实现多设备之间的实时数据同步？<br>8、请简述鸿蒙应用中实现悬浮球的具体步骤，包括权限声明、组件创建和事件监听等<br>9、如何在鸿蒙应用中集成华为支付功能？请描述具体的流程和关键步骤<br>10、谈谈你对鸿蒙操作系统中多线程编程的理解，以及如何避免多线程开发中的常见问题，如线程安全、死锁等</p>
+<!--more-->
+
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-请简述-HarmonyOS-Next-相较于之前版本在架构上的主要改进"><a href="#2-1-请简述-HarmonyOS-Next-相较于之前版本在架构上的主要改进" class="headerlink" title="2.1 请简述 HarmonyOS Next 相较于之前版本在架构上的主要改进"></a>2.1 请简述 HarmonyOS Next 相较于之前版本在架构上的主要改进</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">1、微内核深度优化：</span><br><span class="line">采用首个面向全场景的微内核，通过智能任务分配机制提升多设备协同和实时场景性能（如音视频处理），</span><br><span class="line">并引入内存隔离技术保障设备间数据传输的安全性。</span><br><span class="line"></span><br><span class="line">2、端云协同 AI 架构：</span><br><span class="line">重构以 AI 为中心的鸿蒙原生智能，小艺升级为智能体，支</span><br><span class="line">持多模态交互和融合感知（如文档智能、屏幕内容识别），</span><br><span class="line">同时开放 AI 模型能力至应用层，赋能第三方开发者。</span><br><span class="line"></span><br><span class="line">3、分布式软总线升级：</span><br><span class="line">实现设备无感发现、自由组网和高效传输，</span><br><span class="line">例如鸿蒙原生版钉钉可通过设备靠近无缝接续会议，</span><br><span class="line">WPS 支持跨设备复制粘贴和图库互通。</span><br><span class="line"></span><br><span class="line">4、星盾安全架构：</span><br><span class="line">提供内核级安全（如内存隔离）、系统级保护（如应用沙箱）和全流程纯净（如恶意代码拦截），</span><br><span class="line">通过多行业最高等级认证，是隐私安全最强大的鸿蒙版本</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-说明-ArkTS-语言中-V2-状态装饰器相较于-V1-的主要变化和优势，并举例说明如何使用"><a href="#2-2-说明-ArkTS-语言中-V2-状态装饰器相较于-V1-的主要变化和优势，并举例说明如何使用" class="headerlink" title="2.2 说明 ArkTS 语言中 V2 状态装饰器相较于 V1 的主要变化和优势，并举例说明如何使用"></a>2.2 说明 ArkTS 语言中 V2 状态装饰器相较于 V1 的主要变化和优势，并举例说明如何使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">1、主要变化：</span><br><span class="line">1-1 深度观察对象属性：</span><br><span class="line">V2 引入@ObservedV2和@Trace，支持对嵌套对象属性的细粒度观察，</span><br><span class="line">避免 V1 中@State仅能追踪顶层属性的局限。</span><br><span class="line"></span><br><span class="line">1-2、更严格的状态管理：</span><br><span class="line">@Local禁止外部初始化，需通过@Param和@Once实现参数传递；</span><br><span class="line">@Link被@Param+@Event替代，强制单向数据流动，提升代码健壮性。</span><br><span class="line"></span><br><span class="line">1-3、跨组件层级同步：</span><br><span class="line">@Provider和@Consumer支持跨层级组件状态共享，</span><br><span class="line">替代 V1 的@Provide+@Consume，减少状态传递复杂度。</span><br><span class="line"></span><br><span class="line">2、优势：</span><br><span class="line">-性能优化：减少不必要的 UI 刷新，例如@Trace仅通知被修饰属性关联的组件更新。</span><br><span class="line">-类型安全：通过@Type标记类属性类型，增强编译时检查，避免运行时错误。</span><br><span class="line"></span><br><span class="line">3、示例</span><br><span class="line">// V2中使用@ObservedV2和@Trace实现对象属性观察</span><br><span class="line">@ObservedV2</span><br><span class="line">class User &#123;</span><br><span class="line">  @Trace public name: string = &quot;Alice&quot;;</span><br><span class="line">  @Trace public age: number = 30;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@ComponentV2</span><br><span class="line">@Entry</span><br><span class="line">struct UserProfile &#123;</span><br><span class="line">  @Local user: User = new User();</span><br><span class="line"></span><br><span class="line">  build() &#123;</span><br><span class="line">    Column() &#123;</span><br><span class="line">      Text(`Name: $&#123;this.user.name&#125;`)</span><br><span class="line">      Text(`Age: $&#123;this.user.age&#125;`)</span><br><span class="line">      Button(&quot;Update&quot;)</span><br><span class="line">        .onClick(() =&gt; &#123;</span><br><span class="line">          this.user.name = &quot;Bob&quot;;</span><br><span class="line">          this.user.age = 35; // 自动触发UI更新</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-HarmonyOS-Next-中如何实现元服务与网页端的通信？"><a href="#2-3-HarmonyOS-Next-中如何实现元服务与网页端的通信？" class="headerlink" title="2.3 HarmonyOS Next 中如何实现元服务与网页端的通信？"></a>2.3 HarmonyOS Next 中如何实现元服务与网页端的通信？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">通过以下步骤实现元服务与网页端的双向通信：</span><br><span class="line"></span><br><span class="line">1、WebView 集成：在 UIAbility 中嵌入WebView组件，加载网页内容</span><br><span class="line"></span><br><span class="line">import web from &#x27;@ohos.web&#x27;;</span><br><span class="line">@Component</span><br><span class="line">struct WebViewComponent &#123;</span><br><span class="line">  build() &#123;</span><br><span class="line">    Web() &#123;</span><br><span class="line">      // 加载网页</span><br><span class="line">      web.loadUrl(&quot;https://example.com&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">2、通信协议设计：</span><br><span class="line">2-1 网页调用元服务：通过window.harmony对象暴露 API，例如：</span><br><span class="line">// 网页端调用鸿蒙接口</span><br><span class="line">window.harmony.invokeMetaService(&quot;getUserInfo&quot;, (result) =&gt; &#123;</span><br><span class="line">  console.log(&quot;User info:&quot;, result);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">2-2 元服务响应网页：在 WebAgent 中拦截 URL 协议（如meta://），解析参数并处理：</span><br><span class="line">web.setWebAgent(new web.WebAgent() &#123;</span><br><span class="line">  onLoadResource(url: string): boolean &#123;</span><br><span class="line">    if (url.startsWith(&quot;meta://&quot;)) &#123;</span><br><span class="line">      // 解析参数并调用元服务逻辑</span><br><span class="line">      const params = new URL(url).searchParams;</span><br><span class="line">      const action = params.get(&quot;action&quot;);</span><br><span class="line">      // 处理逻辑...</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">3、权限与安全：</span><br><span class="line">申请网络权限ohos.permission.INTERNET，并在网页端验证元服务来源，防止恶意调用。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-请阐述-HAR-和-HSP-的区别，以及-HSP-如何为应用提供动态更新功能"><a href="#2-4-请阐述-HAR-和-HSP-的区别，以及-HSP-如何为应用提供动态更新功能" class="headerlink" title="2.4 请阐述 HAR 和 HSP 的区别，以及 HSP 如何为应用提供动态更新功能"></a>2.4 请阐述 HAR 和 HSP 的区别，以及 HSP 如何为应用提供动态更新功能</h3><p>1-区别</p>
+<table>
+<thead>
+<tr>
+<th align="center">特性</th>
+<th align="center">HAR(Harmony Archive)</th>
+<th align="center">HSP(Harmony Shared Package)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">类型</td>
+<td align="center">静态共享包，编译时复用</td>
+<td align="center">动态共享包，运行时按需加载</td>
+</tr>
+<tr>
+<td align="center">发布方式</td>
+<td align="center">可发布到 OHPM 仓库，供其他应用引用</td>
+<td align="center">随宿主应用发布，与宿主同进程</td>
+</tr>
+<tr>
+<td align="center">内存占用</td>
+<td align="center">多应用引用时重复加载，内存消耗高</td>
+<td align="center">运行时共享，减少内存占用</td>
+</tr>
+<tr>
+<td align="center">更新能力</td>
+<td align="center">需重新编译应用才能更新</td>
+<td align="center">支持动态更新，无需重启应用</td>
+</tr>
+</tbody></table>
+<p>2-HSP 动态更新实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1、模块拆分：将非核心功能（如插件、皮肤）封装为 HSP，例如</span><br><span class="line">hb build -t hsp -p module_name # 打包HSP</span><br><span class="line"></span><br><span class="line">2、动态加载：在应用启动时通过BundleManager加载 HSP</span><br><span class="line"></span><br><span class="line">import bundle from &#x27;@ohos.bundle&#x27;;</span><br><span class="line">const bundleManager = bundle.getBundleManager();</span><br><span class="line">const hspPath = &quot;/data/app/el2/base/haps/hsp_module.hsp&quot;;</span><br><span class="line">bundleManager.installHsp(hspPath);</span><br><span class="line"></span><br><span class="line">3、更新触发</span><br><span class="line">检测到HSP更新时，调用bundleManager.uninstallHsp()卸载旧版本，重新安装新版本，触发模块热替换。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-当鸿蒙应用切到后台后，有哪些方法可以保证任务继续进行？请详细说明每种方法的实现步骤和注意事项"><a href="#2-5-当鸿蒙应用切到后台后，有哪些方法可以保证任务继续进行？请详细说明每种方法的实现步骤和注意事项" class="headerlink" title="2.5 当鸿蒙应用切到后台后，有哪些方法可以保证任务继续进行？请详细说明每种方法的实现步骤和注意事项"></a>2.5 当鸿蒙应用切到后台后，有哪些方法可以保证任务继续进行？请详细说明每种方法的实现步骤和注意事项</h3><p>1-方法 1：长时任务(适用于音乐播放、导航等场景)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">实现步骤：</span><br><span class="line"></span><br><span class="line">1、权限声明：在module.json5中申请权限：</span><br><span class="line"></span><br><span class="line">&quot;reqPermissions&quot;: [</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;name&quot;: &quot;ohos.permission.KEEP_BACKGROUND_RUNNING&quot;,</span><br><span class="line">    &quot;reason&quot;: &quot;应用需要在后台持续播放音乐&quot;</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">2、启动长时任务：</span><br><span class="line"></span><br><span class="line">import backgroundTask from &#x27;@ohos.backgroundTask&#x27;;</span><br><span class="line">const taskId = backgroundTask.startContinuousTask(&#123;</span><br><span class="line">  type: backgroundTask.BackgroundTaskType.AUDIO_PLAYBACK,</span><br><span class="line">  callback: &#123;</span><br><span class="line">    onRelease: () =&gt; &#123;</span><br><span class="line">      // 任务释放时的清理逻辑</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">3、任务保活：在 Service 中处理核心逻辑，避免被系统回收。</span><br></pre></td></tr></table></figure>
+
+<p>2、方法 2：后台 Service(适用于数据同步、定时任务)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">实现步骤：</span><br><span class="line"></span><br><span class="line">1、创建 Service：</span><br><span class="line">@Entry</span><br><span class="line">struct MainAbility &#123;</span><br><span class="line">  build() &#123;</span><br><span class="line">    Button(&quot;Start Service&quot;)</span><br><span class="line">      .onClick(() =&gt; &#123;</span><br><span class="line">        startAbilityByUri(&quot;ability:///com.example.BackgroundService&quot;);</span><br><span class="line">      &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Service</span><br><span class="line">struct BackgroundService &#123;</span><br><span class="line">  onStart() &#123;</span><br><span class="line">    // 初始化后台任务</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  onStop() &#123;</span><br><span class="line">    // 清理资源</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">2、配置权限：在module.json5中声明 Service 的权限。</span><br></pre></td></tr></table></figure>
+
+<p>3、注意事项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-避免长时间占用 CPU，使用WorkScheduler替代频繁轮询。</span><br><span class="line">-遵循系统资源管理策略，例如在电量低时降低任务频率。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-请描述-EntryAbility-与-UIAbility-的区别，包括它们的概念、用途和生命周期"><a href="#2-6-请描述-EntryAbility-与-UIAbility-的区别，包括它们的概念、用途和生命周期" class="headerlink" title="2.6 请描述 EntryAbility 与 UIAbility 的区别，包括它们的概念、用途和生命周期"></a>2.6 请描述 EntryAbility 与 UIAbility 的区别，包括它们的概念、用途和生命周期</h3><p>1-区别</p>
+<table>
+<thead>
+<tr>
+<th align="center">特性</th>
+<th align="center">EntryAbility</th>
+<th align="center">UIAbility</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>概念</strong></td>
+<td align="center">应用入口 Ability，负责初始化全局资源</td>
+<td align="center">提供用户界面的 Ability，管理具体页面</td>
+</tr>
+<tr>
+<td align="center"><strong>用途</strong></td>
+<td align="center">启动应用、加载配置、初始化数据库连接</td>
+<td align="center">展示 UI、处理用户交互、管理页面生命周期</td>
+</tr>
+<tr>
+<td align="center"><strong>生命周期</strong></td>
+<td align="center">与应用生命周期绑定（如<code>onCreate</code>→<code>onDestroy</code>）</td>
+<td align="center">与 UI 状态绑定（如<code>onStart</code>→<code>onStop</code>）</td>
+</tr>
+<tr>
+<td align="center"><strong>路由能力</strong></td>
+<td align="center">作为路由起点，通常对应主页面</td>
+<td align="center">支持页面跳转和参数传递</td>
+</tr>
+</tbody></table>
+<p>2-示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// EntryAbility示例</span><br><span class="line">@Entry</span><br><span class="line">struct MainAbility &#123;</span><br><span class="line">  build() &#123;</span><br><span class="line">    // 初始化全局配置</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// UIAbility示例</span><br><span class="line">@Component</span><br><span class="line">struct SettingsPage &#123;</span><br><span class="line">  build() &#123;</span><br><span class="line">    // 展示设置界面</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-在鸿蒙开发中，如何使用分布式软总线实现多设备之间的实时数据同步？"><a href="#2-7-在鸿蒙开发中，如何使用分布式软总线实现多设备之间的实时数据同步？" class="headerlink" title="2.7 在鸿蒙开发中，如何使用分布式软总线实现多设备之间的实时数据同步？"></a>2.7 在鸿蒙开发中，如何使用分布式软总线实现多设备之间的实时数据同步？</h3><p>1-<strong>实现步骤</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">1、设备发现：</span><br><span class="line">import softbus from &#x27;@ohos.softbus&#x27;;</span><br><span class="line"></span><br><span class="line">// 发布服务能力</span><br><span class="line">softbus.publishService(&#123;</span><br><span class="line">  serviceId: &quot;data_sync&quot;,</span><br><span class="line">  type: softbus.ServiceType.DISTRIBUTED,</span><br><span class="line">  callback: &#123;</span><br><span class="line">    onDeviceFound(deviceId: string) &#123;</span><br><span class="line">      // 处理发现的设备</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 探测设备</span><br><span class="line">softbus.startDiscovery(&quot;data_sync&quot;);</span><br><span class="line"></span><br><span class="line">2、建立连接：</span><br><span class="line"></span><br><span class="line">const sessionId = softbus.openSession(deviceId, &quot;data_sync&quot;);</span><br><span class="line"></span><br><span class="line">3、数据传输：</span><br><span class="line">softbus.sendBytes(sessionId, new Uint8Array([1, 2, 3]));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">4、数据监听：</span><br><span class="line">softbus.on(&quot;message&quot;, (sessionId, data) =&gt; &#123;</span><br><span class="line">  // 处理接收到的数据</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>2-<strong>注意事项</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-确保设备在同一局域网内，并已登录同一华为账号。</span><br><span class="line">-处理网络中断和设备离线场景，实现自动重连</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-8-请简述鸿蒙应用中实现悬浮球的具体步骤，包括权限声明、组件创建和事件监听等"><a href="#2-8-请简述鸿蒙应用中实现悬浮球的具体步骤，包括权限声明、组件创建和事件监听等" class="headerlink" title="2.8 请简述鸿蒙应用中实现悬浮球的具体步骤，包括权限声明、组件创建和事件监听等"></a>2.8 请简述鸿蒙应用中实现悬浮球的具体步骤，包括权限声明、组件创建和事件监听等</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">1、权限声明：在module.json5中申请窗口权限：</span><br><span class="line"></span><br><span class="line">&quot;reqPermissions&quot;: [</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;name&quot;: &quot;ohos.permission.SYSTEM_WINDOW&quot;,</span><br><span class="line">    &quot;reason&quot;: &quot;需要在其他应用上层显示悬浮球&quot;</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">2、创建悬浮球组件：</span><br><span class="line"></span><br><span class="line">@Component</span><br><span class="line">struct FloatingBall &#123;</span><br><span class="line">  @State position: &#123; x: number, y: number &#125; = &#123; x: 100, y: 100 &#125;;</span><br><span class="line"></span><br><span class="line">  build() &#123;</span><br><span class="line">    Draggable() &#123;</span><br><span class="line">      Rectangle() &#123;</span><br><span class="line">        // 悬浮球样式</span><br><span class="line">      &#125;</span><br><span class="line">      .size(50, 50)</span><br><span class="line">      .backgroundColor(Color.Blue)</span><br><span class="line">      .margin(&#123; left: this.position.x, top: this.position.y &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    .onDragUpdate((offset) =&gt; &#123;</span><br><span class="line">      this.position.x += offset.x;</span><br><span class="line">      this.position.y += offset.y;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">3、启动悬浮窗服务：</span><br><span class="line">@Service</span><br><span class="line">struct FloatingService &#123;</span><br><span class="line">  onCreate() &#123;</span><br><span class="line">    const window = windowManager.createWindow();</span><br><span class="line">    window.setContent(FloatingBall());</span><br><span class="line">    window.show();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-9-如何在鸿蒙应用中集成华为支付功能？请描述具体的流程和关键步骤"><a href="#2-9-如何在鸿蒙应用中集成华为支付功能？请描述具体的流程和关键步骤" class="headerlink" title="2.9 如何在鸿蒙应用中集成华为支付功能？请描述具体的流程和关键步骤"></a>2.9 如何在鸿蒙应用中集成华为支付功能？请描述具体的流程和关键步骤</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">1、流程</span><br><span class="line"></span><br><span class="line">1-1 申请商户资质：在华为开发者联盟注册并申请支付权限。</span><br><span class="line"></span><br><span class="line">1-2 集成 SDK：</span><br><span class="line">在build.gradle中添加依赖：</span><br><span class="line">implementation &#x27;com.huawei.hms:paymentservice:6.12.0.300&#x27;</span><br><span class="line"></span><br><span class="line">1-3 预下单流程：</span><br><span class="line">商户服务器调用华为支付 API 获取prepayId：</span><br><span class="line"></span><br><span class="line">POST https://api.payment.huawei.com/v1/pay/meta/preorder</span><br><span class="line">&#123;</span><br><span class="line">  &quot;merchantId&quot;: &quot;123456&quot;,</span><br><span class="line">  &quot;amount&quot;: 1000,</span><br><span class="line">  &quot;callbackUrl&quot;: &quot;https://example.com/pay/callback&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">1-4 调起支付界面：</span><br><span class="line"></span><br><span class="line">import payment from &#x27;@ohos.payment&#x27;;</span><br><span class="line">payment.pay(&#123;</span><br><span class="line">  orderStr: &quot;prepayId=xxx&amp;sign=xxx&quot;,</span><br><span class="line">  callback: &#123;</span><br><span class="line">    onSuccess: (result) =&gt; &#123;</span><br><span class="line">      // 支付成功处理</span><br><span class="line">    &#125;,</span><br><span class="line">    onFailure: (error) =&gt; &#123;</span><br><span class="line">      // 支付失败处理</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1-5 回调处理：</span><br><span class="line">服务器验证支付结果签名，更新订单状态。</span><br><span class="line"></span><br><span class="line">2、关键步骤：</span><br><span class="line">-支付结果验签使用 SM2 算法，确保数据完整性。</span><br><span class="line">-处理支付中断（如用户取消）和网络异常场景。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-10-谈谈你对鸿蒙操作系统中多线程编程的理解，以及如何避免多线程开发中的常见问题，如线程安全、死锁等"><a href="#2-10-谈谈你对鸿蒙操作系统中多线程编程的理解，以及如何避免多线程开发中的常见问题，如线程安全、死锁等" class="headerlink" title="2.10 谈谈你对鸿蒙操作系统中多线程编程的理解，以及如何避免多线程开发中的常见问题，如线程安全、死锁等"></a>2.10 谈谈你对鸿蒙操作系统中多线程编程的理解，以及如何避免多线程开发中的常见问题，如线程安全、死锁等</h3><p>1-<strong>理解</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-进程与线程：</span><br><span class="line">鸿蒙应用以进程为资源分配单位，每个进程包含多个线程。</span><br><span class="line">主线程（UI 线程）负责处理 UI 更新，子线程处理耗时任务（如网络请求）。</span><br><span class="line"></span><br><span class="line">-线程模型：</span><br><span class="line">支持 Java 线程、Native 线程和 ArkTS 异步任务（async/await）。</span><br></pre></td></tr></table></figure>
+
+<p>2-<strong>常见问题与规避方法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">1、线程安全：</span><br><span class="line">解决方案：使用synchronized关键字或Lock接口保证资源互斥访问。</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line">import sync from &#x27;@ohos.sync&#x27;;</span><br><span class="line">const lock = sync.createLock();</span><br><span class="line">lock.lock();</span><br><span class="line">try &#123;</span><br><span class="line">  // 临界区代码</span><br><span class="line">&#125; finally &#123;</span><br><span class="line">  lock.unlock();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">2、死锁：</span><br><span class="line">解决方案：</span><br><span class="line">按顺序获取锁（如资源 A→资源 B）。</span><br><span class="line">使用超时机制避免无限等待：</span><br><span class="line"></span><br><span class="line">if (lock.tryLock(1000)) &#123; // 尝试获取锁1秒</span><br><span class="line">  try &#123;</span><br><span class="line">    // 操作资源</span><br><span class="line">  &#125; finally &#123;</span><br><span class="line">    lock.unlock();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">3、性能优化：</span><br><span class="line">使用线程池（ThreadPoolExecutor）管理线程，避免频繁创建和销毁。</span><br></pre></td></tr></table></figure>
+
+<p>3-<strong>最佳实践</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">耗时操作（如文件读写）使用Worker线程，避免阻塞 UI。</span><br><span class="line">通过EventBus或Handler实现线程间通信，确保 UI 更新在主线程执行</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/Harmony%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># Harmony面试题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/9c1caeb.html" rel="prev" title="鸿蒙开发之——状态装饰器V2与V1对比">
+                  <i class="fa fa-angle-left"></i> 鸿蒙开发之——状态装饰器V2与V1对比
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/97a5030.html" rel="next" title="NAS入门之——My Cloud EX2通过Docker安装Jellyfin(17)">
+                  NAS入门之——My Cloud EX2通过Docker安装Jellyfin(17) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"4b0acf1e629a1008d4b22a0f21d5da5c"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

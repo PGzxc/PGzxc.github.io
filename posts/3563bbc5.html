@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="概述自从Java8支持Lambda表达式以来，Lambda表达式是实现大量函数特性的基础，让Java开发越来越趋向于流程式开始。在Kotlin中，对Lambda表达式有完美搭档支持，有因为扩展这一特性，Kotlin也走在了函数式编程的前言。对于集合，Kotlin提供的不同类型集合，在标准库中，对这些集合实现了一些扩展以这种方式对集合操作。熟练的函数式编程的集成，是对相关函数有一定的认识和了解。话不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin开发之——集合(二)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/3563bbc5.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="概述自从Java8支持Lambda表达式以来，Lambda表达式是实现大量函数特性的基础，让Java开发越来越趋向于流程式开始。在Kotlin中，对Lambda表达式有完美搭档支持，有因为扩展这一特性，Kotlin也走在了函数式编程的前言。对于集合，Kotlin提供的不同类型集合，在标准库中，对这些集合实现了一些扩展以这种方式对集合操作。熟练的函数式编程的集成，是对相关函数有一定的认识和了解。话不">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-12-20T14:05:41.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.316Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="集合">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/3563bbc5.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/3563bbc5.html","path":"posts/3563bbc5.html","title":"Kotlin开发之——集合(二)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Kotlin开发之——集合(二) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.</span> <span class="nav-text">集合接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#List-Set%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">List&#x2F;Set操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%81%9A%E5%90%88%E6%93%8D%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">聚合操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#any"><span class="nav-number">4.1.</span> <span class="nav-text">any</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#all"><span class="nav-number">4.2.</span> <span class="nav-text">all</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#count"><span class="nav-number">4.3.</span> <span class="nav-text">count</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fold"><span class="nav-number">4.4.</span> <span class="nav-text">fold</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#foldRight"><span class="nav-number">4.5.</span> <span class="nav-text">foldRight</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#forEach"><span class="nav-number">4.6.</span> <span class="nav-text">forEach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#forEachIndexed"><span class="nav-number">4.7.</span> <span class="nav-text">forEachIndexed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maxBy"><span class="nav-number">4.8.</span> <span class="nav-text">maxBy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#minBy"><span class="nav-number">4.9.</span> <span class="nav-text">minBy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#none"><span class="nav-number">4.10.</span> <span class="nav-text">none</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reduce"><span class="nav-number">4.11.</span> <span class="nav-text">reduce</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reduceRight"><span class="nav-number">4.12.</span> <span class="nav-text">reduceRight</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sumBy"><span class="nav-number">4.13.</span> <span class="nav-text">sumBy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AD%9B%E9%80%89%E6%93%8D%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">筛选操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#drop"><span class="nav-number">5.1.</span> <span class="nav-text">drop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dropLast"><span class="nav-number">5.2.</span> <span class="nav-text">dropLast</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dropWhile"><span class="nav-number">5.3.</span> <span class="nav-text">dropWhile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dropLastWhile"><span class="nav-number">5.4.</span> <span class="nav-text">dropLastWhile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#filter"><span class="nav-number">5.5.</span> <span class="nav-text">filter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#filterNot"><span class="nav-number">5.6.</span> <span class="nav-text">filterNot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#filterNotNull"><span class="nav-number">5.7.</span> <span class="nav-text">filterNotNull</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Slice"><span class="nav-number">5.8.</span> <span class="nav-text">Slice</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#take"><span class="nav-number">5.9.</span> <span class="nav-text">take</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#takeLast"><span class="nav-number">5.10.</span> <span class="nav-text">takeLast</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#takeWhile"><span class="nav-number">5.11.</span> <span class="nav-text">takeWhile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#takeLastWhile"><span class="nav-number">5.12.</span> <span class="nav-text">takeLastWhile</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%98%A0%E5%B0%84%E6%93%8D%E4%BD%9C"><span class="nav-number">6.</span> <span class="nav-text">映射操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#flatMap"><span class="nav-number">6.1.</span> <span class="nav-text">flatMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#groupBy"><span class="nav-number">6.2.</span> <span class="nav-text">groupBy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">6.3.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mapIndexed"><span class="nav-number">6.4.</span> <span class="nav-text">mapIndexed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mapNotNull"><span class="nav-number">6.5.</span> <span class="nav-text">mapNotNull</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E6%93%8D%E4%BD%9C"><span class="nav-number">7.</span> <span class="nav-text">元素操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#contains"><span class="nav-number">7.1.</span> <span class="nav-text">contains</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#elementAt"><span class="nav-number">7.2.</span> <span class="nav-text">elementAt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#elementAtOrElse"><span class="nav-number">7.3.</span> <span class="nav-text">elementAtOrElse</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#elementAtOrNull"><span class="nav-number">7.4.</span> <span class="nav-text">elementAtOrNull</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#first"><span class="nav-number">7.5.</span> <span class="nav-text">first</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#firstOrNull"><span class="nav-number">7.6.</span> <span class="nav-text">firstOrNull</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#indexOf"><span class="nav-number">7.7.</span> <span class="nav-text">indexOf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#indexOfFirst"><span class="nav-number">7.8.</span> <span class="nav-text">indexOfFirst</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#last"><span class="nav-number">7.9.</span> <span class="nav-text">last</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lastIndexOf"><span class="nav-number">7.10.</span> <span class="nav-text">lastIndexOf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#single"><span class="nav-number">7.11.</span> <span class="nav-text">single</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#singleOrNull"><span class="nav-number">7.12.</span> <span class="nav-text">singleOrNull</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E6%93%8D%E4%BD%9C"><span class="nav-number">8.</span> <span class="nav-text">生成操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#partition"><span class="nav-number">8.1.</span> <span class="nav-text">partition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#plus"><span class="nav-number">8.2.</span> <span class="nav-text">plus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zip"><span class="nav-number">8.3.</span> <span class="nav-text">zip</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%92%E5%BA%8F%E6%93%8D%E4%BD%9C"><span class="nav-number">9.</span> <span class="nav-text">排序操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#reverse"><span class="nav-number">9.1.</span> <span class="nav-text">reverse</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sortBy"><span class="nav-number">9.2.</span> <span class="nav-text">sortBy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sortDescendingBy"><span class="nav-number">9.3.</span> <span class="nav-text">sortDescendingBy</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/3563bbc5.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Kotlin开发之——集合(二) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Kotlin开发之——集合(二)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Kotlin%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94%E9%9B%86%E5%90%88-2.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-12-20 22:05:41" itemprop="dateCreated datePublished" datetime="2017-12-20T22:05:41+08:00">2017-12-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/B-%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">B-高级语言</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/B-%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80/Kotlin/" itemprop="url" rel="index"><span itemprop="name">Kotlin</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>15 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>自从Java8支持Lambda表达式以来，Lambda表达式是实现大量函数特性的基础，让Java开发越来越趋向于流程式开始。<br>在Kotlin中，对Lambda表达式有完美搭档支持，有因为扩展这一特性，Kotlin也走在了函数式编程的前言。对于集合，Kotlin提供的不同类型集合，在标准库中，对这些集合实现了一些扩展以这种方式对集合操作。熟练的函数式编程的集成，是对相关函数有一定的认识和了解。话不多说，先看集合的这些操作到底有哪些？具体实现的功能？   </p>
+<span id="more"></span>
+
+<h1 id="集合接口"><a href="#集合接口" class="headerlink" title="集合接口"></a>集合接口</h1><ul>
+<li>Iterable：父类。任何类继承这个接口就表示可以遍历序列的元素。</li>
+<li>MutableIterable:在迭代期间移除项目的迭代</li>
+<li>Collection:这个类表示元素的反省集合。我们可以访问函数；返回集合尺寸，集合是否为空，包含一项或一组。由于集合是不可变的，这类集合的所有方法只能请求数据。 </li>
+<li>MutableCollection:支持添加和移除元素的Collection.它提供额外的函数，如：add，remove或clear等等。</li>
+<li>List:或许这是最常用的集合。这表示有序的Collection。由于是有序的，我们可以用get函数，按照项目的位置请求项目。</li>
+<li>MutableList:支持添加和移除元素的List</li>
+<li>Set:不支持重复元素的无需元素集合</li>
+<li>MutableSet:支持添加和移除元素的Set</li>
+<li>Map：key-value(键-值)对集合。在映射表map中key(键)是唯一的，就是说在一个映射表中不能有两对有相同的key.</li>
+<li>MutableMap:支持添加和移除元素的map.</li>
+</ul>
+<h1 id="List-Set操作"><a href="#List-Set操作" class="headerlink" title="List&#x2F;Set操作"></a>List&#x2F;Set操作</h1><pre><code>val bookA = Book(&quot;A&quot;, 20, &quot;Jone&quot;)
+val bookB = Book(&quot;B&quot;, 21, &quot;Green&quot;)
+val bookC = Book(&quot;C&quot;, 22, &quot;Mark&quot;)
+val bookD = Book(&quot;D&quot;, 23, &quot;Node&quot;)
+val bookE = Book(&quot;E&quot;, 24, &quot;Blue&quot;)
+
+val listBook = listOf&lt;Book&gt;(bookA, bookB, bookC, bookD, bookE)
+</code></pre>
+<h1 id="聚合操作"><a href="#聚合操作" class="headerlink" title="聚合操作"></a>聚合操作</h1><p>所谓的聚合操作就是从值集合计算得出单个值</p>
+<h2 id="any"><a href="#any" class="headerlink" title="any"></a>any</h2><p>如果集合中至少有一个元素与指定条件相符，则返回true;否则返回false.在any的函数体内，指定判断元素的条件。</p>
+<p>函数参数类型：   </p>
+<pre><code>predicate:(T)-&gt;Boolean 
+</code></pre>
+<p>返回值<br>	<br>	Boolean<br>示例代码：  </p>
+<pre><code>val any_22: Boolean = listBook.any { it.page &gt; 22 }
+val any_33: Boolean = listBook.any { it.page &gt; 33 }
+println(&quot;any_22: $any_22, any_33: $any_33&quot;) 
+</code></pre>
+<p>打印输出： any_22: true, any_33: false</p>
+<h2 id="all"><a href="#all" class="headerlink" title="all"></a>all</h2><p>如果集合中所有元素与指定条件相符，则返回true；否则返回false;在all的函数体内，指定判断元素的条件；</p>
+<p>函数参数类型：  </p>
+<pre><code>predicate:(T)-&gt;Boolean  
+</code></pre>
+<p>返回值：  </p>
+<pre><code>Boolean  
+</code></pre>
+<p>示例代码：   </p>
+<pre><code>al all_20: Boolean = listBook.all { it.page &gt;= 20 }
+val all_22: Boolean = listBook.all { it.page &gt; 22 }
+println(&quot;all_20: $all_20, all_22: $all_22&quot;) 
+</code></pre>
+<p>输出结果：Log: all_22: true, all_33: false</p>
+<h2 id="count"><a href="#count" class="headerlink" title="count"></a>count</h2><p>返回集合与指定条件相符的元素个数。在count的函数体内，指定判断元素的条件。如果不指定条件，返回集合中所有元素的个数。<br>函数参数类型：  </p>
+<pre><code>predicate:(T)-&gt;Boolean 
+</code></pre>
+<p>返回值：<br>	<br>	Int<br>示例代码：  </p>
+<pre><code>al count: Int = listBook.count {it.page &gt; 23}
+println(&quot;count: $count&quot;)
+</code></pre>
+<h2 id="fold"><a href="#fold" class="headerlink" title="fold"></a>fold</h2><p>将对集合从第一个到最后一个元素的操作结果进行累加，并加上初始值。<br>函数参数类型： </p>
+<pre><code>R:初始值
+operation:(T,R)-&gt;R
+</code></pre>
+<p>返回值：  </p>
+<pre><code>R
+</code></pre>
+<p>示例代码：  </p>
+<pre><code>val fold = listBook.fold(0, ::ops)
+println(&quot;fold: $fold&quot;) // Log:  fold: 110
+
+fun ops(total: Int, book: Book): Int
+ {
+	 	var t = total
+	t += book.page
+	println(&quot;total: $t, book: $book&quot;)
+	return  t
+ }
+</code></pre>
+<p>打印输出：  </p>
+<pre><code>total: 20, book: Book(name=&#39;A&#39;, page=20, author=&#39;Jone&#39;)
+total: 41, book: Book(name=&#39;B&#39;, page=21, author=&#39;Green&#39;)
+total: 63, book: Book(name=&#39;C&#39;, page=22, author=&#39;Mark&#39;)
+total: 86, book: Book(name=&#39;D&#39;, page=23, author=&#39;Node&#39;)
+total: 110, book: Book(name=&#39;E&#39;, page=24, author=&#39;Blue&#39;)
+fold: 110
+</code></pre>
+<h2 id="foldRight"><a href="#foldRight" class="headerlink" title="foldRight"></a>foldRight</h2><p>与fold类似，不同的是从最后一个元素到第一个元素。另外，传递的函数的参数类型也不一样，哪里不同，可以对比下ops和opsRight两个函数的参数的参数类型。   </p>
+<p>函数参数类型：<br>	<br>	R:初始值<br>	operation:(T,R)-&gt;R<br>返回值：<br>	<br>	R<br>示例代码：  </p>
+<pre><code>val foldRight = listBook.foldRight(0, ::opsRight)
+println(&quot;foldRight: $foldRight&quot;)
+
+fun opsRight(book: Book,total: Int): Int 
+{
+	var t = total
+	t += book.page
+	println(&quot;total: $t, book: $book&quot;)
+	return  t
+}
+</code></pre>
+<p>打印输出： </p>
+<pre><code>total: 24, book: Book(name=&#39;E&#39;, page=24, author=&#39;Blue&#39;)
+total: 47, book: Book(name=&#39;D&#39;, page=23, author=&#39;Node&#39;)
+total: 69, book: Book(name=&#39;C&#39;, page=22, author=&#39;Mark&#39;)
+total: 90, book: Book(name=&#39;B&#39;, page=21, author=&#39;Green&#39;)
+total: 110, book: Book(name=&#39;A&#39;, page=20, author=&#39;Jone&#39;)
+foldRight: 110
+</code></pre>
+<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h2><p>对每个元素执行指定的操作，实际效果就是对集合的遍历<br>示例代码：  </p>
+<pre><code>listBook.forEach (::println)
+</code></pre>
+<p>输出结果：  </p>
+<pre><code>book: Book(name=&#39;A&#39;, page=20, author=&#39;Jone&#39;)
+book: Book(name=&#39;B&#39;, page=21, author=&#39;Green&#39;)
+book: Book(name=&#39;C&#39;, page=22, author=&#39;Mark&#39;)
+book: Book(name=&#39;D&#39;, page=23, author=&#39;Node&#39;)
+</code></pre>
+<h2 id="forEachIndexed"><a href="#forEachIndexed" class="headerlink" title="forEachIndexed"></a>forEachIndexed</h2><p>与forEach类似，不同的是在遍历元素的同时获得元素的索引 </p>
+<p>示例代码：  </p>
+<pre><code>listBook.forEachIndexed
+{
+	index, book -&gt;
+	 	run {
+    println(&quot;index: $index, book: $book&quot;)
+	}
+}
+</code></pre>
+<p>输出结果： </p>
+<pre><code>index: 0, book: Book(name=&#39;A&#39;, page=20, author=&#39;Jone&#39;)
+index: 1, book: Book(name=&#39;B&#39;, page=21, author=&#39;Green&#39;)
+index: 2, book: Book(name=&#39;C&#39;, page=22, author=&#39;Mark&#39;)
+index: 3, book: Book(name=&#39;D&#39;, page=23, author=&#39;Node&#39;)
+index: 4, book: Book(name=&#39;E&#39;, page=24, author=&#39;Blue&#39;)
+</code></pre>
+<h2 id="maxBy"><a href="#maxBy" class="headerlink" title="maxBy"></a>maxBy</h2><p>返回使指定函数产生最大值的第一个员。如果没有元素，则返回null。其接受的参数类型为函数参数。</p>
+<p>函数参数类型：<br>	<br>	selector:(T)-&gt;R<br>返回值：  </p>
+<pre><code>T?
+</code></pre>
+<p>示例代码： </p>
+<pre><code>val pageMax: Book? = listBook.maxBy (::maxPage)
+println(&quot;pageMax:$pageMax&quot;)
+
+fun maxPage(book: Book?): Int 
+{
+	return book!!.page
+}
+</code></pre>
+<p>输出结果：  </p>
+<pre><code>pageMax:Book(name=&#39;E&#39;, page=24, author=&#39;Blue&#39;)
+</code></pre>
+<h2 id="minBy"><a href="#minBy" class="headerlink" title="minBy"></a>minBy</h2><p>返回使指定函数产生最小值的第一个元素。如果没有元素，则返回null。<br>函数参数类型： </p>
+<pre><code>selector: (T) -&gt; R
+</code></pre>
+<p>返回值：<br>	<br>	T？<br>示例代码：  </p>
+<pre><code>val pageMin: Book? = listBook.minBy (::selectorPage)
+println(&quot;pageMin:$pageMin&quot;)
+
+fun selectorPage(book: Book?): Int
+ {
+	return book!!.page
+ }
+</code></pre>
+<p>输出结果：<br>pageMin:Book(name&#x3D;&#39;A&#39;, page&#x3D;20, author&#x3D;&#39;Jone&#39;)  </p>
+<h2 id="none"><a href="#none" class="headerlink" title="none"></a>none</h2><p>如果没有元素与指定条件相符，则返回true；否则，返回false。<br>函数参数类型： </p>
+<pre><code>predicate: (T) -&gt; Boolean
+</code></pre>
+<p>返回值：  </p>
+<pre><code>Boolean 
+</code></pre>
+<p>示例代码：</p>
+<pre><code>val none: Boolean = listBook.none { it.page &gt; 50 }
+println(&quot;none: $none&quot;) // Log：true
+</code></pre>
+<p>输出结果：  </p>
+<pre><code>true 
+</code></pre>
+<h2 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h2><p>与fold类似，不同的是其结果不包括初始值，只是将对集合从第一个元素到最后一个元素的操作结果进行累加。 </p>
+<pre><code>public inline fun &lt;S, T: S&gt; Iterable&lt;T&gt;.reduce(operation: (S, T) -&gt; S): S 
+{
+	val iterator = this.iterator()
+	if (!iterator.hasNext()) throw UnsupportedOperationException(&quot;Empty collection can&#39;t be reduced.&quot;)
+	var accumulator: S = iterator.next()
+	while (iterator.hasNext()) 
+	{
+    	accumulator = operation(accumulator, iterator.next())
+	}
+	return accumulator
+}
+</code></pre>
+<p>与fold不同的是，其函数类型也不一样，从reduce源码可以看出，其接受的两个参数分别是list的数据类型T和它的父类S，最后改函数参数的返回值类型也是S。也就是说reduce最后返回的应该是S的一个实例。此时我们可以自定义一个函数或者是将T类的“+”运算符重载。下面的示例中，我们可以自定义一个函数pageReduce;</p>
+<pre><code>fun pageReduce(bookTotal: Book, book: Book): Book 
+{
+	bookTotal.page += book.page
+	return bookTotal
+}
+
+val pageReduce = listBook.reduce (::pageReduce)
+println(pageReduce)
+println(listBook[0])
+</code></pre>
+<p>输出结果：  </p>
+<pre><code>// Log1
+Book(name=&#39;A&#39;, page=110, author=&#39;Jone&#39;)
+// Log2
+Book(name=&#39;A&#39;, page=110, author=&#39;Jone&#39;)
+</code></pre>
+<p>注：<br>仔细观察Log，其name是“A”，也就是说这应该是第一个元素对象的name；然后再看Log2，第一个元素的page值已经修改为了110？为什么会这样呢？<br>看源码有这一段代码：  </p>
+<pre><code>var accumulator: S = iterator.next()
+while (iterator.hasNext()) 
+{
+		accumulator = operation(accumulator, iterator.next())
+}
+</code></pre>
+<p>这是把集合中的第一个元素赋值给结果值accumulaor，这样的话结果值的引用是指向的集合中的第一个元素。在循环中，函数operation修改了accumulator的值，也就意味着集合中第一个元素的值被修改了。这样再次调用集合中的元素时，应该是修改后的值。既然这样在使用reduce时，是否应该暂时保存原集合，值得深思一下？  </p>
+<h2 id="reduceRight"><a href="#reduceRight" class="headerlink" title="reduceRight"></a>reduceRight</h2><p>与reduce不同的是从最后一个元素与其前面的元素按照某一个条件相加，直到第一个元素，并将求出的值返回。</p>
+<pre><code>val pageReduceRight = listBook.reduceRight (::pageReduceRight)
+println(pageReduceRight)
+println(listBook[4])
+</code></pre>
+<p>输出结果： </p>
+<pre><code>// Log1
+Book(name=&#39;E&#39;, page=110, author=&#39;Blue&#39;)
+// Log2
+Book(name=&#39;E&#39;, page=110, author=&#39;Blue&#39;)
+</code></pre>
+<p>注：<br>与reduce不同的是，reduceRight是通过iterator.previous()将集合中的最后一个元素赋值给accumulator，实际的效果就是循环调用operation以后，集合的最后一个元素的值被修改成计算后的值。其处理方式与reduce一致。原集合都应该做临时保存数据。  </p>
+<h2 id="sumBy"><a href="#sumBy" class="headerlink" title="sumBy"></a>sumBy</h2><p>返回集合中元素进行转换函数产生值的综合，其返回值类型为Int<br>函数参数类型：<br>	<br>	selector:(T)-Int<br>返回值：  </p>
+<pre><code>List
+</code></pre>
+<p>示例代码：  </p>
+<pre><code>val sumBy:Int = listBook.sumBy(Book::page)
+println(sumBy) // Log
+</code></pre>
+<h1 id="筛选操作"><a href="#筛选操作" class="headerlink" title="筛选操作"></a>筛选操作</h1><h2 id="drop"><a href="#drop" class="headerlink" title="drop"></a>drop</h2><p>返回集合中除去前N项的所有元素。 </p>
+<p>函数参数类型：Int<br>返回值： List<br>示例代码： </p>
+<pre><code>val listDrop = listBook.drop(2)
+listDrop.forEach(::println)
+</code></pre>
+<p>输出结果：  </p>
+<pre><code>Book(name=&#39;C&#39;, page=22, author=&#39;Mark&#39;)
+Book(name=&#39;D&#39;, page=23, author=&#39;Node&#39;)
+Book(name=&#39;E&#39;, page=24, author=&#39;Blue&#39;)
+</code></pre>
+<h2 id="dropLast"><a href="#dropLast" class="headerlink" title="dropLast"></a>dropLast</h2><p>返回集合中除去最后N项的所有元素<br>函数参数类型：Int<br>返回值：List<br>示例代码：  </p>
+<pre><code>val listDropLast = listBook.dropLast(2)
+listDropLast.forEach(::println)
+</code></pre>
+<p>输出结果：  </p>
+<pre><code>Book(name=&#39;A&#39;, page=20, author=&#39;Jone&#39;)
+Book(name=&#39;B&#39;, page=21, author=&#39;Green&#39;)
+Book(name=&#39;C&#39;, page=22, author=&#39;Mark&#39;)
+</code></pre>
+<h2 id="dropWhile"><a href="#dropWhile" class="headerlink" title="dropWhile"></a>dropWhile</h2><p>返回所有元素列表，除去第一个不满足条件元素的以前的所有元素。如果所有元素都满足条件，将返回一个空的list。这看着好别扭，很难懂，我们看它的源码，到底是怎么回事？</p>
+<pre><code>public inline fun &lt;T&gt; Iterable&lt;T&gt;.dropWhile(predicate: (T) -&gt; Boolean): List&lt;T&gt; 
+{
+	var yielding = false
+	val list = ArrayList&lt;T&gt;()
+	for (item in this)
+    if (yielding)
+        list.add(item)
+    else if (!predicate(item)) 
+	{
+        list.add(item)
+        yielding = true
+    }
+	return list
+ }
+</code></pre>
+<p>dropWhile接收一个函数参数，其返回值是Boolean。看源码中定了一个yielding，其用来判断是否向返回的列表中添加元素的判断条件。  </p>
+<pre><code>if (yielding)
+list.add(item)
+else if (!predicate(item)) 
+{
+	list.add(item)
+	yielding = true
+}
+</code></pre>
+<p>由于yielding的默认值是false，也就是说期初并不怎么往List中添加数据，下面再看另外一个判断条件，当元素满足指定条件时，也不会忘List中添加数据。当第一个不满足的条件的元素出现时，向list添加该不满足条件的元素，同时将yielding添加至list。以后的所有的元素都将被添加至list，此时条件函数已经失效了，不在作为判断标准。也就是说条件函数只是用来哪一个元素为第一个不满足条件，并以此为期间添加原list中后面所有的元素。<br>函数参数类型： predicate:(T)-&gt;Boolean<br>返回值：List<br>示例代码：</p>
+<pre><code>val listDropWhile = listBook.dropWhile {it.page &lt; 23}
+listDropWhile.forEach(::println)
+</code></pre>
+<p>输出结果：  </p>
+<pre><code>Book(name=&#39;D&#39;, page=23, author=&#39;Node&#39;)
+Book(name=&#39;E&#39;, page=24, author=&#39;Blue&#39;)
+</code></pre>
+<h2 id="dropLastWhile"><a href="#dropLastWhile" class="headerlink" title="dropLastWhile"></a>dropLastWhile</h2><p>返回集合中的所有元素，除去第一个不满足条件的元素，而判断顺序为从最后一个元素依次到第一个元素，如果所有元素都满足条件，返回一个空list.<br>函数参数类型：precicate:(T)-&gt;Boolean<br>返回值：List<br>示例代码：</p>
+<pre><code>val listDropLastWhile = listBook.dropLastWhile { it.page &gt; 23 }
+listDropLastWhile.forEach(::println)
+</code></pre>
+<p>输出结果：  </p>
+<pre><code>Book(name=&#39;A&#39;, page=20, author=&#39;Jone&#39;)
+Book(name=&#39;B&#39;, page=21, author=&#39;Green&#39;)
+Book(name=&#39;C&#39;, page=22, author=&#39;Mark&#39;)
+Book(name=&#39;D&#39;, page=23, author=&#39;Node&#39;)
+</code></pre>
+<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><p>返回所有与指定条件相符的元素列表，如果所有元素都不满足指定条件，返回一个空List<br>函数参数类型： predicate:(T)-&gt;Boolean<br>返回值：List<br>示例代码：  </p>
+<pre><code>val listFilter = listBook.filter { it.page &gt; 22 }
+listFilter.forEach(::println)
+</code></pre>
+<p>输出结果：  </p>
+<pre><code>Book(name=&#39;D&#39;, page=23, author=&#39;Node&#39;)
+Book(name=&#39;E&#39;, page=24, author=&#39;Blue&#39;)
+</code></pre>
+<h2 id="filterNot"><a href="#filterNot" class="headerlink" title="filterNot"></a>filterNot</h2><p>返回与指定条件不符的所有元素列表，如果所有元素都满足指定条件，返回一个空list<br>函数参数类型 :predicate:(T)-&gt;Boolean<br>返回值：List<br>示例代码：</p>
+<pre><code>val listFilterNot = listBook.filterNot { it.page &gt; 22 }
+listFilterNot.forEach(::println)
+</code></pre>
+<p>输出结果：  </p>
+<pre><code>Book(name=&#39;A&#39;, page=20, author=&#39;Jone&#39;)
+Book(name=&#39;B&#39;, page=21, author=&#39;Green&#39;)
+Book(name=&#39;C&#39;, page=22, author=&#39;Mark&#39;)
+</code></pre>
+<h2 id="filterNotNull"><a href="#filterNotNull" class="headerlink" title="filterNotNull"></a>filterNotNull</h2><p>返回所有元素列表，但不包括Null元素  </p>
+<p>返回值：List<br>示例代码：  </p>
+<pre><code>val listFilterNotNull = listBook.filterNotNull()
+listFilterNotNull.forEach(::println)
+</code></pre>
+<h2 id="Slice"><a href="#Slice" class="headerlink" title="Slice"></a>Slice</h2><p>返回指定索引的元素列表<br>函数参数类型：Iterable<br>返回值： List<br>示例代码：  </p>
+<pre><code>val listSlice = listBook.slice(listOf(2,4))
+listSlice.forEach(::println)
+</code></pre>
+<p>输出结果：  </p>
+<pre><code>Book(name=&#39;C&#39;, page=22, author=&#39;Mark&#39;)
+Book(name=&#39;E&#39;, page=24, author=&#39;Blue&#39;)
+</code></pre>
+<h2 id="take"><a href="#take" class="headerlink" title="take"></a>take</h2><p>返回前N个元素列表 </p>
+<p>函数参数类型：Int<br>返回值：List<br>示例代码：  </p>
+<pre><code>val listTake = listBook.take(2)
+listTake.forEach(::println)
+</code></pre>
+<p>输出结果：  </p>
+<pre><code>Book(name=&#39;A&#39;, page=20, author=&#39;Jone&#39;)
+Book(name=&#39;B&#39;, page=21, author=&#39;Green&#39;)
+</code></pre>
+<h2 id="takeLast"><a href="#takeLast" class="headerlink" title="takeLast"></a>takeLast</h2><p>返回最后N个元素列表<br>函数参数类型：Int<br>返回值：List<br>示例代码：  </p>
+<pre><code>val listTakeLast = listBook.takeLast(2) 
+listTakeLast.forEach(::println) 
+</code></pre>
+<p>输出结果：  </p>
+<pre><code>Book(name=’D’, page=23, author=’Node’) 
+Book(name=’E’, page=24, author=’Blue’)
+</code></pre>
+<h2 id="takeWhile"><a href="#takeWhile" class="headerlink" title="takeWhile"></a>takeWhile</h2><p>返回满足指定条件的第一个元素列表<br>函数参数类型： predicate:(T)-&gt;Boolean<br>返回值：List<br>示例代码：</p>
+<pre><code>val listTakeWhile = listBook.takeWhile { it.page &lt; 22 }
+listTakeWhile.forEach(::println)
+</code></pre>
+<p>输出结果： </p>
+<pre><code>Book(name=&#39;A&#39;, page=20, author=&#39;Jone&#39;)
+Book(name=&#39;B&#39;, page=21, author=&#39;Green&#39;)
+</code></pre>
+<h2 id="takeLastWhile"><a href="#takeLastWhile" class="headerlink" title="takeLastWhile"></a>takeLastWhile</h2><p>返回一个元素列表，返回的元素的列表是第一个不满足条件的元素的后边的所有元素。也就是意味着，如果最后一个元素不满足条件，将返回一个空list.<br>函数参数类型：predicate:(T)-&gt;Boolean<br>返回值：List<br>示例代码：  </p>
+<pre><code>val listTakeLastWhile = listBook.takeLastWhile { it.page &gt; 22 }
+listTakeLastWhile.forEach(::println)
+</code></pre>
+<p>输出结果：</p>
+<pre><code>Book(name=&#39;D&#39;, page=23, author=&#39;Node&#39;)
+Book(name=&#39;E&#39;, page=24, author=&#39;Blue&#39;)
+</code></pre>
+<h1 id="映射操作"><a href="#映射操作" class="headerlink" title="映射操作"></a>映射操作</h1><h2 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap"></a>flatMap</h2><p>通过遍历，将每个元素转化为一个新的对象，并创建一个新集合，把新的对象添加到新的集合并返回新的集合列表。<br>函数参数类型：transform:(T)-&gt;iterable:List<br>返回值：List<br>示例代码：</p>
+<pre><code>val listFlatMap = listOf(20, 30, 40).flatMap { it -&gt;  mutableListOf(Book(&quot;A-&quot; + it, it, &quot;B- &quot; + it))}
+listFlatMap.forEach (::println)
+</code></pre>
+<p>输出结果：</p>
+<pre><code>Book(name=&#39;A-20&#39;, page=20, author=&#39;B- 20&#39;)
+Book(name=&#39;A-30&#39;, page=30, author=&#39;B- 30&#39;)
+Book(name=&#39;A-40&#39;, page=40, author=&#39;B- 40&#39;
+</code></pre>
+<h2 id="groupBy"><a href="#groupBy" class="headerlink" title="groupBy"></a>groupBy</h2><p>返回一个映射表，该表包括经指定函数对原始集合中元素进行分组后的元素。<br>函数参数类型：keySelector:(T)-&gt;K<br>返回值：Map  </p>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p>返回一个列表，该列表包含对原始集合中每个元素进行转化后结果。<br>函数参数类型： transform:(T)-&gt;R<br>返回值：List<br>示例代码：   </p>
+<pre><code>val listMap = listOf(20, 30, 40).map { Book(&quot;A-&quot; + it, it, &quot;B- &quot; + it) }
+listMap.forEach(::println)  
+</code></pre>
+<p>输出结果： </p>
+<pre><code>Book(name=&#39;A-20&#39;, page=20, author=&#39;B- 20&#39;)
+Book(name=&#39;A-30&#39;, page=30, author=&#39;B- 30&#39;)
+Book(name=&#39;A-40&#39;, page=40, author=&#39;B- 40&#39;)
+</code></pre>
+<h2 id="mapIndexed"><a href="#mapIndexed" class="headerlink" title="mapIndexed"></a>mapIndexed</h2><p>返回一个列表，该列表包含了对原始集合中每个元素进行转换后结果和它们的索引。<br>函数参数类型：transform:(Int,T)-&gt;R<br>返回值：List<br>示例代码： </p>
+<pre><code>val listMapIndexed = listOf(20, 30, 40).mapIndexed { index, it -&gt; Book(&quot;A-&quot; + index, it, &quot;B- &quot; + index) }
+listMapIndexed.forEach(::println)
+</code></pre>
+<p>输出结果：  </p>
+<pre><code>Book(name=&#39;A-0&#39;, page=20, author=&#39;B- 0&#39;)
+Book(name=&#39;A-1&#39;, page=30, author=&#39;B- 1&#39;)
+Book(name=&#39;A-2&#39;, page=40, author=&#39;B- 2&#39;)
+</code></pre>
+<h2 id="mapNotNull"><a href="#mapNotNull" class="headerlink" title="mapNotNull"></a>mapNotNull</h2><p>返回一个列表，该领包含对原始集合中非null元素转化后的结果。<br>函数参数类型： transform:(T)-&gt;R?<br>返回值：List<br>示例代码： </p>
+<pre><code>val listMapNotNull = listOf(20, 30, 40)
+    .mapNotNull (::mapNoNull)
+listMapNotNull.forEach(::println)
+
+fun mapNoNull(page: Int) : Book? 
+{
+	if (page == 20) 
+	{
+    	return null
+	} else 
+	{
+    	return Book(&quot;A-&quot; + page, page, &quot;B- &quot; + page)
+	}
+}
+</code></pre>
+<p>输出结果： </p>
+<pre><code>Book(name=&#39;A-30&#39;, page=30, author=&#39;B- 30&#39;)
+Book(name=&#39;A-40&#39;, page=40, author=&#39;B- 40&#39;)
+</code></pre>
+<h1 id="元素操作"><a href="#元素操作" class="headerlink" title="元素操作"></a>元素操作</h1><h2 id="contains"><a href="#contains" class="headerlink" title="contains"></a>contains</h2><p>在集合中如果找到指定元素，则返回true<br>参数类型：T实例<br>返回值：Boolean<br>实例代码： </p>
+<pre><code>val contains = listBook.contains(bookA)
+val contains_ = listBook.contains(bookF)
+println(&quot;contains: $contains, contains_: $contains_&quot;) 
+</code></pre>
+<p>输出结果：  </p>
+<pre><code>contains: true, contains_: false  
+</code></pre>
+<h2 id="elementAt"><a href="#elementAt" class="headerlink" title="elementAt"></a>elementAt</h2><p>返回指定索引位置的元素。如果索引超出这个集合的范围，则抛出indexOutBoundsException.<br>参数类型： Int，索引位置<br>返回值： T<br>实例代码： </p>
+<pre><code>val bookIn = listBook.elementAt(2)
+println(bookIn)
+</code></pre>
+<p>输出结果： </p>
+<pre><code>Book(name=&#39;C&#39;, page=22, author=&#39;Mark&#39;)
+</code></pre>
+<h2 id="elementAtOrElse"><a href="#elementAtOrElse" class="headerlink" title="elementAtOrElse"></a>elementAtOrElse</h2><p>返回指定索引位置的元素。如果索引超出这个集合的范围，则返回调用默认函数的结果。<br>函数参数类型：<br>	<br>	index:Int<br>	函数参数类型：defaultValue:(Int)-&gt;T<br>返回值： T<br>实例代码：</p>
+<pre><code>val out = listBook.elementAtOrElse(7){index -&gt; Book(&quot;A-&quot; + index, index, &quot;B- &quot; + index)}
+println(out)
+</code></pre>
+<p>输出结果：</p>
+<pre><code>Book(name=&#39;A-7&#39;, page=7, author=&#39;B- 7&#39;)
+</code></pre>
+<h2 id="elementAtOrNull"><a href="#elementAtOrNull" class="headerlink" title="elementAtOrNull"></a>elementAtOrNull</h2><p>返回索引位置的元素。如果索引超出这个集合的范围，则返回null.  </p>
+<h2 id="first"><a href="#first" class="headerlink" title="first"></a>first</h2><p>返回与指定条件相符的第一个元素。如果没有元素满足这个条件，则抛出异常NoSuchElementException<br>函数参数类型： predicate:(T)-Boolean<br>返回值：T<br>示例代码： </p>
+<pre><code>val first = listBook.first{ it.page &gt; 23}
+println(first)
+</code></pre>
+<p>输出结果： Book(name&#x3D;&#39;D&#39;, page&#x3D;23, author&#x3D;&#39;Node&#39;)  </p>
+<h2 id="firstOrNull"><a href="#firstOrNull" class="headerlink" title="firstOrNull"></a>firstOrNull</h2><p>返回与指定条件相符的第一个元素。如果没有找到符合的元素，则返回null.<br>函数参数类型： predicate:(T)-&gt;Boolean<br>返回值：T？  </p>
+<h2 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf"></a>indexOf</h2><p>返回第一个元素的索引。如果集合没有包含元素，则返回-1<br>参数类型： T：元素的数据类型<br>返回值：Int<br>示例代码：  </p>
+<pre><code>val index = listBook.indexOf(bookA)
+val index_ = listBook.indexOf(bookF)
+println(&quot;index: $index, index_: $index_&quot;)
+</code></pre>
+<p>输出结果：<br>index: 0, index_: -1  </p>
+<h2 id="indexOfFirst"><a href="#indexOfFirst" class="headerlink" title="indexOfFirst"></a>indexOfFirst</h2><p>返回第一个与指定条件相符的元素索引。如果集合没有包含这样的元素，则返回-1<br>函数参数类型： predicate:(T)-&gt;Boolean<br>返回值：int<br>示例代码：</p>
+<pre><code>val indexFirst = listBook.indexOfFirst { it.page &gt; 23 }
+val indexFirst_ = listBook.indexOfFirst { it.page &gt; 30 }
+println(&quot;indexFirst: $indexFirst, indexFirst_: $indexFirst_&quot;)
+</code></pre>
+<p>输出结果： indexFirst: 4, indexFirst_: -1</p>
+<h2 id="last"><a href="#last" class="headerlink" title="last"></a>last</h2><p>返回与指定条件相符的最后一个元素。<br>函数参数类型： predicate:(T)-&gt;Boolean<br>返回值：T<br>示例代码：  </p>
+<pre><code>val last = listOf(1, 3, 3, 4, 2, 3).last { it == 3 }
+println(&quot;last: $last&quot;)
+</code></pre>
+<p>输出结果： </p>
+<pre><code>last: 3
+</code></pre>
+<h2 id="lastIndexOf"><a href="#lastIndexOf" class="headerlink" title="lastIndexOf"></a>lastIndexOf</h2><p>返回最后一个满足条件的元素索引。如果集合没有包含满足条件的元素，则返回-1<br>函数参数类型： -T：元素的数据类型<br>返回值：  int<br>示例代码： </p>
+<pre><code>val lastIndexOf = listOf(1, 3, 3, 4, 2, 3).last { it == 3 }
+val lastIndexOf_ = listOf(1, 3, 3, 4, 2, 3).last { it == 6 }
+println(&quot;lastIndexOf: $lastIndexOf, lastIndexOf_: $lastIndexOf_&quot;) 
+</code></pre>
+<p>输出结果：  Book(name&#x3D;&#39;E&#39;, page&#x3D;24, author&#x3D;&#39;Blue&#39;)  </p>
+<h2 id="single"><a href="#single" class="headerlink" title="single"></a>single</h2><p>返回与指定条件相符的单一元素。如果没有或有多个相符的元素，则抛出异常illegalArgumentException<br>函数参数类型：  predicate:(T)-&gt;Boolean<br>返回值：T<br>示例代码：</p>
+<pre><code>val single = listBook.single { it.page == 22 }
+println(single)
+</code></pre>
+<p>输出结果： Book(name&#x3D;&#39;C&#39;, page&#x3D;22, author&#x3D;&#39;Mark&#39;)  </p>
+<h2 id="singleOrNull"><a href="#singleOrNull" class="headerlink" title="singleOrNull"></a>singleOrNull</h2><p>返回与指定条件相符的单一元素。如果没有找到这样元素或有找到多个这样元素，则返回null。<br>函数参数类型：predicate:(T)-&gt;Boolean<br>返回值：T  </p>
+<h1 id="生成操作"><a href="#生成操作" class="headerlink" title="生成操作"></a>生成操作</h1><h2 id="partition"><a href="#partition" class="headerlink" title="partition"></a>partition</h2><p>将元素集合拆分一对集合，一个集合包含判断条件为true的元素，另一个集合包含判断条件为false的元素。<br>函数参数类型： predicate:(T)-&gt;Boolean<br>返回值：pair  </p>
+<h2 id="plus"><a href="#plus" class="headerlink" title="plus"></a>plus</h2><p>返回一个列表，该列表包含原始集合的所有元素和指定集合的所有元素。由于函数名称原因，我们可以使用“+”操作符。执行操作以后，原集合中元素列表并未改变。<br>函数参数类型：  </p>
+<ol>
+<li><p>变种1：  </p>
+<pre><code> T：元素的数据类型实例
+</code></pre>
+</li>
+<li><p>变种2</p>
+<pre><code> Array：元素的数据类型的集合
+</code></pre>
+</li>
+</ol>
+<p>返回值类型： List<T><br>实例代码：  </p>
+<pre><code>val plus = listBook.plus(bookF)
+println(&quot;plus&quot;)
+plus.forEach(::println)
+println(&quot;原list&quot;)
+listBook.forEach(::println)
+</code></pre>
+<p>输出结果： </p>
+<pre><code>plus
+Book(name=&#39;A&#39;, page=20, author=&#39;Jone&#39;)
+Book(name=&#39;B&#39;, page=21, author=&#39;Green&#39;)
+Book(name=&#39;C&#39;, page=22, author=&#39;Mark&#39;)
+Book(name=&#39;D&#39;, page=23, author=&#39;Node&#39;)
+Book(name=&#39;E&#39;, page=24, author=&#39;Blue&#39;)
+Book(name=&#39;F&#39;, page=25, author=&#39;Teaphy&#39;)
+原list
+Book(name=&#39;A&#39;, page=20, author=&#39;Jone&#39;)
+Book(name=&#39;B&#39;, page=21, author=&#39;Green&#39;)
+Book(name=&#39;C&#39;, page=22, author=&#39;Mark&#39;)
+Book(name=&#39;D&#39;, page=23, author=&#39;Node&#39;)
+Book(name=&#39;E&#39;, page=24, author=&#39;Blue&#39;)
+</code></pre>
+<h2 id="zip"><a href="#zip" class="headerlink" title="zip"></a>zip</h2><p>返回一个列表，该列表由两个集合中相同索引元素建立的元素对。这个列表长度为最短集合的长度为准。</p>
+<p>在新的Kotlin版本中，去掉了merge操作符，其功能被保存下来了，作为了zip的一个变种。该变种将接受两个参数，其中一个参数为预建立配对的集合，另一个参数为函数参数，这个函数参数完成了，两个两个集合的配对元素结合，并生成新的元素。然后在将其加入新建的一个集合，最后将新建的集合返回。  </p>
+<ol>
+<li><p>变种 </p>
+<p> 参数类型：other:Iterable<br> 返回值类型：List</p>
+</li>
+</ol>
+<h1 id="排序操作"><a href="#排序操作" class="headerlink" title="排序操作"></a>排序操作</h1><h2 id="reverse"><a href="#reverse" class="headerlink" title="reverse"></a>reverse</h2><p>返回逆序元素列表<br>实例代码  </p>
+<pre><code>println(&quot;reverse&quot;)
+reverse.forEach(::println)
+println(&quot;原list&quot;)
+listBook.forEach(::println)
+</code></pre>
+<p>输出结果： </p>
+<pre><code>reverse
+Book(name=&#39;E&#39;, page=24, author=&#39;Blue&#39;)
+Book(name=&#39;D&#39;, page=23, author=&#39;Node&#39;)
+Book(name=&#39;C&#39;, page=22, author=&#39;Mark&#39;)
+Book(name=&#39;B&#39;, page=21, author=&#39;Green&#39;)
+Book(name=&#39;A&#39;, page=20, author=&#39;Jone&#39;)
+原list
+Book(name=&#39;A&#39;, page=20, author=&#39;Jone&#39;)
+Book(name=&#39;B&#39;, page=21, author=&#39;Green&#39;)
+Book(name=&#39;C&#39;, page=22, author=&#39;Mark&#39;)
+Book(name=&#39;D&#39;, page=23, author=&#39;Node&#39;)
+Book(name=&#39;E&#39;, page=24, author=&#39;Blue&#39;)
+</code></pre>
+<h2 id="sortBy"><a href="#sortBy" class="headerlink" title="sortBy"></a>sortBy</h2><p>返回所有元素列表，其元素通过特定的比较器分类排序<br>函数参数类型：crossinline selector:(T)-&gt;R?<br>返回值类型：List<br>实例代码：</p>
+<pre><code>val sort = listBook.sortedBy { - it.page }
+sort.forEach(::println)
+</code></pre>
+<p>输出结果：</p>
+<pre><code>Book(name=&#39;E&#39;, page=24, author=&#39;Blue&#39;)
+Book(name=&#39;D&#39;, page=23, author=&#39;Node&#39;)
+Book(name=&#39;C&#39;, page=22, author=&#39;Mark&#39;)
+Book(name=&#39;B&#39;, page=21, author=&#39;Green&#39;)
+Book(name=&#39;A&#39;, page=20, author=&#39;Jone&#39;)
+</code></pre>
+<h2 id="sortDescendingBy"><a href="#sortDescendingBy" class="headerlink" title="sortDescendingBy"></a>sortDescendingBy</h2><p>返回所有元素的分类排序列表，其顺序为通过特定排序函数结果的降序。<br>参数类型：crossinline selector:(T)-&gt;R?<br>返回值类型：List<br>实例代码  </p>
+<pre><code>val sortedByDescending = listBook.sortedByDescending { it.page }
+sortedByDescending.forEach(::println)
+</code></pre>
+<p>输出结果：  </p>
+<pre><code>Book(name=&#39;E&#39;, page=24, author=&#39;Blue&#39;)
+Book(name=&#39;D&#39;, page=23, author=&#39;Node&#39;)
+Book(name=&#39;C&#39;, page=22, author=&#39;Mark&#39;)
+Book(name=&#39;B&#39;, page=21, author=&#39;Green&#39;)
+Book(name=&#39;A&#39;, page=20, author=&#39;Jone&#39;)	
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%9B%86%E5%90%88/" rel="tag"># 集合</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/9a5220a7.html" rel="prev" title="Kotlin开发之——集合(一)">
+                  <i class="fa fa-angle-left"></i> Kotlin开发之——集合(一)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/18d6bb69.html" rel="next" title="Kotlin开发之——扩展函数">
+                  Kotlin开发之——扩展函数 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"bb86968ba93b93bd03d07a4a20ab775b"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

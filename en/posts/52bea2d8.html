@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="一 面试题汇总 block是什么？封装了函数以及函数调用环境的OC对象 block分为哪几种类型？有什么区别 block变量捕获有哪些情况？auto，static， ARC，MRC情况下定义block使用的属性关键字有什么区别，为什么 ARC环境下，哪些情况编译器会根据情况自动将栈上的block复制到堆上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IOS面试题——OC中Block本质(4)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/52bea2d8.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="一 面试题汇总 block是什么？封装了函数以及函数调用环境的OC对象 block分为哪几种类型？有什么区别 block变量捕获有哪些情况？auto，static， ARC，MRC情况下定义block使用的属性关键字有什么区别，为什么 ARC环境下，哪些情况编译器会根据情况自动将栈上的block复制到堆上">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-26T12:39:30.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:04.828Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="OC面试题">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/52bea2d8.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/52bea2d8.html","path":"posts/52bea2d8.html","title":"IOS面试题——OC中Block本质(4)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>IOS面试题——OC中Block本质(4) | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB"><span class="nav-number">1.</span> <span class="nav-text">一 面试题汇总</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-block%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%B0%81%E8%A3%85%E4%BA%86%E5%87%BD%E6%95%B0%E4%BB%A5%E5%8F%8A%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%8E%AF%E5%A2%83%E7%9A%84OC%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 block是什么？封装了函数以及函数调用环境的OC对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-block%E5%88%86%E4%B8%BA%E5%93%AA%E5%87%A0%E7%A7%8D%E7%B1%BB%E5%9E%8B%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 block分为哪几种类型？有什么区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-block%E5%8F%98%E9%87%8F%E6%8D%95%E8%8E%B7%E6%9C%89%E5%93%AA%E4%BA%9B%E6%83%85%E5%86%B5%EF%BC%9Fauto%EF%BC%8Cstatic%EF%BC%8C"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 block变量捕获有哪些情况？auto，static，</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-ARC%EF%BC%8CMRC%E6%83%85%E5%86%B5%E4%B8%8B%E5%AE%9A%E4%B9%89block%E4%BD%BF%E7%94%A8%E7%9A%84%E5%B1%9E%E6%80%A7%E5%85%B3%E9%94%AE%E5%AD%97%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 ARC，MRC情况下定义block使用的属性关键字有什么区别，为什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-ARC%E7%8E%AF%E5%A2%83%E4%B8%8B%EF%BC%8C%E5%93%AA%E4%BA%9B%E6%83%85%E5%86%B5%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%9A%E6%A0%B9%E6%8D%AE%E6%83%85%E5%86%B5%E8%87%AA%E5%8A%A8%E5%B0%86%E6%A0%88%E4%B8%8A%E7%9A%84block%E5%A4%8D%E5%88%B6%E5%88%B0%E5%A0%86%E4%B8%8A"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 ARC环境下，哪些情况编译器会根据情况自动将栈上的block复制到堆上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-block%E5%86%85%E9%83%A8%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E4%BF%AE%E6%94%B9%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%EF%BC%8C-block%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%EF%BC%9F"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 block内部为什么不能修改局部变量，__block为什么能？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-block%E6%9C%89%E4%BB%80%E4%B9%88%E9%99%90%E5%88%B6%EF%BC%9F-block%E4%B8%8D%E8%83%BD%E4%BF%AE%E9%A5%B0%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E3%80%81%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%EF%BC%88static%EF%BC%89"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 __block有什么限制？__block不能修饰全局变量、静态变量（static）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-weak-strong%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 __weak, __strong分别有什么作用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/52bea2d8.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="IOS面试题——OC中Block本质(4) | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          IOS面试题——OC中Block本质(4)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/IOS%E9%9D%A2%E8%AF%95%E9%A2%98%E2%80%94%E2%80%94OC%E4%B8%ADBlock%E6%9C%AC%E8%B4%A8(4).md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2024-03-26 20:39:30" itemprop="dateCreated datePublished" datetime="2024-03-26T20:39:30+08:00">2024-03-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/IOS%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">IOS面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>4 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-面试题汇总"><a href="#一-面试题汇总" class="headerlink" title="一 面试题汇总"></a>一 面试题汇总</h2><ol>
+<li>block是什么？封装了函数以及函数调用环境的OC对象</li>
+<li>block分为哪几种类型？有什么区别</li>
+<li>block变量捕获有哪些情况？auto，static，</li>
+<li>ARC，MRC情况下定义block使用的属性关键字有什么区别，为什么</li>
+<li>ARC环境下，哪些情况编译器会根据情况自动将栈上的block复制到堆上 <span id="more"></span></li>
+<li>block内部为什么不能修改局部变量，__block为什么能？</li>
+<li><code>__block</code>有什么限制？<code>__block</code>不能修饰全局变量、静态变量（static）</li>
+<li><code>__weak, __strong</code>分别有什么作用</li>
+</ol>
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-block是什么？封装了函数以及函数调用环境的OC对象"><a href="#2-1-block是什么？封装了函数以及函数调用环境的OC对象" class="headerlink" title="2.1 block是什么？封装了函数以及函数调用环境的OC对象"></a>2.1 block是什么？封装了函数以及函数调用环境的OC对象</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">在 Objective-C 中，block 是一种特殊的对象，也称为闭包（closure）。</span><br><span class="line">它封装了函数以及函数调用环境，可以在代码中像一个变量一样传递和使用。</span><br><span class="line"></span><br><span class="line">block可以捕获其定义时所在的作用域中的变量，并在稍后的时间点执行这些变量所引用的代码。</span><br><span class="line">这使得 block 在异步操作、回调函数等场景中特别有用。</span><br><span class="line"></span><br><span class="line">block 可以被传递给函数、方法，也可以被存储为属性或变量，以便稍后使用。</span><br><span class="line">因为它们可以捕获上下文，所以它们可以在调用时访问定义时的变量</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-block分为哪几种类型？有什么区别"><a href="#2-2-block分为哪几种类型？有什么区别" class="headerlink" title="2.2 block分为哪几种类型？有什么区别"></a>2.2 block分为哪几种类型？有什么区别</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">在 Objective-C 中，block 可以根据其内部捕获的变量的生命周期和存储位置来分为以下几种类型：</span><br><span class="line"></span><br><span class="line">1-Global Blocks（全局块）：</span><br><span class="line"></span><br><span class="line">1.1-全局块是在编译时创建的，它们在整个程序运行期间都是有效的。</span><br><span class="line">1.2-全局块不捕获任何外部变量，因此它们的执行不依赖于定义它们的上下文。</span><br><span class="line">1.3-这些块通常用于表示静态函数或方法。</span><br><span class="line"></span><br><span class="line">2-Stack Blocks（栈块）：</span><br><span class="line"></span><br><span class="line">2.1-栈块是在定义时捕获了外部变量的 block。</span><br><span class="line">2.2-栈块的生命周期仅限于其定义的作用域内。一旦超出作用域，栈块所捕获的变量会被释放。</span><br><span class="line">2.3-栈块通常用于短期的异步任务或局部操作。</span><br><span class="line"></span><br><span class="line">3-Heap Blocks（堆块）：</span><br><span class="line"></span><br><span class="line">3.1-堆块是通过调用 copy 方法从栈上复制而来的块。</span><br><span class="line">3.2-当栈块被复制到堆上时，它们的生命周期不再受限于定义时的作用域，</span><br><span class="line">而是由手动释放或引用计数管理来确定。</span><br><span class="line">3.3-在使用引用计数管理的情况下，通常使用ARC(Automatic Reference Counting)来自动管理内存。</span><br><span class="line">3.4-堆块通常用于长期的异步操作、回调等情景，因为它们的生命周期不依赖于定义它们的作用域。</span><br><span class="line"></span><br><span class="line">在使用 block 时，要特别注意其类型和生命周期，以避免内存管理问题和意外的行为。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-block变量捕获有哪些情况？auto，static，"><a href="#2-3-block变量捕获有哪些情况？auto，static，" class="headerlink" title="2.3 block变量捕获有哪些情况？auto，static，"></a>2.3 block变量捕获有哪些情况？auto，static，</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">在Objective-C 中，block可以捕获外部变量，而捕获的方式会受到变量的存储类别和block的类型(栈块或堆块)的影响。</span><br><span class="line">主要有以下几种情况：</span><br><span class="line"></span><br><span class="line">1-自动变量（auto）：</span><br><span class="line"></span><br><span class="line">1.1-当 block捕获自动变量时，它们会按值捕获，即在定义时直接复制一份变量的值。</span><br><span class="line">1.2-如果捕获的是基本数据类型（如 int、float 等），则捕获的是该变量的值的副本。</span><br><span class="line">1.3-如果捕获的是对象类型，则捕获的是对象的强引用（retain）。</span><br><span class="line">1.4-对于栈块，自动变量的捕获仅在定义时进行一次，之后不会再跟踪变量的更新。</span><br><span class="line"></span><br><span class="line">2-静态变量（static）：</span><br><span class="line"></span><br><span class="line">2.1-当 block 捕获静态变量时，它们同样按值捕获。</span><br><span class="line">2.2-静态变量的捕获与自动变量类似，但由于它们的生命周期长于栈块的定义，</span><br><span class="line">因此捕获后的值可以在块的整个生命周期内保持不变。</span><br><span class="line"></span><br><span class="line">3-全局变量：</span><br><span class="line"></span><br><span class="line">3.1-全局变量可以在任何类型的 block 中被访问，</span><br><span class="line">因为它们的作用域和生命周期都超出了任何 block 的定义范围。</span><br><span class="line">3.2-block 不会对全局变量进行捕获，而是直接访问其值。</span><br><span class="line"></span><br><span class="line">需要注意的是，在使用 block 时，尤其是在异步操作中，</span><br><span class="line">要确保捕获的变量的生命周期与block的执行时机相匹配，以避免潜在的内存管理问题和竞态条件。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-ARC，MRC情况下定义block使用的属性关键字有什么区别，为什么"><a href="#2-4-ARC，MRC情况下定义block使用的属性关键字有什么区别，为什么" class="headerlink" title="2.4 ARC，MRC情况下定义block使用的属性关键字有什么区别，为什么"></a>2.4 ARC，MRC情况下定义block使用的属性关键字有什么区别，为什么</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">在 Objective-C 中，ARC（Automatic Reference Counting）和 MRC（Manual Reference Counting）是两种不同的内存管理方式，</span><br><span class="line">它们对于定义 block 时所使用的属性关键字的影响是不同的。</span><br><span class="line"></span><br><span class="line">1-ARC（Automatic Reference Counting）下的属性关键字：</span><br><span class="line"></span><br><span class="line">1.1-在 ARC 下，可以使用 strong、weak、copy 这些属性关键字来定义 block 属性。</span><br><span class="line">1.2-strong 会在生成的访问器方法中保留（retain） block 对象，</span><br><span class="line">这意味着 block 在对象引用计数不为零时会保持有效。</span><br><span class="line">1.3-weak 则会创建一个弱引用到 block，当 block 的对象被释放后，</span><br><span class="line">弱引用会自动被设置为 nil，避免出现野指针。</span><br><span class="line">1.4-copy 会在生成的访问器方法中复制block对象，确保block在堆上的拷贝，从而防止其在栈上被销毁。</span><br><span class="line"></span><br><span class="line">2-MRC（Manual Reference Counting）下的属性关键字：</span><br><span class="line"></span><br><span class="line">2.1-在 MRC 下，一般使用copy来定义block属性，这是因为copy可以确保在堆上创建 block 的拷贝，</span><br><span class="line">从而避免在栈上创建的 block 在其作用域结束后被销毁导致的问题。</span><br><span class="line">2.2-虽然 MRC 下也可以使用 retain 关键字，但不推荐，</span><br><span class="line">因为 retain 不能保证 block 在栈上的正确管理，而 copy 则是更安全的做法。</span><br><span class="line"></span><br><span class="line">总的来说，无论是 ARC 还是 MRC，都推荐使用 copy 关键字来定义 block 属性，</span><br><span class="line">这样可以确保 block 在堆上的拷贝，避免了在栈上的问题，提高了代码的健壮性和可维护性。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-ARC环境下，哪些情况编译器会根据情况自动将栈上的block复制到堆上"><a href="#2-5-ARC环境下，哪些情况编译器会根据情况自动将栈上的block复制到堆上" class="headerlink" title="2.5 ARC环境下，哪些情况编译器会根据情况自动将栈上的block复制到堆上"></a>2.5 ARC环境下，哪些情况编译器会根据情况自动将栈上的block复制到堆上</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">在 ARC（Automatic Reference Counting）环境下，</span><br><span class="line">编译器会根据情况自动将栈上的 block 复制到堆上，主要包括以下情况：</span><br><span class="line"></span><br><span class="line">1-将 Block 作为函数返回值返回：</span><br><span class="line">当一个函数返回一个block时，编译器会自动将栈上的block复制到堆上，以确保其在函数返回后继续有效。</span><br><span class="line"></span><br><span class="line">2-将 Block 赋值给 strong 修饰的属性或变量：</span><br><span class="line">当一个block被赋值给一个使用strong修饰符的属性或变量时，编译器会自动将栈上的 block 复制到堆上。</span><br><span class="line"></span><br><span class="line">3-将 Block 作为参数传递给方法时：</span><br><span class="line">当一个 block 作为参数传递给一个方法时，如果方法参数使用了strong修饰符，</span><br><span class="line">编译器会自动将栈上的 block 复制到堆上。</span><br><span class="line"></span><br><span class="line">4-Block 在异步调用中使用：</span><br><span class="line">如果一个 block 在异步调用中使用，例如作为GCD（Grand Central Dispatch）的任务</span><br><span class="line">或者作为 NSOperation 的执行体，编译器会自动将栈上的 block 复制到堆上</span><br><span class="line">，以确保 block 在异步执行期间不会被销毁。</span><br><span class="line"></span><br><span class="line">5-Block 在实例变量中使用：</span><br><span class="line">当一个 block 被赋值给一个使用 strong 修饰符的实例变量时，</span><br><span class="line">编译器会自动将栈上的 block 复制到堆上。</span><br><span class="line"></span><br><span class="line">这些情况下，编译器会根据需要自动处理 block 的复制操作，</span><br><span class="line">以确保 block 在正确的内存区域（堆上）被管理，从而避免因栈上 block 超出作用域而导致的问题。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-block内部为什么不能修改局部变量，-block为什么能？"><a href="#2-6-block内部为什么不能修改局部变量，-block为什么能？" class="headerlink" title="2.6 block内部为什么不能修改局部变量，__block为什么能？"></a>2.6 block内部为什么不能修改局部变量，__block为什么能？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">对于普通的局部变量，block 按值捕获，修改只会影响到 block 内部的副本，不会影响到原始变量。</span><br><span class="line">对于使用 __block 修饰的局部变量，block 会捕获变量的指针，从而允许 block 内部修改原始变量的值</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-block有什么限制？-block不能修饰全局变量、静态变量（static）"><a href="#2-7-block有什么限制？-block不能修饰全局变量、静态变量（static）" class="headerlink" title="2.7 __block有什么限制？__block不能修饰全局变量、静态变量（static）"></a>2.7 <code>__block</code>有什么限制？<code>__block</code>不能修饰全局变量、静态变量（static）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">__block 在 Objective-C 中用于修饰局部变量，允许在 block 内部修改这些变量的值，</span><br><span class="line">并且在 ARC 环境下，它还可以解决循环引用的问题。然而，确实存在一些限制：</span><br><span class="line"></span><br><span class="line">1-不能修饰全局变量：</span><br><span class="line">__block 不能用于修饰全局变量。因为全局变量的生命周期超出了任何一个特定的作用域，</span><br><span class="line">而 __block 是用于在块和其作用域之间创建一个关联，所以在全局范围内没有必要使用 __block。</span><br><span class="line"></span><br><span class="line">2-不能修饰静态变量（static）：</span><br><span class="line">类似地，__block 也不能用于修饰静态变量。静态变量的生命周期长于函数或代码块的执行，</span><br><span class="line">因此也不适合使用 __block。</span><br><span class="line"></span><br><span class="line">总的来说，__block 主要是用于解决在块内部修改局部变量的问题，</span><br><span class="line">对于全局变量和静态变量，由于它们的特殊性和生命周期，不适合使用 __block 来修饰。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-8-weak-strong分别有什么作用"><a href="#2-8-weak-strong分别有什么作用" class="headerlink" title="2.8 __weak, __strong分别有什么作用"></a>2.8 <code>__weak, __strong</code>分别有什么作用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">__weak 和 __strong 都是用于在 Objective-C 中管理内存的修饰符，它们通常用于声明对象的引用。</span><br><span class="line">在使用 ARC（Automatic Reference Counting）进行内存管理时，这两个修饰符具有不同的作用。</span><br><span class="line"></span><br><span class="line">1-__weak：</span><br><span class="line"></span><br><span class="line">1.1 __weak 修饰符用于声明一个弱引用（weak reference），它不会增加所引用对象的引用计数。</span><br><span class="line">1.2 当所引用的对象被释放后，__weak 修饰的引用会自动被设置为 nil，避免出现野指针。</span><br><span class="line">1.3 __weak 常用于解决循环引用（retain cycle）的问题，例如在 block 内部捕获 self 时，使用 __weak 可以避免循环引用。</span><br><span class="line"></span><br><span class="line">2- __strong：</span><br><span class="line"></span><br><span class="line">2.1 __strong 修饰符用于声明一个强引用（strong reference），它会增加所引用对象的引用计数。 </span><br><span class="line">2.2 强引用会使对象的引用计数加一，保证对象在被使用期间不会被释放。</span><br><span class="line">2.3 当强引用的对象不再被需要时，需要手动将强引用设置为 nil，以便对象可以被释放并回收内存。</span><br><span class="line"></span><br><span class="line">在 ARC 下，通常会使用 __weak 来避免循环引用，特别是在涉及到 block 的场景中，</span><br><span class="line">而 __strong 则是默认的引用修饰符，用于保持对象在需要时的有效性</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-参考"><a href="#三-参考" class="headerlink" title="三 参考"></a>三 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b4d237dcc252">简书—OC中Block本质</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/OC%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># OC面试题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/f4ea6ed7.html" rel="prev" title="Hexo站点建设之——异常could not read Password for">
+                  <i class="fa fa-angle-left"></i> Hexo站点建设之——异常could not read Password for
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/5ba825a4.html" rel="next" title="IOS面试题——OC之KVO原理(5)">
+                  IOS面试题——OC之KVO原理(5) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"2333f6cff7cb727afbdcb73efba54562"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

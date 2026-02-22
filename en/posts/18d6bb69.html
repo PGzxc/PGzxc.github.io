@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="什么是扩展函数扩展函数是指在一个类上增加一种新的行为，甚至我们没有这个类代码的访问权限。这是一个在缺少有用函数的类上扩展的方法，Kotlin能够为我们做到那些令人关注的事情，而这些Java做不到。   在Java中，通常会实现很多带有static方法的工具类，而Kotlin中扩展函数的一个优势是我们不需要在调用方法的时候把整个对象当做参数传入，它表现的就像属于这个类的一样，而且我们可以使用this">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin开发之——扩展函数">
+<meta property="og:url" content="https://pgzxc.github.io/posts/18d6bb69.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="什么是扩展函数扩展函数是指在一个类上增加一种新的行为，甚至我们没有这个类代码的访问权限。这是一个在缺少有用函数的类上扩展的方法，Kotlin能够为我们做到那些令人关注的事情，而这些Java做不到。   在Java中，通常会实现很多带有static方法的工具类，而Kotlin中扩展函数的一个优势是我们不需要在调用方法的时候把整个对象当做参数传入，它表现的就像属于这个类的一样，而且我们可以使用this">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-12-21T02:27:48.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:04.845Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="扩展函数">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/18d6bb69.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/18d6bb69.html","path":"posts/18d6bb69.html","title":"Kotlin开发之——扩展函数"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Kotlin开发之——扩展函数 | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%89%A9%E5%B1%95%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">什么是扩展函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">扩展函数的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E6%89%A9%E5%B1%95"><span class="nav-number">2.1.</span> <span class="nav-text">函数的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8Toast%E4%B8%AD%E7%9A%84%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95"><span class="nav-number">2.1.1.</span> <span class="nav-text">在Toast中的高级用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String%E6%A8%A1%E6%9D%BF"><span class="nav-number">2.1.2.</span> <span class="nav-text">String模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8onCreateViewHolder%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">2.1.3.</span> <span class="nav-text">在onCreateViewHolder中的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E5%8A%A0%E8%BD%BD%E5%9B%BE%E7%89%87%E7%9A%84%E6%97%B6%E5%80%99%E4%BD%BF%E7%94%A8"><span class="nav-number">2.1.4.</span> <span class="nav-text">在加载图片的时候使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E7%9A%84%E6%89%A9%E5%B1%95"><span class="nav-number">2.2.</span> <span class="nav-text">属性的扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A9%E5%B1%95%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">2.3.</span> <span class="nav-text">扩展函数中的操作符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%AF%E9%80%89%E5%8F%82%E6%95%B0%E5%92%8C%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="nav-number">3.</span> <span class="nav-text">可选参数和默认值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Kotlin%E6%A0%87%E5%87%86%E5%BA%93%E6%89%A9%E5%B1%95%E5%87%BD%E6%95%B0%E9%9B%86%E5%90%88"><span class="nav-number">4.</span> <span class="nav-text">Kotlin标准库扩展函数集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#apply"><span class="nav-number">4.1.</span> <span class="nav-text">apply</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#let"><span class="nav-number">4.2.</span> <span class="nav-text">let</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#with"><span class="nav-number">4.3.</span> <span class="nav-text">with</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#run"><span class="nav-number">4.4.</span> <span class="nav-text">run</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lazy"><span class="nav-number">4.5.</span> <span class="nav-text">lazy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#user"><span class="nav-number">4.6.</span> <span class="nav-text">user</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#repeat"><span class="nav-number">4.7.</span> <span class="nav-text">repeat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#require-assert-check"><span class="nav-number">4.8.</span> <span class="nav-text">require&#x2F;assert&#x2F;check</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8kotlin%E7%9A%84%E6%89%A9%E5%B1%95%E5%87%BD%E6%95%B0findViewOften%E4%B8%A2%E6%8E%89Viewholder"><span class="nav-number">5.</span> <span class="nav-text">用kotlin的扩展函数findViewOften丢掉Viewholder</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ViewHlder%E4%BB%8B%E7%BB%8D"><span class="nav-number">5.1.</span> <span class="nav-text">ViewHlder介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ViewHolder%E7%9A%84%E5%8F%98%E7%A7%8D"><span class="nav-number">5.2.</span> <span class="nav-text">ViewHolder的变种</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kotlin%E6%89%A9%E5%B1%95%E5%87%BD%E6%95%B0findViewOften"><span class="nav-number">5.3.</span> <span class="nav-text">Kotlin扩展函数findViewOften()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RecycleView%E4%B8%AD%E7%9A%84ViewHolder"><span class="nav-number">5.4.</span> <span class="nav-text">RecycleView中的ViewHolder</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/18d6bb69.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Kotlin开发之——扩展函数 | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Kotlin开发之——扩展函数<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Kotlin%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94%E6%89%A9%E5%B1%95%E5%87%BD%E6%95%B0.md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2017-12-21 10:27:48" itemprop="dateCreated datePublished" datetime="2017-12-21T10:27:48+08:00">2017-12-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E5%BC%80%E5%8F%91/B-%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">B-高级语言</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E5%BC%80%E5%8F%91/B-%E9%AB%98%E7%BA%A7%E8%AF%AD%E8%A8%80/Kotlin/" itemprop="url" rel="index"><span itemprop="name">Kotlin</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>9 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="什么是扩展函数"><a href="#什么是扩展函数" class="headerlink" title="什么是扩展函数"></a>什么是扩展函数</h1><p>扩展函数是指在一个类上增加一种新的行为，甚至我们没有这个类代码的访问权限。这是一个在缺少有用函数的类上扩展的方法，Kotlin能够为我们做到那些令人关注的事情，而这些Java做不到。  </p>
+<p>在Java中，通常会实现很多带有static方法的工具类，而Kotlin中扩展函数的一个优势是我们不需要在调用方法的时候把整个对象当做参数传入，它表现的就像属于这个类的一样，而且我们可以使用this关键字和调用所有public方法。  </p>
+<ul>
+<li>Kotlin的扩展函数功能使得我们可以为现有的类添加新的函数，实现某一具体功能。  </li>
+<li>扩展函数是静态解析的，并未对原类添加函数或属性，对类本身没有任何影响。</li>
+<li>扩展属性允许定义在类或者Kotlin文件中，不允许定义在函数中。</li>
+</ul>
+<span id="more"></span>
+
+<h1 id="扩展函数的使用"><a href="#扩展函数的使用" class="headerlink" title="扩展函数的使用"></a>扩展函数的使用</h1><h2 id="函数的扩展"><a href="#函数的扩展" class="headerlink" title="函数的扩展"></a>函数的扩展</h2><p>简单来说，Kotlin扩展函数允许我们在不改变已有类的情况下，为类添加新的函数。例如，我们能能够为Activity中添加新的方法，让我们以更简单的术语显示toast，并且这个函数不需要传入任何context，它可以被任何Context或者它的子类调用，比如Activity或者service：  </p>
+<pre><code>fun Context.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) 
+{
+	Toast.makeText(this, message, duration).show()
+}
+</code></pre>
+<p>当然你也可以这样写：   </p>
+<pre><code>fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT)
+{
+	Toast.makeText(this, message, duration).show()
+}
+</code></pre>
+<p>对参数的解释：  </p>
+<ul>
+<li>Activity:表示函数的接收者，也就是函数扩展的对象  </li>
+<li>&quot;.&quot;：扩展函数修饰符</li>
+<li>toast:扩展函数名称</li>
+</ul>
+<p>我们可以在任何地方(例如在一个工具类文件中)声明这个函数，然后在我们的Activity中将它作为普通方法来直接使用(这里的两种使用方式后文会做出解释)</p>
+<pre><code>override fun onCreate(savedInstanceState: Bundle?) 
+{ 
+	super&lt;BaseActivity&gt;.onCreate(savedInstanceState)
+	toast(&quot;This is onCreate!!&quot;)
+	toast(&quot;Hello world!&quot;, Toast.LENGTH_LONG)
+}
+</code></pre>
+<p>当然了，Anko已经包括了自己的toast扩展函数，跟上面的这个很相似(关于Anko是什么，可以在Github上搜索Anko查看)，Anko提供了一些针对CharSequence和resource的函数，还有两个不同toast和longToast方法。</p>
+<pre><code>toast(&quot;Hello world!&quot;)
+longToast(R.id.hello_world)
+</code></pre>
+<p>有一点值得注意：扩展函数并不是真正地修改了原来的类，它的这些作用效果是以静态导入的方式来实现的。扩展函数可以被声明在任何文件中，因此有个通用的方式是把一系列有关的函数放在一个新建的文件里，就像我们刚才所说的工具类当中。<br>我觉得还是再举几个例子来说明一下吧，因为他们完全显示扩展函数的力量。  </p>
+<h3 id="在Toast中的高级用法"><a href="#在Toast中的高级用法" class="headerlink" title="在Toast中的高级用法"></a>在Toast中的高级用法</h3><p>我们首先看看这个例子：  </p>
+<pre><code>fun Context.niceToast(message: String,
+            tag: String = javaClass&lt;MainActivity&gt;().getSimpleName(),
+            length: Int = Toast.LENGTH_SHORT) 
+{
+	Toast.makeText(this, &quot;[$className] $message&quot;, length).show()
+}
+</code></pre>
+<p>我们增加了一个默认值是类名的参数，如果这是在java中的话，那么总数开销会以集合形式增长，而现在我们可以通过以下方式调用：   </p>
+<pre><code>toast(&quot;Hello&quot;)
+toast(&quot;Hello&quot;, &quot;MyTag&quot;)
+toast(&quot;Hello&quot;, &quot;MyTag&quot;, Toast.LENGTH_SHORT)
+</code></pre>
+<p>我们甚至还有其他选择，因为我们可以使用参数名字来调用，也就是说我们可以通过在值前写明参数名来传入我们希望的参数：  </p>
+<pre><code>toast(message = &quot;Hello&quot;, length = Toast.LENGTH_SHORT)
+</code></pre>
+<p>这样我们就使用了第二个参数的默认形式，而使用了第一第三个参数的传入形式。但是你可能觉得这样的函数调用比较难以理解，“[className]message”，这个是Kotlin中的String模板，我们接下来讲解一下它。  </p>
+<h3 id="String模板"><a href="#String模板" class="headerlink" title="String模板"></a>String模板</h3><p>我们可以在String中直接使用模板表达式，它可以帮助我们很简单地在静态值和变量的基础上编写复杂的String。在上面的例子中，我们使用了“[className]message”.  </p>
+<p>这就意味着，在任何时候我们使用一个符号就可以插入一个表达式。如果这个表达式有一点复杂，我们就需要使用一对大括号括起来，比如：“My{user.anem}”。字符串可以包含模板表达式，既可求值的代码片段，并将其结果连接到字符串中。下面我们举几个例子。    </p>
+<ol>
+<li><p>一个模板表达式由一个$和简单名称组成</p>
+<p> val i&#x3D;10;<br> val s&#x3D;&quot;i&#x3D;$i&quot;&#x2F;&#x2F;输出结果为&quot;i&#x3D;10&quot;</p>
+</li>
+<li><p>一个模板表达式由一个$和大括号括起来的表达式组成  </p>
+<p> val s&#x3D;&quot;abc&quot;<br> val str&#x3D;&quot;$s.length is${s.length}&quot; &#x2F;&#x2F;输出结果为&quot;abc.length is 3&quot;</p>
+</li>
+<li><p>如果想输出字符，比如&quot;$&quot;</p>
+<p> ${&#39;$&#39;}</p>
+</li>
+</ol>
+<h3 id="在onCreateViewHolder中的使用"><a href="#在onCreateViewHolder中的使用" class="headerlink" title="在onCreateViewHolder中的使用"></a>在onCreateViewHolder中的使用</h3><p>第一个是我们在RecycleView中的适配器中用到的例子，正常情况下我们这样使用：   </p>
+<pre><code>override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder 
+{
+	val v = LayoutInflater.from(parent.context).inflate(R.layout.view_item, parent, false)
+	return ViewHolder(v)
+}
+</code></pre>
+<p>但是实际上加载布局的逻辑实在是太麻烦了，并且绝大多数情况下我们都在重复编写同样的适配器代码，那么我们为什么不给ViewGroups赋予inflate的能力呢?   </p>
+<pre><code>fun ViewGroup.inflate(layoutRes: Int): View 
+{
+	return LayoutInflater.from(context).inflate(layoutRes, this, false)
+}
+</code></pre>
+<p>然后我们可以想现在这样使用它：  </p>
+<pre><code>override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder 
+{
+	val v = parent.inflate(R.layout.view_item)
+	return ViewHolder(v)
+}
+</code></pre>
+<h3 id="在加载图片的时候使用"><a href="#在加载图片的时候使用" class="headerlink" title="在加载图片的时候使用"></a>在加载图片的时候使用</h3><p>如果你使用过Picasso加载图片的话，那真是再好不活了，而且你会发现你也可以用相同的方法给ImageView增加一个扩展函数：  </p>
+<pre><code>fun ImageView.loadUrl(url: String) 
+{
+	Picasso.with(context).load(url).into(this)
+}
+</code></pre>
+<p>然后我们在使用的时候只需这样简单的一行： </p>
+<pre><code>imageView.loadUrl(url)
+</code></pre>
+<h2 id="属性的扩展"><a href="#属性的扩展" class="headerlink" title="属性的扩展"></a>属性的扩展</h2><p>扩展函数也可以是一个属性，所以我们可以通过相似的方法来扩展属性。我们知道Kotlin由于互操作性的特征已经提供了getter、setter这个属性，但是我们仍然通过下面的例子来展示一下使用自己的getter&#x2F;setter生成一个属性的方式，因为这很有助于理解扩展属性背后的思想：  </p>
+<pre><code>public var TextView.text: CharSequence
+get() = getText()
+set(v) = setText(v)
+</code></pre>
+<p>再比如：我们可以用次方法来设置View的padLeft属性：  </p>
+<pre><code>// 使用扩展属性(extension property)
+var View.padLeft: Int
+set(value) 
+{
+    setPadding(value, paddingTop, paddingRight, paddingBottom)
+}
+get() 
+{
+    return paddingLeft
+}
+</code></pre>
+<p>有一点值得注意：由于扩展属性实际上不会向类中添加新的成员，因此无法让一个扩展拥有一个后端域变量，所以对于扩展属性不允许存在初始化器。扩展属性的行为只能通过明确给定的取值方法与设置方法来定义，也就意味着扩展属性只能被声明为val而不能被声明为var，如果强制声明为var，即使进行了初始化，在运行也会报异常错误，提示该属性没有后端域变量。  </p>
+<h2 id="扩展函数中的操作符"><a href="#扩展函数中的操作符" class="headerlink" title="扩展函数中的操作符"></a>扩展函数中的操作符</h2><p>通常来讲，我们不需要去扩展我们自己的类，但是我需要使用扩展函数扩展我们已经存在的类让第三方的库能提供更多的操作，比如我们可以去像访问List的方式去访问ViwGroup的view  </p>
+<pre><code>operator fun ViewGroup.get(position: Int): View = getChildAt(position)  
+</code></pre>
+<p>于是我们就可以像这样非常简单地从一个viewgroup中通过position得到一个view：  </p>
+<pre><code>val container: ViewGroup = find(R.id.container)
+val view = container[2]
+</code></pre>
+<h1 id="可选参数和默认值"><a href="#可选参数和默认值" class="headerlink" title="可选参数和默认值"></a>可选参数和默认值</h1><p>聪明的你不知道有没有注意到刚才的那段代码中，Toast的第二个形参为什么一开始就赋予了一个默认值呢？其实这就涉及到了Kotlin中可选参数的概念。   </p>
+<p>什么是可选参数呢？<br>简而言之，就是我们在调用该函数的时候，对于该参数既可以传参也可以不传参，比如上文中的第二个参数。那么在不传参时，默认的参数自然就成了我们上下文代码中指明的Toast.LENGTH_SHORT   </p>
+<p>所以说这样做的好处也是显而易见的，那就是借助于参数和构造函数的默认值，我们将不再需要进行函数重载了。只需要我们做一个函数的声明就可以满足我们几乎所有的需求。还是拿刚才的Toast来说事：   </p>
+<pre><code>fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT)
+{
+	Toast.makeText(this, message, duration)
+}
+</code></pre>
+<p>第二个参数表示toast的显示持续时间，这就是一个我们刚刚说的可选参数，但是没有显示指定时，它将使用默认的Toast.LENGTH_SHORT这个值。因此，我们可以采用前面的两种方式来调用这个函数。   </p>
+<pre><code>override fun onCreate(savedInstanceState: Bundle?) 
+{ 
+    super&lt;BaseActivity&gt;.onCreate(savedInstanceState)
+    toast(&quot;This is onCreate!!&quot;)
+    toast(&quot;Hello world!&quot;, Toast.LENGTH_LONG)
+}
+</code></pre>
+<p>再比如，我们可以采用这样的方式在Activity中支持lollipop动画</p>
+<pre><code>inline public fun &lt;reified T : Activity&gt; Activity.navigate(
+    id: String,
+    sharedView: View? = null,
+    transitionName: String? = null) {...}
+</code></pre>
+<p>所以我们就有了三种方式去调用这个函数，先看一下我们刚介绍过的前两种：   </p>
+<pre><code>navigate&lt;DetailActivity&gt;(&quot;2&quot;)
+navigate&lt;DetailActivity&gt;(&quot;2&quot;, sharedView, TRANSITION_NAME)
+</code></pre>
+<p>而对于第三种方式，虽说在这种情况下意义不大，但却让我们知道了我们也是可以通过使用参数名字来决定哪个参数会被调用的：  </p>
+<pre><code>navigate&lt;DetailActivity&gt;(id = &quot;2&quot;, transitionName = TRANSITION_NAME)
+</code></pre>
+<p>所以，参数的默认值可以让我们只声明一个构造函数，当却会得到很多重载。<br>除此之外，我们呢还可以扩展view的dp转换函数：   </p>
+<pre><code>// 使用扩展函数
+fun View.dp_f(dp: Float): Float 
+{
+	// 引用View的context
+	return TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP, dp, context.resources.displayMetrics)
+}
+// 转换Int
+fun View.dp_i(dp: Float): Int 
+{
+	return dp_f(dp).toInt()
+}
+</code></pre>
+<p>可以看到，扩展函数让我们在编写代码时省去了很多功夫。  </p>
+<p>我们总结下Kotlin的三个特点：  </p>
+<ul>
+<li>Kotlin的扩展函数功能能试的我们可以为现有的类添加新的函数，实现某一具体功能。  </li>
+<li>扩展函数是静态解析的，并未对原类添加函数或属性，对类本身没有任何影响。</li>
+<li>扩展属性允许定义在类或者kotlin文件中，不允许定义在函数中。</li>
+</ul>
+<h1 id="Kotlin标准库扩展函数集合"><a href="#Kotlin标准库扩展函数集合" class="headerlink" title="Kotlin标准库扩展函数集合"></a>Kotlin标准库扩展函数集合</h1><p>Kotlin标准库提供了一些扩展javahttp库的函数，我们接下来一一介绍下。    </p>
+<h2 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h2><p>apply是Any的扩展函数，因而所有类型都能调用。<br>apply接受一个lambda表达式作为参数，并在apply调用时立即执行，apply返回原来的对象。<br>apply主要作用是将多个初始化代码链式操作，提高代码可读性。  </p>
+<p>比如：   </p>
+<pre><code>val task = Runnable { println(&quot;Running&quot;) }
+val thread = Thread(task)
+thread.setDaemon(true)
+thread.start()
+</code></pre>
+<p>上面这段代码可以简化为：   </p>
+<pre><code>val task = Runnable { println(&quot;Running&quot;) }
+Thread(task).apply { setDaemon(true) }.start()
+</code></pre>
+<h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><p>let和apply类似，唯一的不同是返回值，let返回的不是原来的对象，而是闭包里面的值。  </p>
+<pre><code>val outputPath = Paths.get(&quot;/user/home&quot;).let 
+{
+	val path = it.resolve(&quot;output&quot;)
+	path.toFile().createNewFile()
+	path
+}
+</code></pre>
+<p>outputPath结果是闭包里面的path.  </p>
+<h2 id="with"><a href="#with" class="headerlink" title="with"></a>with</h2><p>with是一个顶级函数，当你想调用对象的多个方法但是不想重复对象引用，比如diamante：   </p>
+<pre><code>val g2: Graphics2D = ...
+g2.stroke = BasicStroke(10F)
+g2.setRenderingHint(...)
+g2.background = Color.BLACK
+</code></pre>
+<p>可以用with这样写：  </p>
+<pre><code>with(g2) 
+{
+	stroke = BasicStroke(10F)
+	setRenderingHint(...)
+	background = Color.BLACK
+}
+</code></pre>
+<h2 id="run"><a href="#run" class="headerlink" title="run"></a>run</h2><p>run是with和let的组合，例如：  </p>
+<pre><code>val outputPath = Paths.get(&quot;/user/home&quot;).run 
+{
+	val path = resolve(&quot;output&quot;)
+	path.toFile().createNewFile()
+	path
+}
+</code></pre>
+<h2 id="lazy"><a href="#lazy" class="headerlink" title="lazy"></a>lazy</h2><p>lazy延迟运算，当第一次访问时，调用相应的初始化函数，例如：  </p>
+<pre><code>fun readFromDb(): String = ...
+val lazyString = lazy { readFromDb() }
+val string = lazyString.value
+</code></pre>
+<p>当第一次使用lazySting时，lazy闭包会调用，它一般用在单利模式中。  </p>
+<h2 id="user"><a href="#user" class="headerlink" title="user"></a>user</h2><p>use用在java上的try-with-resources表达式上，例如：  </p>
+<pre><code>val input = Files.newInputStream(Paths.get(&quot;input.txt&quot;))
+val byte = input.use({ input.read() })
+</code></pre>
+<h2 id="repeat"><a href="#repeat" class="headerlink" title="repeat"></a>repeat</h2><p>顾名思义，repeat就是重复的意思，它接受函数和整数作为参数，函数会被调用n次，这个函数避免写循环。  </p>
+<pre><code>repeat(10, { println(&quot;Hello&quot;) })
+</code></pre>
+<h2 id="require-assert-check"><a href="#require-assert-check" class="headerlink" title="require&#x2F;assert&#x2F;check"></a>require&#x2F;assert&#x2F;check</h2><p>require&#x2F;assert&#x2F;check用来检测条件是否为true，否则抛出异常。其中require用在参数检查；而assert&#x2F;check用在内部状态检查，assert抛出AssertionException，check抛出illegalStateException.</p>
+<pre><code>fun neverEmpty(str: String) 
+{
+	require(str.length &gt; 0, { &quot;String should not be empty&quot; })
+	println(str)
+}
+</code></pre>
+<h1 id="用kotlin的扩展函数findViewOften丢掉Viewholder"><a href="#用kotlin的扩展函数findViewOften丢掉Viewholder" class="headerlink" title="用kotlin的扩展函数findViewOften丢掉Viewholder"></a>用kotlin的扩展函数findViewOften丢掉Viewholder</h1><h2 id="ViewHlder介绍"><a href="#ViewHlder介绍" class="headerlink" title="ViewHlder介绍"></a>ViewHlder介绍</h2><p>作为一名Android开发者，对ViewHolder应该再熟悉不过了。ViewHolder一开始并不是Android原生提供的(现在已经是RecycleView的默认实现了)，而是Google为了提高ListView的使用性能，为开发者提供的一种最佳实践。   </p>
+<p>Google提供的ViewHolder的标准实现如下，熟悉者可以直接跳到下个部分ViewHolder的变种。  </p>
+<pre><code>staticclassViewHolder
+{
+	TextView text;
+	TextView timestamp;
+	ImageView icon;
+	ProgressBar progress;
+}
+</code></pre>
+<p>在item第一次创建视图的时候，填充ViewHolder并且将其保存在视图中：  </p>
+<pre><code>ViewHolder holder = newViewHolder();
+holder.icon = (ImageView) convertView.findViewById(R.id.listitem_image);
+holder.text = (TextView) convertView.findViewById(R.id.listitem_text);
+holder.timestamp = (TextView) convertView.findViewById(R.id.listitem_timestamp);
+holder.progress = (ProgressBar) convertView.findViewById(R.id.progress_spinner);
+convertView.setTag(holder);
+</code></pre>
+<p>这样在填充item数据的时候，直接使用ViewHolder对象的属性，这样可以减少在滚动ListView频繁调用findViewByid()而导致的性能问题。当然关于ListView性能优化的问题还有一些内容可以介绍，不过我们在这里不做展开。  </p>
+<h2 id="ViewHolder的变种"><a href="#ViewHolder的变种" class="headerlink" title="ViewHolder的变种"></a>ViewHolder的变种</h2><p>Google提供的ViewHolder的确能够提升List的使用效率，但是ViewHolder的实现相对繁琐，需要为每一种item定义一个ViewHolder，对代码书写和维护都是额外的开销。于是有人针对ViewHolder的实现做了一些优化，让ViewHolder写起来更方便。网上有很多种写法，下面提供一种最为简单优雅又高效的方式：  </p>
+<pre><code>public class ViewHolder 
+{ 
+	@SuppressWarnings(&quot;unchecked&quot;) 
+	public static &lt;T extends View&gt; T get(View view, int id) 
+	{ 
+		SparseArray&lt;View&gt; viewHolder = (SparseArray&lt;View&gt;) view.getTag(); 
+		if (viewHolder == null) 
+		{ 
+  			viewHolder = new SparseArray&lt;View&gt;(); 
+  			view.setTag(viewHolder); 
+		} 
+		View childView = viewHolder.get(id); 
+		if(childView == null) 
+		{ 
+  			childView = view.findViewById(id); 
+  			viewHolder.put(id, childView); 
+		} 
+		return (T) childView; 
+	} 
+}
+</code></pre>
+<p>这里我们使用SparseArray映射每个视图id和对应的视图并将其保存在视图中，这样既保证在滚动过程中频繁回去视图的效率，使用起来也极其方便：  </p>
+<pre><code>ImageView bananaView = ViewHolder.get(convertView, R.id.banana); 
+TextView phoneView = ViewHolder.get(convertView, R.id.phone); 
+BananaPhone bananaPhone = getItem(position); 
+phoneView.setText(bananaPhone.getPhone());
+</code></pre>
+<h2 id="Kotlin扩展函数findViewOften"><a href="#Kotlin扩展函数findViewOften" class="headerlink" title="Kotlin扩展函数findViewOften()"></a>Kotlin扩展函数findViewOften()</h2><p>这里Kotlin实现ViewHolder的扩展函数和上面的变种使用的同一种思路，但得益于Kotlin语言提供的特性，实现和使用起来更加方便流畅，设置都感觉不到ViewHolder这种特殊机制的存在：  </p>
+<pre><code>fun &lt;T : View&gt; View.findViewOften(viewId: Int): T 
+{
+    var viewHolder: SparseArray&lt;View&gt; = tag as? SparseArray&lt;View&gt; ?: SparseArray()
+    tag = viewHolder
+    var childView: View? = viewHolder.get(viewId)
+    if (null == childView) 
+	{
+        childView = findViewById(viewId)
+        viewHolder.put(viewId, childView)
+    }
+    return childView as T
+}
+</code></pre>
+<p>这里了实现了一个View的扩展函数findViewOften(viewid:Int)意味着在需要频繁寻找一个视图的子视图的情况下使用，这样我们在item中就可以这样写了：  </p>
+<pre><code>val subTitle: TextView = convertView.findViewOften(R.id.list_item_subtitle)
+subTitle.text = itemData.subTitle
+</code></pre>
+<p>由于Kotlin提供类型推断功能，所以findViewOften的返回值不用手动转换或者手动指定泛型类型。所以利用Kotlin的语言特性，为View扩展一个方法，从此再也不用繁琐的定义ViewHolder了，使用的时候也是如此的顺畅。  </p>
+<h2 id="RecycleView中的ViewHolder"><a href="#RecycleView中的ViewHolder" class="headerlink" title="RecycleView中的ViewHolder"></a>RecycleView中的ViewHolder</h2><p>最后，不得不提一下在RecycleView应该怎么办，因为在RecycleView的机制里面，在创建item的View的时候，必须创建一个Recycle.ViewHolder并且返回。对于我们上面那么完美的封装，Google这明显是在帮倒忙，还好这忙虽然帮倒了，不过还不至于无法挽回。  </p>
+<p>如果大家在使用RecycleView还想使用文本提供的方法的话，可以参考下面的方式实现：提供一个RecycleView.ViewHolder默认实现类，该类提供了一个通过id获取视图的方法，在创建item的View的时候默认都返回这个类的实例。  </p>
+<pre><code>class MyViewHolder(val convertView: View) : RecyclerView.ViewHolder(convertView) 
+{
+    fun &lt;T : View&gt; findView(viewId: Int): T 
+	{
+    	return convertView.findViewOften(viewId)
+	}
+}
+</code></pre>
+<p>如果不想MyViewHolder的外部有不需要的依赖，可以将findViewOfter直接实现在MyViewHolder里面。</p>
+<p>参考：   </p>
+<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/comwill/article/details/77206508">Kotlin 扩展函数详解与应用</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/%E6%89%A9%E5%B1%95%E5%87%BD%E6%95%B0/" rel="tag"># 扩展函数</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/3563bbc5.html" rel="prev" title="Kotlin开发之——集合(二)">
+                  <i class="fa fa-angle-left"></i> Kotlin开发之——集合(二)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/b6266d42.html" rel="next" title="Kotlin开发之——常用操作符">
+                  Kotlin开发之——常用操作符 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"39b978a0447e6da81dc4f36ea4f02028"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ja/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ja/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ja/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/ja/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/ja/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/ja/","images":"/ja/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索...","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/ja/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/ja/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述1234561.你如何实现 KMP 与 Compose Multiplatform、SwiftUI、Jetpack Compose 三端统一架构？2.如何用 KMP 实现多端插件系统？3.如何封装跨平台音视频模块(基于 FFmpeg&#x2F;C++)？4.如何在 shared 层调用 C&#x2F;C++ 库（CInterop + CMake）？5.解释 cinterop(C interoperation&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KMP面试题之——专家级之工程化与生态集成(11)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/de98d4bc.html">
+<meta property="og:site_name" content="PGzxc (Japanese)">
+<meta property="og:description" content="一 概述1234561.你如何实现 KMP 与 Compose Multiplatform、SwiftUI、Jetpack Compose 三端统一架构？2.如何用 KMP 实现多端插件系统？3.如何封装跨平台音视频模块(基于 FFmpeg&#x2F;C++)？4.如何在 shared 层调用 C&#x2F;C++ 库（CInterop + CMake）？5.解释 cinterop(C interoperation&#x2F;">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2025-10-19T00:45:29.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.082Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="KMP面试题">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/de98d4bc.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"ja","comments":true,"permalink":"https://pgzxc.github.io/posts/de98d4bc.html","path":"posts/de98d4bc.html","title":"KMP面试题之——专家级之工程化与生态集成(11)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>KMP面试题之——专家级之工程化与生态集成(11) | PGzxc (Japanese)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/utils.js" defer></script><script src="/ja/js/motion.js" defer></script><script src="/ja/js/sidebar.js" defer></script><script src="/ja/js/next-boot.js" defer></script><script src="/ja/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/ja/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/ja/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/ja/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/ja/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/ja/atom.xml" title="PGzxc (Japanese)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションを切り替える" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/ja/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (Japanese)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">本から学んだことは表面的なもの；自分で体験しなければならない</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="検索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/ja/" rel="section"><i class="fa fa-bell fa-fw"></i>ホーム</a></li><li class="menu-item menu-item-nav"><a href="/ja/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>ナビゲーション</a></li><li class="menu-item menu-item-categories"><a href="/ja/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリー<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/ja/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/ja/links/" rel="section"><i class="fa fa-link fa-fw"></i>リンク</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>検索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="検索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          目次
+        </li>
+        <li class="sidebar-nav-overview">
+          サイト概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%B8%89%E7%AB%AF%E7%BB%9F%E4%B8%80%E6%9E%B6%E6%9E%84"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 三端统一架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%A4%9A%E7%AB%AF%E6%8F%92%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 多端插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%A6%82%E4%BD%95%E5%B0%81%E8%A3%85%E8%B7%A8%E5%B9%B3%E5%8F%B0%E9%9F%B3%E8%A7%86%E9%A2%91%E6%A8%A1%E5%9D%97"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 如何封装跨平台音视频模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E5%A6%82%E4%BD%95%E5%9C%A8-shared-%E5%B1%82%E8%B0%83%E7%94%A8-C-C-%E5%BA%93"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 如何在 shared 层调用 C&#x2F;C++ 库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E8%A7%A3%E9%87%8A-cinterop-%E4%B8%8E-gradle-native-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 解释 cinterop 与 gradle-native 的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E5%A6%82%E4%BD%95%E5%9C%A8-KMP-%E4%B8%AD%E9%9B%86%E6%88%90-TensorFlow-Lite%E3%80%81OpenCV-%E7%AD%89%E5%8E%9F%E7%94%9F%E5%BA%93%EF%BC%9F"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 如何在 KMP 中集成 TensorFlow Lite、OpenCV 等原生库？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">三 总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/ja/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/ja/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">投稿</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/ja/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">カテゴリー</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/ja/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/de98d4bc.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/ja/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="KMP面试题之——专家级之工程化与生态集成(11) | PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          KMP面试题之——专家级之工程化与生态集成(11)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/KMP%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B9%8B%E2%80%94%E2%80%94%E4%B8%93%E5%AE%B6%E7%BA%A7%E4%B9%8B%E5%B7%A5%E7%A8%8B%E5%8C%96%E4%B8%8E%E7%94%9F%E6%80%81%E9%9B%86%E6%88%90-11.md" class="post-edit-link" title="編集" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2025-10-19 08:45:29" itemprop="dateCreated datePublished" datetime="2025-10-19T08:45:29+08:00">2025-10-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/KMP%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">KMP面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="読書時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">読書時間 &asymp;</span>
+      <span>6 分</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1.你如何实现 KMP 与 Compose Multiplatform、SwiftUI、Jetpack Compose 三端统一架构？</span><br><span class="line">2.如何用 KMP 实现多端插件系统？</span><br><span class="line">3.如何封装跨平台音视频模块(基于 FFmpeg/C++)？</span><br><span class="line">4.如何在 shared 层调用 C/C++ 库（CInterop + CMake）？</span><br><span class="line">5.解释 cinterop(C interoperation/C 语言互操作) 与 gradle-native 的关系。</span><br><span class="line">6.如何在 KMP 中集成 TensorFlow Lite、OpenCV 等原生库？</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-三端统一架构"><a href="#2-1-三端统一架构" class="headerlink" title="2.1 三端统一架构"></a>2.1 三端统一架构</h3><p>1、考点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">架构分层、责任边界、状态管理、测试与复用策略、性能权衡</span><br></pre></td></tr></table></figure>
+
+<p>2、核心思路(高层)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1、Shared(KMP)层只负责业务逻辑与状态：</span><br><span class="line">UseCases、Repositories、Domain Models、跨平台 ViewModel（StateFlow/SharedFlow/Observable）。</span><br><span class="line"></span><br><span class="line">2、Platform 层负责 UI 与原生交互：</span><br><span class="line">Android → Jetpack Compose；</span><br><span class="line">Desktop/Multi → Compose Multiplatform；</span><br><span class="line">iOS → SwiftUI/UIViewController。</span><br><span class="line"></span><br><span class="line">3、桥接层(adapter)：</span><br><span class="line">每个平台写 thin adapter(薄包装器)把 Shared 的状态转换为本平台的 UI 形态</span><br><span class="line">（例如 StateFlow -&gt; LiveData/Compose State/ObservableObject）。</span><br><span class="line"></span><br><span class="line">4、通信契约：</span><br><span class="line">使用 DTO + 明确的不可变 State(data class)作为界面层输入输出，避免共享可变模型直接用于 UI。</span><br></pre></td></tr></table></figure>
+
+<p>3、关键组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、shared：</span><br><span class="line">ViewModel(exposed as StateFlow)、UseCase、Repository(expect/actual 分离平台实现的 I/O)。</span><br><span class="line"></span><br><span class="line">2、android：</span><br><span class="line">ViewModel wrapper（将 StateFlow 转为 Compose collectAsState()），UI 使用 Compose。</span><br><span class="line"></span><br><span class="line">3、ios：</span><br><span class="line">生成的 Kotlin framework，</span><br><span class="line">写一个 Swift 的 ObservableObject wrapper，订阅 StateFlow 并发布到 SwiftUI。</span><br></pre></td></tr></table></figure>
+
+<p>4、示例(伪代码)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">1、Kotlin shared：</span><br><span class="line">class MainViewModel &#123;</span><br><span class="line">  private val _uiState = MutableStateFlow(MainState())</span><br><span class="line">  val uiState: StateFlow&lt;MainState&gt; = _uiState.asStateFlow()</span><br><span class="line">  suspend fun load() &#123; ... &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">2、Android adapter：</span><br><span class="line">@Composable</span><br><span class="line">fun MainScreen(vm: MainViewModel) &#123;</span><br><span class="line">  val state by vm.uiState.collectAsState()</span><br><span class="line">  // Compose UI</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">3、iOS adapter（Swift）</span><br><span class="line">class MainViewModelWrapper: ObservableObject &#123;</span><br><span class="line">  @Published var state: MainStateKotlin</span><br><span class="line">  init(vm: SharedMainViewModel) &#123;</span><br><span class="line">    // subscribe to Kotlin StateFlow and map to @Published</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5、要点&#x2F;注意</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">统一状态模型(immutable)有助于在三端保持一致性。</span><br><span class="line">网络/存储/平台 API 用 expect/actual 分层实现。</span><br><span class="line">UI-specific optimizations（例如 Compose 的 recomposition）放在平台端处理。</span><br><span class="line">写良好的测接口（unit tests in shared）可以提升复用率。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-多端插件"><a href="#2-2-多端插件" class="headerlink" title="2.2 多端插件"></a>2.2 多端插件</h3><p>1、考点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">插件抽象、模块化、动态/静态装载、平台限制（iOS 不允许运行时加载未经签名的代码）、依赖注入/扩展点实现。</span><br></pre></td></tr></table></figure>
+
+<p>2、设计思路(两种模式)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1、编译时插件（推荐）：</span><br><span class="line">插件以单独 KMP module 实现并在构建时注入到主 app（通过 Gradle include/CocoaPods/XCFramework）。</span><br><span class="line">优点：安全、上线可控。</span><br><span class="line"></span><br><span class="line">2、运行时插件（有限制）：</span><br><span class="line">Android 可用 ClassLoader + Dex 动态加载；</span><br><span class="line">iOS 限制严格（只能通过预编译的动态 framework/SPM 集成），通常采用运行时“模块开关”而不是真实动态代码下载。</span><br></pre></td></tr></table></figure>
+
+<p>3、实现模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1、定义插件接口(shared)：</span><br><span class="line">interface Plugin &#123;</span><br><span class="line">  val id: String</span><br><span class="line">  fun initialize(context: PlatformContext)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">2、插件实现：</span><br><span class="line">每个 plugin module 实现 Plugin 并在其 platform 目录实现必要的 expect/actual。</span><br><span class="line"></span><br><span class="line">3、注册机制</span><br><span class="line">Android：使用 ServiceLoader（JVM）或手动在 Application 中注入列表。</span><br><span class="line">iOS：通过一个 PluginRegistry 在 app 启动时把需要的 plugin 实例注入（手动或通过生成代码）。</span><br><span class="line"></span><br><span class="line">4、扩展点与生命周期：</span><br><span class="line">定义 plugin 的生命周期接口(onStart/onStop)，并由宿主统一管理。</span><br></pre></td></tr></table></figure>
+
+<p>4、注意事项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">安全：iOS 不支持任意运行时代码加载（App Store 限制）；动态插件需提前签名与打包。</span><br><span class="line">版本兼容：指定插件契约版本，做好向后/向前兼容。</span><br><span class="line">依赖冲突：插件尽量少依赖 heavy third-party libs 或用 shading/relocation 手段隔离</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-如何封装跨平台音视频模块"><a href="#2-3-如何封装跨平台音视频模块" class="headerlink" title="2.3 如何封装跨平台音视频模块"></a>2.3 如何封装跨平台音视频模块</h3><p>1、考点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">原生C++与KMP的互操作、性能(解码/编码)、线程/渲染路径、API 设计、平台渲染(Surface/Metal/AVPlayer)。</span><br></pre></td></tr></table></figure>
+
+<p>2、架构建议</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1、C++ 层（核心）：</span><br><span class="line">封装 FFmpeg 解码/编码逻辑、packet/frame 管理、低延迟 buffer。</span><br><span class="line">使用 C++ 提供一致 API（例如 MediaEngine）。</span><br><span class="line">编译成 .so（Android）、.framework/.a 或 XCFramework（iOS）。</span><br><span class="line"></span><br><span class="line">2、Native bridge 层：</span><br><span class="line">为每个平台写 thin wrapper(薄包装器)：</span><br><span class="line">-Android：JNI 层（C++) -&gt; Kotlin。</span><br><span class="line">-iOS：直接用 Kotlin/Native cinterop 调用 C++（通过 extern &quot;C&quot; 的 C API 封装，或使用 Objective-C++ 辅助）。</span><br><span class="line"></span><br><span class="line">3、Kotlin Shared API：</span><br><span class="line">在 shared 层提供高层 Kotlin API（协程 + Flow），隐藏底层同步/回调。</span><br><span class="line"></span><br><span class="line">4、渲染：</span><br><span class="line">平台端负责渲染：Android 用 SurfaceTexture / SurfaceView / Compose AndroidView；</span><br><span class="line">iOS 用 AVSampleBufferDisplayLayer 或 Metal 纹理。</span><br></pre></td></tr></table></figure>
+
+<p>3、数据流示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FFmpeg 解出的 frame -&gt; native buffer -&gt; Kotlin 层通过 ByteArray/CInterop 传回 -&gt; 平台渲染</span><br></pre></td></tr></table></figure>
+
+<p>4、性能注意</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-避免在 Kotlin 层复制大量帧数据；优先使用零拷贝（native buffer 指针）并在平台端直接渲染。</span><br><span class="line">-在 JNI/Native 层做好线程调度与内存管理（回收 AVFrame）。</span><br><span class="line">-使用硬件加速（MediaCodec、VideoToolbox、Metal）做解码/渲染时，FFmpeg 主要用于封装/回退。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-如何在-shared-层调用-C-C-库"><a href="#2-4-如何在-shared-层调用-C-C-库" class="headerlink" title="2.4 如何在 shared 层调用 C&#x2F;C++ 库"></a>2.4 如何在 shared 层调用 C&#x2F;C++ 库</h3><p>1、考点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Kotlin/Native cinterop、CMake 构建 pipeline、跨目标编译、头文件绑定、ABI 兼容。</span><br></pre></td></tr></table></figure>
+
+<p>2、实现步骤（概要）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">1、准备 native 库</span><br><span class="line">用 CMake 构建 C/C++ 库，输出为 .so(Android)、.a/.framework 或 XCFramework(iOS)。在 CI 中为所有目标构建二进制。</span><br><span class="line"></span><br><span class="line">2、为 Kotlin/Native 写 cinterop binding</span><br><span class="line">2-1、创建 .def 文件（描述 headers 与 linker flags）：</span><br><span class="line">headers = mylib.h</span><br><span class="line">linkerOpts = -L/path/to/lib -lmylib</span><br><span class="line"></span><br><span class="line">2-2、在 gradle 中声明 cinterop：</span><br><span class="line"></span><br><span class="line">kotlin &#123;</span><br><span class="line">  iosX64 &#123;</span><br><span class="line">    compilations.getByName(&quot;main&quot;) &#123;</span><br><span class="line">      cinterops.create(&quot;mylib&quot;) &#123;</span><br><span class="line">        defFile = file(&quot;src/nativeInterop/cinterop/mylib.def&quot;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">3、使用 C APIs（prefer extern &quot;C&quot; 接口）</span><br><span class="line">若库是 C++，推荐提供外部 extern &quot;C&quot; C wrapper 层以兼容 cinterop。</span><br><span class="line">或使用 Objective-C++ on iOS side.</span><br><span class="line"></span><br><span class="line">4、CMake + Gradle 集成</span><br><span class="line">CMake 负责生成 native artifacts。Gradle（Kotlin plugin）负责将预构建二进制作为依赖并在 cinterop 中引用。</span><br><span class="line">也可在 Gradle task 中触发 CMake 构建，输出到 build/ 目录供 cinterop 使用。</span><br></pre></td></tr></table></figure>
+
+<p>3、注意事项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ABI 与架构：为每个平台/ABI 编译 native 库（arm64, armeabi-v7a, x86_64 等）。</span><br><span class="line">头文件兼容性：cinterop 会生成 Kotlin 调用的签名，避免复杂模板/宏。</span><br><span class="line">C++ name mangling：最好暴露 C ABI wrapper。</span><br><span class="line">内存管理：cinterop 返回的指针在 Kotlin 层需要小心释放（定义释放 API）</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-解释-cinterop-与-gradle-native-的关系"><a href="#2-5-解释-cinterop-与-gradle-native-的关系" class="headerlink" title="2.5 解释 cinterop 与 gradle-native 的关系"></a>2.5 解释 cinterop 与 gradle-native 的关系</h3><p>1、核心解释（面试简答版）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1、cinterop（Kotlin/Native 的 cinterop）</span><br><span class="line">-是 Kotlin/Native 提供的工具链组件，用来 根据 C 头文件生成 Kotlin 绑定（Kotlin 调用 C API）。</span><br><span class="line">输出是 Kotlin 可调用的类/方法（bridge）。</span><br><span class="line">需要 .def 配置描述 headers、linker flags、预处理器宏等。</span><br><span class="line"></span><br><span class="line">-作用域：把 native C ABI 映射为 Kotlin 类型/函数，方便在 shared 模块中直接调用 native 库。</span><br><span class="line"></span><br><span class="line">2、gradle-native / build system（Gradle + CMake/ndk）</span><br><span class="line">-指的是通过 Gradle 配置编译和打包 native 代码（C/C++），</span><br><span class="line">通常使用 CMake 或 ndk-build 在 Android（或外部 CI）构建.so/.a/XCFramework。</span><br><span class="line"></span><br><span class="line">-Gradle 负责 orchestration（触发 native 构建、把产物放到正确位置、与 Kotlin/Native 的 cinterop 链接）。</span><br></pre></td></tr></table></figure>
+
+<p>2、关系</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1、cinterop 依赖 由 gradle-native（或 CMake 构建）产生的 native artifacts（头 + lib）。</span><br><span class="line">通常流程是：</span><br><span class="line">先 CMake 构建 native 二进制 -&gt; </span><br><span class="line">然后 cinterop 读取 headers &amp; link 到库 -&gt; Kotlin/Native 将库链接到最终 framework/binary。</span><br><span class="line"></span><br><span class="line">2、cinterop 不做 native 编译，只做“绑定生成”；Gradle/CMake 做编译与产物管理。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-如何在-KMP-中集成-TensorFlow-Lite、OpenCV-等原生库？"><a href="#2-6-如何在-KMP-中集成-TensorFlow-Lite、OpenCV-等原生库？" class="headerlink" title="2.6 如何在 KMP 中集成 TensorFlow Lite、OpenCV 等原生库？"></a>2.6 如何在 KMP 中集成 TensorFlow Lite、OpenCV 等原生库？</h3><p>1、考点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">多平台二进制管理、性能（硬件 delegate）、模型/资源部署、ABI 分发</span><br></pre></td></tr></table></figure>
+
+<p>2、通用策略</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">1、为每个平台准备 native 二进制</span><br><span class="line">-Android：编译 .so（多个 ABI）；放入 src/main/jniLibs/&lt;abi&gt;/libtflite.so 或用 Gradle externalNativeBuild。</span><br><span class="line">-iOS：打包成 XCFramework（包含 arm64、x86_64 等）。</span><br><span class="line">-Desktop：提供 native shared libs。</span><br><span class="line"></span><br><span class="line">2、定义 C ABI 或使用官方C API：</span><br><span class="line">多数库（TFLite、OpenCV）提供CAPI/flatbuffers C interface，可以直接通过 cinterop 绑定。</span><br><span class="line">若只有 C++ 接口，建议写 C wrapper。</span><br><span class="line"></span><br><span class="line">3、Kotlin 层抽象：</span><br><span class="line">在 shared 用 expect/actual 或 cinterop 直接封装 low-level 调用，</span><br><span class="line">并在 shared 中提供高层 Kotlin API（ModelRunner、ImageProcessor）。</span><br><span class="line"></span><br><span class="line">interface TFLiteRunner &#123;</span><br><span class="line">  fun run(input: ByteArray): FloatArray</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">4、资源/模型分发：</span><br><span class="line">模型（.tflite）作为 assets（Android）/bundle resource（iOS），加载路径需平台实现（expect/actual）。</span><br><span class="line">注意模型大文件的分发策略（on-demand download / CDN）。</span><br><span class="line"></span><br><span class="line">5、性能优化：</span><br><span class="line">利用平台 delegate（Android NNAPI/GPU、iOS Metal delegate）并暴露给 Kotlin 层配置选项。</span><br><span class="line">注意线程亲和性、内存池与 buffer reuse，避免频繁分配。</span><br></pre></td></tr></table></figure>
+
+<p>3、具体注意点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1、许可与体积：这些库会显著增加二进制大小，面试时要能讨论拆分策略（on-demand、modularized）与 license（Apache/BSD）。</span><br><span class="line">2、线程模型：TFLite 在多线程与 delegate 下的行为差异，需要测并行吞吐和延迟。</span><br><span class="line">3、测试：CI 中添加集成测试（小模型/回归）验证所有 target 的二进制可用性。</span><br><span class="line">4、部署：对 iOS 使用 XCFramework + bitcode/strip 策略，对 Android 提供 per-ABI APK 或 split apk。</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-总结"><a href="#三-总结" class="headerlink" title="三 总结"></a>三 总结</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1、统一架构：shared 管状态+业务，platform 层做 UI + adapter（StateFlow -&gt; Compose/SwiftUI）。</span><br><span class="line">2、插件系统：优先编译时插件，iOS 限制运行时加载；用接口 + registry 模式。</span><br><span class="line">3、跨平台音视频：核心用 C++（FFmpeg），native wrapper + Kotlin 高层 API，平台端做渲染。</span><br><span class="line">4、调用 C/C++：用 CMake 构建 native 库，cinterop 生成 Kotlin 绑定（最好暴露 C ABI）。</span><br><span class="line">5、cinterop vs gradle-native：cinterop 生成绑定；Gradle/CMake 负责编译 native artifacts。</span><br><span class="line">6、集成 TFLite/OpenCV：为每个平台提供 native 二进制 + cinterop 绑定 + shared 层高层封装 + delegate/性能调优。</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/ja/tags/KMP%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># KMP面试题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ja/posts/9cc03366.html" rel="prev" title="KMP面试题之——高级之混合开发与通信(10)">
+                  <i class="fa fa-angle-left"></i> KMP面试题之——高级之混合开发与通信(10)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ja/posts/ebc325bb.html" rel="next" title="KMP面试题之——专家级之多端同步与扩展(12)">
+                  KMP面试题之——专家级之多端同步与扩展(12) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"13eb11935ffde24d41f3639612bc1f65"}</script>
+<script src="/ja/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

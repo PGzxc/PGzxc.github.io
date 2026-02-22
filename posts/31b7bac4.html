@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述123456789本文介绍：依赖注入框架Hilt相关内容 -添加 Hilt 依赖与配置 -@HiltAndroidApp + Application 类 -在 Activity &#x2F; Fragment &#x2F; ViewModel &#x2F; Service 注入 -用 @Module 提供依赖 (@Provides、@Binds) -作用域（scope）使用 -限定符（Qualifier）使用 -使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发之——依赖注入框架Hilt(2)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/31b7bac4.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 概述123456789本文介绍：依赖注入框架Hilt相关内容 -添加 Hilt 依赖与配置 -@HiltAndroidApp + Application 类 -在 Activity &#x2F; Fragment &#x2F; ViewModel &#x2F; Service 注入 -用 @Module 提供依赖 (@Provides、@Binds) -作用域（scope）使用 -限定符（Qualifier）使用 -使用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-di-hilt-demo-2.gif">
+<meta property="article:published_time" content="2025-09-13T01:44:19.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.242Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-di-hilt-demo-2.gif">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/31b7bac4.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/31b7bac4.html","path":"posts/31b7bac4.html","title":"Android开发之——依赖注入框架Hilt(2)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android开发之——依赖注入框架Hilt(2) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-Hilt-%E7%AE%80%E4%BB%8B"><span class="nav-number">2.</span> <span class="nav-text">二 Hilt 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Hilt-%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Hilt 的优势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Hilt-%E9%A2%84%E7%BD%AE%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">2.3.</span> <span class="nav-text">2.3  Hilt 预置作用域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%85%A5%E9%97%A8%E6%A6%82%E5%BF%B5"><span class="nav-number">3.</span> <span class="nav-text">三 入门概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-HiltAndroidApp-Application-%E7%B1%BB"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 @HiltAndroidApp + Application 类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%9C%A8-Activity-Fragment-ViewModel-Service-%E6%B3%A8%E5%85%A5"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 在 Activity &#x2F; Fragment &#x2F; ViewModel &#x2F; Service 注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E7%94%A8-Module-%E6%8F%90%E4%BE%9B%E4%BE%9D%E8%B5%96"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 用 @Module 提供依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E4%BD%9C%E7%94%A8%E5%9F%9F%EF%BC%88Scope%EF%BC%89"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 作用域（Scope）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-%E9%99%90%E5%AE%9A%E7%AC%A6-Qualifier"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 限定符(Qualifier)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-%E4%BD%BF%E7%94%A8-EntryPoint-%E6%B3%A8%E5%85%A5%E9%9D%9E-Hilt-%E7%AE%A1%E7%90%86%E7%B1%BB"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 使用 @EntryPoint 注入非 Hilt 管理类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-%E4%BD%BF%E7%94%A8-ApplicationContext-%E4%B8%8E-ActivityContext"><span class="nav-number">3.7.</span> <span class="nav-text">3.7 使用 @ApplicationContext 与 @ActivityContext</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E9%A1%B9%E7%9B%AE%E4%BE%9D%E8%B5%96"><span class="nav-number">4.</span> <span class="nav-text">四 项目依赖</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E3%80%81libs-versions-toml"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 、libs.versions.toml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2%E3%80%81build-gradle-kts-%E9%A1%B9%E7%9B%AE%E6%A0%B9%E7%9B%AE%E5%BD%95"><span class="nav-number">4.2.</span> <span class="nav-text">4.2、build.gradle.kts(项目根目录)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3%E3%80%81app-build-gradle-kts"><span class="nav-number">4.3.</span> <span class="nav-text">4.3、app&#x2F;build.gradle.kts</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="nav-number">5.</span> <span class="nav-text">五 项目结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD-Hilt%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9-ComposeUI%E7%89%88%E6%9C%AC"><span class="nav-number">6.</span> <span class="nav-text">六 Hilt相关内容(ComposeUI版本)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-di-LoggerModule-kt"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 di(LoggerModule.kt)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-service-kt"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 service.kt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-ui-MainScreen-kt"><span class="nav-number">6.3.</span> <span class="nav-text">6.3 ui(MainScreen.kt)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-viewmodel-MainViewModel-kt"><span class="nav-number">6.4.</span> <span class="nav-text">6.4 viewmodel(MainViewModel.kt)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-MainActivity-kt"><span class="nav-number">6.5.</span> <span class="nav-text">6.4 MainActivity.kt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-5-MyApp-kt"><span class="nav-number">6.6.</span> <span class="nav-text">6.5 MyApp.kt</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-6-AndroidManifest-xml"><span class="nav-number">6.7.</span> <span class="nav-text">6.6 AndroidManifest.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-7-%E6%95%88%E6%9E%9C"><span class="nav-number">6.8.</span> <span class="nav-text">6.7 效果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83-%E5%8F%82%E8%80%83%E7%A4%BA%E4%BE%8B"><span class="nav-number">7.</span> <span class="nav-text">七 参考示例</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/31b7bac4.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android开发之——依赖注入框架Hilt(2) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android开发之——依赖注入框架Hilt(2)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Android%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E6%A1%86%E6%9E%B6Hilt-2.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-09-13 09:44:19" itemprop="dateCreated datePublished" datetime="2025-09-13T09:44:19+08:00">2025-09-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/D-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">D-移动开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/D-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>14 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">本文介绍：依赖注入框架Hilt相关内容</span><br><span class="line"> -添加 Hilt 依赖与配置</span><br><span class="line"> -@HiltAndroidApp + Application 类</span><br><span class="line"> -在 Activity / Fragment / ViewModel / Service 注入</span><br><span class="line"> -用 @Module 提供依赖 (@Provides、@Binds)</span><br><span class="line"> -作用域（scope）使用</span><br><span class="line"> -限定符（Qualifier）使用</span><br><span class="line"> -使用 @EntryPoint 对不受 Hilt 管理的类注入</span><br><span class="line"> -使用 @ApplicationContext 与 @ActivityContext</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-Hilt-简介"><a href="#二-Hilt-简介" class="headerlink" title="二 Hilt 简介"></a>二 Hilt 简介</h2><h3 id="2-1-介绍"><a href="#2-1-介绍" class="headerlink" title="2.1 介绍"></a>2.1 介绍</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-Hilt是Google官方推出的Android依赖注入框架，基于Dagger 2封装，专为Android场景优化。</span><br><span class="line">-相比手写 Dagger，它更轻量、规范化，自动处理了 Android 生命周期相关的依赖注入问题</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-Hilt-的优势"><a href="#2-2-Hilt-的优势" class="headerlink" title="2.2 Hilt 的优势"></a>2.2 Hilt 的优势</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-Google 官方支持，AndroidX 生态（Jetpack、WorkManager、Navigation 等）完美支持</span><br><span class="line">-简化依赖注入配置，无需繁琐的 Component / Module 管理</span><br><span class="line">-自动绑定 Android 生命周期（Activity、Fragment、ViewModel、Service 等）</span><br><span class="line">-提升可维护性与可测试性</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-Hilt-预置作用域"><a href="#2-3-Hilt-预置作用域" class="headerlink" title="2.3  Hilt 预置作用域"></a>2.3  Hilt 预置作用域</h3><table>
+<thead>
+<tr>
+<th align="center">作用域注解</th>
+<th align="center">生命周期绑定对象</th>
+<th align="center">典型场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">@Singleton</td>
+<td align="center">Application 全局单例</td>
+<td align="center">全局工具类、网络库、数据库</td>
+</tr>
+<tr>
+<td align="center">@ActivityScoped</td>
+<td align="center">绑定到 <code>Activity</code> 生命周期</td>
+<td align="center">当前 Activity 内共享依赖</td>
+</tr>
+<tr>
+<td align="center">@FragmentScoped</td>
+<td align="center">绑定到 <code>Fragment</code> 生命周期</td>
+<td align="center">当前 Fragment 内共享依赖</td>
+</tr>
+<tr>
+<td align="center">@ViewModelScoped</td>
+<td align="center">绑定到 <code>ViewModel</code> 生命周期</td>
+<td align="center">单个 ViewModel 内共享依赖</td>
+</tr>
+<tr>
+<td align="center">@ServiceScoped</td>
+<td align="center">绑定到 <code>Service</code> 生命周期</td>
+<td align="center">长时间运行的后台服务</td>
+</tr>
+</tbody></table>
+<h2 id="三-入门概念"><a href="#三-入门概念" class="headerlink" title="三 入门概念"></a>三 入门概念</h2><h3 id="3-1-HiltAndroidApp-Application-类"><a href="#3-1-HiltAndroidApp-Application-类" class="headerlink" title="3.1 @HiltAndroidApp + Application 类"></a>3.1 @HiltAndroidApp + Application 类</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、必须在 Application 上加注解，让 Hilt 管理应用级依赖</span><br><span class="line">@HiltAndroidApp</span><br><span class="line">class MyApp : Application()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2、并在 AndroidManifest.xml 中声明</span><br><span class="line">&lt;application</span><br><span class="line">    android:name=&quot;.MyApp&quot;</span><br><span class="line">    ... /&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-在-Activity-Fragment-ViewModel-Service-注入"><a href="#3-2-在-Activity-Fragment-ViewModel-Service-注入" class="headerlink" title="3.2 在 Activity &#x2F; Fragment &#x2F; ViewModel &#x2F; Service 注入"></a>3.2 在 Activity &#x2F; Fragment &#x2F; ViewModel &#x2F; Service 注入</h3><p>1、Activity 注入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@AndroidEntryPoint</span><br><span class="line">class MainActivity : AppCompatActivity() &#123;</span><br><span class="line">    @Inject lateinit var analytics: AnalyticsService</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、Fragment 注入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@AndroidEntryPoint</span><br><span class="line">class HomeFragment : Fragment() &#123;</span><br><span class="line">    @Inject lateinit var repository: UserRepository</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3、ViewModel 注入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1、使用 @HiltViewModel + @Inject constructor</span><br><span class="line">@HiltViewModel</span><br><span class="line">class MainViewModel @Inject constructor(</span><br><span class="line">    private val repository: UserRepository</span><br><span class="line">) : ViewModel()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2、在 UI 中获取</span><br><span class="line">@AndroidEntryPoint</span><br><span class="line">class MainActivity : ComponentActivity() &#123;</span><br><span class="line">    private val viewModel: MainViewModel by viewModels()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4、Service 注入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@AndroidEntryPoint</span><br><span class="line">class MyService : Service() &#123;</span><br><span class="line">    @Inject lateinit var tracker: Tracker</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-用-Module-提供依赖"><a href="#3-3-用-Module-提供依赖" class="headerlink" title="3.3 用 @Module 提供依赖"></a>3.3 用 @Module 提供依赖</h3><p>1、@Provides</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">1、概念</span><br><span class="line">-场景：需要自己手动创建对象，或者提供依赖需要一些额外逻辑。</span><br><span class="line">-特点：可以在方法体内写代码，返回想要提供的对象。</span><br><span class="line">-优点：灵活，可以传参，可以写复杂逻辑。</span><br><span class="line">-缺点：方法体执行时会多一点运行时开销。</span><br><span class="line"></span><br><span class="line">2、示例</span><br><span class="line">@Module</span><br><span class="line">@InstallIn(SingletonComponent::class)</span><br><span class="line">object NetworkModule &#123;</span><br><span class="line"></span><br><span class="line">    @Provides</span><br><span class="line">    fun provideOkHttpClient(): OkHttpClient &#123;</span><br><span class="line">        // 可以写复杂逻辑，比如加拦截器</span><br><span class="line">        return OkHttpClient.Builder()</span><br><span class="line">            .retryOnConnectionFailure(true)</span><br><span class="line">            .build()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Provides</span><br><span class="line">    fun provideApi(client: OkHttpClient): ApiService &#123;</span><br><span class="line">        return Retrofit.Builder()</span><br><span class="line">            .baseUrl(&quot;https://api.xxx.com&quot;)</span><br><span class="line">            .client(client)</span><br><span class="line">            .build()</span><br><span class="line">            .create(ApiService::class.java)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、@Binds</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">1、概念</span><br><span class="line">-场景：只做接口到实现类的绑定，不需要额外逻辑。</span><br><span class="line">-特点：必须是 abstract 方法，且只有一个参数（实现类），返回类型是接口。</span><br><span class="line">-优点：没有方法体，编译期确定，性能比 @Provides 更好。</span><br><span class="line">-缺点：只能用在接口/抽象类的绑定，不能写逻辑。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2、示例</span><br><span class="line">interface AnalyticsService &#123;</span><br><span class="line">    fun trackEvent(name: String)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class FirebaseAnalyticsService @Inject constructor() : AnalyticsService &#123;</span><br><span class="line">    override fun trackEvent(name: String) &#123; /* ... */ &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Module</span><br><span class="line">@InstallIn(SingletonComponent::class)</span><br><span class="line">abstract class AnalyticsModule &#123;</span><br><span class="line">    @Binds</span><br><span class="line">    abstract fun bindAnalytics(</span><br><span class="line">        impl: FirebaseAnalyticsService</span><br><span class="line">    ): AnalyticsService</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>3、对比</p>
+<table>
+<thead>
+<tr>
+<th align="center">特性</th>
+<th align="center">@Provides</th>
+<th align="center">@Binds</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">用途</td>
+<td align="center">构建实例、返回依赖</td>
+<td align="center">绑定接口和实现</td>
+</tr>
+<tr>
+<td align="center">方法类型</td>
+<td align="center">普通方法，有方法体</td>
+<td align="center">抽象方法，无方法体</td>
+</tr>
+<tr>
+<td align="center">参数限制</td>
+<td align="center">可多个参数</td>
+<td align="center">只能一个参数（实现类）</td>
+</tr>
+<tr>
+<td align="center">是否能写逻辑</td>
+<td align="center">可以写复杂逻辑</td>
+<td align="center">不行</td>
+</tr>
+<tr>
+<td align="center">性能</td>
+<td align="center">稍有运行时开销</td>
+<td align="center">更快（编译期优化）</td>
+</tr>
+<tr>
+<td align="center">典型场景</td>
+<td align="center">Retrofit、数据库、带参数构造函数对象</td>
+<td align="center">接口实现绑定（Repository、Service）</td>
+</tr>
+</tbody></table>
+<h3 id="3-4-作用域（Scope）"><a href="#3-4-作用域（Scope）" class="headerlink" title="3.4 作用域（Scope）"></a>3.4 作用域（Scope）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1、Hilt 内置常用作用域：</span><br><span class="line">-@Singleton：整个应用只有一个实例</span><br><span class="line">-@ActivityScoped：同一个 Activity 中共享</span><br><span class="line">-@ViewModelScoped：ViewModel 生命周期内共享</span><br><span class="line"></span><br><span class="line">2、示例</span><br><span class="line">@Singleton</span><br><span class="line">class UserRepository @Inject constructor()</span><br><span class="line"></span><br><span class="line">@ActivityScoped</span><br><span class="line">class SessionManager @Inject constructor()</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-5-限定符-Qualifier"><a href="#3-5-限定符-Qualifier" class="headerlink" title="3.5 限定符(Qualifier)"></a>3.5 限定符(Qualifier)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">1、说明</span><br><span class="line">当有多个相同类型依赖时，用 @Qualifier 区分</span><br><span class="line"></span><br><span class="line">2、示例</span><br><span class="line">@Qualifier</span><br><span class="line">@Retention(AnnotationRetention.BINARY)</span><br><span class="line">annotation class ProdApi</span><br><span class="line"></span><br><span class="line">@Qualifier</span><br><span class="line">@Retention(AnnotationRetention.BINARY)</span><br><span class="line">annotation class TestApi</span><br><span class="line"></span><br><span class="line">@Module</span><br><span class="line">@InstallIn(SingletonComponent::class)</span><br><span class="line">object ApiModule &#123;</span><br><span class="line">    @ProdApi</span><br><span class="line">    @Provides</span><br><span class="line">    fun provideProdApi(): ApiService = createApi(&quot;https://prod.api.com&quot;)</span><br><span class="line"></span><br><span class="line">    @TestApi</span><br><span class="line">    @Provides</span><br><span class="line">    fun provideTestApi(): ApiService = createApi(&quot;https://test.api.com&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Repository @Inject constructor(</span><br><span class="line">    @ProdApi private val api: ApiService</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-6-使用-EntryPoint-注入非-Hilt-管理类"><a href="#3-6-使用-EntryPoint-注入非-Hilt-管理类" class="headerlink" title="3.6 使用 @EntryPoint 注入非 Hilt 管理类"></a>3.6 使用 @EntryPoint 注入非 Hilt 管理类</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">1、说明</span><br><span class="line">有些类（如 BroadcastReceiver、ContentProvider）不能直接用 @AndroidEntryPoint，</span><br><span class="line">可用 @EntryPoint：</span><br><span class="line"></span><br><span class="line">2、示例</span><br><span class="line">@EntryPoint</span><br><span class="line">@InstallIn(SingletonComponent::class)</span><br><span class="line">interface MyEntryPoint &#123;</span><br><span class="line">    fun getRepository(): UserRepository</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class MyReceiver : BroadcastReceiver() &#123;</span><br><span class="line">    override fun onReceive(context: Context, intent: Intent) &#123;</span><br><span class="line">        val entryPoint = EntryPointAccessors.fromApplication(</span><br><span class="line">            context.applicationContext,</span><br><span class="line">            MyEntryPoint::class.java</span><br><span class="line">        )</span><br><span class="line">        val repo = entryPoint.getRepository()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-7-使用-ApplicationContext-与-ActivityContext"><a href="#3-7-使用-ApplicationContext-与-ActivityContext" class="headerlink" title="3.7 使用 @ApplicationContext 与 @ActivityContext"></a>3.7 使用 @ApplicationContext 与 @ActivityContext</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1、说明</span><br><span class="line">区分不同 Context</span><br><span class="line"></span><br><span class="line">2、示例</span><br><span class="line">class StorageHelper @Inject constructor(</span><br><span class="line">    @ApplicationContext private val context: Context</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">class DialogHelper @Inject constructor(</span><br><span class="line">    @ActivityContext private val context: Context</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h2 id="四-项目依赖"><a href="#四-项目依赖" class="headerlink" title="四 项目依赖"></a>四 项目依赖</h2><h3 id="4-1-、libs-versions-toml"><a href="#4-1-、libs-versions-toml" class="headerlink" title="4.1 、libs.versions.toml"></a>4.1 、libs.versions.toml</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">[versions]</span><br><span class="line">agp = &quot;8.12.0&quot;</span><br><span class="line">kotlin = &quot;2.2.10&quot;</span><br><span class="line">coreKtx = &quot;1.16.0&quot;</span><br><span class="line">junit = &quot;4.13.2&quot;</span><br><span class="line">junitVersion = &quot;1.2.1&quot;</span><br><span class="line">espressoCore = &quot;3.6.1&quot;</span><br><span class="line">appcompat = &quot;1.7.0&quot;</span><br><span class="line">material = &quot;1.12.0&quot;</span><br><span class="line"></span><br><span class="line">#添加</span><br><span class="line">ktxFragment = &quot;1.8.9&quot;</span><br><span class="line">activityCompose = &quot;1.10.1&quot;</span><br><span class="line">hilt = &quot;2.56&quot;</span><br><span class="line">hiltNavigation = &quot;1.2.0&quot;</span><br><span class="line">ksp = &quot;2.2.10-2.0.2&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Jetpack Compose 相关版本</span><br><span class="line">composeBom = &quot;2025.08.01&quot;</span><br><span class="line"></span><br><span class="line">[libraries]</span><br><span class="line"># AndroidX 基础库</span><br><span class="line">androidx-core-ktx = &#123; group = &quot;androidx.core&quot;, name = &quot;core-ktx&quot;, version.ref = &quot;coreKtx&quot; &#125;</span><br><span class="line">androidx-appcompat = &#123; group = &quot;androidx.appcompat&quot;, name = &quot;appcompat&quot;, version.ref = &quot;appcompat&quot; &#125;</span><br><span class="line">material = &#123; group = &quot;com.google.android.material&quot;, name = &quot;material&quot;, version.ref = &quot;material&quot; &#125;</span><br><span class="line">androidx-activity-compose = &#123; group = &quot;androidx.activity&quot;, name = &quot;activity-compose&quot;, version.ref = &quot;activityCompose&quot; &#125;</span><br><span class="line">androidx-fragment-ktx = &#123; group = &quot;androidx.fragment&quot;, name = &quot;fragment-ktx&quot;, version.ref = &quot;ktxFragment&quot; &#125; #fragement中使用viewModels()委托</span><br><span class="line"></span><br><span class="line"># 测试</span><br><span class="line">junit = &#123; group = &quot;junit&quot;, name = &quot;junit&quot;, version.ref = &quot;junit&quot; &#125;</span><br><span class="line">androidx-junit = &#123; group = &quot;androidx.test.ext&quot;, name = &quot;junit&quot;, version.ref = &quot;junitVersion&quot; &#125;</span><br><span class="line">androidx-espresso-core = &#123; group = &quot;androidx.test.espresso&quot;, name = &quot;espresso-core&quot;, version.ref = &quot;espressoCore&quot; &#125;</span><br><span class="line"></span><br><span class="line"># Hilt 依赖</span><br><span class="line">hilt-android = &#123; group = &quot;com.google.dagger&quot;, name = &quot;hilt-android&quot;, version.ref = &quot;hilt&quot; &#125;</span><br><span class="line">hilt-android-compiler = &#123; group = &quot;com.google.dagger&quot;, name = &quot;hilt-android-compiler&quot;, version.ref = &quot;hilt&quot; &#125;</span><br><span class="line">hilt-navigation-compose = &#123; group = &quot;androidx.hilt&quot;, name = &quot;hilt-navigation-compose&quot;, version.ref = &quot;hiltNavigation&quot; &#125;</span><br><span class="line"></span><br><span class="line">#compose-bom相关</span><br><span class="line">androidx-compose-bom = &#123; group = &quot;androidx.compose&quot;, name = &quot;compose-bom&quot;, version.ref = &quot;composeBom&quot; &#125;</span><br><span class="line">androidx-ui = &#123; group = &quot;androidx.compose.ui&quot;, name = &quot;ui&quot; &#125;</span><br><span class="line">androidx-ui-graphics = &#123; group = &quot;androidx.compose.ui&quot;, name = &quot;ui-graphics&quot; &#125;</span><br><span class="line">androidx-ui-tooling = &#123; group = &quot;androidx.compose.ui&quot;, name = &quot;ui-tooling&quot; &#125;</span><br><span class="line">androidx-ui-tooling-preview = &#123; group = &quot;androidx.compose.ui&quot;, name = &quot;ui-tooling-preview&quot; &#125;</span><br><span class="line">androidx-ui-test-manifest = &#123; group = &quot;androidx.compose.ui&quot;, name = &quot;ui-test-manifest&quot;&#125;</span><br><span class="line">androidx-ui-test-junit4 = &#123; group = &quot;androidx.compose.ui&quot;, name = &quot;ui-test-junit4&quot; &#125;</span><br><span class="line">androidx-material3 = &#123; group = &quot;androidx.compose.material3&quot;, name = &quot;material3&quot; &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[plugins]</span><br><span class="line">android-application = &#123; id = &quot;com.android.application&quot;, version.ref = &quot;agp&quot; &#125;</span><br><span class="line">kotlin-android = &#123; id = &quot;org.jetbrains.kotlin.android&quot;, version.ref = &quot;kotlin&quot; &#125;</span><br><span class="line">kotlin-compose = &#123; id = &quot;org.jetbrains.kotlin.plugin.compose&quot;, version.ref = &quot;kotlin&quot; &#125;</span><br><span class="line"></span><br><span class="line">#依赖注入</span><br><span class="line">hilt = &#123; id = &quot;com.google.dagger.hilt.android&quot;, version.ref = &quot;hilt&quot; &#125;</span><br><span class="line">ksp = &#123; id = &quot;com.google.devtools.ksp&quot;, version.ref = &quot;ksp&quot; &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2、build-gradle-kts-项目根目录"><a href="#4-2、build-gradle-kts-项目根目录" class="headerlink" title="4.2、build.gradle.kts(项目根目录)"></a>4.2、build.gradle.kts(项目根目录)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    alias(libs.plugins.android.application) apply false</span><br><span class="line">    alias(libs.plugins.kotlin.android) apply false</span><br><span class="line"></span><br><span class="line">    //add</span><br><span class="line">    alias(libs.plugins.kotlin.compose) apply false</span><br><span class="line">    alias(libs.plugins.ksp) apply false</span><br><span class="line">    alias(libs.plugins.hilt) apply false</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3、app-build-gradle-kts"><a href="#4-3、app-build-gradle-kts" class="headerlink" title="4.3、app&#x2F;build.gradle.kts"></a>4.3、app&#x2F;build.gradle.kts</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    alias(libs.plugins.android.application)</span><br><span class="line">    alias(libs.plugins.kotlin.android)</span><br><span class="line">    alias(libs.plugins.hilt)</span><br><span class="line">    alias(libs.plugins.ksp)</span><br><span class="line">    alias(libs.plugins.kotlin.compose)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">android &#123;</span><br><span class="line">    namespace = &quot;com.pgzxc.hiltdemo&quot;</span><br><span class="line">    compileSdk = 36</span><br><span class="line"></span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        applicationId = &quot;com.pgzxc.hiltdemo&quot;</span><br><span class="line">        minSdk = 25</span><br><span class="line">        targetSdk = 36</span><br><span class="line">        versionCode = 1</span><br><span class="line">        versionName = &quot;1.0&quot;</span><br><span class="line"></span><br><span class="line">        testInstrumentationRunner = &quot;androidx.test.runner.AndroidJUnitRunner&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    buildFeatures &#123;</span><br><span class="line">        compose = true</span><br><span class="line">    &#125;</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            isMinifyEnabled = false</span><br><span class="line">            proguardFiles(</span><br><span class="line">                getDefaultProguardFile(&quot;proguard-android-optimize.txt&quot;),</span><br><span class="line">                &quot;proguard-rules.pro&quot;</span><br><span class="line">            )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    compileOptions &#123;</span><br><span class="line">        sourceCompatibility = JavaVersion.VERSION_17</span><br><span class="line">        targetCompatibility = JavaVersion.VERSION_17</span><br><span class="line">    &#125;</span><br><span class="line">    kotlinOptions &#123;</span><br><span class="line">        jvmTarget = &quot;17&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line"></span><br><span class="line">    implementation(libs.androidx.core.ktx)</span><br><span class="line">    implementation(libs.androidx.appcompat)</span><br><span class="line">    implementation(libs.material)</span><br><span class="line"></span><br><span class="line">    implementation(libs.androidx.fragment.ktx)</span><br><span class="line">    implementation(libs.hilt.navigation.compose)</span><br><span class="line">    //test</span><br><span class="line">    testImplementation(libs.junit)</span><br><span class="line">    androidTestImplementation(libs.androidx.junit)</span><br><span class="line">    androidTestImplementation(libs.androidx.espresso.core)</span><br><span class="line"></span><br><span class="line">    //hilt</span><br><span class="line">    implementation(libs.hilt.android)</span><br><span class="line">    ksp(libs.hilt.android.compiler)</span><br><span class="line"></span><br><span class="line">    //compose</span><br><span class="line">    implementation(platform(libs.androidx.compose.bom))</span><br><span class="line">    implementation(libs.androidx.material3)</span><br><span class="line">    implementation(libs.androidx.ui.tooling.preview)</span><br><span class="line">    implementation(libs.androidx.ui)</span><br><span class="line">    implementation(libs.androidx.activity.compose)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="五-项目结构"><a href="#五-项目结构" class="headerlink" title="五 项目结构"></a>五 项目结构</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">hiltdemo/</span><br><span class="line"> ├── app/</span><br><span class="line"> │   ├── src/main/java/com/example/hiltdemo/</span><br><span class="line"> │   │   ├── MyApp.kt</span><br><span class="line"> |   |   |── MainActivity.kt	</span><br><span class="line"> │   │   ├── di/LoggerModule.kt</span><br><span class="line"> │   │   ├── service/AnalyticsService.kt</span><br><span class="line"> │   │   ├── service/Logger.kt</span><br><span class="line"> │   │   ├── viewmodel/MainViewModel.kt</span><br><span class="line"> │   │   └── ui/MainScreen.kt</span><br><span class="line"> │   └── build.gradle.kts</span><br><span class="line"> ├── build.gradle.kts</span><br><span class="line"> └── settings.gradle.kts</span><br></pre></td></tr></table></figure>
+
+<h2 id="六-Hilt相关内容-ComposeUI版本"><a href="#六-Hilt相关内容-ComposeUI版本" class="headerlink" title="六 Hilt相关内容(ComposeUI版本)"></a>六 Hilt相关内容(ComposeUI版本)</h2><h3 id="6-1-di-LoggerModule-kt"><a href="#6-1-di-LoggerModule-kt" class="headerlink" title="6.1 di(LoggerModule.kt)"></a>6.1 di(LoggerModule.kt)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package com.pgzxc.hiltdemo.di</span><br><span class="line"></span><br><span class="line">import com.pgzxc.hiltdemo.service.FileLogger</span><br><span class="line">import com.pgzxc.hiltdemo.service.Logger</span><br><span class="line">import dagger.Module</span><br><span class="line">import dagger.Provides</span><br><span class="line">import dagger.hilt.InstallIn</span><br><span class="line">import dagger.hilt.components.SingletonComponent</span><br><span class="line"></span><br><span class="line">// di/LoggerModule.kt</span><br><span class="line">@Module</span><br><span class="line">@InstallIn(SingletonComponent::class)</span><br><span class="line">object LoggerModule &#123;</span><br><span class="line">    @Provides</span><br><span class="line">    fun provideLogger(): Logger = FileLogger()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2-service-kt"><a href="#6-2-service-kt" class="headerlink" title="6.2 service.kt"></a>6.2 service.kt</h3><p>1、Logger.kt</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package com.pgzxc.hiltdemo.service</span><br><span class="line"></span><br><span class="line">import android.util.Log</span><br><span class="line">import jakarta.inject.Inject</span><br><span class="line"></span><br><span class="line">// service/Logger.kt</span><br><span class="line">interface Logger &#123;</span><br><span class="line">    fun log(msg: String): Int</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class FileLogger @Inject constructor() : Logger &#123;</span><br><span class="line">    override fun log(msg: String) = Log.d(&quot;FileLogger&quot;, msg)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、AnalyticsService.kt</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package com.pgzxc.hiltdemo.service</span><br><span class="line"></span><br><span class="line">import android.util.Log</span><br><span class="line">import jakarta.inject.Inject</span><br><span class="line"></span><br><span class="line">// service/AnalyticsService.kt</span><br><span class="line">class AnalyticsService @Inject constructor() &#123;</span><br><span class="line">    fun logEvent(event: String) &#123;</span><br><span class="line">        Log.d(&quot;AnalyticsService&quot;, &quot;Event: $event&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-3-ui-MainScreen-kt"><a href="#6-3-ui-MainScreen-kt" class="headerlink" title="6.3 ui(MainScreen.kt)"></a>6.3 ui(MainScreen.kt)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">package com.pgzxc.hiltdemo.ui</span><br><span class="line"></span><br><span class="line">import androidx.compose.foundation.layout.Arrangement</span><br><span class="line">import androidx.compose.foundation.layout.Column</span><br><span class="line">import androidx.compose.foundation.layout.Spacer</span><br><span class="line">import androidx.compose.foundation.layout.fillMaxSize</span><br><span class="line">import androidx.compose.foundation.layout.height</span><br><span class="line">import androidx.compose.foundation.layout.padding</span><br><span class="line">import androidx.compose.material3.Button</span><br><span class="line">import androidx.compose.material3.MaterialTheme</span><br><span class="line">import androidx.compose.material3.Text</span><br><span class="line">import androidx.compose.runtime.Composable</span><br><span class="line">import androidx.compose.runtime.collectAsState</span><br><span class="line">import androidx.compose.runtime.getValue</span><br><span class="line">import androidx.compose.ui.Alignment</span><br><span class="line">import androidx.compose.ui.Modifier</span><br><span class="line">import androidx.compose.ui.unit.dp</span><br><span class="line">import androidx.hilt.navigation.compose.hiltViewModel</span><br><span class="line">import com.pgzxc.hiltdemo.viewmodel.MainViewModel</span><br><span class="line"></span><br><span class="line">@Composable</span><br><span class="line">fun MainScreen(viewModel: MainViewModel = hiltViewModel()) &#123;</span><br><span class="line">    val message by viewModel.message.collectAsState()</span><br><span class="line"></span><br><span class="line">    Column(</span><br><span class="line">        modifier = Modifier.fillMaxSize().padding(16.dp),</span><br><span class="line">        verticalArrangement = Arrangement.Center,</span><br><span class="line">        horizontalAlignment = Alignment.CenterHorizontally</span><br><span class="line">    ) &#123;</span><br><span class="line">        Text(message, style = MaterialTheme.typography.headlineSmall)</span><br><span class="line"></span><br><span class="line">        Spacer(modifier = Modifier.height(20.dp))</span><br><span class="line"></span><br><span class="line">        Button(onClick = &#123; viewModel.doWork() &#125;) &#123;</span><br><span class="line">            Text(&quot;点我测试依赖注入&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-4-viewmodel-MainViewModel-kt"><a href="#6-4-viewmodel-MainViewModel-kt" class="headerlink" title="6.4 viewmodel(MainViewModel.kt)"></a>6.4 viewmodel(MainViewModel.kt)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package com.pgzxc.hiltdemo.viewmodel</span><br><span class="line"></span><br><span class="line">import androidx.lifecycle.ViewModel</span><br><span class="line">import com.pgzxc.hiltdemo.repository.UserRepository</span><br><span class="line">import com.pgzxc.hiltdemo.service.AnalyticsService</span><br><span class="line">import com.pgzxc.hiltdemo.service.Logger</span><br><span class="line">import dagger.hilt.android.lifecycle.HiltViewModel</span><br><span class="line">import jakarta.inject.Inject</span><br><span class="line">import kotlinx.coroutines.flow.MutableStateFlow</span><br><span class="line">import kotlinx.coroutines.flow.StateFlow</span><br><span class="line"></span><br><span class="line">// ui/MainViewModel.kt</span><br><span class="line">@HiltViewModel</span><br><span class="line">class MainViewModel @Inject constructor(</span><br><span class="line">        private val logger: Logger,</span><br><span class="line">        private val analytics: AnalyticsService</span><br><span class="line">) : ViewModel() &#123;</span><br><span class="line"></span><br><span class="line">    private val _message = MutableStateFlow(&quot;Hello Hilt + Compose!&quot;)</span><br><span class="line">    val message: StateFlow&lt;String&gt; = _message</span><br><span class="line"></span><br><span class="line">    fun doWork() &#123;</span><br><span class="line">        logger.log(&quot;ViewModel is working...&quot;)</span><br><span class="line">        analytics.logEvent(&quot;Compose Screen Event&quot;)</span><br><span class="line">        _message.value = &quot;Hilt 已成功注入依赖 ✅&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-4-MainActivity-kt"><a href="#6-4-MainActivity-kt" class="headerlink" title="6.4 MainActivity.kt"></a>6.4 MainActivity.kt</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">package com.pgzxc.hiltdemo</span><br><span class="line"></span><br><span class="line">import android.os.Bundle</span><br><span class="line">import androidx.activity.compose.setContent</span><br><span class="line">import androidx.appcompat.app.AppCompatActivity</span><br><span class="line">import androidx.compose.material3.MaterialTheme</span><br><span class="line">import androidx.compose.material3.Text</span><br><span class="line">import androidx.compose.runtime.Composable</span><br><span class="line">import androidx.compose.ui.tooling.preview.Preview</span><br><span class="line">import com.pgzxc.hiltdemo.service.AnalyticsService</span><br><span class="line">import com.pgzxc.hiltdemo.ui.MainScreen</span><br><span class="line">import dagger.hilt.android.AndroidEntryPoint</span><br><span class="line">import jakarta.inject.Inject</span><br><span class="line"></span><br><span class="line">@AndroidEntryPoint</span><br><span class="line">class MainActivity : AppCompatActivity() &#123;</span><br><span class="line"></span><br><span class="line">    @Inject</span><br><span class="line">    lateinit var analytics: AnalyticsService</span><br><span class="line"></span><br><span class="line">    override fun onCreate(savedInstanceState: Bundle?) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState)</span><br><span class="line">        analytics.logEvent(&quot;MainActivity Started&quot;)</span><br><span class="line">        setContent &#123;</span><br><span class="line">            MaterialTheme &#123;</span><br><span class="line">                MainScreen()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Composable</span><br><span class="line">fun Greeting(name: String) &#123;</span><br><span class="line">    Text(text = name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Preview(showBackground = true)</span><br><span class="line">@Composable</span><br><span class="line">fun GreetingPreview() &#123;</span><br><span class="line">    Greeting(&quot;Preview Text&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-5-MyApp-kt"><a href="#6-5-MyApp-kt" class="headerlink" title="6.5 MyApp.kt"></a>6.5 MyApp.kt</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package com.pgzxc.hiltdemo</span><br><span class="line"></span><br><span class="line">import android.app.Application</span><br><span class="line">import dagger.hilt.android.HiltAndroidApp</span><br><span class="line"></span><br><span class="line">@HiltAndroidApp</span><br><span class="line">class MyApp: Application()</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-6-AndroidManifest-xml"><a href="#6-6-AndroidManifest-xml" class="headerlink" title="6.6 AndroidManifest.xml"></a>6.6 AndroidManifest.xml</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;application</span><br><span class="line">        android:allowBackup=&quot;true&quot;</span><br><span class="line">        android:name=&quot;.MyApp&quot;</span><br><span class="line">        android:dataExtractionRules=&quot;@xml/data_extraction_rules&quot;</span><br><span class="line">        android:fullBackupContent=&quot;@xml/backup_rules&quot;</span><br><span class="line">        android:icon=&quot;@mipmap/ic_launcher&quot;</span><br><span class="line">        android:label=&quot;@string/app_name&quot;</span><br><span class="line">        android:roundIcon=&quot;@mipmap/ic_launcher_round&quot;</span><br><span class="line">        android:supportsRtl=&quot;true&quot;</span><br><span class="line">        android:theme=&quot;@style/Theme.HiltDemo&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;activity android:name=&quot;.MainActivity&quot; android:exported=&quot;true&quot;&gt;</span><br><span class="line">            &lt;intent-filter&gt;</span><br><span class="line">                &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;</span><br><span class="line">                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;</span><br><span class="line">            &lt;/intent-filter&gt;</span><br><span class="line">        &lt;/activity&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/application&gt;</span><br><span class="line"></span><br><span class="line">&lt;/manifest&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-7-效果"><a href="#6-7-效果" class="headerlink" title="6.7 效果"></a>6.7 效果</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1、App 启动 → MainActivity 自动注入 AnalyticsService。</span><br><span class="line">2、Compose UI 加载 → MainViewModel 自动注入 Logger + AnalyticsService。</span><br><span class="line">3、点击按钮 → Logcat 输出：</span><br><span class="line"> AnalyticsService: Event: MainActivity Started</span><br><span class="line"> FileLogger: ViewModel is working...</span><br><span class="line"> AnalyticsService: Event: Compose Screen Event</span><br><span class="line"> </span><br><span class="line">4、UI 文案 更新为 Hilt 已成功注入依赖 ✅ </span><br></pre></td></tr></table></figure>
+
+<p>图示</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-di-hilt-demo-2.gif" loading="lazy"></p>
+<h2 id="七-参考示例"><a href="#七-参考示例" class="headerlink" title="七 参考示例"></a>七 参考示例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/PGzxc/DISamples</span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/7a41e786.html" rel="prev" title="Android开发之——开发中常用的依赖注入框架(1)">
+                  <i class="fa fa-angle-left"></i> Android开发之——开发中常用的依赖注入框架(1)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/91e771bf.html" rel="next" title="Android面试题——依赖注入框架Hilt相关(1)">
+                  Android面试题——依赖注入框架Hilt相关(1) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"5b36124da159f50105eee95aaef7475d"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

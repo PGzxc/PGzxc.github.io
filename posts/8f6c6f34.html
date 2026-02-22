@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述Android系统中向下兼容性比较差，实际开发和测试中会遇到版本兼容性的问题，本题的成文参考了网上的部分教程和个人在开发中的实例，进行归纳和总结而成。  版本兼容问题 做兼容性处理先要明白几个概念  针对API的变更引起的问题如何做兼容性处理呢？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发之——版本兼容性问题">
+<meta property="og:url" content="https://pgzxc.github.io/posts/8f6c6f34.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 概述Android系统中向下兼容性比较差，实际开发和测试中会遇到版本兼容性的问题，本题的成文参考了网上的部分教程和个人在开发中的实例，进行归纳和总结而成。  版本兼容问题 做兼容性处理先要明白几个概念  针对API的变更引起的问题如何做兼容性处理呢？">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-version-problem-show.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-api-version.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/version-default.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-compilesdk.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-target-26.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-target-27.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-api-15.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-other-version.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-min-error.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-targetsdk.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-max-sdk.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-resolve-promte.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-target-api.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-suppresslint.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-build-sdk-int.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-flect.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-supprots.png">
+<meta property="article:published_time" content="2017-11-15T09:06:39.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.244Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="版本兼容">
+<meta property="article:tag" content="适配">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-version-problem-show.png">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/8f6c6f34.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/8f6c6f34.html","path":"posts/8f6c6f34.html","title":"Android开发之——版本兼容性问题"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android开发之——版本兼容性问题 | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">二 版本兼容问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E6%80%A7%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 版本兼容性：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%88%91%E4%BB%AC%E5%85%88%E7%9C%8B%E4%B8%80%E4%B8%AA%E5%AE%9E%E4%BE%8B"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 我们先看一个实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Android-%E5%B9%B3%E5%8F%B0%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81%E7%9A%84API%E7%BA%A7%E5%88%AB"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Android 平台版本支持的API级别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%81%9A%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86%E5%85%88%E8%A6%81%E6%98%8E%E7%99%BD%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5"><span class="nav-number">3.</span> <span class="nav-text">三 做兼容性处理先要明白几个概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-build-gradle%E4%B8%AD%E7%9A%84%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 build.gradle中的几个概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5%E8%AF%B4%E6%98%8E"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 几个概念说明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#compileSdkVersion"><span class="nav-number">3.2.1.</span> <span class="nav-text">compileSdkVersion</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#minSdkVersion"><span class="nav-number">3.2.2.</span> <span class="nav-text">minSdkVersion</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#targetSdkVersion"><span class="nav-number">3.3.</span> <span class="nav-text">targetSdkVersion</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#maxSdkVersion"><span class="nav-number">3.3.1.</span> <span class="nav-text">maxSdkVersion</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E9%92%88%E5%AF%B9API%E7%9A%84%E5%8F%98%E6%9B%B4%E5%BC%95%E8%B5%B7%E7%9A%84%E9%97%AE%E9%A2%98%E5%A6%82%E4%BD%95%E5%81%9A%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86%E5%91%A2%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">四 针对API的变更引起的问题如何做兼容性处理呢？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%9C%A8%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E6%97%B6%E5%AF%B9%E5%BA%94%E7%94%A8%E6%89%80%E8%BF%90%E8%A1%8C%E7%9A%84%E5%B9%B3%E5%8F%B0%E8%BF%9B%E8%A1%8C%E5%88%A4%E6%96%AD%EF%BC%8C%E6%97%A7%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8%E6%97%A7%E7%9A%84API%EF%BC%8C%E6%96%B0%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8%E6%96%B0%E7%9A%84API"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 在程序运行时对应用所运行的平台进行判断，旧平台使用旧的API，新平台使用新的API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8TargetApi%E6%B3%A8%E8%A7%A3%E6%A0%87%E6%B3%A8"><span class="nav-number">4.1.1.</span> <span class="nav-text">使用TargetApi注解标注</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8SuppressLint%E6%B3%A8%E8%A7%A3%E6%A0%87%E6%B3%A8"><span class="nav-number">4.1.2.</span> <span class="nav-text">使用SuppressLint注解标注</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8build-Version-SDK-INT%E8%BF%90%E8%A1%8C%E6%97%B6%E5%88%A4%E6%96%AD%EF%BC%8C%E5%88%86%E5%88%AB%E5%A4%84%E7%90%86"><span class="nav-number">4.1.3.</span> <span class="nav-text">使用build.Version.SDK_INT运行时判断，分别处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E7%94%A8%E5%8F%8D%E5%B0%84%E7%9A%84%E6%96%B9%E5%BC%8F%E8%B0%83%E7%94%A8%E9%AB%98%E7%89%88%E6%9C%AC%E4%B8%AD%E7%9A%84%E6%96%B0%E5%8A%9F%E8%83%BD%E6%8E%A5%E5%8F%A3%E8%BF%9B%E8%A1%8C%E8%B0%83%E7%94%A8"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 用反射的方式调用高版本中的新功能接口进行调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E5%88%86%E7%A6%BB%E4%BB%A3%E7%A0%81"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 分离代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E4%BD%BF%E7%94%A8%E5%AE%98%E6%96%B9%E6%8F%90%E4%BE%9B%E7%9A%84support%E7%B1%BB%E5%BA%93%EF%BC%8C%E5%A6%82support-v4-support-v7-support-v13%E7%AD%89"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 使用官方提供的support类库，如support-v4,support-v7,support-v13等</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/8f6c6f34.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android开发之——版本兼容性问题 | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android开发之——版本兼容性问题<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Android%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-11-15 17:06:39" itemprop="dateCreated datePublished" datetime="2017-11-15T17:06:39+08:00">2017-11-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/D-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">D-移动开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/D-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><p>Android系统中向下兼容性比较差，实际开发和测试中会遇到版本兼容性的问题，本题的成文参考了网上的部分教程和个人在开发中的实例，进行归纳和总结而成。</p>
+<ul>
+<li>版本兼容问题</li>
+<li>做兼容性处理先要明白几个概念 </li>
+<li>针对API的变更引起的问题如何做兼容性处理呢？</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="二-版本兼容问题"><a href="#二-版本兼容问题" class="headerlink" title="二 版本兼容问题"></a>二 版本兼容问题</h2><h3 id="2-1-版本兼容性："><a href="#2-1-版本兼容性：" class="headerlink" title="2.1 版本兼容性："></a>2.1 版本兼容性：</h3><p>Android系统中向下兼容性比较差，但是一个应用APP经过处理还是可以在各个版本间运行的。向下兼容性不好，不同版本的系统其API版本也不同，自然有些接口也不同，旧的平台也使用不了新的API，这就是Android的版本兼容性问题;</p>
+<h3 id="2-2-我们先看一个实例"><a href="#2-2-我们先看一个实例" class="headerlink" title="2.2 我们先看一个实例"></a>2.2 我们先看一个实例</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-version-problem-show.png" alt="兼容问题展示" loading="lazy"> </p>
+<p>说明：如图所示：当我们在build.gradle中设置minSdkVersion&#x3D;8时，调用上述API时会出现如图提示，无法运行在低于API8的手机上，这就是Android版本兼容性问题的体现；</p>
+<h3 id="2-3-Android-平台版本支持的API级别"><a href="#2-3-Android-平台版本支持的API级别" class="headerlink" title="2.3 Android 平台版本支持的API级别"></a>2.3 Android 平台版本支持的API级别</h3><p>下表列出了各 Android 平台版本支持的API级别。 如需了解有关运行各版本的设备的相对数量的信息，请参阅<a target="_blank" rel="noopener" href="https://developer.android.google.cn/about/dashboards/index.html">“平台版本”信息中心页面</a>。 </p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-api-version.png" alt="api-version" loading="lazy"></p>
+<p>说明：Android版本更新，新的版本会引入一些新的特性和方法，新的方法带来很多便利，但是对系统版本有要求，无法再低版本手机上运行，如果未做兼容性处理，强行运行，会导致Crash。  </p>
+<h2 id="三-做兼容性处理先要明白几个概念"><a href="#三-做兼容性处理先要明白几个概念" class="headerlink" title="三 做兼容性处理先要明白几个概念"></a>三 做兼容性处理先要明白几个概念</h2><h3 id="3-1-build-gradle中的几个概念"><a href="#3-1-build-gradle中的几个概念" class="headerlink" title="3.1 build.gradle中的几个概念"></a>3.1 build.gradle中的几个概念</h3><p>Android build.gradle中compileSdkVersion，minSdkVersion，targetSdkVersion，maxSdkVersion信息你弄明白了么！<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/version-default.png" alt="默认配置" loading="lazy"> </p>
+<h3 id="3-2-几个概念说明"><a href="#3-2-几个概念说明" class="headerlink" title="3.2 几个概念说明"></a>3.2 几个概念说明</h3><p>新建一个项目工程时，系统都会默认为我们配置上面的参数，compileSdkVersion，minSdkVersion，targetSdkVersion，为什么设置这些参数，有什么作用，你都知道么！  </p>
+<h4 id="compileSdkVersion"><a href="#compileSdkVersion" class="headerlink" title="compileSdkVersion"></a>compileSdkVersion</h4><p>compileSdkVersion 26：指target&#x3D;android-26，也就是{Sdk}\platforms\android-26\android.jar编译项目<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-compilesdk.png" alt="compilesdk" loading="lazy"><br>在项目工程的External Libraries下可以看到引用了Android-26<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-target-26.png" alt="target26" loading="lazy"><br>如果compileSdkVersion 修改为27，相应的也会做修改<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-target-27.png" alt="target27" loading="lazy"><br>一般情况下，设置compileSdkVersion为最新的API即可，这也是项目默认的行为</p>
+<h4 id="minSdkVersion"><a href="#minSdkVersion" class="headerlink" title="minSdkVersion"></a>minSdkVersion</h4><p>minSdkVersion 15，指app最小支持版本为API15(Android 4.0)，低于Android 4.0的手机无法安装此类应用，当设置minSdkVersion 15时，已经完全覆盖100%的设备<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-api-15.png" loading="lazy"><br>并且google官方给出了其他版本对应的比例<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-other-version.png" alt="其他版本" loading="lazy"><br>minSdkVersion不仅在安装时起作用，在项目构建时也会起作用。如图，在minSdkVersion 8 调用API 9中的方法时给出提示<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-min-error.png" alt="min-error" loading="lazy"></p>
+<h3 id="targetSdkVersion"><a href="#targetSdkVersion" class="headerlink" title="targetSdkVersion"></a>targetSdkVersion</h3><p>targetSdkVersion 26，指当前应用已在API26(Android 8.0)经过测试，无需系统开启兼容模式保证程序正常运行。这个值一般和最新的API值相同。  </p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-targetsdk.png" alt="targetsdk" loading="lazy"><br>当设置targetSdkVersion 26时会有如图提示，意思是没有设置为最新的API Level值，打开SDK manager看到最新的API Level为 27，将targetSdkVersion设置为27便兼容了最新的API<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-max-sdk.png" alt="max-sdk" loading="lazy"> </p>
+<h4 id="maxSdkVersion"><a href="#maxSdkVersion" class="headerlink" title="maxSdkVersion"></a>maxSdkVersion</h4><p>maxSdkVersion 26 标明App最高应用版本为API 26(Android 8.0)，高于Android 8.0的手机无法安装此类应用。如果系统升级后，高于maxSdkVersion ，应用将会被卸载。所以官方文档，不推荐使用这个属性。</p>
+<h2 id="四-针对API的变更引起的问题如何做兼容性处理呢？"><a href="#四-针对API的变更引起的问题如何做兼容性处理呢？" class="headerlink" title="四 针对API的变更引起的问题如何做兼容性处理呢？"></a>四 针对API的变更引起的问题如何做兼容性处理呢？</h2><h3 id="4-1-在程序运行时对应用所运行的平台进行判断，旧平台使用旧的API，新平台使用新的API"><a href="#4-1-在程序运行时对应用所运行的平台进行判断，旧平台使用旧的API，新平台使用新的API" class="headerlink" title="4.1 在程序运行时对应用所运行的平台进行判断，旧平台使用旧的API，新平台使用新的API"></a>4.1 在程序运行时对应用所运行的平台进行判断，旧平台使用旧的API，新平台使用新的API</h3><p>使用高于minSdkVersion API Level的方法时，可以看到如下三条提示<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-resolve-promte.png" alt="提示解决" loading="lazy">    </p>
+<h4 id="使用TargetApi注解标注"><a href="#使用TargetApi注解标注" class="headerlink" title="使用TargetApi注解标注"></a>使用TargetApi注解标注</h4><p>注：targetApi，只屏蔽某一新API才能使用的方法报的Android lint错误，如图path.getTotalSpace，如果你在此方法中引入了另一个高于minSdkVersion的api时，此方法仍会报错！<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-target-api.png" alt="target-api" loading="lazy">  </p>
+<h4 id="使用SuppressLint注解标注"><a href="#使用SuppressLint注解标注" class="headerlink" title="使用SuppressLint注解标注"></a>使用SuppressLint注解标注</h4><p>注：屏蔽一切新API才能使用新方法才报的Android lint错误<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-suppresslint.png" loading="lazy">  </p>
+<h4 id="使用build-Version-SDK-INT运行时判断，分别处理"><a href="#使用build-Version-SDK-INT运行时判断，分别处理" class="headerlink" title="使用build.Version.SDK_INT运行时判断，分别处理"></a>使用build.Version.SDK_INT运行时判断，分别处理</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-build-sdk-int.png" alt="sdk-int" loading="lazy"><br>总结：1和2虽然未提示错误，但问题依然存在，我们一般结合1,3使用</p>
+<h3 id="4-2-用反射的方式调用高版本中的新功能接口进行调用"><a href="#4-2-用反射的方式调用高版本中的新功能接口进行调用" class="headerlink" title="4.2 用反射的方式调用高版本中的新功能接口进行调用"></a>4.2 用反射的方式调用高版本中的新功能接口进行调用</h3><p>如果是基于低版本SDK开发，那么新版本中的新接口肯定编译不通过，这时候可以考虑反射的方式先去查找这个方法是否存在，如果有就代表用户的手机支持该调用方法，如果没有则采用低版本的处理方式(借用网上的一段话)	<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-flect.png" alt="反射" loading="lazy"></p>
+<h3 id="4-3-分离代码"><a href="#4-3-分离代码" class="headerlink" title="4.3 分离代码"></a>4.3 分离代码</h3><p>别在不同的SDK上编译运行，最后classLoader加载高版本中的相关类接口。此方法如同二，可以将高版本中的API接口封装后再高版本中的SDK编译成jar包，供低版本中动态加载(借用网上的一段话)</p>
+<h3 id="4-4-使用官方提供的support类库，如support-v4-support-v7-support-v13等"><a href="#4-4-使用官方提供的support类库，如support-v4-support-v7-support-v13等" class="headerlink" title="4.4 使用官方提供的support类库，如support-v4,support-v7,support-v13等"></a>4.4 使用官方提供的support类库，如support-v4,support-v7,support-v13等</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-supprots.png" alt="supports" loading="lazy"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%80%82%E9%85%8D/" rel="tag"># 适配</a>
+              <a href="/tags/%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9/" rel="tag"># 版本兼容</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/f27906f.html" rel="prev" title="Android面试之——关于Activity的那些事2">
+                  <i class="fa fa-angle-left"></i> Android面试之——关于Activity的那些事2
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/97a348f4.html" rel="next" title="开发规范之——阿里规约插件安装和使用">
+                  开发规范之——阿里规约插件安装和使用 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"bc3035f0382d300777b206cceeb3ebd5"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

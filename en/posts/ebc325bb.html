@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述123451.如何支持 Web(Kotlin&#x2F;JS)或 Desktop(Compose Desktop)？2.Kotlin Multiplatform Compose 与 React&#x2F;Flutter 在渲染机制上的差异？3.如何在 KMP 中实现跨端消息总线(SharedFlow + MutableSharedFlow)？4.如何解决 iOS Swift 与 Kotlin 集成中的包大小与">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KMP面试题之——专家级之多端同步与扩展(12)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/ebc325bb.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="一 概述123451.如何支持 Web(Kotlin&#x2F;JS)或 Desktop(Compose Desktop)？2.Kotlin Multiplatform Compose 与 React&#x2F;Flutter 在渲染机制上的差异？3.如何在 KMP 中实现跨端消息总线(SharedFlow + MutableSharedFlow)？4.如何解决 iOS Swift 与 Kotlin 集成中的包大小与">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-10-19T00:52:23.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:04.843Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="KMP面试题">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/ebc325bb.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/ebc325bb.html","path":"posts/ebc325bb.html","title":"KMP面试题之——专家级之多端同步与扩展(12)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>KMP面试题之——专家级之多端同步与扩展(12) | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%94%AF%E6%8C%81Web%E6%88%96-Desktop"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 支持Web或 Desktop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-KMP-%E4%B8%8E-React-Flutter-%E5%9C%A8%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6%E4%B8%8A%E7%9A%84%E5%B7%AE%E5%BC%82%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 KMP 与 React&#x2F;Flutter 在渲染机制上的差异？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%A6%82%E4%BD%95%E5%9C%A8-KMP-%E4%B8%AD%E5%AE%9E%E7%8E%B0%E8%B7%A8%E7%AB%AF%E6%B6%88%E6%81%AF%E6%80%BB%E7%BA%BF-SharedFlow-MutableSharedFlow"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 如何在 KMP 中实现跨端消息总线(SharedFlow + MutableSharedFlow)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3-iOS-Swift-%E4%B8%8E-Kotlin-%E9%9B%86%E6%88%90%E4%B8%AD%E7%9A%84%E5%8C%85%E5%A4%A7%E5%B0%8F%E4%B8%8E%E7%AC%A6%E5%8F%B7%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98"><span class="nav-number">2.4.</span> <span class="nav-text">2.4  如何解决 iOS Swift 与 Kotlin 集成中的包大小与符号冲突问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E5%A6%82%E4%BD%95%E5%9C%A8-iOS-%E4%B8%AD%E5%A4%84%E7%90%86-KMP-Framework-%E7%9A%84-ABI-%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 如何在 iOS 中处理 KMP Framework 的 ABI 兼容性问题？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%BB%B6%E4%BC%B8%E8%BF%BD%E9%97%AE"><span class="nav-number">3.</span> <span class="nav-text">三  延伸追问</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/ebc325bb.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="KMP面试题之——专家级之多端同步与扩展(12) | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          KMP面试题之——专家级之多端同步与扩展(12)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/KMP%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B9%8B%E2%80%94%E2%80%94%E4%B8%93%E5%AE%B6%E7%BA%A7%E4%B9%8B%E5%A4%9A%E7%AB%AF%E5%90%8C%E6%AD%A5%E4%B8%8E%E6%89%A9%E5%B1%95-12.md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2025-10-19 08:52:23" itemprop="dateCreated datePublished" datetime="2025-10-19T08:52:23+08:00">2025-10-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/KMP%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">KMP面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>4 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.如何支持 Web(Kotlin/JS)或 Desktop(Compose Desktop)？</span><br><span class="line">2.Kotlin Multiplatform Compose 与 React/Flutter 在渲染机制上的差异？</span><br><span class="line">3.如何在 KMP 中实现跨端消息总线(SharedFlow + MutableSharedFlow)？</span><br><span class="line">4.如何解决 iOS Swift 与 Kotlin 集成中的包大小与符号冲突问题？</span><br><span class="line">5.如何在 iOS 中处理 KMP Framework 的 ABI 兼容性问题？</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-支持Web或-Desktop"><a href="#2-1-支持Web或-Desktop" class="headerlink" title="2.1 支持Web或 Desktop"></a>2.1 支持Web或 Desktop</h3><p>1、考点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">KMP 多平台扩展目标、Kotlin/JS 配置、Compose Multiplatform 渲染体系、资源与依赖管理。</span><br></pre></td></tr></table></figure>
+
+<p>2、实现思路</p>
+<p>2-1、KMP 支持多平台目标</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">kotlin &#123;</span><br><span class="line">    androidTarget()</span><br><span class="line">    ios()</span><br><span class="line">    js(IR) &#123;</span><br><span class="line">        browser()  // or nodejs()</span><br><span class="line">    &#125;</span><br><span class="line">    jvm(&quot;desktop&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2-2、Web 端 (Kotlin&#x2F;JS)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-Kotlin 编译为 JavaScript（使用 IR 后端，输出 .js 或 .wasm）。</span><br><span class="line">-常用 Compose Multiplatform Web 版本（JetBrains Compose for Web）。</span><br><span class="line">-可通过 compose.html 模块构建 DOM 或 Canvas UI。</span><br><span class="line">-打包方式：Gradle → webpack/bundled.js，部署与 React/Vite 类似。</span><br><span class="line">-数据逻辑依旧复用 shared 层。</span><br></pre></td></tr></table></figure>
+
+<p>2-3、Desktop 端 (Compose Desktop)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-VM Target，使用 Skia 渲染引擎（与 Android Compose 底层一致）。</span><br><span class="line">-可直接调用 shared 模块业务逻辑：</span><br></pre></td></tr></table></figure>
+
+<p>2-4、项目结构建议</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">shared/         // 业务逻辑（KMP）</span><br><span class="line">androidApp/</span><br><span class="line">iosApp/</span><br><span class="line">desktopApp/</span><br><span class="line">webApp/</span><br></pre></td></tr></table></figure>
+
+<p>3、优势</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">所有端复用 shared 层(Ktor、SQLDelight、ViewModel)。</span><br><span class="line">Compose Desktop/Web 与 Compose Android 共用 Compose Runtime → UI DSL 一致。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-KMP-与-React-Flutter-在渲染机制上的差异？"><a href="#2-2-KMP-与-React-Flutter-在渲染机制上的差异？" class="headerlink" title="2.2 KMP 与 React&#x2F;Flutter 在渲染机制上的差异？"></a>2.2 KMP 与 React&#x2F;Flutter 在渲染机制上的差异？</h3><p>1、考点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UI 框架的底层机制、渲染架构差异、声明式编程模型</span><br></pre></td></tr></table></figure>
+
+<p>2、差异</p>
+<table>
+<thead>
+<tr>
+<th align="center">框架</th>
+<th align="center">渲染机制</th>
+<th align="center">状态驱动</th>
+<th align="center">UI 引擎</th>
+<th align="center">性能特征</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Compose Multiplatform</td>
+<td align="center">声明式 + Skia 渲染(Desktop)&#x2F;<br>Android View(Android)&#x2F; <br>DOM(Web)</td>
+<td align="center">State + Recomposition</td>
+<td align="center">平台原生(Android)或 Skia</td>
+<td align="center">高度原生集成，资源轻量</td>
+</tr>
+<tr>
+<td align="center">React</td>
+<td align="center">Virtual DOM Diff</td>
+<td align="center">React Fiber Scheduler</td>
+<td align="center">浏览器 DOM</td>
+<td align="center">依赖 diff 算法，JS 调度</td>
+</tr>
+<tr>
+<td align="center">Flutter</td>
+<td align="center">自绘引擎（Skia）</td>
+<td align="center">Widget Tree rebuild</td>
+<td align="center">Skia Engine</td>
+<td align="center">完全跨平台一致，性能接近原生</td>
+</tr>
+<tr>
+<td align="center">SwiftUI</td>
+<td align="center">声明式 + 原生 UIKit&#x2F;Metal</td>
+<td align="center">State &amp; Binding</td>
+<td align="center">Apple UI 栈</td>
+<td align="center">原生融合性最优</td>
+</tr>
+</tbody></table>
+<p>3、总结：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Compose Multiplatform = “原生 UI 声明式统一 DSL”。</span><br><span class="line">React = “虚拟 DOM diff 渲染”。</span><br><span class="line">Flutter = “完全自绘引擎，跨平台一致”。</span><br><span class="line">SwiftUI = “原生系统声明式框架”。</span><br></pre></td></tr></table></figure>
+
+<p>4、面试答法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Compose MPP 不重写渲染引擎，而是通过</span><br><span class="line">Compose Runtime 统一 DSL + 各平台 backend(AndroidView/Skia/DOM) 实现跨端一致语义。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-如何在-KMP-中实现跨端消息总线-SharedFlow-MutableSharedFlow"><a href="#2-3-如何在-KMP-中实现跨端消息总线-SharedFlow-MutableSharedFlow" class="headerlink" title="2.3 如何在 KMP 中实现跨端消息总线(SharedFlow + MutableSharedFlow)"></a>2.3 如何在 KMP 中实现跨端消息总线(SharedFlow + MutableSharedFlow)</h3><p>1、考点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">多端事件总线设计、线程安全、生命周期管理、UI 层订阅</span><br></pre></td></tr></table></figure>
+
+<p>2、设计思路</p>
+<p>2-1、使用 Kotlin 协程的 <code>SharedFlow</code> 实现事件总线</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">object EventBus &#123;</span><br><span class="line">    private val _events = MutableSharedFlow&lt;Any&gt;(extraBufferCapacity = 64)</span><br><span class="line">    val events = _events.asSharedFlow()</span><br><span class="line"></span><br><span class="line">    suspend fun post(event: Any) = _events.emit(event)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2-2、发布事件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EventBus.post(UserUpdatedEvent(user))</span><br></pre></td></tr></table></figure>
+
+<p>2-3、订阅事件（Android Compose）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">LaunchedEffect(Unit) &#123;</span><br><span class="line">    EventBus.events.collect &#123; event -&gt;</span><br><span class="line">        when (event) &#123;</span><br><span class="line">            is UserUpdatedEvent -&gt; updateUI(event.user)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2-4、订阅事件（iOS Swift）(Kotlin Flow → Swift <code>AsyncStream</code>：)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let flow = EventBus.shared.events</span><br><span class="line">Task &#123;</span><br><span class="line">    for await event in flow &#123;</span><br><span class="line">        print(&quot;Event from Kotlin: \(event)&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2-5、多端同步策略</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shared 层负责定义事件模型与 bus；</span><br><span class="line">各端通过 flow/stream 监听；</span><br><span class="line">线程安全由 SharedFlow 自身保证（多发多收）。</span><br></pre></td></tr></table></figure>
+
+<p>3、面试加分答</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SharedFlow 在 Kotlin/Native 新 GC 下线程安全且无冻结限制，</span><br><span class="line">适合实现轻量级跨端事件总线，可替代 RxBus/EventBus。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-如何解决-iOS-Swift-与-Kotlin-集成中的包大小与符号冲突问题"><a href="#2-4-如何解决-iOS-Swift-与-Kotlin-集成中的包大小与符号冲突问题" class="headerlink" title="2.4  如何解决 iOS Swift 与 Kotlin 集成中的包大小与符号冲突问题"></a>2.4  如何解决 iOS Swift 与 Kotlin 集成中的包大小与符号冲突问题</h3><p>1、考点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Kotlin/Native 编译产物体积优化、符号混淆、Framework 重复符号</span><br></pre></td></tr></table></figure>
+
+<p>2、 常见问题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Kotlin/Native framework 较大（&gt;15MB）</span><br><span class="line">Swift 与 Kotlin 混编时符号重复（如重复依赖第三方 C 库）</span><br><span class="line">Debug 版本带符号信息过多</span><br></pre></td></tr></table></figure>
+
+<p>3、优化方案</p>
+<p>3-1、减小包体积</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1、开启 Release 构建（关闭调试符号）</span><br><span class="line">./gradlew :shared:assembleReleaseXCFramework</span><br><span class="line"></span><br><span class="line">2、在 binaries.framework 中开启优化</span><br><span class="line">binaries.framework &#123;</span><br><span class="line">    freeCompilerArgs += listOf(&quot;-Xallocator=mimalloc&quot;, &quot;-opt&quot;)</span><br><span class="line">    isStatic = true</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">3、移除不必要的调试符号</span><br><span class="line">strip -x Shared.framework/Shared</span><br><span class="line"></span><br><span class="line">4、多模块按需导出：避免整个 shared 暴露所有符号，使用 export 控制：</span><br><span class="line">export(project(&quot;:core&quot;))</span><br></pre></td></tr></table></figure>
+
+<p>3-2、解决符号冲突</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1、确保只在一个层级链接相同的依赖库（例如 cinterop OpenSSL 重复时仅保留一份）。</span><br><span class="line">2、使用不同 module namespace：baseName = &quot;SharedCore&quot;</span><br><span class="line">3、若存在 Swift module 重名冲突，修改 Kotlin framework 名称（baseName）。</span><br></pre></td></tr></table></figure>
+
+<p>3-3、动态 vs 静态 Framework</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">静态 .framework → 链接期合并，减少符号冲突；</span><br><span class="line">动态 .framework → 可独立更新，但符号隔离差。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-如何在-iOS-中处理-KMP-Framework-的-ABI-兼容性问题？"><a href="#2-5-如何在-iOS-中处理-KMP-Framework-的-ABI-兼容性问题？" class="headerlink" title="2.5 如何在 iOS 中处理 KMP Framework 的 ABI 兼容性问题？"></a>2.5 如何在 iOS 中处理 KMP Framework 的 ABI 兼容性问题？</h3><p>1、考点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Kotlin/Native ABI 稳定性、framework 更新策略、Xcode linking</span><br></pre></td></tr></table></figure>
+
+<p>2、背景：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Kotlin/Native 在 1.9 前 ABI 频繁变化，导致升级后旧 framework 无法二进制兼容。</span><br></pre></td></tr></table></figure>
+
+<p>3、 解决思路：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1、使用 XCFramework</span><br><span class="line">-XCFramework 内部支持多架构（arm64、x86_64），保证稳定性。</span><br><span class="line">-对外发布时始终提供完整 XCFramework 包。</span><br><span class="line"></span><br><span class="line">2、固定 Kotlin 版本</span><br><span class="line">-保持 Kotlin 与 Kotlin/Native 版本一致（宿主和依赖端）。</span><br><span class="line">-ABI 不同版本 framework 不可混用。</span><br><span class="line"></span><br><span class="line">3、封装稳定 API 层</span><br><span class="line">-对外只暴露稳定接口（DTO + 协议层），内部逻辑可改。</span><br><span class="line">-使用 thin adapter 隔离 ABI。</span><br><span class="line"></span><br><span class="line">4、使用静态链接（isStatic = true）</span><br><span class="line">避免动态符号重定位问题，提高兼容性。</span><br><span class="line"></span><br><span class="line">5、自动化版本检查</span><br><span class="line">在 CI/CD 中检查：</span><br><span class="line">Shared.framework/Shared | grep &quot;kotlin_version&quot;</span><br><span class="line">确保 framework 与宿主编译链匹配。</span><br></pre></td></tr></table></figure>
+
+<p>4、一句话总结面试答</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Kotlin/Native Framework 目前仍非完全 ABI 稳定，</span><br><span class="line">应通过 XCFramework 打包 + Kotlin 版本固定 + 静态链接策略保证兼容性，业务层使用稳定 API 封装</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-延伸追问"><a href="#三-延伸追问" class="headerlink" title="三  延伸追问"></a>三  延伸追问</h2><table>
+<thead>
+<tr>
+<th align="center">方向</th>
+<th align="center">示例问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">多端 UI</td>
+<td align="center">Compose MPP 能否完全替代 SwiftUI？为什么？</td>
+</tr>
+<tr>
+<td align="center">编译优化</td>
+<td align="center">如何缩小 XCFramework 体积？</td>
+</tr>
+<tr>
+<td align="center">性能</td>
+<td align="center">SharedFlow 与 LiveData 区别？</td>
+</tr>
+<tr>
+<td align="center">原生互通</td>
+<td align="center">Kotlin&#x2F;Native 的 CInterop 如何工作？</td>
+</tr>
+<tr>
+<td align="center">部署</td>
+<td align="center">你们是如何 CI&#x2F;CD 发布多端 framework 的？</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/KMP%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># KMP面试题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/de98d4bc.html" rel="prev" title="KMP面试题之——专家级之工程化与生态集成(11)">
+                  <i class="fa fa-angle-left"></i> KMP面试题之——专家级之工程化与生态集成(11)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/d18b404b.html" rel="next" title="KMP面试题之——专家级之测试与发布(13)">
+                  KMP面试题之——专家级之测试与发布(13) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"641cbdb9004160712c2c2637fe3f3670"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

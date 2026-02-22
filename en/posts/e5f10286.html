@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述1231.无用单元2.悬挂访问3.解决方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法——第8章-动态内存管理-垃圾回收机制(8.4)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/e5f10286.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="一 概述1231.无用单元2.悬挂访问3.解决方法">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-4-1.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-4-2.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-4-3.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-4-4.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-4-5.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-4-6.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-4-7.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-4-8.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-4-9.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-4-10.png">
+<meta property="article:published_time" content="2023-05-04T15:15:07.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:04.902Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="数据结构与算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-4-1.png">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/e5f10286.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/e5f10286.html","path":"posts/e5f10286.html","title":"数据结构与算法——第8章-动态内存管理-垃圾回收机制(8.4)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>数据结构与算法——第8章-动态内存管理-垃圾回收机制(8.4) | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E6%97%A0%E7%94%A8%E5%8D%95%E5%85%83"><span class="nav-number">2.</span> <span class="nav-text">二 无用单元</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%8A%A8%E6%80%81%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 动态存储管理的介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%97%A0%E7%94%A8%E5%8D%95%E5%85%83"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 无用单元</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E6%82%AC%E6%8C%82%E8%AE%BF%E9%97%AE"><span class="nav-number">3.</span> <span class="nav-text">三 悬挂访问</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E8%AF%B4%E6%98%8E"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%9B%BE%E7%A4%BA"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 图示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E8%AF%B4%E6%98%8E"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">四 解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 解决方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E7%AC%AC%E4%BA%8C%E7%A7%8D%E6%96%B9%E6%B3%95%E8%AF%B4%E6%98%8E"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 第二种方法说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E5%8D%A0%E7%94%A8%E7%A9%BA%E9%97%B4%E6%A0%87%E8%AE%B0%E6%96%B9%E6%B3%95"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 占用空间标记方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E9%81%8D%E5%8E%86%E8%BF%87%E7%A8%8B%E9%81%B5%E5%BE%AA%E5%8E%9F%E5%88%99"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 遍历过程遵循原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-%E5%BE%85%E9%81%8D%E5%8E%86%E5%B9%BF%E4%B9%89%E8%A1%A8"><span class="nav-number">4.5.</span> <span class="nav-text">4.5 待遍历广义表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-%E5%87%A0%E7%A7%8D%E6%83%85%E5%86%B5"><span class="nav-number">4.6.</span> <span class="nav-text">4.6 几种情况</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">五 总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD-%E5%8F%82%E8%80%83"><span class="nav-number">6.</span> <span class="nav-text">六 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/e5f10286.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="数据结构与算法——第8章-动态内存管理-垃圾回收机制(8.4) | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据结构与算法——第8章-动态内存管理-垃圾回收机制(8.4)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E7%AC%AC8%E7%AB%A0-%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6(8.4).md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2023-05-04 23:15:07" itemprop="dateCreated datePublished" datetime="2023-05-04T23:15:07+08:00">2023-05-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E5%BC%80%E5%8F%91/N-%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">N-数据与算法</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E5%BC%80%E5%8F%91/N-%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.无用单元</span><br><span class="line">2.悬挂访问</span><br><span class="line">3.解决方法</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-无用单元"><a href="#二-无用单元" class="headerlink" title="二 无用单元"></a>二 无用单元</h2><h3 id="2-1-动态存储管理的介绍"><a href="#2-1-动态存储管理的介绍" class="headerlink" title="2.1 动态存储管理的介绍"></a>2.1 动态存储管理的介绍</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">通过前几节对可利用空间表进行动态存储管理的介绍，运行机制可以概括为：</span><br><span class="line">当用户发出申请空间的请求后，系统向用户分配内存；</span><br><span class="line">用户运行结束释放存储空间后，系统回收内存。</span><br><span class="line">这两部操作都是在用户给出明确的指令后，系统对存储空间进行有效地分配和回收。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-无用单元"><a href="#2-2-无用单元" class="headerlink" title="2.2 无用单元"></a>2.2 无用单元</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">但是在实际使用过程中，有时会因为用户申请了空间，但是在使用完成后没有向系统发出释放的指令，</span><br><span class="line">导致存储空间既没有被使用也没有被回收，变为了无用单元或者会产生悬挂访问的问题。</span><br><span class="line"></span><br><span class="line">什么是无用单元？简单来讲，无用单元是一块用户不再使用，但是系统无法回收的存储空间。</span><br><span class="line">例如在C语言中，用户可以通过 malloc 和 free 两个功能函数来动态申请和释放存储空间。</span><br><span class="line">当用户使用 malloc 申请的空间使用完成后，没有使用 free 函数进行释放，那么该空间就会成为无用单元。</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-悬挂访问"><a href="#三-悬挂访问" class="headerlink" title="三 悬挂访问"></a>三 悬挂访问</h2><h3 id="3-1-说明"><a href="#3-1-说明" class="headerlink" title="3.1 说明"></a>3.1 说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">悬挂访问也很好理解：假设使用 malloc 申请了一块存储空间，有多个指针同时指向这块空间，</span><br><span class="line">当其中一个指针完成使命后，私自将该存储空间使用 free 释放掉，导致其他指针处于悬空状态，</span><br><span class="line">如果释放掉的空间被再分配后，再通过之前的指针访问，就会造成错误。</span><br><span class="line">数据结构中称这种访问为悬挂访问。</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-图示"><a href="#3-2-图示" class="headerlink" title="3.2 图示"></a>3.2 图示</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-4-1.png" loading="lazy"></p>
+<h3 id="3-3-说明"><a href="#3-3-说明" class="headerlink" title="3.3 说明"></a>3.3 说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">在含有共享子表的广义表中，也可能会产生无用单元。</span><br><span class="line">例如图 1 中，L1、L2 和 L3 分别为三个广义表的表头指针，L4 为 L1 和 L2 所共享，</span><br><span class="line">L3 是 L2 的子表，L5 为 L1、L2 和 L3 三个广义表所共享。</span><br><span class="line"></span><br><span class="line">在图 1 的基础上，假设表 L1 不再使用，而 L2 和 L3 还在使用，</span><br><span class="line">若释放表 L1，L1 中的所有结点所占的存储空间都会被释放掉，L2 和 L3 中由于同样包含 L1 中的结点，</span><br><span class="line">两个表会被破坏，某些指针会产生悬挂访问的错误；</span><br><span class="line"></span><br><span class="line">而如果 L1 表使用完成后不及时释放，L1 中独自占用的结点由于未被释放，系统也不会回收，就会成为无用单元。</span><br></pre></td></tr></table></figure>
+
+<h2 id="四-解决方法"><a href="#四-解决方法" class="headerlink" title="四 解决方法"></a>四 解决方法</h2><h3 id="4-1-解决方法"><a href="#4-1-解决方法" class="headerlink" title="4.1 解决方法"></a>4.1 解决方法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">解决存储空间可能成为无用单元或者产生悬挂访问的方法有两个：</span><br><span class="line">1.每个申请的存储空间设置一个计数域，这个计数域记录的是指向该存储空间的指针数目，</span><br><span class="line">只有当计数域的值为 0 时，该存储空间才会被释放。</span><br><span class="line"></span><br><span class="line">2.在程序运行时，所有的存储空间无论是处于使用还是空闲的状态，一律不回收，当系统中的可利用空间表为空时，</span><br><span class="line">将程序中断，对当前不在使用状态的存储空间一律回收，全部链接成一个新的可利用空间表后，程序继续执行。</span><br><span class="line"></span><br><span class="line">第一种方法非常简单，下面主要介绍第二种方法的具体实现。</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-第二种方法说明"><a href="#4-2-第二种方法说明" class="headerlink" title="4.2 第二种方法说明"></a>4.2 第二种方法说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">第二种方法中，在程序运行过程中很难找出此时哪些存储空间是空闲的。</span><br><span class="line">解决这个问题的办法是：找当前正在被占用的存储空间，只需要从当前正在工作的指针变量出发依次遍历，</span><br><span class="line">就可以找到当前正在被占用的存储空间，剩余的自然就是此时处于空闲状态的存储空间。</span><br><span class="line"></span><br><span class="line">如果想使用第二种方式，可以分为两步进行：</span><br><span class="line">1.对所有当前正在使用的存储空间加上被占用的标记</span><br><span class="line">（对于广义表来说，可以在每个结点结构的基础上，添加一个 mark 的标志域。</span><br><span class="line">在初始状态下，所有的存储空间全部标志为 0，被占用时标记为 1）；</span><br><span class="line"></span><br><span class="line">2.依次遍历所有的存储空间，将所有标记为 0 的存储空间链接成一个新的可利用空间表。</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-占用空间标记方法"><a href="#4-3-占用空间标记方法" class="headerlink" title="4.3 占用空间标记方法"></a>4.3 占用空间标记方法</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">对正在被占用的存储空间进行标记的方法有三种：</span><br><span class="line">1.从当前正在工作的指针变量开始，采用递归算法依次将所有表中的存储结点中的标志域全部设置为 1；</span><br><span class="line">2.第一种方法中使用递归算法实现的遍历。而递归底层使用的栈的存储结构，所以也可以直接使用栈的方式进行遍历；</span><br><span class="line">3.以上两种方法都是使用栈结构来记录遍历时指针所走的路径，便于在后期可以沿原路返回。</span><br><span class="line">所以第三种方式就是使用其他的方法代替栈的作用。</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-遍历过程遵循原则"><a href="#4-4-遍历过程遵循原则" class="headerlink" title="4.4 遍历过程遵循原则"></a>4.4 遍历过程遵循原则</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">递归和非递归方式在前面章节做过详细介绍，第三种实现方式中代替栈的方法是：</span><br><span class="line">添加三个指针，p 指针指向当前遍历的结点，t 指针永远指向 p 的父结点，q 指向 p 结点的表头或者表尾结点。</span><br><span class="line">在遍历过程遵循以下原则：</span><br></pre></td></tr></table></figure>
+
+<p>一、当 q 指针指向 p 的表头结点时，可能出现 3 种情况</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.p 结点的表头结点只是一个元素结点，没有表头或者表尾，这时只需要对该表头结点打上标记后即 q 指向 p 的表尾；</span><br><span class="line">2.p 结点的表头结点是空表或者是已经做过标记的子表，这时直接令 q 指针指向 p 结点的表尾即可；</span><br><span class="line">3.p 结点的表头是未添加标记的子表，这时就需要遍历子表，令 p 指向 q，q 指向 q 的表头结点。</span><br><span class="line">同时 t 指针相应地往下移动，但是在移动之前需要记录 t 指针的移动轨迹。</span><br><span class="line">记录的方法就是令 p 结点的 hp 域指向 t，同时设置 tag 值为 0。</span><br></pre></td></tr></table></figure>
+
+<p>二、当 q 指针指向 p 的表尾结点时，可能出现 2 种情况：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.p 指针的表尾是未加标记的子表，就需要遍历该子表，和之前的类似，令 p 指针和 t 指针做相应的移动，</span><br><span class="line">在移动之前记录 t 指针的移动路径，方法是：用 p 结点的 tp 域指向 t 结点，然后在 t 指向 p，p 指向 q。</span><br><span class="line">2.p 指针的表尾如果是空表或者已经做过标记的结点，这时 p 结点和 t 结点都回退到上一个位置。</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5-待遍历广义表"><a href="#4-5-待遍历广义表" class="headerlink" title="4.5 待遍历广义表"></a>4.5 待遍历广义表</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">由于 t 结点的回退路径分别记录在结点的 hp 域或者 tp 域中，在回退时需要根据 tag 的值来判断：</span><br><span class="line">如果 tag 值为 0 ，t 结点通过指向自身 hp 域的结点进行回退；反之，t 结点通过指向其 tp 域的结点进行回退。</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-4-2.png" loading="lazy"></p>
+<h3 id="4-6-几种情况"><a href="#4-6-几种情况" class="headerlink" title="4.6 几种情况"></a>4.6 几种情况</h3><p>一、情况1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如，图 2 中为一个待遍历的广义表，其中每个结点的结构如图 3 所示：</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-4-3.png" loading="lazy"></p>
+<p>二、情况2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在遍历如图 2 中的广义表时，从广义表的 a 结点开始，则 p 指针指向结点 a，同时 a 结点中 mark 域设置为 1，</span><br><span class="line">表示已经遍历过，t 指针为 nil，q 指针指向 a 结点的表头结点，初始状态如图 4 所示</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-4-4.png" loading="lazy"></p>
+<p>三、情况3</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">由于 q 指针指向的结点 b 的 tag 值为 1，表示该结点为表结构，所以此时 p 指向 q，q 指向结点 c，</span><br><span class="line">同时 t 指针下移，在 t 指针指向结点 a 之前，a 结点中的 hp 域指向 t，同时 a 结点中 tag 值设为 0。</span><br><span class="line">效果如图 5 所示：</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-4-5.png" loading="lazy"></p>
+<p>四、情况4</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">通过 q 指针指向的结点 c 的 tag=1，判断该结点为表结点，同样 p 指针指向 c，q 指针指向 d，</span><br><span class="line">同时 t 指针继续下移，在 t 指针指向 结点 b 之前，b 结点的 tag 值更改为 0，同时 hp 域指向结点 a，</span><br><span class="line">效果图如图 6 所示：</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-4-6.png" loading="lazy"></p>
+<p>五、情况5</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">通过 q 指针指向的结点 d 的 tag=0，所以，该结点为原子结点，此时根据遵循的原则，</span><br><span class="line">只需要将 q 指针指向的结点 d 的 mark 域标记为 1，然后让 q 指针直接指向 p 指针指向结点的表尾结点，</span><br><span class="line">效果图如图 7 所示：</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-4-7.png" loading="lazy"></p>
+<p>六、情况6</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">当 q 指针指向 p 指针的表尾结点时，同时 q 指针为空，这种情况的下一步操作为 p 指针和 t 指针全部上移动，</span><br><span class="line">即 p 指针指向结点 b，同时 t 指针根据 b 结点的 hp 域回退到结点 a。</span><br><span class="line">同时由于结点 b 的tag 值为 0，证明之前遍历的是表头，所以还需要遍历 b 结点的表尾结点，</span><br><span class="line">同时将结点 b 的 tag 值改为 1。</span><br><span class="line">效果图如图 8 所示：</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-4-8.png" loading="lazy"></p>
+<p>七、情况7</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">由于 q 指针指向的 e 结点为表结点，根据 q 指针指向的 e 结点是 p 指针指向的 b 结点的表尾结点，</span><br><span class="line">所以所做的操作为：p 指针和 t 指针在下移之前，令 p 指针指向的结点 b 的 tp 域指向结点 a，</span><br><span class="line">然后给 t 赋值 p，p 赋值 q。q 指向 q 的表头结点 f。效果如图 9 所示：</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-4-9.png" loading="lazy"></p>
+<p>八、情况8</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">由于 q 指针指向的结点 f 为原子结点，所以直接 q 指针的 mark 域设为 1 后，</span><br><span class="line">直接令 q 指针指向 p 指针指向的 e 结点的表尾结点。效果如图 10 所示：</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-data-struct-basic/ds-chap8-4-10.png" loading="lazy"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">由于 p 指针指向的 e 结点的表尾结点为空，所以 p 指针和 t 指针都回退。</span><br><span class="line">由于 p 指针指向的结点 b 的 tag 值为 1，表明表尾已经遍历完成，所以 t 指针和 p 指针继续上移，最终遍历完成。</span><br></pre></td></tr></table></figure>
+
+<h2 id="五-总结"><a href="#五-总结" class="headerlink" title="五 总结"></a>五 总结</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">无用单元的收集可以采用以上 3 中算法中任何一种。无论使用哪种算法，</span><br><span class="line">无用单元收集本身都是很费时间的，所以无用单元的收集不适用于实时处理的情况中使用。</span><br></pre></td></tr></table></figure>
+
+<h2 id="六-参考"><a href="#六-参考" class="headerlink" title="六 参考"></a>六 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://c.biancheng.net/view/3424.html">C语言中文网—无用单元收集（垃圾回收机制）</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag"># 数据结构与算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/8e61e409.html" rel="prev" title="标日中级下册——第20课-希望の灯-语法与表达-1">
+                  <i class="fa fa-angle-left"></i> 标日中级下册——第20课-希望の灯-语法与表达-1
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/1768b5b3.html" rel="next" title="标日中级下册——第20课-希望の灯-语法与表达-2">
+                  标日中级下册——第20课-希望の灯-语法与表达-2 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"6f44bce759c92ab532530135343ae242"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

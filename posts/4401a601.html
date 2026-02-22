@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述12345本文介绍一下内容： 1.文生图 Workflow 原理拆解 2.图生图 Workflow 3.高清修复(Hires)流程 4.Upscale 放大方案">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ComfyUI开发之——核心生成流程(4)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/4401a601.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 概述12345本文介绍一下内容： 1.文生图 Workflow 原理拆解 2.图生图 Workflow 3.高清修复(Hires)流程 4.Upscale 放大方案">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-02-04T23:11:00.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.269Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="ComfyUI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/4401a601.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/4401a601.html","path":"posts/4401a601.html","title":"ComfyUI开发之——核心生成流程(4)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ComfyUI开发之——核心生成流程(4) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E6%96%87%E7%94%9F%E5%9B%BE-Workflow-%E5%8E%9F%E7%90%86%E6%8B%86%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">二 文生图 Workflow 原理拆解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-ComfyUI-%E6%96%87%E7%94%9F%E5%9B%BE%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 ComfyUI 文生图的本质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-CLIP-Latent-Sampler-%E5%90%84%E8%87%AA%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 CLIP &#x2F; Latent &#x2F; Sampler 各自做什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-KSampler-%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3-%E5%BF%85%E8%83%8C"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 KSampler 参数详解(必背)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%9B%BE%E7%94%9F%E5%9B%BE-Workflow-Image-to-Image"><span class="nav-number">3.</span> <span class="nav-text">三 图生图 Workflow(Image to Image)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%9B%BE%E7%94%9F%E5%9B%BE%E4%B8%8E%E6%96%87%E7%94%9F%E5%9B%BE%E7%9A%84%E6%A0%B8%E5%BF%83%E5%8C%BA%E5%88%AB"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 图生图与文生图的核心区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%9B%BE%E7%94%9F%E5%9B%BE%E6%A0%B8%E5%BF%83%E8%8A%82%E7%82%B9%E5%8F%98%E5%8C%96"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 图生图核心节点变化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%8E%BB%E5%99%AA%E5%BC%BA%E5%BA%A6-Denoise-Strength"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 去噪强度(Denoise Strength)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E9%A3%8E%E6%A0%BC%E8%BF%81%E7%A7%BB-%E5%B1%80%E9%83%A8%E4%BF%9D%E6%8C%81"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 风格迁移 &amp; 局部保持</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E9%AB%98%E6%B8%85%E4%BF%AE%E5%A4%8D-Hires-%E6%B5%81%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">四 高清修复(Hires)流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E8%AF%B4%E6%98%8E"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E4%B8%A4%E9%98%B6%E6%AE%B5%E9%87%87%E6%A0%B7%E5%8E%9F%E7%90%86"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 两阶段采样原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-Latent-Upscale-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 Latent Upscale 是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 常见问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-Upscale-%E6%94%BE%E5%A4%A7%E6%96%B9%E6%A1%88"><span class="nav-number">5.</span> <span class="nav-text">五 Upscale 放大方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-Latent-%E6%94%BE%E5%A4%A7-vs-%E5%83%8F%E7%B4%A0%E6%94%BE%E5%A4%A7"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 Latent 放大 vs 像素放大</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-ESRGAN-Real-ESRGAN"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 ESRGAN &#x2F; Real-ESRGAN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E6%B8%85%E6%99%B0%E5%BA%A6%E4%B8%8E%E9%80%9F%E5%BA%A6%E7%9A%84%E5%B9%B3%E8%A1%A1"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 清晰度与速度的平衡</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/4401a601.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ComfyUI开发之——核心生成流程(4) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ComfyUI开发之——核心生成流程(4)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/ComfyUI%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94%E6%A0%B8%E5%BF%83%E7%94%9F%E6%88%90%E6%B5%81%E7%A8%8B-4.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-02-05 07:11:00" itemprop="dateCreated datePublished" datetime="2026-02-05T07:11:00+08:00">2026-02-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/Q-AI/" itemprop="url" rel="index"><span itemprop="name">Q-AI</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/Q-AI/ComfyUI/" itemprop="url" rel="index"><span itemprop="name">ComfyUI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">本文介绍一下内容：</span><br><span class="line"> 1.文生图 Workflow 原理拆解</span><br><span class="line"> 2.图生图 Workflow</span><br><span class="line"> 3.高清修复(Hires)流程</span><br><span class="line"> 4.Upscale 放大方案</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-文生图-Workflow-原理拆解"><a href="#二-文生图-Workflow-原理拆解" class="headerlink" title="二 文生图 Workflow 原理拆解"></a>二 文生图 Workflow 原理拆解</h2><h3 id="2-1-ComfyUI-文生图的本质"><a href="#2-1-ComfyUI-文生图的本质" class="headerlink" title="2.1 ComfyUI 文生图的本质"></a>2.1 ComfyUI 文生图的本质</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1.一句话总结：</span><br><span class="line">Prompt → 编码 → 潜空间采样 → 解码成图片</span><br><span class="line"></span><br><span class="line">2.对应 ComfyUI 中的三大核心系统：</span><br><span class="line"></span><br><span class="line">文本（Prompt）</span><br><span class="line">  ↓</span><br><span class="line">CLIP 编码</span><br><span class="line">  ↓</span><br><span class="line">Latent（潜空间）</span><br><span class="line">  ↓</span><br><span class="line">Sampler（采样器）</span><br><span class="line">  ↓</span><br><span class="line">VAE 解码</span><br><span class="line">  ↓</span><br><span class="line">Image</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-CLIP-Latent-Sampler-各自做什么？"><a href="#2-2-CLIP-Latent-Sampler-各自做什么？" class="headerlink" title="2.2 CLIP &#x2F; Latent &#x2F; Sampler 各自做什么？"></a>2.2 CLIP &#x2F; Latent &#x2F; Sampler 各自做什么？</h3><p>1-CLIP(文本编码器)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1.将自然语言 Prompt 转为模型能理解的向量</span><br><span class="line"></span><br><span class="line">2.分为：</span><br><span class="line">-正向 Prompt（你想要什么）</span><br><span class="line">-反向 Prompt（你不想要什么）</span><br><span class="line"></span><br><span class="line">3.常见节点：</span><br><span class="line">-CLIP Text Encode (Prompt)</span><br><span class="line">-CLIP Text Encode (Negative)</span><br><span class="line"></span><br><span class="line">4.重点理解：</span><br><span class="line">-CLIP 不生成图片</span><br><span class="line">-它只负责 “理解文字”</span><br></pre></td></tr></table></figure>
+
+<p>2-Latent(潜空间)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1.Stable Diffusion 不是直接在像素空间画图，而是：</span><br><span class="line">-在一个低维“潜空间”中生成</span><br><span class="line">-最后再通过 VAE 解码成真实图片</span><br><span class="line"></span><br><span class="line">2.常见节点：</span><br><span class="line">-Empty Latent Image</span><br><span class="line">-VAE Encode</span><br><span class="line">-VAE Decode</span><br><span class="line"></span><br><span class="line">3.优点：</span><br><span class="line">-运算更快</span><br><span class="line">-更稳定</span><br><span class="line">-适合迭代生成</span><br></pre></td></tr></table></figure>
+
+<p>3-Sampler(采样器)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.Sampler 是 真正“画图”的地方。</span><br><span class="line">2.在 ComfyUI 中，核心节点是：KSampler</span><br><span class="line"></span><br><span class="line">3.它负责：</span><br><span class="line">-从随机噪声开始</span><br><span class="line">-1步步“去噪”</span><br><span class="line">-最终生成符合 Prompt 的 Latent</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-KSampler-参数详解-必背"><a href="#2-3-KSampler-参数详解-必背" class="headerlink" title="2.3 KSampler 参数详解(必背)"></a>2.3 KSampler 参数详解(必背)</h3><p>这是 ComfyUI 最重要的节点，没有之一。</p>
+<p>1-Steps(采样步数)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">去噪的次数</span><br><span class="line">越高 → 越精细 → 越慢</span><br></pre></td></tr></table></figure>
+
+<p>常见范围</p>
+<table>
+<thead>
+<tr>
+<th align="center">场景</th>
+<th align="center">Steps</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">测试</td>
+<td align="center">15~20</td>
+</tr>
+<tr>
+<td align="center">正常出图</td>
+<td align="center">20~30</td>
+</tr>
+<tr>
+<td align="center">高质量</td>
+<td align="center">30~40</td>
+</tr>
+</tbody></table>
+<p>2-CFG(提示词引导强度)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1.说明：“模型有多听你的话？”</span><br><span class="line"></span><br><span class="line">低 CFG：更自由、更随机</span><br><span class="line">高 CFG：更贴合 Prompt，但容易崩</span><br><span class="line"></span><br><span class="line">2.推荐范围：</span><br><span class="line">5 ~ 9（最常用）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">3.CFG 太高的问题：</span><br><span class="line">-画面僵硬</span><br><span class="line">-过度锐化</span><br><span class="line">-奇怪构图</span><br></pre></td></tr></table></figure>
+
+<p>3-Seed(随机种子)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">决定“随机起点”</span><br><span class="line">同 Seed + 同参数 = 基本相同画面</span><br><span class="line"></span><br><span class="line">2.用法技巧：</span><br><span class="line">-1：每次随机</span><br><span class="line">固定 Seed：用于微调、对比参数</span><br></pre></td></tr></table></figure>
+
+<p>4-Sampler &#x2F; Scheduler</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Sampler：去噪算法</span><br><span class="line">Scheduler：步数分配方式</span><br><span class="line"></span><br><span class="line">2.常用组合（新手）：</span><br><span class="line">Sampler: DPM++ 2M</span><br><span class="line">Scheduler: Karras</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-图生图-Workflow-Image-to-Image"><a href="#三-图生图-Workflow-Image-to-Image" class="headerlink" title="三 图生图 Workflow(Image to Image)"></a>三 图生图 Workflow(Image to Image)</h2><p>图生图 &#x3D; 在已有图片基础上“再创作”</p>
+<h3 id="3-1-图生图与文生图的核心区别"><a href="#3-1-图生图与文生图的核心区别" class="headerlink" title="3.1 图生图与文生图的核心区别"></a>3.1 图生图与文生图的核心区别</h3><table>
+<thead>
+<tr>
+<th align="center">文生图</th>
+<th align="center">图生图</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">从纯噪声开始</td>
+<td align="center">从已有图像开始</td>
+</tr>
+<tr>
+<td align="center">全新生成</td>
+<td align="center">保留原图结构</td>
+</tr>
+<tr>
+<td align="center">不可控性更高</td>
+<td align="center">可控性更强</td>
+</tr>
+</tbody></table>
+<h3 id="3-2-图生图核心节点变化"><a href="#3-2-图生图核心节点变化" class="headerlink" title="3.2 图生图核心节点变化"></a>3.2 图生图核心节点变化</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1.新增关键节点：</span><br><span class="line">-Load Image</span><br><span class="line">-VAE Encode</span><br><span class="line">-去掉 Empty Latent Image</span><br><span class="line"></span><br><span class="line">2.流程变为：</span><br><span class="line">Image</span><br><span class="line"> → VAE Encode</span><br><span class="line"> → Latent</span><br><span class="line"> → KSampler</span><br><span class="line"> → VAE Decode</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-去噪强度-Denoise-Strength"><a href="#3-3-去噪强度-Denoise-Strength" class="headerlink" title="3.3 去噪强度(Denoise Strength)"></a>3.3 去噪强度(Denoise Strength)</h3><p>这是 图生图最关键参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在 KSampler 中体现为：denoise = 0 ~ 1</span><br></pre></td></tr></table></figure>
+
+<p>2-含义</p>
+<table>
+<thead>
+<tr>
+<th align="center">Denoise</th>
+<th align="center">效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0.1~0.3</td>
+<td align="center">微调</td>
+</tr>
+<tr>
+<td align="center">0.4~0.6</td>
+<td align="center">风格迁移</td>
+</tr>
+<tr>
+<td align="center">0.7~0.9</td>
+<td align="center">大幅重绘</td>
+</tr>
+<tr>
+<td align="center">1.0</td>
+<td align="center">接近文生图</td>
+</tr>
+</tbody></table>
+<h3 id="3-4-风格迁移-局部保持"><a href="#3-4-风格迁移-局部保持" class="headerlink" title="3.4 风格迁移 &amp; 局部保持"></a>3.4 风格迁移 &amp; 局部保持</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.风格迁移</span><br><span class="line">-保留结构</span><br><span class="line">-改变画风</span><br><span class="line">-常用 denoise：0.4~0.6</span><br><span class="line"></span><br><span class="line">2.局部保持技巧</span><br><span class="line">-降低 denoise</span><br><span class="line">-使用 ControlNet（后续章节）</span><br><span class="line">-使用 Inpainting</span><br></pre></td></tr></table></figure>
+
+<h2 id="四-高清修复-Hires-流程"><a href="#四-高清修复-Hires-流程" class="headerlink" title="四 高清修复(Hires)流程"></a>四 高清修复(Hires)流程</h2><h3 id="4-1-说明"><a href="#4-1-说明" class="headerlink" title="4.1 说明"></a>4.1 说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">高清修复 ≠ 单纯放大</span><br><span class="line">而是 “先生成 → 再精修”</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-两阶段采样原理"><a href="#4-2-两阶段采样原理" class="headerlink" title="4.2 两阶段采样原理"></a>4.2 两阶段采样原理</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">阶段一：</span><br><span class="line">-小分辨率生成</span><br><span class="line">-保证构图、姿态正确</span><br><span class="line"></span><br><span class="line">阶段二：</span><br><span class="line">-放大 Latent</span><br><span class="line">-再采样补细节</span><br><span class="line"></span><br><span class="line">好处：</span><br><span class="line">-更清晰</span><br><span class="line">-不容易崩脸</span><br><span class="line">-性能友好</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-Latent-Upscale-是什么？"><a href="#4-3-Latent-Upscale-是什么？" class="headerlink" title="4.3 Latent Upscale 是什么？"></a>4.3 Latent Upscale 是什么？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在潜空间中放大</span><br><span class="line">再进行二次采样</span><br><span class="line"></span><br><span class="line">常见节点：</span><br><span class="line">-Latent Upscale</span><br><span class="line">-第二个 KSampler</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-常见问题"><a href="#4-4-常见问题" class="headerlink" title="4.4 常见问题"></a>4.4 常见问题</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1.画面糊</span><br><span class="line">Steps 太低 / CFG 太低</span><br><span class="line"></span><br><span class="line">2.脸崩</span><br><span class="line">Denoise 太高 / 二次采样过强</span><br><span class="line"></span><br><span class="line">3.显存爆</span><br><span class="line">放大倍数太大 / 分辨率过高</span><br></pre></td></tr></table></figure>
+
+<h2 id="五-Upscale-放大方案"><a href="#五-Upscale-放大方案" class="headerlink" title="五 Upscale 放大方案"></a>五 Upscale 放大方案</h2><h3 id="5-1-Latent-放大-vs-像素放大"><a href="#5-1-Latent-放大-vs-像素放大" class="headerlink" title="5.1 Latent 放大 vs 像素放大"></a>5.1 Latent 放大 vs 像素放大</h3><table>
+<thead>
+<tr>
+<th align="center">方式</th>
+<th align="center">特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Latent 放大</td>
+<td align="center">质量高，可再创作</td>
+</tr>
+<tr>
+<td align="center">像素放大</td>
+<td align="center">快，不改变内容</td>
+</tr>
+</tbody></table>
+<h3 id="5-2-ESRGAN-Real-ESRGAN"><a href="#5-2-ESRGAN-Real-ESRGAN" class="headerlink" title="5.2 ESRGAN &#x2F; Real-ESRGAN"></a>5.2 ESRGAN &#x2F; Real-ESRGAN</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1.ESRGAN</span><br><span class="line">-偏向插画 / 二次元</span><br><span class="line">-锐利感强</span><br><span class="line"></span><br><span class="line">2.Real-ESRGAN</span><br><span class="line">-偏向真实照片</span><br><span class="line">-更自然</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3-清晰度与速度的平衡"><a href="#5-3-清晰度与速度的平衡" class="headerlink" title="5.3 清晰度与速度的平衡"></a>5.3 清晰度与速度的平衡</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">推荐策略：</span><br><span class="line">先 Latent Upscale ×2</span><br><span class="line">再 Real-ESRGAN ×2</span><br><span class="line"></span><br><span class="line">兼顾质量与效率</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ComfyUI/" rel="tag"># ComfyUI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/9af56ac2.html" rel="prev" title="ComfyUI开发之——模型与资源管理(3)">
+                  <i class="fa fa-angle-left"></i> ComfyUI开发之——模型与资源管理(3)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/bd6cb003.html" rel="next" title="ComfyUI开发之——进阶控制(5)">
+                  ComfyUI开发之——进阶控制(5) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"deef9b67d47c344ec2b11bc13bb2bf8c"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

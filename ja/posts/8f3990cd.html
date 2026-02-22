@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ja/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ja/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ja/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/ja/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/ja/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/ja/","images":"/ja/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索...","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/ja/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/ja/js/config.js" defer></script>
+
+    <meta name="description" content="一 Profiler-CPU能做什么 优化应用的 CPU 使用率能带来诸多好处，如提供更快、更顺畅的用户体验，以及延长设备电池续航时间 可以使用 CPU 性能剖析器在与应用交互时实时检查应用的 CPU 使用率和线程活动，也可以检查记录的方法跟踪数据、函数跟踪数据和系统跟踪数据的详情">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发之——Profiler-CPU性能分析">
+<meta property="og:url" content="https://pgzxc.github.io/posts/8f3990cd.html">
+<meta property="og:site_name" content="PGzxc (Japanese)">
+<meta property="og:description" content="一 Profiler-CPU能做什么 优化应用的 CPU 使用率能带来诸多好处，如提供更快、更顺畅的用户体验，以及延长设备电池续航时间 可以使用 CPU 性能剖析器在与应用交互时实时检查应用的 CPU 使用率和线程活动，也可以检查记录的方法跟踪数据、函数跟踪数据和系统跟踪数据的详情">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://developer.android.google.cn/studio/images/buttons/toolbar-android-profiler_dark.png?hl=zh_cn">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-run-view.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-cpu-open.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-cpu-explain.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-cpu-record-type.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-cpu-java-record.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-cpu-java-stop.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-cpu-analysis.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-sample-java-methods.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-cpu-export.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-cpu-export-position.png">
+<meta property="og:image" content="https://developer.android.google.cn/studio/images/buttons/ic_plus.png?hl=zh_cn">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-cpu-import.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-cpu-import-view.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-analysis-dialog.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-system-trace-cpu-cores.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-system-trace-render-thread.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-system-trace-buffer-queue.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-system-trace-process-memory.png">
+<meta property="article:published_time" content="2021-08-12T14:02:12.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.003Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://developer.android.google.cn/studio/images/buttons/toolbar-android-profiler_dark.png?hl=zh_cn">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/8f3990cd.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"ja","comments":true,"permalink":"https://pgzxc.github.io/posts/8f3990cd.html","path":"posts/8f3990cd.html","title":"Android开发之——Profiler-CPU性能分析"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android开发之——Profiler-CPU性能分析 | PGzxc (Japanese)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/utils.js" defer></script><script src="/ja/js/motion.js" defer></script><script src="/ja/js/sidebar.js" defer></script><script src="/ja/js/next-boot.js" defer></script><script src="/ja/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/ja/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/ja/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/ja/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/ja/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/ja/atom.xml" title="PGzxc (Japanese)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションを切り替える" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/ja/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (Japanese)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">本から学んだことは表面的なもの；自分で体験しなければならない</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="検索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/ja/" rel="section"><i class="fa fa-bell fa-fw"></i>ホーム</a></li><li class="menu-item menu-item-nav"><a href="/ja/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>ナビゲーション</a></li><li class="menu-item menu-item-categories"><a href="/ja/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリー<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/ja/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/ja/links/" rel="section"><i class="fa fa-link fa-fw"></i>リンク</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>検索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="検索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          目次
+        </li>
+        <li class="sidebar-nav-overview">
+          サイト概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-Profiler-CPU%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88"><span class="nav-number">1.</span> <span class="nav-text">一 Profiler-CPU能做什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-CPU-%E6%80%A7%E8%83%BD%E5%89%96%E6%9E%90%E5%99%A8%E6%A6%82%E8%A7%88"><span class="nav-number">2.</span> <span class="nav-text">二 CPU 性能剖析器概览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%A6%82%E4%BD%95%E6%89%93%E5%BC%80CPU%E6%80%A7%E8%83%BD%E5%89%96%E6%9E%90%E5%99%A8"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 如何打开CPU性能剖析器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-CPU-%E6%80%A7%E8%83%BD%E5%89%96%E6%9E%90%E5%99%A8%E8%AF%B4%E6%98%8E"><span class="nav-number">2.2.</span> <span class="nav-text">2.2  CPU 性能剖析器说明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CPU%E5%89%96%E6%9E%90%E5%9B%BE"><span class="nav-number">2.2.1.</span> <span class="nav-text">CPU剖析图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%96%E6%9E%90%E5%9B%BE%E8%AF%B4%E6%98%8E"><span class="nav-number">2.2.2.</span> <span class="nav-text">剖析图说明</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-CPU%E6%8D%95%E8%8E%B7%E4%BF%A1%E6%81%AF%E8%AF%B4%E6%98%8E"><span class="nav-number">3.</span> <span class="nav-text">三 CPU捕获信息说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%8D%95%E8%8E%B7%E4%BF%A1%E6%81%AF"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 捕获信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%8D%95%E8%8E%B7%E8%AF%B4%E6%98%8E"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 捕获说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E8%AE%B0%E5%BD%95%E8%B7%9F%E8%B8%AA%E6%95%B0%E6%8D%AE"><span class="nav-number">4.</span> <span class="nav-text">四 记录跟踪数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E8%AE%B0%E5%BD%95%E8%B7%9F%E8%B8%AA%E6%95%B0%E6%8D%AE-%E8%B7%9F%E8%B8%AAjava%E6%96%B9%E6%B3%95%E4%B8%BA%E4%BE%8B"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 记录跟踪数据(跟踪java方法为例)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E8%AE%B0%E5%BD%95%E8%B7%9F%E8%B8%AA%E7%BB%93%E6%9E%9C"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 记录跟踪结果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E8%B7%9F%E8%B8%AA%E7%BB%93%E6%9E%9C%E5%9B%BE"><span class="nav-number">4.2.1.</span> <span class="nav-text">记录跟踪结果图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%B4%E6%98%8E"><span class="nav-number">4.2.2.</span> <span class="nav-text">说明</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE"><span class="nav-number">5.</span> <span class="nav-text">五 导入导出数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 导出数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 导入数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD-%E6%A3%80%E6%9F%A5%E8%B7%9F%E8%B8%AA%E6%95%B0%E6%8D%AE"><span class="nav-number">6.</span> <span class="nav-text">六 检查跟踪数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-Analysis-%E7%AA%97%E6%A0%BC"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 Analysis 窗格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-CPU-%E6%A0%B8%E5%BF%83-CPU-cores"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 CPU 核心-CPU cores</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-%E5%B8%A7%E6%B8%B2%E6%9F%93%E6%97%B6%E9%97%B4%E8%BD%B4-Display"><span class="nav-number">6.3.</span> <span class="nav-text">6.3 帧渲染时间轴(Display)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-%E8%BF%9B%E7%A8%8B%E5%86%85%E5%AD%98-RSS"><span class="nav-number">6.4.</span> <span class="nav-text">6.4 进程内存 (RSS)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83-%E5%8F%82%E8%80%83"><span class="nav-number">7.</span> <span class="nav-text">七 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/ja/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/ja/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">投稿</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/ja/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">カテゴリー</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/ja/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/8f3990cd.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/ja/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android开发之——Profiler-CPU性能分析 | PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android开发之——Profiler-CPU性能分析<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Android%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94Profiler-CPU%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90.md" class="post-edit-link" title="編集" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2021-08-12 22:02:12" itemprop="dateCreated datePublished" datetime="2021-08-12T22:02:12+08:00">2021-08-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E5%BC%80%E5%8F%91/D-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">D-移动开发</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E5%BC%80%E5%8F%91/D-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="読書時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">読書時間 &asymp;</span>
+      <span>2 分</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-Profiler-CPU能做什么"><a href="#一-Profiler-CPU能做什么" class="headerlink" title="一 Profiler-CPU能做什么"></a>一 Profiler-CPU能做什么</h2><ul>
+<li>优化应用的 CPU 使用率能带来诸多好处，如提供更快、更顺畅的用户体验，以及延长设备电池续航时间</li>
+<li>可以使用 CPU 性能剖析器在与应用交互时实时检查应用的 CPU 使用率和线程活动，也可以检查记录的方法跟踪数据、函数跟踪数据和系统跟踪数据的详情</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="二-CPU-性能剖析器概览"><a href="#二-CPU-性能剖析器概览" class="headerlink" title="二 CPU 性能剖析器概览"></a>二 CPU 性能剖析器概览</h2><h3 id="2-1-如何打开CPU性能剖析器"><a href="#2-1-如何打开CPU性能剖析器" class="headerlink" title="2.1 如何打开CPU性能剖析器"></a>2.1 如何打开CPU性能剖析器</h3><ul>
+<li>依次选择 <strong>View &gt; Tool Windows &gt; Profiler</strong> 或点击工具栏中的 Profile图标 <img src="https://developer.android.google.cn/studio/images/buttons/toolbar-android-profiler_dark.png?hl=zh_cn" alt="img" loading="lazy"><br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-run-view.png" loading="lazy"></li>
+<li>点击 CPU 时间轴上的任意位置以打开 CPU 性能剖析器<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-cpu-open.png" loading="lazy"></li>
+</ul>
+<h3 id="2-2-CPU-性能剖析器说明"><a href="#2-2-CPU-性能剖析器说明" class="headerlink" title="2.2  CPU 性能剖析器说明"></a>2.2  CPU 性能剖析器说明</h3><h4 id="CPU剖析图"><a href="#CPU剖析图" class="headerlink" title="CPU剖析图"></a>CPU剖析图</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-cpu-explain.png" loading="lazy"></p>
+<h4 id="剖析图说明"><a href="#剖析图说明" class="headerlink" title="剖析图说明"></a>剖析图说明</h4><ol>
+<li><strong>事件时间轴</strong>：显示应用中的 Activity 在其生命周期内不断转换经历各种不同状态的过程，并指示用户与设备的交互，包括屏幕旋转事件</li>
+<li><strong>CPU 时间轴</strong>：显示应用的实时 CPU 使用率（以占总可用 CPU 时间的百分比表示）以及应用当前使用的线程总数</li>
+<li><strong>线程活动时间轴</strong>：列出属于应用进程的每个线程，并使用下面列出的颜色在时间轴上指示它们的活动<ul>
+<li><strong>绿色</strong>：表示线程处于活动状态或准备使用 CPU。也就是说，线程处于正在运行或可运行状态</li>
+<li><strong>黄色</strong>：表示线程处于活动状态，但它正在等待一项 I&#x2F;O 操作（如磁盘或网络 I&#x2F;O），然后才能完成它的工作</li>
+<li><strong>灰色</strong>：表示线程正在休眠且没有消耗任何 CPU 时间。 当线程需要访问尚不可用的资源时，就会出现这种情况</li>
+</ul>
+</li>
+</ol>
+<h2 id="三-CPU捕获信息说明"><a href="#三-CPU捕获信息说明" class="headerlink" title="三 CPU捕获信息说明"></a>三 CPU捕获信息说明</h2><h3 id="3-1-捕获信息"><a href="#3-1-捕获信息" class="headerlink" title="3.1 捕获信息"></a>3.1 捕获信息</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-cpu-record-type.png" loading="lazy"></p>
+<h3 id="3-2-捕获说明"><a href="#3-2-捕获说明" class="headerlink" title="3.2 捕获说明"></a>3.2 捕获说明</h3><ul>
+<li><strong>对 Java 方法采样</strong>：在应用的 Java 代码执行期间，频繁捕获应用的调用堆栈。分析器会比较捕获的数据集，以推导与应用的 Java 代码执行有关的时间和资源使用信息</li>
+<li><strong>跟踪 Java 方法</strong>：在运行时检测应用，从而在每个方法调用开始和结束时记录一个时间戳。系统会收集并比较这些时间戳，以生成方法跟踪数据，包括时间信息和 CPU 使用率</li>
+<li><strong>对 C&#x2F;C++ 函数采样</strong>：捕获应用的原生线程的采样跟踪数据</li>
+<li><strong>跟踪系统调用</strong>：捕获非常翔实的细节，以便您检查应用与系统资源的交互情况</li>
+</ul>
+<h2 id="四-记录跟踪数据"><a href="#四-记录跟踪数据" class="headerlink" title="四 记录跟踪数据"></a>四 记录跟踪数据</h2><h3 id="4-1-记录跟踪数据-跟踪java方法为例"><a href="#4-1-记录跟踪数据-跟踪java方法为例" class="headerlink" title="4.1 记录跟踪数据(跟踪java方法为例)"></a>4.1 记录跟踪数据(跟踪java方法为例)</h3><ul>
+<li><p>选择记录跟踪数据类型，点击Record按钮开始记录</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-cpu-java-record.png" loading="lazy"></p>
+</li>
+<li><p>记录采样一段时间后，点击Stop，停止记录跟踪<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-cpu-java-stop.png" loading="lazy"></p>
+</li>
+<li><p>停止后，进行结果数据分析<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-cpu-analysis.png" loading="lazy"></p>
+</li>
+</ul>
+<h3 id="4-2-记录跟踪结果"><a href="#4-2-记录跟踪结果" class="headerlink" title="4.2 记录跟踪结果"></a>4.2 记录跟踪结果</h3><h4 id="记录跟踪结果图"><a href="#记录跟踪结果图" class="headerlink" title="记录跟踪结果图"></a>记录跟踪结果图</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-sample-java-methods.png" loading="lazy"></p>
+<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><ol>
+<li><strong>选定范围</strong>：确定需在跟踪数据窗格中检查所记录时间的哪一部分</li>
+<li><strong>“Interaction”部分</strong>：沿着时间轴显示用户互动和应用生命周期事件</li>
+<li><strong>“Threads”部分</strong>：沿时间轴针对每一个线程显示线程状态活动（例如运行、休眠等）和<strong>调用图表</strong></li>
+<li><strong>“Analysis”窗格</strong>：显示您选择的时间范围和线程&#x2F;方法调用的跟踪数据</li>
+<li><strong>“Analysis”窗格标签页</strong>：选择如何显示跟踪数据详细信息</li>
+<li><strong>&quot;Time reference&quot;菜单</strong>：选择以下选项之一，以确定如何测量每次调用的时间信息(<strong>Wall clock time</strong>和<strong>Thread time</strong>)</li>
+<li><strong>Filter</strong>：按函数、方法、类或软件包名称过滤跟踪数据</li>
+</ol>
+<h2 id="五-导入导出数据"><a href="#五-导入导出数据" class="headerlink" title="五 导入导出数据"></a>五 导入导出数据</h2><h3 id="5-1-导出数据"><a href="#5-1-导出数据" class="headerlink" title="5.1 导出数据"></a>5.1 导出数据</h3><ul>
+<li><p>在Sessions列表中，点击会话条目右侧的 <strong>Export method trace</strong> 或 <strong>Export system trace</strong> 按钮</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-cpu-export.png" loading="lazy"></p>
+</li>
+<li><p>浏览到需保存文件的目标位置，指定文件名，然后点击 OK<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-cpu-export-position.png" loading="lazy"></p>
+</li>
+</ul>
+<h3 id="5-2-导入数据"><a href="#5-2-导入数据" class="headerlink" title="5.2 导入数据"></a>5.2 导入数据</h3><ul>
+<li><p><strong>Sessions</strong> 窗格中点击 <strong>Start new profiler session</strong> 图标 <img src="https://developer.android.google.cn/studio/images/buttons/ic_plus.png?hl=zh_cn" alt="img" loading="lazy">，然后选择 <strong>Load from file</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-cpu-import.png" loading="lazy"></p>
+</li>
+<li><p>Load from file后的效果如图<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-cpu-import-view.png" loading="lazy"></p>
+</li>
+</ul>
+<h2 id="六-检查跟踪数据"><a href="#六-检查跟踪数据" class="headerlink" title="六 检查跟踪数据"></a>六 检查跟踪数据</h2><h3 id="6-1-Analysis-窗格"><a href="#6-1-Analysis-窗格" class="headerlink" title="6.1 Analysis 窗格"></a>6.1 <strong>Analysis</strong> 窗格</h3><p><strong>Analysis</strong> 窗格中查看 <strong>Flame Chart</strong>、<strong>Top Down</strong>、<strong>Bottom Up</strong> 和 <strong>Events</strong> 标签页</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-analysis-dialog.gif" loading="lazy"></p>
+<p>各个内容说明：</p>
+<ul>
+<li><strong>Flame Chart</strong> 标签页提供一个倒置的调用图表，用来汇总完全相同的调用堆栈</li>
+<li><strong>Top Down</strong> 标签显示一个调用列表，在该列表中展开方法或函数节点会显示它的被调用方</li>
+<li><strong>Top Down</strong> 标签提供以下信息来帮助说明在每个调用上所花的 CPU 时间</li>
+<li><strong>Events</strong>表格列出了当前所选线程中的所有调用</li>
+</ul>
+<h3 id="6-2-CPU-核心-CPU-cores"><a href="#6-2-CPU-核心-CPU-cores" class="headerlink" title="6.2 CPU 核心-CPU cores"></a>6.2 CPU 核心-CPU cores</h3><p>除了 CPU 调度数据外，系统轨迹还包括按核心记录的 CPU 频率。它可以显示每个核心上的活动数量</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-system-trace-cpu-cores.png" loading="lazy"></p>
+<h3 id="6-3-帧渲染时间轴-Display"><a href="#6-3-帧渲染时间轴-Display" class="headerlink" title="6.3 帧渲染时间轴(Display)"></a>6.3 帧渲染时间轴(Display)</h3><p>您可以检查应用在主线程和 <code>RenderThread</code> 上渲染每个帧所用的时间，以调查造成界面卡顿和帧速率低的瓶颈</p>
+<p>记录轨迹后，在 <strong>Display</strong> 部分的 <strong>Frames</strong> 时间轴下查找有关每个帧的信息，如图所示(每个用时超过 16 毫秒的帧都以红色显示)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-system-trace-render-thread.png" loading="lazy"></p>
+<p>Display”部分的详细视图<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-system-trace-buffer-queue.png" loading="lazy"></p>
+<p>Display 部分中显示的跟踪记录如下</p>
+<ul>
+<li><strong>Frames</strong>：在绘制帧时。长帧（大于 16 毫秒）显示为红色</li>
+<li><strong>SurfaceFlinger</strong>：在 <a target="_blank" rel="noopener" href="https://source.android.google.cn/devices/graphics/surfaceflinger-windowmanager?hl=zh_cn#surfaceflinger">SurfaceFlinger</a> 处理帧缓冲区时。SurfaceFlinger 是负责发送要显示的缓冲区的系统进程</li>
+<li><strong>VSYNC</strong>：同步显示流水线的<a target="_blank" rel="noopener" href="https://source.android.google.cn/devices/graphics/implement-vsync?hl=zh_cn">信号</a>。错过 VSYNC 的帧将产生额外的输入延迟。这在高刷新率显示器上尤为重要</li>
+<li><strong>BufferQueue</strong>：有多少帧缓冲区排队等待 SurfaceFlinger 使用</li>
+</ul>
+<h3 id="6-4-进程内存-RSS"><a href="#6-4-进程内存-RSS" class="headerlink" title="6.4 进程内存 (RSS)"></a>6.4 进程内存 (RSS)</h3><p>对于部署到搭载 Android 9 或更高版本的设备的应用，Process Memory (RSS) 部分会显示该应用当前使用的物理内存量<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-system-trace-process-memory.png" loading="lazy"></p>
+<p>RSS各部分说明：</p>
+<ul>
+<li><strong>Total</strong>：这是您的进程当前使用的物理内存总量</li>
+<li><strong>Allocated</strong>：此计数器跟踪进程的正常内存分配目前占用了多少物理内存</li>
+<li><strong>File Mappings</strong>：此计数器会跟踪进程用于文件映射的物理内存量，也就是说，通过内存管理器从文件映射至内存区域的内存</li>
+<li><strong>Shared</strong>：此计数器跟踪在此进程和系统中其他进程之间共享的内存所用的物理内存量</li>
+</ul>
+<h2 id="七-参考"><a href="#七-参考" class="headerlink" title="七 参考"></a>七 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio/profile/cpu-profiler?hl=zh_cn">使用 CPU 性能剖析器检查 CPU 活动</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/ja/tags/Android/" rel="tag"># Android</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ja/posts/ae4435ad.html" rel="prev" title="Android开发之——性能剖析器Profiler">
+                  <i class="fa fa-angle-left"></i> Android开发之——性能剖析器Profiler
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ja/posts/95e02168.html" rel="next" title="Android开发之——Profiler-内存分析">
+                  Android开发之——Profiler-内存分析 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"29d8eef506b9c8d537105dbf78768e72"}</script>
+<script src="/ja/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

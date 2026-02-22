@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="原文请参考：Java5的新特性 序这是Java语言特性系列的第一篇，从java5的新特性开始讲起。初衷就是可以方便的查看语言的演进历史。    特性列表 泛型 枚举 装箱拆箱 变长参数 注解 foreach循环 静态导入 格式化 线程框架&#x2F;数据结构 Arrays工具类&#x2F;StringBuilder&#x2F;instrument">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java开发之——Java5的新特性">
+<meta property="og:url" content="https://pgzxc.github.io/posts/bf7a93c7.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="原文请参考：Java5的新特性 序这是Java语言特性系列的第一篇，从java5的新特性开始讲起。初衷就是可以方便的查看语言的演进历史。    特性列表 泛型 枚举 装箱拆箱 变长参数 注解 foreach循环 静态导入 格式化 线程框架&#x2F;数据结构 Arrays工具类&#x2F;StringBuilder&#x2F;instrument">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-12-14T01:04:08.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.312Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Java5">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/bf7a93c7.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/bf7a93c7.html","path":"posts/bf7a93c7.html","title":"Java开发之——Java5的新特性"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java开发之——Java5的新特性 | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text">序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%B9%E6%80%A7%E5%88%97%E8%A1%A8"><span class="nav-number">2.</span> <span class="nav-text">特性列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">泛型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%9A%E4%B8%BE"><span class="nav-number">2.2.</span> <span class="nav-text">枚举</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Autoboxing%E4%B8%8EUnboxing"><span class="nav-number">2.3.</span> <span class="nav-text">Autoboxing与Unboxing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vararg"><span class="nav-number">2.4.</span> <span class="nav-text">vararg</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#annotation"><span class="nav-number">2.5.</span> <span class="nav-text">annotation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for-in"><span class="nav-number">2.6.</span> <span class="nav-text">for&#x2F;in</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%99%E6%80%81import"><span class="nav-number">2.7.</span> <span class="nav-text">静态import</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="nav-number">2.8.</span> <span class="nav-text">格式化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#threading"><span class="nav-number">2.9.</span> <span class="nav-text">threading</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">2.10.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/bf7a93c7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java开发之——Java5的新特性 | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java开发之——Java5的新特性<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Java%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94Java5%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-12-14 09:04:08" itemprop="dateCreated datePublished" datetime="2017-12-14T09:04:08+08:00">2017-12-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/A-%E5%9F%BA%E7%A1%80%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">A-基础语言</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/A-%E5%9F%BA%E7%A1%80%E8%AF%AD%E8%A8%80/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>10 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>原文请参考：<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000004417288#articleHeader1">Java5的新特性</a></p>
+<h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>这是Java语言特性系列的第一篇，从java5的新特性开始讲起。初衷就是可以方便的查看语言的演进历史。   </p>
+<h1 id="特性列表"><a href="#特性列表" class="headerlink" title="特性列表"></a>特性列表</h1><ul>
+<li>泛型</li>
+<li>枚举</li>
+<li>装箱拆箱</li>
+<li>变长参数</li>
+<li>注解</li>
+<li>foreach循环</li>
+<li>静态导入</li>
+<li>格式化</li>
+<li>线程框架&#x2F;数据结构</li>
+<li>Arrays工具类&#x2F;StringBuilder&#x2F;instrument</li>
+</ul>
+<span id="more"></span>
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><p>所谓类型擦除指的就是Java源码中的范型信息只允许停留在编译前期，而编译后的字节码文件中将不再保留任何的范型信息。也就是说，范型信息在编译时将会被全部删除，其中范型类型的类型参数则会被替换为Object类型，并在实际使用时强制转换为指定的目标数据类型。而C++中的模板则会在编译时将模板类型中的类型参数根据所传递的指定数据类型生成相对应的目标代码。</p>
+<pre><code>Map&lt;Integer, Integer&gt; squares = new HashMap&lt;Integer, Integer&gt;();  
+</code></pre>
+<ul>
+<li><p>通配符类型：避免unchecked警告，问号表示任何类型都可以接受</p>
+<pre><code>  public void printList(List&lt;?&gt; list, PrintStream out) throws IOException
+   {
+     for (Iterator&lt;?&gt; i = list.iterator(); i.hasNext(); ) 
+      {
+         out.println(i.next().toString());
+      }
+     }
+</code></pre>
+</li>
+<li><p>限制类型</p>
+<pre><code>  public static &lt;A extends Number&gt; double sum(Box&lt;A&gt; box1,Box&lt;A&gt; box2)
+  {
+    double total = 0;
+    for (Iterator&lt;A&gt; i = box1.contents.iterator(); i.hasNext(); ) 
+      {
+          total = total + i.next().doubleValue();
+      }
+    for (Iterator&lt;A&gt; i = box2.contents.iterator(); i.hasNext(); ) 
+      {
+         total = total + i.next().doubleValue();
+      }
+           return total;
+     }
+</code></pre>
+</li>
+</ul>
+<h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h2><ul>
+<li><p>EnumMap</p>
+<pre><code>  public void testEnumMap(PrintStream out) throws IOException 
+   {
+    // Create a map with the key and a String message
+        EnumMap&lt;AntStatus, String&gt; antMessages =
+        new EnumMap&lt;AntStatus, String&gt;(AntStatus.class);
+       // Initialize the map
+      antMessages.put(AntStatus.INITIALIZING, &quot;Initializing Ant...&quot;);
+      antMessages.put(AntStatus.COMPILING,    &quot;Compiling Java classes...&quot;);
+          antMessages.put(AntStatus.COPYING,      &quot;Copying files...&quot;);
+      antMessages.put(AntStatus.JARRING,      &quot;JARring up files...&quot;);
+      antMessages.put(AntStatus.ZIPPING,      &quot;ZIPping up files...&quot;);
+      antMessages.put(AntStatus.DONE,         &quot;Build complete.&quot;);
+      antMessages.put(AntStatus.ERROR,        &quot;Error occurred.&quot;);
+      // Iterate and print messages
+      for (AntStatus status : AntStatus.values() ) 
+       {
+           out.println(&quot;For status &quot; + status + &quot;, message is: &quot; +
+            antMessages.get(status));
+       }
+     }
+</code></pre>
+</li>
+<li><p>switch枚举</p>
+<pre><code>  public String getDescription() 
+  {
+    switch(this) 
+      {
+         case ROSEWOOD:      return &quot;Rosewood back and sides&quot;;
+            case MAHOGANY:      return &quot;Mahogany back and sides&quot;;
+          case ZIRICOTE:      return &quot;Ziricote back and sides&quot;;
+          case SPRUCE:        return &quot;Sitka Spruce top&quot;;
+          case CEDAR:         return &quot;Wester Red Cedar top&quot;;
+          case AB_ROSETTE:    return &quot;Abalone rosette&quot;;
+          case AB_TOP_BORDER: return &quot;Abalone top border&quot;;
+          case IL_DIAMONDS:   
+          return &quot;Diamonds and squares fretboard inlay&quot;;
+         case IL_DOTS:
+          return &quot;Small dots fretboard inlay&quot;;
+          default: return &quot;Unknown feature&quot;;
+     }
+   }
+</code></pre>
+</li>
+</ul>
+<h2 id="Autoboxing与Unboxing"><a href="#Autoboxing与Unboxing" class="headerlink" title="Autoboxing与Unboxing"></a>Autoboxing与Unboxing</h2><p>将primitive类型转换成对应的wrapper类型：Boolean、Byte、Short、Character、Integer、Long、Float、Double   </p>
+<pre><code>public static void m1(Integer i)
+{
+   System.out.println(&quot;this is integer&quot;);
+}
+public static void m1(double d)
+{
+   System.out.println(&quot;this is double&quot;);
+}
+</code></pre>
+<h2 id="vararg"><a href="#vararg" class="headerlink" title="vararg"></a>vararg</h2><pre><code>private String print(Object... values) 
+{
+  StringBuilder sb = new StringBuilder();
+  for (Object o : values) 
+	{
+      sb.append(o.toString())
+      .append(&quot; &quot;);
+	}
+ return sb.toString();
+}
+</code></pre>
+<h2 id="annotation"><a href="#annotation" class="headerlink" title="annotation"></a>annotation</h2><ul>
+<li><p>Inherited表示该注解是否对类的子类继承的方法等起作用</p>
+<pre><code>  @Documented
+  @Inherited
+  @Retention(RetentionPolicy.RUNTIME)
+  public @interface InProgress { }
+</code></pre>
+</li>
+<li><p>指定Target</p>
+<pre><code>  @Documented
+  @Retention(RetentionPolicy.RUNTIME)
+  @Target({ElementType.TYPE,
+   ElementType.METHOD, 
+   ElementType.CONSTRUCTOR, 
+   ElementType.ANNOTATION_TYPE})
+  public @interface TODO 
+  { 
+    String value();
+  }
+</code></pre>
+</li>
+<li><p>Target类型</p>
+<pre><code>  public enum ElementType
+   {
+      /** Class, interface (including annotation type), or enum declaration */
+   TYPE,
+   /** Field declaration (includes enum constants) */
+   FIELD,
+   /** Method declaration */
+   METHOD,
+   /** Parameter declaration */
+   PARAMETER,
+   /** Constructor declaration */
+   CONSTRUCTOR,
+   /** Local variable declaration */
+   LOCAL_VARIABLE,
+   /** Annotation type declaration */
+   ANNOTATION_TYPE,
+   /** Package declaration */
+   PACKAGE
+  }
+</code></pre>
+</li>
+<li><p>rentation表示annotation是否保留在编译过的class文件中还是在运行时可读。</p>
+<pre><code>  public enum RetentionPolicy 
+  {
+    /**
+    * Annotations are to be discarded by the compiler.
+    */
+    SOURCE,
+    /**
+     * Annotations are to be recorded in the class file by the compiler
+     * but need not be retained by the VM at run time.  This is the default
+     * behavior.
+     */
+    CLASS,
+    /**
+     * Annotations are to be recorded in the class file by the compiler and
+     * retained by the VM at run time, so they may be read reflectively.
+      *
+      * @see java.lang.reflect.AnnotatedElement
+      */
+         RUNTIME
+   }
+</code></pre>
+</li>
+<li><p>通过反射获取元信息</p>
+<pre><code>  public class ReflectionTester 
+    {
+       public ReflectionTester(){}
+         public void testAnnotationPresent(PrintStream out) throws IOException 
+    {
+      Class c = Super.class;
+         boolean inProgress = c.isAnnotationPresent(InProgress.class);
+      if (inProgress) 
+       {
+            out.println(&quot;Super is In Progress&quot;);
+       } else 
+       {
+            out.println(&quot;Super is not In Progress&quot;);
+        }
+       }
+     public void testInheritedAnnotation(PrintStream out) throws IOException
+   {
+      Class c = Sub.class;
+      boolean inProgress = c.isAnnotationPresent(InProgress.class);
+         if (inProgress)
+       {
+           out.println(&quot;Sub is In Progress&quot;);
+       } else 
+       {
+            out.println(&quot;Sub is not In Progress&quot;);
+       }
+      }
+     public void testGetAnnotation(PrintStream out) throws IOException,NoSuchMethodException 
+     {
+       Class c = AnnotationTester.class;
+       AnnotatedElement element = c.getMethod(&quot;calculateInterest&quot;, 
+                            float.class, float.class);
+          GroupTODO groupTodo = element.getAnnotation(GroupTODO.class);
+       String assignedTo = groupTodo.assignedTo();
+       out.println(&quot;TODO Item on Annotation Tester is assigned to: &#39;&quot; + 
+       assignedTo + &quot;&#39;&quot;);
+        }
+    public void printAnnotations(AnnotatedElement e, PrintStream out)throws IOException 
+   {
+      out.printf(&quot;Printing annotations for &#39;%s&#39;%n%n&quot;, e.toString());
+      Annotation[] annotations = e.getAnnotations();
+      for (Annotation a : annotations) 
+      {
+       out.printf(&quot;    * Annotation &#39;%s&#39; found%n&quot;, a.annotationType().getName());
+       }
+      }
+    public static void main(String[] args) 
+    {
+       try 
+         {
+               ReflectionTester tester = new ReflectionTester();
+               tester.testAnnotationPresent(System.out);
+                 tester.testInheritedAnnotation(System.out);
+              tester.testGetAnnotation(System.out);
+               Class c = AnnotationTester.class;
+               AnnotatedElement element = c.getMethod(&quot;calculateInterest&quot;, 
+                              float.class, float.class);      
+               tester.printAnnotations(element, System.out);
+         }catch (Exception e) 
+          {
+               e.printStackTrace();
+          } 
+      }
+   }
+</code></pre>
+</li>
+</ul>
+<h2 id="for-in"><a href="#for-in" class="headerlink" title="for&#x2F;in"></a>for&#x2F;in</h2><p>for&#x2F;in循环办不到的事情：</p>
+<ul>
+<li>遍历同时获取index</li>
+<li>集合逗号拼接时去掉最后一个</li>
+<li>遍历的同时删除元素</li>
+</ul>
+<h2 id="静态import"><a href="#静态import" class="headerlink" title="静态import"></a>静态import</h2><pre><code>import static java.lang.System.err;
+import static java.lang.System.out;
+import java.io.IOException;
+import java.io.PrintStream;
+public class StaticImporter 
+  {
+		public static void writeError(PrintStream err, String msg) throws IOException 
+		{
+			// Note that err in the parameter list overshadows the imported err
+			err.println(msg); 
+			}
+	public static void main(String[] args) 
+  {
+    if (args.length &lt; 2) 
+	 {
+  		err.println(&quot;Incorrect usage: java com.oreilly.tiger.ch08 [arg1] [arg2]&quot;);
+ 		 return;
+	}
+	out.println(&quot;Good morning, &quot; + args[0]);
+	out.println(&quot;Have a &quot; + args[1] + &quot; day!&quot;);
+	try 
+	{
+      writeError(System.out, &quot;Error occurred.&quot;);
+	} catch (IOException e) 
+	{
+  	  e.printStackTrace();
+	}
+		}
+}
+</code></pre>
+<h2 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h2><pre><code>/**
+	* java.text.DateFormat
+	* java.text.SimpleDateFormat
+	* java.text.MessageFormat
+	* java.text.NumberFormat
+	* java.text.ChoiceFormat
+	* java.text.DecimalFormat
+	*/
+public class FormatTester 
+{
+    public static void printf() 
+		{
+   		    //printf
+    		String filename = &quot;this is a file&quot;;
+    	try {
+       		    File file = new File(filename);
+        	    FileReader fileReader = new FileReader(file);
+        		BufferedReader reader = new BufferedReader(fileReader);
+        		String line;
+        		int i = 1;
+        		while ((line = reader.readLine()) != null) 
+					{
+           			   System.out.printf(&quot;Line %d: %s%n&quot;, i++, line);
+       				}
+    		} catch (Exception e) 
+			{
+       			 System.err.printf(&quot;Unable to open file named &#39;%s&#39;: %s&quot;,
+                filename, e.getMessage());
+    		}
+		}
+	public static void stringFormat() 
+		{
+    		// Format a string containing a date.
+    		Calendar c = new GregorianCalendar(1995, MAY, 23);
+    		String s = String.format(&quot;Duke&#39;s Birthday: %1$tm %1$te,%1$tY&quot;, c);
+    		// -&gt; s == &quot;Duke&#39;s Birthday: May 23, 1995&quot;
+    		System.out.println(s);
+		}
+	   public static void formatter() 
+		{
+   			 StringBuilder sb = new StringBuilder();
+    		// Send all output to the Appendable object sb
+    		Formatter formatter = new Formatter(sb, Locale.US);
+    		// Explicit argument indices may be used to re-order output.
+    		formatter.format(&quot;%4$2s %3$2s %2$2s %1$2s&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;);
+    		// -&gt; &quot; d  c  b  a&quot;
+    		// Optional locale as the first argument can be used to get
+   		   // locale-specific formatting of numbers.  The precision and width can be
+    		// given to round and align the value.
+    		formatter.format(Locale.FRANCE, &quot;e = %+10.4f&quot;, Math.E);
+    		// -&gt; &quot;e =    +2,7183&quot;
+    		// The &#39;(&#39; numeric flag may be used to format negative numbers with
+    		// parentheses rather than a minus sign.  Group separators are
+   			 // automatically inserted.
+    		formatter.format(&quot;Amount gained or lost since last statement: $ %(,.2f&quot;,
+            6217.58);
+    		// -&gt; &quot;Amount gained or lost since last statement: $ (6,217.58)&quot;
+			 }
+	public static void messageFormat() 
+		{
+    		String msg = &quot;欢迎光临，当前（{0}）等待的业务受理的顾客有{1}位，请排号办理业务！&quot;;
+    		MessageFormat mf = new MessageFormat(msg);
+    		String fmsg = mf.format(new Object[]{new Date(), 35});
+    		System.out.println(fmsg);
+		}
+		 public static void dateFormat()
+		{
+   			String str = &quot;2010-1-10 17:39:21&quot;;
+    		SimpleDateFormat format = new SimpleDateFormat(&quot;yyyyMMddHHmmss&quot;);
+    		try
+			 {
+       			 System.out.println(format.format(format.parse(str)));
+    		 } catch (ParseException e) 
+			 {
+        		// TODO Auto-generated catch block
+        		e.printStackTrace();
+   			 }
+			 }
+	public static void main(String[] args) 
+		{
+    		formatter();
+    		stringFormat();
+    		messageFormat();
+    		dateFormat();
+    		printf();
+			 }
+}
+</code></pre>
+<h2 id="threading"><a href="#threading" class="headerlink" title="threading"></a>threading</h2><ul>
+<li><p>uncaught exception</p>
+<pre><code>  public class BubbleSortThread extends Thread 
+      {
+            private int[] numbers;
+            public BubbleSortThread(int[] numbers) 
+              {
+                      setName(&quot;Simple Thread&quot;);
+                  setUncaughtExceptionHandler(
+                   new SimpleThreadExceptionHandler());
+                  this.numbers = numbers;
+        }
+    public void run() 
+      {
+          int index = numbers.length;
+          boolean finished = false;
+             while (!finished) 
+              {
+                    index--;
+                    finished = true;
+                    for (int i=0; i&lt;index; i++) 
+                      {
+                              // Create error condition
+                          if (numbers[i+1] &lt; 0) 
+                              {
+                                    throw new IllegalArgumentException(
+                          &quot;Cannot pass negative numbers into this thread!&quot;);
+                          }
+                          if (numbers[i] &gt; numbers[i+1]) 
+                          {
+                               // swap
+                                int temp = numbers[i];
+                                numbers[i] = numbers[i+1];
+                               numbers[i+1] = temp;
+                                 finished = false;
+                              }
+                }
+      }    
+     }
+   }
+   class SimpleThreadExceptionHandler implements
+  Thread.UncaughtExceptionHandler 
+  {
+        public void uncaughtException(Thread t, Throwable e)
+           {
+               System.err.printf(&quot;%s: %s at line %d of %s%n&quot;,
+              t.getName(), 
+                 e.toString(),
+              e.getStackTrace()[0].getLineNumber(),
+              e.getStackTrace()[0].getFileName());
+             }
+  }
+</code></pre>
+</li>
+<li><p>blocking queue</p>
+<pre><code>  public class Producer extends Thread 
+      {
+            private BlockingQueue q;
+            private PrintStream out;
+            public Producer(BlockingQueue q, PrintStream out) 
+           {
+              setName(&quot;Producer&quot;);
+              this.q = q;
+              this.out = out;
+            }
+           public void run() 
+              {
+                       try 
+                      {
+                           while (true) {
+                           q.put(produce());
+                       }
+              } catch (InterruptedException e) 
+              {
+                    out.printf(&quot;%s interrupted: %s&quot;, getName(), e.getMessage());
+              }
+        }
+    private String produce() 
+      {
+             while (true)
+           {
+                double r = Math.random();
+                // Only goes forward 1/10 of the time
+                if ((r*100) &lt; 10) 
+                  {
+                          String s = String.format(&quot;Inserted at %tc&quot;, new Date());
+                  return s;
+                   }
+          }
+        }
+  }
+</code></pre>
+</li>
+<li><p>线程池</p>
+<p>  著名的JUC类库。</p>
+<ul>
+<li>每次提交任务时，如果线程数还没达到coreSize就创建新线程并绑定该任务。 所以第coreSize次提交任务后线程总数必达到coreSize，不会重用之前的空闲线程。</li>
+<li>程数达到coreSize后，新增的任务就放到工作队列里，而线程池里的线程则努力的使用take()从工作队列里拉活来干。</li>
+<li>如果队列是个有界队列，又如果线程池里的线程不能及时将任务取走，工作队列可能会满掉，插入任务就会失败，此时线程池就会紧急的再创建新的临时线程来补救。</li>
+<li>临时线程使用poll(keepAliveTime，timeUnit)来从工作队列拉活，如果时候到了仍然两手空空没拉到活，表明它太闲了，就会被解雇掉。</li>
+<li>如果core线程数＋临时线程数 &gt;maxSize，则不能再创建新的临时线程了，转头执行RejectExecutionHanlder。默认的AbortPolicy抛RejectedExecutionException异常，其他选择包括静默放弃当前任务(Discard)，放弃工作队列里最老的任务(DisacardOldest)，或由主线程来直接执行(CallerRuns)，或你自己发挥想象力写的一个。</li>
+</ul>
+</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li>Arrays</li>
+</ul>
+<p>Arrays.sort(myArray);<br>Arrays.toString(myArray)<br>Arrays.binarySearch(myArray, 98)<br>Arrays.deepToString(ticTacToe)<br>Arrays.deepEquals(ticTacToe, ticTacToe3)</p>
+<ul>
+<li>Queue</li>
+</ul>
+<p>避开集合的add&#x2F;remove操作，使用offer、poll操作（不抛异常）<br>Queue q &#x3D; new LinkedList(); 采用它来实现queue     </p>
+<ul>
+<li>Override返回类型<br>  支持协变返回</li>
+<li>单线程StringBuilder<br>线程不安全，在单线程下替换string buffer提高性能  </li>
+<li>java.lang.instrument</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java5/" rel="tag"># Java5</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/29a50c49.html" rel="prev" title="Android开发之——AAPT2 error">
+                  <i class="fa fa-angle-left"></i> Android开发之——AAPT2 error
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/2b0ff09.html" rel="next" title="Java开发之——Java6的新特性">
+                  Java开发之——Java6的新特性 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"e05f53a19969191dfc7304873528420d"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

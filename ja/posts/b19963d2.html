@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ja/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ja/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ja/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/ja/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/ja/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/ja/","images":"/ja/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索...","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/ja/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/ja/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述 泛型函数 泛型约束 泛型接口 泛型类 泛型工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript开发之——高级类型-泛型(6)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/b19963d2.html">
+<meta property="og:site_name" content="PGzxc (Japanese)">
+<meta property="og:description" content="一 概述 泛型函数 泛型约束 泛型接口 泛型类 泛型工具">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2023-04-27T04:49:57.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.105Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="TypeScript">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/b19963d2.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"ja","comments":true,"permalink":"https://pgzxc.github.io/posts/b19963d2.html","path":"posts/b19963d2.html","title":"TypeScript开发之——高级类型-泛型(6)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>TypeScript开发之——高级类型-泛型(6) | PGzxc (Japanese)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/utils.js" defer></script><script src="/ja/js/motion.js" defer></script><script src="/ja/js/sidebar.js" defer></script><script src="/ja/js/next-boot.js" defer></script><script src="/ja/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/ja/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/ja/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/ja/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/ja/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/ja/atom.xml" title="PGzxc (Japanese)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションを切り替える" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/ja/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (Japanese)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">本から学んだことは表面的なもの；自分で体験しなければならない</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="検索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/ja/" rel="section"><i class="fa fa-bell fa-fw"></i>ホーム</a></li><li class="menu-item menu-item-nav"><a href="/ja/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>ナビゲーション</a></li><li class="menu-item menu-item-categories"><a href="/ja/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリー<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/ja/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/ja/links/" rel="section"><i class="fa fa-link fa-fw"></i>リンク</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>検索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="検索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          目次
+        </li>
+        <li class="sidebar-nav-overview">
+          サイト概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E6%B3%9B%E5%9E%8B%E5%87%BD%E6%95%B0%E2%80%94%E2%80%94%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%BC%95%E5%85%A5%E6%B3%9B%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">二 泛型函数——为什么需要引入泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%BC%A0%E5%85%A5%E4%BB%80%E4%B9%88%E8%BF%94%E5%9B%9E%E4%BB%80%E4%B9%88%E2%80%94%E5%9B%BA%E5%AE%9A%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 传入什么返回什么—固定类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E4%BC%A0%E5%85%A5%E4%BB%80%E4%B9%88%E8%BF%94%E5%9B%9E%E4%BB%80%E4%B9%88%E2%80%94%E4%B8%8D%E5%9B%BA%E5%AE%9A%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 传入什么返回什么—不固定类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%B3%9B%E5%9E%8B%E5%87%BD%E6%95%B0"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 泛型函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E8%B0%83%E7%94%A8%E6%B3%9B%E5%9E%8B%E5%87%BD%E6%95%B0"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 调用泛型函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E7%AE%80%E5%8C%96%E8%B0%83%E7%94%A8%E6%B3%9B%E5%9E%8B%E5%87%BD%E6%95%B0"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 简化调用泛型函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E6%B3%9B%E5%9E%8B%E7%BA%A6%E6%9D%9F"><span class="nav-number">3.</span> <span class="nav-text">三 泛型约束</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%B3%9B%E5%9E%8B%E7%BA%A6%E6%9D%9F"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 泛型约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%B3%9B%E5%9E%8B%E7%BA%A6%E6%9D%9F%E6%94%B6%E7%BC%A9%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 泛型约束收缩类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%87%E5%AE%9A%E6%9B%B4%E5%8A%A0%E5%85%B7%E4%BD%93%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.2.1.</span> <span class="nav-text">指定更加具体的类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%BA%A6%E6%9D%9F"><span class="nav-number">3.2.2.</span> <span class="nav-text">添加约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E6%B3%9B%E5%9E%8B%E5%8F%98%E9%87%8F"><span class="nav-number">3.2.3.</span> <span class="nav-text">多个泛型变量</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E6%B3%9B%E5%9E%8B%E6%8E%A5%E5%8F%A3"><span class="nav-number">4.</span> <span class="nav-text">四 泛型接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%B3%9B%E5%9E%8B%E6%8E%A5%E5%8F%A3"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 泛型接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E6%B3%9B%E5%9E%8B%E6%8E%A5%E5%8F%A3%E7%A4%BA%E4%BE%8B"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 泛型接口示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-JS-%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E5%9C%A8-TS-%E4%B8%AD%E5%B0%B1%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B3%9B%E5%9E%8B%E6%8E%A5%E5%8F%A3"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 JS 中的数组在 TS 中就是一个泛型接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E6%B3%9B%E5%9E%8B%E7%B1%BB"><span class="nav-number">5.</span> <span class="nav-text">五 泛型类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E6%B3%9B%E5%9E%8B%E7%B1%BB%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 泛型类的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E8%B0%83%E7%94%A8%E6%B3%9B%E5%9E%8B%E7%B1%BB"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 调用泛型类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD-%E6%B3%9B%E5%9E%8B%E5%B7%A5%E5%85%B7"><span class="nav-number">6.</span> <span class="nav-text">六 泛型工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-Partial"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 Partial&lt;Type&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-Readonly"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 Readonly&lt;Type&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-Pick"><span class="nav-number">6.3.</span> <span class="nav-text">6.3 Pick&lt;Type, Keys&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-Record"><span class="nav-number">6.4.</span> <span class="nav-text">6.4 Record&lt;Keys, Type&gt;</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/ja/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/ja/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">投稿</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/ja/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">カテゴリー</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/ja/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/b19963d2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/ja/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="TypeScript开发之——高级类型-泛型(6) | PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          TypeScript开发之——高级类型-泛型(6)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/TypeScript%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94%E9%AB%98%E7%BA%A7%E7%B1%BB%E5%9E%8B-%E6%B3%9B%E5%9E%8B(6).md" class="post-edit-link" title="編集" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2023-04-27 12:49:57" itemprop="dateCreated datePublished" datetime="2023-04-27T12:49:57+08:00">2023-04-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E5%BC%80%E5%8F%91/C-%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">C-前端开发</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E5%BC%80%E5%8F%91/C-%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="読書時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">読書時間 &asymp;</span>
+      <span>5 分</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ul>
+<li>泛型函数</li>
+<li>泛型约束</li>
+<li>泛型接口</li>
+<li>泛型类</li>
+<li>泛型工具</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="二-泛型函数——为什么需要引入泛型"><a href="#二-泛型函数——为什么需要引入泛型" class="headerlink" title="二 泛型函数——为什么需要引入泛型"></a>二 泛型函数——为什么需要引入泛型</h2><h3 id="2-1-传入什么返回什么—固定类型"><a href="#2-1-传入什么返回什么—固定类型" class="headerlink" title="2.1 传入什么返回什么—固定类型"></a>2.1 传入什么返回什么—固定类型</h3><p>需求：创建一个 id 函数，传入什么数据就返回该数据本身（也就是说，参数和返回值类型相同）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function id(value:number):number &#123;return value&#125;</span><br></pre></td></tr></table></figure>
+
+<p>比如，id(10) 调用以上函数就会直接返回 10 本身。但是，该函数只接收数值类型，无法用于其他类型</p>
+<h3 id="2-2-传入什么返回什么—不固定类型"><a href="#2-2-传入什么返回什么—不固定类型" class="headerlink" title="2.2 传入什么返回什么—不固定类型"></a>2.2 传入什么返回什么—不固定类型</h3><p>为了能让函数能够接受任意类型，可以将参数类型修改为 any。但是，这样就失去了 TS 的类型保护，类型不安全</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function id(value:any):any &#123;return value&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-泛型函数"><a href="#2-3-泛型函数" class="headerlink" title="2.3 泛型函数"></a>2.3 泛型函数</h3><p>创建泛型函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function id&lt;Type&gt;(value:Type):Type &#123;return value&#125;</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>语法：在函数名称的后面添加 &lt;&gt;（尖括号），尖括号中添加类型变量，比如此处的 Type</li>
+<li>类型变量 Type，是一种特殊类型的变量，它处理类型而不是值</li>
+<li>该类型变量相当于一个类型容器，能够捕获用户提供的类型（具体是什么类型由用户调用该函数时指定）</li>
+<li>因为 Type 是类型，因此可以将其作为函数参数和返回值的类型，表示参数和返回值具有相同的类型</li>
+<li>类型变量 Type，可以是任意合法的变量名称</li>
+</ul>
+<p>泛型好处</p>
+<ul>
+<li>泛型在保证类型安全（不丢失类型信息）的同时，可以让函数等与多种不同的类型一起工作，灵活可复用</li>
+<li>实际上，在 C＃和 Java 等编程语言中，泛型都是用来实现可复用组件功能的主要工具之一</li>
+</ul>
+<h3 id="2-4-调用泛型函数"><a href="#2-4-调用泛型函数" class="headerlink" title="2.4 调用泛型函数"></a>2.4 调用泛型函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function id&lt;Type&gt;(value:Type):Type &#123;return value&#125;</span><br><span class="line"></span><br><span class="line">const num=id&lt;number&gt;(10)</span><br><span class="line">const str=id&lt;string&gt;(&#x27;a&#x27;)</span><br><span class="line">const ret =id&lt;boolean&gt;(false)</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>语法：在函数名称的后面添加 &lt;&gt;（尖括号），尖括号中指定具体的类型，比如，此处的 numbe</li>
+<li>当传入类型 number 后，这个类型就会被函数声明时指定的类型变量 Type 捕获到</li>
+<li>此时，Type 的类型就是 number，所以，函数 id 参数和返回值的类型也都是 number</li>
+<li>同样，如果传入类型 string，函数 id 参数和返回值的类型就都是 string</li>
+<li>这样，通过泛型就做到了让 id 函数与多种不同的类型一起工作，实现了复用的同时保证了类型安全</li>
+</ul>
+<h3 id="2-5-简化调用泛型函数"><a href="#2-5-简化调用泛型函数" class="headerlink" title="2.5 简化调用泛型函数"></a>2.5 简化调用泛型函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function id&lt;Type&gt;(value:Type):Type &#123;return value&#125;</span><br><span class="line"></span><br><span class="line">const num2=id(10)</span><br><span class="line">const str2=id(&#x27;a&#x27;)</span><br><span class="line">const ret2=id(false)</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>在调用泛型函数时，可以省略 &lt;类型&gt; 来简化泛型函数的调用</li>
+<li>此时，TS 内部会采用一种叫做类型参数推断的机制，来根据传入的实参自动推断出类型变量 Type 的类型</li>
+<li>比如，传入实参 10，TS 会自动推断出变量 num 的类型 number，并作为 Type 的类型</li>
+<li>推荐：使用这种简化的方式调用泛型函数，使代码更短，更易于阅读</li>
+<li>说明：当编译器无法推断类型或者推断的类型不准确时，就需要显式地传入类型参数</li>
+</ul>
+<h2 id="三-泛型约束"><a href="#三-泛型约束" class="headerlink" title="三 泛型约束"></a>三 泛型约束</h2><h3 id="3-1-泛型约束"><a href="#3-1-泛型约束" class="headerlink" title="3.1 泛型约束"></a>3.1 泛型约束</h3><p>泛型约束：默认情况下，泛型函数的类型变量 Type 可以代表多个类型，这导致无法访问任何属性</p>
+<p>比如，id(&#39;a&#39;) 调用函数时获取参数的长度：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function id&lt;Type&gt;(value: Type): Type &#123;</span><br><span class="line">    console.log(value.length)</span><br><span class="line">    return value</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>Type 可以代表任意类型，无法保证一定存在 length 属性，比如 number 类型就没有 length</li>
+<li>此时，就需要为泛型添加约束来收缩类型（缩窄类型取值范围）</li>
+</ul>
+<h3 id="3-2-泛型约束收缩类型"><a href="#3-2-泛型约束收缩类型" class="headerlink" title="3.2 泛型约束收缩类型"></a>3.2 泛型约束收缩类型</h3><p>添加泛型约束收缩类型，主要有以下两种方式：1 指定更加具体的类型 2 添加约束</p>
+<h4 id="指定更加具体的类型"><a href="#指定更加具体的类型" class="headerlink" title="指定更加具体的类型"></a>指定更加具体的类型</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function id&lt;Type&gt;(value: Type[]): Type[] &#123;</span><br><span class="line">    console.log(value.length)</span><br><span class="line">    return value</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>说明：比如，将类型修改为 Type[]（Type 类型的数组），因为只要是数组就一定存在 length 属性，因此就可以访问了</p>
+<h4 id="添加约束"><a href="#添加约束" class="headerlink" title="添加约束"></a>添加约束</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">interface ILength &#123; length: number &#125;</span><br><span class="line"></span><br><span class="line">function id&lt;Type extends ILength&gt;(value: Type): Type &#123;</span><br><span class="line">    console.log(value.length)</span><br><span class="line">    return value</span><br><span class="line">&#125;</span><br><span class="line">//正确</span><br><span class="line">id([&#x27;a&#x27;,&#x27;b&#x27;])</span><br><span class="line">id(&#x27;abc&#x27;)</span><br><span class="line">id(&#123;length:10,name:&#x27;jack&#x27;&#125;)</span><br><span class="line">//错误-没有length属性</span><br><span class="line">id(123)</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>创建描述约束的接口 ILength，该接口要求提供 length 属性</li>
+<li>通过 extends 关键字使用该接口，为泛型（类型变量）添加约束</li>
+<li>该约束表示：传入的类型必须具有 length 属性</li>
+<li>注意：传入的实参（比如，数组）只要有 length 属性即可，这也符合前面讲到的接口的类型兼容性</li>
+</ul>
+<h4 id="多个泛型变量"><a href="#多个泛型变量" class="headerlink" title="多个泛型变量"></a>多个泛型变量</h4><p>泛型的类型变量可以有多个，并且类型变量之间还可以约束（比如，第二个类型变量受第一个类型变量约束）。<br>比如，创建一个函数来获取对象中属性的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function getProp&lt;Type, Key extends keyof Type&gt;(obj: Type, key: Key) &#123;</span><br><span class="line">    return obj[key]</span><br><span class="line">&#125;</span><br><span class="line">//正确</span><br><span class="line">getProp(&#123;name:&#x27;jack&#x27;,age:18&#125;,&#x27;age&#x27;)</span><br><span class="line">getProp(&#123;name:&#x27;jack&#x27;,age:18&#125;,&#x27;name&#x27;)</span><br><span class="line">//错误</span><br><span class="line">getProp(&#123;name:&#x27;jack&#x27;,age:18&#125;,&#x27;age1&#x27;)</span><br><span class="line"></span><br><span class="line">//调用系统默认的属性</span><br><span class="line">getProp(18,&#x27;toFixed&#x27;)</span><br><span class="line">getProp(&#x27;abc&#x27;,&#x27;split&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>添加了第二个类型变量 Key，两个类型变量之间使用（,）逗号分隔</li>
+<li>keyof 关键字接收一个对象类型，生成其键名称（可能是字符串或数字）的联合类型</li>
+<li>本示例中 keyof Type 实际上获取的是 person 对象所有键的联合类型，也就是：&#39;name&#39; | &#39;age&#39;</li>
+<li>类型变量 Key 受 Type 约束，可以理解为：Key 只能是 Type 所有键中的任意一个，或者说只能访问对象中存在的属性</li>
+</ul>
+<h2 id="四-泛型接口"><a href="#四-泛型接口" class="headerlink" title="四 泛型接口"></a>四 泛型接口</h2><h3 id="4-1-泛型接口"><a href="#4-1-泛型接口" class="headerlink" title="4.1 泛型接口"></a>4.1 泛型接口</h3><p>泛型接口：接口也可以配合泛型来使用，以增加其灵活性，增强其复用性</p>
+<h3 id="4-2-泛型接口示例"><a href="#4-2-泛型接口示例" class="headerlink" title="4.2 泛型接口示例"></a>4.2 泛型接口示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">interface IDFunc&lt;Type&gt; &#123;</span><br><span class="line">    id: (value: Type) =&gt; Type</span><br><span class="line">    ids: () =&gt; Type[]</span><br><span class="line">&#125;</span><br><span class="line">let obj: IDFunc&lt;number&gt; = &#123;</span><br><span class="line">    id(value) &#123;</span><br><span class="line">        return value</span><br><span class="line">    &#125;,</span><br><span class="line">    ids() &#123;</span><br><span class="line">        return []</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>在接口名称的后面添加 &lt;类型变量&gt;，那么，这个接口就变成了泛型接口</li>
+<li>接口的类型变量，对接口中所有其他成员可见，也就是接口中所有成员都可以使用类型变量</li>
+<li>使用泛型接口时，需要显式指定具体的类型（比如，此处的 IdFunc&lt;nunber&gt;）</li>
+<li>此时，id 方法的参数和返回值类型都是 number；ids 方法的返回值类型是 number[]</li>
+</ul>
+<h3 id="4-3-JS-中的数组在-TS-中就是一个泛型接口"><a href="#4-3-JS-中的数组在-TS-中就是一个泛型接口" class="headerlink" title="4.3 JS 中的数组在 TS 中就是一个泛型接口"></a>4.3 JS 中的数组在 TS 中就是一个泛型接口</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const strs = [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]</span><br><span class="line">strs.forEach(item =&gt; &#123; &#125;)</span><br><span class="line">const num = [1, 3, 5]</span><br><span class="line">num.forEach(item =&gt; &#123; &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>当我们在使用数组时，TS 会根据数组的不同类型，来自动将类型变量设置为相应的类型</li>
+<li>可以通过 Ctrl + 鼠标左键（Mac：option + 鼠标左键）来查看具体的类型信息</li>
+</ul>
+<h2 id="五-泛型类"><a href="#五-泛型类" class="headerlink" title="五 泛型类"></a>五 泛型类</h2><h3 id="5-1-泛型类的创建"><a href="#5-1-泛型类的创建" class="headerlink" title="5.1 泛型类的创建"></a>5.1 泛型类的创建</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class GenericNumber&lt;NumType&gt;&#123;</span><br><span class="line">    defaultValue: NumType</span><br><span class="line">    add: (x: NumType, y: NumType) =&gt; NumType</span><br><span class="line">    constructor(value:NumType)&#123;</span><br><span class="line">        this.defaultValue=value</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>类似于泛型接口，在 class 名称后面添加 &lt;类型变量&gt;，这个类就变成了泛型类</li>
+<li>此处的 add 方法，采用的是箭头函数形式的类型书写方式</li>
+</ul>
+<h3 id="5-2-调用泛型类"><a href="#5-2-调用泛型类" class="headerlink" title="5.2 调用泛型类"></a>5.2 调用泛型类</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const myNum = new GenericNumber&lt;number&gt;(100)</span><br><span class="line">myNum.defaultValue = 10</span><br></pre></td></tr></table></figure>
+
+<p>说明：类似于泛型接口，在创建 class 实例时，在类名后面通过 &lt;类型&gt; 来指定明确的类型</p>
+<h2 id="六-泛型工具"><a href="#六-泛型工具" class="headerlink" title="六 泛型工具"></a>六 泛型工具</h2><p>泛型工具类型：TS 内置了一些常用的工具类型，来简化 TS 中的一些常见操作。<br>说明：它们都是基于泛型实现的（泛型适用于多种类型，更加通用），并且是内置的，可以直接在代码中使用。<br>这些工具类型有很多，主要学习以下几个：</p>
+<ul>
+<li>Partial&lt;Type&gt;</li>
+<li>Readonly&lt;Type&gt;</li>
+<li>Pick&lt;Type, Keys&gt;</li>
+<li>Record&lt;Keys, Type&gt;</li>
+</ul>
+<h3 id="6-1-Partial"><a href="#6-1-Partial" class="headerlink" title="6.1 Partial&lt;Type&gt;"></a>6.1 Partial&lt;Type&gt;</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">interface Props &#123;</span><br><span class="line">    id: string</span><br><span class="line">    children: number[]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type PartialProps = Partial&lt;Props&gt;</span><br><span class="line">//所有属性都不为空</span><br><span class="line">let p1: Props = &#123;</span><br><span class="line">    id: &#x27;1&#x27;,</span><br><span class="line">    children: [1]</span><br><span class="line">&#125;</span><br><span class="line">//默认为空</span><br><span class="line">let p2: PartialProps = &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>泛型工具类型 - Partial&lt;Type&gt; 用来构造（创建）一个类型，将 Type 的所有属性设置为可选</li>
+<li>构造出来的新类型 PartialProps 结构和 Props 相同，但所有属性都变为可选的。</li>
+</ul>
+<h3 id="6-2-Readonly"><a href="#6-2-Readonly" class="headerlink" title="6.2 Readonly&lt;Type&gt;"></a>6.2 Readonly&lt;Type&gt;</h3><p>泛型工具类型 - Readonly&lt;Type&gt; 用来构造一个类型，将 Type 的所有属性都设置为 readonly（只读）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">interface Props &#123;</span><br><span class="line">    id: string</span><br><span class="line">    children: number[]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type ReadonlyProps = Readonly&lt;Props&gt;</span><br><span class="line"></span><br><span class="line">let p1: ReadonlyProps = &#123;</span><br><span class="line">    id: &#x27;1&#x27;,</span><br><span class="line">    children: []</span><br><span class="line">&#125;</span><br><span class="line">//错误，无法赋值</span><br><span class="line">p1.id = &#x27;2&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>构造出来的新类型 ReadonlyProps 结构和 Props 相同，但所有属性都变为只读的</li>
+<li>当我们想重新给 id 属性赋值时，就会报错：无法分配到 &quot;id&quot; ，因为它是只读属性</li>
+</ul>
+<h3 id="6-3-Pick"><a href="#6-3-Pick" class="headerlink" title="6.3 Pick&lt;Type, Keys&gt;"></a>6.3 Pick&lt;Type, Keys&gt;</h3><p>泛型工具类型 - Pick&lt;Type, Keys&gt; 从 Type 中选择一组属性来构造新类型</p>
+<p>示例代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">interface Props &#123;</span><br><span class="line">    id: string</span><br><span class="line">    title: string</span><br><span class="line">    children: number[]</span><br><span class="line">&#125;</span><br><span class="line">type PickProps = Pick&lt;Props, &#x27;id&#x27; | &#x27;title&#x27;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>Pick 工具类型有两个类型变量：1 表示选择谁的属性 2 表示选择哪几个属性</li>
+<li>其中第二个类型变量，如果只选择一个则只传入该属性名即可</li>
+<li>第二个类型变量传入的属性只能是第一个类型变量中存在的属性</li>
+<li>构造出来的新类型 PickProps，只有 id 和 title 两个属性类型</li>
+</ul>
+<h3 id="6-4-Record"><a href="#6-4-Record" class="headerlink" title="6.4 Record&lt;Keys, Type&gt;"></a>6.4 Record&lt;Keys, Type&gt;</h3><p>泛型工具类型 - Record&lt;Keys,Type&gt; 构造一个对象类型，属性键为 Keys，属性类型为 Type</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">type RecordObj = Record&lt;&#x27;a&#x27; | &#x27;b&#x27; | &#x27;c&#x27;, string[]&gt;</span><br><span class="line"></span><br><span class="line">let obj: RecordObj = &#123;</span><br><span class="line">    a: [&#x27;a&#x27;],</span><br><span class="line">    b: [&#x27;b&#x27;],</span><br><span class="line">    c: [&#x27;c&#x27;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>Record 工具类型有两个类型变量：1 表示对象有哪些属性 2 表示对象属性的类型</li>
+<li>构建的新对象类型 RecordObj 表示：这个对象有三个属性分别为a&#x2F;b&#x2F;c，属性值的类型都是 string[]</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/ja/tags/TypeScript/" rel="tag"># TypeScript</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ja/posts/fbcbde59.html" rel="prev" title="TypeScript开发之——高级类型-交叉类型(5)">
+                  <i class="fa fa-angle-left"></i> TypeScript开发之——高级类型-交叉类型(5)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ja/posts/50587b95.html" rel="next" title="TypeScript开发之——高级类型-索引签名类型(7)">
+                  TypeScript开发之——高级类型-索引签名类型(7) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"d4bb4434f86be57d7251e91eafd3efdc"}</script>
+<script src="/ja/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

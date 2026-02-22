@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述 什么是 React Native 的“桥接”机制？它如何在 JavaScript 和原生代码之间进行通信？ 如何创建和使用原生模块？举例说明如何从 Java&#x2F;Kotlin (Android) 或 Objective-C&#x2F;Swift (iOS) 调用原生方法。 如何在 React Native 中使用第三方原生库？如何处理原生库的版本兼容性问题？ React Nativ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Native面试题2025——原生模块与桥接(5)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/c9b515d1.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="一 概述 什么是 React Native 的“桥接”机制？它如何在 JavaScript 和原生代码之间进行通信？ 如何创建和使用原生模块？举例说明如何从 Java&#x2F;Kotlin (Android) 或 Objective-C&#x2F;Swift (iOS) 调用原生方法。 如何在 React Native 中使用第三方原生库？如何处理原生库的版本兼容性问题？ React Nativ">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-04-10T02:09:48.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:04.855Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="React Native面试题">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/c9b515d1.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/c9b515d1.html","path":"posts/c9b515d1.html","title":"React Native面试题2025——原生模块与桥接(5)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>React Native面试题2025——原生模块与桥接(5) | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%BB%80%E4%B9%88%E6%98%AF-React-Native-%E7%9A%84%E2%80%9C%E6%A1%A5%E6%8E%A5%E2%80%9D%E6%9C%BA%E5%88%B6%EF%BC%9F%E5%AE%83%E5%A6%82%E4%BD%95%E5%9C%A8-JavaScript-%E5%92%8C%E5%8E%9F%E7%94%9F%E4%BB%A3%E7%A0%81%E4%B9%8B%E9%97%B4%E8%BF%9B%E8%A1%8C%E9%80%9A%E4%BF%A1%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 什么是 React Native 的“桥接”机制？它如何在 JavaScript 和原生代码之间进行通信？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8%E5%8E%9F%E7%94%9F%E6%A8%A1%E5%9D%97%EF%BC%9F%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E%E5%A6%82%E4%BD%95%E4%BB%8E-Java-Kotlin-Android-%E6%88%96-Objective-C-Swift-iOS-%E8%B0%83%E7%94%A8%E5%8E%9F%E7%94%9F%E6%96%B9%E6%B3%95%E3%80%82"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 如何创建和使用原生模块？举例说明如何从 Java&#x2F;Kotlin (Android) 或 Objective-C&#x2F;Swift (iOS) 调用原生方法。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%A6%82%E4%BD%95%E5%9C%A8-React-Native-%E4%B8%AD%E4%BD%BF%E7%94%A8%E7%AC%AC%E4%B8%89%E6%96%B9%E5%8E%9F%E7%94%9F%E5%BA%93%EF%BC%9F%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%8E%9F%E7%94%9F%E5%BA%93%E7%9A%84%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 如何在 React Native 中使用第三方原生库？如何处理原生库的版本兼容性问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-React-Native-%E4%B8%AD%E7%9A%84%E2%80%9C%E5%BC%82%E6%AD%A5%E4%BA%8B%E4%BB%B6%E2%80%9D%E5%92%8C%E2%80%9C%E5%9B%9E%E8%B0%83%E2%80%9D%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84%EF%BC%9F%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%EF%BC%9F"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 React Native 中的“异步事件”和“回调”是如何工作的？如何进行错误处理？</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/c9b515d1.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="React Native面试题2025——原生模块与桥接(5) | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          React Native面试题2025——原生模块与桥接(5)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/React%20Native%E9%9D%A2%E8%AF%95%E9%A2%982025%E2%80%94%E2%80%94%E5%8E%9F%E7%94%9F%E6%A8%A1%E5%9D%97%E4%B8%8E%E6%A1%A5%E6%8E%A5(5).md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2025-04-10 10:09:48" itemprop="dateCreated datePublished" datetime="2025-04-10T10:09:48+08:00">2025-04-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/React-Native%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">React Native面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>4 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><ol>
+<li>什么是 React Native 的“桥接”机制？它如何在 JavaScript 和原生代码之间进行通信？</li>
+<li>如何创建和使用原生模块？举例说明如何从 Java&#x2F;Kotlin (Android) 或 Objective-C&#x2F;Swift (iOS) 调用原生方法。</li>
+<li>如何在 React Native 中使用第三方原生库？如何处理原生库的版本兼容性问题？</li>
+<li>React Native 中的“异步事件”和“回调”是如何工作的？如何进行错误处理？</li>
+</ol>
+<span id="more"></span>
+
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-什么是-React-Native-的“桥接”机制？它如何在-JavaScript-和原生代码之间进行通信？"><a href="#2-1-什么是-React-Native-的“桥接”机制？它如何在-JavaScript-和原生代码之间进行通信？" class="headerlink" title="2.1 什么是 React Native 的“桥接”机制？它如何在 JavaScript 和原生代码之间进行通信？"></a>2.1 什么是 React Native 的“桥接”机制？它如何在 JavaScript 和原生代码之间进行通信？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">一、桥接概念</span><br><span class="line">React Native 的“桥接”机制 是 JavaScript 代码和原生代码（iOS/Android）之间进行通信的桥梁。</span><br><span class="line">由于 React Native 是基于跨平台架构，JavaScript 和原生代码运行在不同的线程上，</span><br><span class="line">因此需要通过桥接机制来实现它们之间的相互调用和数据交换。</span><br><span class="line"></span><br><span class="line">二、桥接机制的工作原理：</span><br><span class="line">2.1 异步通信：</span><br><span class="line">JavaScript 和原生代码的通信是异步的，数据在两个线程之间传递时，</span><br><span class="line">JavaScript 线程不会阻塞主线程的 UI 渲染，保证了性能的流畅性。</span><br><span class="line"></span><br><span class="line">2.2 数据序列化：</span><br><span class="line">JavaScript 通过 Bridge 向原生端发送消息时，会将数据序列化为JSON格式，通过桥接进行传输。</span><br><span class="line">原生端再将数据反序列化成对应的原生对象。</span><br><span class="line"></span><br><span class="line">2.3 原生模块（Native Modules）：</span><br><span class="line">通过桥接，JavaScript 可以调用原生模块中的方法，执行原生端的功能（如访问设备硬件、摄像头、地图等）。</span><br><span class="line">开发者可以通过自定义原生模块，封装一些原生功能暴露给 JavaScript 调用。</span><br><span class="line"></span><br><span class="line">2.4 原生 UI 组件（Native UI Components）：</span><br><span class="line">JavaScript 也可以通过桥接机制将原生 UI 组件嵌入到 React 组件中，</span><br><span class="line">从而实现在 React Native 应用中使用原生的 UI 组件。</span><br><span class="line"></span><br><span class="line">三、桥接机制的通信流程：</span><br><span class="line">3.1 JavaScript → 原生：</span><br><span class="line">JavaScript 代码通过调用原生模块的方法，向原生端发送请求。例如，使用 NativeModules 来访问原生功能。</span><br><span class="line"></span><br><span class="line">import &#123; NativeModules &#125; from &#x27;react-native&#x27;;</span><br><span class="line">NativeModules.MyNativeModule.someNativeFunction();</span><br><span class="line"></span><br><span class="line">3.2 原生 → JavaScript：</span><br><span class="line">原生端可以通过桥接向 JavaScript 发送数据，通常使用回调函数或者事件传递数据给 JavaScript 端。</span><br><span class="line"></span><br><span class="line">MyNativeModule.someNativeFunction((result) =&gt; &#123;</span><br><span class="line">  console.log(result);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">总结：</span><br><span class="line">-桥接机制 是 React Native 中 JavaScript 和原生代码之间的通信桥梁。</span><br><span class="line">-它支持异步通信、数据序列化和反序列化，允许 JavaScript 调用原生功能和原生 UI 组件。</span><br><span class="line">-通过桥接，开发者可以在 React Native 应用中实现丰富的原生功能，提升性能和用户体验。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-如何创建和使用原生模块？举例说明如何从-Java-Kotlin-Android-或-Objective-C-Swift-iOS-调用原生方法。"><a href="#2-2-如何创建和使用原生模块？举例说明如何从-Java-Kotlin-Android-或-Objective-C-Swift-iOS-调用原生方法。" class="headerlink" title="2.2 如何创建和使用原生模块？举例说明如何从 Java&#x2F;Kotlin (Android) 或 Objective-C&#x2F;Swift (iOS) 调用原生方法。"></a>2.2 如何创建和使用原生模块？举例说明如何从 Java&#x2F;Kotlin (Android) 或 Objective-C&#x2F;Swift (iOS) 调用原生方法。</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">在 React Native 中，原生模块允许你在 JavaScript 代码中调用 Android 或 iOS 的原生功能。</span><br><span class="line">创建和使用原生模块的过程通常分为以下几个步骤：</span><br><span class="line"></span><br><span class="line">一、创建原生模块</span><br><span class="line">1.1 Android（Java/Kotlin）：</span><br><span class="line">1.1.1 在 android/app/src/main/java/com/&#123;your_project&#125;/ </span><br><span class="line">目录下创建一个Java或Kotlin文件，例如 MyNativeModule.java。</span><br><span class="line"></span><br><span class="line">1.1.2 在该文件中编写原生模块类，继承 ReactContextBaseJavaModule 并实现所需的方法。</span><br><span class="line"></span><br><span class="line">Java 示例：</span><br><span class="line"></span><br><span class="line">package com.myproject;</span><br><span class="line">import com.facebook.react.bridge.ReactApplicationContext;</span><br><span class="line">import com.facebook.react.bridge.ReactContextBaseJavaModule;</span><br><span class="line">import com.facebook.react.bridge.ReactMethod;</span><br><span class="line">public class MyNativeModule extends ReactContextBaseJavaModule &#123;</span><br><span class="line"></span><br><span class="line">  public MyNativeModule(ReactApplicationContext reactContext) &#123;</span><br><span class="line">    super(reactContext);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  public String getName() &#123;</span><br><span class="line">    return &quot;MyNativeModule&quot;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @ReactMethod</span><br><span class="line">  public void showToast(String message) &#123;</span><br><span class="line">    // 调用 Android 的 Toast 类来显示消息</span><br><span class="line">    Toast.makeText(getReactApplicationContext(), message, Toast.LENGTH_SHORT).show();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">1.1.3 注册原生模块。在 MainApplication.java 文件中，添加 MyNativeModule 到包列表中：</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import com.myproject.MyNativeModule;</span><br><span class="line">@Override</span><br><span class="line">protected List&lt;ReactPackage&gt; getPackages() &#123;</span><br><span class="line">  return Arrays.&lt;ReactPackage&gt;asList(</span><br><span class="line">    new MainReactPackage(),</span><br><span class="line">    new MyNativeModule()  // 注册模块</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">1.2 iOS（Objective-C/Swift）：</span><br><span class="line">1.2.1 在 ios/&#123;your_project&#125;/ 目录下创建一个原生模块文件，</span><br><span class="line">例如 MyNativeModule.m（Objective-C）或 MyNativeModule.swift（Swift）。</span><br><span class="line"></span><br><span class="line">Objective-C 示例：</span><br><span class="line"></span><br><span class="line">#import &lt;React/RCTBridgeModule.h&gt;</span><br><span class="line">#import &lt;React/RCTLog.h&gt;</span><br><span class="line">@interface MyNativeModule : NSObject &lt;RCTBridgeModule&gt;</span><br><span class="line">@end</span><br><span class="line">@implementation MyNativeModule</span><br><span class="line">RCT_EXPORT_MODULE();</span><br><span class="line"></span><br><span class="line">RCT_EXPORT_METHOD(showToast:(NSString *)message) &#123;</span><br><span class="line">  // 调用 iOS 的 Toast 类或 UIAlertView 来显示消息</span><br><span class="line">  dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@&quot;Message&quot;</span><br><span class="line">                                                               message:message</span><br><span class="line">                                                        preferredStyle:UIAlertControllerStyleAlert];</span><br><span class="line">    UIAlertAction *action = [UIAlertAction actionWithTitle:@&quot;OK&quot; style:UIAlertActionStyleDefault handler:nil];</span><br><span class="line">    [alert addAction:action];</span><br><span class="line">    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">1.2.2 注册原生模块。在 AppDelegate.m 文件中，确保 RCTBridge 已正确设置并加载模块。</span><br><span class="line"></span><br><span class="line">二、使用原生模块</span><br><span class="line">在 React Native JavaScript 代码中，你可以通过 NativeModules 来调用原生模块的方法。</span><br><span class="line"></span><br><span class="line">JavaScript 使用原生模块：</span><br><span class="line">2.1 在 JavaScript 中，首先导入 NativeModules：</span><br><span class="line"></span><br><span class="line">import &#123; NativeModules &#125; from &#x27;react-native&#x27;;</span><br><span class="line"></span><br><span class="line">2.2 调用原生模块中的方法：</span><br><span class="line">NativeModules.MyNativeModule.showToast(&#x27;Hello from React Native!&#x27;);</span><br><span class="line"></span><br><span class="line">三、总结：</span><br><span class="line">3.1 Android：使用 Java 或 Kotlin 创建原生模块，</span><br><span class="line">继承 ReactContextBaseJavaModule，并通过 @ReactMethod 注解暴露方法。</span><br><span class="line"></span><br><span class="line">3.2 iOS：使用 Objective-C 或 Swift 创建原生模块，遵循 RCTBridgeModule 协议，</span><br><span class="line">通过 RCT_EXPORT_METHOD 暴露方法。</span><br><span class="line"></span><br><span class="line">3.3 在 JavaScript 中，通过 NativeModules 导入原生模块并调用方法。</span><br><span class="line"></span><br><span class="line">这样，你就能在 React Native 应用中调用 Android 和 iOS 的原生功能，扩展应用的能力。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-如何在-React-Native-中使用第三方原生库？如何处理原生库的版本兼容性问题？"><a href="#2-3-如何在-React-Native-中使用第三方原生库？如何处理原生库的版本兼容性问题？" class="headerlink" title="2.3 如何在 React Native 中使用第三方原生库？如何处理原生库的版本兼容性问题？"></a>2.3 如何在 React Native 中使用第三方原生库？如何处理原生库的版本兼容性问题？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-在 React Native 中使用第三方原生库时，首先通过 npm 或 yarn 安装，并按照平台要求配置。</span><br><span class="line">-自动链接机制简化了原生库的集成，iOS 使用 CocoaPods 管理依赖，Android 需要手动配置 Gradle 文件。</span><br><span class="line">-处理版本兼容性时，要注意库的 React Native 版本要求，并可能需要根据版本进行适配或使用特定版本的库。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-React-Native-中的“异步事件”和“回调”是如何工作的？如何进行错误处理？"><a href="#2-4-React-Native-中的“异步事件”和“回调”是如何工作的？如何进行错误处理？" class="headerlink" title="2.4 React Native 中的“异步事件”和“回调”是如何工作的？如何进行错误处理？"></a>2.4 React Native 中的“异步事件”和“回调”是如何工作的？如何进行错误处理？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">异步事件通过 Promise 或 async/await 来处理异步操作，</span><br><span class="line">Promise 提供 .then() 和 .catch() 来处理成功和失败，async/await 提供更简洁的语法。</span><br><span class="line"></span><br><span class="line">回调是一种传统的异步编程方式，在异步函数执行完成后通过回调函数通知调用者结果或错误。</span><br><span class="line"></span><br><span class="line">错误处理：使用 .catch() 或 try/catch 捕获异常，或者在回调函数中判断错误参数并处理。</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/React-Native%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># React Native面试题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/f7f7573a.html" rel="prev" title="React Native面试题2025——性能优化(4)">
+                  <i class="fa fa-angle-left"></i> React Native面试题2025——性能优化(4)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/ad7928d5.html" rel="next" title="React Native面试题2025——网络请求与数据管理(6)">
+                  React Native面试题2025——网络请求与数据管理(6) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"0294eabff6fc225bb8b6a8018fd0ae03"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

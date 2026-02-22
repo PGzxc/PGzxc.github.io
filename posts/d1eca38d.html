@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述WXS(WeiXin Script)：是小程序的一套脚本语言，结合WXML，可以构建出页面的结构WXS与JavaScript是不同的语言，有自己的语法，并不和JavaScript一致  变量 运算符 数据类型 语句 基础类库 模块">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序开发之——WXS模块">
+<meta property="og:url" content="https://pgzxc.github.io/posts/d1eca38d.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 概述WXS(WeiXin Script)：是小程序的一套脚本语言，结合WXML，可以构建出页面的结构WXS与JavaScript是不同的语言，有自己的语法，并不和JavaScript一致  变量 运算符 数据类型 语句 基础类库 模块">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-wxs-two-way-preview.png">
+<meta property="article:published_time" content="2021-11-10T01:50:39.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.359Z">
+<meta property="article:author" content="PGzxc">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-wxs-two-way-preview.png">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/d1eca38d.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/d1eca38d.html","path":"posts/d1eca38d.html","title":"微信小程序开发之——WXS模块"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>微信小程序开发之——WXS模块 | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E5%8F%98%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">二 变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 变量的命名规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">3.</span> <span class="nav-text">三 运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E8%BF%90%E7%AE%97%E7%AC%A6%E5%88%97%E8%A1%A8"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 运算符列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 运算符优先级</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">四 [数据类型][]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E8%AF%AD%E5%8F%A5"><span class="nav-number">5.</span> <span class="nav-text">五 语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD-%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%BA%93"><span class="nav-number">6.</span> <span class="nav-text">六 基础类库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83-%E6%A8%A1%E5%9D%97"><span class="nav-number">7.</span> <span class="nav-text">七 模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-WXS%E6%A8%A1%E5%9D%97%E5%88%9B%E5%BB%BA%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 WXS模块创建的两种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#wxs%E6%A0%87%E7%AD%BE"><span class="nav-number">7.1.1.</span> <span class="nav-text">wxs标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wxs%E6%96%87%E4%BB%B6"><span class="nav-number">7.1.2.</span> <span class="nav-text">.wxs文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#tools-wxs"><span class="nav-number">7.1.2.1.</span> <span class="nav-text">tools.wxs</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E7%94%A8wxs%E7%9A%84%E5%B8%83%E5%B1%80%E6%96%87%E4%BB%B6"><span class="nav-number">7.1.2.2.</span> <span class="nav-text">调用wxs的布局文件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E6%95%88%E6%9E%9C%E5%9B%BE"><span class="nav-number">7.1.3.</span> <span class="nav-text">页面效果图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-WXS%E4%B8%AD%E7%9A%84module%E5%AF%B9%E8%B1%A1%E5%92%8Cexports%E5%B1%9E%E6%80%A7"><span class="nav-number">7.2.</span> <span class="nav-text">7.2 WXS中的module对象和exports属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#module%E5%AF%B9%E8%B1%A1"><span class="nav-number">7.2.1.</span> <span class="nav-text">module对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exports%E5%B1%9E%E6%80%A7"><span class="nav-number">7.2.2.</span> <span class="nav-text">exports属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-require%E5%87%BD%E6%95%B0"><span class="nav-number">7.3.</span> <span class="nav-text">7.3 require函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%B4%E6%98%8E"><span class="nav-number">7.3.1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">7.3.2.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A2%AB%E5%BC%95%E7%94%A8wxs%E6%96%87%E4%BB%B6-tool-wxs"><span class="nav-number">7.3.2.1.</span> <span class="nav-text">被引用wxs文件(tool.wxs)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%95%E7%94%A8wxs%E6%96%87%E4%BB%B6%E7%9A%84wxs%E6%96%87%E4%BB%B6-logic-wxs"><span class="nav-number">7.3.2.2.</span> <span class="nav-text">引用wxs文件的wxs文件(logic.wxs)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-%E6%A0%87%E7%AD%BE"><span class="nav-number">7.4.</span> <span class="nav-text">7.4 &lt;wxs&gt;标签</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB-%E5%8F%82%E8%80%83"><span class="nav-number">8.</span> <span class="nav-text">八 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/d1eca38d.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="微信小程序开发之——WXS模块 | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          微信小程序开发之——WXS模块<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94WXS%E6%A8%A1%E5%9D%97.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-10 09:50:39" itemprop="dateCreated datePublished" datetime="2021-11-10T09:50:39+08:00">2021-11-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/F-%E8%B7%A8%E5%B9%B3%E5%8F%B0/" itemprop="url" rel="index"><span itemprop="name">F-跨平台</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/F-%E8%B7%A8%E5%B9%B3%E5%8F%B0/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" itemprop="url" rel="index"><span itemprop="name">微信小程序</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><p>WXS(WeiXin Script)：是小程序的一套脚本语言，结合<code>WXML</code>，可以构建出页面的结构<br>WXS与JavaScript是不同的语言，有自己的语法，并不和JavaScript一致</p>
+<ul>
+<li>变量</li>
+<li>运算符</li>
+<li>数据类型</li>
+<li>语句</li>
+<li>基础类库</li>
+<li>模块</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="二-变量"><a href="#二-变量" class="headerlink" title="二 变量"></a>二 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/wxs/02variate.html">变量</a></h2><h3 id="2-1-概念"><a href="#2-1-概念" class="headerlink" title="2.1 概念"></a>2.1 概念</h3><ul>
+<li>声明变量用<code>var</code></li>
+<li>变量只声明，不赋值，会被定义为<code>undefine</code></li>
+<li>没有声明直接赋值使用，会被定义为全局变量</li>
+</ul>
+<h3 id="2-2-变量的命名规则"><a href="#2-2-变量的命名规则" class="headerlink" title="2.2 变量的命名规则"></a>2.2 变量的命名规则</h3><ul>
+<li>首字符必须是：字母（a-zA-Z），下划线（_）</li>
+<li>剩余字符可以是：字母（a-zA-Z），下划线（_）， 数字（0-9）</li>
+</ul>
+<h3 id="2-3-示例"><a href="#2-3-示例" class="headerlink" title="2.3 示例"></a>2.3 示例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var foo = 1;</span><br><span class="line">var bar = &quot;hello world&quot;;</span><br><span class="line">var i; // i === undefined</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-运算符"><a href="#三-运算符" class="headerlink" title="三 运算符"></a>三 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/wxs/04operator.html">运算符</a></h2><h3 id="3-1-运算符列表"><a href="#3-1-运算符列表" class="headerlink" title="3.1 运算符列表"></a>3.1 运算符列表</h3><table>
+<thead>
+<tr>
+<th align="center">编号</th>
+<th align="center">运算符分类</th>
+<th align="center">运算符号</th>
+<th align="center">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">基本运算符</td>
+<td align="center">加法(<code>+</code>)&#x2F;减法(<code>-</code>)&#x2F;乘法(<code>*</code>)&#x2F;除法(<code>/</code>)&#x2F;取余(<code>%</code>)</td>
+<td align="center">var a&#x3D;1+2;</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">一元运算符</td>
+<td align="center">自增(<code>++</code>)&#x2F;自减(<code>--</code>)&#x2F;正值(<code>+</code>)&#x2F;负值(<code>-</code>)&#x2F;否(<code>~</code>)&#x2F;取反(<code>!</code>)等</td>
+<td align="center">a++</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">位运算符</td>
+<td align="center">左移(<code>&lt;&lt;</code>)&#x2F;右移(<code>&gt;&gt;</code>)&#x2F;无符号右移(<code>&gt;&gt;&gt;</code>)&#x2F;与运算(<code>&amp;</code>)&#x2F;异或运算(<code>^</code>)&#x2F;或运算(&#96;</td>
+<td align="center">&#96;)</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">比较运算符</td>
+<td align="center">小于(<code>&lt;</code>)&#x2F;大于(<code>&gt;</code>)&#x2F;小于等于(<code>&lt;=</code>)&#x2F;大于等于(<code>&gt;=</code>)</td>
+<td align="center">a &lt; b</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">等值运算符</td>
+<td align="center">等号(<code>==</code>)&#x2F;非等号(<code>!=</code>)&#x2F;全等于(<code>===</code>)&#x2F;非全等号(<code>!==</code>)</td>
+<td align="center">a &#x3D;&#x3D; b</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">赋值运算符</td>
+<td align="center">加等(<code>+=</code>)&#x2F;减等(<code>-=</code>)&#x2F;乘等(<code>*=</code>)&#x2F;除等(<code>/=</code>)&#x2F;左移等(<code>&lt;&lt;=</code>)等</td>
+<td align="center">a &lt;&lt;&#x3D; 10</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">二元逻辑运算符</td>
+<td align="center">逻辑与(<code>&amp;&amp;</code>)&#x2F;逻辑或(<code>||</code>)</td>
+<td align="center">a &amp;&amp; b</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center">其他运算符</td>
+<td align="center">条件运算符&#x2F;逗号运算符</td>
+<td align="center">20 &#x3D;&#x3D;&#x3D; (a &gt;&#x3D; 10 ? a + 10 : b + 10)</td>
+</tr>
+</tbody></table>
+<h3 id="3-2-运算符优先级"><a href="#3-2-运算符优先级" class="headerlink" title="3.2 运算符优先级"></a>3.2 运算符优先级</h3><p>运算符的优先级别从0到20</p>
+<h2 id="四-数据类型"><a href="#四-数据类型" class="headerlink" title="四 [数据类型][]"></a>四 [数据类型][]</h2><table>
+<thead>
+<tr>
+<th align="center">编号</th>
+<th align="center">数据类型</th>
+<th align="center">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center"><code>number</code> ： 数值(整数和小数)</td>
+<td align="center">var a &#x3D; 10;</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center"><code>string</code> ：字符串(单引号和双引号)</td>
+<td align="center">&#39;hello world&#39;;</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center"><code>boolean</code>：布尔值</td>
+<td align="center">var a&#x3D;true;</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center"><code>object</code>：对象(键值对)</td>
+<td align="center">{k:&quot;1&quot;,v:&quot;2&quot;}</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center"><code>function</code>：函数</td>
+<td align="center">function a (x) {   return x; }</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center"><code>array</code> : 数组</td>
+<td align="center">var a &#x3D; [];</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center"><code>date</code>：日期</td>
+<td align="center">var date &#x3D; getDate();</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center"><code>regexp</code>：正则</td>
+<td align="center">var a &#x3D; getRegExp(&quot;x&quot;, &quot;img&quot;)</td>
+</tr>
+</tbody></table>
+<h2 id="五-语句"><a href="#五-语句" class="headerlink" title="五 语句"></a>五 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/wxs/05statement.html">语句</a></h2><table>
+<thead>
+<tr>
+<th align="center">编号</th>
+<th align="center">语句</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">if语句</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">switch语句</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">for语句</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">while语句</td>
+</tr>
+</tbody></table>
+<h2 id="六-基础类库"><a href="#六-基础类库" class="headerlink" title="六 基础类库"></a>六 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/wxs/07basiclibrary.html">基础类库</a></h2><table>
+<thead>
+<tr>
+<th align="center">编号</th>
+<th align="center">基础类库</th>
+<th align="center">类库说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">console</td>
+<td align="center">输出信息</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Math</td>
+<td align="center">数学工具</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Json</td>
+<td align="center">Json字符串转换工具</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">Number</td>
+<td align="center">数字</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">Date</td>
+<td align="center">日期</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">Global</td>
+<td align="center">自带的属性(NAN)或方法(parseInt)等</td>
+</tr>
+</tbody></table>
+<h2 id="七-模块"><a href="#七-模块" class="headerlink" title="七 模块"></a>七 <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/wxs/01wxs-module.html">模块</a></h2><h3 id="7-1-WXS模块创建的两种方式"><a href="#7-1-WXS模块创建的两种方式" class="headerlink" title="7.1 WXS模块创建的两种方式"></a>7.1 WXS模块创建的两种方式</h3><p>WXS 代码可以编写在 wxml 文件中的 <code>&lt;wxs&gt;</code> 标签内，或以 <code>.wxs</code> 为后缀名的文件内</p>
+<h4 id="wxs标签"><a href="#wxs标签" class="headerlink" title="wxs标签"></a>wxs标签</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;view&gt; &#123;&#123;tools.msg&#125;&#125; &lt;/view&gt;</span><br><span class="line">&lt;view&gt; &#123;&#123;tools.bar(tools.FOO)&#125;&#125; &lt;/view&gt;</span><br><span class="line"></span><br><span class="line">&lt;wxs module=&quot;tools&quot;&gt;</span><br><span class="line">  var foo = &quot;&#x27;hello world&#x27; from tools.wxs&quot;;</span><br><span class="line">  var bar = function (d) &#123;</span><br><span class="line">    return d;</span><br><span class="line">  &#125;</span><br><span class="line">  module.exports = &#123;</span><br><span class="line">    FOO: foo,</span><br><span class="line">    bar: bar,</span><br><span class="line">  &#125;;</span><br><span class="line">  module.exports.msg = &quot;some msg&quot;;</span><br><span class="line">&lt;/wxs&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="wxs文件"><a href="#wxs文件" class="headerlink" title=".wxs文件"></a>.wxs文件</h4><h5 id="tools-wxs"><a href="#tools-wxs" class="headerlink" title="tools.wxs"></a>tools.wxs</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var foo = &quot;&#x27;hello world&#x27; from tools.wxs&quot;;</span><br><span class="line">var bar = function (d) &#123;</span><br><span class="line">  return d;</span><br><span class="line">&#125;</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  FOO: foo,</span><br><span class="line">  bar: bar,</span><br><span class="line">&#125;;</span><br><span class="line">module.exports.msg = &quot;some msg&quot;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="调用wxs的布局文件"><a href="#调用wxs的布局文件" class="headerlink" title="调用wxs的布局文件"></a>调用wxs的布局文件</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;wxs src=&quot;./../tools.wxs&quot; module=&quot;tools&quot; /&gt;</span><br><span class="line">&lt;view&gt; &#123;&#123;tools.msg&#125;&#125; &lt;/view&gt;</span><br><span class="line">&lt;view&gt; &#123;&#123;tools.bar(tools.FOO)&#125;&#125; &lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="页面效果图"><a href="#页面效果图" class="headerlink" title="页面效果图"></a>页面效果图</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-wechat/wechat-wxs-two-way-preview.png" loading="lazy"></p>
+<h3 id="7-2-WXS中的module对象和exports属性"><a href="#7-2-WXS中的module对象和exports属性" class="headerlink" title="7.2 WXS中的module对象和exports属性"></a>7.2 WXS中的module对象和exports属性</h3><h4 id="module对象"><a href="#module对象" class="headerlink" title="module对象"></a>module对象</h4><ul>
+<li>在wxml内的wxs标签中使用时<code>&lt;wxs module=&quot;tools&quot;&gt;</code></li>
+<li>wxml通过src引用外部wxs文件时<code>&lt;wxs src=&quot;./../tools.wxs&quot; module=&quot;tools&quot; /&gt;</code></li>
+</ul>
+<h4 id="exports属性"><a href="#exports属性" class="headerlink" title="exports属性"></a>exports属性</h4><ul>
+<li><code>exports</code>: 通过该属性，可以对外共享本模块的私有变量与函数</li>
+</ul>
+<h3 id="7-3-require函数"><a href="#7-3-require函数" class="headerlink" title="7.3 require函数"></a>7.3 require函数</h3><h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><ul>
+<li>在<code>.wxs</code>模块中引用其他 <code>wxs</code> 文件模块，可以使用 <code>require</code> 函数</li>
+</ul>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><h5 id="被引用wxs文件-tool-wxs"><a href="#被引用wxs文件-tool-wxs" class="headerlink" title="被引用wxs文件(tool.wxs)"></a>被引用wxs文件(tool.wxs)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// /pages/tools.wxs</span><br><span class="line"></span><br><span class="line">var foo = &quot;&#x27;hello world&#x27; from tools.wxs&quot;;</span><br><span class="line">var bar = function (d) &#123;</span><br><span class="line">  return d;</span><br><span class="line">&#125;</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  FOO: foo,</span><br><span class="line">  bar: bar,</span><br><span class="line">&#125;;</span><br><span class="line">module.exports.msg = &quot;some msg&quot;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="引用wxs文件的wxs文件-logic-wxs"><a href="#引用wxs文件的wxs文件-logic-wxs" class="headerlink" title="引用wxs文件的wxs文件(logic.wxs)"></a>引用wxs文件的wxs文件(logic.wxs)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// /pages/logic.wxs</span><br><span class="line"></span><br><span class="line">var tools = require(&quot;./tools.wxs&quot;);</span><br><span class="line"></span><br><span class="line">console.log(tools.FOO);</span><br><span class="line">console.log(tools.bar(&quot;logic.wxs&quot;));</span><br><span class="line">console.log(tools.msg);</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-4-标签"><a href="#7-4-标签" class="headerlink" title="7.4 &lt;wxs&gt;标签"></a>7.4 <code>&lt;wxs&gt;</code>标签</h3><table>
+<thead>
+<tr>
+<th align="center">属性名</th>
+<th align="center">类型</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">src</td>
+<td align="center">String</td>
+<td align="center">引用.wxs文件的相对路径</td>
+</tr>
+<tr>
+<td align="center">module</td>
+<td align="center">String</td>
+<td align="center">当前<code>&lt;wxs&gt;</code>标签的模块名。必填字段</td>
+</tr>
+</tbody></table>
+<h2 id="八-参考"><a href="#八-参考" class="headerlink" title="八 参考"></a>八 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/wxs/">小程序官方文档-WXS 语法参考</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/9495838d.html" rel="prev" title="微信小程序开发之——星星评分等级显示">
+                  <i class="fa fa-angle-left"></i> 微信小程序开发之——星星评分等级显示
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/7d74fe7d.html" rel="next" title="微信小程序开发之——数据存储Storage">
+                  微信小程序开发之——数据存储Storage <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"39e7d53c87cd1b6557f28031a2b2000d"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

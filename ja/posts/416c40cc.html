@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ja/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ja/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ja/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/ja/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/ja/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/ja/","images":"/ja/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索...","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/ja/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/ja/js/config.js" defer></script>
+
+    <meta name="description" content="一 面试题汇总 Dart中 ?? 与 ??&#x3D; 的区别 flutter中Widget、Element、RenderObject、Layer都有什么关系？ 简述state的生命周期 简述flutter中自定义View流程？ flutter_boost的优缺点，内部实现">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter面试题——面试题整理2">
+<meta property="og:url" content="https://pgzxc.github.io/posts/416c40cc.html">
+<meta property="og:site_name" content="PGzxc (Japanese)">
+<meta property="og:description" content="一 面试题汇总 Dart中 ?? 与 ??&#x3D; 的区别 flutter中Widget、Element、RenderObject、Layer都有什么关系？ 简述state的生命周期 简述flutter中自定义View流程？ flutter_boost的优缺点，内部实现">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-interview-2-state-life.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-interview-2-render.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-interview-2-thread.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-interview-2-thread-manager.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-interview-2-struct.png">
+<meta property="article:published_time" content="2024-03-24T13:04:57.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.048Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Flutter面试题">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-interview-2-state-life.png">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/416c40cc.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"ja","comments":true,"permalink":"https://pgzxc.github.io/posts/416c40cc.html","path":"posts/416c40cc.html","title":"Flutter面试题——面试题整理2"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Flutter面试题——面试题整理2 | PGzxc (Japanese)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/utils.js" defer></script><script src="/ja/js/motion.js" defer></script><script src="/ja/js/sidebar.js" defer></script><script src="/ja/js/next-boot.js" defer></script><script src="/ja/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/ja/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/ja/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/ja/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/ja/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/ja/atom.xml" title="PGzxc (Japanese)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションを切り替える" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/ja/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (Japanese)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">本から学んだことは表面的なもの；自分で体験しなければならない</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="検索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/ja/" rel="section"><i class="fa fa-bell fa-fw"></i>ホーム</a></li><li class="menu-item menu-item-nav"><a href="/ja/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>ナビゲーション</a></li><li class="menu-item menu-item-categories"><a href="/ja/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリー<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/ja/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/ja/links/" rel="section"><i class="fa fa-link fa-fw"></i>リンク</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>検索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="検索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          目次
+        </li>
+        <li class="sidebar-nav-overview">
+          サイト概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB"><span class="nav-number">1.</span> <span class="nav-text">一 面试题汇总</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二  面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Dart%E4%B8%AD-%E4%B8%8E-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.1.</span> <span class="nav-text">2.1  Dart中 ?? 与 ??&#x3D; 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-flutter%E4%B8%ADWidget%E3%80%81Element%E3%80%81RenderObject%E3%80%81Layer%E9%83%BD%E6%9C%89%E4%BB%80%E4%B9%88%E5%85%B3%E7%B3%BB%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 flutter中Widget、Element、RenderObject、Layer都有什么关系？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E7%AE%80%E8%BF%B0state%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 简述state的生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E7%AE%80%E8%BF%B0flutter%E4%B8%AD%E8%87%AA%E5%AE%9A%E4%B9%89View%E6%B5%81%E7%A8%8B%EF%BC%9F"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 简述flutter中自定义View流程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-flutter-boost%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%8C%E5%86%85%E9%83%A8%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 flutter_boost的优缺点，内部实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-flutter%E7%9A%84%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 flutter的渲染机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-flutter%E5%92%8Cnative%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 flutter和native的优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-flutter%E6%94%AF%E4%B8%8D%E6%94%AF%E6%8C%81-120hz"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 flutter支不支持 120hz</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 多线程怎么处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-10-flutter%E4%B8%AD%E5%A4%A7%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 flutter中大图片上传</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-11-flutter-butild-%E6%96%B9%E6%B3%95%E4%B8%AD%E7%9A%84-BuildContext-%E5%85%B7%E4%BD%93%E6%98%AF%E4%BB%80%E4%B9%88%E4%B8%9C%E8%A5%BF"><span class="nav-number">2.11.</span> <span class="nav-text">2.11 flutter butild 方法中的 BuildContext 具体是什么东西</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-12-flutter-%E6%89%93%E5%8C%85%E6%88%90web%E3%80%81-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E3%80%81%E6%A1%8C%E9%9D%A2%E7%AB%AF%E7%9A%84%E8%BF%87%E7%A8%8B%E6%98%AF%E6%80%8E%E4%B9%88%E6%A0%B7%E7%9A%84"><span class="nav-number">2.12.</span> <span class="nav-text">2.12 flutter 打包成web、 移动端、桌面端的过程是怎么样的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-13-dart%E6%98%AF%E5%BC%B1%E5%BC%95%E7%94%A8%E8%BF%98%E6%98%AF%E5%BC%BA%E5%BC%95%E7%94%A8"><span class="nav-number">2.13.</span> <span class="nav-text">2.13 dart是弱引用还是强引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-14-get-set%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.14.</span> <span class="nav-text">2.14 get set方法实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-15-%E7%AE%80%E8%BF%B0Flutter-%E7%9A%84%E7%83%AD%E9%87%8D%E8%BD%BD"><span class="nav-number">2.15.</span> <span class="nav-text">2.15 简述Flutter 的热重载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-16-Dart-%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">2.16.</span> <span class="nav-text">2.16 Dart 的作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-17-Dart-%E5%BD%93%E4%B8%AD%E7%9A%84-%E3%80%8C-%E3%80%8D%E8%A1%A8%E7%A4%BA%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D%EF%BC%9F"><span class="nav-number">2.17.</span> <span class="nav-text">2.17 Dart 当中的 「 .. 」表示什么意思？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-18-Dart-%E6%98%AF%E4%B8%8D%E6%98%AF%E5%8D%95%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B%EF%BC%9F%E6%98%AF%E5%A6%82%E4%BD%95%E8%BF%90%E8%A1%8C%E7%9A%84%EF%BC%9F"><span class="nav-number">2.18.</span> <span class="nav-text">2.18 Dart 是不是单线程模型？是如何运行的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-19-Dart-%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%A4%9A%E4%BB%BB%E5%8A%A1%E5%B9%B6%E8%A1%8C%E7%9A%84%EF%BC%9F"><span class="nav-number">2.19.</span> <span class="nav-text">2.19 Dart 是如何实现多任务并行的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-20-%E8%AF%B4%E4%B8%80%E4%B8%8B-mixin%E6%9C%BA%E5%88%B6%EF%BC%9F"><span class="nav-number">2.20.</span> <span class="nav-text">2.20 说一下 mixin机制？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-21-%E4%BB%8B%E7%BB%8D%E4%B8%8BFlutter%E7%9A%84FrameWork%E5%B1%82%E5%92%8CEngine%E5%B1%82%EF%BC%8C%E4%BB%A5%E5%8F%8A%E5%AE%83%E4%BB%AC%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">2.21.</span> <span class="nav-text">2.21 介绍下Flutter的FrameWork层和Engine层，以及它们的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-22-%E7%AE%80%E8%BF%B0Flutter%E7%9A%84%E7%BA%BF%E7%A8%8B%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.22.</span> <span class="nav-text">2.22 简述Flutter的线程管理模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-23-%E4%BB%8B%E7%BB%8D%E4%B8%8BFlutter%E7%9A%84%E7%90%86%E5%BF%B5%E6%9E%B6%E6%9E%84"><span class="nav-number">2.23.</span> <span class="nav-text">2.23 介绍下Flutter的理念架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-24-Future%E5%92%8CIsolate%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">2.24.</span> <span class="nav-text">2.24 Future和Isolate有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-25-%E4%BB%80%E4%B9%88%E6%98%AFNavigator-MaterialApp%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.25.</span> <span class="nav-text">2.25 什么是Navigator? MaterialApp做了什么？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/ja/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/ja/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">投稿</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/ja/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">カテゴリー</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/ja/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/416c40cc.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/ja/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Flutter面试题——面试题整理2 | PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Flutter面试题——面试题整理2<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Flutter%E9%9D%A2%E8%AF%95%E9%A2%98%E2%80%94%E2%80%94%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%862.md" class="post-edit-link" title="編集" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2024-03-24 21:04:57" itemprop="dateCreated datePublished" datetime="2024-03-24T21:04:57+08:00">2024-03-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/Flutter%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">Flutter面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="読書時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">読書時間 &asymp;</span>
+      <span>17 分</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-面试题汇总"><a href="#一-面试题汇总" class="headerlink" title="一 面试题汇总"></a>一 面试题汇总</h2><ol>
+<li>Dart中 ?? 与 ??&#x3D; 的区别</li>
+<li>flutter中Widget、Element、RenderObject、Layer都有什么关系？</li>
+<li>简述state的生命周期</li>
+<li>简述flutter中自定义View流程？</li>
+<li>flutter_boost的优缺点，内部实现<span id="more"></span></li>
+<li>flutter的渲染机制</li>
+<li>flutter和native的优缺点</li>
+<li>flutter支不支持 120hz</li>
+<li>多线程怎么处理</li>
+<li>flutter中大图片上传</li>
+<li>flutter butild 方法中的 BuildContext 具体是什么东西</li>
+<li>flutter 打包成web 移动端桌面端的过程是怎么样的</li>
+<li>dart是弱引用还是强引用</li>
+<li>get set方法实现</li>
+<li>简述Flutter 的热重载</li>
+<li>Dart 的作用域</li>
+<li>Dart 当中的 「 .. 」表示什么意思？</li>
+<li>Dart 是不是单线程模型？是如何运行的？</li>
+<li>Dart 是如何实现多任务并行的？</li>
+<li>说一下 mixin机制？</li>
+<li>介绍下Flutter的FrameWork层和Engine层，以及它们的作用</li>
+<li>简述Flutter的线程管理模型</li>
+<li>介绍下Flutter的理念架构</li>
+<li>Future和Isolate有什么区别？</li>
+<li>什么是Navigator? MaterialApp做了什么？</li>
+</ol>
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二  面试题解答(仅供参考)"></a>二  面试题解答(仅供参考)</h2><h3 id="2-1-Dart中-与-的区别"><a href="#2-1-Dart中-与-的区别" class="headerlink" title="2.1  Dart中 ?? 与 ??&#x3D; 的区别"></a>2.1  Dart中 ?? 与 ??&#x3D; 的区别</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">A??B</span><br><span class="line">左边如果为空返回右边的值，否则不处理。</span><br><span class="line">A??=B</span><br><span class="line">左边如果为空把B的值赋值给A</span><br><span class="line"></span><br><span class="line">------------------------------------------------------------------</span><br><span class="line">在 Dart 语言中，?? 和 ??= 都是用于处理空值的操作符，但它们的作用和使用方式有所不同。</span><br><span class="line">1  ?? (空合并运算符)</span><br><span class="line"></span><br><span class="line">1.1 作用：</span><br><span class="line">-?? 运算符用于在表达式为空时提供一个默认值。</span><br><span class="line">-如果 ?? 左侧的表达式不为空，则返回左侧表达式的值。</span><br><span class="line">-如果 ?? 左侧的表达式为空，则返回右侧表达式的值。</span><br><span class="line"></span><br><span class="line">1.2 示例</span><br><span class="line">String? name;</span><br><span class="line">String displayName = name ?? &#x27;Guest&#x27;; // 如果 name 为空，则 displayName 的值为 &#x27;Guest&#x27;</span><br><span class="line">print(displayName); // 输出：Guest</span><br><span class="line"></span><br><span class="line">String? anotherName = &#x27;Alice&#x27;;</span><br><span class="line">String anotherDisplayName = anotherName ?? &#x27;Guest&#x27;; // anotherName 不为空，则 anotherDisplayName 的值为 &#x27;Alice&#x27;</span><br><span class="line">print(anotherDisplayName); // 输出：Alice</span><br><span class="line"></span><br><span class="line">2 ??= (空赋值运算符)</span><br><span class="line"></span><br><span class="line">2.1 作用：</span><br><span class="line">-??= 运算符用于在变量为空时为其赋值。</span><br><span class="line">-如果 ??= 左侧的变量为空，则将右侧表达式的值赋给该变量。</span><br><span class="line">-如果 ??= 左侧的变量不为空，则保持原值不变。</span><br><span class="line"></span><br><span class="line">2.2 示例</span><br><span class="line">String? message;</span><br><span class="line">message ??= &#x27;Hello&#x27;; // message 为空，则 message 的值为 &#x27;Hello&#x27;</span><br><span class="line">print(message); // 输出：Hello</span><br><span class="line"></span><br><span class="line">String? anotherMessage = &#x27;World&#x27;;</span><br><span class="line">anotherMessage ??= &#x27;Hello&#x27;; // anotherMessage 不为空，则保持原值不变</span><br><span class="line">print(anotherMessage); // 输出：World</span><br><span class="line"></span><br><span class="line">3.主要区别总结：</span><br><span class="line">-?? 运算符用于返回一个值，而 ??= 运算符用于为变量赋值。</span><br><span class="line">-?? 运算符不会修改左侧表达式的值，而 ??= 运算符可能会修改左侧变量的值。</span><br><span class="line">-?? 运算符通常用于提供默认值，而 ??= 运算符通常用于初始化变量。</span><br><span class="line"></span><br><span class="line">4.简单来说：</span><br><span class="line">-?? 就像一个“备选方案”，当左边的值为空时，就用右边的值。</span><br><span class="line">-??= 就像一个“懒加载”，当变量为空时，才为其赋值</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-flutter中Widget、Element、RenderObject、Layer都有什么关系？"><a href="#2-2-flutter中Widget、Element、RenderObject、Layer都有什么关系？" class="headerlink" title="2.2 flutter中Widget、Element、RenderObject、Layer都有什么关系？"></a>2.2 flutter中Widget、Element、RenderObject、Layer都有什么关系？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">在Flutter中，Widget、Element、RenderObject和Layer是构建UI的核心概念，</span><br><span class="line">它们之间存在着紧密的联系，共同协作完成组件的渲染。</span><br><span class="line"></span><br><span class="line">1.Widget（组件）：</span><br><span class="line">1.1 定义：</span><br><span class="line">-Widget是Flutter UI的基本构建块，它描述了UI的配置信息，包括布局、样式和交互等。</span><br><span class="line">-Widget是不可变的，这意味着它们的属性在创建后不能更改。</span><br><span class="line"></span><br><span class="line">1.2 作用：</span><br><span class="line">-Widget提供了一种声明式的方式来描述UI，使得UI构建更加简洁和直观。</span><br><span class="line">-Widget树是Flutter应用UI的配置描述，它由开发者构建，使用Dart代码描述UI的结构和属性</span><br><span class="line"></span><br><span class="line">2.Element（元素）：</span><br><span class="line"></span><br><span class="line">2.1定义：</span><br><span class="line">-Element是Widget在UI树中的实例化，它负责管理Widget的生命周期和更新。</span><br><span class="line">-Element持有Widget和RenderObject的引用，并维护它们之间的关联。</span><br><span class="line"></span><br><span class="line">2.2 作用：</span><br><span class="line">-Element是Widget和RenderObject之间的桥梁，它负责协调Widget的配置信息和RenderObject的渲染逻辑。</span><br><span class="line">-Element树是Widget树的实例化，它由Flutter框架根据Widget树构建。</span><br><span class="line"></span><br><span class="line">3. RenderObject（渲染对象）：</span><br><span class="line">3.1定义：</span><br><span class="line">-RenderObject是负责实际布局和绘制的对象，它知道如何将UI元素绘制到屏幕上。</span><br><span class="line">-RenderObject树是由RenderObject对象组成的树，它负责实际的UI布局和绘制操作。</span><br><span class="line"></span><br><span class="line">3.2作用：</span><br><span class="line">-RenderObject负责计算UI元素的大小和位置，并将其绘制到屏幕上。</span><br><span class="line">-RenderObject使用Skia图形引擎进行绘制，Skia是一种高性能的2D图形库。</span><br><span class="line"></span><br><span class="line">4. Layer（图层）：</span><br><span class="line">4.1定义：</span><br><span class="line">-Layer是RenderObject绘制的最终结果，它表示屏幕上的一个绘制区域。</span><br><span class="line">-Layer树是由Layer对象组成的树，它表示屏幕上的所有绘制区域。</span><br><span class="line"></span><br><span class="line">4.2作用：</span><br><span class="line">-Layer负责将RenderObject的绘制结果合成到屏幕上。</span><br><span class="line">-Layer可以用于实现复杂的视觉效果，例如透明度、遮罩和动画。</span><br><span class="line"></span><br><span class="line">5.它们之间的关系：</span><br><span class="line">-Widget树是UI的配置，Element树是Widget的实例化，</span><br><span class="line">RenderObject树是UI的实际绘制，Layer树是最终的屏幕绘制。</span><br><span class="line"></span><br><span class="line">-当Widget树发生变化时，Flutter框架会更新Element树。</span><br><span class="line">-Element树的变化会触发RenderObject树的更新，最终将UI呈现在屏幕上。</span><br><span class="line">-RenderObject通过Layer将绘制结果，最终在屏幕上显示出来</span><br><span class="line"></span><br><span class="line">6.简单来说：</span><br><span class="line">-Widget就像是UI的“设计图”，它描述了UI的结构和样式。</span><br><span class="line">-Element就像是“施工队”，它负责根据Widget的“设计图”来构建实际的UI。</span><br><span class="line">-RenderObject就像是“画家”，它负责将UI元素绘制到屏幕上。</span><br><span class="line">-Layer就像是“画布”，它负责将所有的UI元素组合起来，最终显示在屏幕上。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-简述state的生命周期"><a href="#2-3-简述state的生命周期" class="headerlink" title="2.3 简述state的生命周期"></a>2.3 简述state的生命周期</h3><p>1-图示</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-interview-2-state-life.png" loading="lazy"></p>
+<p>2-内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">在 Flutter 中，State 对象的生命周期是指它从创建到销毁的整个过程，</span><br><span class="line">它对于管理 StatefulWidget 的状态和更新 UI 至关重要。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1.以下是 State 对象的生命周期方法：</span><br><span class="line">1.1 createState()：</span><br><span class="line">-这是 StatefulWidget 创建 State 对象时调用的第一个方法。</span><br><span class="line">-它用于创建与 StatefulWidget 关联的 State 对象。</span><br><span class="line"></span><br><span class="line">1.2 initState()：</span><br><span class="line">-这是 State 对象初始化时调用的方法。</span><br><span class="line">-它用于执行初始化操作，例如初始化变量、订阅事件或启动动画。</span><br><span class="line">-在这个方法中调用 context 时，仅能调用当前widget的context。</span><br><span class="line"></span><br><span class="line">1.3 didChangeDependencies()：</span><br><span class="line">-当 State 对象依赖的 InheritedWidget 发生更改时调用。</span><br><span class="line">-它用于处理依赖项更改，例如从 InheritedWidget 中获取数据。</span><br><span class="line">-在 initState() 方法之后也会立即调用。</span><br><span class="line"></span><br><span class="line">1.4 build()：</span><br><span class="line">-这是构建 UI 时调用的方法。</span><br><span class="line">-它用于根据 State 对象的状态返回一个 Widget 树。</span><br><span class="line">-当 State 对象的状态更改时，会重新调用此方法。</span><br><span class="line"></span><br><span class="line">1.5 didUpdateWidget()：</span><br><span class="line">-当 StatefulWidget 的配置（即 widget 属性）发生更改时调用。</span><br><span class="line">-它用于处理 Widget 配置更新，例如比较新旧配置并执行相应的更新操作。</span><br><span class="line"></span><br><span class="line">1.6 setState()：</span><br><span class="line">-这是一个用于更新 State 对象状态的方法。</span><br><span class="line">-当调用此方法时，Flutter 框架会重新调用 build() 方法，以更新 UI。</span><br><span class="line"></span><br><span class="line">1.7 deactivate()：</span><br><span class="line">-当 State 对象从 Widget 树中移除时调用。</span><br><span class="line">-它用于执行清理操作，例如取消订阅事件或停止动画。</span><br><span class="line"></span><br><span class="line">1.8 dispose()：</span><br><span class="line">-当 State 对象被永久移除时调用。</span><br><span class="line">-它用于释放 State 对象占用的资源，例如关闭流或释放内存。</span><br><span class="line"></span><br><span class="line">2.简而言之：</span><br><span class="line"></span><br><span class="line">State 对象的生命周期方法提供了一种机制，用于管理 StatefulWidget 的状态和更新 UI。</span><br><span class="line">通过合理地使用这些方法，可以构建出高效且响应迅速的 Flutter 应用程序。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-简述flutter中自定义View流程？"><a href="#2-4-简述flutter中自定义View流程？" class="headerlink" title="2.4 简述flutter中自定义View流程？"></a>2.4 简述flutter中自定义View流程？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1-已有控件（widget）的继承，组合</span><br><span class="line">2-自定义绘制widget,也就是利用paint，cavans等进行绘制视图。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-flutter-boost的优缺点，内部实现"><a href="#2-5-flutter-boost的优缺点，内部实现" class="headerlink" title="2.5 flutter_boost的优缺点，内部实现"></a>2.5 flutter_boost的优缺点，内部实现</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">Flutter Boost 是一个由阿里巴巴开发的 Flutter 框架扩展，</span><br><span class="line">旨在为 Flutter 应用提供多页面、多路由的支持，类似于原生应用的多Activity或者多ViewController 的概念。</span><br><span class="line">以下是 Flutter Boost 的优缺点以及内部实现的一些特点：</span><br><span class="line"></span><br><span class="line">1.优点：</span><br><span class="line"></span><br><span class="line">1.1-多页面支持： </span><br><span class="line">Flutter Boost 允许在一个 Flutter 应用中使用多个页面和路由，</span><br><span class="line">这使得开发者可以更灵活地组织应用结构，实现更复杂的应用场景。</span><br><span class="line"></span><br><span class="line">1.2-原生集成： </span><br><span class="line">Flutter Boost提供了与原生代码的无缝集成，可以在原生应用中嵌入Flutter页面，</span><br><span class="line">并且可以方便地与原生代码进行通信和交互。</span><br><span class="line"></span><br><span class="line">1.3-性能优化： </span><br><span class="line">Flutter Boost 的内部实现对于性能进行了优化，使得在多页面场景下 Flutter 应用的性能表现更为稳定。</span><br><span class="line"></span><br><span class="line">1.4-组件复用：</span><br><span class="line">Flutter Boost 支持 Flutter 页面的复用，可以在不同的原生页面中加载同一个 Flutter 页面，提高了开发效率。</span><br><span class="line"></span><br><span class="line">2.缺点：</span><br><span class="line"></span><br><span class="line">2.1-学习成本： </span><br><span class="line">Flutter Boost 的使用相对复杂，需要对 Flutter 框架有一定的了解，</span><br><span class="line">并且需要学习其与原生代码的交互方式，对于新手来说学习成本较高。</span><br><span class="line"></span><br><span class="line">2.2-维护困难： 在使用多页面的情况下，应用的状态管理和页面之间的通信会变得更加复杂，增加了应用的维护难度。</span><br><span class="line">2.3-依赖性： </span><br><span class="line">Flutter Boost是阿里巴巴开发的第三方框架，对于某些项目可能存在依赖性的问题，需要考虑其对项目的长期维护和支持</span><br><span class="line"></span><br><span class="line">3.内部实现：</span><br><span class="line"></span><br><span class="line">Flutter Boost 的内部实现基于 Flutter 的原生页面路由，它主要包含以下几个核心组件：</span><br><span class="line"></span><br><span class="line">1-FlutterBoost: 这是整个框架的入口，负责管理和控制不同 Flutter 页面的跳转和生命周期管理。</span><br><span class="line">2-FlutterBoostApp: 这是 Flutter 应用的主入口，负责初始化 Flutter 引擎，并与原生代码进行交互。</span><br><span class="line">3-BoostNavigator: </span><br><span class="line">这是用于管理多个Flutter页面的导航器，负责页面的压栈、出栈等操作，类似于Flutter中的 Navigator。</span><br><span class="line"></span><br><span class="line">4-BoostContainer: </span><br><span class="line">这是一个 Flutter Widget，用于承载其他 Flutter 页面的内容，</span><br><span class="line">每个 BoostContainer 对应一个 Flutter 页面，可以在原生应用中被嵌入和展示。</span><br><span class="line"></span><br><span class="line">5-BoostChannel: </span><br><span class="line">这是用于Flutter与原生代码通信的渠道，可以实现双向通信，Flutter可以调用原生方法，原生也可以调用Flutter方法。</span><br><span class="line"></span><br><span class="line">通过这些组件的配合，Flutter Boost 实现了在原生应用中嵌入 Flutter 页面，</span><br><span class="line">并且支持多页面、多路由的功能，使得 Flutter 应用在原生应用中的集成和使用更加灵活和便捷</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-flutter的渲染机制"><a href="#2-6-flutter的渲染机制" class="headerlink" title="2.6 flutter的渲染机制"></a>2.6 flutter的渲染机制</h3><p>1-图示</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-interview-2-render.png" loading="lazy"></p>
+<p>2-说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">Flutter 的渲染机制是一个复杂但高效的过程，它确保了应用程序能够以每秒 60 帧或更高的帧率渲染 UI。</span><br><span class="line">以下是对 Flutter 渲染机制的详细描述：</span><br><span class="line"></span><br><span class="line">1. 三棵树的构建与关联：</span><br><span class="line"></span><br><span class="line">1.1 Widget 树：</span><br><span class="line">-这是开发者通过 Dart 代码构建的 UI 组件树，描述了 UI 的结构和配置。</span><br><span class="line">-Widget 本身是不可变的，它只是 UI 的一个描述。</span><br><span class="line"></span><br><span class="line">1.2 Element 树：</span><br><span class="line">-Element 树是 Widget 树的实例化，它维护了 Widget 的生命周期和更新。</span><br><span class="line">-Element 对象持有对 Widget 和 RenderObject 的引用。</span><br><span class="line"></span><br><span class="line">1.3 Render 树：</span><br><span class="line">-Render 树是由 RenderObject 对象组成的树，它负责实际的布局和绘制。</span><br><span class="line">-RenderObject 对象知道如何将 UI 元素绘制到屏幕上。</span><br><span class="line"></span><br><span class="line">1.4 关联：</span><br><span class="line">-Flutter 框架根据 Widget 树构建 Element 树，然后由 Element 树创建并管理 Render 树。</span><br><span class="line">-这三棵树之间存在着紧密的关联，Widget 树的变化会触发 Element 树和 Render 树的更新。</span><br><span class="line"></span><br><span class="line">2. 布局（Layout）：</span><br><span class="line">-Render 树中的每个 RenderObject 对象都会参与布局过程。</span><br><span class="line">-布局过程会计算每个 RenderObject 对象的大小和位置，以确定它们在屏幕上的显示方式。</span><br><span class="line">-Flutter 使用高效的布局算法，以确保 UI 的快速渲染。</span><br><span class="line"></span><br><span class="line">3. 绘制（Painting）：</span><br><span class="line">-布局完成后，Render 树中的每个 RenderObject 对象都会被绘制到屏幕上。</span><br><span class="line">-Flutter 使用 Skia 图形引擎进行绘制，Skia 是一种高性能的 2D 图形库。</span><br><span class="line">-Skia 能够在不同的平台上提供一致的绘制效果。</span><br><span class="line"></span><br><span class="line">4. 合成（Compositing）：</span><br><span class="line">-在绘制完成后，Flutter 会将各个 RenderObject 对象的绘制结果合成为最终的 UI 图像。</span><br><span class="line">-合成过程会处理透明度、遮罩和其他视觉效果</span><br><span class="line"></span><br><span class="line">5. 栅格化（Rasterization）：</span><br><span class="line">-最终的UI图像会被栅格化，转换成像素数据。</span><br><span class="line">-栅格化后的像素数据会被提交给GPU进行渲染</span><br><span class="line"></span><br><span class="line">6. 渲染（Rendering）：</span><br><span class="line">-GPU 将像素数据渲染到屏幕上。</span><br><span class="line">-Flutter 能够以每秒 60 帧或更高的帧率渲染 UI，从而提供流畅的用户体验。</span><br><span class="line"></span><br><span class="line">2核心技术：</span><br><span class="line"></span><br><span class="line">2.1Skia：</span><br><span class="line">-Flutter 使用 Skia 作为其 2D 图形渲染引擎。</span><br><span class="line">-Skia 能够在不同的平台上提供一致的渲染效果，并具有高性能。</span><br><span class="line"></span><br><span class="line">2.2 Dart：</span><br><span class="line">-Flutter 使用 Dart 语言进行开发。</span><br><span class="line">-Dart 具有高性能和快速的编译速度，这使得 Flutter 能够实现快速的 UI 渲染。</span><br><span class="line"></span><br><span class="line">3.总结：</span><br><span class="line"></span><br><span class="line">Flutter 通过构建和管理 Widget 树、Element 树和 Render 树，</span><br><span class="line">并结合 Skia 图形引擎和 Dart 语言，实现了高效且一致的组件渲染。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-flutter和native的优缺点"><a href="#2-7-flutter和native的优缺点" class="headerlink" title="2.7 flutter和native的优缺点"></a>2.7 flutter和native的优缺点</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">Flutter 和 Native（Android/iOS 开发）各有优缺点，适合不同的项目场景。</span><br><span class="line">让我们从多个维度来对比一下</span><br><span class="line"></span><br><span class="line">1. 开发效率</span><br><span class="line">1.1 Flutter：</span><br><span class="line">-优点：一套代码，多端运行，避免重复开发，极大提高效率。</span><br><span class="line">-优点：支持 Hot Reload，代码修改后能立即看到效果，调试效率高。</span><br><span class="line">-缺点：项目初期需要适应新的开发方式，学习 Dart 语言。</span><br><span class="line"></span><br><span class="line">1.2 Native：</span><br><span class="line">-优点：开发工具成熟（Android Studio、Xcode），直接使用平台原生能力。</span><br><span class="line">-缺点：Android 和 iOS 需要各自开发，代码复用率低，开发周期更长。</span><br><span class="line"></span><br><span class="line">2. 性能</span><br><span class="line">2.1 Flutter：</span><br><span class="line">-优点：接近原生性能，使用 Skia 渲染引擎，直接绘制 UI，避免原生视图嵌套带来的性能损耗。</span><br><span class="line">-缺点：由于 Dart VM 需要启动和桥接原生代码，首次启动速度略慢（冷启动优化难度较高）。</span><br><span class="line">-缺点：在涉及复杂的原生交互时（如蓝牙、传感器等），</span><br><span class="line">需要用平台通道（Platform Channel）桥接原生代码，增加一定复杂度。</span><br><span class="line"></span><br><span class="line">2.2 Native：</span><br><span class="line">-优点：性能最佳，无额外的桥接层，适合对性能要求极高的场景（如游戏、图像处理等）。</span><br><span class="line">-缺点：部分场景下，复杂 UI 会有更长的开发周期。</span><br><span class="line"></span><br><span class="line">3. UI/设计</span><br><span class="line">3.1 Flutter：</span><br><span class="line">-优点：拥有完全自绘的渲染机制，可以自定义各类 UI 组件，且界面在各平台表现一致。</span><br><span class="line">-优点：提供了 Material Design（Android 风格）和 Cupertino（iOS 风格）组件库，能快速构建跨平台界面。</span><br><span class="line">-缺点：想要完全模拟原生控件的外观和交互，可能需要大量自定义工作。</span><br><span class="line"></span><br><span class="line">3.2 Native：</span><br><span class="line">-优点：直接使用原生控件，界面更符合系统的交互习惯。</span><br><span class="line">-缺点：两端 UI 需要分别开发，代码复用率低。</span><br><span class="line"></span><br><span class="line">4. 生态与第三方库</span><br><span class="line">4.1 Flutter：</span><br><span class="line">-优点：生态发展非常快，pub.dev 上有大量插件。</span><br><span class="line">-缺点：部分三方库稳定性不如原生库，遇到平台相关的功能（如蓝牙、传感器），可能需要写原生代码桥接。</span><br><span class="line"></span><br><span class="line">4.2 Native：</span><br><span class="line">-优点：生态非常成熟，几乎所有的硬件功能和第三方库都可以直接使用。</span><br><span class="line">-缺点：在多平台项目中，可能需要维护多套依赖管理方案（如 Android 的 Gradle、iOS 的 CocoaPods）。</span><br><span class="line"></span><br><span class="line">5. 团队协作与招聘</span><br><span class="line">5.1 Flutter：</span><br><span class="line">-优点：团队只需要一个跨平台开发者就能同时开发 Android 和 iOS，大幅降低人力成本。</span><br><span class="line">-缺点：Flutter 开发者相对较少，高级开发者难招。</span><br><span class="line"></span><br><span class="line">5.2 Native：</span><br><span class="line">-优点：开发者多，技术栈成熟，容易招聘人才。</span><br><span class="line">-缺点：需要Android 和 iOS 分别招聘开发者，人力成本较高。</span><br><span class="line"></span><br><span class="line">6. 项目适用场景</span><br><span class="line">6.1 Flutter 适合：</span><br><span class="line">-启动速度快、开发效率要求高的场景（如 MVP、快速迭代的项目）。</span><br><span class="line">-跨平台项目、动态化需求强的项目。</span><br><span class="line">-UI 个性化要求高、需要自定义组件的场景。</span><br><span class="line"></span><br><span class="line">6.2 Native 适合：</span><br><span class="line">-性能要求极致的场景（如大型游戏、相机、视频剪辑等）。</span><br><span class="line">-强依赖原生能力、硬件交互的项目（如蓝牙、传感器、地图导航等）。</span><br><span class="line">-项目已有成熟的原生代码库或团队时，继续用原生开发更合适。</span><br><span class="line"></span><br><span class="line">总结</span><br><span class="line">Flutter 优势：开发效率高、跨平台、UI 表现一致。</span><br><span class="line">Flutter 劣势：初期学习成本高、部分场景性能略逊于原生、原生交互需要通过桥接层完成。</span><br><span class="line">Native 优势：性能最佳、原生交互直接调用，生态成熟。</span><br><span class="line">Native 劣势：开发效率低、需要分别开发 Android 和 iOS，维护成本较高。</span><br><span class="line"></span><br><span class="line">如果项目对性能要求极致，选择 Native；</span><br><span class="line">如果想要快速上线、降低开发成本、保持 UI 一致性，那 Flutter 绝对是最佳选择</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-8-flutter支不支持-120hz"><a href="#2-8-flutter支不支持-120hz" class="headerlink" title="2.8 flutter支不支持 120hz"></a>2.8 flutter支不支持 120hz</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Flutter 支持 120Hz 刷新率，但具体支持情况和实现方式需要考虑以下几个方面：</span><br><span class="line"></span><br><span class="line">1. 硬件支持：</span><br><span class="line">-首先，设备本身必须支持 120Hz 刷新率。</span><br><span class="line">-大多数高端 Android 和 iOS 设备都支持 120Hz 刷新率。</span><br><span class="line"></span><br><span class="line">2. Flutter 引擎：</span><br><span class="line">-Flutter 引擎本身支持高刷新率。</span><br><span class="line">-Flutter 的 UI 设计为每秒渲染 60 帧（fps），或者在支持 120Hz 更新的设备上为 120 帧。</span><br><span class="line">-这意味着，大约每 16ms，UI 就会更新以反映动画或 UI 的其他更改。</span><br><span class="line"></span><br><span class="line">3. 操作系统：</span><br><span class="line">-操作系统需要正确地将 Flutter 应用程序的渲染结果以 120Hz 的刷新率显示在屏幕上。</span><br><span class="line">-在 iOS 上，Flutter 可以以达到 120 hz 的刷新率进行渲染。</span><br><span class="line">-在 Android 上，情况可能更复杂，因为不同 OEM 厂商的设备可能存在差异。</span><br><span class="line"></span><br><span class="line">4. 应用程序优化：</span><br><span class="line"></span><br><span class="line">-即使设备和 Flutter 引擎都支持 120Hz，应用程序本身也需要进行优化，以确保能够以 120fps 的帧率渲染 UI。</span><br><span class="line">-这包括避免复杂的布局和绘制操作，以及使用高效的动画和过渡效果。</span><br><span class="line"></span><br><span class="line">5.总结：</span><br><span class="line">-Flutter 本身是支持高刷新率的。</span><br><span class="line">-但实际应用中，还需要考虑设备硬件，操作系统本身，以及应用程序的优化。</span><br><span class="line">-因此，为了确保 Flutter 应用程序能够以 120Hz 的刷新率运行，开发者需要进行充分的测试和优化。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-9-多线程怎么处理"><a href="#2-9-多线程怎么处理" class="headerlink" title="2.9 多线程怎么处理"></a>2.9 多线程怎么处理</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在 Flutter 中处理多线程任务的主要方式是使用异步编程模型。</span><br><span class="line">Flutter 提供了一系列的异步处理工具，其中最常用的是 Future、async 和 await 关键字，以及 Isolate。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-10-flutter中大图片上传"><a href="#2-10-flutter中大图片上传" class="headerlink" title="2.10 flutter中大图片上传"></a>2.10 flutter中大图片上传</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">在 Flutter 中上传大图片通常涉及以下几个步骤：</span><br><span class="line"></span><br><span class="line">1-选择图片： </span><br><span class="line">使用 Flutter 的 image_picker 插件或类似的库来实现从相册或相机中选择图片的功能。</span><br><span class="line">这些插件提供了方便的 API，允许用户选择图片并返回图片的文件路径或字节数据。</span><br><span class="line"></span><br><span class="line">2-压缩图片： </span><br><span class="line">由于大图片可能会占用较多的内存和网络带宽，建议在上传之前对图片进行压缩处理，以减小图片的尺寸和文件大小。</span><br><span class="line">你可以使用 Flutter 中的 flutter_image_compress 插件或类似的库来实现图片的压缩操作。</span><br><span class="line"></span><br><span class="line">3-上传图片： </span><br><span class="line">上传图片通常涉及将图片数据发送到服务器端，你可以使用Flutter的 http 插件或其他网络请求库来实现图片上传功能。</span><br><span class="line">在上传图片之前，确保你已经获得了图片的文件路径或字节数据，并且在请求中将图片数据正确地包装和发送给服务器</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-11-flutter-butild-方法中的-BuildContext-具体是什么东西"><a href="#2-11-flutter-butild-方法中的-BuildContext-具体是什么东西" class="headerlink" title="2.11 flutter butild 方法中的 BuildContext 具体是什么东西"></a>2.11 flutter butild 方法中的 BuildContext 具体是什么东西</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">在 Flutter 中，BuildContext 是非常核心的概念，</span><br><span class="line">它代表了一个 Widget 在 Widget 树中的位置和与其他 Widget 的关系。</span><br><span class="line">具体来说，BuildContext 是一个指向当前 Widget 的环境对象，</span><br><span class="line">它使得你可以访问与该 Widget 相关联的各种上下文信息。</span><br><span class="line"></span><br><span class="line">1. BuildContext 是什么？</span><br><span class="line">1.1 Widget 树中的定位：</span><br><span class="line">每个 Widget 都有一个对应的 BuildContext，它描述了该 Widget 在 Widget 树中的位置。</span><br><span class="line">通过 BuildContext，你可以访问 Widget 树中的其他 Widget 或者获取一些全局的信息（例如主题、路由等）。</span><br><span class="line"></span><br><span class="line">1.2 上下文传递：</span><br><span class="line">BuildContext 是 Flutter 中传递信息的桥梁，它可以被用来获取当前 Widget 所在的上下文信息。</span><br><span class="line"></span><br><span class="line">2. BuildContext 的主要作用</span><br><span class="line">2.1 获取祖先 Widget 的信息</span><br><span class="line">2.2 访问 Widget 树中的信息</span><br><span class="line">2.3 传递状态</span><br><span class="line"></span><br><span class="line">3. BuildContext 作为 Widget 构建的一部分</span><br><span class="line">-在 build() 方法中，BuildContext 作为参数传入，用来在该 Widget 的构建过程中访问其他 Widget 或其状态。</span><br><span class="line">-build() 方法中的 BuildContext 是不可变的，即使 Widget 状态更新后，BuildContext 仍保持不变。</span><br><span class="line">-每当 Widget 树发生变化时，build() 方法都会被调用，并且 BuildContext 会提供当前 Widget 树的状态</span><br><span class="line"></span><br><span class="line">4. 常见用法</span><br><span class="line">4.1 获取当前 Widget 的父级 Widget</span><br><span class="line">4.2 导航与路由管理</span><br><span class="line">4.3 通过 Scaffold 显示 Snackbar 或 Dialog</span><br><span class="line">4.4 获取屏幕尺寸、媒体信息</span><br><span class="line"></span><br><span class="line">5. 小结</span><br><span class="line">-BuildContext 是 Flutter 中每个 Widget 的上下文环境，</span><br><span class="line">它代表了该 Widget 在 Widget 树中的位置，帮助你访问当前上下文信息。</span><br><span class="line">-它提供了对祖先 Widget、InheritedWidget、路由、状态等的访问方式。</span><br><span class="line">-通过 BuildContext，你可以进行页面跳转、状态传递、获取布局信息等。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-12-flutter-打包成web、-移动端、桌面端的过程是怎么样的"><a href="#2-12-flutter-打包成web、-移动端、桌面端的过程是怎么样的" class="headerlink" title="2.12 flutter 打包成web、 移动端、桌面端的过程是怎么样的"></a>2.12 flutter 打包成web、 移动端、桌面端的过程是怎么样的</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line">Flutter 允许将应用打包成多平台应用，</span><br><span class="line">包括 Web、移动端（Android、iOS）和桌面端（Windows、macOS、Linux）。</span><br><span class="line">每个平台有不同的打包和发布流程，下面是针对这些平台的打包过程。</span><br><span class="line"></span><br><span class="line">1. 移动端打包（Android &amp; iOS）</span><br><span class="line"></span><br><span class="line">1.1 Android 打包过程：</span><br><span class="line"></span><br><span class="line">1.1.1 准备：</span><br><span class="line">-确保已经安装了 Android Studio 和相关的 Android SDK。</span><br><span class="line">-需要配置好 Flutter 和 Dart 环境，以及 Android 模拟器或真机。</span><br><span class="line"></span><br><span class="line">1.1.2 构建 APK 或 AAB（Android App Bundle）</span><br><span class="line">-生成 APK：flutter build apk --release</span><br><span class="line">-生成 AAB（推荐发布到 Google Play Store）:flutter build appbundle --release</span><br><span class="line">-生成的 APK 或 AAB 会存放在 build/app/outputs/flutter-apk/</span><br><span class="line">或 build/app/outputs/bundle/release/ 目录下。</span><br><span class="line"></span><br><span class="line">1.1.3 发布到 Google Play Store：</span><br><span class="line">打包完 APK 或 AAB 后，可以通过 Google Play Console 上传并发布应用。</span><br><span class="line"></span><br><span class="line">1.2 iOS 打包过程：</span><br><span class="line">1.2.1 准备：</span><br><span class="line">-需要安装 Xcode 和相关的 iOS 开发环境。</span><br><span class="line">-配置好证书、描述文件和 App ID 等。</span><br><span class="line"></span><br><span class="line">1.2.2 构建 IPA 文件</span><br><span class="line">-生成发布版本:flutter build ios --release</span><br><span class="line">-你也可以使用 Xcode 生成 .ipa 文件：</span><br><span class="line">flutter build ios</span><br><span class="line">open ios/Runner.xcworkspace</span><br><span class="line">-在 Xcode 中，选择 &quot;Generic iOS Device&quot;，然后使用 &quot;Archive&quot; 来生成 .ipa 文件。</span><br><span class="line"></span><br><span class="line">1.2.3 发布到 App Store</span><br><span class="line">生成的 .ipa 文件可以通过 Xcode 或 Apple 提供的 Transporter 工具上传到 App Store</span><br><span class="line"></span><br><span class="line">2. Web 打包过程</span><br><span class="line"></span><br><span class="line">2.1 准备：</span><br><span class="line">-确保 Flutter 环境已安装并支持 Web（Flutter 2.x 及以上版本）。</span><br><span class="line">-确保在 flutter config 中启用了 web 平台。</span><br><span class="line"></span><br><span class="line">2.2 构建 Web 应用</span><br><span class="line">-使用以下命令生成 Web 版本的应用：flutter build web</span><br><span class="line">-这将生成一个 build/web/ 文件夹，里面包含了所有静态文件（HTML、CSS、JS）</span><br><span class="line"></span><br><span class="line">2.3 部署到 Web 服务器</span><br><span class="line">你可以将 build/web/ 文件夹中的内容上传到任意的 Web 服务器，如：</span><br><span class="line">-Firebase Hosting</span><br><span class="line">-Netlify</span><br><span class="line">-GitHub Pages</span><br><span class="line">-自己的服务器</span><br><span class="line"></span><br><span class="line">3. 桌面端打包过程（Windows、macOS、Linux）</span><br><span class="line"></span><br><span class="line">3.1 Windows 打包过程</span><br><span class="line">3.1.1 准备：</span><br><span class="line">-确保已经安装了 Visual Studio 和相关的 Windows 开发环境</span><br><span class="line">3.1.2 构建 Windows 应用：</span><br><span class="line">-使用以下命令生成 Windows 平台的可执行文件:flutter build windows</span><br><span class="line">-这将生成一个 build/windows/ 文件夹，其中包含了 .exe 可执行文件</span><br><span class="line">3.1.3 发布到 Windows</span><br><span class="line">生成的 .exe 文件可以直接分发，或者打包成安装包（如使用 Inno Setup 或其他打包工具）。</span><br><span class="line"></span><br><span class="line">3.2 macOS 打包过程</span><br><span class="line">3.2.1 准备：</span><br><span class="line">-确保安装了 macOS 和 Xcode 开发环境。</span><br><span class="line">3.2.2 构建 macOS 应用</span><br><span class="line">-使用以下命令生成 macOS 平台的可执行文件：flutter build macos</span><br><span class="line">-这将生成一个 .app 文件在 build/macos/ 文件夹中</span><br><span class="line">3.2.3 发布到 Mac App Store</span><br><span class="line">将 .app 文件上传到 App Store，可以通过 Xcode 实现</span><br><span class="line"></span><br><span class="line">3.3 Linux 打包过程：</span><br><span class="line">3.3.1 准备：</span><br><span class="line">-确保安装了 Linux 的开发环境（如 GCC、make 等）</span><br><span class="line">3.3.2 构建 Linux 应用</span><br><span class="line">-使用以下命令生成 Linux 平台的可执行文件：flutter build linux</span><br><span class="line">-生成的可执行文件将位于 build/linux/ 目录</span><br><span class="line">3.3.3 发布到 Linux 系统</span><br><span class="line">可直接通过 .deb、.tar.gz 等格式进行分发，或者打包成应用商店（如 Snap 或 Flatpak）进行发布</span><br><span class="line"></span><br><span class="line">4. 统一打包流程</span><br><span class="line">4.1 平台选择：根据需要选择目标平台（Web、Android、iOS、Windows、macOS、Linux）。</span><br><span class="line">4.2 构建命令：使用 Flutter 的构建命令生成对应平台的应用</span><br><span class="line">-flutter build apk / flutter build appbundle：用于 Android。</span><br><span class="line">-flutter build ios：用于 iOS。</span><br><span class="line">-flutter build web：用于 Web。</span><br><span class="line">-flutter build windows / flutter build macos / flutter build linux：用于桌面平台。</span><br><span class="line"></span><br><span class="line">4.3 发布：完成构建后，按照各平台的发布流程进行上传或分发。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">5.总结</span><br><span class="line">-Flutter 支持多平台打包，</span><br><span class="line">通过平台特定的命令可以为 Android、iOS、Web 和桌面（Windows/macOS/Linux）构建和发布应用。</span><br><span class="line">-跨平台优势：一次代码，打包多个平台，减少开发和维护成本。</span><br><span class="line">-注意事项：不同平台的打包和发布方式有所不同，确保根据每个平台的要求进行配置和优化。</span><br><span class="line"></span><br><span class="line">这样，你就可以使用 Flutter 快速构建并发布一个跨平台的应用了</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-13-dart是弱引用还是强引用"><a href="#2-13-dart是弱引用还是强引用" class="headerlink" title="2.13 dart是弱引用还是强引用"></a>2.13 dart是弱引用还是强引用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">强引用</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-14-get-set方法实现"><a href="#2-14-get-set方法实现" class="headerlink" title="2.14 get set方法实现"></a>2.14 get set方法实现</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在 Dart 中，通常使用类的实例变量（成员变量）来存储对象的状态。</span><br><span class="line">如果你想要对这些变量进行读取和设置，可以使用 Dart 中的 getter 和 setter 方法</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-15-简述Flutter-的热重载"><a href="#2-15-简述Flutter-的热重载" class="headerlink" title="2.15 简述Flutter 的热重载"></a>2.15 简述Flutter 的热重载</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Flutter 的热重载是基于 JIT 编译模式的代码增量同步。</span><br><span class="line">由于 JIT 属于动态编译，能够将 Dart 代码编译成生成中间代码，让 Dart VM 在运行时解释执行，</span><br><span class="line">因此可以通过动态更新中间代码实现增量同步。</span><br><span class="line"></span><br><span class="line">热重载的流程可以分为 5 步，包括：扫描工程改动、增量编译、推送更新、代码合并、Widget 重建。</span><br><span class="line">Flutter 在接收到代码变更后，并不会让 App 重新启动执行，而只会触发 Widget 树的重新绘制</span><br><span class="line">，因此可以保持改动前的状态，大大缩短了从代码修改到看到修改产生的变化之间所需要的时间。</span><br><span class="line"></span><br><span class="line">另一方面，由于涉及到状态的保存与恢复，涉及状态兼容与状态初始化的场景，热重载是无法支持的，</span><br><span class="line">如改动前后 Widget 状态无法兼容、全局变量与静态属性的更改、main 方法里的更改、</span><br><span class="line">initState 方法里的更改、枚举和泛型的更改等。</span><br><span class="line"></span><br><span class="line">可以发现，热重载提高了调试 UI 的效率，非常适合写界面样式这样需要反复查看修改效果的场景。</span><br><span class="line">但由于其状态保存的机制所限，热重载本身也有一些无法支持的边界</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-16-Dart-的作用域"><a href="#2-16-Dart-的作用域" class="headerlink" title="2.16 Dart 的作用域"></a>2.16 Dart 的作用域</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Dart 没有 「public」「private」等关键字，默认就是公开的，私有变量使用下划线 _开头。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-17-Dart-当中的-「-」表示什么意思？"><a href="#2-17-Dart-当中的-「-」表示什么意思？" class="headerlink" title="2.17 Dart 当中的 「 .. 」表示什么意思？"></a>2.17 Dart 当中的 「 .. 」表示什么意思？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Dart 当中的 「..」意思是 「级联操作符」，为了方便配置而使用。</span><br><span class="line">「..」和「.」不同的是 调用「..」后返回的相当于是 this，而「.」返回的则是该方法返回的值 </span><br></pre></td></tr></table></figure>
+
+<h3 id="2-18-Dart-是不是单线程模型？是如何运行的？"><a href="#2-18-Dart-是不是单线程模型？是如何运行的？" class="headerlink" title="2.18 Dart 是不是单线程模型？是如何运行的？"></a>2.18 Dart 是不是单线程模型？是如何运行的？</h3><p>Dart 是单线程模型，运行的的流程如下图。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-interview-2-thread.png" loading="lazy"></p>
+<p>运行说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">Dart 确实是单线程模型，但它通过事件循环（Event Loop）和 Isolate 来实现并发和异步操作，</span><br><span class="line">使得开发者能够编写高效、响应迅速的应用程序。</span><br><span class="line"></span><br><span class="line">1.Dart 的运行方式</span><br><span class="line"></span><br><span class="line">1.1 单线程执行：</span><br><span class="line">-Dart 代码在一个单一的执行线程中运行，这意味着在任何给定时间，只有一个代码块在执行。</span><br><span class="line">-这种模型简化了并发编程，避免了多线程编程中常见的锁和竞态条件等问题。</span><br><span class="line"></span><br><span class="line">1.2 事件循环（Event Loop）：</span><br><span class="line">-Dart 使用事件循环来管理异步操作和事件。</span><br><span class="line">-事件循环是一个无限循环，它不断地从事件队列中取出事件并执行相应的回调函数。</span><br><span class="line">-事件队列包含来自各种来源的事件，例如 I/O 操作、定时器和用户交互。</span><br><span class="line">-事件循环确保了异步操作的有序执行，避免了阻塞主线程。</span><br><span class="line"></span><br><span class="line">1.3 异步操作：</span><br><span class="line">-Dart 提供了 Future 和 Stream 类，用于表示异步操作的结果。</span><br><span class="line">-Future 表示一个可能在将来完成的异步操作，并返回一个结果。</span><br><span class="line">-Stream 表示一个异步的数据序列，可以随着时间的推移发出多个数据事件。</span><br><span class="line">-async 和 await 关键字用于简化异步代码的编写。</span><br><span class="line"></span><br><span class="line">1.4 微任务队列（Microtask Queue）：</span><br><span class="line">-除了事件队列，Dart 还有一个微任务队列。</span><br><span class="line">-微任务队列中的任务优先级高于事件队列中的任务。</span><br><span class="line">-微任务通常用于执行短期的、高优先级的操作，例如 Promise 回调。</span><br><span class="line"></span><br><span class="line">1.5 Isolate：</span><br><span class="line">-虽然 Dart 是单线程的，但它提供了 Isolate 来实现并发。</span><br><span class="line">-Isolate 是一个独立的执行单元，它有自己的内存空间和事件循环。</span><br><span class="line">-Isolate 之间通过消息传递进行通信。</span><br><span class="line">-Isolate 适用于执行 CPU 密集型任务或需要并行处理的场景。</span><br><span class="line"></span><br><span class="line">2 总结：</span><br><span class="line">-Dart 的单线程模型通过事件循环和 Isolate 实现了高效的并发和异步操作。</span><br><span class="line">-事件循环确保了异步操作的有序执行，避免了阻塞主线程，</span><br><span class="line">-而 Isolate 则提供了并发执行 Dart 代码的能力，适用于需要并行处理的场景。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-19-Dart-是如何实现多任务并行的？"><a href="#2-19-Dart-是如何实现多任务并行的？" class="headerlink" title="2.19 Dart 是如何实现多任务并行的？"></a>2.19 Dart 是如何实现多任务并行的？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Dart 实现多任务并行主要依赖于 Isolate 和 异步编程（async/await） 两种机制。</span><br><span class="line">Dart 是单线程的，但是通过这些机制，它能够在不阻塞主线程的情况下实现多任务并行执行</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-20-说一下-mixin机制？"><a href="#2-20-说一下-mixin机制？" class="headerlink" title="2.20 说一下 mixin机制？"></a>2.20 说一下 mixin机制？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Mixin 是 Dart 中一种用于代码复用的机制，它允许你将一个类的行为（方法和属性）混入到另一个类中。</span><br><span class="line">使用 mixin 可以避免传统单继承模式中的一些问题，如无法共享多个类的功能。</span><br><span class="line">with 关键字用于将一个或多个 mixin 应用到类中，允许类获得 mixin 中定义的功能</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-21-介绍下Flutter的FrameWork层和Engine层，以及它们的作用"><a href="#2-21-介绍下Flutter的FrameWork层和Engine层，以及它们的作用" class="headerlink" title="2.21 介绍下Flutter的FrameWork层和Engine层，以及它们的作用"></a>2.21 介绍下Flutter的FrameWork层和Engine层，以及它们的作用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">Flutter 框架可以分为 Framework 层和 Engine 层，它们在 Flutter 应用的构建和运行中扮演着不同的角色</span><br><span class="line"></span><br><span class="line">1.Framework 层</span><br><span class="line"></span><br><span class="line">1.1 作用：</span><br><span class="line">-Framework 层是使用 Dart 语言编写的，它为开发者提供了构建 Flutter 应用所需的各种工具和组件。</span><br><span class="line">-它包括 Widget 库、渲染管道、手势识别、动画等功能。</span><br><span class="line">-开发者主要与 Framework 层交互，通过组合和定制各种 Widget 来构建用户界面。</span><br><span class="line"></span><br><span class="line">1.2 主要组成部分：</span><br><span class="line">-Widgets: Flutter UI 的基本构建块，它描述了 UI 的结构和配置。</span><br><span class="line">-Rendering: 一个抽象的布局层，它将 Widget 描述转换为可以在屏幕上绘制的 RenderObject 树。</span><br><span class="line">-Material 和 Cupertino: 提供了遵循 Material Design 和 iOS 设计规范的 Widget 库。</span><br><span class="line"></span><br><span class="line">1.3 特点：</span><br><span class="line">-使用 Dart 语言编写，易于学习和使用。</span><br><span class="line">-提供了丰富的 Widget 库，支持快速构建美观、流畅的用户界面。</span><br><span class="line">-具有高度的可定制性，允许开发者创建独特的 UI 效果。</span><br><span class="line"></span><br><span class="line">2.Engine 层</span><br><span class="line">2.1 作用：</span><br><span class="line">-Engine 层是使用 C/C++ 语言编写的，它负责 Flutter 应用的底层渲染和 Dart 运行时环境。</span><br><span class="line">-它包括 Skia 图形引擎、Dart 运行时、文本排版引擎等。</span><br><span class="line">-Engine 层提供了高性能的渲染能力，确保 Flutter 应用在不同平台上具有一致的性能和外观。</span><br><span class="line"></span><br><span class="line">2.2 主要组成部分：</span><br><span class="line">-Skia: 一个 2D 图形渲染引擎，用于绘制 UI 元素。</span><br><span class="line">-Dart Runtime: 负责执行 Dart 代码。</span><br><span class="line">-libtxt: 一个文本排版引擎，用于处理文本的显示。</span><br><span class="line"></span><br><span class="line">2.3 特点：</span><br><span class="line">-使用 C/C++ 语言编写，具有高性能。</span><br><span class="line">-通过 Skia 图形引擎实现跨平台渲染，确保 UI 在不同平台上的一致性。</span><br><span class="line">-提供了 Dart 运行时环境，支持 Dart 代码的执行。</span><br><span class="line"></span><br><span class="line">3.Framework 层和 Engine 层的关系</span><br><span class="line">-Framework 层构建在 Engine 层之上，通过调用 Engine 层的 API 来实现 UI 的渲染和 Dart 代码的执行。</span><br><span class="line">-Framework 层负责 UI 的逻辑和布局，而 Engine 层负责 UI 的实际绘制。</span><br><span class="line">-这种分层设计使得 Flutter 既具有高性能，又具有高度的灵活性和可定制性</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-22-简述Flutter的线程管理模型"><a href="#2-22-简述Flutter的线程管理模型" class="headerlink" title="2.22 简述Flutter的线程管理模型"></a>2.22 简述Flutter的线程管理模型</h3><p>1-图示</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-interview-2-thread-manager.png" loading="lazy"></p>
+<p>2-说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Flutter 的线程管理模型基于 Dart 的单线程执行模型，但通过事件循环和 Isolate 提供了并发和异步操作的能力。</span><br><span class="line">以下是 Flutter 线程管理模型的主要特点：</span><br><span class="line"></span><br><span class="line">1. 单线程执行：</span><br><span class="line">-Flutter 应用的 Dart 代码主要在一个单一的 UI 线程（也称为主线程）中执行。</span><br><span class="line">-这意味着 UI 渲染、事件处理和 Dart 代码的执行都在同一个线程中进行。</span><br><span class="line"></span><br><span class="line">2. 事件循环（Event Loop）：</span><br><span class="line">-Flutter 使用事件循环来管理异步操作和事件。</span><br><span class="line">-事件循环是一个无限循环，它不断地从事件队列中取出事件并执行相应的回调函数。</span><br><span class="line">-事件队列包含来自各种来源的事件，例如用户交互、网络请求、定时器等。</span><br><span class="line">-事件循环确保了异步操作的有序执行，避免了阻塞主线程，从而保持 UI 的流畅性和响应性。</span><br><span class="line"></span><br><span class="line">3. Isolate：</span><br><span class="line">-虽然 Dart 是单线程的，但它提供了 Isolate 来实现并发。</span><br><span class="line">-Isolate 是一个独立的执行单元，它有自己的内存空间和事件循环。</span><br><span class="line">-Isolate 之间通过消息传递进行通信。</span><br><span class="line">-Isolate 适用于执行 CPU 密集型任务或需要并行处理的场景，例如图像处理、数据分析等。</span><br><span class="line"></span><br><span class="line">4. Future 和 async/await：</span><br><span class="line">-Flutter 使用 Future 和 async/await 关键字来处理异步操作。</span><br><span class="line">-Future 表示一个可能在将来完成的异步操作，并返回一个结果。</span><br><span class="line">-async/await 关键字简化了异步代码的编写，使其看起来像同步代码</span><br><span class="line"></span><br><span class="line">总结：</span><br><span class="line">Flutter 的线程管理模型通过单线程和事件循环实现了高效的异步操作，保持了 UI 的流畅性和响应性。</span><br><span class="line">Isolate 提供了并发执行 Dart 代码的能力，适用于需要并行处理的场景。</span><br><span class="line">Flutter的线程模型与javascript的线程模型类似，是单线程模型。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-23-介绍下Flutter的理念架构"><a href="#2-23-介绍下Flutter的理念架构" class="headerlink" title="2.23 介绍下Flutter的理念架构"></a>2.23 介绍下Flutter的理念架构</h3><p>1-图示</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-flutter/flutter-interview-2-struct.png" loading="lazy"></p>
+<p>2-说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Flutter的架构层主要可以分为以下三层：</span><br><span class="line"></span><br><span class="line">1.Framework（框架层）：</span><br><span class="line">这一层完全使用Dart语言实现，提供了构建Flutter应用所需的各种工具和抽象。</span><br><span class="line"></span><br><span class="line">它包括：</span><br><span class="line">-Widgets（组件层）： 提供了丰富的、可组合的UI组件，用于构建应用程序的用户界面。</span><br><span class="line">-Rendering（渲染层）： 负责将Widget树转换为可绘制的渲染对象树。</span><br><span class="line">-Material/Cupertino（风格层）： 提供了遵循Material Design和iOS风格的UI组件。</span><br><span class="line">-Widgets层，Rendering层，Material/Cupertino层，都是由Dart语言实现的。</span><br><span class="line"></span><br><span class="line">2.Engine（引擎层）：</span><br><span class="line">这一层是Flutter的核心，主要使用C++实现。</span><br><span class="line">它包括：</span><br><span class="line">-Skia： 一个2D图形渲染引擎，负责绘制UI。</span><br><span class="line">-Dart Runtime（Dart运行时）： 负责执行Dart代码。</span><br><span class="line">-Text Layout（文本布局）： 负责文本的排版和渲染。</span><br><span class="line">引擎层是Flutter跨平台能力的核心。</span><br><span class="line"></span><br><span class="line">3.Embedder（嵌入层）：</span><br><span class="line">这一层是Flutter与底层操作系统的桥梁。</span><br><span class="line">它负责：</span><br><span class="line">-将Flutter引擎嵌入到特定的操作系统中（例如，Android或iOS）。</span><br><span class="line">-提供访问底层操作系统功能（例如，输入、事件循环）的接口。</span><br><span class="line">根据不同的平台，有不同的嵌入层实现。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">4.简单来说：</span><br><span class="line">-Framework层用Dart写好各种组件，方便开发者调用，快速的开发UI。</span><br><span class="line">-Engine层用C++写好渲染，运行Dart代码等核心功能，保证了Flutter的高性能。</span><br><span class="line">-Embedder层，让Flutter可以运行在不同的操作系统上。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-24-Future和Isolate有什么区别？"><a href="#2-24-Future和Isolate有什么区别？" class="headerlink" title="2.24 Future和Isolate有什么区别？"></a>2.24 Future和Isolate有什么区别？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">在 Dart 中，Future 和 Isolate 都用于处理异步操作，但它们在实现方式和适用场景上有所不同。</span><br><span class="line">以下是 Future 和 Isolate 之间的主要区别：</span><br><span class="line"></span><br><span class="line">1. 执行环境：</span><br><span class="line">1.1 Future：</span><br><span class="line">-Future 在同一个 Isolate（即主线程）中执行。</span><br><span class="line">-它通过事件循环（Event Loop）来管理异步操作，避免阻塞主线程。</span><br><span class="line"></span><br><span class="line">1.2 Isolate：</span><br><span class="line">-Isolate 是一个独立的执行单元，拥有自己的内存空间和事件循环。</span><br><span class="line">-它在后台线程中执行，与主线程并行运行。</span><br><span class="line"></span><br><span class="line">2. 并发性：</span><br><span class="line">2.1 Future：</span><br><span class="line">-Future 实现了异步操作，但不是真正的并行。</span><br><span class="line">-它允许在等待 I/O 操作或其他异步任务完成时，继续执行其他代码。</span><br><span class="line"></span><br><span class="line">2.2 Isolate：</span><br><span class="line">-Isolate 实现了真正的并行计算。</span><br><span class="line">-它允许在后台线程中执行 CPU 密集型任务，充分利用多核 CPU 的性能。</span><br><span class="line"></span><br><span class="line">3. 通信方式：</span><br><span class="line">3.1 Future：</span><br><span class="line">-Future 不需要显式的通信机制，可以直接在同一个 Isolate 中访问和修改变量。</span><br><span class="line"></span><br><span class="line">3.2 Isolate：</span><br><span class="line">-Isolate 之间通过消息传递（Message Passing）进行通信。</span><br><span class="line">-这增加了代码的复杂性，但也避免了多线程编程中常见的共享内存问题。</span><br><span class="line"></span><br><span class="line">4. 适用场景：</span><br><span class="line">4.1 Future：</span><br><span class="line">-适用于 I/O 操作，例如网络请求、文件读写等。</span><br><span class="line">-适用于不需要长时间计算的异步任务。</span><br><span class="line">-在Flutter 框架中，大部分的异步操作都是使用Future 完成的。</span><br><span class="line"></span><br><span class="line">4.2 Isolate：</span><br><span class="line">-适用于 CPU 密集型任务，例如图像处理、数据分析、复杂的数学计算等。</span><br><span class="line">-适用于需要并行处理的任务。</span><br><span class="line"></span><br><span class="line">总结：</span><br><span class="line">-Future 用于处理异步 I/O 操作，避免阻塞主线程。</span><br><span class="line">-Isolate 用于实现真正的并行计算，充分利用多核 CPU 的性能</span><br></pre></td></tr></table></figure>
+
+<p>总结</p>
+<table>
+<thead>
+<tr>
+<th align="center">特性</th>
+<th align="center">Future</th>
+<th align="center">Isolate</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">目的</td>
+<td align="center">适用于异步 I&#x2F;O 操作，如网络请求、文件读取等。</td>
+<td align="center">适用于并行计算，执行 CPU 密集型任务。</td>
+</tr>
+<tr>
+<td align="center">线程模型</td>
+<td align="center">运行在主线程（事件循环）中，依赖于异步编程。</td>
+<td align="center">每个 <code>Isolate</code> 拥有自己的线程和内存，支持真正的并行。</td>
+</tr>
+<tr>
+<td align="center">内存</td>
+<td align="center">共享内存，多个 <code>Future</code> 共享主线程的内存。</td>
+<td align="center">独立内存，每个 <code>Isolate</code> 互不干扰</td>
+</tr>
+<tr>
+<td align="center">性能</td>
+<td align="center">更适合处理 I&#x2F;O 密集型任务，避免阻塞主线程。</td>
+<td align="center">更适合处理 CPU 密集型任务，能提高性能。</td>
+</tr>
+<tr>
+<td align="center">通信</td>
+<td align="center">通过 <code>async/await</code> 和事件队列处理结果。</td>
+<td align="center">通过 <code>SendPort</code> 和 <code>ReceivePort</code> 实现消息传递。</td>
+</tr>
+<tr>
+<td align="center">并发</td>
+<td align="center">通过事件循环异步执行，但不是真正的并行。</td>
+<td align="center">支持真正的并行计算，每个 <code>Isolate</code> 可以在不同核心上运行。</td>
+</tr>
+</tbody></table>
+<h3 id="2-25-什么是Navigator-MaterialApp做了什么？"><a href="#2-25-什么是Navigator-MaterialApp做了什么？" class="headerlink" title="2.25 什么是Navigator? MaterialApp做了什么？"></a>2.25 什么是Navigator? MaterialApp做了什么？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Navigator是在Flutter中负责管理维护页面堆栈的导航器。</span><br><span class="line">MaterialApp在需要的时候，会自动为我们创建Navigator。</span><br><span class="line">Navigator.of(context)，会使用context来向上遍历Element树，</span><br><span class="line">找到MaterialApp提供的_NavigatorState再调用其push/pop方法完成导航操作。</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-参考"><a href="#三-参考" class="headerlink" title="三 参考"></a>三 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7067828374344826887">掘金—Flutter 面试题整理</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/ja/tags/Flutter%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># Flutter面试题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ja/posts/b5326b86.html" rel="prev" title="标准韩国语第三册——第10课-压力与疾病-单词">
+                  <i class="fa fa-angle-left"></i> 标准韩国语第三册——第10课-压力与疾病-单词
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ja/posts/366b705a.html" rel="next" title="Flutter面试题——面试题整理3">
+                  Flutter面试题——面试题整理3 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"55f2b414479fa9f57a85dadf6c32f621"}</script>
+<script src="/ja/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="前言Google每发布一个Android新版本，都会在官网更新最新的功能，我们通过https:&#x2F;&#x2F;developer.android.google.cn&#x2F;about&#x2F;versions&#x2F;nougat&#x2F;index.html查看每个版本的功能，针对新特性作产品兼容。否则App运行在新的版本会出现一系列问题。下面是Android每个版本的功能和行为变更。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发之——新特性">
+<meta property="og:url" content="https://pgzxc.github.io/posts/fb211eb4.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="前言Google每发布一个Android新版本，都会在官网更新最新的功能，我们通过https:&#x2F;&#x2F;developer.android.google.cn&#x2F;about&#x2F;versions&#x2F;nougat&#x2F;index.html查看每个版本的功能，针对新特性作产品兼容。否则App运行在新的版本会出现一系列问题。下面是Android每个版本的功能和行为变更。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-change.png">
+<meta property="article:published_time" content="2018-01-10T14:38:27.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.244Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="新特性">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-change.png">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/fb211eb4.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/fb211eb4.html","path":"posts/fb211eb4.html","title":"Android开发之——新特性"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android开发之——新特性 | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android%E8%A1%8C%E4%B8%BA%E5%8F%98%E6%9B%B4"><span class="nav-number">2.</span> <span class="nav-text">Android行为变更</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-5-0-Lollipop"><span class="nav-number">2.1.</span> <span class="nav-text">Android 5.0(Lollipop)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-Runtime-ART"><span class="nav-number">2.1.1.</span> <span class="nav-text">Android Runtime(ART)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A3%B0%E9%9F%B3%E5%92%8C%E9%9C%87%E5%8A%A8"><span class="nav-number">2.1.2.</span> <span class="nav-text">声音和震动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%81%E5%AE%9A%E5%B1%8F%E5%B9%95%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="nav-number">2.1.3.</span> <span class="nav-text">锁定屏幕可见性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%AE%E5%8A%A8%E9%80%9A%E7%9F%A5"><span class="nav-number">2.1.4.</span> <span class="nav-text">浮动通知</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getRecentTasks"><span class="nav-number">2.1.5.</span> <span class="nav-text">getRecentTasks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%91%E5%AE%9A%E5%88%B0%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.1.6.</span> <span class="nav-text">绑定到服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#webview"><span class="nav-number">2.1.7.</span> <span class="nav-text">webview</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-6-0"><span class="nav-number">2.2.</span> <span class="nav-text">Android 6.0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E6%9D%83%E9%99%90"><span class="nav-number">2.2.1.</span> <span class="nav-text">运行时权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%96%E6%B6%88%E6%94%AF%E6%8C%81Apache-HTTP%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">2.2.2.</span> <span class="nav-text">取消支持Apache HTTP客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BoringSSL"><span class="nav-number">2.2.3.</span> <span class="nav-text">BoringSSL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E7%9F%A5"><span class="nav-number">2.2.4.</span> <span class="nav-text">通知</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9F%B3%E9%A2%91%E7%AE%A1%E7%90%86%E5%99%A8%E5%8F%98%E6%9B%B4"><span class="nav-number">2.2.5.</span> <span class="nav-text">音频管理器变更</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E6%9C%BA%E6%9C%8D%E5%8A%A1%E5%8F%98%E6%9B%B4"><span class="nav-number">2.2.6.</span> <span class="nav-text">相机服务变更</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-7-0"><span class="nav-number">2.3.</span> <span class="nav-text">Android 7.0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B5%E6%B1%A0%E5%92%8C%E5%86%85%E5%AD%98"><span class="nav-number">2.3.1.</span> <span class="nav-text">电池和内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Project-Svelte%EF%BC%9A%E5%90%8E%E5%8F%B0%E4%BC%98%E5%8C%96"><span class="nav-number">2.3.2.</span> <span class="nav-text">Project Svelte：后台优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90%E6%9B%B4%E6%94%B9"><span class="nav-number">2.3.3.</span> <span class="nav-text">系统权限更改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E5%BA%94%E7%94%A8%E4%BB%B6%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.4.</span> <span class="nav-text">在应用件共享文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%8F%E5%B9%95%E7%BC%A9%E6%94%BE"><span class="nav-number">2.3.5.</span> <span class="nav-text">屏幕缩放</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E4%BD%A0%E7%9A%84%E5%BA%94%E7%94%A8%E6%98%AF%E5%90%A6%E4%BD%BF%E7%94%A8%E7%A7%81%E6%9C%89%E5%BA%93"><span class="nav-number">2.3.6.</span> <span class="nav-text">检查你的应用是否使用私有库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E9%87%8D%E8%A6%81%E8%AF%B4%E6%98%8E"><span class="nav-number">2.3.7.</span> <span class="nav-text">其他重要说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-8-0-%E6%A6%82%E5%BF%B5"><span class="nav-number">2.4.</span> <span class="nav-text">Android 8.0(概念)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%88%E5%B9%B6Chrome-OS"><span class="nav-number">2.4.1.</span> <span class="nav-text">合并Chrome OS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%AA%97%E5%8F%A3%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.4.2.</span> <span class="nav-text">多窗口模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenJDK%E6%9B%BF%E6%8D%A2Java-API"><span class="nav-number">2.4.3.</span> <span class="nav-text">OpenJDK替换Java API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3D-Touch%E5%8A%9F%E8%83%BD"><span class="nav-number">2.4.4.</span> <span class="nav-text">3D Touch功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B%E5%8D%87%E7%BA%A7"><span class="nav-number">2.4.5.</span> <span class="nav-text">独立升级</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/fb211eb4.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android开发之——新特性 | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android开发之——新特性<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Android%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94%E6%96%B0%E7%89%B9%E6%80%A7.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-01-10 22:38:27" itemprop="dateCreated datePublished" datetime="2018-01-10T22:38:27+08:00">2018-01-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/D-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">D-移动开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/D-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Google每发布一个Android新版本，都会在官网更新最新的功能，我们通过<a target="_blank" rel="noopener" href="https://developer.android.google.cn/about/versions/nougat/index.html">https://developer.android.google.cn/about/versions/nougat/index.html</a><br>查看每个版本的功能，针对新特性作产品兼容。否则App运行在新的版本会出现一系列问题。下面是Android每个版本的功能和行为变更。<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-image/android-change.png" loading="lazy"></p>
+<span id="more"></span>
+<h1 id="Android行为变更"><a href="#Android行为变更" class="headerlink" title="Android行为变更"></a>Android行为变更</h1><p>Android官网提供的版本从4.x开始，4.x之前的版本兼容做的较少，不做分析，本文主要分析Android5,6,7,8版本变更。  </p>
+<h2 id="Android-5-0-Lollipop"><a href="#Android-5-0-Lollipop" class="headerlink" title="Android 5.0(Lollipop)"></a>Android 5.0(Lollipop)</h2><p>Api级别：21  </p>
+<h3 id="Android-Runtime-ART"><a href="#Android-Runtime-ART" class="headerlink" title="Android Runtime(ART)"></a>Android Runtime(ART)</h3><p>大多数Android应用无需任何更改就可以在ART下工作。不过，部分适合Dalvik的技术并不适用于ART。如需立交有关最重要的问题的信息，请参阅在Android Runtime(ART)上验证应用行为。如存在一下情况，应特别注意：   </p>
+<ul>
+<li>你的应用使用Java原生接口(JNI)运行C&#x2F;C++代码</li>
+<li>你使用生成非标准代码的开发工具(例如，一些代码混淆工具) </li>
+<li>你使用与压缩垃圾回收不兼容的技术</li>
+</ul>
+<h3 id="声音和震动"><a href="#声音和震动" class="headerlink" title="声音和震动"></a>声音和震动</h3><p>如果你当前使用Ringtone、MediaPlayer或Vibrator类向通知中添加声音和震动，则移除此代码，以便系统可以在&quot;优先&quot;模式中正确显示通知。取而代之的是，使用Notification.Builder方法添加声音和震动。 </p>
+<p>将设备设为RINGER_MODE_SILENT可使设备进入新的优先模式。如果你将设备设为RINGER_MOVE_NORMAL或RINGER_MODE_VIBRATE，则设备将退出优先模式。  </p>
+<p>以前，Android使用STREAM_MUSIC作为主流式传输来控制平板电脑设备上的音量。在Android 5.0中，手机和平板电脑设备的主音量模式传输现已合并，由STREAM_RING或STREAM_NOTIFICATION进行控制。  </p>
+<h3 id="锁定屏幕可见性"><a href="#锁定屏幕可见性" class="headerlink" title="锁定屏幕可见性"></a>锁定屏幕可见性</h3><p>默认情况下，在Android 5.0中，通知现在显示用户的锁定屏幕上，用户可以选择保护敏感信息不被公开，再次情况下，系统会自动删减通知显示的文本。要自定义此删减的通知，请使用setPublicVersion()。  </p>
+<p>如果通知不包含个人信息，或者你想允许媒体播放控件显示在通知上，则调用setVisibility()方法并将通知的可见性级别设为VISIBILITY_PUBLIC 。  </p>
+<h3 id="浮动通知"><a href="#浮动通知" class="headerlink" title="浮动通知"></a>浮动通知</h3><p>现在，当设备处于活动状态时(即，设备未锁定且其屏幕已打开)，通知可以显示在小型浮动窗口中(也称为&quot;浮动通知&quot;)。这些通知看上去类似于精简版的通知，只是浮动通知还显示按钮。用户可以在不离开当前应用的情况下处理或清除浮动通知。  </p>
+<p>可能触发浮动通知的条件示例包括： </p>
+<ul>
+<li>用户的activity处于全屏模式中(应用使用fullScreenIntent)</li>
+<li>通知具有较高的优先级并使用铃声或震动</li>
+</ul>
+<p>如果你的应用在以上任何情形下实现通知，请确保系统正确显示浮动通知。  </p>
+<h3 id="getRecentTasks"><a href="#getRecentTasks" class="headerlink" title="getRecentTasks"></a>getRecentTasks</h3><p>为提升用户隐私的安全性，现已弃用activityManager.getRecentTask（）方法。对于向后兼容性，此方法仍会返回它的一小部分数据，包括应用自己的任务和可能的一些其他非敏感任务(如首页)。如果你的应用使用此方法检索它自己的任务，则改用getAppTasks检索信息。  </p>
+<h3 id="绑定到服务"><a href="#绑定到服务" class="headerlink" title="绑定到服务"></a>绑定到服务</h3><p>Context.bindService() 方法现在需要显式 Intent，如果提供隐式 intent，将引发异常。为确保应用的安全性，请使用显式 intent 启动或绑定 Service，且不要为服务声明 intent 过滤器。  </p>
+<h3 id="webview"><a href="#webview" class="headerlink" title="webview"></a>webview</h3><p>Android 5.0 更改了应用的默认行为。如果您的应用是面向 API 级别 21 或更高级别：默认情况下，系统会阻止混合内容和第三方 Cookie。要允许混合内容和第三方 Cookie，请分别使用 setMixedContentMode() 和 setAcceptThirdPartyCookies() 方法。系统现在可以智能地选择要绘制的 HTML 文档部分。这个新的默认行为有助于减少内存占用和提升性能。如果您要一次渲染整个文档，可通过调用 enableSlowWholeDocumentDraw() 停用此优化。  </p>
+<p>如果您的应用是面向低于 21 的 API 级别：系统允许混合内容和第三方 Cookie，并始终一次渲染整个文档。</p>
+<h2 id="Android-6-0"><a href="#Android-6-0" class="headerlink" title="Android 6.0"></a>Android 6.0</h2><p>API级别：23  </p>
+<h3 id="运行时权限"><a href="#运行时权限" class="headerlink" title="运行时权限"></a>运行时权限</h3><p>对于以 Android 6.0（API 级别 23）或更高版本为目标平台的应用，请务必在运行时检查和请求权限。要确定您的应用是否已被授予权限，请调用新增的 checkSelfPermission() 方法。要请求权限，请调用新增的 requestPermissions() 方法。即使您的应用并不以 Android 6.0（API 级别 23）为目标平台，您也应该在新权限模式下测试您的应用。  </p>
+<h3 id="取消支持Apache-HTTP客户端"><a href="#取消支持Apache-HTTP客户端" class="headerlink" title="取消支持Apache HTTP客户端"></a>取消支持Apache HTTP客户端</h3><p>Android 6.0 版移除了对 Apache HTTP 客户端的支持。如果您的应用使用该客户端，并以 Android 2.3（API 级别 9）或更高版本为目标平台，请改用 HttpURLConnection 类。此 API 效率更高，因为它可以通过透明压缩和响应缓存减少网络使用，并可最大限度降低耗电量。要继续使用 Apache HTTP API，您必须先在 build.gradle 文件中声明以下编译时依赖项：</p>
+<pre><code>android {useLibrary &#39;org.apache.http.legacy&#39;}
+</code></pre>
+<h3 id="BoringSSL"><a href="#BoringSSL" class="headerlink" title="BoringSSL"></a>BoringSSL</h3><p>Android 正在从使用 OpenSSL 库转向使用 BoringSSL 库。如果您要在应用中使用 Android NDK，请勿链接到并非 NDK API 组成部分的加密库，如 libcrypto.so 和 libssl.so。这些库并非公共 API，可能会在不同版本和设备上毫无征兆地发生变化或出现故障。此外，您还可能让自己暴露在安全漏洞的风险之下。请改为修改原生代码，以通过 JNI 调用 Java 加密 API，或静态链接到您选择的加密库。  </p>
+<h3 id="通知"><a href="#通知" class="headerlink" title="通知"></a>通知</h3><p>此版本移除了 Notification.setLatestEventInfo() 方法。请改用 Notification.Builder 类来构建通知。要重复更新通知，请重复使用 Notification.Builder 实例。调用 build() 方法可获取更新后的 Notification 实例。</p>
+<p>adb shell dumpsys notification 命令不再打印输出您的通知文本。请改用 adb shell dumpsys notification --noredact 命令打印输出 notification 对象中的文本。 </p>
+<h3 id="音频管理器变更"><a href="#音频管理器变更" class="headerlink" title="音频管理器变更"></a>音频管理器变更</h3><p>不再支持通过 AudioManager 类直接设置音量或将特定音频流静音。setStreamSolo() 方法已弃用，您应该改为调用 requestAudioFocus() 方法。类似地，setStreamMute() 方法也已弃用，请改为调用 adjustStreamVolume() 方法并传入方向值 ADJUST_MUTE 或 ADJUST_UNMUTE。  </p>
+<h3 id="相机服务变更"><a href="#相机服务变更" class="headerlink" title="相机服务变更"></a>相机服务变更</h3><p>在此版本中，相机服务中共享资源的访问模式已从之前的“先到先得”访问模式更改为高优先级进程优先的访问模式。对服务行为的变更包括：  </p>
+<ul>
+<li>根据客户端应用进程的“优先级”授予对相机子系统资源的访问权，包括打开和配置相机设备。带有对用户可见 Activity 或前台Activity 的应用进程一般会被授予较高的优先级，从而使相机资源的获取和使用更加可靠； </li>
+<li>当高优先级的应用尝试使用相机时，系统可能会“驱逐”正在使用相机客户端的低优先级应用。在已弃用的 Camera API 中，这会导致系统为被驱逐的客户端调用 onError()。在 Camera2 API 中，这会导致系统为被驱逐的客户端调用onDisconnected()；</li>
+<li>在配备相应相机硬件的设备上，不同的应用进程可同时独立打开和使用不同的相机设备。但现在，如果在多进程用例中同时访问相机会造成任何打开的相机设备的性能或能力严重下降，相机服务会检测到这种情况并禁止同时访问。即使并没有其他应用直接尝试访问同一相机设备，此变更也可能导致低优先级客户端被“驱逐”。</li>
+<li>更改当前用户会导致之前用户帐户拥有的应用内活动相机客户端被驱逐。对相机的访问仅限于访问当前设备用户拥有的用户个人资料。举例来说，这意味着，当用户切换到其他帐户后，“来宾”帐户实际上无法让使用相机子系统的进程保持运行状态</li>
+</ul>
+<h2 id="Android-7-0"><a href="#Android-7-0" class="headerlink" title="Android 7.0"></a>Android 7.0</h2><p>API级别：24 </p>
+<h3 id="电池和内存"><a href="#电池和内存" class="headerlink" title="电池和内存"></a>电池和内存</h3><p>Android 7.0 包括旨在延长设备电池寿命和减少 RAM 使用的系统行为变更。这些变更可能会影响您的应用访问系统资源，以及您的应用通过特定隐式 intent 与其他应用交互的方式。  </p>
+<h3 id="Project-Svelte：后台优化"><a href="#Project-Svelte：后台优化" class="headerlink" title="Project Svelte：后台优化"></a>Project Svelte：后台优化</h3><p>Android 7.0 移除了三项隐式广播，以帮助优化内存使用和电量消耗。此项变更很有必要，因为隐式广播会在后台频繁启动已注册侦听这些广播的应用。删除这些广播可以显著提升设备性能和用户体验。</p>
+<p>移动设备会经历频繁的连接变更，例如在 WLAN 和移动数据之间切换时。目前，可以通过在应用清单中注册一个接收器来侦听隐式 CONNECTIVITY_ACTION 广播，让应用能够监控这些变更。由于很多应用会注册接收此广播，因此单次网络切换即会导致所有应用被唤醒并同时处理此广播。</p>
+<p>同理，在之前版本的 Android 中，应用可以注册接收来自其他应用（例如相机）的隐式 ACTION_NEW_PICTURE 和 ACTION_NEW_VIDEO 广播。当用户使用相机应用拍摄照片时，这些应用即会被唤醒以处理广播。</p>
+<p>为缓解这些问题，Android 7.0 应用了以下优化措施：  </p>
+<ul>
+<li>面向 Android 7.0 开发的应用不会收到 CONNECTIVITY_ACTION 广播，即使它们已有清单条目来请求接受这些事件的通知。在前台运行的应用如果使用 BroadcastReceiver 请求接收通知，则仍可以在主线程中侦听 CONNECTIVITY_CHANGE。 </li>
+<li>应用无法发送或接收 ACTION_NEW_PICTURE 或 ACTION_NEW_VIDEO 广播。此项优化会影响所有应用，而不仅仅是面向 Android 7.0 的应用。</li>
+</ul>
+<p>的应用使用任何 intent，您仍需要尽快移除它们的依赖关系，以正确适配 Android 7.0 设备。Android 框架提供多个解决方案来缓解对这些隐式广播的需求。例如，JobScheduler API 提供了一个稳健可靠的机制来安排满足指定条件（例如连入无限流量网络）时所执行的网络操作。您甚至可以使用 JobScheduler 来适应内容提供程序变化。</p>
+<h3 id="系统权限更改"><a href="#系统权限更改" class="headerlink" title="系统权限更改"></a>系统权限更改</h3><p>为了提高私有文件的安全性，面向 Android 7.0 或更高版本的应用私有目录被限制访问　(0700)。此设置可防止私有文件的元数据泄漏，如它们的大小或存在性。此权限更改有多重副作用：  </p>
+<ul>
+<li>私有文件的文件权限不应再由所有者放宽，为使用 MODE_WORLD_READABLE 和&#x2F;或 MODE_WORLD_WRITEABLE 而进行的此类尝试将触发 SecurityException。<br>注：迄今为止，这种限制尚不能完全执行。应用仍可能使用原生 API 或 File API 来修改它们的私有目录权限。但是，我们强烈反对放宽私有目录的权限。   </li>
+<li>传递软件包网域外的 file:&#x2F;&#x2F; URI 可能给接收器留下无法访问的路径。因此，尝试传递 file:&#x2F;&#x2F; URI 会触发 FileUriExposedException。分享私有文件内容的推荐方法是使用 FileProvider。  </li>
+<li>DownloadManager 不再按文件名分享私人存储的文件。旧版应用在访问 COLUMN_LOCAL_FILENAME 时可能出现无法访问的路径。面向 Android 7.0 或更高版本的应用在尝试访问 COLUMN_LOCAL_FILENAME 时会触发 SecurityException。通过使用DownloadManager.Request.setDestinationInExternalFilesDir() 或DownloadManager.Request.setDestinationInExternalPublicDir() 将下载位置设置为公共位置的旧版应用仍可以访问 COLUMN_LOCAL_FILENAME 中的路径，但是我们强烈反对使用这种方法。对于由 DownloadManager 公开的文件，首选的访问方式是使用ContentResolver.openFileDescriptor() 。</li>
+</ul>
+<h3 id="在应用件共享文件"><a href="#在应用件共享文件" class="headerlink" title="在应用件共享文件"></a>在应用件共享文件</h3><p>对于面向 Android 7.0 的应用，Android 框架执行的 StrictMode API 政策禁止在您的应用外部公开 file:&#x2F;&#x2F; URI。如果一项包含文件 URI 的 intent 离开您的应用，则应用出现故障，并出现 FileUriExposedException 异常。   </p>
+<p>要在应用间共享文件，您应发送一项 content:&#x2F;&#x2F; URI，并授予 URI 临时访问权限。进行此授权的最简单方式是使用 FileProvider 类。</p>
+<h3 id="屏幕缩放"><a href="#屏幕缩放" class="headerlink" title="屏幕缩放"></a>屏幕缩放</h3><p>ndroid 7.0 支持用户设置显示尺寸，以放大或缩小屏幕上的所有元素，从而提升设备对视力不佳用户的可访问性。用户无法将屏幕缩放至低于最小屏幕宽度 sw320dp，该宽度是 Nexus 4 的宽度，也是常规中等大小手机的宽度。</p>
+<p>当设备密度发生更改时，系统会以如下方式通知正在运行的应用： </p>
+<ul>
+<li>如果是面向 API 级别 23 或更低版本系统的应用，系统会自动终止其所有后台进程。这意味着如果用户切换离开此类应用，转而打开 Settings 屏幕并更改 Display size 设置，则系统会像处理内存不足的情况一样终止该应用。如果应用具有任何前台进程，则系统会如处理运行时更改中所述将配置变更通知给这些进程，就像对待设备屏幕方向变更一样。</li>
+<li>如果是面向 Android 7.0 的应用，则其所有进程（前台和后台）都会收到有关配置变更的通知，如处理运行时更改中所述。</li>
+</ul>
+<p>大多数应用并不需要进行任何更改即可支持此功能，不过前提是这些应用遵循 Android 最佳做法。具体要检查的事项：  </p>
+<ul>
+<li>在屏幕宽度为 sw320dp 的设备上测试您的应用，并确保其充分运行。</li>
+<li>当设备配置发生变更时，更新任何与密度相关的缓存信息，例如缓存位图或从网络加载的资源。当应用从暂停状态恢复运行时，检查配置变更。<br>注：如果您要缓存与配置相关的数据，则最好也包括相关元数据，例如该数据对应的屏幕尺寸或像素密度。保存这些元数据便于您在配置变更后决定是否需要刷新缓存数据。  </li>
+<li>避免用像素单位指定尺寸，因为像素不会随屏幕密度缩放。应改为使用与密度无关像素 (dp) 单位指定尺寸。</li>
+</ul>
+<h3 id="检查你的应用是否使用私有库"><a href="#检查你的应用是否使用私有库" class="headerlink" title="检查你的应用是否使用私有库"></a>检查你的应用是否使用私有库</h3><p>为帮助您识别加载私有库的问题，logcat 可能会生成一个警告或运行时错误。例如，如果您的应用面向 API 级别 23 或更低级别，并在运行 Android 7.0 的设备上尝试访问私有库，您可能会看到一个类似于下面所示的警告：  </p>
+<pre><code>library &quot;libandroid_runtime.so&quot;(&quot;/system/lib/libandroid_runtime.so&quot;) needed   
+or dlopened by &quot;/data/app/com.popular-app.android-2/lib/arm/libapplib.so&quot;   
+is not accessible for the namespace &quot;classloader-namespace&quot; - the access  
+is temporarily granted as a workaround for http://b/26394120  
+</code></pre>
+<p>这些 logcat 警告通知您哪个库正在尝试访问私有平台 API，但不会导致您的应用崩溃。但是，如果应用面向 API 级别 24 或更高级别，logcat 会生成以下运行时错误，您的应用可能会  </p>
+<pre><code>java.lang.UnsatisfiedLinkError: dlopen failed:   
+library &quot;libcutils.so&quot;(&quot;/system/lib/libcutils.so&quot;) needed or dlopened  
+by&quot;/system/lib/libnativeloader.so&quot; is not accessible for the   
+namespace &quot;classloader-namespace&quot;
+at java.lang.Runtime.loadLibrary0(Runtime.java:977)
+at java.lang.System.loadLibrary(System.java:1602)  
+</code></pre>
+<p>如果您的应用使用动态链接到私有平台 API 的第三方库，您可能也会看到上述 logcat 输出。利用 Android 7.0DK 中的 readelf 工具，您可以通过运行以下命令生成给定 .so 文件的所有动态链接的共享库列表：   </p>
+<pre><code>aarch64-linux-android-readelf -dW libMyLibrary.so
+</code></pre>
+<h3 id="其他重要说明"><a href="#其他重要说明" class="headerlink" title="其他重要说明"></a>其他重要说明</h3><ul>
+<li><p>如果一个应用在 Android 7.0 上运行，但却是针对更低 API 级别开发的，那么在用户更改显示尺寸时，系统将终止此应用进程。应用必须能够妥善处理此情景。否则，当用户从最近使用记录中恢复运行应用时，应用将会出现崩溃现象。</p>
+<p>  您应测试应用以确保不会发生此行为。要进行此测试，您可以通过 DDMS 手动终止应用，以造成相同的崩溃现象。  </p>
+<p>  在密度发生更改时，系统不会自动终止面向 N 及更高版本的应用；不过，这些应用仍可能对配置变更做出不良响应。  </p>
+</li>
+<li><p>Android 7.0 上的应用应能够妥善处理配置变更，并且在后续启动时不会出现崩溃现象。您可以通过更改字体大小 (Setting &gt;Display &gt; Font size) 并随后从最近使用记录中恢复运行应用，来验证应用行为。  </p>
+</li>
+<li><p>由于之前的 Android 版本中的一项错误，系统未能将对主线程上的一个 TCP 套接字的写入操作举报为违反严格模式。Android 7.0 修复了此错误。呈现出这种行为的应用现在会引发 android.os.NetworkOnMainThreadException 。一般情况下，我们不建议在主线程上执行网络操作，因为这些操作通常会出现可能导致 ANR 和卡顿的高尾延迟。    </p>
+</li>
+<li><p>Debug.startMethodTracing() 方法系列现在默认在您的共享存储空间上的软件包特定目录中存储输出，而非 SD 卡根目录。这意味着应用不再需要请求 WRITE_EXTERNAL_STORAGE 权限来使用这些 API 。</p>
+</li>
+<li><p>许多平台 API 现在开始检查在 Binder 事务间发送的大负载，系统现在会将 TransactionTooLargeExceptions 作为 RuntimeExceptions 再次引发，而不再只是默默记录或抑制它们。一个常见例子是在 Activity.onSaveInstanceState() 上存储过多数据，导致 ActivityThread.StopInfo 在您的应用面向 Android 7.0 时引发 RuntimeException。</p>
+</li>
+<li><p>如果应用向 View 发布 Runnable 任务，并且 View 未附加到窗口，系统会用 View 为 Runnable 任务排队；在 View 附加到窗口之前，不会执行 Runnable 任务。此行为会修复以下错误：</p>
+<p>  如果一项应用是从并非预期窗口 UI 线程的其他线程发布到 View，则 Runnable 可能会因此运行错误的线程。</p>
+<p>  如果 Runnable 任务是从并非环路线程的其他线程发布，则应用可能会曝光 Runnable 任务。  </p>
+</li>
+<li><p>如果 Android 7.0 上一项有 DELETE_PACKAGES 权限的应用尝试删除一个软件包，但另一项应用已经安装了这个软件包，则系统需要用户进行确认。在这种情况下，应用在调用 PackageInstaller.uninstall() 时预计的返回状态应为 STATUS_PENDING_USER_ACTION 。 </p>
+</li>
+<li><p>名为 Crypto 的 JCA 提供程序已弃用，因为它仅有的 SHA1PRNG 算法为弱加密。应用无法再使用 SHA1PRNG（不安全地）派生密钥，因为不再提供此提供程序。</p>
+</li>
+</ul>
+<h2 id="Android-8-0-概念"><a href="#Android-8-0-概念" class="headerlink" title="Android 8.0(概念)"></a>Android 8.0(概念)</h2><p>API级别：24   </p>
+<h3 id="合并Chrome-OS"><a href="#合并Chrome-OS" class="headerlink" title="合并Chrome OS"></a>合并Chrome OS</h3><p>据传，谷歌或可合并Android与Chrome OS以使平台更加统一。  </p>
+<h3 id="多窗口模式"><a href="#多窗口模式" class="headerlink" title="多窗口模式"></a>多窗口模式</h3><p>多窗口模式能够充分利用大屏手机、平板的屏幕空间。  </p>
+<h3 id="OpenJDK替换Java-API"><a href="#OpenJDK替换Java-API" class="headerlink" title="OpenJDK替换Java API"></a>OpenJDK替换Java API</h3><p>Android不再使用Java API是因为官司败诉过。OpenJDK能够更简单地创建通用代码，从而改善Android的开发环境。  </p>
+<h3 id="3D-Touch功能"><a href="#3D-Touch功能" class="headerlink" title="3D Touch功能"></a>3D Touch功能</h3><p>实际上国产华为已经有相关产品预先支持3D<br>Touch功能了，而三星也将会提供相应的支持。  </p>
+<h3 id="独立升级"><a href="#独立升级" class="headerlink" title="独立升级"></a>独立升级</h3><p>如果真的可以实现的话，用户就可以直接通过谷歌进行升级，完全避开第三方的限制，相信这是用户及其渴望的。无需等待，可从官方直升最新版，但是怎样解决兼容等问题是急需解决的问题。  </p>
+<p>参考：<br><a target="_blank" rel="noopener" href="http://blog.csdn.net/fanenqian/article/details/56479714">Android5,6,7,8新特性</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%96%B0%E7%89%B9%E6%80%A7/" rel="tag"># 新特性</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/b7e898af.html" rel="prev" title="Android开发之——手势识别">
+                  <i class="fa fa-angle-left"></i> Android开发之——手势识别
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/34c1b827.html" rel="next" title="Android开发之——Android系统架构与系统源码目录">
+                  Android开发之——Android系统架构与系统源码目录 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"b349358bf00964734e7612759ba89c3f"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ja/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ja/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ja/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/ja/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/ja/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/ja/","images":"/ja/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索...","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/ja/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/ja/js/config.js" defer></script>
+
+    <meta name="description" content="一 面试题汇总 引起内存泄漏的操作有哪些 如何实现ajax请求 简要介绍ES6 对js原型的理解 对js模块化的理解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端面试题之——JavaScript">
+<meta property="og:url" content="https://pgzxc.github.io/posts/ff6ef0dd.html">
+<meta property="og:site_name" content="PGzxc (Japanese)">
+<meta property="og:description" content="一 面试题汇总 引起内存泄漏的操作有哪些 如何实现ajax请求 简要介绍ES6 对js原型的理解 对js模块化的理解">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2024-03-23T03:08:08.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.126Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Web前端面试题">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/ff6ef0dd.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"ja","comments":true,"permalink":"https://pgzxc.github.io/posts/ff6ef0dd.html","path":"posts/ff6ef0dd.html","title":"前端面试题之——JavaScript"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>前端面试题之——JavaScript | PGzxc (Japanese)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/utils.js" defer></script><script src="/ja/js/motion.js" defer></script><script src="/ja/js/sidebar.js" defer></script><script src="/ja/js/next-boot.js" defer></script><script src="/ja/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/ja/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/ja/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/ja/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/ja/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/ja/atom.xml" title="PGzxc (Japanese)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションを切り替える" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/ja/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (Japanese)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">本から学んだことは表面的なもの；自分で体験しなければならない</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="検索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/ja/" rel="section"><i class="fa fa-bell fa-fw"></i>ホーム</a></li><li class="menu-item menu-item-nav"><a href="/ja/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>ナビゲーション</a></li><li class="menu-item menu-item-categories"><a href="/ja/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリー<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/ja/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/ja/links/" rel="section"><i class="fa fa-link fa-fw"></i>リンク</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>検索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="検索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          目次
+        </li>
+        <li class="sidebar-nav-overview">
+          サイト概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB"><span class="nav-number">1.</span> <span class="nav-text">一 面试题汇总</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%BC%95%E8%B5%B7%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E7%9A%84%E6%93%8D%E4%BD%9C%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 引起内存泄漏的操作有哪些</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0ajax%E8%AF%B7%E6%B1%82"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 如何实现ajax请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E7%AE%80%E8%A6%81%E4%BB%8B%E7%BB%8DES6"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 简要介绍ES6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E5%AF%B9js%E5%8E%9F%E5%9E%8B%E7%9A%84%E7%90%86%E8%A7%A3"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 对js原型的理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E5%AF%B9js%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E7%90%86%E8%A7%A3"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 对js模块化的理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAJS%E7%9A%84AMD%E6%A8%A1%E5%9D%97%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 如何实现一个JS的AMD模块加载器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-%E7%AE%80%E8%A6%81%E4%BB%8B%E7%BB%8D%E4%BA%8B%E4%BB%B6%E4%BB%A3%E7%90%86%EF%BC%8C%E4%BB%A5%E5%8F%8A%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BD%BF%E7%94%A8%EF%BC%8C%E4%BA%8B%E4%BB%B6%E4%BB%A3%E7%90%86%E5%8F%91%E7%94%9F%E5%9C%A8%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B%E7%9A%84%E5%93%AA%E4%B8%AA%E9%98%B6%E6%AE%B5%EF%BC%8C%E6%9C%89%E4%BB%80%E4%B9%88%E5%A5%BD%E5%A4%84%EF%BC%9F"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 简要介绍事件代理，以及什么时候使用，事件代理发生在事件处理流程的哪个阶段，有什么好处？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-%E4%BD%BF%E7%94%A8new%E6%93%8D%E4%BD%9C%E7%AC%A6%E5%AE%9E%E4%BE%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 使用new操作符实例化一个对象的具体步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-js%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E7%BD%91%E9%A1%B5%E4%B8%AD%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E6%88%90%E5%8A%9F%E6%88%96%E8%80%85%E5%A4%B1%E8%B4%A5"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 js如何判断网页中图片加载成功或者失败</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-10-%E9%80%92%E5%BD%92%E5%92%8C%E8%BF%AD%E4%BB%A3%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E5%90%84%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%BC%BA%E7%82%B9%EF%BC%9F"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 递归和迭代的区别是什么，各有什么优缺点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-11-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E8%AF%B4%E4%B8%80%E4%B8%8B%E4%BD%A0%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9F"><span class="nav-number">2.11.</span> <span class="nav-text">2.11 策略模式是什么，说一下你的理解？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-12-%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%EF%BC%88EVENT-LOOP%EF%BC%89%EF%BC%9F"><span class="nav-number">2.12.</span> <span class="nav-text">2.12 什么是事件循环（EVENT LOOP）？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-13-%E5%8E%9F%E7%94%9FJS%E6%93%8D%E4%BD%9CDOM%E7%9A%84%E6%96%B9%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">2.13.</span> <span class="nav-text">2.13 原生JS操作DOM的方法有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-14-typeof%E6%93%8D%E4%BD%9C%E7%AC%A6%E8%BF%94%E5%9B%9E%E5%80%BC%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%8C%E5%AF%B9undefined%E3%80%81null%E3%80%81NaN%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%AA%E6%93%8D%E4%BD%9C%E7%AC%A6%E5%88%86%E5%88%AB%E8%BF%94%E5%9B%9E%E4%BB%80%E4%B9%88"><span class="nav-number">2.14.</span> <span class="nav-text">2.14 typeof操作符返回值有哪些，对undefined、null、NaN使用这个操作符分别返回什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-15-%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%B1%BB%E5%9E%8B%E5%88%A4%E6%96%AD%E5%87%BD%E6%95%B0%EF%BC%8C%E9%9C%80%E8%A6%81%E9%89%B4%E5%88%AB%E5%87%BA%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E3%80%81function%E3%80%81null%E3%80%81NaN%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81%E5%AF%B9%E8%B1%A1%EF%BC%9F"><span class="nav-number">2.15.</span> <span class="nav-text">2.15 实现一个类型判断函数，需要鉴别出基本类型、function、null、NaN、数组、对象？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-16-javascript%E5%81%9A%E7%B1%BB%E5%9E%8B%E5%88%A4%E6%96%AD%E7%9A%84%E6%96%B9%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">2.16.</span> <span class="nav-text">2.16 javascript做类型判断的方法有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-17-JavaScript%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F%E4%B8%8B%E6%9C%89%E5%93%AA%E4%BA%9B%E4%B8%8D%E5%90%8C%EF%BC%9F"><span class="nav-number">2.17.</span> <span class="nav-text">2.17 JavaScript严格模式下有哪些不同？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-18-setTimeout%E5%92%8CsetInterval%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%8C%E5%8C%85%E5%90%AB%E5%86%85%E5%AD%98%E6%96%B9%E9%9D%A2%E7%9A%84%E5%88%86%E6%9E%90%EF%BC%9F"><span class="nav-number">2.18.</span> <span class="nav-text">2.18 setTimeout和setInterval的区别，包含内存方面的分析？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-19-%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.19.</span> <span class="nav-text">2.19 同源策略是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-20-ES6%E4%B9%8B%E5%89%8DJavaScript%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF%EF%BC%9F"><span class="nav-number">2.20.</span> <span class="nav-text">2.20 ES6之前JavaScript如何实现继承？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-21-%E5%A6%82%E4%BD%95%E9%98%BB%E6%AD%A2%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%92%8C%E9%BB%98%E8%AE%A4%E4%BA%8B%E4%BB%B6%EF%BC%9F"><span class="nav-number">2.21.</span> <span class="nav-text">2.21 如何阻止事件冒泡和默认事件？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-22-addEventListener%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8F%82%E6%95%B0%EF%BC%9F"><span class="nav-number">2.22.</span> <span class="nav-text">2.22 addEventListener有哪些参数？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-23-%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8BPromise%EF%BC%8C%E5%BA%95%E5%B1%82%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="nav-number">2.23.</span> <span class="nav-text">2.23 介绍一下Promise，底层如何实现？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-24-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%87%92%E5%8A%A0%E8%BD%BD%EF%BC%9F"><span class="nav-number">2.24.</span> <span class="nav-text">2.24 如何实现懒加载？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-25-%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.25.</span> <span class="nav-text">2.25  函数节流是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-26-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%88%86%E5%88%AB%E5%AF%B9%E5%BA%94%E5%93%AA%E4%BA%9B%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%9F"><span class="nav-number">2.26.</span> <span class="nav-text">2.26  浏览器内核有哪些？分别对应哪些浏览器？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-27-%E4%BB%80%E4%B9%88%E6%98%AF%E6%B7%B1%E6%8B%B7%E8%B4%9D%EF%BC%8C%E4%BB%80%E4%B9%88%E6%98%AF%E6%B5%85%E6%8B%B7%E8%B4%9D%EF%BC%9F"><span class="nav-number">2.27.</span> <span class="nav-text">2.27 什么是深拷贝，什么是浅拷贝？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-28-%E5%8E%9F%E7%94%9Fjs%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">2.28.</span> <span class="nav-text">2.28 原生js字符串方法有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-29-%E5%8E%9F%E7%94%9Fjs%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%88%AA%E5%8F%96%E6%96%B9%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">2.29.</span> <span class="nav-text">2.29 原生js字符串截取方法有哪些？有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-30-SVG%E5%92%8CCanvas%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">2.30.</span> <span class="nav-text">2.30 SVG和Canvas的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-31-%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8BES6%E7%9A%84%E6%9A%82%E6%97%B6%E6%80%A7%E6%AD%BB%E5%8C%BA%E5%92%8C%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">2.31.</span> <span class="nav-text">2.31 介绍一下ES6的暂时性死区和块级作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-32-%E8%AF%B7%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F%EF%BC%8C%E5%B9%B6%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.32.</span> <span class="nav-text">2.32 请介绍一下装饰者模式，并实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-33-%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="nav-number">2.33.</span> <span class="nav-text">2.33 介绍一下职责链模式？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-34-%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%E6%A1%B6%E6%8E%92%E5%BA%8F%E5%92%8C%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F%E3%80%81%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="nav-number">2.34.</span> <span class="nav-text">2.34 介绍一下桶排序和基数排序、快速排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-35-%E8%AF%B7%E8%AF%B4%E4%B8%80%E4%B8%8B%E5%AE%9E%E7%8E%B0jsonp%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF%EF%BC%9F"><span class="nav-number">2.35.</span> <span class="nav-text">2.35 请说一下实现jsonp的实现思路？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-36-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%EF%BC%9F"><span class="nav-number">2.36.</span> <span class="nav-text">2.36 如何实现一个双向数据绑定？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-37-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E5%89%8D%E7%AB%AF%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%EF%BC%9F"><span class="nav-number">2.37.</span> <span class="nav-text">2.37 如何实现一个前端模板引擎？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-38-%E8%AF%B7%E7%AE%80%E8%A6%81%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8BPWA%EF%BC%9F"><span class="nav-number">2.38.</span> <span class="nav-text">2.38 请简要介绍一下PWA？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-39-chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84JS%E5%BC%95%E6%93%8E%E6%98%AF%E5%93%AA%E4%B8%AA%EF%BC%9F%E8%BF%99%E4%B8%AA%E5%BC%95%E6%93%8E%E5%81%9A%E4%BA%86%E5%93%AA%E4%BA%9B%E4%BC%98%E5%8C%96%EF%BC%9F"><span class="nav-number">2.39.</span> <span class="nav-text">2.39 chrome浏览器的JS引擎是哪个？这个引擎做了哪些优化？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-40-%E8%AF%B7%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%E4%BD%A0%E6%89%80%E4%BA%86%E8%A7%A3%E7%9A%84%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%EF%BC%9F"><span class="nav-number">2.40.</span> <span class="nav-text">2.40 请介绍一下你所了解的函数式编程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-41-let%E5%92%8Cconst%E7%9A%84%E5%BC%82%E5%90%8C%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">2.41.</span> <span class="nav-text">2.41 let和const的异同有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-42-%E5%B0%86%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E6%94%BE%E5%9C%A8%E5%85%B6%E4%BB%96%E5%9F%9F%E5%90%8D%E7%9A%84%E7%9B%AE%E7%9A%84%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.42.</span> <span class="nav-text">2.42 将静态资源放在其他域名的目的是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-43-%E5%89%8D%E7%AB%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0PV%E5%92%8CUV%E7%9A%84%E7%BB%9F%E8%AE%A1%EF%BC%9F"><span class="nav-number">2.43.</span> <span class="nav-text">2.43 前端如何实现PV和UV的统计？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-44-%E7%AE%80%E8%A6%81%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8BRSA"><span class="nav-number">2.44.</span> <span class="nav-text">2.44 简要介绍一下RSA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-45-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%AF%B9%E4%B8%80%E4%B8%AADOM%E5%85%83%E7%B4%A0%E7%9A%84%E6%B7%B1%E6%8B%B7%E8%B4%9D%EF%BC%8C%E5%8C%85%E6%8B%AC%E5%85%83%E7%B4%A0%E7%9A%84%E7%BB%91%E5%AE%9A%E4%BA%8B%E4%BB%B6%EF%BC%9F"><span class="nav-number">2.45.</span> <span class="nav-text">2.45 如何实现对一个DOM元素的深拷贝，包括元素的绑定事件？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-46-canvas%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E7%9A%84%E6%96%B9%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">2.46.</span> <span class="nav-text">2.46 canvas性能优化的方法有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-47-%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8BKMP%E7%AE%97%E6%B3%95%EF%BC%9F"><span class="nav-number">2.47.</span> <span class="nav-text">2.47 介绍一下KMP算法？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-48-%E7%AE%80%E8%A6%81%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8BWebPack%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="nav-number">2.48.</span> <span class="nav-text">2.48 简要介绍一下WebPack的底层实现原理？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-49-%E7%AE%80%E8%A6%81%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8Bgulp%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="nav-number">2.49.</span> <span class="nav-text">2.49 简要介绍一下gulp的底层实现原理？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-50-ajax%E7%9A%84readyState%E6%9C%89%E5%93%AA%E5%87%A0%E4%B8%AA%E7%8A%B6%E6%80%81%EF%BC%8C%E5%90%AB%E4%B9%89%E5%88%86%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.50.</span> <span class="nav-text">2.50 ajax的readyState有哪几个状态，含义分别是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-51-%E5%AF%B9%E4%BA%8EES7%E4%BD%A0%E4%BA%86%E8%A7%A3%E5%A4%9A%E5%B0%91%EF%BC%9F"><span class="nav-number">2.51.</span> <span class="nav-text">2.51  对于ES7你了解多少？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-52-%E8%AF%B7%E7%AE%80%E8%A6%81%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8Bservice-worker%EF%BC%9F"><span class="nav-number">2.52.</span> <span class="nav-text">2.52 请简要介绍一下service worker？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-53-SPA%E7%9A%84%E8%B7%AF%E7%94%B1%E6%98%AF%E5%A6%82%E6%9E%9C%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%8C%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%9D%A5%E5%81%9A%E4%B8%80%E4%B8%AA%E5%89%8D%E7%AB%AF%E8%B7%AF%E7%94%B1%EF%BC%8C%E4%BD%A0%E4%BC%9A%E6%80%8E%E4%B9%88%E5%81%9A%EF%BC%9F"><span class="nav-number">2.53.</span> <span class="nav-text">2.53 SPA的路由是如果实现的，如果你来做一个前端路由，你会怎么做？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-54-AMD%E4%B8%8ECMD%E7%9A%84%E5%8C%BA%E5%88%AB%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="nav-number">2.54.</span> <span class="nav-text">2.54 AMD与CMD的区别有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-55-%E5%90%AC%E8%AF%B4%E8%BF%87UMD%E5%90%97%EF%BC%9F%E5%8F%AF%E4%BB%A5%E7%AE%80%E8%A6%81%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8B%E5%90%97%EF%BC%9F"><span class="nav-number">2.55.</span> <span class="nav-text">2.55 听说过UMD吗？可以简要介绍一下吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-56-%E7%99%BE%E5%BA%A6%E7%9A%84%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7FIS%E4%BD%A0%E4%BA%86%E8%A7%A3%E5%90%97%EF%BC%9F"><span class="nav-number">2.56.</span> <span class="nav-text">2.56 百度的构建工具FIS你了解吗？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/ja/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/ja/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">投稿</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/ja/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">カテゴリー</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/ja/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/ff6ef0dd.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/ja/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="前端面试题之——JavaScript | PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          前端面试题之——JavaScript<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E4%B9%8B%E2%80%94%E2%80%94JavaScript.md" class="post-edit-link" title="編集" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2024-03-23 11:08:08" itemprop="dateCreated datePublished" datetime="2024-03-23T11:08:08+08:00">2024-03-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">面试相关</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E9%9D%A2%E8%AF%95%E7%9B%B8%E5%85%B3/Web%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">Web前端面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="読書時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">読書時間 &asymp;</span>
+      <span>18 分</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-面试题汇总"><a href="#一-面试题汇总" class="headerlink" title="一 面试题汇总"></a>一 面试题汇总</h2><ol>
+<li>引起内存泄漏的操作有哪些</li>
+<li>如何实现ajax请求</li>
+<li>简要介绍ES6</li>
+<li>对js原型的理解</li>
+<li>对js模块化的理解<span id="more"></span></li>
+<li>如何实现一个JS的AMD模块加载器</li>
+<li>简要介绍事件代理，以及什么时候使用，事件代理发生在事件处理流程的哪个阶段，有什么好处？</li>
+<li>使用new操作符实例化一个对象的具体步骤</li>
+<li>js如何判断网页中图片加载成功或者失败</li>
+<li>递归和迭代的区别是什么，各有什么优缺点？</li>
+<li>策略模式是什么，说一下你的理解？</li>
+<li>什么是事件循环（EVENT LOOP）？</li>
+<li>原生JS操作DOM的方法有哪些？</li>
+<li>typeof操作符返回值有哪些，对undefined、null、NaN使用这个操作符分别返回什么</li>
+<li>实现一个类型判断函数，需要鉴别出基本类型、function、null、NaN、数组、对象？</li>
+<li>javascript做类型判断的方法有哪些？</li>
+<li>JavaScript严格模式下有哪些不同？</li>
+<li>setTimeout和setInterval的区别，包含内存方面的分析？</li>
+<li>同源策略是什么？</li>
+<li>ES6之前JavaScript如何实现继承？</li>
+<li>如何阻止事件冒泡和默认事件？</li>
+<li>addEventListener有哪些参数？</li>
+<li>介绍一下Promise，底层如何实现？</li>
+<li>如何实现懒加载？</li>
+<li>函数节流是什么？</li>
+<li>浏览器内核有哪些？分别对应哪些浏览器？</li>
+<li>什么是深拷贝，什么是浅拷贝？</li>
+<li>原生js字符串方法有哪些？</li>
+<li>原生js字符串截取方法有哪些？有什么区别？</li>
+<li>SVG和Canvas的区别？</li>
+<li>介绍一下ES6的暂时性死区和块级作用域</li>
+<li>请介绍一下装饰者模式，并实现</li>
+<li>介绍一下职责链模式？</li>
+<li>介绍一下桶排序和基数排序、快速排序</li>
+<li>请说一下实现jsonp的实现思路？</li>
+<li>如何实现一个双向数据绑定？</li>
+<li>如何实现一个前端模板引擎？</li>
+<li>请简要介绍一下PWA？</li>
+<li>chrome浏览器的JS引擎是哪个？这个引擎做了哪些优化？</li>
+<li>请介绍一下你所了解的函数式编程？</li>
+<li>let和const的异同有哪些？</li>
+<li>将静态资源放在其他域名的目的是什么？</li>
+<li>前端如何实现PV和UV的统计？</li>
+<li>简要介绍一下RSA</li>
+<li>如何实现对一个DOM元素的深拷贝，包括元素的绑定事件？</li>
+<li>canvas性能优化的方法有哪些？</li>
+<li>介绍一下KMP算法？</li>
+<li>简要介绍一下WebPack的底层实现原理？</li>
+<li>简要介绍一下gulp的底层实现原理？</li>
+<li>ajax的readyState有哪几个状态，含义分别是什么？</li>
+<li>对于ES7你了解多少？</li>
+<li>请简要介绍一下service worker？</li>
+<li>SPA的路由是如果实现的，如果你来做一个前端路由，你会怎么做？</li>
+<li>AMD与CMD的区别有哪些？</li>
+<li>听说过UMD吗？可以简要介绍一下吗？</li>
+<li>百度的构建工具FIS你了解吗？</li>
+</ol>
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-引起内存泄漏的操作有哪些"><a href="#2-1-引起内存泄漏的操作有哪些" class="headerlink" title="2.1 引起内存泄漏的操作有哪些"></a>2.1 引起内存泄漏的操作有哪些</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.全局变量引起</span><br><span class="line">2.闭包引起</span><br><span class="line">3.dom清空，事件未清除</span><br><span class="line">4.子元素存在引用</span><br><span class="line">5.被遗忘的计时器</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-如何实现ajax请求"><a href="#2-2-如何实现ajax请求" class="headerlink" title="2.2 如何实现ajax请求"></a>2.2 如何实现ajax请求</h3><p>1-说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">通过实例化一个XMLHttpRequest对象得到一个实例，</span><br><span class="line">调用实例的open方法为这次ajax请求设定相应的http方法、相应的地址和以及是否异步，</span><br><span class="line">当然大多数情况下我们都是选异步， 以异步为例，之后调用send方法ajax请求，</span><br><span class="line">这个方法可以设定需要发送的报文主体，然后通过 监听readystatechange事件，</span><br><span class="line">通过这个实例的readyState属性来判断这个ajax请求的状态，</span><br><span class="line">其中分为0,1,2,3,4这四种 状态，当状态为4的时候也就是接收数据完成的时候，</span><br><span class="line">这时候可以通过实例的status属性判断这个请求是否成功</span><br></pre></td></tr></table></figure>
+
+<p>2-代码示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var xhr = new XMLHttpRequest();</span><br><span class="line">xhr.open(&#x27;get&#x27;, &#x27;aabb.php&#x27;, true);</span><br><span class="line">xhr.send(null);</span><br><span class="line">xhr.onreadystatechange = function() &#123;</span><br><span class="line">  if(xhr.readyState==4) &#123;</span><br><span class="line">    if(xhr.status==200) &#123;</span><br><span class="line">      console.log(xhr.responseText);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-简要介绍ES6"><a href="#2-3-简要介绍ES6" class="headerlink" title="2.3 简要介绍ES6"></a>2.3 简要介绍ES6</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ES6在变量的声明和定义方面增加了let、const声明变量，有局部变量的概念，赋值中有比较吸引人的结构赋值，</span><br><span class="line">同时ES6对字符串、 数组、正则、对象、函数等拓展了一些方法，</span><br><span class="line">如字符串方面的模板字符串、函数方面的默认参数、对象方面属性的简洁表达方式，</span><br><span class="line">ES6也 引入了新的数据类型symbol，新的数据结构set和map,symbol可以通过typeof检测出来，</span><br><span class="line">为解决异步回调问题，引入了promise和 generator，</span><br><span class="line">还有最为吸引人了实现Class和模块，通过Class可以更好的面向对象编程，使用模块加载方便模块化编程，</span><br><span class="line">当然考虑到 浏览器兼容性，我们在实际开发中需要使用babel进行编译。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-对js原型的理解"><a href="#2-4-对js原型的理解" class="headerlink" title="2.4 对js原型的理解"></a>2.4 对js原型的理解</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">我们知道在es6之前，js没有类和继承的概念，js是通过原型来实现继承的。</span><br><span class="line">在js中一个构造函数默认自带有一个prototype属性， 这个的属性值是一个对象，</span><br><span class="line">同时这个prototype对象自带有一个constructor属性，这个属性指向这个构造函数，</span><br><span class="line">同时每一个实例 都有一个__proto__属性指向这个prototype对象，我们可以将这个叫做隐式原型，</span><br><span class="line">我们在使用一个实例的方法的时候，会先检查 这个实例中是否有这个方法，</span><br><span class="line">没有则会继续向上查找这个prototype对象是否有这个方法，</span><br><span class="line">刚刚我们说到prototype是一个对象， 那么也即是说这个是一个对象的实例，</span><br><span class="line">那么这个对象同样也会有一个__proto__属性指向对象的prototype对象。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-对js模块化的理解"><a href="#2-5-对js模块化的理解" class="headerlink" title="2.5 对js模块化的理解"></a>2.5 对js模块化的理解</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">在ES6出现之前，js没有标准的模块化概念，这也就造成了js多人写作开发容易造成全局污染的情况，</span><br><span class="line">以前我们可能会采用立即执行 函数、对象等方式来尽量减少变量这种情况，</span><br><span class="line">后面社区为了解决这个问题陆续提出了AMD规范和CMD规范，</span><br><span class="line">这里不同于Node.js的 CommonJS的原因在于服务端所有的模块都是存在于硬盘中的，加载和读取几乎是不需要时间的，</span><br><span class="line">而浏览器端因为加载速度取决于网速， 因此需要采用异步加载，</span><br><span class="line">AMD规范中使用define来定义一个模块，使用require方法来加载一个模块，</span><br><span class="line">现在ES6也推出了标准的模块 加载方案，通过export和import来导出和导入模块。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-如何实现一个JS的AMD模块加载器"><a href="#2-6-如何实现一个JS的AMD模块加载器" class="headerlink" title="2.6 如何实现一个JS的AMD模块加载器"></a>2.6 如何实现一个JS的AMD模块加载器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">AMD是解决JS模块化的规范，实现这样的一个模块加载器的关键在于解决每个模块依赖的解析。</span><br><span class="line">首先我们需要有一个模块的入口，也就是主模块，</span><br><span class="line">比如我们使用 一个use方法作为入口，之后以数组的形式列出了主模块的依赖，</span><br><span class="line">这时候我们要想到的是如何解析这一个一个的依赖，也就是如何解析出一个个js文件的绝对地址， </span><br><span class="line">我们可以制定一个规则，如默认为主模块的路径为基准，</span><br><span class="line">也可以像requirejs一样使用一个config方法来指定一个baseurl和为每一个模块指定一个path，</span><br><span class="line">最后就是 模块的问题，我们需要暴露一个define方法来定义模块，也就是模块名，</span><br><span class="line">依赖以及每个模块的各自代码。其中每个模块的代码都应该在依赖加载完之后执行，这就是一个 回调函数，</span><br><span class="line">模块的依赖、回调函数、状态、名字、模块导出等可以看做是一个模块的属性，</span><br><span class="line">因此我们可以使用一个对象来保存所有的模块，然后每个模块的各个属性存放在一个对象中。 </span><br><span class="line"></span><br><span class="line">最后我们来考虑一下模块加载的问题，上面我们说到use方法，use方法的逻辑就是遍历依赖，</span><br><span class="line">然后对每个模块进行加载，也就是解析地址然后使用插入script，</span><br><span class="line">我们假设 使用loadModule方法来加载依赖，</span><br><span class="line">那么这个函数的逻辑就应该是检查我们的模块是否已经加载过来判断是否需要加载，</span><br><span class="line">如果这个模块还有依赖则调用use方法继续解析，</span><br><span class="line">模块依赖中我们 还没有提到的问题就是每个模块的依赖是需要被传进模块里来使用的，</span><br><span class="line">解决方法就是每个模块的callback方法执行后的返回的export记录下来然后使用apply之类的方法将这些参数传递进去。 大致就是这样子的。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-简要介绍事件代理，以及什么时候使用，事件代理发生在事件处理流程的哪个阶段，有什么好处？"><a href="#2-7-简要介绍事件代理，以及什么时候使用，事件代理发生在事件处理流程的哪个阶段，有什么好处？" class="headerlink" title="2.7 简要介绍事件代理，以及什么时候使用，事件代理发生在事件处理流程的哪个阶段，有什么好处？"></a>2.7 简要介绍事件代理，以及什么时候使用，事件代理发生在事件处理流程的哪个阶段，有什么好处？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">事件代理就是说我们将事件添加到本来要添加事件的父节点，将事件委托给父节点来触发处理函数，</span><br><span class="line">这通常会在 这通常会使用在大量的同级元素需要添加同一类事件的时候，</span><br><span class="line">比如一个动态的非常多的列表，需要为每个列表项都添加 点击事件，这时可以使用事件代理，</span><br><span class="line">通过判断e.target.nodeName来判断发生的具体元素，从而判断是否是在 </span><br><span class="line">列表项中触发，这样的好处是可以减少事件绑定，同时动态的DOM结构仍然可以监听。事件代理发生在冒泡阶段。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-8-使用new操作符实例化一个对象的具体步骤"><a href="#2-8-使用new操作符实例化一个对象的具体步骤" class="headerlink" title="2.8 使用new操作符实例化一个对象的具体步骤"></a>2.8 使用new操作符实例化一个对象的具体步骤</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.构造一个新的对象</span><br><span class="line">2.将构造函数的作用域赋给新对象（也就是说this指向了新的对象）</span><br><span class="line">3.执行构造函数中的代码</span><br><span class="line">4.返回新对象</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-9-js如何判断网页中图片加载成功或者失败"><a href="#2-9-js如何判断网页中图片加载成功或者失败" class="headerlink" title="2.9 js如何判断网页中图片加载成功或者失败"></a>2.9 js如何判断网页中图片加载成功或者失败</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用onload事件运行加载成功，使用onerror事件判断失败</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-10-递归和迭代的区别是什么，各有什么优缺点？"><a href="#2-10-递归和迭代的区别是什么，各有什么优缺点？" class="headerlink" title="2.10 递归和迭代的区别是什么，各有什么优缺点？"></a>2.10 递归和迭代的区别是什么，各有什么优缺点？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">程序调用自身称为递归，利用变量的原值推出新值称为迭代，</span><br><span class="line"></span><br><span class="line">递归的优点 大问题转化为小问题，可以减少代码量，同时应为代码精简，可读性好， </span><br><span class="line">缺点就是，递归调用浪费了空间，而且递归太深容易造成堆栈的溢出。</span><br><span class="line"></span><br><span class="line">迭代的好处 就是代码运行效率好，因为时间只因循环次数增加而增加，而且没有额外的空间开销，</span><br><span class="line">缺点就是代码不如递归简洁</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-11-策略模式是什么，说一下你的理解？"><a href="#2-11-策略模式是什么，说一下你的理解？" class="headerlink" title="2.11 策略模式是什么，说一下你的理解？"></a>2.11 策略模式是什么，说一下你的理解？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">策略模式就是说我们将一系列的算法封装起来，使其相互之间可以替换，</span><br><span class="line">封装的算法具有一定的独立性，不会随客户端的变化而变化，</span><br><span class="line">比较常见的使用常见就是类似于 表单验证这种多场景的情况，我们使用策略模式就可以避免使用一堆的if...else。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-12-什么是事件循环（EVENT-LOOP）？"><a href="#2-12-什么是事件循环（EVENT-LOOP）？" class="headerlink" title="2.12 什么是事件循环（EVENT LOOP）？"></a>2.12 什么是事件循环（EVENT LOOP）？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">我们常常说js是单线程的，是指js执行引擎是单线程的，</span><br><span class="line">除了这个单线程，还有一个 任务队列，在执行js代码的过程中，执行引擎遇到注册的延时方法，</span><br><span class="line">如定时器，DOM事件， 会将这些方法交给相应的浏览器模块处理，当这些延时方法有触发条件去触发的时候，</span><br><span class="line">这些延时方法会被添加至任务队列，而这些任务队列中的方法只有js的主线程空闲了才会执行， </span><br><span class="line">这也就是说我们常常用的定时器定的时间参数只是一个触发条件，具体多少时间后执行其实还需要看 js主线程空闲与否</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-13-原生JS操作DOM的方法有哪些？"><a href="#2-13-原生JS操作DOM的方法有哪些？" class="headerlink" title="2.13 原生JS操作DOM的方法有哪些？"></a>2.13 原生JS操作DOM的方法有哪些？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">获取节点的方法getElementById、getElementsByClassName、getElementsByTagName、</span><br><span class="line">getElementsByName、querySelector、querySelectorAll,</span><br><span class="line">对元素属性进行操作的 getAttribute、 setAttribute、removeAttribute方法，</span><br><span class="line">对节点进行增删改的appendChild、insertBefore、replaceChild、removeChild、 createElement等</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-14-typeof操作符返回值有哪些，对undefined、null、NaN使用这个操作符分别返回什么"><a href="#2-14-typeof操作符返回值有哪些，对undefined、null、NaN使用这个操作符分别返回什么" class="headerlink" title="2.14 typeof操作符返回值有哪些，对undefined、null、NaN使用这个操作符分别返回什么"></a>2.14 typeof操作符返回值有哪些，对undefined、null、NaN使用这个操作符分别返回什么</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">typeof的返回值有undefined、boolean、string、number、object、function、symbol。</span><br><span class="line">对undefined 使用返回undefined、null使用返回object，NaN使用返回number</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-15-实现一个类型判断函数，需要鉴别出基本类型、function、null、NaN、数组、对象？"><a href="#2-15-实现一个类型判断函数，需要鉴别出基本类型、function、null、NaN、数组、对象？" class="headerlink" title="2.15 实现一个类型判断函数，需要鉴别出基本类型、function、null、NaN、数组、对象？"></a>2.15 实现一个类型判断函数，需要鉴别出基本类型、function、null、NaN、数组、对象？</h3><p>只需要鉴别这些类型那么使用typeof即可，要鉴别null先判断双等判断是否为null，之后使用typeof判断，如果是obejct的话，再用Array.isArray判断 是否为数组，如果是数字再使用isNaN判断是否为NaN,（需要注意的是NaN并不是JavaScript数据类型，而是一种特殊值）如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function type(ele) &#123;</span><br><span class="line">  if(ele===null) &#123;</span><br><span class="line">    return null;</span><br><span class="line">  &#125; else if(typeof ele === &#x27;object&#x27;) &#123;</span><br><span class="line">    if(Array.isArray(ele)) &#123;</span><br><span class="line">      return &#x27;array&#x27;;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return typeof ele;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; else if(typeof ele === &#x27;number&#x27;) &#123;</span><br><span class="line">    if(isNaN(ele)) &#123;</span><br><span class="line">      return NaN;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return typeof ele;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; else&#123;</span><br><span class="line">    return typeof ele;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-16-javascript做类型判断的方法有哪些？"><a href="#2-16-javascript做类型判断的方法有哪些？" class="headerlink" title="2.16 javascript做类型判断的方法有哪些？"></a>2.16 javascript做类型判断的方法有哪些？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeof、instanceof 、 Object.prototype.toString()(待续)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-17-JavaScript严格模式下有哪些不同？"><a href="#2-17-JavaScript严格模式下有哪些不同？" class="headerlink" title="2.17 JavaScript严格模式下有哪些不同？"></a>2.17 JavaScript严格模式下有哪些不同？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">不允许不使用var关键字去创建全局变量，抛出ReferenceError</span><br><span class="line">不允许对变量使用delete操作符，抛ReferenceError</span><br><span class="line">不可对对象的只读属性赋值，不可对对象的不可配置属性使用delete操作符，不可为不可拓展的对象添加属性，均抛TypeError</span><br><span class="line">对象属性名必须唯一</span><br><span class="line">函数中不可有重名参数</span><br><span class="line">在函数内部对修改参数不会反映到arguments中</span><br><span class="line">淘汰arguments.callee和arguments.caller</span><br><span class="line">不可在if内部声明函数</span><br><span class="line">抛弃with语句</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-18-setTimeout和setInterval的区别，包含内存方面的分析？"><a href="#2-18-setTimeout和setInterval的区别，包含内存方面的分析？" class="headerlink" title="2.18 setTimeout和setInterval的区别，包含内存方面的分析？"></a>2.18 setTimeout和setInterval的区别，包含内存方面的分析？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setTimeout表示间隔一段时间之后执行一次调用，</span><br><span class="line">而setInterval则是每间隔一段时间循环调用，直至clearInterval结束。 </span><br><span class="line">内存方面，setTimeout只需要进入一次队列，不会造成内存溢出，</span><br><span class="line">setInterval因为不计算代码执行时间，有可能同时执行多次代码， 导致内存溢出。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-19-同源策略是什么？"><a href="#2-19-同源策略是什么？" class="headerlink" title="2.19 同源策略是什么？"></a>2.19 同源策略是什么？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">同源策略是指只有具有相同源的页面才能够共享数据，比如cookie，</span><br><span class="line">同源是指页面具有相同的协议、域名、端口号，有一项不同就不是同源。 </span><br><span class="line">有同源策略能够保证web网页的安全性。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-20-ES6之前JavaScript如何实现继承？"><a href="#2-20-ES6之前JavaScript如何实现继承？" class="headerlink" title="2.20 ES6之前JavaScript如何实现继承？"></a>2.20 ES6之前JavaScript如何实现继承？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ES6之前的继承是通过原型来实现的，也就是每一个构造函数都会有一个prototype属性，</span><br><span class="line">然后如果我们调用一个实例的方法或者属性，首先会在自身寻找，然后在 构造函数的prototype上寻找，</span><br><span class="line">而prototype本质上就是一个实例，因此如果prototype上还没有则会往prototype上的构造函数的prototype寻找，</span><br><span class="line">因此实现继承 可以让构造函数的prototype是父级的一个实例就是以实现继承</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-21-如何阻止事件冒泡和默认事件？"><a href="#2-21-如何阻止事件冒泡和默认事件？" class="headerlink" title="2.21 如何阻止事件冒泡和默认事件？"></a>2.21 如何阻止事件冒泡和默认事件？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">标准的DOM对象中可以使用事件对象的stopPropagation()方法来阻止事件冒泡，</span><br><span class="line">但在IE8以下中IE的事件对象通过设置事件对象的cancelBubble属性为true来阻止冒泡； </span><br><span class="line">默认事件的话通过事件对象的preventDefault()方法来阻止，</span><br><span class="line">而IE通过设置事件对象的returnValue属性为false来阻止默认事件。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-22-addEventListener有哪些参数？"><a href="#2-22-addEventListener有哪些参数？" class="headerlink" title="2.22 addEventListener有哪些参数？"></a>2.22 addEventListener有哪些参数？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">有三个参数，</span><br><span class="line">第一个是事件的类型，</span><br><span class="line">第二个是事件的回调函数，</span><br><span class="line">第三个是一个表示事件是冒泡阶段还是捕获阶段捕获的布尔值，true表示捕获，false表示冒泡</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-23-介绍一下Promise，底层如何实现？"><a href="#2-23-介绍一下Promise，底层如何实现？" class="headerlink" title="2.23 介绍一下Promise，底层如何实现？"></a>2.23 介绍一下Promise，底层如何实现？</h3><p>Promise 是 JavaScript 中用于处理异步操作的对象。它代表了一个异步操作的最终完成或失败，并且可以在完成时获取结果或者在失败时获取错误信息。Promise 的主要特点是可以更加清晰和便捷地处理异步操作，避免了传统的回调地狱（callback hell）问题，使异步代码更加可读、可维护。</p>
+<p>Promise 可以处于以下三种状态之一：</p>
+<ol>
+<li>Pending（进行中）：初始状态，表示异步操作还在进行中，尚未完成。</li>
+<li>Fulfilled（已完成）：表示异步操作已经成功完成。</li>
+<li>Rejected（已失败）：表示异步操作失败。</li>
+</ol>
+<p>当一个 Promise 进入到 Fulfilled 或者 Rejected 状态时，它就是 settled（已定型）的。一旦 settled，它就会保持不变，并且在后续状态变化时不再改变。</p>
+<p>Promise 提供了链式调用的语法，使得可以按顺序执行异步操作，并且在每个异步操作完成后可以返回一个新的 Promise 对象，以便于后续的处理。这种方式使得异步操作可以被更好地组织和控制。</p>
+<h3 id="2-24-如何实现懒加载？"><a href="#2-24-如何实现懒加载？" class="headerlink" title="2.24 如何实现懒加载？"></a>2.24 如何实现懒加载？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">懒加载就是根据用户的浏览需要记载内容，也就是在用户即将浏览完当前的内容时进行继续加载内容，</span><br><span class="line">这种技术常常用来加载图片的时候使用。</span><br><span class="line"></span><br><span class="line">我们判断用户是否即将浏览到底部之后进行在家内容 这时候可能会需要加载大量的内容，</span><br><span class="line">可以使用fragment来优化一下，因为大部分是使用滑动和滚轮来触发的，</span><br><span class="line">因此很有可能会不断触发，可以使用函数节流做一个优化，防止用户不断触发。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-25-函数节流是什么？"><a href="#2-25-函数节流是什么？" class="headerlink" title="2.25  函数节流是什么？"></a>2.25  函数节流是什么？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">函数节流就是让一个函数无法在很短的时间间隔内连续调用，</span><br><span class="line">而是间隔一段时间执行，这在我们为元素绑定一些事件的时候经常会用到，</span><br><span class="line">比如我们 为window绑定了一个resize事件，</span><br><span class="line">如果用户一直改变窗口大小，就会一直触发这个事件处理函数，这对性能有很大影响。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-26-浏览器内核有哪些？分别对应哪些浏览器？"><a href="#2-26-浏览器内核有哪些？分别对应哪些浏览器？" class="headerlink" title="2.26  浏览器内核有哪些？分别对应哪些浏览器？"></a>2.26  浏览器内核有哪些？分别对应哪些浏览器？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">常见的浏览器内核有Trident、Gecko、WebKit、Presto，</span><br><span class="line">对应的浏览器为Trident对应于IE，Gecko对应于火狐浏览器，</span><br><span class="line">Webkit有chrome和safari，Presto 有Opera。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-27-什么是深拷贝，什么是浅拷贝？"><a href="#2-27-什么是深拷贝，什么是浅拷贝？" class="headerlink" title="2.27 什么是深拷贝，什么是浅拷贝？"></a>2.27 什么是深拷贝，什么是浅拷贝？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">浅拷贝是指仅仅复制对象的引用，而不是复制对象本身；</span><br><span class="line">深拷贝则是把复制对象所引用的全部对象都复制一遍。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-28-原生js字符串方法有哪些？"><a href="#2-28-原生js字符串方法有哪些？" class="headerlink" title="2.28 原生js字符串方法有哪些？"></a>2.28 原生js字符串方法有哪些？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">简单分为获取类方法，获取类方法有charAt方法用来获取指定位置的字符，</span><br><span class="line">获取指定位置字符的unicode编码的charCodeAt方法， </span><br><span class="line">与之相反的fromCharCode方法，通过传入的unicode返回字符串。</span><br><span class="line"></span><br><span class="line">查找类方法有indexof()、lastIndexOf()、search()、match() 方法。</span><br><span class="line">截取类的方法有substring、slice、substr三个方法，</span><br><span class="line">其他的还有replace、split、toLowerCase、toUpperCase方法。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-29-原生js字符串截取方法有哪些？有什么区别？"><a href="#2-29-原生js字符串截取方法有哪些？有什么区别？" class="headerlink" title="2.29 原生js字符串截取方法有哪些？有什么区别？"></a>2.29 原生js字符串截取方法有哪些？有什么区别？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">js字符串截取方法有substring、slice、substr三个方法，</span><br><span class="line">substring和slice都是指定截取的首尾索引值，不同的是传递负值的时候 </span><br><span class="line">substring会当做0来处理，而slice传入负值的规则是-1指最后一个字符，</span><br><span class="line">substr方法则是第一个参数是开始截取的字符串，第二个是截取的字符数量， </span><br><span class="line">和slice类似，传入负值也是从尾部算起的</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-30-SVG和Canvas的区别？"><a href="#2-30-SVG和Canvas的区别？" class="headerlink" title="2.30 SVG和Canvas的区别？"></a>2.30 SVG和Canvas的区别？</h3><p>SVG（Scalable Vector Graphics）和 Canvas 是用于在 Web 上绘制图形的两种不同的技术。</p>
+<ol>
+<li><strong>SVG (Scalable Vector Graphics)</strong>:<ul>
+<li><strong>基于 XML 的矢量图形格式</strong>：SVG 使用 XML 格式描述图形，因此它本质上是一种基于矢量的图形格式，图形以矢量的方式存储，可缩放而不失真。</li>
+<li><strong>图形元素可操作性</strong>：SVG 图形元素是 DOM 的一部分，因此可以通过 JavaScript 动态地操纵和控制这些元素，使得 SVG 对于交互性的支持更强。</li>
+<li><strong>文本支持</strong>：SVG 支持文本渲染，并且文本是可编辑的。</li>
+<li><strong>分辨率无关性</strong>：由于 SVG 是基于矢量的，因此图形可以在不同的分辨率下保持清晰，适合用于制作图标、图表等。</li>
+<li><strong>适合于复杂图形和动画</strong>：SVG 适合绘制复杂的图形和动画，因为它可以通过 CSS 和 JavaScript 进行控制和样式定义。</li>
+</ul>
+</li>
+<li><strong>Canvas</strong>:<ul>
+<li><strong>基于像素的绘图</strong>：Canvas 提供的是一个像素级别的绘图表面，你可以在其上绘制 2D 图形。</li>
+<li><strong>即时渲染</strong>：Canvas 是一个即时渲染的区域，一旦内容绘制完成，就会被固定在画布上，不能直接修改。</li>
+<li><strong>不支持文本编辑</strong>：相比于 SVG，Canvas 不支持直接对文本进行编辑。如果需要在 Canvas 上绘制文本，你需要手动绘制。</li>
+<li><strong>性能优势</strong>：Canvas 对于大型图形或需要高性能渲染的情况更为适用，因为它直接操作像素，相对较轻量。</li>
+<li><strong>动画实现复杂</strong>：虽然 Canvas 可以实现动画，但相比于 SVG，它需要更多的 JavaScript 代码来控制绘制过程，且对于复杂的动画效果，编写起来更为繁琐。</li>
+</ul>
+</li>
+</ol>
+<p>总的来说，SVG 适合用于绘制可缩放的图形、需要交互和动画的场景，而 Canvas 适用于需要即时渲染和对性能要求较高的情况。选择使用哪种技术取决于项目的需求和特点。</p>
+<h3 id="2-31-介绍一下ES6的暂时性死区和块级作用域"><a href="#2-31-介绍一下ES6的暂时性死区和块级作用域" class="headerlink" title="2.31 介绍一下ES6的暂时性死区和块级作用域"></a>2.31 介绍一下ES6的暂时性死区和块级作用域</h3><p>ES6（ECMAScript 2015）引入了块级作用域和暂时性死区，这两个特性一起改变了 JavaScript 变量声明和作用域的行为。</p>
+<ol>
+<li><strong>块级作用域</strong>：<ul>
+<li>在 ES6 之前，JavaScript 中只有全局作用域和函数作用域，使用 <code>var</code> 关键字声明的变量会提升到函数作用域的顶部，而没有块级作用域。</li>
+<li>ES6 引入了 <code>let</code> 和 <code>const</code> 关键字，它们可以在任意代码块内创建块级作用域，如 if 语句、for 循环、函数等。</li>
+<li>块级作用域意味着在其内部声明的变量只在该块内部可见，超出该块就无法访问。这样可以避免变量污染和提供更好的封装性。</li>
+</ul>
+</li>
+<li><strong>暂时性死区</strong>：<ul>
+<li>暂时性死区是指在块级作用域内，使用 <code>let</code> 或 <code>const</code> 声明的变量在声明之前无法被访问。</li>
+<li>当代码块内存在使用 <code>let</code> 或 <code>const</code> 声明的变量时，这些变量在声明之前的区域被称为暂时性死区。</li>
+<li>在暂时性死区内，尝试访问这些变量会导致 ReferenceError 错误。</li>
+<li>只有当变量的声明语句被执行到时，变量才会从暂时性死区中解除，才能被访问和使用。</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-32-请介绍一下装饰者模式，并实现"><a href="#2-32-请介绍一下装饰者模式，并实现" class="headerlink" title="2.32 请介绍一下装饰者模式，并实现"></a>2.32 请介绍一下装饰者模式，并实现</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在不改变元对象的基础上，对这个对象进行包装和拓展（包括添加属性和方法），从而使这个对象可以有更复杂的功能</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-33-介绍一下职责链模式？"><a href="#2-33-介绍一下职责链模式？" class="headerlink" title="2.33 介绍一下职责链模式？"></a>2.33 介绍一下职责链模式？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">将一个流程进行分解，让这个流程在多个对象中进行传递，由最后一个对象完成这个流程。</span><br><span class="line">通过职责链模式能够将流程进行分解，从而解耦</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-34-介绍一下桶排序和基数排序、快速排序"><a href="#2-34-介绍一下桶排序和基数排序、快速排序" class="headerlink" title="2.34 介绍一下桶排序和基数排序、快速排序"></a>2.34 介绍一下桶排序和基数排序、快速排序</h3><ol>
+<li><strong>桶排序（Bucket Sort）</strong>：<ul>
+<li>桶排序是一种排序算法，它的基本思想是将待排序元素分配到有限数量的桶中，然后对每个桶中的元素进行排序，最后将所有桶中的元素按照顺序依次取出来，从而得到排好序的序列。</li>
+<li>桶排序要求待排序元素的分布是均匀的，且桶的数量足够大，以保证每个桶中的元素数量尽可能地平均。</li>
+<li>桶排序的时间复杂度取决于分配到每个桶中的元素的排序算法，通常情况下为 O(n+k)，其中 n 是待排序元素的数量，k 是桶的数量。</li>
+</ul>
+</li>
+<li><strong>基数排序（Radix Sort）</strong>：<ul>
+<li>基数排序是一种非比较型的排序算法，它的基本思想是将待排序元素按照位数的不同分配到桶中，然后依次对每个位数进行排序，直到所有位数都排好序。</li>
+<li>基数排序通常是从低位到高位依次进行排序，使用稳定的排序算法（比如计数排序）对每个位数进行排序。</li>
+<li>基数排序适用于待排序元素的位数相同的情况，或者能够将待排序元素转换为相同位数的形式。</li>
+<li>基数排序的时间复杂度为 O(d*(n+k))，其中 d 是待排序元素的最大位数，n 是待排序元素的数量，k 是基数的数量。</li>
+</ul>
+</li>
+<li><strong>快速排序（Quick Sort）</strong>：<ul>
+<li>快速排序是一种基于分治思想的排序算法，它的基本思想是选择一个基准元素，然后将待排序元素分割成两个子序列，其中一个子序列中的元素都小于基准元素，另一个子序列中的元素都大于基准元素，然后对两个子序列递归地进行快速排序。</li>
+<li>快速排序的核心是分区（Partition）操作，它通过一趟排序将待排序序列分割成两个部分，其中一部分的元素都小于基准元素，另一部分的元素都大于基准元素。</li>
+<li>快速排序是一种原地排序算法，不需要额外的存储空间。</li>
+<li>快速排序的平均时间复杂度为 O(n*log(n))，最坏情况下为 O(n^2)，其中 n 是待排序元素的数量。但是快速排序通常表现良好，是一种高效的排序算法。</li>
+</ul>
+</li>
+</ol>
+<p>这三种排序算法各有特点，适用于不同的排序场景。桶排序适用于待排序元素分布均匀的情况，基数排序适用于待排序元素位数相同的情况，而快速排序则适用于大多数排序场景，并且具有较好的性能表现。</p>
+<h3 id="2-35-请说一下实现jsonp的实现思路？"><a href="#2-35-请说一下实现jsonp的实现思路？" class="headerlink" title="2.35 请说一下实现jsonp的实现思路？"></a>2.35 请说一下实现jsonp的实现思路？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">jsonp的原理是使用script标签来实现跨域，因为script标签的的src属性是不受同源策略的影响的，</span><br><span class="line">因此可以使用其来跨域。一个最简单的jsonp就是创建一个script标签，设置src为相应的url，</span><br><span class="line">在url之后添加相应的callback，格式类似于 url?callback=xxx，</span><br><span class="line">服务端根据我们的callback来返回相应的数据，</span><br><span class="line">类似于res.send(req.query.callback + &#x27;(&#x27;+ data + &#x27;)&#x27;)，这样就实现了一个最简单的jsonp</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-36-如何实现一个双向数据绑定？"><a href="#2-36-如何实现一个双向数据绑定？" class="headerlink" title="2.36 如何实现一个双向数据绑定？"></a>2.36 如何实现一个双向数据绑定？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">实现双向数据绑定的方法有很多，其中一个比较常见的方式是利用观察者模式和数据劫持（或者称为代理）相结合</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-37-如何实现一个前端模板引擎？"><a href="#2-37-如何实现一个前端模板引擎？" class="headerlink" title="2.37 如何实现一个前端模板引擎？"></a>2.37 如何实现一个前端模板引擎？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">实现一个简单的前端模板引擎可以分为以下几个步骤：</span><br><span class="line"></span><br><span class="line">1-定义模板语法：确定模板语法的标记，例如使用 &#123;&#123; variable &#125;&#125; 表示变量插值，使用 &#123;% if condition %&#125; &#123;% endif %&#125; 表示条件语句等。</span><br><span class="line"></span><br><span class="line">2-解析模板：编写解析模板的函数，将模板字符串解析为 JavaScript 代码，并将变量插值和控制语句转换为对应的 JavaScript 代码片段。</span><br><span class="line"></span><br><span class="line">3-渲染模板：编写渲染模板的函数，利用解析后的 JavaScript 代码片段和数据进行渲染，生成最终的 HTML 字符串</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-38-请简要介绍一下PWA？"><a href="#2-38-请简要介绍一下PWA？" class="headerlink" title="2.38 请简要介绍一下PWA？"></a>2.38 请简要介绍一下PWA？</h3><p>PWA（Progressive Web App，渐进式 Web 应用）是一种结合了网页和原生应用特性的 Web 应用程序开发方法。PWA 可以提供类似于原生应用的体验，包括离线访问、推送通知、本地缓存等功能，同时又能够通过浏览器轻松访问，无需下载和安装。</p>
+<p>PWA 具有以下特点：</p>
+<ol>
+<li><strong>渐进增强</strong>：PWA 应用可以在任何浏览器上访问，但会根据浏览器的支持程度逐步增强功能。即使在不支持某些功能的浏览器中，PWA 应用仍然能够提供基本的功能和体验。</li>
+<li><strong>responsiveness（响应性）</strong>：PWA 应用能够适应不同的设备和屏幕尺寸，提供一致的用户体验。</li>
+<li><strong>连接性独立性</strong>：PWA 应用能够在离线或不稳定的网络环境下正常运行，并提供类似于原生应用的体验。这得益于 Service Worker 技术，它能够在后台缓存数据，使得应用可以在离线状态下加载已缓存的内容。</li>
+<li><strong>类似于应用的体验</strong>：PWA 应用可以添加到设备的主屏幕上，启动时会像原生应用一样快速加载，且可以全屏显示。</li>
+<li><strong>推送通知</strong>：PWA 应用能够向用户发送推送通知，增强用户参与度和留存率。</li>
+<li><strong>安全性</strong>：PWA 应用必须通过 HTTPS 协议进行访问，以确保数据传输的安全性。</li>
+</ol>
+<p>PWA 技术的发展使得开发者能够更轻松地构建功能强大、体验良好的 Web 应用，并且能够覆盖更广泛的用户群体。</p>
+<h3 id="2-39-chrome浏览器的JS引擎是哪个？这个引擎做了哪些优化？"><a href="#2-39-chrome浏览器的JS引擎是哪个？这个引擎做了哪些优化？" class="headerlink" title="2.39 chrome浏览器的JS引擎是哪个？这个引擎做了哪些优化？"></a>2.39 chrome浏览器的JS引擎是哪个？这个引擎做了哪些优化？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chrome的JS引擎是V8，V8是谷歌公司使用C++开发的</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-40-请介绍一下你所了解的函数式编程？"><a href="#2-40-请介绍一下你所了解的函数式编程？" class="headerlink" title="2.40 请介绍一下你所了解的函数式编程？"></a>2.40 请介绍一下你所了解的函数式编程？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">函数式编程（Functional Programming，简称 FP）是一种编程范式，</span><br><span class="line">它将计算视为数学函数的求值，强调函数的纯粹性、不可变性和无副作用。</span><br><span class="line">函数式编程通常使用高阶函数和不可变数据结构来进行编程，以及避免使用可变状态和共享状态</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-41-let和const的异同有哪些？"><a href="#2-41-let和const的异同有哪些？" class="headerlink" title="2.41 let和const的异同有哪些？"></a>2.41 let和const的异同有哪些？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let和const都是对变量的声明，都有块级作用域的概念，</span><br><span class="line">不同的是const是对常量的声明，因此声明同时必须赋值，且之后不能更改，而let则可以</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-42-将静态资源放在其他域名的目的是什么？"><a href="#2-42-将静态资源放在其他域名的目的是什么？" class="headerlink" title="2.42 将静态资源放在其他域名的目的是什么？"></a>2.42 将静态资源放在其他域名的目的是什么？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">这样做的主要目的是在请求这些静态资源的时候不会发送cookie，节省了流量，</span><br><span class="line">需要注意的是cookie是会发送给子域名的（二级域名），所以这些静态资源是不会放在子域名下的，</span><br><span class="line">而是单独放在一个单独的主域名下。</span><br><span class="line">同时还有一个原因就是浏览器对于一个域名会有请求数的限制，这种方法可以方便做CDN</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-43-前端如何实现PV和UV的统计？"><a href="#2-43-前端如何实现PV和UV的统计？" class="headerlink" title="2.43 前端如何实现PV和UV的统计？"></a>2.43 前端如何实现PV和UV的统计？</h3><p>在前端实现PV（Page Views，页面浏览量）和UV（Unique Visitors，独立访客数）的统计可以通过以下几种方式实现：</p>
+<ol>
+<li><strong>使用第三方统计工具</strong>：<ul>
+<li>最简单的方法是使用已有的第三方统计工具，例如 Google Analytics、百度统计等。这些工具提供了强大的功能，包括实时数据监控、页面浏览量、访客来源、访问时长等统计指标，并且不需要开发人员编写额外的代码。</li>
+</ul>
+</li>
+<li><strong>自定义后台接口</strong>：<ul>
+<li>在后台服务器端实现统计逻辑，前端通过 AJAX 请求向后台发送统计数据（如页面访问信息、用户标识等），后台服务器对接收到的数据进行处理，并存储到数据库中。通过统计数据库中的数据来获取PV和UV等信息。</li>
+</ul>
+</li>
+<li><strong>使用前端脚本实现统计</strong>：<ul>
+<li>在前端页面中插入统计脚本，通过 JavaScript 记录页面的访问情况并发送到后台服务器进行处理。可以使用像统计代码片段、像素跟踪或者使用 WebSocket 等方式来发送统计数据。这种方法比较灵活，可以根据需求自定义统计的信息和逻辑，但需要考虑用户隐私和性能问题。</li>
+</ul>
+</li>
+<li><strong>利用浏览器的本地存储</strong>：<ul>
+<li>使用浏览器的本地存储（如 localStorage 或者 IndexedDB）来存储用户的访问信息，每次用户访问页面时先检查本地存储中是否存在相应的记录，根据记录判断是否计算 PV 和 UV。这种方法可以减轻服务器负担，并且能够在一定程度上保护用户隐私</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-44-简要介绍一下RSA"><a href="#2-44-简要介绍一下RSA" class="headerlink" title="2.44 简要介绍一下RSA"></a>2.44 简要介绍一下RSA</h3><p>RSA（Rivest-Shamir-Adleman）是一种非对称加密算法，常用于加密和数字签名。RSA 算法的安全性基于大整数分解的困难性，即大整数因式分解问题。</p>
+<p>RSA 算法的原理简要如下：</p>
+<ol>
+<li><strong>密钥生成</strong>：首先选择两个不同的大素数 p 和 q，并计算它们的乘积 n（即 n &#x3D; p * q）。然后选择一个与 (p-1)<em>(q-1) 互质的整数 e（即 e 和 (p-1)</em>(q-1) 不存在公约数）。公钥由 (n, e) 组成，私钥由 p、q 和与 e 乘法逆元 d 组成。</li>
+<li><strong>加密</strong>：将明文 m 转换为整数，然后使用公钥 (n, e) 对其进行加密，得到密文 c。加密过程为 c &#x3D; m^e mod n。</li>
+<li><strong>解密</strong>：使用私钥 (p, q, d) 对密文 c 进行解密，得到明文 m。解密过程为 m &#x3D; c^d mod n。</li>
+</ol>
+<h3 id="2-45-如何实现对一个DOM元素的深拷贝，包括元素的绑定事件？"><a href="#2-45-如何实现对一个DOM元素的深拷贝，包括元素的绑定事件？" class="headerlink" title="2.45 如何实现对一个DOM元素的深拷贝，包括元素的绑定事件？"></a>2.45 如何实现对一个DOM元素的深拷贝，包括元素的绑定事件？</h3><p>要实现对一个 DOM 元素的深拷贝，包括元素的绑定事件，可以按照以下步骤来操作：</p>
+<ol>
+<li>首先，使用 <code>cloneNode(true)</code> 方法对要拷贝的 DOM 元素进行深拷贝，该方法会复制元素及其所有后代节点。</li>
+<li>然后，对拷贝的 DOM 元素及其后代节点进行遍历，将绑定在原始元素上的事件逐个复制到拷贝的元素上。</li>
+</ol>
+<h3 id="2-46-canvas性能优化的方法有哪些？"><a href="#2-46-canvas性能优化的方法有哪些？" class="headerlink" title="2.46 canvas性能优化的方法有哪些？"></a>2.46 canvas性能优化的方法有哪些？</h3><p>对于 Canvas 性能优化，可以采取以下一些方法来提升性能：</p>
+<ol>
+<li><strong>减少绘制操作</strong>：尽量减少绘制操作的次数，避免在每次动画帧中都重绘整个画布。可以通过合并绘制操作或者使用双缓冲技术来减少绘制次数。</li>
+<li><strong>使用合适的渲染尺寸</strong>：根据实际需求调整 Canvas 的大小，避免不必要的大画布尺寸导致性能下降。如果画布尺寸过大，可以考虑动态调整画布大小以适应设备的分辨率。</li>
+<li><strong>避免频繁重绘</strong>：对于不需要实时更新的元素或者静态元素，尽量避免频繁重绘。可以将这些元素缓存为图像或者使用静态元素。</li>
+<li><strong>使用硬件加速</strong>：在移动设备上，可以通过 CSS 属性 <code>-webkit-transform: translate3d(0, 0, 0);</code> 或者 <code>-webkit-transform: translateZ(0);</code> 来开启硬件加速，提升 Canvas 的渲染性能。</li>
+<li><strong>避免频繁的画布状态变更</strong>：尽量减少对画布状态（如平移、缩放、旋转等）的频繁变更，可以通过保存和恢复画布状态来减少性能开销。</li>
+<li><strong>使用 requestAnimationFrame</strong>：使用 <code>requestAnimationFrame</code> 方法来优化动画的渲染，它可以在浏览器下一次重绘之前执行动画，避免不必要的重复渲染。</li>
+<li><strong>使用图像缓存</strong>：对于复杂的图形或者需要频繁重绘的元素，可以将其渲染到一个离屏的 Canvas 中，然后将其作为图像缓存，减少渲染开销。</li>
+<li><strong>使用 Web Workers</strong>：对于复杂的计算或者数据处理，可以将其放到 Web Workers 中进行处理，以减轻主线程的负担，提升渲染性能。</li>
+<li><strong>优化图形绘制算法</strong>：对于复杂的图形绘制操作，可以考虑优化绘制算法，减少绘制的复杂度和时间复杂度，提升渲染性能。</li>
+</ol>
+<h3 id="2-47-介绍一下KMP算法？"><a href="#2-47-介绍一下KMP算法？" class="headerlink" title="2.47 介绍一下KMP算法？"></a>2.47 介绍一下KMP算法？</h3><p>KMP 算法（Knuth-Morris-Pratt 算法）是一种用于在一个文本串（主串）中查找一个模式串（子串）的高效字符串匹配算法。KMP 算法的核心思想是利用已经部分匹配的信息，尽可能减少模式串和主串的匹配次数，从而提高匹配效率。</p>
+<p>KMP 算法的关键在于构建一个部分匹配表（也称为失配函数或跳转表），该表用于存储模式串中每个位置的最长公共前后缀的长度。利用这个部分匹配表，可以在匹配过程中根据已经匹配的部分快速跳过不匹配的情况。</p>
+<p>KMP 算法的匹配过程如下：</p>
+<ol>
+<li>首先，根据模式串构建部分匹配表。</li>
+<li>在匹配过程中，维护两个指针 i 和 j，分别指向主串和模式串。</li>
+<li>当匹配失败时，根据部分匹配表，将 j 移动到相应位置，以尽量减少匹配次数。</li>
+<li>当 j 移动到模式串的末尾时，表示找到了一个匹配，记录匹配的位置。</li>
+</ol>
+<p>KMP 算法的时间复杂度为 O(n+m)，其中 n 是主串的长度，m 是模式串的长度。由于利用了部分匹配表，KMP 算法避免了回溯操作，因此具有较高的匹配效率。</p>
+<p>总结来说，KMP 算法通过构建部分匹配表，并根据部分匹配表优化匹配过程，从而实现了高效的字符串匹配。</p>
+<h3 id="2-48-简要介绍一下WebPack的底层实现原理？"><a href="#2-48-简要介绍一下WebPack的底层实现原理？" class="headerlink" title="2.48 简要介绍一下WebPack的底层实现原理？"></a>2.48 简要介绍一下WebPack的底层实现原理？</h3><p>Webpack 是一个现代 JavaScript 应用程序的静态模块打包工具，它主要用于将多个 JavaScript 文件打包成一个或多个 bundle。Webpack 的底层实现原理主要涉及以下几个方面：</p>
+<ol>
+<li><strong>入口分析</strong>：Webpack 从指定的入口文件开始，分析整个项目的依赖关系。它会递归地解析每个模块依赖的模块，构建整个依赖图。</li>
+<li><strong>模块解析</strong>：Webpack 支持多种模块类型（如 ES6 模块、CommonJS 模块、AMD 模块等），它会根据不同的模块类型采取不同的解析策略，并通过配置中的 resolve 参数来确定模块的解析规则。</li>
+<li><strong>构建过程</strong>：Webpack 将整个项目构建为一个依赖图，并通过不同的 loader 处理不同类型的模块。loader 负责对模块的源代码进行转换，例如将 ES6 代码转换为 ES5，将 SCSS 转换为 CSS 等。</li>
+<li><strong>模块合并</strong>：Webpack 将经过 loader 处理后的模块合并成一个或多个 bundle。它会根据入口配置和代码分割策略生成不同的 bundle，并通过代码分割技术将公共模块提取到单独的文件中，以提高代码的复用性和性能。</li>
+<li><strong>资源处理</strong>：除了处理 JavaScript 模块外，Webpack 还支持处理其他类型的资源文件，例如 CSS、图片、字体等。它会通过配置中的 loader 将这些资源文件转换为模块，并添加到依赖图中进行打包。</li>
+<li><strong>代码优化</strong>：Webpack 在打包过程中会对代码进行优化，包括但不限于压缩代码、去除冗余代码、代码分割、懒加载等。通过这些优化手段，可以减小 bundle 的体积，提高页面加载速度。</li>
+<li><strong>输出</strong>：最后，Webpack 将打包后的结果输出到指定的目录中。根据配置中的 output 参数，Webpack 可以输出单个或多个 bundle，以及相应的 source map 文件。</li>
+</ol>
+<h3 id="2-49-简要介绍一下gulp的底层实现原理？"><a href="#2-49-简要介绍一下gulp的底层实现原理？" class="headerlink" title="2.49 简要介绍一下gulp的底层实现原理？"></a>2.49 简要介绍一下gulp的底层实现原理？</h3><p>Gulp 是一个基于流的自动化构建工具，它可以帮助开发者自动化地执行一系列任务，例如文件压缩、文件合并、代码检查等。Gulp 的底层实现原理主要涉及以下几个核心概念：</p>
+<ol>
+<li><strong>任务（Task）</strong>：Gulp 将整个构建过程抽象为一系列的任务，每个任务完成一个特定的构建操作。用户可以通过编写 JavaScript 脚本定义自己的任务，并通过任务依赖关系来控制任务的执行顺序。</li>
+<li><strong>流（Stream）</strong>：Gulp 使用 Node.js 中的流来处理文件，它将文件视为可读流和可写流，通过管道（pipe）将多个任务串联起来。流式处理文件可以有效地减少内存占用和提高性能，使得 Gulp 在处理大量文件时表现出色。</li>
+<li><strong>插件（Plugin）</strong>：Gulp 的核心功能相对较少，大部分功能都是通过第三方插件来实现的。插件可以是一系列流操作的封装，例如文件压缩、文件合并、文件重命名等。用户可以通过 npm 安装需要的插件，并在 Gulp 配置文件中使用这些插件来定义任务。</li>
+<li><strong>任务执行器（Task Runner）</strong>：Gulp 提供了一个任务执行器来管理任务的执行流程。当用户在命令行中执行 <code>gulp</code> 命令时，Gulp 会加载配置文件（通常是 <code>gulpfile.js</code>），解析其中的任务定义，并按照任务依赖关系和顺序执行任务。</li>
+<li><strong>监听（Watch）</strong>：Gulp 提供了监听文件变化的功能，用户可以通过 <code>gulp.watch</code> 方法监视文件或目录的变化，并在文件发生变化时自动执行相应的任务。这使得开发者可以实时地监控文件的变化，并且在文件保存时自动执行构建任务，提高开发效率。</li>
+</ol>
+<p>综上所述，Gulp 的底层实现原理涉及任务、流、插件、任务执行器和监听等核心概念。通过这些核心概念的组合和运用，Gulp 实现了高效、灵活的自动化构建工具，为开发者提供了便捷的构建方案。</p>
+<h3 id="2-50-ajax的readyState有哪几个状态，含义分别是什么？"><a href="#2-50-ajax的readyState有哪几个状态，含义分别是什么？" class="headerlink" title="2.50 ajax的readyState有哪几个状态，含义分别是什么？"></a>2.50 ajax的readyState有哪几个状态，含义分别是什么？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ajax的readyState共有5个状态，分别是0-4，其中每个数字的含义分别是</span><br><span class="line">0代表还没调用open方法，</span><br><span class="line">1代表的是未调用send方法，也就是还没发送数据给服务器 </span><br><span class="line">2代表的是还没有接收到响应，</span><br><span class="line">3代表的是开始接收到了部分数据，</span><br><span class="line">4代表的是接收完成，数据可以在客户端使用了。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-51-对于ES7你了解多少？"><a href="#2-51-对于ES7你了解多少？" class="headerlink" title="2.51  对于ES7你了解多少？"></a>2.51  对于ES7你了解多少？</h3><p>ES7，也称为 ECMAScript 2016，是 JavaScript 的第七个版本，于2016年发布。ES7 引入了一些新的语言特性和语法改进，以下是 ES7 中的一些主要特性：</p>
+<ol>
+<li><strong>Array.prototype.includes</strong>：<code>Array.prototype.includes</code> 方法用于检查数组中是否包含某个元素，并返回一个布尔值。与 <code>Array.prototype.indexOf</code> 方法不同的是，<code>includes</code> 方法不会将 NaN 视为等于 NaN。</li>
+<li><strong>指数运算符（Exponentiation Operator）</strong>：ES7 引入了指数运算符 <code>**</code>，用于进行指数运算</li>
+<li><strong>对象的属性名简化</strong>：ES7 允许在对象字面量中直接使用变量名作为属性名，而无需再写键值对</li>
+<li><strong>Async&#x2F;Await</strong>：ES7 引入了 <code>async</code> 和 <code>await</code> 关键字，用于简化 Promise 的使用，并使异步代码的编写更加直观和易读。</li>
+</ol>
+<h3 id="2-52-请简要介绍一下service-worker？"><a href="#2-52-请简要介绍一下service-worker？" class="headerlink" title="2.52 请简要介绍一下service worker？"></a>2.52 请简要介绍一下service worker？</h3><p>Service Worker 是一种在浏览器后台运行的脚本，它独立于网页，并且具有一些强大的功能，如拦截和处理网络请求、管理缓存、实现离线访问等。Service Worker 为 Web 应用提供了一种灵活的方式来处理网络请求和响应，从而实现更好的性能和用户体验。</p>
+<p>以下是 Service Worker 的一些主要特点和用途：</p>
+<ol>
+<li><strong>网络请求拦截和处理</strong>：Service Worker 可以拦截浏览器发出的网络请求，从而允许开发者对这些请求进行自定义的处理，例如缓存策略、路由转发等。</li>
+<li><strong>离线访问</strong>：Service Worker 可以缓存应用的资源文件（如 HTML、CSS、JavaScript、图像等），使得应用在离线状态下仍然可以访问这些资源，提供了更好的离线体验。</li>
+<li><strong>推送通知</strong>：Service Worker 可以通过 Push API 实现推送通知功能，向用户发送即时消息，即使用户当前没有打开网页也能接收到通知。</li>
+<li><strong>后台同步</strong>：Service Worker 可以通过 Background Sync API 实现后台同步功能，允许应用在网络恢复后自动同步数据，保持数据的更新。</li>
+<li><strong>消息传递</strong>：Service Worker 可以通过 postMessage 方法与页面之间进行通信，允许页面和 Service Worker 之间进行双向通信，以便实现一些复杂的功能。</li>
+</ol>
+<p>需要注意的是，由于 Service Worker 在浏览器后台独立运行，因此它无法直接访问 DOM，也无法直接操作页面的内容。它与页面之间通过消息传递进行通信，从而实现对页面的一些控制和操作。</p>
+<p>Service Worker 的引入使得 Web 应用能够具备更强大的功能和更好的性能，例如离线访问、推送通知等，极大地拓展了 Web 应用的应用场景和可能性</p>
+<h3 id="2-53-SPA的路由是如果实现的，如果你来做一个前端路由，你会怎么做？"><a href="#2-53-SPA的路由是如果实现的，如果你来做一个前端路由，你会怎么做？" class="headerlink" title="2.53 SPA的路由是如果实现的，如果你来做一个前端路由，你会怎么做？"></a>2.53 SPA的路由是如果实现的，如果你来做一个前端路由，你会怎么做？</h3><p>SPA（Single Page Application，单页应用）的路由通常是通过前端路由来实现的。前端路由是指在单页应用中，通过 JavaScript 来控制页面的导航和内容展示，而不是通过传统的 HTTP 请求来获取新页面。</p>
+<p>如果我来实现一个前端路由，我会采用以下步骤：</p>
+<ol>
+<li><strong>设计路由规则</strong>：首先需要设计应用的路由规则，确定不同 URL 对应的页面组件或视图，并定义路由映射关系。这包括路由路径、对应的组件或视图，以及可能的路由参数等。</li>
+<li><strong>选择路由库</strong>：选择适合项目需求的前端路由库，常见的有 Vue Router、React Router、Angular Router 等。这些路由库提供了丰富的功能和 API，可以简化路由的管理和操作。</li>
+<li><strong>初始化路由</strong>：在应用启动时，初始化路由库，并配置路由规则。根据项目需要，可能需要配置路由的模式（如 hash 模式、history 模式）、路由导航守卫、路由拦截等。</li>
+<li><strong>编写路由组件</strong>：根据路由规则，编写对应的页面组件或视图，并将其与路由相关联。在路由库中注册这些路由组件，并指定对应的路由路径。</li>
+<li><strong>路由导航</strong>：处理路由导航事件，当用户点击链接或执行程序化导航时，根据路由规则进行页面跳转。可以通过路由库提供的 API 来执行导航操作，如跳转到指定路径、跳转到上一个页面等。</li>
+<li><strong>路由参数传递</strong>：处理路由参数，根据需要将路由参数传递给对应的页面组件，并在组件中进行处理和渲染。</li>
+<li><strong>处理路由事件</strong>：监听路由变化事件，并在路由变化时执行相应的操作。这包括路由切换前的操作（如权限检查、数据加载等）、路由切换后的操作（如页面滚动、埋点统计等）等。</li>
+<li><strong>优化性能</strong>：根据项目需求和实际情况，对路由进行优化，包括懒加载路由组件、使用路由缓存、处理路由懒加载时的加载状态等，以提升应用的性能和用户体验。</li>
+</ol>
+<p>通过以上步骤，可以实现一个灵活、高效的前端路由系统，为单页应用提供良好的页面导航和内容展示功能。</p>
+<h3 id="2-54-AMD与CMD的区别有哪些？"><a href="#2-54-AMD与CMD的区别有哪些？" class="headerlink" title="2.54 AMD与CMD的区别有哪些？"></a>2.54 AMD与CMD的区别有哪些？</h3><p>AMD（Asynchronous Module Definition，异步模块定义）和 CMD（Common Module Definition，通用模块定义）都是 JavaScript 模块加载器&#x2F;定义规范，用于解决 JavaScript 模块化开发中的依赖管理问题，但它们在一些方面有一些不同之处：</p>
+<ol>
+<li><strong>加载时机不同</strong>：<ul>
+<li>AMD：AMD 规范中定义的模块是在加载完成后立即执行，模块加载是异步的。</li>
+<li>CMD：CMD 规范中定义的模块是在使用时才执行，模块加载是同步的。</li>
+</ul>
+</li>
+<li><strong>依赖处理方式不同</strong>：<ul>
+<li>AMD：AMD 使用依赖前置，在定义模块时就声明所有依赖，并在加载模块时立即加载依赖。</li>
+<li>CMD：CMD 使用依赖就近，只有在需要使用某个模块时才去加载该模块的依赖。</li>
+</ul>
+</li>
+<li><strong>对依赖模块的执行时机要求不同</strong>：<ul>
+<li>AMD：AMD 要求依赖模块在当前模块执行之前执行完成。</li>
+<li>CMD：CMD 允许依赖模块在当前模块执行过程中按需加载执行。</li>
+</ul>
+</li>
+<li><strong>代表库不同</strong>：<ul>
+<li>AMD：代表库有 RequireJS。</li>
+<li>CMD：代表库有 SeaJS。</li>
+</ul>
+</li>
+</ol>
+<p>总的来说，AMD 和 CMD 在模块定义和加载的时机、依赖处理方式以及对依赖模块的执行时机要求上有所不同，选择使用哪种规范取决于项目的需求和开发习惯。</p>
+<h3 id="2-55-听说过UMD吗？可以简要介绍一下吗？"><a href="#2-55-听说过UMD吗？可以简要介绍一下吗？" class="headerlink" title="2.55 听说过UMD吗？可以简要介绍一下吗？"></a>2.55 听说过UMD吗？可以简要介绍一下吗？</h3><p>UMD（Universal Module Definition，通用模块定义）是一种用于 JavaScript 模块化的规范，旨在解决不同模块加载器之间的兼容性问题。UMD 可以让一个模块既能在浏览器端使用全局变量方式加载，也能在模块加载器环境（如 CommonJS、AMD、Node.js 等）中使用模块导出和导入的方式加载。</p>
+<p>UMD 的实现通常遵循以下步骤：</p>
+<ol>
+<li>首先，判断当前环境是否支持 CommonJS 规范，如果支持，则使用 <code>module.exports</code> 导出模块。</li>
+<li>如果不支持 CommonJS 规范，则判断当前环境是否支持 AMD 规范，如果支持，则使用 <code>define</code> 函数来定义模块。</li>
+<li>如果当前环境既不支持 CommonJS 规范，也不支持 AMD 规范，则将模块导出到全局变量中，使得模块可以通过全局变量方式被加载和访问。</li>
+</ol>
+<p>UMD 的目标是实现一种通用的模块化规范，使得模块可以在不同的环境和加载器中被使用。通过 UMD，开发者可以编写一次模块代码，在浏览器端和服务端都可以被正确加载和使用，极大地提高了模块的复用性和通用性。</p>
+<p>虽然 UMD 解决了不同模块加载器之间的兼容性问题，但它的实现相对复杂，需要对不同的模块加载器进行判断和处理，因此在实际开发中，一般会选择使用更为简单和统一的模块加载器，如 CommonJS、AMD 或 ES6 模块。</p>
+<h3 id="2-56-百度的构建工具FIS你了解吗？"><a href="#2-56-百度的构建工具FIS你了解吗？" class="headerlink" title="2.56 百度的构建工具FIS你了解吗？"></a>2.56 百度的构建工具FIS你了解吗？</h3><p>是的，FIS（百度前端集成解决方案）是百度推出的一款前端构建工具，用于帮助开发者进行前端项目的构建、优化和部署。FIS 提供了丰富的功能和插件，包括文件编译、资源合并、图片压缩、代码混淆、静态资源版本管理、自动化部署等，可以帮助开发者提高前端开发效率和项目质量。</p>
+<p>以下是 FIS 的一些主要特点和功能：</p>
+<ol>
+<li><strong>多语言支持</strong>：FIS 支持多种前端语言，包括 HTML、CSS、JavaScript、Less、Sass、Stylus 等，可以根据项目需要选择合适的语言进行开发。</li>
+<li><strong>文件编译</strong>：FIS 可以根据配置文件对项目中的文件进行编译和处理，例如将 Less、Sass 等预处理器语言编译为 CSS，将 ES6+ 语法编译为 ES5 等。</li>
+<li><strong>资源合并与压缩</strong>：FIS 支持将多个 CSS 或 JavaScript 文件合并为一个文件，并对合并后的文件进行压缩和混淆，以减少网络请求和提高页面加载速度。</li>
+<li><strong>静态资源管理</strong>：FIS 支持自动添加静态资源的版本号，并根据需求对静态资源进行文件指纹、缓存控制等管理，以解决静态资源更新后的缓存问题。</li>
+<li><strong>自动化部署</strong>：FIS 支持自动化部署功能，可以将构建后的项目文件上传至指定的服务器或云存储，并进行相关配置，实现前端项目的自动化部署和发布。</li>
+<li><strong>插件扩展</strong>：FIS 提供了丰富的插件系统，可以根据项目需求选择合适的插件来扩展功能，例如图片压缩、静态资源依赖分析、前端性能优化等。</li>
+</ol>
+<p>总的来说，FIS 是一款功能强大的前端构建工具，提供了丰富的功能和灵活的配置选项，可以帮助开发者优化前端项目、提高开发效率，并实现自动化部署和发布。</p>
+<h2 id="三-参考"><a href="#三-参考" class="headerlink" title="三 参考"></a>三 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://huruji.github.io/FE-Interview/#/docs/JavaScript">FE-Interview—Javascript</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/ja/tags/Web%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"># Web前端面试题</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ja/posts/3a4cff6e.html" rel="prev" title="标准韩国语第三册——第9课-招待与访问-基本语法1">
+                  <i class="fa fa-angle-left"></i> 标准韩国语第三册——第9课-招待与访问-基本语法1
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ja/posts/3abeb466.html" rel="next" title="前端面试题之——Node">
+                  前端面试题之——Node <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"bf238e987e8743ef9c568f7dbe7cda06"}</script>
+<script src="/ja/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一 Profiler-内存分析能做什么 Profiler-内存分析可帮助您识别可能会导致应用卡顿、冻结甚至崩溃的内存泄漏和内存抖动 它显示一个应用内存使用量的实时图表，让您可以捕获堆转储、强制执行垃圾回收以及跟踪内存分配">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发之——Profiler-内存分析">
+<meta property="og:url" content="https://pgzxc.github.io/posts/95e02168.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 Profiler-内存分析能做什么 Profiler-内存分析可帮助您识别可能会导致应用卡顿、冻结甚至崩溃的内存泄漏和内存抖动 它显示一个应用内存使用量的实时图表，让您可以捕获堆转储、强制执行垃圾回收以及跟踪内存分配">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-all-view.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-click-open.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-profiler-callouts.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-profiler-number.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-record-type.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-trace.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-heap-dump.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-trace-menu.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-native-trace.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-native-allocate.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-java-trace.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-export.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-import.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-list.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-instance.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-details.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-reference.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-jumpsource.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-jumpsource-info.png">
+<meta property="article:published_time" content="2021-08-13T09:44:41.000Z">
+<meta property="article:modified_time" content="2026-02-22T02:43:05.240Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-all-view.png">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/95e02168.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/95e02168.html","path":"posts/95e02168.html","title":"Android开发之——Profiler-内存分析"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android开发之——Profiler-内存分析 | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">275</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4492</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-Profiler-%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88"><span class="nav-number">1.</span> <span class="nav-text">一 Profiler-内存分析能做什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-Profiler-%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90%E6%A6%82%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">二 Profiler-内存分析概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%A6%82%E4%BD%95%E6%89%93%E5%BC%80%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90%E5%89%96%E6%9E%90%E5%99%A8"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 如何打开内存分析剖析器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%86%85%E5%AD%98%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%99%A8%E6%A6%82%E8%A7%88"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 内存性能分析器概览</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%9B%BE"><span class="nav-number">2.2.1.</span> <span class="nav-text">内存性能分析图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%9B%BE%E8%AF%B4%E6%98%8E"><span class="nav-number">2.2.2.</span> <span class="nav-text">内存性能分析图说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E8%AE%A1%E7%AE%97%E6%96%B9%E5%BC%8F"><span class="nav-number">2.2.3.</span> <span class="nav-text">内存计算方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%86%85%E5%AD%98%E6%8D%95%E8%8E%B7%E4%BF%A1%E6%81%AF%E8%AF%B4%E6%98%8E"><span class="nav-number">3.</span> <span class="nav-text">三 内存捕获信息说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%86%85%E5%AD%98%E6%8D%95%E8%8E%B7%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 内存捕获类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%86%85%E5%AD%98%E9%80%89%E9%A1%B9%E8%AF%B4%E6%98%8E"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 内存选项说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="nav-number">4.</span> <span class="nav-text">四 查看内存分配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%8D%95%E8%8E%B7%E5%A0%86%E8%BD%AC%E5%82%A8-Capture-heap-dump-%E6%96%B9%E5%BC%8F%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 捕获堆转储(Capture heap dump)方式查看内存分配</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8D%95%E8%8E%B7%E5%A0%86%E8%BD%AC%E5%82%A8"><span class="nav-number">4.1.1.</span> <span class="nav-text">捕获堆转储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8D%95%E8%8E%B7%E7%BB%93%E6%9E%9C%E6%A3%80%E6%9F%A5"><span class="nav-number">4.1.2.</span> <span class="nav-text">捕获结果检查</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8F%9C%E5%8D%95%E6%9F%A5%E7%9C%8B%E8%AF%B4%E6%98%8E"><span class="nav-number">4.1.3.</span> <span class="nav-text">菜单查看说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E6%8D%95%E8%8E%B7Native%E6%96%B9%E5%BC%8F%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 捕获Native方式查看内存分配</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8D%95%E8%8E%B7Native"><span class="nav-number">4.2.1.</span> <span class="nav-text">捕获Native</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#native%E7%BB%93%E6%9E%9C%E6%95%B0%E6%8D%AE"><span class="nav-number">4.2.2.</span> <span class="nav-text">native结果数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E6%8D%95%E8%8E%B7java-kotlin%E6%96%B9%E5%BC%8F%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 捕获java&#x2F;kotlin方式查看内存分配</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8D%95%E8%8E%B7java-kotlin"><span class="nav-number">4.3.1.</span> <span class="nav-text">捕获java&#x2F;kotlin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Allocation-Tracking%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95%E8%AF%B4%E6%98%8E"><span class="nav-number">4.3.2.</span> <span class="nav-text">Allocation Tracking下拉菜单说明</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E5%A0%86%E8%BD%AC%E5%82%A8%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5%E5%92%8C%E5%AF%BC%E5%87%BA"><span class="nav-number">5.</span> <span class="nav-text">五 堆转储文件导入和导出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E5%A0%86%E8%BD%AC%E5%82%A8%E6%96%87%E4%BB%B6%E5%AF%BC%E5%87%BA"><span class="nav-number">5.1.</span> <span class="nav-text">5.1  堆转储文件导出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E5%A0%86%E8%BD%AC%E5%82%A8%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5"><span class="nav-number">5.2.</span> <span class="nav-text">5.2  堆转储文件导入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD-%E5%86%85%E5%AD%98%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%99%A8%E4%B8%AD%E7%9A%84%E6%B3%84%E6%BC%8F%E6%A3%80%E6%B5%8B"><span class="nav-number">6.</span> <span class="nav-text">六 内存性能分析器中的泄漏检测</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-%E6%A3%80%E6%9F%A5%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 检查内存泄漏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 如何查看内存泄漏的位置</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4492</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">275</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">626</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/95e02168.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android开发之——Profiler-内存分析 | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android开发之——Profiler-内存分析<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Android%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94Profiler-%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-08-13 17:44:41" itemprop="dateCreated datePublished" datetime="2021-08-13T17:44:41+08:00">2021-08-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/D-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">D-移动开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/D-%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-Profiler-内存分析能做什么"><a href="#一-Profiler-内存分析能做什么" class="headerlink" title="一 Profiler-内存分析能做什么"></a>一 Profiler-内存分析能做什么</h2><ul>
+<li>Profiler-内存分析可帮助您识别可能会导致应用卡顿、冻结甚至崩溃的内存泄漏和内存抖动</li>
+<li>它显示一个应用内存使用量的实时图表，让您可以捕获堆转储、强制执行垃圾回收以及跟踪内存分配</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="二-Profiler-内存分析概述"><a href="#二-Profiler-内存分析概述" class="headerlink" title="二 Profiler-内存分析概述"></a>二 Profiler-内存分析概述</h2><h3 id="2-1-如何打开内存分析剖析器"><a href="#2-1-如何打开内存分析剖析器" class="headerlink" title="2.1 如何打开内存分析剖析器"></a>2.1 如何打开内存分析剖析器</h3><ul>
+<li><p>依次选择 <strong>View &gt; Tool Windows &gt; Profiler</strong> 或点击工具栏中的 Profile图标</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-all-view.png" loading="lazy"></p>
+</li>
+<li><p>点击 MEMORY 时间轴上的任意位置以打开内存性能分析器</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-click-open.png" loading="lazy"></p>
+</li>
+</ul>
+<h3 id="2-2-内存性能分析器概览"><a href="#2-2-内存性能分析器概览" class="headerlink" title="2.2 内存性能分析器概览"></a>2.2 内存性能分析器概览</h3><h4 id="内存性能分析图"><a href="#内存性能分析图" class="headerlink" title="内存性能分析图"></a>内存性能分析图</h4><p>当您首次打开内存性能分析器时，您将看到一条表示应用内存使用量的详细时间轴，并可使用各种工具强制执行垃圾回收、捕获堆转储以及记录内存分配<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-profiler-callouts.png" loading="lazy"></p>
+<h4 id="内存性能分析图说明"><a href="#内存性能分析图说明" class="headerlink" title="内存性能分析图说明"></a>内存性能分析图说明</h4><ol>
+<li>用于强制执行垃圾回收事件的按钮</li>
+<li>用于<a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio/profile/memory-profiler#capture-heap-dump">捕获堆转储</a>的按钮</li>
+<li>用于指定性能分析器多久捕获一次内存分配的下拉菜单</li>
+<li>用于缩放时间轴的按钮</li>
+<li>用于跳转到实时内存数据的按钮</li>
+<li>事件时间轴，显示活动状态、用户输入事件和屏幕旋转事件</li>
+<li>内存使用量时间轴，它会显示以下内容<ul>
+<li>一个堆叠图表，显示每个内存类别当前使用多少内存，如左侧的 y 轴以及顶部的彩色键所示</li>
+<li>一条虚线，表示分配的对象数，如右侧的 y 轴所示</li>
+<li>每个垃圾回收事件的图标</li>
+</ul>
+</li>
+</ol>
+<h4 id="内存计算方式"><a href="#内存计算方式" class="headerlink" title="内存计算方式"></a>内存计算方式</h4><p>您在内存性能分析器顶部看到的数字<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-profiler-number.png" loading="lazy"></p>
+<p>内存计数中的类别如下</p>
+<ul>
+<li><strong>Java</strong>：从 Java 或 Kotlin 代码分配的对象的内存</li>
+<li><strong>Native</strong>：从 C 或 C++ 代码分配的对象的内存</li>
+<li><strong>Graphics</strong>：图形缓冲区队列为向屏幕显示像素（包括 GL 表面、GL 纹理等等）所使用的内存</li>
+<li><strong>Stack</strong>：您的应用中的原生堆栈和 Java 堆栈使用的内存。这通常与您的应用运行多少线程有关</li>
+<li><strong>Code</strong>：您的应用用于处理代码和资源（如 dex 字节码、经过优化或编译的 dex 代码、.so 库和字体）的内存</li>
+<li><strong>Others</strong>：您的应用使用的系统不确定如何分类的内存</li>
+<li><strong>Allocated</strong>：您的应用分配的 Java&#x2F;Kotlin 对象数。此数字没有计入 C 或 C++ 中分配的对象</li>
+</ul>
+<h2 id="三-内存捕获信息说明"><a href="#三-内存捕获信息说明" class="headerlink" title="三 内存捕获信息说明"></a>三 内存捕获信息说明</h2><h3 id="3-1-内存捕获类型"><a href="#3-1-内存捕获类型" class="headerlink" title="3.1 内存捕获类型"></a>3.1 内存捕获类型</h3><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-record-type.png" loading="lazy"></p>
+<h3 id="3-2-内存选项说明"><a href="#3-2-内存选项说明" class="headerlink" title="3.2 内存选项说明"></a>3.2 内存选项说明</h3><ul>
+<li>捕获堆转储(Capture heap dump)：查看应用程序中在特定时间点使用内存的对象</li>
+<li>记录Native分配(Record native allocations)：查看每个C&#x2F;C++对象在一段时间内是如何分配的</li>
+<li>记录java&#x2F;kotlin分配(Record java&#x2F;kotlin allocations)：查看在一段时间内如何分配每个java&#x2F;kotlin对象</li>
+</ul>
+<h2 id="四-查看内存分配"><a href="#四-查看内存分配" class="headerlink" title="四 查看内存分配"></a>四 查看内存分配</h2><h3 id="4-1-捕获堆转储-Capture-heap-dump-方式查看内存分配"><a href="#4-1-捕获堆转储-Capture-heap-dump-方式查看内存分配" class="headerlink" title="4.1 捕获堆转储(Capture heap dump)方式查看内存分配"></a>4.1 捕获堆转储(Capture heap dump)方式查看内存分配</h3><h4 id="捕获堆转储"><a href="#捕获堆转储" class="headerlink" title="捕获堆转储"></a>捕获堆转储</h4><p>选择<code>Capture heap dump</code>，并点击<code>Record</code>按钮，开始捕获，捕获完成后，点击Stop，进行分析<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-trace.gif" loading="lazy"></p>
+<h4 id="捕获结果检查"><a href="#捕获结果检查" class="headerlink" title="捕获结果检查"></a>捕获结果检查</h4><p>捕获的结果</p>
+<p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-heap-dump.png" loading="lazy"></p>
+<p>检查分配记录步骤：</p>
+<ol>
+<li>点击 <strong>Class Name</strong> 列标题以按字母顺序排序。然后，点击一个类名称。此时下侧将出现 <strong>Instance View</strong> 窗格，显示该类的每个实例</li>
+<li>在 <strong>Instance View</strong> 窗格中，点击一个实例。此时下方将出现 <strong>References</strong> 标签页，显示该实例被分配到何处以及在哪个线程中。</li>
+<li>在 <strong>References</strong> 标签页中，右键点击任意行并选择 <strong>Jump to Source</strong>，以在编辑器中打开该代码</li>
+</ol>
+<h4 id="菜单查看说明"><a href="#菜单查看说明" class="headerlink" title="菜单查看说明"></a>菜单查看说明</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-trace-menu.gif" loading="lazy"></p>
+<p>菜单-检查的堆：</p>
+<ul>
+<li><strong>default heap</strong>：当系统未指定堆时</li>
+<li><strong>image heap</strong>：系统启动映像，包含启动期间预加载的类。此处的分配确保绝不会移动或消失</li>
+<li><strong>zygote heap</strong>：写时复制堆，其中的应用进程是从 Android 系统中派生的</li>
+<li><strong>app heap</strong>：您的应用在其中分配内存的主堆</li>
+<li><strong>JNI heap</strong>：显示 Java 原生接口 (JNI) 引用被分配和释放到什么位置的堆</li>
+</ul>
+<p>菜单-分配：</p>
+<ul>
+<li><strong>Arrange by class</strong>：根据类名称对所有分配进行分组。这是默认值</li>
+<li><strong>Arrange by package</strong>：根据软件包名称对所有分配进行分组</li>
+<li><strong>Arrange by callstack</strong>：将所有分配分组到其对应的调用堆栈</li>
+</ul>
+<h3 id="4-2-捕获Native方式查看内存分配"><a href="#4-2-捕获Native方式查看内存分配" class="headerlink" title="4.2 捕获Native方式查看内存分配"></a>4.2 捕获Native方式查看内存分配</h3><h4 id="捕获Native"><a href="#捕获Native" class="headerlink" title="捕获Native"></a>捕获Native</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-native-trace.gif" loading="lazy"></p>
+<h4 id="native结果数据"><a href="#native结果数据" class="headerlink" title="native结果数据"></a>native结果数据</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-native-allocate.png" loading="lazy"></p>
+<p>结果信息说明：</p>
+<ul>
+<li><strong>Allocations</strong>：在选定时间段内通过 <code>malloc()</code> 或 <code>new</code> 运算符分配的对象数</li>
+<li><strong>Deallocations</strong>：在选定时间段内通过 <code>free()</code> 或 <code>delete</code> 运算符解除分配的对象数</li>
+<li><strong>Allocations Size</strong>：在选定时间段内所有分配的总大小（以字节为单位）</li>
+<li><strong>Deallocations Size</strong>：在选定时间段内所有已释放内存的总大小（以字节为单位）</li>
+<li><strong>Total Count</strong>：<strong>Allocations</strong> 列中的值减去 <strong>Deallocations</strong> 列中的值所得的结果</li>
+<li><strong>Remaining Size</strong>：<strong>Allocations Size</strong> 列中的值减去 <strong>Deallocations Size</strong> 列中的值所得的结果</li>
+</ul>
+<h3 id="4-3-捕获java-kotlin方式查看内存分配"><a href="#4-3-捕获java-kotlin方式查看内存分配" class="headerlink" title="4.3 捕获java&#x2F;kotlin方式查看内存分配"></a>4.3 捕获java&#x2F;kotlin方式查看内存分配</h3><h4 id="捕获java-kotlin"><a href="#捕获java-kotlin" class="headerlink" title="捕获java&#x2F;kotlin"></a>捕获java&#x2F;kotlin</h4><p><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-java-trace.gif" loading="lazy"></p>
+<h4 id="Allocation-Tracking下拉菜单说明"><a href="#Allocation-Tracking下拉菜单说明" class="headerlink" title="Allocation Tracking下拉菜单说明"></a>Allocation Tracking下拉菜单说明</h4><ul>
+<li><strong>Full</strong>：捕获内存中的所有对象分配。这是 Android Studio 3.2 及更低版本中的默认行为</li>
+<li><strong>Sampled</strong>：定期对内存中的对象分配情况进行采样。</li>
+<li><strong>Off</strong>：停止跟踪应用的内存分配</li>
+</ul>
+<h2 id="五-堆转储文件导入和导出"><a href="#五-堆转储文件导入和导出" class="headerlink" title="五 堆转储文件导入和导出"></a>五 堆转储文件导入和导出</h2><h3 id="5-1-堆转储文件导出"><a href="#5-1-堆转储文件导出" class="headerlink" title="5.1  堆转储文件导出"></a>5.1  堆转储文件导出</h3><p>在Sessions列表中，点击会话条目右侧的 <strong>Export method trace</strong> 或 <strong>Export system trace</strong> 按钮<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-export.png" loading="lazy"></p>
+<h3 id="5-2-堆转储文件导入"><a href="#5-2-堆转储文件导入" class="headerlink" title="5.2  堆转储文件导入"></a>5.2  堆转储文件导入</h3><p><strong>Sessions</strong> 窗格中点击 <strong>Start new profiler session</strong> 图标&quot;+&quot;，然后选择 <strong>Load from file</strong><br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-import.png" loading="lazy"></p>
+<h2 id="六-内存性能分析器中的泄漏检测"><a href="#六-内存性能分析器中的泄漏检测" class="headerlink" title="六 内存性能分析器中的泄漏检测"></a>六 内存性能分析器中的泄漏检测</h2><h3 id="6-1-检查内存泄漏"><a href="#6-1-检查内存泄漏" class="headerlink" title="6.1 检查内存泄漏"></a>6.1 检查内存泄漏</h3><p>捕获堆转储(Capture heap dump)检测期间操作设备，完成后点击Stop按钮，检测结束后，显示有内存泄漏及内存泄漏的数目<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak.png" loading="lazy"></p>
+<h3 id="6-2-如何查看内存泄漏的位置"><a href="#6-2-如何查看内存泄漏的位置" class="headerlink" title="6.2 如何查看内存泄漏的位置"></a>6.2 如何查看内存泄漏的位置</h3><ul>
+<li>双击内存泄漏的位置，显示内存泄漏的列表<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-list.png" loading="lazy"></li>
+<li>点击列表中其中一个，显示实例对象<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-instance.png" loading="lazy"></li>
+<li>点击实例对象，显示详细信息<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-details.png" loading="lazy"></li>
+<li>切换到References选项卡，并点击<code>show nearest GC root only</code><br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-reference.png" loading="lazy"></li>
+<li>右键选择<code>jump to source</code><br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-jumpsource.png" loading="lazy"></li>
+<li>跳转到源码，可以看到是thread引起的内存泄漏<br><img src="https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-android/android-profiler-memory-leak-jumpsource-info.png" loading="lazy"></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/8f3990cd.html" rel="prev" title="Android开发之——Profiler-CPU性能分析">
+                  <i class="fa fa-angle-left"></i> Android开发之——Profiler-CPU性能分析
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/3cb86604.html" rel="next" title="Android开发之——Profiler-网络分析">
+                  Android开发之——Profiler-网络分析 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"cd554385dee19b14c32ad826944f2cea"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>
