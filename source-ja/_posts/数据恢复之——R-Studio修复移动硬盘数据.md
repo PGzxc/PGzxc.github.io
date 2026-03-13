@@ -2,6 +2,7 @@
 title: 数据恢复之——R-Studio修复移动硬盘数据
 categories:
   - 工具
+  - 数据恢复
   - R-Studio
 tags:
   - 数据恢复
