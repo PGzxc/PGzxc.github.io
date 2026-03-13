@@ -2,6 +2,7 @@
 title: HandBrake之——中文使用教程(2)
 categories:
   - 工具
+  - 媒体工具
   - HandBrake
 tags:
   - HandBrake

@@ -2,6 +2,7 @@
 title: HandBrake之——CLI自动化批量转码脚本(3)
 categories:
   - 工具
+  - 媒体工具
   - HandBrake
 tags:
   - HandBrake
