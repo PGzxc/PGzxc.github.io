@@ -1,8 +1,8 @@
 ---
 title: Docker入门之——在NAS上安装Docker(22)
 categories:
-  - 开发
-  - G-后端开发
+  - 运维
+  - 容器
   - Docker
 tags:
   - Docker

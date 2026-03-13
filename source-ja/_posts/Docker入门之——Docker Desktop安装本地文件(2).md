@@ -3,8 +3,8 @@ title: Docker入门之——Docker Desktop安装本地文件(2)
 abbrlink: c6773d74
 date: 2024-08-12 08:53:51
 categories:
-  - 开发
-  - G-后端开发
+  - 运维
+  - 容器
   - Docker
 tags:
   - Docker

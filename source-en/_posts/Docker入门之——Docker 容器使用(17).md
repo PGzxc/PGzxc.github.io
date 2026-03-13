@@ -1,8 +1,8 @@
 ---
 title: Docker入门之——Docker 容器使用(17)
 categories:
-  - 开发
-  - G-后端开发
+  - 运维
+  - 容器
   - Docker
 tags:
   - Docker

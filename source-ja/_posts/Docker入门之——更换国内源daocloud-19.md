@@ -1,8 +1,8 @@
 ---
 title: Docker入门之——更换国内源daocloud(19)
 categories:
-  - 开发
-  - G-后端开发
+  - 运维
+  - 容器
   - Docker
 tags:
   - Docker

@@ -1,8 +1,8 @@
 ---
 title: Docker入门之——Docker跑一个Vue&Nginx项目(23)
 categories:
-  - 开发
-  - G-后端开发
+  - 运维
+  - 容器
   - Docker
 tags:
   - Docker
