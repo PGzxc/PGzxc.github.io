@@ -2,6 +2,7 @@
 title: Chrome插件之——导出Chrome浏览器扩展程序为crx文件
 categories:
   - 工具
+  - 浏览器工具
   - Chrome插件
 tags:
   - Chrome插件
