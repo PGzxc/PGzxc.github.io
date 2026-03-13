@@ -2,6 +2,7 @@
 title: VPN之—Cloudflare Zero Trust使用教程
 categories:
   - 工具
+  - 网络工具
   - VPN
 tags:
   - VPN
