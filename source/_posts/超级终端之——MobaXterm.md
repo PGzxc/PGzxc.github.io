@@ -2,6 +2,7 @@
 title: 超级终端之——MobaXterm
 categories:
   - 工具
+  - 系统工具
   - 终端
 tags:
   - MobaXterm
