@@ -2,6 +2,7 @@
 title: Dns Jumper之——DNS解析工具入门指南
 categories:
   - 工具
+  - 网络工具
   - DNS Jumper
 tags:
   - DNS Jumper
