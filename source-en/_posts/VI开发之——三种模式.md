@@ -2,7 +2,8 @@
 title: VI开发之——三种模式
 categories:
   - 工具
-  - VI
+  - 编辑器
+  - Vim
 tags:
   - VI模式
 abbrlink: ed14c809
