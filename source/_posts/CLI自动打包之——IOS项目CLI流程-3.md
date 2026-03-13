@@ -1,10 +1,9 @@
 ---
 title: CLI自动打包之——IOS项目CLI流程(3)
 categories:
-  - 开发
-  - L-自动化
+  - 运维
+  - 自动化
   - CLI
-  - Github
 tags:
   - Github
 abbrlink: a3db180c

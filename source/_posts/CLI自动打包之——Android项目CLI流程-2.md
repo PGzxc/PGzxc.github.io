@@ -1,10 +1,9 @@
 ---
 title: CLI自动打包之——Android项目CLI流程(2)
 categories:
-  - 开发
-  - L-自动化
+  - 运维
+  - 自动化
   - CLI
-  - Github
 tags:
   - Github
 abbrlink: 3a467850

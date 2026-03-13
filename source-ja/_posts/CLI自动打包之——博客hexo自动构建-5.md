@@ -1,10 +1,9 @@
 ---
 title: CLI自动打包之——博客hexo自动构建(5)
 categories:
-  - 开发
-  - L-自动化
+  - 运维
+  - 自动化
   - CLI
-  - Github
 tags:
   - Github
 abbrlink: 8af1efb5

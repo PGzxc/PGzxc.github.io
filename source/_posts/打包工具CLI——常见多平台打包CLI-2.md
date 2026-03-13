@@ -1,8 +1,8 @@
 ---
 title: 打包工具CLI——常见多平台打包CLI(2)
 categories:
-  - 开发
-  - L-自动化
+  - 运维
+  - 自动化
   - CLI
 tags:
   - CLI

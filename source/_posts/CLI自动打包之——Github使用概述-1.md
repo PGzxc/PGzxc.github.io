@@ -1,10 +1,9 @@
 ---
 title: CLI自动打包之——Github使用概述(1)
 categories:
-  - 开发
-  - L-自动化
+  - 运维
+  - 自动化
   - CLI
-  - Github
 tags:
   - Github
 abbrlink: 63a1c3d2
