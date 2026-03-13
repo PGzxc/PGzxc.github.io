@@ -2,6 +2,7 @@
 title: 网盘工具之——PikPak反代设置
 categories:
   - 工具
+  - 下载工具
   - PikPak
 tags:
   - PikPak
