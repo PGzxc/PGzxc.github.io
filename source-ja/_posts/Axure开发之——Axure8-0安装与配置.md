@@ -1,7 +1,8 @@
 ---
 title: Axure开发之——Axure8.0安装与配置
 categories:
-  - 产品
+  - 工具
+  - 设计工具
   - Axure
 tags:
   - Axure 8.0

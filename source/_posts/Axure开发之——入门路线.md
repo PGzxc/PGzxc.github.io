@@ -1,7 +1,8 @@
 ---
 title: Axure开发之——入门路线
 categories:
-  - 产品
+  - 工具
+  - 设计工具
   - Axure
 tags:
   - Axure

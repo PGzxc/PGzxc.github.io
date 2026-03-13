@@ -1,7 +1,8 @@
 ---
 title: Figma产品设计之——入门路线
 categories:
-  - 产品
+  - 工具
+  - 设计工具
   - Figma
 tags:
   - Figma

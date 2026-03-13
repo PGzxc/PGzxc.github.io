@@ -1,8 +1,9 @@
 ---
 title: 产品开发之——Axure和Figma如何选择
 categories:
-  - 产品
-  - 选择
+  - 工具
+  - 设计工具
+  - 产品设计
 tags:
   - 产品
 abbrlink: 7bd4c171
