@@ -1,8 +1,8 @@
 ---
 title: Jenkins开发之——构建钉钉通知
 categories:
-  - 开发
-  - L-自动化
+  - 运维
+  - 自动化
   - Jenkins
 tags:
   - Jenkins

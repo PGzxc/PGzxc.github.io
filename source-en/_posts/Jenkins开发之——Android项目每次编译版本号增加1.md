@@ -1,8 +1,8 @@
 ---
 title: Jenkins开发之——Android项目每次编译版本号增加1
 categories:
-  - 开发
-  - L-自动化
+  - 运维
+  - 自动化
   - Jenkins
 tags:
   - Jenkins
