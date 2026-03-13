@@ -1,8 +1,8 @@
 ---
 title: Jmeter工具之——连接数据库错误及解决办法(7)
 categories:
-  - 开发
-  - L-自动化
+  - 运维
+  - 自动化
   - Jmeter
 tags:
   - Jmeter

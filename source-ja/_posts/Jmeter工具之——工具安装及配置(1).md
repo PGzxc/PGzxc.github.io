@@ -1,8 +1,8 @@
 ---
 title: Jmeter工具之——工具安装及配置(1)
 categories:
-  - 开发
-  - L-自动化
+  - 运维
+  - 自动化
   - Jmeter
 tags:
   - Jmeter
