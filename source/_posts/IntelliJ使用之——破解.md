@@ -2,6 +2,7 @@
 title: IntelliJ使用之——破解
 categories:
   - 工具
+  - 编辑器
   - IntelliJ
 tags:
   - Intellij破解

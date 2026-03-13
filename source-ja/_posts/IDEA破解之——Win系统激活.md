@@ -2,6 +2,7 @@
 title: IDEA破解之——Win系统激活
 categories:
   - 工具
+  - 编辑器
   - IntelliJ
 tags:
   - IntelliJ

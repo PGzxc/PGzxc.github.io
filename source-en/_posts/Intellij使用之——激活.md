@@ -2,6 +2,7 @@
 title: Intellij使用之——激活
 categories:
   - 工具
+  - 编辑器
   - IntelliJ
 tags:
   - Intellij破解
