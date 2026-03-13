@@ -2,6 +2,7 @@
 title: Markdown开发之——安装与破解
 categories:
   - 工具
+  - 编辑器
   - Markdown
 tags:
   - 破解
