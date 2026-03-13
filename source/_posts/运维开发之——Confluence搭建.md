@@ -2,6 +2,7 @@
 title: 运维开发之——Confluence搭建
 categories:
   - 运维
+  - 协作工具
   - Confluence
 tags:
   - Confluence

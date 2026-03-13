@@ -2,6 +2,7 @@
 title: 运维开发之——Jira管理平台搭建
 categories:
   - 运维
+  - 协作工具
   - Jira
 tags:
   - Jira
