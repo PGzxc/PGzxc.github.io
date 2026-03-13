@@ -2,6 +2,7 @@
 title: Vasio学习之——调整图片输出质量
 categories:
   - 工具
+  - 系统工具
   - Vasio
 tags:
   - Vasio
