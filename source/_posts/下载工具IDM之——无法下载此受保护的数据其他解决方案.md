@@ -2,7 +2,8 @@
 title: 下载工具IDM之——无法下载此受保护的数据其他解决方案
 categories:
   - 工具
-  - 下载
+  - 下载工具
+  - IDM
 tags:
   - IDM
 abbrlink: f29b96e8

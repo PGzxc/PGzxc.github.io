@@ -2,7 +2,8 @@
 title: 下载工具IDM之——禁止Chrome扩展程序自动更新
 categories:
   - 工具
-  - 下载
+  - 下载工具
+  - IDM
 tags:
   - IDM
 abbrlink: 213df9bb

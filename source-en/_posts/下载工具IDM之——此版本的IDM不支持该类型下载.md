@@ -2,7 +2,8 @@
 title: 下载工具IDM之——此版本的IDM不支持该类型下载
 categories:
   - 工具
-  - 下载
+  - 下载工具
+  - IDM
 tags:
   - IDM
 abbrlink: ac0ef340
