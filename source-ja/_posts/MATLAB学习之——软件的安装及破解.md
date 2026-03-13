@@ -2,6 +2,7 @@
 title: MATLAB学习之——软件的安装及破解
 categories:
   - 工具
+  - 开发工具
   - MATLAB
 tags:
   - 安装与破解
