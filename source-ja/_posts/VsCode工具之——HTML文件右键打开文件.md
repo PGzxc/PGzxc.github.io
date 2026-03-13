@@ -2,6 +2,7 @@
 title: VsCode工具之——HTML文件右键打开文件
 categories:
   - 工具
+  - 编辑器
   - VsCode
 tags:
   - VsCode
