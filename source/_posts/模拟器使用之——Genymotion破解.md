@@ -2,6 +2,7 @@
 title: 模拟器使用之——Genymotion破解
 categories:
   - 工具
+  - 虚拟化
   - 模拟器
 tags:
   - Genymotion

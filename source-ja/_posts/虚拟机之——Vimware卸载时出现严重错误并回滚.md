@@ -2,6 +2,7 @@
 title: 虚拟机之——Vimware卸载时出现严重错误并回滚
 categories:
   - 工具
+  - 虚拟化
   - 虚拟机
 tags:
   - Vmware
