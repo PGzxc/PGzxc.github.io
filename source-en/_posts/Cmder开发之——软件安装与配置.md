@@ -2,6 +2,7 @@
 title: Cmder开发之——软件安装与配置
 categories:
   - 工具
+  - 系统工具
   - Cmder
 tags:
   - Cmder
