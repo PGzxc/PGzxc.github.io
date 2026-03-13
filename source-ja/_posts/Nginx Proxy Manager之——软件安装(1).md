@@ -1,8 +1,8 @@
 ---
 title: Nginx Proxy Manager之——软件安装(1)
 categories:
-  - 开发
-  - G-后端开发
+  - 运维
+  - 容器
   - Nginx Proxy Manager
 tags:
   - Nginx Proxy Manager
