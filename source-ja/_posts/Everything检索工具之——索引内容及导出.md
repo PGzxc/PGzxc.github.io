@@ -2,6 +2,7 @@
 title: Everything检索工具之——索引内容及导出
 categories:
   - 工具
+  - 系统工具
   - Everything
 tags:
   - Everything
