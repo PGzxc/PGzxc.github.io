@@ -2,7 +2,7 @@
 title: 开发规范之——阿里巴巴Android开发规则手册
 categories:
   - 开发
-  - K-规范
+  - J-软件架构
   - 开发规范
 tags:
   - 开发规则

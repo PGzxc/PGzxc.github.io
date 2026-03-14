@@ -2,7 +2,8 @@
 title: 设计模式之——Android中的23种设计模式
 categories:
   - 开发
-  - P-设计模式
+  - J-软件架构
+  - 设计模式
 tags:
   - 设计模式
 abbrlink: 6804df
