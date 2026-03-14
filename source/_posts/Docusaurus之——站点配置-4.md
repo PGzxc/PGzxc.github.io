@@ -1,7 +1,8 @@
 ---
 title: Docusaurus之——站点配置(4)
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - Docusaurus
 tags:
   - Docusaurus

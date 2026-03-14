@@ -1,7 +1,8 @@
 ---
 title: Hexo站点建设之——电脑重装系统后如何恢复Hexo博客
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - Hexo博客
 tags:
   - Hexo恢复

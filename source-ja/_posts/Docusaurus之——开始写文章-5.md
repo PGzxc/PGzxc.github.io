@@ -1,7 +1,8 @@
 ---
 title: Docusaurus之——开始写文章(5)
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - Docusaurus
 tags:
   - Docusaurus

@@ -1,7 +1,8 @@
 ---
 title: Hexo站点建设之——The Unicorns have taken over
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - Hexo博客
 tags:
   - Hexo博客

@@ -1,7 +1,8 @@
 ---
 title: GitBook之——GitBook是什么(1)
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - GitBook
 tags:
   - GitBook

@@ -1,7 +1,8 @@
 ---
 title: Hugo开发之——博客搭建
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - Hugo
 tags:
   - Hugo

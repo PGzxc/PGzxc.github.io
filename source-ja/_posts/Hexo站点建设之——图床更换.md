@@ -1,7 +1,8 @@
 ---
 title: Hexo站点建设之——图床更换
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - Hexo博客
 tags:
   - 图床

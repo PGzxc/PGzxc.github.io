@@ -1,7 +1,8 @@
 ---
 title: VuePress之——修改与配置(2)
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - VuePress
 tags:
   - VuePress

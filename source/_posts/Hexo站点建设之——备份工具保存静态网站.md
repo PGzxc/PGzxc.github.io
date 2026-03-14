@@ -1,7 +1,8 @@
 ---
 title: Hexo站点建设之——备份工具保存静态网站
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - Hexo博客
 tags:
   - 备份

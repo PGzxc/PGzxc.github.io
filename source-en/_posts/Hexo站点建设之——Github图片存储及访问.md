@@ -1,7 +1,8 @@
 ---
 title: Hexo站点建设之——Github图片存储及访问
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - Hexo博客
 tags:
   - Github图片

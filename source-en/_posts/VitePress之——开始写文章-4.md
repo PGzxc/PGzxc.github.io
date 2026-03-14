@@ -1,7 +1,8 @@
 ---
 title: VitePress之——开始写文章(4)
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - VitePress
 tags:
   - VitePress

@@ -1,7 +1,8 @@
 ---
 title: Jekyll之——快速搭建个人博客(1)
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - Jekyll
 tags:
   - Jekyll

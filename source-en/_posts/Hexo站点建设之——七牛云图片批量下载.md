@@ -1,7 +1,8 @@
 ---
 title: Hexo站点建设之——七牛云图片批量下载
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - Hexo博客
 tags:
   - 七牛云

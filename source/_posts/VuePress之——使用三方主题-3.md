@@ -1,7 +1,8 @@
 ---
 title: VuePress之——使用三方主题(3)
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - VuePress
 tags:
   - VuePress

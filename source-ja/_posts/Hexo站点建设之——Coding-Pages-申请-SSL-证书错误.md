@@ -1,7 +1,8 @@
 ---
 title: Hexo站点建设之——Coding Pages 申请 SSL 证书错误
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - Hexo博客
 tags:
   - Hexo博客

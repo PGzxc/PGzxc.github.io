@@ -1,7 +1,8 @@
 ---
 title: VitePress之——开发文档网站(1)
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - VitePress
 tags:
   - VitePress

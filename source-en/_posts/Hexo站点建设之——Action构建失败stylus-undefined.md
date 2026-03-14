@@ -1,7 +1,8 @@
 ---
 title: Hexo站点建设之——Action构建失败stylus@undefined
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - Hexo博客
 tags:
   - Hexo

@@ -1,7 +1,8 @@
 ---
 title: Docusaurus之——开发静态网站(1)
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - Docusaurus
 tags:
   - Docusaurus

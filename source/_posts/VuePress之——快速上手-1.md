@@ -1,7 +1,8 @@
 ---
 title: VuePress之——快速上手(1)
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - VuePress
 tags:
   - VuePress

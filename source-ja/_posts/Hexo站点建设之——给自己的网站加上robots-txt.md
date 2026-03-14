@@ -2,7 +2,8 @@
 layout: post
 title: Hexo站点建设之——给自己的网站加上robots.txt
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - Hexo博客
 tags:
   - Hexo博客

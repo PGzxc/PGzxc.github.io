@@ -1,7 +1,8 @@
 ---
 title: 'Hexo站点建设之——Markdown中出现“{{”号解析报错'
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - Hexo博客
 tags:
   - Hexo博客

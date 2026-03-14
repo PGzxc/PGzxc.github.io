@@ -1,7 +1,8 @@
 ---
 title: GitBook之——搭建文档站点(2)
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - GitBook
 tags:
   - GitBook

@@ -1,7 +1,8 @@
 ---
 title: Docsify之——快速搭建文档网站(1)
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - Docsify
 tags:
   - Docsify

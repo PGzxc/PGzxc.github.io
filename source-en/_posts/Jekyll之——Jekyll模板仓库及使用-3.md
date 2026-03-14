@@ -1,7 +1,8 @@
 ---
 title: Jekyll之——Jekyll模板仓库及使用(3)
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - Jekyll
 abbrlink: '74674075'
 date: 2025-07-30 08:46:29

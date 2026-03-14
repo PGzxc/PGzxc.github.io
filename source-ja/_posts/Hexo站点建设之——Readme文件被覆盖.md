@@ -1,7 +1,8 @@
 ---
 title: Hexo站点建设之——Readme文件被覆盖
 categories:
-  - 站点
+  - 博客与建站
+  - 静态博客
   - Hexo博客
 tags:
   - 覆盖
