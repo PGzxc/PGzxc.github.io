@@ -1,9 +1,8 @@
 ---
 title: IPTV之——直播源TXT转M3U格式(3)
 categories:
-  - 开发
-  - J-NAS
-  - 自建服务   
+  - NAS
+  - NAS服务
   - IPTV
 tags:
   - IPTV

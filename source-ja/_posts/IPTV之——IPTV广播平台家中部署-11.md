@@ -1,9 +1,8 @@
 ---
 title: IPTV之——IPTV广播平台家中部署(11)
 categories:
-  - 开发
-  - J-NAS
-  - 自建服务   
+  - NAS
+  - NAS服务
   - IPTV
 tags:
   - IPTV

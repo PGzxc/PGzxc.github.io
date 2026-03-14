@@ -1,9 +1,8 @@
 ---
 title: IPTV之——本地RTMP推流+自建IPTV频道(6)
 categories:
-  - 开发
-  - J-NAS
-  - 自建服务
+  - NAS
+  - NAS服务
   - IPTV
 tags:
   - IPTV
