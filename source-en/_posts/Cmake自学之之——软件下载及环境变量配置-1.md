@@ -2,7 +2,7 @@
 title: Cmake自学之——软件下载及环境变量配置(1)
 categories:
   - 开发
-  - T-构建
+  - J-构建系统
   - Cmake
   - 自学  
 tags:

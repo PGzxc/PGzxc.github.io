@@ -2,7 +2,7 @@
 title: CMake开发之——生成器表达式(3.4)
 categories:
   - 开发
-  - T-构建
+  - J-构建系统
   - Cmake
   - 学习路线
 tags:

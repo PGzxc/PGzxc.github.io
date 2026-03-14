@@ -2,7 +2,7 @@
 title: Cmake开发之——CMake与Make/Ninja/MSBuild的关系(1.3)
 categories:
   - 开发
-  - T-构建
+  - J-构建系统
   - Cmake
   - 学习路线
 tags:

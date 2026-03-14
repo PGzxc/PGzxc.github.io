@@ -2,7 +2,7 @@
 title: Cmake自学之——项目构建过程(3)
 categories:
   - 开发
-  - T-构建
+  - J-构建系统
   - Cmake
   - 自学 
 tags:

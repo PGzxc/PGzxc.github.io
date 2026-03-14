@@ -2,7 +2,7 @@
 title: 前端构建工具Vite——插件与模板6
 categories:
   - 开发
-  - T-构建
+  - J-构建系统
   - Vite
 tags:
   - Vite

@@ -2,7 +2,7 @@
 title: CMake开发之——变量与缓存变量(2.3)
 categories:
   - 开发
-  - T-构建
+  - J-构建系统
   - Cmake
   - 学习路线
 tags:

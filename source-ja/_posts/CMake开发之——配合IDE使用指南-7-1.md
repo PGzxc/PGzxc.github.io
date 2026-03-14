@@ -2,7 +2,7 @@
 title: CMake开发之——配合IDE使用指南(7.1)
 categories:
   - 开发
-  - T-构建
+  - J-构建系统
   - Cmake
   - 学习路线
 tags:

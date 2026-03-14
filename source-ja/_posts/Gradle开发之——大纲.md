@@ -2,7 +2,7 @@
 title: Gradle开发之——大纲
 categories:
   - 开发
-  - T-构建
+  - J-构建系统
   - Gradle
 tags:
   - Gradle

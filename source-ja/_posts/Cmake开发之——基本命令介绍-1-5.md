@@ -2,7 +2,7 @@
 title: Cmake开发之——基本命令介绍(1.5)
 categories:
   - 开发
-  - T-构建
+  - J-构建系统
   - Cmake
   - 学习路线
 tags:

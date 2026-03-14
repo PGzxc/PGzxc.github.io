@@ -2,7 +2,7 @@
 title: Cmake自学之——变量(8)
 categories:
   - 开发
-  - T-构建
+  - J-构建系统
   - Cmake
   - 自学
 tags:
