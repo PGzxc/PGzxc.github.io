@@ -3,7 +3,7 @@ title: JavaWeb开发之——开源管理系统(1)
 categories:
   - 开发
   - G-后端开发
-  - Java
+  - JavaWeb
 tags:
   - Java
   - JavaWeb

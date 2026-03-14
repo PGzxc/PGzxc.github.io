@@ -3,7 +3,7 @@ title: JavaWeb开发之——数据库相关概念(02)
 categories:
   - 开发
   - G-后端开发
-  - Java
+  - JavaWeb
 tags:
   - Java
   - JavaWeb

@@ -3,7 +3,7 @@ title: JavaWeb开发之——若依管理系统入门(1)
 categories:
   - 开发
   - G-后端开发
-  - Java
+  - JavaWeb
 tags:
   - Java
   - JavaWeb

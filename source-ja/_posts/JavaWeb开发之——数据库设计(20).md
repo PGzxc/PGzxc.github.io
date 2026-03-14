@@ -3,7 +3,7 @@ title: JavaWeb开发之——数据库设计(20)
 categories:
   - 开发
   - G-后端开发
-  - Java
+  - JavaWeb
 tags:
   - Java
   - JavaWeb

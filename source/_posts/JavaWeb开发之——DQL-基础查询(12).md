@@ -3,7 +3,7 @@ title: JavaWeb开发之——DQL-基础查询(12)
 categories:
   - 开发
   - G-后端开发
-  - Java
+  - JavaWeb
 tags:
   - Java
   - JavaWeb

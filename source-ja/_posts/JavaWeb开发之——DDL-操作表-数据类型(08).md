@@ -3,7 +3,7 @@ title: JavaWeb开发之——DDL-操作表-数据类型(08)
 categories:
   - 开发
   - G-后端开发
-  - Java
+  - JavaWeb
 tags:
   - Java
   - JavaWeb

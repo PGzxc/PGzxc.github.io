@@ -3,7 +3,7 @@ title: JavaWeb开发之——DDL-操作表-修改表和删除表(09)
 categories:
   - 开发
   - G-后端开发
-  - Java
+  - JavaWeb
 tags:
   - Java
   - JavaWeb

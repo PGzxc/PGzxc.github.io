@@ -3,7 +3,7 @@ title: JavaWeb开发之——SQL简介&通用语法及分类(05)
 categories:
   - 开发
   - G-后端开发
-  - Java
+  - JavaWeb
 tags:
   - Java
   - JavaWeb

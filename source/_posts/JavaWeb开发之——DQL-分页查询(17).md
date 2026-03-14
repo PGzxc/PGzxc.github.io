@@ -3,7 +3,7 @@ title: JavaWeb开发之——DQL-分页查询(17)
 categories:
   - 开发
   - G-后端开发
-  - Java
+  - JavaWeb
 tags:
   - Java
   - JavaWeb
