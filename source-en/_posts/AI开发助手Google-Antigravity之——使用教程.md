@@ -1,8 +1,8 @@
 ---
 title: AI开发助手Google Antigravity之——使用教程
 categories:
-  - 开发
-  - R-AI开发助手
+  - AI
+  - AI开发工具
   - Google Antigravity
 tags:
   - Google Antigravity
