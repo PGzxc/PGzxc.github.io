@@ -1,8 +1,8 @@
 ---
 title: AI开发助手Kiro之——使用教程
 categories:
-  - 开发
-  - R-AI开发助手
+  - AI
+  - AI开发工具
   - Kiro
 tags:
   - Kiro
