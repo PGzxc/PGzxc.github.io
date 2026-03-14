@@ -1,8 +1,9 @@
 ---
 title: ComfyUI开发之——视频与多模态(6)
 categories:
-  - 开发
-  - Q-AI
+  - AI
+  - AI应用
+  - AI绘图
   - ComfyUI
 tags:
   - ComfyUI
