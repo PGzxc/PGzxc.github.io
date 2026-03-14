@@ -1,8 +1,8 @@
 ---
 title: NAS入门之——常见NAS品牌对比
 categories:
-  - 开发
-  - J-NAS
+  - NAS
+  - 理论基础
   - NAS选择
 tags:
   - NAS选择

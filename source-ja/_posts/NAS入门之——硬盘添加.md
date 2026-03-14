@@ -1,8 +1,8 @@
 ---
 title: NAS入门之——硬盘添加
 categories:
-  - 开发
-  - J-NAS
+  - NAS
+  - 理论基础
   - 操作
 tags:
   - 操作

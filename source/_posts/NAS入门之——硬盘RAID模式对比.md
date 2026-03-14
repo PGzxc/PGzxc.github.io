@@ -1,8 +1,8 @@
 ---
 title: NAS入门之——硬盘RAID模式对比
 categories:
-  - 开发
-  - J-NAS
+  - NAS
+  - 理论基础
   - RAID
 tags:
   - RAID
