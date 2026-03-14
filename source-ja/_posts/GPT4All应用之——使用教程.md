@@ -1,8 +1,8 @@
 ---
 title: GPT4All应用之——使用教程
 categories:
-  - 开发
-  - Q-AI
+  - AI
+  - AI模型
   - GPT4All
 tags:
   - GPT4All
