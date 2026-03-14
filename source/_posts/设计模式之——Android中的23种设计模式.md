@@ -2,7 +2,7 @@
 title: 设计模式之——Android中的23种设计模式
 categories:
   - 开发
-  - 软件架构
+  - M-软件架构
   - 设计模式
 tags:
   - 设计模式
