@@ -2,7 +2,7 @@
 title: IPTV之——加密m3u8播放视频(19)
 categories:
   - NAS
-  - NAS服务
+  - F-NAS服务
   - IPTV
 tags:
   - IPTV

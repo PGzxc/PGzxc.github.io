@@ -2,7 +2,7 @@
 title: NAS协议——SMB及WebDAV协议播放器
 categories:
   - NAS
-  - NAS软件
+  - G-NAS软件
   - 播放器
 tags:
   - 常用软件

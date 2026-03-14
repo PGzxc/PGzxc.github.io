@@ -2,7 +2,7 @@
 title: HTTP服务之——常见HTTP软件(1)
 categories:
   - NAS
-  - NAS服务
+  - F-NAS服务
   - HTTP
 tags:
   - HTTP

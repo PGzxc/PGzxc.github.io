@@ -2,7 +2,7 @@
 title: SMB之——支持SMB的NAS和媒体库-4
 categories:
   - NAS
-  - NAS服务
+  - F-NAS服务
   - SMB
 tags:
   - SMB

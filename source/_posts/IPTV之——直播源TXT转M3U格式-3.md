@@ -2,7 +2,7 @@
 title: IPTV之——直播源TXT转M3U格式(3)
 categories:
   - NAS
-  - NAS服务
+  - F-NAS服务
   - IPTV
 tags:
   - IPTV

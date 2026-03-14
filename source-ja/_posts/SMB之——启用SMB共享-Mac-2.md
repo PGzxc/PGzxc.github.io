@@ -2,7 +2,7 @@
 title: SMB之——启用SMB共享(Mac)-2
 categories:
   - NAS
-  - NAS服务
+  - F-NAS服务
   - SMB
 tags:
   - SMB

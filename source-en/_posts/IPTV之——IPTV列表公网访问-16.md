@@ -2,7 +2,7 @@
 title: IPTV之——IPTV列表公网访问(16)
 categories:
   - NAS
-  - NAS服务
+  - F-NAS服务
   - IPTV
 tags:
   - IPTV

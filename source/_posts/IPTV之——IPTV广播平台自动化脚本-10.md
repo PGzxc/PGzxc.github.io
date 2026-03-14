@@ -2,7 +2,7 @@
 title: IPTV之——IPTV广播平台自动化脚本(10)
 categories:
   - NAS
-  - NAS服务
+  - F-NAS服务
   - IPTV
 tags:
   - IPTV

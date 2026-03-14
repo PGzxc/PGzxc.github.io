@@ -2,7 +2,7 @@
 title: IPTV之——将视频转换为直播流文件(5)
 categories:
   - NAS
-  - NAS服务
+  - F-NAS服务
   - IPTV
 tags:
   - IPTV

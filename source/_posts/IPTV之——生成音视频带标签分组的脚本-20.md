@@ -2,7 +2,7 @@
 title: IPTV之——生成音视频带标签分组的脚本(20)
 categories:
   - NAS
-  - NAS服务
+  - F-NAS服务
   - IPTV
 tags:
   - IPTV

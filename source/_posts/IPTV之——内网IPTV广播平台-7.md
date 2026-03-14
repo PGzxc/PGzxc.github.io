@@ -2,7 +2,7 @@
 title: IPTV之——内网IPTV广播平台(7)
 categories:
   - NAS
-  - NAS服务
+  - F-NAS服务
   - IPTV
 tags:
   - IPTV

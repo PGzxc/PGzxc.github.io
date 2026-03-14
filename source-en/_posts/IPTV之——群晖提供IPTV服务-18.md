@@ -2,7 +2,7 @@
 title: IPTV之——群晖提供IPTV服务(18)
 categories:
   - NAS
-  - NAS服务
+  - F-NAS服务
   - IPTV
 tags:
   - IPTV

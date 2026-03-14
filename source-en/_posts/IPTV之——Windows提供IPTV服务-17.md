@@ -1,9 +1,8 @@
 ---
 title: IPTV之——Windows提供IPTV服务(17)
 categories:
-  - 开发
-  - J-NAS
-  - 自建服务  
+  - NAS
+  - F-NAS服务
   - IPTV
 tags:
   - IPTV

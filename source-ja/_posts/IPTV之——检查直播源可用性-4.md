@@ -2,7 +2,7 @@
 title: IPTV之——检查直播源可用性(4)
 categories:
   - NAS
-  - NAS服务
+  - F-NAS服务
   - IPTV
 tags:
   - IPTV

@@ -2,7 +2,7 @@
 title: IPTV之——做一个TXT直播源(2)
 categories:
   - NAS
-  - NAS服务
+  - F-NAS服务
   - IPTV
 tags:
   - IPTV

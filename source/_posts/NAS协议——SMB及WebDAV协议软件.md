@@ -2,7 +2,7 @@
 title: NAS协议——SMB及WebDAV协议软件
 categories:
   - NAS
-  - NAS软件
+  - G-NAS软件
   - 文件管理
 tags:
   - 软件

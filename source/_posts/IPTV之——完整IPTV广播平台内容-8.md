@@ -2,7 +2,7 @@
 title: IPTV之——完整IPTV广播平台内容(8)
 categories:
   - NAS
-  - NAS服务
+  - F-NAS服务
   - IPTV
 tags:
   - IPTV

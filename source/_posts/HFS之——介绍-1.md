@@ -2,7 +2,7 @@
 title: HFS之——介绍(1)
 categories:
   - NAS
-  - NAS服务
+  - F-NAS服务
   - HFS
 tags:
   - HFS

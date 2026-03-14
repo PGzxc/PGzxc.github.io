@@ -2,7 +2,7 @@
 title: IPTV之——本地RTMP推流+自建IPTV频道(6)
 categories:
   - NAS
-  - NAS服务
+  - F-NAS服务
   - IPTV
 tags:
   - IPTV

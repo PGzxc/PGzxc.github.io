@@ -2,7 +2,7 @@
 title: IPTV之——IPTV广播平台家中部署(11)
 categories:
   - NAS
-  - NAS服务
+  - F-NAS服务
   - IPTV
 tags:
   - IPTV

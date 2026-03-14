@@ -2,7 +2,7 @@
 title: SMB之——SMB播放的软件-5
 categories:
   - NAS
-  - NAS服务
+  - F-NAS服务
   - SMB
 tags:
   - SMB

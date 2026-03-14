@@ -2,7 +2,7 @@
 title: IPTV之——酒店电视系统使用方案(12)
 categories:
   - NAS
-  - NAS服务
+  - F-NAS服务
   - IPTV
 tags:
   - IPTV

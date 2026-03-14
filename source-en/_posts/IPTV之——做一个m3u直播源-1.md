@@ -2,7 +2,7 @@
 title: IPTV之——做一个m3u直播源(1)
 categories:
   - NAS
-  - NAS服务
+  - F-NAS服务
   - IPTV
 tags:
   - IPTV

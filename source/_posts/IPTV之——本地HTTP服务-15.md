@@ -2,7 +2,7 @@
 title: IPTV之——本地HTTP服务(15)
 categories:
   - NAS
-  - NAS服务
+  - F-NAS服务
   - IPTV
 tags:
   - IPTV
