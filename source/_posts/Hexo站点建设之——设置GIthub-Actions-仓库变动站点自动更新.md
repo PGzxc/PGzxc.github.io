@@ -2,8 +2,8 @@
 title: Hexo站点建设之——设置GIthub Actions 仓库变动站点自动更新
 categories:
   - 博客与建站
-  - 静态博客
-  - Hexo博客
+  - 博客部署
+  - GIthub Actions
 tags:
   - Hexo博客
 abbrlink: b039871f

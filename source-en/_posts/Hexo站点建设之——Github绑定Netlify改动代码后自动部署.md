@@ -3,8 +3,8 @@ layout: post
 title: Hexo站点建设之——Github绑定Netlify改动代码后自动部署
 categories:
   - 博客与建站
-  - 静态博客
-  - Hexo博客
+  - 博客部署
+  - Netlify
 tags:
   - Hexo博客
 abbrlink: e9afa1d2
