@@ -1,9 +1,9 @@
 ---
 title: NAS入门之——My Cloud EX2绑定IP和Mac地址(14)
 categories:
-  - 开发
-  - J-NAS
-  - My Cloud EX2
+  - NAS
+  - NAS设备
+  - WD MyCloud
 tags:
   - My Cloud EX2
 abbrlink: 9e7eb5af

@@ -1,9 +1,9 @@
 ---
 title: NAS入门之——My Cloud EX2文件名显示乱码(15)
 categories:
-  - 开发
-  - J-NAS
-  - My Cloud EX2
+  - NAS
+  - NAS设备
+  - WD MyCloud
 tags:
   - My Cloud EX2
 abbrlink: adb4c73

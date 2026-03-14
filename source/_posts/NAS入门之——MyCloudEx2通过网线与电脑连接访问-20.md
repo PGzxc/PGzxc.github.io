@@ -1,9 +1,9 @@
 ---
 title: NAS入门之——MyCloudEx2通过网线与电脑连接访问(20)
 categories:
-  - 开发
-  - J-NAS
-  - My Cloud EX2
+  - NAS
+  - NAS设备
+  - WD MyCloud
 tags:
   - My Cloud EX2
 abbrlink: 84874c6b

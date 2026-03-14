@@ -1,8 +1,8 @@
 ---
 title: 群晖入门之——Hosts加速(2)
 categories:
-  - 开发
-  - J-NAS
+  - NAS
+  - NAS设备
   - 群晖
 tags:
   - 群晖

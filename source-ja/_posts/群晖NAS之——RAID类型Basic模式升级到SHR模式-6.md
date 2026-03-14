@@ -1,8 +1,8 @@
 ---
 title: 群晖NAS之——RAID类型Basic模式升级到SHR模式(6)
 categories:
-  - 开发
-  - J-NAS
+  - NAS
+  - NAS设备
   - 群晖
 tags:
   - 群晖

@@ -1,9 +1,9 @@
 ---
 title: NAS入门之——My Cloud EX2通过终端SSH访问(9)
 categories:
-  - 开发
-  - J-NAS
-  - My Cloud EX2
+  - NAS
+  - NAS设备
+  - WD MyCloud
 tags:
   - My Cloud EX2
 abbrlink: 8425f5b3

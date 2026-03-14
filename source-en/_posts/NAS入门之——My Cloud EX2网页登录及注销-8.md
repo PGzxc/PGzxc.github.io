@@ -1,9 +1,9 @@
 ---
 title: NAS入门之——My Cloud EX2网页登录及注销(8)
 categories:
-  - 开发
-  - J-NAS
-  - My Cloud EX2
+  - NAS
+  - NAS设备
+  - WD MyCloud
 tags:
   - My Cloud EX2
 abbrlink: 94f8c0db

@@ -1,9 +1,9 @@
 ---
 title: NAS入门之——My Cloud EX2用户群组及访问权限
 categories:
-  - 开发
-  - J-NAS
-  - My Cloud EX2
+  - NAS
+  - NAS设备
+  - WD MyCloud
 tags:
   - NAS
   - My Cloud EX2

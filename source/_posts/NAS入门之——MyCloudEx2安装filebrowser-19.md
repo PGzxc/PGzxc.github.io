@@ -1,9 +1,9 @@
 ---
 title: NAS入门之——MyCloudEx2安装filebrowser(19)
 categories:
-  - 开发
-  - J-NAS
-  - My Cloud EX2
+  - NAS
+  - NAS设备
+  - WD MyCloud
 tags:
   - My Cloud EX2
 abbrlink: e122092e
