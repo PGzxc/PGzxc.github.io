@@ -2,7 +2,7 @@
 title: 数据库可视化工具之——DBeaver(2)
 categories:
   - 开发
-  - S-数据库
+  - K-数据库
   - 可视化工具
 tags:
   - 可视化工具
