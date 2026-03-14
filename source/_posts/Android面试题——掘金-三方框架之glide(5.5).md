@@ -1,7 +1,8 @@
 ---
 title: Android面试题——掘金-三方框架之glide(5.5)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - Android面试题
 tags:
   - 掘金

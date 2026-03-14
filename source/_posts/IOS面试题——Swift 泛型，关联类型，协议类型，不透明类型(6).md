@@ -1,7 +1,8 @@
 ---
 title: IOS面试题——Swift 泛型，关联类型，协议类型，不透明类型(6)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - IOS面试题
 tags:
   - Swift面试题

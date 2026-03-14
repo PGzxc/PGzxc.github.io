@@ -1,7 +1,8 @@
 ---
 title: IOS面试题——Swift模式匹配(12)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - IOS面试题
 tags:
   - Swift面试题

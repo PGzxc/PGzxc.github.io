@@ -1,7 +1,8 @@
 ---
 title: Android面试题——常见原理性问题
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - Android面试题
 tags:
   - Android面试题

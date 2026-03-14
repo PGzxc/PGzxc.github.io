@@ -1,7 +1,8 @@
 ---
 title: Android面试题——掘金-Framework之Handler(2.1)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - Android面试题
 tags:
   - 掘金

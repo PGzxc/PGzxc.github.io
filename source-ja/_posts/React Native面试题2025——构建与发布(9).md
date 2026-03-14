@@ -1,7 +1,8 @@
 ---
 title: React Native面试题2025——构建与发布(9)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - React Native面试题
 tags:
   - React Native面试题

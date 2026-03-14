@@ -1,7 +1,8 @@
 ---
 title: KMP面试题之——中级之数据存储与网络通信(5)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - KMP面试题
 tags:
   - KMP面试题

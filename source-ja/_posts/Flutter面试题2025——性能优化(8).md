@@ -1,7 +1,8 @@
 ---
 title: Flutter面试题2025——性能优化(8)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - Flutter面试题
 tags:
   - Flutter面试题

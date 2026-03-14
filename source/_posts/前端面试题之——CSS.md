@@ -1,7 +1,8 @@
 ---
 title: 前端面试题之——CSS
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - Web前端面试题
 tags:
   - Web前端面试题

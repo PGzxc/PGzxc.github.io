@@ -1,7 +1,8 @@
 ---
 title: Web前端高频面试题——HTML&CSS(1)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - Web前端面试题
 tags:
   - Web前端面试题

@@ -1,7 +1,8 @@
 ---
 title: Java面试之——最全的BAT大厂面试题整理
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - Java面试题
 tags:
   - BAT大厂面试题

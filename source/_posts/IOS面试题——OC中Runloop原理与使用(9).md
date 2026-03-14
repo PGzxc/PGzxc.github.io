@@ -1,7 +1,8 @@
 ---
 title: IOS面试题——OC中Runloop原理与使用(9)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - IOS面试题
 tags:
   - OC面试题

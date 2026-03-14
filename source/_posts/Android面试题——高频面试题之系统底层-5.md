@@ -1,7 +1,8 @@
 ---
 title: Android面试题——高频面试题之系统底层(5)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - Android面试题
 tags:
   - Android面试题

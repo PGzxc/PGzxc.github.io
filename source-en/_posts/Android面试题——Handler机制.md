@@ -1,7 +1,8 @@
 ---
 title: Android面试题——Handler机制
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - Android面试题
 tags:
   - Android面试题

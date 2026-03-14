@@ -1,7 +1,8 @@
 ---
 title: Android面试题——掘金-底层基础知识(1)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - Android面试题
 tags:
   - Android面试题

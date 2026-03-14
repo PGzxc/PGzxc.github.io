@@ -1,7 +1,8 @@
 ---
 title: IOS面试题——高频面试题之基础(1)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - IOS面试题
 tags:
   - IOS面试题

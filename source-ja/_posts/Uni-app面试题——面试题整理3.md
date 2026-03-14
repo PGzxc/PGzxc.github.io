@@ -1,7 +1,8 @@
 ---
 title: Uni-app面试题——面试题整理3
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - Uni-app面试题
 tags:
   - Uni-app面试题

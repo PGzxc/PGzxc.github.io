@@ -1,7 +1,8 @@
 ---
 title: KMP面试题之——初级之Kotlin语言基础(1)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - KMP面试题
 tags:
   - KMP面试题

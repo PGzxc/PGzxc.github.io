@@ -1,7 +1,8 @@
 ---
 title: React Native面试题——Redux之系统面试(6)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - React Native面试题
 tags:
   - React Native面试题

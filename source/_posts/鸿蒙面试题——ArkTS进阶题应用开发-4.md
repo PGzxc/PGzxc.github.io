@@ -1,7 +1,8 @@
 ---
 title: 鸿蒙面试题——ArkTS进阶题应用开发(4)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - Harmony面试题
 tags:
   - Harmony面试题

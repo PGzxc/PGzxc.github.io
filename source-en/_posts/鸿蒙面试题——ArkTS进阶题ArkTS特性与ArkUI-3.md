@@ -1,7 +1,8 @@
 ---
 title: 鸿蒙面试题——ArkTS进阶题ArkTS特性与ArkUI(3)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - Harmony面试题
 tags:
   - Harmony面试题

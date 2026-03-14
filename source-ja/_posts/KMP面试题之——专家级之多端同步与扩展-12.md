@@ -1,7 +1,8 @@
 ---
 title: KMP面试题之——专家级之多端同步与扩展(12)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - KMP面试题
 tags:
   - KMP面试题

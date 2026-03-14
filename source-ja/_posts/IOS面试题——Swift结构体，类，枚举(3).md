@@ -1,7 +1,8 @@
 ---
 title: IOS面试题——Swift结构体，类，枚举(3)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - IOS面试题
 tags:
   - Swift面试题

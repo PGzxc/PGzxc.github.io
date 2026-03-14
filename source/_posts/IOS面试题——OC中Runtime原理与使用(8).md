@@ -1,7 +1,8 @@
 ---
 title: IOS面试题——OC中Runtime原理与使用(8)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - IOS面试题
 tags:
   - OC面试题

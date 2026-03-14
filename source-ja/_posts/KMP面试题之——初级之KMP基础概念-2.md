@@ -1,7 +1,8 @@
 ---
 title: KMP面试题之——初级之KMP基础概念(2)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - KMP面试题
 tags:
   - KMP面试题

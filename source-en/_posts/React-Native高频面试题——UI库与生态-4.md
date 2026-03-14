@@ -1,7 +1,8 @@
 ---
 title: React Native高频面试题——UI库与生态(4)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - React Native面试题
 tags:
   - React Native面试题

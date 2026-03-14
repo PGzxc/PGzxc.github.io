@@ -1,7 +1,8 @@
 ---
 title: KMP面试题之——专家级之测试与发布(13)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - KMP面试题
 tags:
   - KMP面试题

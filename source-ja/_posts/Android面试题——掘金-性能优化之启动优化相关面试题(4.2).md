@@ -1,7 +1,8 @@
 ---
 title: Android面试题——掘金-性能优化之启动优化相关面试题(4.2)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - Android面试题
 tags:
   - 掘金

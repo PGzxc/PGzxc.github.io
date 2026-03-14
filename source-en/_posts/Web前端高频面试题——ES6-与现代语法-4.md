@@ -1,7 +1,8 @@
 ---
 title: Web前端高频面试题——ES6+与现代语法(4)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - Web前端面试题
 tags:
   - Web前端面试题

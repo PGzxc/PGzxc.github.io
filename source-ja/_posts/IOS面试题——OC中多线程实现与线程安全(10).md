@@ -1,7 +1,8 @@
 ---
 title: IOS面试题——OC中多线程实现与线程安全(10)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - IOS面试题
 tags:
   - OC面试题

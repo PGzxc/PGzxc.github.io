@@ -1,7 +1,8 @@
 ---
 title: React Native面试题——状态管理Zustand
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - React Native面试题
 tags:
   - React Native面试题

@@ -1,7 +1,8 @@
 ---
 title: IOS面试题——SwiftUI面试题(2)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - IOS面试题
 tags:
   - SwiftUI面试题

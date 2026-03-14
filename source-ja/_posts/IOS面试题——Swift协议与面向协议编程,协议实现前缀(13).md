@@ -1,7 +1,8 @@
 ---
 title: 'IOS面试题——Swift协议与面向协议编程,协议实现前缀(13)'
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - IOS面试题
 tags:
   - Swift面试题

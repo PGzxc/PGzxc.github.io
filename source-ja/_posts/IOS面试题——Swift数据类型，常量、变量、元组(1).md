@@ -1,7 +1,8 @@
 ---
 title: IOS面试题——Swift数据类型，常量、变量、元组(1)
 categories:
-  - 面试相关
+  - 职业发展
+  - 面试
   - IOS面试题
 tags:
   - Swift面试题
