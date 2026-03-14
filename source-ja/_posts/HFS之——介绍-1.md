@@ -1,9 +1,8 @@
 ---
 title: HFS之——介绍(1)
 categories:
-  - 开发
-  - J-NAS
-  - 自建服务
+  - NAS
+  - NAS服务
   - HFS
 tags:
   - HFS
