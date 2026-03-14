@@ -1,8 +1,8 @@
 ---
 title: AI开发助手Gemini Pro之——使用教程
 categories:
-  - 开发
-  - R-AI开发助手
+  - AI
+  - AI模型
   - Gemini
 tags:
   - Gemini
