@@ -2,7 +2,7 @@
 title: AI开发之——Leonardo—Finetuned Models及利用模型制图(5)
 categories:
   - AI
-  - AI应用
+  - D-AI应用
   - AI绘图
   - Leonardo
 tags:

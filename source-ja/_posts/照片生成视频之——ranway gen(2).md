@@ -2,7 +2,7 @@
 title: 照片生成视频之——ranway gen(2)
 categories:
   - AI
-  - AI应用
+  - D-AI应用
   - AI视频
   - 照片生成视频
 tags:

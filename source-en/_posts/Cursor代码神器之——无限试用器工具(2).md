@@ -2,7 +2,7 @@
 title: Cursor代码神器之——无限试用器工具(2)
 categories:
   - AI
-  - AI编程助手
+  - E-AI编程助手
   - Cursor
 tags:
   - Cursor

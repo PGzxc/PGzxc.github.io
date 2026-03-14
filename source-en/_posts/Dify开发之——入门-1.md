@@ -2,7 +2,7 @@
 title: Dify开发之——入门(1)
 categories:
   - AI
-  - AI开发
+  - C-AI开发
   - AI框架
   - Dify
 tags:

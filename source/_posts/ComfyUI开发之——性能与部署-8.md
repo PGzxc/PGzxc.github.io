@@ -2,7 +2,7 @@
 title: ComfyUI开发之——性能与部署(8)
 categories:
   - AI
-  - AI应用
+  - D-AI应用
   - AI绘图
   - ComfyUI
 tags:

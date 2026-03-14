@@ -2,7 +2,7 @@
 title: AI开发之——Clawdbot指南
 categories:
   - AI
-  - AI开发工具
+  - F-AI开发工具
   - Clawdbot
 tags:
   - Clawdbot

@@ -2,7 +2,7 @@
 title: AI开发助手DeepSeek-Coder之——使用教程
 categories:
   - AI
-  - AI编程助手
+  - E-AI编程助手
   - DeepSeek-Coder
 tags:
   - DeepSeek-Coder

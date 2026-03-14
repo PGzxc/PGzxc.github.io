@@ -2,7 +2,7 @@
 title: Dify开发之——卸载应用(3)
 categories:
   - AI
-  - AI开发
+  - C-AI开发
   - AI框架
   - Dify
 tags:

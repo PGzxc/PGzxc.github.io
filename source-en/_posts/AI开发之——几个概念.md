@@ -2,7 +2,7 @@
 title: AI开发之——几个概念
 categories:
   - AI
-  - AI基础
+  - A-AI基础
   - 基础
 tags:
   - 基础

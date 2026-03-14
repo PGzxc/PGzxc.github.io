@@ -2,7 +2,7 @@
 title: CodeFormer使用之——使用教程(2)
 categories:
   - AI
-  - AI应用
+  - D-AI应用
   - AI修复
   - CodeFormer
 tags:

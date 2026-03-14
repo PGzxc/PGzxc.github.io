@@ -2,7 +2,7 @@
 title: 秋叶StableDiffusion之——整合包安装(1)
 categories:
   - AI
-  - AI应用
+  - D-AI应用
   - AI绘图
   - StableDiffusion
 tags:

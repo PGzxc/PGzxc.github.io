@@ -2,7 +2,7 @@
 title: AI开发助手Claude Code之——使用教程
 categories:
   - AI
-  - AI编程助手
+  - E-AI编程助手
   - Claude Code
 tags:
   - Claude Code

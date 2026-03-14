@@ -2,7 +2,7 @@
 title: AI开发助手ChatGPT之——使用教程
 categories:
   - AI
-  - AI模型
+  - B-AI模型
   - ChatGPT
 tags:
   - ChatGPT

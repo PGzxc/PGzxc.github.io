@@ -2,7 +2,7 @@
 title: TensorFlow开发之——Windows安装TensorFlow(1)
 categories:
   - AI
-  - AI开发
+  - C-AI开发
   - AI框架
   - TensorFlow
 tags:

@@ -2,7 +2,7 @@
 title: mobile-mcp开发之——实战示例(4)
 categories:
   - AI
-  - AI开发工具
+  - F-AI开发工具
   - mobile-mcp
 tags:
   - mobile-mcp

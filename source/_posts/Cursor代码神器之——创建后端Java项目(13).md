@@ -2,7 +2,7 @@
 title: Cursor代码神器之——创建后端Java项目(13)
 categories:
   - AI
-  - AI编程助手
+  - E-AI编程助手
   - Cursor
 tags:
   - Cursor

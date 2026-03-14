@@ -2,7 +2,7 @@
 title: AI开发之——Gemini开发Android平台接入
 categories:
   - AI
-  - AI模型
+  - B-AI模型
   - Gemini
 tags:
   - Gemini

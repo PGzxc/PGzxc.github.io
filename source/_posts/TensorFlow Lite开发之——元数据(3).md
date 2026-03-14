@@ -2,7 +2,7 @@
 title: TensorFlow Lite开发之——元数据(3)
 categories:
   - AI
-  - AI开发
+  - C-AI开发
   - AI框架
   - TensorFlow Lite
 tags:

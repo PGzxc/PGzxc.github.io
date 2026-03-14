@@ -2,7 +2,7 @@
 title: AI开发之——开发工具与代码助手
 categories:
   - AI
-  - AI基础
+  - A-AI基础
   - 总结对比
 tags:
   - AI工具
