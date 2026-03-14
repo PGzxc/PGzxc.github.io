@@ -1,8 +1,9 @@
 ---
 title: CodeFormer使用之——使用教程(2)
 categories:
-  - 开发
-  - Q-AI
+  - AI
+  - AI应用
+  - AI修复
   - CodeFormer
 tags:
   - CodeFormer

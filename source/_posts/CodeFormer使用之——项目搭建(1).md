@@ -1,8 +1,9 @@
 ---
 title: CodeFormer使用之——项目搭建(1)
 categories:
-  - 开发
-  - Q-AI
+  - AI
+  - AI应用
+  - AI修复
   - CodeFormer
 tags:
   - CodeFormer
