@@ -1,8 +1,9 @@
 ---
 title: AI开发之——Leonardo—账号注册(1)
 categories:
-  - 开发
-  - Q-AI
+  - AI
+  - AI应用
+  - AI绘图
   - Leonardo
 tags:
   - Leonardo

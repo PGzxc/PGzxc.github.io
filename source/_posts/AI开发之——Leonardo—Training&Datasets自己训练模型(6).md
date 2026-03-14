@@ -1,8 +1,9 @@
 ---
 title: AI开发之——Leonardo—Training&Datasets自己训练模型(6)
 categories:
-  - 开发
-  - Q-AI
+  - AI
+  - AI应用
+  - AI绘图
   - Leonardo
 tags:
   - Leonardo

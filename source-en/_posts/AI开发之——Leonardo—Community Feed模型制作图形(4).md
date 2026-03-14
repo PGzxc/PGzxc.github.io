@@ -1,8 +1,9 @@
 ---
 title: AI开发之——Leonardo—Community Feed模型制作图形(4)
 categories:
-  - 开发
-  - Q-AI
+  - AI
+  - AI应用
+  - AI绘图
   - Leonardo
 tags:
   - Leonardo
