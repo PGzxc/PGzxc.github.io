@@ -2,8 +2,8 @@
 title: Hexo站点建设之——优化
 categories:
   - 博客与建站
-  - 静态博客
-  - Hexo博客
+  - SEO优化
+  - 优化
 tags:
   - Hexo
 abbrlink: 8316792a

@@ -3,8 +3,8 @@ layout: post
 title: Hexo站点建设之——给自己的网站加上robots.txt
 categories:
   - 博客与建站
-  - 静态博客
-  - Hexo博客
+  - SEO优化
+  - robots
 tags:
   - Hexo博客
 abbrlink: b9485e70

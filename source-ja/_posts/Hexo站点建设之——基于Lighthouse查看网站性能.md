@@ -2,8 +2,8 @@
 title: Hexo站点建设之——基于Lighthouse查看网站性能
 categories:
   - 博客与建站
-  - 静态博客
-  - Hexo博客
+  - SEO优化
+  - 网站性能
 tags:
   - Hexo
 abbrlink: 21ea8c82
