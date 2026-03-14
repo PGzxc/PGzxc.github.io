@@ -1,8 +1,8 @@
 ---
 title: NAS入门之——Alist挂载别人分享的阿里云盘链接
 categories:
-  - 开发
-  - J-NAS
+  - NAS
+  - NAS工具
   - Alist
 tags:
   - Alist
