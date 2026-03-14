@@ -1,8 +1,9 @@
 ---
 title: LivePortrait开发之——本地部署(1)
 categories:
-  - 开发
-  - Q-AI
+  - AI
+  - AI应用
+  - AI数字人
   - LivePortrait
 tags:
   - LivePortrait

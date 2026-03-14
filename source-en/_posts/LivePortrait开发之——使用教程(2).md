@@ -1,8 +1,9 @@
 ---
 title: LivePortrait开发之——使用教程(2)
 categories:
-  - 开发
-  - Q-AI
+  - AI
+  - AI应用
+  - AI数字人
   - LivePortrait
 tags:
   - LivePortrait
