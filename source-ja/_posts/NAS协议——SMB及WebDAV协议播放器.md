@@ -1,9 +1,9 @@
 ---
 title: NAS协议——SMB及WebDAV协议播放器
 categories:
-  - 开发
-  - J-NAS
-  - 常用软件
+  - NAS
+  - NAS软件
+  - 播放器
 tags:
   - 常用软件
 abbrlink: e8f8528

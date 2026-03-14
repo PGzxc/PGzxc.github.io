@@ -1,9 +1,9 @@
 ---
 title: NAS协议——SMB及WebDAV协议软件
 categories:
-  - 开发
-  - J-NAS
-  - 常用软件
+  - NAS
+  - NAS软件
+  - 文件管理
 tags:
   - 软件
 abbrlink: b7d38e3
