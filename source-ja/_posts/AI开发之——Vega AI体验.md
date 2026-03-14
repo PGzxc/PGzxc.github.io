@@ -1,8 +1,8 @@
 ---
 title: AI开发之——Vega AI体验
 categories:
-  - 开发
-  - Q-AI
+  - AI
+  - AI模型
   - New Bing
 tags:
   - Vega AI
