@@ -1,8 +1,8 @@
 ---
 title: mobile-mcp开发之——传统自动化vsMobile-MCP(2)
 categories:
-  - 开发
-  - R-AI开发助手
+  - AI
+  - AI开发工具
   - mobile-mcp
 tags:
   - mobile-mcp
