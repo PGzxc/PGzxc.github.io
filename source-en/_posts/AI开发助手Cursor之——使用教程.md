@@ -1,8 +1,8 @@
 ---
 title: AI开发助手Cursor之——使用教程
 categories:
-  - 开发
-  - R-AI开发助手
+  - AI
+  - AI编程助手
   - Cursor
 tags:
   - Cursor

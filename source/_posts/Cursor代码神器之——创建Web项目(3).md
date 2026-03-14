@@ -1,8 +1,8 @@
 ---
 title: Cursor代码神器之——创建Web项目(3)
 categories:
-  - 开发
-  - R-AI开发助手
+  - AI
+  - AI编程助手
   - Cursor
 tags:
   - Cursor

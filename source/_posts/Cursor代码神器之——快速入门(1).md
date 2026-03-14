@@ -1,8 +1,8 @@
 ---
 title: Cursor代码神器之——快速入门(1)
 categories:
-  - 开发
-  - R-AI开发助手
+  - AI
+  - AI编程助手
   - Cursor
 tags:
   - Cursor
