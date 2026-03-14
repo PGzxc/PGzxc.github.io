@@ -1,8 +1,8 @@
 ---
 title: AI开发之——几个概念
 categories:
-  - 开发
-  - R-AI开发助手
+  - AI
+  - AI基础
   - 基础
 tags:
   - 基础
