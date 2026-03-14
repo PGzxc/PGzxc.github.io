@@ -1,9 +1,9 @@
 ---
 title: NAS入门之——tinyMediaManager电影刮削器
 categories:
-  - 开发
-  - J-NAS
-  - 刮削器
+  - NAS
+  - 媒体管理
+  - 削刮器
 tags:
   - 刮削器
 abbrlink: 9d2cc17a

@@ -1,8 +1,8 @@
 ---
 title: NAS入门之——字幕网站
 categories:
-  - 开发
-  - J-NAS
+  - NAS
+  - 媒体管理
   - 字幕
 tags:
   - 字幕

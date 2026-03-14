@@ -1,8 +1,8 @@
 ---
 title: NAS入门之——高清影视资源
 categories:
-  - 开发
-  - J-NAS
+  - NAS
+  - 媒体管理
   - 影视资源
 tags:
   - 影视资源
