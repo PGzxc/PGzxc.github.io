@@ -1,8 +1,8 @@
 ---
 title: 路由器NAS之——路由器搭配移动硬盘搭建家庭影视服务器(1)
 categories:
-  - 开发
-  - J-NAS
+  - NAS
+  - NAS设备
   - NAS-路由器
 tags:
   - NAS-路由器

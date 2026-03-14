@@ -1,8 +1,8 @@
 ---
 title: jellyfin流媒体之——服务器端Docker(2)
 categories:
-  - 开发
-  - J-NAS
+  - NAS
+  - 媒体服务器
   - Jellyfin
 tags:
   - Jellyfin

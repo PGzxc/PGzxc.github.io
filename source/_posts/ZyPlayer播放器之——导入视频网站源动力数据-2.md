@@ -1,8 +1,8 @@
 ---
 title: ZyPlayer播放器之——导入视频网站源动力数据(2)
 categories:
-  - 开发
-  - J-NAS
+  - NAS
+  - 媒体服务器
   - ZyPlayer
 tags:
   - ZyPlayer

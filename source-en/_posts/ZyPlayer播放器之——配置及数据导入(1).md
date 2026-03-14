@@ -1,8 +1,8 @@
 ---
 title: ZyPlayer播放器之——配置及数据导入(1)
 categories:
-  - 开发
-  - J-NAS
+  - NAS
+  - 媒体服务器
   - ZyPlayer
 tags:
   - ZyPlayer

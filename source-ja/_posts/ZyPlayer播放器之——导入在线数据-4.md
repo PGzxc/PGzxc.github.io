@@ -1,8 +1,8 @@
 ---
 title: ZyPlayer播放器之——导入在线数据(4)
 categories:
-  - 开发
-  - J-NAS
+  - NAS
+  - 媒体服务器
   - ZyPlayer
 tags:
   - ZyPlayer

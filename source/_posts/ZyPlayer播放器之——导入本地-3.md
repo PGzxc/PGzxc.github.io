@@ -1,8 +1,8 @@
 ---
 title: ZyPlayer播放器之——导入本地(3)
 categories:
-  - 开发
-  - J-NAS
+  - NAS
+  - 媒体服务器
   - ZyPlayer
 tags:
   - ZyPlayer

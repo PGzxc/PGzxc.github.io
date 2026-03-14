@@ -1,8 +1,8 @@
 ---
 title: jellyfin流媒体之——插件MetaTube(6)
 categories:
-  - 开发
-  - J-NAS
+  - NAS
+  - 媒体服务器
   - Jellyfin
 tags:
   - Jellyfin

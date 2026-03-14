@@ -1,8 +1,8 @@
 ---
 title: NAS入门之——KODI-入门教程(1)
 categories:
-  - 开发
-  - J-NAS
+  - NAS
+  - 媒体服务器
   - Kodi
 tags:
   - Kodi

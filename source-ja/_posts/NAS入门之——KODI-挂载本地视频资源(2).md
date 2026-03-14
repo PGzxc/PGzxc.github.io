@@ -1,8 +1,8 @@
 ---
 title: NAS入门之——KODI-挂载本地视频资源(2)
 categories:
-  - 开发
-  - J-NAS
+  - NAS
+  - 媒体服务器
   - Kodi
 tags:
   - Kodi
