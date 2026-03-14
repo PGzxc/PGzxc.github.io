@@ -1,7 +1,8 @@
 ---
 title: Excel表格之——某一列生成UUID
 categories:
-  - 文档
+  - 工具
+  - 办公工具
   - Excel
 tags:
   - Excel

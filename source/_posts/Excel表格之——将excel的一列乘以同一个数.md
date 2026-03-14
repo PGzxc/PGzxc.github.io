@@ -1,7 +1,8 @@
 ---
 title: Excel表格之——将excel的一列乘以同一个数
 categories:
-  - 文档
+  - 工具
+  - 办公工具
   - Excel
 tags:
   - Excel

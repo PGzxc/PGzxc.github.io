@@ -1,7 +1,8 @@
 ---
 title: Excel学习之——快速统计一列中相同数值出现的个数
 categories:
-  - 文档
+  - 工具
+  - 办公工具
   - Excel
 tags:
   - 统计
