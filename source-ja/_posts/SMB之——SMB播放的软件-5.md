@@ -1,9 +1,8 @@
 ---
 title: SMB之——SMB播放的软件-5
 categories:
-  - 开发
-  - J-NAS
-  - 自建服务
+  - NAS
+  - NAS服务
   - SMB
 tags:
   - SMB

@@ -1,9 +1,8 @@
 ---
 title: SMB之——支持SMB的NAS和媒体库-4
 categories:
-  - 开发
-  - J-NAS
-  - 自建服务
+  - NAS
+  - NAS服务
   - SMB
 tags:
   - SMB

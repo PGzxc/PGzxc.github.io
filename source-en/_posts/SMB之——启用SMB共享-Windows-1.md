@@ -1,9 +1,8 @@
 ---
 title: SMB之——启用SMB共享(Windows)-1
 categories:
-  - 开发
-  - J-NAS
-  - 自建服务
+  - NAS
+  - NAS服务
   - SMB
 tags:
   - SMB
