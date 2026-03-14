@@ -1,8 +1,9 @@
 ---
 title: 照片生成视频之——Luma AI(3)
 categories:
-  - 开发
-  - Q-AI
+  - AI
+  - AI应用
+  - AI视频
   - 照片生成视频
 tags:
   - 照片生成视频
