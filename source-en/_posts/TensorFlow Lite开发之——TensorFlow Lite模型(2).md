@@ -1,8 +1,9 @@
 ---
 title: TensorFlow Lite开发之——TensorFlow Lite模型(2)
 categories:
-  - 开发
-  - Q-AI
+  - AI
+  - AI开发
+  - AI框架
   - TensorFlow Lite
 tags:
   - TensorFlow Lite
