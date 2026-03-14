@@ -1,8 +1,8 @@
 ---
 title: NSSM服务器之——安装windows服务配置项
 categories:
-  - 开发
-  - G-后端开发
+  - 工具
+  - 系统工具
   - NSSM
 tags:
   - NSSM
