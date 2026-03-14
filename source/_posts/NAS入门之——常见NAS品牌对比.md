@@ -2,7 +2,7 @@
 title: NAS入门之——常见NAS品牌对比
 categories:
   - NAS
-  - 理论基础
+  - A-理论基础
   - NAS选择
 tags:
   - NAS选择

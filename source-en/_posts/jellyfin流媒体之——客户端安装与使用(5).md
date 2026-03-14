@@ -2,7 +2,7 @@
 title: jellyfin流媒体之——客户端安装与使用(5)
 categories:
   - NAS
-  - 媒体服务器
+  - D-媒体服务器
   - Jellyfin
 tags:
   - Jellyfin

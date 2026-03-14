@@ -2,7 +2,7 @@
 title: NAS入门之——权限访问
 categories:
   - NAS
-  - 理论基础
+  - A-理论基础
   - 操作
 tags:
   - 操作

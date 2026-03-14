@@ -2,7 +2,7 @@
 title: NAS入门之——My Cloud EX2+中继路由接入网络访问(7)
 categories:
   - NAS
-  - NAS设备
+  - B-NAS设备
   - WD MyCloud
 tags:
   - My Cloud EX2

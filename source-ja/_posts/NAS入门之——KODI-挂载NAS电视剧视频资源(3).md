@@ -2,7 +2,7 @@
 title: NAS入门之——KODI-挂载NAS电视剧视频资源(3)
 categories:
   - NAS
-  - 媒体服务器
+  - D-媒体服务器
   - Kodi
 tags:
   - Kodi

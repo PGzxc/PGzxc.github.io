@@ -2,7 +2,7 @@
 title: Emby流媒体之——客户端安装及使用(8)
 categories:
   - NAS
-  - 媒体服务器
+  - D-媒体服务器
   - Emby
 tags:
   - Emby

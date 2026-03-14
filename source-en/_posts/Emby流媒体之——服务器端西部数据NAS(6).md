@@ -2,7 +2,7 @@
 title: Emby流媒体之——服务器端西部数据NAS(6)
 categories:
   - NAS
-  - 媒体服务器
+  - D-媒体服务器
   - Emby
 tags:
   - Emby

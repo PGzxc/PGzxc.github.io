@@ -2,7 +2,7 @@
 title: Emby流媒体之——Emby介绍(1)
 categories:
   - NAS
-  - 媒体服务器
+  - D-媒体服务器
   - Emby
 tags:
   - Emby

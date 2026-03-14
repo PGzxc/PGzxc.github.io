@@ -2,7 +2,7 @@
 title: NAS入门之——My Cloud EX2通过Docker安装Jellyfin(17)
 categories:
   - NAS
-  - NAS设备
+  - B-NAS设备
   - WD MyCloud
 tags:
   - My Cloud EX2

@@ -2,7 +2,7 @@
 title: NAS入门之——Alist使用指南
 categories:
   - NAS
-  - NAS工具
+  - C-NAS工具
   - Alist
 tags:
   - Alist

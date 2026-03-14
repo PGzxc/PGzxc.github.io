@@ -2,7 +2,7 @@
 title: NAS入门之——高清影视资源
 categories:
   - NAS
-  - 媒体管理
+  - E-媒体管理
   - 影视资源
 tags:
   - 影视资源

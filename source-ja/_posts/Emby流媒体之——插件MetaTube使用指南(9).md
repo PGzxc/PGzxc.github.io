@@ -2,7 +2,7 @@
 title: Emby流媒体之——插件MetaTube使用指南(9)
 categories:
   - NAS
-  - 媒体服务器
+  - D-媒体服务器
   - Emby
 tags:
   - Emby

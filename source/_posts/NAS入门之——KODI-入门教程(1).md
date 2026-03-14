@@ -2,7 +2,7 @@
 title: NAS入门之——KODI-入门教程(1)
 categories:
   - NAS
-  - 媒体服务器
+  - D-媒体服务器
   - Kodi
 tags:
   - Kodi

@@ -2,7 +2,7 @@
 title: ZyPlayer播放器之——配置及数据导入(1)
 categories:
   - NAS
-  - 媒体服务器
+  - D-媒体服务器
   - ZyPlayer
 tags:
   - ZyPlayer

@@ -2,7 +2,7 @@
 title: NAS入门之——硬盘RAID模式对比
 categories:
   - NAS
-  - 理论基础
+  - A-理论基础
   - RAID
 tags:
   - RAID

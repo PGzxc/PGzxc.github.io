@@ -2,7 +2,7 @@
 title: NAS入门之——My Cloud EX2 Ultra初始化设置(5)
 categories:
   - NAS
-  - NAS设备
+  - B-NAS设备
   - WD MyCloud
 tags:
   - My Cloud EX2 Ultra

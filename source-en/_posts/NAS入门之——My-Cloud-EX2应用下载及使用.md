@@ -2,7 +2,7 @@
 title: NAS入门之——My Cloud EX2应用下载及使用
 categories:
   - NAS
-  - NAS设备
+  - B-NAS设备
   - WD MyCloud
 tags:
   - NAS

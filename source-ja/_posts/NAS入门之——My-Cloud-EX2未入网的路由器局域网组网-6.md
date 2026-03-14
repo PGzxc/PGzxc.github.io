@@ -2,7 +2,7 @@
 title: NAS入门之——My Cloud EX2未入网的路由器局域网组网(6)
 categories:
   - NAS
-  - NAS设备
+  - B-NAS设备
   - WD MyCloud
 abbrlink: ce44e24c
 date: 2021-10-18 22:40:00

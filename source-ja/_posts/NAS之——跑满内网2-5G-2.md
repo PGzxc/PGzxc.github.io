@@ -2,7 +2,7 @@
 title: NAS之——跑满内网2.5G(2)
 categories:
   - NAS
-  - 理论基础
+  - A-理论基础
   - 跑满内网
 tags:
   - 跑满内网

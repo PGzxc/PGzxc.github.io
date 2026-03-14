@@ -2,7 +2,7 @@
 title: NAS入门之——My Cloud EX2通过终端SSH访问(9)
 categories:
   - NAS
-  - NAS设备
+  - B-NAS设备
   - WD MyCloud
 tags:
   - My Cloud EX2

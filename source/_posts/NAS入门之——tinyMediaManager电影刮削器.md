@@ -2,7 +2,7 @@
 title: NAS入门之——tinyMediaManager电影刮削器
 categories:
   - NAS
-  - 媒体管理
+  - E-媒体管理
   - 削刮器
 tags:
   - 刮削器

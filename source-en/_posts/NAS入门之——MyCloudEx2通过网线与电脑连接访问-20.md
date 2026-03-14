@@ -2,7 +2,7 @@
 title: NAS入门之——MyCloudEx2通过网线与电脑连接访问(20)
 categories:
   - NAS
-  - NAS设备
+  - B-NAS设备
   - WD MyCloud
 tags:
   - My Cloud EX2

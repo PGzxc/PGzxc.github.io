@@ -2,7 +2,7 @@
 title: jellyfin流媒体之——服务器端Windows(1)
 categories:
   - NAS
-  - 媒体服务器
+  - D-媒体服务器
   - Jellyfin
 tags:
   - Jellyfin

@@ -2,7 +2,7 @@
 title: 群晖NAS之——RAID类型Basic与JBOD的区别及选择(5)
 categories:
   - NAS
-  - NAS设备
+  - B-NAS设备
   - 群晖
 tags:
   - 群晖

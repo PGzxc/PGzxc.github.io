@@ -2,7 +2,7 @@
 title: NAS入门之——My Cloud EX2 Ultra在Windows下访问(1)
 categories:
   - NAS
-  - NAS设备
+  - B-NAS设备
   - WD MyCloud
 tags:
   - My Cloud EX2 Ultra

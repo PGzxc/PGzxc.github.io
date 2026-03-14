@@ -2,7 +2,7 @@
 title: ZyPlayer播放器之——导入本地(3)
 categories:
   - NAS
-  - 媒体服务器
+  - D-媒体服务器
   - ZyPlayer
 tags:
   - ZyPlayer

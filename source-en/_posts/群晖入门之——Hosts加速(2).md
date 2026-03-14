@@ -2,7 +2,7 @@
 title: 群晖入门之——Hosts加速(2)
 categories:
   - NAS
-  - NAS设备
+  - B-NAS设备
   - 群晖
 tags:
   - 群晖

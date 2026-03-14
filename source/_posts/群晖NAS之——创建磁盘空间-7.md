@@ -2,7 +2,7 @@
 title: 群晖NAS之——创建磁盘空间(7)
 categories:
   - NAS
-  - NAS设备
+  - B-NAS设备
   - 群晖
 tags:
   - 群晖
