@@ -1,8 +1,9 @@
 ---
 title: AI开发之——本地大模型图片处理
 categories:
-  - 开发
-  - Q-AI
+  - AI
+  - AI应用
+  - AI绘图
   - 图片处理
 tags:
   - 图片处理
