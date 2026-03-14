@@ -1,8 +1,8 @@
 ---
 title: AI开发之——Clawdbot指南
 categories:
-  - 开发
-  - R-AI开发助手
+  - AI
+  - AI开发工具
   - Clawdbot
 tags:
   - Clawdbot
