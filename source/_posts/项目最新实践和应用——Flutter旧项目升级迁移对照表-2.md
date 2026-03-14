@@ -1,8 +1,8 @@
 ---
 title: 项目最新实践和应用——Flutter旧项目升级迁移对照表(2)
 categories:
-  - 开发
-  - U-项目实践
+  - 技术实践
+  - 项目实践
   - Flutter项目
 tags:
   - Flutter项目

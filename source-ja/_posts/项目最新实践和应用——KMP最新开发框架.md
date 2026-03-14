@@ -1,8 +1,8 @@
 ---
 title: 项目最新实践和应用——KMP最新开发框架
 categories:
-  - 开发
-  - U-项目实践
+  - 技术实践
+  - 项目实践
   - KMP项目
 tags:
   - KMP项目

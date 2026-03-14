@@ -1,8 +1,8 @@
 ---
 title: 项目最新实践和应用——IOS最新开发框架
 categories:
-  - 开发
-  - U-项目实践
+  - 技术实践
+  - 项目实践
   - IOS项目
 tags:
   - IOS项目

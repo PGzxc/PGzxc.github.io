@@ -1,8 +1,8 @@
 ---
 title: 项目最新实践和应用——旧项目Gradle升级
 categories:
-  - 开发
-  - U-项目实践
+  - 技术实践
+  - 项目实践
   - Android项目
 tags:
   - Android项目

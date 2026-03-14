@@ -1,8 +1,8 @@
 ---
 title: 项目最新实践和应用——React Native项目最新框架
 categories:
-  - 开发
-  - U-项目实践
+  - 技术实践
+  - 项目实践
   - React Native项目
 tags:
   - React Native项目

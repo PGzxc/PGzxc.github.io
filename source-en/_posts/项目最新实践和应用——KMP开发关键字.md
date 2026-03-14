@@ -1,8 +1,8 @@
 ---
 title: 项目最新实践和应用——KMP开发关键字
 categories:
-  - 开发
-  - U-项目实践
+  - 技术实践
+  - 项目实践
   - Android项目
 tags:
   - Kotlin
