@@ -1,8 +1,9 @@
 ---
 title: AI开发之——Ollama相关操作指令(4)
 categories:
-  - 开发
-  - Q-AI
+  - AI
+  - AI开发
+  - 本地部署
   - Ollama
 tags:
   - Ollama
