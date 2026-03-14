@@ -1,8 +1,9 @@
 ---
 title: 网络购物之——ipad pro2021
 categories:
-  - 生活
-  - 网购
+ - 生活
+ - 生活消费
+ - 网购
 tags:
   - 网购
 abbrlink: c8d1ff2c
