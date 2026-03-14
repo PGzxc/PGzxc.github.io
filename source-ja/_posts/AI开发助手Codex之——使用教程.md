@@ -1,8 +1,8 @@
 ---
 title: AI开发助手Codex之——使用教程
 categories:
-  - 开发
-  - R-AI开发助手
+  - AI
+  - AI编程助手
   - Codex
 tags:
   - Codex
