@@ -1,8 +1,8 @@
 ---
 title: AI开发助手Trae之——使用教程
 categories:
-  - 开发
-  - R-AI开发助手
+  - AI
+  - AI开发工具
   - Trae
 tags:
   - Trae
