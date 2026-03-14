@@ -1,9 +1,8 @@
 ---
 title: Mock接口开发之——Mock介绍
 categories:
-  - 开发
-  - G-后端开发
-  - 接口
+  - 工具
+  - API工具
   - Mock
 tags:
   - Mock

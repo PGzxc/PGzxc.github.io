@@ -1,9 +1,8 @@
 ---
 title: Mockoon接口模拟开发之——使用
 categories:
-  - 开发
-  - G-后端开发
-  - 接口
+  - 工具
+  - API工具
   - Mockoon
 tags:
   - Mockoon

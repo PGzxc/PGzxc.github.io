@@ -1,9 +1,8 @@
 ---
 title: Mock接口开发之——模拟服务器响应
 categories:
-  - 开发
-  - G-后端开发
-  - 接口
+  - 工具
+  - API工具
   - Mock
 tags:
   - Mock
