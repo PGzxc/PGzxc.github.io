@@ -1,9 +1,10 @@
 ---
 title: 秋叶StableDiffusion之——整合包安装(1)
 categories:
-  - 开发
-  - Q-AI
-  - 秋叶StableDiffusion
+  - AI
+  - AI应用
+  - AI绘图
+  - StableDiffusion
 tags:
   - 秋叶StableDiffusion
 abbrlink: b47af6b3
