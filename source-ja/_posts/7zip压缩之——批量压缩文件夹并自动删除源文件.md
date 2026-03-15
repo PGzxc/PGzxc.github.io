@@ -70,37 +70,31 @@ compress.bat
 ```
 @echo off
 chcp 65001 >nul
-title 批量压缩并删除源文件
 
 set "ZIP=D:\SoftWare\压缩\7zip\7z.exe"
 
-echo.
-echo ===== 开始批量压缩 =====
-echo.
+echo ===== 开始压缩 =====
 
 for /d %%i in (*) do (
-    
+
     if not exist "%%i.7z" (
+
         echo 正在压缩：%%i
-        
-        "%ZIP%" a -t7z "%%i.7z" "%%i\*" -mx=1 -mmt
-        
+
+        "%ZIP%" a -t7z "%%i.7z" ".\%%i\*" -mx=1 -mmt
+
         if exist "%%i.7z" (
             echo 压缩成功，删除源文件夹：%%i
             rd /s /q "%%i"
         ) else (
-            echo 压缩失败，保留原文件夹：%%i
+            echo 压缩失败：%%i
         )
-        
-        echo.
-    ) else (
-        echo 已存在压缩包，跳过：%%i
+
     )
 
 )
 
-echo.
-echo ===== 全部完成 =====
+echo ===== 完成 =====
 pause
 ```
 
