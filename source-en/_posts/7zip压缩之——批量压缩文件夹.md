@@ -1,5 +1,5 @@
 ---
-title: 7zip压缩之——批量压缩文件夹并自动删除源文件
+title: 7zip压缩之——批量压缩文件夹
 categories:
   - 工具
   - 系统工具
@@ -15,6 +15,7 @@ date: 2026-03-15 09:58:22
 本文介绍：
 1.Win/Mac下的压缩软件7zip
 2.批量压缩文件夹并自动删除源文件
+3.批量压缩文件夹并保留源文件
 ```
 
 <!--more-->
@@ -27,6 +28,7 @@ date: 2026-03-15 09:58:22
 -7-Zip 是一款非常优秀的压缩软件。
 -官网：https://www.7-zip.org
 -Mac 用户也可以使用：p7zip 或 7zz
+-支持平台：Windows、Mac / Linux(p7zip 或 7zz)、NAS(Linux系统可使用 p7zip)
 ```
 
 ### 2.2 优点
@@ -46,6 +48,7 @@ date: 2026-03-15 09:58:22
 视频课程归档
 NAS 数据备份
 大量文件夹批量压缩
+服务器自动化处理
 ```
 
 ## 三 Windows 批量压缩脚本
@@ -57,12 +60,59 @@ NAS 数据备份
 假设安装路径：D:\SoftWare\压缩\7zip\7z.exe
 ```
 
-### 3.2 创建脚本
+### 3.2 批量压缩并删除源文件
 
 1-在要压缩的目录创建脚本文件
 
 ```
-compress.bat
+compress_delete.bat
+```
+
+2-脚本：
+
+```
+@echo off
+chcp 65001 >nul
+title 批量压缩并删除源文件
+
+set "ZIP=D:\SoftWare\压缩\7zip\7z.exe"
+
+echo.
+echo ===== 开始批量压缩 =====
+echo.
+
+for /d %%i in (*) do (
+    
+    if not exist "%%i.7z" (
+        echo 正在压缩：%%i
+        
+        "%ZIP%" a -t7z "%%i.7z" ".\%%i\*" -mx=1 -mmt
+        
+        if exist "%%i.7z" (
+            echo 压缩成功，删除源文件夹：%%i
+            rd /s /q "%%i"
+        ) else (
+            echo 压缩失败，保留原文件夹：%%i
+        )
+        
+        echo.
+    ) else (
+        echo 已存在压缩包，跳过：%%i
+    )
+
+)
+
+echo.
+echo ===== 全部完成 =====
+pause
+```
+
+### 3.3 批量压缩并保留源文件
+
+1-创建
+
+```
+compress_keep.bat
 ```
 
 2-内容如下：
@@ -70,10 +120,13 @@ compress.bat
 ```
 @echo off
 chcp 65001 >nul
+title 批量压缩文件夹
 
 set "ZIP=D:\SoftWare\压缩\7zip\7z.exe"
 
-echo ===== 开始压缩 =====
+echo.
+echo ===== 开始批量压缩 =====
+echo.
 
 for /d %%i in (*) do (
 
@@ -83,43 +136,31 @@ for /d %%i in (*) do (
 
         "%ZIP%" a -t7z "%%i.7z" ".\%%i\*" -mx=1 -mmt
 
-        if exist "%%i.7z" (
-            echo 压缩成功，删除源文件夹：%%i
-            rd /s /q "%%i"
-        ) else (
-            echo 压缩失败：%%i
-        )
+    ) else (
+
+        echo 已存在压缩包，跳过：%%i
 
     )
 
 )
 
-echo ===== 完成 =====
+echo.
+echo ===== 压缩完成 =====
 pause
 ```
 
-### 3.3 使用方法
+### 3.4 使用方法(删除源文件为例)
 
 ```
 1.目录结构：
-
 Video
- ├ compress.bat
+ ├ compress_delete.bat
  ├ 课程A
  ├ 课程B
  ├ 课程C
 
 2.双击运行：
-
-compress.bat
-
-3.自动生成：
-
-课程A.7z
-课程B.7z
-课程C.7z
-
-并删除原文件夹。
+compress_delete.bat
 ```
 
 ## 四 Mac 批量压缩脚本
@@ -130,12 +171,12 @@ compress.bat
 使用 Homebrew：brew install p7zip
 ```
 
-### 4.2 创建脚本
+### 4.2 批量压缩并删除源文件
 
 1-创建文件：
 
 ```
-compress.sh
+compress_delete.sh
 ```
 
 2-脚本内容：
@@ -153,7 +194,7 @@ if [ ! -f "$name.7z" ]; then
 
 echo "正在压缩: $name"
 
-7z a -t7z "$name.7z" "$name" -mx=1 -mmt
+7z a -t7z "$name.7z" "$name/" -mx=1 -mmt
 
 if [ -f "$name.7z" ]; then
 echo "压缩成功，删除源目录: $name"
@@ -169,25 +210,63 @@ done
 echo "全部完成"
 ```
 
-### 4.3 运行脚本
+### 4.3 批量压缩并保留源文件
+
+1-创建：
+
+```
+compress_keep.sh
+```
+
+2-脚本：
+
+```
+#!/bin/bash
+
+echo "开始批量压缩..."
+
+for dir in */ ; do
+
+name=${dir%/}
+
+if [ ! -f "$name.7z" ]; then
+
+echo "正在压缩: $name"
+
+7z a -t7z "$name.7z" "$name/" -mx=1 -mmt
+
+else
+
+echo "已存在压缩包，跳过: $name"
+
+fi
+
+done
+
+echo "全部完成"
+```
+
+### 4.4 运行脚本(删除源文件为例)
 
 ```
 1.先赋予权限：
-chmod +x compress.sh
+chmod +x compress_delete.sh
 
 2.运行：
-./compress.sh
+./compress_delete.sh
 ```
 
 ## 五 压缩参数推荐
 
 ### 5.1 参数
 
-| 参数 |   含义   |
-| :--: | :------: |
-| mx=1 | 最快压缩 |
-| mx=5 |   默认   |
-| mx=9 | 最大压缩 |
+| 参数 |    含义    |
+| :--: | :--------: |
+| -t7z | 指定7z格式 |
+| mx=1 |  最快压缩  |
+| mx=5 |    默认    |
+| mx=9 |  最大压缩  |
+| -mmt | 多线程压缩 |
 
 ### 5.2 如何选择
 
