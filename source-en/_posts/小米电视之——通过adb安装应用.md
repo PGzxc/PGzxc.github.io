@@ -2,6 +2,7 @@
 title: 小米电视之——通过adb安装应用
 categories:
   - 硬件
+  - 影音设备
   - 电视
 tags:
   - 小米电视
