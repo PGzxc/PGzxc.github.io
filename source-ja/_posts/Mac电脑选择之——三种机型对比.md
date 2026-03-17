@@ -2,6 +2,7 @@
 title: Mac电脑选择之——三种机型对比
 categories:
   - 硬件
+  - 计算器设备
   - 电脑
 tags:
   - 电脑
