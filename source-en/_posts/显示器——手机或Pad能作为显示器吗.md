@@ -2,6 +2,7 @@
 title: 显示器——手机或Pad能作为显示器吗
 categories:
   - 硬件
+  - 计算器设备
   - 显示器
 tags:
   - 显示器
