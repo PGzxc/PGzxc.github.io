@@ -2,6 +2,7 @@
 title: 网桥方案之——共享WIFI
 categories:
   - 硬件
+  - 网络设备
   - 网桥
 tags:
   - 网桥
