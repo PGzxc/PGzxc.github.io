@@ -2,6 +2,7 @@
 title: 硬盘柜之——与NAS区别
 categories:
   - 硬件
+  - 存储设备
   - 硬盘柜
 tags:
   - 硬盘柜
