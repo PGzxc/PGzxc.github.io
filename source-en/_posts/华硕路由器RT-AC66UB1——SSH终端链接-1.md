@@ -2,6 +2,8 @@
 title: 华硕路由器RT-AC66UB1——SSH终端链接(1)
 categories:
   - 硬件
+  - 网络设备
+  - 路由器
   - 华硕
   - RT-AC66UB1
 tags:
