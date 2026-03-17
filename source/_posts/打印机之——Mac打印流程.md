@@ -2,6 +2,7 @@
 title: 打印机之——Mac打印流程
 categories:
   - 硬件
+  - 办公设备
   - 打印机
 tags:
   - 打印机
