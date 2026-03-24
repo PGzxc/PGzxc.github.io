@@ -2,8 +2,8 @@
 title: AI开发之——Clawdbot指南
 categories:
   - AI
-  - F-AI开发工具
-  - Clawdbot
+  - E-AI编程助手
+  - OpenClaw
 tags:
   - Clawdbot
 abbrlink: 44232a48
