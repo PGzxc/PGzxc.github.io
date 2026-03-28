@@ -1,11 +1,11 @@
 ---
-title: IOS开发之——ipa自签名突破7天限制
+title: 移动设备之——ipa自签名突破7天限制
 categories:
-  - 开发
-  - D-移动开发
-  - IOS
+  - 硬件
+  - 移动设备
+  - IPad
 tags:
-  - IOS
+  - IPad
 abbrlink: 730430a6
 date: 2025-03-28 09:21:21
 ---
