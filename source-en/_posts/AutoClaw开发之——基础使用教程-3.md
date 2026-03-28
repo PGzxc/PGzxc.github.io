@@ -2,7 +2,7 @@
 title: AutoClaw开发之——基础使用教程(3)
 categories:
   - AI
-  - E-AI编程助手
+  - G-养虾
   - AutoClaw
 tags:
   - AutoClaw

@@ -2,7 +2,7 @@
 title: AutoClaw开发之——安装教程(2)
 categories:
   - AI
-  - E-AI编程助手
+  - G-养虾
   - AutoClaw
 tags:
   - AutoClaw
