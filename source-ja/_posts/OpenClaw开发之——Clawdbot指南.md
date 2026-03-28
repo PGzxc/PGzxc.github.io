@@ -1,8 +1,8 @@
 ---
-title: AI开发之——Clawdbot指南
+title: OpenClaw开发之——Clawdbot指南
 categories:
   - AI
-  - E-AI编程助手
+  - G-养虾
   - OpenClaw
 tags:
   - Clawdbot
