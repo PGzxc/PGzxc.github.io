@@ -1,11 +1,11 @@
 ---
-title: IOS开发之——免费Apple ID达到限制
+title: 移动设备之——免费Apple ID达到限制
 categories:
-  - 开发
-  - D-移动开发
-  - IOS
+  - 硬件
+  - 移动设备
+  - IPad
 tags:
-  - IOS
+  - IPad
 abbrlink: ba229691
 date: 2025-07-29 12:27:31
 ---
