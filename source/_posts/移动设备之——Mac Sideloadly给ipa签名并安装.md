@@ -1,11 +1,11 @@
 ---
-title: IOS开发之——使用Sideloadly给ipa签名并安装
+title: 移动设备之——Mac Sideloadly给ipa签名并安装
 categories:
-  - 开发
-  - D-移动开发
-  - IOS
+  - 硬件
+  - 移动设备
+  - IPad
 tags:
-  - IOS
+  - IPad
 abbrlink: 1c86e79e
 date: 2025-09-15 08:32:22
 ---
