@@ -1,11 +1,11 @@
 ---
-title: IOS开发之——创建快捷指令续签AltStore应用
+title: 移动设备之——创建快捷指令续签AltStore应用
 categories:
-  - 开发
-  - D-移动开发
-  - IOS
+  - 硬件
+  - 移动设备
+  - IPad
 tags:
-  - IOS
+  - IPad
 abbrlink: '56871152'
 date: 2023-09-29 08:52:44
 ---
