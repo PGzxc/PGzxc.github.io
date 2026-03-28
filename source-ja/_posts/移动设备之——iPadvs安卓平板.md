@@ -1,11 +1,11 @@
 ---
-title: 移动设备——iPadvs安卓平板
+title: 移动设备之——iPadvs安卓平板
 categories:
   - 硬件
   - 移动设备
-  - Pad
+  - IPad
 tags:
-  - Pad
+  - IPad
 abbrlink: a96aebd1
 date: 2025-08-16 09:55:50
 ---
