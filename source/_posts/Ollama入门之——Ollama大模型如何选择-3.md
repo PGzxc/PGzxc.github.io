@@ -1,5 +1,5 @@
 ---
-title: AI开发之——Ollama大模型如何选择(3)
+title: Ollama入门之——Ollama大模型如何选择(3)
 categories:
   - AI
   - C-AI开发

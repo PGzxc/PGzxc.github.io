@@ -1,5 +1,5 @@
 ---
-title: AI开发之——Ollama本地模型UI操作工具(5)
+title: Ollama入门之——Ollama本地模型UI操作工具(5)
 categories:
   - AI
   - C-AI开发

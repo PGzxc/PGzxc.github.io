@@ -1,5 +1,5 @@
 ---
-title: AI开发之——Ollama相关操作指令(4)
+title: Ollama入门之——Ollama相关操作指令(4)
 categories:
   - AI
   - C-AI开发

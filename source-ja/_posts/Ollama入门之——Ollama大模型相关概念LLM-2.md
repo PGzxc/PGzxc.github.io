@@ -1,5 +1,5 @@
 ---
-title: AI开发之——Ollama大模型相关概念LLM(2)
+title: Ollama入门之——Ollama大模型相关概念LLM(2)
 categories:
   - AI
   - C-AI开发
