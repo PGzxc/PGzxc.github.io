@@ -2,7 +2,7 @@
 title: AI开发助手GitHub Copilot之——使用教程
 categories:
   - AI
-  - E-AI编程助手
+  - AI编程助手
   - GitHub Copilot
 tags:
   - GitHub Copilot

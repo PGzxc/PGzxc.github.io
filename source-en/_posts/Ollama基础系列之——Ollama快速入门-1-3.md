@@ -2,7 +2,7 @@
 title: Ollama基础系列之——Ollama快速入门(1.3)
 categories:
   - AI
-  - C-AI开发
+  - AI开发
   - 本地部署
   - Ollama
 tags:

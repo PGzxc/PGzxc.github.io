@@ -2,7 +2,7 @@
 title: AI开发之——Leonardo—用户工具-AI图形制作(2)
 categories:
   - AI
-  - D-AI应用
+  - AI应用
   - AI绘图
   - Leonardo
 tags:

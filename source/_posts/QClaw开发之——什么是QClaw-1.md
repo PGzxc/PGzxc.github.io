@@ -2,7 +2,7 @@
 title: QClaw开发之——什么是QClaw(1)
 categories:
   - AI
-  - G-养虾
+  - 养虾
   - QClaw
 tags:
   - QClaw

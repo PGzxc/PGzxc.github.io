@@ -2,7 +2,7 @@
 title: Dify开发之——安装插件(2)
 categories:
   - AI
-  - C-AI开发
+  - AI开发
   - AI框架
   - Dify
 tags:

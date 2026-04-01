@@ -2,7 +2,7 @@
 title: Trae AI工具之——基于原型图定制开发(2)
 categories:
   - AI
-  - F-AI开发工具
+  - AI开发工具
   - Trae
 tags:
   - Trae

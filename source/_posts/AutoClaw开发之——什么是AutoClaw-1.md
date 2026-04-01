@@ -2,7 +2,7 @@
 title: AutoClaw开发之——什么是AutoClaw(1)
 categories:
   - AI
-  - G-养虾
+  - 养虾
   - AutoClaw
 tags:
   - AutoClaw

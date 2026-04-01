@@ -2,7 +2,7 @@
 title: Cursor代码神器之——创建跨平台KMP项目(12)
 categories:
   - AI
-  - E-AI编程助手
+  - AI编程助手
   - Cursor
 tags:
   - Cursor

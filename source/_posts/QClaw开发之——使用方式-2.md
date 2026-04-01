@@ -2,7 +2,7 @@
 title: QClaw开发之——使用方式(2)
 categories:
   - AI
-  - G-养虾
+  - 养虾
   - QClaw
 tags:
   - QClaw

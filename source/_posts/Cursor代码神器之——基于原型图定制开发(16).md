@@ -2,7 +2,7 @@
 title: Cursor代码神器之——基于原型图定制开发(16)
 categories:
   - AI
-  - E-AI编程助手
+  - AI编程助手
   - Cursor
 tags:
   - Cursor

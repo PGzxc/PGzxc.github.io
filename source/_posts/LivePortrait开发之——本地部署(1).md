@@ -2,7 +2,7 @@
 title: LivePortrait开发之——本地部署(1)
 categories:
   - AI
-  - D-AI应用
+  - AI应用
   - AI数字人
   - LivePortrait
 tags:

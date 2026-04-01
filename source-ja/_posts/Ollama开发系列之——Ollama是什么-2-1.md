@@ -2,7 +2,7 @@
 title: Ollama开发系列之——Ollama是什么(2.1)
 categories:
   - AI
-  - C-AI开发
+  - AI开发
   - 本地部署
   - Ollama
 tags:

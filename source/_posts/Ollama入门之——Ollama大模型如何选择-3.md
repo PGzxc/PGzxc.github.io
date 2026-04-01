@@ -2,7 +2,7 @@
 title: Ollama入门之——Ollama大模型如何选择(3)
 categories:
   - AI
-  - C-AI开发
+  - AI开发
   - 本地部署
   - Ollama
 tags:

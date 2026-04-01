@@ -2,7 +2,7 @@
 title: Ollama开发系列之——Modelfile进阶(2.5)
 categories:
   - AI
-  - C-AI开发
+  - AI开发
   - 本地部署
   - Ollama
 tags:

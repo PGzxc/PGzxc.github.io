@@ -2,7 +2,7 @@
 title: TensorFlow Lite开发之——入门指南(1)
 categories:
   - AI
-  - C-AI开发
+  - AI开发
   - AI框架
   - TensorFlow Lite
 tags:

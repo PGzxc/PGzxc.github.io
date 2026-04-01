@@ -2,7 +2,7 @@
 title: AI开发助手Google Antigravity之——使用教程
 categories:
   - AI
-  - F-AI开发工具
+  - AI开发工具
   - Google Antigravity
 tags:
   - Google Antigravity

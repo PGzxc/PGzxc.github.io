@@ -2,7 +2,7 @@
 title: ComfyUI开发之——Templates模板体系(2)
 categories:
   - AI
-  - D-AI应用
+  - AI应用
   - AI绘图
   - ComfyUI
 tags:

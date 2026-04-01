@@ -2,7 +2,7 @@
 title: ArkClaw开发之——使用教程
 categories:
   - AI
-  - G-养虾
+  - 养虾
   - ArkClaw
 tags:
   - ArkClaw

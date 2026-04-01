@@ -2,7 +2,7 @@
 title: Ollama实战之——从Ollama到完整智能计算平台(3.10)
 categories:
   - AI
-  - C-AI开发
+  - AI开发
   - 本地部署
   - Ollama
 tags:

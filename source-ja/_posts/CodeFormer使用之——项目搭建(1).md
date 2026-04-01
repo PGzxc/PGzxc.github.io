@@ -2,7 +2,7 @@
 title: CodeFormer使用之——项目搭建(1)
 categories:
   - AI
-  - D-AI应用
+  - AI应用
   - AI修复
   - CodeFormer
 tags:

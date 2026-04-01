@@ -2,7 +2,7 @@
 title: QClaw开发之——应用场景(3)
 categories:
   - AI
-  - G-养虾
+  - 养虾
   - QClaw
 tags:
   - QClaw

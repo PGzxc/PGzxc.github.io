@@ -2,7 +2,7 @@
 title: AutoClaw开发之——应用场景(5)
 categories:
   - AI
-  - G-养虾
+  - 养虾
   - AutoClaw
 tags:
   - AutoClaw

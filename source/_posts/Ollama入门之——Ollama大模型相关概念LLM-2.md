@@ -2,7 +2,7 @@
 title: Ollama入门之——Ollama大模型相关概念LLM(2)
 categories:
   - AI
-  - C-AI开发
+  - AI开发
   - 本地部署
   - Ollama
 tags:

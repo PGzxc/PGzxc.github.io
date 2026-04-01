@@ -2,7 +2,7 @@
 title: OpenClaw开发之——是什么(1.1)
 categories:
   - AI
-  - G-养虾
+  - 养虾
   - OpenClaw
 tags:
   - OpenClaw

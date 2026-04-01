@@ -2,7 +2,7 @@
 title: Ollama实战之——Ollama微服务架构实战(3.9)
 categories:
   - AI
-  - C-AI开发
+  - AI开发
   - 本地部署
   - Ollama
 tags:

@@ -2,7 +2,7 @@
 title: ComfyUI开发之——工程化与自动化(7)
 categories:
   - AI
-  - D-AI应用
+  - AI应用
   - AI绘图
   - ComfyUI
 tags:

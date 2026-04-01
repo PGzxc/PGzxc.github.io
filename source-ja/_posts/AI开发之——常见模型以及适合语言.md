@@ -2,7 +2,7 @@
 title: AI开发之——常见模型以及适合语言
 categories:
   - AI
-  - A-AI基础
+  - AI基础
   - 基础
 tags:
   - 基础

@@ -2,7 +2,7 @@
 title: Cursor代码神器之——创建桌面端跨平台Electron项目(15)
 categories:
   - AI
-  - E-AI编程助手
+  - AI编程助手
   - Cursor
 tags:
   - Cursor

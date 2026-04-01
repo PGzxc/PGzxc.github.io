@@ -2,7 +2,7 @@
 title: Trae AI工具之——入门指南(1)
 categories:
   - AI
-  - F-AI开发工具
+  - AI开发工具
   - Trae
 tags:
   - Trae

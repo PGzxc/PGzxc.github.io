@@ -2,7 +2,7 @@
 title: AI开发之——Gemini开发Flutter平台接入
 categories:
   - AI
-  - B-AI模型
+  - AI模型
   - Gemini
 tags:
   - Gemini

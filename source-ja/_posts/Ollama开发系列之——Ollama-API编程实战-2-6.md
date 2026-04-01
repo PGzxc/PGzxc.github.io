@@ -2,7 +2,7 @@
 title: Ollama开发系列之——Ollama API编程实战(2.6)
 categories:
   - AI
-  - C-AI开发
+  - AI开发
   - 本地部署
   - Ollama
 tags:

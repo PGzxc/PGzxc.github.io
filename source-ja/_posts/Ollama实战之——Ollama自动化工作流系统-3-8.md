@@ -2,7 +2,7 @@
 title: Ollama实战之——Ollama自动化工作流系统(3.8)
 categories:
   - AI
-  - C-AI开发
+  - AI开发
   - 本地部署
   - Ollama
 tags:

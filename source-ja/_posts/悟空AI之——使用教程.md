@@ -2,7 +2,7 @@
 title: 悟空AI之——使用教程
 categories:
   - AI
-  - G-养虾
+  - 养虾
   - 悟空AI
 tags:
   - 悟空AI

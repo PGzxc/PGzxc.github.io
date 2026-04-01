@@ -2,7 +2,7 @@
 title: AI开发助手通义灵码之——使用教程
 categories:
   - AI
-  - E-AI编程助手
+  - AI编程助手
   - 通义灵码
 tags:
   - 通义灵码

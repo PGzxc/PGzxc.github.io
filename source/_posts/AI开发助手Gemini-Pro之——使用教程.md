@@ -2,7 +2,7 @@
 title: AI开发助手Gemini Pro之——使用教程
 categories:
   - AI
-  - B-AI模型
+  - AI模型
   - Gemini
 tags:
   - Gemini

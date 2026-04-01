@@ -2,7 +2,7 @@
 title: LivePortrait开发之——使用教程(2)
 categories:
   - AI
-  - D-AI应用
+  - AI应用
   - AI数字人
   - LivePortrait
 tags:

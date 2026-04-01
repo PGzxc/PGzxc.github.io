@@ -2,7 +2,7 @@
 title: AI开发助手Qoder之——使用教程
 categories:
   - AI
-  - F-AI开发工具
+  - AI开发工具
   - Qoder
 tags:
   - Qoder

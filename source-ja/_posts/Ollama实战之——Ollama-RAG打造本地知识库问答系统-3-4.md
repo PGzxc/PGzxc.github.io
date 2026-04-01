@@ -2,7 +2,7 @@
 title: Ollama实战之——Ollama+RAG打造本地知识库问答系统(3.4)
 categories:
   - AI
-  - C-AI开发
+  - AI开发
   - 本地部署
   - Ollama
 tags:

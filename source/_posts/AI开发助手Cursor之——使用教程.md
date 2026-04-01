@@ -2,7 +2,7 @@
 title: AI开发助手Cursor之——使用教程
 categories:
   - AI
-  - E-AI编程助手
+  - AI编程助手
   - Cursor
 tags:
   - Cursor

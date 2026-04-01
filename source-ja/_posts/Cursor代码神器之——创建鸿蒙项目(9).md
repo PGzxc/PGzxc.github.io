@@ -2,7 +2,7 @@
 title: Cursor代码神器之——创建鸿蒙项目(9)
 categories:
   - AI
-  - E-AI编程助手
+  - AI编程助手
   - Cursor
 tags:
   - Cursor

@@ -2,7 +2,7 @@
 title: AutoClaw开发之——进阶玩法(4)
 categories:
   - AI
-  - G-养虾
+  - 养虾
   - AutoClaw
 tags:
   - AutoClaw

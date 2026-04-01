@@ -2,7 +2,7 @@
 title: SmartSub工具——视频提取字幕
 categories:
   - AI
-  - D-AI应用
+  - AI应用
   - AI修复
   - SmartSub
 tags:

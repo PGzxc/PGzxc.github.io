@@ -2,7 +2,7 @@
 title: Ollama开发系列之——CLI命令大全与实战技巧(2.4)
 categories:
   - AI
-  - C-AI开发
+  - AI开发
   - 本地部署
   - Ollama
 tags:

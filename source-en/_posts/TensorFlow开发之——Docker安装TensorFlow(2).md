@@ -2,7 +2,7 @@
 title: TensorFlow开发之——Docker安装TensorFlow(2)
 categories:
   - AI
-  - C-AI开发
+  - AI开发
   - AI框架
   - TensorFlow
 tags:

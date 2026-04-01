@@ -2,7 +2,7 @@
 title: Ollama实战之——Ollama生态解析(3.1)
 categories:
   - AI
-  - C-AI开发
+  - AI开发
   - 本地部署
   - Ollama
 tags:

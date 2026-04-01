@@ -2,7 +2,7 @@
 title: TensorFlow Lite开发之——Android图像分类识别(4)
 categories:
   - AI
-  - C-AI开发
+  - AI开发
   - AI框架
   - TensorFlow Lite
 tags:

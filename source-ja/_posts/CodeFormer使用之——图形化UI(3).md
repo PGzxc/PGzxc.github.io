@@ -2,7 +2,7 @@
 title: CodeFormer使用之——图形化UI(3)
 categories:
   - AI
-  - D-AI应用
+  - AI应用
   - AI修复
   - CodeFormer
 tags:

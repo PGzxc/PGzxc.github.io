@@ -2,7 +2,7 @@
 title: OpenClaw开发之——Clawdbot指南
 categories:
   - AI
-  - G-养虾
+  - 养虾
   - OpenClaw
 tags:
   - Clawdbot

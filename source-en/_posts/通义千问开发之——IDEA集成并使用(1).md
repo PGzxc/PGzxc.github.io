@@ -2,7 +2,7 @@
 title: 通义千问开发之——IDEA集成并使用(1)
 categories:
   - AI
-  - B-AI模型
+  - AI模型
   - 通义千问
 tags:
   - 通义千问
