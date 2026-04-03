@@ -2,7 +2,7 @@
 title: new-api开发之——new-api渠道管理(4)
 categories:
   - AI
-  - AI开发
+  - AI模型
   - 模型调用
   - new-api
 tags:

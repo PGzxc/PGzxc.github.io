@@ -2,7 +2,7 @@
 title: new-api开发之——new-api模型管理(5)
 categories:
   - AI
-  - AI开发
+  - AI模型
   - 模型调用
   - new-api
 tags:
