@@ -3,7 +3,7 @@ title: new-api开发之——new-api安装与部署(2)
 categories:
   - AI
   - AI开发
-  - 本地部署
+  - 模型调用
   - new-api
 tags:
   - new-api

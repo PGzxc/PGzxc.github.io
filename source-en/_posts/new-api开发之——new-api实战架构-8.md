@@ -3,7 +3,7 @@ title: new-api开发之——new-api实战架构(8)
 categories:
   - AI
   - AI开发
-  - 本地部署
+  - 模型调用
   - new-api
 tags:
   - new-api
