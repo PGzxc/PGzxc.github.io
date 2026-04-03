@@ -2,7 +2,7 @@
 title: Ollama基础系列之——Ollama介绍(1.1)
 categories:
   - AI
-  - AI开发
+  - AI模型
   - 本地部署
   - Ollama
 tags:

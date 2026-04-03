@@ -2,7 +2,7 @@
 title: Ollama实战之——AI创业完整路线图(3.13)
 categories:
   - AI
-  - AI开发
+  - AI模型
   - 本地部署
   - Ollama
 tags:

@@ -2,7 +2,7 @@
 title: Ollama实战之——从0到1构建类OpenAI云平台(3.11)
 categories:
   - AI
-  - AI开发
+  - AI模型
   - 本地部署
   - Ollama
 tags:

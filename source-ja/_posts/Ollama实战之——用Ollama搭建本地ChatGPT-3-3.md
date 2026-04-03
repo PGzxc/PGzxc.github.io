@@ -2,7 +2,7 @@
 title: Ollama实战之——用Ollama搭建本地ChatGPT(3.3)
 categories:
   - AI
-  - AI开发
+  - AI模型
   - 本地部署
   - Ollama
 tags:

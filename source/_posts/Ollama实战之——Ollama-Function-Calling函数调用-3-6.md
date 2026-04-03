@@ -2,7 +2,7 @@
 title: Ollama实战之——Ollama Function Calling函数调用(3.6)
 categories:
   - AI
-  - AI开发
+  - AI模型
   - 本地部署
   - Ollama
 tags:

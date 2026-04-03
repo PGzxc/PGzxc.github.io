@@ -2,7 +2,7 @@
 title: Ollama基础系列之——Ollama进阶篇(1.6)
 categories:
   - AI
-  - AI开发
+  - AI模型
   - 本地部署
   - Ollama
 tags:

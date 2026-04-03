@@ -2,7 +2,7 @@
 title: Ollama实战之——本地大模型三大框架全面对比(3.2)
 categories:
   - AI
-  - AI开发
+  - AI模型
   - 本地部署
   - Ollama
 tags:

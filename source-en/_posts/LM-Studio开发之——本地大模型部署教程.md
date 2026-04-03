@@ -2,7 +2,7 @@
 title: LM-Studio开发之——本地大模型部署教程
 categories:
   - AI
-  - AI开发
+  - AI模型
   - 本地部署
   - LM-Studio
 tags:

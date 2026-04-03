@@ -2,7 +2,7 @@
 title: Ollama实战之——Ollama企业级AI架构设计(3.7)
 categories:
   - AI
-  - AI开发
+  - AI模型
   - 本地部署
   - Ollama
 tags:

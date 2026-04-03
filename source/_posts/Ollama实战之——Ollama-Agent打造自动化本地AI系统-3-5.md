@@ -2,7 +2,7 @@
 title: Ollama实战之——Ollama+Agent打造自动化本地AI系统(3.5)
 categories:
   - AI
-  - AI开发
+  - AI模型
   - 本地部署
   - Ollama
 tags:

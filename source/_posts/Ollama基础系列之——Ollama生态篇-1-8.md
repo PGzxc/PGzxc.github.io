@@ -2,7 +2,7 @@
 title: Ollama基础系列之——Ollama生态篇(1.8)
 categories:
   - AI
-  - AI开发
+  - AI模型
   - 本地部署
   - Ollama
 tags:

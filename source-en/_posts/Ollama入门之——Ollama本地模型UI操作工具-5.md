@@ -2,7 +2,7 @@
 title: Ollama入门之——Ollama本地模型UI操作工具(5)
 categories:
   - AI
-  - AI开发
+  - AI模型
   - 本地部署
   - Ollama
 tags:

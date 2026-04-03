@@ -2,7 +2,7 @@
 title: Ollama开发系列之——生产部署与性能优化(2.8)
 categories:
   - AI
-  - AI开发
+  - AI模型
   - 本地部署
   - Ollama
 tags:

@@ -2,7 +2,7 @@
 title: Ollama实战之——AI云平台商业化运营全解析(3.12)
 categories:
   - AI
-  - AI开发
+  - AI模型
   - 本地部署
   - Ollama
 tags:

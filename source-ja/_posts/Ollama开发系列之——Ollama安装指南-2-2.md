@@ -2,7 +2,7 @@
 title: Ollama开发系列之——Ollama安装指南(2.2)
 categories:
   - AI
-  - AI开发
+  - AI模型
   - 本地部署
   - Ollama
 tags:

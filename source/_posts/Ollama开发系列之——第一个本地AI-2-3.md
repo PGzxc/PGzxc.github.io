@@ -2,7 +2,7 @@
 title: Ollama开发系列之——第一个本地AI(2.3)
 categories:
   - AI
-  - AI开发
+  - AI模型
   - 本地部署
   - Ollama
 tags:

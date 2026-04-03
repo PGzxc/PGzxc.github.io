@@ -2,7 +2,7 @@
 title: OMLX开发之——入门教程
 categories:
   - AI
-  - AI开发
+  - AI模型
   - 本地部署
   - OMLX
 tags:

@@ -2,7 +2,7 @@
 title: Ollama入门之——Ollama大模型相关概念NLP(1)
 categories:
   - AI
-  - AI开发
+  - AI模型
   - 本地部署
   - Ollama
 tags:
