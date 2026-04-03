@@ -1,5 +1,5 @@
 ---
-title: AI开发助手Claude Code之——使用教程
+title: Claude Code开发之——使用教程
 categories:
   - AI
   - AI编程助手
