@@ -3,6 +3,7 @@ title: AI开发之——Vega AI体验
 categories:
   - AI
   - AI模型
+  - 大厂模型
   - New Bing
 tags:
   - Vega AI

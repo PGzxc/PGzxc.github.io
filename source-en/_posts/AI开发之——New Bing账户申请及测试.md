@@ -3,6 +3,7 @@ title: AI开发之——New Bing账户申请及测试
 categories:
   - AI
   - AI模型
+  - 大厂模型
   - New Bing
 tags:
   - New Bing

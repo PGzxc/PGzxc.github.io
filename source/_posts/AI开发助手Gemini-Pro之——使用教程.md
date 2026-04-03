@@ -3,6 +3,7 @@ title: AI开发助手Gemini Pro之——使用教程
 categories:
   - AI
   - AI模型
+  - 大厂模型
   - Gemini
 tags:
   - Gemini
