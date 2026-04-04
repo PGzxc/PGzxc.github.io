@@ -3,7 +3,7 @@ title: mobile-mcp开发之——快速入门(3)
 categories:
   - AI
   - AI开发
-  - AI开发工具
+  - AI编程助手
   - mobile-mcp
 tags:
   - mobile-mcp

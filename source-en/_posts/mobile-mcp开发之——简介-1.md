@@ -3,7 +3,7 @@ title: mobile-mcp开发之——简介(1)
 categories:
   - AI
   - AI开发
-  - AI开发工具
+  - AI编程助手
   - mobile-mcp
 tags:
   - mobile-mcp
