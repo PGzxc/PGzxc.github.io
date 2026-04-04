@@ -2,6 +2,7 @@
 title: mobile-mcp开发之——常见问题及解决(6)
 categories:
   - AI
+  - AI开发
   - AI开发工具
   - mobile-mcp
 tags:

@@ -2,6 +2,7 @@
 title: mobile-mcp开发之——工程架构设计(5)
 categories:
   - AI
+  - AI开发
   - AI开发工具
   - mobile-mcp
 tags:

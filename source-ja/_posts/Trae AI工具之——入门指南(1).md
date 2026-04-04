@@ -2,6 +2,7 @@
 title: Trae AI工具之——入门指南(1)
 categories:
   - AI
+  - AI开发
   - AI开发工具
   - Trae
 tags:
