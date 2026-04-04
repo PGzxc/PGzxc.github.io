@@ -2,6 +2,7 @@
 title: Cursor代码神器之——创建跨平台Flutter项目(10)
 categories:
   - AI
+  - AI开发
   - AI编程助手
   - Cursor
 tags:

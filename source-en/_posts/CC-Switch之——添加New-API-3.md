@@ -2,6 +2,7 @@
 title: CC Switch之——添加New-API(3)
 categories:
   - AI
+  - AI开发
   - AI编程助手
   - CC-Switch
 tags:

@@ -2,6 +2,7 @@
 title: Continue教程之——IDE插件安装与配置(2)
 categories:
   - AI
+  - AI开发
   - AI编程助手
   - Continue
 tags:

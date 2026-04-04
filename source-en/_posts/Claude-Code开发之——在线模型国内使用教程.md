@@ -2,6 +2,7 @@
 title: Claude Code开发之——在线模型国内使用教程
 categories:
   - AI
+  - AI开发
   - AI编程助手
   - Claude Code
 tags:

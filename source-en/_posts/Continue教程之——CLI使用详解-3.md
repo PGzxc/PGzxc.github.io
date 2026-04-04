@@ -2,6 +2,7 @@
 title: Continue教程之——CLI使用详解(3)
 categories:
   - AI
+  - AI开发
   - AI编程助手
   - Continue
 tags:

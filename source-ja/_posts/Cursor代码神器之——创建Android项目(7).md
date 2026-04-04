@@ -2,6 +2,7 @@
 title: Cursor代码神器之——创建Android项目(7)
 categories:
   - AI
+  - AI开发
   - AI编程助手
   - Cursor
 tags:

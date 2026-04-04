@@ -2,6 +2,7 @@
 title: Continue教程之——多模型+网关方案(6)
 categories:
   - AI
+  - AI开发
   - AI编程助手
   - Continue
 tags:

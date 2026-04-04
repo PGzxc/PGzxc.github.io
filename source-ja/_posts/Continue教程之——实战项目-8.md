@@ -2,6 +2,7 @@
 title: Continue教程之——实战项目(8)
 categories:
   - AI
+  - AI开发
   - AI编程助手
   - Continue
 tags:

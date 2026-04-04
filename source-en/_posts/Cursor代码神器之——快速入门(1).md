@@ -2,6 +2,7 @@
 title: Cursor代码神器之——快速入门(1)
 categories:
   - AI
+  - AI开发
   - AI编程助手
   - Cursor
 tags:

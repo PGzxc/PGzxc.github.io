@@ -2,6 +2,7 @@
 title: CC-Switch之——添加在线渠道(4)
 categories:
   - AI
+  - AI开发
   - AI编程助手
   - CC-Switch
 tags:

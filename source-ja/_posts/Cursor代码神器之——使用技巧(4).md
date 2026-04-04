@@ -2,6 +2,7 @@
 title: Cursor代码神器之——使用技巧(4)
 categories:
   - AI
+  - AI开发
   - AI编程助手
   - Cursor
 tags:

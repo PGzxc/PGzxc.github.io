@@ -2,6 +2,7 @@
 title: Continue教程之——本地模型接入(5)
 categories:
   - AI
+  - AI开发
   - AI编程助手
   - Continue
 tags:

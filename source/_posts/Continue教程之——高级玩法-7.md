@@ -2,6 +2,7 @@
 title: Continue教程之——高级玩法(7)
 categories:
   - AI
+  - AI开发
   - AI编程助手
   - Continue
 tags:

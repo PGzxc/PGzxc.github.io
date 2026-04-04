@@ -2,6 +2,7 @@
 title: Continue教程之——Checks机制(4)
 categories:
   - AI
+  - AI开发
   - AI编程助手
   - Continue
 tags:

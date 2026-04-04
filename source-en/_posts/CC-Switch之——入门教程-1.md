@@ -2,6 +2,7 @@
 title: CC-Switch之——入门教程(1)
 categories:
   - AI
+  - AI开发
   - AI编程助手
   - CC-Switch
 tags:

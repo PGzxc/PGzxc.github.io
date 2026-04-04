@@ -2,6 +2,7 @@
 title: Continue教程之——基础入门(1)
 categories:
   - AI
+  - AI开发
   - AI编程助手
   - Continue
 tags:
