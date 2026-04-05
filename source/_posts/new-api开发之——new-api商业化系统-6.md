@@ -3,7 +3,7 @@ title: new-api开发之——new-api商业化系统(6)
 categories:
   - AI
   - AI模型
-  - 模型调用
+  - 聚合平台
   - new-api
 tags:
   - new-api
