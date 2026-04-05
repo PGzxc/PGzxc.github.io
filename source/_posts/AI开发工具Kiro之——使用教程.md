@@ -1,5 +1,5 @@
 ---
-title: AI开发助手Kiro之——使用教程
+title: AI开发工具Kiro之——使用教程
 categories:
   - AI
   - AI开发
