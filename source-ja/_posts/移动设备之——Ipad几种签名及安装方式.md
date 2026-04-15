@@ -1,12 +1,12 @@
 ---
-title: IOS开发之——几种签名及安装方式
+title: 移动设备之——Ipad几种签名及安装方式
 categories:
-  - 开发
-  - D-移动开发
-  - IOS
+  - 硬件
+  - 移动设备
+  - IPad
 tags:
-  - IOS
-abbrlink: d40f7c4e
+  - IPad
+abbrlink: 23c6f65c
 date: 2025-08-04 11:11:58
 ---
 ## 一 概述
