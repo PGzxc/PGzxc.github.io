@@ -125,11 +125,11 @@
 
 ### AI
 
-1. Familiar with developing Flutter-based AI image-text software using gemini-1.5-flash model
-2. Familiar with image recognition and classification based on TensorFlow Lite model
-3. Familiar with object detection based on TensorFlow Lite model
-4. Familiar with single or multi-person pose recognition based on TensorFlow Lite model
-5. Familiar with voice command recognition based on TensorFlow Lite model
-6. Familiar with intelligent response based on TensorFlow Lite model
-7. Familiar with human action recognition in video clips based on TensorFlow Lite model
-8. Familiar with natural language processing and question answering based on TensorFlow Lite model
+1. Familiar with large model application development, with experience in building AI chat systems based on Gemini / Qwen / LLaMA
+2. Master OpenAI API protocol, able to implement unified access between local models (Ollama) and clients
+3. Familiar with SSE streaming communication mechanism, implementing incremental rendering for AI conversations
+4. Proficient in using HarmonyOS ArkTS to develop native applications and build responsive UIs
+5. Proficient in using Flutter for cross-platform AI application development
+6. Have network layer encapsulation capabilities, supporting unified processing of regular requests and streaming requests
+7. Familiar with component-based and modular design, improving project maintainability and scalability
+8. Have experience in local large model private deployment and local network communication debugging
