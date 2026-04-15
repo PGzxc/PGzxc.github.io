@@ -123,11 +123,11 @@
 
 ### AI
 
-1. 熟悉开发 Flutter 基于 gemini-1.5-flash 模型制作 AI 图文软件
-2. 熟悉基于 TensorFlow Lite 模型进行图像识别分类
-3. 熟悉基于 TensorFlow Lite 模型进行对象检测
-4. 熟悉基于 TensorFlow Lite 模型识别单人或多人姿势
-5. 熟悉基于 TensorFlow Lite 模型识别语音指令
-6. 熟悉基于 TensorFlow Lite 模型进行智能回复
-7. 熟悉基于 TensorFlow Lite 模型识别视频片段中人体动作
-8. 熟悉基于 TensorFlow LLte 模型进行自然语言处理回答问题
+1. 熟悉大模型应用开发，具备基于 Gemini / Qwen / LLaMA 构建 AI聊天系统经验
+2. 掌握 OpenAI API 协议，能够实现本地模型(Ollama)与客户端的统一接入
+3. 熟悉 SSE流式通信机制，实现 AI 对话增量渲染
+4. 熟练使用 HarmonyOS ArkTS开发原生应用，构建响应式 UI
+5. 熟练使用 Flutter 进行跨平台 AI 应用开发
+6. 具备网络层封装能力，支持普通请求与流式请求统一处理
+7. 熟悉组件化与模块化设计，提升项目可维护性与扩展性
+8. 具备本地大模型私有化部署及局域网通信调试经验
