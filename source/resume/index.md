@@ -40,6 +40,9 @@ toc: false
 {% include_markdown _parts/zh/projects-uni-4.7.md %}
 <!--4.8-个人项目-ai-->
 {% include_markdown _parts/zh/projects-ai-4.8.md %}
+<!--4.9-个人项目-java-->
+{% include_markdown _parts/zh/projects-java-4.9.md %}
+
 
 <!--5-技能清单-->
 {% include_markdown _parts/zh/skills-5.md %}

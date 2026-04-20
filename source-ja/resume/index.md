@@ -41,6 +41,8 @@ toc: false
 {% include_markdown _parts/ja/projects-uni-4.7.md %}
 <!--4.8-個人プロジェクト-AI-->
 {% include_markdown _parts/ja/projects-ai-4.8.md %}
+<!--4.9-個人プロジェクト-java-->
+{% include_markdown _parts/ja/projects-java-4.9.md %}
 
 <!--5-スキルリスト-->
 {% include_markdown _parts/ja/skills-5.md %}
