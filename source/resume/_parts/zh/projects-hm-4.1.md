@@ -1,12 +1,47 @@
 ### <font color=red>一 Harmony项目</font>
 
-#### 1—[SwiperHM](https://github.com/PGzxc/SwiperHM)
+#### 1—[TeaOrderHM](https://github.com/PGzxc/TeaOrderHM)
+
+**项目归属**：个人项目(私有)
+**项目名称**：TeaOrderHM — 鸿蒙点餐应用
+**项目地址**：https://github.com/PGzxc/TeaOrderHM
+**软件支持**：手机/Pad
+**API/SDK**：API Version 21
+**开发语言**：ArkTS+ArkUI
+**开发工具**：DevEco Studio 6.0.1 Release
+**项目描述**：基于ArkTS和ArkUI开发的鸿蒙点餐应用，配套自行开发的Java后端接口和Vue管理平台，实现了完整的点餐流程，包括商品浏览、规格选择、购物车管理和订单历史查看等功能。 
+**功能模块**：
+
+- 点餐页面 ：商品分类展示、商品列表浏览、规格选择、加入购物车
+- 购物车页面 ：商品数量调整、删除商品、清空购物车、结算功能
+- 已点页面 ：订单历史记录展示、订单详情查看
+
+**技术要点**：
+
+- UI布局 ：采用Flex布局及组件构建响应式界面，实现底部导航栏和页面内容的合理布局
+- 常用组件 ：运用List、Button、Image、Text等官方组件构建核心功能界面
+- 状态管理 ：使用@State装饰器实现数据状态管理，确保数据变化与UI同步
+- 自定义组件 ：基于@Component装饰器构建可复用的页面组件
+- 网络请求：封装HttpUtil工具类实现网络请求，支持GET、POST、PUT、DELETE等方法
+- 数据模型 ：定义Product、Category、CartItem、Order等数据模型，规范数据结构
+- 交互体验 ：实现规格选择弹窗、购物车数量调整、即时反馈等交互功能
+- 错误处理机制 ：完善的异常捕获和错误处理，确保应用稳定性
+
+
+**项目预览**
+
+|   ![][tea-1]    |   ![][tea-2]    |   ![][tea-3]    |
+| :-------------: | :-------------: | :-------------: |
+|   ![][tea-4]    |   ![][tea-5]    |   ![][tea-6]    |
+
+
+#### 2—[SwiperHM](https://github.com/PGzxc/SwiperHM)
 
 **项目归属**：个人项目(私密)
-**项目名称**：SwiperHM
+**项目名称**：SwiperHM — 鸿蒙短视频应用
 **项目地址**：https://github.com/PGzxc/SwiperHM
-**软件支持**：鸿蒙全系列
-**API版本**：API Version 17
+**软件支持**：手机/Pad
+**API/SDK**：API Version 17
 **开发语言**：ArkTS+ArkUI
 **开发工具**：DevEco Studio 5.0.5 Release
 **项目描述**：仿抖音和小红书鸿蒙项目， 基于api.apiopen.top开放接口，实现仿抖音视频滑动切换 
@@ -17,10 +52,9 @@
 - 基于V1、V2状态管理监控数据变化及UI同步
 - 基于官方工具WindowUtils适配屏幕和窗口
 - 自定义组件：@Builder装饰器、@Component装饰器
-
-* 三方库：axios(网络请求)、pulltorefres(刷新/加载更多)
-* 常用组件：WaterFlow(瀑布流)、Swiper(视频滑动)、Tabs(导航栏)等
-* 音视频：Video组件及状态管理(播放、循环、准备、开始、出错等)
+- 三方库：axios(网络请求)、pulltorefres(刷新/加载更多)
+- 常用组件：WaterFlow(瀑布流)、Swiper(视频滑动)、Tabs(导航栏)等
+- 音视频：Video组件及状态管理(播放、循环、准备、开始、出错等)
 
 **项目预览**
 
@@ -29,13 +63,13 @@
 | ![][swiperhm-4] | ![][swiperhm-5] | ![][swiperhm-6] |
 | ![][swiperhm-7] | ![][swiperhm-8] | ![][swiperhm-9] |
 
-#### 2—[WanCJ](https://github.com/PGzxc/WanCJ)
+#### 3—[WanCJ](https://github.com/PGzxc/WanCJ)
 
 **项目归属**：个人项目(开源)
 **项目名称**：WanCJ
 **项目地址**：https://github.com/PGzxc/WanCJ
-**软件支持**：鸿蒙全系列
-**API版本**：API Version 12
+**软件支持**：手机/Pad
+**API/SDK**：API Version 12
 **开发语言**：仓颉(.cj)+ArkUI
 **开发工具**：DevEco Studio NEXT Beta1+Node(18.18.2)
 **项目描述**：本项目是由鸿蒙开发语言由ArkTS(.ets)转化为仓颉(.cj)的开源项目，UI 布局不变，用仓颉编写逻辑，并封装网络访问模块，自定义组件等的基础上快速完成功能开发     
@@ -55,13 +89,13 @@
 | :----------: | :----------: | :----------: | :----------: |
 | ![][wancj-5] | ![][wancj-6] | ![][wancj-7] | ![][wancj-8] |
 
-#### 3—[WanAndroidHM](https://github.com/PGzxc/WanAndroidHM)
+#### 4—[WanAndroidHM](https://github.com/PGzxc/WanAndroidHM)
 
 **项目归属**：个人项目(开源)
 **项目名称**：WanAndroidHM
 **项目地址**：https://github.com/PGzxc/WanAndroidHM
-**软件支持**：鸿蒙全系列
-**API版本**：API Version 12
+**软件支持**：手机/Pad
+**API/SDK**：API Version 12
 **开发语言**：ArkTS+ArkUI
 **开发工具**：DevEco Studio 4.0 Release+Node(16.20.1)+ohpm(1.2.5)
 **项目描述**：该项目是基于WanAndroid 网站开源的接口 API制作的一款Harmony开源hap。利用Harmony布局、组件、API开发的一款支持Harmony全系列应用。     
@@ -84,13 +118,13 @@
 | ![][waz-hm-9]  | ![][waz-hm-10] | ![][waz-hm-11] | ![][waz-hm-12] |
 | ![][waz-hm-13] | ![][waz-hm-14] | ![][waz-hm-15] | ![][waz-hm-16] |
 
-#### 4—[BookHM](https://github.com/PGzxc/BookHM)
+#### 5—[BookHM](https://github.com/PGzxc/BookHM)
 
 **项目归属**：个人项目(开源)
 **项目名称**：BookHM
 **项目地址**：https://github.com/PGzxc/BookHM
-**软件支持**：鸿蒙全系列
-**API版本**：API Version 10
+**软件支持**：手机/Pad
+**API/SDK**：API Version 10
 **开发语言**：ArkTS+ArkUI
 **开发工具**：DevEco Studio 4.0 Release+Node(16.20.1)+ohpm(1.2.5)
 **项目描述**：这是一个读书app OpenHarmony版本。使用List 和Grid来处理图书信息的展示，底部使用Tabs导航组件使用。本应用数据使用本地数据模拟返回。
@@ -157,4 +191,13 @@
 [hm-read-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/hm_read_4_voice_his.png
 [hm-read-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/hm_read_5_voice_per.png
 [hm-read-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/hm_read_6_me.png
+
+
+<!--tea-hm-->
+[tea-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-1-order-show.png
+[tea-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-2-order-choose.png
+[tea-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-3-order-add.png
+[tea-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-4-cart-view.png
+[tea-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-5-cart-update.png
+[tea-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-6-order-list.png
 

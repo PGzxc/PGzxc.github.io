@@ -1,28 +1,60 @@
+### <font color=red>一 Harmonyプロジェクト</font>
+
+#### 1—[TeaOrderHM](https://github.com/PGzxc/TeaOrderHM)
+
+**プロジェクト所属**：個人プロジェクト(プライベート)
+**プロジェクト名**：TeaOrderHM — Harmony注文アプリ
+**プロジェクトURL**：https://github.com/PGzxc/TeaOrderHM
+**プラットフォームサポート**：スマートフォン/Pad
+**API/SDK**：API Version 21
+**開発言語**：ArkTS+ArkUI
+**開発ツール**：DevEco Studio 6.0.1 Release
+**プロジェクト説明**：ArkTSとArkUIをベースに開発されたHarmony注文アプリで、自作のJavaバックエンドインターフェースとVue管理プラットフォームと連携し、商品閲覧、サイズ選択、ショッピングカート管理、注文履歴確認などの機能を含む完全な注文プロセスを実現しています。
+**機能モジュール**：
+
+- 注文ページ ：商品カテゴリ表示、商品リスト閲覧、サイズ選択、ショッピングカート追加
+- ショッピングカートページ ：商品数量調整、商品削除、ショッピングカート空にする、精算機能
+- 注文履歴ページ ：注文履歴表示、注文詳細確認
+
+**技術的ハイライト**：
+
+- UIレイアウトアーキテクチャ ：Flexレイアウトとコンポーネントを採用してレスポンシブインターフェースを構築し、下部ナビゲーションバーとページコンテンツの合理的なレイアウトを実現
+- 一般的なコンポーネント ：List、Button、Image、Textなどの公式コンポーネントを活用してコア機能インターフェースを構築
+- 状態管理 ：@Stateデコレータを使用してデータ状態管理を実現し、データの変化とUIの同期を確保
+- カスタムコンポーネント ：@Componentデコレータに基づいて再利用可能なページコンポーネントを構築
+- ネットワークリクエスト：HttpUtilツールクラスをカプセル化してネットワークリクエストを実現し、GET、POST、PUT、DELETEなどのメソッドをサポート
+- データモデル ：Product、Category、CartItem、Orderなどのデータモデルを定義し、データ構造を標準化
+- インタラクション体験 ：サイズ選択ポップアップ、ショッピングカート数量調整、即時フィードバックなどのインタラクション機能を実現
+- エラー処理メカニズム ：完善な例外捕捉とエラー処理を実装し、アプリの安定性を確保
 
 
-### <font color=red>1. Harmonyプロジェクト</font>
+**プロジェクトプレビュー**
 
-#### 1—[SwiperHM](https://github.com/PGzxc/SwiperHM)
+|   ![][tea-1]    |   ![][tea-2]    |   ![][tea-3]    |
+| :-------------: | :-------------: | :-------------: |
+|   ![][tea-4]    |   ![][tea-5]    |   ![][tea-6]    |
 
-**プロジェクト帰属**：個人プロジェクト(非公開)
-**プロジェクト名**：SwiperHM
-**プロジェクトアドレス**：https://github.com/PGzxc/SwiperHM
-**ソフトウェアサポート**：Harmony全シリーズ
-**APIバージョン**：API Version 17
+
+#### 2—[SwiperHM](https://github.com/PGzxc/SwiperHM)
+
+**プロジェクト所属**：個人プロジェクト(プライベート)
+**プロジェクト名**：SwiperHM — Harmonyショートビデオアプリ
+**プロジェクトURL**：https://github.com/PGzxc/SwiperHM
+**プラットフォームサポート**：スマートフォン/Pad
+**API/SDK**：API Version 17
 **開発言語**：ArkTS+ArkUI
 **開発ツール**：DevEco Studio 5.0.5 Release
-**プロジェクト説明**：TikTok・レディースガジェットを模倣したHarmonyプロジェクトで、api.apiopen.topのオープンインターフェースに基づき、TikTokスタイルの動画スワイプ切り替えを実装しています 
-**機能モジュール**：ホーム、ギャラリー、公開、メッセージ、マイページ   
-**技術ポイント**：
+**プロジェクト説明**：TikTokと小紅書を模倣したHarmonyプロジェクトで、api.apiopen.topのオープンインターフェースに基づいて、TikTokスタイルのビデオスワイプ切り替えを実現しています。
+**機能モジュール**：ホーム、写真集、投稿、メッセージ、マイページ  
+**技術的ハイライト**：
 
-- Flex+Builder+scale+animationに基づいてレディースガジェットスタイルのボトムナビゲーションを構築
-- V1、V2状態管理に基づいてデータ変更とUI同期を監視
-- 公式ツールWindowUtilsに基づいて画面とウィンドウを適応
+- Flex+Builder+scale+animationに基づいて小紅書スタイルの下部ナビゲーションを構築
+- V1、V2状態管理に基づいてデータの変化とUIの同期を監視
+- 公式ツールWindowUtilsに基づいて画面とウィンドウに適応
 - カスタムコンポーネント：@Builderデコレータ、@Componentデコレータ
-
-* サードパーティライブラリ：axios(ネットワークリクエスト)、pulltorefres(リフレッシュ/ページング)
-* 一般的なコンポーネント：WaterFlow(カスケードフロー)、Swiper(動画スワイプ)、Tabs(ナビゲーションバー)など
-* 音声・動画：Videoコンポーネントと状態管理(再生、ループ、準備、開始、エラーなど)
+- サードパーティライブラリ：axios(ネットワークリクエスト)、pulltorefres(リフレッシュ/さらに読み込み)
+- 一般的なコンポーネント：WaterFlow(瀑布流)、Swiper(ビデオスワイプ)、Tabs(ナビゲーションバー)など
+- 音声/ビデオ：Videoコンポーネントと状態管理(再生、ループ、準備、開始、エラーなど)
 
 **プロジェクトプレビュー**
 
@@ -31,25 +63,25 @@
 | ![][swiperhm-4] | ![][swiperhm-5] | ![][swiperhm-6] |
 | ![][swiperhm-7] | ![][swiperhm-8] | ![][swiperhm-9] |
 
-#### 2—[WanCJ](https://github.com/PGzxc/WanCJ)
+#### 3—[WanCJ](https://github.com/PGzxc/WanCJ)
 
-**プロジェクト帰属**：個人プロジェクト(オープンソース)
+**プロジェクト所属**：個人プロジェクト(オープンソース)
 **プロジェクト名**：WanCJ
-**プロジェクトアドレス**：https://github.com/PGzxc/WanCJ
-**ソフトウェアサポート**：Harmony全シリーズ
-**APIバージョン**：API Version 12
-**開発言語**： Cangjie(.cj)+ArkUI
+**プロジェクトURL**：https://github.com/PGzxc/WanCJ
+**プラットフォームサポート**：スマートフォン/Pad
+**API/SDK**：API Version 12
+**開発言語**：蒼颉(.cj)+ArkUI
 **開発ツール**：DevEco Studio NEXT Beta1+Node(18.18.2)
-**プロジェクト説明**：このプロジェクトは、Harmony開発言語をArkTS(.ets)からCangjie(.cj)に変換したオープンソースプロジェクトで、UIレイアウトは変更せず、Cangjieでロジックを記述し、ネットワークアクセスモジュール、カスタムコンポーネントなどをカプセル化した上で、機能開発を迅速に完成させています     
-**機能モジュール**：ホーム、コース、ツール、マイページ   
-**技術ポイント**：
+**プロジェクト説明**：このプロジェクトは、Harmony開発言語をArkTS(.ets)から蒼颉(.cj)に変換したオープンソースプロジェクトで、UIレイアウトはそのままに、蒼颉でロジックを記述し、ネットワークアクセスモジュール、カスタムコンポーネントなどをカプセル化することで、機能開発を迅速に完成させています。
+**機能モジュール**：ホーム、コース、ツール、マイページ  
+**技術的ハイライト**：
 
-- Tabs+TabContentに基づいてボトムナビゲーションフレームワークを構築
-- ohos.net.httpに基づいてネットワークリクエストを実行し、Get、Postリクエストをカプセル化
+- Tabs+TabContentに基づいて下部ナビゲーションフレームワークを構築
+- ohos.net.httpに基づいてネットワークリクエストを行い、Get、Postリクエストをカプセル化
 - データクラスのシリアライゼーションとデシリアライゼーション
-- ツールクラスを構築してJsonObjectをBeanに、StringをJsonObjectに変換
+- JsonObjectをBeanに変換し、StringをJsonObjectに変換するツールクラスを構築
 - @State、@Propなどのデコレータに基づいてネットワークデータを取得し、状態を更新
-- @Builderデコレータに基づいてカスタムコンポーネントを作成し、extendで既存コンポーネント(メソッド)を拡張し、再利用コードを削減
+- @Builderデコレータに基づいてカスタムコンポーネントを作成し、extendで既存コンポーネント(メソッド)を拡張し、コードの再利用を減らす
 
 **プロジェクトプレビュー**
 
@@ -57,23 +89,23 @@
 | :----------: | :----------: | :----------: | :----------: |
 | ![][wancj-5] | ![][wancj-6] | ![][wancj-7] | ![][wancj-8] |
 
-#### 3—[WanAndroidHM](https://github.com/PGzxc/WanAndroidHM)
+#### 4—[WanAndroidHM](https://github.com/PGzxc/WanAndroidHM)
 
-**プロジェクト帰属**：個人プロジェクト(オープンソース)
+**プロジェクト所属**：個人プロジェクト(オープンソース)
 **プロジェクト名**：WanAndroidHM
-**プロジェクトアドレス**：https://github.com/PGzxc/WanAndroidHM
-**ソフトウェアサポート**：Harmony全シリーズ
-**APIバージョン**：API Version 12
+**プロジェクトURL**：https://github.com/PGzxc/WanAndroidHM
+**プラットフォームサポート**：スマートフォン/Pad
+**API/SDK**：API Version 12
 **開発言語**：ArkTS+ArkUI
 **開発ツール**：DevEco Studio 4.0 Release+Node(16.20.1)+ohpm(1.2.5)
-**プロジェクト説明**：このプロジェクトは、WanAndroidウェブサイトのオープンAPIに基づいて作成されたHarmonyオープンソースhapです。Harmonyのレイアウト、コンポーネント、APIを利用して開発された、Harmony全シリーズをサポートするアプリケーションです。     
-**機能モジュール**：ホーム、ナビゲーション、プロジェクト、メッセージ、マイページなど   
-**技術ポイント**：
+**プロジェクト説明**：このプロジェクトは、WanAndroidウェブサイトのオープンソースAPIをベースに作成されたHarmonyオープンソースhapです。Harmonyのレイアウト、コンポーネント、APIを利用して開発された、Harmony全シリーズをサポートするアプリケーションです。
+**機能モジュール**：ホーム、ナビゲーション、プロジェクト、メッセージ、マイページなど  
+**技術的ハイライト**：
 
-- Tabs + TabBarを使用してボトムナビゲーションフレームワークを構築し、マルチモジュール切り替えとページ管理を実現
+- Tabs + TabBarを使用して下部ナビゲーションフレームワークを構築し、マルチモジュールの切り替えとページ管理を実現
 - @ohos.net.httpに基づいてネットワークリクエストを送信し、Promiseを採用して非同期操作フローを簡素化
 - @State、@Propなどのデコレータを通じてネットワークデータのバインディングと状態更新を管理
-- @Builder、@Extendなどのデコレータを利用してカスタムコンポーネントをカプセル化し、再利用コードを削減
+- @Builder、@Extendなどのデコレータを利用してカスタムコンポーネントをカプセル化し、コードの再利用を減らす
 - preferencesとPersistentStorageを使用してユーザーデータの永続化ストレージを実現
 - router、Navigatorページルーティングとコンポーネントナビゲーション、およびpageTransitionトランジションアニメーションに基づく
 - @ohos/pulltorefresを統合してページのプルダウンリフレッシュとプルアップロード機能を実現
@@ -86,23 +118,23 @@
 | ![][waz-hm-9]  | ![][waz-hm-10] | ![][waz-hm-11] | ![][waz-hm-12] |
 | ![][waz-hm-13] | ![][waz-hm-14] | ![][waz-hm-15] | ![][waz-hm-16] |
 
-#### 4—[BookHM](https://github.com/PGzxc/BookHM)
+#### 5—[BookHM](https://github.com/PGzxc/BookHM)
 
-**プロジェクト帰属**：個人プロジェクト(オープンソース)
+**プロジェクト所属**：個人プロジェクト(オープンソース)
 **プロジェクト名**：BookHM
-**プロジェクトアドレス**：https://github.com/PGzxc/BookHM
-**ソフトウェアサポート**：Harmony全シリーズ
-**APIバージョン**：API Version 10
+**プロジェクトURL**：https://github.com/PGzxc/BookHM
+**プラットフォームサポート**：スマートフォン/Pad
+**API/SDK**：API Version 10
 **開発言語**：ArkTS+ArkUI
 **開発ツール**：DevEco Studio 4.0 Release+Node(16.20.1)+ohpm(1.2.5)
-**プロジェクト説明**：これは読書アプリのOpenHarmonyバージョンです。ListとGridを使用して図書情報の表示を処理し、下部にTabsナビゲーションコンポーネントを使用しています。このアプリのデータは、ローカルデータを使用して模擬的に返しています。
-**機能モジュール**：読書、ブックシェルフ、読書、マイページ   
-**技術ポイント**：
+**プロジェクト説明**：これは読書アプリのOpenHarmonyバージョンです。ListとGridを使用して図書情報の表示を処理し、下部にTabsナビゲーションコンポーネントを使用しています。このアプリのデータはローカルデータを模擬して返しています。
+**機能モジュール**：読書、本棚、読書、マイページ  
+**技術的ハイライト**：
 
-- Tabs+tabBarに基づいてボトムナビゲーションフレームワークを構築
+- Tabs+tabBarに基づいて下部ナビゲーションフレームワークを構築
 - @State、@Propなどのデコレータに基づいて状態を更新
-- `@Watch('changeTab')`に基づいてtab切り替えを監視し、対応するTabデータを設定
-- @Builder、@Extendなどのデコレータに基づいてカスタムコンポーネントを作成し、再利用コードを削減
+- `@Watch('changeTab')`に基づいてtabの切り替えを監視し、対応するTabデータを設定
+- @Builder、@Extendなどのデコレータに基づいてカスタムコンポーネントを作成し、コードの再利用を減らす
 - router、Navigatorページルーティングとコンポーネントナビゲーション、およびpageTransitionトランジションアニメーションに基づく
 
 **プロジェクトプレビュー**
@@ -159,3 +191,13 @@
 [hm-read-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/hm_read_4_voice_his.png
 [hm-read-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/hm_read_5_voice_per.png
 [hm-read-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/hm_read_6_me.png
+
+
+<!--tea-hm-->
+[tea-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-1-order-show.png
+[tea-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-2-order-choose.png
+[tea-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-3-order-add.png
+[tea-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-4-cart-view.png
+[tea-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-5-cart-update.png
+[tea-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-6-order-list.png
+

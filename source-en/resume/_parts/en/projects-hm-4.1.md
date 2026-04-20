@@ -1,28 +1,60 @@
-
-
 ### <font color=red>1. Harmony Projects</font>
 
-#### 1—[SwiperHM](https://github.com/PGzxc/SwiperHM)
+#### 1—[TeaOrderHM](https://github.com/PGzxc/TeaOrderHM)
 
 **Project Ownership**：Personal Project (Private)
-**Project Name**：SwiperHM
-**Project Address**：https://github.com/PGzxc/SwiperHM
-**Software Support**：Harmony Full Series
-**API Version**：API Version 17
+**Project Name**：TeaOrderHM — Harmony Ordering App
+**Project URL**：https://github.com/PGzxc/TeaOrderHM
+**Platform Support**：Smartphone/Pad
+**API/SDK**：API Version 21
+**Development Language**：ArkTS+ArkUI
+**Development Tools**：DevEco Studio 6.0.1 Release
+**Project Description**：A Harmony ordering app developed based on ArkTS and ArkUI, integrated with self-developed Java backend interface and Vue management platform, implementing a complete ordering process including product browsing, size selection, shopping cart management, and order history viewing.
+**Functional Modules**：
+
+- Ordering Page ：Product category display, product list browsing, size selection, add to shopping cart
+- Shopping Cart Page ：Product quantity adjustment, product deletion, empty shopping cart, checkout function
+- Order History Page ：Order history display, order detail viewing
+
+**Technical Highlights**：
+
+- UI Layout Architecture ：Adopting Flex layout and components to build responsive interfaces, achieving reasonable layout of bottom navigation bar and page content
+- Common Components ：Using official components such as List, Button, Image, Text to build core function interfaces
+- State Management ：Using @State decorator to implement data state management, ensuring data changes are synchronized with UI
+- Custom Components ：Building reusable page components based on @Component decorator
+- Network Requests：Encapsulating HttpUtil tool class to implement network requests, supporting GET, POST, PUT, DELETE and other methods
+- Data Models ：Defining data models such as Product, Category, CartItem, Order to standardize data structure
+- Interaction Experience ：Implementing interactive functions such as size selection pop-up, shopping cart quantity adjustment, and immediate feedback
+- Error Handling Mechanism ：Implementing comprehensive exception capture and error handling to ensure application stability
+
+
+**Project Preview**
+
+|   ![][tea-1]    |   ![][tea-2]    |   ![][tea-3]    |
+| :-------------: | :-------------: | :-------------: |
+|   ![][tea-4]    |   ![][tea-5]    |   ![][tea-6]    |
+
+
+#### 2—[SwiperHM](https://github.com/PGzxc/SwiperHM)
+
+**Project Ownership**：Personal Project (Private)
+**Project Name**：SwiperHM — Harmony Short Video App
+**Project URL**：https://github.com/PGzxc/SwiperHM
+**Platform Support**：Smartphone/Pad
+**API/SDK**：API Version 17
 **Development Language**：ArkTS+ArkUI
 **Development Tools**：DevEco Studio 5.0.5 Release
-**Project Description**：Imitation of Douyin and Xiaohongshu Harmony project, based on api.apiopen.top open interface, implementing Douyin-like video swipe switching 
-**Functional Modules**：Home, Gallery, Publish, Message, Me   
-**Technical Points**：
+**Project Description**：A Harmony project imitating TikTok and Xiaohongshu, based on api.apiopen.top open interface, implementing TikTok-style video swipe switching
+**Functional Modules**：Home, Album, Publish, Messages, My Page   
+**Technical Highlights**：
 
-- Build Xiaohongshu-like bottom navigation based on Flex+Builder+scale+animation
-- Monitor data changes and UI synchronization based on V1, V2 state management
-- Adapt to screens and windows based on official tool WindowUtils
-- Custom components: @Builder decorator, @Component decorator
-
-* Third-party libraries: axios (network requests), pulltorefres (refresh/load more)
-* Common components: WaterFlow (waterfall flow), Swiper (video swipe), Tabs (navigation bar), etc.
-* Audio and video: Video component and state management (playback, loop, preparation, start, error, etc.)
+- Building Xiaohongshu-style bottom navigation based on Flex+Builder+scale+animation
+- Monitoring data changes and UI synchronization based on V1, V2 state management
+- Adapting to screens and windows based on official tool WindowUtils
+- Custom Components：@Builder decorator, @Component decorator
+- Third-party Libraries：axios (network requests), pulltorefres (refresh/load more)
+- Common Components：WaterFlow (waterfall flow), Swiper (video swipe), Tabs (navigation bar), etc.
+- Audio/Video：Video component and state management (play, loop, prepare, start, error, etc.)
 
 **Project Preview**
 
@@ -31,25 +63,25 @@
 | ![][swiperhm-4] | ![][swiperhm-5] | ![][swiperhm-6] |
 | ![][swiperhm-7] | ![][swiperhm-8] | ![][swiperhm-9] |
 
-#### 2—[WanCJ](https://github.com/PGzxc/WanCJ)
+#### 3—[WanCJ](https://github.com/PGzxc/WanCJ)
 
 **Project Ownership**：Personal Project (Open Source)
 **Project Name**：WanCJ
-**Project Address**：https://github.com/PGzxc/WanCJ
-**Software Support**：Harmony Full Series
-**API Version**：API Version 12
-**Development Language**：Cangjie(.cj)+ArkUI
+**Project URL**：https://github.com/PGzxc/WanCJ
+**Platform Support**：Smartphone/Pad
+**API/SDK**：API Version 12
+**Development Language**：Cangjie (.cj)+ArkUI
 **Development Tools**：DevEco Studio NEXT Beta1+Node(18.18.2)
-**Project Description**：This project is an open source project that converts Harmony development language from ArkTS(.ets) to Cangjie(.cj), with UI layout unchanged, using Cangjie to write logic, and quickly completing functional development based on encapsulating network access modules, custom components, etc.     
-**Functional Modules**：Home, Course, Tool, Me   
-**Technical Points**：
+**Project Description**：This project is an open source project that converts the Harmony development language from ArkTS (.ets) to Cangjie (.cj), with UI layout unchanged, using Cangjie to write logic, and encapsulating network access modules, custom components, etc. to quickly complete function development
+**Functional Modules**：Home, Courses, Tools, My Page   
+**Technical Highlights**：
 
-- Build bottom navigation framework based on Tabs+TabContent
-- Perform network requests based on ohos.net.http, encapsulate Get, Post requests
+- Building bottom navigation framework based on Tabs+TabContent
+- Making network requests based on ohos.net.http, encapsulating Get and Post requests
 - Serialization and deserialization of data classes
-- Construct tool classes to convert JsonObject to Bean and String to JsonObject
-- Get network data and update status based on @State, @Prop and other decorators
-- Custom components based on @Builder decorator, extend existing components (methods), reduce reusable code
+- Building tool classes to convert JsonObject to Bean and String to JsonObject
+- Obtaining network data and updating state based on @State, @Prop and other decorators
+- Creating custom components based on @Builder decorator, extending existing components (methods) with extend to reduce code reuse
 
 **Project Preview**
 
@@ -57,26 +89,26 @@
 | :----------: | :----------: | :----------: | :----------: |
 | ![][wancj-5] | ![][wancj-6] | ![][wancj-7] | ![][wancj-8] |
 
-#### 3—[WanAndroidHM](https://github.com/PGzxc/WanAndroidHM)
+#### 4—[WanAndroidHM](https://github.com/PGzxc/WanAndroidHM)
 
 **Project Ownership**：Personal Project (Open Source)
 **Project Name**：WanAndroidHM
-**Project Address**：https://github.com/PGzxc/WanAndroidHM
-**Software Support**：Harmony Full Series
-**API Version**：API Version 12
+**Project URL**：https://github.com/PGzxc/WanAndroidHM
+**Platform Support**：Smartphone/Pad
+**API/SDK**：API Version 12
 **Development Language**：ArkTS+ArkUI
 **Development Tools**：DevEco Studio 4.0 Release+Node(16.20.1)+ohpm(1.2.5)
-**Project Description**：This project is a Harmony open source hap based on the open API of WanAndroid website. It is an application that supports the full Harmony series developed using Harmony layout, components, and API.     
-**Functional Modules**：Home, Navigation, Project, Message, Me, etc.   
-**Technical Points**：
+**Project Description**：This project is a Harmony open source hap created based on the open source API of the WanAndroid website. An application supporting the entire Harmony series developed using Harmony layout, components, and API.
+**Functional Modules**：Home, Navigation, Projects, Messages, My Page, etc.   
+**Technical Highlights**：
 
-- Use Tabs + TabBar to build bottom navigation framework, implementing multi-module switching and page management
-- Send network requests based on @ohos.net.http, use Promise to simplify asynchronous operation process
-- Manage network data binding and state updates through @State, @Prop and other decorators
-- Use @Builder, @Extend and other decorators to encapsulate custom components, reduce reusable code
-- Use preferences and PersistentStorage to implement user data persistence storage
-- Based on router, Navigator page routing and component navigation and pageTransition transition animation
-- Integrate @ohos/pulltorefres to implement page pull-down refresh and pull-up loading functions
+- Using Tabs + TabBar to build bottom navigation framework, implementing multi-module switching and page management
+- Sending network requests based on @ohos.net.http, adopting Promise to simplify asynchronous operation flow
+- Managing network data binding and state updates through @State, @Prop and other decorators
+- Using @Builder, @Extend and other decorators to encapsulate custom components, reducing code reuse
+- Using preferences and PersistentStorage to implement persistent storage of user data
+- Based on router, Navigator page routing and component navigation, and pageTransition transition animation
+- Integrating @ohos/pulltorefres to implement page pull-down refresh and pull-up load functions
 
 **Project Preview**
 
@@ -86,24 +118,24 @@
 | ![][waz-hm-9]  | ![][waz-hm-10] | ![][waz-hm-11] | ![][waz-hm-12] |
 | ![][waz-hm-13] | ![][waz-hm-14] | ![][waz-hm-15] | ![][waz-hm-16] |
 
-#### 4—[BookHM](https://github.com/PGzxc/BookHM)
+#### 5—[BookHM](https://github.com/PGzxc/BookHM)
 
 **Project Ownership**：Personal Project (Open Source)
 **Project Name**：BookHM
-**Project Address**：https://github.com/PGzxc/BookHM
-**Software Support**：Harmony Full Series
-**API Version**：API Version 10
+**Project URL**：https://github.com/PGzxc/BookHM
+**Platform Support**：Smartphone/Pad
+**API/SDK**：API Version 10
 **Development Language**：ArkTS+ArkUI
 **Development Tools**：DevEco Studio 4.0 Release+Node(16.20.1)+ohpm(1.2.5)
-**Project Description**：This is a reading app OpenHarmony version. Use List and Grid to handle book information display, and use Tabs navigation component at the bottom. This application uses local data to simulate returns.
-**Functional Modules**：Reading, Bookshelf, Reading, Me   
-**Technical Points**：
+**Project Description**：This is an OpenHarmony version of a reading app. It uses List and Grid to handle the display of book information, and uses Tabs navigation component at the bottom. The app's data uses local data to simulate returns.
+**Functional Modules**：Reading, Bookshelf, Reading, My Page   
+**Technical Highlights**：
 
-- Build bottom navigation framework based on Tabs+tabBar
-- Update status based on @State, @Prop and other decorators
-- Monitor tab switching and set corresponding Tab data based on `@Watch('changeTab')`
-- Custom components based on @Builder, @Extend and other decorators, reduce reusable code
-- Based on router, Navigator page routing and component navigation and pageTransition transition animation
+- Building bottom navigation framework based on Tabs+tabBar
+- Updating state based on @State, @Prop and other decorators
+- Monitoring tab switching and setting corresponding Tab data based on `@Watch('changeTab')`
+- Creating custom components based on @Builder, @Extend and other decorators to reduce code reuse
+- Based on router, Navigator page routing and component navigation, and pageTransition transition animation
 
 **Project Preview**
 
@@ -159,3 +191,13 @@
 [hm-read-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/hm_read_4_voice_his.png
 [hm-read-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/hm_read_5_voice_per.png
 [hm-read-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/hm_read_6_me.png
+
+
+<!--tea-hm-->
+[tea-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-1-order-show.png
+[tea-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-2-order-choose.png
+[tea-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-3-order-add.png
+[tea-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-4-cart-view.png
+[tea-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-5-cart-update.png
+[tea-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-6-order-list.png
+
