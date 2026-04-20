@@ -42,7 +42,8 @@ toc: false
 {% include_markdown _parts/zh/projects-ai-4.8.md %}
 <!--4.9-个人项目-java-->
 {% include_markdown _parts/zh/projects-java-4.9.md %}
-
+<!--4.10-个人项目-web-->
+{% include_markdown _parts/zh/projects-web-4.10.md %}
 
 <!--5-技能清单-->
 {% include_markdown _parts/zh/skills-5.md %}

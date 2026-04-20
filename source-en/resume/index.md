@@ -43,6 +43,8 @@ toc: false
 {% include_markdown _parts/en/projects-ai-4.8.md %}
 <!--4.9-Personal Project-java-->
 {% include_markdown _parts/en/projects-java-4.9.md %}
+<!--4.10-Personal Project-web-->
+{% include_markdown _parts/en/projects-web-4.10.md %}
 
 <!--5-Skills-->
 {% include_markdown _parts/en/skills-5.md %}
