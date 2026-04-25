@@ -30,9 +30,10 @@
 
 **プロジェクトプレビュー**
 
-|   ![][tea-1]    |   ![][tea-2]    |   ![][tea-3]    |
-| :-------------: | :-------------: | :-------------: |
-|   ![][tea-4]    |   ![][tea-5]    |   ![][tea-6]    |
+| ![][tea-1] | ![][tea-2] | ![][tea-3] |
+| :--------: | :--------: | :--------: |
+| ![][tea-4] | ![][tea-5] | ![][tea-6] |
+| ![][tea-7] | ![][tea-8] | ![][tea-9] |
 
 
 #### 2—[SwiperHM](https://github.com/PGzxc/SwiperHM)
@@ -194,10 +195,13 @@
 
 
 <!--tea-hm-->
-[tea-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-1-order-show.png
-[tea-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-2-order-choose.png
-[tea-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-3-order-add.png
-[tea-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-4-cart-view.png
-[tea-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-5-cart-update.png
-[tea-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-6-order-list.png
+[tea-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-1-buy-view.png
+[tea-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-2-cart-no.png
+[tea-3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-3-order-old.png
+[tea-4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-4-buy-mid.png
+[tea-5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-5-buy-little.png
+[tea-6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-6-buy-big.png
+[tea-7]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-7-cart-has.png
+[tea-8]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-8-cart-add.png
+[tea-9]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-hm-9-order-has.png
 
