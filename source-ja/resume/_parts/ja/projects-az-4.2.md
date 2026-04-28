@@ -2,7 +2,39 @@
 
 ### <font color=red>2. Androidプロジェクト</font>
 
-#### 1—[SwiperAndroid](https://github.com/PGzxc/SwiperAndroid)
+### 1-TeaOrderAndroid
+**プロジェクト所属**: 個人プロジェクト(プライベート)
+**プロジェクト名**: TeaOrderAndroid — Android注文アプリケーション
+**プロジェクトURL**: https://github.com/PGzxc/TeaOrderAndroid
+**ソフトウェアサポート**: Android
+**API/SDK**: Android API Level 34
+**開発言語**: Kotlin + Jetpack Compose
+**開発ツール**: Android Studio Panda3 2025.3.3 + AI支援ツール
+**プロジェクト説明**: KotlinとJetpack Composeに基づいて開発されたAndroid注文アプリケーションで、自前開発のJavaバックエンドAPIおよびVue管理プラットフォームと連携しています。商品閲覧、仕様選択、ショッピングカート管理、注文履歴表示など、完全な注文プロセスを実装しています。
+**機能モジュール**:
+
+* 注文ページ：商品カテゴリ表示と切り替え / 仕様選択ポップアップ(甘さ、サイズ) / カート追加機能
+* カートページ：商品数量調整(増減) / 単品削除 / カートクリア / 決済機能
+* 注文履歴ページ：注文履歴表示 / 注文詳細表示(商品情報、サイズ、甘さ、価格)
+
+**技術的特徴**:
+
+- UIレイアウト：Compose宣言型UIを使用してレスポンシブインターフェースを構築
+- 一般的なコンポーネント：LazyColumn、Button、AsyncImage、Textなどの公式コンポーネント
+- 状態管理：ViewModel + StateFlowを使用してデータ状態管理を実装
+- カスタムコンポーネント：@Composableアノテーションに基づいて再利用可能なページコンポーネントを構築
+- ネットワークリクエスト：Retrofitを使用してネットワークリクエストをカプセル化、ApiClientユーティリティクラスをカプセル化してネットワークリクエストを統合管理
+- データモデル：Product、Category、CartItem、Orderなどのデータクラスでデータ構造を標準化
+- インタラクティブ体験：仕様選択ポップアップ、カート数量調整、即時フィードバックなどのインタラクティブ機能を実装
+- エラー処理メカニズム：例外キャッチとエラー処理、および読み込み状態とエラー状態のUI表示
+
+**プロジェクトプレビュー**
+
+| ![][tea-az1] | ![][tea-az2] | ![][tea-az3] |
+| :----------: | :----------: | :----------: |
+| ![][tea-az4] | ![][tea-az5] | ![][tea-az6] |
+
+#### 2—[SwiperAndroid](https://github.com/PGzxc/SwiperAndroid)
 
 **プロジェクト帰属**：個人プロジェクト
 **プロジェクト名**：SwiperAndroid(プライベート)
@@ -38,7 +70,7 @@
 | ![][swiperaz-4] | ![][swiperaz-5] | ![][swiperaz-6] |
 | ![][swiperaz-7] | ![][swiperaz-8] | ![][swiperaz-9] |
 
-#### 2—[WanAndroid_ComposeUI](https://github.com/PGzxc/WanAndroid_ComposeUI)
+#### 3—[WanAndroid_ComposeUI](https://github.com/PGzxc/WanAndroid_ComposeUI)
 
 **プロジェクト帰属**：個人プロジェクト
 **プロジェクト名**：WanAndroid_ComposeUI
@@ -67,7 +99,7 @@
 | ![][com-az-5] | ![][com-az-6]  | ![][com-az-7]  | ![][com-az-8]  |
 | ![][com-az-9] | ![][com-az-10] | ![][com-az-11] | ![][com-az-12] |
 
-#### 3—[Live ](https://github.com/PGzxc/Live)
+#### 4—[Live ](https://github.com/PGzxc/Live)
 
 **プロジェクト帰属** ：個人プロジェクト
 **プロジェクト名**：Android プロジェクト—Live
@@ -97,6 +129,13 @@
 | ![][live-17]| ![][live-18] | ![][live-19]| ![][live-20]|
 
 
+<!--tea-android-->
+[tea-az1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-az-1-order-show.png
+[tea-az2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-az-2-order-big.png
+[tea-az3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-az-3-order-mid.png
+[tea-az4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-az-4-order-small.png
+[tea-az5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-az-5-cart-add.png
+[tea-az6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-az-6-order-list.png
 <!--swiper-android-->
 [swiperaz-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperaz-1-rec-play.png
 [swiperaz-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperaz-2-rec-pause.png

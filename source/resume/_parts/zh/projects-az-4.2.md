@@ -1,9 +1,42 @@
 ### <font color=red>二 Android项目</font>
 
-#### 1—[SwiperAndroid](https://github.com/PGzxc/SwiperAndroid)
+#### 1-TeaOrderAndroid
+**项目归属**：个人项目(私有)
+**项目名称**：TeaOrderAndroid — Android点餐应用
+**项目地址**：https://github.com/PGzxc/TeaOrderAndroid
+**软件支持**：安卓
+**API/SDK**：Android API Level 34
+**开发语言**：Kotlin + Jetpack Compose
+**开发工具**：Android Studio Panda3 2025.3.3+AI辅助工具
+**项目描述**：基于Kotlin和Jetpack Compose开发的Android点餐应用，配套自行开发的Java后端接口和Vue管理平台，实现了完整的点餐流程，包括商品浏览、规格选择、购物车管理和订单历史查看等功能。
+**功能模块**： 
 
-**项目归属**：个人项目
-**项目名称**：SwiperAndroid(私密)
+* 点餐页面：商品分类展示与切换/规格选择弹窗(甜度、份量)/加入购物车功能 
+* 购物车页面：商品数量调整(增减)/删除单个商品/清空购物车/结算功能 
+* 已点页面：订单历史记录展示/订单详情查看(商品信息、份量、甜度、价格)
+
+**技术要点**：
+
+- UI布局：采用Compose声明式UI构建响应式界面
+- 常用组件：LazyColumn、Button、AsyncImage、Text等官方组件
+- 状态管理：使用ViewModel + StateFlow实现数据状态管理
+- 自定义组件：基于@Composable注解构建可复用的页面组件
+- 网络请求：使用Retrofit封装网络请求，封装ApiClient工具类统一管理网络请求
+- 数据模型 ：Product、Category、CartItem、Order等数据类规范数据结构
+- 交互体验：实现规格选择弹窗、购物车数量调整、即时反馈等交互功能
+- 错误处理机制：异常捕获和错误处理及加载状态、错误状态的UI展示
+
+**项目预览**
+
+| ![][tea-az1] | ![][tea-az2] | ![][tea-az3] |
+| :----------: | :----------: | :----------: |
+| ![][tea-az4] | ![][tea-az5] | ![][tea-az6] |
+
+
+#### 2—[SwiperAndroid](https://github.com/PGzxc/SwiperAndroid)
+
+**项目归属**：个人项目(私有)
+**项目名称**：SwiperAndroid — 安卓短视频应用
 **项目地址**：https://github.com/PGzxc/SwiperAndroid
 **软件支持**：Android
 **开发工具**：Android Studio(2025.2.2)+Java(17.0.15)+Gradle(8.14.3)+Kotlin(2.0.21)+Trae
@@ -36,7 +69,7 @@
 | ![][swiperaz-4] | ![][swiperaz-5] | ![][swiperaz-6] |
 | ![][swiperaz-7] | ![][swiperaz-8] | ![][swiperaz-9] |
 
-#### 2—[WanAndroid_ComposeUI](https://github.com/PGzxc/WanAndroid_ComposeUI)
+#### 3—[WanAndroid_ComposeUI](https://github.com/PGzxc/WanAndroid_ComposeUI)
 
 **项目归属**：个人项目
 **项目名称**：WanAndroid_ComposeUI
@@ -65,7 +98,7 @@
 | ![][com-az-5] | ![][com-az-6]  | ![][com-az-7]  | ![][com-az-8]  |
 | ![][com-az-9] | ![][com-az-10] | ![][com-az-11] | ![][com-az-12] |
 
-#### 3—[直播Live ](https://github.com/PGzxc/Live)
+#### 4—[直播Live ](https://github.com/PGzxc/Live)
 
 **项目归属** ：个人项目
 **项目名称**：Android 项目—直播 Live
@@ -95,6 +128,13 @@
 | ![][live-17]| ![][live-18] | ![][live-19]| ![][live-20]|
 
 
+<!--tea-android-->
+[tea-az1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-az-1-order-show.png
+[tea-az2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-az-2-order-big.png
+[tea-az3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-az-3-order-mid.png
+[tea-az4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-az-4-order-small.png
+[tea-az5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-az-5-cart-add.png
+[tea-az6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-az-6-order-list.png
 <!--swiper-android-->
 [swiperaz-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperaz-1-rec-play.png
 [swiperaz-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperaz-2-rec-pause.png

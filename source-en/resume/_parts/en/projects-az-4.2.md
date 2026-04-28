@@ -2,7 +2,40 @@
 
 ### <font color=red>2. Android Projects</font>
 
-#### 1—[SwiperAndroid](https://github.com/PGzxc/SwiperAndroid)
+### 1-TeaOrderAndroid
+**Project Ownership**: Personal Project (Private)
+**Project Name**: TeaOrderAndroid — Android Food Ordering Application
+**Project URL**: https://github.com/PGzxc/TeaOrderAndroid
+**Software Support**: Android
+**API/SDK**: Android API Level 34
+**Development Language**: Kotlin + Jetpack Compose
+**Development Tools**: Android Studio Panda3 2025.3.3 + AI Assistant Tools
+**Project Description**: An Android food ordering application developed based on Kotlin and Jetpack Compose, paired with self-developed Java backend API and Vue management platform. It implements a complete ordering process including product browsing, specification selection, shopping cart management, and order history viewing.
+**Function Modules**:
+
+* Order Page: Product category display and switching / Specification selection popup (sweetness, size) / Add to cart function
+* Cart Page: Product quantity adjustment (increase/decrease) / Delete single product / Clear cart / Checkout function
+* Order History Page: Order history display / Order details viewing (product info, size, sweetness, price)
+
+**Technical Highlights**:
+
+- UI Layout: Built responsive interface using Compose declarative UI
+- Common Components: LazyColumn, Button, AsyncImage, Text and other official components
+- State Management: Implemented data state management using ViewModel + StateFlow
+- Custom Components: Built reusable page components based on @Composable annotation
+- Network Requests: Used Retrofit to encapsulate network requests, encapsulated ApiClient utility class for unified network request management
+- Data Models: Data classes such as Product, Category, CartItem, Order standardize data structure
+- Interactive Experience: Implemented specification selection popup, cart quantity adjustment, instant feedback and other interactive functions
+- Error Handling Mechanism: Exception catching and error handling, as well as UI display for loading state and error state
+
+**Project Preview**
+
+| ![][tea-az1] | ![][tea-az2] | ![][tea-az3] |
+| :----------: | :----------: | :----------: |
+| ![][tea-az4] | ![][tea-az5] | ![][tea-az6] |
+
+
+#### 2—[SwiperAndroid](https://github.com/PGzxc/SwiperAndroid)
 
 **Project Ownership**：Personal Project
 **Project Name**：SwiperAndroid(Private)
@@ -38,7 +71,7 @@
 | ![][swiperaz-4] | ![][swiperaz-5] | ![][swiperaz-6] |
 | ![][swiperaz-7] | ![][swiperaz-8] | ![][swiperaz-9] |
 
-#### 2—[WanAndroid_ComposeUI](https://github.com/PGzxc/WanAndroid_ComposeUI)
+#### 3—[WanAndroid_ComposeUI](https://github.com/PGzxc/WanAndroid_ComposeUI)
 
 **Project Ownership**：Personal Project
 **Project Name**：WanAndroid_ComposeUI
@@ -67,7 +100,7 @@
 | ![][com-az-5] | ![][com-az-6]  | ![][com-az-7]  | ![][com-az-8]  |
 | ![][com-az-9] | ![][com-az-10] | ![][com-az-11] | ![][com-az-12] |
 
-#### 3—[Live ](https://github.com/PGzxc/Live)
+#### 4—[Live ](https://github.com/PGzxc/Live)
 
 **Project Ownership** ：Personal Project
 **Project Name**：Android Project—Live
@@ -97,6 +130,13 @@
 | ![][live-17]| ![][live-18] | ![][live-19]| ![][live-20]|
 
 
+<!--tea-android-->
+[tea-az1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-az-1-order-show.png
+[tea-az2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-az-2-order-big.png
+[tea-az3]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-az-3-order-mid.png
+[tea-az4]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-az-4-order-small.png
+[tea-az5]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-az-5-cart-add.png
+[tea-az6]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/tea-az-6-order-list.png
 <!--swiper-android-->
 [swiperaz-1]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperaz-1-rec-play.png
 [swiperaz-2]:https://cdn.jsdelivr.net/gh/PGzxc/CDN/blog-resume/swiperaz-2-rec-pause.png
