@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述123本文介绍： - 内网穿透案例：NAS &#x2F; 家庭服务器远程访问方案 - 实现方案">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内网穿透之——内网穿透实战(6)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/1223dc7.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 概述123本文介绍： - 内网穿透案例：NAS &#x2F; 家庭服务器远程访问方案 - 实现方案">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-03-31T08:13:41.000Z">
+<meta property="article:modified_time" content="2026-04-29T00:02:36.167Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="内网穿透">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/1223dc7.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/1223dc7.html","path":"posts/1223dc7.html","title":"内网穿透之——内网穿透实战(6)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>内网穿透之——内网穿透实战(6) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">378</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4809</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="nav-number">2.</span> <span class="nav-text">二 相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 解决什么问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%85%B8%E5%9E%8B%E5%AE%B6%E5%BA%AD%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 典型家庭网络结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E7%9A%84-4-%E7%A7%8D%E4%B8%BB%E6%B5%81%E6%96%B9%E6%A1%88"><span class="nav-number">3.</span> <span class="nav-text">三 远程访问的 4 种主流方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%96%B9%E6%A1%881%EF%BC%9ANAS%E5%AE%98%E6%96%B9DDNS-%E6%9C%80%E7%AE%80%E5%8D%95"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 方案1：NAS官方DDNS(最简单)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%96%B9%E6%A1%882%EF%BC%9A%E8%B7%AF%E7%94%B1%E5%99%A8%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84-Port-Forwarding"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 方案2：路由器端口映射(Port Forwarding)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E6%96%B9%E6%A1%883%EF%BC%9A%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F-%E6%8E%A8%E8%8D%90%E6%96%B9%E6%A1%88"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 方案3：内网穿透(推荐方案)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E6%96%B9%E6%A1%884%EF%BC%9AVPN-WireGuard-Tailscale"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 方案4：VPN(WireGuard &#x2F; Tailscale)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E6%8E%A8%E8%8D%90%E7%BB%84%E5%90%88%E6%9E%B6%E6%9E%84-%E6%9C%80%E5%AE%9E%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">四 推荐组合架构(最实用)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5-%E4%B8%AA%E4%BA%BA-%E5%AE%B6%E5%BA%AD"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 最佳实践(个人&#x2F;家庭)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%8D%87%E7%BA%A7%E7%89%88"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 企业级升级版</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-NAS%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">5.</span> <span class="nav-text">五 NAS实际应用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E8%AE%BF%E9%97%AE"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 远程文件访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E7%A7%81%E4%BA%BA%E5%BD%B1%E9%9F%B3%E5%BA%93"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 私人影音库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E5%A4%87%E4%BB%BD%E7%B3%BB%E7%BB%9F"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 备份系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="nav-number">5.4.</span> <span class="nav-text">5.4 开发环境</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD-%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%AE"><span class="nav-number">6.</span> <span class="nav-text">六 安全建议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-%E4%B8%8D%E8%A6%81%E5%81%9A"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 不要做</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-%E6%8E%A8%E8%8D%90%E5%81%9A"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 推荐做</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83-%E6%9C%AC%E7%AF%87%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">七 本篇总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-NAS%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E6%9C%AC%E8%B4%A8"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 NAS远程访问本质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-%E5%9B%9B%E5%A4%A7%E6%96%B9%E6%A1%88%E6%80%BB%E7%BB%93"><span class="nav-number">7.2.</span> <span class="nav-text">7.2 四大方案总结</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4809</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">378</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">699</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/1223dc7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="内网穿透之——内网穿透实战(6) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          内网穿透之——内网穿透实战(6)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E4%B9%8B%E2%80%94%E2%80%94%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%AE%9E%E6%88%98-6.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-03-31 16:13:41" itemprop="dateCreated datePublished" datetime="2026-03-31T16:13:41+08:00">2026-03-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">网络工具</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" itemprop="url" rel="index"><span itemprop="name">内网穿透</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">本文介绍：</span><br><span class="line"> - 内网穿透案例：NAS / 家庭服务器远程访问方案</span><br><span class="line"> - 实现方案</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-相关概念"><a href="#二-相关概念" class="headerlink" title="二 相关概念"></a>二 相关概念</h2><h3 id="2-1-解决什么问题？"><a href="#2-1-解决什么问题？" class="headerlink" title="2.1 解决什么问题？"></a>2.1 解决什么问题？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.很多人搭了 NAS 或家庭服务器后都会遇到同一个问题：</span><br><span class="line"> -在家可以访问（局域网 OK）</span><br><span class="line"> -出门就访问不了</span><br><span class="line"> -DDNS 配好了但不稳定</span><br><span class="line"> -运营商没有公网 IP（最常见）</span><br><span class="line"></span><br><span class="line">2.本质问题只有一个：</span><br><span class="line"></span><br><span class="line">你的设备在内网，外网无法直接访问</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-典型家庭网络结构"><a href="#2-2-典型家庭网络结构" class="headerlink" title="2.2 典型家庭网络结构"></a>2.2 典型家庭网络结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">手机（外网）</span><br><span class="line">   ↓</span><br><span class="line">公网IP / CGNAT</span><br><span class="line">   ↓</span><br><span class="line">路由器（NAT）</span><br><span class="line">   ↓</span><br><span class="line">NAS / 服务器（192.168.x.x）</span><br><span class="line"></span><br><span class="line">NAS 默认是“隐藏在内网”的设备</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-远程访问的-4-种主流方案"><a href="#三-远程访问的-4-种主流方案" class="headerlink" title="三 远程访问的 4 种主流方案"></a>三 远程访问的 4 种主流方案</h2><h3 id="3-1-方案1：NAS官方DDNS-最简单"><a href="#3-1-方案1：NAS官方DDNS-最简单" class="headerlink" title="3.1 方案1：NAS官方DDNS(最简单)"></a>3.1 方案1：NAS官方DDNS(最简单)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">1、适合：</span><br><span class="line">新手 / 临时使用</span><br><span class="line"></span><br><span class="line">2、常见设备：</span><br><span class="line">Synology DiskStation</span><br><span class="line">QNAP TS Series</span><br><span class="line"></span><br><span class="line">3、思路：</span><br><span class="line">NAS → 自动绑定域名 → 外网访问</span><br><span class="line"></span><br><span class="line">4、示例：</span><br><span class="line">https://yourname.synology.me</span><br><span class="line"></span><br><span class="line">5、优点：</span><br><span class="line">-不需要额外服务器</span><br><span class="line">-一键配置</span><br><span class="line"></span><br><span class="line">6、缺点：</span><br><span class="line">-依赖公网IP（很多家庭没有）</span><br><span class="line">-安全性一般</span><br><span class="line">-不适合复杂服务（Docker / API）</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-方案2：路由器端口映射-Port-Forwarding"><a href="#3-2-方案2：路由器端口映射-Port-Forwarding" class="headerlink" title="3.2 方案2：路由器端口映射(Port Forwarding)"></a>3.2 方案2：路由器端口映射(Port Forwarding)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">1.适合：有公网IP用户</span><br><span class="line"></span><br><span class="line">2.示例：</span><br><span class="line">ASUS RT-AC66U B1</span><br><span class="line"></span><br><span class="line">3.原理：</span><br><span class="line">公网IP:5000 → NAS:5000</span><br><span class="line"></span><br><span class="line">4.操作步骤：</span><br><span class="line">-登录路由器后台</span><br><span class="line">-设置端口转发</span><br><span class="line">-指向 NAS 内网 IP</span><br><span class="line"></span><br><span class="line">5.优点：</span><br><span class="line">-速度快（直连）</span><br><span class="line">-延迟低</span><br><span class="line"></span><br><span class="line">6.缺点：</span><br><span class="line">-极度不安全（暴露端口）</span><br><span class="line">-需要公网IP</span><br><span class="line">-容易被扫描攻击</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-方案3：内网穿透-推荐方案"><a href="#3-3-方案3：内网穿透-推荐方案" class="headerlink" title="3.3 方案3：内网穿透(推荐方案)"></a>3.3 方案3：内网穿透(推荐方案)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">1.适合：</span><br><span class="line">没有公网IP / 运营商 CGNAT</span><br><span class="line"></span><br><span class="line">2.推荐工具：frp</span><br><span class="line"></span><br><span class="line">3.架构：</span><br><span class="line">NAS（内网） → frpc → VPS（公网服务器） → 手机访问</span><br><span class="line"></span><br><span class="line">4.实战架构（推荐）</span><br><span class="line">       公网VPS（服务器）</span><br><span class="line">              ↓</span><br><span class="line">        frps（服务端）</span><br><span class="line">              ↓</span><br><span class="line">        加密隧道</span><br><span class="line">              ↓</span><br><span class="line">      NAS / 家庭服务器（frpc）</span><br><span class="line"></span><br><span class="line">5.适用场景</span><br><span class="line">你可以远程访问：</span><br><span class="line">-NAS 文件管理</span><br><span class="line">-Docker 服务</span><br><span class="line">-Home Assistant</span><br><span class="line">-私人云盘</span><br><span class="line">-Jellyfin / Emby 影音库</span><br><span class="line">-Git / CI 服务</span><br><span class="line"></span><br><span class="line">6.优点</span><br><span class="line">-无需公网IP</span><br><span class="line">-稳定</span><br><span class="line">-可控性高</span><br><span class="line">-支持多服务映射</span><br><span class="line"></span><br><span class="line">7.缺点</span><br><span class="line">需要一台 VPS</span><br><span class="line">初始配置稍复杂</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-方案4：VPN-WireGuard-Tailscale"><a href="#3-4-方案4：VPN-WireGuard-Tailscale" class="headerlink" title="3.4 方案4：VPN(WireGuard &#x2F; Tailscale)"></a>3.4 方案4：VPN(WireGuard &#x2F; Tailscale)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">1.适合：</span><br><span class="line">长期使用 / 安全优先</span><br><span class="line"></span><br><span class="line">2.WireGuard 方式</span><br><span class="line">-类似“虚拟局域网”</span><br><span class="line">-手机 = 直接进入家里内网</span><br><span class="line"></span><br><span class="line">3.结合设备：</span><br><span class="line">-WireGuard</span><br><span class="line">-Tailscale</span><br><span class="line"></span><br><span class="line">4.优点：</span><br><span class="line">-极高安全性</span><br><span class="line">-像在同一局域网</span><br><span class="line">-访问 NAS 就像在家一样</span><br><span class="line"></span><br><span class="line">5.缺点：</span><br><span class="line">-需要设备支持</span><br><span class="line">-某些网络环境速度受限</span><br></pre></td></tr></table></figure>
+
+<h2 id="四-推荐组合架构-最实用"><a href="#四-推荐组合架构-最实用" class="headerlink" title="四 推荐组合架构(最实用)"></a>四 推荐组合架构(最实用)</h2><h3 id="4-1-最佳实践-个人-家庭"><a href="#4-1-最佳实践-个人-家庭" class="headerlink" title="4.1 最佳实践(个人&#x2F;家庭)"></a>4.1 最佳实践(个人&#x2F;家庭)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.组合方案：</span><br><span class="line"></span><br><span class="line">Tailscale（VPN打底）</span><br><span class="line">        +</span><br><span class="line">frp（服务暴露）</span><br><span class="line"></span><br><span class="line">2.组合优势：</span><br><span class="line">-VPN：安全访问 NAS</span><br><span class="line">-frp：对外提供服务（网站/API）</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-企业级升级版"><a href="#4-2-企业级升级版" class="headerlink" title="4.2 企业级升级版"></a>4.2 企业级升级版</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Zero Trust（零信任）</span><br><span class="line">   +</span><br><span class="line">VPN Mesh</span><br><span class="line">   +</span><br><span class="line">反向代理（Nginx）</span><br><span class="line">   +</span><br><span class="line">内网穿透</span><br></pre></td></tr></table></figure>
+
+<h2 id="五-NAS实际应用场景"><a href="#五-NAS实际应用场景" class="headerlink" title="五 NAS实际应用场景"></a>五 NAS实际应用场景</h2><h3 id="5-1-远程文件访问"><a href="#5-1-远程文件访问" class="headerlink" title="5.1 远程文件访问"></a>5.1 远程文件访问</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">手机查看视频</span><br><span class="line">电脑同步文件</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-私人影音库"><a href="#5-2-私人影音库" class="headerlink" title="5.2 私人影音库"></a>5.2 私人影音库</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Jellyfin / Emby</span><br><span class="line">远程看电影</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3-备份系统"><a href="#5-3-备份系统" class="headerlink" title="5.3 备份系统"></a>5.3 备份系统</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">手机照片自动备份</span><br><span class="line">电脑定时同步</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-4-开发环境"><a href="#5-4-开发环境" class="headerlink" title="5.4 开发环境"></a>5.4 开发环境</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Git服务器</span><br><span class="line">Docker部署</span><br><span class="line">API测试环境</span><br></pre></td></tr></table></figure>
+
+<h2 id="六-安全建议"><a href="#六-安全建议" class="headerlink" title="六 安全建议"></a>六 安全建议</h2><h3 id="6-1-不要做"><a href="#6-1-不要做" class="headerlink" title="6.1 不要做"></a>6.1 不要做</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">直接暴露 NAS 管理端口</span><br><span class="line">用弱密码</span><br><span class="line">开 SSH 默认端口</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2-推荐做"><a href="#6-2-推荐做" class="headerlink" title="6.2 推荐做"></a>6.2 推荐做</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">VPN优先访问</span><br><span class="line">frp + token认证</span><br><span class="line">HTTPS加密</span><br><span class="line">限制IP访问</span><br></pre></td></tr></table></figure>
+
+<h2 id="七-本篇总结"><a href="#七-本篇总结" class="headerlink" title="七 本篇总结"></a>七 本篇总结</h2><h3 id="7-1-NAS远程访问本质"><a href="#7-1-NAS远程访问本质" class="headerlink" title="7.1 NAS远程访问本质"></a>7.1 NAS远程访问本质</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">把“内网设备”变成“可控公网服务”</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-2-四大方案总结"><a href="#7-2-四大方案总结" class="headerlink" title="7.2 四大方案总结"></a>7.2 四大方案总结</h3><table>
+<thead>
+<tr>
+<th align="center">方案</th>
+<th align="center">难度</th>
+<th align="center">安全性</th>
+<th align="center">推荐指数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">DDNS</td>
+<td align="center">1颗星</td>
+<td align="center">2颗星</td>
+<td align="center">2颗星</td>
+</tr>
+<tr>
+<td align="center">端口映射</td>
+<td align="center">2颗星</td>
+<td align="center">1颗星</td>
+<td align="center">1颗星</td>
+</tr>
+<tr>
+<td align="center">frp穿透</td>
+<td align="center">3颗星</td>
+<td align="center">4颗星</td>
+<td align="center">5颗星</td>
+</tr>
+<tr>
+<td align="center">VPN（WireGuard）</td>
+<td align="center">3颗星</td>
+<td align="center">5颗星</td>
+<td align="center">5颗星</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag"># 内网穿透</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/f9e2bea4.html" rel="prev" title="内网穿透之——VPN+内网穿透融合方案(5)">
+                  <i class="fa fa-angle-left"></i> 内网穿透之——VPN+内网穿透融合方案(5)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/9ff96214.html" rel="next" title="内网穿透之——企业级远程访问方案(7)">
+                  内网穿透之——企业级远程访问方案(7) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"cb5a0785c342d606fc4d37747336f644"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

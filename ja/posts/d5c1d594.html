@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ja/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ja/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ja/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/ja/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/ja/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/ja/","images":"/ja/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索...","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/ja/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/ja/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述-WorkManager（任务调度）12WorkManager 是 Jetpack 提供的持久化任务调度框架，用于 确保任务在适当的时间执行，即使应用被杀死或设备重启。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android面试题——掘金-JetPack之WorkManager(3.9)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/d5c1d594.html">
+<meta property="og:site_name" content="PGzxc (Japanese)">
+<meta property="og:description" content="一 概述-WorkManager（任务调度）12WorkManager 是 Jetpack 提供的持久化任务调度框架，用于 确保任务在适当的时间执行，即使应用被杀死或设备重启。">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2025-04-07T01:50:28.000Z">
+<meta property="article:modified_time" content="2026-04-29T00:02:35.780Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="掘金">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/d5c1d594.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"ja","comments":true,"permalink":"https://pgzxc.github.io/posts/d5c1d594.html","path":"posts/d5c1d594.html","title":"Android面试题——掘金-JetPack之WorkManager(3.9)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android面试题——掘金-JetPack之WorkManager(3.9) | PGzxc (Japanese)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/utils.js" defer></script><script src="/ja/js/motion.js" defer></script><script src="/ja/js/sidebar.js" defer></script><script src="/ja/js/next-boot.js" defer></script><script src="/ja/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/ja/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/ja/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/ja/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/ja/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/ja/atom.xml" title="PGzxc (Japanese)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションを切り替える" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/ja/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (Japanese)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">本から学んだことは表面的なもの；自分で体験しなければならない</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="検索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/ja/" rel="section"><i class="fa fa-bell fa-fw"></i>ホーム</a></li><li class="menu-item menu-item-nav"><a href="/ja/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>ナビゲーション</a></li><li class="menu-item menu-item-categories"><a href="/ja/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリー<span class="badge">378</span></a></li><li class="menu-item menu-item-archives"><a href="/ja/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ<span class="badge">4809</span></a></li><li class="menu-item menu-item-links"><a href="/ja/links/" rel="section"><i class="fa fa-link fa-fw"></i>リンク</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>検索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="検索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          目次
+        </li>
+        <li class="sidebar-nav-overview">
+          サイト概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0-WorkManager%EF%BC%88%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">一 概述-WorkManager（任务调度）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E7%AD%94-%E4%BB%85%E4%BE%9B%E5%8F%82%E8%80%83"><span class="nav-number">2.</span> <span class="nav-text">二 面试题解答(仅供参考)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%BB%80%E4%B9%88%E6%98%AF-WorkManager%EF%BC%9F%E5%AE%83%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 什么是 WorkManager？它的作用是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-WorkManager-%E9%80%82%E7%94%A8%E4%BA%8E%E5%93%AA%E4%BA%9B%E5%9C%BA%E6%99%AF%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 WorkManager 适用于哪些场景？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-WorkManager-%E7%9A%84%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 WorkManager 的核心组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-WorkManager-%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 WorkManager 的基本使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-WorkManager-%E4%BB%BB%E5%8A%A1%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 WorkManager 任务类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E5%91%A8%E6%9C%9F%E6%80%A7%E4%BB%BB%E5%8A%A1%EF%BC%88PeriodicWorkRequest%EF%BC%89"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 周期性任务（PeriodicWorkRequest）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-%E4%BB%BB%E5%8A%A1%E9%93%BE%EF%BC%88%E9%93%BE%E5%BC%8F%E4%BB%BB%E5%8A%A1%E6%89%A7%E8%A1%8C%EF%BC%89"><span class="nav-number">2.7.</span> <span class="nav-text">2.7 任务链（链式任务执行）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-%E4%BB%BB%E5%8A%A1%E5%90%88%E5%B9%B6%EF%BC%88%E5%B9%B6%E8%A1%8C%E6%89%A7%E8%A1%8C%EF%BC%89"><span class="nav-number">2.8.</span> <span class="nav-text">2.8 任务合并（并行执行）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-9-%E4%BB%BB%E5%8A%A1%E7%8A%B6%E6%80%81%E7%9B%91%E5%90%AC"><span class="nav-number">2.9.</span> <span class="nav-text">2.9 任务状态监听</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-10-%E4%BB%BB%E5%8A%A1%E5%8F%96%E6%B6%88"><span class="nav-number">2.10.</span> <span class="nav-text">2.10 任务取消</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-11-%E4%BB%BB%E5%8A%A1%E9%87%8D%E8%AF%95"><span class="nav-number">2.11.</span> <span class="nav-text">2.11 任务重试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-12-WorkManager-%E5%92%8C%E5%85%B6%E4%BB%96%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E6%96%B9%E5%BC%8F%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="nav-number">2.12.</span> <span class="nav-text">2.12 WorkManager 和其他任务调度方式的对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-13-WorkManager-%E9%80%82%E7%94%A8%E4%BA%8E%E5%93%AA%E4%BA%9B-Android-%E7%89%88%E6%9C%AC%EF%BC%9F"><span class="nav-number">2.13.</span> <span class="nav-text">2.13 WorkManager 适用于哪些 Android 版本？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-14-WorkManager-%E5%92%8C-Coroutine-RxJava-%E7%BB%93%E5%90%88"><span class="nav-number">2.14.</span> <span class="nav-text">2.14 WorkManager 和 Coroutine &#x2F; RxJava 结合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-15-%E6%80%BB%E7%BB%93"><span class="nav-number">2.15.</span> <span class="nav-text">2.15 总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">三 参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/ja/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/ja/archives/">
+          <span class="site-state-item-count">4809</span>
+          <span class="site-state-item-name">投稿</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/ja/categories/">
+        <span class="site-state-item-count">378</span>
+        <span class="site-state-item-name">カテゴリー</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/ja/tags/">
+        <span class="site-state-item-count">699</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/d5c1d594.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/ja/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android面试题——掘金-JetPack之WorkManager(3.9) | PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android面试题——掘金-JetPack之WorkManager(3.9)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/Android%E9%9D%A2%E8%AF%95%E9%A2%98%E2%80%94%E2%80%94%E6%8E%98%E9%87%91-JetPack%E4%B9%8BWorkManager(3.9).md" class="post-edit-link" title="編集" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2025-04-07 09:50:28" itemprop="dateCreated datePublished" datetime="2025-04-07T09:50:28+08:00">2025-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" itemprop="url" rel="index"><span itemprop="name">职业发展</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/%E9%9D%A2%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">面试</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/%E9%9D%A2%E8%AF%95/Android%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">Android面试题</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="読書時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">読書時間 &asymp;</span>
+      <span>4 分</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述-WorkManager（任务调度）"><a href="#一-概述-WorkManager（任务调度）" class="headerlink" title="一 概述-WorkManager（任务调度）"></a>一 概述-WorkManager（任务调度）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WorkManager 是 Jetpack 提供的持久化任务调度框架，</span><br><span class="line">用于 确保任务在适当的时间执行，即使应用被杀死或设备重启。</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-面试题解答-仅供参考"><a href="#二-面试题解答-仅供参考" class="headerlink" title="二 面试题解答(仅供参考)"></a>二 面试题解答(仅供参考)</h2><h3 id="2-1-什么是-WorkManager？它的作用是什么？"><a href="#2-1-什么是-WorkManager？它的作用是什么？" class="headerlink" title="2.1 什么是 WorkManager？它的作用是什么？"></a>2.1 什么是 WorkManager？它的作用是什么？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1.概念</span><br><span class="line">WorkManager 是 Android 官方推荐的 任务调度 API，用于 执行需要保证成功的后台任务，如：</span><br><span class="line"></span><br><span class="line">2.作用</span><br><span class="line">✅ 数据同步（上传日志、备份文件）</span><br><span class="line">✅ 图片压缩、数据库清理</span><br><span class="line">✅ 周期性任务（定时检查更新）</span><br><span class="line">✅ 网络请求（确保有网络时执行）</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-WorkManager-适用于哪些场景？"><a href="#2-2-WorkManager-适用于哪些场景？" class="headerlink" title="2.2 WorkManager 适用于哪些场景？"></a>2.2 WorkManager 适用于哪些场景？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-必须保证任务完成（即使设备重启或 App 退出）</span><br><span class="line">-适用于长时间运行的任务（超过 10 分钟）</span><br><span class="line">-无需实时执行的任务（低优先级后台任务）</span><br><span class="line">-适用于电量、网络受限的情况</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-WorkManager-的核心组件"><a href="#2-3-WorkManager-的核心组件" class="headerlink" title="2.3 WorkManager 的核心组件"></a>2.3 WorkManager 的核心组件</h3><table>
+<thead>
+<tr>
+<th align="center">组件</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Worker</td>
+<td align="center">执行任务的逻辑</td>
+</tr>
+<tr>
+<td align="center">WorkRequest</td>
+<td align="center">任务请求，定义任务参数</td>
+</tr>
+<tr>
+<td align="center">WorkManager</td>
+<td align="center">任务管理器，调度任务</td>
+</tr>
+<tr>
+<td align="center">WorkConstraints</td>
+<td align="center">约束条件（如 WiFi、电量充足时执行）</td>
+</tr>
+</tbody></table>
+<h3 id="2-4-WorkManager-的基本使用"><a href="#2-4-WorkManager-的基本使用" class="headerlink" title="2.4 WorkManager 的基本使用"></a>2.4 WorkManager 的基本使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">1.创建 Worker</span><br><span class="line">public class UploadWorker extends Worker &#123;</span><br><span class="line">    public UploadWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) &#123;</span><br><span class="line">        super(context, workerParams);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @NonNull</span><br><span class="line">    @Override</span><br><span class="line">    public Result doWork() &#123;</span><br><span class="line">        // 执行后台任务（如上传文件）</span><br><span class="line">        uploadFile();</span><br><span class="line">        return Result.success();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">2.创建 WorkRequest</span><br><span class="line">WorkRequest uploadWorkRequest = new OneTimeWorkRequest.Builder(UploadWorker.class).build();</span><br><span class="line"></span><br><span class="line">添加执行约束（如仅在 WiFi 时执行）：</span><br><span class="line">Constraints constraints = new Constraints.Builder()</span><br><span class="line">        .setRequiredNetworkType(NetworkType.UNMETERED) // 仅在 WiFi 下执行</span><br><span class="line">        .setRequiresCharging(true) // 设备充电时执行</span><br><span class="line">        .build();</span><br><span class="line"></span><br><span class="line">WorkRequest constrainedWorkRequest = new OneTimeWorkRequest.Builder(UploadWorker.class)</span><br><span class="line">        .setConstraints(constraints)</span><br><span class="line">        .build();</span><br><span class="line"></span><br><span class="line">3.使用 WorkManager 调度任务</span><br><span class="line">WorkManager.getInstance(context).enqueue(uploadWorkRequest);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-WorkManager-任务类型"><a href="#2-5-WorkManager-任务类型" class="headerlink" title="2.5 WorkManager 任务类型"></a>2.5 WorkManager 任务类型</h3><table>
+<thead>
+<tr>
+<th align="center">任务类型</th>
+<th align="center">API</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">一次性任务</td>
+<td align="center">OneTimeWorkRequest</td>
+<td align="center">仅执行一次</td>
+</tr>
+<tr>
+<td align="center">周期性任务</td>
+<td align="center">PeriodicWorkRequest</td>
+<td align="center">定期执行</td>
+</tr>
+<tr>
+<td align="center">链式任务</td>
+<td align="center">WorkManager.beginWith()</td>
+<td align="center">串行执行多个任务</td>
+</tr>
+</tbody></table>
+<h3 id="2-6-周期性任务（PeriodicWorkRequest）"><a href="#2-6-周期性任务（PeriodicWorkRequest）" class="headerlink" title="2.6 周期性任务（PeriodicWorkRequest）"></a>2.6 周期性任务（PeriodicWorkRequest）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.示例</span><br><span class="line">PeriodicWorkRequest periodicWork = new PeriodicWorkRequest.Builder(UploadWorker.class, 15, TimeUnit.MINUTES)</span><br><span class="line">        .setConstraints(new Constraints.Builder().setRequiresCharging(true).build())</span><br><span class="line">        .build();</span><br><span class="line"></span><br><span class="line">WorkManager.getInstance(context).enqueue(periodicWork);</span><br><span class="line"></span><br><span class="line">2.注意</span><br><span class="line">-最短间隔 15 分钟（系统优化）</span><br><span class="line">-任务不会严格按时执行（系统会优化调度）</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-任务链（链式任务执行）"><a href="#2-7-任务链（链式任务执行）" class="headerlink" title="2.7 任务链（链式任务执行）"></a>2.7 任务链（链式任务执行）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1.示例</span><br><span class="line">OneTimeWorkRequest workA = new OneTimeWorkRequest.Builder(WorkerA.class).build();</span><br><span class="line">OneTimeWorkRequest workB = new OneTimeWorkRequest.Builder(WorkerB.class).build();</span><br><span class="line">OneTimeWorkRequest workC = new OneTimeWorkRequest.Builder(WorkerC.class).build();</span><br><span class="line"></span><br><span class="line">WorkManager.getInstance(context)</span><br><span class="line">    .beginWith(workA)</span><br><span class="line">    .then(workB)</span><br><span class="line">    .then(workC)</span><br><span class="line">    .enqueue();</span><br><span class="line">2.✅ 任务按顺序执行（A → B → C）</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-8-任务合并（并行执行）"><a href="#2-8-任务合并（并行执行）" class="headerlink" title="2.8 任务合并（并行执行）"></a>2.8 任务合并（并行执行）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">WorkManager.getInstance(context)</span><br><span class="line">    .beginWith(Arrays.asList(workA, workB)) // A 和 B 并行</span><br><span class="line">    .then(workC) // A、B 完成后执行 C</span><br><span class="line">    .enqueue();</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-9-任务状态监听"><a href="#2-9-任务状态监听" class="headerlink" title="2.9 任务状态监听"></a>2.9 任务状态监听</h3><p>1-示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">WorkManager.getInstance(context).getWorkInfoByIdLiveData(uploadWorkRequest.getId())</span><br><span class="line">        .observe(this, workInfo -&gt; &#123;</span><br><span class="line">            if (workInfo != null &amp;&amp; workInfo.getState() == WorkInfo.State.SUCCEEDED) &#123;</span><br><span class="line">                Log.d(&quot;WorkManager&quot;, &quot;任务成功完成&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>2-任务状态</p>
+<table>
+<thead>
+<tr>
+<th align="center">状态</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ENQUEUED</td>
+<td align="center">已加入任务队列</td>
+</tr>
+<tr>
+<td align="center">RUNNING</td>
+<td align="center">任务正在执行</td>
+</tr>
+<tr>
+<td align="center">SUCCEEDED</td>
+<td align="center">任务成功完成</td>
+</tr>
+<tr>
+<td align="center">FAILED</td>
+<td align="center">任务执行失败</td>
+</tr>
+<tr>
+<td align="center">CANCELLED</td>
+<td align="center">任务被取消</td>
+</tr>
+</tbody></table>
+<h3 id="2-10-任务取消"><a href="#2-10-任务取消" class="headerlink" title="2.10 任务取消"></a>2.10 任务取消</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.取消某个</span><br><span class="line">WorkManager.getInstance(context).cancelWorkById(uploadWorkRequest.getId());</span><br><span class="line">2.或者取消所有任务</span><br><span class="line">WorkManager.getInstance(context).cancelAllWork();</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-11-任务重试"><a href="#2-11-任务重试" class="headerlink" title="2.11 任务重试"></a>2.11 任务重试</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">在 Worker 中返回 Result.retry() 让任务重试</span><br><span class="line">@NonNull</span><br><span class="line">@Override</span><br><span class="line">public Result doWork() &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        uploadFile();</span><br><span class="line">        return Result.success();</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">        return Result.retry();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-12-WorkManager-和其他任务调度方式的对比"><a href="#2-12-WorkManager-和其他任务调度方式的对比" class="headerlink" title="2.12 WorkManager 和其他任务调度方式的对比"></a>2.12 WorkManager 和其他任务调度方式的对比</h3><table>
+<thead>
+<tr>
+<th align="center">对比项</th>
+<th align="center">WorkManager</th>
+<th align="center">AlarmManager</th>
+<th align="center">JobScheduler</th>
+<th align="center">Foreground Service</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">适用任务</td>
+<td align="center">长期任务（数据同步）</td>
+<td align="center">定时闹钟</td>
+<td align="center">后台调度</td>
+<td align="center">长时间前台任务</td>
+</tr>
+<tr>
+<td align="center">任务可靠性</td>
+<td align="center">✅ 保证任务完成</td>
+<td align="center">❌ 应用被杀死后任务丢失</td>
+<td align="center">✅ 适用于8.0+</td>
+<td align="center">✅ 适用于前台任务</td>
+</tr>
+<tr>
+<td align="center">电池优化</td>
+<td align="center">✅ 支持</td>
+<td align="center">❌ 无优化</td>
+<td align="center">✅ 支持</td>
+<td align="center">❌ 无优化</td>
+</tr>
+<tr>
+<td align="center">执行限制</td>
+<td align="center">⚠️ 可能会延迟执行</td>
+<td align="center">⏳ 受系统限制</td>
+<td align="center">⏳ 受系统限制</td>
+<td align="center">❌ 需手动控制</td>
+</tr>
+</tbody></table>
+<h3 id="2-13-WorkManager-适用于哪些-Android-版本？"><a href="#2-13-WorkManager-适用于哪些-Android-版本？" class="headerlink" title="2.13 WorkManager 适用于哪些 Android 版本？"></a>2.13 WorkManager 适用于哪些 Android 版本？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">✅ Android 5.0（API 21）以上</span><br><span class="line">✅ 自动选择最佳任务调度方式（JobScheduler、AlarmManager...）</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-14-WorkManager-和-Coroutine-RxJava-结合"><a href="#2-14-WorkManager-和-Coroutine-RxJava-结合" class="headerlink" title="2.14 WorkManager 和 Coroutine &#x2F; RxJava 结合"></a>2.14 WorkManager 和 Coroutine &#x2F; RxJava 结合</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">1.WorkManager + Coroutine</span><br><span class="line">public class CoroutineWorkerExample extends CoroutineWorker &#123;</span><br><span class="line">    public CoroutineWorkerExample(@NonNull Context context, @NonNull WorkerParameters params) &#123;</span><br><span class="line">        super(context, params);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @NonNull</span><br><span class="line">    @Override</span><br><span class="line">    public Result doWork() &#123;</span><br><span class="line">        runBlocking &#123;</span><br><span class="line">            uploadFile() // 挂起函数</span><br><span class="line">        &#125;</span><br><span class="line">        return Result.success();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">2.WorkManager + RxJava</span><br><span class="line">public class RxWorkerExample extends RxWorker &#123;</span><br><span class="line">    public RxWorkerExample(@NonNull Context context, @NonNull WorkerParameters params) &#123;</span><br><span class="line">        super(context, params);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @NonNull</span><br><span class="line">    @Override</span><br><span class="line">    public Single&lt;Result&gt; createWork() &#123;</span><br><span class="line">        return Single.fromCallable(() -&gt; &#123;</span><br><span class="line">            uploadFile();</span><br><span class="line">            return Result.success();</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-15-总结"><a href="#2-15-总结" class="headerlink" title="2.15 总结"></a>2.15 总结</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> WorkManager 是 Android 推荐的后台任务调度 API，</span><br><span class="line"> 适用于 需要保证任务完成 的情况，比如 数据同步、日志上传、定期检查。</span><br><span class="line"></span><br><span class="line">✅ 支持持久化任务（即使设备重启或 App 关闭）</span><br><span class="line">✅ 支持任务链（串行、并行执行）</span><br><span class="line">✅ 支持约束条件（WiFi、电量充足时执行）</span><br><span class="line">✅ 支持 Coroutine、RxJava</span><br><span class="line">✅ 兼容所有 Android 版本（自动适配 API 级别）</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="三-参考"><a href="#三-参考" class="headerlink" title="三 参考"></a>三 参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7480464724096057381">掘金—知识库的大纲</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/ja/tags/%E6%8E%98%E9%87%91/" rel="tag"># 掘金</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ja/posts/eca11765.html" rel="prev" title="Android面试题——掘金-JetPack之Paging(3.8)">
+                  <i class="fa fa-angle-left"></i> Android面试题——掘金-JetPack之Paging(3.8)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ja/posts/c40555a.html" rel="next" title="Android面试题——掘金-JetPack之Navigation(3.10)">
+                  Android面试题——掘金-JetPack之Navigation(3.10) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"5fcfb3fdc52738beddb1cc93a086ee03"}</script>
+<script src="/ja/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

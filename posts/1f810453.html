@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一 电子书 App 核心模块拆解12345678一个标准电子书 App，至少包含 6 个核心模块：1.内容解析(不同格式)2.内容渲染(字体&#x2F;背景&#x2F;翻页)3.目录&#x2F;章节结构4.章节跳转 &amp; 进度管理5.在线加载 &amp; 离线缓存6.阅读设置持久化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电子书实战之——概念介绍(1)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/1f810453.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一 电子书 App 核心模块拆解12345678一个标准电子书 App，至少包含 6 个核心模块：1.内容解析(不同格式)2.内容渲染(字体&#x2F;背景&#x2F;翻页)3.目录&#x2F;章节结构4.章节跳转 &amp; 进度管理5.在线加载 &amp; 离线缓存6.阅读设置持久化">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-03-20T01:25:18.000Z">
+<meta property="article:modified_time" content="2026-04-29T00:02:36.271Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="电子书实战">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/1f810453.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/1f810453.html","path":"posts/1f810453.html","title":"电子书实战之——概念介绍(1)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>电子书实战之——概念介绍(1) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">378</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4809</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E7%94%B5%E5%AD%90%E4%B9%A6-App-%E6%A0%B8%E5%BF%83%E6%A8%A1%E5%9D%97%E6%8B%86%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">一 电子书 App 核心模块拆解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E6%94%AF%E6%8C%81%E7%9A%84%E7%94%B5%E5%AD%90%E4%B9%A6%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">二 支持的电子书格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%9C%80%E6%8E%A8%E8%8D%90-%E4%B8%BB%E6%B5%81"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 最推荐(主流)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E8%AF%B4%E6%98%8E"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%86%85%E5%AE%B9%E6%98%BE%E7%A4%BA-%E6%A0%B7%E5%BC%8F%E8%B0%83%E6%95%B4-%E5%AD%97%E4%BD%93-%E8%83%8C%E6%99%AF"><span class="nav-number">3.</span> <span class="nav-text">三 内容显示 &amp; 样式调整(字体 &#x2F; 背景)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-TXT-%E5%86%85%E5%AE%B9%E6%98%BE%E7%A4%BA"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 TXT 内容显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-EPUB-HTML-%E5%86%85%E5%AE%B9%E6%98%BE%E7%A4%BA"><span class="nav-number">3.2.</span> <span class="nav-text">3.2  EPUB &#x2F; HTML 内容显示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84-%E7%AB%A0%E8%8A%82%E8%B7%B3%E8%BD%AC"><span class="nav-number">4.</span> <span class="nav-text">四 目录结构 &amp; 章节跳转</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-TXT-%E7%9B%AE%E5%BD%95%E7%94%9F%E6%88%90"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 TXT 目录生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-EPUB-%E7%9B%AE%E5%BD%95-%E6%A0%87%E5%87%86"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 EPUB 目录(标准)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E7%BF%BB%E9%A1%B5-%E6%BB%9A%E5%8A%A8%E6%A8%A1%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">五 翻页 &#x2F; 滚动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E5%B8%B8%E8%A7%81%E9%98%85%E8%AF%BB%E6%A8%A1%E5%BC%8F"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 常见阅读模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E5%BC%80%E5%8F%91%E5%BB%BA%E8%AE%AE"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 开发建议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD-%E5%9C%A8%E7%BA%BF-%E7%A6%BB%E7%BA%BF%E6%98%BE%E7%A4%BA%E6%96%B9%E6%A1%88"><span class="nav-number">6.</span> <span class="nav-text">六 在线 &amp; 离线显示方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-%E5%9C%A8%E7%BA%BF%E9%98%85%E8%AF%BB"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 在线阅读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-%E7%A6%BB%E7%BA%BF%E9%98%85%E8%AF%BB-%E5%BF%85%E9%A1%BB%E6%94%AF%E6%8C%81"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 离线阅读(必须支持)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83-%E9%98%85%E8%AF%BB%E8%BF%9B%E5%BA%A6-%E7%8A%B6%E6%80%81%E4%BF%9D%E5%AD%98"><span class="nav-number">7.</span> <span class="nav-text">七 阅读进度 &amp; 状态保存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-%E4%BF%9D%E5%AD%98%E5%86%85%E5%AE%B9"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 保存内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">7.2.</span> <span class="nav-text">7.2 存储方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB-%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B"><span class="nav-number">8.</span> <span class="nav-text">八 技术选型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-Android"><span class="nav-number">8.1.</span> <span class="nav-text">8.1 Android</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-Flutter"><span class="nav-number">8.2.</span> <span class="nav-text">8.2 Flutter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-HarmonyOS"><span class="nav-number">8.3.</span> <span class="nav-text">8.3 HarmonyOS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D-%E6%88%90%E7%86%9F%E5%BC%80%E6%BA%90%E6%96%B9%E6%A1%88-%E5%8F%AF%E7%9B%B4%E6%8E%A5%E5%8F%82%E8%80%83"><span class="nav-number">9.</span> <span class="nav-text">九 成熟开源方案(可直接参考)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81-%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%80%BB%E7%BB%93"><span class="nav-number">10.</span> <span class="nav-text">十 一句话总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4809</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">378</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">699</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/1f810453.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="电子书实战之——概念介绍(1) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          电子书实战之——概念介绍(1)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/%E7%94%B5%E5%AD%90%E4%B9%A6%E5%AE%9E%E6%88%98%E4%B9%8B%E2%80%94%E2%80%94%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D-1.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-03-20 09:25:18" itemprop="dateCreated datePublished" datetime="2026-03-20T09:25:18+08:00">2026-03-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E8%B7%B5/" itemprop="url" rel="index"><span itemprop="name">技术实践</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E8%B7%B5/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5/" itemprop="url" rel="index"><span itemprop="name">项目实践</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E8%B7%B5/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5/Android%E9%A1%B9%E7%9B%AE/" itemprop="url" rel="index"><span itemprop="name">Android项目</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-电子书-App-核心模块拆解"><a href="#一-电子书-App-核心模块拆解" class="headerlink" title="一 电子书 App 核心模块拆解"></a>一 电子书 App 核心模块拆解</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">一个标准电子书 App，至少包含 6 个核心模块：</span><br><span class="line"></span><br><span class="line">1.内容解析(不同格式)</span><br><span class="line">2.内容渲染(字体/背景/翻页)</span><br><span class="line">3.目录/章节结构</span><br><span class="line">4.章节跳转 &amp; 进度管理</span><br><span class="line">5.在线加载 &amp; 离线缓存</span><br><span class="line">6.阅读设置持久化</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-支持的电子书格式"><a href="#二-支持的电子书格式" class="headerlink" title="二 支持的电子书格式"></a>二 支持的电子书格式</h2><h3 id="2-1-最推荐-主流"><a href="#2-1-最推荐-主流" class="headerlink" title="2.1 最推荐(主流)"></a>2.1 最推荐(主流)</h3><table>
+<thead>
+<tr>
+<th align="center">格式</th>
+<th align="center">说明</th>
+<th align="center">适合</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">TXT</td>
+<td align="center">纯文本</td>
+<td align="center">小说</td>
+</tr>
+<tr>
+<td align="center">EPUB</td>
+<td align="center">HTML + CSS</td>
+<td align="center">标准电子书</td>
+</tr>
+<tr>
+<td align="center">HTML</td>
+<td align="center">直接渲染</td>
+<td align="center">在线内容</td>
+</tr>
+<tr>
+<td align="center">PDF</td>
+<td align="center">固定排版</td>
+<td align="center">技术文档</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-说明"><a href="#2-2-说明" class="headerlink" title="2.2 说明"></a>2.2 说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">90% 电子书 App 主力：TXT + EPUB</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-内容显示-样式调整-字体-背景"><a href="#三-内容显示-样式调整-字体-背景" class="headerlink" title="三 内容显示 &amp; 样式调整(字体 &#x2F; 背景)"></a>三 内容显示 &amp; 样式调整(字体 &#x2F; 背景)</h2><h3 id="3-1-TXT-内容显示"><a href="#3-1-TXT-内容显示" class="headerlink" title="3.1 TXT 内容显示"></a>3.1 TXT 内容显示</h3><p>1、基本思路</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">TXT 文件</span><br><span class="line"> ↓</span><br><span class="line">读取字符串</span><br><span class="line"> ↓</span><br><span class="line">分章节（正则 / 规则）</span><br><span class="line"> ↓</span><br><span class="line">分页（按屏幕尺寸）</span><br><span class="line"> ↓</span><br><span class="line">渲染 TextView / Canvas</span><br></pre></td></tr></table></figure>
+
+<p>2、字体 &#x2F; 背景调整方式</p>
+<table>
+<thead>
+<tr>
+<th align="center">功能</th>
+<th align="center">实现方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">字体大小</td>
+<td align="center">textSize &#x2F; fontSize</td>
+</tr>
+<tr>
+<td align="center">行距</td>
+<td align="center">lineSpacing</td>
+</tr>
+<tr>
+<td align="center">字体</td>
+<td align="center">自定义 TTF &#x2F; OTF</td>
+</tr>
+<tr>
+<td align="center">背景色</td>
+<td align="center">View 背景</td>
+</tr>
+<tr>
+<td align="center">夜间模式</td>
+<td align="center">切换主题</td>
+</tr>
+</tbody></table>
+<p>3、 推荐做法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">统一封装一个 ReaderStyleConfig：</span><br><span class="line">data class ReaderStyle(</span><br><span class="line">    val fontSize: Float,</span><br><span class="line">    val lineHeight: Float,</span><br><span class="line">    val backgroundColor: Int,</span><br><span class="line">    val textColor: Int,</span><br><span class="line">    val fontPath: String?</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-EPUB-HTML-内容显示"><a href="#3-2-EPUB-HTML-内容显示" class="headerlink" title="3.2  EPUB &#x2F; HTML 内容显示"></a>3.2  EPUB &#x2F; HTML 内容显示</h3><p>1、正确姿势：WebView &#x2F; WKWebView</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1、EPUB 本质</span><br><span class="line">EPUB</span><br><span class="line"> ├── chapter1.xhtml</span><br><span class="line"> ├── chapter2.xhtml</span><br><span class="line"> ├── style.css</span><br><span class="line"> └── toc.ncx</span><br><span class="line"></span><br><span class="line">2、渲染流程</span><br><span class="line">解压 EPUB</span><br><span class="line"> ↓</span><br><span class="line">读取章节 HTML</span><br><span class="line"> ↓</span><br><span class="line">注入 CSS</span><br><span class="line"> ↓</span><br><span class="line">WebView 渲染</span><br></pre></td></tr></table></figure>
+
+<p>2、样式动态调整(核心技巧)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1、说明：</span><br><span class="line">通过 JS + CSS 注入</span><br><span class="line"></span><br><span class="line">2、示例</span><br><span class="line">body &#123;</span><br><span class="line">  font-size: 18px;</span><br><span class="line">  line-height: 1.8;</span><br><span class="line">  background-color: #f6f1e7;</span><br><span class="line">  color: #333;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">document.body.style.fontSize = &#x27;20px&#x27;</span><br><span class="line">document.body.style.backgroundColor = &#x27;#000&#x27;</span><br><span class="line">document.body.style.color = &#x27;#ccc&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>3、优势</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">支持复杂排版</span><br><span class="line">支持图片、超链接</span><br><span class="line">目录定位精准</span><br></pre></td></tr></table></figure>
+
+<h2 id="四-目录结构-章节跳转"><a href="#四-目录结构-章节跳转" class="headerlink" title="四 目录结构 &amp; 章节跳转"></a>四 目录结构 &amp; 章节跳转</h2><h3 id="4-1-TXT-目录生成"><a href="#4-1-TXT-目录生成" class="headerlink" title="4.1 TXT 目录生成"></a>4.1 TXT 目录生成</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1、常见正则</span><br><span class="line">^(第.&#123;1,9&#125;[章回节]).*$</span><br><span class="line"></span><br><span class="line">2、生成目录结构</span><br><span class="line">[</span><br><span class="line">  &#123; &quot;title&quot;: &quot;第一章&quot;, &quot;startOffset&quot;: 1024 &#125;,</span><br><span class="line">  &#123; &quot;title&quot;: &quot;第二章&quot;, &quot;startOffset&quot;: 8096 &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">3、跳转方式</span><br><span class="line">-按 字符偏移</span><br><span class="line">-或 页码索引</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-EPUB-目录-标准"><a href="#4-2-EPUB-目录-标准" class="headerlink" title="4.2 EPUB 目录(标准)"></a>4.2 EPUB 目录(标准)</h3><p>1、EPUB 自带目录文件</p>
+<table>
+<thead>
+<tr>
+<th align="center">文件</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">toc.ncx</td>
+<td align="center">旧标准</td>
+</tr>
+<tr>
+<td align="center">nav.xhtml</td>
+<td align="center">EPUB3</td>
+</tr>
+</tbody></table>
+<p>2、解析后结构</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123; &quot;title&quot;: &quot;Chapter 1&quot;, &quot;href&quot;: &quot;ch1.xhtml#p1&quot; &#125;,</span><br><span class="line">  &#123; &quot;title&quot;: &quot;Chapter 2&quot;, &quot;href&quot;: &quot;ch2.xhtml&quot; &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>3、跳转实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location.href = &#x27;ch2.xhtml&#x27;</span><br><span class="line">或 WebView：</span><br><span class="line">webView.loadUrl(&quot;file:///.../ch2.xhtml&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="五-翻页-滚动模式"><a href="#五-翻页-滚动模式" class="headerlink" title="五 翻页 &#x2F; 滚动模式"></a>五 翻页 &#x2F; 滚动模式</h2><h3 id="5-1-常见阅读模式"><a href="#5-1-常见阅读模式" class="headerlink" title="5.1 常见阅读模式"></a>5.1 常见阅读模式</h3><table>
+<thead>
+<tr>
+<th align="center">模式</th>
+<th align="center">实现</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">上下滚动</td>
+<td align="center">ScrollView &#x2F; WebView</td>
+</tr>
+<tr>
+<td align="center">左右翻页</td>
+<td align="center">ViewPager &#x2F; 自绘 Canvas</td>
+</tr>
+<tr>
+<td align="center">仿真翻页</td>
+<td align="center">OpenGL &#x2F; 自定义 View</td>
+</tr>
+</tbody></table>
+<h3 id="5-2-开发建议"><a href="#5-2-开发建议" class="headerlink" title="5.2 开发建议"></a>5.2 开发建议</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">小说：左右翻页</span><br><span class="line">技术文档 / EPUB：上下滚动</span><br></pre></td></tr></table></figure>
+
+<h2 id="六-在线-离线显示方案"><a href="#六-在线-离线显示方案" class="headerlink" title="六 在线 &amp; 离线显示方案"></a>六 在线 &amp; 离线显示方案</h2><h3 id="6-1-在线阅读"><a href="#6-1-在线阅读" class="headerlink" title="6.1 在线阅读"></a>6.1 在线阅读</h3><p>1、说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">API 获取章节列表</span><br><span class="line"> ↓</span><br><span class="line">API 获取章节内容</span><br><span class="line"> ↓</span><br><span class="line">HTML / JSON</span><br><span class="line"> ↓</span><br><span class="line">渲染</span><br></pre></td></tr></table></figure>
+
+<p>2、优缺点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1、优点</span><br><span class="line">-节省存储</span><br><span class="line">-实时更新</span><br><span class="line"></span><br><span class="line">2、缺点</span><br><span class="line">-依赖网络</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2-离线阅读-必须支持"><a href="#6-2-离线阅读-必须支持" class="headerlink" title="6.2 离线阅读(必须支持)"></a>6.2 离线阅读(必须支持)</h3><p>1、缓存策略(推荐)</p>
+<table>
+<thead>
+<tr>
+<th align="center">内容</th>
+<th align="center">缓存方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">TXT &#x2F; EPUB</td>
+<td align="center">文件存储</td>
+</tr>
+<tr>
+<td align="center">HTML</td>
+<td align="center">本地文件</td>
+</tr>
+<tr>
+<td align="center">图片</td>
+<td align="center">Disk Cache</td>
+</tr>
+<tr>
+<td align="center">阅读进度</td>
+<td align="center">SQLite &#x2F; MMKV</td>
+</tr>
+</tbody></table>
+<p>2、原理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">首次在线 → 下载 → 本地缓存 → 离线可读</span><br></pre></td></tr></table></figure>
+
+<p>3、说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EPUB 离线 = 解压后直接 file:// 加载</span><br></pre></td></tr></table></figure>
+
+<h2 id="七-阅读进度-状态保存"><a href="#七-阅读进度-状态保存" class="headerlink" title="七 阅读进度 &amp; 状态保存"></a>七 阅读进度 &amp; 状态保存</h2><h3 id="7-1-保存内容"><a href="#7-1-保存内容" class="headerlink" title="7.1 保存内容"></a>7.1 保存内容</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;bookId&quot;: &quot;xxx&quot;,</span><br><span class="line">  &quot;chapter&quot;: 12,</span><br><span class="line">  &quot;page&quot;: 5,</span><br><span class="line">  &quot;offset&quot;: 8392,</span><br><span class="line">  &quot;style&quot;: &#123; ... &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-2-存储方式"><a href="#7-2-存储方式" class="headerlink" title="7.2 存储方式"></a>7.2 存储方式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Android：Room / MMKV</span><br><span class="line">iOS：CoreData / UserDefaults</span><br><span class="line">跨端：SQLite</span><br></pre></td></tr></table></figure>
+
+<h2 id="八-技术选型"><a href="#八-技术选型" class="headerlink" title="八 技术选型"></a>八 技术选型</h2><h3 id="8-1-Android"><a href="#8-1-Android" class="headerlink" title="8.1 Android"></a>8.1 Android</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TXT：自定义分页 View</span><br><span class="line">EPUB：WebView + JS</span><br><span class="line">PDF：PdfRenderer / MuPDF</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-2-Flutter"><a href="#8-2-Flutter" class="headerlink" title="8.2 Flutter"></a>8.2 Flutter</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TXT：Canvas + TextPainter</span><br><span class="line">EPUB：flutter_inappwebview</span><br><span class="line">离线：path_provider + file</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-3-HarmonyOS"><a href="#8-3-HarmonyOS" class="headerlink" title="8.3 HarmonyOS"></a>8.3 HarmonyOS</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ArkUI Text + Web 组件</span><br><span class="line">EPUB 走 Web 最稳</span><br></pre></td></tr></table></figure>
+
+<h2 id="九-成熟开源方案-可直接参考"><a href="#九-成熟开源方案-可直接参考" class="headerlink" title="九 成熟开源方案(可直接参考)"></a>九 成熟开源方案(可直接参考)</h2><table>
+<thead>
+<tr>
+<th align="center">平台</th>
+<th align="center">项目</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Android</td>
+<td align="center">CoolReader &#x2F; Readium</td>
+</tr>
+<tr>
+<td align="center">iOS</td>
+<td align="center">FolioReader</td>
+</tr>
+<tr>
+<td align="center">Web</td>
+<td align="center">epub.js</td>
+</tr>
+<tr>
+<td align="center">跨端</td>
+<td align="center">Readium LCP</td>
+</tr>
+</tbody></table>
+<h2 id="十-一句话总结"><a href="#十-一句话总结" class="headerlink" title="十 一句话总结"></a>十 一句话总结</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">电子书 App 的核心是：</span><br><span class="line">内容格式解析 → 统一渲染层 → 样式动态控制 → 精准目录跳转 → 本地缓存保障离线体验</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%94%B5%E5%AD%90%E4%B9%A6%E5%AE%9E%E6%88%98/" rel="tag"># 电子书实战</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/fc804d12.html" rel="prev" title="KMP开发之——三方库集成(14.1)">
+                  <i class="fa fa-angle-left"></i> KMP开发之——三方库集成(14.1)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/8a7a4025.html" rel="next" title="电子书实战之——完整电子书App架构图(2)">
+                  电子书实战之——完整电子书App架构图(2) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"072843cca69840e77cf00b88cfe3c810"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>
