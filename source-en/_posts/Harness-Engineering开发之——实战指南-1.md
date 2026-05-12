@@ -4,9 +4,9 @@ categories:
   - AI
   - AI开发
   - AI Agent
-  - Hermes-Agent
+  - Harness-Engineering
 tags:
-  - Hermes-Agent
+  - Harness-Engineering
 abbrlink: c6edef98
 date: 2026-05-12 19:17:14
 ---
