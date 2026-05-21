@@ -1,7 +1,9 @@
 ---
 title: OpenClaw开发之——更新(2.12)
 categories:
-  - AI - 养虾 - OpenClaw
+  - AI
+  - 养虾
+  - OpenClaw
 tags:
   - OpenClaw
 abbrlink: cc697c08
