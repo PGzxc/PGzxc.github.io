@@ -2,7 +2,7 @@
 title: 秋叶StableDiffusion之——CodeFormer集成(2)
 categories:
   - AI
-  - AI应用
+  - AI图视频短剧
   - AI绘图
   - StableDiffusion
 tags:

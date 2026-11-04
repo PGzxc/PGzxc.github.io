@@ -2,7 +2,7 @@
 title: AI开发之——Leonardo—Editor编辑图像(3)
 categories:
   - AI
-  - AI应用
+  - AI图视频短剧
   - AI绘图
   - Leonardo
 tags:

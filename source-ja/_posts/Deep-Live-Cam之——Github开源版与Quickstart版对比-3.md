@@ -2,7 +2,7 @@
 title: Deep-Live-Cam之——Github开源版与Quickstart版对比(3)
 categories:
   - AI
-  - AI应用
+  - AI图视频短剧
   - AI视频
   - Deep-Live-Cam
 tags:

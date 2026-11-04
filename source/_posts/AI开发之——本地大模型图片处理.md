@@ -2,7 +2,7 @@
 title: AI开发之——本地大模型图片处理
 categories:
   - AI
-  - AI应用
+  - AI图视频短剧
   - AI绘图
   - 图片处理
 tags:

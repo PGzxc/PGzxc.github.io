@@ -2,7 +2,7 @@
 title: Deep-Live-Cam之——Win环境搭建与运行(2)
 categories:
   - AI
-  - AI应用
+  - AI图视频短剧
   - AI视频
   - Deep-Live-Cam
 tags:

@@ -2,7 +2,7 @@
 title: AI开发之——Leonardo—Image To Image(7)
 categories:
   - AI
-  - AI应用
+  - AI图视频短剧
   - AI绘图
   - Leonardo
 tags:

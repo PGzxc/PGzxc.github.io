@@ -2,7 +2,7 @@
 title: AI开发之——Leonardo—Training&Datasets自己训练模型(6)
 categories:
   - AI
-  - AI应用
+  - AI图视频短剧
   - AI绘图
   - Leonardo
 tags:

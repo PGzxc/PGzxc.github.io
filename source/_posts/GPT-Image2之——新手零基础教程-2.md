@@ -2,7 +2,7 @@
 title: GPT-Image2之——新手零基础教程(2)
 categories:
   - AI
-  - AI应用
+  - AI图视频短剧
   - AI绘图
   - GPT-Image2
 tags:

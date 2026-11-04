@@ -2,7 +2,7 @@
 title: GPT-Image2之——是什么(1)
 categories:
   - AI
-  - AI应用
+  - AI图视频短剧
   - AI绘图
   - GPT-Image2
 tags:

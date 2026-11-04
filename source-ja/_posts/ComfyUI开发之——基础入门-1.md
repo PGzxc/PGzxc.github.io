@@ -2,7 +2,7 @@
 title: ComfyUI开发之——基础入门(1)
 categories:
   - AI
-  - AI应用
+  - AI图视频短剧
   - AI绘图
   - ComfyUI
 tags:
