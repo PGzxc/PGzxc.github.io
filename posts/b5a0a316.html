@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一、概述1ComfyUI ControlNet 入门：姿势、边缘与深度控制实战">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ComfyUI开发之——ComfyUI ControlNet 入门(3.5)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/b5a0a316.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一、概述1ComfyUI ControlNet 入门：姿势、边缘与深度控制实战">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-11-04T11:36:08.000Z">
+<meta property="article:modified_time" content="2026-11-05T01:59:37.416Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="ComfyUI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/b5a0a316.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/b5a0a316.html","path":"posts/b5a0a316.html","title":"ComfyUI开发之——ComfyUI ControlNet 入门(3.5)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ComfyUI开发之——ComfyUI ControlNet 入门(3.5) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">384</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4861</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="nav-number">2.</span> <span class="nav-text">二 相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF-ControlNet%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1、什么是 ControlNet？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2%E3%80%81ControlNet-%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">2.2.</span> <span class="nav-text">2.2、ControlNet 的工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3%E3%80%81%E5%B8%B8%E8%A7%81-ControlNet-%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.3.</span> <span class="nav-text">2.3、常见 ControlNet 类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-OpenPose%EF%BC%9A%E4%BA%BA%E7%89%A9%E5%A7%BF%E5%8A%BF%E6%8E%A7%E5%88%B6"><span class="nav-number">2.3.1.</span> <span class="nav-text">1. OpenPose：人物姿势控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Canny%EF%BC%9A%E8%BE%B9%E7%BC%98%E8%BD%AE%E5%BB%93%E6%8E%A7%E5%88%B6"><span class="nav-number">2.3.2.</span> <span class="nav-text">2. Canny：边缘轮廓控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Depth%EF%BC%9A%E6%B7%B1%E5%BA%A6%E6%8E%A7%E5%88%B6"><span class="nav-number">2.3.3.</span> <span class="nav-text">3. Depth：深度控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%85%B6%E4%BB%96%E5%B8%B8%E8%A7%81%E6%8E%A7%E5%88%B6%E6%96%B9%E5%BC%8F"><span class="nav-number">2.3.4.</span> <span class="nav-text">4. 其他常见控制方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E6%A8%A1%E5%9E%8B%E5%AD%98%E6%94%BE%E5%8F%8A%E5%AE%89%E8%A3%85"><span class="nav-number">3.</span> <span class="nav-text">三 模型存放及安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1%E3%80%81%E5%87%86%E5%A4%87-ControlNet-%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.1.</span> <span class="nav-text">3.1、准备 ControlNet 模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%A8%A1%E5%9E%8B%E5%AD%98%E6%94%BE%E4%BD%8D%E7%BD%AE"><span class="nav-number">3.1.1.</span> <span class="nav-text">1. 模型存放位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8%E4%B8%8E-ControlNet-%E6%A8%A1%E5%9E%8B%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">3.1.2.</span> <span class="nav-text">2. 预处理器与 ControlNet 模型有什么区别？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2%E3%80%81%E5%AE%89%E8%A3%85%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8%E8%8A%82%E7%82%B9"><span class="nav-number">3.2.</span> <span class="nav-text">3.2、安装预处理器节点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-%E5%AE%9E%E6%88%98"><span class="nav-number">4.</span> <span class="nav-text">四 实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1%E3%80%81%E5%AE%9E%E6%88%98%E4%B8%80%EF%BC%9A%E4%BD%BF%E7%94%A8-OpenPose-%E6%8E%A7%E5%88%B6%E4%BA%BA%E7%89%A9%E5%A7%BF%E5%8A%BF"><span class="nav-number">4.1.</span> <span class="nav-text">4.1、实战一：使用 OpenPose 控制人物姿势</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%87%86%E5%A4%87%E5%8F%82%E8%80%83%E5%9B%BE%E7%89%87"><span class="nav-number">4.1.1.</span> <span class="nav-text">1. 准备参考图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%8F%90%E5%8F%96%E4%BA%BA%E4%BD%93%E9%AA%A8%E6%9E%B6"><span class="nav-number">4.1.2.</span> <span class="nav-text">2. 提取人体骨架</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%8A%A0%E8%BD%BD-ControlNet-%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.1.3.</span> <span class="nav-text">3. 加载 ControlNet 模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E8%BF%9E%E6%8E%A5%E5%AE%8C%E6%95%B4%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">4.1.4.</span> <span class="nav-text">4. 连接完整工作流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E8%AE%BE%E7%BD%AE%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="nav-number">4.1.5.</span> <span class="nav-text">5. 设置提示词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E8%AE%BE%E7%BD%AE-ControlNet-%E5%8F%82%E6%95%B0"><span class="nav-number">4.1.6.</span> <span class="nav-text">6. 设置 ControlNet 参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2%E3%80%81%E5%AE%9E%E6%88%98%E4%BA%8C%EF%BC%9A%E4%BD%BF%E7%94%A8-Canny-%E6%8E%A7%E5%88%B6%E5%9B%BE%E7%89%87%E8%BD%AE%E5%BB%93"><span class="nav-number">4.2.</span> <span class="nav-text">4.2、实战二：使用 Canny 控制图片轮廓</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%87%86%E5%A4%87%E5%9B%BE%E7%89%87"><span class="nav-number">4.2.1.</span> <span class="nav-text">1. 准备图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%8F%90%E5%8F%96%E8%BE%B9%E7%BC%98%E5%9B%BE"><span class="nav-number">4.2.2.</span> <span class="nav-text">2. 提取边缘图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%BA%94%E7%94%A8-Canny-ControlNet"><span class="nav-number">4.2.3.</span> <span class="nav-text">3. 应用 Canny ControlNet</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3%E3%80%81%E5%AE%9E%E6%88%98%E4%B8%89%EF%BC%9A%E4%BD%BF%E7%94%A8-Depth-%E6%8E%A7%E5%88%B6%E5%9C%BA%E6%99%AF%E7%A9%BA%E9%97%B4"><span class="nav-number">4.3.</span> <span class="nav-text">4.3、实战三：使用 Depth 控制场景空间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81ControlNet-%E9%87%8D%E8%A6%81%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3"><span class="nav-number">5.</span> <span class="nav-text">五、ControlNet 重要参数详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-Strength%EF%BC%9A%E6%8E%A7%E5%88%B6%E5%BC%BA%E5%BA%A6"><span class="nav-number">5.1.</span> <span class="nav-text">5.1. Strength：控制强度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-Start-Percent%EF%BC%9A%E5%BC%80%E5%A7%8B%E6%8E%A7%E5%88%B6%E6%97%B6%E9%97%B4"><span class="nav-number">5.2.</span> <span class="nav-text">5.2. Start Percent：开始控制时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-End-Percent%EF%BC%9A%E7%BB%93%E6%9D%9F%E6%8E%A7%E5%88%B6%E6%97%B6%E9%97%B4"><span class="nav-number">5.3.</span> <span class="nav-text">5.3. End Percent：结束控制时间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81ControlNet-%E4%B8%8E-LoRA-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">六、ControlNet 与 LoRA 有什么区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81ControlNet-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">7.</span> <span class="nav-text">七、ControlNet 常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-%E6%89%BE%E4%B8%8D%E5%88%B0-ControlNet-%E6%A8%A1%E5%9E%8B"><span class="nav-number">7.1.</span> <span class="nav-text">7.1. 找不到 ControlNet 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-%E6%89%BE%E4%B8%8D%E5%88%B0-OpenPose%E3%80%81Canny-%E7%AD%89%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8"><span class="nav-number">7.2.</span> <span class="nav-text">7.2. 找不到 OpenPose、Canny 等预处理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-%E4%BA%BA%E7%89%A9%E5%A7%BF%E5%8A%BF%E4%B8%8E%E5%8F%82%E8%80%83%E5%9B%BE%E4%B8%8D%E4%B8%80%E8%87%B4"><span class="nav-number">7.3.</span> <span class="nav-text">7.3. 人物姿势与参考图不一致</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-%E5%9B%BE%E7%89%87%E7%BB%93%E6%9E%84%E8%BF%87%E4%BA%8E%E5%83%B5%E7%A1%AC"><span class="nav-number">7.4.</span> <span class="nav-text">7.4. 图片结构过于僵硬</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-5-%E6%98%BE%E5%AD%98%E4%B8%8D%E8%B6%B3"><span class="nav-number">7.5.</span> <span class="nav-text">7.5. 显存不足</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E6%9C%AC%E7%AF%87%E6%80%BB%E7%BB%93"><span class="nav-number">8.</span> <span class="nav-text">八、本篇总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4861</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">384</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">704</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/b5a0a316.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ComfyUI开发之——ComfyUI ControlNet 入门(3.5) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ComfyUI开发之——ComfyUI ControlNet 入门(3.5)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/ComfyUI%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94ComfyUI-ControlNet-%E5%85%A5%E9%97%A8-3-5.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-11-04 19:36:08" itemprop="dateCreated datePublished" datetime="2026-11-04T19:36:08+08:00">2026-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/" itemprop="url" rel="index"><span itemprop="name">AI图视频短剧</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">AI绘图</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/ComfyUI/" itemprop="url" rel="index"><span itemprop="name">ComfyUI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI ControlNet 入门：姿势、边缘与深度控制实战</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二-相关概念"><a href="#二-相关概念" class="headerlink" title="二 相关概念"></a>二 相关概念</h2><h3 id="2-1、什么是-ControlNet？"><a href="#2-1、什么是-ControlNet？" class="headerlink" title="2.1、什么是 ControlNet？"></a>2.1、什么是 ControlNet？</h3><p>前面我们学习了 LoRA，可以通过加载额外模型，让基础模型获得特定人物、画风或物体的生成能力。</p>
+<p>但如果希望 AI 按照指定的姿势、轮廓或场景结构生成图片，仅靠提示词和 LoRA 往往不够稳定。</p>
+<p>例如：</p>
+<ul>
+<li>希望生成的人物摆出指定姿势。</li>
+<li>希望新图片保留参考图中的建筑轮廓。</li>
+<li>希望按照一张线稿生成完整图片。</li>
+<li>希望保持原图中前景、背景和物体的空间关系。</li>
+</ul>
+<p>这时就可以使用 ControlNet。</p>
+<p>ControlNet 是一种为图像生成模型增加结构控制能力的技术。它可以接收姿势骨架、边缘图、深度图等条件信息，引导模型按照参考结构生成图片。</p>
+<p>简单理解：</p>
+<ul>
+<li><strong>Checkpoint：</strong> 决定基础生成能力。</li>
+<li><strong>LoRA：</strong> 增加人物、风格或特定元素特征。</li>
+<li><strong>ControlNet：</strong> 控制生成图片的结构和布局。</li>
+<li><strong>Prompt：</strong> 描述希望生成的内容。</li>
+</ul>
+<p>例如，提供一张人物姿势参考图，再使用提示词描述人物服装和画风，就可以尝试生成一个保持相似姿势、但外观不同的人物。</p>
+<h3 id="2-2、ControlNet-的工作原理"><a href="#2-2、ControlNet-的工作原理" class="headerlink" title="2.2、ControlNet 的工作原理"></a>2.2、ControlNet 的工作原理</h3><p>ControlNet 并不是简单地把参考图片作为普通提示词输入，而是先将参考图片转换成特定的控制信息，再将控制信息提供给生成模型。</p>
+<p>常见流程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">参考图片</span><br><span class="line">   ↓</span><br><span class="line">预处理（Preprocessor）</span><br><span class="line">   ↓</span><br><span class="line">姿势图 / 边缘图 / 深度图</span><br><span class="line">   ↓</span><br><span class="line">ControlNet</span><br><span class="line">   ↓</span><br><span class="line">结合正向、负向提示词</span><br><span class="line">   ↓</span><br><span class="line">KSampler</span><br><span class="line">   ↓</span><br><span class="line">VAE Decode</span><br><span class="line">   ↓</span><br><span class="line">生成图片</span><br></pre></td></tr></table></figure>
+
+<p>例如，使用 OpenPose 控制人物姿势时：</p>
+<ol>
+<li>加载一张人物参考照片。</li>
+<li>使用 OpenPose 预处理器提取人体骨架。</li>
+<li>将骨架图作为 ControlNet 条件。</li>
+<li>编写提示词，描述人物服装、外貌和场景。</li>
+<li>通过 KSampler 生成图片。</li>
+</ol>
+<p>这样就可以在一定程度上控制人物的动作和姿势。</p>
+<p>需要注意：ControlNet 不是保证像素级复制参考图的工具，最终结果仍然受到模型、提示词、控制强度和采样参数影响。</p>
+<h3 id="2-3、常见-ControlNet-类型"><a href="#2-3、常见-ControlNet-类型" class="headerlink" title="2.3、常见 ControlNet 类型"></a>2.3、常见 ControlNet 类型</h3><p>ControlNet 有多种控制方式，不同类型适合不同任务。</p>
+<h4 id="1-OpenPose：人物姿势控制"><a href="#1-OpenPose：人物姿势控制" class="headerlink" title="1. OpenPose：人物姿势控制"></a>1. OpenPose：人物姿势控制</h4><p>OpenPose 主要提取人物身体关键点和骨架信息。</p>
+<p>常见控制内容：</p>
+<ul>
+<li>头部位置。</li>
+<li>肩膀和手臂位置。</li>
+<li>腰部和腿部姿势。</li>
+<li>人体整体动作。</li>
+</ul>
+<p>适用场景：</p>
+<ul>
+<li>让人物摆出指定姿势。</li>
+<li>参考照片生成不同服装的人物。</li>
+<li>角色动作设计。</li>
+<li>漫画和插画人物构图。</li>
+</ul>
+<p>例如，上传一张人物站立照片，提取 OpenPose 骨架，再通过提示词生成穿着不同服装的人物。</p>
+<h4 id="2-Canny：边缘轮廓控制"><a href="#2-Canny：边缘轮廓控制" class="headerlink" title="2. Canny：边缘轮廓控制"></a>2. Canny：边缘轮廓控制</h4><p>Canny 通过边缘检测提取图片中的轮廓信息。</p>
+<p>它可以保留：</p>
+<ul>
+<li>建筑物轮廓。</li>
+<li>人物外形。</li>
+<li>物体边界。</li>
+<li>画面主要结构。</li>
+</ul>
+<p>适用场景：</p>
+<ul>
+<li>根据线稿生成图片。</li>
+<li>建筑外观设计。</li>
+<li>产品外观变化。</li>
+<li>保留原图物体轮廓并改变风格。</li>
+</ul>
+<p>例如，提供一张建筑照片，提取边缘图后，可以尝试将建筑转换成水彩画风格，同时保留主要轮廓。</p>
+<h4 id="3-Depth：深度控制"><a href="#3-Depth：深度控制" class="headerlink" title="3. Depth：深度控制"></a>3. Depth：深度控制</h4><p>Depth 主要提取图片中不同物体的远近关系。</p>
+<p>通常会生成一张深度图，用不同灰度表示空间距离。</p>
+<p>它可以帮助模型理解：</p>
+<ul>
+<li>前景和背景。</li>
+<li>物体的远近关系。</li>
+<li>场景空间结构。</li>
+<li>物体之间的大致位置。</li>
+</ul>
+<p>适用场景：</p>
+<ul>
+<li>改变场景风格。</li>
+<li>保留原图空间布局。</li>
+<li>室内设计。</li>
+<li>建筑和环境创作。</li>
+</ul>
+<h4 id="4-其他常见控制方式"><a href="#4-其他常见控制方式" class="headerlink" title="4. 其他常见控制方式"></a>4. 其他常见控制方式</h4><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>主要作用</th>
+<th>常见用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Lineart</td>
+<td>提取线稿</td>
+<td>插画、漫画</td>
+</tr>
+<tr>
+<td>SoftEdge</td>
+<td>提取柔和轮廓</td>
+<td>风格转换</td>
+</tr>
+<tr>
+<td>Scribble</td>
+<td>手绘草图控制</td>
+<td>草图生成</td>
+</tr>
+<tr>
+<td>Normal Map</td>
+<td>控制表面法线方向</td>
+<td>立体结构</td>
+</tr>
+<tr>
+<td>Tile</td>
+<td>分块控制与细节增强</td>
+<td>高清修复</td>
+</tr>
+<tr>
+<td>Segmentation</td>
+<td>根据区域类别控制</td>
+<td>场景布局</td>
+</tr>
+</tbody></table>
+<p>不同 ControlNet 模型支持的控制类型不同，下载前需要确认模型对应的架构和用途。</p>
+<h2 id="三-模型存放及安装"><a href="#三-模型存放及安装" class="headerlink" title="三 模型存放及安装"></a>三 模型存放及安装</h2><h3 id="3-1、准备-ControlNet-模型"><a href="#3-1、准备-ControlNet-模型" class="headerlink" title="3.1、准备 ControlNet 模型"></a>3.1、准备 ControlNet 模型</h3><p>使用 ControlNet，除了基础 Checkpoint，还需要下载与模型架构匹配的 ControlNet 模型。</p>
+<p>常见模型资源：</p>
+<ul>
+<li>Hugging Face：<a target="_blank" rel="noopener" href="https://huggingface.co/">https://huggingface.co/</a></li>
+<li>Civitai：<a target="_blank" rel="noopener" href="https://civitai.com/">https://civitai.com/</a></li>
+</ul>
+<p>搜索时可以使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SD 1.5 ControlNet OpenPose</span><br><span class="line">SD 1.5 ControlNet Canny</span><br><span class="line">SD 1.5 ControlNet Depth</span><br></pre></td></tr></table></figure>
+
+<p>如果使用 SDXL，则需要选择对应的 SDXL ControlNet 模型。</p>
+<p>注意：</p>
+<p><strong>SD 1.5、SDXL 和 FLUX 的 ControlNet 模型通常不能直接混用。</strong></p>
+<p>即使模型名称相似，也需要确认它支持的基础架构和加载方式。</p>
+<h4 id="1-模型存放位置"><a href="#1-模型存放位置" class="headerlink" title="1. 模型存放位置"></a>1. 模型存放位置</h4><p>传统 ControlNet 模型通常放在：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI/</span><br><span class="line">└── models/</span><br><span class="line">    └── controlnet/</span><br><span class="line">        ├── openpose.safetensors</span><br><span class="line">        ├── canny.safetensors</span><br><span class="line">        └── depth.safetensors</span><br></pre></td></tr></table></figure>
+
+<p>实际文件名以下载的模型为准。</p>
+<p>部分新架构或特殊工作流可能使用不同的模型目录和加载节点，应按照模型说明操作。</p>
+<h4 id="2-预处理器与-ControlNet-模型有什么区别？"><a href="#2-预处理器与-ControlNet-模型有什么区别？" class="headerlink" title="2. 预处理器与 ControlNet 模型有什么区别？"></a>2. 预处理器与 ControlNet 模型有什么区别？</h4><p>这是初学者容易混淆的地方。</p>
+<p><strong>预处理器（Preprocessor）</strong> 负责将原始图片转换成控制图。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">人物照片</span><br><span class="line">   ↓</span><br><span class="line">OpenPose 预处理器</span><br><span class="line">   ↓</span><br><span class="line">人体骨架图</span><br></pre></td></tr></table></figure>
+
+<p><strong>ControlNet 模型</strong> 则负责利用控制图引导图像生成。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">人体骨架图</span><br><span class="line">   ↓</span><br><span class="line">OpenPose ControlNet</span><br><span class="line">   ↓</span><br><span class="line">KSampler</span><br></pre></td></tr></table></figure>
+
+<p>两者不是同一个东西。</p>
+<p>如果使用已经制作好的骨架图、边缘图或深度图，可以直接加载控制图，不一定需要预处理器。</p>
+<p>如果希望从普通照片自动提取控制信息，就需要相应的预处理器。</p>
+<h3 id="3-2、安装预处理器节点"><a href="#3-2、安装预处理器节点" class="headerlink" title="3.2、安装预处理器节点"></a>3.2、安装预处理器节点</h3><p>ComfyUI 原生提供部分 ControlNet 相关节点，但 OpenPose、Canny、Depth 等预处理器通常需要额外安装对应的预处理器节点或扩展。</p>
+<p>常见方案是使用 ComfyUI 自定义节点，例如：</p>
+<ul>
+<li>ComfyUI ControlNet Auxiliary Preprocessors。</li>
+</ul>
+<p>项目地址：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Fannovel16/comfyui_controlnet_aux">https://github.com/Fannovel16/comfyui_controlnet_aux</a></p>
+<p>安装方式需要以项目当前 README 为准。</p>
+<p>传统手动安装方式示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ComfyUI/custom_nodes</span><br><span class="line"></span><br><span class="line">git clone https://github.com/Fannovel16/comfyui_controlnet_aux.git</span><br></pre></td></tr></table></figure>
+
+<p>然后使用 ComfyUI 对应的 Python 环境安装依赖。</p>
+<p>例如，如果使用 Windows 便携版，应使用该便携版自带的 Python，而不是随意调用系统 Python。</p>
+<p>安装完成后重新启动 ComfyUI，在节点搜索框中搜索：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">OpenPose</span><br><span class="line">Canny</span><br><span class="line">Depth</span><br></pre></td></tr></table></figure>
+
+<p>如果没有显示对应节点，检查依赖安装是否成功，以及自定义节点是否加载失败。</p>
+<h2 id="四-实战"><a href="#四-实战" class="headerlink" title="四 实战"></a>四 实战</h2><h3 id="4-1、实战一：使用-OpenPose-控制人物姿势"><a href="#4-1、实战一：使用-OpenPose-控制人物姿势" class="headerlink" title="4.1、实战一：使用 OpenPose 控制人物姿势"></a>4.1、实战一：使用 OpenPose 控制人物姿势</h3><p>下面使用 SD 1.5 + OpenPose ControlNet，搭建一个基础人物姿势控制工作流。</p>
+<h4 id="1-准备参考图片"><a href="#1-准备参考图片" class="headerlink" title="1. 准备参考图片"></a>1. 准备参考图片</h4><p>选择一张人物照片，最好满足：</p>
+<ul>
+<li>人物身体姿势清晰。</li>
+<li>手臂和腿部没有被严重遮挡。</li>
+<li>人物主体完整。</li>
+<li>图片背景不要过于复杂。</li>
+</ul>
+<h4 id="2-提取人体骨架"><a href="#2-提取人体骨架" class="headerlink" title="2. 提取人体骨架"></a>2. 提取人体骨架</h4><p>添加以下节点：</p>
+<table>
+<thead>
+<tr>
+<th>节点</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Load Image</td>
+<td>加载人物参考图</td>
+</tr>
+<tr>
+<td>OpenPose Preprocessor</td>
+<td>提取人体骨架</td>
+</tr>
+<tr>
+<td>Preview Image</td>
+<td>查看骨架提取结果</td>
+</tr>
+</tbody></table>
+<p>连接：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Load Image</span><br><span class="line">    ↓ IMAGE</span><br><span class="line">OpenPose Preprocessor</span><br><span class="line">    ↓ IMAGE</span><br><span class="line">Preview Image</span><br></pre></td></tr></table></figure>
+
+<p>运行后，可以看到人体骨架图。</p>
+<p>如果骨架提取不完整，可以尝试更换参考图，或者调整预处理器参数。</p>
+<h4 id="3-加载-ControlNet-模型"><a href="#3-加载-ControlNet-模型" class="headerlink" title="3. 加载 ControlNet 模型"></a>3. 加载 ControlNet 模型</h4><p>添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Load ControlNet Model</span><br></pre></td></tr></table></figure>
+
+<p>在模型列表中选择对应的 SD 1.5 OpenPose ControlNet。</p>
+<p>然后添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Apply ControlNet</span><br></pre></td></tr></table></figure>
+
+<p>将 OpenPose 预处理器输出的骨架图、正向提示词、负向提示词以及 ControlNet 模型连接到 Apply ControlNet。</p>
+<h4 id="4-连接完整工作流"><a href="#4-连接完整工作流" class="headerlink" title="4. 连接完整工作流"></a>4. 连接完整工作流</h4><p>传统 SD 1.5 工作流的关键连接关系：</p>
+<p><strong>模型与提示词：</strong></p>
+<ul>
+<li>Load Checkpoint 的 MODEL → KSampler 的 model。</li>
+<li>Load Checkpoint 的 CLIP → 正向和负向 CLIP Text Encode。</li>
+<li>正向、负向 CLIP Text Encode 输出 → Apply ControlNet 对应输入。</li>
+</ul>
+<p><strong>ControlNet：</strong></p>
+<ul>
+<li>Load ControlNet Model → Apply ControlNet 的 control_net。</li>
+<li>OpenPose Preprocessor 的 IMAGE → Apply ControlNet 的 image。</li>
+<li>Apply ControlNet 的 positive、negative → KSampler 对应输入。</li>
+</ul>
+<p><strong>图片生成：</strong></p>
+<ul>
+<li>Empty Latent Image → KSampler 的 latent_image。</li>
+<li>KSampler → VAE Decode。</li>
+<li>Load Checkpoint 的 VAE → VAE Decode。</li>
+<li>VAE Decode → Save Image。</li>
+</ul>
+<p>不同版本可能显示不同的节点名称或端口布局，连接时以节点实际输入输出类型为准。</p>
+<h4 id="5-设置提示词"><a href="#5-设置提示词" class="headerlink" title="5. 设置提示词"></a>5. 设置提示词</h4><p>正向提示词：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1girl, full body, standing pose,</span><br><span class="line">wearing a white dress,</span><br><span class="line">beautiful background,</span><br><span class="line">realistic photography,</span><br><span class="line">detailed clothing, natural lighting</span><br></pre></td></tr></table></figure>
+
+<p>负向提示词：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">blurry, low quality, bad anatomy,</span><br><span class="line">extra limbs, extra fingers,</span><br><span class="line">distorted body, deformed hands</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-设置-ControlNet-参数"><a href="#6-设置-ControlNet-参数" class="headerlink" title="6. 设置 ControlNet 参数"></a>6. 设置 ControlNet 参数</h4><p>Apply ControlNet 常见参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Strength</td>
+<td>控制强度</td>
+</tr>
+<tr>
+<td>Start Percent</td>
+<td>控制开始生效的位置</td>
+</tr>
+<tr>
+<td>End Percent</td>
+<td>控制结束生效的位置</td>
+</tr>
+</tbody></table>
+<p>入门可以先参考：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Strength = 1.0</span><br><span class="line">Start Percent = 0.0</span><br><span class="line">End Percent = 1.0</span><br></pre></td></tr></table></figure>
+
+<p>不同 ControlNet 模型的最佳参数不同，这些值只是测试起点。</p>
+<p>点击 Queue Prompt 生成图片，观察人物是否按照参考骨架保持相似姿势。</p>
+<h3 id="4-2、实战二：使用-Canny-控制图片轮廓"><a href="#4-2、实战二：使用-Canny-控制图片轮廓" class="headerlink" title="4.2、实战二：使用 Canny 控制图片轮廓"></a>4.2、实战二：使用 Canny 控制图片轮廓</h3><p>OpenPose 主要控制人物姿势，Canny 则更适合控制物体和场景轮廓。</p>
+<h4 id="1-准备图片"><a href="#1-准备图片" class="headerlink" title="1. 准备图片"></a>1. 准备图片</h4><p>选择一张建筑、家具或产品图片。</p>
+<h4 id="2-提取边缘图"><a href="#2-提取边缘图" class="headerlink" title="2. 提取边缘图"></a>2. 提取边缘图</h4><p>添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Load Image</span><br><span class="line">Canny Edge Preprocessor</span><br><span class="line">Preview Image</span><br></pre></td></tr></table></figure>
+
+<p>连接：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Load Image</span><br><span class="line">    ↓</span><br><span class="line">Canny Edge Preprocessor</span><br><span class="line">    ↓</span><br><span class="line">Preview Image</span><br></pre></td></tr></table></figure>
+
+<p>可以调整预处理器的低阈值和高阈值，观察边缘提取结果。</p>
+<p>阈值设置会影响轮廓的多少：</p>
+<ul>
+<li>阈值较低：可能提取更多细节和边缘。</li>
+<li>阈值较高：可能过滤部分较弱的边缘。</li>
+</ul>
+<p>具体效果与图片内容和预处理器实现有关。</p>
+<h4 id="3-应用-Canny-ControlNet"><a href="#3-应用-Canny-ControlNet" class="headerlink" title="3. 应用 Canny ControlNet"></a>3. 应用 Canny ControlNet</h4><p>加载与基础模型兼容的 Canny ControlNet。</p>
+<p>将边缘图连接到 Apply ControlNet 的 image 输入，并将控制后的正向、负向条件传给 KSampler。</p>
+<p>提示词可以尝试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">modern white building,</span><br><span class="line">minimalist architecture,</span><br><span class="line">glass windows,</span><br><span class="line">beautiful natural lighting,</span><br><span class="line">realistic architectural photography</span><br></pre></td></tr></table></figure>
+
+<p>生成后观察建筑轮廓是否与参考图接近。</p>
+<h3 id="4-3、实战三：使用-Depth-控制场景空间"><a href="#4-3、实战三：使用-Depth-控制场景空间" class="headerlink" title="4.3、实战三：使用 Depth 控制场景空间"></a>4.3、实战三：使用 Depth 控制场景空间</h3><p>Depth 控制主要用于保留场景空间结构。</p>
+<p>例如，准备一张室内照片，希望将原本的普通房间转换成现代简约风格，同时尽量保持家具和空间布局。</p>
+<p>基本流程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Load Image</span><br><span class="line">    ↓</span><br><span class="line">Depth Preprocessor</span><br><span class="line">    ↓</span><br><span class="line">Preview Depth Map</span><br><span class="line">    ↓</span><br><span class="line">Apply ControlNet</span><br><span class="line">    ↓</span><br><span class="line">KSampler</span><br><span class="line">    ↓</span><br><span class="line">生成图片</span><br></pre></td></tr></table></figure>
+
+<p>提示词示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">modern minimalist living room,</span><br><span class="line">white walls, wooden furniture,</span><br><span class="line">soft natural light,</span><br><span class="line">clean interior design,</span><br><span class="line">realistic photography</span><br></pre></td></tr></table></figure>
+
+<p>Depth ControlNet 可以帮助模型参考空间结构，但不保证每件家具的位置、尺寸和细节都完全不变。</p>
+<h2 id="五、ControlNet-重要参数详解"><a href="#五、ControlNet-重要参数详解" class="headerlink" title="五、ControlNet 重要参数详解"></a>五、ControlNet 重要参数详解</h2><h3 id="5-1-Strength：控制强度"><a href="#5-1-Strength：控制强度" class="headerlink" title="5.1. Strength：控制强度"></a>5.1. Strength：控制强度</h3><p>Strength 用于控制 ControlNet 对生成过程的影响程度。</p>
+<p>可以先参考：</p>
+<table>
+<thead>
+<tr>
+<th>Strength</th>
+<th>大致效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0.3</td>
+<td>控制较弱</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>中等控制</td>
+</tr>
+<tr>
+<td>0.8</td>
+<td>较强控制</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>强控制</td>
+</tr>
+<tr>
+<td>大于 1.0</td>
+<td>可能进一步增强控制，但不一定更好</td>
+</tr>
+</tbody></table>
+<p>如果生成结果与参考结构差异较大，可以适当提高 Strength。</p>
+<p>如果画面过于僵硬，或者无法自然表现提示词，可以尝试降低 Strength。</p>
+<h3 id="5-2-Start-Percent：开始控制时间"><a href="#5-2-Start-Percent：开始控制时间" class="headerlink" title="5.2. Start Percent：开始控制时间"></a>5.2. Start Percent：开始控制时间</h3><p>Start Percent 决定 ControlNet 从采样过程的哪个阶段开始生效。</p>
+<p>通常可以先设置为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Start Percent = 0.0</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3-End-Percent：结束控制时间"><a href="#5-3-End-Percent：结束控制时间" class="headerlink" title="5.3. End Percent：结束控制时间"></a>5.3. End Percent：结束控制时间</h3><p>End Percent 决定 ControlNet 在采样过程的哪个阶段停止生效。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">End Percent = 1.0</span><br></pre></td></tr></table></figure>
+
+<p>表示在整个采样阶段持续提供控制。</p>
+<p>如果希望模型在后期有更多自由发挥空间，可以尝试提前结束控制。</p>
+<p>注意：不同 ControlNet 实现对这些参数的具体解释和表现可能存在差异。</p>
+<h2 id="六、ControlNet-与-LoRA-有什么区别？"><a href="#六、ControlNet-与-LoRA-有什么区别？" class="headerlink" title="六、ControlNet 与 LoRA 有什么区别？"></a>六、ControlNet 与 LoRA 有什么区别？</h2><p>两者都可以影响生成结果，但控制目标不同。</p>
+<table>
+<thead>
+<tr>
+<th>对比</th>
+<th>LoRA</th>
+<th>ControlNet</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主要作用</td>
+<td>增加风格、人物或元素特征</td>
+<td>控制图片结构</td>
+</tr>
+<tr>
+<td>输入</td>
+<td>LoRA 模型文件</td>
+<td>控制图及 ControlNet 模型</td>
+</tr>
+<tr>
+<td>常见用途</td>
+<td>人物、服装、画风</td>
+<td>姿势、边缘、深度</td>
+</tr>
+<tr>
+<td>控制方式</td>
+<td>调整模型参数影响</td>
+<td>提供额外条件引导生成</td>
+</tr>
+</tbody></table>
+<p>两者也可以同时使用。</p>
+<p>例如：</p>
+<ul>
+<li>LoRA：控制人物画风。</li>
+<li>OpenPose ControlNet：控制人物动作。</li>
+<li>Prompt：描述人物服装和背景。</li>
+</ul>
+<p>这样可以同时控制图片风格、人物姿势和生成内容。</p>
+<h2 id="七、ControlNet-常见问题"><a href="#七、ControlNet-常见问题" class="headerlink" title="七、ControlNet 常见问题"></a>七、ControlNet 常见问题</h2><h3 id="7-1-找不到-ControlNet-模型"><a href="#7-1-找不到-ControlNet-模型" class="headerlink" title="7.1. 找不到 ControlNet 模型"></a>7.1. 找不到 ControlNet 模型</h3><p>检查模型是否放在：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI/models/controlnet/</span><br></pre></td></tr></table></figure>
+
+<p>确认模型与当前基础模型架构兼容。</p>
+<p>如果仍然找不到，可以刷新模型列表或重启 ComfyUI。</p>
+<h3 id="7-2-找不到-OpenPose、Canny-等预处理器"><a href="#7-2-找不到-OpenPose、Canny-等预处理器" class="headerlink" title="7.2. 找不到 OpenPose、Canny 等预处理器"></a>7.2. 找不到 OpenPose、Canny 等预处理器</h3><p>这些预处理器可能来自自定义节点。</p>
+<p>检查：</p>
+<ul>
+<li>是否正确安装自定义节点。</li>
+<li>是否安装对应 Python 依赖。</li>
+<li>是否使用 ComfyUI 对应的 Python 环境。</li>
+<li>启动日志中是否有节点加载错误。</li>
+</ul>
+<h3 id="7-3-人物姿势与参考图不一致"><a href="#7-3-人物姿势与参考图不一致" class="headerlink" title="7.3. 人物姿势与参考图不一致"></a>7.3. 人物姿势与参考图不一致</h3><p>可以检查：</p>
+<ul>
+<li>OpenPose 是否正确提取人体关键点。</li>
+<li>Strength 是否过低。</li>
+<li>参考图是否存在严重遮挡。</li>
+<li>ControlNet 模型是否与基础模型匹配。</li>
+</ul>
+<h3 id="7-4-图片结构过于僵硬"><a href="#7-4-图片结构过于僵硬" class="headerlink" title="7.4. 图片结构过于僵硬"></a>7.4. 图片结构过于僵硬</h3><p>可能是控制强度过高，或者控制时间过长。</p>
+<p>可以适当降低 Strength，或调整 End Percent。</p>
+<h3 id="7-5-显存不足"><a href="#7-5-显存不足" class="headerlink" title="7.5. 显存不足"></a>7.5. 显存不足</h3><p>ControlNet 会增加模型加载和图像处理的资源消耗。</p>
+<p>可以尝试：</p>
+<ul>
+<li>降低生成分辨率。</li>
+<li>使用较轻量的模型。</li>
+<li>不同时加载不需要的 ControlNet。</li>
+<li>减少批量生成数量。</li>
+<li>关闭其他占用显存的程序。</li>
+</ul>
+<h2 id="八、本篇总结"><a href="#八、本篇总结" class="headerlink" title="八、本篇总结"></a>八、本篇总结</h2><p>本篇学习了 ComfyUI ControlNet 的基本概念、模型准备和使用方法。</p>
+<p>需要掌握的知识点：</p>
+<ol>
+<li>ControlNet 用于控制生成图片的结构和布局。</li>
+<li>OpenPose 主要控制人物姿势。</li>
+<li>Canny 主要控制物体和场景轮廓。</li>
+<li>Depth 主要控制场景空间和远近关系。</li>
+<li>预处理器负责提取控制信息，ControlNet 模型负责利用控制信息引导生成。</li>
+<li>Strength、Start Percent 和 End Percent 会影响控制效果。</li>
+<li>LoRA 和 ControlNet 可以组合使用。</li>
+</ol>
+<p>建议分别使用 OpenPose、Canny 和 Depth 做一次简单测试，理解不同控制方式的区别。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ComfyUI/" rel="tag"># ComfyUI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/2579ff86.html" rel="prev" title="ComfyUI开发之——LoRA使用教程(3.4)">
+                  <i class="fa fa-angle-left"></i> ComfyUI开发之——LoRA使用教程(3.4)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/e99e97a9.html" rel="next" title="ComfyUI开发之——ComfyUI 参考图与人物一致性(3.6)">
+                  ComfyUI开发之——ComfyUI 参考图与人物一致性(3.6) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"9e8425a47cfd55974772ea5206631d2f"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一、前言12345678910本文主要介绍：- ComfyUI 的主要界面区域。- 节点、输入输出端口和连线的作用。- 画布的移动、缩放与节点操作。- 工作流的加载、保存和管理。- 生成队列、历史记录及常用快捷键。不同版本的 ComfyUI 在菜单布局上可能有所区别，本文以新版界面的常见布局为主。部分旧版界面可能需要通过设置切换菜单模式。  二、认识 ComfyUI 的主要界面ComfyUI 的核">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ComfyUI开发之——ComfyUI界面详解(1.3)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/5c36aa88.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一、前言12345678910本文主要介绍：- ComfyUI 的主要界面区域。- 节点、输入输出端口和连线的作用。- 画布的移动、缩放与节点操作。- 工作流的加载、保存和管理。- 生成队列、历史记录及常用快捷键。不同版本的 ComfyUI 在菜单布局上可能有所区别，本文以新版界面的常见布局为主。部分旧版界面可能需要通过设置切换菜单模式。  二、认识 ComfyUI 的主要界面ComfyUI 的核">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-11-04T11:25:35.000Z">
+<meta property="article:modified_time" content="2026-11-05T01:59:37.418Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="ComfyUI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/5c36aa88.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/5c36aa88.html","path":"posts/5c36aa88.html","title":"ComfyUI开发之——ComfyUI界面详解(1.3)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ComfyUI开发之——ComfyUI界面详解(1.3) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">384</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4861</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">一、前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%AE%A4%E8%AF%86-ComfyUI-%E7%9A%84%E4%B8%BB%E8%A6%81%E7%95%8C%E9%9D%A2"><span class="nav-number">2.</span> <span class="nav-text">二、认识 ComfyUI 的主要界面</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%94%BB%E5%B8%83"><span class="nav-number">2.1.</span> <span class="nav-text">1. 工作流画布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%B7%A6%E4%BE%A7%E9%9D%A2%E6%9D%BF"><span class="nav-number">2.2.</span> <span class="nav-text">2. 左侧面板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%BF%90%E8%A1%8C%E5%8C%BA%E5%9F%9F%E4%B8%8E%E9%98%9F%E5%88%97"><span class="nav-number">2.3.</span> <span class="nav-text">3. 运行区域与队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E8%AE%BE%E7%BD%AE%E4%B8%8E%E6%97%A5%E5%BF%97"><span class="nav-number">2.4.</span> <span class="nav-text">4.设置与日志</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E8%8A%82%E7%82%B9%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">三、什么是节点？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E8%8A%82%E7%82%B9%E7%94%B1%E5%93%AA%E4%BA%9B%E9%83%A8%E5%88%86%E7%BB%84%E6%88%90%EF%BC%9F"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 节点由哪些部分组成？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E8%BE%93%E5%85%A5%E7%AB%AF%E5%8F%A3%E4%B8%8E%E8%BE%93%E5%87%BA%E7%AB%AF%E5%8F%A3"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 输入端口与输出端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E8%8A%82%E7%82%B9%E5%8F%82%E6%95%B0"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 节点参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E8%BF%9E%E7%BA%BF%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E9%9A%8F%E4%BE%BF%E8%BF%9E%E6%8E%A5%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">四、连线是什么？为什么不能随便连接？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5%E8%8A%82%E7%82%B9%EF%BC%9F"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 如何连接节点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89%E4%BA%9B%E7%AB%AF%E5%8F%A3%E4%B8%8D%E8%83%BD%E8%BF%9E%E6%8E%A5%EF%BC%9F"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 为什么有些端口不能连接？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E7%94%BB%E5%B8%83%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">五、画布的基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E7%A7%BB%E5%8A%A8%E7%94%BB%E5%B8%83"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 移动画布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E7%BC%A9%E6%94%BE%E7%94%BB%E5%B8%83"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 缩放画布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E7%A7%BB%E5%8A%A8%E8%8A%82%E7%82%B9"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 移动节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-%E9%80%89%E6%8B%A9%E5%A4%9A%E4%B8%AA%E8%8A%82%E7%82%B9"><span class="nav-number">5.4.</span> <span class="nav-text">5.4 选择多个节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9"><span class="nav-number">5.5.</span> <span class="nav-text">5.5 添加节点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%A6%82%E4%BD%95%E5%8A%A0%E8%BD%BD%E3%80%81%E4%BF%9D%E5%AD%98%E5%92%8C%E7%AE%A1%E7%90%86%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">六、工作流如何加载、保存和管理？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-%E5%8A%A0%E8%BD%BD%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 加载工作流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-%E4%BF%9D%E5%AD%98%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 保存工作流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%92%8C%E7%94%9F%E6%88%90%E5%9B%BE%E7%89%87%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">6.3.</span> <span class="nav-text">6.3 工作流和生成图片有什么区别？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E9%98%9F%E5%88%97%E3%80%81%E8%BF%90%E8%A1%8C%E7%8A%B6%E6%80%81%E4%B8%8E%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95"><span class="nav-number">7.</span> <span class="nav-text">七、队列、运行状态与历史记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-%E4%BB%80%E4%B9%88%E6%98%AF%E7%94%9F%E6%88%90%E9%98%9F%E5%88%97%EF%BC%9F"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 什么是生成队列？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-%E5%A6%82%E4%BD%95%E6%8F%90%E4%BA%A4%E7%94%9F%E6%88%90%E4%BB%BB%E5%8A%A1%EF%BC%9F"><span class="nav-number">7.2.</span> <span class="nav-text">7.2 如何提交生成任务？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%A6%82%E4%BD%95%E4%B8%AD%E6%96%AD%E4%BB%BB%E5%8A%A1%EF%BC%9F"><span class="nav-number">7.3.</span> <span class="nav-text">3. 如何中断任务？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8%EF%BC%9F"><span class="nav-number">7.4.</span> <span class="nav-text">4. 历史记录有什么用？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%95%B4%E7%90%86"><span class="nav-number">8.</span> <span class="nav-text">八、常用快捷键整理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E5%8A%A8%E6%89%8B%E7%BB%83%E4%B9%A0%EF%BC%9A%E7%86%9F%E6%82%89%E7%95%8C%E9%9D%A2"><span class="nav-number">9.</span> <span class="nav-text">九、动手练习：熟悉界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">10.</span> <span class="nav-text">十、总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">11.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4861</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">384</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">704</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/5c36aa88.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ComfyUI开发之——ComfyUI界面详解(1.3) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ComfyUI开发之——ComfyUI界面详解(1.3)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/ComfyUI%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94ComfyUI%E7%95%8C%E9%9D%A2%E8%AF%A6%E8%A7%A3-1-3.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-11-04 19:25:35" itemprop="dateCreated datePublished" datetime="2026-11-04T19:25:35+08:00">2026-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/" itemprop="url" rel="index"><span itemprop="name">AI图视频短剧</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">AI绘图</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/ComfyUI/" itemprop="url" rel="index"><span itemprop="name">ComfyUI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">本文主要介绍：</span><br><span class="line"></span><br><span class="line">- ComfyUI 的主要界面区域。</span><br><span class="line">- 节点、输入输出端口和连线的作用。</span><br><span class="line">- 画布的移动、缩放与节点操作。</span><br><span class="line">- 工作流的加载、保存和管理。</span><br><span class="line">- 生成队列、历史记录及常用快捷键。</span><br><span class="line"></span><br><span class="line">不同版本的 ComfyUI 在菜单布局上可能有所区别，本文以新版界面的常见布局为主。</span><br><span class="line">部分旧版界面可能需要通过设置切换菜单模式。</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、认识-ComfyUI-的主要界面"><a href="#二、认识-ComfyUI-的主要界面" class="headerlink" title="二、认识 ComfyUI 的主要界面"></a>二、认识 ComfyUI 的主要界面</h2><p>ComfyUI 的核心是中间的工作流画布，其他功能围绕画布展开。</p>
+<p>通常可以将界面理解为以下几个区域：</p>
+<table>
+<thead>
+<tr>
+<th>区域</th>
+<th>主要作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>顶部菜单</td>
+<td>新建、打开、保存工作流等</td>
+</tr>
+<tr>
+<td>工作流画布</td>
+<td>放置节点、连接节点、编辑流程</td>
+</tr>
+<tr>
+<td>左侧面板</td>
+<td>查看节点、模型、工作流等资源</td>
+</tr>
+<tr>
+<td>右侧运行区域</td>
+<td>执行工作流、查看队列和运行状态</td>
+</tr>
+<tr>
+<td>底部工具区</td>
+<td>访问设置、日志及其他辅助功能</td>
+</tr>
+</tbody></table>
+<p>具体布局可能因版本和窗口大小而变化，不必拘泥于按钮所在的位置，先理解各个区域的用途即可。</p>
+<h3 id="1-工作流画布"><a href="#1-工作流画布" class="headerlink" title="1. 工作流画布"></a>1. 工作流画布</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">画布是 ComfyUI 最重要的区域。</span><br><span class="line"></span><br><span class="line">你可以把它理解为一张可以无限延伸的工作台。</span><br><span class="line">在这里放置不同的节点，再通过连线组织生成流程。</span><br><span class="line"></span><br><span class="line">例如，一个简单的文生图工作流可能包含：加载模型 → 文本编码 → 采样生成 → 解码图片 → 保存图片</span><br><span class="line"></span><br><span class="line">在实际界面中，每个步骤会显示为独立的节点，而不是普通的文字框。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-左侧面板"><a href="#2-左侧面板" class="headerlink" title="2. 左侧面板"></a>2. 左侧面板</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">新版界面通常会提供节点库、模型库、工作流等面板。</span><br><span class="line"></span><br><span class="line">- 节点库（Nodes）：查找和添加节点。</span><br><span class="line">- 模型库（Models）： 查看程序识别到的模型。</span><br><span class="line">- 工作流（Workflows）： 管理本地工作流。</span><br><span class="line">- 资源或历史相关面板： 根据版本显示生成的图片及其他内容。</span><br><span class="line"></span><br><span class="line">如果找不到某个模型，可以先检查模型库或对应节点中的模型选择列表；</span><br><span class="line">如果不知道某个节点在哪里，可以尝试从节点库搜索。</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-运行区域与队列"><a href="#3-运行区域与队列" class="headerlink" title="3. 运行区域与队列"></a>3. 运行区域与队列</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">运行区域用于执行当前工作流，并查看等待执行或正在执行的任务。</span><br><span class="line"></span><br><span class="line">如果你连续提交多个生成任务，它们通常会进入队列等待处理。</span><br><span class="line">这样就不必每生成一张图片，都重新搭建一次工作流。</span><br><span class="line"></span><br><span class="line">后面我们还会专门介绍队列和历史记录的区别。</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-设置与日志"><a href="#4-设置与日志" class="headerlink" title="4.设置与日志"></a>4.设置与日志</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">设置通常用于调整界面、语言、快捷键等选项。</span><br><span class="line"></span><br><span class="line">日志则可以帮助你了解程序运行情况。遇到模型加载失败、节点报错或显存不足时，日志和启动终端中的错误信息往往比单纯观察界面更有帮助。</span><br><span class="line"></span><br><span class="line">官方界面说明：ComfyUI 界面总览：https://docs.comfy.org/interface/overview)</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、什么是节点？"><a href="#三、什么是节点？" class="headerlink" title="三、什么是节点？"></a>三、什么是节点？</h2><p>理解节点，是学习 ComfyUI 最重要的一步。</p>
+<p><strong>节点就是一个独立的功能模块，每个节点负责完成某项任务。</strong></p>
+<p>例如：</p>
+<ul>
+<li>加载模型节点：读取图像生成模型。</li>
+<li>文本编码节点：处理正向或负向提示词。</li>
+<li>空 Latent 图像节点：创建指定尺寸的初始潜在图像数据。</li>
+<li>KSampler 节点：执行采样生成过程。</li>
+<li>VAE 解码节点：将潜在图像数据转换为普通图片。</li>
+<li>保存图像节点：保存生成结果。</li>
+</ul>
+<p>这些节点各自负责不同的工作，组合起来才能形成完整的生成流程。</p>
+<h3 id="3-1-节点由哪些部分组成？"><a href="#3-1-节点由哪些部分组成？" class="headerlink" title="3.1 节点由哪些部分组成？"></a>3.1 节点由哪些部分组成？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">常见节点通常包含以下部分：</span><br><span class="line"></span><br><span class="line">- 标题栏： 显示节点名称，可以用来拖动节点。</span><br><span class="line">- 输入端口： 接收其他节点传来的数据。</span><br><span class="line">- 参数区域： 设置提示词、图片尺寸、采样步数等。</span><br><span class="line">- 输出端口： 将处理结果传递给其他节点。</span><br><span class="line"></span><br><span class="line">并非每个节点都具备全部这些部分。</span><br><span class="line">有些节点只有输入输出端口，有些则提供多个参数供用户修改。</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-输入端口与输出端口"><a href="#3-2-输入端口与输出端口" class="headerlink" title="3.2 输入端口与输出端口"></a>3.2 输入端口与输出端口</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">可以把节点之间的关系理解成工厂里的生产流程。</span><br><span class="line"></span><br><span class="line">一个节点负责加工，完成后把结果交给下一个节点。输入端口负责接收数据，输出端口负责提供数据。</span><br><span class="line"></span><br><span class="line">例如，加载模型节点输出模型对象，采样节点接收模型及其他必要输入，再生成潜在图像数据。</span><br><span class="line"></span><br><span class="line">如果某个节点缺少必需的输入，工作流可能无法正常执行。</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-节点参数"><a href="#3-3-节点参数" class="headerlink" title="3.3 节点参数"></a>3.3 节点参数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">节点中的参数决定了具体操作方式。</span><br><span class="line"></span><br><span class="line">例如，在采样节点中，常见参数包括：</span><br><span class="line"></span><br><span class="line">- Seed：随机种子。</span><br><span class="line">- Steps：采样步数。</span><br><span class="line">- CFG：提示词引导强度。</span><br><span class="line">- Sampler：采样算法。</span><br><span class="line"></span><br><span class="line">不同节点提供的参数并不相同。</span><br><span class="line">初学阶段只需先知道参数属于节点本身，等学习文生图时，再逐一理解它们对结果的影响。</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、连线是什么？为什么不能随便连接？"><a href="#四、连线是什么？为什么不能随便连接？" class="headerlink" title="四、连线是什么？为什么不能随便连接？"></a>四、连线是什么？为什么不能随便连接？</h2><p>节点之间的连线用于传递数据。</p>
+<p>在 ComfyUI 中，连线不仅表示操作顺序，还表示一个节点的输出被另一个节点使用。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">加载模型 ─────→ 采样节点</span><br><span class="line">文本编码 ─────→ 采样节点</span><br><span class="line">空 Latent 图像 → 采样节点</span><br></pre></td></tr></table></figure>
+
+<p>这里的采样节点需要多个输入才能工作。只有模型，并不足以完成整个图像生成过程。</p>
+<h3 id="4-1-如何连接节点？"><a href="#4-1-如何连接节点？" class="headerlink" title="4.1 如何连接节点？"></a>4.1 如何连接节点？</h3><p>一般来说，将一个节点的输出端口拖动到另一个节点对应的输入端口，就可以建立连接。</p>
+<p>如果需要更换连接，可以根据界面支持的操作重新拖动连线，或断开原有连接后再重新连接。</p>
+<p>具体操作可能随界面版本有所变化。</p>
+<h3 id="4-2-为什么有些端口不能连接？"><a href="#4-2-为什么有些端口不能连接？" class="headerlink" title="4.2 为什么有些端口不能连接？"></a>4.2 为什么有些端口不能连接？</h3><p>因为不同端口传递的数据类型可能不同。</p>
+<p>例如：</p>
+<ul>
+<li>模型数据不能直接当作普通图片使用。</li>
+<li>文本编码结果不能直接当作最终图像保存。</li>
+<li>潜在图像数据通常需要经过适当的解码步骤，才能得到普通图片。</li>
+</ul>
+<p>可以把它理解成不同类型的插头：即使两个节点的位置很近，也不代表它们的接口一定兼容。</p>
+<p><strong>判断连线是否合理，关键不是看节点摆放得是否整齐，而是看数据类型和节点输入要求是否匹配。</strong></p>
+<p>第三篇先理解这一原则即可。后面学习具体节点时，再逐步掌握不同类型数据的连接规则。</p>
+<h2 id="五、画布的基本操作"><a href="#五、画布的基本操作" class="headerlink" title="五、画布的基本操作"></a>五、画布的基本操作</h2><p>熟悉画布操作，可以让你在编辑复杂工作流时轻松很多。</p>
+<h3 id="5-1-移动画布"><a href="#5-1-移动画布" class="headerlink" title="5.1 移动画布"></a>5.1 移动画布</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">当工作流节点较多，超出当前可见范围时，可以移动画布，查看其他节点。</span><br><span class="line"></span><br><span class="line">常见操作是按住空格键，再拖动鼠标移动画布。部分版本还提供专门的平移工具。</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-缩放画布"><a href="#5-2-缩放画布" class="headerlink" title="5.2 缩放画布"></a>5.2 缩放画布</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">可以通过鼠标滚轮或界面提供的缩放工具调整画布比例，具体操作取决于当前版本和快捷键设置。</span><br><span class="line"></span><br><span class="line">缩放主要改变工作流在屏幕上的显示大小，不会改变图片生成的分辨率。</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3-移动节点"><a href="#5-3-移动节点" class="headerlink" title="5.3 移动节点"></a>5.3 移动节点</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">选中节点后，通常可以拖动节点标题栏，将它移动到合适的位置。</span><br><span class="line"></span><br><span class="line">建议把节点按照处理顺序排列，例如从左到右依次放置模型加载、文本编码、采样、解码和保存节点。</span><br><span class="line"></span><br><span class="line">这样不仅更容易阅读，后续排查问题也会更方便。</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-4-选择多个节点"><a href="#5-4-选择多个节点" class="headerlink" title="5.4 选择多个节点"></a>5.4 选择多个节点</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">当需要整体调整某一部分工作流时，可以使用多选操作，再一起移动节点。</span><br><span class="line"></span><br><span class="line">节点较多时，也可以通过框选或组合功能整理相关节点。</span><br><span class="line">具体支持的操作方式取决于当前界面版本。</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-5-添加节点"><a href="#5-5-添加节点" class="headerlink" title="5.5 添加节点"></a>5.5 添加节点</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">常见的添加方式包括打开节点库搜索，或者在画布空白处双击鼠标左键，调出节点快速搜索面板。</span><br><span class="line"></span><br><span class="line">例如，想查找保存图像的节点，可以搜索 `Save Image`。</span><br><span class="line"></span><br><span class="line">需要注意，搜索结果可能包含不同用途的节点。选择前应确认节点名称、输入输出类型和用途是否符合当前工作流。</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、工作流如何加载、保存和管理？"><a href="#六、工作流如何加载、保存和管理？" class="headerlink" title="六、工作流如何加载、保存和管理？"></a>六、工作流如何加载、保存和管理？</h2><p>工作流是 ComfyUI 的核心资产之一。</p>
+<p>一个工作流通常记录了节点、连接关系和参数等信息。保存工作流后，可以在以后继续使用，也可以分享给其他人。</p>
+<h3 id="6-1-加载工作流"><a href="#6-1-加载工作流" class="headerlink" title="6.1 加载工作流"></a>6.1 加载工作流</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">如果你已经下载了别人分享的工作流，可以通过顶部菜单打开文件，或使用当前版本支持的导入方式加载。</span><br><span class="line"></span><br><span class="line">常见的工作流文件格式是 JSON。</span><br><span class="line"></span><br><span class="line">部分 PNG 图片也可能嵌入工作流信息，某些工作流还支持其他图片或文件格式。能否恢复工作流，取决于文件是否包含相关信息以及当前版本的支持情况。</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2-保存工作流"><a href="#6-2-保存工作流" class="headerlink" title="6.2 保存工作流"></a>6.2 保存工作流</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">编辑完成后，应及时保存。</span><br><span class="line"></span><br><span class="line">常见的操作是通过菜单保存工作流，或者使用快捷键 `Ctrl + S`。</span><br><span class="line"></span><br><span class="line">需要注意，保存工作流不等于保存所有模型文件。 </span><br><span class="line">如果把工作流发给别人，对方可能仍然需要单独下载相应模型，并安装缺失的自定义节点和依赖。</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-3-工作流和生成图片有什么区别？"><a href="#6-3-工作流和生成图片有什么区别？" class="headerlink" title="6.3 工作流和生成图片有什么区别？"></a>6.3 工作流和生成图片有什么区别？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">工作流描述的是如何生成内容，生成图片则是执行工作流后的结果。</span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line"></span><br><span class="line">- 工作流文件：记录节点、连接关系及参数。</span><br><span class="line">- 图片文件：保存最终生成的图像。</span><br><span class="line">- 模型文件：提供图像生成所需的模型能力。</span><br><span class="line"></span><br><span class="line">三者相互配合，但不能相互替代。</span><br><span class="line"></span><br><span class="line">如果你想复现某张图片，除了保存图片，最好也保留工作流和所需模型信息。</span><br></pre></td></tr></table></figure>
+
+<h2 id="七、队列、运行状态与历史记录"><a href="#七、队列、运行状态与历史记录" class="headerlink" title="七、队列、运行状态与历史记录"></a>七、队列、运行状态与历史记录</h2><p>ComfyUI 不只是搭建工作流的界面，也负责管理生成任务。</p>
+<h3 id="7-1-什么是生成队列？"><a href="#7-1-什么是生成队列？" class="headerlink" title="7.1 什么是生成队列？"></a>7.1 什么是生成队列？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">队列可以理解成任务排队列表。</span><br><span class="line"></span><br><span class="line">当你提交一个工作流后，ComfyUI 会根据运行情况执行任务。</span><br><span class="line">如果当前有任务正在处理，后续任务可能需要等待。</span><br><span class="line"></span><br><span class="line">例如，你准备生成 10 张不同提示词的图片，可以多次提交任务，再通过队列查看等待执行的内容。</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-2-如何提交生成任务？"><a href="#7-2-如何提交生成任务？" class="headerlink" title="7.2 如何提交生成任务？"></a>7.2 如何提交生成任务？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">在工作流配置完成后，可以点击界面中的运行按钮，也可以使用快捷键：Ctrl + Enter</span><br><span class="line">这会将当前工作流提交执行。</span><br><span class="line"></span><br><span class="line">提交后，任务可能需要等待，也可能立即开始。实际速度取决于硬件、模型和当前队列情况。</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-如何中断任务？"><a href="#3-如何中断任务？" class="headerlink" title="3. 如何中断任务？"></a>3. 如何中断任务？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">如果发现参数设置错误，或者不想继续当前生成任务，可以使用界面提供的中断操作。</span><br><span class="line"></span><br><span class="line">常见快捷键为：Ctrl + Alt + Enter</span><br><span class="line"></span><br><span class="line">如果队列中还有其他任务，注意区分中断当前任务和清除等待任务等不同操作。</span><br><span class="line">不同版本的界面可能提供不同的队列管理选项。</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-历史记录有什么用？"><a href="#4-历史记录有什么用？" class="headerlink" title="4. 历史记录有什么用？"></a>4. 历史记录有什么用？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">历史记录用于查看之前执行过的任务及其生成结果，方便回顾和管理。</span><br><span class="line"></span><br><span class="line">队列侧重于等待执行或当前运行的任务；历史记录侧重于已经执行过的任务。</span><br><span class="line"></span><br><span class="line">两者的具体显示方式可能随版本变化。</span><br></pre></td></tr></table></figure>
+
+<h2 id="八、常用快捷键整理"><a href="#八、常用快捷键整理" class="headerlink" title="八、常用快捷键整理"></a>八、常用快捷键整理</h2><p>熟悉常用快捷键，可以减少反复打开菜单的操作。</p>
+<p>以下是常见快捷键，实际使用时应以当前版本的快捷键设置为准。</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Ctrl + Enter</code></td>
+<td>提交当前工作流</td>
+</tr>
+<tr>
+<td><code>Ctrl + Shift + Enter</code></td>
+<td>将当前工作流优先提交</td>
+</tr>
+<tr>
+<td><code>Ctrl + Alt + Enter</code></td>
+<td>中断运行</td>
+</tr>
+<tr>
+<td><code>Ctrl + S</code></td>
+<td>保存工作流</td>
+</tr>
+<tr>
+<td><code>Ctrl + O</code></td>
+<td>打开工作流</td>
+</tr>
+<tr>
+<td><code>Ctrl + Z</code></td>
+<td>撤销操作</td>
+</tr>
+<tr>
+<td><code>Ctrl + Y</code></td>
+<td>重做操作</td>
+</tr>
+<tr>
+<td><code>Ctrl + A</code></td>
+<td>选择所有节点</td>
+</tr>
+<tr>
+<td><code>Delete</code> &#x2F; <code>Backspace</code></td>
+<td>删除选中的节点</td>
+</tr>
+<tr>
+<td><code>Ctrl + M</code></td>
+<td>静音或取消静音选中的节点</td>
+</tr>
+<tr>
+<td><code>Ctrl + B</code></td>
+<td>绕过或取消绕过选中的节点</td>
+</tr>
+<tr>
+<td><code>Space + 拖动</code></td>
+<td>移动画布</td>
+</tr>
+<tr>
+<td>双击鼠标左键</td>
+<td>打开节点快速搜索</td>
+</tr>
+</tbody></table>
+<p>其中，静音和绕过是两种不同的操作，不要简单理解为删除节点。它们的实际效果与节点类型及工作流连接方式有关。</p>
+<p>如果快捷键不起作用，可以打开设置中的快捷键面板，检查当前绑定，并根据需要进行自定义。</p>
+<p>官方参考：<a target="_blank" rel="noopener" href="https://docs.comfy.org/zh/interface/shortcuts">ComfyUI 快捷键与自定义设置</a></p>
+<h2 id="九、动手练习：熟悉界面"><a href="#九、动手练习：熟悉界面" class="headerlink" title="九、动手练习：熟悉界面"></a>九、动手练习：熟悉界面</h2><p>了解完界面后，建议实际操作一遍。</p>
+<ol>
+<li>打开 ComfyUI，找到工作流画布。</li>
+<li>查看左侧的节点库、模型库和工作流面板。</li>
+<li>尝试移动画布、缩放画布。</li>
+<li>在空白处双击，打开节点搜索面板，再关闭它。</li>
+<li>如果当前已经有工作流，尝试选中一个节点并移动位置。</li>
+<li>使用 <code>Ctrl + S</code> 保存工作流。</li>
+<li>查看运行区域，认识队列和历史记录的位置。</li>
+<li>打开设置，找到快捷键配置。</li>
+</ol>
+<p>如果当前画布是空白的，也不用着急。下一篇会继续介绍模型的基础知识，之后我们再正式搭建第一个文生图工作流。</p>
+<h2 id="十、总结"><a href="#十、总结" class="headerlink" title="十、总结"></a>十、总结</h2><p>本篇介绍了 ComfyUI 的主要界面，以及节点、连线、画布、工作流和生成队列等基本概念。</p>
+<p>需要记住的核心内容有四点：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 节点：负责执行具体功能。</span><br><span class="line">- 连线：负责在节点之间传递数据。</span><br><span class="line">- 工作流：由节点和连线组成，记录生成过程。</span><br><span class="line">- 队列：负责管理提交的生成任务。</span><br></pre></td></tr></table></figure>
+
+<p>掌握这些基础操作后，面对复杂工作流就不容易感到陌生。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.comfy.org/interface/overview">ComfyUI 官方界面总览</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.comfy.org/zh/interface/shortcuts">ComfyUI 官方快捷键说明</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Comfy-Org/ComfyUI">ComfyUI 官方项目</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ComfyUI/" rel="tag"># ComfyUI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/fdf8a910.html" rel="prev" title="ComfyUI开发之——ComfyUI环境与目录结构详解(1.2)">
+                  <i class="fa fa-angle-left"></i> ComfyUI开发之——ComfyUI环境与目录结构详解(1.2)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/d8b48efa.html" rel="next" title="ComfyUI开发之——ComfyUI模型基础(1.4)">
+                  ComfyUI开发之——ComfyUI模型基础(1.4) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"3fe6814e623c6b961352dd8aec97440d"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

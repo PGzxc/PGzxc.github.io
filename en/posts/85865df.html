@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="一、概述1234567891011前面几篇，我们已经使用 SD 1.5 搭建了第一个文生图工作流，并学习了提示词、采样参数、图片尺寸和显存优化。接下来需要解决一个实际问题：ComfyUI 支持这么多模型，应该选择哪一个？下载模型后放在哪里？为什么有些模型加载后无法正常生成图片？这篇文章主要介绍三类常见图像模型：SD 1.5、SDXL 和 FLUX，并进一步了解模型文件、目录结构、安装方法和兼容性。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ComfyUI开发之——ComfyUI模型选择与管理(2.5)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/85865df.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="一、概述1234567891011前面几篇，我们已经使用 SD 1.5 搭建了第一个文生图工作流，并学习了提示词、采样参数、图片尺寸和显存优化。接下来需要解决一个实际问题：ComfyUI 支持这么多模型，应该选择哪一个？下载模型后放在哪里？为什么有些模型加载后无法正常生成图片？这篇文章主要介绍三类常见图像模型：SD 1.5、SDXL 和 FLUX，并进一步了解模型文件、目录结构、安装方法和兼容性。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-11-04T11:30:54.000Z">
+<meta property="article:modified_time" content="2026-11-05T01:59:37.037Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="ComfyUI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/85865df.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/85865df.html","path":"posts/85865df.html","title":"ComfyUI开发之——ComfyUI模型选择与管理(2.5)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ComfyUI开发之——ComfyUI模型选择与管理(2.5) | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">384</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4861</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9B%BE%E5%83%8F%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">二、图像模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E3%80%81%E5%85%88%E8%AE%A4%E8%AF%86%E4%B8%89%E7%B1%BB%E5%B8%B8%E8%A7%81%E5%9B%BE%E5%83%8F%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">2.1、先认识三类常见图像模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Stable-Diffusion-1-5%EF%BC%88SD-1-5%EF%BC%89"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. Stable Diffusion 1.5（SD 1.5）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Stable-Diffusion-XL%EF%BC%88SDXL%EF%BC%89"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. Stable Diffusion XL（SDXL）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-FLUX"><span class="nav-number">2.1.3.</span> <span class="nav-text">3. FLUX</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2%E3%80%81SD-1-5%E3%80%81SDXL%E3%80%81FLUX-%E5%BA%94%E8%AF%A5%E6%80%8E%E4%B9%88%E9%80%89%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2、SD 1.5、SDXL、FLUX 应该怎么选？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81ComfyUI-%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">三、ComfyUI 模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1%E3%80%81ComfyUI-%E6%A8%A1%E5%9E%8B%E6%96%87%E4%BB%B6%E6%9C%89%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="nav-number">3.1.</span> <span class="nav-text">3.1、ComfyUI 模型文件有哪些类型？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2%E3%80%81ComfyUI-%E6%A8%A1%E5%9E%8B%E5%BA%94%E8%AF%A5%E6%94%BE%E5%9C%A8%E5%93%AA%E9%87%8C%EF%BC%9F"><span class="nav-number">3.2.</span> <span class="nav-text">3.2、ComfyUI 模型应该放在哪里？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-SD-1-5-%E6%A8%A1%E5%9E%8B%E5%AD%98%E6%94%BE%E4%BD%8D%E7%BD%AE"><span class="nav-number">3.2.1.</span> <span class="nav-text">1. SD 1.5 模型存放位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-SDXL-%E6%A8%A1%E5%9E%8B%E5%AD%98%E6%94%BE%E4%BD%8D%E7%BD%AE"><span class="nav-number">3.2.2.</span> <span class="nav-text">2. SDXL 模型存放位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-FLUX-%E6%A8%A1%E5%9E%8B%E5%AD%98%E6%94%BE%E4%BD%8D%E7%BD%AE"><span class="nav-number">3.2.3.</span> <span class="nav-text">3. FLUX 模型存放位置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3%E3%80%81%E5%A6%82%E4%BD%95%E4%B8%8B%E8%BD%BD%E6%A8%A1%E5%9E%8B%EF%BC%9F"><span class="nav-number">3.3.</span> <span class="nav-text">3.3、如何下载模型？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Hugging-Face"><span class="nav-number">3.3.1.</span> <span class="nav-text">1. Hugging Face</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Civitai"><span class="nav-number">3.3.2.</span> <span class="nav-text">2. Civitai</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%AE%98%E6%96%B9%E9%A1%B9%E7%9B%AE%E5%92%8C%E6%A8%A1%E5%9E%8B%E4%BB%93%E5%BA%93"><span class="nav-number">3.3.3.</span> <span class="nav-text">3. 官方项目和模型仓库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4%E3%80%81%E4%B8%8B%E8%BD%BD%E6%A8%A1%E5%9E%8B%E5%90%8E%EF%BC%8C%E5%A6%82%E4%BD%95%E8%AE%A9-ComfyUI-%E8%AF%86%E5%88%AB%EF%BC%9F"><span class="nav-number">3.4.</span> <span class="nav-text">3.4、下载模型后，如何让 ComfyUI 识别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5%E3%80%81%E4%B8%8D%E5%90%8C%E6%A8%A1%E5%9E%8B%E4%B9%8B%E9%97%B4%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E9%9A%8F%E6%84%8F%E6%B7%B7%E7%94%A8%EF%BC%9F"><span class="nav-number">3.5.</span> <span class="nav-text">3.5、不同模型之间为什么不能随意混用？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Checkpoint-%E4%B8%8D%E8%83%BD%E9%9A%8F%E6%84%8F%E6%B7%B7%E7%94%A8"><span class="nav-number">3.5.1.</span> <span class="nav-text">1. Checkpoint 不能随意混用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-LoRA-%E4%B8%8D%E8%83%BD%E9%9A%8F%E6%84%8F%E6%B7%B7%E7%94%A8"><span class="nav-number">3.5.2.</span> <span class="nav-text">2. LoRA 不能随意混用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-VAE-%E4%B8%8D%E8%83%BD%E9%9A%8F%E6%84%8F%E6%B7%B7%E7%94%A8"><span class="nav-number">3.5.3.</span> <span class="nav-text">3. VAE 不能随意混用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%9E%E6%88%98%EF%BC%9A%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E6%A8%A1%E5%9E%8B%E5%BA%93"><span class="nav-number">4.</span> <span class="nav-text">四、实战：建立自己的模型库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9%E6%97%B6%E8%BF%98%E8%A6%81%E6%B3%A8%E6%84%8F%E7%A1%AC%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">5.</span> <span class="nav-text">五、模型选择时还要注意硬件配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">六、总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4861</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">384</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">704</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/85865df.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ComfyUI开发之——ComfyUI模型选择与管理(2.5) | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ComfyUI开发之——ComfyUI模型选择与管理(2.5)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/ComfyUI%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94ComfyUI%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9%E4%B8%8E%E7%AE%A1%E7%90%86-2-5.md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2026-11-04 19:30:54" itemprop="dateCreated datePublished" datetime="2026-11-04T19:30:54+08:00">2026-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/" itemprop="url" rel="index"><span itemprop="name">AI图视频短剧</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">AI绘图</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/ComfyUI/" itemprop="url" rel="index"><span itemprop="name">ComfyUI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>5 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">前面几篇，我们已经使用 SD 1.5 搭建了第一个文生图工作流，</span><br><span class="line">并学习了提示词、采样参数、图片尺寸和显存优化。</span><br><span class="line"></span><br><span class="line">接下来需要解决一个实际问题：</span><br><span class="line">ComfyUI 支持这么多模型，应该选择哪一个？下载模型后放在哪里？</span><br><span class="line">为什么有些模型加载后无法正常生成图片？</span><br><span class="line"></span><br><span class="line">这篇文章主要介绍三类常见图像模型：</span><br><span class="line">SD 1.5、SDXL 和 FLUX，并进一步了解模型文件、目录结构、安装方法和兼容性。</span><br><span class="line"></span><br><span class="line">注意：ComfyUI 不只是 Stable Diffusion 的运行界面，它还支持多种不同架构的图像生成模型。\不同模型可能需要不同的加载节点和工作流，不能简单地通过更换 Checkpoint 就完成切换。</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二、图像模型"><a href="#二、图像模型" class="headerlink" title="二、图像模型"></a>二、图像模型</h2><h3 id="2-1、先认识三类常见图像模型"><a href="#2-1、先认识三类常见图像模型" class="headerlink" title="2.1、先认识三类常见图像模型"></a>2.1、先认识三类常见图像模型</h3><h4 id="1-Stable-Diffusion-1-5（SD-1-5）"><a href="#1-Stable-Diffusion-1-5（SD-1-5）" class="headerlink" title="1. Stable Diffusion 1.5（SD 1.5）"></a>1. Stable Diffusion 1.5（SD 1.5）</h4><p>SD 1.5 是比较经典的开源图像生成模型，也是很多 ComfyUI 入门教程使用的模型。</p>
+<p>主要特点：</p>
+<ul>
+<li>模型相对轻量，对硬件要求较低。</li>
+<li>社区资源丰富，有大量 Checkpoint、LoRA 和 ControlNet 模型。</li>
+<li>适合学习文生图、图生图、局部重绘等基础功能。</li>
+<li>512×512 是常见的基础训练和测试尺寸。</li>
+</ul>
+<p>SD 1.5 的优势是入门门槛低，适合配置有限的电脑。</p>
+<p>如果你刚开始学习 ComfyUI，建议先用它掌握工作流和节点的基本原理。</p>
+<h4 id="2-Stable-Diffusion-XL（SDXL）"><a href="#2-Stable-Diffusion-XL（SDXL）" class="headerlink" title="2. Stable Diffusion XL（SDXL）"></a>2. Stable Diffusion XL（SDXL）</h4><p>SDXL 是 Stable Diffusion 系列中更高规格的一代模型。</p>
+<p>与 SD 1.5 相比，SDXL 主要特点包括：</p>
+<ul>
+<li>常见基础生成尺寸为 1024×1024。</li>
+<li>对复杂场景和图像细节有更强的表现能力。</li>
+<li>具有不同于 SD 1.5 的模型结构和文本编码配置。</li>
+<li>对显存和计算资源的要求通常更高。</li>
+</ul>
+<p>SDXL 的基础工作流与 SD 1.5 有相似之处，但不能直接认为二者的模型、LoRA、VAE 可以互换。</p>
+<p>SDXL 还包含 Base 和 Refiner 等不同组件。入门时可以先使用 SDXL Base 工作流，熟悉后再了解 Refiner。</p>
+<h4 id="3-FLUX"><a href="#3-FLUX" class="headerlink" title="3. FLUX"></a>3. FLUX</h4><p>FLUX 是 Black Forest Labs 推出的图像生成模型系列。</p>
+<p>它的主要特点包括：</p>
+<ul>
+<li>对复杂文字描述有较好的理解能力。</li>
+<li>人物、物体和场景的细节表现较好。</li>
+<li>支持多种模型版本和精度格式。</li>
+<li>模型结构与传统 SD 1.5、SDXL 不同。</li>
+<li>完整模型通常需要较多内存和计算资源。</li>
+</ul>
+<p>FLUX 常见版本包括：</p>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FLUX.1 Dev</td>
+<td>偏向高质量生成，常见开源版本</td>
+</tr>
+<tr>
+<td>FLUX.1 Schnell</td>
+<td>面向快速生成，蒸馏版本</td>
+</tr>
+<tr>
+<td>FLUX.1 Kontext</td>
+<td>面向图像编辑和指令式修改</td>
+</tr>
+<tr>
+<td>FLUX.2 系列</td>
+<td>新一代模型系列，具体能力和资源要求取决于版本</td>
+</tr>
+</tbody></table>
+<p>其中，FLUX.1 Dev 和 Schnell 是入门时经常遇到的两个版本。</p>
+<p>需要注意，FLUX 不只是一个模型文件。完整工作流可能还需要文本编码器、VAE 等配套文件。</p>
+<h3 id="2-2、SD-1-5、SDXL、FLUX-应该怎么选？"><a href="#2-2、SD-1-5、SDXL、FLUX-应该怎么选？" class="headerlink" title="2.2、SD 1.5、SDXL、FLUX 应该怎么选？"></a>2.2、SD 1.5、SDXL、FLUX 应该怎么选？</h3><p>把三类模型放在一起对比：</p>
+<table>
+<thead>
+<tr>
+<th>对比项目</th>
+<th>SD 1.5</th>
+<th>SDXL</th>
+<th>FLUX</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>模型定位</td>
+<td>经典轻量模型</td>
+<td>更高规格的 SD 模型</td>
+<td>独立模型架构系列</td>
+</tr>
+<tr>
+<td>常见基础尺寸</td>
+<td>512×512</td>
+<td>1024×1024</td>
+<td>依版本和工作流而定</td>
+</tr>
+<tr>
+<td>硬件要求</td>
+<td>相对较低</td>
+<td>较高</td>
+<td>依版本和精度差异较大</td>
+</tr>
+<tr>
+<td>社区资源</td>
+<td>非常丰富</td>
+<td>丰富</td>
+<td>持续发展</td>
+</tr>
+<tr>
+<td>LoRA 资源</td>
+<td>丰富</td>
+<td>丰富</td>
+<td>有专门的 FLUX LoRA</td>
+</tr>
+<tr>
+<td>工作流</td>
+<td>经典 Checkpoint 工作流</td>
+<td>SDXL 专用工作流</td>
+<td>通常需要专用加载节点</td>
+</tr>
+<tr>
+<td>入门难度</td>
+<td>较低</td>
+<td>中等</td>
+<td>中等偏高</td>
+</tr>
+</tbody></table>
+<p>我的建议是：</p>
+<ul>
+<li><strong>刚开始学习：</strong> 使用 SD 1.5，先掌握节点、连线、提示词和采样参数。</li>
+<li><strong>希望提高生成质量：</strong> 尝试 SDXL，学习不同模型结构下的工作流。</li>
+<li><strong>希望体验新一代模型：</strong> 再尝试 FLUX，了解独立模型、文本编码器和量化版本。</li>
+</ul>
+<p>不要一开始就下载大量模型。先选一个能稳定运行的模型，理解工作流后再扩展。</p>
+<h2 id="三、ComfyUI-模型"><a href="#三、ComfyUI-模型" class="headerlink" title="三、ComfyUI 模型"></a>三、ComfyUI 模型</h2><h3 id="3-1、ComfyUI-模型文件有哪些类型？"><a href="#3-1、ComfyUI-模型文件有哪些类型？" class="headerlink" title="3.1、ComfyUI 模型文件有哪些类型？"></a>3.1、ComfyUI 模型文件有哪些类型？</h3><p>在下载模型之前，需要先认识常见文件类型。</p>
+<table>
+<thead>
+<tr>
+<th>文件类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.safetensors</code></td>
+<td>常见的模型权重文件格式</td>
+</tr>
+<tr>
+<td><code>.ckpt</code></td>
+<td>传统模型权重格式</td>
+</tr>
+<tr>
+<td><code>.pt</code></td>
+<td>PyTorch 相关模型文件</td>
+</tr>
+<tr>
+<td><code>.pth</code></td>
+<td>PyTorch 模型权重文件</td>
+</tr>
+<tr>
+<td><code>.gguf</code></td>
+<td>一种量化模型文件格式，需使用支持它的加载节点</td>
+</tr>
+</tbody></table>
+<p>其中，<code>.safetensors</code> 是目前常见的模型下载格式之一。</p>
+<p>但要注意：</p>
+<p><strong>文件后缀并不能直接决定模型属于哪一种架构，也不能保证它可以被任意节点加载。</strong></p>
+<p>例如，同样是 <code>.safetensors</code>，可能是完整 Checkpoint，也可能是单独的 Diffusion Model、VAE、LoRA 或文本编码器。</p>
+<p>下载时一定要看清楚模型说明和文件用途。</p>
+<h3 id="3-2、ComfyUI-模型应该放在哪里？"><a href="#3-2、ComfyUI-模型应该放在哪里？" class="headerlink" title="3.2、ComfyUI 模型应该放在哪里？"></a>3.2、ComfyUI 模型应该放在哪里？</h3><p>ComfyUI 通过不同目录管理不同类型的模型文件。</p>
+<p>常见目录如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI/</span><br><span class="line">└── models/</span><br><span class="line">    ├── checkpoints/</span><br><span class="line">    ├── diffusion_models/</span><br><span class="line">    ├── unet/</span><br><span class="line">    ├── loras/</span><br><span class="line">    ├── vae/</span><br><span class="line">    ├── text_encoders/</span><br><span class="line">    ├── clip/</span><br><span class="line">    ├── clip_vision/</span><br><span class="line">    ├── controlnet/</span><br><span class="line">    └── upscale_models/</span><br></pre></td></tr></table></figure>
+
+<p>各目录的作用：</p>
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th>存放内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>checkpoints</td>
+<td>完整 Checkpoint 模型</td>
+</tr>
+<tr>
+<td>diffusion_models</td>
+<td>独立扩散模型</td>
+</tr>
+<tr>
+<td>unet</td>
+<td>部分旧版或兼容工作流使用的 UNet 模型</td>
+</tr>
+<tr>
+<td>loras</td>
+<td>LoRA 模型</td>
+</tr>
+<tr>
+<td>vae</td>
+<td>VAE 编码与解码模型</td>
+</tr>
+<tr>
+<td>text_encoders</td>
+<td>CLIP、T5 等文本编码器</td>
+</tr>
+<tr>
+<td>clip</td>
+<td>部分旧版文本编码器目录</td>
+</tr>
+<tr>
+<td>clip_vision</td>
+<td>图像视觉编码器</td>
+</tr>
+<tr>
+<td>controlnet</td>
+<td>ControlNet 模型</td>
+</tr>
+<tr>
+<td>upscale_models</td>
+<td>图片放大模型</td>
+</tr>
+</tbody></table>
+<p>不同 ComfyUI 版本对部分目录存在兼容或别名关系。以当前安装版本的模型目录和节点加载器为准。</p>
+<h4 id="1-SD-1-5-模型存放位置"><a href="#1-SD-1-5-模型存放位置" class="headerlink" title="1. SD 1.5 模型存放位置"></a>1. SD 1.5 模型存放位置</h4><p>如果下载的是 SD 1.5 完整 Checkpoint：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI/models/checkpoints/</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI/models/checkpoints/</span><br><span class="line">└── v1-5-pruned-emaonly.safetensors</span><br></pre></td></tr></table></figure>
+
+<p>之后可以通过 Load Checkpoint 节点选择模型。</p>
+<h4 id="2-SDXL-模型存放位置"><a href="#2-SDXL-模型存放位置" class="headerlink" title="2. SDXL 模型存放位置"></a>2. SDXL 模型存放位置</h4><p>如果下载的是 SDXL 完整 Checkpoint，同样放在：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI/models/checkpoints/</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI/models/checkpoints/</span><br><span class="line">└── sd_xl_base_1.0.safetensors</span><br></pre></td></tr></table></figure>
+
+<p>如果下载的是独立 VAE，则放在：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI/models/vae/</span><br></pre></td></tr></table></figure>
+
+<p>具体是否需要额外 VAE，取决于模型文件是否已经包含相应组件。</p>
+<h4 id="3-FLUX-模型存放位置"><a href="#3-FLUX-模型存放位置" class="headerlink" title="3. FLUX 模型存放位置"></a>3. FLUX 模型存放位置</h4><p>FLUX 的文件组成可能更加复杂。</p>
+<p>以 FLUX.1 Dev 的完整模型工作流为例，常见文件分布如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI/</span><br><span class="line">└── models/</span><br><span class="line">    ├── diffusion_models/</span><br><span class="line">    │   └── flux1-dev.safetensors</span><br><span class="line">    ├── text_encoders/</span><br><span class="line">    │   ├── clip_l.safetensors</span><br><span class="line">    │   └── t5xxl_fp16.safetensors</span><br><span class="line">    └── vae/</span><br><span class="line">        └── ae.safetensors</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li><code>flux1-dev.safetensors</code>：扩散模型。</li>
+<li><code>clip_l.safetensors</code>：文本编码器之一。</li>
+<li><code>t5xxl_fp16.safetensors</code>：另一套文本编码器。</li>
+<li><code>ae.safetensors</code>：FLUX 使用的 VAE。</li>
+</ul>
+<p>实际下载时，应以对应 FLUX 工作流的模型清单为准。</p>
+<p>如果使用单文件 Checkpoint 版本，安装方式可能更简单，能够通过 Load Checkpoint 加载，但仍然需要确认精度、兼容性和推荐参数。</p>
+<p>官方示例提供了 FLUX 完整模型和单文件版本的不同安装方式，可以参考：</p>
+<p><a target="_blank" rel="noopener" href="https://comfyanonymous.github.io/ComfyUI_examples/flux/">ComfyUI 官方 FLUX 示例</a></p>
+<h3 id="3-3、如何下载模型？"><a href="#3-3、如何下载模型？" class="headerlink" title="3.3、如何下载模型？"></a>3.3、如何下载模型？</h3><p>常见模型来源主要有以下几个。</p>
+<h4 id="1-Hugging-Face"><a href="#1-Hugging-Face" class="headerlink" title="1. Hugging Face"></a>1. Hugging Face</h4><p>是常见的 AI 模型托管平台。</p>
+<p>可以搜索：</p>
+<ul>
+<li>Stable Diffusion 1.5</li>
+<li>SDXL</li>
+<li>FLUX.1 Dev</li>
+<li>FLUX.1 Schnell</li>
+<li>各种 LoRA 和 VAE</li>
+</ul>
+<p>网站：<a target="_blank" rel="noopener" href="https://huggingface.co/">https://huggingface.co/</a></p>
+<p>下载时注意：</p>
+<ol>
+<li>进入模型仓库。</li>
+<li>查看模型介绍和使用许可。</li>
+<li>找到 Files and versions。</li>
+<li>选择需要的模型文件。</li>
+<li>下载后放入对应的 ComfyUI 模型目录。</li>
+</ol>
+<p>部分模型需要登录或接受使用协议才能下载。</p>
+<h4 id="2-Civitai"><a href="#2-Civitai" class="headerlink" title="2. Civitai"></a>2. Civitai</h4><p>是 Stable Diffusion 模型和创作资源社区。</p>
+<p>这里可以找到大量：</p>
+<ul>
+<li>SD 1.5 Checkpoint。</li>
+<li>SDXL Checkpoint。</li>
+<li>LoRA。</li>
+<li>风格模型。</li>
+<li>人物和场景模型。</li>
+</ul>
+<p>网站：<a target="_blank" rel="noopener" href="https://civitai.com/">https://civitai.com/</a></p>
+<p>Civitai 上的模型数量很多，下载前一定要检查：</p>
+<ul>
+<li>基础模型类型，例如 SD 1.5、SDXL 或 FLUX。</li>
+<li>模型文件类型。</li>
+<li>推荐分辨率和采样参数。</li>
+<li>是否需要触发词。</li>
+<li>使用许可和内容限制。</li>
+</ul>
+<h4 id="3-官方项目和模型仓库"><a href="#3-官方项目和模型仓库" class="headerlink" title="3. 官方项目和模型仓库"></a>3. 官方项目和模型仓库</h4><p>对于 FLUX 等模型，建议优先查看模型发布方的官方仓库和 ComfyUI 官方示例。</p>
+<p>这样可以减少模型文件不完整、版本不匹配以及工作流错误的问题。</p>
+<h3 id="3-4、下载模型后，如何让-ComfyUI-识别？"><a href="#3-4、下载模型后，如何让-ComfyUI-识别？" class="headerlink" title="3.4、下载模型后，如何让 ComfyUI 识别？"></a>3.4、下载模型后，如何让 ComfyUI 识别？</h3><p>以 SD 1.5 完整 Checkpoint 为例。</p>
+<p><strong>第1步：下载模型文件</strong></p>
+<p>假设下载得到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v1-5-pruned-emaonly.safetensors</span><br></pre></td></tr></table></figure>
+
+<p><strong>第2步：放入模型目录</strong></p>
+<p>将文件复制到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI/models/checkpoints/</span><br></pre></td></tr></table></figure>
+
+<p><strong>第3步：刷新模型列表</strong></p>
+<p>返回 ComfyUI 页面，找到 Load Checkpoint 节点。</p>
+<p>如果当前版本支持刷新模型列表，可以使用节点的刷新功能；如果没有识别，可以重启 ComfyUI。</p>
+<p><strong>第4步：选择模型</strong></p>
+<p>在 Load Checkpoint 节点的模型下拉列表中选择刚才下载的文件。</p>
+<p><strong>第5步：执行工作流</strong></p>
+<p>确认模型加载正常，再执行文生图。</p>
+<p>如果使用的是 SDXL 或 FLUX，则需要导入对应模型的工作流，不能直接套用上一篇的 SD 1.5 工作流。</p>
+<h3 id="3-5、不同模型之间为什么不能随意混用？"><a href="#3-5、不同模型之间为什么不能随意混用？" class="headerlink" title="3.5、不同模型之间为什么不能随意混用？"></a>3.5、不同模型之间为什么不能随意混用？</h3><p>这是模型管理中最重要的知识点之一。</p>
+<p>不同架构的模型，可能使用不同的网络结构、文本编码器、潜空间格式和 VAE。</p>
+<p>例如：</p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>SD 1.5</th>
+<th>SDXL</th>
+<th>FLUX</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>基础模型</td>
+<td>SD 1.5</td>
+<td>SDXL</td>
+<td>FLUX</td>
+</tr>
+<tr>
+<td>文本编码</td>
+<td>CLIP</td>
+<td>CLIP-L + CLIP-G 等</td>
+<td>CLIP-L + T5 等</td>
+</tr>
+<tr>
+<td>VAE</td>
+<td>SD 1.x 对应 VAE</td>
+<td>SDXL 对应 VAE</td>
+<td>FLUX 对应 AE</td>
+</tr>
+<tr>
+<td>LoRA</td>
+<td>SD 1.5 LoRA</td>
+<td>SDXL LoRA</td>
+<td>FLUX LoRA</td>
+</tr>
+<tr>
+<td>工作流</td>
+<td>SD 1.5 工作流</td>
+<td>SDXL 工作流</td>
+<td>FLUX 工作流</td>
+</tr>
+</tbody></table>
+<p>这张表是常见配置的概括，具体模型可能存在特殊实现。</p>
+<h4 id="1-Checkpoint-不能随意混用"><a href="#1-Checkpoint-不能随意混用" class="headerlink" title="1. Checkpoint 不能随意混用"></a>1. Checkpoint 不能随意混用</h4><p>SD 1.5 的 Checkpoint 不能直接当成 SDXL 模型加载使用。</p>
+<p>同样，FLUX 的独立扩散模型也不能直接放进传统 SD 1.5 工作流中使用。</p>
+<h4 id="2-LoRA-不能随意混用"><a href="#2-LoRA-不能随意混用" class="headerlink" title="2. LoRA 不能随意混用"></a>2. LoRA 不能随意混用</h4><p>例如：</p>
+<ul>
+<li>SD 1.5 LoRA 通常配合 SD 1.5 底模。</li>
+<li>SDXL LoRA 通常配合 SDXL 底模。</li>
+<li>FLUX LoRA 通常配合对应 FLUX 版本。</li>
+</ul>
+<p>即使文件后缀都是 <code>.safetensors</code>，也不代表它们可以互换。</p>
+<h4 id="3-VAE-不能随意混用"><a href="#3-VAE-不能随意混用" class="headerlink" title="3. VAE 不能随意混用"></a>3. VAE 不能随意混用</h4><p>不同模型架构使用的 VAE 可能不同。</p>
+<p>例如 SD 1.5、SDXL 和 FLUX 的 VAE 并不是通用的。</p>
+<p>使用错误的 VAE，可能出现颜色异常、黑图、解码失败等问题。</p>
+<p>因此，下载模型时应优先使用模型作者推荐的配套组件。</p>
+<h2 id="四、实战：建立自己的模型库"><a href="#四、实战：建立自己的模型库" class="headerlink" title="四、实战：建立自己的模型库"></a>四、实战：建立自己的模型库</h2><p>当模型数量逐渐增加后，如果所有文件都随意放置，后续很容易出现找不到模型、重复下载和版本混乱的问题。</p>
+<p>建议按照模型类型和用途管理。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI/</span><br><span class="line">└── models/</span><br><span class="line">    ├── checkpoints/</span><br><span class="line">    │   ├── sd15/</span><br><span class="line">    │   └── sdxl/</span><br><span class="line">    ├── diffusion_models/</span><br><span class="line">    │   └── flux/</span><br><span class="line">    ├── loras/</span><br><span class="line">    │   ├── sd15/</span><br><span class="line">    │   ├── sdxl/</span><br><span class="line">    │   └── flux/</span><br><span class="line">    ├── vae/</span><br><span class="line">    ├── text_encoders/</span><br><span class="line">    ├── controlnet/</span><br><span class="line">    └── upscale_models/</span><br></pre></td></tr></table></figure>
+
+<p>注意：ComfyUI 的模型扫描目录和子目录识别方式可能因版本和加载器而不同。使用子目录前，先确认当前版本能够正常识别；如果没有识别，可以将模型放到对应目录的顶层。</p>
+<p>另外，建议为每个模型记录以下信息：</p>
+<table>
+<thead>
+<tr>
+<th>信息</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>模型名称</td>
+<td>SD 1.5</td>
+</tr>
+<tr>
+<td>模型版本</td>
+<td>v1.5</td>
+</tr>
+<tr>
+<td>文件名称</td>
+<td>v1-5-pruned-emaonly.safetensors</td>
+</tr>
+<tr>
+<td>模型类型</td>
+<td>Checkpoint</td>
+</tr>
+<tr>
+<td>存放位置</td>
+<td>models&#x2F;checkpoints</td>
+</tr>
+<tr>
+<td>推荐尺寸</td>
+<td>512×512</td>
+</tr>
+<tr>
+<td>来源</td>
+<td>Hugging Face</td>
+</tr>
+<tr>
+<td>使用说明</td>
+<td>SD 1.5 基础文生图</td>
+</tr>
+</tbody></table>
+<p>这样以后下载 LoRA、VAE 或 ControlNet 时，就更容易判断是否兼容。</p>
+<h2 id="五、模型选择时还要注意硬件配置"><a href="#五、模型选择时还要注意硬件配置" class="headerlink" title="五、模型选择时还要注意硬件配置"></a>五、模型选择时还要注意硬件配置</h2><p>模型能否运行，不仅取决于模型文件大小，还与以下因素有关：</p>
+<ul>
+<li>显卡显存。</li>
+<li>系统内存。</li>
+<li>模型精度，例如 FP16、BF16、FP8。</li>
+<li>量化方式。</li>
+<li>图片分辨率。</li>
+<li>工作流复杂程度。</li>
+<li>ComfyUI 的显存管理策略。</li>
+</ul>
+<p>例如，FLUX 完整 FP16 模型的资源需求通常比较高，而 FP8 版本可以降低部分内存占用，但具体效果和兼容性需要测试。</p>
+<p>如果电脑配置有限，可以优先考虑：</p>
+<ol>
+<li>选择较轻量的模型。</li>
+<li>使用模型提供的量化版本。</li>
+<li>降低图片尺寸。</li>
+<li>使用 Batch Size 1。</li>
+<li>减少同时加载的模型和扩展节点。</li>
+</ol>
+<p>不要仅凭文件大小判断模型能否运行。</p>
+<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><p>这一篇，我们了解了 ComfyUI 中三类常见图像模型：</p>
+<ul>
+<li>SD 1.5：模型轻量、资源丰富，适合入门学习。</li>
+<li>SDXL：基础生成尺寸较高，适合进一步体验更高规格的图像生成。</li>
+<li>FLUX：采用不同的模型架构，文本理解和图像生成能力具有自身特点，需要使用对应工作流。</li>
+</ul>
+<p>同时还学习了模型文件类型、目录结构、下载方式、安装步骤和模型兼容性。</p>
+<p>建议先建立一个简单的模型库，不要盲目下载大量模型。先保证一个模型能够正常运行，再逐步扩展到 LoRA、ControlNet 和其他模型组件。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/ComfyUI/" rel="tag"># ComfyUI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/5d40450a.html" rel="prev" title="ComfyUI开发之——ComfyUI图片尺寸设置与显存优化(2.4)">
+                  <i class="fa fa-angle-left"></i> ComfyUI开发之——ComfyUI图片尺寸设置与显存优化(2.4)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/555e3539.html" rel="next" title="ComfyUI开发之——ComfyUI工作流与图片保存复用(2.6)">
+                  ComfyUI开发之——ComfyUI工作流与图片保存复用(2.6) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"cf502a1fde231ab80bc1a0970720b2e2"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

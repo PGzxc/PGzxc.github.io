@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ja/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ja/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ja/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/ja/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/ja/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/ja/","images":"/ja/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索...","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/ja/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/ja/js/config.js" defer></script>
+
+    <meta name="description" content="一、概述12345678910111213本文介绍：正向提示词、负向提示词与权重写法上一篇，我们拆解了 ComfyUI 文生图工作流，了解了 CLIP Text Encode 节点会将提示词转换为 CONDITIONING，再交给 KSampler 参与图片生成。那么，提示词应该怎么写？为什么有时候输入一大段描述，生成结果却和预期不一样？正向提示词和负向提示词又有什么区别？这篇文章就从实际操作出发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ComfyUI开发之——ComfyUI提示词入门(2.2)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/99d19391.html">
+<meta property="og:site_name" content="PGzxc (Japanese)">
+<meta property="og:description" content="一、概述12345678910111213本文介绍：正向提示词、负向提示词与权重写法上一篇，我们拆解了 ComfyUI 文生图工作流，了解了 CLIP Text Encode 节点会将提示词转换为 CONDITIONING，再交给 KSampler 参与图片生成。那么，提示词应该怎么写？为什么有时候输入一大段描述，生成结果却和预期不一样？正向提示词和负向提示词又有什么区别？这篇文章就从实际操作出发">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-11-04T11:29:25.000Z">
+<meta property="article:modified_time" content="2026-11-05T01:59:37.230Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="ComfyUI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/99d19391.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"ja","comments":true,"permalink":"https://pgzxc.github.io/posts/99d19391.html","path":"posts/99d19391.html","title":"ComfyUI开发之——ComfyUI提示词入门(2.2)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ComfyUI开发之——ComfyUI提示词入门(2.2) | PGzxc (Japanese)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/utils.js" defer></script><script src="/ja/js/motion.js" defer></script><script src="/ja/js/sidebar.js" defer></script><script src="/ja/js/next-boot.js" defer></script><script src="/ja/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/ja/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/ja/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/ja/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/ja/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/ja/atom.xml" title="PGzxc (Japanese)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションを切り替える" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/ja/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (Japanese)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">本から学んだことは表面的なもの；自分で体験しなければならない</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="検索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/ja/" rel="section"><i class="fa fa-bell fa-fw"></i>ホーム</a></li><li class="menu-item menu-item-nav"><a href="/ja/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>ナビゲーション</a></li><li class="menu-item menu-item-categories"><a href="/ja/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリー<span class="badge">384</span></a></li><li class="menu-item menu-item-archives"><a href="/ja/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ<span class="badge">4861</span></a></li><li class="menu-item menu-item-links"><a href="/ja/links/" rel="section"><i class="fa fa-link fa-fw"></i>リンク</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>検索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="検索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          目次
+        </li>
+        <li class="sidebar-nav-overview">
+          サイト概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E6%8F%90%E7%A4%BA%E8%AF%8D%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">二、什么是提示词？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 提示词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2%E3%80%81%E6%AD%A3%E5%90%91%E6%8F%90%E7%A4%BA%E8%AF%8D%E4%B8%8E%E8%B4%9F%E5%90%91%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="nav-number">2.2.</span> <span class="nav-text">2.2、正向提示词与负向提示词</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-%E6%AD%A3%E5%90%91%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1. 正向提示词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-%E8%B4%9F%E5%90%91%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2. 负向提示词</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%A6%82%E4%BD%95%E7%BB%84%E7%BB%87%E4%B8%80%E6%AE%B5%E5%A5%BD%E7%9A%84%E6%8F%90%E7%A4%BA%E8%AF%8D%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">三、如何组织一段好的提示词？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%9E%84%E6%88%90"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 提示词构成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%B8%B8%E8%A7%81%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%88%86%E7%B1%BB"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 常见提示词分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%9D%83%E9%87%8D%EF%BC%9A%E8%AE%A9%E6%9F%90%E4%BA%9B%E5%85%B3%E9%94%AE%E8%AF%8D%E6%9B%B4%E9%87%8D%E8%A6%81"><span class="nav-number">4.</span> <span class="nav-text">四、提示词权重：让某些关键词更重要</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%9D%83%E9%87%8D"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 提示词权重</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E6%9D%83%E9%87%8D%E5%BA%94%E8%AF%A5%E8%AE%BE%E7%BD%AE%E5%A4%9A%E5%B0%91%EF%BC%9F"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 权重应该设置多少？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E4%B8%AD%E6%96%87%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%92%8C%E8%8B%B1%E6%96%87%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">五、中文提示词和英文提示词有什么区别？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E4%B8%AD%E6%96%87%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%92%8C%E8%8B%B1%E6%96%87%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 中文提示词和英文提示词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E4%B8%AD%E6%96%87%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%A6%82%E4%BD%95%E5%86%99"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 中文提示词如何写</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%AE%9E%E6%88%98%EF%BC%9A%E7%94%9F%E6%88%90%E4%B8%80%E5%BC%A0%E4%BA%BA%E7%89%A9%E5%86%99%E7%9C%9F"><span class="nav-number">6.</span> <span class="nav-text">六、实战：生成一张人物写真</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-%E6%AD%A3%E5%90%91%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="nav-number">6.1.</span> <span class="nav-text">6.1. 正向提示词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-%E8%B4%9F%E5%90%91%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="nav-number">6.2.</span> <span class="nav-text">6.2. 负向提示词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-%E8%B0%83%E6%95%B4%E9%87%87%E6%A0%B7%E5%8F%82%E6%95%B0"><span class="nav-number">6.3.</span> <span class="nav-text">6.3. 调整采样参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-%E6%89%A7%E8%A1%8C%E5%B9%B6%E8%A7%82%E5%AF%9F%E7%BB%93%E6%9E%9C"><span class="nav-number">6.4.</span> <span class="nav-text">6.4. 执行并观察结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">7.</span> <span class="nav-text">七、提示词常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%86%99%E5%BE%97%E8%B6%8A%E9%95%BF%E8%B6%8A%E5%A5%BD%E5%90%97%EF%BC%9F"><span class="nav-number">7.1.</span> <span class="nav-text">7.1. 提示词写得越长越好吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%86%99%E4%BA%86%E6%9F%90%E4%B8%AA%E5%85%B3%E9%94%AE%E8%AF%8D%EF%BC%8C%E5%9B%BE%E7%89%87%E5%8D%B4%E6%B2%A1%E6%9C%89%E4%BD%93%E7%8E%B0%EF%BC%9F"><span class="nav-number">7.2.</span> <span class="nav-text">7.2. 为什么写了某个关键词，图片却没有体现？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%B4%9F%E5%90%91%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%B2%A1%E6%9C%89%E6%95%88%E6%9E%9C%EF%BC%9F"><span class="nav-number">7.3.</span> <span class="nav-text">7.3. 为什么负向提示词没有效果？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%90%8C%E4%B8%80%E6%AE%B5%E6%8F%90%E7%A4%BA%E8%AF%8D%EF%BC%8C%E6%AF%8F%E6%AC%A1%E7%94%9F%E6%88%90%E7%9A%84%E5%9B%BE%E7%89%87%E9%83%BD%E4%B8%8D%E4%B8%80%E6%A0%B7%EF%BC%9F"><span class="nav-number">7.4.</span> <span class="nav-text">7.4. 为什么同一段提示词，每次生成的图片都不一样？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">8.</span> <span class="nav-text">八、总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/ja/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/ja/archives/">
+          <span class="site-state-item-count">4861</span>
+          <span class="site-state-item-name">投稿</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/ja/categories/">
+        <span class="site-state-item-count">384</span>
+        <span class="site-state-item-name">カテゴリー</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/ja/tags/">
+        <span class="site-state-item-count">704</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/99d19391.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/ja/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ComfyUI开发之——ComfyUI提示词入门(2.2) | PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ComfyUI开发之——ComfyUI提示词入门(2.2)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/ComfyUI%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94ComfyUI%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%85%A5%E9%97%A8-2-2.md" class="post-edit-link" title="編集" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2026-11-04 19:29:25" itemprop="dateCreated datePublished" datetime="2026-11-04T19:29:25+08:00">2026-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/" itemprop="url" rel="index"><span itemprop="name">AI图视频短剧</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">AI绘图</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/ComfyUI/" itemprop="url" rel="index"><span itemprop="name">ComfyUI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="読書時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">読書時間 &asymp;</span>
+      <span>4 分</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">本文介绍：正向提示词、负向提示词与权重写法</span><br><span class="line"></span><br><span class="line">上一篇，我们拆解了 ComfyUI 文生图工作流，</span><br><span class="line">了解了 CLIP Text Encode 节点会将提示词转换为 CONDITIONING，再交给 KSampler 参与图片生成。</span><br><span class="line"></span><br><span class="line">那么，提示词应该怎么写？</span><br><span class="line">为什么有时候输入一大段描述，生成结果却和预期不一样？</span><br><span class="line">正向提示词和负向提示词又有什么区别？</span><br><span class="line"></span><br><span class="line">这篇文章就从实际操作出发，学习 ComfyUI 提示词的基本写法。</span><br><span class="line"></span><br><span class="line">本文主要以 SD 1.5 经典文生图工作流为例。</span><br><span class="line">不同模型使用的文本编码器和提示词理解方式可能不同，具体效果需要结合模型测试。</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二、什么是提示词？"><a href="#二、什么是提示词？" class="headerlink" title="二、什么是提示词？"></a>二、什么是提示词？</h2><h3 id="2-1-提示词"><a href="#2-1-提示词" class="headerlink" title="2.1 提示词"></a>2.1 提示词</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">提示词（Prompt）就是我们告诉 AI 希望生成什么内容的文字描述。</span><br><span class="line"></span><br><span class="line">例如，我们想生成一张女孩在公园里看书的图片，可以这样写：</span><br><span class="line"></span><br><span class="line">a young girl reading a book in a park,</span><br><span class="line">long hair, white dress, green trees,</span><br><span class="line">soft sunlight, realistic photography</span><br><span class="line"></span><br><span class="line">这段文字包含了人物、动作、外观、环境和画面风格。</span><br><span class="line">模型会根据提示词中的信息，尝试生成符合描述的图片。</span><br><span class="line"></span><br><span class="line">在 ComfyUI 中，提示词通常填写在 CLIP Text Encode 节点的文本输入框中。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2、正向提示词与负向提示词"><a href="#2-2、正向提示词与负向提示词" class="headerlink" title="2.2、正向提示词与负向提示词"></a>2.2、正向提示词与负向提示词</h3><p>经典文生图工作流中，通常有两个 CLIP Text Encode 节点：</p>
+<ul>
+<li>正向提示词（Positive Prompt）：描述希望图片中出现的内容。</li>
+<li>负向提示词（Negative Prompt）：描述希望尽量避免的内容。</li>
+</ul>
+<p>两者最终分别连接到 KSampler 的 positive 和 negative 输入端口。</p>
+<h4 id="2-2-1-正向提示词"><a href="#2-2-1-正向提示词" class="headerlink" title="2.2.1. 正向提示词"></a>2.2.1. 正向提示词</h4><p>正向提示词主要回答一个问题：</p>
+<p><strong>我希望 AI 生成什么？</strong></p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a beautiful young woman,</span><br><span class="line">long black hair, white dress,</span><br><span class="line">standing in a flower garden,</span><br><span class="line">soft sunlight, realistic photography</span><br></pre></td></tr></table></figure>
+
+<p>这段提示词描述了：</p>
+<ul>
+<li>主体：年轻女性。</li>
+<li>外观：黑色长发、白色连衣裙。</li>
+<li>动作与场景：站在花园中。</li>
+<li>光线：柔和的阳光。</li>
+<li>风格：真实摄影。</li>
+</ul>
+<p>如果只写：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a woman</span><br></pre></td></tr></table></figure>
+
+<p>模型需要自行决定人物外观、服装、环境、姿势和画面风格，生成结果的不确定性会更大。</p>
+<p>适当补充描述，可以让生成方向更加明确。</p>
+<h4 id="2-2-2-负向提示词"><a href="#2-2-2-负向提示词" class="headerlink" title="2.2.2. 负向提示词"></a>2.2.2. 负向提示词</h4><p>负向提示词主要回答：</p>
+<p><strong>我不希望图片出现什么？</strong></p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">blurry, low quality, low resolution,</span><br><span class="line">bad anatomy, extra fingers,</span><br><span class="line">deformed hands, distorted face,</span><br><span class="line">watermark, text, logo</span><br></pre></td></tr></table></figure>
+
+<p>这些词分别用于表达希望避免的情况，例如模糊、低质量、手部异常、水印和文字等。</p>
+<p>对于 SD 1.5 等传统 Stable Diffusion 模型，负向提示词经常用于减少不理想的生成结果。</p>
+<p>但需要注意：</p>
+<ul>
+<li>负向提示词不能保证完全消除图片瑕疵。</li>
+<li>不同模型对负向提示词的支持和理解能力不同。</li>
+<li>并不是写得越多，生成效果就越好。</li>
+<li>有些模型可能不使用传统的负向提示词输入方式。</li>
+</ul>
+<p>入门阶段，可以先使用少量常见负向词，再根据生成结果逐步调整。</p>
+<h2 id="三、如何组织一段好的提示词？"><a href="#三、如何组织一段好的提示词？" class="headerlink" title="三、如何组织一段好的提示词？"></a>三、如何组织一段好的提示词？</h2><h3 id="3-1-提示词构成"><a href="#3-1-提示词构成" class="headerlink" title="3.1 提示词构成"></a>3.1 提示词构成</h3><p>刚开始学习时，不需要记忆大量复杂词汇，可以按照一个简单结构组织提示词：</p>
+<p><strong>主体 + 外观特征 + 动作或姿势 + 场景 + 光线 + 构图 + 风格</strong></p>
+<p>例如，我们要生成一张人物户外写真：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a young woman,</span><br><span class="line">long black hair, wearing a white dress,</span><br><span class="line">standing in a flower garden,</span><br><span class="line">surrounded by colorful flowers,</span><br><span class="line">soft natural sunlight,</span><br><span class="line">medium shot, centered composition,</span><br><span class="line">realistic photography</span><br></pre></td></tr></table></figure>
+
+<p>可以按照下面的方式理解：</p>
+<table>
+<thead>
+<tr>
+<th>描述部分</th>
+<th>示例</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主体</td>
+<td>a young woman</td>
+<td>确定画面主体</td>
+</tr>
+<tr>
+<td>外观</td>
+<td>long black hair</td>
+<td>描述人物特征</td>
+</tr>
+<tr>
+<td>服装</td>
+<td>wearing a white dress</td>
+<td>描述穿着</td>
+</tr>
+<tr>
+<td>动作</td>
+<td>standing</td>
+<td>描述姿势</td>
+</tr>
+<tr>
+<td>场景</td>
+<td>flower garden</td>
+<td>确定环境</td>
+</tr>
+<tr>
+<td>光线</td>
+<td>soft natural sunlight</td>
+<td>控制光照氛围</td>
+</tr>
+<tr>
+<td>构图</td>
+<td>medium shot</td>
+<td>描述取景范围</td>
+</tr>
+<tr>
+<td>风格</td>
+<td>realistic photography</td>
+<td>确定视觉风格</td>
+</tr>
+</tbody></table>
+<p>这种结构不是固定规则，但非常适合初学者。</p>
+<h3 id="3-2-常见提示词分类"><a href="#3-2-常见提示词分类" class="headerlink" title="3.2 常见提示词分类"></a>3.2 常见提示词分类</h3><p>下面整理了一些常用英文关键词，方便在实际生成时组合使用。</p>
+<p><strong>1. 人物与主体</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1girl, 1boy, young woman, old man,</span><br><span class="line">portrait, full body, close-up,</span><br><span class="line">cat, dog, landscape, building</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 外观与服装</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">long hair, short hair, black hair,</span><br><span class="line">white dress, casual clothes,</span><br><span class="line">suit, traditional clothing</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. 动作与姿势</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">standing, sitting, walking,</span><br><span class="line">looking at camera, smiling,</span><br><span class="line">holding a book, running</span><br></pre></td></tr></table></figure>
+
+<p><strong>4. 场景与环境</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flower garden, forest, beach,</span><br><span class="line">city street, indoor room,</span><br><span class="line">mountains, sunset</span><br></pre></td></tr></table></figure>
+
+<p><strong>5. 光线与色彩</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">soft lighting, natural light,</span><br><span class="line">backlighting, warm lighting,</span><br><span class="line">cinematic lighting, vibrant colors,</span><br><span class="line">pastel colors</span><br></pre></td></tr></table></figure>
+
+<p><strong>6. 构图与视角</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">close-up, medium shot, full body,</span><br><span class="line">wide shot, front view, side view,</span><br><span class="line">eye-level view, centered composition</span><br></pre></td></tr></table></figure>
+
+<p><strong>7. 图片风格</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">realistic photography,</span><br><span class="line">anime style, watercolor painting,</span><br><span class="line">oil painting, illustration,</span><br><span class="line">3D render</span><br></pre></td></tr></table></figure>
+
+<p>这些词只是常见示例，并不是所有模型都能准确理解每个关键词。实际使用时，应根据模型特点选择。</p>
+<h2 id="四、提示词权重：让某些关键词更重要"><a href="#四、提示词权重：让某些关键词更重要" class="headerlink" title="四、提示词权重：让某些关键词更重要"></a>四、提示词权重：让某些关键词更重要</h2><h3 id="4-1-提示词权重"><a href="#4-1-提示词权重" class="headerlink" title="4.1 提示词权重"></a>4.1 提示词权重</h3><p>有时候，一段提示词中包含很多描述，但模型没有很好地体现其中某个特征。</p>
+<p>例如，我们希望人物穿红色连衣裙，但生成结果中红色并不明显。</p>
+<p>这时可以尝试调整关键词权重。</p>
+<p>在 ComfyUI 经典提示词解析方式中，常见写法如下：</p>
+<table>
+<thead>
+<tr>
+<th>写法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>(red dress:1.2)</code></td>
+<td>提高 red dress 的权重</td>
+</tr>
+<tr>
+<td><code>(red dress:1.5)</code></td>
+<td>更明显地提高权重</td>
+</tr>
+<tr>
+<td><code>((red dress))</code></td>
+<td>使用多层括号增强权重</td>
+</tr>
+<tr>
+<td><code>[red dress]</code></td>
+<td>降低该部分的权重</td>
+</tr>
+</tbody></table>
+<p>例如：</p>
+<p>普通写法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a woman wearing a red dress,</span><br><span class="line">standing in a flower garden</span><br></pre></td></tr></table></figure>
+
+<p>增加权重：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a woman wearing (red dress:1.2),</span><br><span class="line">standing in a flower garden</span><br></pre></td></tr></table></figure>
+
+<p>这样可以尝试让模型更加关注红色连衣裙这一特征。</p>
+<h3 id="4-2-权重应该设置多少？"><a href="#4-2-权重应该设置多少？" class="headerlink" title="4.2 权重应该设置多少？"></a>4.2 权重应该设置多少？</h3><p>刚开始可以参考下面的范围：</p>
+<table>
+<thead>
+<tr>
+<th>权重</th>
+<th>使用建议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.0</td>
+<td>默认权重</td>
+</tr>
+<tr>
+<td>1.1～1.2</td>
+<td>轻微增强</td>
+</tr>
+<tr>
+<td>1.2～1.4</td>
+<td>比较明显地增强</td>
+</tr>
+<tr>
+<td>1.5 及以上</td>
+<td>谨慎使用，可能造成画面异常</td>
+</tr>
+</tbody></table>
+<p>权重不是越高越好。</p>
+<p>过高的权重可能导致画面不自然、颜色失衡、细节异常，甚至影响其他关键词的表现。</p>
+<p>建议每次只调整一个关键词，逐步比较生成效果。</p>
+<blockquote>
+<p>注意：上述括号权重语法主要适用于 ComfyUI 经典提示词解析方式及兼容的文本编码器。不同节点、模型和提示词解析器可能存在差异，不要认为所有模型都支持完全相同的语法。</p>
+</blockquote>
+<h2 id="五、中文提示词和英文提示词有什么区别？"><a href="#五、中文提示词和英文提示词有什么区别？" class="headerlink" title="五、中文提示词和英文提示词有什么区别？"></a>五、中文提示词和英文提示词有什么区别？</h2><h3 id="5-1-中文提示词和英文提示词"><a href="#5-1-中文提示词和英文提示词" class="headerlink" title="5.1 中文提示词和英文提示词"></a>5.1 中文提示词和英文提示词</h3><p>ComfyUI 本身并不规定必须使用英文。</p>
+<p>中文能不能得到好的生成效果，主要取决于模型使用的文本编码器以及训练数据。</p>
+<p>例如，同样的描述：</p>
+<p>中文：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">一个年轻女孩，黑色长发，</span><br><span class="line">穿着白色连衣裙，站在花园里，</span><br><span class="line">阳光柔和，真实摄影风格</span><br></pre></td></tr></table></figure>
+
+<p>英文：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a young girl, long black hair,</span><br><span class="line">wearing a white dress, standing in a garden,</span><br><span class="line">soft sunlight, realistic photography</span><br></pre></td></tr></table></figure>
+
+<p>对于 SD 1.5 等传统模型，英文关键词通常更容易找到成熟的提示词案例，但中文并不一定不能使用。</p>
+<h3 id="5-2-中文提示词如何写"><a href="#5-2-中文提示词如何写" class="headerlink" title="5.2 中文提示词如何写"></a>5.2 中文提示词如何写</h3><p>如果使用专门支持中文理解的图像模型，中文提示词也可能获得不错的效果。</p>
+<p>建议：</p>
+<ol>
+<li>先使用模型推荐的语言。</li>
+<li>使用简单、明确的描述。</li>
+<li>不要一次堆积太多关键词。</li>
+<li>对比中英文生成结果，找到适合当前模型的写法。</li>
+</ol>
+<h2 id="六、实战：生成一张人物写真"><a href="#六、实战：生成一张人物写真" class="headerlink" title="六、实战：生成一张人物写真"></a>六、实战：生成一张人物写真</h2><p>下面使用前面搭建的 SD 1.5 文生图工作流进行练习。</p>
+<h3 id="6-1-正向提示词"><a href="#6-1-正向提示词" class="headerlink" title="6.1. 正向提示词"></a>6.1. 正向提示词</h3><p>在正向 CLIP Text Encode 节点中输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a beautiful young woman,</span><br><span class="line">long black hair, wearing a white dress,</span><br><span class="line">standing in a flower garden,</span><br><span class="line">colorful flowers, green trees,</span><br><span class="line">soft natural sunlight,</span><br><span class="line">medium shot, realistic photography,</span><br><span class="line">high detail</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2-负向提示词"><a href="#6-2-负向提示词" class="headerlink" title="6.2. 负向提示词"></a>6.2. 负向提示词</h3><p>在负向 CLIP Text Encode 节点中输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">blurry, low quality, low resolution,</span><br><span class="line">bad anatomy, deformed hands,</span><br><span class="line">extra fingers, distorted face,</span><br><span class="line">watermark, text, logo</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-3-调整采样参数"><a href="#6-3-调整采样参数" class="headerlink" title="6.3. 调整采样参数"></a>6.3. 调整采样参数</h3><p>先保持上一篇使用的基础参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>示例值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>图片尺寸</td>
+<td>512 × 512</td>
+</tr>
+<tr>
+<td>Steps</td>
+<td>20</td>
+</tr>
+<tr>
+<td>CFG</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Sampler</td>
+<td>Euler</td>
+</tr>
+<tr>
+<td>Scheduler</td>
+<td>normal</td>
+</tr>
+<tr>
+<td>Denoise</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>Seed</td>
+<td>固定一个数字</td>
+</tr>
+</tbody></table>
+<p>这些参数只是 SD 1.5 入门测试值，不代表所有模型都适用。</p>
+<h3 id="6-4-执行并观察结果"><a href="#6-4-执行并观察结果" class="headerlink" title="6.4. 执行并观察结果"></a>6.4. 执行并观察结果</h3><p>点击 Queue Prompt，等待图片生成。</p>
+<p>生成后重点观察：</p>
+<ul>
+<li>人物是否符合描述？</li>
+<li>服装颜色是否正确？</li>
+<li>场景是否符合预期？</li>
+<li>人物姿势和构图是否合理？</li>
+<li>图片是否存在手部、面部等明显瑕疵？</li>
+</ul>
+<p>如果结果不理想，不要急着把所有提示词都改掉。</p>
+<p>可以按照下面的顺序逐步调整：</p>
+<ol>
+<li>主体不准确：修改主体描述。</li>
+<li>服装不准确：补充服装和颜色描述。</li>
+<li>场景不准确：明确环境和背景。</li>
+<li>构图不理想：调整景别和视角关键词。</li>
+<li>细节有问题：适当增加负向提示词，或考虑后续使用局部重绘。</li>
+</ol>
+<h2 id="七、提示词常见问题"><a href="#七、提示词常见问题" class="headerlink" title="七、提示词常见问题"></a>七、提示词常见问题</h2><h3 id="7-1-提示词写得越长越好吗？"><a href="#7-1-提示词写得越长越好吗？" class="headerlink" title="7.1. 提示词写得越长越好吗？"></a>7.1. 提示词写得越长越好吗？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">不一定。</span><br><span class="line"></span><br><span class="line">过多的关键词可能让描述相互冲突，也可能让模型难以突出重点。</span><br><span class="line"></span><br><span class="line">建议先写清楚主体和场景，再逐步补充细节。</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-2-为什么写了某个关键词，图片却没有体现？"><a href="#7-2-为什么写了某个关键词，图片却没有体现？" class="headerlink" title="7.2. 为什么写了某个关键词，图片却没有体现？"></a>7.2. 为什么写了某个关键词，图片却没有体现？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">可能的原因包括：</span><br><span class="line"></span><br><span class="line">- 模型对该关键词理解有限。</span><br><span class="line">- 关键词之间存在冲突。</span><br><span class="line">- 提示词权重不合适。</span><br><span class="line">- 模型本身不擅长生成对应内容。</span><br><span class="line"></span><br><span class="line">可以尝试换一种表达方式，或者更换模型进行对比。</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-3-为什么负向提示词没有效果？"><a href="#7-3-为什么负向提示词没有效果？" class="headerlink" title="7.3. 为什么负向提示词没有效果？"></a>7.3. 为什么负向提示词没有效果？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">负向提示词不是图片修复工具，无法保证消除所有问题。</span><br><span class="line"></span><br><span class="line">同时，不同模型对负向条件的处理方式也不同。不要将传统 SD 1.5 的经验直接套用到所有新模型上。</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-4-为什么同一段提示词，每次生成的图片都不一样？"><a href="#7-4-为什么同一段提示词，每次生成的图片都不一样？" class="headerlink" title="7.4. 为什么同一段提示词，每次生成的图片都不一样？"></a>7.4. 为什么同一段提示词，每次生成的图片都不一样？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">因为采样过程中还会受到 Seed、Steps、CFG、Sampler 等参数影响。</span><br><span class="line"></span><br><span class="line">如果想比较提示词效果，可以固定 Seed 和其他采样参数，每次只修改一部分提示词。</span><br></pre></td></tr></table></figure>
+
+<h2 id="八、总结"><a href="#八、总结" class="headerlink" title="八、总结"></a>八、总结</h2><p>这一篇主要学习了 ComfyUI 提示词的基础知识：</p>
+<ul>
+<li>正向提示词：描述希望生成的内容。</li>
+<li>负向提示词：描述希望避免的内容。</li>
+<li>提示词结构：主体、外观、动作、场景、光线、构图和风格。</li>
+<li>权重写法：通过调整关键词权重突出重点。</li>
+<li>中英文提示词：根据模型的文本理解能力选择。</li>
+<li>实际练习：固定采样参数，逐步调整提示词并比较结果。</li>
+</ul>
+<p>刚开始不需要追求复杂的提示词技巧。能够清楚描述主体、场景和风格，并通过多次测试逐步调整，就已经掌握了提示词入门的核心方法。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/ja/tags/ComfyUI/" rel="tag"># ComfyUI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ja/posts/9075b64d.html" rel="prev" title="ComfyUI开发之——ComfyUI工作流详解(2.1)">
+                  <i class="fa fa-angle-left"></i> ComfyUI开发之——ComfyUI工作流详解(2.1)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ja/posts/94ab484.html" rel="next" title="ComfyUI开发之——ComfyUI采样参数详解(2.3)">
+                  ComfyUI开发之——ComfyUI采样参数详解(2.3) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"e11e3f4e37b0ea6a8b1856282ae5ec21"}</script>
+<script src="/ja/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

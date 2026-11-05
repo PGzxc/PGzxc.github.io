@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="一、概述123456789101112ComfyUI 本地 API 实战：通过 HTTP 调用工作流、查询任务与获取结果前面的文章已经介绍了 ComfyUI 的基础操作、模型管理、图像处理和视频生成。到目前为止，我们主要通过浏览器打开 ComfyUI，手动调整参数、点击生成，再从界面中保存图片。但如果希望把 ComfyUI 接入自己的 AI 应用，或者通过 Python 脚本批量提交生成任务，就需">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ComfyUI开发之——ComfyUI本地API实战(6.3)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/38807ac6.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="一、概述123456789101112ComfyUI 本地 API 实战：通过 HTTP 调用工作流、查询任务与获取结果前面的文章已经介绍了 ComfyUI 的基础操作、模型管理、图像处理和视频生成。到目前为止，我们主要通过浏览器打开 ComfyUI，手动调整参数、点击生成，再从界面中保存图片。但如果希望把 ComfyUI 接入自己的 AI 应用，或者通过 Python 脚本批量提交生成任务，就需">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-11-04T11:44:37.000Z">
+<meta property="article:modified_time" content="2026-11-05T01:59:37.037Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="ComfyUI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/38807ac6.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/38807ac6.html","path":"posts/38807ac6.html","title":"ComfyUI开发之——ComfyUI本地API实战(6.3)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ComfyUI开发之——ComfyUI本地API实战(6.3) | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">384</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4861</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">2.</span> <span class="nav-text">二、概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E3%80%81ComfyUI-API-%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1、ComfyUI API 能做什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2%E3%80%81%E5%87%86%E5%A4%87-API-%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">2.2.</span> <span class="nav-text">2.2、准备 API 工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%8C%BA%E5%88%86%E4%B8%A4%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%B5%81-JSON"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. 区分两种工作流 JSON</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%AF%BC%E5%87%BA-API-%E6%A0%BC%E5%BC%8F%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. 导出 API 格式工作流</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3%E3%80%81%E8%AE%A4%E8%AF%86-ComfyUI-%E5%B8%B8%E7%94%A8-API-%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.3.</span> <span class="nav-text">2.3、认识 ComfyUI 常用 API 接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">三、操作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1%E3%80%81%E4%BD%BF%E7%94%A8-Python-%E6%8F%90%E4%BA%A4%E7%94%9F%E6%88%90%E4%BB%BB%E5%8A%A1"><span class="nav-number">3.1.</span> <span class="nav-text">3.1、使用 Python 提交生成任务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85-requests"><span class="nav-number">3.1.1.</span> <span class="nav-text">1. 安装 requests</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%8F%90%E4%BA%A4%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">3.1.2.</span> <span class="nav-text">2. 提交工作流</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2%E3%80%81%E6%9F%A5%E8%AF%A2%E4%BB%BB%E5%8A%A1%E7%8A%B6%E6%80%81%E5%92%8C%E7%94%9F%E6%88%90%E7%BB%93%E6%9E%9C"><span class="nav-number">3.2.</span> <span class="nav-text">3.2、查询任务状态和生成结果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%BD%BF%E7%94%A8-HTTP-%E8%BD%AE%E8%AF%A2"><span class="nav-number">3.2.1.</span> <span class="nav-text">1. 使用 HTTP 轮询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BD%BF%E7%94%A8-WebSocket-%E5%AE%9E%E6%97%B6%E7%9B%91%E5%90%AC"><span class="nav-number">3.2.2.</span> <span class="nav-text">2. 使用 WebSocket 实时监听</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3%E3%80%81%E4%B8%8B%E8%BD%BD%E7%94%9F%E6%88%90%E7%9A%84%E5%9B%BE%E7%89%87"><span class="nav-number">3.3.</span> <span class="nav-text">3.3、下载生成的图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4%E3%80%81%E4%BD%BF%E7%94%A8-curl-%E6%B5%8B%E8%AF%95-API"><span class="nav-number">3.4.</span> <span class="nav-text">3.4、使用 curl 测试 API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5%E3%80%81%E5%B1%80%E5%9F%9F%E7%BD%91%E8%AE%BF%E9%97%AE%E4%B8%8E%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="nav-number">3.5.</span> <span class="nav-text">3.5、局域网访问与安全问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5"><span class="nav-number">4.</span> <span class="nav-text">四、常见问题排查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%8A%A8%E6%89%8B%E7%BB%83%E4%B9%A0%EF%BC%9A%E5%AE%8C%E6%88%90%E4%B8%80%E6%AC%A1-API-%E6%96%87%E7%94%9F%E5%9B%BE"><span class="nav-number">5.</span> <span class="nav-text">五、动手练习：完成一次 API 文生图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">六、总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4861</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">384</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">704</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/38807ac6.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ComfyUI开发之——ComfyUI本地API实战(6.3) | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ComfyUI开发之——ComfyUI本地API实战(6.3)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/ComfyUI%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94ComfyUI%E6%9C%AC%E5%9C%B0API%E5%AE%9E%E6%88%98-6-3.md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2026-11-04 19:44:37" itemprop="dateCreated datePublished" datetime="2026-11-04T19:44:37+08:00">2026-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/" itemprop="url" rel="index"><span itemprop="name">AI图视频短剧</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">AI绘图</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/ComfyUI/" itemprop="url" rel="index"><span itemprop="name">ComfyUI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>6 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI 本地 API 实战：通过 HTTP 调用工作流、查询任务与获取结果</span><br><span class="line"></span><br><span class="line">前面的文章已经介绍了 ComfyUI 的基础操作、模型管理、图像处理和视频生成。</span><br><span class="line">到目前为止，我们主要通过浏览器打开 ComfyUI，手动调整参数、点击生成，再从界面中保存图片。</span><br><span class="line"></span><br><span class="line">但如果希望把 ComfyUI 接入自己的 AI 应用，或者通过 Python 脚本批量提交生成任务，</span><br><span class="line">就需要使用它提供的 API。</span><br><span class="line"></span><br><span class="line">ComfyUI 不仅是一个图形化工作流工具，也可以作为本地 AI 图片和视频生成服务。</span><br><span class="line">通过 HTTP 接口提交工作流，再查询任务状态、获取生成结果，就能把它接入其他程序。</span><br><span class="line"></span><br><span class="line">本文从实际开发出发，完成一次完整的 API 调用流程。</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二、概念"><a href="#二、概念" class="headerlink" title="二、概念"></a>二、概念</h2><h3 id="2-1、ComfyUI-API-能做什么？"><a href="#2-1、ComfyUI-API-能做什么？" class="headerlink" title="2.1、ComfyUI API 能做什么？"></a>2.1、ComfyUI API 能做什么？</h3><p>ComfyUI 启动后，通常会在本机开启一个 Web 服务：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:8188</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>127.0.0.1</code> 表示本机地址，<code>8188</code> 是 ComfyUI 常用的默认端口。如果启动时修改了端口，就需要使用实际端口。</p>
+<p>通过 API，我们可以实现：</p>
+<ul>
+<li>从 Python 或其他程序提交图片生成任务。</li>
+<li>动态修改提示词、随机种子和图片尺寸等参数。</li>
+<li>查询任务是否完成。</li>
+<li>获取生成的图片或视频。</li>
+<li>将 ComfyUI 接入自己的客户端或自动化程序。</li>
+</ul>
+<p>例如，未来可以开发一个简单的客户端：用户输入提示词，客户端通过 HTTP 请求 ComfyUI，等待生成完成后，再将图片展示出来。</p>
+<h3 id="2-2、准备-API-工作流"><a href="#2-2、准备-API-工作流" class="headerlink" title="2.2、准备 API 工作流"></a>2.2、准备 API 工作流</h3><p>在调用 API 之前，需要先准备一个可以正常运行的 ComfyUI 工作流。</p>
+<p>建议先使用最基础的文生图工作流，确认能够正常生成图片，再进行 API 调用。</p>
+<h4 id="1-区分两种工作流-JSON"><a href="#1-区分两种工作流-JSON" class="headerlink" title="1. 区分两种工作流 JSON"></a>1. 区分两种工作流 JSON</h4><p>这是初次使用 ComfyUI API 最容易遇到的问题。</p>
+<p>ComfyUI 中存在两种用途不同的 JSON：</p>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">普通工作流 JSON</td>
+<td align="center">保存界面布局、节点位置、连线等信息，用于重新打开工作流</td>
+</tr>
+<tr>
+<td align="center">API 格式 JSON</td>
+<td align="center">保存节点类型、输入参数和连接关系，用于通过 API 执行工作流</td>
+</tr>
+</tbody></table>
+<p>两者不能直接混用。</p>
+<p>如果将普通工作流 JSON 直接提交给 <code>/prompt</code>，通常会因为数据格式不符合要求而报错。</p>
+<h4 id="2-导出-API-格式工作流"><a href="#2-导出-API-格式工作流" class="headerlink" title="2. 导出 API 格式工作流"></a>2. 导出 API 格式工作流</h4><p>在 ComfyUI 中：</p>
+<ol>
+<li>打开一个能够正常运行的文生图工作流。</li>
+<li>确认模型、提示词和采样参数都能正常使用。</li>
+<li>找到工作流菜单中的 API 格式导出选项。</li>
+<li>选择类似 <code>Save (API Format)</code> 的功能，将工作流保存为 JSON 文件。</li>
+</ol>
+<p>不同版本的 ComfyUI，菜单位置和名称可能有所不同。如果没有看到该选项，可以检查当前版本的工作流菜单或相关设置。</p>
+<p>假设保存后的文件名为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">workflow_api.json</span><br></pre></td></tr></table></figure>
+
+<p>API 格式的核心结构大致如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;6&quot;: &#123;</span><br><span class="line">    &quot;class_type&quot;: &quot;CLIPTextEncode&quot;,</span><br><span class="line">    &quot;inputs&quot;: &#123;</span><br><span class="line">      &quot;text&quot;: &quot;a beautiful landscape&quot;,</span><br><span class="line">      &quot;clip&quot;: [&quot;4&quot;, 1]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;9&quot;: &#123;</span><br><span class="line">    &quot;class_type&quot;: &quot;SaveImage&quot;,</span><br><span class="line">    &quot;inputs&quot;: &#123;</span><br><span class="line">      &quot;filename_prefix&quot;: &quot;ComfyUI&quot;,</span><br><span class="line">      &quot;images&quot;: [&quot;8&quot;, 0]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上只是结构示意，并不是完整可运行的工作流。</p>
+<p>重点理解两个字段：</p>
+<ul>
+<li><code>class_type</code>：节点对应的类型，例如 <code>CLIPTextEncode</code>、<code>KSampler</code>、<code>SaveImage</code>。</li>
+<li><code>inputs</code>：节点的输入参数，包括提示词、模型连接、采样参数等。</li>
+</ul>
+<p>节点 ID 通常是字符串，例如 <code>&quot;6&quot;</code>、<code>&quot;9&quot;</code>。节点之间通过输入字段中的数组引用其他节点的输出。</p>
+<p>实际使用时，应该以自己导出的 API JSON 为准，不要直接复制示例中的节点 ID。</p>
+<h3 id="2-3、认识-ComfyUI-常用-API-接口"><a href="#2-3、认识-ComfyUI-常用-API-接口" class="headerlink" title="2.3、认识 ComfyUI 常用 API 接口"></a>2.3、认识 ComfyUI 常用 API 接口</h3><p>ComfyUI 提供了多种 HTTP 接口，用于提交任务、查询进度和获取结果。</p>
+<p>以下是最常用的接口：</p>
+<table>
+<thead>
+<tr>
+<th align="center">接口</th>
+<th align="center">请求方式</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>/prompt</code></td>
+<td align="center">POST</td>
+<td align="center">提交工作流生成任务</td>
+</tr>
+<tr>
+<td align="center"><code>/queue</code></td>
+<td align="center">GET</td>
+<td align="center">查看当前任务队列</td>
+</tr>
+<tr>
+<td align="center"><code>/history/{prompt_id}</code></td>
+<td align="center">GET</td>
+<td align="center">查询指定任务的历史记录和输出</td>
+</tr>
+<tr>
+<td align="center"><code>/view</code></td>
+<td align="center">GET</td>
+<td align="center">获取生成的图片等输出文件</td>
+</tr>
+<tr>
+<td align="center"><code>/system_stats</code></td>
+<td align="center">GET</td>
+<td align="center">查看系统信息和资源状态</td>
+</tr>
+<tr>
+<td align="center"><code>/ws</code></td>
+<td align="center">WebSocket</td>
+<td align="center">接收任务执行过程中的实时事件</td>
+</tr>
+</tbody></table>
+<p>其中，最重要的是 <code>/prompt</code>、<code>/history/{prompt_id}</code> 和 <code>/view</code>。</p>
+<p>可以将它们理解为三个步骤：</p>
+<ol>
+<li>提交任务。</li>
+<li>查询任务结果。</li>
+<li>下载生成文件。</li>
+</ol>
+<h2 id="三、操作流程"><a href="#三、操作流程" class="headerlink" title="三、操作流程"></a>三、操作流程</h2><h3 id="3-1、使用-Python-提交生成任务"><a href="#3-1、使用-Python-提交生成任务" class="headerlink" title="3.1、使用 Python 提交生成任务"></a>3.1、使用 Python 提交生成任务</h3><p>下面通过 Python 实现一次完整的 API 调用。</p>
+<h4 id="1-安装-requests"><a href="#1-安装-requests" class="headerlink" title="1. 安装 requests"></a>1. 安装 requests</h4><p>先安装 Python HTTP 请求库：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install requests</span><br></pre></td></tr></table></figure>
+
+<p>然后准备好前面导出的 <code>workflow_api.json</code>，将它与 Python 脚本放在同一个目录。</p>
+<p>目录结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI-API/</span><br><span class="line">├── workflow_api.json</span><br><span class="line">└── main.py</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-提交工作流"><a href="#2-提交工作流" class="headerlink" title="2. 提交工作流"></a>2. 提交工作流</h4><p>创建 <code>main.py</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">BASE_URL = &quot;http://127.0.0.1:8188&quot;</span><br><span class="line"></span><br><span class="line"># 读取 API 格式工作流</span><br><span class="line">with open(&quot;workflow_api.json&quot;, &quot;r&quot;, encoding=&quot;utf-8&quot;) as f:</span><br><span class="line">    workflow = json.load(f)</span><br><span class="line"></span><br><span class="line"># 根据实际工作流修改节点 ID 和输入字段</span><br><span class="line"># 下面的 &quot;6&quot; 只是示例，请替换为自己工作流中的节点 ID</span><br><span class="line">workflow[&quot;6&quot;][&quot;inputs&quot;][&quot;text&quot;] = (</span><br><span class="line">    &quot;a beautiful landscape, &quot;</span><br><span class="line">    &quot;mountains, lake, sunset&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"># 提交生成任务</span><br><span class="line">response = requests.post(</span><br><span class="line">    f&quot;&#123;BASE_URL&#125;/prompt&quot;,</span><br><span class="line">    json=&#123;</span><br><span class="line">        &quot;prompt&quot;: workflow</span><br><span class="line">    &#125;,</span><br><span class="line">    timeout=30</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">response.raise_for_status()</span><br><span class="line"></span><br><span class="line">result = response.json()</span><br><span class="line"></span><br><span class="line">prompt_id = result[&quot;prompt_id&quot;]</span><br><span class="line"></span><br><span class="line">print(&quot;任务提交成功&quot;)</span><br><span class="line">print(&quot;Prompt ID:&quot;, prompt_id)</span><br></pre></td></tr></table></figure>
+
+<p>这里需要注意：</p>
+<ul>
+<li><code>workflow</code> 必须是 API 格式 JSON。</li>
+<li><code>&quot;6&quot;</code> 必须替换为自己工作流中实际的提示词节点 ID。</li>
+<li><code>text</code> 是示例节点的输入字段，其他工作流可能存在不同的节点结构。</li>
+<li><code>/prompt</code> 返回的 <code>prompt_id</code> 是本次任务的标识，后续查询结果需要使用它。</li>
+</ul>
+<p>如果接口返回错误，可以先检查 ComfyUI 是否已经启动，以及工作流 JSON 是否正确。</p>
+<h3 id="3-2、查询任务状态和生成结果"><a href="#3-2、查询任务状态和生成结果" class="headerlink" title="3.2、查询任务状态和生成结果"></a>3.2、查询任务状态和生成结果</h3><p>任务提交成功后，并不意味着图片已经生成。</p>
+<p>ComfyUI 可能正在执行其他任务，因此需要等待任务完成。</p>
+<p>这里介绍两种方式：HTTP 轮询和 WebSocket 实时监听。</p>
+<h4 id="1-使用-HTTP-轮询"><a href="#1-使用-HTTP-轮询" class="headerlink" title="1. 使用 HTTP 轮询"></a>1. 使用 HTTP 轮询</h4><p>轮询的思路比较简单：</p>
+<p>每隔一段时间请求一次 <code>/history/{prompt_id}</code>，检查任务是否已经生成结果。</p>
+<p>在前面代码的基础上，增加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line"></span><br><span class="line">def wait_for_result(prompt_id):</span><br><span class="line">    url = f&quot;&#123;BASE_URL&#125;/history/&#123;prompt_id&#125;&quot;</span><br><span class="line"></span><br><span class="line">    while True:</span><br><span class="line">        response = requests.get(url, timeout=30)</span><br><span class="line">        response.raise_for_status()</span><br><span class="line"></span><br><span class="line">        history = response.json()</span><br><span class="line"></span><br><span class="line">        if prompt_id in history:</span><br><span class="line">            task = history[prompt_id]</span><br><span class="line"></span><br><span class="line">            outputs = task.get(&quot;outputs&quot;, &#123;&#125;)</span><br><span class="line"></span><br><span class="line">            if outputs:</span><br><span class="line">                print(&quot;任务已完成&quot;)</span><br><span class="line">                return outputs</span><br><span class="line"></span><br><span class="line">        print(&quot;任务执行中...&quot;)</span><br><span class="line">        time.sleep(2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">outputs = wait_for_result(prompt_id)</span><br><span class="line"></span><br><span class="line">print(json.dumps(</span><br><span class="line">    outputs,</span><br><span class="line">    ensure_ascii=False,</span><br><span class="line">    indent=2</span><br><span class="line">))</span><br></pre></td></tr></table></figure>
+
+<p>当任务完成后，历史记录中通常会包含节点输出信息。</p>
+<p>例如，图片保存节点可能返回：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;images&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;filename&quot;: &quot;ComfyUI_00001_.png&quot;,</span><br><span class="line">      &quot;subfolder&quot;: &quot;&quot;,</span><br><span class="line">      &quot;type&quot;: &quot;output&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实际输出结构取决于工作流中的节点类型。</p>
+<p>如果是视频生成工作流，输出字段和文件类型可能不同，需要根据实际返回结果处理。</p>
+<h4 id="2-使用-WebSocket-实时监听"><a href="#2-使用-WebSocket-实时监听" class="headerlink" title="2. 使用 WebSocket 实时监听"></a>2. 使用 WebSocket 实时监听</h4><p>如果希望客户端实时显示生成进度，可以使用 WebSocket。</p>
+<p>与 HTTP 轮询不同，WebSocket 建立连接后，服务端可以主动向客户端发送执行事件。</p>
+<p>常见事件包括：</p>
+<ul>
+<li><code>execution_start</code>：开始执行任务。</li>
+<li><code>executing</code>：正在执行某个节点。</li>
+<li><code>progress</code>：采样进度更新。</li>
+<li><code>execution_cached</code>：使用了缓存结果。</li>
+<li><code>execution_success</code>：任务成功完成。</li>
+<li><code>execution_error</code>：任务执行出错。</li>
+</ul>
+<p>不同版本及节点扩展可能影响事件内容，具体结构应以当前版本实际收到的消息为准。</p>
+<p>Python 可以使用 <code>websocket-client</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install websocket-client</span><br></pre></td></tr></table></figure>
+
+<p>连接地址通常类似：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ws://127.0.0.1:8188/ws?clientId=YOUR_CLIENT_ID</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>clientId</code> 用于标识客户端连接。实际开发中，应在提交任务前建立 WebSocket 连接，并在提交 <code>/prompt</code> 时传入相同的 <code>client_id</code>，方便关联任务事件。</p>
+<p>简单来说：</p>
+<ul>
+<li>HTTP 轮询：实现简单，适合先完成基础功能。</li>
+<li>WebSocket：可以实时接收执行事件，适合开发交互式客户端。</li>
+</ul>
+<p>初学阶段建议先掌握 HTTP 轮询，再进一步实现 WebSocket。</p>
+<h3 id="3-3、下载生成的图片"><a href="#3-3、下载生成的图片" class="headerlink" title="3.3、下载生成的图片"></a>3.3、下载生成的图片</h3><p>查询任务完成后，我们已经拿到了输出文件信息。</p>
+<p>接下来通过 <code>/view</code> 接口获取文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line"></span><br><span class="line">def download_image(image_info):</span><br><span class="line">    url = f&quot;&#123;BASE_URL&#125;/view&quot;</span><br><span class="line"></span><br><span class="line">    response = requests.get(</span><br><span class="line">        url,</span><br><span class="line">        params=&#123;</span><br><span class="line">            &quot;filename&quot;: image_info[&quot;filename&quot;],</span><br><span class="line">            &quot;subfolder&quot;: image_info.get(&quot;subfolder&quot;, &quot;&quot;),</span><br><span class="line">            &quot;type&quot;: image_info.get(&quot;type&quot;, &quot;output&quot;)</span><br><span class="line">        &#125;,</span><br><span class="line">        timeout=60</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    response.raise_for_status()</span><br><span class="line"></span><br><span class="line">    os.makedirs(&quot;results&quot;, exist_ok=True)</span><br><span class="line"></span><br><span class="line">    save_path = os.path.join(</span><br><span class="line">        &quot;results&quot;,</span><br><span class="line">        image_info[&quot;filename&quot;]</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    with open(save_path, &quot;wb&quot;) as f:</span><br><span class="line">        f.write(response.content)</span><br><span class="line"></span><br><span class="line">    print(&quot;图片已保存:&quot;, save_path)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 下载第一个图片输出</span><br><span class="line">images = outputs.get(&quot;保存图片节点ID&quot;, &#123;&#125;).get(&quot;images&quot;, [])</span><br><span class="line"></span><br><span class="line">if images:</span><br><span class="line">    download_image(images[0])</span><br></pre></td></tr></table></figure>
+
+<p>注意：上面的 <code>&quot;保存图片节点ID&quot;</code> 是占位符，需要替换成自己工作流中实际的保存图片节点 ID。</p>
+<p>如果工作流中存在多个图片输出节点，可以遍历 <code>outputs</code>，找到包含 <code>images</code> 的节点，再逐个下载。</p>
+<p>至此，就完成了从 Python 提交任务、查询结果到下载图片的基本流程。</p>
+<h3 id="3-4、使用-curl-测试-API"><a href="#3-4、使用-curl-测试-API" class="headerlink" title="3.4、使用 curl 测试 API"></a>3.4、使用 curl 测试 API</h3><p>如果暂时不想编写 Python 程序，也可以使用 curl 测试接口。</p>
+<p>例如，查看当前任务队列：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://127.0.0.1:8188/queue</span><br></pre></td></tr></table></figure>
+
+<p>查看系统信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://127.0.0.1:8188/system_stats</span><br></pre></td></tr></table></figure>
+
+<p>提交任务时，需要将 API 格式工作流 JSON 放入请求体。</p>
+<p>在 Windows PowerShell 中，<code>curl</code> 可能是 PowerShell 命令的别名。建议使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl.exe</span><br></pre></td></tr></table></figure>
+
+<p>也可以直接使用 Postman 测试 HTTP 接口。</p>
+<p>不过，涉及 JSON 文件读取、动态修改参数、任务轮询和结果下载时，Python 通常更加方便。</p>
+<h3 id="3-5、局域网访问与安全问题"><a href="#3-5、局域网访问与安全问题" class="headerlink" title="3.5、局域网访问与安全问题"></a>3.5、局域网访问与安全问题</h3><p>默认情况下，ComfyUI 通常只监听本机地址。</p>
+<p>如果希望手机、平板或其他电脑访问，需要让 ComfyUI 监听局域网网卡地址。</p>
+<p>例如，部分版本可以通过启动参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python main.py --listen 0.0.0.0</span><br></pre></td></tr></table></figure>
+
+<p>然后通过电脑的局域网 IP 访问：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.1.100:8188</span><br></pre></td></tr></table></figure>
+
+<p>其中，<code>192.168.1.100</code> 只是示例，需要替换成运行 ComfyUI 的电脑实际 IP。</p>
+<p>还需要检查：</p>
+<ol>
+<li>电脑和客户端是否连接同一个局域网。</li>
+<li>Windows 防火墙是否允许 ComfyUI 使用的端口。</li>
+<li>ComfyUI 是否成功监听局域网地址。</li>
+<li>路由器是否开启了设备隔离。</li>
+</ol>
+<p><strong>安全提醒：</strong></p>
+<p>ComfyUI 的本地服务不能默认视为具备完善的身份认证和访问控制能力。</p>
+<p>不要为了方便直接将 <code>8188</code> 端口映射到公网，也不要随意向不可信网络开放服务。API 请求可能直接消耗电脑的 GPU、内存和磁盘资源。</p>
+<p>如果只是自己开发客户端，优先使用本机访问；确实需要局域网访问时，也应限制在可信网络中。</p>
+<h2 id="四、常见问题排查"><a href="#四、常见问题排查" class="headerlink" title="四、常见问题排查"></a>四、常见问题排查</h2><table>
+<thead>
+<tr>
+<th align="center">问题</th>
+<th align="center">可能原因</th>
+<th align="center">处理方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Connection refused</td>
+<td align="center">ComfyUI 未启动或端口错误</td>
+<td align="center">检查服务状态和端口</td>
+</tr>
+<tr>
+<td align="center">404 Not Found</td>
+<td align="center">请求地址或接口路径错误</td>
+<td align="center">检查 URL 和接口名称</td>
+</tr>
+<tr>
+<td align="center">400 Bad Request</td>
+<td align="center">请求 JSON 格式不正确</td>
+<td align="center">检查 API 工作流格式</td>
+</tr>
+<tr>
+<td align="center">缺少节点</td>
+<td align="center">工作流使用了未安装的自定义节点</td>
+<td align="center">安装对应节点并重启</td>
+</tr>
+<tr>
+<td align="center">找不到模型</td>
+<td align="center">模型文件缺失或路径不正确</td>
+<td align="center">检查模型目录和节点配置</td>
+</tr>
+<tr>
+<td align="center">任务一直等待</td>
+<td align="center">前面存在其他任务或当前任务未开始</td>
+<td align="center">查看 <code>/queue</code> 和控制台日志</td>
+</tr>
+<tr>
+<td align="center">查询不到结果</td>
+<td align="center"><code>prompt_id</code> 不正确或任务尚未完成</td>
+<td align="center">检查提交响应和历史记录</td>
+</tr>
+<tr>
+<td align="center">图片下载失败</td>
+<td align="center">文件名、子目录或文件类型不正确</td>
+<td align="center">检查 <code>/history</code> 返回的输出信息</td>
+</tr>
+<tr>
+<td align="center">局域网无法访问</td>
+<td align="center">监听地址或防火墙配置问题</td>
+<td align="center">检查 <code>--listen</code> 和防火墙规则</td>
+</tr>
+</tbody></table>
+<p>排查时，建议同时观察 ComfyUI 启动窗口中的日志。很多模型加载失败、节点执行异常和参数错误，都会在控制台中给出更具体的信息。</p>
+<h2 id="五、动手练习：完成一次-API-文生图"><a href="#五、动手练习：完成一次-API-文生图" class="headerlink" title="五、动手练习：完成一次 API 文生图"></a>五、动手练习：完成一次 API 文生图</h2><p>建议按照下面的顺序自己操作一遍：</p>
+<ol>
+<li>打开 ComfyUI，运行一个正常的文生图工作流。</li>
+<li>导出 API 格式 JSON。</li>
+<li>使用 Python 读取工作流文件。</li>
+<li>修改提示词节点的输入内容。</li>
+<li>调用 <code>POST /prompt</code> 提交任务。</li>
+<li>获取返回的 <code>prompt_id</code>。</li>
+<li>通过 <code>/history/{prompt_id}</code> 查询任务。</li>
+<li>从输出信息中获取图片文件名。</li>
+<li>调用 <code>/view</code> 下载图片。</li>
+<li>修改提示词，再次提交任务，观察生成结果的变化。</li>
+</ol>
+<p>完成后，你就拥有了一个最基础的 ComfyUI API 调用程序。</p>
+<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><p>本文介绍了 ComfyUI 本地 API 的基本使用方式。</p>
+<p>需要重点掌握三个核心接口：</p>
+<ul>
+<li><code>/prompt</code>：提交工作流。</li>
+<li><code>/history/{prompt_id}</code>：查询任务及输出。</li>
+<li><code>/view</code>：获取生成文件。</li>
+</ul>
+<p>此外，还需要理解普通工作流 JSON 与 API 格式 JSON 的区别。只有使用正确的 API 格式，才能通过 HTTP 接口执行工作流。</p>
+<p>掌握这些内容后，ComfyUI 就不再只是一个需要手动操作的网页工具，而是可以被 Python 脚本、桌面软件、手机应用和其他 AI 系统调用的本地生成服务。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/ComfyUI/" rel="tag"># ComfyUI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/d7ca5951.html" rel="prev" title="ComfyUI开发之——ComfyUI视频生成入门(6.2)">
+                  <i class="fa fa-angle-left"></i> ComfyUI开发之——ComfyUI视频生成入门(6.2)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/ad64a656.html" rel="next" title="ComfyUI开发之——ComfyUI自动化实战(6.4)">
+                  ComfyUI开发之——ComfyUI自动化实战(6.4) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"f11c09cc989fefabb2cdd7e750770043"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

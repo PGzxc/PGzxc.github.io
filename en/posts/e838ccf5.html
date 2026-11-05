@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="一、概述12345678910111213141516前面我们已经学习了 ComfyUI 的基础节点、工作流导入、自定义节点安装和常见错误排查。最初的文生图工作流通常比较简单： 加载模型 → 提示词编码 → 采样 → 解码 → 保存图片但在实际使用中，我们经常需要完成更复杂的任务：- 同一张图片使用多个提示词生成不同效果。- 同一模型尝试多种采样参数。- 批量处理多张图片。- 将一张图片同时进行放">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ComfyUI开发之——ComfyUI工作流进阶(4.5)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/e838ccf5.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="一、概述12345678910111213141516前面我们已经学习了 ComfyUI 的基础节点、工作流导入、自定义节点安装和常见错误排查。最初的文生图工作流通常比较简单： 加载模型 → 提示词编码 → 采样 → 解码 → 保存图片但在实际使用中，我们经常需要完成更复杂的任务：- 同一张图片使用多个提示词生成不同效果。- 同一模型尝试多种采样参数。- 批量处理多张图片。- 将一张图片同时进行放">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-11-04T11:40:36.000Z">
+<meta property="article:modified_time" content="2026-11-05T01:59:37.037Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="ComfyUI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/e838ccf5.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/e838ccf5.html","path":"posts/e838ccf5.html","title":"ComfyUI开发之——ComfyUI工作流进阶(4.5)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ComfyUI开发之——ComfyUI工作流进阶(4.5) | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">384</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4861</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%88%86%E6%94%AF%E6%A6%82%E5%BF%B5"><span class="nav-number">2.</span> <span class="nav-text">二、工作流分支概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%88%86%E6%94%AF%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1、什么是工作流分支？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2%E3%80%81%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E5%88%86%E6%94%AF%E5%B7%A5%E4%BD%9C%E6%B5%81%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2、如何搭建一个简单的分支工作流？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%8A%A0%E8%BD%BD%E5%8E%9F%E5%A7%8B%E5%9B%BE%E7%89%87"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. 加载原始图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%B7%BB%E5%8A%A0%E5%A4%9A%E4%B8%AA%E5%A4%84%E7%90%86%E8%8A%82%E7%82%B9"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. 添加多个处理节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%88%86%E5%88%AB%E4%BF%9D%E5%AD%98%E7%BB%93%E6%9E%9C"><span class="nav-number">2.2.3.</span> <span class="nav-text">3. 分别保存结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%88%86%E6%94%AF%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E5%8A%BF%EF%BC%9F"><span class="nav-number">2.2.4.</span> <span class="nav-text">4. 分支有什么优势？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%88%86%E6%94%AF%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">三 工作流分支相关操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1%E3%80%81%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90%E5%9B%BE%E7%89%87"><span class="nav-number">3.1.</span> <span class="nav-text">3.1、批量生成图片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%BD%BF%E7%94%A8-Batch-Size"><span class="nav-number">3.1.1.</span> <span class="nav-text">1. 使用 Batch Size</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BD%BF%E7%94%A8%E5%9B%BE%E7%89%87%E6%89%B9%E6%AC%A1"><span class="nav-number">3.1.2.</span> <span class="nav-text">2. 使用图片批次</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%89%B9%E9%87%8F%E5%A4%84%E7%90%86%E4%B8%8E%E5%BE%AA%E7%8E%AF%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.1.3.</span> <span class="nav-text">3. 批量处理与循环的区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2%E3%80%81%E4%BD%BF%E7%94%A8-Queue-%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90"><span class="nav-number">3.2.</span> <span class="nav-text">3.2、使用 Queue 批量生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3%E3%80%81%E5%8F%82%E6%95%B0%E5%A4%8D%E7%94%A8%EF%BC%9A%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.3.</span> <span class="nav-text">3.3、参数复用：避免重复设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%BD%BF%E7%94%A8-Primitive-%E8%8A%82%E7%82%B9"><span class="nav-number">3.3.1.</span> <span class="nav-text">1. 使用 Primitive 节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BD%BF%E7%94%A8%E8%8A%82%E7%82%B9%E8%BE%93%E5%85%A5%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.3.2.</span> <span class="nav-text">2. 使用节点输入转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E8%8A%82%E7%82%B9%E5%AE%9E%E7%8E%B0%E5%8F%82%E6%95%B0%E7%AE%A1%E7%90%86"><span class="nav-number">3.3.3.</span> <span class="nav-text">3. 使用自定义节点实现参数管理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4%E3%80%81%E8%8A%82%E7%82%B9%E7%BB%84%EF%BC%9A%E8%AE%A9%E5%A4%8D%E6%9D%82%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%9B%B4%E6%95%B4%E6%B4%81"><span class="nav-number">3.4.</span> <span class="nav-text">3.4、节点组：让复杂工作流更整洁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5%E3%80%81%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%BC%98%E5%8C%96%EF%BC%9A%E5%87%8F%E5%B0%91%E9%87%8D%E5%A4%8D%E8%AE%A1%E7%AE%97"><span class="nav-number">3.5.</span> <span class="nav-text">3.5、工作流优化：减少重复计算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%81%BF%E5%85%8D%E9%87%8D%E5%A4%8D%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.5.1.</span> <span class="nav-text">1. 避免重复加载模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%A4%8D%E7%94%A8%E4%B8%AD%E9%97%B4%E5%A4%84%E7%90%86%E7%BB%93%E6%9E%9C"><span class="nav-number">3.5.2.</span> <span class="nav-text">2. 复用中间处理结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%85%88%E4%BD%8E%E5%88%86%E8%BE%A8%E7%8E%87%E6%B5%8B%E8%AF%95"><span class="nav-number">3.5.3.</span> <span class="nav-text">3. 先低分辨率测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%87%8F%E5%B0%91%E4%B8%8D%E5%BF%85%E8%A6%81%E7%9A%84%E8%8A%82%E7%82%B9"><span class="nav-number">3.5.4.</span> <span class="nav-text">4. 减少不必要的节点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%9E%E6%88%98%EF%BC%9A%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E5%9B%BE%E7%89%87%E6%95%88%E6%9E%9C%E5%AF%B9%E6%AF%94%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">4.</span> <span class="nav-text">四、实战：制作一个图片效果对比工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9"><span class="nav-number">4.1.</span> <span class="nav-text">4.1. 添加节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E8%BF%9E%E6%8E%A5%E6%99%AE%E9%80%9A%E7%BC%A9%E6%94%BE%E5%88%86%E6%94%AF"><span class="nav-number">4.2.</span> <span class="nav-text">4.2. 连接普通缩放分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E8%BF%9E%E6%8E%A5-AI-%E6%94%BE%E5%A4%A7%E5%88%86%E6%94%AF"><span class="nav-number">4.3.</span> <span class="nav-text">4.3. 连接 AI 放大分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E8%AE%BE%E7%BD%AE%E4%B8%8D%E5%90%8C%E6%96%87%E4%BB%B6%E5%90%8D%E5%89%8D%E7%BC%80"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 设置不同文件名前缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-%E8%BF%90%E8%A1%8C%E5%B9%B6%E5%AF%B9%E6%AF%94"><span class="nav-number">4.5.</span> <span class="nav-text">4.5. 运行并对比</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">五、常见问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">六、总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4861</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">384</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">704</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/e838ccf5.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ComfyUI开发之——ComfyUI工作流进阶(4.5) | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ComfyUI开发之——ComfyUI工作流进阶(4.5)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/ComfyUI%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94ComfyUI%E5%B7%A5%E4%BD%9C%E6%B5%81%E8%BF%9B%E9%98%B6-4-5.md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2026-11-04 19:40:36" itemprop="dateCreated datePublished" datetime="2026-11-04T19:40:36+08:00">2026-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/" itemprop="url" rel="index"><span itemprop="name">AI图视频短剧</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">AI绘图</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/ComfyUI/" itemprop="url" rel="index"><span itemprop="name">ComfyUI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>4 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">前面我们已经学习了 ComfyUI 的基础节点、工作流导入、自定义节点安装和常见错误排查。</span><br><span class="line"></span><br><span class="line">最初的文生图工作流通常比较简单：</span><br><span class="line"> 加载模型 → 提示词编码 → 采样 → 解码 → 保存图片</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">但在实际使用中，我们经常需要完成更复杂的任务：</span><br><span class="line"></span><br><span class="line">- 同一张图片使用多个提示词生成不同效果。</span><br><span class="line">- 同一模型尝试多种采样参数。</span><br><span class="line">- 批量处理多张图片。</span><br><span class="line">- 将一张图片同时进行放大、修复和风格转换。</span><br><span class="line">- 将多个处理步骤组合成一个工作流。</span><br><span class="line">- 减少重复节点和重复操作。</span><br><span class="line"></span><br><span class="line">这些需求可以通过工作流分支、批量处理、参数复用和流程优化实现。</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二、工作流分支概念"><a href="#二、工作流分支概念" class="headerlink" title="二、工作流分支概念"></a>二、工作流分支概念</h2><h3 id="2-1、什么是工作流分支？"><a href="#2-1、什么是工作流分支？" class="headerlink" title="2.1、什么是工作流分支？"></a>2.1、什么是工作流分支？</h3><p>工作流分支，就是让一部分数据同时流向多个处理节点。</p>
+<p>例如，加载一张图片后，希望分别进行：</p>
+<ul>
+<li>普通图片缩放。</li>
+<li>AI 高清放大。</li>
+<li>图片风格转换。</li>
+</ul>
+<p>就可以将同一张图片连接到多个不同的处理分支。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">          Load Image</span><br><span class="line">              │</span><br><span class="line">    ┌─────────┼─────────┐</span><br><span class="line">    │         │         │</span><br><span class="line">    ▼         ▼         ▼</span><br><span class="line">Image Scale  AI放大   风格转换</span><br><span class="line">    │         │         │</span><br><span class="line">    ▼         ▼         ▼</span><br><span class="line"> Save A    Save B    Save C</span><br></pre></td></tr></table></figure>
+
+<p>这三个分支可以分别完成不同的处理任务。</p>
+<p>需要注意，分支只是共享输入数据，不代表所有节点都一定同时执行。ComfyUI 会根据最终输出节点及其依赖关系决定执行哪些节点。</p>
+<h3 id="2-2、如何搭建一个简单的分支工作流？"><a href="#2-2、如何搭建一个简单的分支工作流？" class="headerlink" title="2.2、如何搭建一个简单的分支工作流？"></a>2.2、如何搭建一个简单的分支工作流？</h3><p>以图片处理为例。</p>
+<h4 id="1-加载原始图片"><a href="#1-加载原始图片" class="headerlink" title="1. 加载原始图片"></a>1. 加载原始图片</h4><p>添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Load Image</span><br></pre></td></tr></table></figure>
+
+<p>选择一张本地图片。</p>
+<p>这个节点输出 IMAGE 数据。</p>
+<h4 id="2-添加多个处理节点"><a href="#2-添加多个处理节点" class="headerlink" title="2. 添加多个处理节点"></a>2. 添加多个处理节点</h4><p>例如：</p>
+<ul>
+<li>Image Scale：普通缩放。</li>
+<li>ImageUpscaleWithModel：AI 放大。</li>
+<li>Image Crop：图片裁剪。</li>
+</ul>
+<p>将 Load Image 的 IMAGE 输出分别连接到各个节点。</p>
+<h4 id="3-分别保存结果"><a href="#3-分别保存结果" class="headerlink" title="3. 分别保存结果"></a>3. 分别保存结果</h4><p>每个分支添加一个 Save Image 节点。</p>
+<p>建议设置不同的文件名前缀：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">branch/scale</span><br><span class="line">branch/upscale</span><br><span class="line">branch/crop</span><br></pre></td></tr></table></figure>
+
+<p>运行工作流后，可以分别查看三个分支的处理结果。</p>
+<h4 id="4-分支有什么优势？"><a href="#4-分支有什么优势？" class="headerlink" title="4. 分支有什么优势？"></a>4. 分支有什么优势？</h4><p>分支可以让你：</p>
+<ul>
+<li>对比不同处理方式。</li>
+<li>使用同一张原图生成多种效果。</li>
+<li>避免重复加载输入图片。</li>
+<li>将多个任务整合到一个工作流。</li>
+</ul>
+<p>特别适合图片修复、高清放大、风格对比和人物照片处理。</p>
+<h2 id="三-工作流分支相关操作"><a href="#三-工作流分支相关操作" class="headerlink" title="三 工作流分支相关操作"></a>三 工作流分支相关操作</h2><h3 id="3-1、批量生成图片"><a href="#3-1、批量生成图片" class="headerlink" title="3.1、批量生成图片"></a>3.1、批量生成图片</h3><p>ComfyUI 支持批量处理。</p>
+<p>批量处理主要有两种常见方式：</p>
+<ol>
+<li>使用节点的 Batch Size。</li>
+<li>使用图片批次或循环类节点。</li>
+</ol>
+<h4 id="1-使用-Batch-Size"><a href="#1-使用-Batch-Size" class="headerlink" title="1. 使用 Batch Size"></a>1. 使用 Batch Size</h4><p>在传统文生图工作流中，Empty Latent Image 通常包含：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">width</span><br><span class="line">height</span><br><span class="line">batch_size</span><br></pre></td></tr></table></figure>
+
+<p>其中 Batch Size 表示一次创建多少张潜空间样本。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">width = 512</span><br><span class="line">height = 512</span><br><span class="line">batch_size = 4</span><br></pre></td></tr></table></figure>
+
+<p>表示创建 4 个样本供后续采样。</p>
+<p>不过需要注意：</p>
+<ul>
+<li>Batch Size 越大，显存需求通常越高。</li>
+<li>每张图片可能对应不同随机结果。</li>
+<li>批量生成不等于多次独立运行。</li>
+<li>某些节点对批次数据的处理方式不同。</li>
+</ul>
+<p>显存不足时，建议先从 Batch Size &#x3D; 1 开始。</p>
+<h4 id="2-使用图片批次"><a href="#2-使用图片批次" class="headerlink" title="2. 使用图片批次"></a>2. 使用图片批次</h4><p>如果要处理多张输入图片，可以使用支持批次输入的节点。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Load Image</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">图片批次处理</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">图片缩放</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">Save Image</span><br></pre></td></tr></table></figure>
+
+<p>部分工作流会使用专门的图片批次加载、合并或拆分节点。</p>
+<p>这些节点通常来自 ComfyUI 自带功能或自定义节点包，具体名称和接口可能随版本变化。</p>
+<h4 id="3-批量处理与循环的区别"><a href="#3-批量处理与循环的区别" class="headerlink" title="3. 批量处理与循环的区别"></a>3. 批量处理与循环的区别</h4><p>Batch Size、图片批次和循环并不是完全相同的概念。</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>主要用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Batch Size</td>
+<td>一次生成多个样本</td>
+</tr>
+<tr>
+<td>图片批次</td>
+<td>将多张图片作为批次数据处理</td>
+</tr>
+<tr>
+<td>循环节点</td>
+<td>对输入数据重复执行某些操作</td>
+</tr>
+<tr>
+<td>Queue 多次运行</td>
+<td>重复执行整个工作流</td>
+</tr>
+</tbody></table>
+<p>如果只是生成多张图片，Batch Size 或 Queue 通常就够了。</p>
+<p>如果需要对大量不同图片执行相同处理，可能需要批次节点、循环节点或 Python 自动化。</p>
+<h3 id="3-2、使用-Queue-批量生成"><a href="#3-2、使用-Queue-批量生成" class="headerlink" title="3.2、使用 Queue 批量生成"></a>3.2、使用 Queue 批量生成</h3><p>ComfyUI 的 Queue 功能可以重复执行工作流。</p>
+<p>例如，想生成多张不同 Seed 的图片，可以使用队列功能。</p>
+<p>基本操作：</p>
+<ol>
+<li>设置好提示词和模型。</li>
+<li>设置 Seed 的变化方式。</li>
+<li>将工作流加入队列。</li>
+<li>根据需要调整队列数量。</li>
+<li>等待任务执行完成。</li>
+</ol>
+<p>部分版本和工作流支持设置运行后自动变化 Seed。</p>
+<p>需要注意，Queue 多次运行和 Batch Size 的区别：</p>
+<ul>
+<li>Queue：多次执行整个工作流。</li>
+<li>Batch Size：一次执行中处理多个样本。</li>
+</ul>
+<p>如果显存有限，通常可以使用较小 Batch Size，通过 Queue 多次运行来生成图片。</p>
+<h3 id="3-3、参数复用：避免重复设置"><a href="#3-3、参数复用：避免重复设置" class="headerlink" title="3.3、参数复用：避免重复设置"></a>3.3、参数复用：避免重复设置</h3><p>参数复用是提高工作流效率的重要方式。</p>
+<p>例如，工作流中有多个 KSampler，如果每个节点都单独设置 Seed、Steps、CFG，就容易出现参数不一致。</p>
+<p>可以考虑以下方式。</p>
+<h4 id="1-使用-Primitive-节点"><a href="#1-使用-Primitive-节点" class="headerlink" title="1. 使用 Primitive 节点"></a>1. 使用 Primitive 节点</h4><p>ComfyUI 中的 Primitive 类节点可以用于创建基础参数。</p>
+<p>例如：</p>
+<ul>
+<li>整数 INT。</li>
+<li>浮点数 FLOAT。</li>
+<li>字符串 STRING。</li>
+<li>布尔值 BOOLEAN。</li>
+</ul>
+<p>不同版本可能使用 Primitive、Primitive Node 或其他相关名称。</p>
+<p>例如，使用一个 INT 参数控制多个节点中的相同设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">     Primitive INT</span><br><span class="line">          │</span><br><span class="line">   ┌──────┴──────┐</span><br><span class="line">   │             │</span><br><span class="line">   ▼             ▼</span><br><span class="line">Node A        Node B</span><br></pre></td></tr></table></figure>
+
+<p>这样修改参数时，可以减少重复操作。</p>
+<p>但需要注意，Primitive 能否连接到某个节点输入，取决于对应的数据类型和接口。</p>
+<h4 id="2-使用节点输入转换"><a href="#2-使用节点输入转换" class="headerlink" title="2. 使用节点输入转换"></a>2. 使用节点输入转换</h4><p>有些参数可能不是直接的 INT 或 FLOAT。</p>
+<p>例如：</p>
+<ul>
+<li>Seed</li>
+<li>Steps</li>
+<li>CFG</li>
+<li>图片宽度</li>
+<li>图片高度</li>
+</ul>
+<p>可以根据节点实际输入类型选择对应参数节点。</p>
+<p>如果连接失败，先检查数据类型是否一致。</p>
+<h4 id="3-使用自定义节点实现参数管理"><a href="#3-使用自定义节点实现参数管理" class="headerlink" title="3. 使用自定义节点实现参数管理"></a>3. 使用自定义节点实现参数管理</h4><p>部分自定义节点包提供：</p>
+<ul>
+<li>参数集中管理。</li>
+<li>多节点参数同步。</li>
+<li>工作流配置预设。</li>
+<li>参数面板。</li>
+<li>节点组或便捷控制节点。</li>
+</ul>
+<p>这些功能适合复杂工作流。</p>
+<p>不过，安装第三方参数管理节点时，需要考虑节点依赖和兼容性。</p>
+<p>初学阶段建议先熟悉原生节点，再逐步扩展。</p>
+<h3 id="3-4、节点组：让复杂工作流更整洁"><a href="#3-4、节点组：让复杂工作流更整洁" class="headerlink" title="3.4、节点组：让复杂工作流更整洁"></a>3.4、节点组：让复杂工作流更整洁</h3><p>当工作流越来越复杂时，画布可能会出现大量节点和连线。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">模型加载</span><br><span class="line">文本编码</span><br><span class="line">ControlNet</span><br><span class="line">IP-Adapter</span><br><span class="line">采样</span><br><span class="line">VAE解码</span><br><span class="line">高清放大</span><br><span class="line">保存图片</span><br></pre></td></tr></table></figure>
+
+<p>如果所有节点都直接铺在画布上，阅读和修改会越来越困难。</p>
+<p>这时可以考虑使用节点组（Node Group）。</p>
+<p>节点组的作用是将多个节点组织成一个逻辑模块。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────┐</span><br><span class="line">│     文本编码模块     │</span><br><span class="line">│                     │</span><br><span class="line">│ CLIP Text Encode    │</span><br><span class="line">│ 正向提示词          │</span><br><span class="line">│ 负向提示词          │</span><br><span class="line">└─────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p>节点组可以帮助：</p>
+<ul>
+<li>减少画布视觉复杂度。</li>
+<li>将功能相近的节点放在一起。</li>
+<li>提高工作流可读性。</li>
+<li>方便分享和维护。</li>
+</ul>
+<p>不同 ComfyUI 版本对节点组的功能和操作方式可能有所差异。</p>
+<p>如果当前版本支持节点组，可以尝试将提示词编码、图片预处理或其他重复模块进行整理。</p>
+<p>需要注意：节点组只是组织工作流的一种方式，不一定会自动减少显存占用或计算量。</p>
+<h3 id="3-5、工作流优化：减少重复计算"><a href="#3-5、工作流优化：减少重复计算" class="headerlink" title="3.5、工作流优化：减少重复计算"></a>3.5、工作流优化：减少重复计算</h3><p>工作流优化不只是减少节点数量，更重要的是减少不必要的计算。</p>
+<h4 id="1-避免重复加载模型"><a href="#1-避免重复加载模型" class="headerlink" title="1. 避免重复加载模型"></a>1. 避免重复加载模型</h4><p>模型加载通常比较耗时，也可能占用大量显存。</p>
+<p>如果多个分支可以共享同一个模型加载节点，就尽量不要重复加载相同模型。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">   Load Checkpoint</span><br><span class="line">          │</span><br><span class="line">   ┌──────┴──────┐</span><br><span class="line">   │             │</span><br><span class="line">   ▼             ▼</span><br><span class="line">KSampler A    KSampler B</span><br></pre></td></tr></table></figure>
+
+<p>这样可以共享模型数据。</p>
+<p>但如果不同分支使用不同模型，仍然需要分别加载。</p>
+<h4 id="2-复用中间处理结果"><a href="#2-复用中间处理结果" class="headerlink" title="2. 复用中间处理结果"></a>2. 复用中间处理结果</h4><p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Load Image</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">图片预处理</span><br><span class="line">    │</span><br><span class="line">    ├──→ ControlNet</span><br><span class="line">    │</span><br><span class="line">    └──→ 图片合成</span><br></pre></td></tr></table></figure>
+
+<p>如果多个分支需要同一份预处理结果，可以尽量复用。</p>
+<p>这样能够避免重复执行相同处理。</p>
+<h4 id="3-先低分辨率测试"><a href="#3-先低分辨率测试" class="headerlink" title="3. 先低分辨率测试"></a>3. 先低分辨率测试</h4><p>复杂工作流可能包含：</p>
+<ul>
+<li>图生图。</li>
+<li>ControlNet。</li>
+<li>IP-Adapter。</li>
+<li>多次采样。</li>
+<li>高清放大。</li>
+<li>局部重绘。</li>
+</ul>
+<p>如果直接使用高分辨率运行，容易浪费时间和显存。</p>
+<p>建议：</p>
+<ol>
+<li>先用低分辨率测试流程。</li>
+<li>确认节点和参数正常。</li>
+<li>检查生成效果。</li>
+<li>最后再提高分辨率。</li>
+</ol>
+<h4 id="4-减少不必要的节点"><a href="#4-减少不必要的节点" class="headerlink" title="4. 减少不必要的节点"></a>4. 减少不必要的节点</h4><p>有些工作流包含大量预览、重复缩放或多次图片转换节点。</p>
+<p>如果某个节点没有实际用途，可以考虑删除。</p>
+<p>但是，删除前必须确认它没有被其他节点依赖。</p>
+<p>对于复杂工作流，建议先复制一份再修改。</p>
+<h2 id="四、实战：制作一个图片效果对比工作流"><a href="#四、实战：制作一个图片效果对比工作流" class="headerlink" title="四、实战：制作一个图片效果对比工作流"></a>四、实战：制作一个图片效果对比工作流</h2><p>这次制作一个简单的图片处理对比工作流。</p>
+<p>目标：同一张图片分别进行普通缩放和 AI 放大。</p>
+<h3 id="4-1-添加节点"><a href="#4-1-添加节点" class="headerlink" title="4.1. 添加节点"></a>4.1. 添加节点</h3><p>需要准备：</p>
+<ul>
+<li>Load Image</li>
+<li>Image Scale</li>
+<li>UpscaleModelLoader</li>
+<li>ImageUpscaleWithModel</li>
+<li>两个 Save Image</li>
+</ul>
+<p>AI 放大还需要下载对应的 Upscale Model。</p>
+<h3 id="4-2-连接普通缩放分支"><a href="#4-2-连接普通缩放分支" class="headerlink" title="4.2. 连接普通缩放分支"></a>4.2. 连接普通缩放分支</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Load Image</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">Image Scale</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">Save Image</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-连接-AI-放大分支"><a href="#4-3-连接-AI-放大分支" class="headerlink" title="4.3. 连接 AI 放大分支"></a>4.3. 连接 AI 放大分支</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Load Image</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">ImageUpscaleWithModel</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">Save Image</span><br></pre></td></tr></table></figure>
+
+<p>同时将 UpscaleModelLoader 的模型输出连接到 ImageUpscaleWithModel。</p>
+<h3 id="4-4-设置不同文件名前缀"><a href="#4-4-设置不同文件名前缀" class="headerlink" title="4.4 设置不同文件名前缀"></a>4.4 设置不同文件名前缀</h3><p>普通缩放：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compare/normal</span><br></pre></td></tr></table></figure>
+
+<p>AI 放大：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compare/ai_upscale</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5-运行并对比"><a href="#4-5-运行并对比" class="headerlink" title="4.5. 运行并对比"></a>4.5. 运行并对比</h3><p>运行工作流后，比较两张图片：</p>
+<ul>
+<li>图片尺寸是否相同。</li>
+<li>普通缩放是否出现模糊。</li>
+<li>AI 放大是否增加细节。</li>
+<li>AI 放大是否产生不真实纹理。</li>
+</ul>
+<p>通过这次练习，可以理解分支、模型复用和图片处理流程。</p>
+<h2 id="五、常见问题"><a href="#五、常见问题" class="headerlink" title="五、常见问题"></a>五、常见问题</h2><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>可能原因</th>
+<th>解决方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>分支没有执行</td>
+<td>没有连接到输出节点</td>
+<td>检查最终输出依赖</td>
+</tr>
+<tr>
+<td>Batch Size 太大无法运行</td>
+<td>显存不足</td>
+<td>降低 Batch Size</td>
+</tr>
+<tr>
+<td>批量图片没有全部处理</td>
+<td>节点不支持当前批次输入</td>
+<td>检查节点接口和批次处理能力</td>
+</tr>
+<tr>
+<td>Primitive 无法连接</td>
+<td>数据类型不匹配</td>
+<td>检查输入类型</td>
+</tr>
+<tr>
+<td>工作流节点太多</td>
+<td>缺少模块化整理</td>
+<td>使用节点组或分区整理</td>
+</tr>
+<tr>
+<td>生成速度慢</td>
+<td>重复计算或模型加载</td>
+<td>复用模型和中间结果</td>
+</tr>
+<tr>
+<td>删除节点后工作流失败</td>
+<td>删除了关键依赖</td>
+<td>恢复节点并检查连线</td>
+</tr>
+</tbody></table>
+<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><p>工作流进阶的核心，不是单纯增加节点，而是让生成流程更加灵活和高效。</p>
+<p>本篇学习了：</p>
+<ul>
+<li>工作流分支。</li>
+<li>Batch Size 和图片批次。</li>
+<li>Queue 多次运行。</li>
+<li>Primitive 参数复用。</li>
+<li>节点组。</li>
+<li>模型和中间结果复用。</li>
+<li>减少重复计算。</li>
+</ul>
+<p>当你能够使用这些方法时，就可以从简单的文生图工作流，逐步搭建复杂的图片处理流程。</p>
+<p>建议在学习过程中，始终保留原始工作流副本，并逐步修改、测试和优化。</p>
+<p>下一阶段进入 AI 图片处理实战。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/ComfyUI/" rel="tag"># ComfyUI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/cde78c53.html" rel="prev" title="ComfyUI开发之——ComfyUI常见报错排查(4.4)">
+                  <i class="fa fa-angle-left"></i> ComfyUI开发之——ComfyUI常见报错排查(4.4)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/1d5fe965.html" rel="next" title="ComfyUI开发之——实战之ComfyUI-AI更换照片背景(5.1)">
+                  ComfyUI开发之——实战之ComfyUI-AI更换照片背景(5.1) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"7704ce2552450be7cb2a8cac0ea0ed8b"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="一、概述1234567891011121314在上一篇中，我们学习了如何使用 ComfyUI 移除照片背景，并将人物合成到新的背景中。本篇继续进入人物照片处理实战，重点学习：- 如何修改人物服装- 如何只处理图片中的指定区域- 如何通过 Mask 控制 AI 修改范围- 如何尽量保留人物原有的面部和身份特征- 如何减少服装修改时出现的边缘问题本篇主要使用 局部重绘（Inpainting），不需要重">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ComfyUI开发之——实战之ComfyUI人物服装修改与局部编辑(5.2)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/644c57a.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="一、概述1234567891011121314在上一篇中，我们学习了如何使用 ComfyUI 移除照片背景，并将人物合成到新的背景中。本篇继续进入人物照片处理实战，重点学习：- 如何修改人物服装- 如何只处理图片中的指定区域- 如何通过 Mask 控制 AI 修改范围- 如何尽量保留人物原有的面部和身份特征- 如何减少服装修改时出现的边缘问题本篇主要使用 局部重绘（Inpainting），不需要重">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-11-04T11:41:49.000Z">
+<meta property="article:modified_time" content="2026-11-05T01:59:37.038Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="ComfyUI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/644c57a.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/644c57a.html","path":"posts/644c57a.html","title":"ComfyUI开发之——实战之ComfyUI人物服装修改与局部编辑(5.2)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ComfyUI开发之——实战之ComfyUI人物服装修改与局部编辑(5.2) | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">384</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4861</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">2.</span> <span class="nav-text">二、概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E3%80%81%E4%BA%BA%E7%89%A9%E6%9C%8D%E8%A3%85%E4%BF%AE%E6%94%B9%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">2.1.</span> <span class="nav-text">2.1、人物服装修改的基本原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2%E3%80%81%E8%AE%A4%E8%AF%86%E5%B1%80%E9%83%A8%E9%87%8D%E7%BB%98%E4%B8%AD%E7%9A%84-Mask"><span class="nav-number">2.2.</span> <span class="nav-text">2.2、认识局部重绘中的 Mask</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%AE%9E%E6%93%8D%E6%B5%81%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">三、实操流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1%E3%80%81%E5%87%86%E5%A4%87%E6%A8%A1%E5%9E%8B%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">3.1.</span> <span class="nav-text">3.1、准备模型与工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%80%89%E6%8B%A9%E6%94%AF%E6%8C%81%E5%B1%80%E9%83%A8%E9%87%8D%E7%BB%98%E7%9A%84%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.1.1.</span> <span class="nav-text">1. 选择支持局部重绘的模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%9A%84%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.1.2.</span> <span class="nav-text">2. 选择合适的模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2%E3%80%81%E6%90%AD%E5%BB%BA%E5%9F%BA%E7%A1%80%E5%B1%80%E9%83%A8%E9%87%8D%E7%BB%98%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">3.2.</span> <span class="nav-text">3.2、搭建基础局部重绘工作流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3%E3%80%81%E5%AE%9E%E6%88%98%EF%BC%9A%E5%B0%86%E4%BA%BA%E7%89%A9-T-%E6%81%A4%E4%BF%AE%E6%94%B9%E4%B8%BA%E8%A5%BF%E8%A3%85"><span class="nav-number">3.3.</span> <span class="nav-text">3.3、实战：将人物 T 恤修改为西装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%8A%A0%E8%BD%BD%E4%BA%BA%E7%89%A9%E7%85%A7%E7%89%87"><span class="nav-number">3.3.1.</span> <span class="nav-text">第一步：加载人物照片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%88%9B%E5%BB%BA%E6%9C%8D%E8%A3%85-Mask"><span class="nav-number">3.3.2.</span> <span class="nav-text">第二步：创建服装 Mask</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B9%E6%B3%95-A%EF%BC%9A%E4%BD%BF%E7%94%A8-Mask-Editor-%E6%89%8B%E5%8A%A8%E7%BB%98%E5%88%B6"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">方法 A：使用 Mask Editor 手动绘制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B9%E6%B3%95-B%EF%BC%9A%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8%E5%B7%A5%E5%85%B7%E5%88%B6%E4%BD%9C-Mask"><span class="nav-number">3.3.2.2.</span> <span class="nav-text">方法 B：使用外部工具制作 Mask</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E6%A3%80%E6%9F%A5%E9%81%AE%E7%BD%A9%E8%8C%83%E5%9B%B4"><span class="nav-number">3.3.3.</span> <span class="nav-text">第三步：检查遮罩范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E5%8A%A0%E8%BD%BD%E5%B1%80%E9%83%A8%E9%87%8D%E7%BB%98%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.3.4.</span> <span class="nav-text">第四步：加载局部重绘模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9A%E8%AE%BE%E7%BD%AE%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="nav-number">3.3.5.</span> <span class="nav-text">第五步：设置提示词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E6%AD%A5%EF%BC%9A%E8%AE%BE%E7%BD%AE%E9%87%87%E6%A0%B7%E5%8F%82%E6%95%B0"><span class="nav-number">3.3.6.</span> <span class="nav-text">第六步：设置采样参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3%E3%80%81Denoise%EF%BC%9A%E6%8E%A7%E5%88%B6%E6%9C%8D%E8%A3%85%E4%BF%AE%E6%94%B9%E7%A8%8B%E5%BA%A6"><span class="nav-number">3.4.</span> <span class="nav-text">3.3、Denoise：控制服装修改程度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4%E3%80%81%E5%A6%82%E4%BD%95%E5%B0%BD%E9%87%8F%E4%BF%9D%E6%8C%81%E4%BA%BA%E7%89%A9%E9%9D%A2%E9%83%A8%E7%89%B9%E5%BE%81"><span class="nav-number">3.5.</span> <span class="nav-text">3.4、如何尽量保持人物面部特征</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%9D%A2%E9%83%A8%E4%B8%8D%E8%A6%81%E8%BF%9B%E5%85%A5-Mask"><span class="nav-number">3.5.1.</span> <span class="nav-text">1. 面部不要进入 Mask</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%81%BF%E5%85%8D%E8%BF%87%E9%AB%98-Denoise"><span class="nav-number">3.5.2.</span> <span class="nav-text">2. 避免过高 Denoise</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E9%81%BF%E5%85%8D%E4%B8%80%E6%AC%A1%E4%BF%AE%E6%94%B9%E5%A4%AA%E5%A4%9A%E5%86%85%E5%AE%B9"><span class="nav-number">3.5.3.</span> <span class="nav-text">3. 避免一次修改太多内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E4%BD%BF%E7%94%A8%E5%8F%82%E8%80%83%E5%9B%BE%E6%88%96%E4%B8%93%E9%97%A8%E7%9A%84%E4%BA%BA%E7%89%A9%E4%B8%80%E8%87%B4%E6%80%A7%E6%96%B9%E6%A1%88"><span class="nav-number">3.5.4.</span> <span class="nav-text">4. 使用参考图或专门的人物一致性方案</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">四、常见问题与解决方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E7%BB%83%E4%B9%A0%EF%BC%9A%E5%88%B6%E4%BD%9C%E4%B8%80%E5%BC%A0%E5%95%86%E5%8A%A1%E5%BD%A2%E8%B1%A1%E7%85%A7"><span class="nav-number">5.</span> <span class="nav-text">五、练习：制作一张商务形象照</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">六、总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4861</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">384</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">704</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/644c57a.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ComfyUI开发之——实战之ComfyUI人物服装修改与局部编辑(5.2) | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ComfyUI开发之——实战之ComfyUI人物服装修改与局部编辑(5.2)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/ComfyUI%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94%E5%AE%9E%E6%88%98%E4%B9%8BComfyUI%E4%BA%BA%E7%89%A9%E6%9C%8D%E8%A3%85%E4%BF%AE%E6%94%B9%E4%B8%8E%E5%B1%80%E9%83%A8%E7%BC%96%E8%BE%91-5-2.md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2026-11-04 19:41:49" itemprop="dateCreated datePublished" datetime="2026-11-04T19:41:49+08:00">2026-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/" itemprop="url" rel="index"><span itemprop="name">AI图视频短剧</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">AI绘图</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/ComfyUI/" itemprop="url" rel="index"><span itemprop="name">ComfyUI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>4 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">在上一篇中，我们学习了如何使用 ComfyUI 移除照片背景，并将人物合成到新的背景中。</span><br><span class="line"></span><br><span class="line">本篇继续进入人物照片处理实战，重点学习：</span><br><span class="line"></span><br><span class="line">- 如何修改人物服装</span><br><span class="line">- 如何只处理图片中的指定区域</span><br><span class="line">- 如何通过 Mask 控制 AI 修改范围</span><br><span class="line">- 如何尽量保留人物原有的面部和身份特征</span><br><span class="line">- 如何减少服装修改时出现的边缘问题</span><br><span class="line"></span><br><span class="line">本篇主要使用 局部重绘（Inpainting），不需要重新生成整张图片。</span><br><span class="line"></span><br><span class="line">需要提前说明：AI 可以尽量保留人物原貌，但无法保证完全不改变脸部细节。</span><br><span class="line">遮罩范围、模型、提示词以及重绘强度都会影响结果。</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二、概念"><a href="#二、概念" class="headerlink" title="二、概念"></a>二、概念</h2><h3 id="2-1、人物服装修改的基本原理"><a href="#2-1、人物服装修改的基本原理" class="headerlink" title="2.1、人物服装修改的基本原理"></a>2.1、人物服装修改的基本原理</h3><p>假设有一张人物照片，希望将人物原来的 T 恤修改为西装。</p>
+<p>传统图片编辑需要手动处理衣服区域，而 ComfyUI 可以通过局部重绘，让 AI 根据提示词重新生成指定区域。</p>
+<p>整体流程如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">原始人物照片</span><br><span class="line">    ↓</span><br><span class="line">创建服装区域 Mask</span><br><span class="line">    ↓</span><br><span class="line">局部重绘（Inpainting）</span><br><span class="line">    ↓</span><br><span class="line">生成新服装</span><br><span class="line">    ↓</span><br><span class="line">检查人物面部和边缘</span><br><span class="line">    ↓</span><br><span class="line">保存图片</span><br></pre></td></tr></table></figure>
+
+<p>与普通图生图相比，局部重绘最大的区别是：</p>
+<p><strong>只修改遮罩指定的区域，尽量保留其他区域不变。</strong></p>
+<p>不过，实际生成时，遮罩边缘附近仍可能发生变化，因此需要合理控制 Mask 和 Denoise。</p>
+<h3 id="2-2、认识局部重绘中的-Mask"><a href="#2-2、认识局部重绘中的-Mask" class="headerlink" title="2.2、认识局部重绘中的 Mask"></a>2.2、认识局部重绘中的 Mask</h3><p>局部重绘需要通过 Mask 指定修改范围。</p>
+<p>通常情况下：</p>
+<ul>
+<li>白色区域：需要重绘的区域</li>
+<li>黑色区域：尽量保留的区域</li>
+<li>灰色区域：部分重绘或过渡区域</li>
+</ul>
+<p>但不同节点的 Mask 约定可能不同，使用前需要确认当前节点的说明。</p>
+<p>例如：</p>
+<p>希望将人物的 T 恤改成西装，可以创建如下遮罩：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">┌──────────────────┐</span><br><span class="line">│      面部        │  ← 不修改</span><br><span class="line">│                  │</span><br><span class="line">│   ┌──────────┐   │</span><br><span class="line">│   │ 服装区域 │   │  ← Mask 白色区域</span><br><span class="line">│   │          │   │</span><br><span class="line">│   └──────────┘   │</span><br><span class="line">│                  │</span><br><span class="line">└──────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p>遮罩范围应覆盖衣服，但尽量避免覆盖：</p>
+<ul>
+<li>面部</li>
+<li>头发</li>
+<li>手部</li>
+<li>背景</li>
+<li>不需要修改的身体区域</li>
+</ul>
+<p>Mask 并不是越大越好。</p>
+<p>遮罩过大，AI 可能重新生成脸部、头发甚至整个上半身；遮罩过小，则可能导致新衣服无法自然覆盖旧衣服。</p>
+<h2 id="三、实操流程"><a href="#三、实操流程" class="headerlink" title="三、实操流程"></a>三、实操流程</h2><h3 id="3-1、准备模型与工作流"><a href="#3-1、准备模型与工作流" class="headerlink" title="3.1、准备模型与工作流"></a>3.1、准备模型与工作流</h3><h4 id="1-选择支持局部重绘的模型"><a href="#1-选择支持局部重绘的模型" class="headerlink" title="1. 选择支持局部重绘的模型"></a>1. 选择支持局部重绘的模型</h4><p>常见模型体系包括：</p>
+<table>
+<thead>
+<tr>
+<th align="center">模型体系</th>
+<th align="center">特点</th>
+<th align="center">注意事项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">SD 1.5 Inpainting</td>
+<td align="center">局部重绘资源较多</td>
+<td align="center">需要匹配对应模型和工作流</td>
+</tr>
+<tr>
+<td align="center">SDXL Inpainting</td>
+<td align="center">分辨率和细节表现较好</td>
+<td align="center">显存占用通常更高</td>
+</tr>
+<tr>
+<td align="center">FLUX 系列相关工作流</td>
+<td align="center">生成质量较好，支持特定编辑方案</td>
+<td align="center">需使用兼容的模型、节点和工作流</td>
+</tr>
+</tbody></table>
+<p>不同模型体系的局部重绘流程可能不同。</p>
+<p>例如，传统 SD 1.5 工作流常使用专门的 Inpainting Checkpoint；其他模型可能使用不同的编辑节点或专用工作流。</p>
+<p><strong>不要将不同模型体系的节点和模型随意混用。</strong></p>
+<h4 id="2-选择合适的模型"><a href="#2-选择合适的模型" class="headerlink" title="2. 选择合适的模型"></a>2. 选择合适的模型</h4><p>如果是第一次练习，建议先使用已经成功运行过的文生图模型及其对应的局部重绘流程。</p>
+<p>优先选择：</p>
+<ul>
+<li>与当前 ComfyUI 工作流兼容的模型</li>
+<li>显存能够承受的模型</li>
+<li>有明确局部重绘支持的模型</li>
+</ul>
+<p>如果使用专用 Inpainting 模型，应确认其模型类型与当前工作流匹配。</p>
+<h3 id="3-2、搭建基础局部重绘工作流"><a href="#3-2、搭建基础局部重绘工作流" class="headerlink" title="3.2、搭建基础局部重绘工作流"></a>3.2、搭建基础局部重绘工作流</h3><p>局部重绘工作流通常包括以下部分：</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>常见节点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加载原图</td>
+<td>Load Image</td>
+</tr>
+<tr>
+<td>创建或加载 Mask</td>
+<td>Mask Editor、Load Image、相关遮罩节点</td>
+</tr>
+<tr>
+<td>加载模型</td>
+<td>Load Checkpoint 或对应模型加载节点</td>
+</tr>
+<tr>
+<td>文本提示词</td>
+<td>CLIP Text Encode 或模型对应文本编码节点</td>
+</tr>
+<tr>
+<td>图像编码</td>
+<td>VAE Encode、Inpaint 相关节点</td>
+</tr>
+<tr>
+<td>局部重绘</td>
+<td>KSampler 或对应采样节点</td>
+</tr>
+<tr>
+<td>图像解码</td>
+<td>VAE Decode</td>
+</tr>
+<tr>
+<td>保存结果</td>
+<td>Save Image</td>
+</tr>
+</tbody></table>
+<p>不同模型体系和工作流的节点结构可能不同。</p>
+<p>以下先介绍传统的 SD 1.5 &#x2F; SDXL 类局部重绘思路。其他模型需要使用对应的官方或社区工作流。</p>
+<h3 id="3-3、实战：将人物-T-恤修改为西装"><a href="#3-3、实战：将人物-T-恤修改为西装" class="headerlink" title="3.3、实战：将人物 T 恤修改为西装"></a>3.3、实战：将人物 T 恤修改为西装</h3><h4 id="第一步：加载人物照片"><a href="#第一步：加载人物照片" class="headerlink" title="第一步：加载人物照片"></a>第一步：加载人物照片</h4><p>添加 <code>Load Image</code> 节点，选择一张人物照片。</p>
+<p>建议选择：</p>
+<ul>
+<li>人物正面或侧面清晰</li>
+<li>衣服区域完整</li>
+<li>光线比较均匀</li>
+<li>面部无遮挡</li>
+<li>分辨率适中的照片</li>
+</ul>
+<p>初次练习建议使用半身照，方便控制服装修改区域。</p>
+<h4 id="第二步：创建服装-Mask"><a href="#第二步：创建服装-Mask" class="headerlink" title="第二步：创建服装 Mask"></a>第二步：创建服装 Mask</h4><p>在 ComfyUI 中，常见方法有两种。</p>
+<h5 id="方法-A：使用-Mask-Editor-手动绘制"><a href="#方法-A：使用-Mask-Editor-手动绘制" class="headerlink" title="方法 A：使用 Mask Editor 手动绘制"></a>方法 A：使用 Mask Editor 手动绘制</h5><p>部分 ComfyUI 版本支持在图片节点中打开 Mask Editor。</p>
+<p>一般操作流程：</p>
+<ol>
+<li>加载人物照片。</li>
+<li>打开图片对应的 Mask 编辑功能。</li>
+<li>在需要修改的服装区域绘制遮罩。</li>
+<li>确认遮罩覆盖衣服。</li>
+<li>保存或应用 Mask。</li>
+</ol>
+<p>具体编辑入口可能随版本变化。</p>
+<p>如果当前版本没有内置 Mask Editor，可以使用外部图片编辑工具制作黑白遮罩，再通过 <code>Load Image</code> 或相应遮罩加载节点导入。</p>
+<h5 id="方法-B：使用外部工具制作-Mask"><a href="#方法-B：使用外部工具制作-Mask" class="headerlink" title="方法 B：使用外部工具制作 Mask"></a>方法 B：使用外部工具制作 Mask</h5><p>可以使用支持黑白遮罩的图片编辑工具。</p>
+<p>通常：</p>
+<ul>
+<li>白色区域表示修改区域</li>
+<li>黑色区域表示保留区域</li>
+</ul>
+<p>遮罩尺寸应与原图一致。</p>
+<p>如果导入后出现遮罩偏移或尺寸不一致，需要先调整遮罩。</p>
+<h4 id="第三步：检查遮罩范围"><a href="#第三步：检查遮罩范围" class="headerlink" title="第三步：检查遮罩范围"></a>第三步：检查遮罩范围</h4><p>在正式生成前，先预览 Mask。</p>
+<p>重点检查：</p>
+<ul>
+<li>是否覆盖完整衣服</li>
+<li>是否误覆盖脸部</li>
+<li>是否覆盖头发</li>
+<li>是否覆盖不需要修改的手部</li>
+<li>是否包含衣服边缘附近的必要区域</li>
+</ul>
+<p>例如，将 T 恤修改成西装时，遮罩应覆盖 T 恤以及需要重新生成的衣领、肩部区域。</p>
+<p>如果希望生成西装领口，可以适当覆盖原衣领，但不要覆盖到下巴或脸部。</p>
+<h4 id="第四步：加载局部重绘模型"><a href="#第四步：加载局部重绘模型" class="headerlink" title="第四步：加载局部重绘模型"></a>第四步：加载局部重绘模型</h4><p>根据当前工作流加载对应模型。</p>
+<p>对于传统 SD 1.5 &#x2F; SDXL 工作流，可以使用：</p>
+<ul>
+<li><code>Load Checkpoint</code></li>
+<li>对应的文本编码节点</li>
+<li>VAE</li>
+<li>Inpainting 相关节点</li>
+</ul>
+<p>部分工作流会使用专门的 Inpaint 节点，例如支持 Mask 的 VAE 编码节点。</p>
+<p>需要注意：普通 <code>VAE Encode</code> 与专用 Inpainting 编码节点的处理方式可能不同，不能仅凭名称随意替换。</p>
+<p>如果使用专用 Inpainting 模型，应按照该模型对应的工作流进行连接。</p>
+<h4 id="第五步：设置提示词"><a href="#第五步：设置提示词" class="headerlink" title="第五步：设置提示词"></a>第五步：设置提示词</h4><p>正向提示词用于描述希望生成的服装。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a realistic black business suit,</span><br><span class="line">white shirt, formal clothing,</span><br><span class="line">natural fabric texture,</span><br><span class="line">realistic lighting,</span><br><span class="line">professional portrait photography</span><br></pre></td></tr></table></figure>
+
+<p>负向提示词可以尝试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">deformed clothing,</span><br><span class="line">extra buttons,</span><br><span class="line">incorrect collar,</span><br><span class="line">blurry fabric,</span><br><span class="line">distorted body,</span><br><span class="line">unnatural texture</span><br></pre></td></tr></table></figure>
+
+<p>提示词不一定越长越好。</p>
+<p>建议重点描述：</p>
+<ul>
+<li>服装类型</li>
+<li>服装颜色</li>
+<li>材质</li>
+<li>领口</li>
+<li>袖口</li>
+<li>风格</li>
+<li>光线与照片质感</li>
+</ul>
+<p>如果原图是正面人物照片，尽量避免提示词要求人物改变姿势或视角。</p>
+<h4 id="第六步：设置采样参数"><a href="#第六步：设置采样参数" class="headerlink" title="第六步：设置采样参数"></a>第六步：设置采样参数</h4><p>局部重绘仍然需要设置采样参数。</p>
+<p>重点关注：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+<th>建议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Seed</td>
+<td>控制随机生成</td>
+<td>固定 Seed 便于对比</td>
+</tr>
+<tr>
+<td>Steps</td>
+<td>采样步数</td>
+<td>先使用模型推荐范围</td>
+</tr>
+<tr>
+<td>CFG</td>
+<td>提示词影响程度</td>
+<td>适度调整，避免过高</td>
+</tr>
+<tr>
+<td>Sampler</td>
+<td>采样算法</td>
+<td>使用模型或工作流推荐值</td>
+</tr>
+<tr>
+<td>Scheduler</td>
+<td>采样调度方式</td>
+<td>与当前模型工作流匹配</td>
+</tr>
+<tr>
+<td>Denoise</td>
+<td>修改程度</td>
+<td>局部重绘最重要的参数之一</td>
+</tr>
+</tbody></table>
+<p>不同模型对参数的适用范围不同，建议优先使用对应工作流的默认值。</p>
+<h3 id="3-3、Denoise：控制服装修改程度"><a href="#3-3、Denoise：控制服装修改程度" class="headerlink" title="3.3、Denoise：控制服装修改程度"></a>3.3、Denoise：控制服装修改程度</h3><p>Denoise 是局部重绘中非常重要的参数。</p>
+<p>它决定原始图像保留多少，以及 AI 重新生成多少内容。</p>
+<p>可以简单理解为：</p>
+<ul>
+<li>较低 Denoise：更倾向于保留原图</li>
+<li>较高 Denoise：更倾向于重新生成遮罩区域</li>
+</ul>
+<p>一般来说：</p>
+<table>
+<thead>
+<tr>
+<th>Denoise</th>
+<th>常见表现</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>低</td>
+<td>修改较轻，可能无法明显改变衣服</td>
+</tr>
+<tr>
+<td>中等</td>
+<td>适合尝试服装修改</td>
+</tr>
+<tr>
+<td>高</td>
+<td>修改明显，但可能改变原有结构</td>
+</tr>
+</tbody></table>
+<p>建议从中等强度开始测试，再逐步调整。</p>
+<p>如果衣服几乎没有变化，可以适当提高 Denoise。</p>
+<p>如果衣服结构、人物身体或边缘发生明显变化，可以尝试降低 Denoise，并缩小遮罩范围。</p>
+<p>需要注意：不同模型和工作流的 Denoise 表现并不完全一致，不能把某个数值当作所有模型的固定标准。</p>
+<h3 id="3-4、如何尽量保持人物面部特征"><a href="#3-4、如何尽量保持人物面部特征" class="headerlink" title="3.4、如何尽量保持人物面部特征"></a>3.4、如何尽量保持人物面部特征</h3><p>这是人物服装修改中最重要的部分。</p>
+<h4 id="1-面部不要进入-Mask"><a href="#1-面部不要进入-Mask" class="headerlink" title="1. 面部不要进入 Mask"></a>1. 面部不要进入 Mask</h4><p>最直接的方法是：</p>
+<p><strong>尽量不要将面部区域包含在遮罩中。</strong></p>
+<p>如果遮罩覆盖脸部，AI 可能重新生成面部细节。</p>
+<p>即使只是覆盖部分脸部，也可能影响：</p>
+<ul>
+<li>眼睛</li>
+<li>鼻子</li>
+<li>嘴巴</li>
+<li>面部轮廓</li>
+<li>皮肤纹理</li>
+</ul>
+<p>因此，服装修改时应尽量限制在衣服区域。</p>
+<h4 id="2-避免过高-Denoise"><a href="#2-避免过高-Denoise" class="headerlink" title="2. 避免过高 Denoise"></a>2. 避免过高 Denoise</h4><p>Denoise 过高时，遮罩附近的内容可能发生较大变化。</p>
+<p>建议：</p>
+<ul>
+<li>固定 Seed</li>
+<li>先使用较低或中等 Denoise</li>
+<li>每次只调整一个参数</li>
+<li>对比生成结果</li>
+</ul>
+<p>这样更容易判断是哪一个参数导致变化。</p>
+<h4 id="3-避免一次修改太多内容"><a href="#3-避免一次修改太多内容" class="headerlink" title="3. 避免一次修改太多内容"></a>3. 避免一次修改太多内容</h4><p>不要在一次工作流中同时修改：</p>
+<ul>
+<li>服装</li>
+<li>发型</li>
+<li>面部</li>
+<li>身体姿势</li>
+<li>背景</li>
+</ul>
+<p>建议一次只修改一个主要区域。</p>
+<p>例如：</p>
+<p>第一步修改服装。</p>
+<p>第二步如果需要，再单独修改背景。</p>
+<p>这样更容易控制结果。</p>
+<h4 id="4-使用参考图或专门的人物一致性方案"><a href="#4-使用参考图或专门的人物一致性方案" class="headerlink" title="4. 使用参考图或专门的人物一致性方案"></a>4. 使用参考图或专门的人物一致性方案</h4><p>如果需要更强的人物一致性，可以考虑：</p>
+<ul>
+<li>IP-Adapter</li>
+<li>InstantID</li>
+<li>其他人物参考图方案</li>
+</ul>
+<p>但这些方案需要对应的模型、节点和工作流，并不意味着能够百分之百保持原脸。</p>
+<p>对于真实人物照片，最终结果仍应仔细检查。</p>
+<h2 id="四、常见问题与解决方法"><a href="#四、常见问题与解决方法" class="headerlink" title="四、常见问题与解决方法"></a>四、常见问题与解决方法</h2><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>可能原因</th>
+<th>解决方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>衣服没有明显变化</td>
+<td>Denoise 太低或 Mask 不正确</td>
+<td>检查遮罩，适当提高 Denoise</td>
+</tr>
+<tr>
+<td>新衣服边缘不自然</td>
+<td>Mask 边界过于生硬</td>
+<td>调整遮罩范围或羽化</td>
+</tr>
+<tr>
+<td>脸部发生变化</td>
+<td>Mask 覆盖面部或重绘范围过大</td>
+<td>缩小 Mask，避免覆盖脸部</td>
+</tr>
+<tr>
+<td>衣服颜色不符合提示词</td>
+<td>提示词不明确或模型响应不足</td>
+<td>明确服装颜色和类型</td>
+</tr>
+<tr>
+<td>衣服出现奇怪结构</td>
+<td>提示词过复杂或生成区域太小</td>
+<td>简化提示词，适当扩大服装区域</td>
+</tr>
+<tr>
+<td>原衣服残留</td>
+<td>Mask 没有覆盖完整</td>
+<td>检查衣服边缘和领口</td>
+</tr>
+<tr>
+<td>人物身体变形</td>
+<td>遮罩过大或 Denoise 过高</td>
+<td>缩小遮罩，降低重绘强度</td>
+</tr>
+<tr>
+<td>生成结果不稳定</td>
+<td>Seed 每次变化</td>
+<td>固定 Seed，逐项调整参数</td>
+</tr>
+</tbody></table>
+<h2 id="五、练习：制作一张商务形象照"><a href="#五、练习：制作一张商务形象照" class="headerlink" title="五、练习：制作一张商务形象照"></a>五、练习：制作一张商务形象照</h2><p>建议完成以下练习：</p>
+<ol>
+<li>选择一张人物半身照。</li>
+<li>加载照片。</li>
+<li>创建服装区域 Mask。</li>
+<li>将普通 T 恤修改为黑色西装。</li>
+<li>固定 Seed。</li>
+<li>分别尝试不同 Denoise。</li>
+<li>对比不同遮罩范围的效果。</li>
+<li>检查面部、头发和衣服边缘。</li>
+<li>保存效果较好的版本。</li>
+</ol>
+<p>建议保存三张图片：</p>
+<ul>
+<li>原始照片</li>
+<li>初次局部重绘结果</li>
+<li>调整 Mask 和 Denoise 后的最终结果</li>
+</ul>
+<p>通过对比，可以更直观地理解局部重绘的控制方式。</p>
+<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><p>本篇学习了 ComfyUI 人物服装修改的基本方法：</p>
+<ul>
+<li>使用 Mask 指定修改区域</li>
+<li>通过局部重绘修改服装</li>
+<li>使用提示词描述新服装</li>
+<li>通过 Denoise 控制修改程度</li>
+<li>尽量避免遮罩覆盖面部</li>
+<li>使用人物参考方案提高一致性</li>
+</ul>
+<p>局部重绘的关键是：<strong>遮罩范围决定修改位置，Denoise 决定修改程度，提示词决定生成方向。</strong></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/ComfyUI/" rel="tag"># ComfyUI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/1d5fe965.html" rel="prev" title="ComfyUI开发之——实战之ComfyUI-AI更换照片背景(5.1)">
+                  <i class="fa fa-angle-left"></i> ComfyUI开发之——实战之ComfyUI-AI更换照片背景(5.1)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/8a811d48.html" rel="next" title="ComfyUI开发之——实战之ComfyUI老人照片修复(5.3)">
+                  ComfyUI开发之——实战之ComfyUI老人照片修复(5.3) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"3cf2e69fa78066017133ef04891cf090"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

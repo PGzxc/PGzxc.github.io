@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ja/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ja/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ja/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/ja/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/ja/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/ja/","images":"/ja/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索...","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/ja/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/ja/js/config.js" defer></script>
+
+    <meta name="description" content="一、概述12345678910111213本篇继续进入照片处理实战，学习如何修复老照片中的常见问题：- 照片划痕、污渍和破损- 照片褪色、偏色- 人物面部模糊- 图片分辨率较低- 老照片放大后细节不足老照片修复与普通图片增强不同。尤其是老人、长辈或已故亲人的照片，修复时不仅要追求清晰度，还要尽量保留原有面貌。需要特别注意：AI 修复可能生成原图中不存在的细节。对于面部、眼睛、鼻子、嘴巴等重要区域，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ComfyUI开发之——实战之ComfyUI老人照片修复(5.3)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/8a811d48.html">
+<meta property="og:site_name" content="PGzxc (Japanese)">
+<meta property="og:description" content="一、概述12345678910111213本篇继续进入照片处理实战，学习如何修复老照片中的常见问题：- 照片划痕、污渍和破损- 照片褪色、偏色- 人物面部模糊- 图片分辨率较低- 老照片放大后细节不足老照片修复与普通图片增强不同。尤其是老人、长辈或已故亲人的照片，修复时不仅要追求清晰度，还要尽量保留原有面貌。需要特别注意：AI 修复可能生成原图中不存在的细节。对于面部、眼睛、鼻子、嘴巴等重要区域，">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-11-04T11:42:29.000Z">
+<meta property="article:modified_time" content="2026-11-05T01:59:37.231Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="ComfyUI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/8a811d48.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"ja","comments":true,"permalink":"https://pgzxc.github.io/posts/8a811d48.html","path":"posts/8a811d48.html","title":"ComfyUI开发之——实战之ComfyUI老人照片修复(5.3)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ComfyUI开发之——实战之ComfyUI老人照片修复(5.3) | PGzxc (Japanese)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/utils.js" defer></script><script src="/ja/js/motion.js" defer></script><script src="/ja/js/sidebar.js" defer></script><script src="/ja/js/next-boot.js" defer></script><script src="/ja/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/ja/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/ja/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/ja/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/ja/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/ja/atom.xml" title="PGzxc (Japanese)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションを切り替える" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/ja/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (Japanese)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">本から学んだことは表面的なもの；自分で体験しなければならない</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="検索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/ja/" rel="section"><i class="fa fa-bell fa-fw"></i>ホーム</a></li><li class="menu-item menu-item-nav"><a href="/ja/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>ナビゲーション</a></li><li class="menu-item menu-item-categories"><a href="/ja/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリー<span class="badge">384</span></a></li><li class="menu-item menu-item-archives"><a href="/ja/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ<span class="badge">4861</span></a></li><li class="menu-item menu-item-links"><a href="/ja/links/" rel="section"><i class="fa fa-link fa-fw"></i>リンク</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>検索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="検索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          目次
+        </li>
+        <li class="sidebar-nav-overview">
+          サイト概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">2.</span> <span class="nav-text">二、概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E3%80%81%E8%80%81%E7%85%A7%E7%89%87%E4%BF%AE%E5%A4%8D%E4%B8%BB%E8%A6%81%E8%A7%A3%E5%86%B3%E5%93%AA%E4%BA%9B%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1、老照片修复主要解决哪些问题？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2%E3%80%81%E8%80%81%E7%85%A7%E7%89%87%E4%BF%AE%E5%A4%8D%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B"><span class="nav-number">2.2.</span> <span class="nav-text">2.2、老照片修复的基本流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3%E3%80%81%E5%87%86%E5%A4%87-ComfyUI-%E4%BF%AE%E5%A4%8D%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">2.3.</span> <span class="nav-text">2.3、准备 ComfyUI 修复工作流</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">3.</span> <span class="nav-text">三、实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1%E3%80%81%E5%AE%9E%E6%88%98%E4%B8%80%EF%BC%9A%E4%BF%AE%E5%A4%8D%E8%80%81%E7%85%A7%E7%89%87%E4%B8%AD%E7%9A%84%E5%88%92%E7%97%95"><span class="nav-number">3.1.</span> <span class="nav-text">3.1、实战一：修复老照片中的划痕</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%8A%A0%E8%BD%BD%E8%80%81%E7%85%A7%E7%89%87"><span class="nav-number">3.1.1.</span> <span class="nav-text">第一步：加载老照片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E7%A1%AE%E5%AE%9A%E9%9C%80%E8%A6%81%E4%BF%AE%E5%A4%8D%E7%9A%84%E5%8C%BA%E5%9F%9F"><span class="nav-number">3.1.2.</span> <span class="nav-text">第二步：确定需要修复的区域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E4%BD%BF%E7%94%A8%E5%B1%80%E9%83%A8%E9%87%8D%E7%BB%98"><span class="nav-number">3.1.3.</span> <span class="nav-text">第三步：使用局部重绘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E6%8E%A7%E5%88%B6%E9%87%8D%E7%BB%98%E5%BC%BA%E5%BA%A6"><span class="nav-number">3.1.4.</span> <span class="nav-text">第四步：控制重绘强度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9A%E6%A3%80%E6%9F%A5%E4%BF%AE%E5%A4%8D%E7%BB%93%E6%9E%9C"><span class="nav-number">3.1.5.</span> <span class="nav-text">第五步：检查修复结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2%E3%80%81%E5%AE%9E%E6%88%98%E4%BA%8C%EF%BC%9A%E4%BF%AE%E5%A4%8D%E8%A4%AA%E8%89%B2%E5%92%8C%E5%81%8F%E8%89%B2%E7%85%A7%E7%89%87"><span class="nav-number">3.2.</span> <span class="nav-text">3.2、实战二：修复褪色和偏色照片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%85%88%E8%B0%83%E6%95%B4%E4%BA%AE%E5%BA%A6%E4%B8%8E%E5%AF%B9%E6%AF%94%E5%BA%A6"><span class="nav-number">3.2.1.</span> <span class="nav-text">1. 先调整亮度与对比度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%BB%91%E7%99%BD%E7%85%A7%E7%89%87%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E4%B8%8A%E8%89%B2%EF%BC%9F"><span class="nav-number">3.2.2.</span> <span class="nav-text">2. 黑白照片是否需要上色？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3%E3%80%81%E5%AE%9E%E6%88%98%E4%B8%89%EF%BC%9A%E8%80%81%E7%85%A7%E7%89%87%E6%B8%85%E6%99%B0%E5%BA%A6%E5%A2%9E%E5%BC%BA%E4%B8%8E-AI-%E6%94%BE%E5%A4%A7"><span class="nav-number">3.3.</span> <span class="nav-text">3.3、实战三：老照片清晰度增强与 AI 放大</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%99%AE%E9%80%9A%E6%94%BE%E5%A4%A7%E4%B8%8E-AI-%E6%94%BE%E5%A4%A7%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.3.1.</span> <span class="nav-text">1. 普通放大与 AI 放大的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BD%BF%E7%94%A8-ComfyUI-Upscale-%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">3.3.2.</span> <span class="nav-text">2. 使用 ComfyUI Upscale 工作流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%B8%8D%E8%A6%81%E4%B8%80%E5%BC%80%E5%A7%8B%E5%B0%B1%E6%94%BE%E5%A4%A7%E5%9B%9B%E5%80%8D%E6%88%96%E5%85%AB%E5%80%8D"><span class="nav-number">3.3.3.</span> <span class="nav-text">3. 不要一开始就放大四倍或八倍</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4%E3%80%81%E5%AE%9E%E6%88%98%E5%9B%9B%EF%BC%9A%E8%80%81%E4%BA%BA%E7%85%A7%E7%89%87%E9%9D%A2%E9%83%A8%E5%A2%9E%E5%BC%BA"><span class="nav-number">3.4.</span> <span class="nav-text">3.4、实战四：老人照片面部增强</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%85%88%E5%B0%9D%E8%AF%95%E6%95%B4%E4%BD%93%E5%A2%9E%E5%BC%BA"><span class="nav-number">3.4.1.</span> <span class="nav-text">1. 先尝试整体增强</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%B0%A8%E6%85%8E%E4%BD%BF%E7%94%A8-Face-Restoration"><span class="nav-number">3.4.2.</span> <span class="nav-text">2. 谨慎使用 Face Restoration</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%BF%AE%E5%A4%8D%E5%89%8D%E5%90%8E%E5%AF%B9%E6%AF%94"><span class="nav-number">3.4.3.</span> <span class="nav-text">3. 修复前后对比</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%A6%82%E4%BD%95%E5%B0%BD%E9%87%8F%E4%BF%9D%E7%95%99%E4%BA%BA%E7%89%A9%E5%8E%9F%E8%B2%8C%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">四、如何尽量保留人物原貌？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E4%BC%98%E5%85%88%E4%BD%BF%E7%94%A8%E5%B1%80%E9%83%A8%E4%BF%AE%E5%A4%8D"><span class="nav-number">4.1.</span> <span class="nav-text">4.1. 优先使用局部修复</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E6%8E%A7%E5%88%B6%E9%87%8D%E7%BB%98%E5%BC%BA%E5%BA%A6"><span class="nav-number">4.2.</span> <span class="nav-text">4.2. 控制重绘强度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E9%81%BF%E5%85%8D%E8%BF%9E%E7%BB%AD%E5%A4%9A%E6%AC%A1-AI-%E5%A2%9E%E5%BC%BA"><span class="nav-number">4.3.</span> <span class="nav-text">4.3. 避免连续多次 AI 增强</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E4%BF%9D%E7%95%99%E5%8E%9F%E5%A7%8B%E7%85%A7%E7%89%87"><span class="nav-number">4.4.</span> <span class="nav-text">4.4. 保留原始照片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5"><span class="nav-number">5.</span> <span class="nav-text">五、常见问题排查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E7%BB%83%E4%B9%A0%EF%BC%9A%E4%BF%AE%E5%A4%8D%E4%B8%80%E5%BC%A0%E8%80%81%E7%85%A7%E7%89%87"><span class="nav-number">6.</span> <span class="nav-text">六、练习：修复一张老照片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">七、总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/ja/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/ja/archives/">
+          <span class="site-state-item-count">4861</span>
+          <span class="site-state-item-name">投稿</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/ja/categories/">
+        <span class="site-state-item-count">384</span>
+        <span class="site-state-item-name">カテゴリー</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/ja/tags/">
+        <span class="site-state-item-count">704</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/8a811d48.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/ja/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ComfyUI开发之——实战之ComfyUI老人照片修复(5.3) | PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ComfyUI开发之——实战之ComfyUI老人照片修复(5.3)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/ComfyUI%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94%E5%AE%9E%E6%88%98%E4%B9%8BComfyUI%E8%80%81%E4%BA%BA%E7%85%A7%E7%89%87%E4%BF%AE%E5%A4%8D-5-3.md" class="post-edit-link" title="編集" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2026-11-04 19:42:29" itemprop="dateCreated datePublished" datetime="2026-11-04T19:42:29+08:00">2026-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/" itemprop="url" rel="index"><span itemprop="name">AI图视频短剧</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">AI绘图</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/ComfyUI/" itemprop="url" rel="index"><span itemprop="name">ComfyUI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="読書時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">読書時間 &asymp;</span>
+      <span>4 分</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">本篇继续进入照片处理实战，学习如何修复老照片中的常见问题：</span><br><span class="line"></span><br><span class="line">- 照片划痕、污渍和破损</span><br><span class="line">- 照片褪色、偏色</span><br><span class="line">- 人物面部模糊</span><br><span class="line">- 图片分辨率较低</span><br><span class="line">- 老照片放大后细节不足</span><br><span class="line"></span><br><span class="line">老照片修复与普通图片增强不同。</span><br><span class="line">尤其是老人、长辈或已故亲人的照片，修复时不仅要追求清晰度，还要尽量保留原有面貌。</span><br><span class="line"></span><br><span class="line">需要特别注意：AI 修复可能生成原图中不存在的细节。</span><br><span class="line">对于面部、眼睛、鼻子、嘴巴等重要区域，应尽量避免过度重绘。</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二、概念"><a href="#二、概念" class="headerlink" title="二、概念"></a>二、概念</h2><h3 id="2-1、老照片修复主要解决哪些问题？"><a href="#2-1、老照片修复主要解决哪些问题？" class="headerlink" title="2.1、老照片修复主要解决哪些问题？"></a>2.1、老照片修复主要解决哪些问题？</h3><p>老照片常见的问题可以分成几类：</p>
+<table>
+<thead>
+<tr>
+<th align="center">问题</th>
+<th align="center">常见表现</th>
+<th align="center">处理方向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">划痕与污渍</td>
+<td align="center">照片表面有线条、斑点</td>
+<td align="center">局部修复、Inpainting</td>
+</tr>
+<tr>
+<td align="center">褪色</td>
+<td align="center">颜色变淡、整体偏黄</td>
+<td align="center">色彩调整、颜色恢复</td>
+</tr>
+<tr>
+<td align="center">模糊</td>
+<td align="center">人物轮廓不清晰</td>
+<td align="center">图像增强、AI 放大</td>
+</tr>
+<tr>
+<td align="center">低分辨率</td>
+<td align="center">图片尺寸较小</td>
+<td align="center">超分辨率放大</td>
+</tr>
+<tr>
+<td align="center">局部破损</td>
+<td align="center">眼睛、衣服、背景缺失</td>
+<td align="center">遮罩与局部重绘</td>
+</tr>
+<tr>
+<td align="center">噪点</td>
+<td align="center">图片颗粒明显</td>
+<td align="center">降噪处理</td>
+</tr>
+</tbody></table>
+<p>这些问题并不适合全部使用同一种方法处理。</p>
+<p>例如：</p>
+<ul>
+<li>划痕通常适合局部修复。</li>
+<li>模糊照片可以尝试图像增强。</li>
+<li>分辨率不足可以尝试 AI 放大。</li>
+<li>褪色照片可以先调整颜色。</li>
+<li>大面积缺失可能需要 AI 补全，但结果不一定真实。</li>
+</ul>
+<p>建议先判断照片的问题，再选择合适的工作流。</p>
+<h3 id="2-2、老照片修复的基本流程"><a href="#2-2、老照片修复的基本流程" class="headerlink" title="2.2、老照片修复的基本流程"></a>2.2、老照片修复的基本流程</h3><p>一个比较稳妥的修复流程如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">原始老照片</span><br><span class="line">    ↓</span><br><span class="line">保存原图备份</span><br><span class="line">    ↓</span><br><span class="line">检查照片问题</span><br><span class="line">    ↓</span><br><span class="line">基础处理：裁剪、旋转、降噪</span><br><span class="line">    ↓</span><br><span class="line">划痕与破损修复</span><br><span class="line">    ↓</span><br><span class="line">色彩与亮度调整</span><br><span class="line">    ↓</span><br><span class="line">AI 清晰度增强 / 超分辨率</span><br><span class="line">    ↓</span><br><span class="line">检查面部细节</span><br><span class="line">    ↓</span><br><span class="line">保存修复结果</span><br></pre></td></tr></table></figure>
+
+<p>建议不要一开始就使用多个 AI 模型连续处理。</p>
+<p>每一步都保存中间结果，便于对比和回退。</p>
+<h3 id="2-3、准备-ComfyUI-修复工作流"><a href="#2-3、准备-ComfyUI-修复工作流" class="headerlink" title="2.3、准备 ComfyUI 修复工作流"></a>2.3、准备 ComfyUI 修复工作流</h3><p>老照片修复通常会用到以下节点：</p>
+<table>
+<thead>
+<tr>
+<th align="center">功能</th>
+<th align="center">常见节点或方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">加载照片</td>
+<td align="center">Load Image</td>
+</tr>
+<tr>
+<td align="center">图像调整</td>
+<td align="center">Resize、Crop、Image Processing</td>
+</tr>
+<tr>
+<td align="center">降噪</td>
+<td align="center">降噪模型或相关图像处理节点</td>
+</tr>
+<tr>
+<td align="center">划痕修复</td>
+<td align="center">Mask + Inpainting</td>
+</tr>
+<tr>
+<td align="center">局部重绘</td>
+<td align="center">VAE Encode、KSampler 等</td>
+</tr>
+<tr>
+<td align="center">图像放大</td>
+<td align="center">Upscale Model Loader、Image Upscale</td>
+</tr>
+<tr>
+<td align="center">面部增强</td>
+<td align="center">Face Restoration 相关节点</td>
+</tr>
+<tr>
+<td align="center">预览</td>
+<td align="center">Preview Image</td>
+</tr>
+<tr>
+<td align="center">保存</td>
+<td align="center">Save Image</td>
+</tr>
+</tbody></table>
+<p>部分功能需要第三方自定义节点。</p>
+<p>节点名称和功能可能随 ComfyUI 版本、插件以及模型变化。建议优先使用已经安装并验证可运行的工作流。</p>
+<h2 id="三、实战"><a href="#三、实战" class="headerlink" title="三、实战"></a>三、实战</h2><h3 id="3-1、实战一：修复老照片中的划痕"><a href="#3-1、实战一：修复老照片中的划痕" class="headerlink" title="3.1、实战一：修复老照片中的划痕"></a>3.1、实战一：修复老照片中的划痕</h3><p>划痕修复是老照片处理中比较常见的任务。</p>
+<p>例如，照片中有一条划痕穿过人物衣服或背景，希望将其去除。</p>
+<h4 id="第一步：加载老照片"><a href="#第一步：加载老照片" class="headerlink" title="第一步：加载老照片"></a>第一步：加载老照片</h4><p>添加 <code>Load Image</code> 节点，选择一张老照片。</p>
+<p>建议：</p>
+<ul>
+<li>优先使用扫描件或高质量照片</li>
+<li>不要直接覆盖原始文件</li>
+<li>保留原始分辨率</li>
+<li>避免使用经过多次压缩的图片</li>
+</ul>
+<p>如果原照片是纸质照片，可以先使用扫描仪或手机拍摄，尽量保证光线均匀、照片平整。</p>
+<h4 id="第二步：确定需要修复的区域"><a href="#第二步：确定需要修复的区域" class="headerlink" title="第二步：确定需要修复的区域"></a>第二步：确定需要修复的区域</h4><p>如果划痕比较明显，可以使用 Mask 指定修复范围。</p>
+<p>例如：</p>
+<ul>
+<li>背景划痕：只覆盖背景中的划痕</li>
+<li>衣服划痕：只覆盖衣服受损区域</li>
+<li>面部划痕：尽量缩小修复范围</li>
+</ul>
+<p>Mask 的基本规则通常是：</p>
+<ul>
+<li>白色区域：需要修复</li>
+<li>黑色区域：尽量保留</li>
+</ul>
+<p>但具体规则仍需确认当前节点的 Mask 约定。</p>
+<p><strong>不要为了去除一条细小划痕，就将整张照片都设为重绘区域。</strong></p>
+<h4 id="第三步：使用局部重绘"><a href="#第三步：使用局部重绘" class="headerlink" title="第三步：使用局部重绘"></a>第三步：使用局部重绘</h4><p>将照片和 Mask 连接到支持 Inpainting 的工作流。</p>
+<p>提示词可以根据照片内容进行描述，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">restore damaged photograph,</span><br><span class="line">natural original texture,</span><br><span class="line">preserve original clothing,</span><br><span class="line">preserve original face,</span><br><span class="line">realistic photographic details</span><br></pre></td></tr></table></figure>
+
+<p>如果只是修复背景，可以描述背景原本的内容。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">restore the original wall background,</span><br><span class="line">natural texture,</span><br><span class="line">preserve original composition</span><br></pre></td></tr></table></figure>
+
+<p>提示词只是辅助，实际修复效果仍取决于模型、遮罩、图像内容和采样参数。</p>
+<h4 id="第四步：控制重绘强度"><a href="#第四步：控制重绘强度" class="headerlink" title="第四步：控制重绘强度"></a>第四步：控制重绘强度</h4><p>划痕修复时，建议从较低或中等重绘强度开始测试。</p>
+<p>如果重绘强度过高，AI 可能：</p>
+<ul>
+<li>改变衣服纹理</li>
+<li>改变面部轮廓</li>
+<li>生成新的背景内容</li>
+<li>使照片风格发生变化</li>
+</ul>
+<p>如果划痕没有完全去除，可以适当调整 Mask 或重绘强度。</p>
+<p>建议固定 Seed，逐步调整参数，方便比较。</p>
+<h4 id="第五步：检查修复结果"><a href="#第五步：检查修复结果" class="headerlink" title="第五步：检查修复结果"></a>第五步：检查修复结果</h4><p>重点检查：</p>
+<ul>
+<li>划痕是否消失</li>
+<li>修复区域是否出现明显接缝</li>
+<li>衣服纹理是否自然</li>
+<li>面部是否发生变化</li>
+<li>背景是否出现不合理内容</li>
+</ul>
+<p>如果结果不理想，可以缩小 Mask，或者分多次修复。</p>
+<p>对于特别细小的划痕，传统图像修复工具有时比 AI 重绘更稳定。</p>
+<h3 id="3-2、实战二：修复褪色和偏色照片"><a href="#3-2、实战二：修复褪色和偏色照片" class="headerlink" title="3.2、实战二：修复褪色和偏色照片"></a>3.2、实战二：修复褪色和偏色照片</h3><p>老照片经过多年保存，可能出现：</p>
+<ul>
+<li>整体偏黄</li>
+<li>颜色变淡</li>
+<li>对比度下降</li>
+<li>暗部细节丢失</li>
+<li>黑白照片出现色偏</li>
+</ul>
+<p>这些问题不一定需要 AI 重绘。</p>
+<h4 id="1-先调整亮度与对比度"><a href="#1-先调整亮度与对比度" class="headerlink" title="1. 先调整亮度与对比度"></a>1. 先调整亮度与对比度</h4><p>可以尝试使用图像处理节点调整：</p>
+<ul>
+<li>Brightness：亮度</li>
+<li>Contrast：对比度</li>
+<li>Saturation：饱和度</li>
+<li>Gamma：伽马值</li>
+</ul>
+<p>建议小幅调整，避免让照片变得过亮或过暗。</p>
+<h4 id="2-黑白照片是否需要上色？"><a href="#2-黑白照片是否需要上色？" class="headerlink" title="2. 黑白照片是否需要上色？"></a>2. 黑白照片是否需要上色？</h4><p>黑白照片上色属于另一类任务。</p>
+<p>AI 上色会根据人物、环境和模型推测颜色，并不代表恢复了原始颜色。</p>
+<p>例如：</p>
+<ul>
+<li>衣服颜色可能被推测错误</li>
+<li>背景颜色可能与真实情况不同</li>
+<li>人物肤色可能不符合原始照片</li>
+</ul>
+<p>如果目的是保存历史照片，建议同时保留：</p>
+<ul>
+<li>原始黑白版本</li>
+<li>修复后的黑白版本</li>
+<li>AI 上色版本</li>
+</ul>
+<p>不要将 AI 上色结果当作真实历史记录。</p>
+<h3 id="3-3、实战三：老照片清晰度增强与-AI-放大"><a href="#3-3、实战三：老照片清晰度增强与-AI-放大" class="headerlink" title="3.3、实战三：老照片清晰度增强与 AI 放大"></a>3.3、实战三：老照片清晰度增强与 AI 放大</h3><p>当照片本身没有明显划痕，但人物比较模糊时，可以尝试图像增强或超分辨率放大。</p>
+<h4 id="1-普通放大与-AI-放大的区别"><a href="#1-普通放大与-AI-放大的区别" class="headerlink" title="1. 普通放大与 AI 放大的区别"></a>1. 普通放大与 AI 放大的区别</h4><p>普通放大主要通过插值增加像素。</p>
+<p>AI 放大则会尝试恢复或生成细节。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>普通 Resize</td>
+<td>处理简单，但细节增加有限</td>
+</tr>
+<tr>
+<td>Lanczos 等插值</td>
+<td>放大效果较平滑</td>
+</tr>
+<tr>
+<td>AI Upscale</td>
+<td>可以生成纹理和细节，但可能改变原图</td>
+</tr>
+<tr>
+<td>Face Restoration</td>
+<td>重点增强面部，但可能改变人物特征</td>
+</tr>
+</tbody></table>
+<p>AI 放大并不意味着真实恢复了照片中已经丢失的信息。</p>
+<h4 id="2-使用-ComfyUI-Upscale-工作流"><a href="#2-使用-ComfyUI-Upscale-工作流" class="headerlink" title="2. 使用 ComfyUI Upscale 工作流"></a>2. 使用 ComfyUI Upscale 工作流</h4><p>常见的 AI 放大流程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Load Image</span><br><span class="line">    ↓</span><br><span class="line">Upscale Model Loader</span><br><span class="line">    ↓</span><br><span class="line">Image Upscale</span><br><span class="line">    ↓</span><br><span class="line">Preview Image</span><br><span class="line">    ↓</span><br><span class="line">Save Image</span><br></pre></td></tr></table></figure>
+
+<p>具体节点名称可能因版本或插件不同而有所变化。</p>
+<p>ComfyUI 常见放大模型包括 ESRGAN 系列及其他超分辨率模型。</p>
+<p>选择模型时，需要注意：</p>
+<ul>
+<li>模型适合照片还是插画</li>
+<li>放大倍率</li>
+<li>显存和内存占用</li>
+<li>是否会产生过度锐化</li>
+</ul>
+<p>如果是人物老照片，建议优先选择适合真实照片的模型。</p>
+<h4 id="3-不要一开始就放大四倍或八倍"><a href="#3-不要一开始就放大四倍或八倍" class="headerlink" title="3. 不要一开始就放大四倍或八倍"></a>3. 不要一开始就放大四倍或八倍</h4><p>建议先尝试较小倍率。</p>
+<p>例如：</p>
+<ol>
+<li>先将原图放大约两倍。</li>
+<li>检查面部和衣服细节。</li>
+<li>如果效果满意，再继续放大。</li>
+<li>如果人物面部变化明显，则降低放大强度或换模型。</li>
+</ol>
+<p>过度放大可能会让照片看起来清晰，但人物五官与原图差异增大。</p>
+<h3 id="3-4、实战四：老人照片面部增强"><a href="#3-4、实战四：老人照片面部增强" class="headerlink" title="3.4、实战四：老人照片面部增强"></a>3.4、实战四：老人照片面部增强</h3><p>对于老人照片，面部增强是最需要谨慎的部分。</p>
+<p>一些面部修复模型能够改善模糊、噪点和细节，但也可能改变：</p>
+<ul>
+<li>眼睛形状</li>
+<li>鼻子轮廓</li>
+<li>嘴唇形状</li>
+<li>皱纹</li>
+<li>面部年龄感</li>
+<li>皮肤纹理</li>
+</ul>
+<p>如果照片用于家庭纪念或遗像制作，建议遵循以下原则：</p>
+<p><strong>宁可保留适度模糊，也不要为了追求高清而改变人物原貌。</strong></p>
+<h4 id="1-先尝试整体增强"><a href="#1-先尝试整体增强" class="headerlink" title="1. 先尝试整体增强"></a>1. 先尝试整体增强</h4><p>建议先使用轻度降噪和放大。</p>
+<p>观察人物脸部是否自然，再决定是否需要面部增强。</p>
+<h4 id="2-谨慎使用-Face-Restoration"><a href="#2-谨慎使用-Face-Restoration" class="headerlink" title="2. 谨慎使用 Face Restoration"></a>2. 谨慎使用 Face Restoration</h4><p>面部修复节点可能依赖额外模型，例如某些人脸修复模型或第三方节点。</p>
+<p>安装前应确认：</p>
+<ul>
+<li>模型来源可靠</li>
+<li>与当前节点兼容</li>
+<li>能够在本地运行</li>
+<li>依赖安装正确</li>
+</ul>
+<p>面部增强最好作为可选步骤，而不是整个修复流程的必选项。</p>
+<h4 id="3-修复前后对比"><a href="#3-修复前后对比" class="headerlink" title="3. 修复前后对比"></a>3. 修复前后对比</h4><p>建议保存以下版本：</p>
+<ul>
+<li>原始照片</li>
+<li>普通放大版本</li>
+<li>AI 放大版本</li>
+<li>AI 面部增强版本</li>
+</ul>
+<p>将这些图片并排比较，重点观察面部特征是否发生变化。</p>
+<p>不要仅凭“更清晰”判断效果好坏。</p>
+<h2 id="四、如何尽量保留人物原貌？"><a href="#四、如何尽量保留人物原貌？" class="headerlink" title="四、如何尽量保留人物原貌？"></a>四、如何尽量保留人物原貌？</h2><p>老照片修复的难点在于：原图可能已经丢失细节，AI 只能根据上下文进行推测。</p>
+<p>可以采用以下方法降低变化：</p>
+<h3 id="4-1-优先使用局部修复"><a href="#4-1-优先使用局部修复" class="headerlink" title="4.1. 优先使用局部修复"></a>4.1. 优先使用局部修复</h3><p>如果只是衣服有划痕，就不要重绘面部。</p>
+<p>如果只是背景破损，就不要将人物包含在 Mask 中。</p>
+<h3 id="4-2-控制重绘强度"><a href="#4-2-控制重绘强度" class="headerlink" title="4.2. 控制重绘强度"></a>4.2. 控制重绘强度</h3><p>重绘强度越高，AI 越可能改变原有内容。</p>
+<p>建议从较低强度开始，根据实际情况逐步调整。</p>
+<h3 id="4-3-避免连续多次-AI-增强"><a href="#4-3-避免连续多次-AI-增强" class="headerlink" title="4.3. 避免连续多次 AI 增强"></a>4.3. 避免连续多次 AI 增强</h3><p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">AI修复</span><br><span class="line">  ↓</span><br><span class="line">AI放大</span><br><span class="line">  ↓</span><br><span class="line">AI面部增强</span><br><span class="line">  ↓</span><br><span class="line">再次AI重绘</span><br></pre></td></tr></table></figure>
+
+<p>这种连续处理可能导致细节逐渐偏离原图。</p>
+<p>建议每次处理后都保留中间结果，并根据实际效果决定是否继续。</p>
+<h3 id="4-4-保留原始照片"><a href="#4-4-保留原始照片" class="headerlink" title="4.4. 保留原始照片"></a>4.4. 保留原始照片</h3><p>原始照片是最重要的参考。</p>
+<p>任何修复都应在副本上进行，不能覆盖唯一的原始文件。</p>
+<h2 id="五、常见问题排查"><a href="#五、常见问题排查" class="headerlink" title="五、常见问题排查"></a>五、常见问题排查</h2><table>
+<thead>
+<tr>
+<th align="center">问题</th>
+<th align="center">可能原因</th>
+<th align="center">处理方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">划痕修复后仍然存在</td>
+<td align="center">Mask 没有覆盖完整</td>
+<td align="center">检查遮罩范围</td>
+</tr>
+<tr>
+<td align="center">修复区域出现明显接缝</td>
+<td align="center">Mask 边缘生硬</td>
+<td align="center">适当羽化遮罩</td>
+</tr>
+<tr>
+<td align="center">人物脸部变得不像原图</td>
+<td align="center">重绘强度过高</td>
+<td align="center">缩小 Mask，降低强度</td>
+</tr>
+<tr>
+<td align="center">放大后出现塑料感</td>
+<td align="center">面部增强过度</td>
+<td align="center">降低增强程度或换模型</td>
+</tr>
+<tr>
+<td align="center">细节变得不自然</td>
+<td align="center">AI 生成了原图不存在的内容</td>
+<td align="center">对比原图，减少增强</td>
+</tr>
+<tr>
+<td align="center">图片出现色偏</td>
+<td align="center">色彩调整过度</td>
+<td align="center">减少饱和度、亮度等调整</td>
+</tr>
+<tr>
+<td align="center">放大时显存不足</td>
+<td align="center">图片尺寸或模型过大</td>
+<td align="center">降低输入尺寸，分阶段处理</td>
+</tr>
+<tr>
+<td align="center">节点无法运行</td>
+<td align="center">模型或依赖缺失</td>
+<td align="center">检查节点说明与启动日志</td>
+</tr>
+</tbody></table>
+<h2 id="六、练习：修复一张老照片"><a href="#六、练习：修复一张老照片" class="headerlink" title="六、练习：修复一张老照片"></a>六、练习：修复一张老照片</h2><p>建议找一张有轻微划痕或模糊的老照片进行练习。</p>
+<p>按照以下步骤完成：</p>
+<ol>
+<li>保存原始照片。</li>
+<li>判断照片主要问题。</li>
+<li>对划痕区域创建 Mask。</li>
+<li>使用局部重绘修复划痕。</li>
+<li>调整亮度和对比度。</li>
+<li>使用 AI 放大模型增强清晰度。</li>
+<li>对比是否需要面部增强。</li>
+<li>保存不同阶段的结果。</li>
+</ol>
+<p>建议最终保留四个版本：</p>
+<ul>
+<li>原始照片</li>
+<li>划痕修复版</li>
+<li>AI 放大版</li>
+<li>最终修复版</li>
+</ul>
+<p>这样可以清楚地比较不同处理方式的效果。</p>
+<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>本篇学习了 ComfyUI 老照片修复的基本思路：</p>
+<ul>
+<li>使用 Mask 修复划痕和局部破损</li>
+<li>使用图像调整处理褪色与偏色</li>
+<li>使用 AI Upscale 增强清晰度</li>
+<li>谨慎使用面部增强模型</li>
+<li>通过局部处理减少人物变化</li>
+<li>保存多个版本进行效果对比</li>
+</ul>
+<p>老照片修复最重要的不是让照片变得极度清晰，而是尽可能保留照片原有的信息和人物特征。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/ja/tags/ComfyUI/" rel="tag"># ComfyUI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ja/posts/644c57a.html" rel="prev" title="ComfyUI开发之——实战之ComfyUI人物服装修改与局部编辑(5.2)">
+                  <i class="fa fa-angle-left"></i> ComfyUI开发之——实战之ComfyUI人物服装修改与局部编辑(5.2)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ja/posts/b42e97f5.html" rel="next" title="ComfyUI开发之——实战之ComfyUI证件照制作(5.4)">
+                  ComfyUI开发之——实战之ComfyUI证件照制作(5.4) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"3516c3d3a26885b070f8723d9cbb8d47"}</script>
+<script src="/ja/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

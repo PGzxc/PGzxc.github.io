@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一、概述123456789前面已经学习了 ComfyUI 的文生图、图生图、局部重绘、LoRA、ControlNet、IP-Adapter 等功能。实际使用中，不一定每个工作流都需要自己从零搭建。很多时候，我们可以直接下载别人制作好的工作流，在原有基础上修改提示词、模型和参数，就能实现新的生成效果。但是，下载的工作流并不一定能直接运行。它可能依赖特定模型、自定义节点、Python 环境，甚至指定版">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ComfyUI开发之——ComfyUI工作流下载导入修改与分享(4.1)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/38bf2f69.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一、概述123456789前面已经学习了 ComfyUI 的文生图、图生图、局部重绘、LoRA、ControlNet、IP-Adapter 等功能。实际使用中，不一定每个工作流都需要自己从零搭建。很多时候，我们可以直接下载别人制作好的工作流，在原有基础上修改提示词、模型和参数，就能实现新的生成效果。但是，下载的工作流并不一定能直接运行。它可能依赖特定模型、自定义节点、Python 环境，甚至指定版">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-11-04T11:37:34.000Z">
+<meta property="article:modified_time" content="2026-11-05T01:59:37.417Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="ComfyUI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/38bf2f69.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/38bf2f69.html","path":"posts/38bf2f69.html","title":"ComfyUI开发之——ComfyUI工作流下载导入修改与分享(4.1)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ComfyUI开发之——ComfyUI工作流下载导入修改与分享(4.1) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">384</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4861</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81ComfyUI-%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%9C%89%E5%93%AA%E4%BA%9B%E6%A0%BC%E5%BC%8F%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">二、ComfyUI 工作流有哪些格式？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%B8%B8%E8%A7%81%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 常见格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2%E3%80%81%E6%99%AE%E9%80%9A%E5%B7%A5%E4%BD%9C%E6%B5%81-JSON-%E4%B8%8E-API-JSON-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2、普通工作流 JSON 与 API JSON 有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">三 相关操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1%E3%80%81%E4%BB%8E%E5%93%AA%E9%87%8C%E4%B8%8B%E8%BD%BD-ComfyUI-%E5%B7%A5%E4%BD%9C%E6%B5%81%EF%BC%9F"><span class="nav-number">3.1.</span> <span class="nav-text">3.1、从哪里下载 ComfyUI 工作流？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-ComfyUI-%E5%AE%98%E6%96%B9%E7%A4%BA%E4%BE%8B"><span class="nav-number">3.1.1.</span> <span class="nav-text">1. ComfyUI 官方示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Civitai"><span class="nav-number">3.1.2.</span> <span class="nav-text">2. Civitai</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-OpenArt"><span class="nav-number">3.1.3.</span> <span class="nav-text">3. OpenArt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-GitHub"><span class="nav-number">3.1.4.</span> <span class="nav-text">4. GitHub</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2%E3%80%81%E5%A6%82%E4%BD%95%E5%AF%BC%E5%85%A5%E5%88%AB%E4%BA%BA%E5%88%86%E4%BA%AB%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%EF%BC%9F"><span class="nav-number">3.2.</span> <span class="nav-text">3.2、如何导入别人分享的工作流？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%AF%BC%E5%85%A5-JSON-%E6%96%87%E4%BB%B6"><span class="nav-number">3.2.1.</span> <span class="nav-text">1. 导入 JSON 文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BB%8E%E5%9B%BE%E7%89%87%E4%B8%AD%E6%81%A2%E5%A4%8D%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">3.2.2.</span> <span class="nav-text">2. 从图片中恢复工作流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8%E7%95%8C%E9%9D%A2%E6%89%93%E5%BC%80%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">3.2.3.</span> <span class="nav-text">3. 使用界面打开工作流</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3%E3%80%81%E5%AF%BC%E5%85%A5%E5%90%8E%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E7%9B%B4%E6%8E%A5%E8%BF%90%E8%A1%8C%EF%BC%9F"><span class="nav-number">3.3.</span> <span class="nav-text">3.3、导入后为什么不能直接运行？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%8A%82%E7%82%B9%E7%BC%BA%E5%A4%B1"><span class="nav-number">3.3.1.</span> <span class="nav-text">1. 自定义节点缺失</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%A8%A1%E5%9E%8B%E6%96%87%E4%BB%B6%E7%BC%BA%E5%A4%B1"><span class="nav-number">3.3.2.</span> <span class="nav-text">2. 模型文件缺失</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Python-%E4%BE%9D%E8%B5%96%E7%BC%BA%E5%A4%B1"><span class="nav-number">3.3.3.</span> <span class="nav-text">3. Python 依赖缺失</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4%E3%80%81%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9%E4%B8%8B%E8%BD%BD%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%EF%BC%9F"><span class="nav-number">3.4.</span> <span class="nav-text">3.4、如何修改下载的工作流？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%85%88%E4%BF%9D%E5%AD%98%E4%B8%80%E4%BB%BD%E5%89%AF%E6%9C%AC"><span class="nav-number">3.4.1.</span> <span class="nav-text">1. 先保存一份副本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%89%BE%E5%88%B0%E5%87%A0%E4%B8%AA%E5%85%B3%E9%94%AE%E8%8A%82%E7%82%B9"><span class="nav-number">3.4.2.</span> <span class="nav-text">2. 找到几个关键节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%B8%80%E6%AC%A1%E5%8F%AA%E4%BF%AE%E6%94%B9%E4%B8%80%E4%B8%AA%E5%9C%B0%E6%96%B9"><span class="nav-number">3.4.3.</span> <span class="nav-text">3. 一次只修改一个地方</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E4%B8%8D%E8%A6%81%E9%9A%8F%E6%84%8F%E5%88%A0%E9%99%A4%E8%8A%82%E7%82%B9%E5%92%8C%E8%BF%9E%E7%BA%BF"><span class="nav-number">3.4.4.</span> <span class="nav-text">4. 不要随意删除节点和连线</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%A6%82%E4%BD%95%E5%88%86%E4%BA%AB%E8%87%AA%E5%B7%B1%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">四、如何分享自己的工作流？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5"><span class="nav-number">5.</span> <span class="nav-text">五、常见问题排查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%8A%A8%E6%89%8B%E7%BB%83%E4%B9%A0%EF%BC%9A%E4%B8%8B%E8%BD%BD%E5%B9%B6%E4%BF%AE%E6%94%B9%E4%B8%80%E4%B8%AA%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">6.</span> <span class="nav-text">六、动手练习：下载并修改一个工作流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">七、总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4861</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">384</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">704</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/38bf2f69.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ComfyUI开发之——ComfyUI工作流下载导入修改与分享(4.1) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ComfyUI开发之——ComfyUI工作流下载导入修改与分享(4.1)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/ComfyUI%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94ComfyUI%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%8B%E8%BD%BD%E5%AF%BC%E5%85%A5%E4%BF%AE%E6%94%B9%E4%B8%8E%E5%88%86%E4%BA%AB-4-1.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-11-04 19:37:34" itemprop="dateCreated datePublished" datetime="2026-11-04T19:37:34+08:00">2026-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/" itemprop="url" rel="index"><span itemprop="name">AI图视频短剧</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">AI绘图</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/ComfyUI/" itemprop="url" rel="index"><span itemprop="name">ComfyUI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">前面已经学习了 ComfyUI 的文生图、图生图、局部重绘、LoRA、ControlNet、IP-Adapter 等功能。</span><br><span class="line"></span><br><span class="line">实际使用中，不一定每个工作流都需要自己从零搭建。</span><br><span class="line">很多时候，我们可以直接下载别人制作好的工作流，在原有基础上修改提示词、模型和参数，就能实现新的生成效果。</span><br><span class="line"></span><br><span class="line">但是，下载的工作流并不一定能直接运行。</span><br><span class="line">它可能依赖特定模型、自定义节点、Python 环境，甚至指定版本的 ComfyUI。</span><br><span class="line"></span><br><span class="line">这篇文章就来介绍如何下载、导入、检查、修改和分享 ComfyUI 工作流。</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二、ComfyUI-工作流有哪些格式？"><a href="#二、ComfyUI-工作流有哪些格式？" class="headerlink" title="二、ComfyUI 工作流有哪些格式？"></a>二、ComfyUI 工作流有哪些格式？</h2><h3 id="2-1-常见格式"><a href="#2-1-常见格式" class="headerlink" title="2.1 常见格式"></a>2.1 常见格式</h3><p>在下载工作流之前，先了解几种常见格式。</p>
+<table>
+<thead>
+<tr>
+<th align="center">格式</th>
+<th align="center">说明</th>
+<th align="center">常见用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">JSON 工作流</td>
+<td align="center">保存节点、连线和参数等信息</td>
+<td align="center">导入画布继续编辑</td>
+</tr>
+<tr>
+<td align="center">PNG &#x2F; WebP 图片</td>
+<td align="center">部分图片内嵌工作流元数据</td>
+<td align="center">从生成结果恢复工作流</td>
+</tr>
+<tr>
+<td align="center">API JSON</td>
+<td align="center">保存面向 API 执行的节点提示数据</td>
+<td align="center">程序调用工作流</td>
+</tr>
+</tbody></table>
+<h3 id="2-2、普通工作流-JSON-与-API-JSON-有什么区别？"><a href="#2-2、普通工作流-JSON-与-API-JSON-有什么区别？" class="headerlink" title="2.2、普通工作流 JSON 与 API JSON 有什么区别？"></a>2.2、普通工作流 JSON 与 API JSON 有什么区别？</h3><p>前面提到，两者虽然都使用 JSON 格式，但用途不同。</p>
+<table>
+<thead>
+<tr>
+<th align="center">对比项目</th>
+<th align="center">普通工作流 JSON</th>
+<th align="center">API JSON</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">主要用途</td>
+<td align="center">画布编辑</td>
+<td align="center">程序提交生成任务</td>
+</tr>
+<tr>
+<td align="center">节点布局</td>
+<td align="center">通常包含</td>
+<td align="center">不包含画布布局</td>
+</tr>
+<tr>
+<td align="center">节点连线</td>
+<td align="center">保存为工作流结构</td>
+<td align="center">使用节点输入引用组织执行数据</td>
+</tr>
+<tr>
+<td align="center">适合用户</td>
+<td align="center">日常搭建和修改</td>
+<td align="center">Python、HTTP API 调用</td>
+</tr>
+<tr>
+<td align="center">直接拖入画布</td>
+<td align="center">通常可以</td>
+<td align="center">通常不可以</td>
+</tr>
+</tbody></table>
+<p>如果后续要通过 Python 或其他客户端调用 ComfyUI，就需要了解 API 工作流格式。</p>
+<p>通常可以在 ComfyUI 中通过工作流菜单找到导出 API 格式的入口。不同版本的菜单位置可能有所变化。</p>
+<p>第 28 篇会专门介绍如何通过 HTTP 调用 ComfyUI 工作流。</p>
+<h3 id="2-3-注意事项"><a href="#2-3-注意事项" class="headerlink" title="2.3 注意事项"></a>2.3 注意事项</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">这里需要特别注意：普通工作流 JSON 和 API JSON 不是同一种格式。</span><br><span class="line"></span><br><span class="line">普通工作流 JSON 主要用于 ComfyUI 画布编辑，包含节点位置、连线和界面信息。</span><br><span class="line">API JSON 则主要用于提交生成任务，通常不包含画布布局等信息。</span><br><span class="line"></span><br><span class="line">因此，不能简单地把 API JSON 当作普通工作流直接拖入画布。</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-相关操作"><a href="#三-相关操作" class="headerlink" title="三 相关操作"></a>三 相关操作</h2><h3 id="3-1、从哪里下载-ComfyUI-工作流？"><a href="#3-1、从哪里下载-ComfyUI-工作流？" class="headerlink" title="3.1、从哪里下载 ComfyUI 工作流？"></a>3.1、从哪里下载 ComfyUI 工作流？</h3><p>目前常见的工作流资源主要来自以下几个渠道。</p>
+<h4 id="1-ComfyUI-官方示例"><a href="#1-ComfyUI-官方示例" class="headerlink" title="1. ComfyUI 官方示例"></a>1. ComfyUI 官方示例</h4><p>官方示例适合初学者，通常能够了解某种模型或功能的标准使用方式。</p>
+<ul>
+<li>ComfyUI 官方网站：<a target="_blank" rel="noopener" href="https://www.comfy.org/">https://www.comfy.org/</a></li>
+<li>ComfyUI GitHub：<a target="_blank" rel="noopener" href="https://github.com/Comfy-Org/ComfyUI">https://github.com/Comfy-Org/ComfyUI</a></li>
+<li>ComfyUI 示例工作流：<a target="_blank" rel="noopener" href="https://comfyanonymous.github.io/ComfyUI_examples/">https://comfyanonymous.github.io/ComfyUI_examples/</a></li>
+</ul>
+<p>建议刚开始学习时优先使用官方示例，能够减少模型和节点版本不匹配的问题。</p>
+<h4 id="2-Civitai"><a href="#2-Civitai" class="headerlink" title="2. Civitai"></a>2. Civitai</h4><p>Civitai 是比较常见的 AI 模型和工作流分享平台。</p>
+<p><a target="_blank" rel="noopener" href="https://civitai.com/">https://civitai.com/</a></p>
+<p>可以找到：</p>
+<ul>
+<li>文生图工作流</li>
+<li>图生图工作流</li>
+<li>LoRA 示例</li>
+<li>ControlNet 工作流</li>
+<li>人像生成与修复工作流</li>
+</ul>
+<p>部分资源会同时提供模型和工作流，下载时要仔细查看说明。</p>
+<h4 id="3-OpenArt"><a href="#3-OpenArt" class="headerlink" title="3. OpenArt"></a>3. OpenArt</h4><p>OpenArt 提供了大量 AI 图片和工作流资源。</p>
+<p><a target="_blank" rel="noopener" href="https://openart.ai/">https://openart.ai/</a></p>
+<p>可以按照生成效果查找工作流，例如人物写真、动漫风格、产品图片、图片编辑等。</p>
+<h4 id="4-GitHub"><a href="#4-GitHub" class="headerlink" title="4. GitHub"></a>4. GitHub</h4><p>GitHub 上有大量 ComfyUI 自定义节点和项目示例。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a></p>
+<p>适合查找：</p>
+<ul>
+<li>特定模型的工作流</li>
+<li>自定义节点示例</li>
+<li>自动化处理流程</li>
+<li>项目配套工作流</li>
+</ul>
+<p>下载时建议优先选择官方仓库或维护活跃、说明完整的项目。</p>
+<p><strong>注意：</strong> 不要因为工作流能生成漂亮图片就直接运行其中的所有节点。对于来源不明的自定义节点、脚本和模型文件，要先检查项目说明和代码，避免运行不可信代码。</p>
+<h3 id="3-2、如何导入别人分享的工作流？"><a href="#3-2、如何导入别人分享的工作流？" class="headerlink" title="3.2、如何导入别人分享的工作流？"></a>3.2、如何导入别人分享的工作流？</h3><p>ComfyUI 常见的导入方式有三种。</p>
+<h4 id="1-导入-JSON-文件"><a href="#1-导入-JSON-文件" class="headerlink" title="1. 导入 JSON 文件"></a>1. 导入 JSON 文件</h4><p>假设下载了一个工作流文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">portrait_workflow.json</span><br></pre></td></tr></table></figure>
+
+<p>打开 ComfyUI 后，可以直接将 JSON 文件拖入画布。</p>
+<p>部分版本也可以通过界面中的工作流打开功能选择 JSON 文件。</p>
+<p>导入成功后，画布会显示对应的节点、连线和参数。</p>
+<h4 id="2-从图片中恢复工作流"><a href="#2-从图片中恢复工作流" class="headerlink" title="2. 从图片中恢复工作流"></a>2. 从图片中恢复工作流</h4><p>有些用户分享的不是 JSON 文件，而是生成完成的 PNG 图片。</p>
+<p>如果图片保存时包含了 ComfyUI 工作流元数据，可以直接将图片拖入 ComfyUI 画布。</p>
+<p>ComfyUI 会尝试读取图片中的元数据并恢复对应工作流。</p>
+<p>需要注意：</p>
+<ul>
+<li>并不是所有 PNG 图片都包含工作流。</li>
+<li>图片经过某些网站压缩、格式转换或二次编辑后，元数据可能丢失。</li>
+<li>普通截图通常无法恢复完整工作流。</li>
+</ul>
+<p>所以，分享工作流时，最好同时保存 JSON 文件和原始生成图片。</p>
+<h4 id="3-使用界面打开工作流"><a href="#3-使用界面打开工作流" class="headerlink" title="3. 使用界面打开工作流"></a>3. 使用界面打开工作流</h4><p>不同版本的 ComfyUI 界面可能有所区别。</p>
+<p>通常可以在工作流菜单中找到打开或加载工作流的入口，选择本地 JSON 文件即可。</p>
+<p>导入后建议先不要立即运行，先检查节点和模型依赖。</p>
+<h3 id="3-3、导入后为什么不能直接运行？"><a href="#3-3、导入后为什么不能直接运行？" class="headerlink" title="3.3、导入后为什么不能直接运行？"></a>3.3、导入后为什么不能直接运行？</h3><p>这是初学者最容易遇到的问题。</p>
+<p>工作流只是保存了生成流程，并不意味着运行它所需的所有资源也已经安装。</p>
+<p>通常需要检查以下几个方面。</p>
+<h4 id="1-自定义节点缺失"><a href="#1-自定义节点缺失" class="headerlink" title="1. 自定义节点缺失"></a>1. 自定义节点缺失</h4><p>如果工作流使用了额外安装的节点，而本地没有对应节点，导入时可能出现缺失节点提示，画布中也可能显示无法识别的节点。</p>
+<p>例如：</p>
+<ul>
+<li>IP-Adapter 相关节点</li>
+<li>ControlNet 预处理器节点</li>
+<li>图片背景移除节点</li>
+<li>视频处理节点</li>
+<li>第三方采样或图像处理节点</li>
+</ul>
+<p>解决方法：</p>
+<p>首先记录缺失节点的名称，找到它所属的自定义节点项目。</p>
+<p>如果使用 ComfyUI Manager，可以通过其中的缺失节点查找或安装功能进行处理。不同版本的 Manager 界面和功能入口可能不同。</p>
+<p>也可以根据项目官方仓库说明手动安装。</p>
+<p>例如，传统方式是将节点仓库放入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI/custom_nodes/</span><br></pre></td></tr></table></figure>
+
+<p>然后按照项目说明安装依赖。</p>
+<p>如果需要安装 Python 依赖，一定要使用当前 ComfyUI 对应的 Python 环境，而不是随意使用系统 Python。</p>
+<p>安装完成后重启 ComfyUI，再重新打开工作流。</p>
+<h4 id="2-模型文件缺失"><a href="#2-模型文件缺失" class="headerlink" title="2. 模型文件缺失"></a>2. 模型文件缺失</h4><p>工作流可能引用了本地没有下载的模型。</p>
+<p>常见模型包括：</p>
+<table>
+<thead>
+<tr>
+<th align="center">模型类型</th>
+<th align="center">常见存放目录</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Checkpoint</td>
+<td align="center"><code>models/checkpoints/</code></td>
+</tr>
+<tr>
+<td align="center">LoRA</td>
+<td align="center"><code>models/loras/</code></td>
+</tr>
+<tr>
+<td align="center">VAE</td>
+<td align="center"><code>models/vae/</code></td>
+</tr>
+<tr>
+<td align="center">ControlNet</td>
+<td align="center"><code>models/controlnet/</code></td>
+</tr>
+<tr>
+<td align="center">CLIP Vision</td>
+<td align="center"><code>models/clip_vision/</code></td>
+</tr>
+<tr>
+<td align="center">Upscale Model</td>
+<td align="center"><code>models/upscale_models/</code></td>
+</tr>
+<tr>
+<td align="center">扩散模型</td>
+<td align="center"><code>models/diffusion_models/</code></td>
+</tr>
+<tr>
+<td align="center">文本编码器</td>
+<td align="center"><code>models/text_encoders/</code></td>
+</tr>
+</tbody></table>
+<p>例如，工作流需要一个 SDXL Checkpoint：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sd_xl_base_1.0.safetensors</span><br></pre></td></tr></table></figure>
+
+<p>就需要将模型放入对应的 Checkpoint 目录，或者在模型加载节点中选择正确的文件。</p>
+<p>如果模型已经放入目录，但下拉列表没有显示，可以尝试刷新模型列表或重启 ComfyUI。</p>
+<p>还要注意模型架构是否匹配。</p>
+<p>例如：</p>
+<ul>
+<li>SD 1.5 的 LoRA 通常不能直接用于 SDXL。</li>
+<li>SDXL 的工作流不能随意替换成 SD 1.5 模型。</li>
+<li>FLUX 工作流需要对应的模型、文本编码器和 VAE 等资源。</li>
+<li>IP-Adapter、ControlNet 等模型也需要匹配对应架构和节点实现。</li>
+</ul>
+<p>不能只看文件名相似就认为可以直接替换。</p>
+<h4 id="3-Python-依赖缺失"><a href="#3-Python-依赖缺失" class="headerlink" title="3. Python 依赖缺失"></a>3. Python 依赖缺失</h4><p>部分自定义节点除了代码，还需要额外的 Python 库。</p>
+<p>例如，某些图片处理节点可能依赖：</p>
+<ul>
+<li>opencv-python</li>
+<li>insightface</li>
+<li>onnxruntime</li>
+<li>segment-anything</li>
+</ul>
+<p>具体依赖以节点仓库的 requirements 文件和安装说明为准。</p>
+<p>如果使用便携版 ComfyUI，通常需要使用其自带的 Python 环境安装依赖。</p>
+<p>如果使用虚拟环境安装版，则需要进入对应虚拟环境。</p>
+<p><strong>不要直接把依赖安装到另一个 Python 环境中，否则可能出现安装成功、ComfyUI 仍然无法使用的情况。</strong></p>
+<h3 id="3-4、如何修改下载的工作流？"><a href="#3-4、如何修改下载的工作流？" class="headerlink" title="3.4、如何修改下载的工作流？"></a>3.4、如何修改下载的工作流？</h3><p>工作流导入成功后，不建议一开始就大幅修改。</p>
+<p>更好的方法是先理解原有流程，再逐步调整。</p>
+<h4 id="1-先保存一份副本"><a href="#1-先保存一份副本" class="headerlink" title="1. 先保存一份副本"></a>1. 先保存一份副本</h4><p>假设下载的文件是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">portrait_workflow.json</span><br></pre></td></tr></table></figure>
+
+<p>建议先另存为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">portrait_workflow_custom.json</span><br></pre></td></tr></table></figure>
+
+<p>这样即使修改错误，也可以重新恢复原始工作流。</p>
+<h4 id="2-找到几个关键节点"><a href="#2-找到几个关键节点" class="headerlink" title="2. 找到几个关键节点"></a>2. 找到几个关键节点</h4><p>对于常见的文生图工作流，优先检查以下节点：</p>
+<table>
+<thead>
+<tr>
+<th align="center">节点</th>
+<th align="center">主要作用</th>
+<th align="center">常见修改内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Load Checkpoint</td>
+<td align="center">加载基础模型</td>
+<td align="center">更换模型</td>
+</tr>
+<tr>
+<td align="center">CLIP Text Encode</td>
+<td align="center">编码提示词</td>
+<td align="center">修改正向、负向提示词</td>
+</tr>
+<tr>
+<td align="center">Empty Latent Image</td>
+<td align="center">创建初始潜空间</td>
+<td align="center">修改宽度、高度、批量数量</td>
+</tr>
+<tr>
+<td align="center">KSampler</td>
+<td align="center">采样生成</td>
+<td align="center">修改 Seed、Steps、CFG 等</td>
+</tr>
+<tr>
+<td align="center">VAE Decode</td>
+<td align="center">解码图片</td>
+<td align="center">通常不需要修改</td>
+</tr>
+<tr>
+<td align="center">Save Image</td>
+<td align="center">保存图片</td>
+<td align="center">修改输出文件名前缀</td>
+</tr>
+</tbody></table>
+<p>不同模型的工作流可能使用不同的节点组合。</p>
+<p>例如，FLUX、Qwen Image 等模型的文本编码和采样流程与传统 SD 1.5 工作流并不完全相同，不要直接套用上面的节点结构。</p>
+<h4 id="3-一次只修改一个地方"><a href="#3-一次只修改一个地方" class="headerlink" title="3. 一次只修改一个地方"></a>3. 一次只修改一个地方</h4><p>建议按照下面的顺序练习：</p>
+<p>第一步：修改正向提示词，观察生成效果。</p>
+<p>第二步：修改 Seed，观察随机变化。</p>
+<p>第三步：修改图片宽度和高度。</p>
+<p>第四步：修改 Steps、CFG 等采样参数。</p>
+<p>第五步：尝试更换模型或 LoRA。</p>
+<p>每次修改后运行一次，确认效果和原工作流之间的区别。</p>
+<p>这样更容易定位问题，也能逐步理解工作流的结构。</p>
+<h4 id="4-不要随意删除节点和连线"><a href="#4-不要随意删除节点和连线" class="headerlink" title="4. 不要随意删除节点和连线"></a>4. 不要随意删除节点和连线</h4><p>ComfyUI 的节点之间存在数据依赖。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Load Checkpoint → KSampler → VAE Decode → Save Image</span><br></pre></td></tr></table></figure>
+
+<p>如果删除了中间节点，或者把不兼容的数据类型连接在一起，就可能导致工作流无法执行。</p>
+<p>如果不清楚某个节点的作用，可以先查看节点名称和输入输出端口，再决定是否修改。</p>
+<h2 id="四、如何分享自己的工作流？"><a href="#四、如何分享自己的工作流？" class="headerlink" title="四、如何分享自己的工作流？"></a>四、如何分享自己的工作流？</h2><p>当我们成功搭建一个工作流后，也可以分享给其他人使用。</p>
+<p>建议至少准备以下内容：</p>
+<table>
+<thead>
+<tr>
+<th align="center">分享内容</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">工作流 JSON</td>
+<td align="center">方便别人导入和编辑</td>
+</tr>
+<tr>
+<td align="center">效果图片</td>
+<td align="center">展示最终生成效果</td>
+</tr>
+<tr>
+<td align="center">模型清单</td>
+<td align="center">说明需要哪些模型</td>
+</tr>
+<tr>
+<td align="center">自定义节点</td>
+<td align="center">说明需要安装哪些节点包</td>
+</tr>
+<tr>
+<td align="center">ComfyUI 版本</td>
+<td align="center">说明测试时使用的版本</td>
+</tr>
+<tr>
+<td align="center">参数说明</td>
+<td align="center">说明关键参数和使用方法</td>
+</tr>
+<tr>
+<td align="center">输入图片</td>
+<td align="center">如果工作流依赖参考图，需要说明如何准备</td>
+</tr>
+</tbody></table>
+<p>如果分享的是 PNG 图片，也可以保留原始工作流元数据，方便别人直接拖入 ComfyUI 恢复流程。</p>
+<p>还需要注意模型和 LoRA 的授权许可。不要未经允许就重新打包或分发受限制的模型文件。</p>
+<h2 id="五、常见问题排查"><a href="#五、常见问题排查" class="headerlink" title="五、常见问题排查"></a>五、常见问题排查</h2><table>
+<thead>
+<tr>
+<th align="center">问题</th>
+<th align="center">可能原因</th>
+<th align="center">处理方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">JSON 拖入没有反应</td>
+<td align="center">文件格式不正确或文件损坏</td>
+<td align="center">确认是否为普通工作流 JSON</td>
+</tr>
+<tr>
+<td align="center">导入后节点缺失</td>
+<td align="center">没有安装对应自定义节点</td>
+<td align="center">使用 Manager 或手动安装</td>
+</tr>
+<tr>
+<td align="center">模型下拉列表找不到文件</td>
+<td align="center">路径错误或列表未刷新</td>
+<td align="center">检查模型目录并刷新</td>
+</tr>
+<tr>
+<td align="center">工作流提示输入图片不存在</td>
+<td align="center">引用的是分享者电脑上的路径</td>
+<td align="center">重新选择本地图片</td>
+</tr>
+<tr>
+<td align="center">节点显示红色或无法连接</td>
+<td align="center">节点版本或接口不兼容</td>
+<td align="center">检查节点版本及连线</td>
+</tr>
+<tr>
+<td align="center">安装节点后仍然无法使用</td>
+<td align="center">Python 依赖缺失或环境错误</td>
+<td align="center">检查 ComfyUI 对应 Python 环境</td>
+</tr>
+<tr>
+<td align="center">生成效果与分享图片不同</td>
+<td align="center">模型、参数、Seed 或版本不一致</td>
+<td align="center">对照原始配置逐项检查</td>
+</tr>
+<tr>
+<td align="center">显存不足</td>
+<td align="center">模型或分辨率要求过高</td>
+<td align="center">降低分辨率、使用低显存配置</td>
+</tr>
+</tbody></table>
+<h2 id="六、动手练习：下载并修改一个工作流"><a href="#六、动手练习：下载并修改一个工作流" class="headerlink" title="六、动手练习：下载并修改一个工作流"></a>六、动手练习：下载并修改一个工作流</h2><p>建议通过下面的练习熟悉整个流程。</p>
+<p><strong>练习目标：</strong> 下载一个简单的 SD 1.5 或 SDXL 文生图工作流，完成导入、依赖检查和修改。</p>
+<ol>
+<li>从 ComfyUI 官方示例或可信社区下载一个文生图工作流。</li>
+<li>将 JSON 文件导入 ComfyUI。</li>
+<li>检查是否存在缺失节点。</li>
+<li>检查 Checkpoint、VAE 等模型是否齐全。</li>
+<li>修改正向提示词。</li>
+<li>修改图片尺寸和 Seed。</li>
+<li>运行工作流，观察生成效果。</li>
+<li>将修改后的工作流另存为新的 JSON 文件。</li>
+</ol>
+<p>完成后，你就掌握了下载、导入、修改和保存别人工作流的基本方法。</p>
+<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>ComfyUI 工作流可以重复使用，也可以在别人的基础上继续修改。</p>
+<p>真正需要掌握的不只是如何导入 JSON，而是理解工作流背后的依赖关系：</p>
+<ul>
+<li>工作流文件负责保存节点和参数。</li>
+<li>自定义节点负责提供额外功能。</li>
+<li>模型文件负责提供生成能力。</li>
+<li>Python 依赖负责支持节点运行。</li>
+<li>ComfyUI 版本和节点版本会影响兼容性。</li>
+</ul>
+<p>以后下载工作流时，建议先检查依赖，再运行和修改。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ComfyUI/" rel="tag"># ComfyUI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/e99e97a9.html" rel="prev" title="ComfyUI开发之——ComfyUI 参考图与人物一致性(3.6)">
+                  <i class="fa fa-angle-left"></i> ComfyUI开发之——ComfyUI 参考图与人物一致性(3.6)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/9834c6df.html" rel="next" title="ComfyUI开发之——ComfyUI常用节点详解(4.2)">
+                  ComfyUI开发之——ComfyUI常用节点详解(4.2) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"dc1747da6a14d475f74ac552dc4379af"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

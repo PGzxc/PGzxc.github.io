@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一、概述1234567891011121314ComfyUI 学习总结：整理模型库、工作流库与个人 AI 项目案例经过前面一系列文章，我们已经从 ComfyUI 的安装和基础操作，逐步学习了文生图、图生图、局部重绘、LoRA、ControlNet、人物一致性、视频生成以及 API 自动化。如果只是学会了几个节点的使用，还不能算真正掌握 ComfyUI。更重要的是：能够根据实际需求选择模型、搭建工作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ComfyUI开发之——ComfyUI学习总结(6.5)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/cacbc635.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一、概述1234567891011121314ComfyUI 学习总结：整理模型库、工作流库与个人 AI 项目案例经过前面一系列文章，我们已经从 ComfyUI 的安装和基础操作，逐步学习了文生图、图生图、局部重绘、LoRA、ControlNet、人物一致性、视频生成以及 API 自动化。如果只是学会了几个节点的使用，还不能算真正掌握 ComfyUI。更重要的是：能够根据实际需求选择模型、搭建工作">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-11-04T11:45:36.000Z">
+<meta property="article:modified_time" content="2026-11-05T01:59:37.417Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="ComfyUI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/cacbc635.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/cacbc635.html","path":"posts/cacbc635.html","title":"ComfyUI开发之——ComfyUI学习总结(6.5)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ComfyUI开发之——ComfyUI学习总结(6.5) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">384</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4861</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9B%9E%E9%A1%BE-ComfyUI-%E7%9A%84%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF"><span class="nav-number">2.</span> <span class="nav-text">二、回顾 ComfyUI 的学习路线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">三、操作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1%E3%80%81%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E6%A8%A1%E5%9E%8B%E5%BA%93"><span class="nav-number">3.1.</span> <span class="nav-text">3.1、建立自己的模型库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%AE%A4%E8%AF%86%E5%B8%B8%E8%A7%81%E6%A8%A1%E5%9E%8B%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.1.1.</span> <span class="nav-text">1. 认识常见模型类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%8E%A8%E8%8D%90%E7%9A%84%E6%A8%A1%E5%9E%8B%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F"><span class="nav-number">3.1.2.</span> <span class="nav-text">2. 推荐的模型管理方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%BB%BA%E7%AB%8B%E6%A8%A1%E5%9E%8B%E4%BF%A1%E6%81%AF%E6%B8%85%E5%8D%95"><span class="nav-number">3.1.3.</span> <span class="nav-text">3. 建立模型信息清单</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2%E3%80%81%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%BA%93"><span class="nav-number">3.2.</span> <span class="nav-text">3.2、建立自己的工作流库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%8E%A8%E8%8D%90%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%88%86%E7%B1%BB"><span class="nav-number">3.2.1.</span> <span class="nav-text">1. 推荐的工作流分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%B8%BA%E6%AF%8F%E4%B8%AA%E5%B7%A5%E4%BD%9C%E6%B5%81%E5%BB%BA%E7%AB%8B%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3"><span class="nav-number">3.2.2.</span> <span class="nav-text">2. 为每个工作流建立说明文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86"><span class="nav-number">3.2.3.</span> <span class="nav-text">3. 工作流版本管理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3%E3%80%81%E5%BB%BA%E7%AB%8B%E4%B8%80%E5%A5%97%E7%A8%B3%E5%AE%9A%E7%9A%84-ComfyUI-%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="nav-number">3.3.</span> <span class="nav-text">3.3、建立一套稳定的 ComfyUI 使用流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%B0%86-ComfyUI-%E7%94%A8%E4%BA%8E%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">四、个人项目案例：将 ComfyUI 用于实际应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%A1%88%E4%BE%8B%E4%B8%80%EF%BC%9AAI-%E8%AF%81%E4%BB%B6%E7%85%A7%E5%88%B6%E4%BD%9C"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 案例一：AI 证件照制作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E6%A1%88%E4%BE%8B%E4%BA%8C%EF%BC%9A%E8%80%81%E4%BA%BA%E7%85%A7%E7%89%87%E4%BF%AE%E5%A4%8D%E4%B8%8E%E7%BA%AA%E5%BF%B5%E7%85%A7%E7%89%87%E5%88%B6%E4%BD%9C"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 案例二：老人照片修复与纪念照片制作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E6%A1%88%E4%BE%8B%E4%B8%89%EF%BC%9A%E6%9C%AC%E5%9C%B0-AI-%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 案例三：本地 AI 图片处理客户端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81ComfyUI-%E4%B8%8E-Ollama-%E5%A6%82%E4%BD%95%E9%85%8D%E5%90%88%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">五、ComfyUI 与 Ollama 如何配合？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%AD%A6%E4%B9%A0-ComfyUI-%E9%9C%80%E8%A6%81%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E7%94%B5%E8%84%91%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">六、学习 ComfyUI 需要什么样的电脑？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%95%B4%E7%90%86%E4%B8%80%E4%BB%BD%E9%95%BF%E6%9C%9F%E7%BB%B4%E6%8A%A4%E6%B8%85%E5%8D%95"><span class="nav-number">7.</span> <span class="nav-text">七、整理一份长期维护清单</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-%E6%A8%A1%E5%9E%8B%E7%AE%A1%E7%90%86"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 模型管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%AE%A1%E7%90%86"><span class="nav-number">7.2.</span> <span class="nav-text">7.2 工作流管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86"><span class="nav-number">7.3.</span> <span class="nav-text">7.3 环境管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86"><span class="nav-number">7.4.</span> <span class="nav-text">7.4 项目管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E6%8E%A5%E4%B8%8B%E6%9D%A5%E5%A6%82%E4%BD%95%E7%BB%A7%E7%BB%AD%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0%EF%BC%9F"><span class="nav-number">8.</span> <span class="nav-text">八、接下来如何继续深入学习？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E7%B3%BB%E5%88%97%E6%80%BB%E7%BB%93"><span class="nav-number">9.</span> <span class="nav-text">九、系列总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4861</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">384</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">704</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/cacbc635.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ComfyUI开发之——ComfyUI学习总结(6.5) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ComfyUI开发之——ComfyUI学习总结(6.5)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/ComfyUI%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94ComfyUI%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93-6-5.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-11-04 19:45:36" itemprop="dateCreated datePublished" datetime="2026-11-04T19:45:36+08:00">2026-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/" itemprop="url" rel="index"><span itemprop="name">AI图视频短剧</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">AI绘图</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/ComfyUI/" itemprop="url" rel="index"><span itemprop="name">ComfyUI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI 学习总结：整理模型库、工作流库与个人 AI 项目案例</span><br><span class="line"></span><br><span class="line">经过前面一系列文章，我们已经从 ComfyUI 的安装和基础操作，</span><br><span class="line">逐步学习了文生图、图生图、局部重绘、LoRA、ControlNet、人物一致性、视频生成以及 API 自动化。</span><br><span class="line"></span><br><span class="line">如果只是学会了几个节点的使用，还不能算真正掌握 ComfyUI。</span><br><span class="line"></span><br><span class="line">更重要的是：能够根据实际需求选择模型、搭建工作流、排查问题，并将 ComfyUI 接入自己的应用。</span><br><span class="line"></span><br><span class="line">本篇作为整个系列的最后一篇，将重点整理三个方面：</span><br><span class="line"></span><br><span class="line">- 建立自己的模型库和工作流库。</span><br><span class="line">- 形成一套稳定、可复用的 ComfyUI 使用方法。</span><br><span class="line">- 通过实际项目，将 ComfyUI 应用到图片处理和 AI 应用开发中。</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二、回顾-ComfyUI-的学习路线"><a href="#二、回顾-ComfyUI-的学习路线" class="headerlink" title="二、回顾 ComfyUI 的学习路线"></a>二、回顾 ComfyUI 的学习路线</h2><p>整个系列分为六个阶段。</p>
+<table>
+<thead>
+<tr>
+<th align="center">阶段</th>
+<th align="center">学习内容</th>
+<th align="center">核心目标</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">第一阶段：基础入门</td>
+<td align="center">安装、目录、界面、模型、工作流</td>
+<td align="center">理解 ComfyUI 的基本使用方式</td>
+</tr>
+<tr>
+<td align="center">第二阶段：文生图与核心参数</td>
+<td align="center">提示词、采样器、尺寸、模型管理</td>
+<td align="center">独立完成文生图</td>
+</tr>
+<tr>
+<td align="center">第三阶段：图像生成与控制</td>
+<td align="center">图生图、局部重绘、放大、LoRA、ControlNet</td>
+<td align="center">掌握常见图片生成和修改方法</td>
+</tr>
+<tr>
+<td align="center">第四阶段：工作流与扩展</td>
+<td align="center">节点、工作流导入、自定义节点、故障排查</td>
+<td align="center">能够修改和管理复杂工作流</td>
+</tr>
+<tr>
+<td align="center">第五阶段：AI 图片处理实战</td>
+<td align="center">换背景、服装修改、照片修复、证件照</td>
+<td align="center">将 ComfyUI 用于实际图片处理</td>
+</tr>
+<tr>
+<td align="center">第六阶段：进阶应用与项目集成</td>
+<td align="center">视频生成、本地 API、Python 自动化</td>
+<td align="center">将 ComfyUI 接入其他应用</td>
+</tr>
+</tbody></table>
+<p>学习过程中，建议不要只关注生成效果，还要理解每个工作流的输入、输出、节点依赖和参数配置。</p>
+<p>例如，一个图生图工作流不仅要知道如何点击运行，还应该能够回答：</p>
+<ol>
+<li>输入图片来自哪个节点？</li>
+<li>提示词在哪个节点修改？</li>
+<li>哪个参数控制原图保留程度？</li>
+<li>使用了什么模型和 VAE？</li>
+<li>最终图片保存到哪里？</li>
+<li>如果出现报错，应该从哪里排查？</li>
+</ol>
+<p>能够回答这些问题，才说明真正理解了工作流。</p>
+<h2 id="三、操作流程"><a href="#三、操作流程" class="headerlink" title="三、操作流程"></a>三、操作流程</h2><h3 id="3-1、建立自己的模型库"><a href="#3-1、建立自己的模型库" class="headerlink" title="3.1、建立自己的模型库"></a>3.1、建立自己的模型库</h3><p>模型是 ComfyUI 生成图片和视频的基础。</p>
+<p>随着学习深入，模型文件会越来越多。如果没有统一管理，很容易出现模型重复下载、路径混乱、版本不清楚等问题。</p>
+<h4 id="1-认识常见模型类型"><a href="#1-认识常见模型类型" class="headerlink" title="1. 认识常见模型类型"></a>1. 认识常见模型类型</h4><table>
+<thead>
+<tr>
+<th align="center">模型类型</th>
+<th align="center">主要用途</th>
+<th align="center">常见目录</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Checkpoint</td>
+<td align="center">基础图像生成模型</td>
+<td align="center"><code>models/checkpoints/</code></td>
+</tr>
+<tr>
+<td align="center">VAE</td>
+<td align="center">图像与潜空间之间的编码、解码</td>
+<td align="center"><code>models/vae/</code></td>
+</tr>
+<tr>
+<td align="center">LoRA</td>
+<td align="center">调整人物、风格或画面特征</td>
+<td align="center"><code>models/loras/</code></td>
+</tr>
+<tr>
+<td align="center">ControlNet</td>
+<td align="center">根据姿势、边缘、深度等控制生成</td>
+<td align="center"><code>models/controlnet/</code></td>
+</tr>
+<tr>
+<td align="center">CLIP</td>
+<td align="center">文本提示词编码</td>
+<td align="center"><code>models/clip/</code></td>
+</tr>
+<tr>
+<td align="center">CLIP Vision</td>
+<td align="center">图像特征编码</td>
+<td align="center"><code>models/clip_vision/</code></td>
+</tr>
+<tr>
+<td align="center">Upscale Model</td>
+<td align="center">图片放大和细节增强</td>
+<td align="center"><code>models/upscale_models/</code></td>
+</tr>
+<tr>
+<td align="center">Diffusion Models</td>
+<td align="center">部分架构使用的扩散模型文件</td>
+<td align="center"><code>models/diffusion_models/</code></td>
+</tr>
+</tbody></table>
+<p>以上是常见目录示例，实际目录和模型加载方式会随模型架构、ComfyUI 版本及节点扩展有所不同。</p>
+<p>例如，SD 1.5、SDXL 和 FLUX 的模型组件及工作流并不完全相同，不能只根据文件扩展名判断模型是否兼容。</p>
+<h4 id="2-推荐的模型管理方式"><a href="#2-推荐的模型管理方式" class="headerlink" title="2. 推荐的模型管理方式"></a>2. 推荐的模型管理方式</h4><p>可以按照用途对模型进行分类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI/</span><br><span class="line">└── models/</span><br><span class="line">    ├── checkpoints/</span><br><span class="line">    │   ├── sd15/</span><br><span class="line">    │   └── sdxl/</span><br><span class="line">    │</span><br><span class="line">    ├── diffusion_models/</span><br><span class="line">    ├── text_encoders/</span><br><span class="line">    ├── vae/</span><br><span class="line">    ├── loras/</span><br><span class="line">    │   ├── portrait/</span><br><span class="line">    │   ├── style/</span><br><span class="line">    │   └── character/</span><br><span class="line">    │</span><br><span class="line">    ├── controlnet/</span><br><span class="line">    ├── clip_vision/</span><br><span class="line">    └── upscale_models/</span><br></pre></td></tr></table></figure>
+
+<p>这里的子目录只是管理建议，ComfyUI 是否能扫描到模型，还要看对应加载器和当前版本的目录配置。</p>
+<p>如果使用多个 ComfyUI 环境，也可以通过模型搜索路径配置共享模型目录，减少重复占用磁盘空间。</p>
+<h4 id="3-建立模型信息清单"><a href="#3-建立模型信息清单" class="headerlink" title="3. 建立模型信息清单"></a>3. 建立模型信息清单</h4><p>建议每下载一个模型，都记录基本信息。</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>记录内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>模型名称</td>
+<td>实际模型文件名</td>
+</tr>
+<tr>
+<td>模型类型</td>
+<td>Checkpoint、LoRA、ControlNet 等</td>
+</tr>
+<tr>
+<td>模型架构</td>
+<td>SD 1.5、SDXL、FLUX 等</td>
+</tr>
+<tr>
+<td>文件大小</td>
+<td>模型占用空间</td>
+</tr>
+<tr>
+<td>下载来源</td>
+<td>官方页面或可信模型发布页面</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>人像、风景、修复、放大等</td>
+</tr>
+<tr>
+<td>使用说明</td>
+<td>触发词、推荐参数、兼容要求</td>
+</tr>
+</tbody></table>
+<p>这样后续查找模型、迁移环境和复现工作流都会更加方便。</p>
+<p>下载模型时，优先选择可信来源，检查模型许可、使用限制和文件完整性，不要随意运行来源不明的模型附带脚本。</p>
+<h3 id="3-2、建立自己的工作流库"><a href="#3-2、建立自己的工作流库" class="headerlink" title="3.2、建立自己的工作流库"></a>3.2、建立自己的工作流库</h3><p>模型解决的是生成能力问题，工作流解决的是如何组织这些能力。</p>
+<p>同一个模型，通过不同工作流可以完成不同任务。</p>
+<p>例如：</p>
+<ul>
+<li>文生图：根据提示词生成图片。</li>
+<li>图生图：根据原图生成新图片。</li>
+<li>局部重绘：只修改图片指定区域。</li>
+<li>ControlNet：控制姿势、边缘和深度。</li>
+<li>图片放大：提高输出分辨率。</li>
+<li>图片修复：改善旧照片质量。</li>
+</ul>
+<p>如果每次都从空白画布重新搭建工作流，会浪费大量时间。</p>
+<p>因此，建议建立自己的工作流库。</p>
+<h4 id="1-推荐的工作流分类"><a href="#1-推荐的工作流分类" class="headerlink" title="1. 推荐的工作流分类"></a>1. 推荐的工作流分类</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">My-ComfyUI-Workflows/</span><br><span class="line">│</span><br><span class="line">├── 01-文生图/</span><br><span class="line">│   ├── 基础文生图.json</span><br><span class="line">│   ├── SDXL文生图.json</span><br><span class="line">│   └── FLUX文生图.json</span><br><span class="line">│</span><br><span class="line">├── 02-图生图/</span><br><span class="line">│   ├── 基础图生图.json</span><br><span class="line">│   └── 风格转换.json</span><br><span class="line">│</span><br><span class="line">├── 03-局部重绘/</span><br><span class="line">│   ├── 人物局部修改.json</span><br><span class="line">│   └── 背景修改.json</span><br><span class="line">│</span><br><span class="line">├── 04-人物一致性/</span><br><span class="line">│   ├── IP-Adapter.json</span><br><span class="line">│   └── InstantID.json</span><br><span class="line">│</span><br><span class="line">├── 05-图片修复/</span><br><span class="line">│   ├── 老照片修复.json</span><br><span class="line">│   └── 图片高清放大.json</span><br><span class="line">│</span><br><span class="line">├── 06-证件照/</span><br><span class="line">│   ├── 背景替换.json</span><br><span class="line">│   └── 证件照处理.json</span><br><span class="line">│</span><br><span class="line">├── 07-视频生成/</span><br><span class="line">│   └── 图片转视频.json</span><br><span class="line">│</span><br><span class="line">└── 08-API自动化/</span><br><span class="line">    └── API文生图.json</span><br></pre></td></tr></table></figure>
+
+<p>建议同时保存两种文件：</p>
+<ul>
+<li>普通工作流 JSON：用于在 ComfyUI 界面中打开和编辑。</li>
+<li>API 格式 JSON：用于 Python 程序或其他客户端调用。</li>
+</ul>
+<p>不要只保存最终生成的图片，工作流也是非常重要的项目资料。</p>
+<h4 id="2-为每个工作流建立说明文档"><a href="#2-为每个工作流建立说明文档" class="headerlink" title="2. 为每个工作流建立说明文档"></a>2. 为每个工作流建立说明文档</h4><p>每个工作流建议配套一份说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"># 工作流名称</span><br><span class="line"></span><br><span class="line">## 主要用途</span><br><span class="line">说明这个工作流能够完成什么任务。</span><br><span class="line"></span><br><span class="line">## 模型要求</span><br><span class="line">- 基础模型：</span><br><span class="line">- VAE：</span><br><span class="line">- LoRA：</span><br><span class="line">- 其他模型：</span><br><span class="line"></span><br><span class="line">## 自定义节点</span><br><span class="line">- 节点名称：</span><br><span class="line">- 安装来源：</span><br><span class="line"></span><br><span class="line">## 输入参数</span><br><span class="line">- 图片：</span><br><span class="line">- 提示词：</span><br><span class="line">- Seed：</span><br><span class="line">- 图片尺寸：</span><br><span class="line"></span><br><span class="line">## 输出结果</span><br><span class="line">- 输出类型：</span><br><span class="line">- 保存目录：</span><br><span class="line"></span><br><span class="line">## 使用步骤</span><br><span class="line">1. 导入工作流。</span><br><span class="line">2. 检查模型。</span><br><span class="line">3. 修改参数。</span><br><span class="line">4. 点击运行。</span><br><span class="line"></span><br><span class="line">## 注意事项</span><br><span class="line">记录模型兼容性、显存要求和常见问题。</span><br></pre></td></tr></table></figure>
+
+<p>这样，即使过几个月重新使用某个工作流，也不需要重新研究一遍。</p>
+<h4 id="3-工作流版本管理"><a href="#3-工作流版本管理" class="headerlink" title="3. 工作流版本管理"></a>3. 工作流版本管理</h4><p>工作流修改后，建议保留历史版本。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">portrait_v1.json</span><br><span class="line">portrait_v2.json</span><br><span class="line">portrait_v3.json</span><br></pre></td></tr></table></figure>
+
+<p>或者使用 Git 管理工作流文件和说明文档。</p>
+<p>这样可以比较不同版本的节点变化，必要时也能恢复之前的配置。</p>
+<p>注意，模型文件通常比较大，不建议直接将大量模型文件提交到普通 Git 仓库。可以使用独立模型目录或 Git LFS 等方式管理。</p>
+<h3 id="3-3、建立一套稳定的-ComfyUI-使用流程"><a href="#3-3、建立一套稳定的-ComfyUI-使用流程" class="headerlink" title="3.3、建立一套稳定的 ComfyUI 使用流程"></a>3.3、建立一套稳定的 ComfyUI 使用流程</h3><p>实际使用时，建议按照固定流程操作。</p>
+<p><strong>第一步：明确生成目标。</strong></p>
+<p>先判断任务属于哪种类型：</p>
+<ul>
+<li>从文字生成图片。</li>
+<li>根据原图修改图片。</li>
+<li>修改指定区域。</li>
+<li>保持人物或物体特征。</li>
+<li>图片修复或放大。</li>
+<li>图片转视频。</li>
+</ul>
+<p><strong>第二步：选择合适的模型。</strong></p>
+<p>根据任务选择模型架构和配套组件，不要为了追求效果而盲目下载大型模型。</p>
+<p><strong>第三步：选择或搭建工作流。</strong></p>
+<p>优先使用已经测试成功的工作流，再根据实际需求修改节点和参数。</p>
+<p><strong>第四步：先小规模测试。</strong></p>
+<p>先使用较低分辨率、较少生成数量验证效果，确认模型和节点都正常后再提高参数。</p>
+<p><strong>第五步：保存结果和参数。</strong></p>
+<p>保存生成图片、提示词、Seed、模型信息和工作流文件。</p>
+<p><strong>第六步：整理和复盘。</strong></p>
+<p>效果好的工作流放入自己的工作流库，记录适用场景和参数范围。</p>
+<p>这套流程能够减少重复劳动，也有助于形成自己的 AI 图片处理经验。</p>
+<h2 id="四、个人项目案例：将-ComfyUI-用于实际应用"><a href="#四、个人项目案例：将-ComfyUI-用于实际应用" class="headerlink" title="四、个人项目案例：将 ComfyUI 用于实际应用"></a>四、个人项目案例：将 ComfyUI 用于实际应用</h2><p>学习 ComfyUI 的最终目的，不只是生成漂亮图片，而是把它应用到真实需求中。</p>
+<p>结合前面学习的图片处理技术，可以考虑以下项目。</p>
+<h3 id="4-1-案例一：AI-证件照制作"><a href="#4-1-案例一：AI-证件照制作" class="headerlink" title="4.1 案例一：AI 证件照制作"></a>4.1 案例一：AI 证件照制作</h3><p>证件照是一个比较适合练习 ComfyUI 的项目。</p>
+<p>基本流程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">上传或拍摄照片</span><br><span class="line">       │</span><br><span class="line">       ▼</span><br><span class="line">人物抠图</span><br><span class="line">       │</span><br><span class="line">       ▼</span><br><span class="line">背景替换</span><br><span class="line">       │</span><br><span class="line">       ▼</span><br><span class="line">服装调整（可选）</span><br><span class="line">       │</span><br><span class="line">       ▼</span><br><span class="line">人像位置与尺寸调整</span><br><span class="line">       │</span><br><span class="line">       ▼</span><br><span class="line">裁剪与输出</span><br><span class="line">       │</span><br><span class="line">       ▼</span><br><span class="line">生成证件照</span><br></pre></td></tr></table></figure>
+
+<p>可以使用人物分割、背景合成、局部重绘和图片调整等技术。</p>
+<p>不过，证件照有严格的规范要求，不能只依赖 AI 生成结果。</p>
+<p>尤其要注意：</p>
+<ul>
+<li>保持本人真实面部特征。</li>
+<li>避免改变五官、脸型和身份特征。</li>
+<li>背景颜色符合目标用途要求。</li>
+<li>头部比例、肩部位置和裁剪尺寸符合规范。</li>
+<li>输出分辨率和文件格式符合办理机构要求。</li>
+</ul>
+<p>如果用于正式证件，应以相关机构的最新照片规范为准，AI 生成后还需要进行人工检查。</p>
+<h3 id="4-2-案例二：老人照片修复与纪念照片制作"><a href="#4-2-案例二：老人照片修复与纪念照片制作" class="headerlink" title="4.2 案例二：老人照片修复与纪念照片制作"></a>4.2 案例二：老人照片修复与纪念照片制作</h3><p>老照片修复也是比较有实际价值的应用场景。</p>
+<p>常见处理需求：</p>
+<ul>
+<li>修复照片划痕和破损。</li>
+<li>改善模糊和噪点。</li>
+<li>调整亮度和对比度。</li>
+<li>适度增强人物面部细节。</li>
+<li>更换背景或调整服装。</li>
+</ul>
+<p>基本流程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">上传老照片</span><br><span class="line">     │</span><br><span class="line">     ▼</span><br><span class="line">图片质量检查</span><br><span class="line">     │</span><br><span class="line">     ▼</span><br><span class="line">划痕与破损修复</span><br><span class="line">     │</span><br><span class="line">     ▼</span><br><span class="line">人脸细节增强</span><br><span class="line">     │</span><br><span class="line">     ▼</span><br><span class="line">背景或服装调整（可选）</span><br><span class="line">     │</span><br><span class="line">     ▼</span><br><span class="line">人工检查</span><br><span class="line">     │</span><br><span class="line">     ▼</span><br><span class="line">保存修复结果</span><br></pre></td></tr></table></figure>
+
+<p>这类任务需要特别注意人物身份保持。</p>
+<p>老照片中的人脸信息可能已经不完整，AI 修复有时会生成原图中不存在的五官细节。因此，应尽量保留原始面部特征，不要将 AI 补全的细节误认为真实历史信息。</p>
+<p>对于纪念照片，也应保留原始照片，避免覆盖或丢失原始资料。</p>
+<h3 id="4-3-案例三：本地-AI-图片处理客户端"><a href="#4-3-案例三：本地-AI-图片处理客户端" class="headerlink" title="4.3 案例三：本地 AI 图片处理客户端"></a>4.3 案例三：本地 AI 图片处理客户端</h3><p>前面第 28 篇已经学习了 ComfyUI API，第 29 篇又实现了 Python 批量处理。</p>
+<p>接下来就可以把这些能力封装成一个客户端。</p>
+<p>客户端主要负责：</p>
+<ul>
+<li>选择图片。</li>
+<li>输入提示词。</li>
+<li>选择处理类型。</li>
+<li>设置图片尺寸和生成参数。</li>
+<li>提交任务。</li>
+<li>显示任务进度。</li>
+<li>展示和保存生成结果。</li>
+</ul>
+<p>整体架构可以设计为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">┌──────────────────────┐</span><br><span class="line">│      客户端           │</span><br><span class="line">│                      │</span><br><span class="line">│  图片选择 / 参数设置  │</span><br><span class="line">│  任务列表 / 结果展示  │</span><br><span class="line">└──────────┬───────────┘</span><br><span class="line">           │ HTTP / WebSocket</span><br><span class="line">           ▼</span><br><span class="line">┌──────────────────────┐</span><br><span class="line">│    Python 服务层      │</span><br><span class="line">│                      │</span><br><span class="line">│  任务管理 / 参数处理  │</span><br><span class="line">│  文件管理 / 结果返回  │</span><br><span class="line">└──────────┬───────────┘</span><br><span class="line">           │ ComfyUI API</span><br><span class="line">           ▼</span><br><span class="line">┌──────────────────────┐</span><br><span class="line">│       ComfyUI        │</span><br><span class="line">│                      │</span><br><span class="line">│  模型加载 / 工作流执行│</span><br><span class="line">│  图片生成 / 视频生成  │</span><br><span class="line">└──────────┬───────────┘</span><br><span class="line">           │</span><br><span class="line">           ▼</span><br><span class="line">┌──────────────────────┐</span><br><span class="line">│      本地模型库       │</span><br><span class="line">│                      │</span><br><span class="line">│  Checkpoint / LoRA   │</span><br><span class="line">│  ControlNet / VAE    │</span><br><span class="line">└──────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li>客户端不直接负责模型推理。</li>
+<li>Python 服务层负责管理任务和调用接口。</li>
+<li>ComfyUI 负责执行工作流。</li>
+<li>模型库负责提供生成所需的模型文件。</li>
+</ul>
+<p>这种方式可以将界面、业务逻辑和模型推理分开，后续更换客户端或调整工作流时也更方便。</p>
+<h2 id="五、ComfyUI-与-Ollama-如何配合？"><a href="#五、ComfyUI-与-Ollama-如何配合？" class="headerlink" title="五、ComfyUI 与 Ollama 如何配合？"></a>五、ComfyUI 与 Ollama 如何配合？</h2><p>如果已经了解 Ollama，也可以进一步将两者组合起来。</p>
+<p>它们解决的是不同问题：</p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>主要能力</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ollama</td>
+<td>运行本地大语言模型，处理文本和部分多模态任务</td>
+</tr>
+<tr>
+<td>ComfyUI</td>
+<td>通过节点工作流执行图片、视频等生成任务</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>连接不同服务，组织业务流程</td>
+</tr>
+<tr>
+<td>客户端</td>
+<td>提供用户操作界面</td>
+</tr>
+</tbody></table>
+<p>例如，可以设计一个简单的 AI 图片助手：</p>
+<ol>
+<li>用户输入自然语言需求。</li>
+<li>Ollama 根据需求整理提示词。</li>
+<li>Python 获取提示词并选择对应的 ComfyUI 工作流。</li>
+<li>ComfyUI 执行图片生成。</li>
+<li>Python 获取生成结果。</li>
+<li>客户端展示图片。</li>
+</ol>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">用户：</span><br><span class="line">生成一张日落时分的山水风景图</span><br><span class="line"></span><br><span class="line">        │</span><br><span class="line">        ▼</span><br><span class="line"></span><br><span class="line">Ollama：</span><br><span class="line">整理生成提示词</span><br><span class="line"></span><br><span class="line">        │</span><br><span class="line">        ▼</span><br><span class="line"></span><br><span class="line">Python：</span><br><span class="line">选择文生图工作流</span><br><span class="line"></span><br><span class="line">        │</span><br><span class="line">        ▼</span><br><span class="line"></span><br><span class="line">ComfyUI：</span><br><span class="line">执行图片生成</span><br><span class="line"></span><br><span class="line">        │</span><br><span class="line">        ▼</span><br><span class="line"></span><br><span class="line">客户端：</span><br><span class="line">展示最终图片</span><br></pre></td></tr></table></figure>
+
+<p>这只是一个简单的系统设计示例。</p>
+<p>如果要进一步实现自动化，还可以让 Ollama 根据用户需求选择不同工作流，例如文生图、图片修复、背景替换或图片放大。</p>
+<p>不过，模型选择、提示词生成和工作流执行最好保持相对独立，避免让大语言模型直接控制所有底层节点参数。</p>
+<h2 id="六、学习-ComfyUI-需要什么样的电脑？"><a href="#六、学习-ComfyUI-需要什么样的电脑？" class="headerlink" title="六、学习 ComfyUI 需要什么样的电脑？"></a>六、学习 ComfyUI 需要什么样的电脑？</h2><p>ComfyUI 对硬件的要求与模型架构、分辨率、批量大小、视频帧数和量化方式密切相关。</p>
+<p>下面是 NVIDIA 显卡显存的粗略参考：</p>
+<table>
+<thead>
+<tr>
+<th align="center">显存</th>
+<th align="center">适合的学习方向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">4GB</td>
+<td align="center">小型模型、低分辨率基础体验，部分工作流可能无法运行</td>
+</tr>
+<tr>
+<td align="center">6GB</td>
+<td align="center">部分 SD 1.5 工作流和轻量图片处理</td>
+</tr>
+<tr>
+<td align="center">8GB</td>
+<td align="center">基础文生图、图生图及部分轻量扩展</td>
+</tr>
+<tr>
+<td align="center">12GB</td>
+<td align="center">更多 SDXL 和图片处理工作流</td>
+</tr>
+<tr>
+<td align="center">16GB</td>
+<td align="center">较复杂的图像生成及部分轻量视频工作流</td>
+</tr>
+<tr>
+<td align="center">24GB 及以上</td>
+<td align="center">更适合高分辨率、较大模型和视频生成</td>
+</tr>
+</tbody></table>
+<p>以上只是经验参考，不是硬性门槛。</p>
+<p>实际运行能力还受到以下因素影响：</p>
+<ul>
+<li>模型是否支持量化。</li>
+<li>是否使用低显存加载方式。</li>
+<li>是否启用 CPU 卸载。</li>
+<li>图片分辨率和批量大小。</li>
+<li>是否同时加载多个模型。</li>
+<li>自定义节点的资源需求。</li>
+</ul>
+<p>如果电脑显存较小，建议先从 SD 1.5 等相对轻量的图片工作流开始，逐步学习模型管理、节点连接和 API 调用。</p>
+<p>对于视频生成，不建议仅凭显存容量判断能否运行，最好先确认目标模型的官方硬件要求和 ComfyUI 工作流说明。</p>
+<h2 id="七、整理一份长期维护清单"><a href="#七、整理一份长期维护清单" class="headerlink" title="七、整理一份长期维护清单"></a>七、整理一份长期维护清单</h2><p>学习结束后，可以建立一个长期维护清单。</p>
+<h3 id="7-1-模型管理"><a href="#7-1-模型管理" class="headerlink" title="7.1 模型管理"></a>7.1 模型管理</h3><ul>
+<li>按模型类型整理目录。</li>
+<li>记录模型名称、架构和来源。</li>
+<li>检查模型文件是否完整。</li>
+<li>删除不再使用的重复模型。</li>
+<li>记录模型许可和使用限制。</li>
+</ul>
+<h3 id="7-2-工作流管理"><a href="#7-2-工作流管理" class="headerlink" title="7.2 工作流管理"></a>7.2 工作流管理</h3><ul>
+<li>保存常用文生图工作流。</li>
+<li>保存图生图和局部重绘工作流。</li>
+<li>保存图片修复和放大工作流。</li>
+<li>保存视频生成工作流。</li>
+<li>保存 API 格式工作流。</li>
+<li>记录自定义节点及版本依赖。</li>
+</ul>
+<h3 id="7-3-环境管理"><a href="#7-3-环境管理" class="headerlink" title="7.3 环境管理"></a>7.3 环境管理</h3><ul>
+<li>记录 ComfyUI 版本。</li>
+<li>记录 Python 环境和依赖。</li>
+<li>记录启动参数。</li>
+<li>备份配置文件。</li>
+<li>定期检查自定义节点兼容性。</li>
+</ul>
+<h3 id="7-4-项目管理"><a href="#7-4-项目管理" class="headerlink" title="7.4 项目管理"></a>7.4 项目管理</h3><ul>
+<li>保留原始输入图片。</li>
+<li>保存生成结果和参数。</li>
+<li>记录任务执行状态。</li>
+<li>对重要工作流进行版本管理。</li>
+<li>定期测试备份是否能够恢复。</li>
+</ul>
+<p>建议在每次升级 ComfyUI 或自定义节点之前，先备份当前环境和重要工作流。不要在正在使用的环境中盲目更新所有节点，否则可能导致原本正常的工作流无法运行。</p>
+<h2 id="八、接下来如何继续深入学习？"><a href="#八、接下来如何继续深入学习？" class="headerlink" title="八、接下来如何继续深入学习？"></a>八、接下来如何继续深入学习？</h2><p>完成本系列后，可以根据自己的兴趣选择深入方向。</p>
+<table>
+<thead>
+<tr>
+<th align="center">方向</th>
+<th align="center">后续学习内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">图片生成</td>
+<td align="center">更深入学习 SDXL、FLUX 及其他图像模型</td>
+</tr>
+<tr>
+<td align="center">人物一致性</td>
+<td align="center">深入研究 IP-Adapter、InstantID 等方案</td>
+</tr>
+<tr>
+<td align="center">图片修复</td>
+<td align="center">学习人脸修复、超分辨率和图像分割</td>
+</tr>
+<tr>
+<td align="center">视频生成</td>
+<td align="center">学习 Wan、LTX-Video 等视频模型</td>
+</tr>
+<tr>
+<td align="center">自动化开发</td>
+<td align="center">学习 Python、WebSocket、任务队列和文件管理</td>
+</tr>
+<tr>
+<td align="center">AI 应用开发</td>
+<td align="center">将 ComfyUI 接入 Android、HarmonyOS、iOS 或 Web 客户端</td>
+</tr>
+<tr>
+<td align="center">AI 系统集成</td>
+<td align="center">结合 Ollama、ComfyUI 和其他本地 AI 服务</td>
+</tr>
+</tbody></table>
+<p>不建议一开始就追求复杂的多模型、多工作流系统。</p>
+<p>更有效的方式是：先选择一个实际需求，完成一个稳定、可复现、能够正常交付结果的小项目，再逐步扩展功能。</p>
+<h2 id="九、系列总结"><a href="#九、系列总结" class="headerlink" title="九、系列总结"></a>九、系列总结</h2><p>从安装 ComfyUI，到理解节点和模型，再到图片生成、图像控制、视频生成以及 API 自动化，整个系列完成了从入门到实际应用的学习过程。</p>
+<p>回顾整个过程，有三个重要认识：</p>
+<p><strong>第一，模型决定生成能力，工作流决定如何组织生成过程。</strong></p>
+<p>同一个模型可以通过不同工作流完成不同任务，理解节点之间的数据关系比单纯下载模型更重要。</p>
+<p><strong>第二，ComfyUI 不只是一个图片生成界面。</strong></p>
+<p>它可以通过 API 被 Python、桌面软件、手机应用和其他服务调用，成为本地 AI 应用中的图像生成引擎。</p>
+<p><strong>第三，真正有价值的是解决实际问题。</strong></p>
+<p>无论是证件照制作、老人照片修复、人物服装修改，还是本地 AI 图片处理客户端，都需要把模型、工作流、程序和用户需求结合起来。</p>
+<p>到这里，<strong>ComfyUI 系列 30 篇教程全部完成</strong>。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ComfyUI/" rel="tag"># ComfyUI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/ad64a656.html" rel="prev" title="ComfyUI开发之——ComfyUI自动化实战(6.4)">
+                  <i class="fa fa-angle-left"></i> ComfyUI开发之——ComfyUI自动化实战(6.4)
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"7bcb541b50cc7fcefe69ffde642aea82"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

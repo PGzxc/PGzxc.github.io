@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ja/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ja/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ja/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/ja/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/ja/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/ja/","images":"/ja/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索...","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/ja/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/ja/js/config.js" defer></script>
+
+    <meta name="description" content="一、概述1ComfyUI 图片高清放大与细节修复：不同 Upscale 方法对比">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ComfyUI开发之——ComfyUI图片高清放大与细节修复(3.3)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/d6a66f6b.html">
+<meta property="og:site_name" content="PGzxc (Japanese)">
+<meta property="og:description" content="一、概述1ComfyUI 图片高清放大与细节修复：不同 Upscale 方法对比">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-11-04T11:33:57.000Z">
+<meta property="article:modified_time" content="2026-11-05T01:59:37.229Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="ComfyUI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/d6a66f6b.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"ja","comments":true,"permalink":"https://pgzxc.github.io/posts/d6a66f6b.html","path":"posts/d6a66f6b.html","title":"ComfyUI开发之——ComfyUI图片高清放大与细节修复(3.3)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ComfyUI开发之——ComfyUI图片高清放大与细节修复(3.3) | PGzxc (Japanese)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/utils.js" defer></script><script src="/ja/js/motion.js" defer></script><script src="/ja/js/sidebar.js" defer></script><script src="/ja/js/next-boot.js" defer></script><script src="/ja/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/ja/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/ja/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/ja/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/ja/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/ja/atom.xml" title="PGzxc (Japanese)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションを切り替える" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/ja/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (Japanese)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">本から学んだことは表面的なもの；自分で体験しなければならない</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="検索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/ja/" rel="section"><i class="fa fa-bell fa-fw"></i>ホーム</a></li><li class="menu-item menu-item-nav"><a href="/ja/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>ナビゲーション</a></li><li class="menu-item menu-item-categories"><a href="/ja/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリー<span class="badge">384</span></a></li><li class="menu-item menu-item-archives"><a href="/ja/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ<span class="badge">4861</span></a></li><li class="menu-item menu-item-links"><a href="/ja/links/" rel="section"><i class="fa fa-link fa-fw"></i>リンク</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>検索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="検索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          目次
+        </li>
+        <li class="sidebar-nav-overview">
+          サイト概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9B%BE%E7%89%87%E9%AB%98%E6%B8%85%E6%94%BE%E5%A4%A7"><span class="nav-number">2.</span> <span class="nav-text">二、图片高清放大</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%9B%BE%E7%89%87%E9%AB%98%E6%B8%85%E6%94%BE%E5%A4%A7%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1、为什么需要图片高清放大？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2%E3%80%81%E4%B8%89%E7%A7%8D%E5%B8%B8%E8%A7%81%E6%94%BE%E5%A4%A7%E6%96%B9%E5%BC%8F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2、三种常见放大方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%99%AE%E9%80%9A%E5%9B%BE%E7%89%87%E7%BC%A9%E6%94%BE"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. 普通图片缩放</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-AI-%E8%B6%85%E5%88%86%E8%BE%A8%E7%8E%87%E6%94%BE%E5%A4%A7"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. AI 超分辨率放大</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%BD%9C%E7%A9%BA%E9%97%B4%E9%AB%98%E6%B8%85%E4%BF%AE%E5%A4%8D%EF%BC%88Latent-Upscale%EF%BC%89"><span class="nav-number">2.2.3.</span> <span class="nav-text">3. 潜空间高清修复（Latent Upscale）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3%E3%80%81%E5%87%86%E5%A4%87-AI-%E6%94%BE%E5%A4%A7%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.3.</span> <span class="nav-text">2.3、准备 AI 放大模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%AE%9E%E6%88%98"><span class="nav-number">3.</span> <span class="nav-text">三 实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1%E3%80%81%E5%AE%9E%E6%88%98%E4%B8%80%EF%BC%9A%E4%BD%BF%E7%94%A8%E6%99%AE%E9%80%9A%E8%8A%82%E7%82%B9%E6%94%BE%E5%A4%A7%E5%9B%BE%E7%89%87"><span class="nav-number">3.1.</span> <span class="nav-text">3.1、实战一：使用普通节点放大图片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9"><span class="nav-number">3.1.1.</span> <span class="nav-text">1. 添加节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%BF%9E%E6%8E%A5%E8%8A%82%E7%82%B9"><span class="nav-number">3.1.2.</span> <span class="nav-text">2. 连接节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E8%AE%BE%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="nav-number">3.1.3.</span> <span class="nav-text">3. 设置参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E8%BF%90%E8%A1%8C%E5%B9%B6%E6%9F%A5%E7%9C%8B%E7%BB%93%E6%9E%9C"><span class="nav-number">3.1.4.</span> <span class="nav-text">4. 运行并查看结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2%E3%80%81%E5%AE%9E%E6%88%98%E4%BA%8C%EF%BC%9A%E4%BD%BF%E7%94%A8-AI-Upscale-Model-%E6%94%BE%E5%A4%A7%E5%9B%BE%E7%89%87"><span class="nav-number">3.2.</span> <span class="nav-text">3.2、实战二：使用 AI Upscale Model 放大图片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">1. 添加节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%BF%9E%E6%8E%A5%E8%8A%82%E7%82%B9-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">2. 连接节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E9%80%89%E6%8B%A9%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.2.3.</span> <span class="nav-text">3. 选择模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E8%BF%90%E8%A1%8C%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">3.2.4.</span> <span class="nav-text">4. 运行工作流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E6%9F%A5%E7%9C%8B%E6%95%88%E6%9E%9C"><span class="nav-number">3.2.5.</span> <span class="nav-text">5. 查看效果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3%E3%80%81%E5%AE%9E%E6%88%98%E4%B8%89%EF%BC%9A%E6%BD%9C%E7%A9%BA%E9%97%B4%E6%94%BE%E5%A4%A7%E4%B8%8E%E4%BA%8C%E6%AC%A1%E9%87%87%E6%A0%B7"><span class="nav-number">3.3.</span> <span class="nav-text">3.3、实战三：潜空间放大与二次采样</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E7%90%86%E8%A7%A3%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-number">3.3.1.</span> <span class="nav-text">1. 理解工作流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9"><span class="nav-number">3.3.2.</span> <span class="nav-text">2. 添加节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E8%BF%9E%E6%8E%A5%E8%8A%82%E7%82%B9"><span class="nav-number">3.3.3.</span> <span class="nav-text">3. 连接节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E8%AE%BE%E7%BD%AE%E6%94%BE%E5%A4%A7%E5%8F%82%E6%95%B0"><span class="nav-number">3.3.4.</span> <span class="nav-text">4. 设置放大参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E5%AF%B9%E6%AF%94%E7%BB%93%E6%9E%9C"><span class="nav-number">3.3.5.</span> <span class="nav-text">5. 对比结果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E4%B8%8D%E5%90%8C%E6%94%BE%E5%A4%A7%E6%96%B9%E6%B3%95%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">四、不同放大方法如何选择？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E9%AB%98%E6%B8%85%E6%94%BE%E5%A4%A7%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">五、高清放大常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E6%94%BE%E5%A4%A7%E5%90%8E%E5%9B%BE%E7%89%87%E5%8F%8D%E8%80%8C%E4%B8%8D%E8%87%AA%E7%84%B6"><span class="nav-number">5.1.</span> <span class="nav-text">5.1. 放大后图片反而不自然</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E6%94%BE%E5%A4%A7%E5%90%8E%E4%BA%BA%E8%84%B8%E5%8F%91%E7%94%9F%E5%8F%98%E5%8C%96"><span class="nav-number">5.2.</span> <span class="nav-text">5.2. 放大后人脸发生变化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E6%98%BE%E5%AD%98%E4%B8%8D%E8%B6%B3"><span class="nav-number">5.3.</span> <span class="nav-text">5.3. 显存不足</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-%E6%89%BE%E4%B8%8D%E5%88%B0-Upscale-Model"><span class="nav-number">5.4.</span> <span class="nav-text">5.4. 找不到 Upscale Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-%E8%BE%93%E5%87%BA%E5%9B%BE%E7%89%87%E5%B0%BA%E5%AF%B8%E8%BF%87%E5%A4%A7"><span class="nav-number">5.5.</span> <span class="nav-text">5.5. 输出图片尺寸过大</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E6%9C%AC%E7%AF%87%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">六、本篇总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/ja/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/ja/archives/">
+          <span class="site-state-item-count">4861</span>
+          <span class="site-state-item-name">投稿</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/ja/categories/">
+        <span class="site-state-item-count">384</span>
+        <span class="site-state-item-name">カテゴリー</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/ja/tags/">
+        <span class="site-state-item-count">704</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/d6a66f6b.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/ja/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ComfyUI开发之——ComfyUI图片高清放大与细节修复(3.3) | PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ComfyUI开发之——ComfyUI图片高清放大与细节修复(3.3)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/ComfyUI%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94ComfyUI%E5%9B%BE%E7%89%87%E9%AB%98%E6%B8%85%E6%94%BE%E5%A4%A7%E4%B8%8E%E7%BB%86%E8%8A%82%E4%BF%AE%E5%A4%8D-3-3.md" class="post-edit-link" title="編集" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2026-11-04 19:33:57" itemprop="dateCreated datePublished" datetime="2026-11-04T19:33:57+08:00">2026-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/" itemprop="url" rel="index"><span itemprop="name">AI图视频短剧</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">AI绘图</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/ComfyUI/" itemprop="url" rel="index"><span itemprop="name">ComfyUI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="読書時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">読書時間 &asymp;</span>
+      <span>4 分</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI 图片高清放大与细节修复：不同 Upscale 方法对比</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二、图片高清放大"><a href="#二、图片高清放大" class="headerlink" title="二、图片高清放大"></a>二、图片高清放大</h2><h3 id="2-1、为什么需要图片高清放大？"><a href="#2-1、为什么需要图片高清放大？" class="headerlink" title="2.1、为什么需要图片高清放大？"></a>2.1、为什么需要图片高清放大？</h3><p>使用 ComfyUI 生成图片时，通常会受到模型、分辨率和显存的限制。</p>
+<p>例如：</p>
+<ul>
+<li>SD 1.5 常见生成尺寸为 512×512。</li>
+<li>SDXL 常见生成尺寸为 1024×1024。</li>
+<li>更高分辨率可能带来更大的显存占用和生成时间。</li>
+</ul>
+<p>如果希望将图片用于打印、证件照、海报或高清展示，原始图片可能无法满足需求。</p>
+<p>这时就需要使用图片高清放大（Upscale）。</p>
+<p>但需要注意：<strong>普通图片放大只是增加像素数量，不一定能恢复真实细节；AI 高清放大则可以利用模型重新生成或补充部分细节。</strong></p>
+<p>ComfyUI 常见的图片放大方式有三种：</p>
+<ol>
+<li>普通图片缩放：调整图片尺寸，不主动生成新细节。</li>
+<li>AI 超分辨率放大：使用专门的 Upscale Model 提升分辨率和清晰度。</li>
+<li>潜空间高清修复：放大潜空间，再通过采样重新生成细节。</li>
+</ol>
+<p>下面分别介绍。</p>
+<h3 id="2-2、三种常见放大方式"><a href="#2-2、三种常见放大方式" class="headerlink" title="2.2、三种常见放大方式"></a>2.2、三种常见放大方式</h3><h4 id="1-普通图片缩放"><a href="#1-普通图片缩放" class="headerlink" title="1. 普通图片缩放"></a>1. 普通图片缩放</h4><p>普通缩放主要是调整图片的宽度和高度。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">原图：512 × 512</span><br><span class="line"></span><br><span class="line">放大后：1024 × 1024</span><br></pre></td></tr></table></figure>
+
+<p>可以使用 ComfyUI 中的 Image Scale 节点。</p>
+<p>常见插值算法包括：</p>
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>nearest-exact</td>
+<td>最近邻，速度快，但容易出现像素块</td>
+</tr>
+<tr>
+<td>bilinear</td>
+<td>双线性插值，结果比较平滑</td>
+</tr>
+<tr>
+<td>bicubic</td>
+<td>双三次插值，通常比双线性更细腻</td>
+</tr>
+<tr>
+<td>lanczos</td>
+<td>常用于图片缩放，能够保留较多边缘细节</td>
+</tr>
+</tbody></table>
+<p>普通缩放的优点是速度快、操作简单，不需要额外下载 AI 放大模型。</p>
+<p>缺点是无法真正恢复原图中不存在的细节。放大后可能只是图片尺寸变大，并没有明显变清晰。</p>
+<p>适合简单调整尺寸、预处理图片以及输出尺寸要求明确的场景。</p>
+<h4 id="2-AI-超分辨率放大"><a href="#2-AI-超分辨率放大" class="headerlink" title="2. AI 超分辨率放大"></a>2. AI 超分辨率放大</h4><p>AI 超分辨率（Super Resolution）使用专门训练的模型，对低分辨率图片进行放大和细节增强。</p>
+<p>ComfyUI 常见的模型包括：</p>
+<ul>
+<li>RealESRGAN 系列。</li>
+<li>ESRGAN 系列。</li>
+<li>其他针对人像、动漫或通用图片训练的 Upscale Model。</li>
+</ul>
+<p>例如，一张 512×512 的图片，使用 4x 放大模型后，理论输出尺寸可以达到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">512 × 512</span><br><span class="line">      ↓</span><br><span class="line">2048 × 2048</span><br></pre></td></tr></table></figure>
+
+<p>AI 放大不仅增加像素，还可能重新生成纹理、边缘和局部细节。</p>
+<p>不同模型的效果有所区别：</p>
+<table>
+<thead>
+<tr>
+<th>模型类型</th>
+<th>常见用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RealESRGAN</td>
+<td>通用图片、照片增强</td>
+</tr>
+<tr>
+<td>ESRGAN</td>
+<td>图片纹理和细节增强</td>
+</tr>
+<tr>
+<td>Anime 类放大模型</td>
+<td>动漫、插画</td>
+</tr>
+<tr>
+<td>人像增强模型</td>
+<td>人脸和人物细节优化</td>
+</tr>
+</tbody></table>
+<p>需要注意，AI 放大生成的细节不一定完全符合原始场景，尤其是人脸、文字和小物体，可能出现细节偏差。</p>
+<h4 id="3-潜空间高清修复（Latent-Upscale）"><a href="#3-潜空间高清修复（Latent-Upscale）" class="headerlink" title="3. 潜空间高清修复（Latent Upscale）"></a>3. 潜空间高清修复（Latent Upscale）</h4><p>潜空间高清修复与前两种方法不同。</p>
+<p>它不是直接对最终图片进行放大，而是在潜空间中先放大图像数据，再通过 KSampler 重新采样，生成更高分辨率的图片。</p>
+<p>基本流程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">文生图工作流</span><br><span class="line">     ↓</span><br><span class="line">生成初始潜空间</span><br><span class="line">     ↓</span><br><span class="line">Latent Upscale</span><br><span class="line">     ↓</span><br><span class="line">KSampler 重新采样</span><br><span class="line">     ↓</span><br><span class="line">VAE Decode</span><br><span class="line">     ↓</span><br><span class="line">高清图片</span><br></pre></td></tr></table></figure>
+
+<p>这种方式可以在放大图片的同时重新生成细节，适合改善人物、建筑和复杂场景的纹理。</p>
+<p>但它也有缺点：</p>
+<ul>
+<li>显存占用更高。</li>
+<li>生成时间更长。</li>
+<li>Denoise 设置不合适时，可能改变原图构图。</li>
+<li>可能出现人物面部、物体形状变化。</li>
+</ul>
+<p>因此，潜空间高清修复更适合对生成图片进行二次优化，而不是单纯调整图片尺寸。</p>
+<h3 id="2-3、准备-AI-放大模型"><a href="#2-3、准备-AI-放大模型" class="headerlink" title="2.3、准备 AI 放大模型"></a>2.3、准备 AI 放大模型</h3><p>如果使用 AI 超分辨率放大，需要准备对应的 Upscale Model。</p>
+<p>ComfyUI 常见的模型目录：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI/</span><br><span class="line">└── models/</span><br><span class="line">    └── upscale_models/</span><br></pre></td></tr></table></figure>
+
+<p>常见模型文件格式包括：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.pth</span><br><span class="line">.safetensors</span><br></pre></td></tr></table></figure>
+
+<p>模型可以从 Hugging Face、GitHub 或可信的模型发布页面获取。</p>
+<p>下载时需要注意：</p>
+<ol>
+<li>确认模型用途，是通用照片、人像还是动漫。</li>
+<li>确认模型支持的放大倍率。</li>
+<li>确认模型文件格式和 ComfyUI 加载节点兼容。</li>
+<li>不要下载来源不明的模型文件。</li>
+</ol>
+<p>放入目录后，如果 ComfyUI 没有自动识别，可以重新启动或刷新模型列表。</p>
+<h2 id="三-实战"><a href="#三-实战" class="headerlink" title="三 实战"></a>三 实战</h2><h3 id="3-1、实战一：使用普通节点放大图片"><a href="#3-1、实战一：使用普通节点放大图片" class="headerlink" title="3.1、实战一：使用普通节点放大图片"></a>3.1、实战一：使用普通节点放大图片</h3><p>先从最简单的方式开始，理解 ComfyUI 图片缩放流程。</p>
+<h4 id="1-添加节点"><a href="#1-添加节点" class="headerlink" title="1. 添加节点"></a>1. 添加节点</h4><p>添加以下节点：</p>
+<table>
+<thead>
+<tr>
+<th>节点</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Load Image</td>
+<td>加载原图</td>
+</tr>
+<tr>
+<td>Image Scale</td>
+<td>调整图片尺寸</td>
+</tr>
+<tr>
+<td>Save Image</td>
+<td>保存图片</td>
+</tr>
+</tbody></table>
+<h4 id="2-连接节点"><a href="#2-连接节点" class="headerlink" title="2. 连接节点"></a>2. 连接节点</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Load Image</span><br><span class="line">    ↓ IMAGE</span><br><span class="line">Image Scale</span><br><span class="line">    ↓ IMAGE</span><br><span class="line">Save Image</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-设置参数"><a href="#3-设置参数" class="headerlink" title="3. 设置参数"></a>3. 设置参数</h4><p>假设原图尺寸为 512×512，希望放大到 1024×1024。</p>
+<p>可以设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">width = 1024</span><br><span class="line">height = 1024</span><br><span class="line">upscale_method = lanczos</span><br></pre></td></tr></table></figure>
+
+<p>如果节点提供保持宽高比的选项，建议开启，避免图片变形。</p>
+<h4 id="4-运行并查看结果"><a href="#4-运行并查看结果" class="headerlink" title="4. 运行并查看结果"></a>4. 运行并查看结果</h4><p>点击 Queue Prompt，生成图片。</p>
+<p>可以分别尝试：</p>
+<ul>
+<li>nearest-exact</li>
+<li>bilinear</li>
+<li>bicubic</li>
+<li>lanczos</li>
+</ul>
+<p>对比不同算法的效果。</p>
+<p>这种方式适合快速调整图片尺寸，但不要将它与 AI 超分辨率混为一谈。</p>
+<h3 id="3-2、实战二：使用-AI-Upscale-Model-放大图片"><a href="#3-2、实战二：使用-AI-Upscale-Model-放大图片" class="headerlink" title="3.2、实战二：使用 AI Upscale Model 放大图片"></a>3.2、实战二：使用 AI Upscale Model 放大图片</h3><p>接下来使用 AI 放大模型进行图片增强。</p>
+<h4 id="1-添加节点-1"><a href="#1-添加节点-1" class="headerlink" title="1. 添加节点"></a>1. 添加节点</h4><p>传统 ComfyUI 工作流通常使用：</p>
+<table>
+<thead>
+<tr>
+<th>节点</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Load Image</td>
+<td>加载原图</td>
+</tr>
+<tr>
+<td>UpscaleModelLoader</td>
+<td>加载 AI 放大模型</td>
+</tr>
+<tr>
+<td>ImageUpscaleWithModel</td>
+<td>使用模型放大图片</td>
+</tr>
+<tr>
+<td>Save Image</td>
+<td>保存结果</td>
+</tr>
+</tbody></table>
+<h4 id="2-连接节点-1"><a href="#2-连接节点-1" class="headerlink" title="2. 连接节点"></a>2. 连接节点</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Load Image</span><br><span class="line">    ↓ IMAGE</span><br><span class="line">ImageUpscaleWithModel</span><br><span class="line">    ↓ IMAGE</span><br><span class="line">Save Image</span><br><span class="line"></span><br><span class="line">UpscaleModelLoader</span><br><span class="line">    ↓ UPSCALE_MODEL</span><br><span class="line">ImageUpscaleWithModel</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-选择模型"><a href="#3-选择模型" class="headerlink" title="3. 选择模型"></a>3. 选择模型</h4><p>在 UpscaleModelLoader 中选择已经下载的模型。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RealESRGAN_x4plus.pth</span><br></pre></td></tr></table></figure>
+
+<p>不同模型名称和文件可能有所区别，以实际下载内容为准。</p>
+<h4 id="4-运行工作流"><a href="#4-运行工作流" class="headerlink" title="4. 运行工作流"></a>4. 运行工作流</h4><p>点击 Queue Prompt，等待图片放大完成。</p>
+<p>如果原图是 512×512，使用 4x 模型后，输出尺寸通常为 2048×2048。</p>
+<p>注意：模型倍率、实际输出尺寸以及显存占用需要结合具体模型和节点实现确认。</p>
+<h4 id="5-查看效果"><a href="#5-查看效果" class="headerlink" title="5. 查看效果"></a>5. 查看效果</h4><p>建议将原图和放大后的图片放在一起对比，重点观察：</p>
+<ul>
+<li>人物面部是否更加清晰。</li>
+<li>头发和衣服纹理是否得到改善。</li>
+<li>建筑边缘是否自然。</li>
+<li>图片是否出现过度锐化。</li>
+<li>是否产生原图中不存在的细节。</li>
+</ul>
+<p>AI 放大不一定每次都更好。如果出现明显的虚假纹理或人脸变形，可以尝试更换模型。</p>
+<h3 id="3-3、实战三：潜空间放大与二次采样"><a href="#3-3、实战三：潜空间放大与二次采样" class="headerlink" title="3.3、实战三：潜空间放大与二次采样"></a>3.3、实战三：潜空间放大与二次采样</h3><p>如果希望在放大分辨率的同时，让模型重新生成细节，可以使用 Latent Upscale。</p>
+<p>这里以传统 SD 1.5 文生图工作流为基础。</p>
+<h4 id="1-理解工作流程"><a href="#1-理解工作流程" class="headerlink" title="1. 理解工作流程"></a>1. 理解工作流程</h4><p>普通文生图：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Empty Latent Image</span><br><span class="line">       ↓</span><br><span class="line">    KSampler</span><br><span class="line">       ↓</span><br><span class="line">   VAE Decode</span><br><span class="line">       ↓</span><br><span class="line">    Save Image</span><br></pre></td></tr></table></figure>
+
+<p>潜空间放大：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Empty Latent Image</span><br><span class="line">       ↓</span><br><span class="line">    KSampler</span><br><span class="line">       ↓</span><br><span class="line">Latent Upscale</span><br><span class="line">       ↓</span><br><span class="line">    KSampler 2</span><br><span class="line">       ↓</span><br><span class="line">   VAE Decode</span><br><span class="line">       ↓</span><br><span class="line">    Save Image</span><br></pre></td></tr></table></figure>
+
+<p>第一个 KSampler 负责生成基础图片，Latent Upscale 负责放大潜空间，第二个 KSampler 负责重新采样和细节优化。</p>
+<h4 id="2-添加节点"><a href="#2-添加节点" class="headerlink" title="2. 添加节点"></a>2. 添加节点</h4><p>在原有文生图工作流基础上，增加：</p>
+<ul>
+<li>Latent Upscale。</li>
+<li>第二个 KSampler。</li>
+</ul>
+<p>具体节点名称可能因 ComfyUI 版本而略有差异。</p>
+<h4 id="3-连接节点"><a href="#3-连接节点" class="headerlink" title="3. 连接节点"></a>3. 连接节点</h4><p>第一个 KSampler 的 LATENT 输出连接到 Latent Upscale 的 samples。</p>
+<p>Latent Upscale 的 LATENT 输出连接到第二个 KSampler 的 latent_image。</p>
+<p>第二个 KSampler 的 MODEL、positive、negative 可以继续使用原来的模型和提示词输出。</p>
+<p>第二个 KSampler 的 LATENT 输出连接到 VAE Decode 的 samples。</p>
+<h4 id="4-设置放大参数"><a href="#4-设置放大参数" class="headerlink" title="4. 设置放大参数"></a>4. 设置放大参数</h4><p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">第一次生成：</span><br><span class="line">width = 512</span><br><span class="line">height = 512</span><br><span class="line">steps = 20</span><br><span class="line"></span><br><span class="line">Latent Upscale：</span><br><span class="line">width = 768</span><br><span class="line">height = 768</span><br><span class="line"></span><br><span class="line">第二次采样：</span><br><span class="line">steps = 15</span><br><span class="line">denoise = 0.35</span><br></pre></td></tr></table></figure>
+
+<p>这里的参数仅作为 SD 1.5 的入门测试示例。</p>
+<p>第二次采样的 Denoise 可以从 0.2～0.4 开始尝试：</p>
+<ul>
+<li>较低：尽量保留原图结构。</li>
+<li>较高：允许模型重新生成更多细节。</li>
+</ul>
+<p>如果 Denoise 太高，可能导致人物、构图或物体发生变化。</p>
+<h4 id="5-对比结果"><a href="#5-对比结果" class="headerlink" title="5. 对比结果"></a>5. 对比结果</h4><p>重点比较：</p>
+<ul>
+<li>原图与放大图的构图是否一致。</li>
+<li>人物细节是否改善。</li>
+<li>纹理是否自然。</li>
+<li>是否出现不必要的内容变化。</li>
+</ul>
+<p>这种方式适合希望进一步优化 AI 生成图片的场景。</p>
+<h2 id="四、不同放大方法如何选择？"><a href="#四、不同放大方法如何选择？" class="headerlink" title="四、不同放大方法如何选择？"></a>四、不同放大方法如何选择？</h2><p>三种方法各有用途，不需要所有图片都使用最复杂的工作流。</p>
+<table>
+<thead>
+<tr>
+<th>放大方式</th>
+<th>速度</th>
+<th>细节增强</th>
+<th>显存要求</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Image Scale</td>
+<td>快</td>
+<td>基本没有</td>
+<td>低</td>
+<td>调整图片尺寸</td>
+</tr>
+<tr>
+<td>AI Upscale Model</td>
+<td>较快</td>
+<td>有</td>
+<td>视模型和图片尺寸而定</td>
+<td>图片清晰度增强</td>
+</tr>
+<tr>
+<td>Latent Upscale</td>
+<td>较慢</td>
+<td>可重新生成细节</td>
+<td>较高</td>
+<td>AI 图片二次优化</td>
+</tr>
+</tbody></table>
+<p>我的建议：</p>
+<ul>
+<li>只是需要改变图片尺寸：使用 Image Scale。</li>
+<li>希望图片更清晰：先尝试 AI Upscale Model。</li>
+<li>希望放大后重新生成细节：使用 Latent Upscale。</li>
+</ul>
+<p>也可以组合使用，例如先通过 AI 模型放大，再进行适当的细节修复。</p>
+<h2 id="五、高清放大常见问题"><a href="#五、高清放大常见问题" class="headerlink" title="五、高清放大常见问题"></a>五、高清放大常见问题</h2><h3 id="5-1-放大后图片反而不自然"><a href="#5-1-放大后图片反而不自然" class="headerlink" title="5.1. 放大后图片反而不自然"></a>5.1. 放大后图片反而不自然</h3><p>可能原因：</p>
+<ul>
+<li>模型不适合当前图片类型。</li>
+<li>模型过度增强纹理。</li>
+<li>原图质量太低。</li>
+<li>放大倍率过高。</li>
+</ul>
+<p>建议更换模型，或者降低处理强度。</p>
+<h3 id="5-2-放大后人脸发生变化"><a href="#5-2-放大后人脸发生变化" class="headerlink" title="5.2. 放大后人脸发生变化"></a>5.2. 放大后人脸发生变化</h3><p>AI 放大可能会重新生成面部细节。</p>
+<p>如果对人物身份和面部一致性要求较高，需要谨慎选择人像增强模型，并对结果进行人工检查。</p>
+<p>对于证件照、纪念照等用途，不应该直接将 AI 补充的面部细节当成真实信息。</p>
+<h3 id="5-3-显存不足"><a href="#5-3-显存不足" class="headerlink" title="5.3. 显存不足"></a>5.3. 显存不足</h3><p>图片分辨率越高，处理时通常需要更多显存。</p>
+<p>可以尝试：</p>
+<ul>
+<li>降低输入图片尺寸。</li>
+<li>分阶段放大，不要一次放大太多。</li>
+<li>使用支持分块处理的放大节点或模型。</li>
+<li>关闭其他占用显存的程序。</li>
+<li>减少不必要的工作流节点。</li>
+</ul>
+<p>注意，分块处理可能在接缝处出现不自然的痕迹，具体取决于节点和模型。</p>
+<h3 id="5-4-找不到-Upscale-Model"><a href="#5-4-找不到-Upscale-Model" class="headerlink" title="5.4. 找不到 Upscale Model"></a>5.4. 找不到 Upscale Model</h3><p>检查：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI/models/upscale_models/</span><br></pre></td></tr></table></figure>
+
+<p>确认模型文件是否放在正确目录。</p>
+<p>如果已经放入但列表中没有显示，可以尝试刷新模型列表或重新启动 ComfyUI。</p>
+<h3 id="5-5-输出图片尺寸过大"><a href="#5-5-输出图片尺寸过大" class="headerlink" title="5.5. 输出图片尺寸过大"></a>5.5. 输出图片尺寸过大</h3><p>例如使用 4x 放大：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1024 × 1024</span><br><span class="line">      ↓</span><br><span class="line">4096 × 4096</span><br></pre></td></tr></table></figure>
+
+<p>图片尺寸增大后，内存占用和处理时间也会增加。</p>
+<p>建议根据最终用途确定输出尺寸，不要盲目追求越大越好。</p>
+<h2 id="六、本篇总结"><a href="#六、本篇总结" class="headerlink" title="六、本篇总结"></a>六、本篇总结</h2><p>本篇学习了 ComfyUI 的三种常见图片放大方式：</p>
+<ol>
+<li>Image Scale：普通图片缩放，只调整尺寸。</li>
+<li>AI Upscale Model：利用专门的模型增强图片细节。</li>
+<li>Latent Upscale：在潜空间中放大，再通过采样重新生成细节。</li>
+</ol>
+<p>需要重点理解：</p>
+<ul>
+<li>图片放大不等于真实细节恢复。</li>
+<li>不同 Upscale Model 适合不同图片类型。</li>
+<li>潜空间放大可以重新生成细节，但也可能改变原图内容。</li>
+<li>分辨率越高，通常对显存和处理时间的要求越高。</li>
+</ul>
+<p>建议分别使用三种方法处理同一张图片，保存结果并进行对比，找到适合自己电脑和图片类型的方案。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/ja/tags/ComfyUI/" rel="tag"># ComfyUI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ja/posts/93768c72.html" rel="prev" title="ComfyUI开发之——ComfyUI局部重绘(3.2)">
+                  <i class="fa fa-angle-left"></i> ComfyUI开发之——ComfyUI局部重绘(3.2)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ja/posts/2579ff86.html" rel="next" title="ComfyUI开发之——LoRA使用教程(3.4)">
+                  ComfyUI开发之——LoRA使用教程(3.4) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"197d0dcfa4946a27b8d5af8282de612e"}</script>
+<script src="/ja/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

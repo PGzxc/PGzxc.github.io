@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="一 概述12345678910111213本文介绍：拆解默认文生图节点与数据流向上一篇，我们已经从空白画布搭建了第一个 ComfyUI 文生图工作流，了解了 Checkpoint、CLIP Text Encode、KSampler、VAE Decode 等节点的连接方式。但工作流能运行，并不代表我们真正理解了它。ComfyUI 与普通图形界面工具最大的区别，就是它通过节点和连线传递数据。每个节点负">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ComfyUI开发之——ComfyUI工作流详解(2.1)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/9075b64d.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="一 概述12345678910111213本文介绍：拆解默认文生图节点与数据流向上一篇，我们已经从空白画布搭建了第一个 ComfyUI 文生图工作流，了解了 Checkpoint、CLIP Text Encode、KSampler、VAE Decode 等节点的连接方式。但工作流能运行，并不代表我们真正理解了它。ComfyUI 与普通图形界面工具最大的区别，就是它通过节点和连线传递数据。每个节点负">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-11-04T11:28:57.000Z">
+<meta property="article:modified_time" content="2026-11-05T01:59:37.037Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="ComfyUI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/9075b64d.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/9075b64d.html","path":"posts/9075b64d.html","title":"ComfyUI开发之——ComfyUI工作流详解(2.1)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ComfyUI开发之——ComfyUI工作流详解(2.1) | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">384</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4861</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%85%88%E7%9C%8B%E6%87%82%E6%95%B4%E4%B8%AA%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">2.</span> <span class="nav-text">二、先看懂整个工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%96%87%E7%94%9F%E5%9B%BE%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%BB%84%E6%88%90"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 文生图工作流组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B%E7%90%86%E8%A7%A3"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 整体流程理解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E8%AE%A4%E8%AF%86%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%AD%E7%9A%84%E5%85%AD%E7%A7%8D%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE"><span class="nav-number">3.</span> <span class="nav-text">三、认识工作流中的六种核心数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-6%E4%B8%AD%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 6中核心数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%85%AD%E7%A7%8D%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE%E8%AF%A6%E8%A7%A3"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 六种核心数据详解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%80%90%E4%B8%AA%E8%8A%82%E7%82%B9%E8%BF%BD%E8%B8%AA%E6%95%B0%E6%8D%AE%E6%B5%81%E5%90%91"><span class="nav-number">4.</span> <span class="nav-text">四、逐个节点追踪数据流向</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Load-Checkpoint%EF%BC%9A%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 Load Checkpoint：加载模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-CLIP-Text-Encode%EF%BC%9A%E7%BC%96%E7%A0%81%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 CLIP Text Encode：编码提示词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-Empty-Latent-Image%EF%BC%9A%E5%88%9B%E5%BB%BA%E5%88%9D%E5%A7%8B%E7%94%BB%E5%B8%83"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 Empty Latent Image：创建初始画布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-KSampler%EF%BC%9A%E6%A0%B8%E5%BF%83%E9%87%87%E6%A0%B7%E8%8A%82%E7%82%B9"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 KSampler：核心采样节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-VAE-Decode%EF%BC%9A%E5%B0%86%E6%BD%9C%E7%A9%BA%E9%97%B4%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%9B%BE%E7%89%87"><span class="nav-number">4.5.</span> <span class="nav-text">4.5 VAE Decode：将潜空间转换为图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-Save-Image%EF%BC%9A%E4%BF%9D%E5%AD%98%E7%94%9F%E6%88%90%E7%BB%93%E6%9E%9C"><span class="nav-number">4.6.</span> <span class="nav-text">4.6. Save Image：保存生成结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81ComfyUI-%E6%98%AF%E6%8C%89%E7%85%A7%E4%BB%8E%E5%B7%A6%E5%88%B0%E5%8F%B3%E7%9A%84%E9%A1%BA%E5%BA%8F%E6%89%A7%E8%A1%8C%E5%90%97%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">五、ComfyUI 是按照从左到右的顺序执行吗？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 执行顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E7%A4%BA%E4%BE%8B"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E8%BF%9E%E7%BA%BF%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%98%AF%E5%90%A6%E6%AD%A3%E7%A1%AE%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">六、如何判断连线和数据类型是否正确？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-%E8%BF%9E%E7%BA%BF%E5%8C%BA%E5%88%86"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 连线区分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-%E6%A3%80%E6%9F%A5%E6%83%85%E5%86%B5"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 检查情况</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%8A%A8%E6%89%8B%E7%BB%83%E4%B9%A0%EF%BC%9A%E8%A7%82%E5%AF%9F%E6%95%B0%E6%8D%AE%E6%B5%81%E5%8F%98%E5%8C%96"><span class="nav-number">7.</span> <span class="nav-text">七、动手练习：观察数据流变化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-%E7%BB%83%E4%B9%A0%E4%B8%80%EF%BC%9A%E4%BF%AE%E6%94%B9%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 练习一：修改提示词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-%E7%BB%83%E4%B9%A0%E4%BA%8C%EF%BC%9A%E4%BF%AE%E6%94%B9%E5%9B%BE%E7%89%87%E5%B0%BA%E5%AF%B8"><span class="nav-number">7.2.</span> <span class="nav-text">7.2 练习二：修改图片尺寸</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-%E7%BB%83%E4%B9%A0%E4%B8%89%EF%BC%9A%E5%9B%BA%E5%AE%9A-Seed"><span class="nav-number">7.3.</span> <span class="nav-text">7.3 练习三：固定 Seed</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-%E7%BB%83%E4%B9%A0%E5%9B%9B%EF%BC%9A%E8%A7%82%E5%AF%9F-VAE-%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">7.4.</span> <span class="nav-text">7.4 练习四：观察 VAE 的作用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">8.</span> <span class="nav-text">八、总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-%E4%B8%BB%E7%BA%BF"><span class="nav-number">8.1.</span> <span class="nav-text">8.1 主线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-%E6%A0%B8%E5%BF%83%E6%95%B0%E6%8D%AE"><span class="nav-number">8.2.</span> <span class="nav-text">8.2 核心数据</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4861</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">384</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">704</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/9075b64d.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ComfyUI开发之——ComfyUI工作流详解(2.1) | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ComfyUI开发之——ComfyUI工作流详解(2.1)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/ComfyUI%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94ComfyUI%E5%B7%A5%E4%BD%9C%E6%B5%81%E8%AF%A6%E8%A7%A3-2-1.md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2026-11-04 19:28:57" itemprop="dateCreated datePublished" datetime="2026-11-04T19:28:57+08:00">2026-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/" itemprop="url" rel="index"><span itemprop="name">AI图视频短剧</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">AI绘图</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/ComfyUI/" itemprop="url" rel="index"><span itemprop="name">ComfyUI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>4 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一 概述"></a>一 概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">本文介绍：拆解默认文生图节点与数据流向</span><br><span class="line"></span><br><span class="line">上一篇，我们已经从空白画布搭建了第一个 ComfyUI 文生图工作流，</span><br><span class="line">了解了 Checkpoint、CLIP Text Encode、KSampler、VAE Decode 等节点的连接方式。</span><br><span class="line"></span><br><span class="line">但工作流能运行，并不代表我们真正理解了它。</span><br><span class="line"></span><br><span class="line">ComfyUI 与普通图形界面工具最大的区别，就是它通过节点和连线传递数据。</span><br><span class="line">每个节点负责一项任务，前一个节点的输出会成为后一个节点的输入。</span><br><span class="line"></span><br><span class="line">这篇文章就以经典SD 1.5文生图工作流为例，拆解节点之间的数据传递关系，理解一张图片究竟是如何生成的。</span><br><span class="line"></span><br><span class="line">注意：本文讲解的是 SD 1.5 经典文生图工作流。SDXL、FLUX、Qwen Image 等模型的节点结构和数据流可能不同，不能直接照搬。</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二、先看懂整个工作流"><a href="#二、先看懂整个工作流" class="headerlink" title="二、先看懂整个工作流"></a>二、先看懂整个工作流</h2><h3 id="2-1-文生图工作流组成"><a href="#2-1-文生图工作流组成" class="headerlink" title="2.1 文生图工作流组成"></a>2.1 文生图工作流组成</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">经典文生图工作流主要由以下几个部分组成：</span><br><span class="line"></span><br><span class="line">1. 加载模型：提供模型、文本编码器和 VAE。</span><br><span class="line">2. 编码提示词：将正向和负向提示词转换为条件数据。</span><br><span class="line">3. 准备画布：创建指定尺寸的潜空间数据。</span><br><span class="line">4. 采样生成：根据模型、提示词和初始潜空间进行去噪计算。</span><br><span class="line">5. 解码图片：将潜空间数据转换为普通图片。</span><br><span class="line">6. 保存图片：将生成结果保存到本地。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-整体流程理解"><a href="#2-2-整体流程理解" class="headerlink" title="2.2 整体流程理解"></a>2.2 整体流程理解</h3><p>整体流程可以简单理解为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">                   Load Checkpoint</span><br><span class="line">                  /       |        \</span><br><span class="line">              MODEL     CLIP       VAE</span><br><span class="line">                |       /   \        |</span><br><span class="line">                |      /     \       |</span><br><span class="line">                |  正向提示词 负向提示词 |</span><br><span class="line">                |      |       |     |</span><br><span class="line">                |  CONDITIONING  CONDITIONING</span><br><span class="line">                |      |       |</span><br><span class="line">                |      +---+---+</span><br><span class="line">                |          |</span><br><span class="line">Empty Latent Image         |</span><br><span class="line">        |                  |</span><br><span class="line">        +-------&gt; KSampler &lt;+</span><br><span class="line">                     |</span><br><span class="line">                  LATENT</span><br><span class="line">                     |</span><br><span class="line">                 VAE Decode &lt;--- VAE</span><br><span class="line">                     |</span><br><span class="line">                   IMAGE</span><br><span class="line">                     |</span><br><span class="line">                 Save Image</span><br></pre></td></tr></table></figure>
+
+<p>这张图展示了数据的主要流向。接下来，我们从节点输出的数据类型开始理解。</p>
+<h2 id="三、认识工作流中的六种核心数据"><a href="#三、认识工作流中的六种核心数据" class="headerlink" title="三、认识工作流中的六种核心数据"></a>三、认识工作流中的六种核心数据</h2><h3 id="3-1-6中核心数据"><a href="#3-1-6中核心数据" class="headerlink" title="3.1 6中核心数据"></a>3.1 6中核心数据</h3><p>在 ComfyUI 中，节点之间传递的不只是普通文本和图片，还包括模型对象、条件数据以及潜空间数据。</p>
+<table>
+<thead>
+<tr>
+<th align="center">数据类型</th>
+<th align="center">作用</th>
+<th align="center">通俗理解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">MODEL</td>
+<td align="center">扩散模型</td>
+<td align="center">负责生成图片的核心模型</td>
+</tr>
+<tr>
+<td align="center">CLIP</td>
+<td align="center">文本编码器</td>
+<td align="center">负责理解提示词</td>
+</tr>
+<tr>
+<td align="center">CONDITIONING</td>
+<td align="center">条件数据</td>
+<td align="center">提示词经过编码后的结果</td>
+</tr>
+<tr>
+<td align="center">LATENT</td>
+<td align="center">潜空间数据</td>
+<td align="center">尚未解码成普通图片的数据</td>
+</tr>
+<tr>
+<td align="center">VAE</td>
+<td align="center">编码与解码模型</td>
+<td align="center">负责潜空间与图片之间的转换</td>
+</tr>
+<tr>
+<td align="center">IMAGE</td>
+<td align="center">图片数据</td>
+<td align="center">可以预览和保存的普通图片</td>
+</tr>
+</tbody></table>
+<p>其中，最容易混淆的是 CONDITIONING、LATENT 和 IMAGE。</p>
+<h3 id="3-2-六种核心数据详解"><a href="#3-2-六种核心数据详解" class="headerlink" title="3.2 六种核心数据详解"></a>3.2 六种核心数据详解</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">1. MODEL：模型数据：</span><br><span class="line">由 Load Checkpoint 节点输出，提供图像生成所需的模型计算能力。</span><br><span class="line">它不是生成好的图片，也不是模型文件的简单路径，而是 ComfyUI 加载后的模型对象。</span><br><span class="line"></span><br><span class="line">2. CLIP：文本编码器：</span><br><span class="line">CLIP 负责将文本提示词转换为模型能够使用的条件信息。</span><br><span class="line">在经典 SD 1.5 工作流中，Load Checkpoint 会输出 CLIP，</span><br><span class="line">随后连接到两个 CLIP Text Encode 节点，分别处理正向和负向提示词。</span><br><span class="line"></span><br><span class="line">3. CONDITIONING：条件数据</span><br><span class="line"></span><br><span class="line">CLIP Text Encode 节点输出的就是 CONDITIONING。</span><br><span class="line"></span><br><span class="line">例如输入：</span><br><span class="line">a beautiful girl, long hair, blue dress, realistic photography</span><br><span class="line"></span><br><span class="line">节点会将这些文字编码成模型可以使用的条件数据。</span><br><span class="line"></span><br><span class="line">正向提示词用于告诉模型希望生成什么；负向提示词用于表达希望避免的内容。</span><br><span class="line">它们最终分别连接到 KSampler 的 positive 和 negative 输入端口。</span><br><span class="line"></span><br><span class="line">4. LATENT：潜空间数据</span><br><span class="line"></span><br><span class="line">LATENT 不是普通图片，而是模型在潜空间中处理的数据。</span><br><span class="line">Empty Latent Image 节点会根据设置的宽度、高度和批量数量，创建初始潜空间数据。</span><br><span class="line">KSampler 在此基础上进行采样和去噪，输出处理后的 LATENT。</span><br><span class="line"></span><br><span class="line">5. VAE：图片编码与解码模型</span><br><span class="line"></span><br><span class="line">VAE 的主要作用是完成潜空间数据与普通图片数据之间的转换。</span><br><span class="line">在文生图工作流中，最常见的是使用 VAE Decode，将 KSampler 输出的 LATENT 解码为 IMAGE。</span><br><span class="line"></span><br><span class="line">6. IMAGE：普通图片数据</span><br><span class="line"></span><br><span class="line">IMAGE 是可以直接预览、保存或继续进行图片处理的数据。</span><br><span class="line">VAE Decode 输出 IMAGE 后，就可以连接 Save Image 节点保存到本地。</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、逐个节点追踪数据流向"><a href="#四、逐个节点追踪数据流向" class="headerlink" title="四、逐个节点追踪数据流向"></a>四、逐个节点追踪数据流向</h2><p>理解了数据类型，再回到工作流中，看看每个节点具体做了什么。</p>
+<h3 id="4-1-Load-Checkpoint：加载模型"><a href="#4-1-Load-Checkpoint：加载模型" class="headerlink" title="4.1 Load Checkpoint：加载模型"></a>4.1 Load Checkpoint：加载模型</h3><p>这个节点通常有三个主要输出：</p>
+<ul>
+<li>MODEL：扩散模型。</li>
+<li>CLIP：文本编码器。</li>
+<li>VAE：图片编码与解码模型。</li>
+</ul>
+<p>它相当于整个工作流的数据来源。</p>
+<p>一个 Checkpoint 加载后，其他节点就可以使用它提供的模型资源。</p>
+<h3 id="4-2-CLIP-Text-Encode：编码提示词"><a href="#4-2-CLIP-Text-Encode：编码提示词" class="headerlink" title="4.2 CLIP Text Encode：编码提示词"></a>4.2 CLIP Text Encode：编码提示词</h3><p>正向和负向提示词分别使用一个 CLIP Text Encode 节点。</p>
+<p>两个节点都需要连接 Load Checkpoint 输出的 CLIP。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Load Checkpoint</span><br><span class="line">       |</span><br><span class="line">      CLIP</span><br><span class="line">       |</span><br><span class="line">   +---+---+</span><br><span class="line">   |       |</span><br><span class="line">正向编码  负向编码</span><br><span class="line">   |       |</span><br><span class="line">   |       |</span><br><span class="line">positive negative</span><br><span class="line">    \     /</span><br><span class="line">     KSampler</span><br></pre></td></tr></table></figure>
+
+<p>这里要注意：</p>
+<ul>
+<li>输入的是普通文本。</li>
+<li>输出的是 CONDITIONING。</li>
+<li>正向和负向编码结果不能直接当作图片使用。</li>
+</ul>
+<p>修改提示词后，节点会重新生成对应的条件数据，影响后续采样结果。</p>
+<h3 id="4-3-Empty-Latent-Image：创建初始画布"><a href="#4-3-Empty-Latent-Image：创建初始画布" class="headerlink" title="4.3 Empty Latent Image：创建初始画布"></a>4.3 Empty Latent Image：创建初始画布</h3><p>这个节点主要负责设置生成图片的尺寸和批量数量。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">width: 512</span><br><span class="line">height: 512</span><br><span class="line">batch_size: 1</span><br></pre></td></tr></table></figure>
+
+<p>它输出的是 LATENT 数据，而不是一张已经生成好的 512×512 图片。</p>
+<p>可以把它理解为：先确定生成任务使用多大的潜空间画布，再交给 KSampler 进行后续计算。</p>
+<h3 id="4-4-KSampler：核心采样节点"><a href="#4-4-KSampler：核心采样节点" class="headerlink" title="4.4 KSampler：核心采样节点"></a>4.4 KSampler：核心采样节点</h3><p>KSampler 是经典文生图工作流中最重要的节点之一。</p>
+<p>它接收四类主要输入：</p>
+<table>
+<thead>
+<tr>
+<th>输入</th>
+<th>来源</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>model</td>
+<td>Load Checkpoint</td>
+<td>提供生成模型</td>
+</tr>
+<tr>
+<td>positive</td>
+<td>正向 CLIP Text Encode</td>
+<td>提供正向条件</td>
+</tr>
+<tr>
+<td>negative</td>
+<td>负向 CLIP Text Encode</td>
+<td>提供负向条件</td>
+</tr>
+<tr>
+<td>latent_image</td>
+<td>Empty Latent Image</td>
+<td>提供初始潜空间数据</td>
+</tr>
+</tbody></table>
+<p>KSampler 根据模型、正负条件和采样参数，对潜空间数据进行多步采样与去噪，最终输出新的 LATENT 数据。</p>
+<p>可以简单理解为：</p>
+<p><strong>模型负责生成，提示词负责引导，采样参数负责控制生成过程。</strong></p>
+<p>注意，Empty Latent Image 创建的是初始潜空间数据，KSampler 才是执行实际采样和去噪计算的核心环节。</p>
+<h3 id="4-5-VAE-Decode：将潜空间转换为图片"><a href="#4-5-VAE-Decode：将潜空间转换为图片" class="headerlink" title="4.5 VAE Decode：将潜空间转换为图片"></a>4.5 VAE Decode：将潜空间转换为图片</h3><p>KSampler 输出 LATENT 后，还不能直接作为普通图片保存。</p>
+<p>这时需要使用 VAE Decode。</p>
+<p>它接收两个输入：</p>
+<ul>
+<li>samples：KSampler 输出的 LATENT。</li>
+<li>vae：Load Checkpoint 输出的 VAE。</li>
+</ul>
+<p>经过解码后，输出 IMAGE 数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">KSampler</span><br><span class="line">   |</span><br><span class="line"> LATENT</span><br><span class="line">   |</span><br><span class="line">VAE Decode &lt;--- VAE</span><br><span class="line">   |</span><br><span class="line"> IMAGE</span><br></pre></td></tr></table></figure>
+
+<p>如果没有正确连接 VAE，或者使用了不匹配的 VAE，就可能出现解码异常或图片效果不理想等问题。</p>
+<h3 id="4-6-Save-Image：保存生成结果"><a href="#4-6-Save-Image：保存生成结果" class="headerlink" title="4.6. Save Image：保存生成结果"></a>4.6. Save Image：保存生成结果</h3><p>最后，将 VAE Decode 输出的 IMAGE 连接到 Save Image。</p>
+<p>执行工作流后，ComfyUI 会将生成的图片保存到输出目录，默认通常是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI/output/</span><br></pre></td></tr></table></figure>
+
+<p>这样，一次完整的文生图任务就结束了。</p>
+<h2 id="五、ComfyUI-是按照从左到右的顺序执行吗？"><a href="#五、ComfyUI-是按照从左到右的顺序执行吗？" class="headerlink" title="五、ComfyUI 是按照从左到右的顺序执行吗？"></a>五、ComfyUI 是按照从左到右的顺序执行吗？</h2><h3 id="5-1-执行顺序"><a href="#5-1-执行顺序" class="headerlink" title="5.1 执行顺序"></a>5.1 执行顺序</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">不完全是。</span><br><span class="line"></span><br><span class="line">这是初学者容易产生的一个误解。</span><br><span class="line"></span><br><span class="line">ComfyUI 并不是简单地按照节点在画布上的位置，</span><br><span class="line">从左到右依次执行，而是根据节点之间的依赖关系组织执行流程。</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-示例"><a href="#5-2-示例" class="headerlink" title="5.2 示例"></a>5.2 示例</h3><p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Load Checkpoint</span><br><span class="line">       |</span><br><span class="line">       +----&gt; CLIP Text Encode</span><br><span class="line">       |               |</span><br><span class="line">       |               |</span><br><span class="line">       |             KSampler</span><br><span class="line">       |               |</span><br><span class="line">       +------------&gt; VAE Decode</span><br><span class="line">                       |</span><br><span class="line">                    Save Image</span><br></pre></td></tr></table></figure>
+
+<p>如果某个节点需要使用另一个节点的输出，ComfyUI 就需要先完成对应的上游计算。</p>
+<p>因此：</p>
+<ul>
+<li>节点放在画布左边，不代表一定先执行。</li>
+<li>节点放在画布右边，也不代表一定后执行。</li>
+<li>真正决定数据依赖关系的是连线。</li>
+</ul>
+<p>画布上的位置主要是为了方便我们阅读和管理工作流。</p>
+<h2 id="六、如何判断连线和数据类型是否正确？"><a href="#六、如何判断连线和数据类型是否正确？" class="headerlink" title="六、如何判断连线和数据类型是否正确？"></a>六、如何判断连线和数据类型是否正确？</h2><h3 id="6-1-连线区分"><a href="#6-1-连线区分" class="headerlink" title="6.1 连线区分"></a>6.1 连线区分</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI 的节点端口和连线通常会通过颜色辅助区分数据类型。</span><br><span class="line"></span><br><span class="line">不同版本、主题和节点可能存在视觉差异，因此不要只依赖颜色判断，优先查看端口名称和节点类型。</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2-检查情况"><a href="#6-2-检查情况" class="headerlink" title="6.2 检查情况"></a>6.2 检查情况</h3><p>排查工作流时，可以重点检查以下几种情况：</p>
+<table>
+<thead>
+<tr>
+<th align="center">问题</th>
+<th align="center">可能原因</th>
+<th align="center">检查方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">KSampler 没有模型</td>
+<td align="center">MODEL 未连接</td>
+<td align="center">检查 model 输入</td>
+</tr>
+<tr>
+<td align="center">提示词不起作用</td>
+<td align="center">CLIP 或 CONDITIONING 未正确连接</td>
+<td align="center">检查两个编码节点</td>
+</tr>
+<tr>
+<td align="center">无法生成图片</td>
+<td align="center">LATENT 未连接或尺寸设置异常</td>
+<td align="center">检查 latent_image</td>
+</tr>
+<tr>
+<td align="center">图片无法解码</td>
+<td align="center">VAE 或 LATENT 未正确连接</td>
+<td align="center">检查 VAE Decode</td>
+</tr>
+<tr>
+<td align="center">模型加载失败</td>
+<td align="center">模型文件缺失或架构不匹配</td>
+<td align="center">检查模型路径和类型</td>
+</tr>
+<tr>
+<td align="center">节点无法连接</td>
+<td align="center">输入输出数据类型不兼容</td>
+<td align="center">检查端口类型</td>
+</tr>
+</tbody></table>
+<p>特别注意：LATENT 和 IMAGE 是两种不同的数据类型。</p>
+<p>KSampler 输出的是 LATENT，Save Image 需要的是 IMAGE，中间必须经过 VAE Decode 转换。</p>
+<h2 id="七、动手练习：观察数据流变化"><a href="#七、动手练习：观察数据流变化" class="headerlink" title="七、动手练习：观察数据流变化"></a>七、动手练习：观察数据流变化</h2><p>理解节点关系后，可以做几个简单实验，加深印象。</p>
+<h3 id="7-1-练习一：修改提示词"><a href="#7-1-练习一：修改提示词" class="headerlink" title="7.1 练习一：修改提示词"></a>7.1 练习一：修改提示词</h3><p>修改正向提示词，观察生成结果的变化。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a beautiful girl, long hair, blue dress</span><br></pre></td></tr></table></figure>
+
+<p>改成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a beautiful girl, short hair, red dress</span><br></pre></td></tr></table></figure>
+
+<p>观察 CLIP Text Encode 输出的条件数据发生变化后，最终图片有什么不同。</p>
+<h3 id="7-2-练习二：修改图片尺寸"><a href="#7-2-练习二：修改图片尺寸" class="headerlink" title="7.2 练习二：修改图片尺寸"></a>7.2 练习二：修改图片尺寸</h3><p>在 Empty Latent Image 中修改：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">512 × 512</span><br></pre></td></tr></table></figure>
+
+<p>改成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">768 × 512</span><br></pre></td></tr></table></figure>
+
+<p>观察生成图片的尺寸和构图变化。</p>
+<h3 id="7-3-练习三：固定-Seed"><a href="#7-3-练习三：固定-Seed" class="headerlink" title="7.3 练习三：固定 Seed"></a>7.3 练习三：固定 Seed</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在 KSampler 中设置固定 Seed，其他参数保持不变，再修改提示词或采样参数。</span><br><span class="line"></span><br><span class="line">这样可以更直观地观察不同条件对生成结果的影响。</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-4-练习四：观察-VAE-的作用"><a href="#7-4-练习四：观察-VAE-的作用" class="headerlink" title="7.4 练习四：观察 VAE 的作用"></a>7.4 练习四：观察 VAE 的作用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在兼容的前提下，尝试更换 VAE，比较解码后的图片效果。</span><br><span class="line"></span><br><span class="line">不要随意混用不同模型架构的 VAE，否则可能出现不兼容问题。</span><br></pre></td></tr></table></figure>
+
+<h2 id="八、总结"><a href="#八、总结" class="headerlink" title="八、总结"></a>八、总结</h2><p>这一篇，我们从数据流向的角度重新认识了 ComfyUI 的经典文生图工作流。</p>
+<h3 id="8-1-主线"><a href="#8-1-主线" class="headerlink" title="8.1 主线"></a>8.1 主线</h3><p>最重要的是记住这条主线：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">加载模型</span><br><span class="line">   ↓</span><br><span class="line">编码提示词</span><br><span class="line">   ↓</span><br><span class="line">准备初始潜空间</span><br><span class="line">   ↓</span><br><span class="line">KSampler 采样与去噪</span><br><span class="line">   ↓</span><br><span class="line">VAE Decode 解码</span><br><span class="line">   ↓</span><br><span class="line">Save Image 保存</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-2-核心数据"><a href="#8-2-核心数据" class="headerlink" title="8.2 核心数据"></a>8.2 核心数据</h3><p>同时要理解六种核心数据：</p>
+<ul>
+<li>MODEL：生成模型。</li>
+<li>CLIP：文本编码器。</li>
+<li>CONDITIONING：提示词编码后的条件数据。</li>
+<li>LATENT：潜空间数据。</li>
+<li>VAE：潜空间与图片之间的转换模型。</li>
+<li>IMAGE：普通图片数据。</li>
+</ul>
+<p>当你能够看懂节点的输入、输出和数据依赖关系，</p>
+<p>就不再只是照着教程连接节点，而是开始真正理解 ComfyUI 的工作方式。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/ComfyUI/" rel="tag"># ComfyUI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/4773952a.html" rel="prev" title="ComfyUI开发之——ComfyUI第1个工作流(1.6)">
+                  <i class="fa fa-angle-left"></i> ComfyUI开发之——ComfyUI第1个工作流(1.6)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/99d19391.html" rel="next" title="ComfyUI开发之——ComfyUI提示词入门(2.2)">
+                  ComfyUI开发之——ComfyUI提示词入门(2.2) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"254957166a9e05ab55102e99803e7f62"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

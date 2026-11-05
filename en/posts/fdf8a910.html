@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="一、前言123456789101112刚安装 ComfyUI 时，很多新手会遇到几个问题：- ComfyUI 应该从哪里下载？有哪几种安装方式？- 软件启动后，为什么找不到模型？- &#96;models&#96;、&#96;checkpoints&#96;、&#96;loras&#96; 等目录分别有什么作用？- 如何修改启动参数？- 能否把模型放在其他磁盘，或者与 Stable Diffusion WebUI 共用模型？这些问题看起来比较零">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ComfyUI开发之——ComfyUI环境与目录结构详解(1.2)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/fdf8a910.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="一、前言123456789101112刚安装 ComfyUI 时，很多新手会遇到几个问题：- ComfyUI 应该从哪里下载？有哪几种安装方式？- 软件启动后，为什么找不到模型？- &#96;models&#96;、&#96;checkpoints&#96;、&#96;loras&#96; 等目录分别有什么作用？- 如何修改启动参数？- 能否把模型放在其他磁盘，或者与 Stable Diffusion WebUI 共用模型？这些问题看起来比较零">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-11-04T11:25:02.000Z">
+<meta property="article:modified_time" content="2026-11-05T01:59:37.038Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="ComfyUI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/fdf8a910.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/fdf8a910.html","path":"posts/fdf8a910.html","title":"ComfyUI开发之——ComfyUI环境与目录结构详解(1.2)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ComfyUI开发之——ComfyUI环境与目录结构详解(1.2) | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">384</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4861</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">一、前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81ComfyUI-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">二、ComfyUI 有哪些安装方式？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%A1%8C%E9%9D%A2%E7%89%88%EF%BC%9A%E9%80%82%E5%90%88%E6%96%B0%E6%89%8B"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 桌面版：适合新手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Windows-%E4%BE%BF%E6%90%BA%E7%89%88%EF%BC%9A%E9%80%82%E5%90%88%E5%B8%8C%E6%9C%9B%E7%9B%B4%E6%8E%A5%E7%AE%A1%E7%90%86%E6%96%87%E4%BB%B6%E7%9A%84%E7%94%A8%E6%88%B7"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Windows 便携版：适合希望直接管理文件的用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85%E7%89%88%EF%BC%9A%E9%80%82%E5%90%88%E5%BC%80%E5%8F%91%E8%80%85%E5%92%8C%E8%BF%9B%E9%98%B6%E7%94%A8%E6%88%B7"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 手动安装版：适合开发者和进阶用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E5%BA%94%E8%AF%A5%E9%80%89%E6%8B%A9%E5%93%AA%E4%B8%80%E7%A7%8D%EF%BC%9F"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 应该选择哪一种？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81ComfyUI-%E7%9A%84%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3"><span class="nav-number">3.</span> <span class="nav-text">三、ComfyUI 的目录结构详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-models%EF%BC%9A%E6%A8%A1%E5%9E%8B%E5%AD%98%E6%94%BE%E7%9B%AE%E5%BD%95"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 models：模型存放目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-custom-nodes%EF%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89%E8%8A%82%E7%82%B9%E7%9B%AE%E5%BD%95"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 custom_nodes：自定义节点目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-input%EF%BC%9A%E8%BE%93%E5%85%A5%E5%9B%BE%E7%89%87%E7%9B%AE%E5%BD%95"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 input：输入图片目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-output%EF%BC%9A%E7%94%9F%E6%88%90%E7%BB%93%E6%9E%9C%E7%9B%AE%E5%BD%95"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 output：生成结果目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-temp%EF%BC%9A%E4%B8%B4%E6%97%B6%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 temp：临时文件目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-user%EF%BC%9A%E7%94%A8%E6%88%B7%E6%95%B0%E6%8D%AE%E7%9B%AE%E5%BD%95"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 user：用户数据目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-main-py%EF%BC%9A%E7%A8%8B%E5%BA%8F%E5%85%A5%E5%8F%A3"><span class="nav-number">3.7.</span> <span class="nav-text">3.7 main.py：程序入口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%A8%A1%E5%9E%8B%E5%BA%94%E8%AF%A5%E6%94%BE%E5%9C%A8%E5%93%AA%E9%87%8C%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">四、模型应该放在哪里？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%94%BE%E5%9C%A8%E5%93%AA%E9%87%8C"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 放在哪里</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%A8%A1%E5%9E%8B%E5%B7%B2%E7%BB%8F%E6%94%BE%E8%BF%9B%E5%8E%BB%E4%BA%86%EF%BC%8CComfyUI-%E8%BF%98%E6%98%AF%E6%89%BE%E4%B8%8D%E5%88%B0%EF%BC%9F"><span class="nav-number">4.2.</span> <span class="nav-text">为什么模型已经放进去了，ComfyUI 还是找不到？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%83%BD%E5%90%A6%E6%8A%8A%E6%A8%A1%E5%9E%8B%E6%94%BE%E5%9C%A8%E5%85%B6%E4%BB%96%E7%A3%81%E7%9B%98%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">五、能否把模型放在其他磁盘？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E5%8F%AF%E4%BB%A5"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 可以</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%85%88%E5%87%86%E5%A4%87%E6%A8%A1%E5%9E%8B%E7%9B%AE%E5%BD%95"><span class="nav-number">5.2.</span> <span class="nav-text">1. 先准备模型目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%89%BE%E5%88%B0%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B%E6%96%87%E4%BB%B6"><span class="nav-number">5.3.</span> <span class="nav-text">2. 找到配置示例文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%85%8D%E7%BD%AE%E9%A2%9D%E5%A4%96%E8%B7%AF%E5%BE%84"><span class="nav-number">5.4.</span> <span class="nav-text">3. 配置额外路径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81ComfyUI-%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0%E6%80%8E%E4%B9%88%E8%AE%BE%E7%BD%AE%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">六、ComfyUI 启动参数怎么设置？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%B8%B8%E8%A7%81%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0"><span class="nav-number">6.1.</span> <span class="nav-text">1. 常见启动参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0%EF%BC%9F"><span class="nav-number">6.2.</span> <span class="nav-text">2. 如何修改启动参数？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%A6%82%E4%BD%95%E8%AE%BF%E9%97%AE-ComfyUI%EF%BC%9F"><span class="nav-number">6.3.</span> <span class="nav-text">3. 如何访问 ComfyUI？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%A6%82%E4%BD%95%E4%BB%8E%E6%89%8B%E6%9C%BA%E6%88%96%E5%85%B6%E4%BB%96%E7%94%B5%E8%84%91%E8%AE%BF%E9%97%AE%EF%BC%9F"><span class="nav-number">6.4.</span> <span class="nav-text">4. 如何从手机或其他电脑访问？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90%E5%90%8E%EF%BC%8C%E5%85%88%E6%A3%80%E6%9F%A5%E5%93%AA%E4%BA%9B%E8%AE%BE%E7%BD%AE%EF%BC%9F"><span class="nav-number">7.</span> <span class="nav-text">七、安装完成后，先检查哪些设置？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%A1%AE%E8%AE%A4%E7%A8%8B%E5%BA%8F%E8%83%BD%E5%A4%9F%E6%AD%A3%E5%B8%B8%E5%90%AF%E5%8A%A8"><span class="nav-number">7.1.</span> <span class="nav-text">1. 确认程序能够正常启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%A1%AE%E8%AE%A4%E6%A8%A1%E5%9E%8B%E8%83%BD%E5%A4%9F%E8%A2%AB%E8%AF%86%E5%88%AB"><span class="nav-number">7.2.</span> <span class="nav-text">2. 确认模型能够被识别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%A1%AE%E8%AE%A4%E8%BE%93%E5%85%A5%E5%92%8C%E8%BE%93%E5%87%BA%E7%9B%AE%E5%BD%95"><span class="nav-number">7.3.</span> <span class="nav-text">3. 确认输入和输出目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%9A%82%E6%97%B6%E4%B8%8D%E8%A6%81%E5%AE%89%E8%A3%85%E5%A4%A7%E9%87%8F%E8%87%AA%E5%AE%9A%E4%B9%89%E8%8A%82%E7%82%B9"><span class="nav-number">7.4.</span> <span class="nav-text">4. 暂时不要安装大量自定义节点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5"><span class="nav-number">8.</span> <span class="nav-text">八、常见问题排查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">8.1.</span> <span class="nav-text">8.1 常见问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5"><span class="nav-number">8.2.</span> <span class="nav-text">8.2 如何排查</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">9.</span> <span class="nav-text">九、总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">10.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4861</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">384</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">704</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/fdf8a910.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ComfyUI开发之——ComfyUI环境与目录结构详解(1.2) | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ComfyUI开发之——ComfyUI环境与目录结构详解(1.2)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/ComfyUI%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94ComfyUI%E7%8E%AF%E5%A2%83%E4%B8%8E%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3-1-2.md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2026-11-04 19:25:02" itemprop="dateCreated datePublished" datetime="2026-11-04T19:25:02+08:00">2026-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/" itemprop="url" rel="index"><span itemprop="name">AI图视频短剧</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">AI绘图</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/ComfyUI/" itemprop="url" rel="index"><span itemprop="name">ComfyUI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>6 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">刚安装 ComfyUI 时，很多新手会遇到几个问题：</span><br><span class="line"></span><br><span class="line">- ComfyUI 应该从哪里下载？有哪几种安装方式？</span><br><span class="line">- 软件启动后，为什么找不到模型？</span><br><span class="line">- `models`、`checkpoints`、`loras` 等目录分别有什么作用？</span><br><span class="line">- 如何修改启动参数？</span><br><span class="line">- 能否把模型放在其他磁盘，或者与 Stable Diffusion WebUI 共用模型？</span><br><span class="line"></span><br><span class="line">这些问题看起来比较零散，但都与 ComfyUI 的安装方式、目录结构和配置有关。</span><br><span class="line"></span><br><span class="line">本文以 Windows 本地环境为主，介绍常见的安装方式、主要目录、模型存放位置和基础配置。</span><br><span class="line">Linux、macOS 用户也可以参考其中的目录与配置思路，但具体操作可能有所不同。</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、ComfyUI-有哪些安装方式？"><a href="#二、ComfyUI-有哪些安装方式？" class="headerlink" title="二、ComfyUI 有哪些安装方式？"></a>二、ComfyUI 有哪些安装方式？</h2><p>ComfyUI 常见的使用方式主要有三种：桌面版、Windows 便携版和手动安装版。</p>
+<h3 id="2-1-桌面版：适合新手"><a href="#2-1-桌面版：适合新手" class="headerlink" title="2.1 桌面版：适合新手"></a>2.1 桌面版：适合新手</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">桌面版提供相对完整的安装和管理体验，可以像普通软件一样安装和启动，并帮助配置运行环境。</span><br><span class="line"></span><br><span class="line">优点：</span><br><span class="line">- 安装过程相对简单。</span><br><span class="line">- 不需要自己从头配置 Python 环境。</span><br><span class="line">- 适合刚接触 ComfyUI 的用户。</span><br><span class="line"></span><br><span class="line">如果你主要目的是学习节点、搭建工作流和生成图片，建议优先考虑桌面版。</span><br><span class="line"></span><br><span class="line">官方下载：ComfyUI 下载页面：https://www.comfy.org/download</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-Windows-便携版：适合希望直接管理文件的用户"><a href="#2-2-Windows-便携版：适合希望直接管理文件的用户" class="headerlink" title="2.2 Windows 便携版：适合希望直接管理文件的用户"></a>2.2 Windows 便携版：适合希望直接管理文件的用户</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">便携版通常将 ComfyUI 程序和独立的 Python 运行环境放在同一个目录中，解压后即可通过启动脚本运行。</span><br><span class="line"></span><br><span class="line">常见目录结构如下：</span><br><span class="line">ComfyUI_windows_portable/</span><br><span class="line">├── ComfyUI/</span><br><span class="line">│   ├── models/</span><br><span class="line">│   ├── custom_nodes/</span><br><span class="line">│   ├── input/</span><br><span class="line">│   ├── output/</span><br><span class="line">│   └── user/</span><br><span class="line">├── python_embeded/</span><br><span class="line">├── update/</span><br><span class="line">├── run_nvidia_gpu.bat</span><br><span class="line">└── run_cpu.bat</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">实际目录可能因版本和安装包不同而有所变化。</span><br><span class="line"></span><br><span class="line">便携版的优点是目录清晰，方便备份、迁移和手动管理模型。</span><br><span class="line">缺点是部分配置、更新和扩展节点的维护工作需要自己处理。</span><br><span class="line"></span><br><span class="line">官方项目：ComfyUI GitHub:https://github.com/Comfy-Org/ComfyUI</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-手动安装版：适合开发者和进阶用户"><a href="#2-3-手动安装版：适合开发者和进阶用户" class="headerlink" title="2.3 手动安装版：适合开发者和进阶用户"></a>2.3 手动安装版：适合开发者和进阶用户</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">手动安装通常需要自行准备 Python、Git 以及与硬件匹配的 PyTorch 等依赖，</span><br><span class="line">再下载 ComfyUI 项目并安装运行环境。</span><br><span class="line"></span><br><span class="line">这种方式的优点是配置自由，适合调试环境、研究依赖和开发扩展节点。</span><br><span class="line"></span><br><span class="line">但对于初学者，如果 Python 版本、PyTorch、显卡驱动或其他依赖不匹配，可能会遇到安装失败的问题。</span><br><span class="line"></span><br><span class="line">因此，除非你有明确的开发需求，否则没有必要一开始就选择手动安装。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-应该选择哪一种？"><a href="#2-4-应该选择哪一种？" class="headerlink" title="2.4 应该选择哪一种？"></a>2.4 应该选择哪一种？</h3><table>
+<thead>
+<tr>
+<th>安装方式</th>
+<th>适合人群</th>
+<th>主要特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>桌面版</td>
+<td>初学者</td>
+<td>安装和管理较方便</td>
+</tr>
+<tr>
+<td>便携版</td>
+<td>喜欢自己管理目录的用户</td>
+<td>文件集中，迁移方便</td>
+</tr>
+<tr>
+<td>手动安装版</td>
+<td>开发者、进阶用户</td>
+<td>配置自由，但需要维护依赖</td>
+</tr>
+</tbody></table>
+<p>建议：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">先选定一种安装方式，再按照对应版本的官方文档操作。</span><br><span class="line">不要把桌面版、便携版和手动安装版的目录、启动脚本或配置文件混在一起使用。</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、ComfyUI-的目录结构详解"><a href="#三、ComfyUI-的目录结构详解" class="headerlink" title="三、ComfyUI 的目录结构详解"></a>三、ComfyUI 的目录结构详解</h2><p>安装完成后，先不要急着下载大量模型。建议先认识几个最常用的目录。</p>
+<p>下面以常见的 ComfyUI 主目录为例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI/</span><br><span class="line">├── models/</span><br><span class="line">│   ├── checkpoints/</span><br><span class="line">│   ├── loras/</span><br><span class="line">│   ├── vae/</span><br><span class="line">│   ├── controlnet/</span><br><span class="line">│   ├── clip/</span><br><span class="line">│   ├── diffusion_models/</span><br><span class="line">│   ├── text_encoders/</span><br><span class="line">│   └── upscale_models/</span><br><span class="line">├── custom_nodes/</span><br><span class="line">├── input/</span><br><span class="line">├── output/</span><br><span class="line">├── temp/</span><br><span class="line">├── user/</span><br><span class="line">├── main.py</span><br><span class="line">└── extra_model_paths.yaml.example</span><br></pre></td></tr></table></figure>
+
+<p>不同版本、安装方式和模型架构可能会出现其他目录。上面列出的是常见目录，并不是所有安装都必须具备完全相同的结构。</p>
+<h3 id="3-1-models：模型存放目录"><a href="#3-1-models：模型存放目录" class="headerlink" title="3.1 models：模型存放目录"></a>3.1 <code>models</code>：模型存放目录</h3><p>这是最重要的目录之一。</p>
+<p>ComfyUI 需要根据模型类型加载相应的文件。为了方便管理，通常会将不同类型的模型放入不同子目录。</p>
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th>主要用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>checkpoints</code></td>
+<td>存放传统的完整检查点模型</td>
+</tr>
+<tr>
+<td><code>loras</code></td>
+<td>存放 LoRA 模型</td>
+</tr>
+<tr>
+<td><code>vae</code></td>
+<td>存放独立的 VAE 模型</td>
+</tr>
+<tr>
+<td><code>controlnet</code></td>
+<td>存放 ControlNet 模型</td>
+</tr>
+<tr>
+<td><code>clip</code></td>
+<td>存放部分 CLIP 相关模型</td>
+</tr>
+<tr>
+<td><code>diffusion_models</code></td>
+<td>存放部分独立的扩散模型</td>
+</tr>
+<tr>
+<td><code>text_encoders</code></td>
+<td>存放文本编码器</td>
+</tr>
+<tr>
+<td><code>upscale_models</code></td>
+<td>存放图片放大模型</td>
+</tr>
+</tbody></table>
+<p>说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">这些目录的作用不是简单地按文件后缀分类，而是按照模型在工作流中的用途分类。</span><br><span class="line"></span><br><span class="line">例如，`.safetensors` 是一种常见的模型文件格式，但文件后缀相同，并不代表它们可以互相替代。</span><br><span class="line">模型放在哪个目录，要以模型说明和对应工作流的要求为准。</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-custom-nodes：自定义节点目录"><a href="#3-2-custom-nodes：自定义节点目录" class="headerlink" title="3.2 custom_nodes：自定义节点目录"></a>3.2 <code>custom_nodes</code>：自定义节点目录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI 自带常用节点，但一些工作流需要额外的自定义节点才能运行。</span><br><span class="line"></span><br><span class="line">例如，某些节点用于：</span><br><span class="line"></span><br><span class="line">- 图片处理与批量操作。</span><br><span class="line">- 特定模型的加载与推理。</span><br><span class="line">- 视频生成。</span><br><span class="line">- 外部服务或 API 集成。</span><br><span class="line"></span><br><span class="line">这些扩展通常放在 `custom_nodes` 目录下。</span><br><span class="line"></span><br><span class="line">需要注意，自定义节点可能还依赖额外的 Python 包、模型文件或特定版本的 ComfyUI。把节点文件复制进去，不一定就意味着它能够正常运行。</span><br><span class="line"></span><br><span class="line">建议初学阶段先使用官方基础节点。等到导入的工作流明确提示缺少某个节点时，再安装对应扩展。</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-input：输入图片目录"><a href="#3-3-input：输入图片目录" class="headerlink" title="3.3 input：输入图片目录"></a>3.3 <code>input</code>：输入图片目录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">某些工作流需要读取本地图片，例如图生图、局部重绘和照片修复。</span><br><span class="line"></span><br><span class="line">这类图片通常可以放在 `input` 目录中，再通过相应的加载图片节点选择。</span><br><span class="line"></span><br><span class="line">具体支持哪些文件格式，取决于使用的节点及其实现。</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-output：生成结果目录"><a href="#3-4-output：生成结果目录" class="headerlink" title="3.4 output：生成结果目录"></a>3.4 <code>output</code>：生成结果目录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI 生成并保存的图片，通常会放在 `output` 目录中。</span><br><span class="line"></span><br><span class="line">完成图片生成后，可以在这个目录中查看结果。</span><br><span class="line"></span><br><span class="line">如果你经常生成大量图片，建议定期整理输出文件，避免结果文件越来越多，占用大量磁盘空间。</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-5-temp：临时文件目录"><a href="#3-5-temp：临时文件目录" class="headerlink" title="3.5 temp：临时文件目录"></a>3.5 <code>temp</code>：临时文件目录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">部分处理过程会产生临时文件，通常放在 `temp` 目录中。</span><br><span class="line"></span><br><span class="line">它不是用来长期保存最终作品的目录。</span><br><span class="line">如果磁盘空间紧张，可以在确认没有任务正在运行后，再根据需要清理临时文件。</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-6-user：用户数据目录"><a href="#3-6-user：用户数据目录" class="headerlink" title="3.6 user：用户数据目录"></a>3.6 <code>user</code>：用户数据目录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">部分版本会使用 `user` 目录保存用户相关数据，例如界面设置、工作流管理数据等。</span><br><span class="line"></span><br><span class="line">具体内容会随版本和功能发生变化，因此不建议在不了解用途的情况下直接删除整个目录。</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-7-main-py：程序入口"><a href="#3-7-main-py：程序入口" class="headerlink" title="3.7 main.py：程序入口"></a>3.7 <code>main.py</code>：程序入口</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">对于便携版以外的一些安装方式，`main.py` 是常见的程序启动入口。</span><br><span class="line"></span><br><span class="line">例如，在已经配置好 Python 和依赖的环境中，可以通过命令启动：</span><br><span class="line"></span><br><span class="line">​```</span><br><span class="line">python main.py</span><br><span class="line">​```</span><br><span class="line"></span><br><span class="line">但如果你使用的是桌面版或便携版，通常应该优先使用对应的应用程序或启动脚本，不要直接套用这条命令。</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、模型应该放在哪里？"><a href="#四、模型应该放在哪里？" class="headerlink" title="四、模型应该放在哪里？"></a>四、模型应该放在哪里？</h2><h3 id="4-1-放在哪里"><a href="#4-1-放在哪里" class="headerlink" title="4.1 放在哪里"></a>4.1 放在哪里</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">这是 ComfyUI 初学阶段最常见的问题之一。</span><br><span class="line"></span><br><span class="line">假设你下载了一个 Stable Diffusion 检查点模型，文件名是：example_model.safetensors</span><br><span class="line"></span><br><span class="line">如果模型说明明确指出它是传统的 Checkpoint 模型，</span><br><span class="line">通常可以放在：ComfyUI/models/checkpoints/example_model.safetensors</span><br><span class="line"></span><br><span class="line">如果下载的是 LoRA 模型，常见位置则是：ComfyUI/models/loras/</span><br><span class="line"></span><br><span class="line">但如果你下载的是 FLUX 或其他新架构模型，就不能只凭文件名或后缀，判断应该放在哪里。部分工作流需要独立的扩散模型、文本编码器、VAE 等多个文件。</span><br><span class="line"></span><br><span class="line">因此，下载模型时应重点确认三个信息：</span><br><span class="line">1. 模型属于哪一种架构和类型。</span><br><span class="line">2. 模型需要哪些配套文件。</span><br><span class="line">3. 对应工作流要求使用哪些节点和目录。</span><br></pre></td></tr></table></figure>
+
+<h3 id="为什么模型已经放进去了，ComfyUI-还是找不到？"><a href="#为什么模型已经放进去了，ComfyUI-还是找不到？" class="headerlink" title="为什么模型已经放进去了，ComfyUI 还是找不到？"></a>为什么模型已经放进去了，ComfyUI 还是找不到？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">通常可以从以下几个方向排查：</span><br><span class="line"></span><br><span class="line">- 文件放错了目录。</span><br><span class="line">- 模型类型与当前节点不匹配。</span><br><span class="line">- 文件没有完整下载。</span><br><span class="line">- 模型目录被修改过，但配置没有同步更新。</span><br><span class="line">- ComfyUI 尚未重新扫描模型，或者需要重启。</span><br><span class="line">- 当前工作流使用的是另一种模型加载方式。</span><br><span class="line"></span><br><span class="line">排查时，先核对模型说明和工作流要求，不要一遇到问题就重复下载同一个文件。</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、能否把模型放在其他磁盘？"><a href="#五、能否把模型放在其他磁盘？" class="headerlink" title="五、能否把模型放在其他磁盘？"></a>五、能否把模型放在其他磁盘？</h2><h3 id="5-1-可以"><a href="#5-1-可以" class="headerlink" title="5.1 可以"></a>5.1 可以</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">例如，你的系统盘空间有限，</span><br><span class="line">但 D 盘有较大的空闲空间，就可以把模型集中放在 D 盘，而不必全部存放在 ComfyUI 的默认目录中。</span><br><span class="line"></span><br><span class="line">这样做还有一个好处：如果同时使用多个 AI 绘图工具，可以减少同一模型的重复存储。</span><br><span class="line"></span><br><span class="line">ComfyUI 支持通过 `extra_model_paths.yaml` 等配置方式添加额外的模型搜索路径。</span><br><span class="line">不同安装版本的配置文件位置和格式可能有所区别。</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-先准备模型目录"><a href="#1-先准备模型目录" class="headerlink" title="1. 先准备模型目录"></a>1. 先准备模型目录</h3><p>例如，在 D 盘建立统一的模型目录：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">D:/AI/models/</span><br><span class="line">├── checkpoints/</span><br><span class="line">├── loras/</span><br><span class="line">├── vae/</span><br><span class="line">├── controlnet/</span><br><span class="line">└── upscale_models/</span><br></pre></td></tr></table></figure>
+
+<p>然后将对应类型的模型放入相应子目录。</p>
+<h3 id="2-找到配置示例文件"><a href="#2-找到配置示例文件" class="headerlink" title="2. 找到配置示例文件"></a>2. 找到配置示例文件</h3><p>对于常见的便携版和手动安装版，可以在 ComfyUI 主目录中查找：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extra_model_paths.yaml.example</span><br></pre></td></tr></table></figure>
+
+<p>通常可以复制这个文件，并将副本命名为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extra_model_paths.yaml</span><br></pre></td></tr></table></figure>
+
+<p>然后按照文件中的示例修改配置。</p>
+<p>注意：桌面版的配置位置可能不同，应使用该版本文档中指定的配置文件，不要直接将便携版的配置文件覆盖到桌面版配置目录中。</p>
+<h3 id="3-配置额外路径"><a href="#3-配置额外路径" class="headerlink" title="3. 配置额外路径"></a>3. 配置额外路径</h3><p>下面是一个简化示例。假设模型存放在 <code>D:/AI/models/</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">my_models:</span><br><span class="line">  base_path: &quot;D:/AI/models/&quot;</span><br><span class="line">  checkpoints: checkpoints/</span><br><span class="line">  loras: loras/</span><br><span class="line">  vae: vae/</span><br><span class="line">  controlnet: controlnet/</span><br><span class="line">  upscale_models: upscale_models/</span><br></pre></td></tr></table></figure>
+
+<p>这里的 <code>my_models</code> 是自定义配置名称，可以自行修改。</p>
+<p><code>base_path</code> 指定模型目录的基础路径，后面的各项指定对应类型的子目录。</p>
+<p>实际配置时，建议参考你当前版本附带的示例文件，并保留已有配置。不同版本可能支持不同的目录项，不能直接认为上面的示例覆盖所有模型类型。</p>
+<p>修改完成后，保存配置并重启 ComfyUI，再检查相应模型是否能够被识别。</p>
+<p>官方参考：<a target="_blank" rel="noopener" href="https://github.com/Comfy-Org/ComfyUI/blob/master/extra_model_paths.yaml.example">ComfyUI 模型路径配置说明</a></p>
+<h2 id="六、ComfyUI-启动参数怎么设置？"><a href="#六、ComfyUI-启动参数怎么设置？" class="headerlink" title="六、ComfyUI 启动参数怎么设置？"></a>六、ComfyUI 启动参数怎么设置？</h2><p>启动参数用于调整 ComfyUI 的运行方式，例如修改端口、允许局域网访问，或者指定某些运行选项。</p>
+<p>对于初学者，先认识几个常用参数即可，不需要一开始就修改所有设置。</p>
+<h3 id="1-常见启动参数"><a href="#1-常见启动参数" class="headerlink" title="1. 常见启动参数"></a>1. 常见启动参数</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--port 8188</code></td>
+<td>指定 Web 服务端口</td>
+</tr>
+<tr>
+<td><code>--listen 0.0.0.0</code></td>
+<td>监听所有 IPv4 网络接口，便于局域网访问</td>
+</tr>
+<tr>
+<td><code>--cpu</code></td>
+<td>使用 CPU 运行，通常速度较慢</td>
+</tr>
+<tr>
+<td><code>--lowvram</code></td>
+<td>在支持的运行模式下尝试降低显存占用</td>
+</tr>
+<tr>
+<td><code>--disable-auto-launch</code></td>
+<td>不自动打开浏览器</td>
+</tr>
+</tbody></table>
+<p>这些参数的实际效果与当前版本、硬件和运行环境有关。尤其是显存相关选项，不要认为开启 <code>--lowvram</code> 就一定能够运行任何大型模型。</p>
+<h3 id="2-如何修改启动参数？"><a href="#2-如何修改启动参数？" class="headerlink" title="2. 如何修改启动参数？"></a>2. 如何修改启动参数？</h3><p>如果使用便携版，通常可以检查对应的 <code>.bat</code> 启动脚本。</p>
+<p>例如，原来的启动命令可能包含：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\python_embeded\python.exe -s ComfyUI\main.py --windows-standalone-build</span><br></pre></td></tr></table></figure>
+
+<p>如果希望指定端口，可以在原有参数后面追加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--port 8189</span><br></pre></td></tr></table></figure>
+
+<p>修改前建议备份原始脚本。不同版本的脚本内容可能不同，应以你实际安装的文件为准。</p>
+<p>如果使用桌面版，应优先通过应用提供的设置项配置，不要假设它与便携版使用相同的启动脚本。</p>
+<h3 id="3-如何访问-ComfyUI？"><a href="#3-如何访问-ComfyUI？" class="headerlink" title="3. 如何访问 ComfyUI？"></a>3. 如何访问 ComfyUI？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI 默认端口通常是 `8188`。</span><br><span class="line"></span><br><span class="line">在本机成功启动后，可以在浏览器中打开：http://127.0.0.1:8188</span><br><span class="line">如果你修改了端口，例如设置为 `8189`，则应访问：http://127.0.0.1:8189</span><br><span class="line"></span><br><span class="line">如果页面打不开，先检查命令行窗口是否显示启动成功，以及实际端口是否与浏览器地址一致。</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-如何从手机或其他电脑访问？"><a href="#4-如何从手机或其他电脑访问？" class="headerlink" title="4. 如何从手机或其他电脑访问？"></a>4. 如何从手机或其他电脑访问？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">如果你想让同一局域网内的手机、平板或另一台电脑访问 ComfyUI，</span><br><span class="line">可以在确认网络环境可信的前提下，配置监听地址，例如：--listen 0.0.0.0</span><br><span class="line"></span><br><span class="line">然后使用运行 ComfyUI 的电脑在局域网中的 IP 地址访问，例如：http://192.168.1.100:8188</span><br><span class="line"></span><br><span class="line">其中的 IP 只是示例，应替换为你电脑的实际局域网 IP。</span><br><span class="line"></span><br><span class="line">此外，还需要检查 Windows 防火墙和网络设置是否允许连接。</span><br><span class="line"></span><br><span class="line">安全提醒：</span><br><span class="line">不要为了方便，直接把未做安全防护的 ComfyUI 服务暴露到公网。</span><br><span class="line">局域网访问与公网访问是两回事。</span><br><span class="line">如果确实需要远程访问，应先设计好身份验证、网络隔离和访问控制。</span><br><span class="line"></span><br><span class="line">官方参数参考：ComfyUI 启动参数文档 </span><br></pre></td></tr></table></figure>
+
+<h2 id="七、安装完成后，先检查哪些设置？"><a href="#七、安装完成后，先检查哪些设置？" class="headerlink" title="七、安装完成后，先检查哪些设置？"></a>七、安装完成后，先检查哪些设置？</h2><p>第一次启动成功后，不需要立刻修改所有配置。建议先完成下面的基础检查。</p>
+<h3 id="1-确认程序能够正常启动"><a href="#1-确认程序能够正常启动" class="headerlink" title="1. 确认程序能够正常启动"></a>1. 确认程序能够正常启动</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">检查终端窗口是否报错，浏览器是否能打开 ComfyUI 页面。</span><br><span class="line">如果程序无法启动，先查看终端中的错误信息，不要只根据浏览器页面判断原因。</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-确认模型能够被识别"><a href="#2-确认模型能够被识别" class="headerlink" title="2. 确认模型能够被识别"></a>2. 确认模型能够被识别</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果已经下载了适配当前工作流的模型，检查它是否出现在对应的模型选择节点中。</span><br><span class="line">如果没有出现，优先检查模型目录、配置路径以及模型类型。</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-确认输入和输出目录"><a href="#3-确认输入和输出目录" class="headerlink" title="3. 确认输入和输出目录"></a>3. 确认输入和输出目录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">了解图片从哪里读取、生成结果保存在哪里。</span><br><span class="line">建议将输入图片、模型和输出结果分开管理，便于后续整理和备份。</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-暂时不要安装大量自定义节点"><a href="#4-暂时不要安装大量自定义节点" class="headerlink" title="4. 暂时不要安装大量自定义节点"></a>4. 暂时不要安装大量自定义节点</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">自定义节点能够扩展功能，但也可能带来依赖冲突、版本不兼容等问题。</span><br><span class="line">刚入门时，先使用基础节点跑通一个简单工作流，再根据实际需要安装扩展，会更容易排查问题。</span><br></pre></td></tr></table></figure>
+
+<h2 id="八、常见问题排查"><a href="#八、常见问题排查" class="headerlink" title="八、常见问题排查"></a>八、常见问题排查</h2><h3 id="8-1-常见问题"><a href="#8-1-常见问题" class="headerlink" title="8.1 常见问题"></a>8.1 常见问题</h3><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>优先检查</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>双击启动脚本后立即退出</td>
+<td>查看终端报错、Python 或 PyTorch 依赖、显卡驱动</td>
+</tr>
+<tr>
+<td>浏览器无法打开页面</td>
+<td>检查程序是否启动成功、端口是否正确</td>
+</tr>
+<tr>
+<td>模型列表中找不到文件</td>
+<td>检查目录、模型类型和额外路径配置</td>
+</tr>
+<tr>
+<td>导入工作流提示缺少模型</td>
+<td>按工作流说明补齐模型及其配套文件</td>
+</tr>
+<tr>
+<td>导入工作流提示缺少节点</td>
+<td>确认缺失节点的名称、来源及兼容版本</td>
+</tr>
+<tr>
+<td>生成时提示显存不足</td>
+<td>尝试降低分辨率、使用更轻量的模型或简化工作流</td>
+</tr>
+<tr>
+<td>修改配置后没有变化</td>
+<td>确认改的是当前安装版本使用的配置文件，并按要求重启</td>
+</tr>
+</tbody></table>
+<h3 id="8-2-如何排查"><a href="#8-2-如何排查" class="headerlink" title="8.2 如何排查"></a>8.2 如何排查</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">遇到问题时，建议按照“确认安装版本 → 查看错误日志 → 核对模型和节点 → 检查配置”的顺序排查。</span><br><span class="line">这样通常比反复重装更有效。</span><br></pre></td></tr></table></figure>
+
+<h2 id="九、总结"><a href="#九、总结" class="headerlink" title="九、总结"></a>九、总结</h2><p>这一篇主要介绍了 ComfyUI 的安装方式、目录结构、模型管理和基础启动配置。</p>
+<p>记住几个关键目录即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- `models`：存放各类模型。</span><br><span class="line">- `custom_nodes`：存放自定义节点。</span><br><span class="line">- `input`：存放或读取输入图片。</span><br><span class="line">- `output`：保存生成结果。</span><br><span class="line">- `temp`：存放临时文件。</span><br><span class="line">- `user`：存放部分用户数据。</span><br><span class="line">- `main.py`：常见的程序启动入口。</span><br></pre></td></tr></table></figure>
+
+<p>注意事项：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">如果模型较多，可以将模型放到其他磁盘，并通过额外模型路径配置让 ComfyUI 识别。</span><br><span class="line"></span><br><span class="line">对于新手，现阶段最重要的不是记住所有参数，而是确认程序能够正常启动、理解模型存放位置，并知道出现问题时应该从哪里排查。</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/Comfy-Org/ComfyUI">ComfyUI 官方项目与安装说明</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.comfy.org/">ComfyUI 官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Comfy-Org/ComfyUI/blob/master/extra_model_paths.yaml.example">额外模型路径配置示例</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Comfy-Org/docs/blob/main/development/comfyui-server/startup-flags.mdx">ComfyUI 启动参数说明</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/ComfyUI/" rel="tag"># ComfyUI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/4caf801.html" rel="prev" title="ComfyUI开发之——ComfyUI是什么(1.1)">
+                  <i class="fa fa-angle-left"></i> ComfyUI开发之——ComfyUI是什么(1.1)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/5c36aa88.html" rel="next" title="ComfyUI开发之——ComfyUI界面详解(1.3)">
+                  ComfyUI开发之——ComfyUI界面详解(1.3) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"a6fe972c90485cb0c2dca1a15820acf0"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

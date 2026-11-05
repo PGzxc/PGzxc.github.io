@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一、概述1ComfyUI 参考图与人物一致性：IP-Adapter、InstantID 原理与实践">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ComfyUI开发之——ComfyUI 参考图与人物一致性(3.6)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/e99e97a9.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一、概述1ComfyUI 参考图与人物一致性：IP-Adapter、InstantID 原理与实践">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-11-04T11:36:52.000Z">
+<meta property="article:modified_time" content="2026-11-05T01:59:37.416Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="ComfyUI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/e99e97a9.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/e99e97a9.html","path":"posts/e99e97a9.html","title":"ComfyUI开发之——ComfyUI 参考图与人物一致性(3.6)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ComfyUI开发之——ComfyUI 参考图与人物一致性(3.6) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">384</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4861</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9B%BE%E4%B8%8E%E4%BA%BA%E7%89%A9%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">二、图与人物一致性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E4%BA%BA%E7%89%A9%E4%B8%80%E8%87%B4%E6%80%A7%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1、为什么需要人物一致性？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2%E3%80%81IP-Adapter-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2、IP-Adapter 是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-IP-Adapter-%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. IP-Adapter 的基本原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-IP-Adapter-%E5%B8%B8%E8%A7%81%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. IP-Adapter 常见类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3%E3%80%81InstantID-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.3.</span> <span class="nav-text">2.3、InstantID 是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-InstantID-%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">2.3.1.</span> <span class="nav-text">1. InstantID 的基本原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-InstantID-%E4%B8%8E-IP-Adapter-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.3.2.</span> <span class="nav-text">2. InstantID 与 IP-Adapter 的区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%87%86%E5%A4%87%E6%A8%A1%E5%9E%8B%E4%B8%8E%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83"><span class="nav-number">3.</span> <span class="nav-text">三、准备模型与运行环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-IP-Adapter-%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.1.</span> <span class="nav-text">3.1. IP-Adapter 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-InstantID-%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.2.</span> <span class="nav-text">3.2. InstantID 模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%AE%89%E8%A3%85%E8%87%AA%E5%AE%9A%E4%B9%89%E8%8A%82%E7%82%B9"><span class="nav-number">3.3.</span> <span class="nav-text">3.3. 安装自定义节点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%9E%E6%88%98"><span class="nav-number">4.</span> <span class="nav-text">四、实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1%E3%80%81%E5%AE%9E%E6%88%98%E4%B8%80%EF%BC%9A%E4%BD%BF%E7%94%A8-IP-Adapter-%E8%BF%9B%E8%A1%8C%E4%BA%BA%E7%89%A9%E5%8F%82%E8%80%83%E7%94%9F%E6%88%90"><span class="nav-number">4.1.</span> <span class="nav-text">4.1、实战一：使用 IP-Adapter 进行人物参考生成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%87%86%E5%A4%87%E5%8F%82%E8%80%83%E5%9B%BE%E7%89%87"><span class="nav-number">4.1.1.</span> <span class="nav-text">1. 准备参考图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9"><span class="nav-number">4.1.2.</span> <span class="nav-text">2. 添加节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E8%BF%9E%E6%8E%A5%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B"><span class="nav-number">4.1.3.</span> <span class="nav-text">3. 连接基本流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E8%AE%BE%E7%BD%AE%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="nav-number">4.1.4.</span> <span class="nav-text">4. 设置提示词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E8%B0%83%E6%95%B4-IP-Adapter-%E6%9D%83%E9%87%8D"><span class="nav-number">4.1.5.</span> <span class="nav-text">5. 调整 IP-Adapter 权重</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E8%A7%82%E5%AF%9F%E7%94%9F%E6%88%90%E7%BB%93%E6%9E%9C"><span class="nav-number">4.1.6.</span> <span class="nav-text">6. 观察生成结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2%E3%80%81%E5%AE%9E%E6%88%98%E4%BA%8C%EF%BC%9A%E4%BD%BF%E7%94%A8-InstantID-%E4%BF%9D%E6%8C%81%E4%BA%BA%E7%89%A9%E9%9D%A2%E9%83%A8%E7%89%B9%E5%BE%81"><span class="nav-number">4.2.</span> <span class="nav-text">4.2、实战二：使用 InstantID 保持人物面部特征</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%87%86%E5%A4%87%E4%BA%BA%E7%89%A9%E7%85%A7%E7%89%87"><span class="nav-number">4.2.1.</span> <span class="nav-text">1. 准备人物照片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%B7%BB%E5%8A%A0%E7%9B%B8%E5%85%B3%E8%8A%82%E7%82%B9"><span class="nav-number">4.2.2.</span> <span class="nav-text">2. 添加相关节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E7%90%86%E8%A7%A3%E5%B7%A5%E4%BD%9C%E6%B5%81%E8%BF%9E%E6%8E%A5"><span class="nav-number">4.2.3.</span> <span class="nav-text">3. 理解工作流连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E8%AE%BE%E7%BD%AE%E7%94%9F%E6%88%90%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="nav-number">4.2.4.</span> <span class="nav-text">4. 设置生成提示词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E8%B0%83%E6%95%B4%E6%8E%A7%E5%88%B6%E5%8F%82%E6%95%B0"><span class="nav-number">4.2.5.</span> <span class="nav-text">5. 调整控制参数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B"><span class="nav-number">5.</span> <span class="nav-text">五、技术选型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1%E3%80%81IP-Adapter%E3%80%81InstantID%E3%80%81LoRA%E3%80%81ControlNet-%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%EF%BC%9F"><span class="nav-number">5.1.</span> <span class="nav-text">5.1、IP-Adapter、InstantID、LoRA、ControlNet 如何选择？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2%E3%80%81%E4%BA%BA%E7%89%A9%E4%B8%80%E8%87%B4%E6%80%A7%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BB%8D%E7%84%B6%E4%B8%8D%E7%A8%B3%E5%AE%9A%EF%BC%9F"><span class="nav-number">5.2.</span> <span class="nav-text">5.2、人物一致性为什么仍然不稳定？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%8F%82%E8%80%83%E7%85%A7%E7%89%87%E8%B4%A8%E9%87%8F%E4%B8%8D%E5%A4%9F"><span class="nav-number">5.2.1.</span> <span class="nav-text">1. 参考照片质量不够</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%8F%90%E7%A4%BA%E8%AF%8D%E4%B8%8E%E5%8F%82%E8%80%83%E5%9B%BE%E5%86%B2%E7%AA%81"><span class="nav-number">5.2.2.</span> <span class="nav-text">2. 提示词与参考图冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%8E%A7%E5%88%B6%E6%9D%83%E9%87%8D%E4%B8%8D%E5%90%88%E9%80%82"><span class="nav-number">5.2.3.</span> <span class="nav-text">3. 控制权重不合适</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84%E4%B8%8D%E5%8C%B9%E9%85%8D"><span class="nav-number">5.2.4.</span> <span class="nav-text">4. 模型架构不匹配</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E4%BA%BA%E7%89%A9%E5%A7%BF%E5%8A%BF%E5%92%8C%E8%A7%92%E5%BA%A6%E5%8F%98%E5%8C%96%E5%A4%AA%E5%A4%A7"><span class="nav-number">5.2.5.</span> <span class="nav-text">5. 人物姿势和角度变化太大</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3%E3%80%81%E7%BB%93%E5%90%88%E5%AE%9E%E9%99%85%E9%A1%B9%E7%9B%AE%EF%BC%9A%E8%AF%81%E4%BB%B6%E7%85%A7%E4%B8%8E%E8%80%81%E4%BA%BA%E7%85%A7%E7%89%87%E5%A4%84%E7%90%86"><span class="nav-number">5.3.</span> <span class="nav-text">5.3、结合实际项目：证件照与老人照片处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%AF%81%E4%BB%B6%E7%85%A7%E5%88%B6%E4%BD%9C"><span class="nav-number">5.3.1.</span> <span class="nav-text">1. 证件照制作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%80%81%E4%BA%BA%E7%85%A7%E7%89%87%E5%A4%84%E7%90%86"><span class="nav-number">5.3.2.</span> <span class="nav-text">2. 老人照片处理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E6%9C%AC%E7%AF%87%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">六、本篇总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4861</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">384</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">704</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/e99e97a9.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ComfyUI开发之——ComfyUI 参考图与人物一致性(3.6) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ComfyUI开发之——ComfyUI 参考图与人物一致性(3.6)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/ComfyUI%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94ComfyUI-%E5%8F%82%E8%80%83%E5%9B%BE%E4%B8%8E%E4%BA%BA%E7%89%A9%E4%B8%80%E8%87%B4%E6%80%A7-3-6.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-11-04 19:36:52" itemprop="dateCreated datePublished" datetime="2026-11-04T19:36:52+08:00">2026-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/" itemprop="url" rel="index"><span itemprop="name">AI图视频短剧</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">AI绘图</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/ComfyUI/" itemprop="url" rel="index"><span itemprop="name">ComfyUI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI 参考图与人物一致性：IP-Adapter、InstantID 原理与实践</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二、图与人物一致性"><a href="#二、图与人物一致性" class="headerlink" title="二、图与人物一致性"></a>二、图与人物一致性</h2><h3 id="2-1、为什么需要人物一致性？"><a href="#2-1、为什么需要人物一致性？" class="headerlink" title="2.1、为什么需要人物一致性？"></a>2.1、为什么需要人物一致性？</h3><p>使用 ComfyUI 生成图片时，经常会遇到一个问题：第一次生成的人物效果不错，但再次生成时，人物的脸型、五官、发型甚至整体外观都发生了变化。</p>
+<p>例如：</p>
+<ul>
+<li>想让同一个人物出现在不同场景中。</li>
+<li>想让人物穿不同衣服，但保持面部特征。</li>
+<li>想生成一组人物写真，尽量保持外观一致。</li>
+<li>想根据一张参考照片生成不同风格的图片。</li>
+</ul>
+<p>仅靠提示词和 Seed，通常很难稳定保持人物身份特征。</p>
+<p>这时可以使用参考图相关技术。</p>
+<p>常见方案包括：</p>
+<ul>
+<li><strong>IP-Adapter：</strong> 利用参考图片提取视觉特征，引导模型生成相似内容。</li>
+<li><strong>InstantID：</strong> 利用人脸身份特征和关键点信息，帮助保持人物面部身份一致性。</li>
+<li><strong>LoRA：</strong> 通过训练或使用已有适配模型，学习特定人物或风格特征。</li>
+<li><strong>ControlNet：</strong> 控制人物姿势、轮廓和场景结构。</li>
+</ul>
+<p>它们可以单独使用，也可以根据任务组合使用。</p>
+<h3 id="2-2、IP-Adapter-是什么？"><a href="#2-2、IP-Adapter-是什么？" class="headerlink" title="2.2、IP-Adapter 是什么？"></a>2.2、IP-Adapter 是什么？</h3><p>IP-Adapter（Image Prompt Adapter）是一种图像提示适配技术。</p>
+<p>前面我们使用 Prompt，通过文字告诉模型希望生成什么内容。</p>
+<p>IP-Adapter 则可以额外输入一张参考图片，让模型根据图片中的视觉特征进行生成。</p>
+<p>例如：</p>
+<p>上传一张人物照片，再通过 IP-Adapter 将其作为参考图，生成不同服装、不同背景或不同画风的人物图片。</p>
+<p>它可以帮助模型参考：</p>
+<ul>
+<li>人物整体外观。</li>
+<li>面部视觉特征。</li>
+<li>服装和配色。</li>
+<li>图片风格。</li>
+<li>画面中的视觉元素。</li>
+</ul>
+<p>需要注意，IP-Adapter 不是专门的人脸身份识别工具。它提取的是图像视觉特征，具体保留哪些特征取决于模型类型和工作流。</p>
+<h4 id="1-IP-Adapter-的基本原理"><a href="#1-IP-Adapter-的基本原理" class="headerlink" title="1. IP-Adapter 的基本原理"></a>1. IP-Adapter 的基本原理</h4><p>IP-Adapter 会通过图像编码器提取参考图片的特征，再将这些特征作为额外条件提供给图像生成模型。</p>
+<p>基本流程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">参考图片</span><br><span class="line">    ↓</span><br><span class="line">CLIP Vision 图像编码器</span><br><span class="line">    ↓</span><br><span class="line">提取图像特征</span><br><span class="line">    ↓</span><br><span class="line">IP-Adapter</span><br><span class="line">    ↓</span><br><span class="line">结合文本提示词</span><br><span class="line">    ↓</span><br><span class="line">KSampler</span><br><span class="line">    ↓</span><br><span class="line">生成图片</span><br></pre></td></tr></table></figure>
+
+<p>可以理解为：</p>
+<ul>
+<li>Prompt 负责描述生成内容。</li>
+<li>参考图负责提供视觉信息。</li>
+<li>IP-Adapter 负责将参考图的信息引入生成过程。</li>
+</ul>
+<p>例如：</p>
+<p>参考图片：一个穿着白色衬衫的女性。</p>
+<p>提示词：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a woman wearing a black dress,</span><br><span class="line">standing in a beautiful garden,</span><br><span class="line">realistic photography</span><br></pre></td></tr></table></figure>
+
+<p>通过 IP-Adapter，可以让模型在生成不同服装和背景时，尽量参考原图中的人物视觉特征。</p>
+<h4 id="2-IP-Adapter-常见类型"><a href="#2-IP-Adapter-常见类型" class="headerlink" title="2. IP-Adapter 常见类型"></a>2. IP-Adapter 常见类型</h4><p>IP-Adapter 有不同版本，适用于不同模型架构和任务。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>主要用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IP-Adapter</td>
+<td>通用图片参考</td>
+</tr>
+<tr>
+<td>IP-Adapter Plus</td>
+<td>更丰富的图像特征参考</td>
+</tr>
+<tr>
+<td>IP-Adapter Face</td>
+<td>更侧重面部视觉特征</td>
+</tr>
+<tr>
+<td>IP-Adapter Plus Face</td>
+<td>结合面部和整体视觉特征</td>
+</tr>
+<tr>
+<td>FaceID 系列</td>
+<td>利用人脸身份特征进行参考</td>
+</tr>
+</tbody></table>
+<p>不同版本所需的模型文件、图像编码器和加载节点可能不同。</p>
+<p>下载时一定要确认基础模型架构，例如 SD 1.5 或 SDXL，不能只看模型名称。</p>
+<h3 id="2-3、InstantID-是什么？"><a href="#2-3、InstantID-是什么？" class="headerlink" title="2.3、InstantID 是什么？"></a>2.3、InstantID 是什么？</h3><p>如果 IP-Adapter 更侧重整体图像视觉参考，那么 InstantID 则更加关注人物面部身份特征。</p>
+<p>InstantID 是一种面向身份保持的图像生成方案，可以利用参考人脸的身份特征和面部关键点信息，引导生成结果尽量保持人物身份。</p>
+<p>例如：</p>
+<ul>
+<li>根据一张人物照片生成不同服装的照片。</li>
+<li>更换人物背景。</li>
+<li>调整人物姿势和构图。</li>
+<li>尝试生成不同风格的人物图片。</li>
+</ul>
+<h4 id="1-InstantID-的基本原理"><a href="#1-InstantID-的基本原理" class="headerlink" title="1. InstantID 的基本原理"></a>1. InstantID 的基本原理</h4><p>InstantID 通常会使用人脸分析模型提取身份特征，同时通过人脸关键点信息提供姿势和面部结构方面的控制。</p>
+<p>基本流程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">参考人脸照片</span><br><span class="line">      ↓</span><br><span class="line">人脸检测与特征提取</span><br><span class="line">      ↓</span><br><span class="line">身份特征（Face Embedding）</span><br><span class="line">      ↓</span><br><span class="line">InstantID</span><br><span class="line">      +</span><br><span class="line">人脸关键点信息</span><br><span class="line">      ↓</span><br><span class="line">ControlNet 等结构控制</span><br><span class="line">      ↓</span><br><span class="line">图像生成模型</span><br><span class="line">      ↓</span><br><span class="line">生成图片</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li>人脸身份特征用于提供人物身份参考。</li>
+<li>人脸关键点用于提供面部结构和位置方面的控制。</li>
+<li>提示词用于描述服装、背景、风格等内容。</li>
+</ul>
+<p>InstantID 并不是简单地把原图的人脸复制到新图片上，而是利用身份特征引导模型重新生成。</p>
+<h4 id="2-InstantID-与-IP-Adapter-的区别"><a href="#2-InstantID-与-IP-Adapter-的区别" class="headerlink" title="2. InstantID 与 IP-Adapter 的区别"></a>2. InstantID 与 IP-Adapter 的区别</h4><table>
+<thead>
+<tr>
+<th>对比</th>
+<th>IP-Adapter</th>
+<th>InstantID</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主要目标</td>
+<td>参考图片视觉特征</td>
+<td>保持人物面部身份</td>
+</tr>
+<tr>
+<td>参考信息</td>
+<td>图像特征</td>
+<td>人脸身份特征及关键点</td>
+</tr>
+<tr>
+<td>常见用途</td>
+<td>风格、人物外观、视觉参考</td>
+<td>人物写真、面部身份保持</td>
+</tr>
+<tr>
+<td>人脸专注程度</td>
+<td>取决于具体版本</td>
+<td>更侧重人脸</td>
+</tr>
+<tr>
+<td>模型要求</td>
+<td>依版本而定</td>
+<td>经典方案主要面向 SDXL</td>
+</tr>
+</tbody></table>
+<p>需要注意，InstantID 经典实现主要针对 SDXL。使用时应选择与其兼容的模型、节点和依赖，不能直接将 SD 1.5 的工作流照搬过来。</p>
+<h2 id="三、准备模型与运行环境"><a href="#三、准备模型与运行环境" class="headerlink" title="三、准备模型与运行环境"></a>三、准备模型与运行环境</h2><p>IP-Adapter 和 InstantID 通常需要额外下载模型文件，并安装对应的自定义节点或依赖。</p>
+<p>常见资源：</p>
+<ul>
+<li>ComfyUI IPAdapter Plus：<a target="_blank" rel="noopener" href="https://github.com/cubiq/ComfyUI_IPAdapter_plus">https://github.com/cubiq/ComfyUI_IPAdapter_plus</a></li>
+<li>InstantID 官方项目：<a target="_blank" rel="noopener" href="https://github.com/InstantID/InstantID">https://github.com/InstantID/InstantID</a></li>
+<li>Hugging Face：<a target="_blank" rel="noopener" href="https://huggingface.co/">https://huggingface.co/</a></li>
+<li>Civitai：<a target="_blank" rel="noopener" href="https://civitai.com/">https://civitai.com/</a></li>
+</ul>
+<h3 id="3-1-IP-Adapter-模型"><a href="#3-1-IP-Adapter-模型" class="headerlink" title="3.1. IP-Adapter 模型"></a>3.1. IP-Adapter 模型</h3><p>使用 IP-Adapter Plus 扩展时，常见目录结构如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI/</span><br><span class="line">└── models/</span><br><span class="line">    ├── ipadapter/</span><br><span class="line">    │   └── IP-Adapter 模型文件</span><br><span class="line">    │</span><br><span class="line">    └── clip_vision/</span><br><span class="line">        └── CLIP Vision 模型文件</span><br></pre></td></tr></table></figure>
+
+<p>注意：不同版本和模型架构所需的文件不同，具体目录以当前扩展的 README 为准。</p>
+<h3 id="3-2-InstantID-模型"><a href="#3-2-InstantID-模型" class="headerlink" title="3.2. InstantID 模型"></a>3.2. InstantID 模型</h3><p>经典 InstantID 工作流通常需要准备：</p>
+<ul>
+<li>InstantID 身份适配模型。</li>
+<li>对应的 ControlNet 模型。</li>
+<li>人脸分析模型及相关依赖。</li>
+<li>兼容的 SDXL 基础模型。</li>
+</ul>
+<p>常见目录示意：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI/</span><br><span class="line">└── models/</span><br><span class="line">    ├── instantid/</span><br><span class="line">    │   └── InstantID 模型文件</span><br><span class="line">    │</span><br><span class="line">    └── controlnet/</span><br><span class="line">        └── InstantID ControlNet 模型</span><br></pre></td></tr></table></figure>
+
+<p>人脸分析模型的文件位置可能由具体自定义节点决定，不能仅凭上述目录示意判断是否安装完整。</p>
+<h3 id="3-3-安装自定义节点"><a href="#3-3-安装自定义节点" class="headerlink" title="3.3. 安装自定义节点"></a>3.3. 安装自定义节点</h3><p>IP-Adapter Plus 的传统手动安装方式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ComfyUI/custom_nodes</span><br><span class="line"></span><br><span class="line">git clone https://github.com/cubiq/ComfyUI_IPAdapter_plus.git</span><br></pre></td></tr></table></figure>
+
+<p>InstantID 相关节点也需要按照对应项目的 README 安装。</p>
+<p>安装依赖时，必须使用当前 ComfyUI 所使用的 Python 环境。</p>
+<p>例如，Windows 便携版通常需要使用其自带的 Python，而不是直接使用系统 Python。</p>
+<p>安装完成后重新启动 ComfyUI，检查启动日志是否存在依赖或节点加载错误。</p>
+<p>注意：自定义节点项目可能更新、迁移或调整安装方式，实际操作应以项目当前官方说明为准。</p>
+<h2 id="四、实战"><a href="#四、实战" class="headerlink" title="四、实战"></a>四、实战</h2><h3 id="4-1、实战一：使用-IP-Adapter-进行人物参考生成"><a href="#4-1、实战一：使用-IP-Adapter-进行人物参考生成" class="headerlink" title="4.1、实战一：使用 IP-Adapter 进行人物参考生成"></a>4.1、实战一：使用 IP-Adapter 进行人物参考生成</h3><p>下面以 SDXL + IP-Adapter Plus 为例，理解基本工作流程。</p>
+<h4 id="1-准备参考图片"><a href="#1-准备参考图片" class="headerlink" title="1. 准备参考图片"></a>1. 准备参考图片</h4><p>选择一张人物照片。</p>
+<p>建议：</p>
+<ul>
+<li>人脸清晰。</li>
+<li>光线正常。</li>
+<li>人物没有严重遮挡。</li>
+<li>图片分辨率适中。</li>
+<li>背景不要过于复杂。</li>
+</ul>
+<p>如果希望参考人物整体外观，可以使用包含上半身的照片；如果重点是面部特征，可以选择面部清晰的照片。</p>
+<h4 id="2-添加节点"><a href="#2-添加节点" class="headerlink" title="2. 添加节点"></a>2. 添加节点</h4><p>不同版本的 IP-Adapter Plus 节点名称可能略有差异，常见节点包括：</p>
+<table>
+<thead>
+<tr>
+<th>节点</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Load Image</td>
+<td>加载参考图片</td>
+</tr>
+<tr>
+<td>IPAdapter Unified Loader</td>
+<td>加载适配器及相关模型</td>
+</tr>
+<tr>
+<td>IPAdapter</td>
+<td>应用参考图条件</td>
+</tr>
+<tr>
+<td>Load Checkpoint</td>
+<td>加载基础模型</td>
+</tr>
+<tr>
+<td>CLIP Text Encode</td>
+<td>编写提示词</td>
+</tr>
+<tr>
+<td>KSampler</td>
+<td>生成图片</td>
+</tr>
+<tr>
+<td>VAE Decode</td>
+<td>解码图片</td>
+</tr>
+<tr>
+<td>Save Image</td>
+<td>保存图片</td>
+</tr>
+</tbody></table>
+<h4 id="3-连接基本流程"><a href="#3-连接基本流程" class="headerlink" title="3. 连接基本流程"></a>3. 连接基本流程</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Load Checkpoint</span><br><span class="line">      ↓ MODEL</span><br><span class="line">IPAdapter Unified Loader</span><br><span class="line">      ↓ MODEL</span><br><span class="line">IPAdapter</span><br><span class="line">      ↓ MODEL</span><br><span class="line">KSampler</span><br><span class="line"></span><br><span class="line">Load Image</span><br><span class="line">      ↓ IMAGE</span><br><span class="line">IPAdapter</span><br><span class="line"></span><br><span class="line">CLIP Text Encode（正向）</span><br><span class="line">      ↓ CONDITIONING</span><br><span class="line">KSampler</span><br><span class="line"></span><br><span class="line">CLIP Text Encode（负向）</span><br><span class="line">      ↓ CONDITIONING</span><br><span class="line">KSampler</span><br><span class="line"></span><br><span class="line">Empty Latent Image</span><br><span class="line">      ↓ LATENT</span><br><span class="line">KSampler</span><br><span class="line">      ↓ LATENT</span><br><span class="line">VAE Decode</span><br><span class="line">      ↓ IMAGE</span><br><span class="line">Save Image</span><br></pre></td></tr></table></figure>
+
+<p>实际使用时，部分版本的 IPAdapter 节点还需要连接 IP-Adapter 模型、CLIP Vision 等输入，具体以节点接口为准。</p>
+<h4 id="4-设置提示词"><a href="#4-设置提示词" class="headerlink" title="4. 设置提示词"></a>4. 设置提示词</h4><p>例如，参考图中的人物穿着普通衣服，希望生成一张户外写真。</p>
+<p>正向提示词：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">portrait photography,</span><br><span class="line">wearing an elegant white dress,</span><br><span class="line">standing in a beautiful garden,</span><br><span class="line">natural sunlight,</span><br><span class="line">realistic skin texture,</span><br><span class="line">high quality</span><br></pre></td></tr></table></figure>
+
+<p>负向提示词：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">blurry, low quality,</span><br><span class="line">distorted face, bad anatomy,</span><br><span class="line">extra fingers, deformed hands</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-调整-IP-Adapter-权重"><a href="#5-调整-IP-Adapter-权重" class="headerlink" title="5. 调整 IP-Adapter 权重"></a>5. 调整 IP-Adapter 权重</h4><p>IP-Adapter 通常提供类似 <code>weight</code> 的控制参数。</p>
+<p>它决定参考图对生成结果的影响程度。</p>
+<p>可以从以下数值开始测试：</p>
+<table>
+<thead>
+<tr>
+<th>权重</th>
+<th>大致效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0.3</td>
+<td>参考影响较弱</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>中等参考</td>
+</tr>
+<tr>
+<td>0.7</td>
+<td>较强参考</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>强参考</td>
+</tr>
+</tbody></table>
+<p>这些数值只是实验起点，不同 IP-Adapter 版本、模型和工作流的实际效果可能不同。</p>
+<p>如果生成结果与参考人物差异较大，可以适当提高权重；如果服装、背景和画风难以按照提示词改变，可以尝试降低权重。</p>
+<h4 id="6-观察生成结果"><a href="#6-观察生成结果" class="headerlink" title="6. 观察生成结果"></a>6. 观察生成结果</h4><p>重点观察：</p>
+<ul>
+<li>面部外观是否接近参考图。</li>
+<li>人物整体外观是否保持相似。</li>
+<li>服装是否按照提示词改变。</li>
+<li>背景是否成功替换。</li>
+<li>是否出现面部失真。</li>
+</ul>
+<p>IP-Adapter 可以帮助参考人物外观，但不能保证每次生成都保持完全相同的身份特征。</p>
+<h3 id="4-2、实战二：使用-InstantID-保持人物面部特征"><a href="#4-2、实战二：使用-InstantID-保持人物面部特征" class="headerlink" title="4.2、实战二：使用 InstantID 保持人物面部特征"></a>4.2、实战二：使用 InstantID 保持人物面部特征</h3><p>接下来使用 InstantID 进行人物身份参考。</p>
+<p>这里以经典 SDXL InstantID 工作流为例。</p>
+<h4 id="1-准备人物照片"><a href="#1-准备人物照片" class="headerlink" title="1. 准备人物照片"></a>1. 准备人物照片</h4><p>选择一张正面或接近正面的清晰人脸照片。</p>
+<p>建议：</p>
+<ul>
+<li>面部完整可见。</li>
+<li>五官清楚。</li>
+<li>光线均匀。</li>
+<li>尽量避免严重遮挡。</li>
+<li>不使用模糊或过度美颜的图片。</li>
+</ul>
+<h4 id="2-添加相关节点"><a href="#2-添加相关节点" class="headerlink" title="2. 添加相关节点"></a>2. 添加相关节点</h4><p>经典 InstantID 工作流通常涉及：</p>
+<table>
+<thead>
+<tr>
+<th>节点或组件</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Load Image</td>
+<td>加载参考人脸</td>
+</tr>
+<tr>
+<td>InstantID Face Analysis</td>
+<td>提取人脸身份特征</td>
+</tr>
+<tr>
+<td>InstantID Model Loader</td>
+<td>加载 InstantID 模型</td>
+</tr>
+<tr>
+<td>InstantID ControlNet Loader</td>
+<td>加载对应控制模型</td>
+</tr>
+<tr>
+<td>Apply InstantID</td>
+<td>应用身份和结构控制</td>
+</tr>
+<tr>
+<td>Load Checkpoint</td>
+<td>加载 SDXL 基础模型</td>
+</tr>
+<tr>
+<td>KSampler</td>
+<td>生成图片</td>
+</tr>
+</tbody></table>
+<p>实际节点名称会因自定义节点版本而不同。</p>
+<h4 id="3-理解工作流连接"><a href="#3-理解工作流连接" class="headerlink" title="3. 理解工作流连接"></a>3. 理解工作流连接</h4><p>整体关系可以理解为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">参考人脸图片</span><br><span class="line">      ↓</span><br><span class="line">人脸检测与身份特征提取</span><br><span class="line">      ↓</span><br><span class="line">Apply InstantID</span><br><span class="line">      ↑</span><br><span class="line">InstantID 模型</span><br><span class="line">      ↑</span><br><span class="line">InstantID ControlNet</span><br><span class="line"></span><br><span class="line">SDXL 基础模型</span><br><span class="line">      ↓</span><br><span class="line">Apply InstantID</span><br><span class="line">      ↓</span><br><span class="line">KSampler</span><br><span class="line">      ↓</span><br><span class="line">VAE Decode</span><br><span class="line">      ↓</span><br><span class="line">Save Image</span><br></pre></td></tr></table></figure>
+
+<p>Apply InstantID 通常会将身份特征、面部关键点控制和其他生成条件整合到工作流中。</p>
+<p>它不是一个只连接图片就能完成全部工作的普通图片节点，实际连接方式应按照当前节点版本的接口进行。</p>
+<h4 id="4-设置生成提示词"><a href="#4-设置生成提示词" class="headerlink" title="4. 设置生成提示词"></a>4. 设置生成提示词</h4><p>例如，希望生成一张人物户外写真：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">realistic portrait photography,</span><br><span class="line">wearing a light blue dress,</span><br><span class="line">standing in a green garden,</span><br><span class="line">soft natural lighting,</span><br><span class="line">detailed face,</span><br><span class="line">high quality</span><br></pre></td></tr></table></figure>
+
+<p>负向提示词：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">blurry, low quality,</span><br><span class="line">deformed face, distorted eyes,</span><br><span class="line">bad anatomy, unnatural skin</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-调整控制参数"><a href="#5-调整控制参数" class="headerlink" title="5. 调整控制参数"></a>5. 调整控制参数</h4><p>InstantID 相关工作流通常会提供身份参考强度、ControlNet 强度以及开始和结束控制时间等参数。</p>
+<p>建议先使用作者提供的默认配置运行，再逐项调整。</p>
+<p>重点观察：</p>
+<ul>
+<li>面部身份特征是否保持。</li>
+<li>人脸关键点是否与目标构图匹配。</li>
+<li>服装和背景能否按提示词改变。</li>
+<li>是否出现面部比例异常。</li>
+</ul>
+<p>不要直接套用其他 IP-Adapter 工作流中的权重数值，因为两者的参数定义和作用并不完全相同。</p>
+<h2 id="五、技术选型"><a href="#五、技术选型" class="headerlink" title="五、技术选型"></a>五、技术选型</h2><h3 id="5-1、IP-Adapter、InstantID、LoRA、ControlNet-如何选择？"><a href="#5-1、IP-Adapter、InstantID、LoRA、ControlNet-如何选择？" class="headerlink" title="5.1、IP-Adapter、InstantID、LoRA、ControlNet 如何选择？"></a>5.1、IP-Adapter、InstantID、LoRA、ControlNet 如何选择？</h3><p>这几种技术都可以影响生成结果，但它们解决的问题并不完全相同。</p>
+<table>
+<thead>
+<tr>
+<th>技术</th>
+<th>主要控制目标</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IP-Adapter</td>
+<td>参考图片视觉特征</td>
+<td>参考人物外观、画风、图片内容</td>
+</tr>
+<tr>
+<td>InstantID</td>
+<td>人物面部身份特征</td>
+<td>人物写真、面部身份保持</td>
+</tr>
+<tr>
+<td>LoRA</td>
+<td>特定人物、风格或概念</td>
+<td>固定角色、画风、服装</td>
+</tr>
+<tr>
+<td>ControlNet</td>
+<td>姿势、轮廓、空间结构</td>
+<td>人物动作、建筑结构、场景布局</td>
+</tr>
+</tbody></table>
+<p>例如，想生成同一个人物的不同写真，可以考虑：</p>
+<ul>
+<li>InstantID：提供人物面部身份参考。</li>
+<li>ControlNet：控制人物姿势。</li>
+<li>LoRA：提供特定画风。</li>
+<li>Prompt：描述服装、背景和拍摄环境。</li>
+</ul>
+<p>但并不是所有任务都需要同时加载这些模型。模型越多，工作流越复杂，显存和兼容性要求也可能越高。</p>
+<p>建议先单独掌握每一种技术，再根据实际需求组合。</p>
+<h3 id="5-2、人物一致性为什么仍然不稳定？"><a href="#5-2、人物一致性为什么仍然不稳定？" class="headerlink" title="5.2、人物一致性为什么仍然不稳定？"></a>5.2、人物一致性为什么仍然不稳定？</h3><p>即使使用 IP-Adapter 或 InstantID，也不能保证每次生成的人物完全相同。</p>
+<p>常见原因包括：</p>
+<h4 id="1-参考照片质量不够"><a href="#1-参考照片质量不够" class="headerlink" title="1. 参考照片质量不够"></a>1. 参考照片质量不够</h4><p>如果人脸模糊、遮挡严重或光线不足，模型可能无法准确提取特征。</p>
+<p>建议更换清晰的参考照片。</p>
+<h4 id="2-提示词与参考图冲突"><a href="#2-提示词与参考图冲突" class="headerlink" title="2. 提示词与参考图冲突"></a>2. 提示词与参考图冲突</h4><p>例如，参考图是短发人物，但提示词明确要求长发，生成结果就可能发生明显变化。</p>
+<p>需要合理区分希望保留的特征和希望修改的特征。</p>
+<h4 id="3-控制权重不合适"><a href="#3-控制权重不合适" class="headerlink" title="3. 控制权重不合适"></a>3. 控制权重不合适</h4><p>权重过低，参考图影响不足；权重过高，可能限制服装、姿势和背景变化，甚至造成生成异常。</p>
+<p>建议固定其他参数，逐步调整权重。</p>
+<h4 id="4-模型架构不匹配"><a href="#4-模型架构不匹配" class="headerlink" title="4. 模型架构不匹配"></a>4. 模型架构不匹配</h4><p>不同架构的 IP-Adapter、InstantID 和 ControlNet 不能随意混用。</p>
+<p>尤其需要注意：</p>
+<ul>
+<li>SD 1.5 工作流。</li>
+<li>SDXL 工作流。</li>
+<li>FLUX 工作流。</li>
+</ul>
+<p>下载模型时应确认对应架构，并按照官方工作流安装。</p>
+<h4 id="5-人物姿势和角度变化太大"><a href="#5-人物姿势和角度变化太大" class="headerlink" title="5. 人物姿势和角度变化太大"></a>5. 人物姿势和角度变化太大</h4><p>如果参考照片是正面照，而目标图片要求大幅侧身或仰视，面部特征可能难以保持。</p>
+<p>可以尝试提供角度更接近的参考图片，或配合合适的姿势控制方法。</p>
+<h3 id="5-3、结合实际项目：证件照与老人照片处理"><a href="#5-3、结合实际项目：证件照与老人照片处理" class="headerlink" title="5.3、结合实际项目：证件照与老人照片处理"></a>5.3、结合实际项目：证件照与老人照片处理</h3><p>前面规划过 ComfyUI 的 AI 图片处理实战，包括证件照制作和老人照片修复。</p>
+<p>这里可以提前理解一下这些技术的用途。</p>
+<h4 id="1-证件照制作"><a href="#1-证件照制作" class="headerlink" title="1. 证件照制作"></a>1. 证件照制作</h4><p>证件照通常需要：</p>
+<ul>
+<li>保持人物身份和面部特征。</li>
+<li>更换背景颜色。</li>
+<li>更换符合要求的服装。</li>
+<li>调整图片尺寸和比例。</li>
+<li>输出符合具体用途要求的照片。</li>
+</ul>
+<p>对于证件照，应该优先采用背景分割、图像合成和尺寸处理等可控方法。</p>
+<p>如果需要更换服装，可以使用局部重绘，但必须检查是否改变了人物面部和身份特征。</p>
+<p>不建议完全依赖生成式 AI 重新生成整张证件照，因为它可能改变五官、面部细节或真实外观。</p>
+<h4 id="2-老人照片处理"><a href="#2-老人照片处理" class="headerlink" title="2. 老人照片处理"></a>2. 老人照片处理</h4><p>老人照片修复可能涉及：</p>
+<ul>
+<li>划痕和破损修复。</li>
+<li>清晰度增强。</li>
+<li>背景替换。</li>
+<li>服装调整。</li>
+<li>旧照片上色。</li>
+</ul>
+<p>如果希望尽量保留原始人物面貌，可以结合参考图、局部重绘和图像修复技术。</p>
+<p>需要特别注意：AI 可能会补充原图中不存在的面部细节。对于纪念照或有真实身份意义的照片，应保留原图，并仔细检查修复结果，不要将 AI 推测生成的细节当成真实记录。</p>
+<p>使用他人照片进行身份参考、生成或分享时，也应获得适当授权，并注意照片隐私。</p>
+<h2 id="六、本篇总结"><a href="#六、本篇总结" class="headerlink" title="六、本篇总结"></a>六、本篇总结</h2><p>这一篇学习了 ComfyUI 人物参考和一致性控制的两种常见技术。</p>
+<p>需要掌握的知识点：</p>
+<ol>
+<li>IP-Adapter 可以利用参考图片的视觉特征引导生成。</li>
+<li>InstantID 更侧重利用人脸身份特征保持人物面部身份。</li>
+<li>IP-Adapter 不等于专门的人脸身份识别工具。</li>
+<li>InstantID 经典方案主要面向 SDXL，需要对应的模型和节点。</li>
+<li>LoRA 可以学习人物或风格特征，ControlNet 可以控制姿势和结构。</li>
+<li>多种技术可以组合，但需要注意模型兼容性、显存和参数设置。</li>
+</ol>
+<p>建议先完成一次 IP-Adapter 人物参考生成，再尝试 InstantID，分别观察两者在面部、服装和背景方面的表现。</p>
+<p>至此，ComfyUI 第三阶段「图像生成与控制」已经完成。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ComfyUI/" rel="tag"># ComfyUI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/b5a0a316.html" rel="prev" title="ComfyUI开发之——ComfyUI ControlNet 入门(3.5)">
+                  <i class="fa fa-angle-left"></i> ComfyUI开发之——ComfyUI ControlNet 入门(3.5)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/38bf2f69.html" rel="next" title="ComfyUI开发之——ComfyUI工作流下载导入修改与分享(4.1)">
+                  ComfyUI开发之——ComfyUI工作流下载导入修改与分享(4.1) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"7f395bce6112eae7fdb35a3d46249967"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

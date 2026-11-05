@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="一、概述1234567从本篇开始，进入 ComfyUI 最后一个阶段：进阶应用与项目集成。本篇将学习： 如何使用 ComfyUI 生成 AI 视频 重点介绍图片转视频（Image-to-Video） 了解常见视频模型、工作流、节点和硬件要求 并完成第一个简单的视频生成任务。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ComfyUI开发之——ComfyUI视频生成入门(6.2)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/d7ca5951.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="一、概述1234567从本篇开始，进入 ComfyUI 最后一个阶段：进阶应用与项目集成。本篇将学习： 如何使用 ComfyUI 生成 AI 视频 重点介绍图片转视频（Image-to-Video） 了解常见视频模型、工作流、节点和硬件要求 并完成第一个简单的视频生成任务。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-11-04T11:44:10.000Z">
+<meta property="article:modified_time" content="2026-11-05T01:59:37.038Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="ComfyUI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/d7ca5951.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/d7ca5951.html","path":"posts/d7ca5951.html","title":"ComfyUI开发之——ComfyUI视频生成入门(6.2)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ComfyUI开发之——ComfyUI视频生成入门(6.2) | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">384</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4861</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%A6%82%E5%BF%B5"><span class="nav-number">2.</span> <span class="nav-text">二、概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E3%80%81ComfyUI-%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E8%A7%86%E9%A2%91%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1、ComfyUI 如何生成视频？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2%E3%80%81%E5%B8%B8%E8%A7%81%E7%9A%84%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">2.2、常见的视频生成模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Stable-Video-Diffusion"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. Stable Video Diffusion</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Wan-%E7%B3%BB%E5%88%97"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. Wan 系列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-LTX-Video"><span class="nav-number">2.2.3.</span> <span class="nav-text">3. LTX-Video</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-AnimateDiff"><span class="nav-number">2.2.4.</span> <span class="nav-text">4. AnimateDiff</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3%E3%80%81%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90%E5%AF%B9%E7%94%B5%E8%84%91%E7%A1%AC%E4%BB%B6%E6%9C%89%E4%BB%80%E4%B9%88%E8%A6%81%E6%B1%82%EF%BC%9F"><span class="nav-number">2.3.</span> <span class="nav-text">2.3、视频生成对电脑硬件有什么要求？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%B8%BB%E8%A6%81%E7%A1%AC%E4%BB%B6%E6%8C%87%E6%A0%87"><span class="nav-number">2.3.1.</span> <span class="nav-text">1. 主要硬件指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%B8%8D%E5%90%8C%E6%98%BE%E5%AD%98%E9%85%8D%E7%BD%AE%E7%9A%84%E5%8F%82%E8%80%83"><span class="nav-number">2.3.2.</span> <span class="nav-text">2. 不同显存配置的参考</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E7%BB%93%E5%90%88%E6%9C%AC%E5%9C%B0%E7%94%B5%E8%84%91%E9%80%89%E6%8B%A9%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.3.3.</span> <span class="nav-text">3. 结合本地电脑选择模型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%87%86%E5%A4%87-ComfyUI-%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90%E7%8E%AF%E5%A2%83"><span class="nav-number">3.</span> <span class="nav-text">三、准备 ComfyUI 视频生成环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E7%A1%AE%E8%AE%A4-ComfyUI-%E7%89%88%E6%9C%AC"><span class="nav-number">3.1.</span> <span class="nav-text">3.1. 确认 ComfyUI 版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%AE%89%E8%A3%85%E8%A7%86%E9%A2%91%E7%9B%B8%E5%85%B3%E8%8A%82%E7%82%B9"><span class="nav-number">3.2.</span> <span class="nav-text">3.2. 安装视频相关节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E4%B8%8B%E8%BD%BD%E6%A8%A1%E5%9E%8B%E6%96%87%E4%BB%B6"><span class="nav-number">3.3.</span> <span class="nav-text">3.3. 下载模型文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%9E%E6%88%98%EF%BC%9A%E4%BD%BF%E7%94%A8%E4%B8%80%E5%BC%A0%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E7%9F%AD%E8%A7%86%E9%A2%91"><span class="nav-number">4.</span> <span class="nav-text">四、实战：使用一张图片生成短视频</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%87%86%E5%A4%87%E4%B8%80%E5%BC%A0%E5%9B%BE%E7%89%87"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 第一步：准备一张图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%AF%BC%E5%85%A5%E5%AE%98%E6%96%B9%E6%88%96%E6%A8%A1%E5%9E%8B%E5%AF%B9%E5%BA%94%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 第二步：导入官方或模型对应的工作流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E5%8A%A0%E8%BD%BD%E8%BE%93%E5%85%A5%E5%9B%BE%E7%89%87"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 第三步：加载输入图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E8%AE%BE%E7%BD%AE%E5%8A%A8%E4%BD%9C%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 第四步：设置动作提示词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9A%E8%AE%BE%E7%BD%AE%E8%A7%86%E9%A2%91%E5%8F%82%E6%95%B0"><span class="nav-number">4.5.</span> <span class="nav-text">4.5 第五步：设置视频参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-6-%E7%AC%AC%E5%85%AD%E6%AD%A5%EF%BC%9A%E8%BF%90%E8%A1%8C%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90"><span class="nav-number">4.6.</span> <span class="nav-text">4.6 第六步：运行视频生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-7-%E7%AC%AC%E4%B8%83%E6%AD%A5%EF%BC%9A%E5%90%88%E6%88%90%E5%B9%B6%E4%BF%9D%E5%AD%98%E8%A7%86%E9%A2%91"><span class="nav-number">4.7.</span> <span class="nav-text">4.7 第七步：合成并保存视频</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90%E6%95%88%E6%9E%9C%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">五、视频生成效果如何优化？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E5%87%8F%E5%B0%91%E5%8A%A8%E4%BD%9C%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">5.1.</span> <span class="nav-text">5.1. 减少动作复杂度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E6%8E%A7%E5%88%B6%E9%95%9C%E5%A4%B4%E8%BF%90%E5%8A%A8"><span class="nav-number">5.2.</span> <span class="nav-text">5.2. 控制镜头运动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E9%99%8D%E4%BD%8E%E8%A7%86%E9%A2%91%E5%88%86%E8%BE%A8%E7%8E%87%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95"><span class="nav-number">5.3.</span> <span class="nav-text">5.3. 降低视频分辨率进行测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-%E6%B3%A8%E6%84%8F%E4%BA%BA%E7%89%A9%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-number">5.4.</span> <span class="nav-text">5.4. 注意人物一致性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81ComfyUI-%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90%E4%B8%8E%E4%BC%A0%E7%BB%9F%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">六、ComfyUI 视频生成与传统视频剪辑有什么区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5"><span class="nav-number">7.</span> <span class="nav-text">七、常见问题排查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E7%BB%83%E4%B9%A0%EF%BC%9A%E5%88%B6%E4%BD%9C%E4%B8%80%E6%AE%B5%E5%9B%BE%E7%89%87%E8%BD%AC%E8%A7%86%E9%A2%91%E7%9F%AD%E7%89%87"><span class="nav-number">8.</span> <span class="nav-text">八、练习：制作一段图片转视频短片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">9.</span> <span class="nav-text">九、总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4861</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">384</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">704</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/d7ca5951.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ComfyUI开发之——ComfyUI视频生成入门(6.2) | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ComfyUI开发之——ComfyUI视频生成入门(6.2)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/ComfyUI%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94ComfyUI%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90%E5%85%A5%E9%97%A8-6-2.md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2026-11-04 19:44:10" itemprop="dateCreated datePublished" datetime="2026-11-04T19:44:10+08:00">2026-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/" itemprop="url" rel="index"><span itemprop="name">AI图视频短剧</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">AI绘图</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/ComfyUI/" itemprop="url" rel="index"><span itemprop="name">ComfyUI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>5 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">从本篇开始，进入 ComfyUI 最后一个阶段：进阶应用与项目集成。</span><br><span class="line"></span><br><span class="line">本篇将学习：</span><br><span class="line"> 如何使用 ComfyUI 生成 AI 视频</span><br><span class="line"> 重点介绍图片转视频（Image-to-Video）</span><br><span class="line"> 了解常见视频模型、工作流、节点和硬件要求</span><br><span class="line"> 并完成第一个简单的视频生成任务。</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二、概念"><a href="#二、概念" class="headerlink" title="二、概念"></a>二、概念</h2><h3 id="2-1、ComfyUI-如何生成视频？"><a href="#2-1、ComfyUI-如何生成视频？" class="headerlink" title="2.1、ComfyUI 如何生成视频？"></a>2.1、ComfyUI 如何生成视频？</h3><p>传统的 ComfyUI 文生图工作流，通常是输入提示词，经过模型采样，最终输出一张图片。</p>
+<p>视频生成则不同。</p>
+<p>它需要模型连续生成多帧画面，再将这些画面组合成视频。</p>
+<p>常见的视频生成方式有三种：</p>
+<table>
+<thead>
+<tr>
+<th align="center">生成方式</th>
+<th align="center">输入</th>
+<th align="center">输出</th>
+<th align="center">适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">文本转视频（T2V）</td>
+<td align="center">提示词</td>
+<td align="center">视频</td>
+<td align="center">根据文字生成视频</td>
+</tr>
+<tr>
+<td align="center">图片转视频（I2V）</td>
+<td align="center">一张图片和提示词</td>
+<td align="center">视频</td>
+<td align="center">让静态图片动起来</td>
+</tr>
+<tr>
+<td align="center">视频转视频（V2V）</td>
+<td align="center">原始视频和提示词</td>
+<td align="center">新视频</td>
+<td align="center">修改视频风格或内容</td>
+</tr>
+</tbody></table>
+<p>本篇主要学习图片转视频。</p>
+<p>例如，先使用 ComfyUI 生成一张人物照片，再让人物产生轻微动作：</p>
+<ul>
+<li>人物自然眨眼</li>
+<li>头发轻微摆动</li>
+<li>人物转动头部</li>
+<li>镜头缓慢推进</li>
+<li>背景产生轻微动态</li>
+</ul>
+<p>整体流程如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">输入图片</span><br><span class="line">   ↓</span><br><span class="line">加载视频生成模型</span><br><span class="line">   ↓</span><br><span class="line">输入动作提示词</span><br><span class="line">   ↓</span><br><span class="line">设置视频参数</span><br><span class="line">   ↓</span><br><span class="line">模型生成连续帧</span><br><span class="line">   ↓</span><br><span class="line">帧序列合成视频</span><br><span class="line">   ↓</span><br><span class="line">保存 MP4</span><br></pre></td></tr></table></figure>
+
+<p>需要注意：视频模型生成的是一段新的连续画面，并不是简单地将原图移动一下。人物的面部、服装和背景都可能发生变化。</p>
+<h3 id="2-2、常见的视频生成模型"><a href="#2-2、常见的视频生成模型" class="headerlink" title="2.2、常见的视频生成模型"></a>2.2、常见的视频生成模型</h3><p>ComfyUI 本身主要提供工作流执行和节点管理能力，视频生成通常需要额外安装对应模型及节点。</p>
+<p>目前常见的视频模型和技术路线包括：</p>
+<table>
+<thead>
+<tr>
+<th align="center">模型或方案</th>
+<th align="center">主要用途</th>
+<th align="center">特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Stable Video Diffusion（SVD）</td>
+<td align="center">图片转视频</td>
+<td align="center">较早期的图片动画生成方案</td>
+</tr>
+<tr>
+<td align="center">Wan 系列</td>
+<td align="center">文本转视频、图片转视频</td>
+<td align="center">支持多种视频生成工作流</td>
+</tr>
+<tr>
+<td align="center">LTX-Video</td>
+<td align="center">文本转视频、图片转视频</td>
+<td align="center">注重生成效率和视频工作流</td>
+</tr>
+<tr>
+<td align="center">HunyuanVideo</td>
+<td align="center">文本转视频等</td>
+<td align="center">模型规模较大，硬件要求较高</td>
+</tr>
+<tr>
+<td align="center">AnimateDiff</td>
+<td align="center">基于图像扩散模型生成动画</td>
+<td align="center">可与部分 Stable Diffusion 工作流结合</td>
+</tr>
+</tbody></table>
+<p>这些方案的模型规模、生成质量、支持分辨率和显存需求差异较大。</p>
+<p>初学者不需要一次安装所有模型，建议先选择一个能够在当前电脑上运行的方案。</p>
+<h4 id="1-Stable-Video-Diffusion"><a href="#1-Stable-Video-Diffusion" class="headerlink" title="1. Stable Video Diffusion"></a>1. Stable Video Diffusion</h4><p>Stable Video Diffusion（SVD）是较早应用于图片转视频的模型方案。</p>
+<p>它可以将一张图片作为输入，生成具有连续运动效果的视频帧。</p>
+<p>适合学习：</p>
+<ul>
+<li>图片转视频的基本原理</li>
+<li>视频帧生成</li>
+<li>运动幅度控制</li>
+<li>视频输出流程</li>
+</ul>
+<p>但它属于较早期的视频生成方案，在人物动作和复杂场景方面存在一定局限。</p>
+<h4 id="2-Wan-系列"><a href="#2-Wan-系列" class="headerlink" title="2. Wan 系列"></a>2. Wan 系列</h4><p>Wan是常见的视频生成模型系列，支持不同的视频生成任务。</p>
+<p>根据具体模型版本和工作流，可以实现：</p>
+<ul>
+<li>图片转视频</li>
+<li>文本转视频</li>
+<li>视频生成与编辑相关任务</li>
+</ul>
+<p>ComfyUI 社区有相应的工作流和节点支持。</p>
+<p>初学者可以优先了解 Wan 的图片转视频工作流，但需要根据模型版本选择匹配的工作流，不能把不同版本的模型文件随意混用。</p>
+<h4 id="3-LTX-Video"><a href="#3-LTX-Video" class="headerlink" title="3. LTX-Video"></a>3. LTX-Video</h4><p>LTX-Video是另一种视频生成方案，提供相应的 ComfyUI 工作流支持。</p>
+<p>它可以用于：</p>
+<ul>
+<li>文本生成视频</li>
+<li>图片生成视频</li>
+<li>视频生成实验</li>
+</ul>
+<p>具体支持能力取决于模型版本和当前工作流。</p>
+<h4 id="4-AnimateDiff"><a href="#4-AnimateDiff" class="headerlink" title="4. AnimateDiff"></a>4. AnimateDiff</h4><p>AnimateDiff 与前面的视频生成方案有所不同。</p>
+<p>它主要通过动画模块与图像扩散模型结合，生成连续帧。</p>
+<p>常见应用包括：</p>
+<ul>
+<li>人物简单动作</li>
+<li>动漫风格动画</li>
+<li>图片动态效果</li>
+<li>风格化短视频</li>
+</ul>
+<p>如果已经熟悉 Stable Diffusion 文生图，可以进一步学习 AnimateDiff。</p>
+<h3 id="2-3、视频生成对电脑硬件有什么要求？"><a href="#2-3、视频生成对电脑硬件有什么要求？" class="headerlink" title="2.3、视频生成对电脑硬件有什么要求？"></a>2.3、视频生成对电脑硬件有什么要求？</h3><p>视频生成通常比普通图片生成更消耗资源。</p>
+<p>原因主要有三个：</p>
+<ol>
+<li>不只生成一张图片，而是需要生成多帧。</li>
+<li>视频模型通常规模较大。</li>
+<li>帧数、分辨率和模型精度都会影响显存占用。</li>
+</ol>
+<h4 id="1-主要硬件指标"><a href="#1-主要硬件指标" class="headerlink" title="1. 主要硬件指标"></a>1. 主要硬件指标</h4><table>
+<thead>
+<tr>
+<th align="center">硬件</th>
+<th align="center">影响</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">GPU</td>
+<td align="center">影响模型运行速度</td>
+</tr>
+<tr>
+<td align="center">显存 VRAM</td>
+<td align="center">决定能够加载多大的模型和处理多大的任务</td>
+</tr>
+<tr>
+<td align="center">内存 RAM</td>
+<td align="center">影响模型加载、数据交换和系统稳定性</td>
+</tr>
+<tr>
+<td align="center">硬盘</td>
+<td align="center">存放模型、缓存和生成的视频</td>
+</tr>
+<tr>
+<td align="center">CPU</td>
+<td align="center">负责部分数据处理和任务调度</td>
+</tr>
+</tbody></table>
+<p>其中，GPU 显存通常是影响本地视频生成体验的重要因素。</p>
+<h4 id="2-不同显存配置的参考"><a href="#2-不同显存配置的参考" class="headerlink" title="2. 不同显存配置的参考"></a>2. 不同显存配置的参考</h4><p>以下是选择模型时的粗略参考，不是所有模型的硬性运行门槛：</p>
+<table>
+<thead>
+<tr>
+<th align="center">GPU 显存</th>
+<th align="center">建议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">4GB</td>
+<td align="center">以图片生成和轻量视频实验为主</td>
+</tr>
+<tr>
+<td align="center">6GB</td>
+<td align="center">可以尝试部分轻量方案，但限制较多</td>
+</tr>
+<tr>
+<td align="center">8GB</td>
+<td align="center">可以研究量化模型、低显存工作流</td>
+</tr>
+<tr>
+<td align="center">12GB</td>
+<td align="center">可尝试更多轻量视频模型和优化工作流</td>
+</tr>
+<tr>
+<td align="center">16GB</td>
+<td align="center">选择范围进一步扩大</td>
+</tr>
+<tr>
+<td align="center">24GB 及以上</td>
+<td align="center">更适合本地视频生成和较复杂任务</td>
+</tr>
+</tbody></table>
+<p>实际需求还取决于：</p>
+<ul>
+<li>模型参数量</li>
+<li>FP16、BF16 或量化精度</li>
+<li>视频分辨率</li>
+<li>视频帧数</li>
+<li>是否使用 CPU Offload</li>
+<li>工作流中的其他模型</li>
+</ul>
+<p>不能仅凭显存大小判断某个模型一定可以运行。</p>
+<h4 id="3-结合本地电脑选择模型"><a href="#3-结合本地电脑选择模型" class="headerlink" title="3. 结合本地电脑选择模型"></a>3. 结合本地电脑选择模型</h4><p>如果电脑只有 6GB 显存，不建议一开始就下载大型视频模型。</p>
+<p>可以先使用：</p>
+<ul>
+<li>图片生成工作流</li>
+<li>低分辨率视频实验</li>
+<li>轻量模型</li>
+<li>量化模型</li>
+<li>云端 GPU 环境</li>
+</ul>
+<p>如果使用的是集成显卡，视频生成能力通常会受到较大限制。</p>
+<p>本地视频生成还需要考虑模型下载空间。一个模型可能占用数 GB 到数十 GB，安装多个模型时应提前检查硬盘容量。</p>
+<h2 id="三、准备-ComfyUI-视频生成环境"><a href="#三、准备-ComfyUI-视频生成环境" class="headerlink" title="三、准备 ComfyUI 视频生成环境"></a>三、准备 ComfyUI 视频生成环境</h2><h3 id="3-1-确认-ComfyUI-版本"><a href="#3-1-确认-ComfyUI-版本" class="headerlink" title="3.1. 确认 ComfyUI 版本"></a>3.1. 确认 ComfyUI 版本</h3><p>建议先更新 ComfyUI，并确认当前环境可以正常运行普通文生图工作流。</p>
+<p>视频节点和模型通常对 ComfyUI 版本有一定要求。</p>
+<p>如果版本过旧，可能出现：</p>
+<ul>
+<li>找不到节点</li>
+<li>模型无法加载</li>
+<li>工作流导入失败</li>
+<li>节点输入输出不匹配</li>
+</ul>
+<p>更新之前建议备份已有工作流和配置。</p>
+<h3 id="3-2-安装视频相关节点"><a href="#3-2-安装视频相关节点" class="headerlink" title="3.2. 安装视频相关节点"></a>3.2. 安装视频相关节点</h3><p>可以通过 ComfyUI Manager 查找对应的视频节点。</p>
+<p>例如：</p>
+<ul>
+<li>视频生成相关节点</li>
+<li>视频加载与处理节点</li>
+<li>视频帧合成节点</li>
+<li>视频保存节点</li>
+</ul>
+<p>也可以参考 ComfyUI 官方示例和对应模型项目提供的工作流。</p>
+<p>安装时建议遵循以下顺序：</p>
+<ol>
+<li>确认要使用的视频模型。</li>
+<li>查看模型对应的 ComfyUI 工作流。</li>
+<li>确认需要哪些自定义节点。</li>
+<li>安装节点及依赖。</li>
+<li>下载模型文件。</li>
+<li>重启 ComfyUI。</li>
+<li>导入示例工作流并检查缺失项。</li>
+</ol>
+<p>不要先安装大量节点，再寻找它们能够运行的工作流。</p>
+<h3 id="3-3-下载模型文件"><a href="#3-3-下载模型文件" class="headerlink" title="3.3. 下载模型文件"></a>3.3. 下载模型文件</h3><p>视频模型通常包含多个组件，例如：</p>
+<ul>
+<li>主模型</li>
+<li>文本编码器</li>
+<li>VAE</li>
+<li>图像编码器</li>
+<li>运动模块或其他辅助模型</li>
+</ul>
+<p>具体组成取决于模型架构。</p>
+<p>下载时应以模型官方仓库或工作流说明为准，注意模型版本和文件精度。</p>
+<p>部分模型还提供量化版本，例如 FP8 或其他低精度版本。量化可以降低显存占用，但可能影响速度或生成质量。</p>
+<p>不要把所有模型文件都直接放到 <code>checkpoints</code> 目录。不同架构和节点通常有各自的模型目录要求。</p>
+<h2 id="四、实战：使用一张图片生成短视频"><a href="#四、实战：使用一张图片生成短视频" class="headerlink" title="四、实战：使用一张图片生成短视频"></a>四、实战：使用一张图片生成短视频</h2><p>下面以通用图片转视频流程为例。</p>
+<p>具体节点名称和连接方式，需要根据选择的模型及其工作流确定。</p>
+<h3 id="4-1-第一步：准备一张图片"><a href="#4-1-第一步：准备一张图片" class="headerlink" title="4.1 第一步：准备一张图片"></a>4.1 第一步：准备一张图片</h3><p>可以使用前面教程生成的图片，也可以导入自己的照片。</p>
+<p>建议选择：</p>
+<ul>
+<li>人物主体清晰</li>
+<li>构图完整</li>
+<li>人物没有被遮挡</li>
+<li>背景相对简单</li>
+<li>分辨率适中</li>
+</ul>
+<p>第一次练习建议使用风景图片或简单人物图片。</p>
+<p>如果直接使用复杂人物照片，生成过程中可能出现面部变化、手部异常等问题。</p>
+<h3 id="4-2-第二步：导入官方或模型对应的工作流"><a href="#4-2-第二步：导入官方或模型对应的工作流" class="headerlink" title="4.2 第二步：导入官方或模型对应的工作流"></a>4.2 第二步：导入官方或模型对应的工作流</h3><p>打开 ComfyUI，导入对应模型提供的图片转视频工作流。</p>
+<p>可以从以下渠道查找：</p>
+<ul>
+<li>ComfyUI 官方示例</li>
+<li>对应模型的官方仓库</li>
+<li>模型项目的使用说明</li>
+<li>ComfyUI 社区工作流</li>
+</ul>
+<p>优先使用与模型版本匹配的工作流。</p>
+<p>如果工作流导入后提示缺少节点，应先安装缺失节点，不要随意删除后继续运行。</p>
+<h3 id="4-3-第三步：加载输入图片"><a href="#4-3-第三步：加载输入图片" class="headerlink" title="4.3 第三步：加载输入图片"></a>4.3 第三步：加载输入图片</h3><p>在工作流中找到图片加载节点，选择准备好的图片。</p>
+<p>通常对应 <code>Load Image</code> 或模型专用的图像输入节点。</p>
+<p>检查：</p>
+<ul>
+<li>图片是否正确加载</li>
+<li>图片尺寸是否符合模型要求</li>
+<li>图片比例是否合理</li>
+<li>是否需要先缩放或裁剪</li>
+</ul>
+<p>部分视频模型对输入图片的宽高、分辨率和比例有要求，应以工作流说明为准。</p>
+<h3 id="4-4-第四步：设置动作提示词"><a href="#4-4-第四步：设置动作提示词" class="headerlink" title="4.4 第四步：设置动作提示词"></a>4.4 第四步：设置动作提示词</h3><p>图片转视频除了输入图片，还可以通过提示词描述希望发生的运动。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">A person gently turns their head,</span><br><span class="line">natural blinking,</span><br><span class="line">subtle hair movement,</span><br><span class="line">soft natural lighting,</span><br><span class="line">static camera,</span><br><span class="line">realistic motion.</span><br></pre></td></tr></table></figure>
+
+<p>中文意思：</p>
+<p>人物轻轻转动头部，自然眨眼，头发轻微摆动，光线柔和，镜头保持固定，动作自然。</p>
+<p>如果是风景图片，可以尝试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Clouds slowly moving across the sky,</span><br><span class="line">gentle wind moving the trees,</span><br><span class="line">subtle water movement,</span><br><span class="line">cinematic camera movement.</span><br></pre></td></tr></table></figure>
+
+<p>建议提示词重点描述：</p>
+<ul>
+<li>主体动作</li>
+<li>背景变化</li>
+<li>镜头运动</li>
+<li>动作速度</li>
+<li>整体风格</li>
+</ul>
+<p>不要同时要求人物做太多复杂动作。</p>
+<h3 id="4-5-第五步：设置视频参数"><a href="#4-5-第五步：设置视频参数" class="headerlink" title="4.5 第五步：设置视频参数"></a>4.5 第五步：设置视频参数</h3><p>不同视频模型的参数并不完全相同，常见参数包括：</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Width</td>
+<td align="center">视频帧宽度</td>
+</tr>
+<tr>
+<td align="center">Height</td>
+<td align="center">视频帧高度</td>
+</tr>
+<tr>
+<td align="center">Frames</td>
+<td align="center">生成帧数</td>
+</tr>
+<tr>
+<td align="center">FPS</td>
+<td align="center">每秒播放帧数</td>
+</tr>
+<tr>
+<td align="center">Steps</td>
+<td align="center">采样步数</td>
+</tr>
+<tr>
+<td align="center">Seed</td>
+<td align="center">随机种子</td>
+</tr>
+<tr>
+<td align="center">CFG</td>
+<td align="center">提示词影响程度，具体是否使用取决于模型</td>
+</tr>
+<tr>
+<td align="center">Motion Strength</td>
+<td align="center">运动强度，部分模型支持</td>
+</tr>
+</tbody></table>
+<p>其中，帧数和 FPS 决定视频时长。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">计算公式：</span><br><span class="line"></span><br><span class="line">[</span><br><span class="line">视频时长=\frac&#123;帧数&#125;&#123;FPS&#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line"></span><br><span class="line">- 48 帧</span><br><span class="line">- 24 FPS</span><br><span class="line"></span><br><span class="line">则：</span><br><span class="line"></span><br><span class="line">[</span><br><span class="line">48 \div 24 = 2秒</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">也就是说，48 帧、24 FPS 的视频时长约为 2 秒。</span><br><span class="line"></span><br><span class="line">注意：不同模型可能对帧数有特殊要求，例如要求特定帧数倍数或固定帧数。应以工作流提供的参数规则为准。</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-6-第六步：运行视频生成"><a href="#4-6-第六步：运行视频生成" class="headerlink" title="4.6 第六步：运行视频生成"></a>4.6 第六步：运行视频生成</h3><p>确认输入图片、模型和参数后，点击 Queue Prompt 运行。</p>
+<p>视频生成通常比普通图片生成耗时更长。</p>
+<p>第一次运行可能还需要加载模型，因此建议耐心等待。</p>
+<p>如果出现显存不足，可以尝试：</p>
+<ol>
+<li>降低视频分辨率。</li>
+<li>减少生成帧数。</li>
+<li>使用量化模型。</li>
+<li>关闭其他占用显存的任务。</li>
+<li>使用模型支持的 CPU Offload 或低显存方案。</li>
+</ol>
+<p>不要一开始就使用高分辨率和大量帧数。</p>
+<h3 id="4-7-第七步：合成并保存视频"><a href="#4-7-第七步：合成并保存视频" class="headerlink" title="4.7 第七步：合成并保存视频"></a>4.7 第七步：合成并保存视频</h3><p>模型通常先生成视频帧序列，之后再通过视频合成节点输出视频文件。</p>
+<p>工作流中可能包含：</p>
+<ul>
+<li>Video Combine</li>
+<li>VHS Video Combine</li>
+<li>其他视频合成节点</li>
+</ul>
+<p>其中部分视频合成节点来自第三方扩展，例如 VideoHelperSuite。</p>
+<p>保存时需要注意：</p>
+<ul>
+<li>视频格式，例如 MP4</li>
+<li>帧率</li>
+<li>编码格式</li>
+<li>是否包含音频</li>
+<li>输出目录</li>
+</ul>
+<p>如果只是图片转视频，通常不会自动生成配音或背景音乐。</p>
+<p>最终生成的视频可以在 ComfyUI 输出目录中查看。</p>
+<h2 id="五、视频生成效果如何优化？"><a href="#五、视频生成效果如何优化？" class="headerlink" title="五、视频生成效果如何优化？"></a>五、视频生成效果如何优化？</h2><p>视频生成不仅需要画面好看，还要保证连续帧之间的稳定性。</p>
+<p>常见问题包括：</p>
+<ul>
+<li>人物面部不断变化</li>
+<li>手部形状异常</li>
+<li>人物服装发生变化</li>
+<li>背景闪烁</li>
+<li>画面出现不自然的运动</li>
+<li>镜头运动过于剧烈</li>
+</ul>
+<p>可以从以下几个方面调整。</p>
+<h3 id="5-1-减少动作复杂度"><a href="#5-1-减少动作复杂度" class="headerlink" title="5.1. 减少动作复杂度"></a>5.1. 减少动作复杂度</h3><p>初次生成时，建议选择简单动作。</p>
+<p>例如：</p>
+<ul>
+<li>轻微转头</li>
+<li>眨眼</li>
+<li>头发摆动</li>
+<li>云层移动</li>
+<li>水面波动</li>
+</ul>
+<p>动作越复杂，模型越难保证连续帧之间的一致性。</p>
+<h3 id="5-2-控制镜头运动"><a href="#5-2-控制镜头运动" class="headerlink" title="5.2. 控制镜头运动"></a>5.2. 控制镜头运动</h3><p>提示词可以明确要求：</p>
+<ul>
+<li>Static camera：固定镜头</li>
+<li>Slow zoom in：缓慢推进</li>
+<li>Slow pan：缓慢平移</li>
+<li>Gentle camera movement：轻微镜头运动</li>
+</ul>
+<p>如果希望人物保持稳定，可以优先使用固定镜头。</p>
+<h3 id="5-3-降低视频分辨率进行测试"><a href="#5-3-降低视频分辨率进行测试" class="headerlink" title="5.3. 降低视频分辨率进行测试"></a>5.3. 降低视频分辨率进行测试</h3><p>高分辨率视频通常需要更多显存和计算资源。</p>
+<p>建议先使用较低分辨率测试动作效果，再决定是否提高分辨率。</p>
+<h3 id="5-4-注意人物一致性"><a href="#5-4-注意人物一致性" class="headerlink" title="5.4. 注意人物一致性"></a>5.4. 注意人物一致性</h3><p>图片转视频时，人物可能出现面部和服装变化。</p>
+<p>可以尝试：</p>
+<ul>
+<li>使用面部清晰的输入图片</li>
+<li>简化动作提示词</li>
+<li>减少镜头变化</li>
+<li>使用模型支持的人物一致性方案</li>
+<li>避免过长的视频时长</li>
+</ul>
+<p>但目前不能保证每一帧都与原始照片完全一致。</p>
+<h2 id="六、ComfyUI-视频生成与传统视频剪辑有什么区别？"><a href="#六、ComfyUI-视频生成与传统视频剪辑有什么区别？" class="headerlink" title="六、ComfyUI 视频生成与传统视频剪辑有什么区别？"></a>六、ComfyUI 视频生成与传统视频剪辑有什么区别？</h2><p>ComfyUI 主要负责 AI 内容生成和图像处理，并不是完整的视频剪辑软件。</p>
+<p>两者可以配合使用。</p>
+<table>
+<thead>
+<tr>
+<th align="center">功能</th>
+<th align="center">ComfyUI</th>
+<th align="center">视频剪辑软件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">AI 图片生成</td>
+<td align="center">支持</td>
+<td align="center">通常不是主要功能</td>
+</tr>
+<tr>
+<td align="center">图片转视频</td>
+<td align="center">支持，取决于模型</td>
+<td align="center">通常依赖外部素材或插件</td>
+</tr>
+<tr>
+<td align="center">AI 动作生成</td>
+<td align="center">支持</td>
+<td align="center">不是主要功能</td>
+</tr>
+<tr>
+<td align="center">视频裁剪</td>
+<td align="center">可通过节点处理</td>
+<td align="center">支持</td>
+</tr>
+<tr>
+<td align="center">添加字幕</td>
+<td align="center">可通过特定工作流实现</td>
+<td align="center">更方便</td>
+</tr>
+<tr>
+<td align="center">配音</td>
+<td align="center">需要额外模型或工具</td>
+<td align="center">通常更方便</td>
+</tr>
+<tr>
+<td align="center">音乐与音效</td>
+<td align="center">需要额外处理</td>
+<td align="center">更方便</td>
+</tr>
+<tr>
+<td align="center">多轨道剪辑</td>
+<td align="center">不是主要用途</td>
+<td align="center">支持</td>
+</tr>
+</tbody></table>
+<p>如果要制作完整短视频，可以采用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI</span><br><span class="line">  ↓</span><br><span class="line">生成图片和视频素材</span><br><span class="line">  ↓</span><br><span class="line">视频剪辑软件</span><br><span class="line">  ↓</span><br><span class="line">添加字幕、配音、音乐</span><br><span class="line">  ↓</span><br><span class="line">导出完整视频</span><br></pre></td></tr></table></figure>
+
+<p>这样既能发挥 ComfyUI 的 AI 生成能力，也能利用专业剪辑软件完成后期制作。</p>
+<h2 id="七、常见问题排查"><a href="#七、常见问题排查" class="headerlink" title="七、常见问题排查"></a>七、常见问题排查</h2><table>
+<thead>
+<tr>
+<th align="center">问题</th>
+<th align="center">可能原因</th>
+<th align="center">处理方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">导入工作流后节点缺失</td>
+<td align="center">没有安装对应插件</td>
+<td align="center">安装工作流依赖</td>
+</tr>
+<tr>
+<td align="center">模型无法加载</td>
+<td align="center">模型文件路径或版本不正确</td>
+<td align="center">检查模型说明</td>
+</tr>
+<tr>
+<td align="center">显存不足</td>
+<td align="center">模型或视频参数过大</td>
+<td align="center">降低分辨率和帧数</td>
+</tr>
+<tr>
+<td align="center">生成时间很长</td>
+<td align="center">模型规模大或硬件性能不足</td>
+<td align="center">使用量化模型或更轻量方案</td>
+</tr>
+<tr>
+<td align="center">人物面部变化</td>
+<td align="center">视频模型难以保持身份一致性</td>
+<td align="center">简化动作，换用合适模型</td>
+</tr>
+<tr>
+<td align="center">视频背景闪烁</td>
+<td align="center">连续帧一致性不足</td>
+<td align="center">调整提示词和模型参数</td>
+</tr>
+<tr>
+<td align="center">视频无法保存</td>
+<td align="center">缺少视频合成节点或编码依赖</td>
+<td align="center">检查视频节点和环境</td>
+</tr>
+<tr>
+<td align="center">视频没有声音</td>
+<td align="center">图片转视频通常不自动生成音频</td>
+<td align="center">后期添加音频</td>
+</tr>
+</tbody></table>
+<h2 id="八、练习：制作一段图片转视频短片"><a href="#八、练习：制作一段图片转视频短片" class="headerlink" title="八、练习：制作一段图片转视频短片"></a>八、练习：制作一段图片转视频短片</h2><p>建议完成以下练习：</p>
+<ol>
+<li>使用 ComfyUI 生成一张风景图片。</li>
+<li>选择支持图片转视频的模型。</li>
+<li>导入对应工作流。</li>
+<li>设置简单的运动提示词。</li>
+<li>设置较低分辨率和较少帧数。</li>
+<li>生成一段短视频。</li>
+<li>检查画面是否连续。</li>
+<li>尝试调整动作提示词，再生成一次。</li>
+<li>对比不同提示词的效果。</li>
+</ol>
+<p>建议保存：</p>
+<ul>
+<li>原始图片</li>
+<li>第一次生成的视频</li>
+<li>调整提示词后的第二个视频</li>
+</ul>
+<p>通过对比，理解提示词、帧数和运动设置对视频效果的影响。</p>
+<h2 id="九、总结"><a href="#九、总结" class="headerlink" title="九、总结"></a>九、总结</h2><p>本篇学习了 ComfyUI 视频生成的基础知识：</p>
+<ul>
+<li>了解文本转视频、图片转视频和视频转视频</li>
+<li>认识 SVD、Wan、LTX-Video 和 AnimateDiff 等方案</li>
+<li>了解视频生成的硬件要求</li>
+<li>安装视频相关节点和模型</li>
+<li>导入图片转视频工作流</li>
+<li>设置动作提示词和视频参数</li>
+<li>生成视频帧并合成 MP4</li>
+<li>排查显存不足、人物变化和视频闪烁等问题</li>
+</ul>
+<p>需要记住：<strong>ComfyUI 视频生成的核心是模型、工作流和连续帧生成，而不是简单地把一张图片转换成视频文件。</strong></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/ComfyUI/" rel="tag"># ComfyUI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/becad4a3.html" rel="prev" title="ComfyUI开发之——图生视频模型选择(6.1)">
+                  <i class="fa fa-angle-left"></i> ComfyUI开发之——图生视频模型选择(6.1)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/38807ac6.html" rel="next" title="ComfyUI开发之——ComfyUI本地API实战(6.3)">
+                  ComfyUI开发之——ComfyUI本地API实战(6.3) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"15da7aedf84af0c14bc07b58e8739585"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

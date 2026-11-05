@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="一、概述12345678910111213在使用 ComfyUI 的过程中，即使工作流已经搭建完成，也可能遇到各种问题：- ComfyUI 启动失败。- 工作流提示缺失节点。- 模型下拉列表找不到文件。- 运行时出现 Python 错误。- 图片生成到一半突然中断。- 显卡显存不足，无法完成生成。- 更新节点后，原来的工作流无法运行。这些问题看起来比较复杂，但大多数都可以通过日志、模型目录、节点依">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ComfyUI开发之——ComfyUI常见报错排查(4.4)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/cde78c53.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="一、概述12345678910111213在使用 ComfyUI 的过程中，即使工作流已经搭建完成，也可能遇到各种问题：- ComfyUI 启动失败。- 工作流提示缺失节点。- 模型下拉列表找不到文件。- 运行时出现 Python 错误。- 图片生成到一半突然中断。- 显卡显存不足，无法完成生成。- 更新节点后，原来的工作流无法运行。这些问题看起来比较复杂，但大多数都可以通过日志、模型目录、节点依">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-11-04T11:39:59.000Z">
+<meta property="article:modified_time" content="2026-11-05T01:59:37.037Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="ComfyUI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/cde78c53.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/cde78c53.html","path":"posts/cde78c53.html","title":"ComfyUI开发之——ComfyUI常见报错排查(4.4)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ComfyUI开发之——ComfyUI常见报错排查(4.4) | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">384</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4861</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81ComfyUI%E9%94%99%E8%AF%AF%E5%8F%8A%E6%9F%A5%E7%9C%8B"><span class="nav-number">2.</span> <span class="nav-text">二、ComfyUI错误及查看</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E3%80%81ComfyUI-%E5%87%BA%E7%8E%B0%E9%97%AE%E9%A2%98%EF%BC%8C%E5%85%88%E4%BB%8E%E5%93%AA%E9%87%8C%E5%BC%80%E5%A7%8B%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1、ComfyUI 出现问题，先从哪里开始？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2%E3%80%81%E5%A6%82%E4%BD%95%E6%9F%A5%E7%9C%8B-ComfyUI-%E9%94%99%E8%AF%AF%E6%97%A5%E5%BF%97%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2、如何查看 ComfyUI 错误日志？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%87%8D%E7%82%B9%E5%85%B3%E6%B3%A8%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%EF%BC%9F"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. 重点关注哪些内容？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%A6%82%E4%BD%95%E6%89%BE%E5%88%B0%E7%9C%9F%E6%AD%A3%E7%9A%84%E9%94%99%E8%AF%AF%E4%BD%8D%E7%BD%AE%EF%BC%9F"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. 如何找到真正的错误位置？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81ComfyUI%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF"><span class="nav-number">3.</span> <span class="nav-text">三、ComfyUI常见错误</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1%E3%80%81ComfyUI-%E5%90%AF%E5%8A%A8%E5%A4%B1%E8%B4%A5%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-number">3.1.</span> <span class="nav-text">3.1、ComfyUI 启动失败怎么办？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%A3%80%E6%9F%A5%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E4%BA%86%E6%96%B0%E8%8A%82%E7%82%B9"><span class="nav-number">3.1.1.</span> <span class="nav-text">1. 检查是否安装了新节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%A3%80%E6%9F%A5-Python-%E4%BE%9D%E8%B5%96"><span class="nav-number">3.1.2.</span> <span class="nav-text">2. 检查 Python 依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%A3%80%E6%9F%A5%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC%E5%86%B2%E7%AA%81"><span class="nav-number">3.1.3.</span> <span class="nav-text">3. 检查依赖版本冲突</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2%E3%80%81%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%8F%90%E7%A4%BA%E7%BC%BA%E5%A4%B1%E8%8A%82%E7%82%B9%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-number">3.2.</span> <span class="nav-text">3.2、工作流提示缺失节点怎么办？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%85%88%E7%A1%AE%E8%AE%A4%E8%8A%82%E7%82%B9%E5%90%8D%E7%A7%B0"><span class="nav-number">3.2.1.</span> <span class="nav-text">1. 先确认节点名称</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85%E8%8A%82%E7%82%B9%E5%90%8E%E9%87%8D%E5%90%AF"><span class="nav-number">3.2.2.</span> <span class="nav-text">2. 安装节点后重启</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%97%A7%E8%8A%82%E7%82%B9%E5%92%8C%E6%96%B0%E8%8A%82%E7%82%B9%E5%8F%AF%E8%83%BD%E4%B8%8D%E5%85%BC%E5%AE%B9"><span class="nav-number">3.2.3.</span> <span class="nav-text">3. 旧节点和新节点可能不兼容</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3%E3%80%81%E6%A8%A1%E5%9E%8B%E7%BC%BA%E5%A4%B1%E6%88%96%E6%A8%A1%E5%9E%8B%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-number">3.3.</span> <span class="nav-text">3.3、模型缺失或模型无法加载怎么办？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%A8%A1%E5%9E%8B%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8%E6%89%BE%E4%B8%8D%E5%88%B0%E6%96%87%E4%BB%B6"><span class="nav-number">3.3.1.</span> <span class="nav-text">1. 模型下拉列表找不到文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%A8%A1%E5%9E%8B%E6%96%87%E4%BB%B6%E6%8D%9F%E5%9D%8F"><span class="nav-number">3.3.2.</span> <span class="nav-text">2. 模型文件损坏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84%E4%B8%8D%E5%85%BC%E5%AE%B9"><span class="nav-number">3.3.3.</span> <span class="nav-text">3. 模型架构不兼容</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4%E3%80%81%E7%94%9F%E6%88%90%E5%9B%BE%E7%89%87%E6%97%B6%E6%98%BE%E5%AD%98%E4%B8%8D%E8%B6%B3%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-number">3.4.</span> <span class="nav-text">3.4、生成图片时显存不足怎么办？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%99%8D%E4%BD%8E%E5%9B%BE%E7%89%87%E5%88%86%E8%BE%A8%E7%8E%87"><span class="nav-number">3.4.1.</span> <span class="nav-text">1. 降低图片分辨率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%87%8F%E5%B0%91-Batch-Size"><span class="nav-number">3.4.2.</span> <span class="nav-text">2. 减少 Batch Size</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8%E6%9B%B4%E8%BD%BB%E9%87%8F%E7%9A%84%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.4.3.</span> <span class="nav-text">3. 使用更轻量的模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E4%BD%BF%E7%94%A8%E4%BD%8E%E6%98%BE%E5%AD%98%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0"><span class="nav-number">3.4.4.</span> <span class="nav-text">4. 使用低显存启动参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E4%BD%BF%E7%94%A8%E5%88%86%E5%9D%97-VAE-%E8%A7%A3%E7%A0%81"><span class="nav-number">3.4.5.</span> <span class="nav-text">5. 使用分块 VAE 解码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5%E3%80%81%E7%94%9F%E6%88%90%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%AA%81%E7%84%B6%E5%A4%B1%E8%B4%A5%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-number">3.5.</span> <span class="nav-text">3.5、生成过程中突然失败怎么办？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-KSampler-%E9%98%B6%E6%AE%B5%E5%A4%B1%E8%B4%A5"><span class="nav-number">3.5.1.</span> <span class="nav-text">1. KSampler 阶段失败</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-VAE-Decode-%E9%98%B6%E6%AE%B5%E5%A4%B1%E8%B4%A5"><span class="nav-number">3.5.2.</span> <span class="nav-text">2. VAE Decode 阶段失败</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Save-Image-%E9%98%B6%E6%AE%B5%E5%A4%B1%E8%B4%A5"><span class="nav-number">3.5.3.</span> <span class="nav-text">3. Save Image 阶段失败</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6%E3%80%81%E5%9B%BE%E7%89%87%E7%94%9F%E6%88%90%E9%80%9F%E5%BA%A6%E5%BE%88%E6%85%A2%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-number">3.6.</span> <span class="nav-text">3.6、图片生成速度很慢怎么办？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7%E3%80%81ComfyUI-%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E6%88%96%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F"><span class="nav-number">3.7.</span> <span class="nav-text">3.7、ComfyUI 无法访问或连接失败怎么办？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%A3%80%E6%9F%A5-ComfyUI-%E6%98%AF%E5%90%A6%E5%90%AF%E5%8A%A8%E6%88%90%E5%8A%9F"><span class="nav-number">3.7.1.</span> <span class="nav-text">1. 检查 ComfyUI 是否启动成功</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%A3%80%E6%9F%A5%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E8%A2%AB%E5%8D%A0%E7%94%A8"><span class="nav-number">3.7.2.</span> <span class="nav-text">2. 检查端口是否被占用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%B1%80%E5%9F%9F%E7%BD%91%E8%AE%BF%E9%97%AE%E5%A4%B1%E8%B4%A5"><span class="nav-number">3.7.3.</span> <span class="nav-text">3. 局域网访问失败</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E6%B8%85%E5%8D%95"><span class="nav-number">4.</span> <span class="nav-text">四、建立自己的故障排查清单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">五、总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4861</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">384</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">704</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/cde78c53.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ComfyUI开发之——ComfyUI常见报错排查(4.4) | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ComfyUI开发之——ComfyUI常见报错排查(4.4)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/ComfyUI%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94ComfyUI%E5%B8%B8%E8%A7%81%E6%8A%A5%E9%94%99%E6%8E%92%E6%9F%A5-4-4.md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2026-11-04 19:39:59" itemprop="dateCreated datePublished" datetime="2026-11-04T19:39:59+08:00">2026-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/" itemprop="url" rel="index"><span itemprop="name">AI图视频短剧</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">AI绘图</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/ComfyUI/" itemprop="url" rel="index"><span itemprop="name">ComfyUI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>5 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">在使用 ComfyUI 的过程中，即使工作流已经搭建完成，也可能遇到各种问题：</span><br><span class="line"></span><br><span class="line">- ComfyUI 启动失败。</span><br><span class="line">- 工作流提示缺失节点。</span><br><span class="line">- 模型下拉列表找不到文件。</span><br><span class="line">- 运行时出现 Python 错误。</span><br><span class="line">- 图片生成到一半突然中断。</span><br><span class="line">- 显卡显存不足，无法完成生成。</span><br><span class="line">- 更新节点后，原来的工作流无法运行。</span><br><span class="line"></span><br><span class="line">这些问题看起来比较复杂，但大多数都可以通过日志、模型目录、节点依赖和显存情况逐步排查。</span><br><span class="line"></span><br><span class="line">这篇文章就来整理一套实用的 ComfyUI 故障排查方法。</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二、ComfyUI错误及查看"><a href="#二、ComfyUI错误及查看" class="headerlink" title="二、ComfyUI错误及查看"></a>二、ComfyUI错误及查看</h2><h3 id="2-1、ComfyUI-出现问题，先从哪里开始？"><a href="#2-1、ComfyUI-出现问题，先从哪里开始？" class="headerlink" title="2.1、ComfyUI 出现问题，先从哪里开始？"></a>2.1、ComfyUI 出现问题，先从哪里开始？</h3><p>遇到错误时，不建议立即重新安装 ComfyUI。</p>
+<p>因为重新安装可能无法解决真正的问题，还可能导致模型、节点和工作流丢失。</p>
+<p>建议按照下面的顺序排查：</p>
+<ol>
+<li>确认错误发生在哪个阶段。</li>
+<li>查看 ComfyUI 终端日志。</li>
+<li>检查工作流是否缺少节点。</li>
+<li>检查模型文件是否存在。</li>
+<li>检查 Python 依赖和版本。</li>
+<li>检查显存和系统资源。</li>
+<li>尝试使用简单工作流验证环境。</li>
+</ol>
+<p>可以先判断错误属于哪一类：</p>
+<table>
+<thead>
+<tr>
+<th align="center">错误阶段</th>
+<th align="center">常见原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">启动时</td>
+<td align="center">Python 环境、依赖冲突、自定义节点</td>
+</tr>
+<tr>
+<td align="center">导入工作流时</td>
+<td align="center">缺失节点、工作流格式、版本差异</td>
+</tr>
+<tr>
+<td align="center">加载模型时</td>
+<td align="center">模型文件缺失、格式或架构不兼容</td>
+</tr>
+<tr>
+<td align="center">执行节点时</td>
+<td align="center">输入错误、节点异常、依赖问题</td>
+</tr>
+<tr>
+<td align="center">生成过程中</td>
+<td align="center">显存不足、运行库错误</td>
+</tr>
+<tr>
+<td align="center">保存图片时</td>
+<td align="center">输出路径、磁盘空间或权限问题</td>
+</tr>
+</tbody></table>
+<h3 id="2-2、如何查看-ComfyUI-错误日志？"><a href="#2-2、如何查看-ComfyUI-错误日志？" class="headerlink" title="2.2、如何查看 ComfyUI 错误日志？"></a>2.2、如何查看 ComfyUI 错误日志？</h3><p>日志是排查问题最重要的信息来源。</p>
+<p>ComfyUI 出现错误时，通常会在启动终端或控制台中显示详细信息。</p>
+<p>如果使用 Windows 便携版，一般可以通过启动 ComfyUI 的 <code>.bat</code> 文件查看终端输出。</p>
+<p>如果使用桌面版，则需要查看对应版本提供的日志或控制台信息。</p>
+<h4 id="1-重点关注哪些内容？"><a href="#1-重点关注哪些内容？" class="headerlink" title="1. 重点关注哪些内容？"></a>1. 重点关注哪些内容？</h4><p>常见错误关键词：</p>
+<table>
+<thead>
+<tr>
+<th align="center">错误关键词</th>
+<th align="center">可能原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>ModuleNotFoundError</code></td>
+<td align="center">Python 模块缺失</td>
+</tr>
+<tr>
+<td align="center"><code>ImportError</code></td>
+<td align="center">模块导入失败或版本不兼容</td>
+</tr>
+<tr>
+<td align="center"><code>FileNotFoundError</code></td>
+<td align="center">文件或模型路径不存在</td>
+</tr>
+<tr>
+<td align="center"><code>CUDA out of memory</code></td>
+<td align="center">显存不足</td>
+</tr>
+<tr>
+<td align="center"><code>RuntimeError</code></td>
+<td align="center">运行时错误，需要结合上下文判断</td>
+</tr>
+<tr>
+<td align="center"><code>DLL load failed</code></td>
+<td align="center">动态库或运行环境问题</td>
+</tr>
+<tr>
+<td align="center"><code>No such file or directory</code></td>
+<td align="center">文件路径错误</td>
+</tr>
+<tr>
+<td align="center"><code>Connection refused</code></td>
+<td align="center">服务未启动或连接地址错误</td>
+</tr>
+</tbody></table>
+<p>需要注意，错误关键词只能帮助定位方向，不能单凭一个词就判断具体原因。</p>
+<h4 id="2-如何找到真正的错误位置？"><a href="#2-如何找到真正的错误位置？" class="headerlink" title="2. 如何找到真正的错误位置？"></a>2. 如何找到真正的错误位置？</h4><p>例如，日志可能出现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;example.py&quot;, line 10, in ...</span><br><span class="line">ModuleNotFoundError: No module named &#x27;xxx&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>排查时重点关注：</p>
+<ul>
+<li>最后几行错误信息。</li>
+<li>报错涉及的节点名称。</li>
+<li>报错文件路径。</li>
+<li>缺少的模块名称。</li>
+<li>错误发生在加载模型还是执行节点时。</li>
+</ul>
+<p>通常，最后一行异常信息能够提供最直接的线索。</p>
+<p>如果需要向别人求助，建议提供完整错误日志，而不是只截取一句报错。</p>
+<h2 id="三、ComfyUI常见错误"><a href="#三、ComfyUI常见错误" class="headerlink" title="三、ComfyUI常见错误"></a>三、ComfyUI常见错误</h2><h3 id="3-1、ComfyUI-启动失败怎么办？"><a href="#3-1、ComfyUI-启动失败怎么办？" class="headerlink" title="3.1、ComfyUI 启动失败怎么办？"></a>3.1、ComfyUI 启动失败怎么办？</h3><p>如果 ComfyUI 无法启动，可以按照下面的流程排查。</p>
+<h4 id="1-检查是否安装了新节点"><a href="#1-检查是否安装了新节点" class="headerlink" title="1. 检查是否安装了新节点"></a>1. 检查是否安装了新节点</h4><p>如果安装某个自定义节点后，ComfyUI 无法启动，首先怀疑该节点或它的依赖。</p>
+<p>可以尝试：</p>
+<ol>
+<li>关闭 ComfyUI。</li>
+<li>打开 <code>custom_nodes</code> 目录。</li>
+<li>找到最近安装或更新的节点。</li>
+<li>暂时将节点目录移出 <code>custom_nodes</code>。</li>
+<li>重新启动 ComfyUI。</li>
+</ol>
+<p>如果移除节点后可以正常启动，说明问题可能与该节点有关。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">custom_nodes/</span><br><span class="line">├── ComfyUI-Manager/</span><br><span class="line">├── ComfyUI_IPAdapter_plus/</span><br><span class="line">└── comfyui_controlnet_aux/</span><br></pre></td></tr></table></figure>
+
+<p>可以暂时移出最近安装的节点，逐个排查。</p>
+<p>注意：不要一次删除所有节点，否则可能导致原有工作流无法使用。</p>
+<h4 id="2-检查-Python-依赖"><a href="#2-检查-Python-依赖" class="headerlink" title="2. 检查 Python 依赖"></a>2. 检查 Python 依赖</h4><p>如果日志出现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ModuleNotFoundError: No module named &#x27;xxx&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>通常说明当前 ComfyUI Python 环境中缺少对应模块。</p>
+<p>解决方法：</p>
+<ul>
+<li>查看报错涉及的节点。</li>
+<li>找到节点项目的 README 或 requirements 文件。</li>
+<li>使用 ComfyUI 对应的 Python 环境安装依赖。</li>
+<li>重启 ComfyUI。</li>
+</ul>
+<p>不要直接使用系统 Python 安装依赖，因为它可能不是 ComfyUI 实际使用的环境。</p>
+<h4 id="3-检查依赖版本冲突"><a href="#3-检查依赖版本冲突" class="headerlink" title="3. 检查依赖版本冲突"></a>3. 检查依赖版本冲突</h4><p>有些节点需要特定版本的 Python 库。</p>
+<p>例如，更新某个节点后，可能导致其他节点依赖的库版本发生变化。</p>
+<p>如果出现这种情况：</p>
+<ul>
+<li>查看节点官方安装说明。</li>
+<li>检查当前依赖版本。</li>
+<li>尝试恢复兼容版本。</li>
+<li>避免盲目升级全部依赖。</li>
+</ul>
+<p>如果环境已经严重混乱，可以考虑在备份工作流和模型后，建立一个干净的 ComfyUI 环境进行测试。</p>
+<h3 id="3-2、工作流提示缺失节点怎么办？"><a href="#3-2、工作流提示缺失节点怎么办？" class="headerlink" title="3.2、工作流提示缺失节点怎么办？"></a>3.2、工作流提示缺失节点怎么办？</h3><p>下载别人分享的工作流时，经常会遇到缺失节点。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Missing Node</span><br></pre></td></tr></table></figure>
+
+<p>或者工作流中出现无法识别的节点。</p>
+<h4 id="1-先确认节点名称"><a href="#1-先确认节点名称" class="headerlink" title="1. 先确认节点名称"></a>1. 先确认节点名称</h4><p>记录缺失节点名称。</p>
+<p>然后判断它属于：</p>
+<ul>
+<li>ComfyUI 自带节点。</li>
+<li>第三方自定义节点。</li>
+<li>已经更名或删除的旧节点。</li>
+</ul>
+<p>如果属于第三方节点，可以使用 ComfyUI Manager 的缺失节点查找功能，或根据节点名称搜索对应项目。</p>
+<p>Manager 的菜单和功能会随着版本变化，应以当前版本界面为准。</p>
+<h4 id="2-安装节点后重启"><a href="#2-安装节点后重启" class="headerlink" title="2. 安装节点后重启"></a>2. 安装节点后重启</h4><p>安装完成后，通常需要重启 ComfyUI，才能加载新节点。</p>
+<p>如果节点仍然缺失，需要进一步检查：</p>
+<ul>
+<li>节点是否安装在正确目录。</li>
+<li>是否存在多层重复文件夹。</li>
+<li>Python 依赖是否安装成功。</li>
+<li>节点是否支持当前 ComfyUI 版本。</li>
+<li>启动日志是否出现加载错误。</li>
+</ul>
+<h4 id="3-旧节点和新节点可能不兼容"><a href="#3-旧节点和新节点可能不兼容" class="headerlink" title="3. 旧节点和新节点可能不兼容"></a>3. 旧节点和新节点可能不兼容</h4><p>有些工作流使用较旧版本的节点。</p>
+<p>更新节点后，可能出现：</p>
+<ul>
+<li>输入参数发生变化。</li>
+<li>输出端口发生变化。</li>
+<li>节点名称改变。</li>
+<li>原有连线失效。</li>
+</ul>
+<p>如果工作流原作者明确指定了节点版本，可以尝试使用对应版本。</p>
+<p>对于重要工作流，建议在更新节点之前先备份。</p>
+<h3 id="3-3、模型缺失或模型无法加载怎么办？"><a href="#3-3、模型缺失或模型无法加载怎么办？" class="headerlink" title="3.3、模型缺失或模型无法加载怎么办？"></a>3.3、模型缺失或模型无法加载怎么办？</h3><p>模型问题是 ComfyUI 最常见的错误之一。</p>
+<h4 id="1-模型下拉列表找不到文件"><a href="#1-模型下拉列表找不到文件" class="headerlink" title="1. 模型下拉列表找不到文件"></a>1. 模型下拉列表找不到文件</h4><p>首先检查模型文件是否放在正确目录。</p>
+<p>常见目录：</p>
+<table>
+<thead>
+<tr>
+<th>模型类型</th>
+<th>目录</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Checkpoint</td>
+<td><code>models/checkpoints/</code></td>
+</tr>
+<tr>
+<td>LoRA</td>
+<td><code>models/loras/</code></td>
+</tr>
+<tr>
+<td>VAE</td>
+<td><code>models/vae/</code></td>
+</tr>
+<tr>
+<td>ControlNet</td>
+<td><code>models/controlnet/</code></td>
+</tr>
+<tr>
+<td>CLIP Vision</td>
+<td><code>models/clip_vision/</code></td>
+</tr>
+<tr>
+<td>Upscale Model</td>
+<td><code>models/upscale_models/</code></td>
+</tr>
+<tr>
+<td>Diffusion Model</td>
+<td><code>models/diffusion_models/</code></td>
+</tr>
+<tr>
+<td>Text Encoder</td>
+<td><code>models/text_encoders/</code></td>
+</tr>
+</tbody></table>
+<p>如果模型目录已经正确，可以尝试刷新模型列表或重启 ComfyUI。</p>
+<p>如果使用了 <code>extra_model_paths.yaml</code>，还需要检查配置文件中的路径是否正确。</p>
+<h4 id="2-模型文件损坏"><a href="#2-模型文件损坏" class="headerlink" title="2. 模型文件损坏"></a>2. 模型文件损坏</h4><p>如果模型文件下载不完整，可能出现加载失败。</p>
+<p>可以检查：</p>
+<ul>
+<li>文件大小是否与下载页面一致。</li>
+<li>下载是否中断。</li>
+<li>文件是否被错误重命名。</li>
+<li>文件是否能够被正常识别。</li>
+</ul>
+<p>必要时重新下载模型。</p>
+<h4 id="3-模型架构不兼容"><a href="#3-模型架构不兼容" class="headerlink" title="3. 模型架构不兼容"></a>3. 模型架构不兼容</h4><p>不同模型架构之间不能随意替换。</p>
+<p>例如：</p>
+<ul>
+<li>SD 1.5 Checkpoint 与 SDXL Checkpoint 不同。</li>
+<li>SDXL LoRA 通常不能直接用于 SD 1.5。</li>
+<li>FLUX 工作流需要对应的扩散模型、文本编码器和 VAE。</li>
+<li>ControlNet 模型也需要与基础模型架构匹配。</li>
+</ul>
+<p>如果工作流加载成功，但生成结果异常，模型架构不匹配也是需要检查的原因之一。</p>
+<h3 id="3-4、生成图片时显存不足怎么办？"><a href="#3-4、生成图片时显存不足怎么办？" class="headerlink" title="3.4、生成图片时显存不足怎么办？"></a>3.4、生成图片时显存不足怎么办？</h3><p>显存不足是 ComfyUI 使用过程中非常常见的问题。</p>
+<p>尤其是在运行 SDXL、FLUX、Qwen Image 等较大的模型时。</p>
+<p>常见报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA out of memory</span><br></pre></td></tr></table></figure>
+
+<p>它通常表示当前任务需要的显存超过了可用显存。</p>
+<h4 id="1-降低图片分辨率"><a href="#1-降低图片分辨率" class="headerlink" title="1. 降低图片分辨率"></a>1. 降低图片分辨率</h4><p>分辨率越高，生成图片所需要的资源通常越多。</p>
+<p>例如：</p>
+<ul>
+<li>512 × 512</li>
+<li>768 × 768</li>
+<li>1024 × 1024</li>
+</ul>
+<p>对于传统 SD 1.5，可以先从 512 × 512 开始测试。</p>
+<p>对于 SDXL、FLUX 等模型，应参考对应模型的推荐尺寸。</p>
+<p>如果显存不足，先降低宽度和高度，再尝试生成。</p>
+<h4 id="2-减少-Batch-Size"><a href="#2-减少-Batch-Size" class="headerlink" title="2. 减少 Batch Size"></a>2. 减少 Batch Size</h4><p>Batch Size 表示一次处理多少张图片。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">batch_size = 1</span><br></pre></td></tr></table></figure>
+
+<p>表示一次生成一张图片。</p>
+<p>如果设置为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">batch_size = 4</span><br></pre></td></tr></table></figure>
+
+<p>则一次处理四张图片，显存需求通常会明显增加。</p>
+<p>显存有限时，建议先设置为 1。</p>
+<h4 id="3-使用更轻量的模型"><a href="#3-使用更轻量的模型" class="headerlink" title="3. 使用更轻量的模型"></a>3. 使用更轻量的模型</h4><p>如果显存只有 4GB 或 6GB，运行大型模型可能非常困难。</p>
+<p>可以考虑：</p>
+<ul>
+<li>使用 SD 1.5 等相对轻量的模型。</li>
+<li>使用适合当前显存的模型量化版本。</li>
+<li>减少同时加载的模型数量。</li>
+<li>避免运行复杂的多模型工作流。</li>
+</ul>
+<p>量化模型是否可用取决于对应模型架构、节点和运行环境。</p>
+<h4 id="4-使用低显存启动参数"><a href="#4-使用低显存启动参数" class="headerlink" title="4. 使用低显存启动参数"></a>4. 使用低显存启动参数</h4><p>部分 ComfyUI 版本支持以下启动参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--lowvram</span><br></pre></td></tr></table></figure>
+
+<p>以及：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--normalvram</span><br><span class="line">--highvram</span><br></pre></td></tr></table></figure>
+
+<p>这些参数用于调整显存管理方式。</p>
+<p>不同版本的支持情况和实际行为可能存在差异，建议先查看当前 ComfyUI 的启动参数说明。</p>
+<p>注意：低显存模式通常会降低显存占用，但可能增加运行时间，并不能保证所有模型都能运行。</p>
+<h4 id="5-使用分块-VAE-解码"><a href="#5-使用分块-VAE-解码" class="headerlink" title="5. 使用分块 VAE 解码"></a>5. 使用分块 VAE 解码</h4><p>如果采样已经完成，但在 VAE Decode 阶段显存不足，可以尝试分块解码。</p>
+<p>部分工作流提供：</p>
+<ul>
+<li>VAE Decode Tiled</li>
+<li>Tiled VAE</li>
+<li>分块编码或解码节点</li>
+</ul>
+<p>分块处理可以降低部分阶段的显存需求，但可能增加处理时间，也可能产生接缝等问题。</p>
+<p>具体效果取决于工作流和节点实现。</p>
+<h3 id="3-5、生成过程中突然失败怎么办？"><a href="#3-5、生成过程中突然失败怎么办？" class="headerlink" title="3.5、生成过程中突然失败怎么办？"></a>3.5、生成过程中突然失败怎么办？</h3><p>如果工作流可以正常启动，但运行到一半失败，需要根据失败阶段判断。</p>
+<h4 id="1-KSampler-阶段失败"><a href="#1-KSampler-阶段失败" class="headerlink" title="1. KSampler 阶段失败"></a>1. KSampler 阶段失败</h4><p>可能原因：</p>
+<ul>
+<li>显存不足。</li>
+<li>模型不兼容。</li>
+<li>采样参数不适合当前模型。</li>
+<li>自定义节点异常。</li>
+<li>PyTorch 或 CUDA 运行环境问题。</li>
+</ul>
+<p>建议先降低分辨率、Batch Size，使用官方示例工作流测试。</p>
+<h4 id="2-VAE-Decode-阶段失败"><a href="#2-VAE-Decode-阶段失败" class="headerlink" title="2. VAE Decode 阶段失败"></a>2. VAE Decode 阶段失败</h4><p>如果采样已经完成，但解码失败，重点检查：</p>
+<ul>
+<li>VAE 是否正确。</li>
+<li>显存是否不足。</li>
+<li>图片分辨率是否过高。</li>
+<li>是否可以使用分块解码。</li>
+</ul>
+<h4 id="3-Save-Image-阶段失败"><a href="#3-Save-Image-阶段失败" class="headerlink" title="3. Save Image 阶段失败"></a>3. Save Image 阶段失败</h4><p>如果图片已经生成，但无法保存，需要检查：</p>
+<ul>
+<li>输出目录是否存在。</li>
+<li>磁盘空间是否充足。</li>
+<li>文件路径是否正确。</li>
+<li>当前用户是否有写入权限。</li>
+<li>文件名前缀是否包含不适合当前系统的字符。</li>
+</ul>
+<p>默认输出目录通常是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI/output/</span><br></pre></td></tr></table></figure>
+
+<p>如果磁盘空间不足，可以清理不需要的输出图片，但建议先备份重要作品。</p>
+<h3 id="3-6、图片生成速度很慢怎么办？"><a href="#3-6、图片生成速度很慢怎么办？" class="headerlink" title="3.6、图片生成速度很慢怎么办？"></a>3.6、图片生成速度很慢怎么办？</h3><p>生成速度慢不一定是故障。</p>
+<p>可能与以下因素有关：</p>
+<ul>
+<li>模型规模较大。</li>
+<li>显存不足，发生模型卸载或换入换出。</li>
+<li>分辨率过高。</li>
+<li>Steps 设置过多。</li>
+<li>使用 CPU 运行。</li>
+<li>自定义节点执行了额外处理。</li>
+<li>磁盘速度或系统内存不足。</li>
+</ul>
+<p>建议按顺序检查：</p>
+<ol>
+<li>确认 ComfyUI 是否使用 GPU。</li>
+<li>检查显卡驱动和运行环境。</li>
+<li>降低图片分辨率。</li>
+<li>减少采样步数。</li>
+<li>使用适合显存的模型。</li>
+<li>检查是否有额外的图片处理节点。</li>
+</ol>
+<p>如果使用 NVIDIA 显卡，可以通过任务管理器或显卡监控工具观察 GPU 使用情况。</p>
+<p>不要仅根据 GPU 总利用率判断是否正常，还要关注显存占用和实际生成时间。</p>
+<h3 id="3-7、ComfyUI-无法访问或连接失败怎么办？"><a href="#3-7、ComfyUI-无法访问或连接失败怎么办？" class="headerlink" title="3.7、ComfyUI 无法访问或连接失败怎么办？"></a>3.7、ComfyUI 无法访问或连接失败怎么办？</h3><p>如果 ComfyUI 已经启动，但浏览器无法打开界面，需要检查服务和网络。</p>
+<h4 id="1-检查-ComfyUI-是否启动成功"><a href="#1-检查-ComfyUI-是否启动成功" class="headerlink" title="1. 检查 ComfyUI 是否启动成功"></a>1. 检查 ComfyUI 是否启动成功</h4><p>默认情况下，ComfyUI 常使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:8188</span><br></pre></td></tr></table></figure>
+
+<p>如果服务没有正常启动，浏览器自然无法访问。</p>
+<p>先查看终端日志，确认服务是否已经监听端口。</p>
+<h4 id="2-检查端口是否被占用"><a href="#2-检查端口是否被占用" class="headerlink" title="2. 检查端口是否被占用"></a>2. 检查端口是否被占用</h4><p>如果启动时提示端口冲突，可以尝试使用其他端口：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--port 8189</span><br></pre></td></tr></table></figure>
+
+<p>然后访问：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1:8189</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-局域网访问失败"><a href="#3-局域网访问失败" class="headerlink" title="3. 局域网访问失败"></a>3. 局域网访问失败</h4><p>如果希望手机或其他电脑访问 ComfyUI，需要配置监听地址，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--listen 0.0.0.0</span><br></pre></td></tr></table></figure>
+
+<p>同时检查 Windows 防火墙和局域网网络配置。</p>
+<p>注意：开放监听地址可能让其他设备访问 ComfyUI。不要在不可信网络中随意开放服务，也不要直接将 ComfyUI 暴露到公网。</p>
+<h2 id="四、建立自己的故障排查清单"><a href="#四、建立自己的故障排查清单" class="headerlink" title="四、建立自己的故障排查清单"></a>四、建立自己的故障排查清单</h2><p>建议将下面的清单保存起来，遇到问题时逐项检查。</p>
+<ul>
+<li>ComfyUI 是否正常启动？</li>
+<li>是否最近安装或更新了自定义节点？</li>
+<li>工作流是否存在缺失节点？</li>
+<li>模型文件是否放在正确目录？</li>
+<li>模型架构是否与工作流匹配？</li>
+<li>Python 依赖是否安装到正确环境？</li>
+<li>是否存在显存不足？</li>
+<li>图片分辨率和 Batch Size 是否过高？</li>
+<li>输出目录是否存在？</li>
+<li>磁盘空间是否充足？</li>
+<li>错误日志是否提供了明确线索？</li>
+</ul>
+<p>如果上述检查都无法解决问题，可以尝试使用官方简单工作流进行对比。</p>
+<p>如果官方工作流可以正常运行，说明问题更可能出现在第三方节点、模型或原工作流中。</p>
+<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><p>ComfyUI 的错误虽然很多，但排查思路可以归纳为几个方向：</p>
+<ul>
+<li>启动失败：检查 Python 环境和自定义节点。</li>
+<li>节点缺失：检查节点安装和版本兼容。</li>
+<li>模型异常：检查模型路径、文件完整性和架构。</li>
+<li>生成失败：检查采样参数、节点和显存。</li>
+<li>保存失败：检查输出目录和磁盘空间。</li>
+<li>网络问题：检查监听地址、端口和防火墙。</li>
+</ul>
+<p>最重要的是：<strong>先看日志，再定位问题，不要一遇到错误就重新安装整个 ComfyUI。</strong></p>
+<p>通过逐步排查，你会发现很多问题都能找到明确原因。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/ComfyUI/" rel="tag"># ComfyUI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/6211410d.html" rel="prev" title="ComfyUI开发之——ComfyUI自定义节点安装与管理(4.3)">
+                  <i class="fa fa-angle-left"></i> ComfyUI开发之——ComfyUI自定义节点安装与管理(4.3)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/e838ccf5.html" rel="next" title="ComfyUI开发之——ComfyUI工作流进阶(4.5)">
+                  ComfyUI开发之——ComfyUI工作流进阶(4.5) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"f185c99119edbe92557192fbd3dc89f1"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

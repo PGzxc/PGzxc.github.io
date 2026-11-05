@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/en/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/en/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/en/","images":"/en/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Search...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/en/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/en/js/config.js" defer></script>
+
+    <meta name="description" content="一、概述12345678上一篇，我们学习了 Seed、Steps、CFG、Sampler 和 Scheduler 等采样参数，知道了如何通过调整参数影响图片生成效果。但在实际使用 ComfyUI 时，还会遇到一个问题：图片尺寸越大，生成过程越容易变慢，甚至出现显存不足（Out of Memory，简称 OOM）。尤其是使用本地电脑运行 AI 图像模型时，显卡显存、系统内存和模型大小都会影响生成体验">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ComfyUI开发之——ComfyUI图片尺寸设置与显存优化(2.4)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/5d40450a.html">
+<meta property="og:site_name" content="PGzxc (English)">
+<meta property="og:description" content="一、概述12345678上一篇，我们学习了 Seed、Steps、CFG、Sampler 和 Scheduler 等采样参数，知道了如何通过调整参数影响图片生成效果。但在实际使用 ComfyUI 时，还会遇到一个问题：图片尺寸越大，生成过程越容易变慢，甚至出现显存不足（Out of Memory，简称 OOM）。尤其是使用本地电脑运行 AI 图像模型时，显卡显存、系统内存和模型大小都会影响生成体验">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-11-04T11:30:26.000Z">
+<meta property="article:modified_time" content="2026-11-05T01:59:37.036Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="ComfyUI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/5d40450a.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://pgzxc.github.io/posts/5d40450a.html","path":"posts/5d40450a.html","title":"ComfyUI开发之——ComfyUI图片尺寸设置与显存优化(2.4)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ComfyUI开发之——ComfyUI图片尺寸设置与显存优化(2.4) | PGzxc (English)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/en/js/utils.js" defer></script><script src="/en/js/motion.js" defer></script><script src="/en/js/sidebar.js" defer></script><script src="/en/js/next-boot.js" defer></script><script src="/en/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/en/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/en/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/en/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/en/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/en/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/en/atom.xml" title="PGzxc (English)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/en/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (English)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">What I learn from books is superficial; I must experience it myself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/en/" rel="section"><i class="fa fa-bell fa-fw"></i>Home</a></li><li class="menu-item menu-item-nav"><a href="/en/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>Navigation</a></li><li class="menu-item menu-item-categories"><a href="/en/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">384</span></a></li><li class="menu-item menu-item-archives"><a href="/en/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">4861</span></a></li><li class="menu-item menu-item-links"><a href="/en/links/" rel="section"><i class="fa fa-link fa-fw"></i>Links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Search..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Site Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9B%BE%E7%89%87%E5%B0%BA%E5%AF%B8"><span class="nav-number">2.</span> <span class="nav-text">二、图片尺寸</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E3%80%81%E5%9B%BE%E7%89%87%E5%B0%BA%E5%AF%B8%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E4%B9%88%E9%87%8D%E8%A6%81%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1、图片尺寸为什么这么重要？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2%E3%80%81%E4%B8%8D%E5%90%8C%E6%A8%A1%E5%9E%8B%E5%BA%94%E8%AF%A5%E4%BD%BF%E7%94%A8%E5%A4%9A%E5%A4%A7%E5%88%86%E8%BE%A8%E7%8E%87%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">2.2、不同模型应该使用多大分辨率？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3%E3%80%81%E5%9B%BE%E7%89%87%E5%B0%BA%E5%AF%B8%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%EF%BC%9F"><span class="nav-number">2.3.</span> <span class="nav-text">2.3、图片尺寸应该如何设置？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%AE%BD%E5%BA%A6%E5%92%8C%E9%AB%98%E5%BA%A6"><span class="nav-number">2.3.1.</span> <span class="nav-text">1. 宽度和高度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Batch-Size%EF%BC%9A%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90%E6%95%B0%E9%87%8F"><span class="nav-number">2.3.2.</span> <span class="nav-text">2. Batch Size：批量生成数量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%9B%BE%E7%89%87%E5%B0%BA%E5%AF%B8%E4%B8%8D%E6%98%AF%E9%9A%8F%E4%BE%BF%E8%AE%BE%E7%BD%AE%E7%9A%84"><span class="nav-number">2.3.3.</span> <span class="nav-text">3. 图片尺寸不是随便设置的</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%98%BE%E5%AD%98%E4%BC%98%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text">三、显存优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1%E3%80%81ComfyUI-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%8D%A0%E7%94%A8%E5%A4%A7%E9%87%8F%E6%98%BE%E5%AD%98%EF%BC%9F"><span class="nav-number">3.1.</span> <span class="nav-text">3.1、ComfyUI 为什么会占用大量显存？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2%E3%80%81%E6%98%BE%E5%AD%98%E4%B8%8D%E8%B6%B3%E6%97%B6%E6%9C%89%E5%93%AA%E4%BA%9B%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%EF%BC%9F"><span class="nav-number">3.2.</span> <span class="nav-text">3.2、显存不足时有哪些解决方法？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%99%8D%E4%BD%8E%E5%9B%BE%E7%89%87%E5%88%86%E8%BE%A8%E7%8E%87"><span class="nav-number">3.2.1.</span> <span class="nav-text">1. 降低图片分辨率</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%99%8D%E4%BD%8E-Batch-Size"><span class="nav-number">3.2.2.</span> <span class="nav-text">2. 降低 Batch Size</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E9%80%89%E6%8B%A9%E6%9B%B4%E8%BD%BB%E9%87%8F%E7%9A%84%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.2.3.</span> <span class="nav-text">3. 选择更轻量的模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E4%BD%BF%E7%94%A8%E4%BD%8E%E6%98%BE%E5%AD%98%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.2.4.</span> <span class="nav-text">4. 使用低显存运行模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E4%BD%BF%E7%94%A8-VAE-%E5%88%86%E5%9D%97%E8%A7%A3%E7%A0%81"><span class="nav-number">3.2.5.</span> <span class="nav-text">5. 使用 VAE 分块解码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E5%85%B3%E9%97%AD%E4%B8%8D%E5%BF%85%E8%A6%81%E7%9A%84%E7%A8%8B%E5%BA%8F"><span class="nav-number">3.2.6.</span> <span class="nav-text">6. 关闭不必要的程序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3%E3%80%81ComfyUI-%E5%B8%B8%E8%A7%81%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8%EF%BC%9F"><span class="nav-number">3.3.</span> <span class="nav-text">3.3、ComfyUI 常见启动参数怎么使用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4%E3%80%81%E6%98%BE%E5%8D%A1%E9%85%8D%E7%BD%AE%E6%9C%89%E9%99%90%EF%BC%8C%E5%BA%94%E8%AF%A5%E6%80%8E%E4%B9%88%E9%80%89%E6%8B%A9%E6%96%B9%E6%A1%88%EF%BC%9F"><span class="nav-number">3.4.</span> <span class="nav-text">3.4、显卡配置有限，应该怎么选择方案？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%9E%E6%88%98%EF%BC%9A%E5%88%B6%E4%BD%9C%E4%B8%80%E5%A5%97%E9%80%82%E5%90%88%E8%87%AA%E5%B7%B1%E7%94%B5%E8%84%91%E7%9A%84%E7%94%9F%E6%88%90%E5%8F%82%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">四、实战：制作一套适合自己电脑的生成参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="nav-number">4.1.</span> <span class="nav-text">4.1. 基础配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E6%B5%8B%E8%AF%95%E6%9B%B4%E9%AB%98%E5%88%86%E8%BE%A8%E7%8E%87"><span class="nav-number">4.2.</span> <span class="nav-text">4.2. 测试更高分辨率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E8%AE%B0%E5%BD%95%E8%87%AA%E5%B7%B1%E7%9A%84%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C"><span class="nav-number">4.3.</span> <span class="nav-text">4.3. 记录自己的测试结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">五、总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/en/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/en/archives/">
+          <span class="site-state-item-count">4861</span>
+          <span class="site-state-item-name">Posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/en/categories/">
+        <span class="site-state-item-count">384</span>
+        <span class="site-state-item-name">Categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/en/tags/">
+        <span class="site-state-item-count">704</span>
+        <span class="site-state-item-name">Tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/enundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/5d40450a.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ComfyUI开发之——ComfyUI图片尺寸设置与显存优化(2.4) | PGzxc (English)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ComfyUI开发之——ComfyUI图片尺寸设置与显存优化(2.4)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/ComfyUI%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94ComfyUI%E5%9B%BE%E7%89%87%E5%B0%BA%E5%AF%B8%E8%AE%BE%E7%BD%AE%E4%B8%8E%E6%98%BE%E5%AD%98%E4%BC%98%E5%8C%96-2-4.md" class="post-edit-link" title="Edit" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created at:2026-11-04 19:30:26" itemprop="dateCreated datePublished" datetime="2026-11-04T19:30:26+08:00">2026-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/" itemprop="url" rel="index"><span itemprop="name">AI图视频短剧</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">AI绘图</span></a>
+        </span>
+          ,
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/en/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/ComfyUI/" itemprop="url" rel="index"><span itemprop="name">ComfyUI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>4 minutes</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">上一篇，我们学习了 Seed、Steps、CFG、Sampler 和 Scheduler 等采样参数，知道了如何通过调整参数影响图片生成效果。</span><br><span class="line"></span><br><span class="line">但在实际使用 ComfyUI 时，还会遇到一个问题：</span><br><span class="line">图片尺寸越大，生成过程越容易变慢，甚至出现显存不足（Out of Memory，简称 OOM）。</span><br><span class="line"></span><br><span class="line">尤其是使用本地电脑运行 AI 图像模型时，显卡显存、系统内存和模型大小都会影响生成体验。</span><br><span class="line"></span><br><span class="line">这篇文章就介绍图片尺寸的设置方法、显存占用的影响因素，以及电脑配置有限时可以采用的优化方案。</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二、图片尺寸"><a href="#二、图片尺寸" class="headerlink" title="二、图片尺寸"></a>二、图片尺寸</h2><h3 id="2-1、图片尺寸为什么这么重要？"><a href="#2-1、图片尺寸为什么这么重要？" class="headerlink" title="2.1、图片尺寸为什么这么重要？"></a>2.1、图片尺寸为什么这么重要？</h3><p>在 ComfyUI 中，图片尺寸通常由 Empty Latent Image 节点设置。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">width: 512</span><br><span class="line">height: 512</span><br><span class="line">batch_size: 1</span><br></pre></td></tr></table></figure>
+
+<p>表示生成一张 512×512 的图片。</p>
+<p>如果修改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">width: 1024</span><br><span class="line">height: 1024</span><br><span class="line">batch_size: 1</span><br></pre></td></tr></table></figure>
+
+<p>生成图片的宽度和高度都增加了一倍，但总像素数量变成了原来的四倍。</p>
+<table>
+<thead>
+<tr>
+<th>图片尺寸</th>
+<th>总像素数量</th>
+<th>相对像素量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>512×512</td>
+<td>262,144</td>
+<td>1 倍</td>
+</tr>
+<tr>
+<td>768×768</td>
+<td>589,824</td>
+<td>2.25 倍</td>
+</tr>
+<tr>
+<td>1024×1024</td>
+<td>1,048,576</td>
+<td>4 倍</td>
+</tr>
+<tr>
+<td>1536×1536</td>
+<td>2,359,296</td>
+<td>9 倍</td>
+</tr>
+<tr>
+<td>2048×2048</td>
+<td>4,194,304</td>
+<td>16 倍</td>
+</tr>
+</tbody></table>
+<p>这意味着图片尺寸增加后，模型需要处理更多的图像数据，计算量和内存需求通常也会增加。</p>
+<p>特别是对于使用注意力机制的模型，分辨率提高可能带来明显的显存压力。</p>
+<p>需要注意：显存占用并不完全按照像素数量成比例增长，还受到模型结构、注意力实现、批量数量、精度和工作流节点等因素影响。</p>
+<h3 id="2-2、不同模型应该使用多大分辨率？"><a href="#2-2、不同模型应该使用多大分辨率？" class="headerlink" title="2.2、不同模型应该使用多大分辨率？"></a>2.2、不同模型应该使用多大分辨率？</h3><p>不同图像模型的训练分辨率和推荐尺寸并不一样，不能所有模型都使用同一套参数。</p>
+<p>下面是一些常见的入门参考：</p>
+<table>
+<thead>
+<tr>
+<th>模型类型</th>
+<th>常见测试尺寸</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SD 1.5</td>
+<td>512×512</td>
+<td>经典基础测试尺寸</td>
+</tr>
+<tr>
+<td>SD 1.5</td>
+<td>512×768、768×512</td>
+<td>适合尝试竖图和横图</td>
+</tr>
+<tr>
+<td>SDXL</td>
+<td>1024×1024</td>
+<td>常见基础测试尺寸</td>
+</tr>
+<tr>
+<td>FLUX</td>
+<td>依据模型与工作流推荐</td>
+<td>通常需要更多计算资源</td>
+</tr>
+<tr>
+<td>Qwen Image</td>
+<td>依据模型与工作流推荐</td>
+<td>需要关注模型自身的尺寸要求</td>
+</tr>
+</tbody></table>
+<p>这些是常见参考，不是严格限制。</p>
+<p>例如，SD 1.5 可以生成 1024×1024 的图片，但直接使用较高分辨率可能出现构图异常、人物重复或细节不稳定等问题。</p>
+<p>对于 SD 1.5，比较常见的做法是：</p>
+<ol>
+<li>先生成 512×512 的基础图片。</li>
+<li>确认人物和构图符合要求。</li>
+<li>再通过高清放大或二次处理提高分辨率。</li>
+</ol>
+<p>SDXL 则通常以 1024×1024 作为常见的基础尺寸。</p>
+<p>对于 FLUX、Qwen Image 等模型，建议优先参考模型说明和对应工作流，不要直接套用 SD 1.5 的尺寸经验。</p>
+<h3 id="2-3、图片尺寸应该如何设置？"><a href="#2-3、图片尺寸应该如何设置？" class="headerlink" title="2.3、图片尺寸应该如何设置？"></a>2.3、图片尺寸应该如何设置？</h3><p>在经典文生图工作流中，找到 Empty Latent Image 节点。</p>
+<p>通常可以调整三个参数：</p>
+<ul>
+<li>width：图片宽度。</li>
+<li>height：图片高度。</li>
+<li>batch_size：一次生成的图片数量。</li>
+</ul>
+<h4 id="1-宽度和高度"><a href="#1-宽度和高度" class="headerlink" title="1. 宽度和高度"></a>1. 宽度和高度</h4><p>如果要生成不同方向的图片，可以参考：</p>
+<table>
+<thead>
+<tr>
+<th>图片方向</th>
+<th>SD 1.5 入门尺寸</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>正方形</td>
+<td>512×512</td>
+</tr>
+<tr>
+<td>竖版</td>
+<td>512×768</td>
+</tr>
+<tr>
+<td>横版</td>
+<td>768×512</td>
+</tr>
+</tbody></table>
+<p>例如，制作手机壁纸或人物全身照，可以尝试竖版尺寸。</p>
+<p>制作风景图片或横向封面，可以尝试横版尺寸。</p>
+<h4 id="2-Batch-Size：批量生成数量"><a href="#2-Batch-Size：批量生成数量" class="headerlink" title="2. Batch Size：批量生成数量"></a>2. Batch Size：批量生成数量</h4><p>Batch Size 表示一次处理多少张图片。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">width: 512</span><br><span class="line">height: 512</span><br><span class="line">batch_size: 1</span><br></pre></td></tr></table></figure>
+
+<p>表示一次生成一张。</p>
+<p>如果修改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">width: 512</span><br><span class="line">height: 512</span><br><span class="line">batch_size: 4</span><br></pre></td></tr></table></figure>
+
+<p>则表示一次生成四张。</p>
+<p>Batch Size 增加后，通常会增加显存和内存需求。</p>
+<p>如果电脑显存比较有限，建议先设置为 1，需要多张图片时再通过多次执行或其他批量工作流完成。</p>
+<h4 id="3-图片尺寸不是随便设置的"><a href="#3-图片尺寸不是随便设置的" class="headerlink" title="3. 图片尺寸不是随便设置的"></a>3. 图片尺寸不是随便设置的</h4><p>部分模型和工作流对图片宽高有特定要求。</p>
+<p>例如，传统 Stable Diffusion 模型通常使用能够被 8 整除的尺寸；某些新架构模型则可能有不同的尺寸对齐要求。</p>
+<p>因此，设置尺寸时要注意：</p>
+<ul>
+<li>优先使用模型推荐尺寸。</li>
+<li>不要一开始就设置特别大的分辨率。</li>
+<li>尽量保持宽高比例符合实际需求。</li>
+<li>遇到尺寸错误时，检查模型和节点的尺寸限制。</li>
+</ul>
+<h2 id="三、显存优化"><a href="#三、显存优化" class="headerlink" title="三、显存优化"></a>三、显存优化</h2><h3 id="3-1、ComfyUI-为什么会占用大量显存？"><a href="#3-1、ComfyUI-为什么会占用大量显存？" class="headerlink" title="3.1、ComfyUI 为什么会占用大量显存？"></a>3.1、ComfyUI 为什么会占用大量显存？</h3><p>显存（VRAM）是显卡上的高速内存，用于存放模型参数、计算数据和中间结果。</p>
+<p>ComfyUI 运行图像模型时，显存主要用于以下几个方面：</p>
+<p><strong>1. 模型权重</strong></p>
+<p>加载 Checkpoint 或其他模型时，需要占用一定显存。</p>
+<p>模型越大，通常需要的存储空间越多。</p>
+<p><strong>2. 中间计算数据</strong></p>
+<p>在采样过程中，模型会产生大量中间数据。</p>
+<p>这些数据与图片尺寸、模型结构、批量数量等因素有关。</p>
+<p><strong>3. VAE 解码</strong></p>
+<p>KSampler 完成采样后，还需要通过 VAE Decode 将 LATENT 转换为普通图片。</p>
+<p>分辨率较高时，VAE 解码也可能带来额外的显存压力。</p>
+<p><strong>4. 其他节点和模型</strong></p>
+<p>如果工作流中同时使用 LoRA、ControlNet、IP-Adapter、高清放大模型等，也可能进一步增加资源占用。</p>
+<p>因此，不能只根据模型文件大小判断电脑能否运行。</p>
+<p>模型能够加载，不代表一定能顺利完成整个工作流。</p>
+<h3 id="3-2、显存不足时有哪些解决方法？"><a href="#3-2、显存不足时有哪些解决方法？" class="headerlink" title="3.2、显存不足时有哪些解决方法？"></a>3.2、显存不足时有哪些解决方法？</h3><p>如果生成图片时出现 CUDA out of memory、显存不足或程序异常退出，可以按照下面的顺序排查。</p>
+<h4 id="1-降低图片分辨率"><a href="#1-降低图片分辨率" class="headerlink" title="1. 降低图片分辨率"></a>1. 降低图片分辨率</h4><p>这是最直接的方法。</p>
+<p>例如，将：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1024 × 1024</span><br></pre></td></tr></table></figure>
+
+<p>调整为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">512 × 512</span><br></pre></td></tr></table></figure>
+
+<p>如果仍然不足，可以继续降低分辨率，先确认基础工作流能够正常运行。</p>
+<h4 id="2-降低-Batch-Size"><a href="#2-降低-Batch-Size" class="headerlink" title="2. 降低 Batch Size"></a>2. 降低 Batch Size</h4><p>将：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">batch_size: 4</span><br></pre></td></tr></table></figure>
+
+<p>修改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">batch_size: 1</span><br></pre></td></tr></table></figure>
+
+<p>对于显存有限的电脑，建议优先使用单张生成。</p>
+<h4 id="3-选择更轻量的模型"><a href="#3-选择更轻量的模型" class="headerlink" title="3. 选择更轻量的模型"></a>3. 选择更轻量的模型</h4><p>如果使用的是大型模型，可以考虑更小的模型或经过合理量化的版本。</p>
+<p>例如：</p>
+<ul>
+<li>SD 1.5：相对轻量，适合入门。</li>
+<li>SDXL：通常比 SD 1.5 需要更多资源。</li>
+<li>FLUX：不同版本和量化方式的资源需求差异较大。</li>
+<li>Qwen Image：应根据具体模型版本和运行方式评估资源需求。</li>
+</ul>
+<p>模型越小不一定代表效果越差，但要根据具体任务选择。</p>
+<h4 id="4-使用低显存运行模式"><a href="#4-使用低显存运行模式" class="headerlink" title="4. 使用低显存运行模式"></a>4. 使用低显存运行模式</h4><p>ComfyUI 支持不同的显存管理策略，可以根据电脑配置选择。</p>
+<p>常见启动参数包括：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--lowvram</code></td>
+<td>尝试降低显存使用，适合显存较小的显卡</td>
+</tr>
+<tr>
+<td><code>--normalvram</code></td>
+<td>使用普通显存管理模式</td>
+</tr>
+<tr>
+<td><code>--highvram</code></td>
+<td>尽可能将模型保持在显存中，适合显存较充足的设备</td>
+</tr>
+<tr>
+<td><code>--cpu</code></td>
+<td>使用 CPU 运行模型，速度通常较慢</td>
+</tr>
+<tr>
+<td><code>--force-fp16</code></td>
+<td>尝试强制使用 FP16 精度，具体兼容性需结合模型和设备</td>
+</tr>
+<tr>
+<td><code>--disable-smart-memory</code></td>
+<td>禁用部分智能显存管理策略，可能改变内存调度方式</td>
+</tr>
+</tbody></table>
+<p>这些参数的实际效果与 ComfyUI 版本、显卡、驱动和模型有关。</p>
+<p>不要一次添加所有参数。建议先正常启动，出现显存问题后再逐项尝试。</p>
+<h4 id="5-使用-VAE-分块解码"><a href="#5-使用-VAE-分块解码" class="headerlink" title="5. 使用 VAE 分块解码"></a>5. 使用 VAE 分块解码</h4><p>如果采样已经完成，但在 VAE Decode 阶段出现显存不足，可以考虑使用分块 VAE 解码。</p>
+<p>ComfyUI 提供了相应的分块 VAE 解码节点，具体名称可能因版本和节点包不同而有所区别。</p>
+<p>分块解码会将图片拆成多个区域处理，降低单次解码的显存需求。</p>
+<p>但需要注意，分块处理可能带来额外耗时，部分设置下还需要注意分块边缘的拼接效果。</p>
+<h4 id="6-关闭不必要的程序"><a href="#6-关闭不必要的程序" class="headerlink" title="6. 关闭不必要的程序"></a>6. 关闭不必要的程序</h4><p>运行 ComfyUI 前，可以关闭：</p>
+<ul>
+<li>占用大量显存的游戏。</li>
+<li>其他 AI 图像生成程序。</li>
+<li>不必要的视频剪辑软件。</li>
+<li>占用大量 GPU 资源的应用。</li>
+</ul>
+<p>同时检查系统内存是否充足。</p>
+<p>显存不足和系统内存不足是两个不同的问题，不能混为一谈。</p>
+<h3 id="3-3、ComfyUI-常见启动参数怎么使用？"><a href="#3-3、ComfyUI-常见启动参数怎么使用？" class="headerlink" title="3.3、ComfyUI 常见启动参数怎么使用？"></a>3.3、ComfyUI 常见启动参数怎么使用？</h3><p>如果使用 Windows 便携版或手动安装版，可以通过启动脚本传入参数。</p>
+<p>例如，便携版目录中可能存在：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">run_nvidia_gpu.bat</span><br><span class="line">run_cpu.bat</span><br></pre></td></tr></table></figure>
+
+<p>可以通过编辑对应的启动脚本，增加启动参数。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python main.py --lowvram</span><br></pre></td></tr></table></figure>
+
+<p>如果需要局域网访问，也可以根据实际需求组合：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python main.py --lowvram --listen 0.0.0.0 --port 8188</span><br></pre></td></tr></table></figure>
+
+<p>这里：</p>
+<ul>
+<li><code>--lowvram</code>：尝试降低显存使用。</li>
+<li><code>--listen 0.0.0.0</code>：允许局域网内其他设备访问。</li>
+<li><code>--port 8188</code>：指定服务端口。</li>
+</ul>
+<p>如果使用 ComfyUI Desktop，启动参数的设置方式可能与便携版不同，应以当前版本的设置界面和官方说明为准。</p>
+<p>另外，开启局域网访问时，应确保只允许可信设备连接，不要直接将 ComfyUI 服务暴露到公网。</p>
+<h3 id="3-4、显卡配置有限，应该怎么选择方案？"><a href="#3-4、显卡配置有限，应该怎么选择方案？" class="headerlink" title="3.4、显卡配置有限，应该怎么选择方案？"></a>3.4、显卡配置有限，应该怎么选择方案？</h3><p>不同显卡的显存容量和计算能力差异很大。</p>
+<p>可以先根据显存容量做一个粗略判断：</p>
+<table>
+<thead>
+<tr>
+<th>显存容量</th>
+<th>使用建议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2GB～4GB</td>
+<td>优先考虑轻量模型、低分辨率和 CPU&#x2F;显存优化方案</td>
+</tr>
+<tr>
+<td>6GB</td>
+<td>可以尝试部分轻量模型，注意控制分辨率和批量数量</td>
+</tr>
+<tr>
+<td>8GB</td>
+<td>可以运行更多常见图像工作流，但大型模型仍可能受限</td>
+</tr>
+<tr>
+<td>12GB</td>
+<td>可尝试更高分辨率和部分较大型模型</td>
+</tr>
+<tr>
+<td>16GB 及以上</td>
+<td>选择空间更大，但仍需要考虑模型结构和工作流复杂度</td>
+</tr>
+</tbody></table>
+<p>这只是粗略参考，不代表某个模型一定能在对应显存下运行。</p>
+<p>实际还要看模型精度、量化方式、系统占用、显存管理策略，以及是否同时加载多个模型。</p>
+<p>如果显存不足，也可以考虑云端 GPU 或远程 ComfyUI 服务。</p>
+<h2 id="四、实战：制作一套适合自己电脑的生成参数"><a href="#四、实战：制作一套适合自己电脑的生成参数" class="headerlink" title="四、实战：制作一套适合自己电脑的生成参数"></a>四、实战：制作一套适合自己电脑的生成参数</h2><p>下面以 SD 1.5 为例，建立一套基础测试配置。</p>
+<h3 id="4-1-基础配置"><a href="#4-1-基础配置" class="headerlink" title="4.1. 基础配置"></a>4.1. 基础配置</h3><p>在 Empty Latent Image 中设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">width: 512</span><br><span class="line">height: 512</span><br><span class="line">batch_size: 1</span><br></pre></td></tr></table></figure>
+
+<p>在 KSampler 中设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">steps: 20</span><br><span class="line">cfg: 7</span><br><span class="line">sampler_name: euler</span><br><span class="line">scheduler: normal</span><br><span class="line">denoise: 1.0</span><br></pre></td></tr></table></figure>
+
+<p>先使用这套配置完成一次生成。</p>
+<h3 id="4-2-测试更高分辨率"><a href="#4-2-测试更高分辨率" class="headerlink" title="4.2. 测试更高分辨率"></a>4.2. 测试更高分辨率</h3><p>依次尝试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">512 × 512</span><br><span class="line">512 × 768</span><br><span class="line">768 × 768</span><br><span class="line">1024 × 1024</span><br></pre></td></tr></table></figure>
+
+<p>每次观察：</p>
+<ul>
+<li>图片是否正常生成。</li>
+<li>显存占用是否明显增加。</li>
+<li>生成时间是否变长。</li>
+<li>是否出现显存不足。</li>
+</ul>
+<p>如果某个尺寸无法正常运行，就回到上一个可用尺寸。</p>
+<h3 id="4-3-记录自己的测试结果"><a href="#4-3-记录自己的测试结果" class="headerlink" title="4.3. 记录自己的测试结果"></a>4.3. 记录自己的测试结果</h3><p>可以建立一个简单的记录表：</p>
+<table>
+<thead>
+<tr>
+<th>图片尺寸</th>
+<th>Batch Size</th>
+<th>是否成功</th>
+<th>生成时间</th>
+<th>显存占用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>512×512</td>
+<td>1</td>
+<td>待测试</td>
+<td>待记录</td>
+<td>待记录</td>
+</tr>
+<tr>
+<td>512×768</td>
+<td>1</td>
+<td>待测试</td>
+<td>待记录</td>
+<td>待记录</td>
+</tr>
+<tr>
+<td>768×768</td>
+<td>1</td>
+<td>待测试</td>
+<td>待记录</td>
+<td>待记录</td>
+</tr>
+<tr>
+<td>1024×1024</td>
+<td>1</td>
+<td>待测试</td>
+<td>待记录</td>
+<td>待记录</td>
+</tr>
+</tbody></table>
+<p>通过实际测试，就能找到当前电脑比较合适的生成尺寸。</p>
+<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><p>这一篇主要学习了 ComfyUI 图片尺寸和显存优化：</p>
+<ul>
+<li>图片尺寸越大，通常需要处理更多数据。</li>
+<li>Batch Size 越大，通常需要更多显存。</li>
+<li>不同模型有不同的推荐分辨率。</li>
+<li>显存不足时，可以降低分辨率、减少批量数量、选择轻量模型。</li>
+<li><code>--lowvram</code> 等启动参数可以辅助调整显存管理方式。</li>
+<li>VAE 分块解码可以缓解部分解码阶段的显存压力。</li>
+<li>最终配置应通过实际测试确定。</li>
+</ul>
+<p>对于初学者，建议先从 SD 1.5 的 512×512、Batch Size 1 开始，确保基础工作流稳定运行，再逐步提高分辨率。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/en/tags/ComfyUI/" rel="tag"># ComfyUI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/en/posts/94ab484.html" rel="prev" title="ComfyUI开发之——ComfyUI采样参数详解(2.3)">
+                  <i class="fa fa-angle-left"></i> ComfyUI开发之——ComfyUI采样参数详解(2.3)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/en/posts/85865df.html" rel="next" title="ComfyUI开发之——ComfyUI模型选择与管理(2.5)">
+                  ComfyUI开发之——ComfyUI模型选择与管理(2.5) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"0f7e05a69d066fef07565270da089540"}</script>
+<script src="/en/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一、概述1234567891011前面我们已经学习了如何下载、导入和修改 ComfyUI 工作流。在使用别人分享的工作流时，经常会遇到一个问题： 节点很多，连线也很复杂，不知道每个节点有什么作用，更不知道应该如何修改。其实，ComfyUI 的核心就是节点和数据流。每个节点负责完成一项任务，例如加载模型、处理提示词、生成图片、调整尺寸或者保存文件。节点之间通过连线传递数据，最终形成一个完整的工作流。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ComfyUI开发之——ComfyUI常用节点详解(4.2)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/9834c6df.html">
+<meta property="og:site_name" content="PGzxc">
+<meta property="og:description" content="一、概述1234567891011前面我们已经学习了如何下载、导入和修改 ComfyUI 工作流。在使用别人分享的工作流时，经常会遇到一个问题： 节点很多，连线也很复杂，不知道每个节点有什么作用，更不知道应该如何修改。其实，ComfyUI 的核心就是节点和数据流。每个节点负责完成一项任务，例如加载模型、处理提示词、生成图片、调整尺寸或者保存文件。节点之间通过连线传递数据，最终形成一个完整的工作流。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-11-04T11:38:10.000Z">
+<meta property="article:modified_time" content="2026-11-05T01:59:37.417Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="ComfyUI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/9834c6df.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://pgzxc.github.io/posts/9834c6df.html","path":"posts/9834c6df.html","title":"ComfyUI开发之——ComfyUI常用节点详解(4.2)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ComfyUI开发之——ComfyUI常用节点详解(4.2) | PGzxc</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="PGzxc" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">纸上得来终觉浅 绝知此事要躬行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-bell fa-fw"></i>首页</a></li><li class="menu-item menu-item-nav"><a href="/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>导航</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">384</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4861</span></a></li><li class="menu-item menu-item-links"><a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81ComfyUI%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">二、ComfyUI知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E3%80%81ComfyUI-%E8%8A%82%E7%82%B9%E7%94%B1%E4%BB%80%E4%B9%88%E7%BB%84%E6%88%90%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1、ComfyUI 节点由什么组成？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2%E3%80%81ComfyUI-%E5%B8%B8%E8%A7%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">2.2、ComfyUI 常见数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-MODEL"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. MODEL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-CLIP"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. CLIP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-CONDITIONING"><span class="nav-number">2.2.3.</span> <span class="nav-text">3. CONDITIONING</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-LATENT"><span class="nav-number">2.2.4.</span> <span class="nav-text">4. LATENT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-VAE"><span class="nav-number">2.2.5.</span> <span class="nav-text">5. VAE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-IMAGE-%E5%92%8C-MASK"><span class="nav-number">2.2.6.</span> <span class="nav-text">6. IMAGE 和 MASK</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3%E3%80%81%E6%A8%A1%E5%9E%8B%E5%8A%A0%E8%BD%BD%E7%B1%BB%E8%8A%82%E7%82%B9"><span class="nav-number">2.3.</span> <span class="nav-text">2.3、模型加载类节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Load-Checkpoint"><span class="nav-number">2.3.1.</span> <span class="nav-text">1. Load Checkpoint</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Load-Diffusion-Model"><span class="nav-number">2.3.2.</span> <span class="nav-text">2. Load Diffusion Model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Load-VAE"><span class="nav-number">2.3.3.</span> <span class="nav-text">3. Load VAE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Load-LoRA"><span class="nav-number">2.3.4.</span> <span class="nav-text">4. Load LoRA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Load-ControlNet-Model"><span class="nav-number">2.3.5.</span> <span class="nav-text">5. Load ControlNet Model</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%9B%B8%E5%85%B3%E5%A4%84%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">三、相关处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1%E3%80%81%E6%96%87%E6%9C%AC%E4%B8%8E%E6%9D%A1%E4%BB%B6%E5%A4%84%E7%90%86%E8%8A%82%E7%82%B9"><span class="nav-number">3.1.</span> <span class="nav-text">3.1、文本与条件处理节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-CLIP-Text-Encode"><span class="nav-number">3.1.1.</span> <span class="nav-text">1. CLIP Text Encode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Conditioning-%E5%90%88%E5%B9%B6%E4%B8%8E%E5%A4%84%E7%90%86"><span class="nav-number">3.1.2.</span> <span class="nav-text">2. Conditioning 合并与处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-FLUX-%E5%92%8C%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%96%87%E6%9C%AC%E7%BC%96%E7%A0%81%E8%8A%82%E7%82%B9"><span class="nav-number">3.1.3.</span> <span class="nav-text">3. FLUX 和其他模型的文本编码节点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2%E3%80%81%E6%BD%9C%E7%A9%BA%E9%97%B4%E4%B8%8E%E9%87%87%E6%A0%B7%E8%8A%82%E7%82%B9"><span class="nav-number">3.2.</span> <span class="nav-text">3.2、潜空间与采样节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Empty-Latent-Image"><span class="nav-number">3.2.1.</span> <span class="nav-text">1. Empty Latent Image</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-VAE-Encode"><span class="nav-number">3.2.2.</span> <span class="nav-text">2. VAE Encode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-KSampler"><span class="nav-number">3.2.3.</span> <span class="nav-text">3. KSampler</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-KSampler-Advanced"><span class="nav-number">3.2.4.</span> <span class="nav-text">4. KSampler Advanced</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3%E3%80%81%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E7%B1%BB%E8%8A%82%E7%82%B9"><span class="nav-number">3.3.</span> <span class="nav-text">3.3、图片处理类节点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Load-Image"><span class="nav-number">3.3.1.</span> <span class="nav-text">1. Load Image</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Preview-Image"><span class="nav-number">3.3.2.</span> <span class="nav-text">2. Preview Image</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Save-Image"><span class="nav-number">3.3.3.</span> <span class="nav-text">3. Save Image</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Image-Scale"><span class="nav-number">3.3.4.</span> <span class="nav-text">4. Image Scale</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Image-Crop"><span class="nav-number">3.3.5.</span> <span class="nav-text">5. Image Crop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Image-Composite"><span class="nav-number">3.3.6.</span> <span class="nav-text">6. Image Composite</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4%E3%80%81%E9%81%AE%E7%BD%A9%E4%B8%8E%E5%B1%80%E9%83%A8%E5%A4%84%E7%90%86%E8%8A%82%E7%82%B9"><span class="nav-number">3.4.</span> <span class="nav-text">3.4、遮罩与局部处理节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5%E3%80%81%E8%8A%82%E7%82%B9%E4%B9%8B%E9%97%B4%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5%EF%BC%9F"><span class="nav-number">3.5.</span> <span class="nav-text">3.5、节点之间应该如何连接？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E6%96%87%E7%94%9F%E5%9B%BE%E6%B5%81%E7%A8%8B"><span class="nav-number">3.5.1.</span> <span class="nav-text">一个简单的文生图流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6%E3%80%81%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E8%8A%82%E7%82%B9%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%EF%BC%9F"><span class="nav-number">3.6.</span> <span class="nav-text">3.6、如何判断节点执行顺序？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8A%A8%E6%89%8B%E7%BB%83%E4%B9%A0%EF%BC%9A%E8%87%AA%E5%B7%B1%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">4.</span> <span class="nav-text">四、动手练习：自己搭建一个节点工作流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">五、总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4861</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">384</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">704</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/zh-CNundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/9834c6df.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ComfyUI开发之——ComfyUI常用节点详解(4.2) | PGzxc">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ComfyUI开发之——ComfyUI常用节点详解(4.2)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/ComfyUI%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94ComfyUI%E5%B8%B8%E7%94%A8%E8%8A%82%E7%82%B9%E8%AF%A6%E8%A7%A3-4-2.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-11-04 19:38:10" itemprop="dateCreated datePublished" datetime="2026-11-04T19:38:10+08:00">2026-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/" itemprop="url" rel="index"><span itemprop="name">AI图视频短剧</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">AI绘图</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/ComfyUI/" itemprop="url" rel="index"><span itemprop="name">ComfyUI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">前面我们已经学习了如何下载、导入和修改 ComfyUI 工作流。</span><br><span class="line"></span><br><span class="line">在使用别人分享的工作流时，经常会遇到一个问题：</span><br><span class="line"> 节点很多，连线也很复杂，不知道每个节点有什么作用，更不知道应该如何修改。</span><br><span class="line"></span><br><span class="line">其实，ComfyUI 的核心就是节点和数据流。</span><br><span class="line"></span><br><span class="line">每个节点负责完成一项任务，例如加载模型、处理提示词、生成图片、调整尺寸或者保存文件。</span><br><span class="line">节点之间通过连线传递数据，最终形成一个完整的工作流。</span><br><span class="line"></span><br><span class="line">这篇文章就从常用节点入手，帮助你理解 ComfyUI 的节点体系。</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二、ComfyUI知识点"><a href="#二、ComfyUI知识点" class="headerlink" title="二、ComfyUI知识点"></a>二、ComfyUI知识点</h2><h3 id="2-1、ComfyUI-节点由什么组成？"><a href="#2-1、ComfyUI-节点由什么组成？" class="headerlink" title="2.1、ComfyUI 节点由什么组成？"></a>2.1、ComfyUI 节点由什么组成？</h3><p>一个普通节点通常包含三个部分：</p>
+<ul>
+<li>输入端口：接收其他节点传递的数据。</li>
+<li>节点参数：设置当前节点的运行配置。</li>
+<li>输出端口：将处理结果传递给其他节点。</li>
+</ul>
+<p>例如，Load Checkpoint 节点负责加载模型，通常会输出 MODEL、CLIP 和 VAE 三种数据。</p>
+<p>这些数据可以分别连接到后续节点。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Load Checkpoint</span><br><span class="line">│</span><br><span class="line">├── MODEL ──→ KSampler</span><br><span class="line">│</span><br><span class="line">├── CLIP ───→ CLIP Text Encode</span><br><span class="line">│</span><br><span class="line">└── VAE ────→ VAE Decode</span><br></pre></td></tr></table></figure>
+
+
+<p>节点的输入和输出端口通常使用不同颜色区分数据类型。</p>
+<p>需要注意，颜色只是辅助识别方式，具体类型和连接关系应以节点端口及 ComfyUI 的实际提示为准。</p>
+<h3 id="2-2、ComfyUI-常见数据类型"><a href="#2-2、ComfyUI-常见数据类型" class="headerlink" title="2.2、ComfyUI 常见数据类型"></a>2.2、ComfyUI 常见数据类型</h3><p>理解数据类型，是学习节点连接最重要的一步。</p>
+<p>ComfyUI 中常见的数据类型如下：</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>主要作用</th>
+<th>常见节点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MODEL</td>
+<td>模型及其采样相关配置</td>
+<td>Load Checkpoint、KSampler</td>
+</tr>
+<tr>
+<td>CLIP</td>
+<td>文本编码模型</td>
+<td>Load Checkpoint、CLIP Text Encode</td>
+</tr>
+<tr>
+<td>CONDITIONING</td>
+<td>文本条件信息</td>
+<td>CLIP Text Encode</td>
+</tr>
+<tr>
+<td>LATENT</td>
+<td>潜空间数据</td>
+<td>Empty Latent Image、KSampler</td>
+</tr>
+<tr>
+<td>VAE</td>
+<td>图片与潜空间之间的转换</td>
+<td>Load Checkpoint、VAE Decode</td>
+</tr>
+<tr>
+<td>IMAGE</td>
+<td>图片数据</td>
+<td>Load Image、Save Image</td>
+</tr>
+<tr>
+<td>MASK</td>
+<td>遮罩数据</td>
+<td>Load Image、Load Mask</td>
+</tr>
+<tr>
+<td>INT</td>
+<td>整数</td>
+<td>图片尺寸、Steps 等参数</td>
+</tr>
+<tr>
+<td>FLOAT</td>
+<td>浮点数</td>
+<td>CFG、权重等参数</td>
+</tr>
+<tr>
+<td>STRING</td>
+<td>字符串</td>
+<td>文件名、文本等</td>
+</tr>
+</tbody></table>
+<p>其中，前面学习过的六种数据尤其重要。</p>
+<h4 id="1-MODEL"><a href="#1-MODEL" class="headerlink" title="1. MODEL"></a>1. MODEL</h4><p>MODEL 表示模型数据，通常由模型加载节点输出。</p>
+<p>例如：</p>
+<ul>
+<li>Load Checkpoint</li>
+<li>Load Diffusion Model</li>
+</ul>
+<p>MODEL 可以传递给 KSampler 等需要模型的节点。</p>
+<h4 id="2-CLIP"><a href="#2-CLIP" class="headerlink" title="2. CLIP"></a>2. CLIP</h4><p>CLIP 主要用于文本编码。</p>
+<p>例如，使用提示词描述：</p>
+<p><code>a beautiful landscape, mountain, sunset</code></p>
+<p>CLIP Text Encode 节点会使用 CLIP 对应的文本编码能力，将提示词转换为后续生成流程使用的 CONDITIONING 数据。</p>
+<p>不同模型可能使用不同的文本编码架构，不是所有模型都使用传统 CLIP。</p>
+<h4 id="3-CONDITIONING"><a href="#3-CONDITIONING" class="headerlink" title="3. CONDITIONING"></a>3. CONDITIONING</h4><p>CONDITIONING 可以理解为生成条件。</p>
+<p>它包含文本编码等信息，用来指导模型生成符合要求的图片。</p>
+<p>例如：</p>
+<ul>
+<li>正向提示词：描述希望生成的内容。</li>
+<li>负向提示词：描述希望避免的内容。</li>
+</ul>
+<p>在传统 SD 工作流中，正向和负向 CONDITIONING 通常分别连接到 KSampler。</p>
+<h4 id="4-LATENT"><a href="#4-LATENT" class="headerlink" title="4. LATENT"></a>4. LATENT</h4><p>LATENT 是潜空间数据。</p>
+<p>Stable Diffusion 并不是直接在普通图片像素上完成整个采样过程，而是在潜空间中进行生成和去噪。</p>
+<p>常见节点：</p>
+<ul>
+<li>Empty Latent Image</li>
+<li>VAE Encode</li>
+<li>KSampler</li>
+<li>Latent Upscale</li>
+</ul>
+<p>需要注意，LATENT 不是普通图片，不能直接连接到要求 IMAGE 的图片保存节点。</p>
+<h4 id="5-VAE"><a href="#5-VAE" class="headerlink" title="5. VAE"></a>5. VAE</h4><p>VAE 负责图片和潜空间之间的转换。</p>
+<p>主要包括：</p>
+<ul>
+<li>VAE Encode：将 IMAGE 编码成 LATENT。</li>
+<li>VAE Decode：将 LATENT 解码成 IMAGE。</li>
+</ul>
+<p>图生图和文生图都会用到 VAE，只是潜空间的来源不同。</p>
+<h4 id="6-IMAGE-和-MASK"><a href="#6-IMAGE-和-MASK" class="headerlink" title="6. IMAGE 和 MASK"></a>6. IMAGE 和 MASK</h4><p>IMAGE 是普通图片数据，可以用于预览、缩放、裁剪和保存。</p>
+<p>MASK 是遮罩数据，用于指定需要处理或保留的区域。</p>
+<p>例如，局部重绘时，可以通过遮罩告诉模型重点修改人物衣服，而尽量保留其他区域。</p>
+<h3 id="2-3、模型加载类节点"><a href="#2-3、模型加载类节点" class="headerlink" title="2.3、模型加载类节点"></a>2.3、模型加载类节点</h3><p>模型加载节点负责把本地模型文件加载到工作流中。</p>
+<h4 id="1-Load-Checkpoint"><a href="#1-Load-Checkpoint" class="headerlink" title="1. Load Checkpoint"></a>1. Load Checkpoint</h4><p>这是传统 Stable Diffusion 工作流中最常见的模型加载节点。</p>
+<p>它通常输出：</p>
+<ul>
+<li>MODEL</li>
+<li>CLIP</li>
+<li>VAE</li>
+</ul>
+<p>适用于包含完整 Checkpoint 的传统模型。</p>
+<p>例如 SD 1.5 和 SDXL 的常见 Checkpoint 工作流。</p>
+<h4 id="2-Load-Diffusion-Model"><a href="#2-Load-Diffusion-Model" class="headerlink" title="2. Load Diffusion Model"></a>2. Load Diffusion Model</h4><p>主要用于加载独立的扩散模型。</p>
+<p>在 FLUX 等较新的模型工作流中，经常可以看到这个节点。</p>
+<p>与传统完整 Checkpoint 不同，它通常需要另外加载文本编码器和 VAE。</p>
+<p>因此，不能认为只要有一个扩散模型文件就能直接完成整个生成流程。</p>
+<h4 id="3-Load-VAE"><a href="#3-Load-VAE" class="headerlink" title="3. Load VAE"></a>3. Load VAE</h4><p>用于单独加载 VAE 模型。</p>
+<p>当使用的模型没有包含合适的 VAE，或者工作流需要指定独立 VAE 时，就需要使用这个节点。</p>
+<h4 id="4-Load-LoRA"><a href="#4-Load-LoRA" class="headerlink" title="4. Load LoRA"></a>4. Load LoRA</h4><p>用于加载 LoRA 模型。</p>
+<p>通常会接收 MODEL 和 CLIP，并输出经过 LoRA 调整后的 MODEL 和 CLIP。</p>
+<p>常见参数：</p>
+<ul>
+<li>strength_model：模型侧权重。</li>
+<li>strength_clip：文本编码侧权重。</li>
+</ul>
+<p>不同模型架构和节点实现可能存在差异，使用时需要确认 LoRA 与基础模型兼容。</p>
+<h4 id="5-Load-ControlNet-Model"><a href="#5-Load-ControlNet-Model" class="headerlink" title="5. Load ControlNet Model"></a>5. Load ControlNet Model</h4><p>用于加载 ControlNet 模型。</p>
+<p>例如：</p>
+<ul>
+<li>OpenPose</li>
+<li>Canny</li>
+<li>Depth</li>
+</ul>
+<p>加载后通常还需要结合预处理结果和 Apply ControlNet 等节点使用。</p>
+<h2 id="三、相关处理"><a href="#三、相关处理" class="headerlink" title="三、相关处理"></a>三、相关处理</h2><h3 id="3-1、文本与条件处理节点"><a href="#3-1、文本与条件处理节点" class="headerlink" title="3.1、文本与条件处理节点"></a>3.1、文本与条件处理节点</h3><p>这类节点主要负责处理提示词和生成条件。</p>
+<h4 id="1-CLIP-Text-Encode"><a href="#1-CLIP-Text-Encode" class="headerlink" title="1. CLIP Text Encode"></a>1. CLIP Text Encode</h4><p>这是传统文生图工作流中的核心节点。</p>
+<p>输入：</p>
+<ul>
+<li>CLIP</li>
+<li>文本提示词</li>
+</ul>
+<p>输出：</p>
+<ul>
+<li>CONDITIONING</li>
+</ul>
+<p>通常会使用两个节点分别处理正向和负向提示词。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">正向提示词</span><br><span class="line">     │</span><br><span class="line">     ▼</span><br><span class="line">CLIP Text Encode ──→ 正向 CONDITIONING</span><br><span class="line"></span><br><span class="line">负向提示词</span><br><span class="line">     │</span><br><span class="line">     ▼</span><br><span class="line">CLIP Text Encode ──→ 负向 CONDITIONING</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-Conditioning-合并与处理"><a href="#2-Conditioning-合并与处理" class="headerlink" title="2. Conditioning 合并与处理"></a>2. Conditioning 合并与处理</h4><p>ComfyUI 还提供了多种 CONDITIONING 处理节点。</p>
+<p>例如：</p>
+<ul>
+<li>Conditioning Combine</li>
+<li>Conditioning Concat</li>
+<li>Conditioning Set Area</li>
+</ul>
+<p>它们可以组合多个条件，或者让不同提示词作用于指定区域。</p>
+<p>这些节点适合复杂工作流，初学阶段先理解基本的正向、负向条件即可。</p>
+<h4 id="3-FLUX-和其他模型的文本编码节点"><a href="#3-FLUX-和其他模型的文本编码节点" class="headerlink" title="3. FLUX 和其他模型的文本编码节点"></a>3. FLUX 和其他模型的文本编码节点</h4><p>FLUX、Qwen Image 等模型可能使用不同的文本编码节点和条件处理方式。</p>
+<p>例如，部分 FLUX 工作流会使用 DualCLIPLoader 或专门的文本编码节点。</p>
+<p>因此，不要认为所有模型都必须使用两个传统的 CLIP Text Encode 节点。</p>
+<p>最稳妥的方法是使用对应模型的官方示例工作流。</p>
+<h3 id="3-2、潜空间与采样节点"><a href="#3-2、潜空间与采样节点" class="headerlink" title="3.2、潜空间与采样节点"></a>3.2、潜空间与采样节点</h3><p>这类节点主要负责准备生成数据和执行采样。</p>
+<h4 id="1-Empty-Latent-Image"><a href="#1-Empty-Latent-Image" class="headerlink" title="1. Empty Latent Image"></a>1. Empty Latent Image</h4><p>用于创建空白潜空间。</p>
+<p>常见参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>width</td>
+<td>图片宽度</td>
+</tr>
+<tr>
+<td>height</td>
+<td>图片高度</td>
+</tr>
+<tr>
+<td>batch_size</td>
+<td>一次生成的图片数量</td>
+</tr>
+</tbody></table>
+<p>例如：</p>
+<ul>
+<li>width：512</li>
+<li>height：512</li>
+<li>batch_size：1</li>
+</ul>
+<p>这里创建的是潜空间，并不是一张已经生成好的图片。</p>
+<h4 id="2-VAE-Encode"><a href="#2-VAE-Encode" class="headerlink" title="2. VAE Encode"></a>2. VAE Encode</h4><p>用于将普通图片编码成 LATENT。</p>
+<p>主要用于图生图、局部重绘等工作流。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Load Image</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">VAE Encode</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">LATENT</span><br><span class="line">    │</span><br><span class="line">    ▼</span><br><span class="line">KSampler</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-KSampler"><a href="#3-KSampler" class="headerlink" title="3. KSampler"></a>3. KSampler</h4><p>KSampler 是传统 Stable Diffusion 工作流中非常重要的采样节点。</p>
+<p>主要输入：</p>
+<ul>
+<li>MODEL</li>
+<li>正向 CONDITIONING</li>
+<li>负向 CONDITIONING</li>
+<li>LATENT</li>
+</ul>
+<p>常见参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>seed</td>
+<td>随机种子</td>
+</tr>
+<tr>
+<td>steps</td>
+<td>采样步数</td>
+</tr>
+<tr>
+<td>cfg</td>
+<td>提示词引导强度</td>
+</tr>
+<tr>
+<td>sampler_name</td>
+<td>采样器</td>
+</tr>
+<tr>
+<td>scheduler</td>
+<td>调度器</td>
+</tr>
+<tr>
+<td>denoise</td>
+<td>去噪强度</td>
+</tr>
+</tbody></table>
+<p>前面第 08 篇已经详细介绍过这些参数。</p>
+<p>这里需要补充一点：并不是所有新模型都采用传统 KSampler 的相同参数组合和采样方式，应该根据模型对应的工作流设置。</p>
+<h4 id="4-KSampler-Advanced"><a href="#4-KSampler-Advanced" class="headerlink" title="4. KSampler Advanced"></a>4. KSampler Advanced</h4><p>这是功能更灵活的高级采样节点。</p>
+<p>可以控制：</p>
+<ul>
+<li>起始采样步数</li>
+<li>结束采样步数</li>
+<li>是否添加噪声</li>
+<li>是否保留最终噪声</li>
+</ul>
+<p>适合分阶段采样、复杂工作流等场景。</p>
+<p>初学阶段先掌握普通 KSampler 即可。</p>
+<h3 id="3-3、图片处理类节点"><a href="#3-3、图片处理类节点" class="headerlink" title="3.3、图片处理类节点"></a>3.3、图片处理类节点</h3><p>图片处理节点主要负责对生成结果或输入图片进行调整。</p>
+<h4 id="1-Load-Image"><a href="#1-Load-Image" class="headerlink" title="1. Load Image"></a>1. Load Image</h4><p>加载本地图片。</p>
+<p>常用于：</p>
+<ul>
+<li>图生图</li>
+<li>局部重绘</li>
+<li>ControlNet</li>
+<li>IP-Adapter</li>
+<li>图片参考</li>
+</ul>
+<p>输出通常包括 IMAGE，部分模式还可以提供 MASK。</p>
+<h4 id="2-Preview-Image"><a href="#2-Preview-Image" class="headerlink" title="2. Preview Image"></a>2. Preview Image</h4><p>预览图片。</p>
+<p>适合在工作流中间查看处理结果，而不需要每次都保存到输出目录。</p>
+<p>例如，可以在图片缩放、抠图、背景替换之后添加预览节点。</p>
+<h4 id="3-Save-Image"><a href="#3-Save-Image" class="headerlink" title="3. Save Image"></a>3. Save Image</h4><p>保存最终图片。</p>
+<p>常见参数：</p>
+<ul>
+<li>filename_prefix：文件名前缀。</li>
+</ul>
+<p>默认输出目录通常是：</p>
+<p><code>ComfyUI/output/</code></p>
+<p>例如设置：</p>
+<p><code>portrait/test</code></p>
+<p>生成的文件会按照对应前缀保存。</p>
+<h4 id="4-Image-Scale"><a href="#4-Image-Scale" class="headerlink" title="4. Image Scale"></a>4. Image Scale</h4><p>用于调整图片尺寸。</p>
+<p>常见设置包括：</p>
+<ul>
+<li>width</li>
+<li>height</li>
+<li>upscale_method</li>
+<li>crop</li>
+</ul>
+<p>适合普通图片缩放。</p>
+<p>需要注意，普通缩放只是调整像素尺寸，并不等于 AI 高清修复。</p>
+<h4 id="5-Image-Crop"><a href="#5-Image-Crop" class="headerlink" title="5. Image Crop"></a>5. Image Crop</h4><p>用于裁剪图片。</p>
+<p>可以根据指定位置和尺寸截取图片区域，适合制作局部处理工作流。</p>
+<h4 id="6-Image-Composite"><a href="#6-Image-Composite" class="headerlink" title="6. Image Composite"></a>6. Image Composite</h4><p>用于合成图片。</p>
+<p>例如，将人物抠图结果与新的背景图片进行合成。</p>
+<p>常见用途：</p>
+<ul>
+<li>更换照片背景</li>
+<li>人物与背景融合</li>
+<li>多张图片拼接</li>
+<li>图片局部覆盖</li>
+</ul>
+<h3 id="3-4、遮罩与局部处理节点"><a href="#3-4、遮罩与局部处理节点" class="headerlink" title="3.4、遮罩与局部处理节点"></a>3.4、遮罩与局部处理节点</h3><p>遮罩是局部重绘和图片编辑的重要基础。</p>
+<p>常见节点包括：</p>
+<table>
+<thead>
+<tr>
+<th>节点</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Load Mask</td>
+<td>加载遮罩</td>
+</tr>
+<tr>
+<td>Mask Editor</td>
+<td>编辑遮罩</td>
+</tr>
+<tr>
+<td>Grow Mask</td>
+<td>扩大遮罩区域</td>
+</tr>
+<tr>
+<td>Feather Mask</td>
+<td>羽化遮罩边缘</td>
+</tr>
+<tr>
+<td>Blur Mask</td>
+<td>模糊遮罩边缘</td>
+</tr>
+<tr>
+<td>Invert Mask</td>
+<td>反转遮罩</td>
+</tr>
+</tbody></table>
+<p>例如，想修改人物衣服，可以先通过遮罩选中衣服区域，再结合 Inpaint 工作流进行生成。</p>
+<p>需要注意，不同节点和工作流对遮罩白色、黑色区域的处理约定可能有所不同，使用前应确认节点说明和实际效果。</p>
+<h3 id="3-5、节点之间应该如何连接？"><a href="#3-5、节点之间应该如何连接？" class="headerlink" title="3.5、节点之间应该如何连接？"></a>3.5、节点之间应该如何连接？</h3><p>掌握了常见节点之后，最重要的是理解连接规则。</p>
+<p>ComfyUI 的连接并不是随意的，主要遵循数据类型和节点接口要求。</p>
+<p>例如：</p>
+<ul>
+<li>MODEL 通常连接到需要模型的输入端口。</li>
+<li>CLIP 通常连接到文本编码节点。</li>
+<li>CONDITIONING 通常连接到采样或条件处理节点。</li>
+<li>LATENT 通常连接到采样、潜空间处理或 VAE 解码节点。</li>
+<li>VAE 通常连接到编码或解码节点。</li>
+<li>IMAGE 通常连接到图片处理、预览或保存节点。</li>
+<li>MASK 通常连接到需要遮罩的处理节点。</li>
+</ul>
+<h4 id="一个简单的文生图流程"><a href="#一个简单的文生图流程" class="headerlink" title="一个简单的文生图流程"></a>一个简单的文生图流程</h4><p>下面以传统 SD 1.5 文生图为例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">                 Load Checkpoint</span><br><span class="line">                 /      |       \</span><br><span class="line">              MODEL   CLIP      VAE</span><br><span class="line">                |       |         |</span><br><span class="line">                |       ├── 正向提示词编码</span><br><span class="line">                |       └── 负向提示词编码</span><br><span class="line">                |                 |</span><br><span class="line">                |           CONDITIONING</span><br><span class="line">                |                 |</span><br><span class="line">Empty Latent ───┴──────────────→ KSampler</span><br><span class="line">                                    |</span><br><span class="line">                                  LATENT</span><br><span class="line">                                    |</span><br><span class="line">                                VAE Decode</span><br><span class="line">                                    |</span><br><span class="line">                                  IMAGE</span><br><span class="line">                                    |</span><br><span class="line">                                Save Image</span><br></pre></td></tr></table></figure>
+
+<p>这个流程包含了模型加载、文本编码、潜空间准备、采样、解码和保存。</p>
+<p>不同模型可能采用不同的节点组合，但整体思路仍然是组织数据、处理条件、执行生成、输出结果。</p>
+<h3 id="3-6、如何判断节点执行顺序？"><a href="#3-6、如何判断节点执行顺序？" class="headerlink" title="3.6、如何判断节点执行顺序？"></a>3.6、如何判断节点执行顺序？</h3><p>初学者容易认为 ComfyUI 是按照画布从左到右执行节点。</p>
+<p>实际上并不是这样。</p>
+<p>ComfyUI 会根据节点之间的数据依赖关系，确定执行顺序。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Load Checkpoint</span><br><span class="line">       │</span><br><span class="line">       ▼</span><br><span class="line">   KSampler</span><br><span class="line">       │</span><br><span class="line">       ▼</span><br><span class="line">  VAE Decode</span><br><span class="line">       │</span><br><span class="line">       ▼</span><br><span class="line">   Save Image</span><br></pre></td></tr></table></figure>
+
+<p>当你执行工作流时，ComfyUI 会从最终需要执行的输出节点开始，向前检查它依赖的数据，并执行所需节点。</p>
+<p>这意味着：</p>
+<ul>
+<li>没有被最终输出依赖的节点，可能不会执行。</li>
+<li>某个节点的数据发生变化时，相关计算可能需要重新执行。</li>
+<li>可以通过增加预览或保存节点，检查中间处理结果。</li>
+</ul>
+<p>理解这一点后，就能更容易分析复杂工作流为什么没有按照画布位置执行。</p>
+<h2 id="四、动手练习：自己搭建一个节点工作流"><a href="#四、动手练习：自己搭建一个节点工作流" class="headerlink" title="四、动手练习：自己搭建一个节点工作流"></a>四、动手练习：自己搭建一个节点工作流</h2><p>建议使用前面第 05 篇的 SD 1.5 文生图工作流进行练习。</p>
+<p>这次重点不是生成图片，而是理解每个节点的输入和输出。</p>
+<p>练习步骤：</p>
+<ol>
+<li>添加 Load Checkpoint，选择一个 SD 1.5 模型。</li>
+<li>添加两个 CLIP Text Encode，分别输入正向和负向提示词。</li>
+<li>添加 Empty Latent Image，设置图片尺寸。</li>
+<li>添加 KSampler，连接模型、条件和潜空间。</li>
+<li>添加 VAE Decode，将 LATENT 转换为 IMAGE。</li>
+<li>添加 Save Image，保存生成结果。</li>
+<li>运行工作流，观察各个节点之间的数据传递。</li>
+</ol>
+<p>完成后，再尝试添加 Preview Image，查看中间图片处理结果。</p>
+<p>如果已经熟悉基础工作流，可以尝试增加 Load Image 和 VAE Encode，改造成简单的图生图流程。</p>
+<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><p>ComfyUI 的节点虽然很多，但可以按照功能进行分类：</p>
+<ul>
+<li>模型加载：负责加载 Checkpoint、LoRA、VAE 等模型。</li>
+<li>文本处理：负责提示词编码和条件处理。</li>
+<li>潜空间与采样：负责准备生成数据和执行采样。</li>
+<li>图片处理：负责加载、缩放、裁剪、合成和保存图片。</li>
+<li>遮罩处理：负责控制图片需要修改的区域。</li>
+</ul>
+<p>学习节点时，不需要一次记住所有名称。</p>
+<p>更重要的是理解三个问题：</p>
+<ol>
+<li>这个节点负责什么功能？</li>
+<li>它需要接收什么数据？</li>
+<li>它会输出什么数据？</li>
+</ol>
+<p>只要理解这三个问题，就能逐步看懂别人分享的复杂工作流，并且根据自己的需求进行修改。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ComfyUI/" rel="tag"># ComfyUI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/38bf2f69.html" rel="prev" title="ComfyUI开发之——ComfyUI工作流下载导入修改与分享(4.1)">
+                  <i class="fa fa-angle-left"></i> ComfyUI开发之——ComfyUI工作流下载导入修改与分享(4.1)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/6211410d.html" rel="next" title="ComfyUI开发之——ComfyUI自定义节点安装与管理(4.3)">
+                  ComfyUI开发之——ComfyUI自定义节点安装与管理(4.3) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"86995f41e379c3885e61a52412321129"}</script>
+<script src="/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>

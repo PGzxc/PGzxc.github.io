@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/ja/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/ja/images/favicon/favicon-64x64.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/ja/images/favicon/favicon-32x32.png">
+  <link rel="mask-icon" href="/ja/images/favicon/favicon-64x64.png" color="#222">
+
+<link rel="stylesheet" href="/ja/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"pgzxc.github.io","root":"/ja/","images":"/ja/images","scheme":"Gemini","darkmode":true,"version":"8.26.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"an-old-hope","dark":"an-old-hope"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"default"},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"検索...","empty":"検索結果が見つかりませんでした: ${query}","hits_time":"${hits} の結果が ${time} ms で見つかりました","hits":"${hits} 件の結果が見つかりました"},"path":"/ja/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/ja/js/config.js" defer></script>
+
+    <meta name="description" content="一、概述1ComfyUI 局部重绘：修改图片指定区域与 Inpainting 实战">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ComfyUI开发之——ComfyUI局部重绘(3.2)">
+<meta property="og:url" content="https://pgzxc.github.io/posts/93768c72.html">
+<meta property="og:site_name" content="PGzxc (Japanese)">
+<meta property="og:description" content="一、概述1ComfyUI 局部重绘：修改图片指定区域与 Inpainting 实战">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2026-11-04T11:33:22.000Z">
+<meta property="article:modified_time" content="2026-11-05T01:59:37.229Z">
+<meta property="article:author" content="PGzxc">
+<meta property="article:tag" content="ComfyUI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pgzxc.github.io/posts/93768c72.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"ja","comments":true,"permalink":"https://pgzxc.github.io/posts/93768c72.html","path":"posts/93768c72.html","title":"ComfyUI开发之——ComfyUI局部重绘(3.2)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ComfyUI开发之——ComfyUI局部重绘(3.2) | PGzxc (Japanese)</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/utils.js" defer></script><script src="/ja/js/motion.js" defer></script><script src="/ja/js/sidebar.js" defer></script><script src="/ja/js/next-boot.js" defer></script><script src="/ja/js/pjax.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/ja/js/third-party/search/local-search.js" defer></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.1/mermaid.min.js","integrity":"sha256-BmQmdWDS8X2OTbrwELWK366LV6escyWhHHe0XCTU/Hk="}}</script>
+  <script src="/ja/js/third-party/tags/mermaid.js" defer></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/ja/js/third-party/tags/wavedrom.js" defer></script>
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/ja/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/ja/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/ja/atom.xml" title="PGzxc (Japanese)" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="ナビゲーションを切り替える" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/ja/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">PGzxc (Japanese)</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">本から学んだことは表面的なもの；自分で体験しなければならない</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="検索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/ja/" rel="section"><i class="fa fa-bell fa-fw"></i>ホーム</a></li><li class="menu-item menu-item-nav"><a href="/ja/navs/" rel="section"><i class="fa fa-bars fa-fw"></i>ナビゲーション</a></li><li class="menu-item menu-item-categories"><a href="/ja/categories/" rel="section"><i class="fa fa-th fa-fw"></i>カテゴリー<span class="badge">384</span></a></li><li class="menu-item menu-item-archives"><a href="/ja/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>アーカイブ<span class="badge">4861</span></a></li><li class="menu-item menu-item-links"><a href="/ja/links/" rel="section"><i class="fa fa-link fa-fw"></i>リンク</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>検索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="検索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          目次
+        </li>
+        <li class="sidebar-nav-overview">
+          サイト概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B1%80%E9%83%A8%E9%87%8D%E7%BB%98"><span class="nav-number">2.</span> <span class="nav-text">二、局部重绘</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%B1%80%E9%83%A8%E9%87%8D%E7%BB%98%EF%BC%9F"><span class="nav-number">2.1.</span> <span class="nav-text">2.1、什么是局部重绘？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2%E3%80%81%E5%B1%80%E9%83%A8%E9%87%8D%E7%BB%98%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">2.2.</span> <span class="nav-text">2.2、局部重绘的基本原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%87%86%E5%A4%87%E5%9B%BE%E7%89%87%E4%B8%8E%E9%81%AE%E7%BD%A9"><span class="nav-number">3.</span> <span class="nav-text">三、准备图片与遮罩</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%87%86%E5%A4%87%E5%8E%9F%E5%A7%8B%E5%9B%BE%E7%89%87"><span class="nav-number">3.1.</span> <span class="nav-text">3.1. 准备原始图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E4%BB%80%E4%B9%88%E6%98%AF%E9%81%AE%E7%BD%A9%EF%BC%9F"><span class="nav-number">3.2.</span> <span class="nav-text">3.2. 什么是遮罩？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E9%81%AE%E7%BD%A9%E7%BB%98%E5%88%B6%E5%8E%9F%E5%88%99"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 遮罩绘制原则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%90%AD%E5%BB%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%B1%80%E9%83%A8%E9%87%8D%E7%BB%98%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">4.</span> <span class="nav-text">四、搭建第一个局部重绘工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9"><span class="nav-number">4.1.</span> <span class="nav-text">4.1. 添加节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E8%BF%9E%E6%8E%A5%E8%8A%82%E7%82%B9"><span class="nav-number">4.2.</span> <span class="nav-text">4.2. 连接节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E8%AE%BE%E7%BD%AE%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="nav-number">4.3.</span> <span class="nav-text">4.3. 设置提示词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E8%AE%BE%E7%BD%AE-KSampler-%E5%8F%82%E6%95%B0"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 设置 KSampler 参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%B1%80%E9%83%A8%E9%87%8D%E7%BB%98%E7%9A%84%E9%87%8D%E8%A6%81%E5%8F%82%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">五、局部重绘的重要参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-Denoise%EF%BC%9A%E6%8E%A7%E5%88%B6%E4%BF%AE%E6%94%B9%E7%A8%8B%E5%BA%A6"><span class="nav-number">5.1.</span> <span class="nav-text">5.1. Denoise：控制修改程度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E9%81%AE%E7%BD%A9%E8%8C%83%E5%9B%B4"><span class="nav-number">5.2.</span> <span class="nav-text">5.2. 遮罩范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E9%81%AE%E7%BD%A9%E7%BE%BD%E5%8C%96%E4%B8%8E%E8%BE%B9%E7%BC%98%E5%A4%84%E7%90%86"><span class="nav-number">5.3.</span> <span class="nav-text">5.3. 遮罩羽化与边缘处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%AE%9E%E6%88%98%EF%BC%9A%E6%9B%B4%E6%8D%A2%E4%BA%BA%E7%89%A9%E8%A1%A3%E6%9C%8D%E9%A2%9C%E8%89%B2"><span class="nav-number">6.</span> <span class="nav-text">六、实战：更换人物衣服颜色</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-%E9%80%89%E6%8B%A9%E4%BA%BA%E7%89%A9%E7%85%A7%E7%89%87"><span class="nav-number">6.1.</span> <span class="nav-text">6.1. 选择人物照片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-%E7%BB%98%E5%88%B6%E9%81%AE%E7%BD%A9"><span class="nav-number">6.2.</span> <span class="nav-text">6.2. 绘制遮罩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-%E7%BC%96%E5%86%99%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="nav-number">6.3.</span> <span class="nav-text">6.3. 编写提示词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-%E8%AE%BE%E7%BD%AE%E5%8F%82%E6%95%B0%E5%B9%B6%E7%94%9F%E6%88%90"><span class="nav-number">6.4.</span> <span class="nav-text">6.4. 设置参数并生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-5-%E4%BF%9D%E5%AD%98%E5%B9%B6%E5%AF%B9%E6%AF%94"><span class="nav-number">6.5.</span> <span class="nav-text">6.5. 保存并对比</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%99%AE%E9%80%9A%E5%9B%BE%E7%94%9F%E5%9B%BE%E4%B8%8E-Inpainting-%E6%A8%A1%E5%9E%8B%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">7.</span> <span class="nav-text">七、普通图生图与 Inpainting 模型有什么区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E5%B1%80%E9%83%A8%E9%87%8D%E7%BB%98%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">8.</span> <span class="nav-text">八、局部重绘常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-%E9%81%AE%E7%BD%A9%E5%8C%BA%E5%9F%9F%E6%B2%A1%E6%9C%89%E5%8F%91%E7%94%9F%E5%8F%98%E5%8C%96"><span class="nav-number">8.1.</span> <span class="nav-text">8.1. 遮罩区域没有发生变化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-%E4%BF%AE%E6%94%B9%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%91%A8%E5%9B%B4%E7%94%BB%E9%9D%A2%E8%A1%94%E6%8E%A5%E4%B8%8D%E8%87%AA%E7%84%B6"><span class="nav-number">8.2.</span> <span class="nav-text">8.2. 修改区域与周围画面衔接不自然</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-%E4%BA%BA%E7%89%A9%E8%84%B8%E9%83%A8%E4%B9%9F%E5%8F%91%E7%94%9F%E4%BA%86%E5%8F%98%E5%8C%96"><span class="nav-number">8.3.</span> <span class="nav-text">8.3. 人物脸部也发生了变化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4-%E7%94%9F%E6%88%90%E7%BB%93%E6%9E%9C%E4%B8%8D%E7%AC%A6%E5%90%88%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="nav-number">8.4.</span> <span class="nav-text">8.4. 生成结果不符合提示词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-5-%E9%81%AE%E7%BD%A9%E8%BE%B9%E7%BC%98%E5%87%BA%E7%8E%B0%E6%98%8E%E6%98%BE%E8%89%B2%E5%9D%97"><span class="nav-number">8.5.</span> <span class="nav-text">8.5. 遮罩边缘出现明显色块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E6%9C%AC%E7%AF%87%E6%80%BB%E7%BB%93"><span class="nav-number">9.</span> <span class="nav-text">九、本篇总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="PGzxc"
+      src="/ja/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">PGzxc</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/ja/archives/">
+          <span class="site-state-item-count">4861</span>
+          <span class="site-state-item-name">投稿</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/ja/categories/">
+        <span class="site-state-item-count">384</span>
+        <span class="site-state-item-name">カテゴリー</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/ja/tags/">
+        <span class="site-state-item-count">704</span>
+        <span class="site-state-item-name">タグ</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="http://blog.csdn.net/calvin_zhou" title="CSDN → http:&#x2F;&#x2F;blog.csdn.net&#x2F;calvin_zhou" rel="noopener me" target="_blank"><i class="fa fa-book fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://weibo.com/5582039920" title="微博 → http:&#x2F;&#x2F;weibo.com&#x2F;5582039920" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/c5cdcb4dc52b" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;c5cdcb4dc52b" rel="noopener me" target="_blank"><i class="fa fa-heartbeat fa-fw"></i></a>
+      </span>
+  </div>
+
+
+<nav class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav-menu">
+        <li class="menu-item menu-item-home">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-nav">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-archives">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+        <li class="menu-item menu-item-links">
+          <a href="/jaundefined" rel="section">
+            <span></span>
+          </a>
+        </li>
+  </ul>
+</nav>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="ja">
+    <link itemprop="mainEntityOfPage" href="https://pgzxc.github.io/posts/93768c72.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/ja/images/avatar.jpg">
+      <meta itemprop="name" content="PGzxc">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ComfyUI开发之——ComfyUI局部重绘(3.2) | PGzxc (Japanese)">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ComfyUI开发之——ComfyUI局部重绘(3.2)<a href="https://github.com/PGzxc/PGzxc.github.io/edit/master/source/_posts/ComfyUI%E5%BC%80%E5%8F%91%E4%B9%8B%E2%80%94%E2%80%94ComfyUI%E5%B1%80%E9%83%A8%E9%87%8D%E7%BB%98-3-2.md" class="post-edit-link" title="編集" rel="noopener" target="_blank"><i class="fa fa-pen-nib"></i></a>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">投稿日</span>
+
+      <time title="作成日：2026-11-04 19:33:22" itemprop="dateCreated datePublished" datetime="2026-11-04T19:33:22+08:00">2026-11-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">カテゴリ</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/" itemprop="url" rel="index"><span itemprop="name">AI图视频短剧</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/" itemprop="url" rel="index"><span itemprop="name">AI绘图</span></a>
+        </span>
+          、
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/ja/categories/AI/AI%E5%9B%BE%E8%A7%86%E9%A2%91%E7%9F%AD%E5%89%A7/AI%E7%BB%98%E5%9B%BE/ComfyUI/" itemprop="url" rel="index"><span itemprop="name">ComfyUI</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="読書時間">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">読書時間 &asymp;</span>
+      <span>4 分</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ComfyUI 局部重绘：修改图片指定区域与 Inpainting 实战</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="二、局部重绘"><a href="#二、局部重绘" class="headerlink" title="二、局部重绘"></a>二、局部重绘</h2><h3 id="2-1、什么是局部重绘？"><a href="#2-1、什么是局部重绘？" class="headerlink" title="2.1、什么是局部重绘？"></a>2.1、什么是局部重绘？</h3><p>前面我们学习了 ComfyUI 图生图，可以根据原图重新生成图片，但它通常会对整张图片进行处理。</p>
+<p>如果只想修改图片中的某个部分，例如：</p>
+<ul>
+<li>将人物的红色衣服换成白色衣服。</li>
+<li>将照片中的天空替换成蓝天。</li>
+<li>删除背景中的路人或杂物。</li>
+<li>修复老照片中的划痕和破损。</li>
+<li>修改人物周围的某个物体。</li>
+</ul>
+<p>这时就可以使用局部重绘（Inpainting）。</p>
+<p>局部重绘的核心是使用**遮罩（Mask）**告诉模型：哪些区域需要重新生成，哪些区域尽量保持不变。</p>
+<p>可以简单理解为：</p>
+<ul>
+<li>白色区域：需要修改的区域。</li>
+<li>黑色区域：尽量保留的区域。</li>
+<li>灰色区域：部分遮罩，在支持软遮罩的工作流中可以实现渐变过渡。</li>
+</ul>
+<p>不同节点或工作流可能对遮罩颜色的显示方式有所不同，实际使用时要以节点说明为准。</p>
+<h3 id="2-2、局部重绘的基本原理"><a href="#2-2、局部重绘的基本原理" class="headerlink" title="2.2、局部重绘的基本原理"></a>2.2、局部重绘的基本原理</h3><p>局部重绘与图生图有相似之处，都需要将图片转换成模型能够处理的数据。</p>
+<p>但局部重绘还需要额外提供遮罩信息。</p>
+<p>基本流程：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Load Image ───────────────┐</span><br><span class="line">                          │</span><br><span class="line">Load Mask / 绘制遮罩 ─────┤</span><br><span class="line">                          ↓</span><br><span class="line">                    Inpainting流程</span><br><span class="line">                          ↑</span><br><span class="line">Load Checkpoint ──────────┤</span><br><span class="line">                          │</span><br><span class="line">正向提示词 / 负向提示词 ──┘</span><br><span class="line">                          ↓</span><br><span class="line">                       KSampler</span><br><span class="line">                          ↓</span><br><span class="line">                      VAE Decode</span><br><span class="line">                          ↓</span><br><span class="line">                      Save Image</span><br></pre></td></tr></table></figure>
+
+<p>实际工作流可能使用 VAE Encode (for Inpainting)、InpaintModelConditioning 或专用的 Inpaint 模型节点。不同模型架构和工作流的连接方式并不完全相同。</p>
+<p>本篇先使用 ComfyUI 传统 SD 1.5 Inpainting 工作流理解基本原理。</p>
+<h2 id="三、准备图片与遮罩"><a href="#三、准备图片与遮罩" class="headerlink" title="三、准备图片与遮罩"></a>三、准备图片与遮罩</h2><h3 id="3-1-准备原始图片"><a href="#3-1-准备原始图片" class="headerlink" title="3.1. 准备原始图片"></a>3.1. 准备原始图片</h3><p>选择一张需要修改的图片。</p>
+<p>例如，一张人物照片，希望将人物身上的红色衣服换成蓝色衣服。</p>
+<p>建议选择：</p>
+<ul>
+<li>图片主体清晰。</li>
+<li>需要修改的区域比较明显。</li>
+<li>图片分辨率适中。</li>
+<li>需要修改的区域不要过大。</li>
+</ul>
+<h3 id="3-2-什么是遮罩？"><a href="#3-2-什么是遮罩？" class="headerlink" title="3.2. 什么是遮罩？"></a>3.2. 什么是遮罩？</h3><p>遮罩（Mask）是一张用于指定修改区域的灰度图。</p>
+<p>在 ComfyUI 中，遮罩通常以 MASK 数据类型传递。</p>
+<p>可以通过以下方式获得遮罩：</p>
+<ol>
+<li>在 Load Image 节点中使用内置遮罩编辑功能（如果当前版本支持）。</li>
+<li>使用独立的 Mask Editor 或绘制遮罩节点。</li>
+<li>在外部图片编辑软件中制作遮罩，再通过节点加载。</li>
+</ol>
+<p>如果使用 Load Image 自带的遮罩编辑功能，可以在节点中打开图片编辑界面，绘制需要修改的区域。具体操作入口可能因 ComfyUI 版本而异。</p>
+<h3 id="3-3-遮罩绘制原则"><a href="#3-3-遮罩绘制原则" class="headerlink" title="3.3 遮罩绘制原则"></a>3.3 遮罩绘制原则</h3><p>假设需要更换人物衣服：</p>
+<ul>
+<li>尽量完整覆盖衣服区域。</li>
+<li>不要大面积覆盖脸部和头发。</li>
+<li>注意肩膀、袖口、衣领等边缘。</li>
+<li>避免遗漏衣服边缘，否则可能出现新旧颜色交界。</li>
+</ul>
+<p>如果遮罩范围过小，模型可能无法自然处理边缘；如果范围过大，又可能改变原本不需要修改的内容。</p>
+<p>建议在需要修改的区域边缘适当留出空间，让模型有足够的区域生成过渡细节。</p>
+<h2 id="四、搭建第一个局部重绘工作流"><a href="#四、搭建第一个局部重绘工作流" class="headerlink" title="四、搭建第一个局部重绘工作流"></a>四、搭建第一个局部重绘工作流</h2><p>这里以传统 SD 1.5 Inpainting 工作流为例。</p>
+<p>需要注意：普通 Checkpoint 和专用 Inpainting Checkpoint 并不是完全相同的使用方式。下面先介绍普通 SD 1.5 Checkpoint 配合遮罩编码的基础流程，后面再介绍专用 Inpainting 模型。</p>
+<h3 id="4-1-添加节点"><a href="#4-1-添加节点" class="headerlink" title="4.1. 添加节点"></a>4.1. 添加节点</h3><p>在 ComfyUI 画布中添加以下节点：</p>
+<table>
+<thead>
+<tr>
+<th>节点</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Load Checkpoint</td>
+<td>加载模型</td>
+</tr>
+<tr>
+<td>Load Image</td>
+<td>加载原图</td>
+</tr>
+<tr>
+<td>CLIP Text Encode（Prompt）</td>
+<td>正向提示词</td>
+</tr>
+<tr>
+<td>CLIP Text Encode（Prompt）</td>
+<td>负向提示词</td>
+</tr>
+<tr>
+<td>InpaintModelConditioning</td>
+<td>将图片、遮罩和提示词整理为局部重绘条件</td>
+</tr>
+<tr>
+<td>KSampler</td>
+<td>执行采样</td>
+</tr>
+<tr>
+<td>VAE Decode</td>
+<td>解码生成图片</td>
+</tr>
+<tr>
+<td>Save Image</td>
+<td>保存结果</td>
+</tr>
+</tbody></table>
+<p>这里使用 InpaintModelConditioning，可以将原图和遮罩信息一起处理，生成供 KSampler 使用的条件数据。</p>
+<h3 id="4-2-连接节点"><a href="#4-2-连接节点" class="headerlink" title="4.2. 连接节点"></a>4.2. 连接节点</h3><p>按照以下关系连接：</p>
+<p><strong>模型与提示词：</strong></p>
+<ul>
+<li>Load Checkpoint 的 MODEL → InpaintModelConditioning 的 model。</li>
+<li>Load Checkpoint 的 CLIP → 正向、负向 CLIP Text Encode 的 clip。</li>
+<li>正向 CLIP Text Encode 的 CONDITIONING → InpaintModelConditioning 的 positive。</li>
+<li>负向 CLIP Text Encode 的 CONDITIONING → InpaintModelConditioning 的 negative。</li>
+</ul>
+<p><strong>原图与遮罩：</strong></p>
+<ul>
+<li>Load Image 的 IMAGE → InpaintModelConditioning 的 pixels。</li>
+<li>Load Image 的 MASK → InpaintModelConditioning 的 mask。</li>
+<li>Load Checkpoint 的 VAE → InpaintModelConditioning 的 vae。</li>
+</ul>
+<p><strong>采样与输出：</strong></p>
+<ul>
+<li>InpaintModelConditioning 的 positive → KSampler 的 positive。</li>
+<li>InpaintModelConditioning 的 negative → KSampler 的 negative。</li>
+<li>InpaintModelConditioning 的 latent → KSampler 的 latent_image。</li>
+<li>Load Checkpoint 的 MODEL → KSampler 的 model。</li>
+<li>KSampler 的 LATENT → VAE Decode 的 samples。</li>
+<li>Load Checkpoint 的 VAE → VAE Decode 的 vae。</li>
+<li>VAE Decode 的 IMAGE → Save Image 的 images。</li>
+</ul>
+<p>如果 Load Image 没有有效遮罩，需要先在图片编辑器中绘制遮罩，或使用其他遮罩加载节点。</p>
+<h3 id="4-3-设置提示词"><a href="#4-3-设置提示词" class="headerlink" title="4.3. 设置提示词"></a>4.3. 设置提示词</h3><p>假设需要将人物的红色衣服改成蓝色衬衫。</p>
+<p>正向提示词：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">blue shirt, realistic fabric,</span><br><span class="line">natural clothing folds,</span><br><span class="line">detailed texture, realistic photography</span><br></pre></td></tr></table></figure>
+
+<p>负向提示词：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">blurry, low quality, distorted clothing,</span><br><span class="line">extra limbs, bad anatomy</span><br></pre></td></tr></table></figure>
+
+<p>提示词应尽量描述修改后希望得到的内容，而不是只描述原图。</p>
+<h3 id="4-4-设置-KSampler-参数"><a href="#4-4-设置-KSampler-参数" class="headerlink" title="4.4 设置 KSampler 参数"></a>4.4 设置 KSampler 参数</h3><p>可以先参考下面的 SD 1.5 入门参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>示例值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Steps</td>
+<td>20</td>
+</tr>
+<tr>
+<td>CFG</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Sampler</td>
+<td>Euler</td>
+</tr>
+<tr>
+<td>Scheduler</td>
+<td>normal</td>
+</tr>
+<tr>
+<td>Denoise</td>
+<td>1.0</td>
+</tr>
+</tbody></table>
+<p>这里的 Denoise 与普通图生图有所不同。</p>
+<p>局部重绘通常希望遮罩区域充分重新生成，因此可以先从 1.0 开始测试。如果希望保留更多原始细节，也可以尝试降低 Denoise。</p>
+<p>需要注意，遮罩范围、模型类型和工作流都会影响最终效果。</p>
+<p>完成连接后，点击 Queue Prompt 运行。</p>
+<h2 id="五、局部重绘的重要参数"><a href="#五、局部重绘的重要参数" class="headerlink" title="五、局部重绘的重要参数"></a>五、局部重绘的重要参数</h2><h3 id="5-1-Denoise：控制修改程度"><a href="#5-1-Denoise：控制修改程度" class="headerlink" title="5.1. Denoise：控制修改程度"></a>5.1. Denoise：控制修改程度</h3><p>Denoise 决定遮罩区域内原有图像信息受到多大程度的重新生成。</p>
+<table>
+<thead>
+<tr>
+<th>Denoise</th>
+<th>大致效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0.2～0.3</td>
+<td>修改较轻，原有细节保留较多</td>
+</tr>
+<tr>
+<td>0.4～0.6</td>
+<td>中等修改，适合调整颜色和部分细节</td>
+</tr>
+<tr>
+<td>0.7～0.9</td>
+<td>修改较大，允许重新生成更多内容</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>遮罩区域充分重新生成</td>
+</tr>
+</tbody></table>
+<p>这些范围只是经验参考，不代表固定效果。</p>
+<p>例如，更换衣服时，如果 Denoise 太低，可能无法彻底改变原来的衣服；如果太高，可能生成与原图结构差异较大的服装。</p>
+<h3 id="5-2-遮罩范围"><a href="#5-2-遮罩范围" class="headerlink" title="5.2. 遮罩范围"></a>5.2. 遮罩范围</h3><p>遮罩范围直接影响模型可以修改的位置。</p>
+<p>例如更换衣服时：</p>
+<ul>
+<li>遮罩太小：容易残留原来的衣服颜色。</li>
+<li>遮罩太大：可能影响脖子、头发、手臂甚至背景。</li>
+<li>遮罩适当：更容易在保留人物整体结构的同时完成修改。</li>
+</ul>
+<p>因此，遮罩绘制往往比反复修改提示词更重要。</p>
+<h3 id="5-3-遮罩羽化与边缘处理"><a href="#5-3-遮罩羽化与边缘处理" class="headerlink" title="5.3. 遮罩羽化与边缘处理"></a>5.3. 遮罩羽化与边缘处理</h3><p>有些工作流提供 Mask Blur、Grow Mask、Feather Mask 等节点。</p>
+<p>它们通常用于改善遮罩边缘：</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Grow Mask</td>
+<td>扩大遮罩范围</td>
+</tr>
+<tr>
+<td>Blur Mask</td>
+<td>模糊遮罩边缘</td>
+</tr>
+<tr>
+<td>Feather Mask</td>
+<td>让遮罩边缘逐渐过渡</td>
+</tr>
+<tr>
+<td>Mask Composite</td>
+<td>合并或组合多个遮罩</td>
+</tr>
+</tbody></table>
+<p>这些节点的具体名称和功能可能随自定义节点包或版本变化。</p>
+<p>如果生成结果出现明显的边界、颜色断层，可以尝试适当扩大遮罩，或对边缘进行羽化处理。</p>
+<h2 id="六、实战：更换人物衣服颜色"><a href="#六、实战：更换人物衣服颜色" class="headerlink" title="六、实战：更换人物衣服颜色"></a>六、实战：更换人物衣服颜色</h2><p>下面以人物照片为例，完成一次简单的局部重绘。</p>
+<h3 id="6-1-选择人物照片"><a href="#6-1-选择人物照片" class="headerlink" title="6.1. 选择人物照片"></a>6.1. 选择人物照片</h3><p>准备一张人物上半身照片，尽量让衣服区域清晰可见。</p>
+<h3 id="6-2-绘制遮罩"><a href="#6-2-绘制遮罩" class="headerlink" title="6.2. 绘制遮罩"></a>6.2. 绘制遮罩</h3><p>打开图片遮罩编辑界面，将需要更换的衣服区域涂成白色。</p>
+<p>注意：</p>
+<ul>
+<li>不要覆盖脸部。</li>
+<li>不要大面积覆盖头发。</li>
+<li>尽量覆盖完整衣服。</li>
+<li>适当包含衣服边缘。</li>
+</ul>
+<h3 id="6-3-编写提示词"><a href="#6-3-编写提示词" class="headerlink" title="6.3. 编写提示词"></a>6.3. 编写提示词</h3><p>例如希望将红色外套改为黑色西装：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">black formal suit,</span><br><span class="line">realistic fabric texture,</span><br><span class="line">natural folds,</span><br><span class="line">professional clothing,</span><br><span class="line">realistic photography</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-4-设置参数并生成"><a href="#6-4-设置参数并生成" class="headerlink" title="6.4. 设置参数并生成"></a>6.4. 设置参数并生成</h3><p>第一次可以设置：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Steps = 20</span><br><span class="line">CFG = 7</span><br><span class="line">Denoise = 1.0</span><br></pre></td></tr></table></figure>
+
+<p>生成后观察衣服形状、颜色和边缘是否自然。</p>
+<p>如果效果不理想，可以按以下方向调整：</p>
+<ul>
+<li>颜色不准确：修改正向提示词。</li>
+<li>原来的衣服仍然存在：检查遮罩是否完整，适当提高 Denoise。</li>
+<li>衣服边缘不自然：调整遮罩范围和羽化。</li>
+<li>人物其他部分发生变化：缩小遮罩范围，检查是否使用了正确的局部重绘流程。</li>
+</ul>
+<h3 id="6-5-保存并对比"><a href="#6-5-保存并对比" class="headerlink" title="6.5. 保存并对比"></a>6.5. 保存并对比</h3><p>将生成结果保存到 output 目录。</p>
+<p>建议同时保存原图、遮罩和生成图片，方便后续比较和调整。</p>
+<h2 id="七、普通图生图与-Inpainting-模型有什么区别？"><a href="#七、普通图生图与-Inpainting-模型有什么区别？" class="headerlink" title="七、普通图生图与 Inpainting 模型有什么区别？"></a>七、普通图生图与 Inpainting 模型有什么区别？</h2><p>ComfyUI 中既可以使用普通模型配合遮罩完成局部重绘，也可以使用专门训练的 Inpainting 模型。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>普通 Checkpoint + 遮罩条件</td>
+<td>使用通用模型，通过工作流提供遮罩信息</td>
+</tr>
+<tr>
+<td>专用 Inpainting Checkpoint</td>
+<td>针对局部重绘任务训练，通常需要对应的专用工作流</td>
+</tr>
+</tbody></table>
+<p>例如，SD 1.5 有专用的 Inpainting 模型。</p>
+<p>使用专用模型时，需要确认模型本身、节点和工作流相互兼容。不能简单地将任意 Inpainting 模型当成普通 Checkpoint 使用。</p>
+<p>对于 SDXL、FLUX 等其他架构，也存在不同的局部编辑方案，不能直接照搬 SD 1.5 的节点连接方式。</p>
+<h2 id="八、局部重绘常见问题"><a href="#八、局部重绘常见问题" class="headerlink" title="八、局部重绘常见问题"></a>八、局部重绘常见问题</h2><h3 id="8-1-遮罩区域没有发生变化"><a href="#8-1-遮罩区域没有发生变化" class="headerlink" title="8.1. 遮罩区域没有发生变化"></a>8.1. 遮罩区域没有发生变化</h3><p>检查：</p>
+<ul>
+<li>遮罩是否正确传入工作流。</li>
+<li>遮罩白色和黑色区域是否理解正确。</li>
+<li>Denoise 是否设置过低。</li>
+<li>是否使用了真正支持遮罩的局部重绘工作流。</li>
+</ul>
+<h3 id="8-2-修改区域与周围画面衔接不自然"><a href="#8-2-修改区域与周围画面衔接不自然" class="headerlink" title="8.2. 修改区域与周围画面衔接不自然"></a>8.2. 修改区域与周围画面衔接不自然</h3><p>可能是遮罩边缘过于生硬，或者遮罩范围太小。</p>
+<p>可以尝试扩大遮罩范围，并适当进行边缘羽化。</p>
+<h3 id="8-3-人物脸部也发生了变化"><a href="#8-3-人物脸部也发生了变化" class="headerlink" title="8.3. 人物脸部也发生了变化"></a>8.3. 人物脸部也发生了变化</h3><p>检查遮罩是否误覆盖脸部。</p>
+<p>尽量缩小修改范围，避免让模型重新生成不需要修改的区域。</p>
+<p>如果人物身份和面部一致性要求很高，还需要结合更合适的人物参考图控制方案。</p>
+<h3 id="8-4-生成结果不符合提示词"><a href="#8-4-生成结果不符合提示词" class="headerlink" title="8.4. 生成结果不符合提示词"></a>8.4. 生成结果不符合提示词</h3><p>可以尝试：</p>
+<ul>
+<li>更明确地描述需要生成的内容。</li>
+<li>减少互相矛盾的提示词。</li>
+<li>调整 Denoise。</li>
+<li>更换适合当前任务的模型。</li>
+<li>检查模型是否支持对应的 Inpainting 工作流。</li>
+</ul>
+<h3 id="8-5-遮罩边缘出现明显色块"><a href="#8-5-遮罩边缘出现明显色块" class="headerlink" title="8.5. 遮罩边缘出现明显色块"></a>8.5. 遮罩边缘出现明显色块</h3><p>可以尝试使用 Blur Mask 或 Feather Mask 等节点处理边缘，同时检查遮罩是否覆盖了完整的过渡区域。</p>
+<h2 id="九、本篇总结"><a href="#九、本篇总结" class="headerlink" title="九、本篇总结"></a>九、本篇总结</h2><p>这一篇学习了 ComfyUI 局部重绘的基本原理和实践方法。</p>
+<p>需要掌握的知识点：</p>
+<ol>
+<li>Inpainting 是通过遮罩指定图片中需要修改的区域。</li>
+<li>Load Image 用于加载原图。</li>
+<li>Mask 用于指定修改范围。</li>
+<li>InpaintModelConditioning 可以将原图、遮罩和提示词组织成局部重绘条件。</li>
+<li>Denoise 控制遮罩区域的重新生成程度。</li>
+<li>遮罩范围和边缘处理会直接影响最终效果。</li>
+</ol>
+<p>建议先使用人物衣服、天空或背景中的简单区域进行练习，熟悉遮罩绘制和参数调整。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/ja/tags/ComfyUI/" rel="tag"># ComfyUI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/ja/posts/eab3a76b.html" rel="prev" title="ComfyUI开发之——ComfyUI图生图(3.1)">
+                  <i class="fa fa-angle-left"></i> ComfyUI开发之——ComfyUI图生图(3.1)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ja/posts/d6a66f6b.html" rel="next" title="ComfyUI开发之——ComfyUI图片高清放大与细节修复(3.3)">
+                  ComfyUI开发之——ComfyUI图片高清放大与细节修复(3.3) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">PGzxc</span>
+  </div><div class="footer-language">
+  <a href="/" data-lang="zh-CN" class="lang-link">中文</a>
+  <span class="lang-separator">|</span>
+  <a href="/en/" data-lang="en" class="lang-link">English</a>
+  <span class="lang-separator">|</span>
+  <a href="/ja/" data-lang="ja" class="lang-link">日本語</a>
+</div>
+
+<style>
+.footer-language {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.lang-link {
+  margin: 0 5px;
+  padding: 2px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.lang-link:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-link.active {
+  background-color: #333;
+  color: white;
+}
+
+.lang-separator {
+  color: #999;
+}
+</style>
+
+<script>
+// 检测当前语言并设置选中状态
+function setActiveLanguage() {
+  const pathname = window.location.pathname;
+  const langLinks = document.querySelectorAll('.lang-link');
+  
+  langLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  if (pathname.startsWith('/en/')) {
+    document.querySelector('[data-lang="en"]').classList.add('active');
+  } else if (pathname.startsWith('/ja/')) {
+    document.querySelector('[data-lang="ja"]').classList.add('active');
+  } else {
+    document.querySelector('[data-lang="zh-CN"]').classList.add('active');
+  }
+}
+
+// 页面加载时设置选中状态
+window.addEventListener('load', setActiveLanguage);
+
+// 为语言切换链接添加点击事件处理
+const langLinks = document.querySelectorAll('.lang-link');
+langLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    const targetLang = this.getAttribute('data-lang');
+    const currentPath = window.location.pathname;
+    
+    // 提取当前路径中除去语言前缀的部分
+    let pathWithoutLang = currentPath;
+    if (currentPath.startsWith('/en/')) {
+      pathWithoutLang = currentPath.substring(3);
+    } else if (currentPath.startsWith('/ja/')) {
+      pathWithoutLang = currentPath.substring(3);
+    }
+    
+    // 构建目标URL
+    let targetUrl = this.getAttribute('href');
+    if (pathWithoutLang && pathWithoutLang !== '/') {
+      // 如果不是首页，保持路径
+      targetUrl = targetUrl + pathWithoutLang.replace(/^\//, '');
+    }
+    
+    // 阻止默认跳转并使用新URL
+    e.preventDefault();
+    window.location.href = targetUrl;
+  });
+});
+</script>
+
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"PGzxc","repo":"PGzxc.github.io","client_id":"4d2d97c55a316dfcea73","client_secret":"f55fe43764e8560484a13850e4a6d84792924fb0","admin_user":"PGzxc","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js","integrity":"sha256-MVK9MGD/XJaGyIghSVrONSnoXoGh3IFxLw0zfvzpxR4="},"path_md5":"a1864dfac846387fc009a8ce494c8836"}</script>
+<script src="/ja/js/third-party/comments/gitalk.js" defer></script>
+
+</body>
+</html>
